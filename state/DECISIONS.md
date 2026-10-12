@@ -1,0 +1,16 @@
+# Decisions (append-only; one line each: date | id | decision | reason | ref)
+2026-10-12 | D-001 | Core worlds: square vs cylinder 12×12; torus and others are extensions | scope for 4–6 days; matched N | RESEARCH_SUMMARY §3
+2026-10-12 | D-002 | P = axis-wise state permutation of O (not full permutation) | O factorises in x,y; full permutation would confound smoothness with factorisation (Shai et al. 2026, factored representations) | RESEARCH_SUMMARY §4
+2026-10-12 | D-003 | N control is never used to calibrate thresholds | avoid circularity found in an earlier draft | RESEARCH_SUMMARY §7.3
+2026-10-12 | D-004 | Representation baselines R2 (previous-token mixing) and R3 (context average) added | grid-like geometry can arise from symbol mixing (Park et al. 2025 + follow-up; Jerpelea 2026 centroid confound) | RESEARCH_SUMMARY §7.6
+2026-10-12 | D-005 | Gaussian floor reported for S; never used as a threshold | Malhotra et al. 2026: Gaussian clouds yield many spurious H1 bars | RESEARCH_SUMMARY §7.3
+2026-10-12 | D-006 | Max-degree lazy walk as the general dynamics rule | identical to "blocked → stay" on the core lattice; keeps π uniform on extension worlds | RESEARCH_SUMMARY §3
+2026-10-12 | D-007 | No GPU assumed; S3 measures CPU throughput; local CPU if projected stage time ≤ 8 h, else one bundle per run to a free/rented GPU | owner has no GPU; model is small (~0.8M params) | EXECUTION §5
+2026-10-13 | D-008 | SequenceLayout.model_inputs(tokens, V) takes V explicitly | SPEC signature had no way to know the BOS id (= V) | contracts/SPEC.md; DATA_SCHEMAS §8
+2026-10-13 | D-009 | payload_sha256 = canonical content hash (array name/dtype/shape/bytes + canonical extra JSON); non-array fields stored in extra.json | np.savez zip timestamps make file hashes nondeterministic | contracts/README.md
+2026-10-13 | D-010 | Env: .venv is Python 3.10.6 (owner said 3.11; ≥3.10 required, so kept); requirements.lock pinned (torch 2.14.1+cpu, numpy 2.2.6, scipy 1.15.3, ripser 0.6.15); bundle installs strip the +cpu suffix | reproducibility; Colab/Kaggle cannot resolve +cpu wheels | CONVENTIONS §1; EXECUTION §3
+2026-10-13 | D-011 | validate() checks artifact-local invariants only; ∂∂=0 (world), T support on edges and permuted-row multiset (process) are enforced by the producer | these need the cubical sign convention or a second artifact; contracts holds no science | contracts/README.md
+2026-10-13 | D-012 | World-scoped randomness (P axis permutations, test split) uses SeedTree(0) scoped by (name, world family); replicate-scoped randomness uses SeedTree(master) | base.yaml seeds.world_scoped=true; gives one fixed stream per world | RESEARCH_SUMMARY §4; base.yaml
+2026-10-13 | D-013 | ArtifactStore.save requires parents to be stored (MISSING_PARENT); export_bundle includes all ancestors by default | lineage integrity; remote stores need the full parent closure | EXECUTION §3
+2026-10-13 | D-014 | git initialised by the conductor (branch main, local only); tasks.ps1 is the Windows equivalent of every Makefile target | owner environment has no make | tools/SPEC.md
+2026-10-13 | D-015 | contracts FROZEN at SCHEMA_VERSION 1.0.0 (public API = contracts.__all__); S0 gate G-S0 passed | W0 complete: 95/95 independent tests, imports clean; W1 started on this API | ORCHESTRATOR §13.4

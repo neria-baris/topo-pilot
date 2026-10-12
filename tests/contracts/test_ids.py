@@ -5,8 +5,14 @@ import random
 import numpy as np
 import pytest
 
-from topo_pilot.contracts import (ErrorCode, SCHEMA_VERSION, SeedTree, StageFailure,
-                                  canonical_json, make_artifact_id)
+from topo_pilot.contracts import (
+    SCHEMA_VERSION,
+    ErrorCode,
+    SeedTree,
+    StageFailure,
+    canonical_json,
+    make_artifact_id,
+)
 
 pytestmark = pytest.mark.contracts
 

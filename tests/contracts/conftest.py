@@ -1,4 +1,5 @@
 import pytest as _pytest
+
 pytestmark = _pytest.mark.contracts
 
 """Hand-built small valid instances of every artifact class (independent of the implementation)."""

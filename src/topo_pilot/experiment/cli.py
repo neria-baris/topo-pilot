@@ -9,8 +9,14 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from topo_pilot.contracts import (ARTIFACT_CLASSES, ArtifactMeta, ArtifactStore, GateReport,
-                                  LocalFSBackend, StageFailure)
+from topo_pilot.contracts import (
+    ARTIFACT_CLASSES,
+    ArtifactMeta,
+    ArtifactStore,
+    GateReport,
+    LocalFSBackend,
+    StageFailure,
+)
 
 from .config import ResolvedConfig, load_config, producer_version
 from .stages import STAGE_REGISTRY, run_stage

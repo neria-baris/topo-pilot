@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from collections.abc import Mapping
 from typing import Any, ClassVar
 
-from topo_pilot.contracts import (ArtifactStore, ErrorCode, GateCheck, GateReport, StageFailure)
+from topo_pilot.contracts import ArtifactStore, ErrorCode, GateCheck, GateReport, StageFailure
 
 from .config import ResolvedConfig
 

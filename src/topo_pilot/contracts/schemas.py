@@ -2,12 +2,27 @@
 
 from __future__ import annotations
 
-from .base import Artifact
-from ._schemas_data import (BaselineOutputs, EvalSidecar, HistoryIndex, ObservationSet,
-                            OracleOutputs, ProcessDiagnostics)
-from ._schemas_results import (ActivationSet, Checkpoint, Diagrams, DistanceArtifact, GateCheck,
-                               GateReport, MetricRecords, MetricRow, RunManifest)
+from ._schemas_data import (
+                            BaselineOutputs,
+                            EvalSidecar,
+                            HistoryIndex,
+                            ObservationSet,
+                            OracleOutputs,
+                            ProcessDiagnostics,
+)
+from ._schemas_results import (
+                            ActivationSet,
+                            Checkpoint,
+                            Diagrams,
+                            DistanceArtifact,
+                            GateCheck,
+                            GateReport,
+                            MetricRecords,
+                            MetricRow,
+                            RunManifest,
+)
 from ._schemas_world import EmissionSpec, TransitionSpec, WorldSpec
+from .base import Artifact
 
 ARTIFACT_CLASSES: dict[str, type[Artifact]] = {
     cls.ARTIFACT_TYPE: cls

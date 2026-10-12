@@ -8,8 +8,13 @@ import numpy as np
 import pytest
 
 from topo_pilot.contracts import ErrorCode, SeedTree, StageFailure
-from topo_pilot.process import (CENTER_REGISTRY, CenterStrategy, EmissionConfig, GridCenters,
-                                OverlapGaussian)
+from topo_pilot.process import (
+    CENTER_REGISTRY,
+    CenterStrategy,
+    EmissionConfig,
+    GridCenters,
+    OverlapGaussian,
+)
 from topo_pilot.process._diagnostics import check_symbols_alive
 
 pytestmark = pytest.mark.process

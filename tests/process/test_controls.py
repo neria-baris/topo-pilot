@@ -7,12 +7,28 @@ import inspect
 import numpy as np
 import pytest
 
-from topo_pilot.contracts import (EmissionSpec, ErrorCode, SeedTree, StageFailure,
-                                  TransitionSpec, WorldSpec)
+from topo_pilot.contracts import (
+    EmissionSpec,
+    ErrorCode,
+    SeedTree,
+    StageFailure,
+    TransitionSpec,
+    WorldSpec,
+)
 from topo_pilot.contracts.testing import memory_store
-from topo_pilot.process import (EMISSION_REGISTRY, AxisPermuted, EmissionConfig, EmissionModel,
-                                FPSCenters, FullPermuted, Identical, OverlapGaussian,
-                                ProcessStage, TransitionConfig, Unique)
+from topo_pilot.process import (
+    EMISSION_REGISTRY,
+    AxisPermuted,
+    EmissionConfig,
+    EmissionModel,
+    FPSCenters,
+    FullPermuted,
+    Identical,
+    OverlapGaussian,
+    ProcessStage,
+    TransitionConfig,
+    Unique,
+)
 from topo_pilot.process._diagnostics import check_row_multiset
 from topo_pilot.process.emission import axis_state_perm, draw_axis_permutation
 

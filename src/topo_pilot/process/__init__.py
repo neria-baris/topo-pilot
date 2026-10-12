@@ -1,8 +1,16 @@
 """Public API of `topo_pilot.process` (see SPEC.md and README.md)."""
 
 from .centers import CENTER_REGISTRY, CenterStrategy, FPSCenters, GridCenters
-from .emission import (EMISSION_REGISTRY, AxisPermuted, EmissionConfig, EmissionModel,
-                       FullPermuted, Identical, OverlapGaussian, Unique)
+from .emission import (
+                       EMISSION_REGISTRY,
+                       AxisPermuted,
+                       EmissionConfig,
+                       EmissionModel,
+                       FullPermuted,
+                       Identical,
+                       OverlapGaussian,
+                       Unique,
+)
 from .stage import ProcessStage
 from .transition import TransitionBuilder, TransitionConfig
 

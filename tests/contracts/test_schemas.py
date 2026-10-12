@@ -5,7 +5,6 @@ import pytest
 
 from topo_pilot import contracts as C
 from topo_pilot.contracts import ErrorCode, StageFailure
-from topo_pilot.contracts import testing as T
 
 pytestmark = pytest.mark.contracts
 

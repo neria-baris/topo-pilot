@@ -11,8 +11,8 @@ import numpy as np
 
 from .backends import MemoryBackend
 from .errors import ErrorCode, StageFailure
-from .schemas import ObservationSet, WorldSpec
 from .ids import SeedTree
+from .schemas import ObservationSet, WorldSpec
 from .store import ArtifactStore
 
 # Betti numbers of the two core surfaces (contractible square; cylinder ~ circle), any field p.

@@ -1,0 +1,76 @@
+# Per-stage settings. Values not listed here come from base.yaml.
+# Executor hosts and paths live in configs/local.yaml (untracked).
+
+S0:
+  gates: []
+S1:
+  emissions_for_sigmas: [O, P, N]
+  gates: [G-A]
+S2:
+  requires: [S1]
+  gates: [G-B, G-C, G-D]
+  discriminability_spaces: [world, emission, belief32, belief1, future1, future2]
+  human_checkpoint: H1
+S3:
+  requires: [S2]
+  runs: [{world: cylinder, condition: O, seed: 1729}]
+  throughput_probe_steps: 100
+  device_policy:                        # docs/EXECUTION.md §5; no GPU assumed
+    assume_gpu: false
+    local_cpu_max_projected_hours: 8    # above this: BundleExecutor, one job per run
+    torch_threads: physical_cores
+  gates: [G-E]
+  human_checkpoint: H2
+S4:
+  requires: [S3]
+  runs_ordered:                         # seed-major, world-paired (STAGES §2)
+    - {world: cylinder, condition: O, seed: 1729}   # reused from S3
+    - {world: square,   condition: O, seed: 1729}
+    - {world: any,      condition: N, seed: 1729}
+    - {world: cylinder, condition: O, seed: 2718}
+    - {world: square,   condition: O, seed: 2718}
+    - {world: cylinder, condition: O, seed: 3141}
+    - {world: square,   condition: O, seed: 3141}
+  extract:
+    all_panels_at: [0, 5000]
+    panel1_at: all
+  gates: [G-F]
+  exit: E2
+S5:
+  requires: [S4]
+  runs_ordered:
+    - {world: cylinder, condition: P, seed: 1729}
+    - {world: square,   condition: P, seed: 1729}
+    - {world: cylinder, condition: P, seed: 2718}
+    - {world: square,   condition: P, seed: 2718}
+    - {world: cylinder, condition: P, seed: 3141}
+    - {world: square,   condition: P, seed: 3141}
+  gates: [G-F]
+S6:
+  requires: [S4]
+  checkpoint_order_null_permutations: 1000
+  layer_sweep: true
+  exit: E3                              # together with S5
+S7:
+  requires: [S6]
+  runs_ordered:
+    - {world: cylinder, condition: U, seed: 1729}
+    - {world: square,   condition: U, seed: 1729}
+    - {world: any,      condition: N, seed: 2718}
+    - {world: any,      condition: N, seed: 3141}
+  sensitivity:                          # one factor at a time
+    activation_metric: [chord]
+    pca_dims: [32]                      # fitted on dev
+    panel_size: [256]
+    distribution_metric: [sqrt_js]
+  probes: {lambdas: [1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0]}
+  circular_coordinates: true
+  gates: [G-G]
+S8:
+  requires: [S7]
+  rerun_identity_check: {world: cylinder, condition: O, seed: 1729}
+  exit: E4
+
+cut_paths:                              # STAGES §4; triggered on time/resources only
+  reduced_steps: 3000
+  fallback_ladder: [{steps: 10000}, {n_layers: 6, d_model: 256}, {next_sigma: true}]

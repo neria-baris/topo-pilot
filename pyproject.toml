@@ -1,0 +1,34 @@
+# Template. In wave W0 the conductor installs, then pins exact versions in requirements.lock
+# (and records the lock in state/DECISIONS.md).
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "topo-pilot"
+version = "0.1.0"
+description = "Topology of a latent world in transformer representations: a controlled pilot"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "torch", "ripser", "pyyaml", "matplotlib"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+ext = ["gudhi"]
+
+[project.scripts]
+topo-pilot = "topo_pilot.experiment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not slow and not gpu and not integration'"
+markers = [
+  "contracts", "world", "process", "dataset", "oracle", "learner", "activations",
+  "prediction", "topology", "analysis", "experiment", "executors",
+  "slow: excluded by default", "gpu: needs CUDA", "integration: runs at stage gates only",
+]
+
+[tool.ruff]
+line-length = 100

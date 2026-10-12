@@ -1,0 +1,12 @@
+# X3: higher-dimensional holes (docs/EXTENSIONS.md §4). Requires E2. H3 results are flagged "approximate".
+worlds:
+  - {family: cube_surface,     params: {k: 5}}        # S^2, N = 152, beta (1,0,1)
+  - {family: torus3,           dims: [5, 5, 5]}       # T^3, N = 125, beta (1,3,3,1)
+  - {family: hypercube_surface, params: {k: 3}}       # S^3, N = 240, beta (1,0,0,1)
+emissions: {center_strategy: fps, V_ratio: 4, metric: graph}
+ph:
+  h2: {maxdim: 2, landmarks: 400}
+  h3: {maxdim: 3, landmarks: 150, alternative: witness_complex_gudhi}
+  timeout_s: 600
+calibration: {synthetic: [sphere2, sphere3], ambient: 128, noise: 0.05, draws: 20}
+analysis: {belief_entropy_filter_quantiles: [0.25, 0.5, 1.0]}

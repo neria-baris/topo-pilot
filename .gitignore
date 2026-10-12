@@ -1,0 +1,13 @@
+artifacts/
+bundles/
+outputs_*.tar.gz
+bundle_*.tar.gz
+configs/local.yaml
+.env
+*.log
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.venv/

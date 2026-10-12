@@ -1,0 +1,16 @@
+# X2: unions of tori (docs/EXTENSIONS.md §3). Requires E2.
+x2a_disjoint:
+  world: {family: torus_disjoint_union, params: {components: 2, dims: [12, 12]}}   # N = 288, beta (2,4,2)
+  emissions:
+    V: 36
+    component_A: {mode: overlap, center_strategy: grid}
+    component_B: {mode: axis_permuted, source: component_A}   # same marginal statistics
+  analysis:
+    component_marginal: true          # P(component | history) from the oracle
+    h0_gap_vs_position: true
+x2b_connected_sum:
+  world: {family: connected_sum, params: {genus: 2, torus_dims: [12, 12], hole_faces: [2, 2]}}  # N = 278, chi = -2
+  dynamics: {kind: max_degree_lazy_walk, p_stay: 0.2}    # D_max = 6 at seam corners; report spectral gap
+  emissions: {center_strategy: fps, V: 70, metric: graph}
+  comparison_world: {family: torus, dims: [12, 12], emissions: {center_strategy: fps, V: 36, metric: graph}}
+  ph: {maxdim: 2, landmarks: 400}

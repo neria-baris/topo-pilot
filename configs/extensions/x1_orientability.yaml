@@ -1,0 +1,15 @@
+# X1: orientability (docs/EXTENSIONS.md §2). Requires E2. Needs its own preregistration addendum.
+x1a_boundary:
+  worlds:
+    - {family: cylinder, dims: [12, 12]}
+    - {family: mobius,   dims: [12, 12], identifications: [{axis: 0, kind: flipped, flip_axis: 1}]}
+  emissions: {conditions: [O, P, N], center_strategy: grid, V: 36}
+  analysis:
+    boundary_belief_mass_min: 0.8     # selects histories by oracle belief, not by latent label
+    prediction: {cylinder: {beta0: 2, h1_per_component: 1}, mobius: {beta0: 1, h1: 1}}
+x1b_closed:
+  pairs:
+    - [{family: torus, dims: [12, 12]}, {family: klein, dims: [12, 12]}]
+    - [{family: cube_surface, params: {k: 5}}, {family: rp2_cube_quotient, params: {k: 7}}]
+  ph: {maxdim: 2, coeff_p: [2, 3], landmarks: 400}
+  emissions: {center_strategy: fps, V_ratio: 4, metric: graph}

@@ -86,6 +86,12 @@ def run_stage(stage_id: str, cfg: ResolvedConfig, store: ArtifactStore) -> list[
                            f"stage {stage_id!r} is not implemented yet "
                            f"(available: {sorted(STAGE_REGISTRY)})")
     stage = STAGE_REGISTRY[stage_id]()
+    for required in stage.requires:
+        verdicts = [store.load(GateReport, gid, consumer="experiment").verdict
+                    for gid in store.find(GateReport, stage=required)]
+        if not any(v in ("pass", "waived") for v in verdicts):
+            raise StageFailure(ErrorCode.GATE_FAILED, f"experiment.{stage_id}", "requires",
+                               f"required stage {required} has no passed gate")
     written: list[str] = []
     for job in stage.plan(cfg, store):
         written.extend(stage.execute(job, cfg, store))

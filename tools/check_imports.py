@@ -4,6 +4,7 @@
 Exit 0 = clean, 1 = violations (one line each), 2 = usage error.
 """
 import argparse
+import os
 import ast
 import sys
 from pathlib import Path
@@ -31,8 +32,11 @@ def import_paths(node, root, path):
         if target[:1] == ["topo_pilot"]:
             for alias in node.names:
                 # "from topo_pilot.x import y" where y is a file or folder of x is a deep import
-                sub = root.joinpath(*target[1:], alias.name)
-                is_sub = sub.with_suffix(".py").is_file() or sub.is_dir()
+                parent = root.joinpath(*target[1:])
+                # exact (case-sensitive) match: Windows paths are case-insensitive
+                entries = set(os.listdir(parent)) if parent.is_dir() else set()
+                is_sub = f"{alias.name}.py" in entries or (
+                    alias.name in entries and (parent / alias.name).is_dir())
                 module_name = len(target) == 1 and alias.name in MODULES
                 if module_name or (is_sub and alias.name != "*"):
                     names.append(target + [alias.name])

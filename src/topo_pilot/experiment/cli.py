@@ -24,6 +24,7 @@ from .prereg import write_prereg
 from .report import build_e0
 from .report_e2 import build_e2
 from .report_e3 import build_e3
+from .report_e4 import build_e4
 from .report_x4 import x4_section
 from .stages import STAGE_REGISTRY, run_stage
 
@@ -63,8 +64,8 @@ def status_lines(cfg: ResolvedConfig, store: ArtifactStore) -> list[str]:
 
 
 def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list[Path]:
-    """Write the report(s) for ``level``; ``all`` skips E2 / E3 until an S4 / S5 analysis
-    exists."""
+    """Write the report(s) for ``level``; ``all`` skips E2 / E3 / E4 until an S4 / S5
+    analysis / S7 sensitivity record exists."""
     out = []
     if level in ("all", "E0"):
         out.append(build_e0(store, cfg.repo_root / "reports" / "E0"))
@@ -77,6 +78,10 @@ def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list
     if level == "E3" or (level == "all" and s5_done):
         final = int(cfg.base["training"]["primary_checkpoint"])
         out.append(build_e3(store, cfg.repo_root / "reports" / "E3", cfg.repo_root, final))
+    s7_done = bool(store.find(MetricRecords, stage="S7", kind="sensitivity"))
+    if level == "E4" or (level == "all" and s7_done):
+        final = int(cfg.base["training"]["primary_checkpoint"])
+        out.append(build_e4(store, cfg.repo_root / "reports" / "E4", final))
     return out
 
 
@@ -90,7 +95,7 @@ def _parser() -> argparse.ArgumentParser:
     sg.add_argument("--config", default="configs/stages.yaml")
     sg.add_argument("--executor", default="local", choices=["local", "bundle", "ssh"])
     rp = sub.add_parser("report", help="summary + figures from MetricRecords only")
-    rp.add_argument("--level", default="all", choices=["all", "E0", "E2", "E3"],
+    rp.add_argument("--level", default="all", choices=["all", "E0", "E2", "E3", "E4"],
                     help="exit level; 'all' regenerates every level whose data exists")
     rp.add_argument("--config", default="configs/stages.yaml")
     pr = sub.add_parser("prereg", help="write PREREGISTRATION.md from S2 outputs (H1 draft)")

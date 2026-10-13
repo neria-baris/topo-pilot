@@ -1,0 +1,16 @@
+{
+ "E_canon_max_diff": 0.0,
+ "pi_stationarity": 8.673617379884035e-19,
+ "maps": {
+  "route_diff": 0.0,
+  "lexicographic_diff": 2.7755575615628914e-17,
+  "O1_vs_G1T": 0.0,
+  "O2_head_vs_O1": 0.0,
+  "G1_row_sum": 3.3306690738754696e-16,
+  "G2_row_sum": 4.440892098500626e-16,
+  "G2_min": 8.235471732049698e-34,
+  "first_marginal_diff": 1.6653345369377348e-16,
+  "second_marginal_vs_T2E": 1.6653345369377348e-16,
+  "second_marginal_vs_G1": 0.05562942334525117
+ }
+}

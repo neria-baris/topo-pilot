@@ -1,0 +1,20 @@
+{
+ "protocol": "x4b2-v1",
+ "verdicts": {
+  "ambient": "ALLOWS_STABLE (inherited from Phase B, recomputation matched)",
+  "practical": "NO_GAP",
+  "strict": "UNRESOLVED",
+  "overall": "NO-GO"
+ },
+ "reasons": {
+  "practical": "covered pools show no material gap",
+  "overall": "no material reachable gap in adequately covered pools (sample-scoped)"
+ },
+ "pool_status": {
+  "reference": "NO_MATERIAL_GAP",
+  "repetition1": "NO_MATERIAL_GAP",
+  "repetition2": "NO_MATERIAL_GAP",
+  "repetition3": "NO_MATERIAL_GAP"
+ },
+ "failures": []
+}

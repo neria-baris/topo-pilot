@@ -1,0 +1,13 @@
+{
+ "ambient.json": "979009dd2c336f3c484b478efb3d2c0a7c772908844984b7ce7340fbabbeda4c",
+ "anchors_reference.csv": "d92f99a7e14248e887e6e3e8ad1074ce1e5d0aa952e877153e1fa6de1bc19208",
+ "anchors_repetition1.csv": "b240584d45d32ddbaafc8c46a4e5a95a358ec473b0046a064fe18791205df39c",
+ "anchors_repetition2.csv": "1d82a2028ef7be07848016c2d60964b90e542cda9cfb313b8942a7648dbe5ac6",
+ "anchors_repetition3.csv": "c1f722b078b59e91f05dc1a1ed00c8f3a865e77a07669995554d928bf310dd7c",
+ "inputs.json": "4a24c938eba811679d212c3c3c82345a205ef79f331e8f718a162337846c8c4b",
+ "pools.json": "2e1be2f889f1c3d89ab22691b47ee0c1cdd3d342b41175d4d9baf7656b1f310e",
+ "process_and_map_checks.json": "5b834020eea9c608573e9b3f778ea6200b85f71dd817727ccff72fe8e6a8fb95",
+ "run.json": "eb2ed763d96ee7f8c5a9aa37bb6634fdc2c41cbfc9a9287227192bf953b5ef5c",
+ "separation.json": "021845c2bfb38d3abb25292dbb42281cbb984a41e26cdc9ce3a96a3a8f8c3643",
+ "verdicts.json": "d8321f0b28960c8930e1e9a0c25eb8c89a9591688b462bab9ca79fc397532d1b"
+}

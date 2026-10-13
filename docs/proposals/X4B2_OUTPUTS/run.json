@@ -1,0 +1,96 @@
+{
+ "protocol": "x4b2-v1",
+ "protocol_doc_sha256": "e6ceab02670019fd61397e20b39e50afe13710a4c11cbdada8c59c8e0d3efdd0",
+ "producer_version": "c62590a9a670",
+ "code_notes": {
+  "zero_map_guard": "analysis.tangent_audit (5b2f384), inert for this process",
+  "memory_query_fix": "experiment.x4b_run.peak_memory_bytes (741333c)"
+ },
+ "phase_b_link": {
+  "metric_records_id": "be4fbf6252097544",
+  "ambient_json_sha256": "fdef1e405da3b984129c3ef317a8fc07de04c9a43dfa171a4d36f79540c522cd"
+ },
+ "cpu_s": 48.89,
+ "wall_s": 33.69,
+ "cpu_cap_s": 3600.0,
+ "peak_memory_bytes": 1191374848,
+ "budget_steps": [
+  {
+   "step": "ambient",
+   "cpu_s": 2.75,
+   "wall_s": 3.598
+  },
+  {
+   "step": "old_data",
+   "cpu_s": 4.031,
+   "wall_s": 5.007
+  },
+  {
+   "step": "reference",
+   "cpu_s": 19.828,
+   "wall_s": 13.76
+  },
+  {
+   "step": "repetition1",
+   "cpu_s": 29.141,
+   "wall_s": 19.508
+  },
+  {
+   "step": "repetition2",
+   "cpu_s": 37.891,
+   "wall_s": 25.603
+  },
+  {
+   "step": "repetition3",
+   "cpu_s": 47.203,
+   "wall_s": 31.831
+  }
+ ],
+ "main_store_listing_before": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "main_store_listing_after": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "lineage": {
+  "reference": {
+   "role": "reference",
+   "stream": "x4b2-v1/pool/cylinder/overlap/1.25/reference",
+   "seed": 4472965773301758267,
+   "n": 16384,
+   "first_token_chi2_p": 0.3772432967178333,
+   "tokens_export_sha256": "9bf085529c0648740ed9c413fb03672f0696b969195301aa2800781918422df7",
+   "screen_export_sha256": "6bfe0042e4dd9fcd1261a3dfde41df12c0e344a37f1860ff6f032ee6c279844d"
+  },
+  "repetition1": {
+   "role": "repetition1",
+   "stream": "x4b2-v1/pool/cylinder/overlap/1.25/repetition1",
+   "seed": 9041520877900685805,
+   "n": 16384,
+   "first_token_chi2_p": 0.7926890412094755,
+   "tokens_export_sha256": "6e2faa9e38f36819332a20bc2ae7efe32ba4d719e666e4d626825f052ee02ac9",
+   "screen_export_sha256": "32e877c772dff9a87ae4716149c77569f4a821e8196fb602f208631aa108b606"
+  },
+  "repetition2": {
+   "role": "repetition2",
+   "stream": "x4b2-v1/pool/cylinder/overlap/1.25/repetition2",
+   "seed": 1190608976536703855,
+   "n": 16384,
+   "first_token_chi2_p": 0.53885659464985,
+   "tokens_export_sha256": "e8544a703b4992138181638e53dcbe4808a261f6aa1e90d9ad4ace2470451920",
+   "screen_export_sha256": "18226165b089178ae2e794b72819bc18a79eda004e6619ba2b238a3f9430e619"
+  },
+  "repetition3": {
+   "role": "repetition3",
+   "stream": "x4b2-v1/pool/cylinder/overlap/1.25/repetition3",
+   "seed": 264034718665583389,
+   "n": 16384,
+   "first_token_chi2_p": 0.255589751317309,
+   "tokens_export_sha256": "0842e83998b95d453a37a466edf650fb422c34daadbe5544f0432173ada4cc3d",
+   "screen_export_sha256": "d117bad267eb593d59795b675d75359f6705e28b7335d2f72dc5d055a69e6d49"
+  }
+ },
+ "metric_records_id": "49ee640ccf257be7"
+}

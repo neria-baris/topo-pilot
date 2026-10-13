@@ -1,0 +1,55 @@
+[
+ {
+  "role": "world",
+  "artifact_id": "21feee1d8ee5422e",
+  "type": "WorldSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": []
+ },
+ {
+  "role": "transition",
+  "artifact_id": "e4dafc7b9785c172",
+  "type": "TransitionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "emission[1729]",
+  "artifact_id": "3633ac27dab50cf4",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "emission[2718]",
+  "artifact_id": "97838b9e13a26f74",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "88203323334704db45ecc104af54f7e21f5225ad1a28fc2d08fc7ab8d75f5874",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "emission[3141]",
+  "artifact_id": "8c29c329c197c79e",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "ccd97a63ec03bf1287ef0098fe84ad305e4e810054cd4fa7bf1c025e4a74a84f",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ }
+]

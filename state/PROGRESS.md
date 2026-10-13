@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S2 done, waiting at H1 | Wave: W2 accepted; W3 next | Last exit reached: E0 (tagged)
+Stage: S2 done (H1 approved) | Wave: W3 building | Last exit reached: E1 (tagged)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,7 +28,7 @@ Stage: S2 done, waiting at H1 | Wave: W2 accepted; W3 next | Last exit reached: 
 | G-D | pass | 2026-10-13 | no latent fields; learner→sidecar LEAKAGE |
 
 ## Open issues (≤5)
-- H1: owner approval of PREREGISTRATION.md (uncommitted draft) before any training
+- E1 README sentence needs H4 approval
 - H3 decidable one-sidedly only (P: oracle b32 shows 5/8)
 - ~40 lines over 100 chars (style cleanup by Tier C)
 - process.is_x_periodic detects the cylinder by name (extension fragility)

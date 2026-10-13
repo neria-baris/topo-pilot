@@ -169,3 +169,10 @@ This section is appended; the planning text above is unchanged.
 | Decoder ceiling for Q2 | Not measured: no decoder was fitted | — |
 
 No further coverage extension, threshold change or Phase C follows. The closure is scoped to the process, horizon, position and screen above. It says nothing about other horizons, positions, processes or the trained models' representations. H4C-F, X5 and X6 remain proposals that need separate approval. The next separately approved task is a descriptive audit of the E4 circular baseline on existing artifacts.
+
+### Status addendum (14 October 2026, D-058, D-059)
+
+| Item | Status | Record |
+|---|---|---|
+| E4 circular-baseline audit | BEYOND_SYMBOL_AND_MIXING, descriptive only; the direct R1 gap is resolved descriptively | D-057 |
+| X4-F (H4C-F) | Draft x4f-draft-1 and plan (D-058); execution contract x4f-exec-v1 prepared for coordinator review (D-059). Not executed. | X4F_EXECUTION_PROTOCOL.md |

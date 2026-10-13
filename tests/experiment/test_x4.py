@@ -110,8 +110,13 @@ def make_runs(parents, skip=()):
 
 
 def fake_resolver(runs, missing):
+    """Source-aware like StoreResolver: S4 holds the O and N runs, S5 the P runs."""
+    conds = {"S4": ("O", "N"), "S5": ("P",)}
+
     def resolver(source_stage):
-        return list(runs), list(missing)
+        keep = conds[source_stage]
+        return ([r for r in runs if r.condition in keep],
+                [m for m in missing if m[1] in keep])
     return resolver
 
 

@@ -207,10 +207,13 @@ def _grid_figure(cells: list[list[dict]], path: Path, title: str) -> Path:
             for (world, _seed), pts in sorted(cell["series"].items()):
                 ax.plot([pos[s] for s, _ in pts], [v for _, v in pts], color=WORLD_COLOR[world],
                         linewidth=1.6, alpha=0.85, marker="o", markersize=3)
-            for (world, label), y in cell.get("refs", {}).items():
+            refs = cell.get("refs", {})
+            for (world, _label), y in refs.items():
                 ax.axhline(y, color=WORLD_COLOR[world], linewidth=1, linestyle=(0, (3, 3)))
-                ax.annotate(label, (len(steps) - 1, y), xytext=(2, 2),
-                            textcoords="offset points", fontsize=6, color=INK_MUTED, ha="right")
+            if refs:
+                ax.annotate(cell.get("ref_label", ""), (len(steps) - 1, max(refs.values())),
+                            xytext=(0, 3), textcoords="offset points", fontsize=6,
+                            color=INK_MUTED, ha="right")
             if cell.get("log"):
                 ax.set_yscale("log")
             ax.set_title(cell["title"], fontsize=8, color=INK, loc="left")
@@ -244,7 +247,7 @@ def dynamics_figure(dyn: dict[str, Sequence[MetricRow]], path: Path) -> Path:
                        "series": _series(rows, "dyn:S", "S_H1")},
                       {"title": f"{cond}: regret KL(q_C ‖ p_model)", "ylabel": "nats (log)",
                        "series": _series(rows, "dyn:regret", "regret"), "log": True,
-                       "refs": g_c}])
+                       "refs": g_c, "ref_label": "G_C (dashed; colour = world)"}])
     return _grid_figure(cells, path, "Training dynamics on panel 1 (H4, D-034)")
 
 
@@ -319,7 +322,12 @@ def build_e3(store: ArtifactStore, out_dir: Path, repo_root: Path, final: int = 
               *compare_table(rows_o, rows_p), "", *geometry_compare(rows_o, rows_p), "",
               "## Layer sweep (descriptive, RESEARCH_SUMMARY §7.7)", "",
               *layer_table(layers), "",
+              "embed: at p = 32 the embedding depends on w₃₂ only (at most 36 distinct points, "
+              "the same in every panel), so its S is panel-independent and u_r = 0 by "
+              "construction.", "",
               "![X4 view curves](fig_x4_curves.png)", "",
+              "Post hoc reading (not pre-registered; written after this summary): "
+              "[exploratory.md](exploratory.md).", "",
               "**Not run:** S7 (U and extra N controls, probes, sensitivity, circular "
               "coordinates), S8 (clean rerun), X4-causal and other extensions.", ""]
     if any(dyn.values()):

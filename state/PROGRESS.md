@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S5 running (LocalExecutor, CPU; started 2026-10-13 after commit eadd330) | Wave: E3 tooling built (D-044) | Last exit reached: E2 (tagged)
+Stage: S5 + X4 (S4, S5) + S6 complete; E3 report generated; AWAITING H4 (owner) | Last exit reached: E2 (tagged); E3 not tagged
 
 ## Modules
 | module | status | owner tier | notes |
@@ -18,7 +18,7 @@ Stage: S5 running (LocalExecutor, CPU; started 2026-10-13 after commit eadd330) 
 | activations | accepted | B | hook extraction at p = 32 |
 | experiment | S0–S6, X4 + report E0/E2/E3 | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S6 x4curves + E3 report (D-044); S7–S8 todo |
 
-All module suites: 450 passed at E2 (+4 process, +5 experiment since), 5 deselected (slow/integration); check_imports clean; ruff clean.
+All module suites: 459 passed, 5 deselected (slow/integration); integration 2 passed; check_imports clean; ruff clean.
 
 ## Gates
 | gate | verdict | date | key value |
@@ -30,14 +30,14 @@ All module suites: 450 passed at E2 (+4 process, +5 experiment since), 5 deselec
 | G-D | pass | 2026-10-13 | no latent fields; learner→sidecar LEAKAGE |
 | G-E | pass | 2026-10-13 | captured 0.986; 22k tok/s, 16 min/run; S4 proj 1.6 h |
 | G-F | pass | 2026-10-13 | S4: 7 runs × 12 checkpoints (84 Checkpoint, 84 ActivationSet); analysis done ~13:15 local |
+| G-F (S5) | pass | 2026-10-13 | P: 6 runs × 12 checkpoints; captured 0.874–0.914 |
 
 ## Open issues (≤5)
-- R1 (last-symbol embedding) reaches 0.47–0.89 of the model's F1 contrast under O (exploratory, reports/E2/exploratory.md); P (S5, H3′) is what separates emission geometry from history
-- H3 decidable one-sidedly only; H3′ approved (D-037), decided under P only
+- E3 verdicts (D-045): H3 rule REJECTED under P (one-sided: uninformative); H4 REJECTED (S rises at step 50, regret < G_C at 100; rise also in square runs); H3′ SUPPORTED under P
+- R1 contrast collapses under P (median D −0.035/0.008/0.007): not static emission geometry, but symbol-level statistics vs history integration still undecided (reports/E3/exploratory.md)
 - Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
 
 ## Next actions (≤5)
-1. If S5 was interrupted: re-run `topo-pilot stage S5` (stored runs are reused, D-032); check `topo-pilot status` (Checkpoint count 84 → 156 when done).
-2. Then `topo-pilot stage X4` (sources [S4, S5]; verify O rows equal record 78c86738c6c8ae34), then `topo-pilot stage S6` (O + P; needs X4 first for x4curves).
-3. `topo-pilot report --level E3`; conductor writes reports/E3/discussion.md (post hoc, labelled); STOP at H4 (no README change, no E3 tag before owner approval).
-4. Not in scope before approval: S7, S8, X4-causal, X5, X6.
+1. Owner H4: approve (or edit) the proposed E3 finding sentence; only then write it into README (with E3 caveats) and tag E3 (local, unpushed).
+2. After approval: README status line and 'Not run' list update; `topo-pilot report --level all` regenerates E0/E2/E3.
+3. Not started (need owner go-ahead): S7, S8, X4-causal, X5, X6; follow-ups in reports/E3/exploratory.md §9 need their own preregistration.

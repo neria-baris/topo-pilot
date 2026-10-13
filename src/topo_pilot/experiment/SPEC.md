@@ -150,6 +150,10 @@ Items that need a view not in `views`, or the oracle (N runs), are skipped for t
 
 `x4b.py` (M1/M2): frozen input table checked against `find_run_inputs` and the S7 dev lineage; `future_maps` (two `FutureOperator` routes plus the explicit formula); canonical pools (`E_canon = E[:, symbol_perm]`, canonical trajectory IDs mapped to each run's history IDs); `ReadThroughBackend` (reads main and output stores, writes the output store only). `x4b_audit.py`: per-pool screens and the test-pool precision and permutation agreement. `x4b_run.py` (M7): budget (1 CPU hour), main-store listing hash before and after, one MetricRecords in the independent store, npz exports and JSON/CSV tables. Run with `python -m topo_pilot.experiment.x4b_run`. It loads no checkpoint, ActivationSet or EvalSidecar and changes no stage config.
 
+## X4 Phase B2 lineage adapter (protocol x4b2-v1, D-053; not a registered stage)
+
+`x4b2.py`: fresh oracle-only pools from the unchanged cylinder-O process. Uses `dataset.HMMSampler` on `E_canon` under frozen named streams `SeedTree(0).generator("x4b2-v1", "pool", "cylinder", "overlap", "1.25", role)` and the sequence-ID namespace `(process_code("x4b2-v1:role") << 32) | (5 << 28) | index`. Latent states are discarded at once. Includes the first-token χ² check, chunked p32 beliefs and the Phase B ambient link. `x4b2_run.py` runs the pools one at a time through the unchanged x4b-v1 screen, with reference in the test role. It checks separation from every stored ObservationSet, runs the permutation and float32 checks, and exports to an independent store. Run with `python -m topo_pilot.experiment.x4b2_run`.
+
 ## Errors
 
 `GATE_FAILED`, `MISSING_PARENT`, `CONFIG_DRIFT`, `EXECUTOR_ERROR` (wrapped from executors).

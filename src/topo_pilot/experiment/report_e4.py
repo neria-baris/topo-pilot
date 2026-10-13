@@ -77,11 +77,6 @@ def _f1_values(rows: Sequence[MetricRow]) -> str:
                      f"{_fmt(_one(rows, 'F1', 'u', replicate=s))}" for s in replicates(rows))
 
 
-def _f1_cell(rows: Sequence[MetricRow]) -> str:
-    st, reason = verdict(rows)
-    return f"{st} ({_f1_values(rows)})" + (f"; {reason}" if reason else "")
-
-
 def _dg_fraction(rows: Sequence[MetricRow]) -> str:
     vals = [r.value for r in _pick(rows, "geometry", "delta_geom_all") if r.value is not None]
     return _fmt(sum(v > 0 for v in vals) / len(vals), 2) if vals else "not run"
@@ -115,8 +110,9 @@ def build_e4(store: ArtifactStore, out_dir: Path, final: int = 5000) -> Path:
     ctrl = control_runs(store)
     probes, circ = s7_rows(store, "probes"), s7_rows(store, "circular")
     sens, controls = s7_rows(store, "sensitivity"), s7_rows(store, "controls")
-    primary = {c: (_f1_cell(r), _verdict(x4, "x4:h3p:V0", "H3prime_verdict", c)[0],
-                   _dg_fraction(r)) for c, r in (("O", rows_o), ("P", rows_p))}
+    primary = {c: (f"{verdict(r)[0]} ({_f1_values(r)})",
+                   _verdict(x4, "x4:h3p:V0", "H3prime_verdict", c)[0], _dg_fraction(r))
+               for c, r in (("O", rows_o), ("P", rows_p))}
     lines = ["# E4: controls, probes, circular coordinates, sensitivity (S7) and clean rerun (S8)",
              "", ORDER_NOTE, "",
              "## 1. Primary hypotheses (unchanged since E2/E3)", "",

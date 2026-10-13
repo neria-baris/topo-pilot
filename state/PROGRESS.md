@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S4 + X4 complete; H4 approved (D-042) | Wave: WX4 built | Last exit reached: E2 (tagged)
+Stage: S5 running (LocalExecutor, CPU; started 2026-10-13 after commit eadd330) | Wave: E3 tooling built (D-044) | Last exit reached: E2 (tagged)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -7,7 +7,7 @@ Stage: S4 + X4 complete; H4 approved (D-042) | Wave: WX4 built | Last exit reach
 | contracts | accepted (frozen 1.0.0) | A / TW | 95 tests; style-only line wraps since freeze |
 | tools | accepted | C | Makefile + tasks.ps1 |
 | world | accepted | B / TW | 30 tests |
-| process | accepted | B | 38 tests |
+| process | accepted | B | 42 tests; is_x_periodic from complex (D-043) |
 | topology | accepted | B / TW | 31 + 3 slow (G-A calib) |
 | executors | accepted | B | 27 tests |
 | dataset | accepted | B | 18 tests |
@@ -16,9 +16,9 @@ Stage: S4 + X4 complete; H4 approved (D-042) | Wave: WX4 built | Last exit reach
 | analysis | accepted (a,b,d) | B / TW | F1 rule, Δgeom (D-031), R0–R3, null, layer sweep; (d) readout helpers (WX4); part (c) W5 |
 | learner | accepted | B | pre-LN transformer, deterministic trainer |
 | activations | accepted | B | hook extraction at p = 32 |
-| experiment | S0–S6, X4 + report E0/E2(+X4) | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S7–S8 todo |
+| experiment | S0–S6, X4 + report E0/E2/E3 | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S6 x4curves + E3 report (D-044); S7–S8 todo |
 
-All module suites: 450 passed, 5 deselected (slow/integration); check_imports clean; ruff clean.
+All module suites: 450 passed at E2 (+4 process, +5 experiment since), 5 deselected (slow/integration); check_imports clean; ruff clean.
 
 ## Gates
 | gate | verdict | date | key value |
@@ -34,10 +34,10 @@ All module suites: 450 passed, 5 deselected (slow/integration); check_imports cl
 ## Open issues (≤5)
 - R1 (last-symbol embedding) reaches 0.47–0.89 of the model's F1 contrast under O (exploratory, reports/E2/exploratory.md); P (S5, H3′) is what separates emission geometry from history
 - H3 decidable one-sidedly only; H3′ approved (D-037), decided under P only
-- process.is_x_periodic detects periodicity by family name (or an identification string); fix before any extension (prompt 3)
 - Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
 
 ## Next actions (≤5)
-1. S5 (6 P runs, ~1.6 h) on LocalExecutor; then X4 with sources [S4, S5] (H3′ decision) and `stage S6` (O + P) → E3 report.
-2. experiment: S7–S8 stages; E3/E4 report levels.
-3. Prompt 3: fix process.is_x_periodic before any extension (not in this session).
+1. If S5 was interrupted: re-run `topo-pilot stage S5` (stored runs are reused, D-032); check `topo-pilot status` (Checkpoint count 84 → 156 when done).
+2. Then `topo-pilot stage X4` (sources [S4, S5]; verify O rows equal record 78c86738c6c8ae34), then `topo-pilot stage S6` (O + P; needs X4 first for x4curves).
+3. `topo-pilot report --level E3`; conductor writes reports/E3/discussion.md (post hoc, labelled); STOP at H4 (no README change, no E3 tag before owner approval).
+4. Not in scope before approval: S7, S8, X4-causal, X5, X6.

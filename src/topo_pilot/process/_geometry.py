@@ -16,8 +16,35 @@ def fail(code: ErrorCode, check: str, detail: str) -> StageFailure:
 
 
 def is_x_periodic(world: WorldSpec) -> bool:
-    """True if axis 0 is glued with period ``dims[0]`` (the cylinder)."""
-    return world.family == "cylinder" or any("x periodic" in s for s in world.identifications)
+    """True if axis 0 is glued with period ``dims[0]``, read from the complex, not the name.
+
+    Math
+    ----
+    With ``P = dims[0] >= 3``, axis 0 is periodic iff the 1-skeleton contains the straight wrap
+    edge ``{(0, r), (P - 1, r)}`` for every index ``r`` of the other axes (vertex ids in
+    row-major order). A flipped gluing (Möbius, Klein) has crossed wrap edges and is not
+    periodic. For ``P <= 2`` the periodic and plain x distances coincide, so False is exact.
+
+    Raises
+    ------
+    StageFailure
+        ``INVALID_GLUE`` if the wrap edges are only partly present, or if the description
+        declares ``'x periodic'`` but the complex has no wrap edges.
+    """
+    dims = tuple(int(d) for d in world.dims)
+    period = dims[0]
+    declared = any("x periodic" in s for s in world.identifications)
+    if period < 3:
+        return False
+    rest = int(np.prod(dims[1:], dtype=np.int64))
+    first = np.arange(rest, dtype=np.int64)
+    wrap = {(int(a), int(b)) for a, b in zip(first, first + (period - 1) * rest)}
+    present = {(int(min(a, b)), int(max(a, b))) for a, b in np.asarray(world.edges)}
+    n_wrap = len(wrap & present)
+    if 0 < n_wrap < len(wrap) or (declared and n_wrap == 0):
+        raise fail(ErrorCode.INVALID_GLUE, "x_periodic",
+                   f"{n_wrap}/{len(wrap)} wrap edges in axis 0; declared periodic: {declared}")
+    return n_wrap == len(wrap)
 
 
 def check_state_order(world: WorldSpec) -> None:

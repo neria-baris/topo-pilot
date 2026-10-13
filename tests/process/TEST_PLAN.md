@@ -16,3 +16,4 @@ Marker: `pytest.mark.process`. Uses `contracts.testing.tiny_world_spec` until `w
 | P10 | σ = 0 raises `INVALID_SIGMA`; a dead symbol (constructed) raises `INVALID_SIGMA` | error path |
 | P11 | The emission builder signature does not accept T (inspect), and the transition builder does not accept E | contract |
 | P12 | `FPSCenters` (extension readiness): on tiny_world_spec, centers are distinct and greedy maxmin by hand | known answer |
+| P13 | `is_x_periodic` reads the wrap edges of the complex: core worlds known answer; a renamed family keeps its periodicity; crossed (flipped) wrap edges are not periodic; partial wrap edges, or 'x periodic' declared without wrap edges, raise `INVALID_GLUE` | known answer / error path |

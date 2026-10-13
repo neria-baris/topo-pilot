@@ -18,7 +18,7 @@ from .config import ResolvedConfig
 
 
 class Stage(ABC):
-    """A run stage. ``plan`` lists job descriptors; ``execute`` runs one and returns artifact ids."""
+    """A run stage: ``plan`` lists job descriptors; ``execute`` runs one, returns artifact ids."""
 
     stage_id: ClassVar[str]
     requires: ClassVar[tuple[str, ...]] = ()

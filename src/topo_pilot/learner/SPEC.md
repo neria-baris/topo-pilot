@@ -52,6 +52,10 @@ def load_model(checkpoint: Checkpoint) -> TransformerLM: ...   # used by `activa
 - **Device.** "auto" means CUDA if available, otherwise CPU. Record the device and the torch version in the metadata. Determinism flags are set where available. GPU nondeterminism is documented, not hidden.
 - **Throughput report.** `TrainSummary` includes tokens per second, used by S3 to project compute.
 
+## X4-F frozen forward with patch (`forward_with_patch`, `PatchedOutput`)
+
+Specified in `docs/proposals/X4F_GATES_API.md` (implements the frozen x4f-exec-v2, D-061). Independent tests by the X4-F test-writer agent; builder smoke test `tests/experiment/test_x4f_gates_smoke.py`.
+
 ## Invariants and errors
 
 | Condition | Error |

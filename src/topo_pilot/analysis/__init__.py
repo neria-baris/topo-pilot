@@ -1,4 +1,4 @@
-"""Public API of `topo_pilot.analysis` (see SPEC.md), parts (a) to (e)."""
+"""Public API of `topo_pilot.analysis` (see SPEC.md), parts (a) to (g)."""
 
 from .baselines import r2_points, r3_points, spectral_embedding
 from .circular import CircularCorrespondence, belief_angle, circular_agreement, lattice_angle
@@ -31,6 +31,31 @@ from .readout import ln_gauge_free, predictive_pointset, readout_projector, spli
 from .sensitivity import Sensitivity
 from .sigma import SigmaCalibrator, SigmaDecision, SigmaRow
 from .spaces import SpaceBuilder
+from .x4f_erasure import (
+    Eraser,
+    Family,
+    Whitening,
+    apply_map,
+    displacements,
+    eraser_from_basis,
+    fit_oblique_eraser,
+    mismatch_report,
+    random_family,
+    whiten,
+)
+from .x4f_scores import (
+    gate_verdict,
+    kl_rows,
+    ledoit_wolf,
+    r2_pooled,
+    rbf_bandwidth,
+    rbf_features,
+    rbf_map,
+    standardizer,
+    support_gate,
+    support_report,
+)
+from .x4f_targets import PCMap, circle_expectation, leading_components, pc_scores
 
 __all__ = [
     "CircularCorrespondence", "DiscriminabilityTable", "Dynamics", "F1Decision", "F1Verdict",
@@ -41,4 +66,8 @@ __all__ = [
     "Partners", "PoolScreen", "TangentAudit", "ToleranceRow", "hellinger", "helmert_basis",
     "joint_marginals", "nearest_partners", "overall_verdict", "pair_d2", "practical_verdict",
     "screen_pool", "select_anchors", "strict_verdict", "symbol_only_bound", "tangent_audit",
+    "Eraser", "Family", "PCMap", "Whitening", "apply_map", "circle_expectation", "displacements",
+    "eraser_from_basis", "fit_oblique_eraser", "gate_verdict", "kl_rows", "leading_components",
+    "ledoit_wolf", "mismatch_report", "pc_scores", "r2_pooled", "random_family", "rbf_bandwidth",
+    "rbf_features", "rbf_map", "standardizer", "support_gate", "support_report", "whiten",
 ]

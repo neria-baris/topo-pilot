@@ -143,6 +143,10 @@ Pure functions in `horizon.py` and `horizon_pools.py`; numeric arrays in, number
 
 `symbol_only_bound(theta, symbols)` returns `(1/M) Σ_w |Σ_{s_i=w} e^{iθ_i}|`, the in-sample optimistic ceiling of `circular_agreement` for any angle that depends on the symbol alone. It is privileged_eval and descriptive; it is not a held-out predictor.
 
+## Part (g): X4-F kernels (targets, whitening/erasure/families, scores, support, verdict)
+
+Specified in `docs/proposals/X4F_GATES_API.md` (implements the frozen x4f-exec-v2, D-061). Independent tests by the X4-F test-writer agent; builder smoke test `tests/experiment/test_x4f_gates_smoke.py`.
+
 ## Logic requirements (binding; see RESEARCH_SUMMARY §7)
 
 - **Same histories.** Every comparison between spaces uses the identical `history_id` list; a mismatch raises `SAMPLE_ID_MISMATCH`. World and emission spaces are over all 144 states and are reported separately.

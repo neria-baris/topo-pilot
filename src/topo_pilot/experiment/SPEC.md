@@ -158,6 +158,10 @@ Items that need a view not in `views`, or the oracle (N runs), are skipped for t
 
 `circ_audit.py` covers the cylinder-O runs and the S7 test panels. It reruns the S7 estimator on the model and R0, using S7's null streams, and checks the results against the stored S7 rows. It runs the same estimator on R1/R2/R3 (`SpaceBuilder.baseline`, existing k). It also computes the b1/b32 angles, the y-axis control and `symbol_only_bound`, and applies the frozen C1/C2 and three-run reading. Outputs go to an independent store. Run with `python -m topo_pilot.experiment.circ_audit`.
 
+## X4-F calibration/validation gates (`x4f_probe`, `x4f_data`, `x4f_gates`, `x4f_damage`, `x4f_run`; not a registered stage)
+
+Specified in `docs/proposals/X4F_GATES_API.md` (implements the frozen x4f-exec-v2, D-061). Independent tests by the X4-F test-writer agent; builder smoke test `tests/experiment/test_x4f_gates_smoke.py`.
+
 ## Errors
 
 `GATE_FAILED`, `MISSING_PARENT`, `CONFIG_DRIFT`, `EXECUTOR_ERROR` (wrapped from executors).

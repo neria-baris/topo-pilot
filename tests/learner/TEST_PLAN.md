@@ -14,3 +14,4 @@ Marker: `pytest.mark.learner`. Uses a tiny config (2 layers, d = 16, 2 heads) on
 | L08 | A forced NaN (monkeypatched loss) raises `NONFINITE_LOSS` | error path |
 | L09 | Static: the module source contains no import of world, process, oracle, analysis, or prediction (parse the AST) | contract |
 | L10 | The checkpoint schedule is respected exactly; the optimizer state exists only at the final step | contract |
+| L11 | X4-F `test_patch.py` (independent): identity at all positions, causality, resid_post_k and ln_final_out sites, non-uniform γ / non-zero β without a second LayerNorm, hooks after the patch, unchanged weights, error paths, no science imports | contract + known answer + error path |

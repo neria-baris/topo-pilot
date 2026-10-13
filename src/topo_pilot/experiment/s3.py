@@ -124,10 +124,11 @@ class RunResult:
 class TrainingRun:
     """Train one model (or reuse a stored run) and extract its activations."""
 
-    def __init__(self, cfg: ResolvedConfig, store: ArtifactStore):
+    def __init__(self, cfg: ResolvedConfig, store: ArtifactStore, V: int | None = None):
+        """``V`` overrides the vocabulary of ``base.yaml`` (the U control has V = N = 144)."""
         self.cfg, self.store = cfg, store
         base = cfg.base
-        V = base["emissions"]["V"]
+        V = int(V) if V is not None else base["emissions"]["V"]
         m, t = base["model"], base["training"]
         self.model_cfg = ModelConfig(vocab_in=V + 1, vocab_out=V, n_ctx=base["sequences"]["n_obs"],
                                      n_layers=m["n_layers"], d_model=m["d_model"],

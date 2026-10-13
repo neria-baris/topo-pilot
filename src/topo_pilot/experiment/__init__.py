@@ -5,6 +5,7 @@ from . import s2 as _s2  # noqa: F401  (registers S2)
 from . import s3 as _s3  # noqa: F401  (registers S3)
 from . import s4 as _s4  # noqa: F401  (registers S4, S5)
 from . import s6 as _s6  # noqa: F401  (registers S6)
+from . import s7 as _s7  # noqa: F401  (registers S7)
 from . import x4 as _x4  # noqa: F401  (registers X4)
 from .cli import main, status_lines
 from .config import ResolvedConfig, load_config, producer_version

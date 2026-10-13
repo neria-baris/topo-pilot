@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S4 complete (G-F pass); E2 report NOT yet built (blind, see X4) | Wave: W4 built (S4–S6 + E2 report) | Last exit reached: E1 (tagged)
+Stage: S4 + X4 complete; E2 report built, unblinded; awaiting H4 (README E2, tag E2) | Wave: WX4 built | Last exit reached: E1 (tagged)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -13,12 +13,12 @@ Stage: S4 complete (G-F pass); E2 report NOT yet built (blind, see X4) | Wave: W
 | dataset | accepted | B | 18 tests |
 | oracle | accepted | B / TW | 17 tests, brute force |
 | prediction | accepted (a,b,c) | B | run_probes used in S7 |
-| analysis | accepted (a,b) | B / TW | F1 rule, Δgeom (D-031), R0–R3, null, layer sweep; part (c) W5 |
+| analysis | accepted (a,b,d) | B / TW | F1 rule, Δgeom (D-031), R0–R3, null, layer sweep; (d) readout helpers (WX4); part (c) W5 |
 | learner | accepted | B | pre-LN transformer, deterministic trainer |
 | activations | accepted | B | hook extraction at p = 32 |
-| experiment | S0–S6 + report E0/E2 | A | idempotent re-runs (D-032); H4 rule D-034; S7–S8 todo; X4 todo |
+| experiment | S0–S6, X4 + report E0/E2(+X4) | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S7–S8 todo |
 
-All module suites: 379 passed, 3 deselected (slow); check_imports clean; ruff clean.
+All module suites: 449 passed, 5 deselected (slow/integration); check_imports clean; ruff clean.
 
 ## Gates
 | gate | verdict | date | key value |
@@ -32,13 +32,13 @@ All module suites: 379 passed, 3 deselected (slow); check_imports clean; ruff cl
 | G-F | pass | 2026-10-13 | S4: 7 runs × 12 checkpoints (84 Checkpoint, 84 ActivationSet); analysis done ~13:15 local |
 
 ## Open issues (≤5)
-- Blinding: S4 analysis numbers still unseen; X4 approved (D-036), so the next step is implementing X4 and then unblinding via the E2 report
-- H3 decidable one-sidedly only (P: oracle b32 shows 5/8); H3′ (X4) approved at H3 as a decision rule (D-036)
-- Δgeom same-last-symbol pairs: d_B1 ≡ 0 there (D-031), so the term reduces to ρ_s(d_A, d_B32); X4-d adds R2/R3 baselines
+- R1 (last-symbol embedding) reaches 0.47–0.89 of the model's F1 contrast under O (exploratory, reports/E2/exploratory.md); P (S5, H3′) is what separates emission geometry from history
+- E2 report: N run's learning-gate cell shows "fail" (G_C = 0); should read "n/a" (cosmetic, before README E2)
+- H3 decidable one-sidedly only; H3′ approved (D-037), decided under P only
 - process.is_x_periodic detects periodicity by family name (or an identification string); fix before any extension (prompt 3)
+- Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
 
 ## Next actions (≤5)
-1. Implement X4 (experiment stage loads Checkpoint → γ, β, W_U; analysis kernels for V1–V5; settings in configs/extensions/x4.yaml so the config hash is unchanged; no contract change).
-2. Run X4 on S4, then `topo-pilot report --level E2`; E2 finding sentence at H4; README at E2; tag E2.
-3. S5 (6 P runs, ~1.6 h) on the same executor; then `stage S6` (O + P) and X4 on S5 → E3 report.
-4. experiment: S7–S8 stages; E3/E4 report levels.
+1. H4: owner approves the E2 finding sentence; then README at E2 (+ N gate cell fix) and tag E2.
+2. S5 (6 P runs, ~1.6 h) on LocalExecutor; then X4 with sources [S4, S5] (H3′ decision) and `stage S6` (O + P) → E3 report.
+3. experiment: S7–S8 stages; E3/E4 report levels.

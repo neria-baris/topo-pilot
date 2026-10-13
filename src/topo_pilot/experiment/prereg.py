@@ -85,6 +85,13 @@ def disc_table(rows: list[MetricRow], n_panels: int) -> list[str]:
                 continue
             lines.append(f"| {space} | {cond} | {statistics.median(cyl):.3f} | "
                          f"{statistics.median(sq):.3f} | {pos.get((space, cond), 0)}/{n_panels} |")
+    for space, cond in (("world", None), ("emission", "O"), ("emission", "P")):
+        key = f"{{w}}/{cond}"
+        cyl, sq = worlds.get((space, key.format(w="cylinder"))), worlds.get(
+            (space, key.format(w="square")))
+        if cyl is not None and sq is not None:
+            label = "—" if cond is None else cond
+            lines.append(f"| {space} (all 144 states) | {label} | {cyl:.3f} | {sq:.3f} | — |")
     floor = {(r.space, r.world, r.condition, r.metric_id): r.value for r in rows
              if r.space.startswith("null:")}
     lines += ["", "Gaussian floor of S (belief32, panel 1, Hellinger embedding; context only):", "",

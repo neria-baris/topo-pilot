@@ -1,8 +1,28 @@
 # topo-pilot: topology of a latent world in transformer representations
 
-> **Status: exit level E2 reached** (2026-10-13): 7 models trained on CPU under condition O (3 replicates × cylinder/square, plus the N control); F1 decided by the rule fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) before any training; secondary analyses X4 pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
+> **Status: exit level E3 reached** (2026-10-13): 13 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, plus the N control. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
 
-## Current finding (E2)
+## Current finding (E3)
+
+**Under the axis-permuted emission P, the trained models show no reliable cylinder–square H₁ contrast (F1 rule rejected under P: median D 0.021–0.034 below u_r 0.066–0.089, all learning gates passed). The preregistration declared this outcome uninformative, because under P the exact belief itself does not separate the worlds. Their activation geometry still tracks the 32-symbol belief well beyond initialisation and the mixing baselines (H3′ supported: ρ_s rises from 0.09 to 0.70, beating R2/R3 in 48/48 run-panels). Under O, the raw persistent-H₁ score rises at step 50 in both cylinder and square runs, before regret crosses the G_C threshold at step 100. Thus, the preregistered H4 timing rule is rejected. However, the cylinder–square contrast grows mainly between steps 100 and 200, after history use begins; this latter observation is exploratory and does not alter the H4 verdict.**
+
+How to read it (approved with the sentence at H4, D-046):
+
+1. **H3 under P is uninformative, not negative.** Under P the exact belief geometry b³² itself does not separate the worlds reliably (5/8 panels; E1), so a model that tracked its belief perfectly would also fail the F1 rule. The rejection says nothing about whether the model learned the world's topology.
+2. **H3′ is alignment, not causal use.** H3′ shows that the activations align with the 32-symbol Bayesian belief geometry under P, even though there is no reliable H₁ contrast. It does not show that topological structure is causally necessary for prediction.
+3. **The R1 limitation stands.** Under O the last-symbol embedding (R1) carries 0.47–0.89 of the model's contrast. Under P it collapses, and so does the model's contrast. P keeps the emission field as the same point cloud, so R1's O contrast is not static emission geometry. But the collapse does not decide whether the relevant structure comes from history integration or from learned symbol-level transition statistics: under O the contrast is already present at the embedding layer.
+4. **The absolute H₁ score and the cylinder–square contrast differ in timing.** The raw score S rises at step 50 in all O runs of both worlds (cylinder 0.24–0.25, square 0.17–0.23, from 0.05–0.07). Regret first falls below G_C at step 100. The preregistered H4 rule uses the raw score of the cylinder runs and is rejected. The contrast S_cyl − S_sq on panel 1 is +0.02 to +0.07 at step 50 and +0.18 to +0.23 at step 200. This timing is exploratory and not tested by any registered rule.
+5. **V3/V4 are representational, not causal.** Under O the F1 rule passes on both the readout-visible part (V3) and the readout-null part (V4) of the normalised stream; under P it passes on neither. No intervention has shown that preserving the detected topology improves prediction.
+
+| replicate | O: panels D > 0, median D (u_r) | P: panels D > 0, median D (u_r) | R1 median D, O → P | P: ρ_s(d_A, d_B32), init → final (max of R2, R3) |
+|---|---|---|---|---|
+| 1729 | 8/8, 0.158 (0.097) | 6/8, 0.021 (0.066) | 0.140 → −0.035 | 0.09 → 0.70 (0.39) |
+| 2718 | 8/8, 0.176 (0.084) | 7/8, 0.034 (0.089) | 0.083 → 0.008 | 0.06 → 0.70 (0.39) |
+| 3141 | 8/8, 0.173 (0.084) | 5/8, 0.034 (0.072) | 0.094 → 0.007 | 0.11 → 0.70 (0.39) |
+
+Median over the 8 panels of each replicate (both worlds for ρ_s; A = V0, raw `resid_post_3`). H4 (D-034), cylinder runs under O: t_history = 100 and t_rise = 50 in 3/3 runs, so the rule is rejected; P and square runs are descriptive. Secondary X4 under P: the F1 rule fails under every view V0–V5 (X4-a: V0 and V1 agree); X4-d is supported (same-last-symbol ρ_s 0.82); the predictive cloud V5 reverses (D < 0), as the oracle's next-symbol future does under P (descriptive). Full tables and figures: [`reports/E3/summary.md`](reports/E3/summary.md), with the S5 tables and X4 under P in [`reports/E3/condition_P.md`](reports/E3/condition_P.md). Post hoc readings are kept separate in [`reports/E3/exploratory.md`](reports/E3/exploratory.md).
+
+### Earlier exit (E2)
 
 **Under the smooth emission O, next-token training increases a persistent H₁ signal in the final residual stream that distinguishes the cylinder from the square (F1 supported: D > 0 in 8/8 panels in each of 3 replicates, median D 0.158–0.176 above the noise envelope u_r 0.084–0.097, all learning gates passed), and the activation geometry follows the 32-symbol belief more than the last-symbol posterior, including among histories that share the last symbol (H2: Δgeom > 0 in 48/48 panels).**
 
@@ -38,7 +58,7 @@ The rows for b¹ and the emission field are identical under O and P. P permutes 
 
 The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
 
-**Not run yet:** S5 (condition P: H3, H3′), S6 (dynamics: H4; layer sweep), S7 (U and extra N controls, probes, sensitivity, circular coordinates), S8 (clean rerun). No claim is made about P, H3, H4, or causal use of the structure.
+**Not run yet:** S7 (U and extra N controls, probes, sensitivity, circular coordinates), S8 (clean rerun), interventions (X4-causal) and other extensions. No claim is made about causal use of the structure.
 
 ## Reproduce (Windows, CPU)
 
@@ -51,8 +71,10 @@ python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --extra-index-ur
 .\.venv\Scripts\topo-pilot.exe report --level E0
 .\.venv\Scripts\topo-pilot.exe stage S3   # smoke run + throughput (G-E)
 .\.venv\Scripts\topo-pilot.exe stage S4   # 7 training runs on CPU (~1.6 h) + F1 analysis (G-F)
-.\.venv\Scripts\topo-pilot.exe stage X4   # secondary readout-geometry analyses (~2 min)
-.\.venv\Scripts\topo-pilot.exe report --level E2
+.\.venv\Scripts\topo-pilot.exe stage S5   # 6 training runs under P (~1.5 h) + analysis (G-F for P)
+.\.venv\Scripts\topo-pilot.exe stage X4   # secondary readout-geometry analyses over S4 and S5 (~4 min)
+.\.venv\Scripts\topo-pilot.exe stage S6   # dynamics (H4), checkpoint-order null, layer sweep, V1/V5 curves
+.\.venv\Scripts\topo-pilot.exe report     # regenerates E0, E2 and E3 from MetricRecords
 ```
 
 ## The question, in one paragraph

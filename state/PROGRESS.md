@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S5 + X4 (S4, S5) + S6 complete; E3 report generated; AWAITING H4 (owner) | Last exit reached: E2 (tagged); E3 not tagged
+Stage: S5 + X4 (S4, S5) + S6 complete; H4 approved (D-046) | Last exit reached: E3 (tagged, local)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -33,11 +33,12 @@ All module suites: 459 passed, 5 deselected (slow/integration); integration 2 pa
 | G-F (S5) | pass | 2026-10-13 | P: 6 runs × 12 checkpoints; captured 0.874–0.914 |
 
 ## Open issues (≤5)
-- E3 verdicts (D-045): H3 rule REJECTED under P (one-sided: uninformative); H4 REJECTED (S rises at step 50, regret < G_C at 100; rise also in square runs); H3′ SUPPORTED under P
-- R1 contrast collapses under P (median D −0.035/0.008/0.007): not static emission geometry, but symbol-level statistics vs history integration still undecided (reports/E3/exploratory.md)
+- E3 verdicts (D-045/D-046): H3 rule REJECTED under P (uninformative by design); H4 REJECTED (raw S rises at step 50 in both worlds; regret < G_C at 100); H3′ SUPPORTED under P
+- R1 limitation stands: history integration vs learned symbol-level transition statistics undecided (README caveat 3; reports/E3/exploratory.md)
+- No interventions: V3/V4 and H3′ are representational, not causal
 - Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
 
 ## Next actions (≤5)
-1. Owner H4: approve (or edit) the proposed E3 finding sentence; only then write it into README (with E3 caveats) and tag E3 (local, unpushed).
-2. After approval: README status line and 'Not run' list update; `topo-pilot report --level all` regenerates E0/E2/E3.
-3. Not started (need owner go-ahead): S7, S8, X4-causal, X5, X6; follow-ups in reports/E3/exploratory.md §9 need their own preregistration.
+1. STOP: wait for the owner before starting S7, S8, X4-causal, X5, X6 or any extension.
+2. Candidate follow-ups (each needs its own preregistration): contrast-based dynamics rule on a denser early grid; embedding-level control (reports/E3/exploratory.md §9).
+3. Tags E0–E3 are local only; push only on explicit owner instruction.

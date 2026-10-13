@@ -2,6 +2,20 @@
 
 Written by the conductor on 2026-10-13, after `summary.md` and `condition_P.md` were generated and read for the first time. Nothing here changes a verdict, threshold, or rule. Each item reads numbers already in those files, or in the stored S6 records, or names a follow-up. A follow-up needs its own preregistration before it counts as evidence.
 
+## 0. Approved at H4 (D-046)
+
+Finding sentence, approved by the owner with the revised H4 clause:
+
+> **Under the axis-permuted emission P, the trained models show no reliable cylinder–square H₁ contrast (F1 rule rejected under P: median D 0.021–0.034 below u_r 0.066–0.089, all learning gates passed). The preregistration declared this outcome uninformative, because under P the exact belief itself does not separate the worlds. Their activation geometry still tracks the 32-symbol belief well beyond initialisation and the mixing baselines (H3′ supported: ρ_s rises from 0.09 to 0.70, beating R2/R3 in 48/48 run-panels). Under O, the raw persistent-H₁ score rises at step 50 in both cylinder and square runs, before regret crosses the G_C threshold at step 100. Thus, the preregistered H4 timing rule is rejected. However, the cylinder–square contrast grows mainly between steps 100 and 200, after history use begins; this latter observation is exploratory and does not alter the H4 verdict.**
+
+Interpretations the owner asked to keep (they restate §2–§5 and §8 below; nothing in them changes a rule, threshold, metric or verdict):
+
+1. Under P, rejection of the F1 rule is uninformative about whether the model learned the world's topology, because the exact belief geometry itself does not separate the worlds reliably.
+2. H3′ support shows alignment with the 32-symbol Bayesian belief geometry despite the absence of a reliable H₁ contrast. It does not establish that topological structure is causally necessary for prediction.
+3. The strong last-symbol baseline (R1) under O remains an important limitation. The collapse of R1 under P does not establish whether the relevant structure comes from history integration or from learned symbol-level transition statistics.
+4. The early rise of H₁ under O occurs in both worlds. The absolute H₁ score and the cylinder–square contrast are different quantities: the preregistered H4 rejection concerns the former and stands; the later timing of the contrast is exploratory.
+5. The V3/V4 findings are representational, not causal. No intervention has established that preserving the detected topology improves prediction.
+
 ## 1. What was decided (recap, kept separate)
 
 | item | status | result |
@@ -21,18 +35,18 @@ The two observations that matter:
 - **The static emission geometry alone does not produce R1's contrast.** P keeps the emission field and the last-symbol posterior b¹ as the same point clouds, up to relabelling (E1: S 0.568 vs 0.108 and 0.324 vs 0.165 under both O and P). If R1's contrast under O were simply inherited from the geometry of the 36 emission centres, it would survive P. It does not. So the symbol embeddings must encode something learned from the sequences: under O, symbol co-occurrence follows world adjacency (smooth dynamics plus overlapping emissions); P breaks that alignment.
 - **This does not settle the E2 caveat in favour of multi-step history integration.** Co-occurrence structure is learnable from short-range (bigram-level) statistics. Under O, the F1 contrast is already present at the `embed` hook (median D 0.104–0.110, layer sweep) and from `resid_post_0` onwards. Under O, F1 therefore remains compatible with a mostly symbol-level, dynamics-learned geometry. P cannot separate the two, because under P the exact belief b³² itself no longer separates the worlds (5/8 panels; E1). A model that tracked b³² perfectly would also fail the F1 rule under P. This is why the preregistration declared H3 one-sided.
 
-So, in short: P moves the caveat from "emission geometry" to "symbol-level statistics learned from the dynamics". It does not remove it.
+So, in short: P moves the caveat from "emission geometry" to "symbol-level statistics learned from the dynamics". It does not remove it. The strong R1 baseline under O remains an important limitation of F1.
 
 ## 3. History integration under P (H3′, X4-d)
 
-H3′ was designed for this case, and it is supported. Under P, ρ_s(d_A, d_B32) on all pairs goes from a median of 0.09 at initialisation to 0.70 at step 5000 (V0; V1: 0.07 → 0.71). It beats max(R2, R3) (0.35–0.44) in every panel of every run. Within pairs that share w₃₂, where R1 is constant, the model's ρ_s with b³² has a median of 0.82 (O: 0.96), and it beats R2 and R3 in 48/48 run-panels (X4-d). So under P the models still organise their activations by the 32-symbol belief, which is a pre-registered positive result about history use. They do so less tightly than under O, in line with the lower captured fraction (0.87–0.91 vs 0.985–0.992). The topological contrast disappears, but the belief-alignment does not. This fits "the model follows its belief state, and the belief state under P has no cylinder signature". It does not show that topology is computed per se.
+H3′ was designed for this case, and it is supported. Under P, ρ_s(d_A, d_B32) on all pairs goes from a median of 0.09 at initialisation to 0.70 at step 5000 (V0; V1: 0.07 → 0.71). It beats max(R2, R3) (0.35–0.44) in every panel of every run. Within pairs that share w₃₂, where R1 is constant, the model's ρ_s with b³² has a median of 0.82 (O: 0.96), and it beats R2 and R3 in 48/48 run-panels (X4-d). So under P the models still organise their activations by the 32-symbol belief, which is a pre-registered positive result about history use. They do so less tightly than under O, in line with the lower captured fraction (0.87–0.91 vs 0.985–0.992). The topological contrast disappears, but the belief-alignment does not. This fits "the model follows its belief state, and the belief state under P has no cylinder signature". It does not show that topology is computed per se, nor that topological structure is causally necessary for prediction.
 
 ## 4. H4: why it is rejected, and what the rejection does and does not mean
 
 Rule outcome: in every cylinder run under O, S on panel 1 exceeds S₀ + u_r at step 50 (S 0.237–0.250, from 0.055–0.066). Regret first drops below G_C at step 100 (0.21 vs G_C 0.265). At step 50, regret is 0.53–0.55, still above G_C. H4 is rejected as registered. Readings, all post hoc:
 
 - **Grid resolution.** The violation spans one checkpoint interval (50 → 100 steps). D-034 counts the same checkpoint as consistent, but adjacent checkpoints as a violation. The verdict stands; a finer grid would date the crossing more precisely.
-- **The early rise is not specific to the cylinder.** The square runs rise at step 50 too (S 0.172–0.230 from 0.046–0.065), and so do all P runs. The world contrast S_cyl − S_sq on panel 1 is small at step 50 (+0.020 to +0.073). It grows mainly between steps 100 and 200 (+0.175 to +0.227), after t_history. The registered H4 measure is S_t − S₀ of the cylinder run alone, so it counts a world-unspecific rise as "S rises". A dynamics rule on the contrast D_t would be a different, new hypothesis. It would need its own preregistration, and these numbers cannot test it, because they suggested it.
+- **The early rise is not specific to the cylinder; the absolute H₁ score is not the contrast.** The square runs rise at step 50 too (S 0.172–0.230 from 0.046–0.065), and so do all P runs. The world contrast S_cyl − S_sq on panel 1 is small at step 50 (+0.020 to +0.073). It grows mainly between steps 100 and 200 (+0.175 to +0.227), after t_history. The registered H4 measure is S_t − S₀ of the cylinder run alone, so it counts a world-unspecific rise as "S rises". A dynamics rule on the contrast D_t would be a different, new hypothesis. It would need its own preregistration, and these numbers cannot test it, because they suggested it.
 - The checkpoint-order null is descriptive. Its p values for the O cylinder runs are 0.07–0.18.
 
 ## 5. X4 under P
@@ -59,7 +73,7 @@ Together these make the most cautious reading of F1 the right one: training unde
 
 ## 8. Limits on causal interpretation
 
-- No intervention was run. Nothing here shows that the H₁ structure is used for prediction.
+- No intervention was run. Nothing here shows that the H₁ structure is used for prediction, or that preserving the detected topology improves prediction.
 - V3 is logit-readout-visible, not proof of causal use. V4 is logit-readout-null, not evidence that the model never computes or uses that information elsewhere (addendum D-040).
 - LayerNorm is exactly invariant to mean shifts, but not in general to positive scaling with eps > 0. A V0 ≠ V1 difference would show sensitivity to normalisation, not pure gauge dependence. Here V0 and V1 agree under both O and P.
 - Oracle topology does not guarantee learned topology. The V5 agreement with the oracle under both O and P is empirical.

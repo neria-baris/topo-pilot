@@ -98,6 +98,29 @@ Readout-geometry helpers (`readout.py`, wave WX4), all float64.
 - Edge cases: `A = 0` gives `P = 0`; zero entries in `gamma` or duplicate rows of `W_U` lower the
   rank (and `trace(P)`); a zero-variance row with `eps = 0` raises `NUMERICAL_FAILURE`.
 
+## Part (c) logic
+Sensitivity variants and circular correspondence (`sensitivity.py`, `circular.py`, wave W5).
+- `Sensitivity`: pure distance-matrix variants. Activations: euclidean, chord (row-normalised),
+  pca (centre on `X_fit`, top `pca_dims` right singular vectors, then Euclidean; `X_fit` is the
+  dev set, never `X`). Distributions: Hellinger `||sqrt p - sqrt q|| / sqrt 2`, `sqrt(JSD)` with
+  natural log. No deduplication. `head(n, k) = arange(k)`.
+- `circular_agreement`: `A = max(|mean e^{i(phi-theta)}|, |mean e^{i(phi+theta)}|)`. Rotation
+  `phi + c` multiplies both resultants by a unit phase, and reflection `-phi` swaps the two
+  (up to conjugation), so `A` is invariant to both (circular coordinates are defined only up to
+  origin and orientation). `A(theta, theta) = 1`; independent angles give `A ~ 1/sqrt(M)`.
+- `lattice_angle`: `theta = 2 pi coords[z, axis] / period`. `belief_angle`: arg of the belief's
+  resultant `sum_z b_z e^{2 pi i coords[z, axis]/period}` (0 if the resultant vanishes).
+- `CircularCorrespondence.compare`: `phi` from `CircularCoordinates(D)`; permutation null
+  `A_k = A(phi, theta[perm_k])`; `p = (1 + #{A_k >= A}) / (1 + n_perm)` (never 0). No finite H1
+  bar is a status (`no_h1_class`, all values None), not an exception; other topology errors
+  propagate.
+- `run` (I/O): raw Euclidean D of the panel cloud; states `z[row, end-1]` via the parent
+  HistoryIndex and `EvalSidecar.sequence_id`; period `coords[:, axis].max() + 1`. Rows:
+  `agreement_x`, `_null_q95`, `_p`, `agreement_control` (control axis, same phi),
+  `agreement_oracle_x` (belief angle vs lattice angle, no PH). All rows carry
+  `space = "privileged_eval:circular"` because they derive from the EvalSidecar. With no H1
+  class the PH-based values are None with status `inconclusive`, `uncertainty_kind = no_h1_class`.
+
 ## Data
 `PointSet(space, X, D, ids, metric)` (frozen); `SigmaRow`, `SigmaDecision` (frozen);
 `MetricRecords` output of the table. No artifacts are written here.
@@ -105,7 +128,8 @@ Readout-geometry helpers (`readout.py`, wave WX4), all float64.
 ## Public API
 `PointSet, SpaceBuilder, SigmaRow, SigmaDecision, SigmaCalibrator, DiscriminabilityTable,
 ph_summary, require_same_ids, ln_gauge_free, readout_projector, split_readout,
-predictive_pointset`.
+predictive_pointset, Sensitivity, CircularCorrespondence, circular_agreement, lattice_angle,
+belief_angle`.
 
 ## How to test
 `.venv\Scripts\python.exe -m pytest tests/analysis -q`; `python tools/check_imports.py`;

@@ -207,8 +207,10 @@ def f1_figure(rows: Sequence[MetricRow], path: Path, title: str) -> Path:
     return path
 
 
-def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int = 5000) -> Path:
-    """Write ``summary.md`` and ``fig_f1_contrasts.png`` for ``stage`` (S4: O, E2; S5: P)."""
+def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int = 5000,
+             extra: Sequence[str] = ()) -> Path:
+    """Write ``summary.md`` and ``fig_f1_contrasts.png`` for ``stage`` (S4: O, E2; S5: P);
+    ``extra`` lines (e.g. the secondary X4 section) are appended after the F1 sections."""
     cond = "O" if stage == "S4" else "P"
     rows, runs = analysis_rows(store, stage), run_rows(store, stage)
     status, reasons = verdict(rows)
@@ -237,6 +239,8 @@ def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int 
                   f"{'pass' if c.passed else 'fail'}" for c in g.checks]
     f1_figure(rows, out_dir / "fig_f1_contrasts.png",
               f"F1 contrasts under {cond}: D per panel, median (◆) and noise envelope u_r (┊)")
+    if extra:
+        lines += ["", *extra]
     summary = out_dir / "summary.md"
     summary.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return summary

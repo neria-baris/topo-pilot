@@ -23,6 +23,7 @@ from .config import ResolvedConfig, load_config, producer_version
 from .prereg import write_prereg
 from .report import build_e0
 from .report_e2 import build_e2
+from .report_x4 import x4_section
 from .stages import STAGE_REGISTRY, run_stage
 
 MAX_STATUS_LINES = 40
@@ -68,7 +69,8 @@ def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list
     s4_done = bool(store.find(MetricRecords, stage="S4", kind="analysis"))
     if level == "E2" or (level == "all" and s4_done):
         final = int(cfg.base["training"]["primary_checkpoint"])
-        out.append(build_e2(store, cfg.repo_root / "reports" / "E2", "S4", final))
+        extra = x4_section(store, cfg.repo_root / "PREREGISTRATION_X4.md", "O", final)
+        out.append(build_e2(store, cfg.repo_root / "reports" / "E2", "S4", final, extra))
     return out
 
 

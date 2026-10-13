@@ -16,4 +16,4 @@ Marker: `pytest.mark.experiment`. Uses stub stages and gates (no science). Budge
 | X10 | Re-running `X4Job.run()` with the same inputs returns the same MetricRecords id and does not raise | contract |
 | X11 | A missing run (resolver lists it as missing) gives an `x4` / `run_available` row with status `not_run` and no invented values; the affected verdicts are INCONCLUSIVE | error path |
 | X12 | `"X4" in STAGE_REGISTRY` with `requires == ("S4",)` and no gates | contract |
-
+| X13 | `x4_section`: without an X4 record prints "X4: not run"; with one, quotes the prereg `Blinding:` line, the X4-c interpretation line selected by the category and the D-040 addendum verbatim | known answer |

@@ -1,9 +1,10 @@
-# analysis (part a, wave W2)
+# analysis (parts a and b, waves W2 and W4)
 
 ## Purpose
 Project-aware analysis. Part (a) builds the reference comparison spaces on the same histories,
 applies the pre-registered sigma rule, and computes the discriminability table (S per space).
-Parts (b) and (c) (F1 rule, Delta-geom, baselines, dynamics, sensitivity) are not implemented yet.
+Part (b) adds the F1 rule, Delta-geom, baselines R0-R3, the checkpoint-order null and a minimal
+layer sweep. Part (c) (sensitivity, circular correspondence) is not implemented yet.
 Imports: stdlib, numpy, `topo_pilot.contracts`, `topo_pilot.topology` (package roots).
 
 ## Logic
@@ -43,6 +44,40 @@ Imports: stdlib, numpy, `topo_pilot.contracts`, `topo_pilot.topology` (package r
 Result: `sigma = 0.75`, status `ok`. If instead 0.75 had `G_C = 0.05` in a world and 2.0 `0.02`,
 nothing passes; min-world `G_C` is 0.08 / 0.05 / 0.02 so 1.25 is chosen as `weak_context`. If all
 three were below 0.03 the status is `stop_H3` (checkpoint H3).
+
+## Part (b) logic
+- **F1 rule** (`f1.py`, RESEARCH_SUMMARY 7.4). `contrasts(S)` gives
+  `D_i = (S[cyl,final,i]-S[cyl,init,i]) - (S[sq,final,i]-S[sq,init,i])` over sorted panel ids;
+  `noise_envelope(S)` gives `u = max over the 4 cells of percentile95{|S_i-S_j|: i<j}`.
+  `verdict(...)`: INCONCLUSIVE if any learning gate is False, any input status is not `ok`, or
+  fewer than 3 replicates (reasons name `learning_gate`, `status`, `replicates`); else cond1 =
+  at least 7 panels with `D>0`, cond2 = `median(D) > u` strictly; SUPPORTED iff both hold in every
+  replicate, else REJECTED with reasons naming replicate and condition.
+- **Toy F1 table.** Per panel i=1..8: cyl-init 0.1, cyl-final 0.5+0.01i, sq-init 0.1, sq-final
+  0.12. Then `D_i = 0.40+0.01i-0.02 = 0.39..0.46` (all positive), `median D = 0.425`. The cell
+  spreads: cyl-final differs by 0.01 steps, so `q95{|S_i-S_j|}` = 0.06; other cells are constant
+  so `u = 0.06`. cond1 (8 >= 7) and cond2 (0.425 > 0.06) hold, so 3 such replicates give
+  SUPPORTED. If one replicate had only 6 positive panels: REJECTED (cond1). If `median D == u`
+  exactly: REJECTED (strict). If any gate failed: INCONCLUSIVE regardless of D.
+- **Delta-geom** (`geometry.py`). Inputs are `[M, M]` distance matrices; Spearman over `i<j`;
+  `all = rho(dA,dB32) - rho(dA,dB1)`; same-last-symbol restricts to pairs with equal `w_32`;
+  fewer than 200 such pairs gives `None` and `status_same="inconclusive"`.
+- **Baselines** (`baselines.py`, `SpaceBuilder.baseline`). R0: step-0 activations (hook default
+  `resid_post_3`). R1: the `embed` hook of the final checkpoint at position 32; positional
+  embedding is a constant shift at a fixed position, so Euclidean distances equal
+  token-embedding distances. R2 / R3 are labelled process-level (they use E, T, pi, the same
+  knowledge as the oracle): `phi` = spectral embedding of `M = E^T diag(pi) T E` (symmetrised),
+  normalised Laplacian `L = I - D^-1/2 M D^-1/2`, eigenvectors of the `k` smallest eigenvalues
+  excluding the trivial one, scaled by `D^-1/2` (`k = 12` by default, `refs["k"]`);
+  R2 = `1/2[phi(w_32)+phi(w_31)]`, R3 = mean of `phi(w_t)`, t=1..32. Tokens come from the
+  `ObservationSet` joined to the `HistoryIndex` by `sequence_id`; all histories need `end == 32`.
+  If R2 / R3 show `D>0` of similar size, F1 under O is explained by simple mixing.
+- **Activations**. `SpaceBuilder.activations` takes the panel's ids from the ActivationSet's
+  parent `HistoryIndex`; the set may cover only some panels but must contain all ids of the panel.
+- **Checkpoint-order null** (`dynamics.py`). `stat` = share of total `|dS|` in the first
+  `ceil((n-1)/3)` consecutive differences; `p = (1+#{perm >= obs})/(1+n_perm)`; zero total gives
+  `nan` and `p=1`. Descriptive only. `Dynamics.curves` is not implemented.
+- **LayerSweep**. `S_H1` (Euclidean, via `ph_summary`) per hook plus `concat`.
 
 ## Data
 `PointSet(space, X, D, ids, metric)` (frozen); `SigmaRow`, `SigmaDecision` (frozen);

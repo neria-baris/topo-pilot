@@ -7,16 +7,20 @@ from typing import Literal
 import numpy as np
 
 from topo_pilot.contracts import (
+    ActivationSet,
     ArtifactStore,
     EmissionSpec,
     ErrorCode,
     HistoryIndex,
+    ObservationSet,
     OracleOutputs,
     StageFailure,
+    TransitionSpec,
     WorldSpec,
 )
 from topo_pilot.topology import NullClouds
 
+from .baselines import r2_points, r3_points, spectral_embedding
 from .pointset import PointSet
 
 _COMPONENT = "analysis.SpaceBuilder"
@@ -128,3 +132,90 @@ class SpaceBuilder:
         else:
             raise _fail(ErrorCode.INVALID_CONFIG, "kind", f"kind={kind!r}")
         return PointSet(f"null:{kind}", X, None, list(like.ids), "euclidean")
+
+    def _index_of(self, artifact_id: str) -> HistoryIndex:
+        parents = self._store.meta(artifact_id).parent_ids
+        index_id = next((p for p in parents
+                         if self._store.meta(p).artifact_type == "HistoryIndex"), None)
+        if index_id is None:
+            raise _fail(ErrorCode.MISSING_PARENT, "history_index",
+                        "artifact has no HistoryIndex parent", artifact_id)
+        return self._store.load(HistoryIndex, index_id, consumer=_CONSUMER)
+
+    def hooks(self, activation_set_id: str) -> tuple[str, ...]:
+        """The hook names of an ActivationSet, in storage order."""
+        return tuple(self._store.load(ActivationSet, activation_set_id, consumer=_CONSUMER).hooks)
+
+    def activations(self, activation_set_id: str, hook: str, panel: int,
+                    space: str | None = None) -> PointSet:
+        """Activations of one hook for one panel, metric Euclidean, space ``act:<hook>``.
+
+        Rows follow the panel's order in the parent ``HistoryIndex``; the ActivationSet may
+        cover only some panels (e.g. panel 1 only) but must contain every id of the panel.
+        """
+        act = self._store.load(ActivationSet, activation_set_id, consumer=_CONSUMER)
+        if hook not in act.hooks:
+            raise _fail(ErrorCode.UNKNOWN_HOOK, "hook", f"hook {hook!r} not in {act.hooks}",
+                        activation_set_id)
+        index = self._index_of(activation_set_id)
+        ids = [str(h) for h in np.asarray(index.history_id)[np.asarray(index.panel) == panel]]
+        if not ids:
+            raise _fail(ErrorCode.ARTIFACT_MISSING, "panel", f"panel {panel} has no histories",
+                        activation_set_id)
+        row_of = {str(h): i for i, h in enumerate(act.history_id)}
+        missing = [h for h in ids if h not in row_of]
+        if missing:
+            raise _fail(ErrorCode.SAMPLE_ID_MISMATCH, "panel_coverage",
+                        f"{len(missing)} panel histories absent from the ActivationSet",
+                        activation_set_id)
+        rows = [row_of[h] for h in ids]
+        X = np.asarray(act.A, dtype=np.float64)[rows, act.hooks.index(hook), :]
+        return PointSet(space or f"act:{hook}", X, None, ids, "euclidean")
+
+    def baseline(self, kind: Literal["R0", "R1", "R2", "R3"], panel: int, **refs) -> PointSet:
+        """Representation baseline R0..R3 on the panel histories (RESEARCH_SUMMARY 7.6).
+
+        R0: ``activation_set_id`` (step-0 checkpoint), hook ``refs.get("hook","resid_post_3")``.
+        R1: hook ``embed`` of ``activation_set_id`` (final checkpoint) at position 32; the
+        positional embedding is a constant shift at a fixed position, so Euclidean distances
+        equal token-embedding distances. R2 / R3 (labelled process-level): need
+        ``emission_id, transition_id, obs_test_id, history_index_id``; ``k = refs.get("k", 12)``.
+        """
+        if kind in ("R0", "R1"):
+            hook = "embed" if kind == "R1" else refs.get("hook", "resid_post_3")
+            return self.activations(self._need(refs, "activation_set_id"), hook, panel,
+                                    space=f"base:{kind}")
+        if kind not in ("R2", "R3"):
+            raise _fail(ErrorCode.INVALID_CONFIG, "kind", f"kind={kind!r}")
+        E = np.asarray(self._store.load(EmissionSpec, self._need(refs, "emission_id"),
+                                        consumer=_CONSUMER).E, dtype=np.float64)
+        trans = self._store.load(TransitionSpec, self._need(refs, "transition_id"),
+                                 consumer=_CONSUMER)
+        phi = spectral_embedding(E, np.asarray(trans.T, dtype=np.float64),
+                                 np.asarray(trans.pi, dtype=np.float64), int(refs.get("k", 12)))
+        ids, tokens = self._panel_tokens(self._need(refs, "history_index_id"),
+                                         self._need(refs, "obs_test_id"), panel)
+        X = r2_points(tokens, phi) if kind == "R2" else r3_points(tokens, phi)
+        return PointSet(f"base:{kind}", X, None, ids, "euclidean")
+
+    @staticmethod
+    def _need(refs: dict, key: str) -> str:
+        if key not in refs:
+            raise _fail(ErrorCode.INVALID_CONFIG, "refs", f"baseline needs refs[{key!r}]")
+        return refs[key]
+
+    def _panel_tokens(self, index_id: str, obs_id: str, panel: int):
+        index = self._store.load(HistoryIndex, index_id, consumer=_CONSUMER)
+        obs = self._store.load(ObservationSet, obs_id, consumer=_CONSUMER)
+        mask = np.asarray(index.panel) == panel
+        if not mask.any():
+            raise _fail(ErrorCode.ARTIFACT_MISSING, "panel", f"panel {panel} has no histories",
+                        index_id)
+        row_of = {int(s): i for i, s in enumerate(obs.sequence_id)}
+        seqs = np.asarray(index.sequence_id)[mask]
+        if np.any(np.asarray(index.end)[mask] != 32) or any(int(s) not in row_of for s in seqs):
+            raise _fail(ErrorCode.SAMPLE_ID_MISMATCH, "tokens",
+                        "histories must have end == 32 and sequences present in obs_test",
+                        index_id)
+        tokens = np.asarray(obs.tokens)[[row_of[int(s)] for s in seqs], :32]
+        return [str(h) for h in np.asarray(index.history_id)[mask]], tokens

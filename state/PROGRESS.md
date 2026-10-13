@@ -1,5 +1,5 @@
-# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x5-g1-planning)
-Stage: **X5 G1 gate contract x5g1-feas-v2 prepared, pending coordinator review (job 0005, D-064)**; X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x5-g1-gates)
+Stage: **X5 G1 gates implementation running (job 0006; contract x5g1-feas-v2 frozen, D-065)**; X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -39,6 +39,6 @@ Stage: **X5 G1 gate contract x5g1-feas-v2 prepared, pending coordinator review (
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. Wait for coordinator review of X5_G1_FEASIBILITY_PROTOCOL_V2.md and X5_G1_IMPLEMENTATION_PLAN_V2.md (job 0005)
-2. No X5 computation before ACCEPT; no training on the gate contract; X4-F code reuse blocked until its four dormant defects are fixed
+1. Implement conductance/process, x5_kernel/x5_context, lineage/run with independent tests; commit before data
+2. Run the exact-process/calibration gate once; report; STOP (no training; X4-F code reuse still blocked)
 3. No implementation, sampling, fitting, extraction, PH, intervention or training before approval; no Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

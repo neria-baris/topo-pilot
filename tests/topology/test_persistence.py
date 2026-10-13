@@ -80,7 +80,8 @@ def test_T04_scale_covariance():
     assert a.shape == b.shape
     scaled = a.copy()
     scaled[:, 1:3] *= c  # inf stays inf
-    np.testing.assert_allclose(b[:, 1:3], scaled[:, 1:3], rtol=1e-5, atol=1e-6)  # ripser stores float32
+    # ripser stores float32
+    np.testing.assert_allclose(b[:, 1:3], scaled[:, 1:3], rtol=1e-5, atol=1e-6)
     np.testing.assert_array_equal(a[:, [0, 3]], b[:, [0, 3]])
     np.testing.assert_allclose(r2.scale_s, c * r1.scale_s, rtol=1e-9)
     s1 = Summaries.S(d1, 1, r1.scale_s)

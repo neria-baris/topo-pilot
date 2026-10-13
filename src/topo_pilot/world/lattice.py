@@ -113,8 +113,8 @@ def describe_identifications(idents: Sequence[Identification]) -> tuple[str, ...
 
 
 class QuotientLatticeBuilder(WorldBuilder):
-    """Generic: product lattice + per-axis Identification; builds vertices, all k-cubes (k<=len(dims)),
-    including cubes crossing seams, with consistent vertex order.
+    """Generic: product lattice + per-axis Identification; builds vertices and all k-cubes
+    (k <= len(dims)), including cubes crossing seams, with consistent vertex order.
 
     Subclasses set ``family``, ``expected_betti`` and the class attribute ``identifications``
     (a tuple of :class:`Identification`; axes not listed are unglued).
@@ -149,7 +149,8 @@ class QuotientLatticeBuilder(WorldBuilder):
         betti = {int(p): cx.betti(int(p)) for p in self.expected_betti}
         expected = {int(p): tuple(v) for p, v in self.expected_betti.items()}
         if betti != expected:
-            raise _fail(ErrorCode.BETTI_MISMATCH, "betti", f"computed {betti} != expected {expected}")
+            raise _fail(ErrorCode.BETTI_MISMATCH, "betti",
+                        f"computed {betti} != expected {expected}")
         coords = np.stack(np.meshgrid(*[np.arange(n) for n in dims], indexing="ij"),
                           axis=-1).reshape(-1, len(dims)).astype(np.float64)
         dist_graph = GraphGeodesicMetric().pairwise(coords, cx, idents, dims)

@@ -204,7 +204,8 @@ class EmissionSpec(Artifact):
             raise self._fail(ErrorCode.INVALID_SIGMA, "p_w", "dead_symbol")
         if self.mode == "identical" and np.max(np.abs(E - E[:1])) > 1e-12:
             raise self._fail(ErrorCode.INVALID_CONFIG, "identical_rows", "rows differ")
-        if self.mode == "unique" and (n != v or not np.array_equal(np.sort(E, axis=1)[:, -1], np.ones(n))
-                                      or not np.array_equal(E.sum(axis=0), np.ones(v))):
+        if self.mode == "unique" and (
+                n != v or not np.array_equal(np.sort(E, axis=1)[:, -1], np.ones(n))
+                or not np.array_equal(E.sum(axis=0), np.ones(v))):
             raise self._fail(ErrorCode.INVALID_CONFIG, "unique_permutation",
                              "E is not a permutation matrix")

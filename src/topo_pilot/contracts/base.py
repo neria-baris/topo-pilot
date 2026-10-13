@@ -1,4 +1,5 @@
-"""Artifact envelope (``ArtifactMeta``) and the ``Artifact`` base class with generic serialisation."""
+"""Artifact envelope (``ArtifactMeta``) and the ``Artifact`` base class with generic
+serialisation."""
 
 from __future__ import annotations
 
@@ -122,7 +123,8 @@ class Artifact(ABC):
         return StageFailure(code, f"contracts.{type(self).__name__}", check, detail)
 
     def to_payload(self) -> tuple[dict[str, np.ndarray | bytes], dict[str, Any]]:
-        """Split the artifact into ``(arrays, extra)``; blob fields appear in ``arrays`` as bytes."""
+        """Split the artifact into ``(arrays, extra)``; blob fields appear in ``arrays`` as
+        bytes."""
         arrays: dict[str, np.ndarray | bytes] = {}
         extra: dict[str, Any] = {}
         for f in dataclasses.fields(self):  # type: ignore[arg-type]

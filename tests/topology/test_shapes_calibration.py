@@ -36,9 +36,9 @@ def test_shape_generators_contract():
 
 
 def test_null_clouds_contract():
-    I = NullClouds.isotropic(60, 12, np.random.default_rng(0))
-    assert I.shape == (60, 12)
-    assert I.std() > 0 and abs(I.mean()) < 0.5  # scale convention unspecified
+    iso = NullClouds.isotropic(60, 12, np.random.default_rng(0))
+    assert iso.shape == (60, 12)
+    assert iso.std() > 0 and abs(iso.mean()) < 0.5  # scale convention unspecified
     X = np.random.default_rng(1).normal(size=(500, 6)) @ np.diag([5, 3, 2, 1, 0.5, 0.1])
     G = NullClouds.covariance_matched(X, np.random.default_rng(2))
     assert G.shape == X.shape

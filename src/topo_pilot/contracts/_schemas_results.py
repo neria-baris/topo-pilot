@@ -114,7 +114,8 @@ class DistanceArtifact(Artifact):
         dm = ck.require_array(name, "dedup_map", self.dedup_map, 1, "i")
         if dm.size and (dm.min() < 0 or set(np.unique(dm).tolist()) != set(range(m))):
             raise self._fail(ErrorCode.ALIGNMENT_ERROR, "dedup_map", "map is not onto 0..M'-1")
-        if self.status not in STATUS_VALUES or not (self.scale_s >= 0 and math.isfinite(self.scale_s)):
+        scale_ok = self.scale_s >= 0 and math.isfinite(self.scale_s)
+        if self.status not in STATUS_VALUES or not scale_ok:
             raise self._fail(ErrorCode.INVALID_CONFIG, "status_scale",
                              f"status={self.status}, scale_s={self.scale_s}")
 
@@ -145,11 +146,13 @@ class Diagrams(Artifact):
         if self.coeff_p < 2 or any(self.coeff_p % k == 0 for k in range(2, self.coeff_p)):
             raise self._fail(ErrorCode.INVALID_CONFIG, "coeff_p", f"{self.coeff_p} is not prime")
         dims, birth, death, cens = rows.T
-        if rows.size and (np.any(dims != np.round(dims)) or dims.min() < 0 or dims.max() > self.maxdim
+        if rows.size and (np.any(dims != np.round(dims)) or dims.min() < 0
+                          or dims.max() > self.maxdim
                           or not np.all(np.isin(cens, (0.0, 1.0)))):
             raise self._fail(ErrorCode.INVALID_CONFIG, "dims_censored", "bad dim or censored flag")
         if not np.all(np.isfinite(birth)) or np.any(np.isnan(death)) or np.any(death < birth):
-            raise self._fail(ErrorCode.NUMERICAL_FAILURE, "bars", "non-finite birth or death < birth")
+            raise self._fail(ErrorCode.NUMERICAL_FAILURE, "bars",
+                             "non-finite birth or death < birth")
         if self.status not in STATUS_VALUES:
             raise self._fail(ErrorCode.INVALID_CONFIG, "status", self.status)
 

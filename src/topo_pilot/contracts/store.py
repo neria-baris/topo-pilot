@@ -82,7 +82,8 @@ class ArtifactStore:
     def _key(artifact_type: str, artifact_id: str, name: str) -> str:
         return f"{artifact_type}/{artifact_id}/{name}"
 
-    def _fail(self, code: ErrorCode, check: str, detail: str, aid: str | None = None) -> StageFailure:
+    def _fail(self, code: ErrorCode, check: str, detail: str,
+              aid: str | None = None) -> StageFailure:
         return StageFailure(code, "contracts.ArtifactStore", check, detail, aid)
 
     # ---- write ----------------------------------------------------------------------------

@@ -71,7 +71,8 @@ def export_bundle(store: ArtifactStore, ids: Sequence[str], dest: Path, with_par
             info = tarfile.TarInfo(name)
             info.size, info.mtime, info.mode = len(files[name]), 0, 0o644
             tar.addfile(info, io.BytesIO(files[name]))
-    with open(dest, "wb") as handle, gzip.GzipFile(filename="", fileobj=handle, mode="wb", mtime=0) as gz:
+    with open(dest, "wb") as handle, \
+            gzip.GzipFile(filename="", fileobj=handle, mode="wb", mtime=0) as gz:
         gz.write(raw.getvalue())
     return dest
 
@@ -92,7 +93,10 @@ def _read_members(src: Path) -> dict[str, bytes]:
 
 
 def import_bundle(store: ArtifactStore, src: Path) -> list[str]:
-    """Verify everything first, then write in dependency order; see ``ArtifactStore.import_bundle``."""
+    """Verify everything first, then write in dependency order.
+
+    See ``ArtifactStore.import_bundle``.
+    """
     files = _read_members(src)
     if INDEX_NAME not in files:
         raise _fail(ErrorCode.ARTIFACT_MISSING, "index", f"{INDEX_NAME} missing")
@@ -127,7 +131,8 @@ def _verify_one(store: ArtifactStore, meta: ArtifactMeta, group: dict[str, bytes
                 bundle_ids: set[str]) -> None:
     aid = meta.artifact_id
     if meta.artifact_type not in ARTIFACT_CLASSES or meta.status != "complete":
-        raise _fail(ErrorCode.CHECKSUM_MISMATCH, "meta", f"bad type/status {meta.artifact_type}", aid)
+        raise _fail(ErrorCode.CHECKSUM_MISMATCH, "meta",
+                    f"bad type/status {meta.artifact_type}", aid)
     store._check_version(meta)
     if make_artifact_id(meta.artifact_type, meta.config, meta.parent_ids,
                         meta.schema_version) != aid:

@@ -32,7 +32,8 @@ def test_C13_transition_asymmetric_and_stationarity(builders):
     asym = np.array([[0.5, 0.5, 0.0, 0.0], [0.0, 0.5, 0.5, 0.0],
                      [0.0, 0.0, 0.5, 0.5], [0.5, 0.0, 0.0, 0.5]])
     _fails(dataclasses.replace(ts, T=asym), ErrorCode.NONSTOCHASTIC)
-    _fails(dataclasses.replace(ts, pi=np.array([0.4, 0.2, 0.2, 0.2])), ErrorCode.STATIONARITY_FAILURE)
+    _fails(dataclasses.replace(ts, pi=np.array([0.4, 0.2, 0.2, 0.2])),
+           ErrorCode.STATIONARITY_FAILURE)
 
 
 def test_C13_emission_dead_symbol(builders):
@@ -57,7 +58,8 @@ def test_C13_emission_other_violations(builders):
 
 def test_C13_history_index_overlapping_panels(make_hist):
     make_hist().validate()
-    # trajectory 0 appears in panel 1 (end 32) and panel 2 (end 31): unique history ids, shared trajectory
+    # trajectory 0 appears in panel 1 (end 32) and panel 2 (end 31): unique history ids,
+    # shared trajectory
     overlapping = make_hist(sequence_id=(0, 1, 0, 3), end=(32, 32, 31, 31))
     _fails(overlapping, ErrorCode.SPLIT_OVERLAP)
 
@@ -74,7 +76,8 @@ def test_C13_history_index_other_violations(make_hist):
 def test_C13_world_spec(builders):
     w = builders["WorldSpec"]()
     w.validate()
-    _fails(dataclasses.replace(w, betti_computed={2: (1, 0, 0), 3: (1, 0, 0)}), ErrorCode.BETTI_MISMATCH)
+    _fails(dataclasses.replace(w, betti_computed={2: (1, 0, 0), 3: (1, 0, 0)}),
+           ErrorCode.BETTI_MISMATCH)
     bad = w.dist.copy()
     bad[0, 1] = bad[1, 0] = 50.0  # breaks the triangle inequality
     _fails(dataclasses.replace(w, dist=bad), ErrorCode.NON_METRIC)
@@ -89,7 +92,8 @@ def test_C13_data_artifacts(builders):
     obs = builders["ObservationSet"]()
     _fails(dataclasses.replace(obs, V=2), ErrorCode.ALIGNMENT_ERROR)  # tokens up to 2 >= V
     _fails(dataclasses.replace(obs, tokens=obs.tokens[:, :32]), ErrorCode.ALIGNMENT_ERROR)
-    _fails(dataclasses.replace(obs, sequence_id=np.zeros(8, dtype=np.int64)), ErrorCode.SAMPLE_ID_MISMATCH)
+    _fails(dataclasses.replace(obs, sequence_id=np.zeros(8, dtype=np.int64)),
+           ErrorCode.SAMPLE_ID_MISMATCH)
     _fails(dataclasses.replace(obs, split="val"), ErrorCode.INVALID_CONFIG)
     es = builders["EvalSidecar"]()
     _fails(dataclasses.replace(es, split="train"), ErrorCode.INVALID_CONFIG)
@@ -104,7 +108,8 @@ def test_C13_misc_artifacts(builders):
     _fails(dataclasses.replace(b["Checkpoint"](), state=b""), ErrorCode.INVALID_CONFIG)
     _fails(dataclasses.replace(b["Checkpoint"](), step=-1), ErrorCode.INVALID_CONFIG)
     _fails(dataclasses.replace(b["RunManifest"](), executor=""), ErrorCode.INVALID_CONFIG)
-    _fails(dataclasses.replace(b["ProcessDiagnostics"](), G_C=float("nan")), ErrorCode.NUMERICAL_FAILURE)
+    _fails(dataclasses.replace(b["ProcessDiagnostics"](), G_C=float("nan")),
+           ErrorCode.NUMERICAL_FAILURE)
     bad_q = b["BaselineOutputs"]()
     _fails(dataclasses.replace(bad_q, probs=bad_q.probs * 2), ErrorCode.NUMERICAL_FAILURE)
     act = b["ActivationSet"]()

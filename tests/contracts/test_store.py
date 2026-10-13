@@ -53,7 +53,8 @@ def assert_same(a, b):
 
 
 def _snapshot(root):
-    return {str(p.relative_to(root)): p.read_bytes() for p in sorted(root.rglob("*")) if p.is_file()}
+    return {str(p.relative_to(root)): p.read_bytes()
+            for p in sorted(root.rglob("*")) if p.is_file()}
 
 
 def _save(store, art, cfg=None, parents=()):
@@ -121,8 +122,9 @@ def test_C04_roundtrip_localfs(name, builders, fs_store):
     store2 = C.ArtifactStore(C.LocalFSBackend(root))
     assert_same(art, store2.load(type(art), aid, consumer=CONSUMER))
     meta = json.loads((d / "meta.json").read_text(encoding="utf-8"))
-    for key in ("artifact_type", "artifact_id", "schema_version", "parent_ids", "config", "seed_map",
-                "producer_version", "created_utc", "shapes", "dtypes", "payload_sha256", "status"):
+    for key in ("artifact_type", "artifact_id", "schema_version", "parent_ids", "config",
+                "seed_map", "producer_version", "created_utc", "shapes", "dtypes",
+                "payload_sha256", "status"):
         assert key in meta
     assert meta["status"] == "complete" and meta["artifact_id"] == aid
 
@@ -184,7 +186,8 @@ def test_C05_tampered_payload_detected(tamper, builders, fs_store):
     art = builders["ObservationSet"]()
     aid = _save(store, art)
     tamper(_dir(root, "ObservationSet", aid) / "payload.npz")
-    _failure(lambda: store.load(C.ObservationSet, aid, consumer=CONSUMER), ErrorCode.CHECKSUM_MISMATCH)
+    _failure(lambda: store.load(C.ObservationSet, aid, consumer=CONSUMER),
+             ErrorCode.CHECKSUM_MISMATCH)
     _failure(lambda: _save(store, art), ErrorCode.CHECKSUM_MISMATCH)
 
 
@@ -209,12 +212,14 @@ def test_C06_incomplete_refused(builders, fs_store):
     store, root = fs_store
     aid = _save(store, builders["ObservationSet"]())
     _edit_meta(root, "ObservationSet", aid, status="incomplete")
-    _failure(lambda: store.load(C.ObservationSet, aid, consumer=CONSUMER), ErrorCode.ARTIFACT_MISSING)
+    _failure(lambda: store.load(C.ObservationSet, aid, consumer=CONSUMER),
+             ErrorCode.ARTIFACT_MISSING)
 
 
 def test_C06_unknown_id_is_missing(fs_store):
     store, _ = fs_store
-    _failure(lambda: store.load(C.ObservationSet, "0" * 16, consumer=CONSUMER), ErrorCode.ARTIFACT_MISSING)
+    _failure(lambda: store.load(C.ObservationSet, "0" * 16, consumer=CONSUMER),
+             ErrorCode.ARTIFACT_MISSING)
     _failure(lambda: T.memory_store().load(C.ObservationSet, "0" * 16, consumer=CONSUMER),
              ErrorCode.ARTIFACT_MISSING)
 

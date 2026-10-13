@@ -43,7 +43,8 @@ def test_C01_id_independent_of_key_order():
 
 
 def test_C01_id_independent_of_parent_order_and_container():
-    assert make_artifact_id("T", CFG, ["a", "b", "c"]) == make_artifact_id("T", CFG, ("c", "a", "b"))
+    assert (make_artifact_id("T", CFG, ["a", "b", "c"])
+            == make_artifact_id("T", CFG, ("c", "a", "b")))
 
 
 def test_C02_id_changes_with_each_input():
@@ -69,9 +70,11 @@ def test_C03_canonical_json_known_answers():
     assert canonical_json({"b": 1, "a": 2}) == '{"a":2,"b":1}'
     assert canonical_json({2: 1, 1: 2}) == '{"1":2,"2":1}'
     assert canonical_json({10: 1, 9: 2}) == '{"10":1,"9":2}'  # keys sorted after str()
-    assert canonical_json({"a": {"d": 1, "c": [1, {"f": 1, "e": 2}]}}) == '{"a":{"c":[1,{"e":2,"f":1}],"d":1}}'
+    assert (canonical_json({"a": {"d": 1, "c": [1, {"f": 1, "e": 2}]}})
+            == '{"a":{"c":[1,{"e":2,"f":1}],"d":1}}')
     assert canonical_json((1, 2)) == canonical_json([1, 2]) == "[1,2]"
-    assert canonical_json({"t": (1, (2, 3))}) == canonical_json({"t": [1, [2, 3]]}) == '{"t":[1,[2,3]]}'
+    assert (canonical_json({"t": (1, (2, 3))}) == canonical_json({"t": [1, [2, 3]]})
+            == '{"t":[1,[2,3]]}')
     assert canonical_json([True, False, None]) == "[true,false,null]"
     assert canonical_json("é") == '"é"'  # ensure_ascii=False
     assert canonical_json([]) == "[]" and canonical_json({}) == "{}"

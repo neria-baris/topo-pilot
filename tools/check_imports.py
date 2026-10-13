@@ -4,8 +4,8 @@
 Exit 0 = clean, 1 = violations (one line each), 2 = usage error.
 """
 import argparse
-import os
 import ast
+import os
 import sys
 from pathlib import Path
 

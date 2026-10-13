@@ -133,7 +133,8 @@ def test_P11_emission_builder_does_not_accept_transition():
 
 def test_P12_fps_greedy_maxmin_by_hand(square3):
     # n=3 square, start vertex 0=(0,0); farthest: (2,2) (sqrt 8). Next: (0,2) and (2,0) tie at
-    # distance 2 from both chosen -> lowest id (0,2)=2. Then (2,0)=6 (distance 2) beats (1,1) (sqrt 2).
+    # distance 2 from both chosen -> lowest id (0,2)=2.
+    # Then (2,0)=6 (distance 2) beats (1,1) (sqrt 2).
     c = FPSCenters().centers(square3, 4, np.random.default_rng(0))
     assert c.tolist() == [[0, 0], [2, 2], [0, 2], [2, 0]]
     assert len({tuple(r) for r in c.tolist()}) == 4

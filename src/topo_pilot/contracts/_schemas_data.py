@@ -64,7 +64,8 @@ class ObservationSet(Artifact):
 
 @dataclass(frozen=True, eq=False)
 class EvalSidecar(Artifact):
-    """Privileged latent states for dev/test: ``z: int16[R, 33]``, ``z[:, t]`` emitted ``tokens[:, t]``.
+    """Privileged latent states for dev/test: ``z: int16[R, 33]``; ``z[:, t]`` emitted
+    ``tokens[:, t]``.
 
     Loading is restricted by ``DEFAULT_ACCESS_POLICY`` (``learner``/``activations`` -> ``LEAKAGE``).
     Invariants: ``split`` in {dev, test}; states in ``0..N-1``; ids unique and aligned.
@@ -172,7 +173,8 @@ class OracleOutputs(Artifact):
             ck.require_len(name, key, arr, m)
             ck.require_distribution_rows(name, key, arr, 1e-9)
         if self.b32.shape != self.b1.shape or self.q.shape != self.q_last.shape:
-            raise self._fail(ErrorCode.ALIGNMENT_ERROR, "widths", "belief or predictive widths differ")
+            raise self._fail(ErrorCode.ALIGNMENT_ERROR, "widths",
+                             "belief or predictive widths differ")
         for key in ("belief_entropy", "log_evidence"):
             arr = ck.require_array(name, key, getattr(self, key), 1, "f")
             ck.require_len(name, key, arr, m)
@@ -184,7 +186,8 @@ class OracleOutputs(Artifact):
                 raise self._fail(ErrorCode.ALIGNMENT_ERROR, "F2_shape", f"F2 {F2.shape}")
             ck.require_distribution_rows(name, "F2", F2.astype(np.float64), 1e-4)
         if self.ce_oracle_all_positions is not None:
-            ce = ck.require_array(name, "ce_oracle_all_positions", self.ce_oracle_all_positions, 2, "f")
+            ce = ck.require_array(name, "ce_oracle_all_positions",
+                                  self.ce_oracle_all_positions, 2, "f")
             if ce.shape[1] != N_OBS:
                 raise self._fail(ErrorCode.ALIGNMENT_ERROR, "ce_shape", f"ce {ce.shape}")
             ck.require_finite(name, "ce_oracle_all_positions", ce)

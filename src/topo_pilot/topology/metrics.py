@@ -21,7 +21,8 @@ def _fail(code: ErrorCode, component: str, check: str, detail: str) -> StageFail
 def _check_matrix(X: NDArray[np.float64], component: str) -> NDArray[np.float64]:
     X = np.asarray(X, dtype=np.float64)
     if X.ndim != 2 or X.shape[0] < 1 or X.shape[1] < 1:
-        raise _fail(ErrorCode.NUMERICAL_FAILURE, component, "shape", f"expected [M,F], got {X.shape}")
+        raise _fail(ErrorCode.NUMERICAL_FAILURE, component, "shape",
+                    f"expected [M,F], got {X.shape}")
     if not np.all(np.isfinite(X)):
         raise _fail(ErrorCode.NUMERICAL_FAILURE, component, "finite", "non-finite entries")
     return X

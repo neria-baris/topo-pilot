@@ -1,13 +1,12 @@
-import pytest as _pytest
-
-pytestmark = _pytest.mark.contracts
-
-"""Hand-built small valid instances of every artifact class (independent of the implementation)."""
+"""Hand-built small valid instances of every artifact class (independent of the
+implementation)."""
 import numpy as np
 import pytest
 
 from topo_pilot import contracts as C
 from topo_pilot.contracts import testing as T
+
+pytestmark = pytest.mark.contracts
 
 CONSUMER = "experiment"  # allowed to read and write every artifact type per DATA_SCHEMAS section 7
 

@@ -106,7 +106,8 @@ def _relative_orientation(face: tuple[int, ...], stored: tuple[int, ...], m: int
 
 
 class CubicalComplex:
-    """Cells of dim 0..3 as ordered vertex tuples (k-cube has 2**k vertices, local lexicographic order).
+    """Cells of dim 0..3 as ordered vertex tuples (a k-cube has 2**k vertices, in local
+    lexicographic order).
 
     Math
     ----

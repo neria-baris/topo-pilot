@@ -24,7 +24,8 @@ class ArtifactBackend(ABC):
 
     @abstractmethod
     def put(self, key: str, data: bytes) -> None:
-        """Store ``data`` under ``key`` (atomically where the medium allows), replacing any value."""
+        """Store ``data`` under ``key``, replacing any value (atomically where the medium
+        allows)."""
 
     @abstractmethod
     def get(self, key: str) -> bytes:

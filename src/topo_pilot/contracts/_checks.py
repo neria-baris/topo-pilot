@@ -40,12 +40,14 @@ def require_len(owner: str, name: str, arr: np.ndarray, n: int) -> None:
 def require_finite(owner: str, name: str, arr: np.ndarray) -> None:
     """Require every entry to be finite."""
     if not np.all(np.isfinite(arr)):
-        raise fail(owner, ErrorCode.NUMERICAL_FAILURE, f"{name}_finite", f"{name} has non-finite entries")
+        raise fail(owner, ErrorCode.NUMERICAL_FAILURE, f"{name}_finite",
+                   f"{name} has non-finite entries")
 
 
 def require_distribution_rows(owner: str, name: str, P: np.ndarray, tol: float,
                               code: ErrorCode = ErrorCode.NUMERICAL_FAILURE) -> None:
-    """Require nonnegative finite rows (over the last axis, or the last two for 3-d) summing to 1."""
+    """Require nonnegative finite rows summing to 1 (over the last axis, or the last two for
+    3-d arrays)."""
     require_finite(owner, name, P)
     if np.any(P < 0):
         raise fail(owner, code, f"{name}_nonnegative", f"{name} has negative entries")

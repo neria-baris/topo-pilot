@@ -32,14 +32,13 @@ All module suites: 379 passed, 3 deselected (slow); check_imports clean; ruff cl
 | G-F | pass | 2026-10-13 | S4: 7 runs × 12 checkpoints (84 Checkpoint, 84 ActivationSet); analysis done ~13:15 local |
 
 ## Open issues (≤5)
-- Blinding: S4 analysis numbers unseen by owner and planning conductor; no E2 report, no MetricRecords reads until X4 is approved (PREREGISTRATION_X4.md)
-- H3 decidable one-sidedly only (P: oracle b32 shows 5/8); H3′ proposed in X4, needs owner approval at H3
+- Blinding: S4 analysis numbers still unseen; X4 approved (D-036), so the next step is implementing X4 and then unblinding via the E2 report
+- H3 decidable one-sidedly only (P: oracle b32 shows 5/8); H3′ (X4) approved at H3 as a decision rule (D-036)
 - Δgeom same-last-symbol pairs: d_B1 ≡ 0 there (D-031), so the term reduces to ρ_s(d_A, d_B32); X4-d adds R2/R3 baselines
 - process.is_x_periodic detects periodicity by family name (or an identification string); fix before any extension (prompt 3)
-- monitor/ is untracked, created outside the conductor workflow; owner decides commit vs .gitignore
 
 ## Next actions (≤5)
-1. Owner: approve PREREGISTRATION_X4.md; decide H3′ (checkpoint H3); decide monitor/.
-2. After approval: implement X4 (experiment stage + analysis kernels; no contract change), then `topo-pilot report --level E2`; E2 finding sentence at H4; README at E2; tag E2.
+1. Implement X4 (experiment stage loads Checkpoint → γ, β, W_U; analysis kernels for V1–V5; settings in configs/extensions/x4.yaml so the config hash is unchanged; no contract change).
+2. Run X4 on S4, then `topo-pilot report --level E2`; E2 finding sentence at H4; README at E2; tag E2.
 3. S5 (6 P runs, ~1.6 h) on the same executor; then `stage S6` (O + P) and X4 on S5 → E3 report.
 4. experiment: S7–S8 stages; E3/E4 report levels.

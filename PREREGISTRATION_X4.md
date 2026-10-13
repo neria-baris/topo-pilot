@@ -33,3 +33,7 @@ The replicate (training run) is the unit; panels are within-run resampling; pair
 
 ## Cost
 Pure re-analysis: about (5 views × 7 runs × 2 checkpoints × 8 panels) Ripser calls of 512 points for S4, the same again for S5. Minutes to an hour on CPU.
+
+## Approval
+
+Owner approval: PREREGISTRATION_X4.md approved by the repository owner, 2026-10-13; H3′ approved at checkpoint H3 (2026-10-13), so it is a decision rule, not descriptive only. Approved while still blind (no S4 analysis numbers seen).

@@ -1,12 +1,28 @@
 # topo-pilot: topology of a latent world in transformer representations
 
-> **Status:** specification package. This repository contains no implementation yet. It holds:
-> - an orchestration prompt;
-> - binding research decisions;
-> - per-module contracts and test plans;
-> - data schemas, stage gates, and configs.
->
-> The code is built by following `ORCHESTRATOR_PROMPT.md`.
+> **Status: exit level E0 reached** (2026-10-13). Implementation is in progress, wave by wave, following `ORCHESTRATOR_PROMPT.md`.
+
+## Current finding (E0)
+
+**The PH pipeline recovers the known topology: Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes.**
+
+| world | graph cycle rank | β₁ (GF(2)) | S, flat d_M | S, graph metric (sensitivity) |
+|---|---|---|---|---|
+| square | 121 | 0 | 0.037 | 0.067 |
+| cylinder | 133 | 1 | 0.299 | 0.231 |
+
+Gate G-A passed with thresholds fixed before the run (D-016). In the synthetic calibration (M = 512 in ℝ¹²⁸), a noisy circle was ranked above every disk in 20/20 draws. Figure and details: [`reports/E0/summary.md`](reports/E0/summary.md). To regenerate: `topo-pilot report --level E0` (Windows: `.	asks.ps1 reproduce-figures`).
+
+This finding involves no model. **Not run yet:** S2 (σ calibration, discriminability of the unlearned spaces, preregistration), S3–S8 (training, F1, controls, dynamics, sensitivity). No claim is made about learned representations.
+
+## Reproduce (Windows, CPU)
+
+```powershell
+python -m venv .venv; .\.venv\Scripts\python.exe -m pip install -r requirements.lock -e .
+.\.venv\Scripts	opo-pilot.exe stage S0   # environment and contract sanity
+.\.venv\Scripts	opo-pilot.exe stage S1   # worlds, kernels, emissions, PH calibration (~30 s)
+.\.venv\Scripts	opo-pilot.exe report --level E0
+```
 
 ## The question, in one paragraph
 

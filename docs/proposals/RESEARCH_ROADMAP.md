@@ -176,3 +176,11 @@ No further coverage extension, threshold change or Phase C follows. The closure 
 |---|---|---|
 | E4 circular-baseline audit | BEYOND_SYMBOL_AND_MIXING, descriptive only; the direct R1 gap is resolved descriptively | D-057 |
 | X4-F (H4C-F) | Draft x4f-draft-1 and plan (D-058); execution contract x4f-exec-v1 prepared for coordinator review (D-059). Not executed. | X4F_EXECUTION_PROTOCOL.md |
+
+### Status addendum (14 October 2026, D-061 – D-063)
+
+| Item | Status | Record |
+|---|---|---|
+| X4-F execution v2 gates | INCONCLUSIVE. G1–G3 pass (G3 LINEAR_COMPONENT_ONLY); G4 FAMILY_UNMATCHED; G5 NOT_RUN. The formulation is closed and the causal endpoint was NOT_RUN. | D-062, D-063, X4F_COORDINATOR_REVIEW_ADDENDUM.md |
+| Next selected follow-up | **X5 G1 only.** Flat vs conductance kernel on the same cylinder. It begins with the oracle/kernel feasibility contract (draft); training is only outlined. | X5_G1_FEASIBILITY_PROTOCOL_DRAFT.md, X5_G1_IMPLEMENTATION_PLAN.md |
+| Not selected now | X6, G2, density, further X4 rescue | — |

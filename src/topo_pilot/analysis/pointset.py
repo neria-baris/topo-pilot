@@ -33,8 +33,8 @@ class PointSet:
     Invariants
     ----------
     ``space`` is one of ``world | emission | belief32 | belief1 | future1 | future2 |
-    act:<hook> | base:R0..R3 | null:iso | null:cov``; ``metric`` is ``hellinger``,
-    ``euclidean`` or ``flat`` (a given D).
+    act:<hook> | base:R0..R3 | null:iso | null:cov |
+    pred:softmax | x4:V0..V5``; ``metric`` is ``hellinger``, ``euclidean`` or ``flat`` (a given D).
     """
 
     space: str

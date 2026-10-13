@@ -82,13 +82,30 @@ three were below 0.03 the status is `stop_H3` (checkpoint H3).
   `nan` and `p=1`. Descriptive only. `Dynamics.curves` is not implemented.
 - **LayerSweep**. `S_H1` (Euclidean, via `ph_summary`) per hook plus `concat`.
 
+## Part (d) logic
+Readout-geometry helpers (`readout.py`, wave WX4), all float64.
+- `ln_gauge_free`: row-wise LayerNorm without gamma/beta, `u = (z - mean(z)) / sqrt(var(z)+eps)`
+  (ddof 0). Invariant to per-row shifts, and to positive scaling when `eps = 0`.
+- Why the split is exact: with no unembedding bias, `logits = LN_f(z) W_U^T = u A + beta W_U^T`
+  where `A = diag(gamma) W_U^T` (`d x V`) and `beta` is the LayerNorm shift. `readout_projector`
+  returns `P = Q_r Q_r^T`, the orthogonal projector onto `range(A)` (thin SVD, singular values
+  above `tol = max(d,V) * eps * sigma_max`, the `matrix_rank` convention), so `(I - P) A = 0`.
+  Hence `u A = u P A + u (I - P) A = u P A`: only `U_visible = u P` reaches the logits, and
+  `U_null = u (I - P)` (dimension at least `d - V`) is invisible to the next-token output.
+  `split_readout` is therefore exact, up to float rounding, and the two parts are orthogonal
+  row by row because `P` is symmetric idempotent.
+- `predictive_pointset`: max-subtracted softmax of the logits as a Hellinger `PointSet`.
+- Edge cases: `A = 0` gives `P = 0`; zero entries in `gamma` or duplicate rows of `W_U` lower the
+  rank (and `trace(P)`); a zero-variance row with `eps = 0` raises `NUMERICAL_FAILURE`.
+
 ## Data
 `PointSet(space, X, D, ids, metric)` (frozen); `SigmaRow`, `SigmaDecision` (frozen);
 `MetricRecords` output of the table. No artifacts are written here.
 
 ## Public API
 `PointSet, SpaceBuilder, SigmaRow, SigmaDecision, SigmaCalibrator, DiscriminabilityTable,
-ph_summary, require_same_ids`.
+ph_summary, require_same_ids, ln_gauge_free, readout_projector, split_readout,
+predictive_pointset`.
 
 ## How to test
 `.venv\Scripts\python.exe -m pytest tests/analysis -q`; `python tools/check_imports.py`;

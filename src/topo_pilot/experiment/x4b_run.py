@@ -72,8 +72,12 @@ def peak_memory_bytes() -> int | None:
                                                    "PagefileUsage", "PeakPagefileUsage")]
             pmc = _PMC()
             pmc.cb = ctypes.sizeof(_PMC)
-            handle = ctypes.windll.kernel32.GetCurrentProcess()
-            ctypes.windll.psapi.GetProcessMemoryInfo(handle, ctypes.byref(pmc), pmc.cb)
+            current = ctypes.windll.kernel32.GetCurrentProcess
+            current.restype = ctypes.c_void_p  # 64-bit pseudo-handle; default int truncates it
+            query = ctypes.windll.psapi.GetProcessMemoryInfo
+            query.argtypes = [ctypes.c_void_p, ctypes.POINTER(_PMC), ctypes.c_ulong]
+            if not query(current(), ctypes.byref(pmc), pmc.cb):
+                return None
             return int(pmc.PeakWorkingSetSize)
         import resource
         return int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss) * 1024

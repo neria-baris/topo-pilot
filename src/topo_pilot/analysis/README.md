@@ -61,7 +61,10 @@ three were below 0.03 the status is `stop_H3` (checkpoint H3).
   exactly: REJECTED (strict). If any gate failed: INCONCLUSIVE regardless of D.
 - **Delta-geom** (`geometry.py`). Inputs are `[M, M]` distance matrices; Spearman over `i<j`;
   `all = rho(dA,dB32) - rho(dA,dB1)`; same-last-symbol restricts to pairs with equal `w_32`;
-  fewer than 200 such pairs gives `None` and `status_same="inconclusive"`.
+  fewer than 200 such pairs gives `None` and `status_same="inconclusive"`. Because
+  `b1 = r_{w32}` depends on `w_32` only, `dB1` is identically 0 on those pairs; a constant `dB1`
+  term counts as 0, so the restricted value is `rho(dA,dB32)` (D-031). A non-finite restricted
+  value (e.g. constant `dA`) gives `None` / inconclusive, never NaN.
 - **Baselines** (`baselines.py`, `SpaceBuilder.baseline`). R0: step-0 activations (hook default
   `resid_post_3`). R1: the `embed` hook of the final checkpoint at position 32; positional
   embedding is a constant shift at a fixed position, so Euclidean distances equal

@@ -88,3 +88,29 @@ def test_same_last_symbol_value_matches_restricted_spearman():
     assert out["status_same"] == "ok"
     assert out["same_last_symbol"] == pytest.approx(exp)
     assert "all" in out
+
+
+def test_same_last_symbol_finite_when_b1_is_a_function_of_w32():
+    # b1 = r_{w32}: identical rows within a symbol, so d_B1 == 0 on every same pair (D-031)
+    rng = np.random.default_rng(3)
+    last = np.repeat(np.arange(4), 25)  # 4 * 300 = 1200 same pairs
+    X32 = rng.normal(size=(100, 5))
+    D_A = pdist_mat(X32 + 0.1 * rng.normal(size=(100, 5)))
+    D_32 = pdist_mat(X32)
+    D_1 = pdist_mat(rng.normal(size=(4, 5))[last])
+    out = GeometryAlignment().delta_geom(D_A, D_32, D_1, last_symbol=last)
+    iu = np.triu_indices(100, 1)
+    keep = last[iu[0]] == last[iu[1]]
+    assert np.all(D_1[iu][keep] == 0.0)
+    assert out["status_same"] == "ok"
+    assert out["same_last_symbol"] == pytest.approx(spearmanr(D_A[iu][keep], D_32[iu][keep])[0])
+    assert np.isfinite(out["all"])
+
+
+def test_same_last_symbol_none_when_activation_distances_constant():
+    last = np.repeat(np.arange(2), 21)  # 2 * 210 = 420 same pairs
+    _, D_32, D_1 = planted(M=42, seed=4)
+    D_A = np.ones((42, 42)) - np.eye(42)
+    out = GeometryAlignment().delta_geom(D_A, D_32, D_1, last_symbol=last)
+    assert out["same_last_symbol"] is None
+    assert out["status_same"] == "inconclusive"

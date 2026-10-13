@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import dataclasses
 import logging
-import subprocess
 import sys
 from collections.abc import Mapping
 from typing import Any
@@ -29,7 +28,6 @@ from topo_pilot.contracts import (
     ErrorCode,
     EvalSidecar,
     GateCheck,
-    GateReport,
     MetricRecords,
     MetricRow,
     ObservationSet,
@@ -46,13 +44,23 @@ from topo_pilot.prediction import PredictionStage
 from topo_pilot.process import EmissionConfig, ProcessStage
 
 from .config import ResolvedConfig
-from .stages import Stage, register_stage
+from .stages import Stage, register_stage, run_tool, save_tool_gate
 
 log = logging.getLogger(__name__)
 CONS = "experiment"
 MODES = {"O": "overlap", "P": "axis_permuted", "N": "identical", "U": "unique"}
 PUBLIC_FIELDS = {"split", "V", "sequence_id", "tokens", "layout_version"}
-FLOOR_DRAWS, MIN_POSITIVE_PANELS = 20, 7
+
+
+def world_id(store: ArtifactStore, cfg: ResolvedConfig, family: str) -> str:
+    """The unique WorldSpec of ``family`` with the configured dims and metric."""
+    worlds = cfg.base["worlds"]
+    ids = store.find(WorldSpec, family=family, dims=list(worlds["dims"]), metric=worlds["metric"])
+    if len(ids) != 1:
+        raise StageFailure(ErrorCode.MISSING_PARENT, "experiment.world_id", "world",
+                           f"WorldSpec {family} {worlds['dims']} {worlds['metric']}: "
+                           f"{len(ids)} found")
+    return ids[0]
 
 
 def child_of(store: ArtifactStore, cls: type, parent: str, **flt: Any) -> str:
@@ -86,7 +94,7 @@ class S2Stage(Stage):
     # ---- building blocks ------------------------------------------------------------------
     def _ctx(self, cfg: ResolvedConfig, store: ArtifactStore) -> dict[str, Any]:
         base = cfg.base
-        worlds = {f: store.find(WorldSpec, family=f)[0] for f in base["worlds"]["core"]}
+        worlds = {f: world_id(store, cfg, f) for f in base["worlds"]["core"]}
         trans = {f: child_of(store, TransitionSpec, w) for f, w in worlds.items()}
         data = base["data"]
         dcfg = DatasetConfig(n_train=data["n_train"], n_dev=data["n_dev"], n_test=data["n_test"],
@@ -97,7 +105,7 @@ class S2Stage(Stage):
     def _emission(self, ctx: dict, store: ArtifactStore, family: str, cond: str,
                   sigma: float | None, master: int) -> str:
         V = ctx["N"] if cond == "U" else ctx["V"]
-        ecfg = EmissionConfig(mode=MODES[cond], V=V, sigma=sigma if cond in "OP" else None,
+        ecfg = EmissionConfig(mode=MODES[cond], V=V, sigma=sigma if cond in ("O", "P") else None,
                               source_mode="overlap" if cond == "P" else None)
         return ProcessStage().run_emission(ctx["worlds"][family], ecfg, SeedTree(master), store)
 
@@ -136,7 +144,8 @@ class S2Stage(Stage):
         return decision, records
 
     # ---- floor and world-difference summary -----------------------------------------------
-    def _floor(self, store: ArtifactStore, ref: dict, family: str, cond: str) -> list[MetricRow]:
+    def _floor(self, store: ArtifactStore, ref: dict, family: str, cond: str,
+               n_draws: int) -> list[MetricRow]:
         b32 = SpaceBuilder(store).beliefs(ref["oracle"], "b32", 1)
         hell = PointSet(space="belief32_hellinger_embedding", X=np.sqrt(b32.X) / np.sqrt(2.0),
                         D=None, ids=b32.ids, metric="euclidean")
@@ -144,7 +153,7 @@ class S2Stage(Stage):
         for kind in ("iso", "cov"):
             vals = [ph_summary(SpaceBuilder(store).null(
                 hell, kind, tree.generator("gaussian_floor", family, cond, kind, i)))["S_H1"]
-                for i in range(FLOOR_DRAWS)]
+                for i in range(n_draws)]
             rows += [_row(f"null:{kind}:belief32", "S_H1_mean", float(np.mean(vals)), family, cond,
                           1, parents=(ref["oracle"],)),
                      _row(f"null:{kind}:belief32", "S_H1_q95", float(np.percentile(vals, 95)),
@@ -171,8 +180,8 @@ class S2Stage(Stage):
         decision, records = self._calibrate(cfg, ctx, store)
         log.info("S2: sigma decision %s (%s)", decision.sigma, decision.status)
         if decision.sigma is None:
-            gid = self._save_gate(store, cfg, "G-C", (GateCheck("sigma_selected", False, None,
-                                                                 "rule"),), [])
+            gid = save_tool_gate(store, cfg, "S2", "G-C",
+                                 (GateCheck("sigma_selected", False, None, "rule"),), [])
             raise StageFailure(ErrorCode.GATE_FAILED, "experiment.S2", "G-C",
                                "no sigma meets the rule or the fallback: checkpoint H3", gid)
         refs = self._build_all(cfg, ctx, store, decision.sigma)
@@ -180,8 +189,9 @@ class S2Stage(Stage):
         disc = DiscriminabilityTable(store).compute(
             {(f, c): refs[(f, c, refs["_m0"])] for f in ctx["worlds"] for c in ("O", "P")},
             list(range(1, ctx["dcfg"].n_panels + 1)))
+        draws = int(cfg.base["topology"]["gaussian_floor_draws"])
         floor = [r for f in ctx["worlds"] for c in ("O", "P")
-                 for r in self._floor(store, refs[(f, c, refs["_m0"])], f, c)]
+                 for r in self._floor(store, refs[(f, c, refs["_m0"])], f, c, draws)]
         diff = self.world_difference(disc, ctx["dcfg"].n_panels)
         rows = tuple(records) + disc.rows + tuple(floor) + tuple(diff) + (
             _row("sigma", "selected", float(decision.sigma), status="ok"),)
@@ -209,12 +219,6 @@ class S2Stage(Stage):
                                                              baselines=False)
         return refs
 
-    def _save_gate(self, store, cfg, gate_id, checks, parents) -> str:
-        verdict = "pass" if checks and all(c.passed for c in checks) else "fail"
-        return store.save(GateReport(stage="S2", gate_id=gate_id, verdict=verdict, checks=checks),
-                          config={"stage": "S2", "gate": gate_id, "config_hash": cfg.config_hash},
-                          parents=parents, seed_map={}, consumer=CONS)
-
     def _gates(self, cfg, ctx, store, refs, decision, mid) -> list[str]:
         m0 = refs["_m0"]
         n_err = u_err = 0.0
@@ -238,22 +242,17 @@ class S2Stage(Stage):
             leak_blocked = False
         except StageFailure as exc:
             leak_blocked = exc.code == ErrorCode.LEAKAGE
-        imports_ok, imports_line = _run(cfg, [sys.executable, "tools/check_imports.py"])
+        imports_ok, imports_line = run_tool([sys.executable, "tools/check_imports.py"], cfg, 900)
         ds_ok, ds_line = _pytest(cfg, "tests/dataset")
         g_d = (GateCheck("no_latent_field_in_ObservationSet", fields == PUBLIC_FIELDS,
                          sorted(fields), sorted(PUBLIC_FIELDS)),
                GateCheck("learner_cannot_load_sidecar", leak_blocked, leak_blocked, True),
                GateCheck("check_imports_clean", imports_ok, imports_line, "clean"),
                GateCheck("dataset_leakage_tests", ds_ok, ds_line, "all pass"))
-        return [self._save_gate(store, cfg, gid, checks, [mid])
+        return [save_tool_gate(store, cfg, "S2", gid, checks, [mid])
                 for gid, checks in (("G-B", g_b), ("G-C", g_c), ("G-D", g_d))]
 
 
-def _run(cfg: ResolvedConfig, cmd: list[str]) -> tuple[bool, str]:
-    proc = subprocess.run(cmd, cwd=cfg.repo_root, capture_output=True, text=True, timeout=900)
-    lines = (proc.stdout + proc.stderr).strip().splitlines()
-    return proc.returncode == 0, lines[-1] if lines else ""
-
-
 def _pytest(cfg: ResolvedConfig, folder: str) -> tuple[bool, str]:
-    return _run(cfg, [sys.executable, "-m", "pytest", folder, "-q", "-p", "no:cacheprovider"])
+    return run_tool([sys.executable, "-m", "pytest", folder, "-q", "-p", "no:cacheprovider"],
+                    cfg, 900)

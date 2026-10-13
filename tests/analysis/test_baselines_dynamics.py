@@ -5,8 +5,14 @@ import numpy as np
 import pytest
 
 from topo_pilot.analysis import Dynamics, r2_points, r3_points, spectral_embedding
-from topo_pilot.topology import (DistancePipeline, Euclidean, NullClouds, PersistenceComputer,
-                                 PHConfig, Summaries)
+from topo_pilot.topology import (
+    DistancePipeline,
+    Euclidean,
+    NullClouds,
+    PersistenceComputer,
+    PHConfig,
+    Summaries,
+)
 
 pytestmark = pytest.mark.analysis
 

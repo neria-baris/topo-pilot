@@ -32,7 +32,10 @@ class GeometryAlignment:
     Invariants
     ----------
     Fewer than 200 same-last-symbol pairs (or no ``last_symbol``) gives ``same_last_symbol=None``
-    and ``status_same="inconclusive"``. A constant distance vector gives ``nan`` (Spearman).
+    and ``status_same="inconclusive"``. On same-last-symbol pairs ``d_B1`` is identically 0 when
+    ``b1`` is the last-symbol posterior ``r_{w32}``; a constant ``d_B1`` there carries no ordering,
+    so its term is 0 and ``same_last_symbol = rho_s(d_A, d_B32)`` (D-031). Any other constant
+    distance vector gives ``nan`` overall and ``same_last_symbol=None`` (status inconclusive).
 
     Raises
     ------
@@ -60,6 +63,10 @@ class GeometryAlignment:
         same = (ls[:, None] == ls[None, :])[iu]
         out["n_same_pairs"] = int(same.sum())
         if out["n_same_pairs"] >= MIN_SAME_PAIRS:
-            out["same_last_symbol"] = _rho(dA[same], d32[same]) - _rho(dA[same], d1[same])
-            out["status_same"] = "ok"
+            d1_same = d1[same]
+            rho_1 = 0.0 if np.ptp(d1_same) == 0.0 else _rho(dA[same], d1_same)
+            value = _rho(dA[same], d32[same]) - rho_1
+            if np.isfinite(value):
+                out["same_last_symbol"] = value
+                out["status_same"] = "ok"
         return out

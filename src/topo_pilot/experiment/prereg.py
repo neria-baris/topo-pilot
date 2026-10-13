@@ -1,7 +1,8 @@
 """``topo-pilot prereg``: write PREREGISTRATION.md from S2 outputs and base.yaml (H1 draft).
 
 Reads only MetricRecords and GateReports (plus the repository docs and configs); refuses with
-``GATE_FAILED`` unless G-B, G-C and G-D have passed.
+``GATE_FAILED`` unless G-B, G-C and G-D have passed, and with ``INVALID_CONFIG`` if
+PREREGISTRATION.md already exists (an approved preregistration is never overwritten silently).
 """
 
 from __future__ import annotations
@@ -35,6 +36,11 @@ def _section(text: str, heading: str) -> str:
     pattern = rf"^{re.escape(heading)}.*?(?=^{level} |\Z)"
     match = re.search(pattern, text, flags=re.S | re.M)
     return match.group(0).strip() if match else f"(section {heading!r} not found)"
+
+
+def _demote(text: str) -> str:
+    """Embed a copied section one heading level deeper, so its headings nest under ours."""
+    return re.sub(r"^(#+) ", r"#\1 ", text, flags=re.M)
 
 
 def _s2_rows(store: ArtifactStore) -> list[MetricRow]:
@@ -106,8 +112,16 @@ def disc_table(rows: list[MetricRow], n_panels: int) -> list[str]:
     return lines
 
 
-def write_prereg(cfg: ResolvedConfig, store: ArtifactStore, conductor_note: str = "") -> Path:
-    """Write ``PREREGISTRATION.md`` at the repository root; returns its path."""
+def write_prereg(cfg: ResolvedConfig, store: ArtifactStore, conductor_note: str = "",
+                 force: bool = False) -> Path:
+    """Write ``PREREGISTRATION.md`` at the repository root; returns its path.
+
+    Raises ``INVALID_CONFIG`` if the file exists and ``force`` is False.
+    """
+    path = cfg.repo_root / "PREREGISTRATION.md"
+    if path.exists() and not force:
+        raise StageFailure(ErrorCode.INVALID_CONFIG, "experiment.prereg", "exists",
+                           f"{path.name} exists (approved at H1?); pass --force to overwrite")
     gates = _gates(store)
     missing = [g for g in S2_GATES if g not in gates or gates[g].verdict == "fail"]
     if missing:
@@ -123,8 +137,8 @@ def write_prereg(cfg: ResolvedConfig, store: ArtifactStore, conductor_note: str 
         f"- **Date / git SHA:** {date.today().isoformat()} / {producer_version(cfg.repo_root)}",
         f"- **Resolved config hash:** {cfg.config_hash}; full `base.yaml` embedded in §7.", "",
         "## 1. Hypotheses and decision rules (verbatim from RESEARCH_SUMMARY)", "",
-        _section(summary, "## 2."), "", _section(summary, "### 7.4"), "",
-        _section(summary, "### 7.5"), "", _section(summary, "### 7.6"), "",
+        *(_demote(_section(summary, h)) + "\n"
+          for h in ("## 2.", "### 7.4", "### 7.5", "### 7.6")),
         "## 2. Calibration outcome (S2)", "", *sigma_table(rows), "",
         f"**Selected σ = {sigma!r}**. Rule path: "
         f"{'first-pass' if status == 'ok' else status}.", "",
@@ -146,6 +160,5 @@ def write_prereg(cfg: ResolvedConfig, store: ArtifactStore, conductor_note: str 
         "## 6. Approval", "", "Owner approval at checkpoint H1: <name, date>.", "",
         "## 7. base.yaml", "", "```yaml",
         (cfg.repo_root / "configs" / "base.yaml").read_text(encoding="utf-8").strip(), "```", ""]
-    path = cfg.repo_root / "PREREGISTRATION.md"
     path.write_text("\n".join(lines), encoding="utf-8")
     return path

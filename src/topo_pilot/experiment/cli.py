@@ -73,6 +73,8 @@ def _parser() -> argparse.ArgumentParser:
     pr = sub.add_parser("prereg", help="write PREREGISTRATION.md from S2 outputs (H1 draft)")
     pr.add_argument("--config", default="configs/stages.yaml")
     pr.add_argument("--note", default="", help="conductor note on decidable hypotheses")
+    pr.add_argument("--force", action="store_true",
+                    help="overwrite an existing PREREGISTRATION.md")
     return ap
 
 
@@ -87,7 +89,7 @@ def main(argv: list[str] | None = None) -> int:
             print("\n".join(status_lines(cfg, store)))
             return 0
         if args.command == "prereg":
-            out = write_prereg(cfg, store, args.note)
+            out = write_prereg(cfg, store, args.note, force=args.force)
             print(f"prereg: {out.relative_to(cfg.repo_root).as_posix()}")
             return 0
         if args.command == "report":

@@ -129,6 +129,16 @@ def predictive_pointset(logits: NDArray, ids: Sequence[str], space: str = "pred:
 
 Why the split is exact: with `logits = LN_f(z) W_U^T = u A + beta W_U^T` (no unembedding bias) and `(I − P) A = 0`, only `u P` reaches the logits; `u (I − P)` (dimension ≥ d − V) is invisible to the next-token output.
 
+## Part (e): horizon feasibility (X4 Phase B; protocol x4b-v1, D-051)
+
+Pure functions in `horizon.py` and `horizon_pools.py`; numeric arrays in, numbers and verdict strings out; no store, oracle or fitting.
+
+- `helmert_basis(n)`: orthonormal sum-zero basis `[n, n-1]`.
+- `joint_marginals(Q2, V)`: first (= Q1) and second (= bT²E) marginals of a lexicographic joint.
+- `hellinger(P, Q)`: row-wise `||√p − √q||₂/√2`; entries below −1e-14 raise `NUMERICAL_FAILURE`.
+- `tangent_audit(G1, G2)`: full left null of `BᵀG1` at relative tolerances 1e-8/1e-10/1e-12, `D = U0ᵀBᵀG2`, ρ, ranks, conditioning, amplification, the rank certificate and the verdict ALLOWS_STABLE / FACTORIZES / TOLERANCE_DEPENDENT. A tangent map whose largest singular value is ≤ 1e-12 × its ambient norm is treated as exactly zero (relative tolerances are undefined for a zero matrix).
+- `select_anchors`, `nearest_partners`, `pair_d2`, `screen_pool`, `practical_verdict`, `strict_verdict`, `overall_verdict`: the frozen reachable screen and decision table of protocol §6–§7.
+
 ## Logic requirements (binding; see RESEARCH_SUMMARY §7)
 
 - **Same histories.** Every comparison between spaces uses the identical `history_id` list; a mismatch raises `SAMPLE_ID_MISMATCH`. World and emission spaces are over all 144 states and are reported separately.

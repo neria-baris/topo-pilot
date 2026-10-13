@@ -146,6 +146,10 @@ Items that need a view not in `views`, or the oracle (N runs), are skipped for t
 
 **Store contract:** `run()` saves exactly one `MetricRecords` with config `{"stage": "X4", "kind": "analysis", "sources": [...], "settings": {...}}` and parents = the sorted union of every run's `parents`; it writes nothing else. Identical inputs give the identical id (D-032).
 
+## X4 Phase B adapter (protocol x4b-v1, D-051; not a registered stage)
+
+`x4b.py` (M1/M2): frozen input table checked against `find_run_inputs` and the S7 dev lineage; `future_maps` (two `FutureOperator` routes plus the explicit formula); canonical pools (`E_canon = E[:, symbol_perm]`, canonical trajectory IDs mapped to each run's history IDs); `ReadThroughBackend` (reads main and output stores, writes the output store only). `x4b_audit.py`: per-pool screens and the test-pool precision and permutation agreement. `x4b_run.py` (M7): budget (1 CPU hour), main-store listing hash before and after, one MetricRecords in the independent store, npz exports and JSON/CSV tables. Run with `python -m topo_pilot.experiment.x4b_run`. It loads no checkpoint, ActivationSet or EvalSidecar and changes no stage config.
+
 ## Errors
 
 `GATE_FAILED`, `MISSING_PARENT`, `CONFIG_DRIFT`, `EXECUTOR_ERROR` (wrapped from executors).

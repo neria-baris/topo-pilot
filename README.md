@@ -1,8 +1,24 @@
 # topo-pilot: topology of a latent world in transformer representations
 
-> **Status: exit level E1 reached** (2026-10-13): σ calibrated and the preregistration committed before any training ([`PREREGISTRATION.md`](PREREGISTRATION.md)). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
+> **Status: exit level E2 reached** (2026-10-13): 7 models trained on CPU under condition O (3 replicates × cylinder/square, plus the N control); F1 decided by the rule fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) before any training; secondary analyses X4 pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
 
-## Current finding (E1)
+## Current finding (E2)
+
+**Under the smooth emission O, next-token training increases a persistent H₁ signal in the final residual stream that distinguishes the cylinder from the square (F1 supported: D > 0 in 8/8 panels in each of 3 replicates, median D 0.158–0.176 above the noise envelope u_r 0.084–0.097, all learning gates passed), and the activation geometry follows the 32-symbol belief more than the last-symbol posterior, including among histories that share the last symbol (H2: Δgeom > 0 in 48/48 panels).**
+
+**Caveat (R1).** The trained embedding of the last symbol alone (baseline R1) already reproduces a substantial fraction of the cylinder–square contrast: its median D is 0.89, 0.47 and 0.54 of the model's in the three replicates (the mixing baselines R2 and R3 stay at ≤ 0.20). F1 alone therefore does not establish that history integration causes the topological signal; under O, the emission geometry learned into the symbol embeddings may carry much of it. The axis-permuted control P (stage S5, H3/H3′) remains essential. H2 points to history use beyond the last symbol: within pairs that share it, where R1 is constant, the activation distances track the 32-symbol belief (ρ_s 0.935–0.979 per run) and beat R2 and R3 in every panel.
+
+**Readout split (secondary, X4).** The F1 rule also passes on the readout-null part V4 of the LayerNorm-normalised activations (the directions the unembedding cannot see), as well as on the readout-visible part V3, the normalised stream, and the model's predictive distributions. This shows that the structure is present in those subspaces; it does not show that it is functionally necessary for prediction, which would need interventions.
+
+| replicate | S cyl init | S cyl final | S sq init | S sq final | panels D > 0 | median D | u_r |
+|---|---|---|---|---|---|---|---|
+| 1729 | 0.058 | 0.307 | 0.062 | 0.129 | 8/8 | 0.158 | 0.097 |
+| 2718 | 0.057 | 0.321 | 0.058 | 0.137 | 8/8 | 0.176 | 0.084 |
+| 3141 | 0.058 | 0.304 | 0.059 | 0.126 | 8/8 | 0.173 | 0.084 |
+
+Median S over 8 panels of 512 test histories each, primary hook `resid_post_3`, raw Euclidean distances, VR over GF(2); init = checkpoint 0, final = step 5000. Full tables (prediction vs oracle, baselines R1–R3, Δgeom, Gaussian floor, H0, G-F, and X4 with its interpretation caveats): [`reports/E2/summary.md`](reports/E2/summary.md). Observations made after unblinding are kept separate in [`reports/E2/exploratory.md`](reports/E2/exploratory.md).
+
+### Earlier exit (E1, no model)
 
 **With no model involved, the exact Bayesian belief and prediction spaces already separate the cylinder from the square under the smooth emission O (S_cyl > S_sq in 8/8 panels in every space; belief b³² median S 0.671 vs 0.321, Gaussian floor ≤ 0.10), while under the axis-permuted control P the belief space no longer separates them (5/8 panels).**
 
@@ -22,7 +38,7 @@ The rows for b¹ and the emission field are identical under O and P. P permutes 
 
 The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
 
-**Not run yet:** S3–S8 (training, F1 on activations, controls, dynamics, sensitivity). No claim is made about learned representations.
+**Not run yet:** S5 (condition P: H3, H3′), S6 (dynamics: H4; layer sweep), S7 (U and extra N controls, probes, sensitivity, circular coordinates), S8 (clean rerun). No claim is made about P, H3, H4, or causal use of the structure.
 
 ## Reproduce (Windows, CPU)
 
@@ -33,6 +49,10 @@ python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --extra-index-ur
 .\.venv\Scripts\topo-pilot.exe stage S2   # data, exact oracle, baselines, σ, discriminability (~5 min)
 .\.venv\Scripts\topo-pilot.exe prereg     # regenerates the S2 tables in PREREGISTRATION.md
 .\.venv\Scripts\topo-pilot.exe report --level E0
+.\.venv\Scripts\topo-pilot.exe stage S3   # smoke run + throughput (G-E)
+.\.venv\Scripts\topo-pilot.exe stage S4   # 7 training runs on CPU (~1.6 h) + F1 analysis (G-F)
+.\.venv\Scripts\topo-pilot.exe stage X4   # secondary readout-geometry analyses (~2 min)
+.\.venv\Scripts\topo-pilot.exe report --level E2
 ```
 
 ## The question, in one paragraph

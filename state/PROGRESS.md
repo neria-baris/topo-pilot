@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S4 + X4 complete; E2 report built, unblinded; awaiting H4 (README E2, tag E2) | Wave: WX4 built | Last exit reached: E1 (tagged)
+Stage: S4 + X4 complete; H4 approved (D-042) | Wave: WX4 built | Last exit reached: E2 (tagged)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -18,7 +18,7 @@ Stage: S4 + X4 complete; E2 report built, unblinded; awaiting H4 (README E2, tag
 | activations | accepted | B | hook extraction at p = 32 |
 | experiment | S0–S6, X4 + report E0/E2(+X4) | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S7–S8 todo |
 
-All module suites: 449 passed, 5 deselected (slow/integration); check_imports clean; ruff clean.
+All module suites: 450 passed, 5 deselected (slow/integration); check_imports clean; ruff clean.
 
 ## Gates
 | gate | verdict | date | key value |
@@ -33,12 +33,11 @@ All module suites: 449 passed, 5 deselected (slow/integration); check_imports cl
 
 ## Open issues (≤5)
 - R1 (last-symbol embedding) reaches 0.47–0.89 of the model's F1 contrast under O (exploratory, reports/E2/exploratory.md); P (S5, H3′) is what separates emission geometry from history
-- E2 report: N run's learning-gate cell shows "fail" (G_C = 0); should read "n/a" (cosmetic, before README E2)
 - H3 decidable one-sidedly only; H3′ approved (D-037), decided under P only
 - process.is_x_periodic detects periodicity by family name (or an identification string); fix before any extension (prompt 3)
 - Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
 
 ## Next actions (≤5)
-1. H4: owner approves the E2 finding sentence; then README at E2 (+ N gate cell fix) and tag E2.
-2. S5 (6 P runs, ~1.6 h) on LocalExecutor; then X4 with sources [S4, S5] (H3′ decision) and `stage S6` (O + P) → E3 report.
-3. experiment: S7–S8 stages; E3/E4 report levels.
+1. S5 (6 P runs, ~1.6 h) on LocalExecutor; then X4 with sources [S4, S5] (H3′ decision) and `stage S6` (O + P) → E3 report.
+2. experiment: S7–S8 stages; E3/E4 report levels.
+3. Prompt 3: fix process.is_x_periodic before any extension (not in this session).

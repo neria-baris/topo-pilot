@@ -1,27 +1,38 @@
 # topo-pilot: topology of a latent world in transformer representations
 
-> **Status: exit level E0 reached** (2026-10-13). Implementation is in progress, wave by wave, following `ORCHESTRATOR_PROMPT.md`.
+> **Status: exit level E1 reached** (2026-10-13): σ calibrated and the preregistration committed before any training ([`PREREGISTRATION.md`](PREREGISTRATION.md)). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
 
-## Current finding (E0)
+## Current finding (E1)
 
-**The PH pipeline recovers the known topology: Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes.**
+**With no model involved, the exact Bayesian belief and prediction spaces already separate the cylinder from the square under the smooth emission O (S_cyl > S_sq in 8/8 panels in every space; belief b³² median S 0.671 vs 0.321, Gaussian floor ≤ 0.10), while under the axis-permuted control P the belief space no longer separates them (5/8 panels).**
 
-| world | graph cycle rank | β₁ (GF(2)) | S, flat d_M | S, graph metric (sensitivity) |
-|---|---|---|---|---|
-| square | 121 | 0 | 0.037 | 0.067 |
-| cylinder | 133 | 1 | 0.299 | 0.231 |
+Median S over 8 panels of 512 histories each (Hellinger distances, VR over GF(2)); replicate 1729, σ = 1.25:
 
-Gate G-A passed with thresholds fixed before the run (D-016). In the synthetic calibration (M = 512 in ℝ¹²⁸), a noisy circle was ranked above every disk in 20/20 draws. Figure and details: [`reports/E0/summary.md`](reports/E0/summary.md). To regenerate: `topo-pilot report --level E0` (Windows: `.	asks.ps1 reproduce-figures`).
+| space | O: cylinder vs square (panels cyl > sq) | P: cylinder vs square (panels cyl > sq) |
+|---|---|---|
+| belief b³² (exact filter) | 0.671 vs 0.321 (8/8) | 0.323 vs 0.310 (5/8) |
+| last-symbol posterior b¹ | 0.324 vs 0.165 (8/8) | 0.324 vs 0.165 (8/8) |
+| next-symbol future F₁ | 0.556 vs 0.189 (8/8) | 0.194 vs 0.241 (1/8) |
+| two-symbol future F₂ | 0.614 vs 0.216 (8/8) | 0.202 vs 0.242 (2/8) |
+| emission field (144 states) | 0.568 vs 0.108 | 0.568 vs 0.108 |
 
-This finding involves no model. **Not run yet:** S2 (σ calibration, discriminability of the unlearned spaces, preregistration), S3–S8 (training, F1, controls, dynamics, sensitivity). No claim is made about learned representations.
+The rows for b¹ and the emission field are identical under O and P. P permutes the states, which leaves both point clouds unchanged up to relabelling. Consequence, pre-registered: H3 (structure under P) can only be decided in one direction. A failure under P is expected even for the ideal predictor.
+
+### Earlier exit (E0, no model)
+
+The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
+
+**Not run yet:** S3–S8 (training, F1 on activations, controls, dynamics, sensitivity). No claim is made about learned representations.
 
 ## Reproduce (Windows, CPU)
 
 ```powershell
 python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.lock -e .
-.\.venv\Scripts	opo-pilot.exe stage S0   # environment and contract sanity
-.\.venv\Scripts	opo-pilot.exe stage S1   # worlds, kernels, emissions, PH calibration (~30 s)
-.\.venv\Scripts	opo-pilot.exe report --level E0
+.\.venv\Scripts\topo-pilot.exe stage S0   # environment and contract sanity
+.\.venv\Scripts\topo-pilot.exe stage S1   # worlds, kernels, emissions, PH calibration (~30 s)
+.\.venv\Scripts\topo-pilot.exe stage S2   # data, exact oracle, baselines, σ, discriminability (~5 min)
+.\.venv\Scripts\topo-pilot.exe prereg     # regenerates the S2 tables in PREREGISTRATION.md
+.\.venv\Scripts\topo-pilot.exe report --level E0
 ```
 
 ## The question, in one paragraph

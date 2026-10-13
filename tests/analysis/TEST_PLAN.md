@@ -17,7 +17,7 @@ Marker: `pytest.mark.analysis`. The F1 and Δgeom tests are written by an **inde
 | N11 | R2 baseline: with a ring-shaped symbol transition matrix (hand-built), R2 points lie on a loop (S above null) — documents why R2 is needed | property |
 | N12 | Checkpoint-order null: a monotone early-jump sequence gives a small p; a random sequence gives p ≈ uniform | property |
 | N13 | Privileged reads are labelled `privileged_eval` in the output records | contract |
-| N14 | `ln_gauge_free`: `U(αZ + c·1) == U(Z)` to 1e-6 for α ∈ {0.3, 1, 7.5} and random per-row shifts c, with eps = 0; the shift alone is exact for eps = 1e-5; rows have mean 0; a hand-computed 1×4 row matches | known answer + property |
+| N14 | `ln_gauge_free`: `U(αZ + c·1) == U(Z)` to 1e-6 for α ∈ {0.3, 1, 7.5} and random per-row shifts c, with eps = 0; the shift alone is exact for eps = 1e-5; with eps = 1e-5 scaling is NOT an invariance: test the exact identity `U_eps(αZ) = U_{eps/α²}(Z)` and a visible difference for rows with variance ≪ eps (D-040); rows have mean 0; a hand-computed 1×4 row matches | known answer + property |
 | N15 | `readout_projector`: P symmetric and idempotent (1e-10), trace(P) = rank = numpy `matrix_rank(A)` for full-rank A (V < d) and for a rank-deficient W_U (duplicate rows) and a gamma with zeros; `P A = A` | property |
 | N16 | `split_readout`: `U_visible + U_null == U`; row-wise dot products ≈ 0; U already in range(A) gives `U_null ≈ 0` | property |
 | N17 | Tiny random numpy model (Z → `ln_gauge_free` → `gamma ⊙ u + beta` → `@ W_U^T`): logits from U_visible equal logits from U to 1e-10 (float64) | known answer |

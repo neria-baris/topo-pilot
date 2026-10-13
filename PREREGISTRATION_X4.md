@@ -37,3 +37,11 @@ Pure re-analysis: about (5 views × 7 runs × 2 checkpoints × 8 panels) Ripser 
 ## Approval
 
 Owner approval: PREREGISTRATION_X4.md approved by the repository owner, 2026-10-13; H3′ approved at checkpoint H3 (2026-10-13), so it is a decision rule, not descriptive only. Approved while still blind (no S4 analysis numbers seen).
+
+## Addendum: interpretation caveats (D-040, 2026-10-13; added before any X4 result was computed or seen)
+
+The analyses, thresholds and verdict rules above are unchanged. These caveats qualify how the pre-registered interpretations are read; any new analysis they suggest is a separately labelled follow-up, not part of X4.
+1. LayerNorm gauge (V1): `ln_gauge_free` is exactly invariant to per-history shifts along the all-ones vector; with eps = 1e-5 it is not exactly invariant to positive rescaling (exact identity: U_eps(αz) = U_{eps/α²}(z)). The V1 definition is unchanged.
+2. Readout split (X4-c): V3 is the logit-readout-visible subspace, not necessarily the functionally necessary subspace. Softmax is also invariant to constant logit shifts, so up to one further direction inside range(A) does not affect the predictive distribution. V4 is logit-readout-null. H1 structure in V3 is not evidence of causal predictive use; that needs interventions.
+3. Functional geometry (X4-b): the oracle's future1 separating the worlds does not mathematically guarantee that the trained model's predictive cloud has the same topology (passing the learning gate bounds an average KL, not H1 persistence). X4-b is a falsifiable empirical hypothesis; "expected" above is a prediction, not a theorem.
+4. Gauge robustness (X4-a): a verdict difference between V0 and V1 establishes sensitivity to normalisation (per-history centring and rescaling), not that the whole signal lies in the mean-shift gauge direction.

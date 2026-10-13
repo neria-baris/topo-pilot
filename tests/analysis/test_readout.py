@@ -68,6 +68,21 @@ def test_N14_ln_gauge_free_shift_exact_with_eps():
     assert np.max(np.abs(U - U2)) < 1e-6
 
 
+@pytest.mark.parametrize("alpha", [0.3, 1.0, 7.5])
+def test_N14_ln_gauge_free_scaling_with_eps_is_an_eps_rescaling(alpha):
+    # With eps > 0 scaling is not an invariance; the exact identity is
+    # U_eps(alpha Z) = U_{eps / alpha^2}(Z).
+    Z = unit_var_rows(12, 10, seed=7)
+    U_scaled = ln_gauge_free(alpha * Z, eps=1e-5)
+    assert np.max(np.abs(U_scaled - ln_gauge_free(Z, eps=1e-5 / alpha**2))) < 1e-12
+
+
+def test_N14_ln_gauge_free_not_scale_invariant_with_eps_at_small_variance():
+    Z = 1e-3 * unit_var_rows(12, 10, seed=8)  # row variance 1e-6 << eps
+    diff = np.max(np.abs(ln_gauge_free(10.0 * Z, eps=1e-5) - ln_gauge_free(Z, eps=1e-5)))
+    assert diff > 1e-2
+
+
 def test_N14_ln_gauge_free_rows_have_mean_zero_and_shape():
     Z = np.random.default_rng(5).normal(loc=3.0, scale=2.0, size=(9, 7))
     U = ln_gauge_free(Z)

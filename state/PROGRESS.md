@@ -1,5 +1,5 @@
-# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x4-phase-b2)
-Stage: **Practical Q2-gap branch closed by owner (D-055)** | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch e4-circular-audit)
+Stage: **E4 circular-baseline audit running** (circ-audit-v1, D-056) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,6 +28,7 @@ Stage: **Practical Q2-gap branch closed by owner (D-055)** | Phase B INCONCLUSIV
 | X4 Phase B (protocol-local) | **INCONCLUSIVE** | 2026-10-13 | all 4 pools UNDERCOVERED (D-052) |
 | X4 Phase B2 (protocol-local) | **NO-GO** | 2026-10-14 | 4 covered pools, 0 witnesses (D-054) |
 | H4C-I (Phase C) | **NOT RUN** | 2026-10-14 | stopped at the feasibility gate (D-055) |
+| E4 circular-baseline audit (descriptive) | running | 2026-10-14 | protocol circ-audit-v1 frozen (D-056) |
 
 ## Open issues (≤5)
 - Closure is scoped (cylinder O, σ 1.25, horizon 2, p32, registered screen); strict Q1 sufficiency UNRESOLVED; no general sufficiency proof and no decoder ceiling measured
@@ -36,5 +37,5 @@ Stage: **Practical Q2-gap branch closed by owner (D-055)** | Phase B INCONCLUSIV
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. E4 circular-baseline audit (descriptive, existing artifacts only) on a separate branch, protocol frozen first
+1. Implement and run the circular-baseline audit once (circ-audit-v1); write the report; record the outcome; STOP
 2. No Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

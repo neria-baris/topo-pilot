@@ -50,6 +50,7 @@ S6:
   requires: [S4]
   checkpoint_order_null_permutations: 1000
   layer_sweep: true
+  x4_curves: [V1, V5]                   # D-044: descriptive panel-1 curves (needs X4 first)
   exit: E3                              # together with S5
 S7:
   requires: [S6]
@@ -72,7 +73,7 @@ S8:
   exit: E4
 X4:                                     # PREREGISTRATION_X4.md; secondary, no training, no gate
   requires: [S4]
-  sources: [S4]                         # [S4, S5] once S5 has run
+  sources: [S4, S5]                     # S5 added for E3 (D-044)
   views: [V0, V1, V2, V3, V4, V5]
   ln_eps: 1.0e-5                        # = nn.LayerNorm default in learner
   positive_control_min_rho: 0.9

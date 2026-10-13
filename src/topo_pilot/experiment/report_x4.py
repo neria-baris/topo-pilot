@@ -19,6 +19,9 @@ VIEWS = ("V0", "V1", "V2", "V3", "V4", "V5")
 VIEW_NAMES = {"V0": "resid_post_3, raw (primary metric)", "V1": "LN-gauge-free u",
               "V2": "ln_final_out", "V3": "readout-visible P_A u", "V4": "readout-null u − P_A u",
               "V5": "softmax(logits), Hellinger"}
+P_X4B_NOTE = ("Under P the X4-b expectation (stated for O) does not apply: the oracle "
+              "future1 does not separate the worlds under P (1/8 panels, PREREGISTRATION §3). "
+              "The V5 verdict under P is descriptive; the positive control is reported as is.")
 X4C_LINE = {"V3_only": "  V3 supported, V4 not", "V4_only": "  V4 supported, V3 not",
             "both": "  both / neither", "neither": "  both / neither"}
 
@@ -117,6 +120,8 @@ def x4_section(store: ArtifactStore, prereg: Path, cond: str = "O", final: int =
             + ("yes" if _one(rows, "x4:b", "positive_control_passed", condition=cond)
                else "no") + ".", "",
             f"Result: X4-b {b_status}" + (f" ({b_reason})" if b_reason else "") + ".", ""]
+    if cond != "O":
+        out += [P_X4B_NOTE, ""]
     cat = next((r.metric_id.removeprefix("X4c_") for r in rows if r.space == "x4:c"
                 and r.condition == cond and r.metric_id.startswith("X4c_")), None)
     ratios = "; ".join(
@@ -136,7 +141,9 @@ def x4_section(store: ArtifactStore, prereg: Path, cond: str = "O", final: int =
                    + (f" ({reason})" if reason else ""))
     out += ["", "### H3′ (approved at H3, D-037; decided under P only)", "",
             _prereg_line(text, "H3′"), "",
-            f"Condition {cond}: comparison only (descriptive); the decision needs S5 (P)."]
+            f"Condition {cond}: comparison only (descriptive); the decision needs S5 (P)."
+            if cond == "O" else
+            f"Condition {cond}: decision rule (approved at H3, D-037; D-039 operational rule)."]
     for a in ("V0", "V1"):
         st, reason = _verdict(rows, f"x4:h3p:{a}", "H3prime_verdict", cond)
         out.append(f"- A = {a}: panels passing per run "

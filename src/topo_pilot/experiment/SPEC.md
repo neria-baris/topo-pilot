@@ -55,6 +55,11 @@ class ReportBuilder:
 - **Figures:** produced by matplotlib from MetricRecords only. `make reproduce-figures` calls `topo-pilot report`.
 - **`status`:** prints at most 40 lines. It is the command a new conductor runs first.
 
+## Stage S6 extras and report E3 (D-044)
+
+- S6 job `x4curves` (when `S6.x4_curves` lists views; V1 and V5 only): per run, on panel 1 at the 12 checkpoints, S under V1 = `ln_gauge_free(resid_post_3)` and V5 = `predictive_pointset(logits)`, plus `t_rise` = first checkpoint with S_t − S_0 > u_r(view), u_r(view) from the newest X4 record (`x4:<Vk>` / `u`, same condition and replicate). Rows: space `dyn:x4:<Vk>`, metrics `S_H1` (checkpoint, panel 1), `u_r`, `t_rise` (None with `uncertainty_kind` `no_rise` / `no_envelope`). Descriptive; never a verdict. Run X4 before S6.
+- `topo-pilot report --level E3` (`report_e3.build_e3`) writes `reports/E3/summary.md`, `condition_P.md` (S5 in the E2 layout + X4 section for P), `fig_dynamics.png`, `fig_x4_curves.png`. Fixed readings: H3 REJECTED is printed with the one-sided note (PREREGISTRATION §3); H4 is decided on the O cylinder runs only, P is descriptive (D-034); X4-b under P is descriptive; H3′ is a decision under P and a comparison under O (D-037).
+
 ## Stage X4 (wave WX4; `PREREGISTRATION_X4.md`, operational details D-039)
 
 Re-analysis only: never trains, never extracts, writes no GateReport. Module `topo_pilot/experiment/x4.py` (+ `x4_inputs.py` for store resolution, `report_x4.py` for the report section). `X4Stage` is registered in `STAGE_REGISTRY` with `stage_id = "X4"`, `requires = ("S4",)`, one job.

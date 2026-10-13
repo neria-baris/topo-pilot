@@ -23,6 +23,7 @@ from .config import ResolvedConfig, load_config, producer_version
 from .prereg import write_prereg
 from .report import build_e0
 from .report_e2 import build_e2
+from .report_e3 import build_e3
 from .report_x4 import x4_section
 from .stages import STAGE_REGISTRY, run_stage
 
@@ -62,7 +63,8 @@ def status_lines(cfg: ResolvedConfig, store: ArtifactStore) -> list[str]:
 
 
 def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list[Path]:
-    """Write the report(s) for ``level``; ``all`` skips E2 until an S4 analysis exists."""
+    """Write the report(s) for ``level``; ``all`` skips E2 / E3 until an S4 / S5 analysis
+    exists."""
     out = []
     if level in ("all", "E0"):
         out.append(build_e0(store, cfg.repo_root / "reports" / "E0"))
@@ -71,6 +73,10 @@ def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list
         final = int(cfg.base["training"]["primary_checkpoint"])
         extra = x4_section(store, cfg.repo_root / "PREREGISTRATION_X4.md", "O", final)
         out.append(build_e2(store, cfg.repo_root / "reports" / "E2", "S4", final, extra))
+    s5_done = bool(store.find(MetricRecords, stage="S5", kind="analysis"))
+    if level == "E3" or (level == "all" and s5_done):
+        final = int(cfg.base["training"]["primary_checkpoint"])
+        out.append(build_e3(store, cfg.repo_root / "reports" / "E3", cfg.repo_root, final))
     return out
 
 
@@ -84,7 +90,7 @@ def _parser() -> argparse.ArgumentParser:
     sg.add_argument("--config", default="configs/stages.yaml")
     sg.add_argument("--executor", default="local", choices=["local", "bundle", "ssh"])
     rp = sub.add_parser("report", help="summary + figures from MetricRecords only")
-    rp.add_argument("--level", default="all", choices=["all", "E0", "E2"],
+    rp.add_argument("--level", default="all", choices=["all", "E0", "E2", "E3"],
                     help="exit level; 'all' regenerates every level whose data exists")
     rp.add_argument("--config", default="configs/stages.yaml")
     pr = sub.add_parser("prereg", help="write PREREGISTRATION.md from S2 outputs (H1 draft)")

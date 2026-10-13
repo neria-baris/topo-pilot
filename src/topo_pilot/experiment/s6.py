@@ -9,6 +9,10 @@ Per condition (O always; P once S5 has an analysis) two jobs, each writing one M
   checkpoint-order null (descriptive), and the H4 verdict over the cylinder runs.
 - **layers:** the F1 contrast D (8 panels, checkpoints 0 and final) for every hook and for
   their concatenation (descriptive, RESEARCH_SUMMARY §7.7).
+- **x4curves** (D-044, descriptive): on panel 1 at the 12 checkpoints, S under the X4 views
+  listed in ``S6.x4_curves`` (V1 = LN-gauge-free resid_post_3, V5 = softmax(logits) under
+  Hellinger) and the first checkpoint with S_t − S_0 > u_r(view), u_r(view) taken from the
+  X4 record of the same condition. Never a verdict.
 
 Missing runs are recorded as ``not_run``, never invented. S6 has no gate.
 """
@@ -21,7 +25,15 @@ from typing import Any
 
 import numpy as np
 
-from topo_pilot.analysis import Dynamics, F1Decision, LayerSweep, ph_summary
+from topo_pilot.analysis import (
+    Dynamics,
+    F1Decision,
+    LayerSweep,
+    PointSet,
+    ln_gauge_free,
+    ph_summary,
+    predictive_pointset,
+)
 from topo_pilot.contracts import (
     ActivationSet,
     ArtifactStore,
@@ -35,6 +47,7 @@ from topo_pilot.prediction import PredictiveMetrics
 
 from .config import ResolvedConfig
 from .report_e2 import analysis_rows
+from .report_x4 import x4_rows
 from .s3 import activation_ids
 from .s4_analysis import WORLDS, AnalysisJob, _row
 from .stages import Stage, register_stage
@@ -161,6 +174,63 @@ class S6Job:
         log.info("S6 dynamics %s: H4 %s %s", self.cond, status, reason)
         return rows
 
+    # ---- X4 view curves (descriptive, D-044) --------------------------------------------
+    def view_envelopes(self, views: list[str]) -> dict[tuple[str, int], float | None]:
+        """u_r per (view, replicate) from the newest X4 record, for this condition."""
+        rows = x4_rows(self.store)
+        if rows:
+            self.parents.add(next(iter(sorted(
+                self.store.find(MetricRecords, stage="X4", kind="analysis"),
+                key=lambda a: self.store.meta(a).created_utc, reverse=True))))
+        return {(r.space.removeprefix("x4:"), r.replicate): r.value for r in rows
+                if r.metric_id == "u" and r.condition == self.cond
+                and r.space.removeprefix("x4:") in views}
+
+    def view_curve(self, world: str, seed: int, views: list[str], eps: float
+                   ) -> dict[str, list[tuple[float, str]]]:
+        """(S, status) on panel 1 at every checkpoint for each view in ``views``."""
+        out: dict[str, list[tuple[float, str]]] = {v: [] for v in views}
+        for step in self.steps:
+            aid = self.act_at(world, seed, step)
+            ps = self.aj.sb.activations(aid, self.aj.hook, 1)
+            acts = self.store.load(ActivationSet, aid, consumer=CONS)
+            a_row = {str(h): i for i, h in enumerate(acts.history_id.tolist())}
+            logits = acts.logits.astype(np.float64)[[a_row[h] for h in ps.ids]]
+            points = {"V1": lambda: PointSet("x4:V1", ln_gauge_free(ps.X, eps), None,
+                                             list(ps.ids), "euclidean"),
+                      "V5": lambda: predictive_pointset(logits, ps.ids, "x4:V5")}
+            for v in views:
+                res = ph_summary(points[v]())
+                out[v].append((float(res["S_H1"]), str(res["status"])))
+        return out
+
+    def x4_curves(self) -> list[MetricRow]:
+        views = [v for v in self.cfg.stage("S6").get("x4_curves", []) if v in ("V1", "V5")]
+        eps = float(self.cfg.stage("X4").get("ln_eps", 1e-5))
+        u_view = self.view_envelopes(views)
+        rows: list[MetricRow] = []
+        for seed in self.cfg.base["seeds"]["masters"]:
+            for world in WORLDS:
+                common = {"world": world, "condition": self.cond, "replicate": seed}
+                try:
+                    curves = self.view_curve(world, seed, views, eps)
+                except KeyError as exc:
+                    log.warning("S6 x4curves: %s %s missing (%s)", world, seed, exc)
+                    rows.append(_row("run_available", None, "dyn:x4", status="not_run",
+                                     **common))
+                    continue
+                for v, curve in curves.items():
+                    space = f"dyn:x4:{v}"
+                    rows += [_row("S_H1", s, space, checkpoint=t, panel=1, status=st, **common)
+                             for t, (s, st) in zip(self.steps, curve)]
+                    u = u_view.get((v, seed))
+                    t_s = None if u is None else first_step(
+                        self.steps, [s - curve[0][0] > u for s, _ in curve])
+                    rows += [_row("u_r", u, space, **common),
+                             _row("t_rise", t_s, space, uncertainty_kind=None if t_s is not None
+                                  else ("no_envelope" if u is None else "no_rise"), **common)]
+        return rows
+
     # ---- layer sweep ----------------------------------------------------------------------
     def layers(self) -> list[MetricRow]:
         rule = self.cfg.base["f1_rule"]
@@ -202,13 +272,16 @@ class S6Stage(Stage):
 
     def plan(self, cfg: ResolvedConfig, store: ArtifactStore) -> list[Mapping[str, Any]]:
         conds = ["O"] + (["P"] if analysis_rows(store, "S5") else [])
-        kinds = ["dynamics"] + (["layers"] if cfg.stage("S6").get("layer_sweep") else [])
+        s6 = cfg.stage("S6")
+        kinds = ["dynamics"] + (["layers"] if s6.get("layer_sweep") else []) \
+            + (["x4curves"] if s6.get("x4_curves") else [])
         return [{"stage": "S6", "job": k, "condition": c} for c in conds for k in kinds]
 
     def execute(self, job: Mapping[str, Any], cfg: ResolvedConfig,
                 store: ArtifactStore) -> list[str]:
         s6 = S6Job(job["condition"], cfg, store)
-        rows = s6.dynamics() if job["job"] == "dynamics" else s6.layers()
+        rows = {"dynamics": s6.dynamics, "layers": s6.layers,
+                "x4curves": s6.x4_curves}[job["job"]]()
         return [store.save(MetricRecords(rows=tuple(rows)),
                            config={"stage": "S6", "kind": job["job"],
                                    "condition": job["condition"]},

@@ -17,3 +17,6 @@ Marker: `pytest.mark.experiment`. Uses stub stages and gates (no science). Budge
 | X11 | A missing run (resolver lists it as missing) gives an `x4` / `run_available` row with status `not_run` and no invented values; the affected verdicts are INCONCLUSIVE | error path |
 | X12 | `"X4" in STAGE_REGISTRY` with `requires == ("S4",)` and no gates | contract |
 | X13 | `x4_section`: without an X4 record prints "X4: not run"; with one, quotes the prereg `Blinding:` line, the X4-c interpretation line selected by the category and the D-040 addendum verbatim | known answer |
+| X14 | `build_e3` from records only: with an empty store prints "not run" for H3 and H4, quotes the prereg H3/H4 rows and D-034 verbatim and writes `condition_P.md`; an S5 verdict REJECTED prints the fixed one-sided reading | known answer |
+| X15 | `h4_table` row layout from S6 dynamics rows (t_history, t_rise, class, order null; V1/V5 "not run" without x4curves); `fig_dynamics.png` is written when dynamics rows exist | known answer |
+| X16 | `x4_section` under P prints the X4-b note and "decision rule" for H3′, under O neither; `S6Stage.plan` adds `x4curves` when configured and condition P only after an S5 analysis | contract |

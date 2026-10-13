@@ -212,9 +212,10 @@ def f1_figure(rows: Sequence[MetricRow], path: Path, title: str) -> Path:
 
 
 def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int = 5000,
-             extra: Sequence[str] = ()) -> Path:
-    """Write ``summary.md`` and ``fig_f1_contrasts.png`` for ``stage`` (S4: O, E2; S5: P);
-    ``extra`` lines (e.g. the secondary X4 section) are appended after the F1 sections."""
+             extra: Sequence[str] = (), name: str = "summary.md",
+             figure: str = "fig_f1_contrasts.png") -> Path:
+    """Write ``name`` and ``figure`` for ``stage`` (S4: O, E2; S5: P, part of E3); ``extra``
+    lines (e.g. the secondary X4 section) are appended after the F1 sections."""
     cond = "O" if stage == "S4" else "P"
     rows, runs = analysis_rows(store, stage), run_rows(store, stage)
     status, reasons = verdict(rows)
@@ -224,7 +225,7 @@ def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int 
              "Missing replicates (not run): " + (", ".join(map(str, missing)) or "none"), "",
              "## Prediction vs oracle (p = 32, test panels)", "", *prediction_table(runs, cond),
              "", "## F1 contrasts (median S over 8 panels; RESEARCH_SUMMARY §7.4)", "",
-             *f1_table(rows, final), "", "![D per panel](fig_f1_contrasts.png)", "",
+             *f1_table(rows, final), "", f"![D per panel]({figure})", "",
              "## Representation baselines (D-028: baseline in place of the final checkpoint)",
              "", *baseline_table(rows), "",
              "## H2: Δgeom = ρ(d_A, d_B32) − ρ(d_A, d_B1) (D-031 for same-w₃₂ pairs)", "",
@@ -241,11 +242,11 @@ def build_e2(store: ArtifactStore, out_dir: Path, stage: str = "S4", final: int 
         lines.append(f"Gate {g.gate_id}: **{g.verdict}**")
         lines += [f"- {c.name}: {c.value} (threshold {c.threshold}) -> "
                   f"{'pass' if c.passed else 'fail'}" for c in g.checks]
-    f1_figure(rows, out_dir / "fig_f1_contrasts.png",
+    f1_figure(rows, out_dir / figure,
               f"F1 contrasts under {cond}: D per panel, median (◆) and noise envelope u_r (┊)")
     if extra:
         lines += ["", *extra]
-    summary = out_dir / "summary.md"
+    summary = out_dir / name
     summary.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return summary
 

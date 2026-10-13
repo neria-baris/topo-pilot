@@ -1,0 +1,348 @@
+[
+ {
+  "role": "S7:circular",
+  "artifact_id": "a7a60592e32b26fb",
+  "type": "MetricRecords",
+  "producer_version": "ad3ac577118a",
+  "payload_sha256": "99fad3864ae528a3959fc70393052e33721d78d1a7d88b4c33f7d50282a5cb40",
+  "created_utc": "2026-10-13T15:57:22+00:00",
+  "parents": [
+   "012a75f6ca215e50",
+   "03eb3ffde72dafb7",
+   "069da84ce363d8f2",
+   "0bb8c58ec901f33c",
+   "0dcf30fe0e2ca666",
+   "0e001559534ee7ef",
+   "1731629d61077e96",
+   "21feee1d8ee5422e",
+   "26a74494ed8bdf45",
+   "26a7f510538dbdd6",
+   "29094627be385755",
+   "2aeb81bce2800167",
+   "2daa0b434c5d911c",
+   "313a6b65e9763da1",
+   "32bab52c738f7217",
+   "37aa1d888dbd17ed",
+   "42f8a452928cc7f0",
+   "441a17111cf73a8d",
+   "4b0924ec4c3e4df4",
+   "55d06b341547f583",
+   "613f586c64079aa5",
+   "6586a798507c80fd",
+   "680342cb9cb90561",
+   "6e6d1fa70df81031",
+   "7215d6748ef27d55",
+   "7aa1c41a1643cf05",
+   "7bb5adce169a6e7d",
+   "7f6287a26efd69db",
+   "82be0cb02a6299bf",
+   "8d1963a30dc6187d",
+   "8d1b98e9dc08a61a",
+   "92c79456eed7da13",
+   "94ecc58e19c2c249",
+   "98026366f2ee24df",
+   "9cf8b0b547ba973c",
+   "ae80990e00336d10",
+   "b0a9351cf158aeb0",
+   "b1074678222ea6aa",
+   "ba6847835e34be32",
+   "c323165778ecc7a1",
+   "c4ba1772d0711cf0",
+   "cf3767500ad16109",
+   "d16f6287b883d411",
+   "d1f8f1da4d3495db",
+   "d38c946665739b67",
+   "d985820911cdb3b1",
+   "d9c6defcc7a9d803",
+   "de2bafb822921d67",
+   "e204118edfbd96ea",
+   "e30749a962376fbb",
+   "e3166d24ab13b007",
+   "e35086f85c4c8321",
+   "e59d60ad79da2dc9",
+   "ec17425cf67f1a54",
+   "efebc05165d4f7bc",
+   "f14b01d243a50c1c",
+   "f2870da82253d42b",
+   "f6b337e6cc86aa0b"
+  ]
+ },
+ {
+  "role": "acts[1729,0]",
+  "artifact_id": "e59d60ad79da2dc9",
+  "type": "ActivationSet",
+  "producer_version": "6aea8046b5a5+dirty",
+  "payload_sha256": "e99176886a29a16c5a0eb841ff02a862a11397363df3f2ea54f549dfd86a42be",
+  "created_utc": "2026-10-13T05:23:00+00:00",
+  "parents": [
+   "2a67b2c947e293ba",
+   "afb6e7120c9477b1",
+   "bd8813115bbd970b"
+  ]
+ },
+ {
+  "role": "acts[1729,5000]",
+  "artifact_id": "0e001559534ee7ef",
+  "type": "ActivationSet",
+  "producer_version": "6aea8046b5a5+dirty",
+  "payload_sha256": "a134e8f3c68b105215834cdf5c4f11fa11eeae354faf71da1399fdca76869db5",
+  "created_utc": "2026-10-13T05:23:06+00:00",
+  "parents": [
+   "2a67b2c947e293ba",
+   "afb6e7120c9477b1",
+   "c3358e3cb9c352fb"
+  ]
+ },
+ {
+  "role": "sidecar[1729]",
+  "artifact_id": "f14b01d243a50c1c",
+  "type": "EvalSidecar",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "c95da9e87c0edf79cd735b8e58ed28baa9bccefae67a0900851b70951cfa5f46",
+  "created_utc": "2026-10-13T04:44:36+00:00",
+  "parents": [
+   "3633ac27dab50cf4",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "oracle[1729]",
+  "artifact_id": "efebc05165d4f7bc",
+  "type": "OracleOutputs",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "791a765a5e17dc524d33859700480d2590de071005f11c39d47f5bad34c026fc",
+  "created_utc": "2026-10-13T04:44:38+00:00",
+  "parents": [
+   "2a67b2c947e293ba",
+   "3633ac27dab50cf4",
+   "afb6e7120c9477b1",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "history_index[1729]",
+  "artifact_id": "afb6e7120c9477b1",
+  "type": "HistoryIndex",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "69cba32cc4eb4095f2009aed1d82c9675e77f83fbcab4e5b7b6bf8bc8d939120",
+  "created_utc": "2026-10-13T04:44:36+00:00",
+  "parents": [
+   "2a67b2c947e293ba"
+  ]
+ },
+ {
+  "role": "obs_test[1729]",
+  "artifact_id": "2a67b2c947e293ba",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "a0a2d7c4ff6c57e0e5db1a0f77b61461ff2dfb169607e82612c7dd74cd3686cf",
+  "created_utc": "2026-10-13T04:44:36+00:00",
+  "parents": [
+   "3633ac27dab50cf4",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "emission[1729]",
+  "artifact_id": "3633ac27dab50cf4",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "acts[2718,0]",
+  "artifact_id": "7215d6748ef27d55",
+  "type": "ActivationSet",
+  "producer_version": "487356033678",
+  "payload_sha256": "63c46adc939990441d9a8852b4b083ffda13339094ca0f6e44e612c617956b5e",
+  "created_utc": "2026-10-13T09:29:24+00:00",
+  "parents": [
+   "5e6e6b7c446907f9",
+   "908cb61ffbd956c6",
+   "95c4d118517ecd92"
+  ]
+ },
+ {
+  "role": "acts[2718,5000]",
+  "artifact_id": "ec17425cf67f1a54",
+  "type": "ActivationSet",
+  "producer_version": "487356033678",
+  "payload_sha256": "d326ac0ae3339e76e3677484977deb12eb12edcbd488bce4ad80d7f83b5af2aa",
+  "created_utc": "2026-10-13T09:29:33+00:00",
+  "parents": [
+   "908cb61ffbd956c6",
+   "95c4d118517ecd92",
+   "98b0e703a337d513"
+  ]
+ },
+ {
+  "role": "sidecar[2718]",
+  "artifact_id": "de2bafb822921d67",
+  "type": "EvalSidecar",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "c95da9e87c0edf79cd735b8e58ed28baa9bccefae67a0900851b70951cfa5f46",
+  "created_utc": "2026-10-13T04:45:40+00:00",
+  "parents": [
+   "97838b9e13a26f74",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "oracle[2718]",
+  "artifact_id": "d9c6defcc7a9d803",
+  "type": "OracleOutputs",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "5f18e66d4f2ad9345843a947dd4affe49d2bcb68378cabb29edef22017a95a4b",
+  "created_utc": "2026-10-13T04:45:42+00:00",
+  "parents": [
+   "908cb61ffbd956c6",
+   "95c4d118517ecd92",
+   "97838b9e13a26f74",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "history_index[2718]",
+  "artifact_id": "908cb61ffbd956c6",
+  "type": "HistoryIndex",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "7c398082bf5ae1bdbcf5c612d51c02c208d2bfc031b1dd20f6f0f1d15125dbb3",
+  "created_utc": "2026-10-13T04:45:40+00:00",
+  "parents": [
+   "95c4d118517ecd92"
+  ]
+ },
+ {
+  "role": "obs_test[2718]",
+  "artifact_id": "95c4d118517ecd92",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "20de132725eb4b2ceea5ad0d72355fd2b7a4b942e1eeb07c93f85263a0d6ed57",
+  "created_utc": "2026-10-13T04:45:40+00:00",
+  "parents": [
+   "97838b9e13a26f74",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "emission[2718]",
+  "artifact_id": "97838b9e13a26f74",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "88203323334704db45ecc104af54f7e21f5225ad1a28fc2d08fc7ab8d75f5874",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "acts[3141,0]",
+  "artifact_id": "f2870da82253d42b",
+  "type": "ActivationSet",
+  "producer_version": "487356033678",
+  "payload_sha256": "1b98bc8e329b7da65d22098b16375d836cfd1919650142456cd36795ddf29eb3",
+  "created_utc": "2026-10-13T09:57:53+00:00",
+  "parents": [
+   "2e2cf22bb4820155",
+   "7e7d27bd143ebeb5",
+   "995f11b1120ccb36"
+  ]
+ },
+ {
+  "role": "acts[3141,5000]",
+  "artifact_id": "069da84ce363d8f2",
+  "type": "ActivationSet",
+  "producer_version": "487356033678",
+  "payload_sha256": "22fb78ce44a5f54c44192db3589061748ae1990d055f6cf269717b595ea56ad3",
+  "created_utc": "2026-10-13T09:58:00+00:00",
+  "parents": [
+   "036b670743ffbbaf",
+   "2e2cf22bb4820155",
+   "7e7d27bd143ebeb5"
+  ]
+ },
+ {
+  "role": "sidecar[3141]",
+  "artifact_id": "8d1963a30dc6187d",
+  "type": "EvalSidecar",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "c95da9e87c0edf79cd735b8e58ed28baa9bccefae67a0900851b70951cfa5f46",
+  "created_utc": "2026-10-13T04:46:16+00:00",
+  "parents": [
+   "8c29c329c197c79e",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "oracle[3141]",
+  "artifact_id": "1731629d61077e96",
+  "type": "OracleOutputs",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "461edb9c03ee73e5e581d7095628e861a9dfb0734d00acfe1938f7eda42a0e70",
+  "created_utc": "2026-10-13T04:46:18+00:00",
+  "parents": [
+   "2e2cf22bb4820155",
+   "7e7d27bd143ebeb5",
+   "8c29c329c197c79e",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "history_index[3141]",
+  "artifact_id": "7e7d27bd143ebeb5",
+  "type": "HistoryIndex",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "e21f40ebe5657565788f3d25f7ecc1cc70f771a975e82012b417fe1956f2f891",
+  "created_utc": "2026-10-13T04:46:16+00:00",
+  "parents": [
+   "2e2cf22bb4820155"
+  ]
+ },
+ {
+  "role": "obs_test[3141]",
+  "artifact_id": "2e2cf22bb4820155",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "2bdffea3e92cca045d37160182d2632b92068d5d57a79d8a4f77b588ffef09e4",
+  "created_utc": "2026-10-13T04:46:16+00:00",
+  "parents": [
+   "8c29c329c197c79e",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "emission[3141]",
+  "artifact_id": "8c29c329c197c79e",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "ccd97a63ec03bf1287ef0098fe84ad305e4e810054cd4fa7bf1c025e4a74a84f",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "world",
+  "artifact_id": "21feee1d8ee5422e",
+  "type": "WorldSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": []
+ },
+ {
+  "role": "transition",
+  "artifact_id": "e4dafc7b9785c172",
+  "type": "TransitionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ }
+]

@@ -1,0 +1,35 @@
+{
+ "protocol": "circ-audit-v1",
+ "protocol_doc_sha256": "9bbe753c582a5fb8d615f9d868c6b6a26775c3ed599d9d3d665e806de3b75034",
+ "producer_version": "e5581e5d9a1c",
+ "cpu_s": 79.31,
+ "wall_s": 82.09,
+ "cpu_cap_s": 3600.0,
+ "peak_memory_bytes": 413413376,
+ "budget_steps": [
+  {
+   "step": "seed 1729",
+   "cpu_s": 26.984,
+   "wall_s": 27.37
+  },
+  {
+   "step": "seed 2718",
+   "cpu_s": 51.953,
+   "wall_s": 52.732
+  },
+  {
+   "step": "seed 3141",
+   "cpu_s": 75.312,
+   "wall_s": 76.814
+  }
+ ],
+ "main_store_listing_before": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "main_store_listing_after": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "metric_records_id": "4ddd610fe4684288"
+}

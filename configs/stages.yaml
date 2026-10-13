@@ -59,17 +59,29 @@ S7:
     - {world: square,   condition: U, seed: 1729}
     - {world: any,      condition: N, seed: 2718}
     - {world: any,      condition: N, seed: 3141}
+  analysis_conditions: [O, P]           # D-047: probes, dev extraction, sensitivity
+  dev_extract: {checkpoints: [0, 5000], hook: resid_post_3}   # dev panels: PanelBuilder on obs_dev
   sensitivity:                          # one factor at a time
     activation_metric: [chord]
     pca_dims: [32]                      # fitted on dev
     panel_size: [256]
     distribution_metric: [sqrt_js]
-  probes: {lambdas: [1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0]}
-  circular_coordinates: true
+  probes:
+    lambdas: [1.0e-3, 1.0e-2, 1.0e-1, 1.0, 10.0]
+    fit_panels: [1, 2, 3, 4, 5, 6]      # dev panels; lambda chosen on the rest
+    val_panels: [7, 8]
+    checkpoints: [0, 5000]
+  circular_coordinates:
+    coeff_p: 47
+    n_perm: 1000
+    checkpoints: [0, 5000]
+    conditions: [O, P, U]
+  u_sanity_captured_min: 0.8            # descriptive (G_C = 0 under U); never a gate
   gates: [G-G]
 S8:
   requires: [S7]
   rerun_identity_check: {world: cylinder, condition: O, seed: 1729}
+  rerun_stages: [S0, S1, S2, S3]        # fresh clone + empty store; S3 trains exactly this run
   exit: E4
 X4:                                     # PREREGISTRATION_X4.md; secondary, no training, no gate
   requires: [S4]

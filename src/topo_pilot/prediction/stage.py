@@ -77,5 +77,6 @@ class PredictionStage:
 
     def run_probes(self, activation_set_ids: list[str], oracle_id: str, split_spec: Any,
                    store: ArtifactStore) -> str:
-        """Not implemented until wave W5."""
-        raise NotImplementedError("W5")
+        """Not implemented here: probe I/O lives in ``experiment`` stage S7 (D-047), because dev
+        beliefs need the oracle kernels and this module depends on ``contracts`` only."""
+        raise NotImplementedError("probe I/O is in experiment S7 (D-047)")

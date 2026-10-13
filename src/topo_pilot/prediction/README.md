@@ -18,7 +18,7 @@ Predictive evaluation without PH and without the model: n-gram baselines (a), pr
 
 ## Data
 
-Reads `ObservationSet` (train, dev, test) and `HistoryIndex`. Writes `BaselineOutputs(ngram_order, smoothing="additive:<alpha!r>", history_id, probs)` with parents `[train, dev, test, history_index]`, one per order 1 and 2. The grid is `(1e-3, 1e-2, 1e-1, 0.5, 1.0)`. `run_metrics` (W4) and `run_probes` (W5) raise `NotImplementedError`.
+Reads `ObservationSet` (train, dev, test) and `HistoryIndex`. Writes `BaselineOutputs(ngram_order, smoothing="additive:<alpha!r>", history_id, probs)` with parents `[train, dev, test, history_index]`, one per order 1 and 2. The grid is `(1e-3, 1e-2, 1e-1, 0.5, 1.0)`. `run_metrics` (W4) and `run_probes` (W5) raise `NotImplementedError`: the learning metrics and the probe I/O run in `experiment` (S3/S4 and S7, D-047), which calls `PredictiveMetrics`, `LearningGate` and `RidgeProbe`.
 
 ## Public API
 

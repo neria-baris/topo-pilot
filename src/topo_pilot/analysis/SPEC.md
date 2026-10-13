@@ -62,14 +62,52 @@ class Dynamics:                               # (b) S6
 class LayerSweep:                             # (b) secondary: all hooks + concatenation
     def run(self, refs) -> MetricRecords: ...
 
-class Sensitivity:                            # (c) S7, one factor at a time
-    def run(self, refs, factors: Mapping[str, Sequence[Any]]) -> MetricRecords: ...
-
+class Sensitivity:                            # (c) S7, one factor at a time; see Part (c)
 class CircularCorrespondence:                 # (c) S7: circular coords of activations vs latent x angle
-    def run(self, activation_ref, sidecar_ref, panel) -> MetricRecords: ...
 
 class AnalysisStage:  # I/O wrappers per stage S2/S4/S5/S6/S7; writes DistanceArtifact, Diagrams, MetricRecords
 ```
+
+## Part (c): sensitivity variants and circular correspondence (wave W5; D-047)
+
+Exported from `topo_pilot.analysis`. Computation in float64.
+
+```python
+class Sensitivity:                                   # pure
+    ACTIVATION_VARIANTS = ("euclidean", "chord", "pca")
+    DISTRIBUTION_VARIANTS = ("hellinger", "sqrt_js")
+    def activation_D(self, X: NDArray, variant: str, X_fit: NDArray | None = None,
+                     pca_dims: int = 32) -> NDArray[np.float64]: ...
+    def distribution_D(self, P: NDArray, variant: str) -> NDArray[np.float64]: ...
+    @staticmethod
+    def head(n: int, k: int) -> NDArray[np.int64]: ...      # first k row indices, k <= n
+
+def circular_agreement(phi: ArrayLike, theta: ArrayLike) -> float: ...
+def lattice_angle(coords: NDArray, states: ArrayLike, axis: int, period: float) -> NDArray[np.float64]: ...
+def belief_angle(b: NDArray, coords: NDArray, axis: int, period: float) -> NDArray[np.float64]: ...
+
+class CircularCorrespondence:
+    def __init__(self, coeff_p: int = 47, n_perm: int = 1000): ...
+    def compare(self, D: NDArray, theta: NDArray, rng: np.random.Generator) -> dict: ...  # pure
+    def run(self, store: ArtifactStore, activation_set_id: str, sidecar_id: str, world_id: str,
+            oracle_id: str, hook: str, panel: int, rng: np.random.Generator,
+            axis: int = 0, control_axis: int = 1, **row_fields) -> list[MetricRow]: ...    # I/O
+```
+
+| Object | Math | Shapes | Invariants | Raises |
+|---|---|---|---|---|
+| `Sensitivity.activation_D` | `euclidean`: `‖x_i − x_j‖`; `chord`: `‖x_i/‖x_i‖ − x_j/‖x_j‖‖` (topology `Chord`); `pca`: centre on the mean of `X_fit`, project on the top `pca_dims` right singular vectors of the centred `X_fit`, then Euclidean (topology `DistancePipeline(Euclidean(), pca_dims).fit_pca(X_fit)`); `X_fit` is never `X` itself in S7 (dev rows) | `X [M, d]`, `X_fit [n, d]` → `D [M, M]` (no deduplication) | `D` symmetric, zero diagonal; `pca` with `pca_dims ≥ rank(X_fit − mean)` and X in the span equals `euclidean` | `INVALID_CONFIG` (unknown variant, `pca` without `X_fit`, `pca_dims < 1`); `ALIGNMENT_ERROR` (column mismatch); `NUMERICAL_FAILURE` (`chord` zero row, non-finite) |
+| `Sensitivity.distribution_D` | `hellinger`: `‖√p − √q‖₂/√2`; `sqrt_js`: `√JSD(p, q)` with natural log (topology `SqrtJS`) | `P [M, N]` rows on the simplex → `D [M, M]` | symmetric, zero diagonal, values in `[0, 1]` (hellinger) and `[0, √ln 2]` (sqrt_js) | `INVALID_CONFIG`; `NUMERICAL_FAILURE` (rows not distributions, tolerance 1e-6) |
+| `Sensitivity.head` | `arange(k)` | → `[k]` int64 | — | `INVALID_CONFIG` (`k < 1` or `k > n`) |
+| `circular_agreement` | `A = max(|mean_i e^{i(φ_i − θ_i)}|, |mean_i e^{i(φ_i + θ_i)}|)` | `phi, theta [M]` → float in `[0, 1]` | invariant to `φ → φ + c` and `φ → −φ` (rotation, reflection); `A(θ, θ) = 1` | `ALIGNMENT_ERROR` (shapes differ or M = 0); `NUMERICAL_FAILURE` (non-finite) |
+| `lattice_angle` | `θ_i = 2π · coords[states_i, axis] / period` | `coords [N, D]`, `states [M]` → `[M]` | — | `ALIGNMENT_ERROR` (state out of range, axis out of range); `INVALID_CONFIG` (`period ≤ 0`) |
+| `belief_angle` | `θ̂_i = arg Σ_z b_{iz} e^{2πi·coords[z, axis]/period}` (circular mean of the belief); a zero resultant gives `θ̂ = 0` | `b [M, N]` → `[M]` in `(−π, π]` | a delta belief at z gives `lattice_angle` of z (mod 2π) | `ALIGNMENT_ERROR` (b width ≠ N) |
+| `CircularCorrespondence.compare` | `φ = CircularCoordinates(coeff_p).fit_transform(D)`; `A = circular_agreement(φ, θ)`; null: `A_k = circular_agreement(φ, θ[rng.permutation(M)])`, `k = 1..n_perm`; `p = (1 + #{A_k ≥ A}) / (1 + n_perm)` | `D [M, M]`, `theta [M]` | returns `{"status": "ok", "agreement", "null_q95", "p_value", "phi" [M]}`; no finite H₁ bar → `{"status": "no_h1_class", "agreement": None, "null_q95": None, "p_value": None, "phi": None}` (a status, not an exception) | `ALIGNMENT_ERROR` (theta length ≠ M); `INVALID_CONFIG` (`n_perm < 1`); topology codes for a bad D |
+| `CircularCorrespondence.run` | cloud = `SpaceBuilder.activations(activation_set_id, hook, panel)` (raw Euclidean D); states `z_32 = EvalSidecar.z[row, end − 1]` joined by `sequence_id` through the ActivationSet's parent `HistoryIndex`; `θ = lattice_angle(coords, z_32, axis, period)` with `period = coords[:, axis].max() + 1`; control `θ_c` the same on `control_axis`; reference `θ̂ = belief_angle(b32 of the panel, …)` from `oracle_id` | — | one `MetricRow` per metric, all with `space = "privileged_eval:circular"`, `run_id = activation_set_id`, `panel`, `hook`, plus `row_fields` (world, condition, replicate, checkpoint): `agreement_x`, `agreement_x_null_q95`, `agreement_x_p`, `agreement_control` (θ_c, same φ), `agreement_oracle_x` (A(θ̂, θ), no PH); values None + status `inconclusive` (uncertainty_kind `no_h1_class`) when there is no H₁ class | `SAMPLE_ID_MISMATCH` (a history's sequence absent from the sidecar, or oracle ids differ) |
+
+`run` is the only part-(c) code that reads `EvalSidecar` (consumer `"analysis"`); the label `privileged_eval` in `space` marks every value derived from it.
+
+The W1-era placeholder signatures `Sensitivity.run(refs, factors)` and `CircularCorrespondence.run(activation_ref, sidecar_ref, panel)` are superseded by this table (D-047). The loops over runs, variants and rules live in `experiment` (stage S7), which calls these pure helpers and the existing `F1Decision`, `GeometryAlignment` and `ph_summary`.
 
 ## Part (d): readout-geometry helpers (wave WX4; `PREREGISTRATION_X4.md`)
 

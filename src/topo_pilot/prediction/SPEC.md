@@ -45,6 +45,8 @@ class PredictionStage:  # I/O, consumer "prediction"
     def run_baselines(self, obs_train_id, obs_dev_id, obs_test_id, history_index_id, store) -> list[str]: ...
     def run_metrics(self, activation_set_id, oracle_id, store) -> str: ...    # MetricRecords
     def run_probes(self, activation_set_ids, oracle_id, split_spec, store) -> str: ...
+    # D-047: stays a NotImplementedError stub; the S7 probe I/O (dev panels, dev beliefs from the
+    # oracle kernels, RidgeProbe per target) lives in experiment, see experiment/SPEC.md Stage S7
 ```
 
 ## Logic requirements

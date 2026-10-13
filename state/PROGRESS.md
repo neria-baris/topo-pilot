@@ -1,5 +1,5 @@
-# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch e4-circular-audit)
-Stage: **E4 circular-baseline audit complete — BEYOND_SYMBOL_AND_MIXING (descriptive)** (D-057; circ-audit-v1, D-056) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x4f-planning)
+Stage: **X4-F planning complete — awaiting owner review (planning only, D-058)** | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,15 +28,16 @@ Stage: **E4 circular-baseline audit complete — BEYOND_SYMBOL_AND_MIXING (descr
 | X4 Phase B (protocol-local) | **INCONCLUSIVE** | 2026-10-13 | all 4 pools UNDERCOVERED (D-052) |
 | X4 Phase B2 (protocol-local) | **NO-GO** | 2026-10-14 | 4 covered pools, 0 witnesses (D-054) |
 | H4C-I (Phase C) | **NOT RUN** | 2026-10-14 | stopped at the feasibility gate (D-055) |
-| E4 circular-baseline audit (descriptive) | **BEYOND_SYMBOL_AND_MIXING** | 2026-10-14 | 24/24 run-panels: model 0.884–0.892 > A*_symbol 0.817 and best baseline; S7 rows reproduced exactly; 79 CPU s, 0.41 GB (D-057) |
+| E4 circular-baseline audit (descriptive) | **BEYOND_SYMBOL_AND_MIXING** (direct R1 gap resolved descriptively) | 2026-10-14 | 24/24 run-panels: model 0.884–0.892 > A*_symbol 0.817 and best baseline; S7 rows reproduced exactly; 79 CPU s, 0.41 GB (D-057) |
 
 ## Open issues (≤5)
 - Closure is scoped (cylinder O, σ 1.25, horizon 2, p32, registered screen); strict Q1 sufficiency UNRESOLVED; no general sufficiency proof and no decoder ceiling measured
-- Circular audit is descriptive and in-sample on unblinded data; it does not separate short-context (w31,w32) from long-history information, nor show causal use or H1 necessity
+- Unresolved: short-context origin (w31, w32 vs longer history), recoverability at resid_post_1, and causal use of the coordinate; audit was descriptive, in-sample, on unblinded data
+- X4-F is a draft (x4f-draft-1): every [P] threshold, the dev resid_post_1 extraction, the fresh test lineage and the learner adapter need owner approval
 - G-H FAIL stands (D-049, D-050); no causal claims; H4 rejected; R1 limitation stands
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. **STOP: owner review of docs/proposals/CIRCULAR_BASELINE_AUDIT_REPORT.md**
-2. Recommendation: planning (not running) a coordinate causal-use test is justified, with short-context and held-out recoverability controls; no intervention without separate approval
-3. No Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change
+1. **STOP: owner review of X4F_COORDINATE_CAUSAL_PROTOCOL_DRAFT.md and X4F_IMPLEMENTATION_PLAN.md** (owner decisions listed in protocol §8)
+2. If approved: implement adapter + gates, run G1–G5 on calibration/validation only, then STOP before any fresh-test sampling
+3. No implementation, sampling, fitting, extraction, PH, intervention or training before approval; no Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

@@ -67,8 +67,9 @@ def control_table(runs: dict[tuple, dict], s4_h0: Sequence[MetricRow]) -> list[s
             h0 = (f"{_fmt(v.get('nll_p32'), 4)} vs {_fmt(_h0_floor(v), 4)}: "
                   + ("not run" if ok is None else ("pass" if ok else "FAIL")))
         wall = v.get("wall_time_s")
+        cap_cell = "n/a (G_C = 0)" if cond == "N" else _fmt(cap)
         lines.append(f"| {name} | {_fmt(v.get('V'), 0)} | {_fmt(v.get('regret'), 4)} "
-                     f"| {_fmt(gain, 4)} | {_fmt(cap)} | {gate_cell} | {h0} "
+                     f"| {_fmt(gain, 4)} | {cap_cell} | {gate_cell} | {h0} "
                      f"| {_fmt(None if wall is None else wall / 60, 1)} |")
     nll, hw = _one(s4_h0, "H0", "nll_p32"), _one(s4_h0, "H0", "H_W")
     half = _one(s4_h0, "H0", "ci_half_width")

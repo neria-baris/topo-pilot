@@ -84,6 +84,14 @@ def run_key_of(job: Mapping[str, Any]) -> tuple:
     return (job["world"], job["condition"], int(job["seed"]))
 
 
+def on_test_split(store: ArtifactStore, activation_set_id: str) -> bool:
+    """True if the ActivationSet was extracted from test histories (S7 also extracts dev
+    histories for probes and PCA, D-047; those never enter the test-panel analyses)."""
+    return any(store.meta(p).artifact_type == "ObservationSet"
+               and store.meta(p).config.get("split") == "test"
+               for p in store.meta(activation_set_id).parent_ids)
+
+
 def activation_ids(store: ArtifactStore, job: Mapping[str, Any], steps: tuple[int, ...],
                    panels: str = "all",
                    train_config: Mapping[str, Any] | None = None) -> dict[int, str]:
@@ -104,6 +112,7 @@ def activation_ids(store: ArtifactStore, job: Mapping[str, Any], steps: tuple[in
                                "checkpoint", f"{len(cids)} checkpoints for {flt['run_key']} "
                                f"step {step}; pass train_config to choose one")
         found = store.find(ActivationSet, checkpoint_id=cids[0], panels=panels) if cids else []
+        found = [a for a in found if on_test_split(store, a)]
         if found:
             out[step] = found[0]
     return out

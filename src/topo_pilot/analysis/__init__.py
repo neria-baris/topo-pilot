@@ -2,6 +2,7 @@
 
 from .baselines import r2_points, r3_points, spectral_embedding
 from .circular import CircularCorrespondence, belief_angle, circular_agreement, lattice_angle
+from .circular_bound import symbol_only_bound
 from .discriminability import DiscriminabilityTable
 from .dynamics import Dynamics, LayerSweep
 from .f1 import F1Decision, F1Verdict
@@ -39,5 +40,5 @@ __all__ = [
     "r3_points", "readout_projector", "require_same_ids", "spectral_embedding", "split_readout",
     "Partners", "PoolScreen", "TangentAudit", "ToleranceRow", "hellinger", "helmert_basis",
     "joint_marginals", "nearest_partners", "overall_verdict", "pair_d2", "practical_verdict",
-    "screen_pool", "select_anchors", "strict_verdict", "tangent_audit",
+    "screen_pool", "select_anchors", "strict_verdict", "symbol_only_bound", "tangent_audit",
 ]

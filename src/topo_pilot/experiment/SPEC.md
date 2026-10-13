@@ -154,6 +154,10 @@ Items that need a view not in `views`, or the oracle (N runs), are skipped for t
 
 `x4b2.py`: fresh oracle-only pools from the unchanged cylinder-O process. Uses `dataset.HMMSampler` on `E_canon` under frozen named streams `SeedTree(0).generator("x4b2-v1", "pool", "cylinder", "overlap", "1.25", role)` and the sequence-ID namespace `(process_code("x4b2-v1:role") << 32) | (5 << 28) | index`. Latent states are discarded at once. Includes the first-token χ² check, chunked p32 beliefs and the Phase B ambient link. `x4b2_run.py` runs the pools one at a time through the unchanged x4b-v1 screen, with reference in the test role. It checks separation from every stored ObservationSet, runs the permutation and float32 checks, and exports to an independent store. Run with `python -m topo_pilot.experiment.x4b2_run`.
 
+## E4 circular-baseline audit (protocol circ-audit-v1, D-056; not a registered stage)
+
+`circ_audit.py` covers the cylinder-O runs and the S7 test panels. It reruns the S7 estimator on the model and R0, using S7's null streams, and checks the results against the stored S7 rows. It runs the same estimator on R1/R2/R3 (`SpaceBuilder.baseline`, existing k). It also computes the b1/b32 angles, the y-axis control and `symbol_only_bound`, and applies the frozen C1/C2 and three-run reading. Outputs go to an independent store. Run with `python -m topo_pilot.experiment.circ_audit`.
+
 ## Errors
 
 `GATE_FAILED`, `MISSING_PARENT`, `CONFIG_DRIFT`, `EXECUTOR_ERROR` (wrapped from executors).

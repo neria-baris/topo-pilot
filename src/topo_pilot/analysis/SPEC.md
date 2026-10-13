@@ -139,6 +139,10 @@ Pure functions in `horizon.py` and `horizon_pools.py`; numeric arrays in, number
 - `tangent_audit(G1, G2)`: full left null of `BᵀG1` at relative tolerances 1e-8/1e-10/1e-12, `D = U0ᵀBᵀG2`, ρ, ranks, conditioning, amplification, the rank certificate and the verdict ALLOWS_STABLE / FACTORIZES / TOLERANCE_DEPENDENT. A tangent map whose largest singular value is ≤ 1e-12 × its ambient norm is treated as exactly zero (relative tolerances are undefined for a zero matrix).
 - `select_anchors`, `nearest_partners`, `pair_d2`, `screen_pool`, `practical_verdict`, `strict_verdict`, `overall_verdict`: the frozen reachable screen and decision table of protocol §6–§7.
 
+## Part (f): symbol-only circular bound (circ-audit-v1, D-056)
+
+`symbol_only_bound(theta, symbols)` returns `(1/M) Σ_w |Σ_{s_i=w} e^{iθ_i}|`, the in-sample optimistic ceiling of `circular_agreement` for any angle that depends on the symbol alone. It is privileged_eval and descriptive; it is not a held-out predictor.
+
 ## Logic requirements (binding; see RESEARCH_SUMMARY §7)
 
 - **Same histories.** Every comparison between spaces uses the identical `history_id` list; a mismatch raises `SAMPLE_ID_MISMATCH`. World and emission spaces are over all 144 states and are reported separately.

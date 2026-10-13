@@ -154,3 +154,18 @@ Planning is complete and no permission is needed to read the package. Execution 
 For an internship portfolio the pilot and this disciplined planning package demonstrate mathematical and empirical judgment; that is different from a publication novelty claim. Three-model exploratory success cannot guarantee population inference or transfer to natural-language LLMs.
 
 **Planning stopping condition satisfied:** eight Markdown documents and a matching ZIP are prepared in a separate research worktree. No implementation, model fitting, experiment, training, core-file modification, merge or push is authorized or initiated.
+
+## Status update after X4 Phase B and B2 (14 October 2026, owner decision D-055)
+
+This section is appended; the planning text above is unchanged.
+
+| Item | Status | Record |
+|---|---|---|
+| X4 Phase B: oracle feasibility audit (x4b-v1) | Complete — **INCONCLUSIVE** (ambient ALLOWS_STABLE; all pools under-covered; strict UNRESOLVED) | D-052, [report](X4_FEASIBILITY_REPORT.md) |
+| X4 Phase B2: oracle-only coverage extension (x4b2-v1) | Complete — **NO-GO** (four covered 16,384-trajectory pools, 0 witnesses) | D-054, [report](X4B2_COVERAGE_REPORT.md) |
+| Practical Q2-gap branch: cylinder O, σ 1.25, horizon 2, p32, registered screen | **Closed by the owner** after B2 | D-055 |
+| H4C-I decoder experiment (Phase C) | **NOT RUN — stopped at the feasibility gate** | D-055 |
+| Strict Q1 sufficiency on reachable beliefs | UNRESOLVED; no general sufficiency proof exists | D-052, D-054 |
+| Decoder ceiling for Q2 | Not measured: no decoder was fitted | — |
+
+No further coverage extension, threshold change or Phase C follows. The closure is scoped to the process, horizon, position and screen above. It says nothing about other horizons, positions, processes or the trained models' representations. H4C-F, X5 and X6 remain proposals that need separate approval. The next separately approved task is a descriptive audit of the E4 circular baseline on existing artifacts.

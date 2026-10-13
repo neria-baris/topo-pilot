@@ -4,8 +4,15 @@ from pathlib import Path
 
 import pytest
 
-from topo_pilot.contracts import (ArtifactStore, EmissionSpec, GateCheck, GateReport,
-                                  LocalFSBackend, TransitionSpec, WorldSpec)
+from topo_pilot.contracts import (
+    ArtifactStore,
+    EmissionSpec,
+    GateCheck,
+    GateReport,
+    LocalFSBackend,
+    TransitionSpec,
+    WorldSpec,
+)
 from topo_pilot.experiment import load_config, run_stage
 
 pytestmark = [pytest.mark.integration, pytest.mark.experiment]

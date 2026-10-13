@@ -19,6 +19,7 @@ from topo_pilot.contracts import (
 )
 
 from .config import ResolvedConfig, load_config, producer_version
+from .prereg import write_prereg
 from .report import build_e0
 from .stages import STAGE_REGISTRY, run_stage
 
@@ -69,6 +70,9 @@ def _parser() -> argparse.ArgumentParser:
     rp = sub.add_parser("report", help="summary + figures from MetricRecords only")
     rp.add_argument("--level", default="E0", choices=["E0"])
     rp.add_argument("--config", default="configs/stages.yaml")
+    pr = sub.add_parser("prereg", help="write PREREGISTRATION.md from S2 outputs (H1 draft)")
+    pr.add_argument("--config", default="configs/stages.yaml")
+    pr.add_argument("--note", default="", help="conductor note on decidable hypotheses")
     return ap
 
 
@@ -81,6 +85,10 @@ def main(argv: list[str] | None = None) -> int:
         store = open_store(cfg)
         if args.command == "status":
             print("\n".join(status_lines(cfg, store)))
+            return 0
+        if args.command == "prereg":
+            out = write_prereg(cfg, store, args.note)
+            print(f"prereg: {out.relative_to(cfg.repo_root).as_posix()}")
             return 0
         if args.command == "report":
             out = build_e0(store, cfg.repo_root / "reports" / args.level)

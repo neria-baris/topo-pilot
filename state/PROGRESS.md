@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S3 done (G-E pass) | Wave: W4 built (S4/S5 jobs + analysis) | Last exit reached: E1 (tagged) | **Waiting: H2**
+Stage: S4 running (H2 approved, D-033) | Wave: W4 built (S4–S6 + E2 report) | Last exit reached: E1 (tagged)
 
 ## Modules
 | module | status | owner tier | notes |
@@ -16,7 +16,7 @@ Stage: S3 done (G-E pass) | Wave: W4 built (S4/S5 jobs + analysis) | Last exit r
 | analysis | accepted (a,b) | B / TW | F1 rule, Δgeom (D-031), R0–R3, null, layer sweep; part (c) W5 |
 | learner | accepted | B | pre-LN transformer, deterministic trainer |
 | activations | accepted | B | hook extraction at p = 32 |
-| experiment | S0–S5 implemented | A | idempotent re-runs + per-gate requires (D-032); S6–S8 todo |
+| experiment | S0–S6 + report E0/E2 | A | idempotent re-runs (D-032); H4 rule D-034; S7–S8 todo |
 
 All module suites: 379 passed, 3 deselected (slow); check_imports clean; ruff clean.
 
@@ -36,7 +36,7 @@ All module suites: 379 passed, 3 deselected (slow); check_imports clean; ruff cl
 - Δgeom same-last-symbol pairs: d_B1 ≡ 0 there (D-031), so the term reduces to ρ_s(d_A, d_B32)
 
 ## Next actions (≤5)
-1. H2: owner approves S4 plan (6 new runs + analysis, LocalExecutor CPU, ~1.6 h + analysis).
-2. Run `topo-pilot stage S4 --config configs/stages.yaml`; evaluate G-F; E2 report; H4 for the E2 README sentence.
-3. S5 (6 P runs, ~1.6 h) on the same executor; then S6 (dynamics, checkpoint-order null, layer sweep) → E3.
-4. experiment: implement S6–S8 stages and report levels E2/E3.
+1. S4 is running (`topo-pilot stage S4`; re-running resumes: stored runs are reused). Then G-F.
+2. `topo-pilot report --level E2`; present the E2 finding sentence at H4; README at E2; tag E2.
+3. S5 (6 P runs, ~1.6 h) on the same executor; then `stage S6` (O + P) → E3 report.
+4. experiment: S7–S8 stages; E3/E4 report levels.

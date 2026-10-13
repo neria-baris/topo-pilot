@@ -1,10 +1,15 @@
 """Fixtures for the executors tests: a throw-away repository copy, stores, subprocess env."""
 
 import shutil
+import sys
 from pathlib import Path
 
 import pytest
-from exec_helpers import make_store
+
+# pytest runs with --import-mode=importlib (pyproject), which does not put test folders on
+# sys.path; the helper modules next to this file are imported by name.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from exec_helpers import make_store  # noqa: E402
 
 from topo_pilot.contracts import ArtifactStore
 

@@ -23,7 +23,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-m 'not slow and not gpu and not integration'"
+addopts = "--import-mode=importlib -m 'not slow and not gpu and not integration'"
 markers = [
   "contracts", "world", "process", "dataset", "oracle", "learner", "activations",
   "prediction", "topology", "analysis", "experiment", "executors",

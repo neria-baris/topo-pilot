@@ -18,7 +18,7 @@ This finding involves no model. **Not run yet:** S2 (σ calibration, discriminab
 ## Reproduce (Windows, CPU)
 
 ```powershell
-python -m venv .venv; .\.venv\Scripts\python.exe -m pip install -r requirements.lock -e .
+python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.lock -e .
 .\.venv\Scripts	opo-pilot.exe stage S0   # environment and contract sanity
 .\.venv\Scripts	opo-pilot.exe stage S1   # worlds, kernels, emissions, PH calibration (~30 s)
 .\.venv\Scripts	opo-pilot.exe report --level E0

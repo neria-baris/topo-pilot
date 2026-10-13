@@ -82,10 +82,14 @@ def prediction_table(runs: dict[tuple, dict], cond: str) -> list[str]:
         if c not in (cond, "N"):
             continue
         gate = v.get("learning_gate_passed")
+        # N has G_C = 0, so captured and the learning gate are undefined; N is judged by H0
+        gate_cell = "n/a" if c == "N" else ("not run" if gate is None else
+                                            ("pass" if gate else "fail"))
+        captured = "n/a" if c == "N" else _fmt(v.get("captured"))
         lines.append(
-            f"| {world}-{c}-{seed} | {_fmt(v.get('captured'))} | {_fmt(v.get('regret'), 4)} "
+            f"| {world}-{c}-{seed} | {captured} | {_fmt(v.get('regret'), 4)} "
             f"| {_fmt(v.get('G_C'), 4)} | {_fmt(v.get('dev_ce_final'), 4)} "
-            f"| {'not run' if gate is None else ('pass' if gate else 'fail')} "
+            f"| {gate_cell} "
             f"| {_fmt(None if v.get('wall_time_s') is None else v['wall_time_s'] / 60, 1)} |")
     return lines
 

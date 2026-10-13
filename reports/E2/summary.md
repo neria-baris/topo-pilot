@@ -8,7 +8,7 @@ Missing replicates (not run): none
 
 | run | captured | regret (nats) | G_C (nats) | dev CE, final | learning gate | wall (min) |
 |---|---|---|---|---|---|---|
-| any-N-1729 | not run | 0.0000 | 0.0000 | 3.5835 | fail | 15.1 |
+| any-N-1729 | n/a | 0.0000 | 0.0000 | 3.5835 | n/a | 15.1 |
 | cylinder-O-1729 | 0.986 | 0.0036 | 0.2649 | 2.2676 | pass | 16.0 |
 | cylinder-O-2718 | 0.985 | 0.0039 | 0.2649 | 2.2699 | pass | 15.4 |
 | cylinder-O-3141 | 0.986 | 0.0038 | 0.2649 | 2.2598 | pass | 14.4 |

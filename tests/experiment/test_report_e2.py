@@ -9,7 +9,7 @@ from topo_pilot.contracts import (
     MetricRecords,
     MetricRow,
 )
-from topo_pilot.experiment.report_e2 import build_e2, f1_table, verdict
+from topo_pilot.experiment.report_e2 import build_e2, f1_table, prediction_table, verdict
 
 pytestmark = pytest.mark.experiment
 
@@ -72,3 +72,11 @@ def test_build_e2_from_records_only(store, tmp_path):
 def test_build_e2_without_analysis_says_not_run(store, tmp_path):
     text = build_e2(store, tmp_path / "E2").read_text(encoding="utf-8")
     assert "**F1 verdict: not run**" in text
+
+
+def test_n_run_learning_gate_is_not_applicable():
+    runs = {("any", "N", 1729): {"learning_gate_passed": False, "G_C": 0.0, "captured": None},
+            ("cylinder", "O", 1729): {"learning_gate_passed": True, "captured": 0.98}}
+    lines = prediction_table(runs, "O")
+    assert lines[2].startswith("| any-N-1729 | n/a |") and "| n/a |" in lines[2]
+    assert "fail" not in lines[2] and "| pass |" in lines[3]

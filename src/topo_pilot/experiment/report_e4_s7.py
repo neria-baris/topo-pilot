@@ -261,7 +261,8 @@ def probe_figure(rows: Sequence[MetricRow], path: Path) -> Path:
         _dot_panel(ax, groups, "test R² (pooled over 8 panels)")
         ax.set_facecolor(SURFACE)
         ax.set_title(f"condition {cond}", fontsize=8, color=INK, loc="left")
-    axes[0].legend(loc="lower right", fontsize=7, frameon=False)
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper right", ncol=2, fontsize=7, frameon=False)
     fig.suptitle("Ridge probes: one dot per run (3 replicates per world)", fontsize=9, color=INK,
                  x=0.01, ha="left")
     return _save(fig, path)

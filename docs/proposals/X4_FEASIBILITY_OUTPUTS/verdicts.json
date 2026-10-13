@@ -1,0 +1,20 @@
+{
+ "protocol": "x4b-v1",
+ "verdicts": {
+  "ambient": "ALLOWS_STABLE",
+  "practical": "INCONCLUSIVE",
+  "strict": "UNRESOLVED",
+  "overall": "INCONCLUSIVE"
+ },
+ "reasons": {
+  "practical": "insufficient near-neighbour coverage",
+  "overall": "practical screen inconclusive"
+ },
+ "pool_status": {
+  "test": "UNDERCOVERED",
+  "dev1729": "UNDERCOVERED",
+  "dev2718": "UNDERCOVERED",
+  "dev3141": "UNDERCOVERED"
+ },
+ "failures": []
+}

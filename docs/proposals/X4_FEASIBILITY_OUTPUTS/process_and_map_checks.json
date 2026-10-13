@@ -1,0 +1,74 @@
+{
+ "E_canon_max_diff": 0.0,
+ "pi_stationarity": 8.673617379884035e-19,
+ "maps": {
+  "canonical": {
+   "route_diff": 0.0,
+   "lexicographic_diff": 2.7755575615628914e-17,
+   "O1_vs_G1T": 0.0,
+   "O2_head_vs_O1": 0.0,
+   "G1_row_sum": 3.3306690738754696e-16,
+   "G2_row_sum": 4.440892098500626e-16,
+   "G2_min": 8.235471732049698e-34,
+   "first_marginal_diff": 1.6653345369377348e-16,
+   "second_marginal_vs_T2E": 1.6653345369377348e-16,
+   "second_marginal_vs_G1": 0.05562942334525117
+  },
+  "1729": {
+   "route_diff": 0.0,
+   "lexicographic_diff": 2.7755575615628914e-17,
+   "O1_vs_G1T": 0.0,
+   "O2_head_vs_O1": 0.0,
+   "G1_row_sum": 3.3306690738754696e-16,
+   "G2_row_sum": 4.440892098500626e-16,
+   "G2_min": 8.235471732049698e-34,
+   "first_marginal_diff": 1.1102230246251565e-16,
+   "second_marginal_vs_T2E": 1.6653345369377348e-16,
+   "second_marginal_vs_G1": 0.05562942334525112
+  },
+  "2718": {
+   "route_diff": 0.0,
+   "lexicographic_diff": 2.7755575615628914e-17,
+   "O1_vs_G1T": 0.0,
+   "O2_head_vs_O1": 0.0,
+   "G1_row_sum": 3.3306690738754696e-16,
+   "G2_row_sum": 4.440892098500626e-16,
+   "G2_min": 8.235471732049698e-34,
+   "first_marginal_diff": 1.6653345369377348e-16,
+   "second_marginal_vs_T2E": 2.220446049250313e-16,
+   "second_marginal_vs_G1": 0.05562942334525117
+  },
+  "3141": {
+   "route_diff": 0.0,
+   "lexicographic_diff": 2.7755575615628914e-17,
+   "O1_vs_G1T": 0.0,
+   "O2_head_vs_O1": 0.0,
+   "G1_row_sum": 3.3306690738754696e-16,
+   "G2_row_sum": 4.440892098500626e-16,
+   "G2_min": 8.235471732049698e-34,
+   "first_marginal_diff": 1.6653345369377348e-16,
+   "second_marginal_vs_T2E": 1.6653345369377348e-16,
+   "second_marginal_vs_G1": 0.05562942334525117
+  }
+ },
+ "diagnostics_and_permutation": {
+  "1729": {
+   "stored_O1_rel_diff": 0.0,
+   "stored_O2_rel_diff": 0.0,
+   "G1_perm_diff": 0.0,
+   "G2_perm_diff": 0.0
+  },
+  "2718": {
+   "stored_O1_rel_diff": 0.0,
+   "stored_O2_rel_diff": 0.0,
+   "G1_perm_diff": 0.0,
+   "G2_perm_diff": 0.0
+  },
+  "3141": {
+   "stored_O1_rel_diff": 0.0,
+   "stored_O2_rel_diff": 0.0,
+   "G1_perm_diff": 0.0,
+   "G2_perm_diff": 0.0
+  }
+ }
+}

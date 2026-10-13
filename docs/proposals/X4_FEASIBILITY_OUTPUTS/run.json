@@ -1,0 +1,52 @@
+{
+ "protocol": "x4b-v1",
+ "protocol_doc_sha256": "3ce4999cf77c58a0b891e7c0dfcb2797bb4c15417dea641936b9962f34c13351",
+ "producer_version": "5b2f3840bb98",
+ "source_commit": "f8afc2a5e43309aa4bf2d402f2be4e38470df180",
+ "cpu_s": 19.72,
+ "wall_s": 14.92,
+ "cpu_cap_s": 3600.0,
+ "peak_memory_bytes": 0,
+ "budget_steps": [
+  {
+   "step": "inputs",
+   "cpu_s": 2.328,
+   "wall_s": 3.058
+  },
+  {
+   "step": "ambient",
+   "cpu_s": 3.375,
+   "wall_s": 3.758
+  },
+  {
+   "step": "pools",
+   "cpu_s": 8.594,
+   "wall_s": 5.998
+  },
+  {
+   "step": "audit",
+   "cpu_s": 13.656,
+   "wall_s": 11.077
+  },
+  {
+   "step": "agreement",
+   "cpu_s": 19.078,
+   "wall_s": 14.066
+  }
+ ],
+ "main_store_listing_before": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "main_store_listing_after": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "exports_sha256": {
+  "pool_test.npz": "8879ee45d0f5a454a4beff48388248e83e6d0b03dbfdd8de04a3a1a239279b58",
+  "pool_dev1729.npz": "1088b551e4b56573c4a1cc25d615b9586ec9f6da111721a84d94242eae4d65cb",
+  "pool_dev2718.npz": "789e8d93bde2544d21657209b6f1511ad9a375cb0d63e500e5e4d2ae8fa83f9d",
+  "pool_dev3141.npz": "13faa5876c54d863a9cdecc8afc28b32861568c3dcfe1fb1f9c174e3ec1ce095"
+ },
+ "metric_records_id": "be4fbf6252097544"
+}

@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x5-g1-gates)
-Stage: **X5 G1 gates implementation running (job 0006; contract x5g1-feas-v2 frozen, D-065)**; X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+Stage: **X5 G1 exact-process/calibration gate complete — FEASIBLE (D-066)**; contract x5g1-feas-v2 frozen (D-065); X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,6 +28,7 @@ Stage: **X5 G1 gates implementation running (job 0006; contract x5g1-feas-v2 fro
 | X4 Phase B (protocol-local) | **INCONCLUSIVE** | 2026-10-13 | all 4 pools UNDERCOVERED (D-052) |
 | X4 Phase B2 (protocol-local) | **NO-GO** | 2026-10-14 | 4 covered pools, 0 witnesses (D-054) |
 | H4C-I (Phase C) | **NOT RUN** | 2026-10-14 | stopped at the feasibility gate (D-055) |
+| X5 G1 gate (x5g1-feas-v2) | **FEASIBLE** | 2026-10-14 | G_C a0 0.271 [0.267, 0.275], a020 0.294 [0.290, 0.298] nats; kernels valid; 8.9 CPU s (D-066) |
 | X4-F gates (x4f-exec-v2) | **INCONCLUSIVE; formulation closed (D-063)** | 2026-10-14 | G1–G3 PASS ×3 (G3 LINEAR_COMPONENT_ONLY), G4 FAMILY_UNMATCHED ×3, G5 NOT_RUN (D-062) |
 | E4 circular-baseline audit (descriptive) | **BEYOND_SYMBOL_AND_MIXING** (direct R1 gap resolved descriptively) | 2026-10-14 | 24/24 run-panels: model 0.884–0.892 > A*_symbol 0.817 and best baseline; S7 rows reproduced exactly; 79 CPU s, 0.41 GB (D-057) |
 
@@ -39,6 +40,6 @@ Stage: **X5 G1 gates implementation running (job 0006; contract x5g1-feas-v2 fro
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. Implement conductance/process, x5_kernel/x5_context, lineage/run with independent tests; commit before data
-2. Run the exact-process/calibration gate once; report; STOP (no training; X4-F code reuse still blocked)
+1. STOP: coordinator review of docs/proposals/X5_G1_FEASIBILITY_REPORT.md (job 0006)
+2. FEASIBLE permits only proposing a six-model training protocol in a new reviewed task; movement-speed confound is large (rate-matched flat ≈ curved mixing); no training now
 3. No implementation, sampling, fitting, extraction, PH, intervention or training before approval; no Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

@@ -1,0 +1,226 @@
+{
+ "entries": [
+  {
+   "job": "0006",
+   "cpu_s": 8.922,
+   "status": "ok",
+   "utc": "2026-10-13T23:16:10Z",
+   "outcome": "FEASIBLE: both kernels valid and G_C PASS in both arms",
+   "steps": [
+    {
+     "step": "listing before",
+     "cpu_s": 0.0
+    },
+    {
+     "step": "integrity",
+     "cpu_s": 0.422
+    },
+    {
+     "step": "kernels",
+     "cpu_s": 0.453
+    },
+    {
+     "step": "diagnostics a0",
+     "cpu_s": 0.516
+    },
+    {
+     "step": "diagnostics a020",
+     "cpu_s": 0.578
+    },
+    {
+     "step": "rate matched",
+     "cpu_s": 0.625
+    },
+    {
+     "step": "sample a0",
+     "cpu_s": 0.625
+    },
+    {
+     "step": "sample a0 done",
+     "cpu_s": 1.016
+    },
+    {
+     "step": "sample a020",
+     "cpu_s": 1.016
+    },
+    {
+     "step": "sample a020 done",
+     "cpu_s": 1.406
+    },
+    {
+     "step": "disjointness",
+     "cpu_s": 2.594
+    },
+    {
+     "step": "oracle batch 0",
+     "cpu_s": 2.594
+    },
+    {
+     "step": "oracle batch 0 done",
+     "cpu_s": 3.281
+    },
+    {
+     "step": "oracle batch 4096",
+     "cpu_s": 3.281
+    },
+    {
+     "step": "oracle batch 4096 done",
+     "cpu_s": 3.953
+    },
+    {
+     "step": "oracle batch 8192",
+     "cpu_s": 3.953
+    },
+    {
+     "step": "oracle batch 8192 done",
+     "cpu_s": 4.578
+    },
+    {
+     "step": "oracle batch 12288",
+     "cpu_s": 4.578
+    },
+    {
+     "step": "oracle batch 12288 done",
+     "cpu_s": 5.234
+    },
+    {
+     "step": "bootstrap 0",
+     "cpu_s": 5.266
+    },
+    {
+     "step": "bootstrap 0 done",
+     "cpu_s": 5.312
+    },
+    {
+     "step": "bootstrap 500",
+     "cpu_s": 5.312
+    },
+    {
+     "step": "bootstrap 500 done",
+     "cpu_s": 5.375
+    },
+    {
+     "step": "bootstrap 1000",
+     "cpu_s": 5.375
+    },
+    {
+     "step": "bootstrap 1000 done",
+     "cpu_s": 5.406
+    },
+    {
+     "step": "bootstrap 1500",
+     "cpu_s": 5.406
+    },
+    {
+     "step": "bootstrap 1500 done",
+     "cpu_s": 5.453
+    },
+    {
+     "step": "context a0",
+     "cpu_s": 5.453
+    },
+    {
+     "step": "oracle batch 0",
+     "cpu_s": 5.453
+    },
+    {
+     "step": "oracle batch 0 done",
+     "cpu_s": 6.062
+    },
+    {
+     "step": "oracle batch 4096",
+     "cpu_s": 6.062
+    },
+    {
+     "step": "oracle batch 4096 done",
+     "cpu_s": 6.672
+    },
+    {
+     "step": "oracle batch 8192",
+     "cpu_s": 6.672
+    },
+    {
+     "step": "oracle batch 8192 done",
+     "cpu_s": 7.359
+    },
+    {
+     "step": "oracle batch 12288",
+     "cpu_s": 7.359
+    },
+    {
+     "step": "oracle batch 12288 done",
+     "cpu_s": 8.047
+    },
+    {
+     "step": "bootstrap 0",
+     "cpu_s": 8.078
+    },
+    {
+     "step": "bootstrap 0 done",
+     "cpu_s": 8.125
+    },
+    {
+     "step": "bootstrap 500",
+     "cpu_s": 8.125
+    },
+    {
+     "step": "bootstrap 500 done",
+     "cpu_s": 8.172
+    },
+    {
+     "step": "bootstrap 1000",
+     "cpu_s": 8.172
+    },
+    {
+     "step": "bootstrap 1000 done",
+     "cpu_s": 8.203
+    },
+    {
+     "step": "bootstrap 1500",
+     "cpu_s": 8.203
+    },
+    {
+     "step": "bootstrap 1500 done",
+     "cpu_s": 8.25
+    },
+    {
+     "step": "context a020",
+     "cpu_s": 8.25
+    },
+    {
+     "step": "paired 0",
+     "cpu_s": 8.25
+    },
+    {
+     "step": "paired 0 done",
+     "cpu_s": 8.312
+    },
+    {
+     "step": "paired 500",
+     "cpu_s": 8.312
+    },
+    {
+     "step": "paired 500 done",
+     "cpu_s": 8.359
+    },
+    {
+     "step": "paired 1000",
+     "cpu_s": 8.359
+    },
+    {
+     "step": "paired 1000 done",
+     "cpu_s": 8.422
+    },
+    {
+     "step": "paired 1500",
+     "cpu_s": 8.422
+    },
+    {
+     "step": "paired 1500 done",
+     "cpu_s": 8.469
+    }
+   ]
+  }
+ ],
+ "cumulative_cpu_s": 8.922
+}

@@ -1,0 +1,232 @@
+{
+ "protocol": "x5g1-feas-v2",
+ "protocol_doc_sha256": "e5b0dceba7c43917a8921a69db396700477ba5c9693b7f5d70f50b94b1cfb312",
+ "producer_version": "64482629c39b",
+ "python": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot\\.venv\\Scripts\\python.exe",
+ "topo_pilot_file": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot-x4b\\src\\topo_pilot\\__init__.py",
+ "numpy": "2.2.6",
+ "blas_threads": {
+  "OPENBLAS_NUM_THREADS": "1",
+  "MKL_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "cpu_s_before_export": 8.906,
+ "cpu_prior_cumulative": 0.0,
+ "peak_memory_bytes": 699723776,
+ "steps": [
+  {
+   "step": "listing before",
+   "cpu_s": 0.0
+  },
+  {
+   "step": "integrity",
+   "cpu_s": 0.422
+  },
+  {
+   "step": "kernels",
+   "cpu_s": 0.453
+  },
+  {
+   "step": "diagnostics a0",
+   "cpu_s": 0.516
+  },
+  {
+   "step": "diagnostics a020",
+   "cpu_s": 0.578
+  },
+  {
+   "step": "rate matched",
+   "cpu_s": 0.625
+  },
+  {
+   "step": "sample a0",
+   "cpu_s": 0.625
+  },
+  {
+   "step": "sample a0 done",
+   "cpu_s": 1.016
+  },
+  {
+   "step": "sample a020",
+   "cpu_s": 1.016
+  },
+  {
+   "step": "sample a020 done",
+   "cpu_s": 1.406
+  },
+  {
+   "step": "disjointness",
+   "cpu_s": 2.594
+  },
+  {
+   "step": "oracle batch 0",
+   "cpu_s": 2.594
+  },
+  {
+   "step": "oracle batch 0 done",
+   "cpu_s": 3.281
+  },
+  {
+   "step": "oracle batch 4096",
+   "cpu_s": 3.281
+  },
+  {
+   "step": "oracle batch 4096 done",
+   "cpu_s": 3.953
+  },
+  {
+   "step": "oracle batch 8192",
+   "cpu_s": 3.953
+  },
+  {
+   "step": "oracle batch 8192 done",
+   "cpu_s": 4.578
+  },
+  {
+   "step": "oracle batch 12288",
+   "cpu_s": 4.578
+  },
+  {
+   "step": "oracle batch 12288 done",
+   "cpu_s": 5.234
+  },
+  {
+   "step": "bootstrap 0",
+   "cpu_s": 5.266
+  },
+  {
+   "step": "bootstrap 0 done",
+   "cpu_s": 5.312
+  },
+  {
+   "step": "bootstrap 500",
+   "cpu_s": 5.312
+  },
+  {
+   "step": "bootstrap 500 done",
+   "cpu_s": 5.375
+  },
+  {
+   "step": "bootstrap 1000",
+   "cpu_s": 5.375
+  },
+  {
+   "step": "bootstrap 1000 done",
+   "cpu_s": 5.406
+  },
+  {
+   "step": "bootstrap 1500",
+   "cpu_s": 5.406
+  },
+  {
+   "step": "bootstrap 1500 done",
+   "cpu_s": 5.453
+  },
+  {
+   "step": "context a0",
+   "cpu_s": 5.453
+  },
+  {
+   "step": "oracle batch 0",
+   "cpu_s": 5.453
+  },
+  {
+   "step": "oracle batch 0 done",
+   "cpu_s": 6.062
+  },
+  {
+   "step": "oracle batch 4096",
+   "cpu_s": 6.062
+  },
+  {
+   "step": "oracle batch 4096 done",
+   "cpu_s": 6.672
+  },
+  {
+   "step": "oracle batch 8192",
+   "cpu_s": 6.672
+  },
+  {
+   "step": "oracle batch 8192 done",
+   "cpu_s": 7.359
+  },
+  {
+   "step": "oracle batch 12288",
+   "cpu_s": 7.359
+  },
+  {
+   "step": "oracle batch 12288 done",
+   "cpu_s": 8.047
+  },
+  {
+   "step": "bootstrap 0",
+   "cpu_s": 8.078
+  },
+  {
+   "step": "bootstrap 0 done",
+   "cpu_s": 8.125
+  },
+  {
+   "step": "bootstrap 500",
+   "cpu_s": 8.125
+  },
+  {
+   "step": "bootstrap 500 done",
+   "cpu_s": 8.172
+  },
+  {
+   "step": "bootstrap 1000",
+   "cpu_s": 8.172
+  },
+  {
+   "step": "bootstrap 1000 done",
+   "cpu_s": 8.203
+  },
+  {
+   "step": "bootstrap 1500",
+   "cpu_s": 8.203
+  },
+  {
+   "step": "bootstrap 1500 done",
+   "cpu_s": 8.25
+  },
+  {
+   "step": "context a020",
+   "cpu_s": 8.25
+  },
+  {
+   "step": "paired 0",
+   "cpu_s": 8.25
+  },
+  {
+   "step": "paired 0 done",
+   "cpu_s": 8.312
+  },
+  {
+   "step": "paired 500",
+   "cpu_s": 8.312
+  },
+  {
+   "step": "paired 500 done",
+   "cpu_s": 8.359
+  },
+  {
+   "step": "paired 1000",
+   "cpu_s": 8.359
+  },
+  {
+   "step": "paired 1000 done",
+   "cpu_s": 8.422
+  },
+  {
+   "step": "paired 1500",
+   "cpu_s": 8.422
+  },
+  {
+   "step": "paired 1500 done",
+   "cpu_s": 8.469
+  }
+ ],
+ "utc": "2026-10-13T23:16:10Z",
+ "metric_records_id": "e978af31f4625fbb"
+}

@@ -1,0 +1,7 @@
+{
+ "protocol": "x5g1-feas-v2",
+ "verdict": "FEASIBLE",
+ "reason": "both kernels valid and G_C PASS in both arms",
+ "global_failed": [],
+ "global_inconclusive": []
+}

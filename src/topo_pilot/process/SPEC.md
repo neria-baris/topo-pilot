@@ -64,6 +64,10 @@ class ProcessStage:   # I/O
   - row-entropy quantiles.
 - **σ selection** is **not** done here. It happens in `analysis` (S2), which needs the oracle. This module builds specs for each σ requested.
 
+## X5 G1 metric-conductance kernel
+
+`conductance.py` (`ConductanceConfig`, `warp_profile`, `conductance_kernel`) and `ProcessStage.run_conductance_transition`. Specified in `docs/proposals/X5_G1_GATES_API.md` (frozen x5g1-feas-v2, D-065). Independent tests: `tests/process/test_conductance.py`.
+
 ## Invariants and errors
 
 | Condition | Error |

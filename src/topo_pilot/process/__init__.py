@@ -1,6 +1,7 @@
 """Public API of `topo_pilot.process` (see SPEC.md and README.md)."""
 
 from .centers import CENTER_REGISTRY, CenterStrategy, FPSCenters, GridCenters
+from .conductance import ConductanceConfig, conductance_kernel, warp_profile
 from .emission import (
                        EMISSION_REGISTRY,
                        AxisPermuted,
@@ -15,7 +16,9 @@ from .stage import ProcessStage
 from .transition import TransitionBuilder, TransitionConfig
 
 __all__ = [
-    "CENTER_REGISTRY", "EMISSION_REGISTRY", "AxisPermuted", "CenterStrategy", "EmissionConfig",
+    "CENTER_REGISTRY", "EMISSION_REGISTRY", "AxisPermuted", "CenterStrategy", "ConductanceConfig",
+    "EmissionConfig",
     "EmissionModel", "FPSCenters", "FullPermuted", "GridCenters", "Identical", "OverlapGaussian",
     "ProcessStage", "TransitionBuilder", "TransitionConfig", "Unique",
+    "conductance_kernel", "warp_profile",
 ]

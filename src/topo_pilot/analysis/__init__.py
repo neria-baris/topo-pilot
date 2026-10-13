@@ -1,4 +1,4 @@
-"""Public API of `topo_pilot.analysis` (see SPEC.md), parts (a) to (g)."""
+"""Public API of `topo_pilot.analysis` (see SPEC.md), parts (a) to (h)."""
 
 from .baselines import r2_points, r3_points, spectral_embedding
 from .circular import CircularCorrespondence, belief_angle, circular_agreement, lattice_angle
@@ -56,6 +56,20 @@ from .x4f_scores import (
     support_report,
 )
 from .x4f_targets import PCMap, circle_expectation, leading_components, pc_scores
+from .x5_context import (
+    GC_THRESHOLD,
+    context_status,
+    percentile_interval,
+    x5_overall_verdict,
+)
+from .x5_kernel import (
+    SpectrumReport,
+    integrated_autocorrelation,
+    is_connected,
+    movement_rate,
+    rate_matched_kernel,
+    spectrum_report,
+)
 
 __all__ = [
     "CircularCorrespondence", "DiscriminabilityTable", "Dynamics", "F1Decision", "F1Verdict",
@@ -70,4 +84,7 @@ __all__ = [
     "eraser_from_basis", "fit_oblique_eraser", "gate_verdict", "kl_rows", "leading_components",
     "ledoit_wolf", "mismatch_report", "pc_scores", "r2_pooled", "random_family", "rbf_bandwidth",
     "rbf_features", "rbf_map", "standardizer", "support_gate", "support_report", "whiten",
+    "GC_THRESHOLD", "SpectrumReport", "context_status", "integrated_autocorrelation",
+    "is_connected", "movement_rate", "percentile_interval", "x5_overall_verdict",
+    "rate_matched_kernel", "spectrum_report",
 ]

@@ -114,7 +114,8 @@ def context_status(lo, hi, valid=True) -> str
 * Otherwise PASS iff lo ≥ 0.03, FAIL iff hi < 0.03, else NEAR_THRESHOLD.
 
 ```python
-def overall_verdict(arms: dict[str, dict], global_failed: list[str], global_inconclusive: list[str]) -> tuple[str, str]
+def x5_overall_verdict(arms: dict[str, dict], global_failed: list[str], global_inconclusive: list[str]) -> tuple[str, str]
+# exported from topo_pilot.analysis as x5_overall_verdict; the name overall_verdict already belongs to X4 Phase B
 ```
 
 * Each arm dict has keys "op" (one of "ok", "FAILED", "INVALID_KERNEL", "NEAR_UNIT_GAP") and "context" (a context status, or None when not computed).

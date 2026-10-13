@@ -147,6 +147,10 @@ Pure functions in `horizon.py` and `horizon_pools.py`; numeric arrays in, number
 
 Specified in `docs/proposals/X4F_GATES_API.md` (implements the frozen x4f-exec-v2, D-061). Independent tests by the X4-F test-writer agent; builder smoke test `tests/experiment/test_x4f_gates_smoke.py`.
 
+## Part (h): X5 G1 kernel diagnostics and context gate
+
+`x5_kernel.py`, `x5_context.py` (`x5_overall_verdict`). Specified in `docs/proposals/X5_G1_GATES_API.md`. Independent tests: `test_x5_kernel.py`, `test_x5_context.py`.
+
 ## Logic requirements (binding; see RESEARCH_SUMMARY §7)
 
 - **Same histories.** Every comparison between spaces uses the identical `history_id` list; a mismatch raises `SAMPLE_ID_MISMATCH`. World and emission spaces are over all 144 states and are reported separately.

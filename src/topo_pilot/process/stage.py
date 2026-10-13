@@ -9,6 +9,7 @@ from typing import Any
 from topo_pilot.contracts import ArtifactStore, ErrorCode, SeedTree, WorldSpec
 
 from ._geometry import fail
+from .conductance import ConductanceConfig, conductance_kernel
 from .emission import EMISSION_REGISTRY, WORLD_SCOPE_MASTER, EmissionConfig
 from .transition import TransitionBuilder, TransitionConfig
 
@@ -27,6 +28,16 @@ class ProcessStage:
         aid = store.save(spec, config=asdict(cfg), parents=[world_id], seed_map={},
                          consumer=CONSUMER)
         log.info("process: transition %s for world %s", aid, world_id)
+        return aid
+
+    def run_conductance_transition(self, world_id: str, cfg: ConductanceConfig,
+                                   store: ArtifactStore) -> str:
+        """Build and save the metric-conductance ``TransitionSpec`` of ``world_id`` (X5 G1); the
+        artifact config is the kernel metadata (warp profile, lengths, ``C_max``)."""
+        world = store.load(WorldSpec, world_id, consumer=CONSUMER)
+        spec, meta = conductance_kernel(world, cfg)
+        aid = store.save(spec, config=meta, parents=[world_id], seed_map={}, consumer=CONSUMER)
+        log.info("process: conductance transition %s (a=%s) for world %s", aid, cfg.a, world_id)
         return aid
 
     def run_emission(self, world_id: str, cfg: EmissionConfig, seeds: SeedTree,

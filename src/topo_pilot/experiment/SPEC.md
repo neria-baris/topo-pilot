@@ -162,6 +162,10 @@ Items that need a view not in `views`, or the oracle (N runs), are skipped for t
 
 Specified in `docs/proposals/X4F_GATES_API.md` (implements the frozen x4f-exec-v2, D-061). Independent tests by the X4-F test-writer agent; builder smoke test `tests/experiment/test_x4f_gates_smoke.py`.
 
+## X5 G1 exact-process/calibration gate (`x5g1_lineage`, `x5g1_oracle`, `x5g1_controls`, `x5g1_run`, `x5g1_main`; not a registered stage)
+
+Specified in `docs/proposals/X5_G1_GATES_API.md`. Run: `python -m topo_pilot.experiment.x5g1_main`. Independent tests: `test_x5g1_lineage.py`, `test_x5g1_controls.py`; builder smoke test: `test_x5g1_smoke.py`.
+
 ## Errors
 
 `GATE_FAILED`, `MISSING_PARENT`, `CONFIG_DRIFT`, `EXECUTOR_ERROR` (wrapped from executors).

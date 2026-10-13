@@ -15,12 +15,14 @@ from topo_pilot.contracts import (
     ArtifactStore,
     GateReport,
     LocalFSBackend,
+    MetricRecords,
     StageFailure,
 )
 
 from .config import ResolvedConfig, load_config, producer_version
 from .prereg import write_prereg
 from .report import build_e0
+from .report_e2 import build_e2
 from .stages import STAGE_REGISTRY, run_stage
 
 MAX_STATUS_LINES = 40
@@ -58,6 +60,18 @@ def status_lines(cfg: ResolvedConfig, store: ArtifactStore) -> list[str]:
     return lines
 
 
+def build_reports(level: str, cfg: ResolvedConfig, store: ArtifactStore) -> list[Path]:
+    """Write the report(s) for ``level``; ``all`` skips E2 until an S4 analysis exists."""
+    out = []
+    if level in ("all", "E0"):
+        out.append(build_e0(store, cfg.repo_root / "reports" / "E0"))
+    s4_done = bool(store.find(MetricRecords, stage="S4", kind="analysis"))
+    if level == "E2" or (level == "all" and s4_done):
+        final = int(cfg.base["training"]["primary_checkpoint"])
+        out.append(build_e2(store, cfg.repo_root / "reports" / "E2", "S4", final))
+    return out
+
+
 def _parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="topo-pilot", description=__doc__)
     sub = ap.add_subparsers(dest="command", required=True)
@@ -68,7 +82,8 @@ def _parser() -> argparse.ArgumentParser:
     sg.add_argument("--config", default="configs/stages.yaml")
     sg.add_argument("--executor", default="local", choices=["local", "bundle", "ssh"])
     rp = sub.add_parser("report", help="summary + figures from MetricRecords only")
-    rp.add_argument("--level", default="E0", choices=["E0"])
+    rp.add_argument("--level", default="all", choices=["all", "E0", "E2"],
+                    help="exit level; 'all' regenerates every level whose data exists")
     rp.add_argument("--config", default="configs/stages.yaml")
     pr = sub.add_parser("prereg", help="write PREREGISTRATION.md from S2 outputs (H1 draft)")
     pr.add_argument("--config", default="configs/stages.yaml")
@@ -93,8 +108,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"prereg: {out.relative_to(cfg.repo_root).as_posix()}")
             return 0
         if args.command == "report":
-            out = build_e0(store, cfg.repo_root / "reports" / args.level)
-            print(f"report {args.level}: {out.relative_to(cfg.repo_root).as_posix()}")
+            for out in build_reports(args.level, cfg, store):
+                print(f"report: {out.relative_to(cfg.repo_root).as_posix()}")
             return 0
         if args.executor != "local":
             print(f"executor {args.executor!r} arrives in wave W1/W4; use --executor local")

@@ -147,8 +147,7 @@ class SensitivityJob:
                         dgs.append(stat["dg"])
                     statuses += [r.status for r in prow if r.metric_id == "S_H1"]
                 n_pass[(world, seed)] = passes
-                run_gates[(world, seed)] = self.aj.learning_gate(world, seed) \
-                    if cond == "O" else self._gate_p(world, seed)
+                run_gates[(world, seed)] = self.gate(cond, world, seed)
                 rows.append(_row("h3prime_n_pass", float(passes), space, **common))
             gates.append(all(run_gates[(w, seed)] for w in WORLDS))
             if S:

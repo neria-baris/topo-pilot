@@ -1,0 +1,18 @@
+{
+ "entries": [
+  {
+   "job": "0003",
+   "protocol": "x4f-exec-v2",
+   "cpu_s": 284.77,
+   "utc": "2026-10-13T22:38:49Z"
+  },
+  {
+   "job": "0003",
+   "protocol": "x4f-exec-v2",
+   "cpu_s": 221.69,
+   "what": "descriptive F-primary displacement diagnostic (same draws)",
+   "utc": "2026-10-13T22:45Z"
+  }
+ ],
+ "cumulative_cpu_s": 506.46
+}

@@ -1,0 +1,239 @@
+[
+ {
+  "role": "world[1729]",
+  "artifact_id": "21feee1d8ee5422e",
+  "type": "WorldSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": []
+ },
+ {
+  "role": "emission[1729]",
+  "artifact_id": "3633ac27dab50cf4",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "obs_dev[1729]",
+  "artifact_id": "096f9b6dbe8536cd",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "cf9d13c03abef2f7cd04fc3fadfced9bef29096a6cb553a955c879cff02fe5a7",
+  "created_utc": "2026-10-13T04:44:36+00:00",
+  "parents": [
+   "3633ac27dab50cf4",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "transition[1729]",
+  "artifact_id": "e4dafc7b9785c172",
+  "type": "TransitionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "dev_index[1729]",
+  "artifact_id": "d9fe461a56797514",
+  "type": "HistoryIndex",
+  "producer_version": "216cdca29946+dirty",
+  "payload_sha256": "f0e0911e531a72597468a82da11db13de079ad0ec213680a61b761c7f4b6951d",
+  "created_utc": "2026-10-13T14:40:03+00:00",
+  "parents": [
+   "096f9b6dbe8536cd"
+  ]
+ },
+ {
+  "role": "checkpoint[1729]",
+  "artifact_id": "c3358e3cb9c352fb",
+  "type": "Checkpoint",
+  "producer_version": "6aea8046b5a5+dirty",
+  "payload_sha256": "bcd024efc2ff30f76940d459dba95a693f536fb7cc3b2441c4ee5145dcf8596b",
+  "created_utc": "2026-10-13T05:22:58+00:00",
+  "parents": [
+   "096f9b6dbe8536cd",
+   "38358227133898a2"
+  ]
+ },
+ {
+  "role": "dev_activations[1729]",
+  "artifact_id": "4d997fc3837231f4",
+  "type": "ActivationSet",
+  "producer_version": "5c637054daed",
+  "payload_sha256": "86c8a467dfa04d6267f610976e6ae5a6be5d59395363c7bdc549afb14e69758f",
+  "created_utc": "2026-10-13T22:34:08+00:00",
+  "parents": [
+   "096f9b6dbe8536cd",
+   "c3358e3cb9c352fb",
+   "d9fe461a56797514"
+  ]
+ },
+ {
+  "role": "world[2718]",
+  "artifact_id": "21feee1d8ee5422e",
+  "type": "WorldSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": []
+ },
+ {
+  "role": "emission[2718]",
+  "artifact_id": "97838b9e13a26f74",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "88203323334704db45ecc104af54f7e21f5225ad1a28fc2d08fc7ab8d75f5874",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "obs_dev[2718]",
+  "artifact_id": "d6d3eeb32dfa40ac",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "90fb3a3e2653c145de7c267693d71a5b51896b0d3470d2f07a805d7b28fac27c",
+  "created_utc": "2026-10-13T04:45:40+00:00",
+  "parents": [
+   "97838b9e13a26f74",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "transition[2718]",
+  "artifact_id": "e4dafc7b9785c172",
+  "type": "TransitionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "dev_index[2718]",
+  "artifact_id": "880c3e8ec8347b72",
+  "type": "HistoryIndex",
+  "producer_version": "4b9078813939",
+  "payload_sha256": "133ead3f0816cc8fc4b4f0bbe1038badf302877f247c49b052f596b2b0c2139a",
+  "created_utc": "2026-10-13T14:42:44+00:00",
+  "parents": [
+   "d6d3eeb32dfa40ac"
+  ]
+ },
+ {
+  "role": "checkpoint[2718]",
+  "artifact_id": "98b0e703a337d513",
+  "type": "Checkpoint",
+  "producer_version": "487356033678",
+  "payload_sha256": "48c5b743d0c500aa4d14c4f40e1b5f115a8421af01e6a383b1927ce006f05efc",
+  "created_utc": "2026-10-13T09:29:22+00:00",
+  "parents": [
+   "38ba325c2d35d92a",
+   "d6d3eeb32dfa40ac"
+  ]
+ },
+ {
+  "role": "dev_activations[2718]",
+  "artifact_id": "56bf697051eb3794",
+  "type": "ActivationSet",
+  "producer_version": "5c637054daed",
+  "payload_sha256": "b17886e9aeecafb575a68c0963490b78726a4e108a64c047028e91f9e34c7864",
+  "created_utc": "2026-10-13T22:34:14+00:00",
+  "parents": [
+   "880c3e8ec8347b72",
+   "98b0e703a337d513",
+   "d6d3eeb32dfa40ac"
+  ]
+ },
+ {
+  "role": "world[3141]",
+  "artifact_id": "21feee1d8ee5422e",
+  "type": "WorldSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": []
+ },
+ {
+  "role": "emission[3141]",
+  "artifact_id": "8c29c329c197c79e",
+  "type": "EmissionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "ccd97a63ec03bf1287ef0098fe84ad305e4e810054cd4fa7bf1c025e4a74a84f",
+  "created_utc": "2026-10-12T21:27:36+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "obs_dev[3141]",
+  "artifact_id": "6da65c49fac77b30",
+  "type": "ObservationSet",
+  "producer_version": "1a3b6161dcf7+dirty",
+  "payload_sha256": "3722c076a0fcb4ccb548484e7aeae68718b4da019b20fc0be72a6ff0ab03fc42",
+  "created_utc": "2026-10-13T04:46:16+00:00",
+  "parents": [
+   "8c29c329c197c79e",
+   "e4dafc7b9785c172"
+  ]
+ },
+ {
+  "role": "transition[3141]",
+  "artifact_id": "e4dafc7b9785c172",
+  "type": "TransitionSpec",
+  "producer_version": "84152ab27e91+dirty",
+  "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "created_utc": "2026-10-12T21:27:35+00:00",
+  "parents": [
+   "21feee1d8ee5422e"
+  ]
+ },
+ {
+  "role": "dev_index[3141]",
+  "artifact_id": "d5e64c5398ef4c25",
+  "type": "HistoryIndex",
+  "producer_version": "4b9078813939",
+  "payload_sha256": "76777ead58a9edf0639a9d62301419a859d0b127351815e4cd5e90e9383a47c6",
+  "created_utc": "2026-10-13T14:43:07+00:00",
+  "parents": [
+   "6da65c49fac77b30"
+  ]
+ },
+ {
+  "role": "checkpoint[3141]",
+  "artifact_id": "036b670743ffbbaf",
+  "type": "Checkpoint",
+  "producer_version": "487356033678",
+  "payload_sha256": "ac7cff661c45bdba1e2fd13d668332bc58866715d9d4d475ec5af76c0814e062",
+  "created_utc": "2026-10-13T09:57:51+00:00",
+  "parents": [
+   "15b4957cc5ec4740",
+   "6da65c49fac77b30"
+  ]
+ },
+ {
+  "role": "dev_activations[3141]",
+  "artifact_id": "8d8809f4f28b8f12",
+  "type": "ActivationSet",
+  "producer_version": "5c637054daed",
+  "payload_sha256": "09df2f3e850eeb78522439d934030fc786b50d3234ff8c8fe8b3b40a8032a997",
+  "created_utc": "2026-10-13T22:34:20+00:00",
+  "parents": [
+   "036b670743ffbbaf",
+   "6da65c49fac77b30",
+   "d5e64c5398ef4c25"
+  ]
+ }
+]

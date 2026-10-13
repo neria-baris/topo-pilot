@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x4f-gates)
-Stage: **X4-F gates implementation running (job 0003; contract x4f-exec-v2 frozen, D-061)**; X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+Stage: **X4-F gates complete — INCONCLUSIVE (G4 FAMILY_UNMATCHED; D-062)**; contract x4f-exec-v2 frozen (D-061); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,6 +28,7 @@ Stage: **X4-F gates implementation running (job 0003; contract x4f-exec-v2 froze
 | X4 Phase B (protocol-local) | **INCONCLUSIVE** | 2026-10-13 | all 4 pools UNDERCOVERED (D-052) |
 | X4 Phase B2 (protocol-local) | **NO-GO** | 2026-10-14 | 4 covered pools, 0 witnesses (D-054) |
 | H4C-I (Phase C) | **NOT RUN** | 2026-10-14 | stopped at the feasibility gate (D-055) |
+| X4-F gates (x4f-exec-v2) | **INCONCLUSIVE** | 2026-10-14 | G1–G3 PASS ×3 (G3 LINEAR_COMPONENT_ONLY), G4 FAMILY_UNMATCHED ×3, G5 NOT_RUN (D-062) |
 | E4 circular-baseline audit (descriptive) | **BEYOND_SYMBOL_AND_MIXING** (direct R1 gap resolved descriptively) | 2026-10-14 | 24/24 run-panels: model 0.884–0.892 > A*_symbol 0.817 and best baseline; S7 rows reproduced exactly; 79 CPU s, 0.41 GB (D-057) |
 
 ## Open issues (≤5)
@@ -38,6 +39,6 @@ Stage: **X4-F gates implementation running (job 0003; contract x4f-exec-v2 froze
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. Implement adapter + analysis kernels + experiment orchestration with independent tests; commit before data
-2. Extract dev activations (step 5000) to an independent store; run G1–G5 on calibration/validation; report; STOP before any fresh-test sampling
+1. STOP: coordinator review of docs/proposals/X4F_FEASIBILITY_GATES_REPORT.md (job 0003)
+2. No fresh causal test under x4f-exec-v2 (not FEASIBLE); any change to the random-control construction needs a reviewed protocol revision before further data
 3. No implementation, sampling, fitting, extraction, PH, intervention or training before approval; no Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

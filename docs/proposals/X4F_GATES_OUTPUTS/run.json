@@ -1,0 +1,118 @@
+{
+ "protocol": "x4f-exec-v2",
+ "protocol_doc_sha256": "66c9068c916503d5bf7aefcbbfb1e56bf5c7104b932c523e1ba6ccbdeed08f23",
+ "producer_version": "5c637054daed",
+ "python": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot\\.venv\\Scripts\\python.exe",
+ "topo_pilot_file": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot-x4b\\src\\topo_pilot\\__init__.py",
+ "blas_threads": {
+  "OPENBLAS_NUM_THREADS": "1",
+  "MKL_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "cpu_s": 284.89,
+ "wall_s": 287.42,
+ "cpu_cap_s": 3600.0,
+ "peak_memory_bytes": 997502976,
+ "budget_steps": [
+  {
+   "step": "extract+targets 1729",
+   "cpu_s": 6.797,
+   "wall_s": 7.444
+  },
+  {
+   "step": "extract+targets 2718",
+   "cpu_s": 12.406,
+   "wall_s": 13.498
+  },
+  {
+   "step": "extract+targets 3141",
+   "cpu_s": 18.516,
+   "wall_s": 19.911
+  },
+  {
+   "step": "G1 1729",
+   "cpu_s": 21.281,
+   "wall_s": 22.675
+  },
+  {
+   "step": "G1 2718",
+   "cpu_s": 23.953,
+   "wall_s": 25.368
+  },
+  {
+   "step": "G1 3141",
+   "cpu_s": 26.703,
+   "wall_s": 28.125
+  },
+  {
+   "step": "G2 1729",
+   "cpu_s": 30.703,
+   "wall_s": 32.162
+  },
+  {
+   "step": "G2 2718",
+   "cpu_s": 34.719,
+   "wall_s": 36.195
+  },
+  {
+   "step": "G2 3141",
+   "cpu_s": 38.812,
+   "wall_s": 40.284
+  },
+  {
+   "step": "G3 1729",
+   "cpu_s": 46.969,
+   "wall_s": 48.5
+  },
+  {
+   "step": "G3 2718",
+   "cpu_s": 55.219,
+   "wall_s": 56.778
+  },
+  {
+   "step": "G3 3141",
+   "cpu_s": 63.203,
+   "wall_s": 64.786
+  },
+  {
+   "step": "G4 1729",
+   "cpu_s": 137.922,
+   "wall_s": 139.874
+  },
+  {
+   "step": "G4 2718",
+   "cpu_s": 211.891,
+   "wall_s": 214.049
+  },
+  {
+   "step": "G4 3141",
+   "cpu_s": 284.359,
+   "wall_s": 286.749
+  }
+ ],
+ "ledger": {
+  "entries": [
+   {
+    "job": "0003",
+    "protocol": "x4f-exec-v2",
+    "cpu_s": 284.77,
+    "utc": "2026-10-13T22:38:49Z"
+   }
+  ],
+  "cumulative_cpu_s": 284.77
+ },
+ "main_store_listing_before": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "main_store_listing_after": [
+  "8662922c8ca158d11b2af14a81c68429189ecbdc07038924a33a9dd927a14b26",
+  2568
+ ],
+ "exports_sha256": {
+  "x4f_gates_1729.npz": "ad8c831d084d17cbcd8f52498a7b9e902ba05500335575424e317056edcf8f6c",
+  "x4f_gates_2718.npz": "fc02cf59094580957ddd6e0ba018180d108b62d91d20fe1688645d3640e9acba",
+  "x4f_gates_3141.npz": "6765fee34aed7b11b969d9f43c1cd04470d742a7ef8f68965ea2c1731530dad4"
+ },
+ "metric_records_id": "4615fea12afce514"
+}

@@ -1,0 +1,29 @@
+{
+ "protocol": "x4f-exec-v2",
+ "overall": "INCONCLUSIVE",
+ "reason": "G4 INCONCLUSIVE in model 1729",
+ "status": {
+  "1729": {
+   "G1": "PASS",
+   "G2": "PASS",
+   "G3": "PASS",
+   "G4": "INCONCLUSIVE",
+   "G5": "NOT_RUN"
+  },
+  "2718": {
+   "G1": "PASS",
+   "G2": "PASS",
+   "G3": "PASS",
+   "G4": "INCONCLUSIVE",
+   "G5": "NOT_RUN"
+  },
+  "3141": {
+   "G1": "PASS",
+   "G2": "PASS",
+   "G3": "PASS",
+   "G4": "INCONCLUSIVE",
+   "G5": "NOT_RUN"
+  }
+ },
+ "main_store_unchanged": true
+}

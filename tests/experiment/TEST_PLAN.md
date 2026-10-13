@@ -11,3 +11,9 @@ Marker: `pytest.mark.experiment`. Uses stub stages and gates (no science). Budge
 | X05 | Report sentence templates: each F1 verdict selects the right template; INCONCLUSIVE includes the reason | known answer |
 | X06 | `status` output stays within 40 lines on a store with 100 artifacts | contract |
 | X07 | `prereg` writes all closed decisions and the S2 tables; it refuses if S2 gates have not passed | contract |
+| X08 | `x4c_category` for the four status combinations (and INCONCLUSIVE counting as not supported); `run_rule_verdict`: all runs ≥ min → SUPPORTED; one run below → REJECTED; a gate False/None → INCONCLUSIVE; 2 of 3 replicates → INCONCLUSIVE; exactly min passes | known answer |
+| X09 | `X4Job(cfg, store, resolver=fake).run()` on 3 replicates × 2 worlds + 1 N run of tiny synthetic data (M ≈ 20 per panel, 8 panels, d = 8, V = 5): the record has every (space, metric_id) of the SPEC table for views V0–V5; N rows only `x4:<Vk>` S_H1 and `x4:check`; the store gains exactly one artifact (a MetricRecords with config stage `X4`), pre-existing artifacts are byte-identical; parents = union of the runs' parents | contract |
+| X10 | Re-running `X4Job.run()` with the same inputs returns the same MetricRecords id and does not raise | contract |
+| X11 | A missing run (resolver lists it as missing) gives an `x4` / `run_available` row with status `not_run` and no invented values; the affected verdicts are INCONCLUSIVE | error path |
+| X12 | `"X4" in STAGE_REGISTRY` with `requires == ("S4",)` and no gates | contract |
+

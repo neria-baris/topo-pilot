@@ -12,6 +12,7 @@ Project-aware analysis:
 | (a) | W2 | reference spaces, σ calibration, discriminability table |
 | (b) | W4 | F1 rule, Δgeom, baselines R0–R3, Gaussian floor, layer sweep, dynamics with the checkpoint-order null |
 | (c) | W5 | sensitivity grid, circular-coordinate correspondence |
+| (d) | WX4 | readout-geometry helpers for X4 (LN gauge, readout projector, predictive cloud) |
 
 ## Public API
 
@@ -69,6 +70,26 @@ class CircularCorrespondence:                 # (c) S7: circular coords of activ
 
 class AnalysisStage:  # I/O wrappers per stage S2/S4/S5/S6/S7; writes DistanceArtifact, Diagrams, MetricRecords
 ```
+
+## Part (d): readout-geometry helpers (wave WX4; `PREREGISTRATION_X4.md`)
+
+Pure functions, exported from `topo_pilot.analysis`. All computation is in float64; inputs may be float32.
+
+```python
+def ln_gauge_free(Z: NDArray, eps: float = 1e-5) -> NDArray[np.float64]: ...
+def readout_projector(gamma: NDArray, W_U: NDArray, rtol: float | None = None) -> NDArray[np.float64]: ...
+def split_readout(U: NDArray, P: NDArray) -> tuple[NDArray[np.float64], NDArray[np.float64]]: ...
+def predictive_pointset(logits: NDArray, ids: Sequence[str], space: str = "pred:softmax") -> PointSet: ...
+```
+
+| Function | Math | Shapes | Invariants | Raises |
+|---|---|---|---|---|
+| `ln_gauge_free` | LayerNorm without its affine part, row-wise: `u = (z − mean(z)·1) / sqrt(var(z) + eps)`, population variance (ddof 0), as in `torch.nn.LayerNorm` | `Z [M, d]`, d ≥ 2 → `U [M, d]` | every row of U has mean 0; `U(Z + c·1) = U(Z)` for any per-row shift c and any eps; `U(αZ) = U(Z)` for α > 0 exactly when eps = 0 (up to eps otherwise) | `ALIGNMENT_ERROR` (not 2-D, or d < 2); `NUMERICAL_FAILURE` (non-finite Z, or a zero-variance row with eps = 0); `INVALID_CONFIG` (eps < 0) |
+| `readout_projector` | `A = diag(gamma) W_U^T ∈ R^{d×V}`; thin SVD `A = Q Σ R^T`; keep the r columns of Q with `σ_k > tol`, `tol = rtol·σ_max`, default `rtol = max(d, V)·eps_float64` (the `numpy.linalg.matrix_rank` convention); `P = Q_r Q_r^T`. A = 0 gives P = 0 | `gamma [d]`, `W_U [V, d]` → `P [d, d]` | `P = P^T`; `P² = P`; `trace(P) = rank(A)`; `P A = A` | `ALIGNMENT_ERROR` (shapes); `NUMERICAL_FAILURE` (non-finite); `INVALID_CONFIG` (rtol < 0) |
+| `split_readout` | rows are points: `U_visible = U P`, `U_null = U − U_visible` | `U [M, d]`, `P [d, d]` → two `[M, d]` | `U_visible + U_null = U`; row-wise `U_visible[i] · U_null[i] = 0` (P an orthogonal projector); the readout `U A` is unchanged when U is replaced by `U_visible` | `ALIGNMENT_ERROR` (shapes) |
+| `predictive_pointset` | `p = softmax(logits)` per row (max-subtracted, float64) | `logits [M, V]`, M ids → `PointSet(space, X=p, D=None, ids=list(ids), metric="hellinger")` | rows of X sum to 1 and are positive | `ALIGNMENT_ERROR` (not 2-D, or len(ids) ≠ M); `NUMERICAL_FAILURE` (non-finite) |
+
+Why the split is exact: with `logits = LN_f(z) W_U^T = u A + beta W_U^T` (no unembedding bias) and `(I − P) A = 0`, only `u P` reaches the logits; `u (I − P)` (dimension ≥ d − V) is invisible to the next-token output.
 
 ## Logic requirements (binding; see RESEARCH_SUMMARY §7)
 

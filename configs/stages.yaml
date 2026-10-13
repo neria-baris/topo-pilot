@@ -70,6 +70,13 @@ S8:
   requires: [S7]
   rerun_identity_check: {world: cylinder, condition: O, seed: 1729}
   exit: E4
+X4:                                     # PREREGISTRATION_X4.md; secondary, no training, no gate
+  requires: [S4]
+  sources: [S4]                         # [S4, S5] once S5 has run
+  views: [V0, V1, V2, V3, V4, V5]
+  ln_eps: 1.0e-5                        # = nn.LayerNorm default in learner
+  positive_control_min_rho: 0.9
+  reuse_stored_V0: true                 # prereg: V0 recomputed only if not stored
 
 cut_paths:                              # STAGES §4; triggered on time/resources only
   reduced_steps: 3000

@@ -1,5 +1,5 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S7 + S8 complete; E4 report written; AWAITING H4 | Wave: W5 done | Last exit reached: E3 (tagged, local)
+Stage: S7 + S8 complete; H4 approved (D-050) | Wave: W5 done | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -29,13 +29,13 @@ Suites: module 511 passed (7 deselected), slow 3 passed, integration 4 passed; i
 | G-H | **FAIL** | 2026-10-13 | rerun_ok only: 307/307 shared artifacts bitwise equal, 1 rerun-only run_timing record (D-049); integrity 785/785, reports 9/9, tests pass |
 
 ## Open issues (≤5)
-- H4 pending: owner to approve (or revise) the proposed E4 finding sentence; README and tag E4 untouched
-- G-H failed on a provenance gap (main store lacks the cylinder-O-1729 run_timing record, code added in D-032 after the S3 run); owner decides whether E4 may be claimed with it
-- R1 limitation stands; circular statistic has no last-symbol baseline (reports/E4/interpretation.md §3)
-- Probes: activations decode b32 no better than the exact next-symbol distribution F1 (1/6 runs per condition); λ at grid edge under O
-- No interventions: all E4 evidence is representational
+- G-H FAIL stands (D-049, D-050): rerun reproduced 307/307 shared artifacts bitwise and 6/6 gate verdicts; one historical run_timing record missing from the original store; same machine, 1 of 17 runs repeated
+- No causal claims: all evidence is representational; X4-causal not run
+- H4 rejected; R1 last-symbol limitation stands (circular statistic has no last-symbol baseline)
+- Probes decode b32 no better than the exact next-symbol distribution; λ at grid edge under O
+- Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. STOP at H4: present the E4 sentence, verdicts, S7 results, S8 status (reports/E4/summary.md, interpretation.md)
-2. After approval only: E4 sentence + readings into README.md (and README_HE.md), README "not run" list, tag E4 (local)
-3. Do not push; do not start X4-causal, X5, X6 or extensions without a new owner instruction
+1. STOP: E4 reached and tagged locally; wait for the owner
+2. Do not push; do not start X4-causal, X5, X6, extensions or any training without a new owner instruction
+3. Candidate follow-ups (each needs its own preregistration): circular statistic on R1/b1/R2/R3; non-linear probes vs the F1 baseline; interventions along the circular coordinate

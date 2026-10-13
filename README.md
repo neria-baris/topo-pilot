@@ -1,8 +1,30 @@
 # topo-pilot: topology of a latent world in transformer representations
 
-> **Status: exit level E3 reached** (2026-10-13): 13 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, plus the N control. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md). Implementation continues wave by wave following `ORCHESTRATOR_PROMPT.md`.
+> **Status: exit level E4 reached** (2026-10-13), **with a documented failed gate (G-H, see below)**. 17 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, 3 N controls and 2 U controls. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md); every S7/S8 operational detail was fixed before any S7 result (D-047, D-048). No primary verdict changed at E4.
 
-## Current finding (E3)
+## Current finding (E4)
+
+**The added controls and analyses leave every primary verdict unchanged: the F1 rule stays supported under O and rejected under P in each of the three one-factor variants that change the activation clouds (chord metric, PCA-32 fitted on dev, 256-history panels), and H3′ stays supported in all four variants. Under O, the circular coordinate of the trained cylinder models' most persistent H₁ class tracks the latent periodic coordinate (agreement 0.88–0.89, versus 0.06–0.12 at initialisation, 0.10 against the non-periodic axis, 0.21–0.30 on the square, and 0.92 for the exact belief); this is a representational correspondence, not evidence of causal use, and it does not separate history integration from last-symbol structure. Linear probes decode the 32-symbol belief from the activations (test R² 0.82–0.84 under O) no better than from the exact next-symbol distribution (0.83–0.84). A fresh-clone rerun reproduced the retrained run and all shared data bitwise, but the predeclared rerun gate failed on one record missing from the original store.**
+
+How to read it (approved with the sentence at H4, D-050):
+
+1. **O and P differ, and the difference is the point.** Under O the trained models show a reliable cylinder–square H₁ contrast (F1 supported), and the leading H₁ class is the world's periodic circle. Under P they show no reliable contrast (the F1 rule is rejected; the preregistration declared this outcome uninformative, because under P the exact belief does not separate the worlds either). Yet under P the activation geometry still aligns with the 32-symbol Bayesian belief geometry (H3′ supported in every variant). **Learned representations can align with Bayesian belief geometry even when the registered H₁ contrast is not supported.**
+2. **No causal claim.** The project has not shown that topology, or the circle, is causally necessary for prediction. Every result is representational: persistent homology of activation clouds, rank correlations, linear probes, circular coordinates. No intervention was run.
+3. **H4 was rejected, and the R1 limitation remains.** The raw H₁ score rises at step 50 in both worlds, before history use, so the early rise is not cylinder-specific. Under O the last-symbol embedding (R1) carries 0.47–0.89 of the F1 contrast, the activations decode the last-symbol posterior with R² ≈ 0.97, and the circular statistic has no last-symbol baseline. The U control shows that a circle aligned with x can arise from symbol-level transition statistics alone. History integration versus learned symbol-level statistics remains undecided.
+4. **Reproducibility, stated exactly. Gate G-H is FAIL, and that verdict stands (D-049).** In a fresh clone of the repository with an empty artifact store, all 307 artifacts shared with the original store were reproduced **bitwise**, including the 12 checkpoints and 12 activation sets of the retrained run. All six gate verdicts matched. The single failure is one historical timing record (`run_timing` of cylinder-O-1729): the recording step that writes it was added after the original S3 run, so the original store never contained it. The rerun used the same machine and the same environment, and only **one of the 17 training runs** was independently repeated. Store integrity (785/785 checksums), report reproduction (byte-identical) and all test suites passed.
+5. **Probes add no evidence beyond next-token needs.** The activations decode b³² as well as, but no better than, the exact next-symbol distribution F₁ does, so linear decodability alone does not show belief content beyond what the next-token objective requires. The probes are linear; non-linear content is not excluded.
+
+| variant (one factor) | F1 rule under O | F1 rule under P | H3′ under P |
+|---|---|---|---|
+| primary (raw Euclidean, Hellinger, M = 512) | SUPPORTED | REJECTED (uninformative) | SUPPORTED |
+| chord metric | SUPPORTED | REJECTED | SUPPORTED |
+| PCA-32 fitted on dev | SUPPORTED | REJECTED | SUPPORTED |
+| 256 histories per panel | SUPPORTED | REJECTED | SUPPORTED |
+| √JSD for beliefs | unchanged by construction | unchanged by construction | SUPPORTED |
+
+Controls: the 3 N models sit at H(W) = ln 36 within 2e-5 (H0 holds; no leakage); the U models learn the visible-state dynamics (captured_U 0.9985). Gate G-G (all S7 runs and analyses documented) passed. Full tables and figures: [`reports/E4/summary.md`](reports/E4/summary.md); interpretation, limitations and post hoc notes, kept separate: [`reports/E4/interpretation.md`](reports/E4/interpretation.md).
+
+### Earlier exit (E3)
 
 **Under the axis-permuted emission P, the trained models show no reliable cylinder–square H₁ contrast (F1 rule rejected under P: median D 0.021–0.034 below u_r 0.066–0.089, all learning gates passed). The preregistration declared this outcome uninformative, because under P the exact belief itself does not separate the worlds. Their activation geometry still tracks the 32-symbol belief well beyond initialisation and the mixing baselines (H3′ supported: ρ_s rises from 0.09 to 0.70, beating R2/R3 in 48/48 run-panels). Under O, the raw persistent-H₁ score rises at step 50 in both cylinder and square runs, before regret crosses the G_C threshold at step 100. Thus, the preregistered H4 timing rule is rejected. However, the cylinder–square contrast grows mainly between steps 100 and 200, after history use begins; this latter observation is exploratory and does not alter the H4 verdict.**
 
@@ -58,7 +80,7 @@ The rows for b¹ and the emission field are identical under O and P. P permutes 
 
 The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
 
-**Not run yet:** S7 (U and extra N controls, probes, sensitivity, circular coordinates), S8 (clean rerun), interventions (X4-causal) and other extensions. No claim is made about causal use of the structure.
+**Not run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
 
 ## Reproduce (Windows, CPU)
 
@@ -74,7 +96,9 @@ python -m venv .venv; .\.venv\Scripts\python.exe -m pip install --extra-index-ur
 .\.venv\Scripts\topo-pilot.exe stage S5   # 6 training runs under P (~1.5 h) + analysis (G-F for P)
 .\.venv\Scripts\topo-pilot.exe stage X4   # secondary readout-geometry analyses over S4 and S5 (~4 min)
 .\.venv\Scripts\topo-pilot.exe stage S6   # dynamics (H4), checkpoint-order null, layer sweep, V1/V5 curves
-.\.venv\Scripts\topo-pilot.exe report     # regenerates E0, E2 and E3 from MetricRecords
+.\.venv\Scripts\topo-pilot.exe stage S7   # 2 U + 2 N runs (~1.2 h), dev panels, probes, circular coordinates, sensitivity (G-G)
+.\.venv\Scripts\topo-pilot.exe stage S8   # fresh-clone rerun of S0-S3, store integrity, report reproduction, tests (G-H)
+.\.venv\Scripts\topo-pilot.exe report     # regenerates E0, E2, E3 and E4 from MetricRecords
 ```
 
 ## The question, in one paragraph

@@ -2,6 +2,22 @@
 
 Written by the conductor on 2026-10-13, after `summary.md` was generated and read for the first time. Nothing here changes a verdict, threshold, rule or metric. Each item reads numbers that are already in `summary.md` or in the stored S7/S8 records. Anything that would need a new analysis is named as a follow-up; a follow-up needs its own preregistration before it counts as evidence.
 
+## 0. Approved at H4 (D-050)
+
+The owner approved the finding sentence as written. It is quoted verbatim in `README.md` and `README_HE.md`. E4 was accepted as a completed milestone **with a documented G-H failure**. G-H stays FAIL. The acceptance criterion is unchanged, the missing historical record is not backfilled, and the failed check is not read as a pass.
+
+Readings the owner asked to state explicitly (nothing in them changes a rule, threshold, metric or verdict):
+
+1. **O versus P.** Under O, the trained models show a reliable cylinder–square H₁ contrast (F1 supported under every sensitivity variant), and the leading H₁ class of the cylinder models is the world's periodic circle (§3). Under P, there is no reliable contrast (the F1 rule is rejected under every variant). The preregistration declared this outcome uninformative, because under P the exact belief does not separate the worlds by PH either. Yet under P the activation geometry still aligns with the 32-symbol Bayesian belief geometry, well beyond initialisation and the mixing baselines (H3′ supported in every variant). **Learned representations can align with Bayesian belief geometry even when the registered H₁ contrast is not supported.** Belief alignment and an H₁ contrast are different properties: the second is only expected where the belief geometry itself carries the world's hole.
+2. **No causal necessity.** The project has not shown that topology is causally necessary for prediction. All evidence is representational, and no intervention was run.
+3. **H4 was rejected**, and the early rise of the raw H₁ score is not cylinder-specific.
+4. **The R1 last-symbol limitation remains** (§3, §8).
+5. **Reproducibility, exactly** (§6):
+   - all 307 artifacts shared with the original store reproduced bitwise in the fresh clone;
+   - all six gate verdicts matched;
+   - the failure was caused by one missing historical timing record, whose recording step was added after the original S3 run;
+   - the rerun used the same machine and environment, and only one of the 17 training runs was independently repeated.
+
 ## 1. What is decided, and by what
 
 | layer | items | status after E4 |

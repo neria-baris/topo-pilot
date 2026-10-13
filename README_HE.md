@@ -1,6 +1,22 @@
 # מדריך קצר לבעלים
 
-התיקייה הזו היא **חבילת הוראות**. עדיין אין בה קוד. מודל חזק ("מנצח") בונה את הפרויקט לפיה, עם תתי־סוכנים זולים יותר.
+התיקייה הזו התחילה כ**חבילת הוראות**. מודל חזק ("מנצח") בנה לפיה את הפרויקט, עם תתי־סוכנים זולים יותר. הקוד, הנתונים המסוכמים והדוחות נמצאים עכשיו במאגר.
+
+## מצב הפרויקט: נקודת היציאה E4 הושגה (2026-10-13), עם שער שנכשל ומתועד
+
+הממצא המאושר (H4, ‏D-050). זהו הנוסח המחייב, באנגלית, מתוך `README.md`:
+
+> **The added controls and analyses leave every primary verdict unchanged: the F1 rule stays supported under O and rejected under P in each of the three one-factor variants that change the activation clouds (chord metric, PCA-32 fitted on dev, 256-history panels), and H3′ stays supported in all four variants. Under O, the circular coordinate of the trained cylinder models' most persistent H₁ class tracks the latent periodic coordinate (agreement 0.88–0.89, versus 0.06–0.12 at initialisation, 0.10 against the non-periodic axis, 0.21–0.30 on the square, and 0.92 for the exact belief); this is a representational correspondence, not evidence of causal use, and it does not separate history integration from last-symbol structure. Linear probes decode the 32-symbol belief from the activations (test R² 0.82–0.84 under O) no better than from the exact next-symbol distribution (0.83–0.84). A fresh-clone rerun reproduced the retrained run and all shared data bitwise, but the predeclared rerun gate failed on one record missing from the original store.**
+
+בקצרה, בעברית (תרגום חופשי; הנוסח האנגלי הוא המחייב):
+
+1. **ההבדל בין O ל־P.** תחת הפליטה החלקה O, המודלים המאומנים מראים הבדל יציב ב־H₁ בין הגליל לריבוע (F1 נתמך), ומחלקת ה־H₁ הבולטת היא המעגל המחזורי של העולם. תחת P אין הבדל יציב (כלל F1 נדחה, ותוצאה זו הוגדרה מראש כלא־אינפורמטיבית, כי תחת P גם האמונה המדויקת עצמה אינה מבחינה בין העולמות). ובכל זאת, תחת P גאומטריית האקטיבציות מתיישרת עם גאומטריית האמונה הבייסיאנית (H3′ נתמך). כלומר, ייצוגים נלמדים יכולים להתיישר עם גאומטריית האמונה גם כשהניגוד ב־H₁ שנרשם מראש אינו נתמך.
+2. **אין טענה סיבתית.** לא הוכח שהטופולוגיה, או המעגל, נחוצים סיבתית לחיזוי. כל הממצאים ייצוגיים, ולא בוצעו התערבויות.
+3. **H4 נדחתה, ומגבלת R1 נשארת.** ציון ה־H₁ הגולמי עולה בצעד 50 בשני העולמות, לפני השימוש בהיסטוריה. העלייה המוקדמת אינה ייחודית לגליל. ההטמעה של הסמל האחרון (R1) נושאת חלק ניכר מהניגוד תחת O. השאלה אם מקור המבנה הוא שילוב היסטוריה או סטטיסטיקה של מעברים ברמת הסמל נותרה פתוחה.
+4. **שחזור: השער G-H נכשל, וההכרעה נשארת "נכשל" (D-049).** בשכפול נקי של המאגר, עם מאגר תוצרים ריק, שוחזרו כל 307 התוצרים המשותפים באופן זהה ביט־לביט, וכל שש הכרעות השערים התאימו. הכישלון נובע מרשומת תזמון היסטורית אחת (`run_timing` של הריצה cylinder-O-1729): שלב הרישום שכותב אותה נוסף אחרי ריצת S3 המקורית, ולכן היא חסרה במאגר המקורי. השחזור רץ על אותה מכונה ואותה סביבה, ורק אחת מ־17 ריצות האימון שוחזרה באופן עצמאי.
+5. **ה־probes אינם מוסיפים ראיה מעבר לצורכי החיזוי.** האמונה מפוענחת מהאקטיבציות באותה רמה, ולא יותר, מאשר מהתפלגות הסמל הבא המדויקת.
+
+אין כאן טענה על מודלי שפה טבעית גדולים. פרטים מלאים: `README.md`, ‏`reports/E4/summary.md` ו־`reports/E4/interpretation.md`. לא הורצו: התערבויות (X4-causal), ‏X5, ‏X6 וההרחבות X1–X3.
 
 ## איך מתחילים
 

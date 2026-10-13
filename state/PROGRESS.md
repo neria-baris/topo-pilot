@@ -1,44 +1,41 @@
 # Progress (updated 2026-10-13 by conductor, claude-opus-5-5)
-Stage: S5 + X4 (S4, S5) + S6 complete; H4 approved (D-046) | Last exit reached: E3 (tagged, local)
+Stage: S7 + S8 complete; E4 report written; AWAITING H4 | Wave: W5 done | Last exit reached: E3 (tagged, local)
 
 ## Modules
 | module | status | owner tier | notes |
 |---|---|---|---|
-| contracts | accepted (frozen 1.0.0) | A / TW | 95 tests; style-only line wraps since freeze |
+| contracts | accepted (frozen 1.0.0) | A / TW | 95 tests |
 | tools | accepted | C | Makefile + tasks.ps1 |
 | world | accepted | B / TW | 30 tests |
-| process | accepted | B | 42 tests; is_x_periodic from complex (D-043) |
-| topology | accepted | B / TW | 31 + 3 slow (G-A calib) |
+| process | accepted | B | is_x_periodic from complex (D-043) |
+| topology | accepted | B / TW | CircularCoordinates (T12 slow) used in S7 |
 | executors | accepted | B | 27 tests |
-| dataset | accepted | B | 18 tests |
-| oracle | accepted | B / TW | 17 tests, brute force |
-| prediction | accepted (a,b,c) | B | run_probes used in S7 |
-| analysis | accepted (a,b,d) | B / TW | F1 rule, Δgeom (D-031), R0–R3, null, layer sweep; (d) readout helpers (WX4); part (c) W5 |
-| learner | accepted | B | pre-LN transformer, deterministic trainer |
-| activations | accepted | B | hook extraction at p = 32 |
-| experiment | S0–S6, X4 + report E0/E2/E3 | A / TW (X4) | idempotent re-runs (D-032); H4 rule D-034; S6 x4curves + E3 report (D-044); S7–S8 todo |
+| dataset | accepted | B | PanelBuilder reused for dev panels (D-047) |
+| oracle | accepted | B / TW | kernels reused for dev beliefs |
+| prediction | accepted (a,b,c) | B | RidgeProbe; run_probes stub, I/O in experiment (D-047) |
+| analysis | accepted (a–d) | B / TW | part (c): Sensitivity, CircularCorrespondence, N13/N20–N25 |
+| learner | accepted | B | V override for U (V = 144) |
+| activations | accepted | B | dev extraction via ActivationStage |
+| experiment | S0–S8, X4, reports E0–E4 | A / TW | S7 (D-047), S8 + G-H (D-048), X17–X25 |
+| integration | I01, I02, I04, I06 | B | I03, I05 never built (gap, reported) |
 
-All module suites: 459 passed, 5 deselected (slow/integration); integration 2 passed; check_imports clean; ruff clean.
+Suites: module 511 passed (7 deselected), slow 3 passed, integration 4 passed; imports, file sizes, ruff clean.
 
 ## Gates
 | gate | verdict | date | key value |
 |---|---|---|---|
-| G-S0 | pass | 2026-10-13 | contracts green |
-| G-A | pass | 2026-10-13 | S_cyl 0.299, S_sq 0.037, synthetic 20/20 |
-| G-B | pass | 2026-10-13 | oracle brute force; N, U controls exact |
-| G-C | pass | 2026-10-13 | σ = 1.25 first-pass |
-| G-D | pass | 2026-10-13 | no latent fields; learner→sidecar LEAKAGE |
-| G-E | pass | 2026-10-13 | captured 0.986; 22k tok/s, 16 min/run; S4 proj 1.6 h |
-| G-F | pass | 2026-10-13 | S4: 7 runs × 12 checkpoints (84 Checkpoint, 84 ActivationSet); analysis done ~13:15 local |
-| G-F (S5) | pass | 2026-10-13 | P: 6 runs × 12 checkpoints; captured 0.874–0.914 |
+| G-S0, G-A … G-F (S4, S5) | pass | 2026-10-13 | unchanged since E3 |
+| G-G | pass | 2026-10-13 | 4 runs + 5 analysis records documented, no failures |
+| G-H | **FAIL** | 2026-10-13 | rerun_ok only: 307/307 shared artifacts bitwise equal, 1 rerun-only run_timing record (D-049); integrity 785/785, reports 9/9, tests pass |
 
 ## Open issues (≤5)
-- E3 verdicts (D-045/D-046): H3 rule REJECTED under P (uninformative by design); H4 REJECTED (raw S rises at step 50 in both worlds; regret < G_C at 100); H3′ SUPPORTED under P
-- R1 limitation stands: history integration vs learned symbol-level transition statistics undecided (README caveat 3; reports/E3/exploratory.md)
-- No interventions: V3/V4 and H3′ are representational, not causal
-- Extensions suggested by review (horizons, density, curvature, optimisation, orientability, sheaves) deferred to research planning after E3 (D-040)
+- H4 pending: owner to approve (or revise) the proposed E4 finding sentence; README and tag E4 untouched
+- G-H failed on a provenance gap (main store lacks the cylinder-O-1729 run_timing record, code added in D-032 after the S3 run); owner decides whether E4 may be claimed with it
+- R1 limitation stands; circular statistic has no last-symbol baseline (reports/E4/interpretation.md §3)
+- Probes: activations decode b32 no better than the exact next-symbol distribution F1 (1/6 runs per condition); λ at grid edge under O
+- No interventions: all E4 evidence is representational
 
 ## Next actions (≤5)
-1. STOP: wait for the owner before starting S7, S8, X4-causal, X5, X6 or any extension.
-2. Candidate follow-ups (each needs its own preregistration): contrast-based dynamics rule on a denser early grid; embedding-level control (reports/E3/exploratory.md §9).
-3. Tags E0–E3 are local only; push only on explicit owner instruction.
+1. STOP at H4: present the E4 sentence, verdicts, S7 results, S8 status (reports/E4/summary.md, interpretation.md)
+2. After approval only: E4 sentence + readings into README.md (and README_HE.md), README "not run" list, tag E4 (local)
+3. Do not push; do not start X4-causal, X5, X6 or extensions without a new owner instruction

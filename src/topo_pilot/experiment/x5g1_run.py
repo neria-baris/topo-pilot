@@ -38,16 +38,23 @@ from .x4b2 import ROLES as B2_ROLES
 from .x4b2 import sequence_ids as b2_sequence_ids
 from .x4b2 import stored_sequence_ids, windows
 from .x4b_run import listing_hash
-from .x5g1_controls import RunControls, verify_parents
+from .x5g1_controls import RunControls
 from .x5g1_lineage import ARMS, STREAM, calibration_obs, paired_generators, sample_named
 from .x5g1_lineage import sequence_ids as x5_sequence_ids
 from .x5g1_oracle import bootstrap_means, gate_quantities
+from .x5g1_safety import verify_sources_full
 
 log = logging.getLogger(__name__)
 PROTOCOL = "x5g1-feas-v2"
 PROTOCOL_DOC = "docs/proposals/X5_G1_FEASIBILITY_PROTOCOL_V2.md"
-PARENTS = {"21feee1d8ee5422e": "b6f0746e46d20d20", "e4dafc7b9785c172": "f94340a64769df1c",
-           "3633ac27dab50cf4": "f5b6197c22e3613f"}
+PARENTS_FULL = {
+    "21feee1d8ee5422e": (WorldSpec,
+                         "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f"),
+    "e4dafc7b9785c172": (TransitionSpec,
+                         "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd"),
+    "3633ac27dab50cf4": (EmissionSpec,
+                         "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb"),
+}
 WORLD, T_FLAT, EMIS = "21feee1d8ee5422e", "e4dafc7b9785c172", "3633ac27dab50cf4"
 CAP_S, CUMULATIVE_CAP_S = 3600.0, 21600.0
 
@@ -106,9 +113,9 @@ def body(res: dict, ctl: RunControls, repo: Path, main_root: Path, out_root: Pat
     rw = ArtifactStore(ReadThroughBackend(LocalFSBackend(main_root), LocalFSBackend(out_root /
                                                                                   "store")),
                        producer_version=producer_version(repo))
-    bad = verify_parents(main, PARENTS)
+    bad = verify_sources_full(main, PARENTS_FULL)
     if bad:
-        raise GateFailed("integrity: " + "; ".join(bad))
+        raise GateFailed("integrity before: " + "; ".join(bad))
     world = main.load(WorldSpec, WORLD, consumer="experiment")
     flat = main.load(TransitionSpec, T_FLAT, consumer="experiment")
     emis = main.load(EmissionSpec, EMIS, consumer="experiment")
@@ -199,6 +206,9 @@ def body(res: dict, ctl: RunControls, repo: Path, main_root: Path, out_root: Pat
     res["listing_after"] = listing_hash(main_root)
     if res["listing_after"] != res["listing_before"]:
         raise GateFailed("main store listing changed")
+    bad = verify_sources_full(main, PARENTS_FULL)
+    if bad:
+        raise GateFailed("integrity after: " + "; ".join(bad))
 
 
 def _paired(kl: dict, g) -> list[float]:

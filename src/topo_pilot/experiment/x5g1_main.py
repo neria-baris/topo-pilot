@@ -31,6 +31,7 @@ from .x4b_run import _sha256, peak_memory_bytes
 from .x5g1_controls import BudgetExceeded, RunControls, StopRequested
 from .x5g1_lineage import ARMS
 from .x5g1_run import CAP_S, CUMULATIVE_CAP_S, PROTOCOL, PROTOCOL_DOC, GateFailed, body
+from .x5g1_safety import ensure_new_output_dir, guarded_export
 
 log = logging.getLogger(__name__)
 
@@ -51,6 +52,7 @@ def run_gate(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox:
     """Run once; the ledger entry is written by ``RunControls`` whatever happens."""
     res: dict = {"protocol": PROTOCOL, "arms": {}, "global_failed": [], "global_inconclusive": []}
     out_root.mkdir(parents=True, exist_ok=True)
+    ensure_new_output_dir(tables)  # refuse before any computation if a version exists
     ctl = RunControls(out_root / "cpu_ledger.json", CAP_S, mailbox / "STOP", "0006",
                       CUMULATIVE_CAP_S)
     with ctl:
@@ -73,7 +75,6 @@ def run_gate(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox:
 
 def _export(repo: Path, main_root: Path, out_root: Path, tables: Path, res: dict,
             ctl: RunControls) -> None:
-    tables.mkdir(parents=True, exist_ok=True)
     meta = {"protocol": PROTOCOL, "protocol_doc_sha256": _sha256(repo / PROTOCOL_DOC),
             "producer_version": producer_version(repo), "python": sys.executable,
             "topo_pilot_file": __import__("topo_pilot").__file__,
@@ -111,11 +112,16 @@ def _export(repo: Path, main_root: Path, out_root: Path, tables: Path, res: dict
     files = {"verdict.json": {k: res.get(k) for k in ("protocol", "verdict", "reason",
                                                        "global_failed", "global_inconclusive")},
              "result.json": res, "run.json": meta}
-    for name, obj in files.items():
+    def write(name: str, obj) -> None:
         (tables / name).write_text(json.dumps(_jsonable(obj), indent=1, default=str),
                                    encoding="utf-8")
-    manifest = {f.name: _sha256(f) for f in sorted(tables.iterdir()) if f.name != "MANIFEST.json"}
-    (tables / "MANIFEST.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
+
+    def manifest() -> None:
+        sums = {f.name: _sha256(f) for f in sorted(tables.iterdir()) if f.name != "MANIFEST.json"}
+        (tables / "MANIFEST.json").write_text(json.dumps(sums, indent=1), encoding="utf-8")
+
+    steps = [(n, (lambda n=n, o=o: write(n, o))) for n, o in files.items()]
+    guarded_export(ctl, steps + [("manifest", manifest)], tables / "EXPORT_STATUS.json")
 
 
 def main(argv: list[str] | None = None) -> int:

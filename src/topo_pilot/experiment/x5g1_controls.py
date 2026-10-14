@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from pathlib import Path
 
@@ -17,12 +18,18 @@ class BudgetExceeded(RuntimeError):
     """The per-run or cumulative CPU cap was reached."""
 
 
+class LedgerCorrupt(RuntimeError):
+    """The existing ledger cannot be parsed; it is left untouched."""
+
+
 class RunControls:
     """Guard before/after operations and always persist a ledger entry on exit.
 
-    The ledger ``{"entries": [...], "cumulative_cpu_s": float}`` is appended, never reset; the
-    exit status is ``ok``, ``stopped``, ``budget`` or ``error:<ExceptionName>``; exceptions are
-    never suppressed.
+    The ledger ``{"entries": [...], "cumulative_cpu_s": float}`` is appended atomically (temp file
+    plus ``os.replace``), never reset; the exit status is ``ok``, ``stopped``, ``budget`` or
+    ``error:<ExceptionName>`` and ``cause`` holds the exception text; exceptions are never
+    suppressed. ``try/finally`` cannot record CPU of a process killed abruptly (task kill, power
+    loss); such costs are absent from the ledger and must be reported as unknown.
     """
 
     def __init__(self, ledger_path: Path, cap_s: float, stop_path: Path, job: str,
@@ -35,9 +42,15 @@ class RunControls:
         self.t0 = time.process_time()
 
     def _read(self) -> dict:
-        if self.ledger_path.exists():
-            return json.loads(self.ledger_path.read_text(encoding="utf-8"))
-        return {"entries": [], "cumulative_cpu_s": 0.0}
+        if not self.ledger_path.exists():
+            return {"entries": [], "cumulative_cpu_s": 0.0}
+        try:
+            data = json.loads(self.ledger_path.read_text(encoding="utf-8"))
+            float(data["cumulative_cpu_s"])
+            list(data["entries"])
+        except (ValueError, KeyError, TypeError) as exc:
+            raise LedgerCorrupt(f"{self.ledger_path}: {exc}") from exc
+        return data
 
     def cpu(self) -> float:
         return time.process_time() - self.t0
@@ -61,10 +74,14 @@ class RunControls:
         cpu = self.cpu()
         ledger["entries"].append({"job": self.job, "cpu_s": round(cpu, 3), "status": status,
                                   "utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-                                  "outcome": self.outcome, "steps": self.steps})
+                                  "outcome": self.outcome,
+                                  "cause": None if exc_type is None else
+                                  f"{exc_type.__name__}: {exc}", "steps": self.steps})
         ledger["cumulative_cpu_s"] = round(float(ledger["cumulative_cpu_s"]) + cpu, 3)
         self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
-        self.ledger_path.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+        tmp = self.ledger_path.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+        os.replace(tmp, self.ledger_path)
         return False
 
 

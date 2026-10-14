@@ -329,3 +329,31 @@ All fixtures use tiny models, N4/V3 processes and temporary stores.
   - malformed-ledger preservation (existing `LedgerCorrupt`);
   - resource caps, with `None` failing closed;
   - manifest hashes.
+
+## 9. Clarifications after implementation (additive, job 0009)
+
+These were raised by the independent test writers. None of them changed a frozen rule.
+
+### Endpoint
+
+* **Guard label.** `{start}` in the guard string is the 0-based index of the batch's first draw. A partial last batch is allowed.
+* **`quantile_inverted_cdf`.** It applies a 1e-9 tolerance. It can differ from numpy only when q·n lies within 1e-9 above an integer. The study values (n = 2000, q = 0.025 and 0.975) are exact.
+* **`collisions` "internal" count.** It is total minus unique.
+
+### Runtime
+
+* **`StudyControls` keyword arguments.** It also takes `sleep=None` and `poll_s=45.0`, passed to `hold_while_needed`.
+* **`hold_while_needed` sleep.** `sleep=None` resolves to `time.sleep` at call time.
+* **Malformed controls.** A JSON file that is not an object, or that has a missing or null `command` or `mode`, is malformed and fails closed (STOP). Commands are case-sensitive.
+
+### Training composition
+
+* **`train_one` keyword arguments.** It also takes `reserve_s=0.0` (the study evaluation reserve) and `est=EST`.
+* **Boundary calls.** `controls.boundary` is called once before the model starts, then before and after every checkpoint write.
+* **An outcome is recorded once the lock is taken.** A STOP or budget stop at the start boundary therefore records an INCOMPLETE outcome. That model's single attempt is consumed, with no retry. A start refused by `RunLocked`, before the lock is taken, records nothing.
+* **Directories.** `record_outcome` creates the parent directories.
+
+### Stages
+
+* **Pool parents.** Pool ObservationSets have parents [T_arm, E].
+* **Dev-analysis requirements.** Dev-analysis treats a pair as failed (`None`) unless both models are COMPLETE and their recorded checkpoint steps equal the grid.

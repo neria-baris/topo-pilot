@@ -1,4 +1,4 @@
-"""Per-row numerical certificate (ERROR_BOUND.md v2.1; API.md error_bound.py).
+"""Per-row numerical certificate (ERROR_BOUND.md v2.2; API.md error_bound.py, spec v2.4).
 
 The float pipeline is compared with an independent high-precision reference: the job-0014
 `independent_reference.decimal_suffix_posterior`, reused UNCHANGED. A proven reference envelope
@@ -9,6 +9,7 @@ model.
 from __future__ import annotations
 
 import decimal
+import hashlib
 import math
 import sys
 from decimal import Decimal
@@ -20,7 +21,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests" / "oracle_profile"))
 
 import independent_reference  # noqa: E402
-from errors import Invalid, require_scoring  # noqa: E402
+from errors import CacheMiss, Invalid, require_scoring  # noqa: E402
 
 TAYLOR_N = 48
 X_MAX = Fraction(6284, 1000)
@@ -68,19 +69,41 @@ def _factorial_fraction(x: Fraction, n: int) -> Fraction:
     return x**n / math.factorial(n)
 
 
+def _series_bound(first: int, n: int) -> Fraction:
+    """Exact upper bound of the COMPLETE positive series sum_k X^(2k+first)/(2k+first)!.
+
+    Partial sum over k <= n, plus the complete tail beyond n bounded geometrically by
+    t_{n+1}/(1 - r). Here r = X^2/((2n+3+first)(2n+4+first)) bounds every later ratio
+    t_{k+1}/t_k, because those ratios decrease in k; r < 1 is required.
+    """
+    partial = sum(_factorial_fraction(X_MAX, 2 * k + first) for k in range(n + 1))
+    first_tail = _factorial_fraction(X_MAX, 2 * n + 2 + first)
+    r = X_MAX**2 / ((2 * n + 3 + first) * (2 * n + 4 + first))
+    if not r < 1:
+        raise Invalid("Taylor tail ratio not below 1")
+    return partial + first_tail / (1 - r)
+
+
 def _verify_taylor_constants() -> tuple[Fraction, Fraction]:
+    """Exact verification (ERROR_BOUND.md v2.2 section 8).
+
+    Alternating remainder: beyond N the term magnitudes decrease (ratio < 1), so by Leibniz the
+    neglected tail is bounded by its first term T_cos / T_sin. Rounding terms use
+    sum_{k<=N} |t_k| <= the complete positive even (cosh) / odd (sinh) series <= A.
+    """
     n = TAYLOR_N
     tail_cos = _factorial_fraction(X_MAX, 2 * n + 2)
     tail_sin = _factorial_fraction(X_MAX, 2 * n + 3)
     ratio_cos = X_MAX**2 / ((2 * n + 3) * (2 * n + 4))
     ratio_sin = X_MAX**2 / ((2 * n + 4) * (2 * n + 5))
-    partial = sum(_factorial_fraction(X_MAX, k) for k in range(2 * n + 4))
+    even, odd = _series_bound(0, n), _series_bound(1, n)
     if not (
         tail_cos < TAIL_LIMIT
         and tail_sin < TAIL_LIMIT
         and ratio_cos < 1
         and ratio_sin < 1
-        and partial + tail_cos <= 2 * TERM_SUM_BOUND
+        and even <= TERM_SUM_BOUND
+        and odd <= TERM_SUM_BOUND
     ):
         raise Invalid("Taylor constants fail their exact verification")
     return tail_cos, tail_sin
@@ -174,6 +197,9 @@ def moment_envelope(beta, S) -> Fraction:
 
 
 def _reference_posterior(T, E, pi, suffix) -> list[Decimal]:
+    """The nested reference context (its own localcontext) INHERITS these traps, so any
+    underflow/subnormal/overflow inside it raises. Its flags do NOT propagate back; the flag
+    check below covers only operations in this outer context."""
     ctx = trapping_context(REF_DIGITS)
     with decimal.localcontext(ctx):
         try:
@@ -186,18 +212,47 @@ def _reference_posterior(T, E, pi, suffix) -> list[Decimal]:
     return post
 
 
-def reference_moments(T, E, pi, coords, canonical32, Ks=(4, 32), cache=None) -> list[dict]:
-    """Per row {K: (Mx, My)} Decimal moments with exact features (cached by row bytes)."""
-    feats = exact_features(coords)
+def process_digest(T, E, pi, coords) -> str:
+    """sha256 binding of the exact process and feature inputs (dtype, shape, C-order bytes)."""
+    h = hashlib.sha256()
+    for name, arr in (("T", T), ("E", E), ("pi", pi), ("coords", coords)):
+        a = np.ascontiguousarray(np.asarray(arr, dtype=np.float64))
+        h.update(f"{name}:{a.dtype.str}:{list(a.shape)}\n".encode())
+        h.update(a.tobytes())
+    return h.hexdigest()
+
+
+def _checked_histories(canonical32, n_symbols: int) -> np.ndarray:
     tok = np.asarray(canonical32)
     if tok.ndim != 2 or tok.shape[1] != 32:
         raise Invalid("canonical histories must be [n, 32]")
+    if tok.dtype.kind not in "iu":
+        raise Invalid("canonical histories must have an integer dtype")
+    if tok.size and (tok.min() < 0 or tok.max() >= n_symbols):
+        raise Invalid("canonical history symbol outside 0..V-1")
+    return tok.astype(np.int64)
+
+
+def reference_moments(
+    T, E, pi, coords, canonical32, Ks=(4, 32), cache=None, cache_only=False
+) -> list[dict]:
+    """Per row {K: (Mx, My)} Decimal moments with exact features.
+
+    Cache key = (process digest, K, int64 history bytes); histories are validated before any
+    conversion, so reuse with another process or a wrapped/truncated history is impossible.
+    cache_only: a missing key raises Invalid BEFORE any reference computation.
+    """
+    feats = exact_features(coords)
+    tok = _checked_histories(canonical32, np.asarray(E).shape[1])
+    digest = process_digest(T, E, pi, coords)
     cache = {} if cache is None else cache
     out = []
     for row in tok:
         per = {}
         for K in Ks:
-            key = (int(K), row.astype(np.uint8).tobytes())
+            key = (digest, int(K), row.tobytes())
+            if key not in cache and cache_only:
+                raise CacheMiss("reference cache miss")
             if key not in cache:
                 post = _reference_posterior(T, E, pi, row[32 - int(K) :])
                 with decimal.localcontext(trapping_context(FEATURE_DIGITS)):
@@ -229,26 +284,41 @@ def _deny_scoring(split, scoring_release):
         require_scoring(scoring_release)
 
 
-def _moment_gap(m_hat_row, ref) -> float:
+MOMENT_TOL_EXACT = Fraction(1, 10**10)
+
+
+def _moment_gap(m_hat_row, ref) -> Fraction:
+    """Exact rational gap |m_hat - M_ref| (compared exactly; floats only for reporting)."""
     return max(abs(Fraction(float(m_hat_row[j])) - Fraction(ref[j])) for j in (0, 1))
 
 
 def reference_check_rows(
-    T, E, pi, coords, canonical32, m_hat: dict, Ks, split, scoring_release=None, cache=None
+    T,
+    E,
+    pi,
+    coords,
+    canonical32,
+    m_hat: dict,
+    Ks,
+    split,
+    scoring_release=None,
+    cache=None,
+    cache_only=False,
 ) -> dict:
     """Early gate: every row and K in Ks, |m_hat - M_ref| <= 1e-10 (no phase needed)."""
     _deny_scoring(split, scoring_release)
-    refs = reference_moments(T, E, pi, coords, canonical32, tuple(Ks), cache)
+    refs = reference_moments(T, E, pi, coords, canonical32, tuple(Ks), cache, cache_only)
     worst = {}
     for K in Ks:
         mh = np.asarray(m_hat[K], dtype=np.float64)
         if mh.shape != (len(refs), 2) or not np.isfinite(mh).all():
             raise Invalid(f"m_hat[{K}] must be finite [n, 2]")
-        worst[int(K)] = float(max(_moment_gap(mh[i], refs[i][int(K)]) for i in range(len(refs))))
-    ok = all(v <= MOMENT_TOL for v in worst.values())
+        worst[int(K)] = max(_moment_gap(mh[i], refs[i][int(K)]) for i in range(len(refs)))
+    ok = all(v <= MOMENT_TOL_EXACT for v in worst.values())
     return {
         "status": "PASS" if ok else "FAIL_TECHNICAL",
-        "moment_check_max": worst,
+        "moment_check_max": {K: float(v) for K, v in worst.items()},
+        "moment_check_max_exact": {K: str(v) for K, v in worst.items()},
         "rows": len(refs),
     }
 
@@ -267,6 +337,7 @@ def certify_rows(
     scoring_release=None,
     cap=1e-4,
     cache=None,
+    cache_only=False,
 ) -> dict:
     """Per-row score certificate; CERTIFIED / INCONCLUSIVE / FAIL_TECHNICAL (ERROR_BOUND §7)."""
     _deny_scoring(split, scoring_release)
@@ -292,6 +363,7 @@ def certify_rows(
             split,
             scoring_release,
             cache,
+            cache_only,
         )
         if check["status"] != "PASS":
             return dict(
@@ -301,13 +373,15 @@ def certify_rows(
                 moment_check_max_by_K=check["moment_check_max"],
                 reason="moment check above 1e-10",
             )
-        refs = reference_moments(T, E, pi, coords, canonical32, (4, 32), cache)
+        refs = reference_moments(T, E, pi, coords, canonical32, (4, 32), cache, cache_only)
         S = int(np.asarray(pi).shape[0])
         eps = {K: moment_envelope(posterior_envelope(K, S), S) for K in (4, 32)}
         bounds = [
             row_bound(x_hat[i], phi[i], refs[i][4], refs[i][32], eps[4], eps[32])["B"]
             for i in range(n)
         ]
+    except CacheMiss:
+        raise
     except Invalid as exc:
         return dict(base, status="FAIL_TECHNICAL", reason=str(exc))
     worst = max(bounds) if bounds else Fraction(0)

@@ -23,7 +23,9 @@ import release  # noqa: E402
 
 
 def _ledger(tmp_path, entries):
-    (tmp_path / "cpu_ledger.json").write_text(json.dumps({"entries": entries}), encoding="utf-8")
+    caps = meter_bind.CONTRACT["resources"]["stage_caps_s"]  # v2.4: ledgers carry cap metadata
+    ledger = {"entries": entries, "stage_caps_s": caps}
+    (tmp_path / "cpu_ledger.json").write_text(json.dumps(ledger), encoding="utf-8")
 
 
 @pytest.fixture()
@@ -177,6 +179,12 @@ SIDE_EFFECT_FREE = (
     "meter_bind",
     "freeze_bind",
     "run_tests_bind",
+    "process_law",
+    "reference_cache",
+    "stage_records",
+    "precision_stage",
+    "op_guard",
+    "env_identity",
 )
 
 

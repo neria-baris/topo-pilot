@@ -24,7 +24,7 @@ for extra in (TOOL, REPO / "tools" / "x4_oracle_profile", REPO / "tests" / "orac
 import oracle_profile  # noqa: E402
 import runner  # noqa: E402
 from adapter import E4Manifest  # noqa: E402
-from errors import Unresolved  # noqa: E402
+from stage_records import StageRefused  # noqa: E402
 
 from topo_pilot.contracts import (  # noqa: E402
     ActivationSet,
@@ -174,7 +174,7 @@ def test_frozen_thresholds_stop_inconclusive_at_coverage(tmp_path):
     )
     first_bad = next(s for _, s in _gates(tmp_path) if s != "PASS")
     assert first_bad == "INCONCLUSIVE"
-    with pytest.raises(Unresolved):
+    with pytest.raises(StageRefused):
         runner.stage_precision(ctx)
     assert runner.stage_export(ctx)["overall"] == "INCONCLUSIVE"
 
@@ -185,8 +185,9 @@ def test_relaxed_thresholds_reach_precision_and_export(tmp_path):
     oracle = runner.stage_oracle(ctx)
     assert all(
         v["four_lowest"]["status"] == "PASS" and v["all_rows"]["status"] == "PASS"
-        for v in oracle.values()
+        for v in oracle["rows"].values()
     )
+    assert oracle["process_law"]["status"] == "UNAVAILABLE"  # 12-state ring, not the lattice
     charts = runner.stage_charts(ctx)
     assert "stopped_at" not in charts, charts
     for model in MODELS:
@@ -206,9 +207,11 @@ def test_relaxed_thresholds_reach_precision_and_export(tmp_path):
     ).exists()
 
 
-def test_join_mismatch_stops_inconclusive(tmp_path):
+def test_join_mismatch_fails_technical(tmp_path):
+    """Spec v2.4 item 1: a technical identity mismatch is FAIL_TECHNICAL (overall FAIL)."""
     ctx = _context(tmp_path, relaxed=True)
     ctx.process["perm"][2718] = PERMS[3141]
     with pytest.raises(Exception):
         runner.stage_identity(ctx)
-    assert _gates(tmp_path)[0][1] in ("INCONCLUSIVE", "FAIL_TECHNICAL")
+    assert _gates(tmp_path)[0][1] == "FAIL_TECHNICAL"
+    assert runner.stage_export(ctx)["overall"] == "FAIL"

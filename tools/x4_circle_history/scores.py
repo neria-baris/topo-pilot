@@ -143,3 +143,12 @@ def angular_instability(m, bound) -> np.ndarray:
         raise Invalid("instability bound must be finite and nonnegative")
     norm = _magnitude(m)
     return (norm > 0.0) & (norm <= bound)
+
+
+CONTROL_NAMES = ("m1_unit", "m4_unit", "sha256_last4")
+
+
+def control_scores(m1, m4, m32, canonical32) -> dict:
+    """{name: u_c . (m32 - m4)} for the three fixed suffix-only controls (spec v2.4 item 10)."""
+    vectors = control_vectors(m1, m4, canonical32)
+    return {name: scores(vectors[name], m32, m4) for name in CONTROL_NAMES}

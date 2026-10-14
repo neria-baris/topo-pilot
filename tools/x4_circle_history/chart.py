@@ -117,7 +117,7 @@ def fit_chart(X, landmark_ids, cfg, guard=None, timed=None) -> Chart:
     X, ids = _check_landmarks(X, landmark_ids)
     timed = timed or (lambda label, fn: fn())
     p, n = int(cfg["field"]), X.shape[0]
-    D = cdist(X, X)
+    D = timed("distance", lambda: cdist(X, X))
     result = timed(
         "ph", lambda: ripser.ripser(D, maxdim=1, coeff=p, distance_matrix=True, do_cocycles=True)
     )
@@ -125,7 +125,7 @@ def fit_chart(X, landmark_ids, cfg, guard=None, timed=None) -> Chart:
     k = select_h1_bar(dgm)
     birth, death = float(dgm[k, 0]), float(dgm[k, 1])
     radius = (birth + death) / 2.0
-    edges = edge_list(D, radius)
+    edges = timed("edges", lambda: edge_list(D, radius))
     a = cocycle_to_edges(result["cocycles"][1][k], edges, p)
     if guard is not None:
         guard()
@@ -186,14 +186,15 @@ def apply_gauge(phi, gauge: Gauge) -> np.ndarray:
     return (gauge.sign * np.asarray(phi, dtype=np.float64) - gauge.shift) % TWO_PI
 
 
-def extend(chart: Chart, gauge: Gauge, Q, cfg) -> Extension:
-    """Out-of-sample phase by the fixed 8-nearest Gaussian rule (API.md extend)."""
+def extend(chart: Chart, gauge: Gauge, Q, cfg, timed=None) -> Extension:
+    """Out-of-sample phase by the fixed 8-nearest Gaussian rule (API.md extend; v2.4 timed)."""
+    timed = timed or (lambda label, fn: fn())
     Q = np.asarray(Q, dtype=np.float64)
     if Q.ndim != 2 or Q.shape[1] != chart.landmarks.shape[1] or not np.isfinite(Q).all():
         raise Invalid("queries must be finite [m, d] with the landmark dimension")
     k = int(cfg["extension_k"])
     phi_g = apply_gauge(chart.phi, gauge)
-    dist = cdist(Q, chart.landmarks)
+    dist = timed("extension_distance", lambda: cdist(Q, chart.landmarks))
     order = np.argsort(dist, axis=1, kind="stable")[:, :k]
     nearest = np.take_along_axis(dist, order, axis=1)
     log_w = -0.5 * (nearest / chart.sigma) ** 2

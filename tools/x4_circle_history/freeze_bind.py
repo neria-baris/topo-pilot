@@ -3,13 +3,21 @@
 Reuses the hashing helpers of the job-0014 freeze.py UNCHANGED (sha, tree, git). That module's
 own snapshot and freeze functions are job-0014-specific, so this module is the job-0016 binding.
 
+Spec v2.4 (items 11-12): frozen_files() also binds the imported project dependency source
+(src/topo_pilot/__init__.py, every file of src/topo_pilot/contracts, dataset/sampler.py); the
+freeze records the numerical implementation identity probed in the venv interpreter
+(env_identity.py); an existing FREEZE.json is archived as a numbered superseded record before
+the new freeze is written (never overwritten).
+
 Usage (through meter_bind.py, base interpreter):
   python -I freeze_bind.py snapshot NAME | compare A B | freeze | verify
 """
 
 from __future__ import annotations
 
+import hashlib
 import json
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -41,6 +49,8 @@ GIT_REFS = {
     "x4_history_feas": ROOT / "topo-pilot-x4-history-feas",
     "circle_k4": REPO,
 }
+VENV_PYTHON = ROOT / "topo-pilot" / ".venv" / "Scripts" / "python.exe"
+PROJECT_DEPENDENCIES = ("src/topo_pilot/__init__.py", "src/topo_pilot/dataset/sampler.py")
 DIST_PREFIXES = ("numpy-", "scipy-", "ripser-", "pytest-", "threadpoolctl-", "matplotlib-")
 
 
@@ -71,8 +81,52 @@ def snapshot() -> dict:
 def frozen_files() -> dict:
     own = sorted(p for p in HERE.iterdir() if p.is_file() and p.suffix in (".py", ".json", ".md"))
     tests = sorted(p for p in TESTS.iterdir() if p.is_file() and p.suffix in (".py", ".md"))
-    paths = [p.relative_to(REPO).as_posix() for p in own + tests] + list(REUSED_0014)
-    return {rel: f14.sha(REPO / rel) for rel in paths}
+    contracts = sorted(
+        p
+        for p in (REPO / "src" / "topo_pilot" / "contracts").rglob("*")
+        if p.is_file() and "__pycache__" not in p.parts
+    )
+    paths = [p.relative_to(REPO).as_posix() for p in own + tests + contracts]
+    paths += list(REUSED_0014) + list(PROJECT_DEPENDENCIES)
+    return {rel: f14.sha(REPO / rel) for rel in sorted(set(paths))}
+
+
+def numerical_identity() -> dict:
+    """env_identity.record() from a fresh venv probe process (metered with this run)."""
+    probe = subprocess.run(
+        [str(VENV_PYTHON), "-I", str(HERE / "env_identity.py")],
+        capture_output=True,
+        text=True,
+        check=False,
+        cwd=str(REPO),
+    )
+    if probe.returncode != 0:
+        raise SystemExit(f"numerical identity probe failed: {probe.stderr[-2000:]}")
+    return json.loads(probe.stdout)
+
+
+def archive_superseded() -> dict | None:
+    """Keep an existing FREEZE.json as freezes/FREEZE_superseded_NN.json (exclusive create)."""
+    current = OUT / "FREEZE.json"
+    if not current.exists():
+        return None
+    data = current.read_bytes()
+    digest = hashlib.sha256(data).hexdigest()
+    folder = OUT / "freezes"
+    folder.mkdir(exist_ok=True)
+    number = 1 + len(list(folder.glob("FREEZE_superseded_*.json")))
+    dest = folder / f"FREEZE_superseded_{number:02d}.json"
+    with dest.open("xb") as handle:
+        handle.write(data)
+    if hashlib.sha256(dest.read_bytes()).hexdigest() != digest:
+        raise SystemExit("superseded freeze archive does not match the original")
+    old = json.loads(data.decode("utf-8"))
+    current.unlink()
+    return {
+        "sha256": digest,
+        "commit": old.get("commit"),
+        "archived_as": dest.relative_to(OUT).as_posix(),
+    }
 
 
 def reused_unchanged() -> dict:
@@ -122,10 +176,11 @@ def freeze() -> dict:
         "reused_0014_unchanged": reuse,
         "contract_sha256": f14.sha(HERE / "CONTRACT.json"),
         "accepted_tests_sha256": f14.sha(OUT / "tests" / "ACCEPTED.json"),
-        "environment": environment(),
+        "environment": dict(environment(), numerical_identity=numerical_identity()),
         "utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "scope": "implementation freeze only; no real payload accessed; no feasibility run",
     }
+    record["supersedes"] = archive_superseded()
     f14.write_new(OUT / "FREEZE.json", record)
     return record
 

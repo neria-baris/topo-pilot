@@ -5,6 +5,11 @@ unchanged job-0014 controls to the released job for the safe-boundary guard. Bui
 read-only artifact store. Loads the process through the unchanged job-0014
 `inputs.load_process`, with its own unchanged config: the WorldSpec, TransitionSpec and three
 EmissionSpecs are identical artifacts.
+
+Spec v2.4: before any store access the frozen project dependency files (contracts subtree,
+dataset/sampler.py) and the numerical implementation identity (env_identity) are verified and
+no unfrozen project module may be loaded; check_loaded_modules repeats the module check at
+stage end. The Context carries the native-operation timed hook (op_guard).
 """
 
 from __future__ import annotations
@@ -47,7 +52,28 @@ def _pin_modules(freeze: dict) -> dict:
         raise RuntimeError("frozen file set changed (file added or removed)")
     if freeze_bind.environment()["dist_info"] != freeze["environment"]["dist_info"]:
         raise RuntimeError("installed numerical dependencies differ from the freeze")
+    import env_identity
+
+    env_identity.import_scientific()
+    unfrozen = env_identity.unfrozen_project_modules(set(freeze["files"]))
+    if unfrozen:
+        raise RuntimeError(f"unfrozen project modules loaded: {unfrozen}")
+    if env_identity.record() != freeze["environment"]["numerical_identity"]:
+        raise RuntimeError("numerical implementation identity differs from the freeze")
     return pinned
+
+
+def check_loaded_modules(ctx) -> None:
+    """Stage-end re-check: no unfrozen project module and no new site-packages distribution."""
+    import env_identity
+    from errors import Invalid
+
+    frozen = ctx.notes["freeze"]
+    unfrozen = env_identity.unfrozen_project_modules(set(frozen["files"]))
+    known = set(frozen["environment"]["numerical_identity"]["distributions"])
+    extra = [d for d in env_identity.loaded_distributions() if d not in known]
+    if unfrozen or extra:
+        raise Invalid(f"unfrozen modules loaded during the stage: {unfrozen} {extra}")
 
 
 def _guard_factory(rel: dict, out: Path):
@@ -77,6 +103,7 @@ def build(rel: dict):
     guard = _guard_factory(rel, out)
     guard()
     import inputs
+    import op_guard
     from adapter import E4Manifest
 
     from topo_pilot.contracts import ArtifactStore
@@ -108,5 +135,6 @@ def build(rel: dict):
         process=process,
         contract=contract,
         guard=guard,
-        notes={"pinned_modules": pinned},
+        timed=op_guard.timed_factory(out, contract["resources"]["native_operation_wall_s"]),
+        notes={"pinned_modules": pinned, "freeze": freeze},
     )

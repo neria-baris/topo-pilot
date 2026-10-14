@@ -106,3 +106,41 @@ def b4_summary(b4_draws, b4_point: dict, models, cfg) -> dict:
     }
     met = all(v["lower"] > cfg["delta"] for v in per.values())
     return {"models": per, "status": "PASS" if met else "INCONCLUSIVE", "criterion_met": met}
+
+
+CONTROL_NAMES = ("m1_unit", "m4_unit", "sha256_last4")
+_CONTROL_Q = {"central95": (0.025, 0.975), "bonferroni": (0.05 / 3, 1.0 - 0.05 / 3)}
+
+
+def control_summary(C: dict, models, seed, draws) -> dict:
+    """Validation control means with joint whole-trajectory resampling (spec v2.4 item 10).
+
+    ONE rng.integers(0, n, size=n) call per draw, shared by every control and model (with
+    seed = sd_seed this is exactly the SD/B4 index stream). Reported only: no status, no gate.
+    """
+    models = list(models)
+    if not models or len(set(models)) != len(models):
+        raise Invalid("models must be a non-empty list without duplicates")
+    if set(C) - set(CONTROL_NAMES) or not C:
+        raise Invalid(f"unknown or missing control names: {sorted(C)}")
+    names = [name for name in CONTROL_NAMES if name in C]
+    series = {name: _arrays(C[name], models) for name in names}
+    n = series[names[0]][0].shape[0]
+    if any(a.shape[0] != n for arrs in series.values() for a in arrs):
+        raise Invalid("control arrays differ in length")
+    rng = np.random.Generator(np.random.PCG64(seed))
+    means = {name: np.empty((int(draws), len(models))) for name in names}
+    for b in range(int(draws)):
+        idx = rng.integers(0, n, size=n)
+        for name in names:
+            for k, a in enumerate(series[name]):
+                means[name][b, k] = np.mean(a[idx])
+    out = {}
+    for name in names:
+        out[name] = {}
+        for k, m in enumerate(models):
+            col = means[name][:, k]
+            out[name][m] = {"point": float(np.mean(series[name][k]))} | {
+                label: [_q(col, lo), _q(col, hi)] for label, (lo, hi) in _CONTROL_Q.items()
+            }
+    return out

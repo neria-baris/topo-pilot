@@ -9,6 +9,10 @@ class Invalid(RuntimeError):
     """Numerical, integrity or implementation defect: the runner reports FAIL_TECHNICAL."""
 
 
+class CacheMiss(Invalid):
+    """cache_only reference lookup missed (spec v2.4): raised, never folded into a status."""
+
+
 class Unresolved(RuntimeError):
     """Valid criterion not met, unsupported, or exhausted: the runner reports INCONCLUSIVE."""
 

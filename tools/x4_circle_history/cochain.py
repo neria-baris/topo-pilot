@@ -138,7 +138,20 @@ def _local_passes(z, edges, n, cfg, over_cap):
 
 
 def integer_lift(a, D1, edges, triangles, n, cfg, guard=None, clock=time.process_time):
-    """Exact integer lift alpha = a - p z of a mod-p cocycle a (API.md integer_lift)."""
+    """Exact integer lift alpha = a - p z of a mod-p cocycle a (API.md integer_lift).
+
+    The CPU timer starts at ENTRY (spec v2.4 item 5); every successful return is preceded,
+    after its final exact checks, by the cap check, including the already-closed branch.
+    """
+    start = clock()
+    cap = float(cfg["lift_cpu_cap_s"])
+
+    def elapsed():
+        return clock() - start
+
+    def over_cap():
+        return elapsed() >= cap
+
     p = int(cfg["field"])
     a = np.asarray(a, dtype=np.int64)
     defect = D1 @ a
@@ -147,6 +160,8 @@ def integer_lift(a, D1, edges, triangles, n, cfg, guard=None, clock=time.process
     if not np.any(defect):
         check_closure(a, edges, triangles)
         check_congruence(a, a, p)
+        if over_cap():
+            raise Unresolved("integer lift CPU cap exceeded before the certificate was accepted")
         return a.copy(), {
             "kind": "centered_exact",
             "solver_calls": 0,
@@ -154,15 +169,7 @@ def integer_lift(a, D1, edges, triangles, n, cfg, guard=None, clock=time.process
             "l1_correction": 0,
         }
     b = defect // p
-    cap = float(cfg["lift_cpu_cap_s"])
-    start, z, calls = clock(), None, []
-
-    def elapsed():
-        return clock() - start
-
-    def over_cap():
-        return elapsed() >= cap
-
+    z, calls = None, []
     for bound in cfg["lift_bounds"]:
         if guard is not None:
             guard()

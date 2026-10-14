@@ -1,4 +1,4 @@
-# x4_circle_history: public API (job 0016, spec v2.1; continues the BLOCKED job-0015 draft)
+# x4_circle_history: public API (job 0016, spec v2.2; continues the BLOCKED job-0015 draft)
 
 Status: written specification, fixed BEFORE production implementation, for independent test
 authors. The machine contract is CONTRACT.json; the numerical bound is ERROR_BOUND.md. Every
@@ -308,6 +308,39 @@ cross_model_join({model: {"sequence_id", "canonical32", "panel"}}) does the foll
 - Returns {"order": {model: index array that sorts that model's rows by ascending sequence_id},
   "sequence_id": the common ascending ids}.
 - There is no unpaired fallback.
+
+## Spec v2.2 clarifications (coordinator code-draft review; normative)
+
+1. **integer_lift CPU cap (aggregate, per chart).** Let elapsed = clock() − start, with start
+   taken when the bounded search begins, and cap = cfg["lift_cpu_cap_s"]. Each condition below
+   raises Unresolved, never PASS:
+   - (a) before each solver call: elapsed ≥ cap;
+   - (b) IMMEDIATELY AFTER each solver call, before its candidate is accepted: elapsed ≥ cap.
+     A candidate that arrives after the cap is rejected.
+   - (c) at every vertex step of the local L1 passes: elapsed ≥ cap;
+   - (d) after the final closure and congruence verification: elapsed ≥ cap.
+
+   Each native call also gets time_limit = min(cap − elapsed, cfg.get("native_operation_wall_s",
+   180)). Tests inject a fake `clock` callable. The search bounds and node limits are unchanged.
+2. **HiGHS threads.** The solver options are pinned explicitly: threads = 1 and parallel = False.
+   scipy forwards them to HiGHS verbatim. If HiGHS rejects or ignores any option, which shows up
+   as a scipy OptimizeWarning during the call, integer_lift raises Invalid (fail closed). The
+   module exposes `cochain.HIGHS_PINNED == {"threads": 1, "parallel": False}`.
+3. **extend normalisation.** The weights are computed as w_j = exp(ℓ_j − max_k ℓ_k), with
+   ℓ_j = −½(d_j/σ)². This is the same normalised weighting as exp(ℓ_j)/Σexp(ℓ_k), without
+   underflow. There is NO denominator floor, so a far query keeps the exact normalised resultant
+   of its 8 neighbours: its phase and |z| equal the near-query formula after subtracting the
+   largest log-weight. A non-finite z raises Invalid. Support semantics are unchanged.
+4. **control_vectors / angular_instability.** Nonzero vectors are normalised scale-first: divide
+   by the maximum absolute component, then by the Euclidean norm of the scaled vector.
+   - EXACT (0.0, 0.0) maps to (1, 0).
+   - Tiny normal or subnormal nonzero vectors give finite unit vectors in the correct direction.
+     For example (5e-324, 0) → (1, 0) and (−5e-324, 5e-324) → (−√½, √½).
+   - angular_instability uses the same stable magnitude. Non-finite input, or a negative or
+     non-finite bound, raises Invalid.
+5. **precision_summary / b4_summary fail closed.** They raise Invalid when models is empty or has
+   duplicates, when a draw matrix is not 2-D with ≥ 1 row and exactly len(models) columns, on
+   non-finite values, or (b4_summary) when the point keys differ from models.
 
 ## Runtime (builder-tested; not part of the independent numerical tests)
 

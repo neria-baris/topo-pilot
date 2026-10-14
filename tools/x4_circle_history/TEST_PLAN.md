@@ -125,6 +125,24 @@ Execution: the conductor runs every test through the job meter. Authors do not e
   - cross_model_join orders rows by sequence_id, and differing sequence sets or digests raise
     JoinError.
 
+## Spec v2.2 additions (both authors; see API.md "Spec v2.2 clarifications")
+
+- **A14 (author A).** integer_lift with an injected fake clock covers four points:
+  - over the cap before the first call raises Unresolved;
+  - a clock that jumps past the cap DURING a solver call raises Unresolved even though the solve
+    succeeds;
+  - a cap reached during the local passes raises Unresolved;
+  - `cochain.HIGHS_PINNED` equals {"threads": 1, "parallel": False}.
+
+  No 30-second real-time tests.
+- **A15 (author A).** extend on a far query whose raw weights would all underflow: the result
+  is finite and equals the exactly normalised weights computed independently in the test by
+  log-sum-exp. It is unsupported by the radius rule. No floor-based value.
+- **B8 (author B).** control_vectors and angular_instability on tiny normal and subnormal
+  nonzero vectors and on an exact zero. Invalid for a non-finite input or a bad bound.
+- **B9 (author B).** precision_summary and b4_summary raise Invalid for empty models, duplicate
+  models, wrong draw shapes, non-finite draws and mismatched point keys.
+
 ## Builder tests (implementer; labelled non-independent): `tests/circle_history/test_builder_*.py`
 
 - meter_bind: job and task binding, stage ceilings, and that the export cap of 80 s is

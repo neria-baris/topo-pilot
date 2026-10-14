@@ -80,3 +80,33 @@ def guarded_export(ctl: RunControls, steps: list[tuple[str, Callable[[], None]]]
   - no `.tmp` file remains;
   - a corrupt ledger raises LedgerCorrupt and keeps its bytes unchanged.
 * **Immutable outputs:** a non-empty directory → OutputExists, with its content unchanged; a new or empty directory is accepted.
+
+## 4. Job 0008 additions (export integration and ledger validation)
+
+### 4.1 `x5g1_main._export(repo, main_root, out_root, tables, res, ctl)`
+
+This is the real gate-driver export path. Inputs:
+
+* `res` holds:
+  - "provenance": a list of {"artifact_id": …};
+  - "T_a020_id";
+  - "arms": {arm: {"obs_id", "GC", "GC_stationary", "two_token_regret", "context"}} for arms a0 and a020;
+  - "verdict", "reason", "global_failed" and "global_inconclusive".
+* `ctl` is an entered `RunControls`.
+
+Behaviour:
+
+* The parents of the MetricRecords are every ID in provenance, plus T_a020_id and the obs_ids. They must exist in the main store (a `LocalFSBackend` at `main_root`).
+* **The only scientific store save** (one MetricRecords into `out_root/store`) is the **first guarded export step**, named "metric_records". It runs only if IDs exist and `global_failed` is empty. The table writes follow (verdict.json, result.json, run.json), then the manifest, all via `guarded_export` with status file `tables/EXPORT_STATUS.json`.
+* **STOP present before `_export`:** StopRequested propagates, **no `ArtifactStore.save` call happens**, no MetricRecords directory is created, and the status file shows completed_steps [].
+* **STOP created during the save step:** that save completes, the remaining steps are skipped, and the status file shows completed_steps ["metric_records"].
+* **Normal run:** exactly one save; run.json contains "metric_records_id"; MANIFEST.json lists the written files.
+* **`global_failed` non-empty:** no save, and the tables are still written.
+
+### 4.2 `RunControls` ledger validation
+
+* LedgerCorrupt is raised at construction, with the file left byte-identical, when:
+  - `cumulative_cpu_s` is not a finite, non-negative number (NaN, ±inf, negative, a bool or a string);
+  - `entries` is not a list (for example a string or a dict);
+  - any entry is not an object.
+* A valid ledger whose run raises inside the `with` block keeps all prior entries, and its cumulative CPU is ≥ the prior value.

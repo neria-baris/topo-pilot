@@ -176,6 +176,39 @@ Loads the JSON. `ConfigInvalid` as above.
 | roots | the three read roots, the study root, the ledger and the mailbox (absolute) |
 | lineage | `NAMESPACE`, `CODES` and the stream tail ("cylinder", "overlap", "1.25") |
 
+### `ProductionSpec` fields (exact)
+
+| Field | Type |
+|---|---|
+| `protocol` | str |
+| `protocol_doc` | str |
+| `protocol_doc_sha256` | str |
+| `read_roots` | tuple[str, ...] |
+| `study_root` | str |
+| `ledger_path` | str |
+| `mailbox` | str |
+| `sources` | dict, shaped like the config |
+| `source_producers` | dict |
+| `stored_checkpoint` | tuple[str, str] |
+| `stored_model_config` | dict |
+| `stored_train_config` | dict, the stored E3 dict |
+| `masters` | tuple |
+| `sizes` | dict |
+| `steps` | int |
+| `grid` | tuple[int, ...] |
+| `gc` | dict |
+| `threads` | int |
+| `bootstrap_draws` | int |
+| `cap_s` | float |
+| `cumulative_cap_s` | float |
+| `check_stored_ids` | bool |
+| `env` | dict |
+| `lineage` | dict: `{"namespace": str, "codes": dict, "stream_tail": tuple}` |
+
+**Tests can build a synthetic spec** with `dataclasses.replace(PRODUCTION, ...)`, pointing it at temporary stores and a temporary repo that holds a protocol document.
+
+The validator reads the stored checkpoint's `meta.config["model_config"]` and `meta.config["train_config"]`. Any Checkpoint artifact saved with such a config can serve as the stored checkpoint in a test.
+
 ### `validate_config(cfg, repo, spec=PRODUCTION) -> dict`
 
 * **Read-only.** No file or directory is created.

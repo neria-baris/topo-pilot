@@ -165,8 +165,9 @@ def test_fixture_arithmetic():
 
 # ----------------------------------------------------------------------------------------- A2
 def test_closed_cocycle_is_centered_exact():
-    # v2.2: the cap clock starts with the bounded search, which the exact path never enters.
-    alpha, info = lift(EXACT_K4, K4_EDGES, K4_TRIS, 4, clock=SteppingClock(1000.0))
+    # v2.4 item 5 supersedes v2.2 here: the exact branch also checks the cap before returning
+    # (tested in test_cochain_chart_v24.py), so this clock stays below the cap.
+    alpha, info = lift(EXACT_K4, K4_EDGES, K4_TRIS, 4, clock=lambda: 0.0)
     assert np.asarray(alpha).dtype == np.int64 and np.asarray(alpha).tolist() == EXACT_K4
     assert info["kind"] == "centered_exact"
     assert info["solver_calls"] == 0 and info["l1_correction"] == 0
@@ -207,7 +208,7 @@ def test_wheel_disk_lift_certificate():
 def test_not_cocycle_mod_p_is_invalid_before_any_cap():
     with pytest.raises(errors.Invalid):
         lift([1, 0, 0, 0, 0, 0], K4_EDGES, K4_TRIS, 4)  # sum on (0,1,2) is 1
-    with pytest.raises(errors.Invalid):  # step 2 precedes the bounded search and its clock
+    with pytest.raises(errors.Invalid):  # step 2 precedes every cap check (v2.2 and v2.4)
         lift([20, -7, 21], TRI_EDGES, TRI, 3, clock=SteppingClock(1000.0))
 
 

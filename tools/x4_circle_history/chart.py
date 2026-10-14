@@ -9,6 +9,7 @@ only; no file I/O and no randomness. fit_chart never receives labels or validati
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -21,10 +22,16 @@ TWO_PI = 2.0 * np.pi
 
 
 def _cmean(values) -> complex:
-    """Complex mean as sum / n: one correctly rounded division per component (numpy's mean
-    multiplies by a rounded reciprocal, which can sit one ulp off an exact boundary)."""
-    values = np.asarray(values)
-    return complex(np.sum(values) / values.size)
+    """Complex mean with each component summed then divided ONCE in IEEE double (correctly
+    rounded): numpy's complex mean and complex/real division both returned 0.30000000000000004
+    for an exact 0.3 boundary (independent test A12)."""
+    values = np.asarray(values, dtype=np.complex128)
+    n = float(values.size)
+    return complex(float(np.sum(values.real)) / n, float(np.sum(values.imag)) / n)
+
+
+def _cabs(z: complex) -> float:
+    return math.hypot(z.real, z.imag)
 
 
 @dataclass(frozen=True)
@@ -214,7 +221,7 @@ def agreement(phi_a, phi_b) -> float:
         or not (np.isfinite(a).all() and np.isfinite(b).all())
     ):
         raise Invalid("agreement needs equal-length finite phase vectors")
-    return min(1.0, max(abs(_cmean(np.exp(1j * (a - s * b)))) for s in (1, -1)))
+    return min(1.0, max(_cabs(_cmean(np.exp(1j * (a - s * b)))) for s in (1, -1)))
 
 
 def phase_bin_counts(phi, bins: int = 12) -> np.ndarray:
@@ -229,7 +236,7 @@ def overall_resultant(phi) -> float:
     phi = np.asarray(phi, dtype=np.float64)
     if not phi.size or not np.isfinite(phi).all():
         raise Invalid("non-finite or empty phase")
-    return float(abs(_cmean(np.exp(1j * phi))))
+    return _cabs(_cmean(np.exp(1j * phi)))
 
 
 def _record(met: bool, value, threshold) -> dict:

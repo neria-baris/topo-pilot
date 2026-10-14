@@ -27,6 +27,8 @@ The tests target spec v2.4 (commit 65792a0; ERROR_BOUND.md v2.2). Writing starte
 
   No earlier file was changed for v2.4, because no v2.3 expectation is contradicted by v2.4.
 
+  Revision after the metered dev run (fix committed at c0cd612): in `test_reference_binding.py::test_exact_gap_boundary_at_one_over_ten_to_the_ten`, `above` had been formed as `at - Decimal("1E-30")` in the default 28-digit decimal context. The decrement rounded away, and the test's own precondition failed. `above` is now the exact literal `Decimal("0.499999999899999999999999999999")`. The preconditions now assert exactly that `at - above == 10^-30` and that the gap equals `1/10^10 + 10^-30`. The intent is unchanged: the exact gap is above 1/10^10 while its float is still 1e-10. No other test changed.
+
 ## What was read
 
 - `tools/x4_circle_history/`: `API.md`, `CONTRACT.json`, `ERROR_BOUND.md` and `TEST_PLAN.md`. These were read in full at v2 and v2.1. Later versions were read as git diffs: v2.2, v2.3, and v2.4 (`git diff 0c11e9b..65792a0` restricted to these four files).

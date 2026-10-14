@@ -228,11 +228,6 @@
    "precision": 200,
    "export": 200
   },
-  "job_0015_released_stages": [
-   "implementation",
-   "export"
-  ],
-  "job_0015_export_max_s": 80,
   "export_unspent_reserve_after_0015_s": 120,
   "threads": 1,
   "memory_bytes": 8589934592,
@@ -243,7 +238,13 @@
    "0015",
    "0016",
    "review"
-  ]
+  ],
+  "job_0016_released_stages": [
+   "implementation",
+   "export"
+  ],
+  "job_0016_export_max_s": 80,
+  "stage_label_rule": "ledger entry label = <stage>:<label>; stage totals are sums of charged_cpu_s over that prefix"
  },
  "supersedes": {
   "job": "0015",

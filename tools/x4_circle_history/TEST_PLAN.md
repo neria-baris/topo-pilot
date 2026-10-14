@@ -104,6 +104,14 @@ Execution: the conductor runs every test through the job meter. Authors do not e
     - split "scoring" without a release raises AccessDenied even when the other inputs are
       invalid, which proves no computation runs first;
     - "scoring" with a release token runs.
+- **B6b. Spec v2.1 additions:**
+  - reference_check_rows passes on exact pipeline moments and FAILs on a 1e-9 shift;
+  - the exact-rational R in row_bound equals an independently assembled Fraction;
+  - TAYLOR_N == 48, and the exact tail and ratio inequalities hold, recomputed in the test with
+    Fractions;
+  - certify_rows gives FAIL_TECHNICAL for phi = 2*np.pi (operational range) even though it lies
+    inside the analytic interval;
+  - the K1 four-lowest references are invoked through reference_check_rows with Ks = (1, 4, 32).
 - **B7. Adapter.** Build synthetic ObservationSet, HistoryIndex and ActivationSet artifacts in
   `topo_pilot.contracts.testing.memory_store()`, with tiny sizes (for example panel_size 4,
   n_panels 3). Use `contracts` public classes and `store.save` (read src/topo_pilot/contracts

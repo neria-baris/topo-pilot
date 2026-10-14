@@ -1,4 +1,4 @@
-# Per-row numerical certificate for the K4 score (job 0016, v2)
+# Per-row numerical certificate for the K4 score (job 0016, v2.1)
 
 Status: SYMBOLIC derivation plus a per-row certificate PROCEDURE. Nothing here has been run on
 real arrays. The procedure runs only on released calibration and validation rows, after a
@@ -11,6 +11,13 @@ Revision history:
   coordinator_continuation_review.md) found five defects in it: a circular mass lower bound,
   incomplete DAZ division handling, unproven Decimal slack, an ad-hoc 1+1e-6 multiplier, and
   C versus C2 in norm bounds.
+- **v2.1** (this version) applies the six corrections of jobs/0016/NUMERICAL_V2_STATIC_REVIEW.md:
+  1. the reference score and residuals are assembled in exact rationals;
+  2. the Taylor tail uses exact rational term bounds with a fixed, verified N;
+  3. the operational phase check is separated from the analytic interval;
+  4. the sampling TV bound uses both adjacent CDF-boundary errors;
+  5. score certificates come after the chart transform;
+  6. the K1 four-lowest-row references are kept explicitly.
 - **v2 replaces the float error MODEL with a finite-row CERTIFICATE.** It is the reviewer's
   candidate approach. For every released row, the float result is compared with an independent
   high-precision reference, and a PROVEN envelope bounds that reference's own error. v2 therefore
@@ -21,8 +28,11 @@ Revision history:
 
 For a row with canonical history w_1..w_32 and a model's SAVED extended phase φ (a float64 value,
 used as an exact real number):
-- The operational process P_op takes the stored float64 T̂, Ê = E_named[:, perm] and π̂ as exact
-  real numbers.
+- The operational process P_op is the normalised stored-weight likelihood calculation. The
+  stored float64 T̂, Ê = E_named[:, perm] and π̂ are taken as exact real numbers. These stored
+  weights need not define an exactly stochastic or stationary process: M*_K is simply the
+  normalised suffix-likelihood-weighted mean that the job-0014 filter computes in exact
+  arithmetic. The stationary generating law and the sampling law are treated separately in §6.
 - The exact features are c*(s) = (cos(2πx_s/12), sin(2πx_s/12)), with x_s = coords[s, 0].
 - M*_K is the exact posterior mean of c* given the last K observations under P_op, using the
   restart-at-π̂ suffix filter of CONTRACT.json.
@@ -71,7 +81,8 @@ Exponent reasoning, which a test verifies:
 3. **Moments.** M̃_K = Σ_s P̃_K,s · c̃_s, accumulated in index order at precision q.
 4. **Unit vector.** ṽ = (cos, sin) of x = Decimal(φ), which is exact, by a Taylor series at
    precision q (§4). The procedure requires 0 ≤ φ < 2π, and so |x| < 7.
-5. **Reference score.** R = ṽ_x (M̃_32,x − M̃_4,x) + ṽ_y (M̃_32,y − M̃_4,y) at precision q.
+5. **Reference score.** R is assembled EXACTLY in rationals. With r̃_j = Fraction(M̃_32,j) −
+   Fraction(M̃_4,j), R = Σ_j Fraction(ṽ_j)·r̃_j. No Decimal subtraction or dot rounding is used.
 6. **Observed discrepancy.** Δ = |Fraction(Decimal(X̂)) − Fraction(R)| in exact rational
    arithmetic. The reference is never converted to float.
 7. **Certified bound.** B = Δ + E_ref (§3), an exact rational compared exactly with 1e-4.
@@ -79,8 +90,14 @@ Exponent reasoning, which a test verifies:
 Rules for the row:
 - **CERTIFIED** iff B ≤ 1e-4.
 - **INCONCLUSIVE** (criterion not met) if B is finite and > 1e-4.
-- **FAIL_TECHNICAL** on any trap, a nonfinite input, a range violation, or a moment-check
-  violation: max_j |m̂_K,j − M̃_K,j| > 1e-10 for K ∈ {4, 32}.
+- **FAIL_TECHNICAL** on any trap or flag, a nonfinite input, an operational phase-range
+  violation, or a moment-check violation: max_j |m̂_K,j − M̃_K,j| > 1e-10 for K ∈ {4, 32}.
+
+**Phase ranges.**
+- The OPERATIONAL check is the canonical chart range: 0 ≤ φ < 2π_float, where 2π_float =
+  2·np.pi as float64. It is a defect check.
+- The ANALYTIC Taylor interval used in §4 is the wider rational interval [0, X_max] with
+  X_max = 6284/1000 > 2π_float. That interval does not by itself enforce the chart range.
 
 The moment check implements the contract's reference tolerance on EVERY released row, not only
 on four selected rows.
@@ -118,49 +135,51 @@ This absolute bound covers signed cancellation.
 
 **(d) Unit vector, per coordinate.** |ṽ_j − v*_j| ≤ ε_v (§4).
 
-**(e) Score.** Write r̃ = M̃_32 − M̃_4 (each coordinate one rounding at precision q) and
-r* = M*_32 − M*_4. Then
+**(e) Score.** r̃ = M̃_32 − M̃_4 and R = ṽ·r̃ are EXACT rationals (§2), and r* = M*_32 − M*_4.
+Then
 
-  |R − X*| ≤ Σ_j |ṽ_j − v*_j|·|r̃_j|                       (unit-vector error)
-           + Σ_j |v*_j|·|r̃_j − r*_j|                        (moment error; |v*_j| ≤ 1)
-           + γ^(80)_3·Σ_j |ṽ_j r̃_j|                         (two products and one sum)
+  X* − R = Σ_j (v*_j − ṽ_j)·r̃_j + Σ_j v*_j·(r*_j − r̃_j),
 
-  with |r̃_j − r*_j| ≤ ε_M,32 + ε_M,4 + u_80·|r̃_j|.
+so
 
-So E_ref = ε_v·Σ_j|r̃_j| + Σ_j(ε_M,32 + ε_M,4 + u_80|r̃_j|) + γ^(80)_3·Σ_j|ṽ_j r̃_j|.
+  |R − X*| ≤ ε_v·Σ_j |r̃_j| + Σ_j (ε_M,32 + ε_M,4),
 
-**Rigorous evaluation of the bound itself.**
-- Every envelope constant (u, γ, h, ℓ, q, β, ε_c, ε_M and ε_v) is evaluated in EXACT rational
-  arithmetic (`fractions.Fraction`).
-- Every per-row Decimal quantity enters exactly through Fraction(Decimal), including Decimal(X̂),
-  R and r̃.
-- So Δ = |Fraction(Decimal(X̂)) − Fraction(R)| is exact, B = Δ + E_ref is an exact rational, and
-  the comparison B ≤ 1/10000 is exact.
-- No outward-rounding heuristic and no slack multiplier are used.
-- The only rounding is inside the reference's own arithmetic, which E_ref covers.
+using |v*_j| ≤ 1 and |r*_j − r̃_j| ≤ ε_M,32 + ε_M,4, since r̃ is unrounded.
 
-For scale: with S = 144 and L = 32, ε_P ≈ 2·9300·5e-60 ≈ 1e-55, so E_ref is about 1e-54. The
+E_ref := ε_v·Σ_j |r̃_j| + 2·(ε_M,32 + ε_M,4).
+
+For scale: with S = 144 and L = 32, β ≈ 2·9200·5e-60 ≈ 1e-55, so E_ref is about 1e-54. The
 certificate is decided by the observed float discrepancy Δ. E_ref only makes the reference's
 own error explicit.
 
 ## 4. Decimal cos and sin (precision q = 80, no argument reduction, no π)
 
-Use cos x = Σ_k (−1)^k x^(2k)/(2k)! and sin x = Σ_k (−1)^k x^(2k+1)/(2k+1)!, with |x| < 7.
+Use cos x = Σ_k (−1)^k x^(2k)/(2k)! and sin x = Σ_k (−1)^k x^(2k+1)/(2k+1)!, with
+0 ≤ x ≤ X_max = 6284/1000. Here x = Decimal(φ) is exact, and Fraction(x) is its exact rational
+value.
 
-- **Recurrence.** t_{k+1} = −t_k·x² / ((2k+1)(2k+2)) for cos, and analogously for sin. Each step
-  is three correctly rounded operations: x², a product, and a division by an exact integer
-  product.
-- **Truncation.** Stop after term N, the first index with 2N+2 > |x| (so terms decrease from
-  there) and |t_N| < 10^-75. The tail is alternating and decreasing in magnitude, so its
-  absolute value is ≤ |t_{N+1}| ≤ |t_N| < 10^-75.
-- **Rounding.** The computed t̃_k satisfies |t̃_k − t_k| ≤ γ^(80)_{3k}·|t_k|. The sequential
-  summation of N+1 terms adds γ^(80)_{N+1}·Σ|t̃_k|. With Σ_k |t_k| ≤ cosh|x| ≤ e^7:
+- **Fixed term count.** N = 48. The sums run over k = 0..48. Two facts are verified EXACTLY in
+  rational arithmetic, at import time and in the tests:
+  - **Monotone tail.** The ratio of successive term magnitudes beyond N is below 1:
+    X_max²/((2N+3)(2N+4)) < 1 for cos and X_max²/((2N+4)(2N+5)) < 1 for sin. The neglected
+    tails are alternating with decreasing magnitude.
+  - **Tail size.** The exact tails are bounded by their first neglected term:
+    T_cos = X_max^(2N+2)/(2N+2)! and T_sin = X_max^(2N+3)/(2N+3)!. Both are < 10^-75 (checked
+    as exact rationals: X_max^98/98! < 10^-75 and X_max^99/99! < 10^-75).
 
-  ε_v ≤ 10^-75 + (γ^(80)_{3N} + γ^(80)_{N+1}·(1 + γ^(80)_{3N}))·1100,
+  Neither the stopping rule nor the tail bound uses computed terms.
+- **Term rounding enclosure (proved).** The terms are computed by the recurrence
+  t̃_{k+1} = fl(fl(t̃_k·x̃₂)/m_k), with x̃₂ = fl(x·x) computed once and m_k an exact integer
+  (sin starts from t̃_0 = x, which is exact). Each term carries a relative factor in
+  (1 ± γ^(80)_{3k}) against the exact t_k: x̃₂ contributes one rounding, and the product and
+  division contribute one each per step. So |t̃_k − t_k| ≤ γ^(80)_{3N}·|t_k| for k ≤ N.
+- **Summation.** Sequential summation of N + 1 computed terms in Decimal(80), starting from 0,
+  adds at most γ^(80)_{N+1}·Σ_k|t̃_k|. The magnitudes satisfy Σ_k |t_k| ≤ cosh(X_max) ≤ A := 270.
+  A is verified exactly: the rational partial sum Σ_{k=0}^{2N+3} X_max^k/k! plus its tail bound
+  is ≤ 540, so cosh(X_max) ≤ 270.
+- **Result (per coordinate, exact rational):**
 
-  This uses the exact rational upper bound 1100 > e^7 ≈ 1096.63, the actual N, and exact
-  rational evaluation. The stored φ must satisfy 0 ≤ φ ≤ 6.284 (less than 2π + 1e-3); the
-  procedure checks this.
+  ε_v = max(T_cos, T_sin) + γ^(80)_{3N}·A + γ^(80)_{N+1}·(1 + γ^(80)_{3N})·A.
 
 ## 5. What is and is not assumed
 
@@ -209,8 +228,16 @@ arrays):
 **Sampling law Q of the E4 data.** dataset.HMMSampler in canonical order (stage.py), using the
 inverse CDF of float cumsums with the last positive entry set to 1, and `rng.random()` on the
 2^-53 grid.
-- Per categorical draw, TV(q_row, p\*_row) ≤ ½Σ_j(2^-53 + |cum-sum rounding|_j + |p̂_j − p\*_j|).
-- Cum-sum rounding is bounded at release from the actual float cumsums against exact rational
+- **Per categorical draw.** Let C_j = Σ_{i≤j} p̂_i be the exact rational partial sums of the
+  stored row, and Ĉ_j the stored float CDF after the last-positive substitution (Ĉ_j = 1 from
+  the last positive index on). Let e_j = Ĉ_j − C_j, with e_{−1} = 0.
+  - The sampler returns j iff u ∈ [Ĉ_{j−1}, Ĉ_j), with u uniform on the grid {k·2^-53}.
+  - So its probability is q_j = (number of grid points in that interval)·2^-53, and
+    |q_j − (Ĉ_j − Ĉ_{j−1})| ≤ 2^-53: grid quantisation of the two endpoints together.
+  - Hence |q_j − p\*_j| ≤ |e_j| + |e_{j−1}| + 2^-53 + |p̂_j − p\*_j|, and
+
+    TV(q_row, p\*_row) ≤ ½ Σ_j (|e_j| + |e_{j−1}| + 2^-53 + |p̂_j − p\*_j|).
+- The e_j are computed EXACTLY at release, from the stored float CDF against exact rational
   partial sums.
 - TV(Q, P\*) ≤ the sum over the 64 draws (π, 32 emissions, 31 transitions).
 - ASSUMED: PCG64 output is uniform on its grid.
@@ -222,20 +249,38 @@ inverse CDF of float cumsums with the last positive entry set to 1, and `rng.ran
 This is reported beside the controls, as the documented deviation of the "population zero". It
 is never presented as an exact identity of the sampled data.
 
-## 7. Implemented procedure (error_bound.py) and its locks
+## 7. Implemented procedure (error_bound.py), gate placement and locks
+
+Gate placement (CONTRACT gates):
+- **Early "process_and_reference" gate (no chart needed):**
+  - (i) the explicit FOUR-lowest-history-ID references for K ∈ {1, 4, 32}, per model and per
+    split (calibration and validation), with max moment error ≤ 1e-10;
+  - (ii) the all-row K4/K32 moment checks ≤ 1e-10 for every released row.
+
+  Canonical reference results may be shared across models ONLY after the exact process
+  equality and cross-model history equality checks pass.
+- **"row_score_certificates" gate.** It runs after the chart, extension, fidelity, bins and
+  resultant gates, because it needs the saved φ. Calibration rows use the gauged landmark
+  phases; validation rows use the extended phases. It precedes B4 and precision.
 
 ```
-certify_rows(T, E, pi, canonical32, phi, x_hat, m4_hat, m32_hat, split, scoring_release=None, cap=1e-4)
+reference_check_rows(T, E, pi, coords, canonical32, m_hat, Ks, cache=None) -> dict
+certify_rows(T, E, pi, coords, canonical32, phi, x_hat, m4_hat, m32_hat, split,
+             scoring_release=None, cap=1e-4, cache=None) -> dict
 ```
 
-The procedure does the following:
+reference_check_rows performs the early moment checks: every row, every K in Ks, with
+|m̂ − M̃| ≤ 1e-10. It needs no phase.
+
+certify_rows does the following:
 - **Access.** split ∈ {calibration, validation, scoring}. split == "scoring" without a release
-  token raises AccessDenied BEFORE any computation.
+  token raises AccessDenied BEFORE any computation (this applies to both functions).
 - **Per row:**
+  - the operational phase check;
   - reference posteriors for K ∈ {4, 32}, cached by canonical-history digest;
   - exact-feature moments;
   - the moment check (≤ 1e-10);
   - ṽ and ε_v;
-  - R, Δ, E_ref and B.
+  - exact-rational R, Δ, E_ref and B.
 - **Returns** per-row B, Δ, E_ref, the moment-check maxima and status counts, plus the overall
   status CERTIFIED / INCONCLUSIVE / FAIL_TECHNICAL. It returns no endpoint aggregate.

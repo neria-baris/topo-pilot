@@ -100,7 +100,7 @@
   "suffix_convention": "restart at stationary pi, emit first, transitions only between emissions",
   "process_tolerance": 1e-12,
   "reference_rows_per_split_per_model": 4,
-  "reference_row_rule": "minimum: 4 lowest history_id rows of panel 1 and of panel 2 per model (K1/4/32, moment error <= 1e-10); SUBSUMED by the all-row certificate (ERROR_BOUND.md v2): every released calibration/validation row, K4/K32, moment error <= 1e-10",
+  "reference_row_rule": "explicit minimum: 4 lowest history_id rows of panel 1 and of panel 2 per model, K1/4/32, moment error <= 1e-10; plus every released calibration/validation row K4/K32 moment check <= 1e-10 (ERROR_BOUND.md v2.1)",
   "reference_K": [
    1,
    4,
@@ -186,20 +186,25 @@
  },
  "numerical_bound": {
   "max_score_error": 0.0001,
-  "document": "tools/x4_circle_history/ERROR_BOUND.md (v2: per-row certificate against an independent Decimal reference plus proven reference envelope)",
+  "document": "tools/x4_circle_history/ERROR_BOUND.md (v2.1)",
   "reference": "tests/oracle_profile/independent_reference.decimal_suffix_posterior (job 0014, unchanged), digits 60, inside a decimal context trapping Underflow/Subnormal/Overflow/Clamped/InvalidOperation/DivisionByZero",
   "features_reference": "exact algebraic cos/sin of multiples of pi/6 at 80 digits",
-  "trig_reference": "Taylor series at 80 digits, truncation < 1e-75, explicit rounding envelope, 0 <= phi < 2pi",
+  "trig_reference": "Taylor series at 80 digits with fixed N = 48 terms, exact-rational tail bound < 1e-75 on the analytic interval [0, 6284/1000], proved term-rounding enclosure",
   "moment_check": 1e-10,
   "outcomes": "CERTIFIED if every row bound <= 1e-4; INCONCLUSIVE if some finite bound > 1e-4; FAIL_TECHNICAL on trap/nonfinite/range/moment-check violation",
   "coverage": "every released calibration and validation row for every model; reference posteriors computed once per unique canonical history after the cross-model join",
   "instantiation": "only after coordinator release; scored rows locked (AccessDenied without scoring release)",
-  "process_law": "separate reported Z_bound (ERROR_BOUND.md section 6); never part of the score certificate"
+  "process_law": "separate reported Z_bound (ERROR_BOUND.md section 6): stored-vs-generating-law relative perturbation plus sampler TV with both adjacent CDF-boundary errors and 2^-53 grid quantisation; carried into later interpretation of the zero benchmark",
+  "phase_checks": {
+   "operational": "0 <= phi < 2*np.pi (float64), FAIL_TECHNICAL otherwise",
+   "analytic": "[0, 6284/1000]"
+  },
+  "reference_score": "assembled exactly in rationals from finite Decimal moments and unit vectors",
+  "process_operational": "P_op is the normalised stored-weight likelihood calculation (stored floats as exact reals), not assumed exactly stochastic or stationary"
  },
  "gates": [
   "identity",
   "process_and_reference",
-  "row_error_certificates",
   "chart_calibration",
   "gauge",
   "validation_direct_chart",
@@ -207,6 +212,7 @@
   "fidelity_A",
   "phase_bins",
   "overall_resultant",
+  "row_score_certificates",
   "B4_lower",
   "precision_projection"
  ],
@@ -259,5 +265,9 @@
   "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv (read-only; no install)",
   "pythonpath": "X:/Downloads/projects/topo-pilot/topo-pilot-circle-history-k4/src",
   "module_pinning": "runtime asserts topo_pilot, oracle_profile, independent_reference and x4_circle_history modules resolve under this worktree and match freeze hashes"
+ },
+ "gate_notes": {
+  "process_and_reference": "(i) four lowest history_id rows per split per model, K1/4/32 Decimal references, max moment error <= 1e-10 (explicit, not subsumed); (ii) every released row K4/K32 moment check <= 1e-10; canonical references shared across models only after exact process and history equality",
+  "row_score_certificates": "after the chart transform: calibration rows with gauged landmark phases, validation rows with extended phases; ERROR_BOUND.md v2.1 per-row bound <= 1e-4"
  }
 }

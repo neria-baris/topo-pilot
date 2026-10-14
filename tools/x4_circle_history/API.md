@@ -1,4 +1,4 @@
-# x4_circle_history: public API (job 0016; continues the BLOCKED job-0015 draft)
+# x4_circle_history: public API (job 0016, spec v2.1; continues the BLOCKED job-0015 draft)
 
 Status: written specification, fixed BEFORE production implementation, for independent test
 authors. The machine contract is CONTRACT.json; the numerical bound is ERROR_BOUND.md. Every
@@ -235,8 +235,9 @@ def exact_features(coords) -> list[tuple[Decimal, Decimal]]
     # Invalid for non-integer or out-of-range x.
 def feature_envelope() -> Fraction            # eps_c = 2*u_digits(80)
 def decimal_cos_sin(x: float, digits=80) -> tuple[Decimal, Decimal, Fraction]
-    # (cos, sin, eps_v) of Decimal(x) exactly, Taylor series per ERROR_BOUND.md section 4;
-    # Invalid unless finite and 0 <= x <= 6.284. eps_v is the exact-rational per-coordinate bound.
+    # (cos, sin, eps_v) of Decimal(x) exactly; fixed N = 48 Taylor terms (TAYLOR_N); exact-rational
+    # eps_v per ERROR_BOUND.md v2.1 section 4; Invalid unless finite and 0 <= x <= 6284/1000
+    # (ANALYTIC interval). The OPERATIONAL chart check 0 <= phi < 2*np.pi is done by certify_rows.
 def posterior_envelope(L, S) -> Fraction      # beta of section 3(a), N = 1 + (L-1)(2S+2)
 def moment_envelope(beta, S) -> Fraction      # eps_M of section 3(c)
 def reference_moments(T, E, pi, canonical32, Ks=(4, 32), cache=None) -> dict
@@ -244,12 +245,18 @@ def reference_moments(T, E, pi, canonical32, Ks=(4, 32), cache=None) -> dict
     # trapping_context(60) (flags Underflow/Subnormal/Overflow also checked after each call),
     # then exact-feature moments at 80 digits; a trap or raised flag -> Invalid.
 def row_bound(x_hat, phi, M4, M32, eps_M4, eps_M32) -> dict
-    # exact rationals: {"Delta", "E_ref", "B"} per ERROR_BOUND.md sections 2-3; phi must pass the
-    # decimal_cos_sin range check.
+    # exact rationals {"R", "Delta", "E_ref", "B"}: R = sum_j Fraction(v_j)*(Fraction(M32_j)-Fraction(M4_j));
+    # Delta = |Fraction(Decimal(x_hat)) - R|; E_ref = eps_v*sum_j|r_j| + 2*(eps_M4 + eps_M32); B = Delta + E_ref.
+def reference_check_rows(T, E, pi, coords, canonical32, m_hat: dict, Ks, split,
+                         scoring_release=None, cache=None) -> dict
+    # early gate: for every row and K in Ks, max_j |m_hat[K][row, j] - M_ref_K,j| <= 1e-10;
+    # {"status": "PASS" | "FAIL_TECHNICAL", "moment_check_max": {K: float}, "rows": n};
+    # split "scoring" without scoring_release -> AccessDenied before computation.
 def certify_rows(T, E, pi, coords, canonical32, phi, x_hat, m4_hat, m32_hat, split,
-                 scoring_release=None, cap=1e-4) -> dict
+                 scoring_release=None, cap=1e-4, cache=None) -> dict
     # split in {"calibration", "validation", "scoring"}; "scoring" without scoring_release ->
-    # AccessDenied BEFORE any computation. Per row: moment check |m_hat - M_ref| <= 1e-10
+    # AccessDenied BEFORE any computation. Per row: operational phase check 0 <= phi < 2*np.pi
+    # (else FAIL_TECHNICAL), moment check |m_hat - M_ref| <= 1e-10
     # (K4, K32), then the bound B. Returns {"status": "CERTIFIED" | "INCONCLUSIVE" | "FAIL_TECHNICAL",
     # "max_bound": float, "bounds": list, "moment_check_max": float, "rows": n, "reason": str};
     # INCONCLUSIVE iff some finite B > cap; FAIL_TECHNICAL on a trap, nonfinite, range or

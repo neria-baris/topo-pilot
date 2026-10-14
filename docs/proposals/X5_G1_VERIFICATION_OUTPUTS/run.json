@@ -1,0 +1,25 @@
+{
+ "kind": "deterministic post-hoc verification of the same saved data; not an independent replication",
+ "producer_version": "166711c5d10f",
+ "python": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot\\.venv\\Scripts\\python.exe",
+ "topo_pilot_file": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot-x4b\\src\\topo_pilot\\__init__.py",
+ "numpy": "2.2.6",
+ "blas_threads": {
+  "OPENBLAS_NUM_THREADS": "1",
+  "MKL_NUM_THREADS": "1",
+  "OMP_NUM_THREADS": "1"
+ },
+ "sources_full_sha256": {
+  "21feee1d8ee5422e": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "e4dafc7b9785c172": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+  "3633ac27dab50cf4": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb",
+  "08a22a03727d2295": "663d0011c7f9b541a436359c885a9f367dda280b20b594e484ff1492b8686b7b",
+  "eb3170a226f03bd0": "cd7ac874a89bf46e80ccc7f2424a25862e56de4783b43982bd81ce51276622ac",
+  "e574367fd00ccf02": "a5bba39669225d766b061dcce2f6219f7e32306caeaa17ef99fb28cd25e37de3"
+ },
+ "old_result_sha256": "5962cb5c2f4994cd9d4318dacb7e155d1be34ebaee9a5a79a73a902db327bddf",
+ "cpu_s_before_export": 8.078,
+ "cpu_prior_cumulative": 8.922,
+ "peak_memory_bytes": 671195136,
+ "utc": "2026-10-14T02:07:13Z"
+}

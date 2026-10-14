@@ -244,7 +244,7 @@
    "export"
   ],
   "job_0016_export_max_s": 80,
-  "stage_label_rule": "ledger entry label = <stage>:<label>; stage totals are sums of charged_cpu_s over that prefix"
+  "stage_label_rule": "ledger entry label = <stage>__<label> (legacy <stage>:<label> also counted); stage totals are sums of charged_cpu_s over that prefix"
  },
  "supersedes": {
   "job": "0015",

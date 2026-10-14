@@ -68,7 +68,7 @@ def test_stage_label_and_ceiling(bound):
     args = meter_bind.rewrite_argv(
         ["--stage", "implementation", "--label", "t", "--max-cpu", "600", "--", "cmd", "arg"]
     )
-    assert args[args.index("--label") + 1] == "implementation:t"
+    assert args[args.index("--label") + 1] == "implementation__t"
     assert float(args[args.index("--max-cpu") + 1]) == pytest.approx(400 - 390.5 - 1.0)
     assert args[args.index("--") + 1 :] == ["cmd", "arg"]
 
@@ -79,7 +79,7 @@ def test_stage_label_and_ceiling(bound):
 def test_exhausted_or_unreleased_stage_runs_noop(bound, stage, spent):
     _ledger(bound, [{"label": f"{stage}:a", "charged_cpu_s": spent}])
     args = meter_bind.rewrite_argv(["--stage", stage, "--label", "t", "--", "cmd"])
-    assert args[args.index("--label") + 1].endswith(":REFUSED_stage_ceiling_or_unreleased")
+    assert args[args.index("--label") + 1].endswith("__REFUSED_stage_ceiling_or_unreleased")
     assert args[-1] == "raise SystemExit(4)" and "cmd" not in args
 
 

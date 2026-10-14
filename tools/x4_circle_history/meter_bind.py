@@ -8,7 +8,8 @@ rebinds their module-level names to this job's task digest, output store and led
 - the finalization rule: only an explicit `--finalization` export may proceed past 3480 toward
   3600; every other stage stops new work at 3480.
 
-The stage is recorded as the label prefix "<stage>:<label>". The release check
+The stage is recorded as the Windows-safe label prefix "<stage>__<label>" (a colon would create
+an NTFS alternate data stream in log file names; legacy "<stage>:" entries are still counted). The release check
 (release.verify) reads git files directly and spawns no process before the Job Object exists.
 An exhausted or unreleased stage still runs, as a metered no-op child that exits 4, so the
 refusal is charged.
@@ -70,7 +71,7 @@ def stage_spent(ledger_path: Path, stage: str) -> float:
     return sum(
         float(e.get("charged_cpu_s") or 0.0)
         for e in ledger["entries"]
-        if str(e.get("label", "")).startswith(f"{stage}:")
+        if str(e.get("label", "")).startswith((f"{stage}__", f"{stage}:"))
     )
 
 
@@ -115,10 +116,10 @@ def rewrite_argv(argv: list[str]) -> list[str]:
     spent = stage_spent(meter.LEDGER, stage)
     remaining = (caps[stage] - spent) if stage in caps else 0.0
     i = args.index("--label")
-    args[i + 1] = f"{stage}:{args[i + 1]}"
+    args[i + 1] = f"{stage}__{args[i + 1]}"
     sep = args.index("--") if "--" in args else len(args)
     if remaining <= MARGIN_S:
-        args[i + 1] += ":REFUSED_stage_ceiling_or_unreleased"
+        args[i + 1] += "__REFUSED_stage_ceiling_or_unreleased"
         meter.limit_reason = make_stage_limiter(float("inf"), 0.0)
         return args[:sep] + ["--", sys.executable, "-I", "-c", "raise SystemExit(4)"]
     meter.limit_reason = make_stage_limiter(caps[stage], spent)

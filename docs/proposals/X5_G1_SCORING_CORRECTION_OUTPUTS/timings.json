@@ -1,0 +1,135 @@
+{
+ "protocol": "x5g1-techbench-scoring-v2",
+ "kind": "technical fixture timing only; not scientific",
+ "producer_head": "a5b3a056db69ead7efee1a7d895e1c3367acf4a3",
+ "protocol_doc_sha256": "9f5e8300e983a2f784ae59dde23e27689c4c134cd6ef98db92a772747939231a",
+ "prior_tech_cumulative_s": 140.422,
+ "S0_setup": {
+  "cpu_s": 0.046875,
+  "wall_s": 0.054524200000741985,
+  "peak_rss_bytes": 276647936
+ },
+ "stored_checkpoint": {
+  "id": "c3358e3cb9c352fb",
+  "payload_sha256": "bcd024efc2ff30f76940d459dba95a693f536fb7cc3b2441c4ee5145dcf8596b",
+  "model_config": {
+   "activation": "gelu",
+   "d_mlp": 512,
+   "d_model": 128,
+   "dropout": 0.0,
+   "n_ctx": 33,
+   "n_heads": 4,
+   "n_layers": 4,
+   "tie_embeddings": false,
+   "vocab_in": 37,
+   "vocab_out": 36
+  },
+  "asserted": true
+ },
+ "shapes": {
+  "inputs": [
+   4096,
+   33
+  ],
+  "q": [
+   4096,
+   36
+  ]
+ },
+ "S1_scoring": [
+  {
+   "cpu_s": 3.890625,
+   "wall_s": 3.905966999998782,
+   "peak_rss_bytes": 456376320,
+   "batches": 8,
+   "out_shape": [
+    4096
+   ],
+   "finite": true
+  },
+  {
+   "cpu_s": 3.875,
+   "wall_s": 3.877371200003836,
+   "peak_rss_bytes": 456392704,
+   "batches": 8,
+   "out_shape": [
+    4096
+   ],
+   "finite": true
+  },
+  {
+   "cpu_s": 3.84375,
+   "wall_s": 3.885996900004102,
+   "peak_rss_bytes": 456400896,
+   "batches": 8,
+   "out_shape": [
+    4096
+   ],
+   "finite": true
+  }
+ ],
+ "state_bytes": 3243204,
+ "S2_load": [
+  {
+   "cpu_s": 0.03125,
+   "wall_s": 0.027500500000314787,
+   "peak_rss_bytes": 456400896
+  },
+  {
+   "cpu_s": 0.03125,
+   "wall_s": 0.02921010000136448,
+   "peak_rss_bytes": 456400896
+  },
+  {
+   "cpu_s": 0.03125,
+   "wall_s": 0.027405099994211923,
+   "peak_rss_bytes": 456400896
+  }
+ ],
+ "projection_v1_1thread": {
+  "train": 11484.375,
+  "init": 23.15625,
+  "devCE": 635.34375,
+  "scoring": 720.65625,
+  "ckpt_io": 0.84375,
+  "generation": 300.0,
+  "bootstrap": 120.0,
+  "fresh_test": 84.46875,
+  "exports": 60.0,
+  "total": 13428.84375,
+  "limit_80pct": 17266.3872,
+  "fits": true,
+  "train_wall_h_per_model": 0.5400695625000177
+ },
+ "projection_corrected": {
+  "train": 11484.375,
+  "init": 23.15625,
+  "devCE": 635.34375,
+  "ckpt_io": 0.84375,
+  "generation": 300.0,
+  "bootstrap": 120.0,
+  "exports": 60.0,
+  "scoring": 692.8125,
+  "fresh_test": 83.4375,
+  "setup": 0.28125,
+  "total": 13400.25,
+  "limit_80pct": 17266.3872,
+  "fits": true
+ },
+ "env": {
+  "python": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot\\.venv\\Scripts\\python.exe",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.2.6",
+  "threads": 1,
+  "interop_threads": 6,
+  "logical_cpus": 12,
+  "blas_env": {
+   "OPENBLAS_NUM_THREADS": null,
+   "MKL_NUM_THREADS": null,
+   "OMP_NUM_THREADS": null
+  },
+  "topo_pilot_file": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot-x4b\\src\\topo_pilot\\__init__.py"
+ },
+ "outcome": "FITS",
+ "tech_cpu_s_before_export": 11.766
+}

@@ -3,8 +3,11 @@
 
 Every stage validates the configuration first (read-only, before any output directory, store
 write, sampler or model). Exports go through ``study_export`` under the full study controls;
-prerequisites advance only on a COMPLETE, manifest-matching export; world, kernels, emission and
-every used pool are fully re-hashed before use and again before the result export. Budget checks
+prerequisites advance only on a COMPLETE, manifest-matching export with a consistent pool table;
+every used pool must prove its semantic identity (API v4.1 §B: config, parents, split, V, layout,
+rows, ordered IDs) before any model, oracle or scoring; world, kernels, emission, every used pool
+and every ObservationSet read for the collision check are fully re-hashed before use and again
+before the result export. Budget checks
 at boundaries are periodic safety checks, not an instruction-level CPU kill: an atomic unit (a
 draw, a checkpoint write, a scoring batch) can exceed its estimate.
 """
@@ -12,6 +15,7 @@ draw, a checkpoint write, a scoring batch) can exceed its estimate.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -33,17 +37,17 @@ from .x4b import ReadThroughBackend
 from .x4b_run import peak_memory_bytes
 from .x5g1_controls import RunControls
 from .x5g1_safety import ensure_new_output_dir
-from .x5g1t_checks import IntegrityFailed, canonical, verify_full
+from .x5g1t_checks import IntegrityFailed, canonical, validate_pool, verify_full
 from .x5g1t_config import StudyConfig, read_chain, read_store, validate_config
 from .x5g1t_exports import study_export, verify_export_complete
 from .x5g1t_lineage import (
     ARMS,
     collisions,
     draw_pair,
-    pool_config,
     pool_observation,
     sequence_ids,
     stream,
+    study_pool_config,
 )
 from .x5g1t_runtime import (
     EST,
@@ -101,9 +105,47 @@ def tables(cfg: StudyConfig, *parts: str) -> Path:
 
 
 def complete_pools(cfg: StudyConfig) -> dict:
-    """``pools.json`` of a COMPLETE, manifest-matching pools export (else ``ExportIncomplete``)."""
-    verify_export_complete(tables(cfg, "pools"))
-    return json.loads(tables(cfg, "pools", "pools.json").read_text(encoding="utf-8"))
+    """``pools.json`` of a COMPLETE, manifest-matching pools export whose table has exactly the
+    configured keys with 64-hex hashes and whose run record matches the config (API v4.1 §C)."""
+    out = tables(cfg, "pools")
+    verify_export_complete(out)
+    pools = json.loads((out / "pools.json").read_text(encoding="utf-8"))
+    run = json.loads((out / "run.json").read_text(encoding="utf-8"))
+    keys = {f"{s}:{a}:{m}" for s in ("train", "dev") for a in ARMS for m in cfg.masters}
+    table, shas = pools.get("pools"), pools.get("pool_sha256")
+    if not (isinstance(table, dict) and isinstance(shas, dict) and set(table) == keys
+            and set(shas) == keys and all(isinstance(v, str) and re.fullmatch(r"[0-9a-f]{64}", v)
+                                          for v in shas.values())):
+        raise IntegrityFailed("pool table keys/hashes differ from the configuration")
+    if run.get("protocol") != cfg.protocol or run.get("mode") != cfg.mode:
+        raise IntegrityFailed("pools export was produced under another protocol/mode")
+    return pools
+
+
+def emission_V(store: ArtifactStore, cfg: StudyConfig) -> int:
+    return int(np.asarray(store.load(EmissionSpec, cfg.sources["E"][0],
+                                     consumer="experiment").E).shape[1])
+
+
+def validate_pools(store: ArtifactStore, cfg: StudyConfig, pools: dict, which, V: int) -> dict:
+    """Semantic identity of each ``(split, arm, master)`` pool in the table (API v4.1 §B)."""
+    used: dict = {}
+    for split, arm, m in which:
+        key = f"{split}:{arm}:{m}"
+        used.update(validate_pool(store, pools["pools"][key], pools["pool_sha256"][key], cfg,
+                                  split, arm, m, V))
+    return used
+
+
+def collision_inputs(ro: ArtifactStore) -> tuple[np.ndarray, dict]:
+    """IDs of every read-root ObservationSet, and ``{id: (cls, sha)}`` recorded at load so the
+    same inputs are re-verified before the result export (API v4.1 §D)."""
+    ids, used = [], {}
+    for aid in ro.find(ObservationSet):
+        used[aid] = (ObservationSet, str(ro.meta(aid).payload_sha256))
+        ids.append(np.asarray(ro.load(ObservationSet, aid, consumer="experiment").sequence_id,
+                              np.int64))
+    return np.concatenate(ids or [np.zeros(0, np.int64)]), used
 
 
 def pool_expected(pools: dict, keys) -> dict:
@@ -136,10 +178,8 @@ def run_pools(cfg: StudyConfig, repo: Path) -> dict:
         verify_full(ro, exp, "sources before pools")
         plan = {f"{s}:{a}:{m}": sequence_ids(s, a, m, cfg.sizes[s])
                 for s in ("train", "dev") for m in cfg.masters for a in ARMS}
-        stored = (np.concatenate([np.asarray(ro.load(ObservationSet, a, consumer="experiment")
-                                             .sequence_id, np.int64)
-                                  for a in ro.find(ObservationSet)] or [np.zeros(0, np.int64)])
-                  if cfg.check_stored_ids else np.zeros(0, np.int64))
+        stored, seen = (collision_inputs(ro) if cfg.check_stored_ids
+                        else (np.zeros(0, np.int64), {}))
         res["collisions"] = collisions(plan, stored)
         if any(res["collisions"].values()):
             raise StudyFailed(f"namespace collision {res['collisions']}")
@@ -153,7 +193,7 @@ def run_pools(cfg: StudyConfig, repo: Path) -> dict:
                     key = f"{split}:{arm}:{m}"
                     obs = pool_observation(split, named[arm], plan[key], E.shape[1])
                     sc.boundary(f"save {key}", EST["save"], reserve)
-                    oid = rw.save(obs, config=pool_config(split, arm, m),
+                    oid = rw.save(obs, config=study_pool_config(split, arm, m, cfg.protocol),
                                   parents=[cfg.sources["T"][arm][0], cfg.sources["E"][0]],
                                   seed_map={"/".join(map(str, (m, *stream(split)))):
                                             SeedTree(m).seed(*stream(split))},
@@ -164,7 +204,9 @@ def run_pools(cfg: StudyConfig, repo: Path) -> dict:
                 res[f"first_symbol_equal:{split}:{m}"] = bool(np.array_equal(
                     named["a0"][:, 0], named["a020"][:, 0]))
         verify_full(ro, exp, "sources after pools")
-        verify_full(rw, pool_expected(res, res["pools"]), "pools before export")
+        verify_full(ro, seen, "collision inputs before export")
+        validate_pools(rw, cfg, res, [(s, a, m) for s in ("train", "dev") for m in cfg.masters
+                                      for a in ARMS], E.shape[1])
         ctl.outcome = "POOLS_DONE"
         study_export(sc, out, {"pools.json": res,
                                "run.json": _meta(cfg, repo, ctl, "pools", report)},
@@ -186,6 +228,8 @@ def run_train(cfg: StudyConfig, repo: Path, arm: str, master) -> dict:
         n_models = 2 * len(cfg.masters)
         reserve = evaluation_reserve(len(cfg.grid) * n_models, n_models)
         verify_full(rw, exp, "sources and pools before training")
+        validate_pools(rw, cfg, pools, [("train", arm, master), ("dev", arm, master)],
+                       emission_V(ro, cfg))
         outcome = train_one(rw, pools["pools"][keys[0]], pools["pools"][keys[1]],
                             ModelConfig(**cfg.model_config),
                             study_train_config(cfg.steps, cfg.grid), master, arm, cfg.root, sc,

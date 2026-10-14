@@ -2,12 +2,14 @@
 the separately authorised ``final-test``.
 
 Both validate the configuration first and advance only on COMPLETE, manifest-matching
-prerequisite exports. Every used checkpoint passes ``validate_checkpoints`` (grid, identity,
-parents, full hash) before it is scored; every 512-row scoring batch and every oracle batch is
-bracketed by the study controls. The fresh test IDs are collision-checked against the read roots
-and the study's train and dev pools BEFORE the fresh draw; a collision or a STOP before the draw
-means the fresh test is never drawn. Used sources, pools and checkpoints are re-hashed before the
-result export; an integrity failure exports nothing scientific.
+prerequisite exports. Every used pool proves its semantic identity (API v4.1 §B) and every used
+checkpoint passes ``validate_checkpoints`` (grid, identity, parents, full hash) before any oracle
+or scoring; every 512-row scoring batch and every oracle batch is bracketed by the study
+controls. In final-test every train/dev pool is identity-checked first; the fresh test IDs are
+then collision-checked against the read roots and those pools BEFORE the fresh draw (the
+ObservationSets read for that check are re-hashed before the export); a collision or a STOP
+before the draw means the fresh test is never drawn. Used sources, pools and checkpoints
+are re-hashed before the result export; an integrity failure exports nothing scientific.
 """
 
 from __future__ import annotations
@@ -39,7 +41,7 @@ from topo_pilot.dataset import PublicTokenDataset
 from topo_pilot.learner import load_model
 
 from .x5g1_safety import ensure_new_output_dir
-from .x5g1t_checks import validate_checkpoints, verify_full
+from .x5g1t_checks import validate_checkpoints, validate_pool, verify_full
 from .x5g1t_config import StudyConfig, validate_config
 from .x5g1t_exports import study_export, verify_export_complete
 from .x5g1t_lineage import (
@@ -48,10 +50,10 @@ from .x5g1t_lineage import (
     TEST_MASTER,
     collisions,
     draw_pair,
-    pool_config,
     pool_observation,
     sequence_ids,
     stream,
+    study_pool_config,
 )
 from .x5g1t_oracle import oracle_q32
 from .x5g1t_runtime import EST, StudyControls, evaluation_reserve
@@ -62,11 +64,12 @@ from .x5g1t_stages import (
     _meta,
     _sources,
     _study,
+    collision_inputs,
     complete_outcome,
     complete_pools,
-    pool_expected,
     stores,
     tables,
+    validate_pools,
 )
 
 
@@ -111,6 +114,15 @@ def run_dev_analysis(cfg: StudyConfig, repo: Path) -> dict:
         reserve = evaluation_reserve(0, 2 * len(cfg.masters))
         verify_full(ro, exp, "sources before dev analysis")
         kernels, E, _, pi = _sources(ro, cfg)
+        scored = [(a, m) for m in cfg.masters for a in ARMS
+                  if all(_complete(outcomes[(x, m)]) for x in ARMS)]
+        # every used input proven BEFORE any checkpoint, oracle or scoring: pools, then checkpoints
+        used.update(validate_pools(rw, cfg, pools, [(s, a, m) for a, m in scored
+                                                     for s in ("train", "dev")], E.shape[1]))
+        for a, m in scored:
+            used.update(validate_checkpoints(rw, outcomes[(a, m)], cfg, a, m,
+                                             pools["pools"][f"train:{a}:{m}"],
+                                             pools["pools"][f"dev:{a}:{m}"]))
         pairs: list[PairEvidence | None] = []
         for m in cfg.masters:
             oc = {a: outcomes[(a, m)] for a in ARMS}
@@ -122,12 +134,6 @@ def run_dev_analysis(cfg: StudyConfig, repo: Path) -> dict:
             reg = {}
             for arm in ARMS:
                 key = f"dev:{arm}:{m}"
-                dev = pool_expected(pools, [key])
-                verify_full(rw, dev, f"dev pool {key}")
-                used.update(dev)
-                used.update(validate_checkpoints(rw, oc[arm], cfg, arm, m,
-                                                 pools["pools"][f"train:{arm}:{m}"],
-                                                 pools["pools"][key]))
                 obs = rw.load(ObservationSet, pools["pools"][key], consumer="experiment")
                 q = oracle_q32(kernels[arm], E, pi, obs.tokens, guard=_guard(sc, reserve))
                 reg[arm] = _regret_curve(rw, sc, oc[arm]["checkpoints"], _inputs(obs), q,
@@ -163,13 +169,10 @@ def run_dev_analysis(cfg: StudyConfig, repo: Path) -> dict:
     return res
 
 
-def _stored_ids(ro: ArtifactStore, rw: ArtifactStore, pools: dict) -> np.ndarray:
-    """Sequence IDs of every ObservationSet in the read roots and of the study's pools."""
-    ids = [np.asarray(ro.load(ObservationSet, a, consumer="experiment").sequence_id, np.int64)
-           for a in ro.find(ObservationSet)]
-    ids += [np.asarray(rw.load(ObservationSet, oid, consumer="experiment").sequence_id,
-                       np.int64) for oid in pools["pools"].values()]
-    return np.concatenate(ids or [np.zeros(0, np.int64)])
+def _pool_ids(rw: ArtifactStore, pools: dict) -> np.ndarray:
+    """Sequence IDs of the study's (already identity-checked) train and dev pools."""
+    return np.concatenate([np.asarray(rw.load(ObservationSet, oid, consumer="experiment")
+                                      .sequence_id, np.int64) for oid in pools["pools"].values()])
 
 
 def run_final_test(cfg: StudyConfig, repo: Path, authorized: bool) -> dict:
@@ -189,7 +192,9 @@ def run_final_test(cfg: StudyConfig, repo: Path, authorized: bool) -> dict:
         sc = _study(cfg, ctl, "final_test")
         reserve = evaluation_reserve(0, 0)
         verify_full(ro, exp, "sources before final test")
-        used: dict = {}
+        V = int(_sources(ro, cfg)[1].shape[1])
+        used = validate_pools(rw, cfg, pools, [(s, a, m) for s in ("train", "dev")
+                                               for m in cfg.masters for a in ARMS], V)
         for (arm, m), o in outcomes.items():
             if _complete(o):
                 used.update(validate_checkpoints(
@@ -198,7 +203,8 @@ def run_final_test(cfg: StudyConfig, repo: Path, authorized: bool) -> dict:
         n = cfg.sizes["test"]
         plan = {f"test:{a}:{TEST_MASTER}": sequence_ids("test", a, TEST_MASTER, n)
                 for a in ARMS}
-        res["collisions"] = collisions(plan, _stored_ids(ro, rw, pools))
+        stored, seen = collision_inputs(ro)
+        res["collisions"] = collisions(plan, np.concatenate([stored, _pool_ids(rw, pools)]))
         if any(res["collisions"].values()):
             raise StudyFailed(f"fresh test namespace collision {res['collisions']}")
         kernels, E, perm, pi = _sources(ro, cfg)
@@ -210,13 +216,14 @@ def run_final_test(cfg: StudyConfig, repo: Path, authorized: bool) -> dict:
             obs = pool_observation("test", named[arm], plan[f"test:{arm}:{TEST_MASTER}"],
                                    E.shape[1])
             sc.boundary(f"save test {arm}", EST["save"], reserve)
-            oid = rw.save(obs, config=pool_config("test", arm, TEST_MASTER),
+            oid = rw.save(obs, config=study_pool_config("test", arm, TEST_MASTER, cfg.protocol),
                           parents=[cfg.sources["T"][arm][0], cfg.sources["E"][0]],
                           seed_map={"/".join(map(str, (0, *stream("test")))):
                                     SeedTree(0).seed(*stream("test"))}, consumer="experiment")
             res["test_pools"][arm] = oid
-            used[oid] = (ObservationSet, rw.meta(oid).payload_sha256)
             sc.boundary(f"save test {arm} done", EST["save"], reserve)
+            used.update(validate_pool(rw, oid, rw.meta(oid).payload_sha256, cfg, "test", arm,
+                                      TEST_MASTER, V))
             tests[arm] = (_inputs(obs), oracle_q32(kernels[arm], E, pi, obs.tokens,
                                                    guard=_guard(sc, reserve)))
         for m in cfg.masters:
@@ -230,7 +237,8 @@ def run_final_test(cfg: StudyConfig, repo: Path, authorized: bool) -> dict:
                                               "regret": float(reg.mean()),
                                               "ratio": float(reg.mean() / cfg.gc[arm])}
         verify_full(ro, exp, "sources before export")
-        verify_full(rw, used, "test pools and checkpoints before export")
+        verify_full(ro, seen, "collision inputs before export")
+        verify_full(rw, used, "pools and checkpoints before export")
         ctl.outcome = "FINAL_TEST_DONE"
         study_export(sc, out, {"result.json": res,
                                "run.json": _meta(cfg, repo, ctl, "final-test", report)},

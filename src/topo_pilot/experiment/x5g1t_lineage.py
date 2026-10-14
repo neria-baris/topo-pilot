@@ -78,6 +78,17 @@ def pool_config(split: str, arm: str, master) -> dict:
             "stream": "/".join(stream(split)), "namespace_code": CODES[split]}
 
 
+def study_pool_config(split: str, arm: str, master, execution_protocol: str) -> dict:
+    """Metadata of a NEW study pool (API v4.1 §A): ``lineage_protocol`` names the frozen
+    stream/namespace/seed/ID construction (``PROTOCOL``, API v3 §2); ``execution_protocol`` names
+    the validated run contract. ``pool_config`` stays for historical records."""
+    if arm not in ARMS:
+        raise _bad("arm", f"unknown arm {arm!r}")
+    return {"role": f"x5g1t-{split}", "lineage_protocol": PROTOCOL,
+            "execution_protocol": execution_protocol, "arm": arm, "master": master,
+            "stream": "/".join(stream(split)), "namespace_code": CODES[split]}
+
+
 def collisions(new: dict[str, NDArray], stored: NDArray) -> dict[str, int]:
     """Per new id set: how many ids are in ``stored``; ``internal``: duplicates across all new."""
     st = np.asarray(stored, dtype=np.int64)

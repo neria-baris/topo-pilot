@@ -1,15 +1,19 @@
-"""X5 G1 study integrity checks (x5g1-train-v4 §11; API v4 §5): full-hash verification of used
-artifacts and checkpoint identity against the model, arm, master and pools."""
+"""X5 G1 study integrity checks (x5g1-train-v4 §11; API v4 §5, v4.1 §B): full-hash verification
+of used artifacts, semantic pool identity (hashes prove bytes, not which pool) and checkpoint
+identity against the model, arm, master and pools."""
 
 from __future__ import annotations
 
 import dataclasses
 import json
 
-from topo_pilot.contracts import ArtifactStore, Checkpoint
+import numpy as np
+
+from topo_pilot.contracts import ArtifactStore, Checkpoint, ObservationSet, SequenceLayout
 from topo_pilot.learner import ModelConfig
 
 from .x5g1_safety import verify_sources_full
+from .x5g1t_lineage import sequence_ids, study_pool_config
 from .x5g1t_train import study_run_key, study_train_config
 
 
@@ -26,6 +30,40 @@ def verify_full(store: ArtifactStore, expected: dict, when: str) -> None:
     bad = verify_sources_full(store, expected)
     if bad:
         raise IntegrityFailed(f"integrity {when}: " + "; ".join(bad))
+
+
+def validate_pool(store: ArtifactStore, pool_id: str, sha: str, cfg, split: str, arm: str,
+                  master, V: int) -> dict:
+    """``{pool_id: (ObservationSet, sha)}`` once the pool is proven to be ``split/arm/master``:
+    type and hash, exact metadata config (lineage and execution protocol), parents = this arm's
+    T plus E, full payload hash, split, V, layout, row count and the exact ordered sequence IDs."""
+    where = f"pool {pool_id} as {split}:{arm}:{master}"
+    try:
+        meta = store.meta(pool_id)
+    except Exception as exc:  # noqa: BLE001 - any failure is an integrity failure
+        raise IntegrityFailed(f"{where}: {type(exc).__name__}: {exc}") from exc
+    if meta.artifact_type != "ObservationSet" or meta.payload_sha256 != sha:
+        raise IntegrityFailed(f"{where}: type/payload mismatch")
+    if canonical(dict(meta.config)) != canonical(study_pool_config(split, arm, master,
+                                                                   cfg.protocol)):
+        raise IntegrityFailed(f"{where}: metadata config {dict(meta.config)} differs")
+    parents = tuple(sorted({cfg.sources["T"][arm][0], cfg.sources["E"][0]}))
+    if tuple(meta.parent_ids) != parents:
+        raise IntegrityFailed(f"{where}: parents {meta.parent_ids} != {parents}")
+    verify_full(store, {pool_id: (ObservationSet, sha)}, where)
+    try:
+        obs = store.load(ObservationSet, pool_id, consumer="experiment")
+    except Exception as exc:  # noqa: BLE001 - e.g. bytes changed after the hash check
+        raise IntegrityFailed(f"{where}: {type(exc).__name__}: {exc}") from exc
+    n = cfg.sizes[split]
+    if (obs.split != split or int(obs.V) != int(V) or obs.layout_version != "1"
+            or tuple(obs.tokens.shape) != (n, SequenceLayout().n_obs)):
+        raise IntegrityFailed(f"{where}: split/V/layout/rows {obs.split}/{obs.V}/"
+                              f"{obs.layout_version}/{tuple(obs.tokens.shape)} differ")
+    if not np.array_equal(np.asarray(obs.sequence_id, np.int64),
+                          sequence_ids(split, arm, master, n)):
+        raise IntegrityFailed(f"{where}: sequence IDs differ from the frozen construction")
+    return {pool_id: (ObservationSet, sha)}
 
 
 def validate_checkpoints(store: ArtifactStore, outcome: dict, cfg, arm: str, master,

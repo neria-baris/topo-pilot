@@ -17,7 +17,7 @@ from topo_pilot.contracts import (
     LocalFSBackend,
     TransitionSpec,
 )
-from topo_pilot.contracts.testing import tiny_world_spec
+from topo_pilot.world import WorldConfig, build_world
 
 from .x5g1t_config import PRODUCTION
 from .x5g1t_lineage import MASTERS
@@ -61,8 +61,8 @@ def build_fixture(root: Path, sizes: dict | None = None, steps: int = 6,
             for arm, T in (("a0", T0), ("a020", T1))}
     eid = src.save(_emission(E, pi, perm), config={"fixture": "E"}, parents=[], seed_map={},
                    consumer="experiment")
-    wid = src.save(tiny_world_spec(), config={"fixture": "world"}, parents=[], seed_map={},
-                   consumer="experiment")
+    wid = src.save(build_world(WorldConfig("cylinder", (3, 3))), config={"fixture": "world"},
+                   parents=[], seed_map={}, consumer="experiment")
     doc = PRODUCTION.protocol_doc
     mailbox = root / "mailbox"
     mailbox.mkdir(parents=True, exist_ok=True)

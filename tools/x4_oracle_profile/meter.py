@@ -244,7 +244,9 @@ def lock_refusal(args) -> str | None:
     if lock.get("session") != owner or (args.mode == "run" and owner != WORKER_SESSION):
         return f"RUN.lock not owned by {owner} for mode {args.mode}"
     if EMERGENCY.exists():
-        records = sum(1 for line in EMERGENCY.read_text(encoding="utf-8").splitlines() if line.strip())
+        records = sum(
+            1 for line in EMERGENCY.read_text(encoding="utf-8").splitlines() if line.strip()
+        )
         if records > int(lock.get("emergency_records_reconciled", 0)):
             return "unreconciled emergency charge records exist"
     return None

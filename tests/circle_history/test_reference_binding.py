@@ -179,9 +179,11 @@ def _gap_cache(mx_ref: Decimal) -> dict:
 def test_exact_gap_boundary_at_one_over_ten_to_the_ten() -> None:
     m_hat = {4: np.array([[0.5, 0.25]])}                 # exact binary values
     at = Decimal("0.4999999999")                          # exact gap 1/10^10
-    above = at - Decimal("1E-30")                         # exact gap 1/10^10 + 10^-30
+    # formed as an exact literal: arithmetic in the default 28-digit context would round 1e-30 away
+    above = Decimal("0.499999999899999999999999999999")  # exact gap 1/10^10 + 10^-30
+    assert F(at) - F(above) == F(1, 10**30)
     assert F(0.5) - F(at) == F(1, 10**10)
-    assert F(0.5) - F(above) > F(1, 10**10)
+    assert F(0.5) - F(above) == F(1, 10**10) + F(1, 10**30)
     assert float(F(0.5) - F(above)) == 1e-10 == float(F(0.5) - F(at))    # floats cannot tell
     for ref, want in ((at, "PASS"), (above, "FAIL_TECHNICAL")):
         out = _check(E, m_hat, hist=HIST[:1], ks=(4,), cache=_gap_cache(ref), cache_only=True)

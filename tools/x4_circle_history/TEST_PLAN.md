@@ -154,6 +154,106 @@ Execution: the conductor runs every test through the job meter. Authors do not e
   - Cover certify_rows, reference_check_rows, and RestrictedE4Adapter.panels with panel 3 (zero
     loads).
 
+## Spec v2.4 additions (see API.md "Spec v2.4 clarifications" and ERROR_BOUND.md v2.2 sections 8-9)
+
+Earlier test files and their revisions are preserved in git; new cases go into new files where
+practical. Nothing deliberately takes 180 s or 30 s of real time: clocks and operation markers
+are injected.
+
+- **A16 (author A; integer_lift timer).** With an injected clock (an iterator of values):
+  - the already-closed branch (zero defect) whose clock advances past lift_cpu_cap_s between
+    entry and return raises Unresolved, although the returned lift would be exact;
+  - the same branch with the clock below the cap returns the exact lift;
+  - the corrected branch whose clock passes the cap only during the final exact checks raises
+    Unresolved;
+  - the FIRST clock call happens before any defect is formed (e.g. a clock that raises a marker
+    exception on its first call propagates that exception for an input whose D1·a would also
+    be malformed).
+- **A17 (author A; fit_chart timed hook).** A recording timed sees exactly the labels
+  "distance", "ph", "edges", "two_skeleton", "integer_lift", "primitive", "smoothing" in that
+  order, and the chart equals the one with timed=None. A timed that raises Unresolved at
+  "two_skeleton" propagates Unresolved and never sees a later label. extend with a recording
+  timed sees "extension_distance".
+- **B11 (author B; reference binding and exact gaps).**
+  - process_digest changes when any of T, E, pi, coords changes by one ulp or a shape changes;
+    an integer coords array and the equal float64 array give the SAME digest (inputs are
+    converted to float64 first).
+  - Cache-binding mutation: a cache filled under process P1 and then used with P2 (one E entry
+    changed) produces no hit (the P2 result equals a fresh P2 computation).
+  - Malformed-history collision: histories [.., 260, ..] (int64) and [.., 4, ..], float-dtype
+    histories, bool histories, negative values and values ≥ V raise Invalid before any
+    reference work; no two distinct valid histories share a key.
+  - Exact-gap counterexample: an m_hat whose exact gap is Fraction(1, 10**10) passes; an m_hat
+    whose exact gap is slightly above Fraction(1, 10**10) while float(gap) == 1e-10 fails
+    (construct m_hat and M_ref as exact rationals around a float boundary).
+  - cache_only=True with an empty cache raises Invalid("reference cache miss") and calls no
+    reference (e.g. a T whose reference would itself trap shows the miss error, not the trap).
+- **B12 (author B; reference_cache.py).** export_cache/load_cache round trip is exact (Decimal
+  strings equal, no float). load_cache raises Invalid for: a schema change, any identity field
+  change, an entry with another process_digest, a duplicate key, "NaN"/"Infinity"/garbage mx.
+  verify_rows raises Invalid for a reordered history_id, one changed sequence_id, a changed
+  panel, a changed history byte, a missing (model, split) record and a missing K entry; it
+  passes on the exact table.
+- **B13 (author B; process_law thresholds and grid law).**
+  - threshold_law on hand-made rows with 2^-53-grid arithmetic: a monotone row ending at 1; a
+    row whose raw cumsum exceeds 1 BEFORE the last positive entry (e.g. p = [0.5, 0.5 + 2^-52,
+    0, 1e-17] style rows written as exact floats) where the clamped thresholds keep the law
+    identical to direct counting; a hand-made non-monotone threshold row (not producible
+    by the sampler, which is monotone after clamping) where q equals the comparison-count law
+    derived in the test from the sorted thresholds and "monotone" is False; a negative
+    threshold clamps to 0.
+  - row_tv: "documented" is None for a non-monotone row and ≥ "grid" for a monotone one.
+- **B14 (author B; process_law softmax and law).**
+  - lattice_states rejects a permuted coords array, a non-integer coordinate and S != 144.
+  - documented_transition: degree 3 on y = 0 and y = 11, degree 4 elsewhere, x wraps, y does
+    not; ideal_identities passes on it and fails on a perturbed copy.
+  - softmax_enclosure: logits are exact (d² for state (0, 0) and centre (1/2, 1/2) is 1/2,
+    logit −4/25); for a few entries the exact interval contains an independent 80-digit test
+    computation; lo < 1 < hi and hi − lo is below 1e-55.
+  - process_law_bound on the exact documented law rounded to float64 (built in the test from
+    the written equations, numpy float softmax) gives BOUNDED with 0 < kappa < 1e-12 and a
+    finite Z_bound below 1e-9; with one T̂ zero-support change, a zero Ê entry, a permuted coords
+    array, or kappa forced ≥ 1 it gives UNAVAILABLE with a reason naming the condition.
+- **B15 (author B; controls).** control_scores equals u_c·(m32 − m4) per row for hand-made
+  rows, including an exact (0, 0) m1 row mapped to (1, 0). control_summary reproduces, for a
+  tiny n and draws, the means over indices from ONE rng.integers(0, n, size=n) call per draw
+  shared by all controls and models (recomputed in the test with Generator(PCG64(seed))); the
+  quantiles use inverted_cdf at .025, .975, .05/3 and 1 − .05/3; Invalid for non-finite values,
+  unequal lengths, n < 2, duplicate or empty models and unknown control names.
+- **B16 (author B; taxonomy).** The adapter's lineage and join failures raise JoinError (as
+  before); the API text that JoinError is a technical defect is checked by asserting
+  issubclass relations are unchanged and that no adapter failure raises Unresolved.
+
+### Builder tests (v2.4)
+
+- runner._run_gate records FAIL_TECHNICAL for Invalid and JoinError and INCONCLUSIVE for
+  Unresolved; the e2e join mismatch now ends overall FAIL.
+- stage_records: an out-of-order oracle/charts/precision call refuses with no gate record; a
+  second call of a STARTED stage refuses (also after a simulated kill: STARTED without
+  COMPLETED); an evidence hash change refuses with integrity true and export reports FAIL;
+  export runs after a non-PASS.
+- persisted reference: charts reloads the cache without recomputation (a counting stub shows no
+  reference call), refuses a modified cache file, a modified ORACLE.json hash, a different
+  process and a row-table mismatch; saved oracle IDs that differ from reloaded rows fail
+  FAIL_TECHNICAL before any chart work.
+- op_guard: marker and OPERATIONS.jsonl events for start/end/error; the post-return check with
+  an injected clock raises Unresolved; the meter_bind limiter with a marker whose started_epoch
+  is older than deadline_s returns the native-operation kill reason; one short real metered
+  child (deadline 1 s, a marked sleep of a few seconds) is KILLED with that reason and its
+  stale marker is archived as KILLED_<seq>.json by the next meter_bind call.
+- integer_lift and fit_chart wiring from the runner: ctx.timed is used for every labelled
+  operation.
+- allocation: meter_bind syncs a ledger with the previous caps to the CONTRACT caps, keeps every
+  entry byte-identical and records allocation_history; a ledger with unknown caps refuses.
+- manifests: frozen_files contains src/topo_pilot/__init__.py, every contracts file and
+  dataset/sampler.py; a changed contracts file or an extra one is refused before store access;
+  an unfrozen project module loaded is refused.
+- numerical identity: the probe record has the documented keys and is deterministic across two
+  calls in one process; a changed package file digest (simulated record) is refused.
+- precision: PRECISION.json is written after a B4 stop and contains controls, instability counts
+  and Z_bound; a sequence_id or digest mismatch across models fails FAIL_TECHNICAL before any
+  bootstrap.
+
 ## Builder tests (implementer; labelled non-independent): `tests/circle_history/test_builder_*.py`
 
 - meter_bind: job and task binding, stage ceilings, and that the export cap of 80 s is

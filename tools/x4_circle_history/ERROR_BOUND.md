@@ -1,4 +1,4 @@
-# Per-row numerical certificate for the K4 score (job 0016, v2.1)
+# Per-row numerical certificate for the K4 score (job 0016, v2.2)
 
 Status: SYMBOLIC derivation plus a per-row certificate PROCEDURE. Nothing here has been run on
 real arrays. The procedure runs only on released calibration and validation rows, after a
@@ -6,6 +6,10 @@ coordinator release. Scored-row certificates are implemented but locked until th
 scoring. The cap is unchanged: every certified score error must be ≤ 1e-4.
 
 Revision history:
+- **v2.2** applies the reference-final, pipeline-freeze and generating-law
+  reviews (sections 8 and 9): separate exact even/odd Taylor series bounds, process-bound
+  validated reference keys, exact gap comparison, a persisted verified reference, and the
+  implemented process-law bound under an explicitly IDEALIZED sampling law.
 - **v1** was the job-0015 draft (sha256 3d12aaf5…). It modelled float64 rounding with
   relative-plus-absolute terms. The coordinator's independent review (jobs/0016/
   coordinator_continuation_review.md) found five defects in it: a circular mass lower bound,
@@ -284,3 +288,82 @@ certify_rows does the following:
   - exact-rational R, Δ, E_ref and B.
 - **Returns** per-row B, Δ, E_ref, the moment-check maxima and status counts, plus the overall
   status CERTIFIED / INCONCLUSIVE / FAIL_TECHNICAL. It returns no endpoint aggregate.
+
+## 8. v2.2 corrections (reference-final and pipeline-freeze reviews; normative)
+
+**Taylor verification (corrects §4).** For first ∈ {0, 1} define the complete positive series
+S_first = Σ_{k≥0} X^(2k+first)/(2k+first)! (cosh X and sinh X). For k > N the term ratio
+t_{k+1}/t_k = X²/((2k+2+first)(2k+3+first)) decreases in k, so with
+r = X²/((2N+3+first)(2N+4+first)) < 1,
+
+  S_first ≤ Σ_{k≤N} t_k + t_{N+1}/(1 − r)   (exact rationals).
+
+Both bounds must be ≤ A = 270. The cos/sin remainders alternate with decreasing magnitude
+beyond N, so by Leibniz each is bounded by its first neglected term (T_cos, T_sin < 1e-75). The
+rounding terms use Σ_{k≤N}|t_k| ≤ S_first ≤ A. The earlier draft compared partial + T_cos with
+2A, which did not bound each series separately.
+
+**Reference binding (corrects §7).** References are keyed by (process digest of T, E, pi,
+coords; K; int64 history bytes) after validating the histories (integer dtype, 0..V−1, shape
+[n, 32]) BEFORE any conversion. Moment gaps are compared EXACTLY with Fraction(1, 10^10). The
+oracle stage persists the Decimal moments as strings with their process, feature and source
+identities and the per-model/split row table (history_id, sequence_id, panel, history bytes);
+the charts stage verifies that file and runs the certificate with cache_only (no silent
+recomputation, no float conversion of a reference). Cost: the all-row references are computed
+once per unique canonical history and charged to the oracle stage only.
+
+**Decimal contexts.** Traps propagate into nested contexts; flags do not, so the outer flag
+inspection covers only outer operations, and the nested reference is protected by the traps.
+
+## 9. Process-law approximation: implemented procedure (process_law.py; completes §6)
+
+Follows the coordinator's static generating-law review (message 01C0116D…), which confirmed
+canonical sampling then renaming and emission-before-transition indexing against the unchanged
+dataset/sampler.py, dataset/stage.py and process/emission.py. Inputs: the stored float arrays
+T̂ (144×144), Ê_canon (144×36), π̂ (144) and coords, read as exact reals. Nothing is sampled and
+the sampler is neither edited nor rerun.
+
+1. **Documented law P\* and its identities.** States s ↔ (x, y) = (s // 12, s mod 12), required
+   exactly. T\*: 1/5 per neighbour (x ± 1 mod 12 with equal y; y ± 1 with equal x, y not
+   periodic), 1 − deg/5 on the diagonal. π\* = 1/144. Verified EXACTLY in rationals: T\*
+   symmetric, rows sum to 1, π\* T\* = π\*. Ê\*: softmax over the 36 centres (1/2 + 2a, 1/2 + 2b),
+   column j = 6a + b, logits −8d²/25 (σ = 5/4) with the x-periodic flat distance.
+2. **Required conditions.** κ < 1; T̂ has exactly the zero support of T\*; every Ê and π̂ entry
+   is strictly positive (E\*, π\* are positive). Stored rows need NOT be exactly stochastic: the
+   posterior is the normalised stored-weight calculation. Any failure makes the bound
+   UNAVAILABLE with its exact reason; nothing is then claimed about the zero benchmark.
+3. **Rigorous softmax enclosure.** d² is an exact quarter-integer and the logit −8d²/25 an
+   exact finite decimal (Inexact trapped). In a trapping 60-digit context, n_j = exp(logit_j)
+   (allowed relative error 2u; correct rounding is not relied on), D = Σ n_j from Decimal(0)
+   (≤ 36 roundings), E_dec = n_j/D (one rounding). With u = ½·10^(−59),
+   lo = (1−2u)(1−u)/((1+2u)(1+u)^36) and hi = (1+2u)(1+u)/((1−2u)(1−u)^36), every exact E\*
+   lies in the positive interval [E_dec/hi, E_dec/lo]. The stored float geometry/log-sum-exp
+   error enters only through comparing the stored Ê with that interval; the stored builder is
+   never treated as exact.
+4. **κ (exact).** κ_T = max_{T\*>0}|T̂ − T\*|/T\*, κ_π = 144·max|π̂ − 1/144|,
+   κ_E = max max(|Ê − E_dec/hi|, |Ê − E_dec/lo|)/(E_dec/hi); κ = max. ρ_κ − 1 =
+   ((1+κ)/(1−κ))^(2L+1) − 1 with L = 32; a length-L positive path has 2L factors, so 2L+1 is
+   conservative.
+5. **Sampler thresholds and the exact comparison-count law.** The actual `_draw` returns
+   j = min(#{i : c_i ≤ u}, V−1), counting successful threshold comparisons; raw float cumsums
+   can exceed 1 before the last-positive substitution. The thresholds c come from the ACTUAL
+   `_cumulative_rows` (frozen file). For the proof they are clamped, c' = min(max(c, 0), 1),
+   which is observationally identical for u ∈ [0, 1). With s = sorted(c'), s_{−1} = 0 and
+   G(x) = min(max(⌈x·2^53⌉, 0), 2^53), the exact law of N = #{i : c'_i ≤ u} on the grid
+   u = k·2^−53 is P(N = j) = (G(s_j) − G(s_{j−1}))·2^−53 (j < V) and P(N = V) = 1 − G(s_{V−1})·2^−53;
+   q_j = P(N = j) for j < V−1 and q_{V−1} = P(N = V−1) + P(N = V). When c' is nondecreasing with
+   c'_{V−1} = 1 this is the adjacent-interval law of §6, and the v2.1 formula
+   ½Σ_j(|e_j| + |e_{j−1}| + 2^−53 + dev_j) with e_j = c'_j − Σ_{i≤j} p̂_i is also reported;
+   otherwise that formula is marked not applicable and only the exact law is used.
+6. **Per-draw TV and Z_bound.** TV(q_row, p\*_row) ≤ ½Σ_j(|q_j − p̂_j| + dev_j), with
+   dev_j ≥ |p̂_j − p\*_j| exact for T and π and max(|Ê − E_dec/hi|, |Ê − E_dec/lo|) for E. Then
+   TV(Q, P\*) ≤ tv_π + 32·max_s tv_E + 31·max_s tv_T, and Z_bound = 2(ρ_κ − 1) + 4·TV(Q, P\*)
+   (C2 = 1).
+7. **Idealisation (stated, not proved).** Q is the IDEALIZED sampling law: independent uniform
+   53-bit draws across every relevant sampler call and trajectory, and independent
+   panel-assignment randomness. Uniform marginal outputs alone would not justify the 64-step
+   coupling or independent trajectories. Z_bound bounds |E_Q[g·(M32 − M4)]| for that
+   idealization, covering the parameter, CDF and grid discrepancy only; it does not bound
+   deterministic PRNG bias or correlation and does not establish an exact zero for the fixed
+   saved data. It is reported beside the controls, is not a gate, and changes no threshold.
+   Also assumed: libmpdec rounds +, −, ×, ÷ correctly (§5).

@@ -7,7 +7,7 @@
   "commit": "8783adc122153d0e5697cd807686b04c80e4e199",
   "sha256": "42FB2E9F2F8CD95C908241E5512E5C3D259501AB32F4EBE12C03ECD0F9CEE0FA"
  },
- "status": "IMPLEMENTATION_CONTRACT (job 0016: code + synthetic tests only; no real payload; no feasibility execution)",
+ "status": "IMPLEMENTATION_CONTRACT spec v2.4 (job 0016: code + synthetic tests only; no real payload; no feasibility execution)",
  "scope": {
   "models": [
    1729,
@@ -100,7 +100,7 @@
   "suffix_convention": "restart at stationary pi, emit first, transitions only between emissions",
   "process_tolerance": 1e-12,
   "reference_rows_per_split_per_model": 4,
-  "reference_row_rule": "explicit minimum: 4 lowest history_id rows of panel 1 and of panel 2 per model, K1/4/32, moment error <= 1e-10; plus every released calibration/validation row K4/K32 moment check <= 1e-10 (ERROR_BOUND.md v2.1)",
+  "reference_row_rule": "explicit minimum: 4 lowest history_id rows of panel 1 and of panel 2 per model, K1/4/32, moment error <= 1e-10; plus every released calibration/validation row K4/K32 moment check <= 1e-10 (ERROR_BOUND.md v2.2); K1 all-row references computed as a diagnostic for the m1 control only",
   "reference_K": [
    1,
    4,
@@ -159,7 +159,8 @@
    "m4_unit": "m4 / ||m4||; exactly (0,0) -> (1,0)",
    "sha256_last4": "phase = 2*pi*int.from_bytes(sha256(bytes(canonical_last4_uint8)).digest()[:8], 'big') / 2**64; u = (cos, sin)"
   },
-  "control_angular_instability": "flag (diagnostic only) rows with 0 < ||m|| <= certified moment-error bound; vector is the operational float result; never infer zero from a tolerance"
+  "control_angular_instability": "flag (diagnostic only) rows with 0 < ||m|| <= certified moment-error bound; vector is the operational float result; never infer zero from a tolerance",
+  "control_reporting": "validation only: control_summary with the SD/B4 index stream (seed sd_seed, sd_draws, one rng.integers(0, n, size=n) per draw shared by controls and models); point, central 95% and Bonferroni q=.05/3 bounds (inverted_cdf); near-zero angular counts for m1/m4 with bound = exact max moment gap + moment envelope; reported beside Z_bound; never gated or recentred"
  },
  "precision": {
   "validation_rows": 512,
@@ -186,7 +187,7 @@
  },
  "numerical_bound": {
   "max_score_error": 0.0001,
-  "document": "tools/x4_circle_history/ERROR_BOUND.md (v2.1)",
+  "document": "tools/x4_circle_history/ERROR_BOUND.md (v2.2)",
   "reference": "tests/oracle_profile/independent_reference.decimal_suffix_posterior (job 0014, unchanged), digits 60, inside a decimal context trapping Underflow/Subnormal/Overflow/Clamped/InvalidOperation/DivisionByZero",
   "features_reference": "exact algebraic cos/sin of multiples of pi/6 at 80 digits",
   "trig_reference": "Taylor series at 80 digits with fixed N = 48 terms, exact-rational tail bound < 1e-75 on the analytic interval [0, 6284/1000], proved term-rounding enclosure",
@@ -194,13 +195,14 @@
   "outcomes": "CERTIFIED if every row bound <= 1e-4; INCONCLUSIVE if some finite bound > 1e-4; FAIL_TECHNICAL on trap/nonfinite/range/moment-check violation",
   "coverage": "every released calibration and validation row for every model; reference posteriors computed once per unique canonical history after the cross-model join",
   "instantiation": "only after coordinator release; scored rows locked (AccessDenied without scoring release)",
-  "process_law": "separate reported Z_bound (ERROR_BOUND.md section 6): stored-vs-generating-law relative perturbation plus sampler TV with both adjacent CDF-boundary errors and 2^-53 grid quantisation; carried into later interpretation of the zero benchmark",
+  "process_law": "separate reported Z_bound (ERROR_BOUND.md sections 6 and 9, v2.2; process_law.py): exact documented-law identities, rigorous 60-digit softmax enclosure, stored-vs-ideal relative kappa < 1 with identical support, exact comparison-count law of the ACTUAL sampler thresholds (clamped to [0,1]) on the 2^-53 grid; under the IDEALIZED independent-uniform sampling law only; UNAVAILABLE with reason on any structural mismatch; never an exact zero; not a gate",
   "phase_checks": {
    "operational": "0 <= phi < 2*np.pi (float64), FAIL_TECHNICAL otherwise",
    "analytic": "[0, 6284/1000]"
   },
   "reference_score": "assembled exactly in rationals from finite Decimal moments and unit vectors",
-  "process_operational": "P_op is the normalised stored-weight likelihood calculation (stored floats as exact reals), not assumed exactly stochastic or stationary"
+  "process_operational": "P_op is the normalised stored-weight likelihood calculation (stored floats as exact reals), not assumed exactly stochastic or stationary",
+  "reference_persistence": "oracle stage persists exact Decimal-string moments in REFERENCE_CACHE.json bound to process/feature/source identities and the per-model/split row table; charts stage verifies hash, identity, row table and saved IDs, then certifies with cache_only"
  },
  "gates": [
   "identity",
@@ -223,8 +225,8 @@
   "stage_caps_s": {
    "implementation": 400,
    "identity": 200,
-   "oracle": 400,
-   "charts": 2200,
+   "oracle": 900,
+   "charts": 1700,
    "precision": 200,
    "export": 200
   },
@@ -244,7 +246,51 @@
    "export"
   ],
   "job_0016_export_max_s": 80,
-  "stage_label_rule": "ledger entry label = <stage>__<label> (legacy <stage>:<label> also counted); stage totals are sums of charged_cpu_s over that prefix"
+  "stage_label_rule": "ledger entry label = <stage>__<label> (legacy <stage>:<label> also counted); stage totals are sums of charged_cpu_s over that prefix",
+  "allocation_history": [
+   {
+    "stage_caps_s": {
+     "implementation": 400,
+     "identity": 200,
+     "oracle": 400,
+     "charts": 2200,
+     "precision": 200,
+     "export": 200
+    },
+    "superseded_by": {
+     "implementation": 400,
+     "identity": 200,
+     "oracle": 900,
+     "charts": 1700,
+     "precision": 200,
+     "export": 200
+    },
+    "authority": {
+     "message_id": "coordinator-0016-prospective-resource-allocation",
+     "message_sha256": "9C7BE6D5DC185B9BAE58A1EA9325463C3E17412182F6B8CDEAF6D0F93742DBB2"
+    },
+    "recorded_utc": "2026-10-14T20:17:04Z",
+    "note": "prospective administrative reallocation of 500 CPU s from charts to oracle within the same 3600 total, recorded BEFORE any real oracle work (no oracle-stage ledger entry exists); synthetic cost_probe.json and earlier freezes immutable; sufficiency is a projection; an inadequate stage stops honestly and never borrows"
+   }
+  ],
+  "owner_override": {
+   "message_id": "owner-overnight-coordinator-transfer-20261014",
+   "message_sha256": "E4F56F6B9561C62645C195DA1500084DF423D96EC65DA21593ED2A665A9D65AC",
+   "owner_message_sha256": "13160D21CA0F52BEC04CCC9AA73BBE4016842C8A108E32994656F57E5B4E69CA",
+   "effect": "all CPU-time ceilings and stage allocations (including the K4 total 3600 and its subcaps) CANCELLED prospectively; measurement, ledger and reporting continue",
+   "safety_limits": {
+    "threads_max": 4,
+    "memory_bytes_max": 12884901888,
+    "scientific_tasks_at_once": 1,
+    "large_outputs": "X: only",
+    "safe_stop_free_bytes": {
+     "C:": 2000000000,
+     "X:": 30000000000
+    }
+   },
+   "interim_binding": "until the incoming coordinator reviews a transparent binding change, the meter still enforces stage_caps_s (conservative), threads 1, memory 8 GiB; the disk safe-STOP is enforced by meter_bind",
+   "methodological_bounds_unchanged": "lift 30 CPU s per chart, six 512-row constructions, 180 s per native operation, 128 nodes per bound, fixed search"
+  }
  },
  "supersedes": {
   "job": "0015",
@@ -269,6 +315,11 @@
  },
  "gate_notes": {
   "process_and_reference": "(i) four lowest history_id rows per split per model, K1/4/32 Decimal references, max moment error <= 1e-10 (explicit, not subsumed); (ii) every released row K4/K32 moment check <= 1e-10; canonical references shared across models only after exact process and history equality",
-  "row_score_certificates": "after the chart transform: calibration rows with gauged landmark phases, validation rows with extended phases; ERROR_BOUND.md v2.1 per-row bound <= 1e-4"
+  "row_score_certificates": "after the chart transform: calibration rows with gauged landmark phases, validation rows with extended phases; ERROR_BOUND.md v2.2 per-row bound <= 1e-4"
+ },
+ "gate_taxonomy": {
+  "FAIL_TECHNICAL": "Invalid and JoinError: invalid input, integrity, checksum, lineage, canonical-join, persisted-ID, source-integrity, certificate, implementation or numerical defects (overall FAIL)",
+  "INCONCLUSIVE": "Unresolved: valid criterion not met, unsupported rows, missing chart/lift, resource or operation exhaustion, inadequate precision (criterion_met=false)",
+  "authority": "coordinator-0016-prospective-resource-allocation 9C7BE6D5DC185B9BAE58A1EA9325463C3E17412182F6B8CDEAF6D0F93742DBB2"
  }
 }

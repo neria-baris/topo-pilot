@@ -1,4 +1,4 @@
-# x4_circle_history: public API (job 0016, spec v2.3; continues the BLOCKED job-0015 draft)
+# x4_circle_history: public API (job 0016, spec v2.4; continues the BLOCKED job-0015 draft)
 
 Status: written specification, fixed BEFORE production implementation, for independent test
 authors. The machine contract is CONTRACT.json; the numerical bound is ERROR_BOUND.md. Every
@@ -369,6 +369,261 @@ cross_model_join({model: {"sequence_id", "canonical32", "panel"}}) does the foll
 4. **Source integrity before payload I/O (`live_context.py`; builder-tested).** Before any store
    access, every frozen file hash, the frozen file set, the module paths and the installed
    dependency set are re-checked against FREEZE.json. A dirty source is refused.
+
+## Spec v2.4 clarifications (coordinator reference-final, pipeline-freeze and allocation reviews; normative)
+
+Sources: messages coordinator-0016-reference-final-review (A43DDDC2…),
+coordinator-0016-pipeline-freeze-review (B481F090…), jobs/0016/PIPELINE_DRAFT_STATIC_REVIEW.md
+(0FBD542B…) and coordinator-0016-prospective-resource-allocation (9C7BE6D5…). Scientific gates,
+thresholds, panels, methods, seeds and the history-ID chart order / sequence-ID precision order
+are UNCHANGED. Items 1–6 are tested by the independent authors (A: items 5–6; B: items 1–4);
+items 7–12 are builder-tested runtime.
+
+1. **Error taxonomy (errors.py, runner).** `JoinError` now means a TECHNICAL identity defect:
+   cross-model pairing, artifact lineage, checksum, canonical join, persisted-ID or
+   source-integrity mismatch. The runner records `Invalid` AND `JoinError` as FAIL_TECHNICAL
+   (overall FAIL); only `Unresolved` (valid criterion not met, unsupported, missing chart,
+   resource exhaustion, inadequate precision) is INCONCLUSIVE. Which calls raise JoinError is
+   unchanged (adapter lineage/join, cross_model_join). A blocked gate still ends the cohort.
+
+2. **error_bound.py corrections (reference-final review).**
+   - Taylor constants: for first ∈ {0 (even/cos), 1 (odd/sin)} the COMPLETE positive series
+     Σ_k X^(2k+first)/(2k+first)! is bounded exactly by Σ_{k≤N} t_k + t_{N+1}/(1 − r) with
+     r = X²/((2N+3+first)(2N+4+first)) < 1; both bounds must be ≤ A = 270. The alternating
+     remainder is bounded by its first neglected term (Leibniz; ratio < 1 verified); rounding
+     uses Σ_{k≤N}|t_k| ≤ complete positive series ≤ A. The module refuses import (Invalid) if
+     any check fails.
+   - `process_digest(T, E, pi, coords) -> str`: sha256 over, for name in ("T", "E", "pi",
+     "coords") in that order, the bytes of f"{name}:{a.dtype.str}:{list(a.shape)}\n" followed by
+     a.tobytes(), where a = np.ascontiguousarray(np.asarray(x, dtype=np.float64)).
+   - Histories are validated BEFORE any conversion: ndim 2, exactly 32 columns, integer dtype
+     (kind "i" or "u"), every value in 0..V−1 with V = E.shape[1]; otherwise Invalid. A float,
+     bool, negative, ≥ V or wrapped (e.g. 260 as uint8 = 4) history is never accepted.
+   - Cache key = (process_digest, K, int64 row bytes). A cache filled under one process is never
+     hit under another; two histories that would collide after a narrowing conversion never
+     share a key.
+   - New keyword `cache_only=False` on reference_moments, reference_check_rows and
+     certify_rows: when True, a missing key raises Invalid("reference cache miss") BEFORE any
+     reference computation (no silent recomputation).
+   - Moment gaps are exact: |Fraction(float(m̂)) − Fraction(M_ref)| compared with
+     Fraction(1, 10**10). The returned "moment_check_max" values are floats for REPORTING only;
+     "moment_check_max_exact" gives str(Fraction). A gap of exactly 1e-10 as a rational passes;
+     a gap whose float rounds to 1e-10 but whose exact value exceeds Fraction(1, 10**10) fails.
+   - certify_rows reports "moment_check_max" (float max over K) and "moment_check_max_by_K".
+   - Decimal traps propagate into the nested reference context; its flags do not propagate
+     back, so the outer flag inspection covers only outer operations.
+
+3. **reference_cache.py (new; persisted exact references).**
+   ```python
+   SCHEMA = "x4-circle-reference-cache-v2"
+   def identity(T, E, pi, coords) -> dict
+       # {"process_digest": error_bound.process_digest(...),
+       #  "feature_identity": sha256 hex of "\n".join(f"{c}|{s}" for (c, s) in
+       #       error_bound.exact_features(arange(12) as [12,1] coords)) + f"|{FEATURE_DIGITS}|{REF_DIGITS}",
+       #  "source_identity": {"independent_reference": sha256 of tests/oracle_profile/independent_reference.py,
+       #                      "error_bound": sha256 of tools/x4_circle_history/error_bound.py}}
+   def export_cache(cache, ident, rows) -> dict
+       # {"schema", "identity": ident, "rows": rows, "entries": [...]};
+       # entries sorted by key: {"process_digest", "K", "history": int64-bytes hex, "mx": str(Decimal), "my": str(Decimal)};
+       # rows: list of {"model", "split", "panel", "history_id": [str], "sequence_id": [int],
+       #                "history": [int64-bytes hex per row]} in the stage's row order.
+   def load_cache(obj, ident_expected) -> dict
+       # Invalid on: schema mismatch; identity != ident_expected (any field); an entry whose
+       # process_digest differs; a duplicate (digest, K, history) key; an mx/my string that is not
+       # a finite Decimal. Returns {(digest, K, bytes): (Decimal, Decimal)} with Decimal(str) exact.
+   def verify_rows(obj, model, split, panel, history_id, sequence_id, canonical32, Ks=(4, 32)) -> None
+       # Invalid unless obj["rows"] holds exactly one record for (model, split) whose panel,
+       # history_id (as str), sequence_id (as int64) and history hex (int64 bytes of the validated
+       # canonical rows) are EXACTLY equal, in order, to the arguments; and every (digest, K, row)
+       # entry for K in Ks is present.
+   ```
+   Decimal strings are never converted through float. Only calibration and validation rows are
+   ever stored.
+
+4. **process_law.py (new; ERROR_BOUND.md v2.2 section 9, implemented).** Exact rationals
+   (Fraction) and 60-digit Decimal only; the stored float arrays are exact reals. It follows the
+   coordinator's generating-law clarification (01C0116D…).
+   ```python
+   LAW = {"dims": (12, 12), "x_period": 12, "neighbour": Fraction(1, 5), "grid": 6,
+          "sigma": Fraction(5, 4), "L": 32, "draws": {"pi": 1, "emission": 32, "transition": 31}}
+   def lattice_states(coords) -> list[tuple[int, int]]
+       # (x, y) per state; Mismatch unless coords are exactly the integers (s // 12, s % 12).
+   def documented_transition(states) -> list[list[Fraction]]
+       # neighbours: same y and x differing by ±1 mod 12, or same x and |dy| = 1 (y not periodic);
+       # T*[s][t] = 1/5 per neighbour, T*[s][s] = 1 - deg(s)/5, 0 otherwise.
+   def ideal_identities(T_star, S) -> None
+       # Mismatch unless, EXACTLY: T* symmetric, every row sums to 1, entries in [0, 1], and
+       # pi* = (1/S, ..., 1/S) satisfies pi* T* = pi*.
+   def softmax_enclosure(states, digits=60) -> tuple[list[list[Decimal]], Fraction, Fraction]
+       # centre j = 6a + b at (1/2 + 2a, 1/2 + 2b); d² = min(|dx| mod 12, 12 - |dx| mod 12)² + dy²
+       # (exact quarter-integers); logit = -8d²/25 formed EXACTLY in Decimal (Inexact trapped for
+       # that division only); in a trapping 60-digit context: n_j = exp(logit_j), D = sum of the
+       # 36 n_j from Decimal(0) (36 roundings), E_dec = n_j / D (one rounding).
+       # u = u_digits(60); exp is allowed 2u relative error (correct rounding is not relied on):
+       # lo = (1-2u)(1-u) / ((1+2u)(1+u)^36), hi = (1+2u)(1+u) / ((1-2u)(1-u)^36).
+       # Every exact E*[s][j] lies in the POSITIVE interval [E_dec/hi, E_dec/lo].
+   def sampler_cdf(P) -> np.ndarray
+       # the ACTUAL sampler thresholds: src/topo_pilot/dataset/sampler.py `_cumulative_rows`
+       # (loaded from that frozen file without importing the dataset package), applied as
+       # HMMSampler does to T, E_canon and pi[None, :]. The sampler is neither edited nor rerun.
+   def threshold_law(c_row) -> dict
+       # c' = min(max(c, 0), 1) elementwise (observationally identical for u in [0, 1));
+       # the draw is j = min(#{i: c'_i <= u}, V-1) for u = k·2^-53, k in 0..2^53-1.
+       # With s = sorted(c') and s_{-1} = 0, G(x) = min(max(ceil(x·2^53), 0), 2^53):
+       # P(N = j) = (G(s_j) - G(s_{j-1}))·2^-53 for j < V, P(N = V) = (2^53 - G(s_{V-1}))·2^-53,
+       # q_j = P(N = j) for j < V-1 and q_{V-1} = P(N = V-1) + P(N = V)  (exact Fractions).
+       # Returns {"q": [Fraction], "clamped": [Fraction], "monotone": bool (c' nondecreasing and
+       # c'_{V-1} == 1)}.
+   def row_tv(p_hat_row, dev_row, c_row) -> dict
+       # dev_row[j] >= |p̂_j - p*_j| exactly. Returns {"grid": ½Σ_j(|q_j - p̂_j| + dev_j),
+       # "documented": ½Σ_j(|e_j| + |e_{j-1}| + 2^-53 + dev_j) with e_j = c'_j - Σ_{i<=j} p̂_i,
+       # e_{-1} = 0, ONLY when monotone (else None)}. "grid" is the bound used.
+   def process_law_bound(T, E, pi, coords) -> dict
+       # status "BOUNDED" or "UNAVAILABLE" (never Invalid for a mismatch; Invalid only for
+       # non-finite or misshaped inputs). UNAVAILABLE with the exact reason when: coords are not
+       # the documented lattice, S != 144 or V != 36, the ideal identities fail, the zero support
+       # of T̂ differs from T*, some Ê or π̂ entry is not strictly positive, or kappa >= 1.
+       # kappa_T = max over T* > 0 of |T̂ - T*|/T*; kappa_pi = max_s |π̂_s - 1/144|·144;
+       # kappa_E = max_{s,j} max(|Ê - E_dec/hi|, |Ê - E_dec/lo|)/(E_dec/hi); kappa = max of the three.
+       # rho_minus_1 = ((1 + kappa)/(1 - kappa))^(2L+1) - 1 with L = 32 (a length-L positive
+       # path has 2L factors; 2L+1 is conservative).
+       # dev: |π̂ - 1/144| (pi), |T̂ - T*| (T), max(|Ê - E_dec/hi|, |Ê - E_dec/lo|) (E).
+       # TV = tv_pi + 32·max_s tv_E(s) + 31·max_s tv_T(s) (grid values); Z_bound = 2·(rho - 1) + 4·TV
+       # (C2 = 1). Returns exact strings and floats for kappa_*, rho_minus_1, tv_pi, tv_E_max,
+       # tv_T_max, TV, TV_documented (None if any row is non-monotone), Z_bound, the monotone
+       # flags, and "claim": "bound on |E_Q[g·(M32-M4)]| under the IDEALIZED sampling law; not an
+       # exact zero for the fixed saved data".
+   ```
+   Q is the IDEALIZED law: independent uniform 53-bit draws across every sampler call and
+   trajectory, and independent panel assignment. Z_bound covers the parameter, CDF and grid
+   discrepancy under that idealization only; it does not bound deterministic PRNG bias or
+   correlation. `Mismatch` is a module-local exception caught inside process_law_bound
+   (→ UNAVAILABLE). process_law_bound is reported beside the controls; it is not a gate and never
+   changes a threshold.
+
+5. **cochain.integer_lift timer (author A).** `start = clock()` is taken at ENTRY, before the
+   defect D1·a is formed. EVERY successful return is preceded, after its final exact closure
+   and congruence checks, by the cap check `clock() - start >= lift_cpu_cap_s → Unresolved`;
+   this includes the already-closed (zero-defect) branch. The cap stays 30 CPU s per chart
+   whatever the study budget.
+
+6. **chart.py timed hook (author A).** `fit_chart(X, ids, cfg, guard=None, timed=None)` calls
+   `timed(label, fn)` with a zero-argument callable for each of, in order: "distance" (cdist),
+   "ph" (ripser), "edges" (edge_list), "two_skeleton", "integer_lift", "primitive",
+   "smoothing", returning fn's result unchanged; timed=None runs each fn directly. An exception
+   raised by timed (e.g. Unresolved for an exhausted operation) propagates unchanged and no later
+   label is called. `extend(chart, gauge, Q, cfg, timed=None)` wraps its query-landmark distance
+   computation as "extension_distance".
+
+7. **Native-operation wall guard (op_guard.py + meter_bind; builder-tested).** The live context
+   supplies `timed = op_guard.timed_factory(out, native_operation_wall_s)`:
+   - before fn: appends {"event": "start", seq, label, utc} to out/OPERATIONS.jsonl and
+     atomically writes out/OPERATION_ACTIVE.json {"state": "active", seq, label,
+     "started_epoch", "deadline_s", pid};
+   - after fn: writes {"state": "idle", seq, label} and appends {"event": "end", seq, label,
+     elapsed_s}; an exception appends {"event": "error"} and re-raises;
+   - secondary post-return check: elapsed ≥ deadline → {"event": "exhausted"} and Unresolved.
+   The PRIMARY enforcement is the existing meter supervisor loop (no new watcher):
+   meter_bind's stage limiter reads OPERATION_ACTIVE.json at every poll and returns the kill
+   reason "native operation wall <d>s exceeded: <label> (seq <n>)" once now − started_epoch ≥
+   deadline_s; the unchanged meter then terminates the Job Object and records killed_reason in
+   the ledger. Before launching, meter_bind archives a stale active marker to
+   out/operations/KILLED_<seq>.json (the killed-attempt record) and removes it. A killed or
+   exhausted attempt is never retried (item 8).
+
+8. **Stage prerequisites and no recompute (stage_records.py; builder-tested).** out/STAGES.jsonl
+   holds {"stage", "event": "STARTED" | "COMPLETED" | "REFUSED", "utc", "evidence": {file:
+   sha256}, "reason"}. `begin(out, stage)` refuses (StageRefused, exit 3, a REFUSED line, no gate
+   record) when the stage already has a STARTED line (no retry, no recompute, including after a
+   kill), or when its prerequisites are missing:
+   - oracle: identity COMPLETED, gate identity PASS, IDENTITY.json hash equal to its COMPLETED
+     evidence, and IDENTITY.json showing every model joined on the same rows;
+   - charts: oracle COMPLETED, gate process_and_reference PASS, evidence hashes of ORACLE.json,
+     REFERENCE_CACHE.json and every oracle_<model>.npz equal;
+   - precision: charts COMPLETED with one row_score_certificates PASS per model, evidence hashes
+     of CHARTS.json and every chart_/phases_<model> file equal;
+   - export: no prerequisite (closeout after any non-PASS), once.
+   An evidence hash mismatch is an integrity REFUSED line with "integrity": true; export then
+   reports overall FAIL. An empty or incomplete GATES history never opens a later stage.
+
+9. **Persisted reference and ID alignment (runner; builder-tested).** The oracle stage computes
+   all-row references once per unique canonical history (K4/K32 gated; K1 for every row as a
+   diagnostic for the m1 control; the four lowest rows K1/K4/K32 gated), writes
+   REFERENCE_CACHE.json (item 3) with the row table for every model and split, and records its
+   sha256 and identity in ORACLE.json together with process_law_bound (item 4). The charts
+   stage, BEFORE gauge/chart/certificate work, verifies the cache file hash, identity and
+   verify_rows for each model/split, and compares the saved oracle history_id and sequence_id
+   arrays EXACTLY with the reloaded rows (Invalid → FAIL_TECHNICAL at chart_calibration);
+   certify_rows then runs with cache_only=True. The precision stage verifies, before any
+   bootstrap, that every model's validation rows sorted by sequence_id have identical
+   sequence_id arrays and identical canonical-history digests (Invalid → FAIL_TECHNICAL at
+   B4_lower).
+
+10. **Validation controls (precision.py, scores.py; author B for the kernels).**
+    ```python
+    scores.control_scores(m1, m4, m32, canonical32) -> dict
+        # {name: u_c · (m32 - m4)} for name in ("m1_unit", "m4_unit", "sha256_last4"),
+        # u_c = control_vectors(m1, m4, canonical32)[name]
+    precision.control_summary(C, models, seed, draws) -> dict
+        # C = {name: {model: [n] floats}} in evaluation order; rng = Generator(PCG64(seed));
+        # for b in range(draws): idx = rng.integers(0, n, size=n), ONE call per draw shared by
+        # every control and model; draw value = mean(C[name][model][idx]).
+        # Per name and model: "point" = mean, "central95" = [q(.025), q(.975)],
+        # "bonferroni" = [q(.05/3), q(1 - .05/3)], quantiles inverted_cdf. Invalid on non-finite,
+        # unequal lengths, n < 2, empty or duplicate models, or unknown control names.
+        # Returns no status: controls are reported, never gated, never used to recentre.
+    ```
+    The runner calls control_summary with seed = sd_seed and draws = sd_draws, so the control
+    draws use exactly the SD/B4 index stream (joint whole-trajectory resampling). Near-zero
+    angular diagnostics: for m1_unit and m4_unit, counts of
+    angular_instability(m_K, bound_K) per model with bound_K = (exact max moment gap of K over
+    the validation rows, rounded up to float) + float(moment_envelope(posterior_envelope(K,
+    144), 144)) rounded up. PRECISION.json is written in every outcome (also after a B4 stop)
+    and carries the controls, the instability counts and the oracle Z_bound.
+
+11. **Frozen dependency manifest (freeze_bind, live_context; builder-tested).** frozen_files()
+    also binds every file of src/topo_pilot/__init__.py, src/topo_pilot/contracts/** (all
+    files, no __pycache__) and src/topo_pilot/dataset/sampler.py. Before any store access,
+    live_context verifies those hashes and the exact file set, imports the contracts modules,
+    and refuses if any loaded module from this worktree's src/, tools/ or tests/ is outside the
+    frozen set. The runner re-checks the loaded-module set at stage end (Invalid on an unfrozen
+    module). Those sources are never edited.
+
+12. **Numerical implementation identity (env_identity.py; builder-tested).** The freeze runs a
+    metered probe in the venv interpreter that imports the fixed scientific import list and
+    records: interpreter version, executable sha256, base python310.dll/python3.dll/vcruntime
+    sha256; sha256 of every loaded module file; for every site-packages top-level distribution
+    with a loaded module, a tree digest (sorted relpath:sha256 lines) of that top-level entry and
+    of its "<name>.libs" directory; platform, processor, numpy CPU-dispatch features and
+    threadpool info (informational but verified). live_context recomputes the same record after
+    the same imports and refuses unless equal. LIMITATION (stated, not overclaimed): OS DLLs
+    outside the Python and site-packages trees, CPU microarchitecture, microcode and runtime SIMD
+    / BLAS kernel selection are not bound by hashes; the per-row certificate measures the actual
+    float result in the same run, so certificate validity does not depend on them, but
+    bit-for-bit reproducibility on other hardware is not claimed.
+
+13. **Resources: prospective allocation, then owner override (CONTRACT.json, ledger
+    metadata).**
+    - The coordinator's prospective subcaps (implementation 400, identity 200, oracle 900, charts
+      1700, precision 200, export 200; total 3600; stop new non-finalization work at 3480) are
+      recorded in CONTRACT resources.stage_caps_s. The previous caps (oracle 400, charts 2200) are
+      kept in resources.allocation_history with the authorising message; the change was
+      prospective, before any real oracle work.
+    - The owner override (owner-overnight-coordinator-transfer-20261014, OWNER_MESSAGE 13160D21…)
+      then CANCELLED all CPU-time ceilings and stage allocations prospectively, replacing them
+      with safety limits: ≤ 4 threads and ≤ 12 GiB RAM per task, one scientific task at a time,
+      large outputs on X: only, safe STOP if C: free < 2 GB or X: free < 30 GB. It is recorded in
+      resources.owner_override. CPU measurement, the single ledger and reporting continue; old
+      entries and provenance are preserved.
+    - Interim binding, pending the incoming coordinator's review of a transparent binding change:
+      the meter still enforces the recorded caps (conservative; 0016 uses the implementation
+      stage only), threads stay 1, memory stays 8 GiB, and meter_bind ADDS the owner's disk
+      safe-STOP to the stage limiter (kill reason "disk safe-STOP ..."; also checked before
+      launch). meter_bind applies the recorded caps to the ledger metadata in the supervisor
+      process (charged to that run), preserving every entry byte for byte, and refuses a ledger
+      whose caps match neither the current nor a recorded previous allocation.
+    - Methodological bounds stay unchanged: lift 30 CPU s per chart, six 512-row constructions,
+      180 s per native operation, 128 nodes per bound, fixed search.
 
 ## Runtime (builder-tested; not part of the independent numerical tests)
 

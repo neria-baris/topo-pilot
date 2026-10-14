@@ -1,17 +1,26 @@
-"""Coordinator release verification (standard library only). No release exists in job 0016.
+"""Coordinator release verification (standard library only; no subprocess). No release exists in
+job 0016.
 
-A release is a coordinator-authored JSON file inside the mailbox job directory of the CURRENTLY
-dispatched job. It is accepted only if it matches the live request.json (RUN_NEXT, job id, task
-digest), the committed source HEAD, the freeze record and this contract. Scoring stays locked
-unless the release explicitly carries an owner scoring release. Any mismatch refuses.
+A release is a coordinator-authored JSON file in the mailbox directory of the CURRENTLY dispatched
+job. It is accepted only if it matches all of these:
+- the live request.json (RUN_NEXT, job id, task digest);
+- the source HEAD, read directly from the git files without spawning a process;
+- this contract;
+- the freeze record.
+
+`scoring_released` must be a strict boolean. Scoring is unlocked only by `scoring_authority()`,
+which requires scoring_released is True AND an owner_scoring_release_ref naming an existing
+immutable owner-approval record by path, sha256 and a scope that includes "scoring". A
+feasibility release never yields scored access.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
-import subprocess
 from pathlib import Path
+
+from errors import ScoringAuthority
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
@@ -25,13 +34,40 @@ class ReleaseError(RuntimeError):
 
 
 def _sha(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def _head() -> str:
-    return subprocess.run(
-        ["git", "-C", str(REPO), "rev-parse", "HEAD"], capture_output=True, text=True, check=True
-    ).stdout.strip()
+def _git_dir(repo: Path) -> tuple[Path, Path]:
+    dot = repo / ".git"
+    if dot.is_dir():
+        return dot, dot
+    text = dot.read_text(encoding="utf-8").strip()
+    if not text.startswith("gitdir:"):
+        raise ReleaseError("unrecognised .git file")
+    gitdir = (repo / text.split(":", 1)[1].strip()).resolve()
+    common = gitdir
+    if (gitdir / "commondir").exists():
+        common = (gitdir / (gitdir / "commondir").read_text(encoding="utf-8").strip()).resolve()
+    return gitdir, common
+
+
+def _head(repo: Path = REPO) -> str:
+    """HEAD commit id read from the git files (worktree aware; loose or packed refs)."""
+    gitdir, common = _git_dir(Path(repo))
+    head = (gitdir / "HEAD").read_text(encoding="utf-8").strip()
+    if not head.startswith("ref:"):
+        return head
+    ref = head.split(":", 1)[1].strip()
+    for base in (gitdir, common):
+        loose = base / ref
+        if loose.exists():
+            return loose.read_text(encoding="utf-8").strip()
+    packed = common / "packed-refs"
+    if packed.exists():
+        for line in packed.read_text(encoding="utf-8").splitlines():
+            if line and not line.startswith(("#", "^")) and line.split(" ", 1)[1] == ref:
+                return line.split(" ", 1)[0]
+    raise ReleaseError(f"cannot resolve HEAD ref {ref}")
 
 
 def verify(path: Path, mailbox: Path = MAILBOX, out: Path | None = None) -> dict:
@@ -60,33 +96,54 @@ def verify(path: Path, mailbox: Path = MAILBOX, out: Path | None = None) -> dict
         raise ReleaseError("release schema/issuer")
     if path.resolve().parent != (mailbox / "jobs" / job).resolve():
         raise ReleaseError("release must live in the dispatched job's mailbox directory")
-    if (
+    live = (
         request.get("command"),
         request.get("job_id"),
         str(request.get("task_sha256", "")).upper(),
-    ) != ("RUN_NEXT", job, str(rel["task_sha256"]).upper()):
+    )
+    if live != ("RUN_NEXT", job, str(rel["task_sha256"]).upper()):
         raise ReleaseError("release does not match the live RUN_NEXT request")
-    task = mailbox / "jobs" / job / "task.md"
-    if _sha(task).upper() != str(rel["task_sha256"]).upper():
+    if _sha(mailbox / "jobs" / job / "task.md").upper() != str(rel["task_sha256"]).upper():
         raise ReleaseError("task.md digest mismatch")
-    if not set(rel["released_stages"]) <= STAGES:
-        raise ReleaseError("unknown stage in release")
+    if not isinstance(rel["released_stages"], list) or not set(rel["released_stages"]) <= STAGES:
+        raise ReleaseError("released_stages must be a list of known stages")
     if rel["source_commit"] != _head():
         raise ReleaseError("source HEAD differs from the released commit")
     if _sha(HERE / "CONTRACT.json") != rel["contract_sha256"]:
         raise ReleaseError("contract digest differs from the release")
-    out = (
-        Path(out)
-        if out
-        else Path(
-            json.loads((HERE / "CONTRACT.json").read_text(encoding="utf-8"))["resources"][
-                "output_root"
-            ]
-        )
-    )
-    freeze = out / "FREEZE.json"
+    if out is None:
+        contract = json.loads((HERE / "CONTRACT.json").read_text(encoding="utf-8"))
+        out = Path(contract["resources"]["output_root"])
+    freeze = Path(out) / "FREEZE.json"
     if not freeze.exists() or _sha(freeze) != rel["freeze_sha256"]:
         raise ReleaseError("freeze record missing or different from the release")
-    if rel["scoring_released"] is not False and not rel.get("owner_scoring_release_ref"):
-        raise ReleaseError("scoring may only be released with an explicit owner release reference")
+    if not isinstance(rel["scoring_released"], bool):
+        raise ReleaseError("scoring_released must be a strict boolean")
+    if rel["scoring_released"]:
+        _owner_record(rel)
     return rel
+
+
+def _owner_record(rel: dict) -> dict:
+    ref = rel.get("owner_scoring_release_ref")
+    if not isinstance(ref, dict) or not {"path", "sha256", "scope"} <= set(ref):
+        raise ReleaseError("scoring release needs owner_scoring_release_ref {path, sha256, scope}")
+    record = Path(ref["path"])
+    if not record.is_file() or _sha(record) != str(ref["sha256"]).lower():
+        raise ReleaseError("owner scoring record missing or hash mismatch")
+    if "scoring" not in list(ref["scope"]):
+        raise ReleaseError("owner scoring record scope does not include scoring")
+    return ref
+
+
+def scoring_authority(rel: dict) -> ScoringAuthority:
+    """The ONLY issuer of ScoringAuthority: a verified release with an owner scoring record."""
+    if rel.get("scoring_released") is not True:
+        raise ReleaseError("feasibility release: scoring is not released")
+    ref = _owner_record(rel)
+    return ScoringAuthority(
+        owner_record_path=str(ref["path"]),
+        owner_record_sha256=str(ref["sha256"]).lower(),
+        scope=tuple(ref["scope"]),
+        release_job_id=str(rel["job_id"]),
+    )

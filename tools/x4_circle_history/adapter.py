@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-from errors import AccessDenied, JoinError
+from errors import AccessDenied, JoinError, require_scoring
 from scores import history_digests
 
 ALLOWED_PANELS = frozenset({1, 2})
@@ -94,10 +94,13 @@ class RestrictedE4Adapter:
 
     def panels(self, model, panels=(1, 2)) -> dict:
         requested = {int(p) for p in panels}
-        if not requested <= ALLOWED_PANELS and self._scoring_release is None:
-            raise AccessDenied(
-                f"panels {sorted(requested - ALLOWED_PANELS)} need a scoring release"
-            )
+        if not requested <= ALLOWED_PANELS:
+            try:
+                require_scoring(self._scoring_release)
+            except AccessDenied as exc:
+                raise AccessDenied(
+                    f"panels {sorted(requested - ALLOWED_PANELS)} need a verified scoring authority"
+                ) from exc
         obs, hist, acts, th = self._load(model)
         info = self._verify(model, obs, hist, acts, th)
         panel = np.asarray(hist.panel)

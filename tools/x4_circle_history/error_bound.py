@@ -20,7 +20,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tests" / "oracle_profile"))
 
 import independent_reference  # noqa: E402
-from errors import AccessDenied, Invalid  # noqa: E402
+from errors import Invalid, require_scoring  # noqa: E402
 
 TAYLOR_N = 48
 X_MAX = Fraction(6284, 1000)
@@ -225,8 +225,8 @@ def row_bound(x_hat, phi, M4, M32, eps_M4, eps_M32) -> dict:
 def _deny_scoring(split, scoring_release):
     if split not in ("calibration", "validation", "scoring"):
         raise Invalid(f"unknown split {split!r}")
-    if split == "scoring" and scoring_release is None:
-        raise AccessDenied("scored-row certificates require a separate owner scoring release")
+    if split == "scoring":
+        require_scoring(scoring_release)
 
 
 def _moment_gap(m_hat_row, ref) -> float:

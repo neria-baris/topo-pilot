@@ -1,12 +1,14 @@
 # Builder tests (job 0016): authorship note
 
-`test_builder_runtime.py` and `test_builder_e2e.py` were written by the job-0016 BUILDER, the
+`test_builder_runtime.py`, `test_builder_guards.py` and `test_builder_e2e.py` were written by the job-0016 BUILDER, the
 worker that also wrote the production code. They are NOT independent.
 
 They cover:
 - the job binding of the reused job-0014 meter, controls and winjob, and the stage ceilings;
 - the export cap of 80 CPU s;
 - coordinator-release refusals;
+- the spec v2.3 guards: supervisor-inclusive stage limiter, finalization reserve, strict
+  scoring authority and dirty-source refusal;
 - the absence of import side effects;
 - a static scored-access audit of runner.py;
 - a fully synthetic end-to-end run of the runner stages on contracts.testing.memory_store(). It

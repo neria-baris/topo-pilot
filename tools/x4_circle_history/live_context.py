@@ -41,6 +41,12 @@ def _pin_modules(freeze: dict) -> dict:
     for rel, digest in freeze["files"].items():
         if _sha(REPO / rel) != digest:
             raise RuntimeError(f"frozen file changed: {rel}")
+    import freeze_bind
+
+    if set(freeze_bind.frozen_files()) != set(freeze["files"]):
+        raise RuntimeError("frozen file set changed (file added or removed)")
+    if freeze_bind.environment()["dist_info"] != freeze["environment"]["dist_info"]:
+        raise RuntimeError("installed numerical dependencies differ from the freeze")
     return pinned
 
 

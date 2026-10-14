@@ -240,7 +240,8 @@ def decimal_cos_sin(x: float, digits=80) -> tuple[Decimal, Decimal, Fraction]
     # (ANALYTIC interval). The OPERATIONAL chart check 0 <= phi < 2*np.pi is done by certify_rows.
 def posterior_envelope(L, S) -> Fraction      # beta of section 3(a), N = 1 + (L-1)(2S+2)
 def moment_envelope(beta, S) -> Fraction      # eps_M of section 3(c)
-def reference_moments(T, E, pi, canonical32, Ks=(4, 32), cache=None) -> dict
+def reference_moments(T, E, pi, coords, canonical32, Ks=(4, 32), cache=None, cache_only=False) -> list[dict]
+    # (v2.4 erratum: coords and cache_only were missing from this line; one {K: (Mx, My)} per row)
     # {K: (Mx, My) Decimals} via independent_reference.decimal_suffix_posterior(digits=60) inside
     # trapping_context(60) (flags Underflow/Subnormal/Overflow also checked after each call),
     # then exact-feature moments at 80 digits; a trap or raised flag -> Invalid.
@@ -404,7 +405,9 @@ items 7–12 are builder-tested runtime.
      share a key.
    - New keyword `cache_only=False` on reference_moments, reference_check_rows and
      certify_rows: when True, a missing key raises Invalid("reference cache miss") BEFORE any
-     reference computation (no silent recomputation).
+     reference computation (no silent recomputation). The miss is `errors.CacheMiss`, a subclass
+     of Invalid, and certify_rows re-raises it instead of folding it into a status (the runner
+     records it as FAIL_TECHNICAL at row_score_certificates).
    - Moment gaps are exact: |Fraction(float(m̂)) − Fraction(M_ref)| compared with
      Fraction(1, 10**10). The returned "moment_check_max" values are floats for REPORTING only;
      "moment_check_max_exact" gives str(Fraction). A gap of exactly 1e-10 as a rational passes;

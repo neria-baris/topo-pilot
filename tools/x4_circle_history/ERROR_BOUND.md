@@ -293,7 +293,7 @@ certify_rows does the following:
 
 **Taylor verification (corrects §4).** For first ∈ {0, 1} define the complete positive series
 S_first = Σ_{k≥0} X^(2k+first)/(2k+first)! (cosh X and sinh X). For k > N the term ratio
-t_{k+1}/t_k = X²/((2k+2+first)(2k+3+first)) decreases in k, so with
+t_{k+1}/t_k = X²/((2k+1+first)(2k+2+first)) decreases in k (erratum 2026-10-14: the first v2.2 text wrote (2k+2+first)(2k+3+first); r below was and is correct), so with
 r = X²/((2N+3+first)(2N+4+first)) < 1,
 
   S_first ≤ Σ_{k≤N} t_k + t_{N+1}/(1 − r)   (exact rationals).

@@ -1,0 +1,38 @@
+{
+ "settings": {
+  "1": {
+   "train": 11484.375,
+   "init": 23.15625,
+   "devCE": 635.34375,
+   "scoring": 720.65625,
+   "ckpt_io": 0.84375,
+   "generation": 300.0,
+   "bootstrap": 120.0,
+   "fresh_test": 84.46875,
+   "exports": 60.0,
+   "total": 13428.84375,
+   "limit_80pct": 17266.3872,
+   "fits": true,
+   "train_wall_h_per_model": 0.5400695625000177
+  },
+  "6": {
+   "train": 34429.6875,
+   "init": 37.875,
+   "devCE": 1812.375,
+   "scoring": 2105.25,
+   "ckpt_io": 48.9375,
+   "generation": 300.0,
+   "bootstrap": 120.0,
+   "fresh_test": 135.75,
+   "exports": 60.0,
+   "total": 39049.875,
+   "limit_80pct": 17266.3872,
+   "fits": false,
+   "train_wall_h_per_model": 0.2666256041670244
+  }
+ },
+ "decision": {
+  "chosen_threads": 1,
+  "B1": "RESOLVED"
+ }
+}

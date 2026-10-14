@@ -1,5 +1,5 @@
-# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x5-g1-verify)
-Stage: **X5 G1 repairs + post-hoc verification CONSISTENT; training protocol DRAFT pending review (job 0007, D-067)**; gate FEASIBLE (D-066); X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
+# Progress (updated 2026-10-14 by conductor, claude-opus-5-5; branch x5-g1-bench)
+Stage: **X5 G1 technical benchmark B1 RESOLVED (1 thread, projected 13,429 of 21,583 CPU s); export/ledger repairs; training protocol DRAFT v2 pending review (job 0008, D-068)**; verification CONSISTENT (D-067); gate FEASIBLE (D-066); X4-F execution v2 closed INCONCLUSIVE (D-062, D-063); X4-F draft and plan (D-058) unchanged | Circular audit: BEYOND_SYMBOL_AND_MIXING, descriptive (D-057) | Practical Q2-gap branch closed by owner (D-055) | Phase B INCONCLUSIVE (D-052) · B2 NO-GO (D-054) · H4C-I decoder experiment: NOT RUN — stopped at feasibility gate | Last exit reached: E4 (tagged, local), with documented G-H failure
 
 ## Modules
 | module | status | owner tier | notes |
@@ -28,6 +28,7 @@ Stage: **X5 G1 repairs + post-hoc verification CONSISTENT; training protocol DRA
 | X4 Phase B (protocol-local) | **INCONCLUSIVE** | 2026-10-13 | all 4 pools UNDERCOVERED (D-052) |
 | X4 Phase B2 (protocol-local) | **NO-GO** | 2026-10-14 | 4 covered pools, 0 witnesses (D-054) |
 | H4C-I (Phase C) | **NOT RUN** | 2026-10-14 | stopped at the feasibility gate (D-055) |
+| X5 G1 technical benchmark (job 0008, not scientific) | **B1 RESOLVED** | 2026-10-14 | 1 thread 0.383 CPU s/update; projected 13,428.8 ≤ 17,266.4 (80%); 6 threads 39,049.9 do not fit; tech ledger 140.4 s, scientific ledger 17.016 s (D-068) |
 | X5 G1 verification (job 0007) | **CONSISTENT** | 2026-10-14 | 27/27 quantities identical (diff 0.0); X5 ledger 17.0 s (D-067) |
 | X5 G1 gate (x5g1-feas-v2) | **FEASIBLE** | 2026-10-14 | G_C a0 0.271 [0.267, 0.275], a020 0.294 [0.290, 0.298] nats; kernels valid; 8.9 CPU s (D-066) |
 | X4-F gates (x4f-exec-v2) | **INCONCLUSIVE; formulation closed (D-063)** | 2026-10-14 | G1–G3 PASS ×3 (G3 LINEAR_COMPONENT_ONLY), G4 FAMILY_UNMATCHED ×3, G5 NOT_RUN (D-062) |
@@ -41,6 +42,6 @@ Stage: **X5 G1 repairs + post-hoc verification CONSISTENT; training protocol DRA
 - Integration tests I03 and I05 never built; cross-machine and GPU determinism untested
 
 ## Next actions (≤5)
-1. STOP: coordinator review of X5_G1_TRAINING_PROTOCOL_DRAFT.md (job 0007); blocking issue B1 (CPU budget feasibility) needs a technical throughput probe and a budget/scope decision
+1. STOP: coordinator review of X5_G1_TRAINING_PROTOCOL_V2.md and IMPLEMENTATION_PLAN_V2.md (job 0008); open choices: serialise_state export from learner, shared dev pool, censoring window
 2. No training, sampling or freeze before a separately reviewed task; movement-speed confound remains (no curvature attribution)
 3. No implementation, sampling, fitting, extraction, PH, intervention or training before approval; no Phase C, coverage extension, threshold change, intervention, training, merge, push or tag change

@@ -1,0 +1,253 @@
+{
+ "protocol": "x5g1-techbench-v1",
+ "kind": "technical fixture timing only; uniform random public tokens; not a scientific pilot",
+ "settings": [
+  {
+   "threads": 1,
+   "interop_threads": 6,
+   "P1_init_materialise_warmup": {
+    "cpu_s": 3.859375,
+    "wall_s": 4.2135344999987865
+   },
+   "P2_updates_plus_devce128": {
+    "cpu_s": 7.78125,
+    "wall_s": 7.9002103000020725
+   },
+   "P3_devce128": [
+    {
+     "cpu_s": 0.125,
+     "wall_s": 0.1232086000018171
+    },
+    {
+     "cpu_s": 0.125,
+     "wall_s": 0.12387740000121994
+    },
+    {
+     "cpu_s": 0.125,
+     "wall_s": 0.12299169999459991
+    }
+   ],
+   "P4_devce4096": [
+    {
+     "cpu_s": 3.921875,
+     "wall_s": 3.9325829000008525
+    },
+    {
+     "cpu_s": 4.0,
+     "wall_s": 4.010858999994525
+    },
+    {
+     "cpu_s": 3.828125,
+     "wall_s": 3.839997199997015
+    }
+   ],
+   "P5_scoring4096": [
+    {
+     "cpu_s": 4.359375,
+     "wall_s": 4.389853100001346
+    },
+    {
+     "cpu_s": 4.078125,
+     "wall_s": 4.0888340000019525
+    },
+    {
+     "cpu_s": 4.03125,
+     "wall_s": 4.033067399999709
+    }
+   ],
+   "P6_save_intermediate": [
+    {
+     "cpu_s": 0.0,
+     "wall_s": 0.014651500001491513
+    },
+    {
+     "cpu_s": 0.015625,
+     "wall_s": 0.009236000005330425
+    },
+    {
+     "cpu_s": 0.0,
+     "wall_s": 0.00901270000031218
+    }
+   ],
+   "P6_save_final": [
+    {
+     "cpu_s": 0.046875,
+     "wall_s": 0.03345180000178516
+    },
+    {
+     "cpu_s": 0.015625,
+     "wall_s": 0.031109399998968
+    },
+    {
+     "cpu_s": 0.046875,
+     "wall_s": 0.03152030000637751
+    }
+   ],
+   "checkpoint_bytes": {
+    "intermediate": 3243204,
+    "final": 9741911
+   },
+   "update_cpu_s": 0.3828125,
+   "update_wall_s": 0.3888500850000128,
+   "projection": {
+    "train": 11484.375,
+    "init": 23.15625,
+    "devCE": 635.34375,
+    "scoring": 720.65625,
+    "ckpt_io": 0.84375,
+    "generation": 300.0,
+    "bootstrap": 120.0,
+    "fresh_test": 84.46875,
+    "exports": 60.0,
+    "total": 13428.84375,
+    "limit_80pct": 17266.3872,
+    "fits": true,
+    "train_wall_h_per_model": 0.5400695625000177
+   }
+  },
+  {
+   "threads": 6,
+   "interop_threads": 6,
+   "P1_init_materialise_warmup": {
+    "cpu_s": 6.3125,
+    "wall_s": 1.9911607000030926
+   },
+   "P2_updates_plus_devce128": {
+    "cpu_s": 23.234375,
+    "wall_s": 3.891195800002606
+   },
+   "P3_devce128": [
+    {
+     "cpu_s": 0.375,
+     "wall_s": 0.05178709999745479
+    },
+    {
+     "cpu_s": 0.28125,
+     "wall_s": 0.05143590000079712
+    },
+    {
+     "cpu_s": 0.28125,
+     "wall_s": 0.054385900002671406
+    }
+   ],
+   "P4_devce4096": [
+    {
+     "cpu_s": 10.625,
+     "wall_s": 1.7741927999959444
+    },
+    {
+     "cpu_s": 11.921875,
+     "wall_s": 2.074677700002212
+    },
+    {
+     "cpu_s": 11.1875,
+     "wall_s": 1.8851018999994267
+    }
+   ],
+   "P5_scoring4096": [
+    {
+     "cpu_s": 12.53125,
+     "wall_s": 2.1348165000017616
+    },
+    {
+     "cpu_s": 13.375,
+     "wall_s": 2.4385488999978406
+    },
+    {
+     "cpu_s": 12.625,
+     "wall_s": 2.1039315999951214
+    }
+   ],
+   "P6_save_intermediate": [
+    {
+     "cpu_s": 0.09375,
+     "wall_s": 0.012930500000948086
+    },
+    {
+     "cpu_s": 0.0,
+     "wall_s": 0.011285700005828403
+    },
+    {
+     "cpu_s": 0.09375,
+     "wall_s": 0.011140100003103726
+    }
+   ],
+   "P6_save_final": [
+    {
+     "cpu_s": 0.28125,
+     "wall_s": 0.042700699996203184
+    },
+    {
+     "cpu_s": 0.1875,
+     "wall_s": 0.041672400002426
+    },
+    {
+     "cpu_s": 0.28125,
+     "wall_s": 0.03896179999719607
+    }
+   ],
+   "checkpoint_bytes": {
+    "intermediate": 3243204,
+    "final": 9741911
+   },
+   "update_cpu_s": 1.14765625,
+   "update_wall_s": 0.19197043500025757,
+   "projection": {
+    "train": 34429.6875,
+    "init": 37.875,
+    "devCE": 1812.375,
+    "scoring": 2105.25,
+    "ckpt_io": 48.9375,
+    "generation": 300.0,
+    "bootstrap": 120.0,
+    "fresh_test": 135.75,
+    "exports": 60.0,
+    "total": 39049.875,
+    "limit_80pct": 17266.3872,
+    "fits": false,
+    "train_wall_h_per_model": 0.2666256041670244
+   }
+  }
+ ],
+ "decision": {
+  "chosen_threads": 1,
+  "B1": "RESOLVED"
+ },
+ "env": {
+  "python": "X:\\Downloads\\projects\\topo-pilot\\topo-pilot\\.venv\\Scripts\\python.exe",
+  "torch": "2.14.1+cpu",
+  "numpy": "2.2.6",
+  "logical_cpus": 12,
+  "blas_env": {
+   "OPENBLAS_NUM_THREADS": null,
+   "MKL_NUM_THREADS": null,
+   "OMP_NUM_THREADS": null
+  },
+  "model_config": {
+   "activation": "gelu",
+   "d_mlp": 512,
+   "d_model": 128,
+   "dropout": 0.0,
+   "n_ctx": 33,
+   "n_heads": 4,
+   "n_layers": 4,
+   "tie_embeddings": false,
+   "vocab_in": 37,
+   "vocab_out": 36
+  },
+  "train_config_fixture": {
+   "steps": 23,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 200,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    3,
+    23
+   ],
+   "device": "auto"
+  }
+ }
+}

@@ -110,10 +110,18 @@ def test_runtime_state_wait_is_hold(mb: Path) -> None:
     assert _action(mb) == "HOLD"
 
 
-@pytest.mark.parametrize("mode", ["RUNNING", "IDLE", "CONTINUE", "STOP", "anything"])
+# v4 (API v4 §2): the mode allow-list; WORKING/WAITING/USAGE_READY are no-ops.
+@pytest.mark.parametrize("mode", ["WORKING", "WAITING", "USAGE_READY"])
 def test_runtime_state_other_modes_are_noop(mb: Path, mode: str) -> None:
     _put(mb, "runtime_state.json", {"mode": mode})
     assert _action(mb) == "CONTINUE"
+
+
+# v4 (API v4 §2): an unknown mode (formerly a no-op) now fails closed.
+@pytest.mark.parametrize("mode", ["RUNNING", "IDLE", "CONTINUE", "STOP", "anything"])
+def test_runtime_state_unknown_mode_is_stop(mb: Path, mode: str) -> None:
+    _put(mb, "runtime_state.json", {"mode": mode})
+    assert _action(mb) == "STOP"
 
 
 @pytest.mark.parametrize("content", ["{bad", "", "[1]", "42"])
@@ -122,12 +130,19 @@ def test_runtime_state_malformed_is_stop(mb: Path, content: str) -> None:
     assert _action(mb) == "STOP"
 
 
-@pytest.mark.parametrize("content", [{"observability": "UNAVAILABLE"},
-                                     {"observability": "UNAVAILABLE", "mode": "STOP"},
-                                     "{garbage"])
-def test_claude_usage_is_never_read(mb: Path, content) -> None:
-    _put(mb, "claude_usage.json", content)
+# v4 (API v4 §2): claude_usage.json is now read via apply_usage; UNAVAILABLE alone is no hold,
+# a malformed file (no limits list, bad JSON) is STOP.
+def test_claude_usage_unavailable_is_no_hold(mb: Path) -> None:
+    _put(mb, "claude_usage.json", {"observability": "UNAVAILABLE", "limits": [], "mode": "STOP"})
     assert _action(mb) == "CONTINUE"
+
+
+@pytest.mark.parametrize("content", [{"observability": "UNAVAILABLE"}, "{garbage"])
+def test_claude_usage_malformed_is_stop(mb: Path, content) -> None:
+    _put(mb, "claude_usage.json", content)
+    state = rt.read_controls(mb)
+    assert state.action == "STOP"
+    assert any(r.startswith("usage_malformed") for r in state.reasons)
 
 
 @pytest.mark.parametrize("stop_src", ["file", "request", "worker", "worker_bad", "state_bad"])
@@ -153,7 +168,8 @@ def test_stop_beats_hold_from_any_source(mb: Path, stop_src: str, hold_src: str)
 def test_both_holds_give_hold_with_reasons(mb: Path) -> None:
     _put(mb, "worker_control.json", {"command": "WAIT_USAGE_RESET"})
     _put(mb, "runtime_state.json", {"mode": "WAIT_USAGE_RESET"})
-    _put(mb, "claude_usage.json", {"observability": "UNAVAILABLE"})
+    # v4 (API v4 §2): the usage file must be well formed (limits list) or it is STOP.
+    _put(mb, "claude_usage.json", {"observability": "UNAVAILABLE", "limits": []})
     assert _action(mb) == "HOLD"
 
 
@@ -222,7 +238,7 @@ def test_resume_only_after_both_holds_released(mb: Path, tmp_path: Path) -> None
     audit = tmp_path / "hold.json"
     # poll1 both held; release coordinator -> poll2 worker usage hold still active;
     # idle poll -> poll3 still held; clear usage hold -> poll4 continues.
-    script = Script(mb, audit, [_wc("CONTINUE"), _noop, _rs("RUNNING")])
+    script = Script(mb, audit, [_wc("CONTINUE"), _noop, _rs("WORKING")])
     assert _hold(mb, audit, script, poll_s=30.0) == 3
     assert script.calls == [30.0, 30.0, 30.0]
     polls = [a["polls"] for a in script.audits]
@@ -233,7 +249,7 @@ def test_release_in_other_order(mb: Path, tmp_path: Path) -> None:
     _put(mb, "worker_control.json", {"command": "WAIT_USAGE_RESET"})
     _put(mb, "runtime_state.json", {"mode": "WAIT_USAGE_RESET"})
     audit = tmp_path / "hold.json"
-    script = Script(mb, audit, [_rs("IDLE"), _wc("CONTINUE")])
+    script = Script(mb, audit, [_rs("WAITING"), _wc("CONTINUE")])
     assert _hold(mb, audit, script) == 2
     assert script.calls == [45.0, 45.0]
 
@@ -251,7 +267,7 @@ def test_time_never_resumes(mb: Path, tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setattr(time, "monotonic", lambda: clock[0])
     _put(mb, "runtime_state.json", {"mode": "WAIT_USAGE_RESET"})
     audit = tmp_path / "hold.json"
-    script = Script(mb, audit, [_noop] * 7 + [_rs("RUNNING")], clock=clock)
+    script = Script(mb, audit, [_noop] * 7 + [_rs("WORKING")], clock=clock)
     assert _hold(mb, audit, script) == 8
     assert len(script.calls) == 8
 
@@ -332,6 +348,6 @@ def test_poll_bounds_rejected_even_without_hold(mb: Path, tmp_path: Path, poll_s
 def test_poll_bounds_inclusive_upper(mb: Path, tmp_path: Path, poll_s: float) -> None:
     _put(mb, "runtime_state.json", {"mode": "WAIT_USAGE_RESET"})
     audit = tmp_path / "hold.json"
-    script = Script(mb, audit, [_rs("RUNNING")])
+    script = Script(mb, audit, [_rs("WORKING")])
     assert _hold(mb, audit, script, poll_s=poll_s) == 1
     assert script.calls == [poll_s]

@@ -143,6 +143,17 @@ Execution: the conductor runs every test through the job meter. Authors do not e
 - **B9 (author B).** precision_summary and b4_summary raise Invalid for empty models, duplicate
   models, wrong draw shapes, non-finite draws and mismatched point keys.
 
+## Spec v2.3 additions (author B; see API.md "Spec v2.3 clarifications")
+
+- **B10.**
+  - Scoring positive cases use a synthetic `errors.ScoringAuthority(owner_record_path="x",
+    owner_record_sha256="0"*64, scope=("scoring",), release_job_id="0099")`.
+  - Negative cases raise AccessDenied before any computation or load, for each of: None, False,
+    True, {}, "token", object(), a ScoringAuthority with scope ("feasibility",), and one with a
+    short sha.
+  - Cover certify_rows, reference_check_rows, and RestrictedE4Adapter.panels with panel 3 (zero
+    loads).
+
 ## Builder tests (implementer; labelled non-independent): `tests/circle_history/test_builder_*.py`
 
 - meter_bind: job and task binding, stage ceilings, and that the export cap of 80 s is

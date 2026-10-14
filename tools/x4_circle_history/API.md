@@ -1,4 +1,4 @@
-# x4_circle_history: public API (job 0016, spec v2.2; continues the BLOCKED job-0015 draft)
+# x4_circle_history: public API (job 0016, spec v2.3; continues the BLOCKED job-0015 draft)
 
 Status: written specification, fixed BEFORE production implementation, for independent test
 authors. The machine contract is CONTRACT.json; the numerical bound is ERROR_BOUND.md. Every
@@ -341,6 +341,34 @@ cross_model_join({model: {"sequence_id", "canonical32", "panel"}}) does the foll
 5. **precision_summary / b4_summary fail closed.** They raise Invalid when models is empty or has
    duplicates, when a draw matrix is not 2-D with ≥ 1 row and exactly len(models) columns, on
    non-finite values, or (b4_summary) when the point keys differ from models.
+
+## Spec v2.3 clarifications (coordinator guard review; normative)
+
+1. **Scoring authority.** The ONLY value that unlocks scored access is an instance of
+   `errors.ScoringAuthority`, a frozen dataclass with fields owner_record_path: str,
+   owner_record_sha256: str (64 hex), scope: tuple and release_job_id: str, whose scope contains
+   "scoring".
+   - `errors.require_scoring(x)` raises AccessDenied for anything else: None, False, True, {},
+     a string, an arbitrary object, a ScoringAuthority whose scope lacks "scoring", or one with
+     a malformed sha256.
+   - Production code obtains a ScoringAuthority only from `release.scoring_authority(rel)`.
+     Tests may construct one directly as a synthetic fixture.
+   - The rule applies identically to `RestrictedE4Adapter(..., scoring_release=...)` for panels
+     outside {1, 2} (checked before any store.load), and to `error_bound.certify_rows` and
+     `reference_check_rows` with split "scoring" (checked before any computation).
+2. **Release (`release.py`; builder-tested).**
+   - `scoring_released` must be a strict bool.
+   - A True value requires owner_scoring_release_ref = {path, sha256, scope}, naming an existing
+     file whose sha256 matches, with "scoring" in scope.
+   - A feasibility release (scoring_released False) never yields scored access.
+   - HEAD is read from the git files; no subprocess is used.
+3. **Metering (`meter_bind.py`; builder-tested).**
+   - During supervision the stage ceiling is enforced on stage spent + current child + current
+     supervisor CPU + tail allowance.
+   - Only `--finalization` with stage export may run past 3480, up to 3600.
+4. **Source integrity before payload I/O (`live_context.py`; builder-tested).** Before any store
+   access, every frozen file hash, the frozen file set, the module paths and the installed
+   dependency set are re-checked against FREEZE.json. A dirty source is refused.
 
 ## Runtime (builder-tested; not part of the independent numerical tests)
 

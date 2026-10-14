@@ -297,7 +297,8 @@ def certify_rows(
             return dict(
                 base,
                 status="FAIL_TECHNICAL",
-                moment_check_max=check["moment_check_max"],
+                moment_check_max=max(check["moment_check_max"].values()),
+                moment_check_max_by_K=check["moment_check_max"],
                 reason="moment check above 1e-10",
             )
         refs = reference_moments(T, E, pi, coords, canonical32, (4, 32), cache)
@@ -317,6 +318,7 @@ def certify_rows(
         bounds=[float(b) for b in bounds],
         max_bound=float(worst),
         max_bound_exact=str(worst),
-        moment_check_max=check["moment_check_max"],
+        moment_check_max=max(check["moment_check_max"].values()),
+        moment_check_max_by_K=check["moment_check_max"],
         reason="all rows within cap" if status == "CERTIFIED" else "some bound exceeds cap",
     )

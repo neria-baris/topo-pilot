@@ -8,6 +8,7 @@ only; no file I/O and no randomness. fit_chart never receives labels or validati
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -17,6 +18,13 @@ from errors import Invalid, Unresolved
 from scipy.spatial.distance import cdist
 
 TWO_PI = 2.0 * np.pi
+
+
+def _cmean(values) -> complex:
+    """Complex mean as sum / n: one correctly rounded division per component (numpy's mean
+    multiplies by a rounded reciprocal, which can sit one ulp off an exact boundary)."""
+    values = np.asarray(values)
+    return complex(np.sum(values) / values.size)
 
 
 @dataclass(frozen=True)
@@ -156,7 +164,7 @@ def fit_gauge(chart: Chart, m32) -> Gauge:
     if m32.shape != (len(chart.phi), 2) or not np.isfinite(m32).all():
         raise Invalid("m32 must be finite [n, 2] aligned to the landmarks")
     target = np.conj(m32[:, 0] + 1j * m32[:, 1])
-    values = {s: np.mean(np.exp(1j * s * chart.phi) * target) for s in (1, -1)}
+    values = {s: _cmean(np.exp(1j * s * chart.phi) * target) for s in (1, -1)}
     sign = 1 if abs(values[1]) >= abs(values[-1]) else -1
     c = values[sign]
     alignment = float(abs(c))
@@ -188,7 +196,7 @@ def extend(chart: Chart, gauge: Gauge, Q, cfg) -> Extension:
         raise Invalid("non-finite extension resultant")
     duplicate = (dist == 0.0).any(axis=1)
     for row in np.flatnonzero(duplicate):
-        z[row] = np.mean(np.exp(1j * phi_g[dist[row] == 0.0]))
+        z[row] = _cmean(np.exp(1j * phi_g[dist[row] == 0.0]))
         if 1.0 - abs(z[row]) > 1e-8:
             raise Invalid("exact duplicate landmarks carry conflicting phases")
     resultant = np.abs(z)
@@ -206,7 +214,7 @@ def agreement(phi_a, phi_b) -> float:
         or not (np.isfinite(a).all() and np.isfinite(b).all())
     ):
         raise Invalid("agreement needs equal-length finite phase vectors")
-    return min(1.0, max(abs(np.mean(np.exp(1j * (a - s * b)))) for s in (1, -1)))
+    return min(1.0, max(abs(_cmean(np.exp(1j * (a - s * b)))) for s in (1, -1)))
 
 
 def phase_bin_counts(phi, bins: int = 12) -> np.ndarray:
@@ -221,7 +229,7 @@ def overall_resultant(phi) -> float:
     phi = np.asarray(phi, dtype=np.float64)
     if not phi.size or not np.isfinite(phi).all():
         raise Invalid("non-finite or empty phase")
-    return float(abs(np.mean(np.exp(1j * phi))))
+    return float(abs(_cmean(np.exp(1j * phi))))
 
 
 def _record(met: bool, value, threshold) -> dict:
@@ -278,7 +286,7 @@ _ARRAY_FIELDS = (
 
 
 def chart_to_arrays(chart: Chart, gauge: Gauge) -> dict:
-    """Arrays for an immutable NPZ (info is stored separately as JSON by the runner)."""
+    """Arrays for an immutable NPZ; info travels as a JSON string in a unicode array (no pickle)."""
     out = {name: np.asarray(getattr(chart, name)) for name in _ARRAY_FIELDS}
     out["landmark_ids"] = np.asarray(chart.landmark_ids).astype(str)
     out["scalars"] = np.array(
@@ -291,7 +299,16 @@ def chart_to_arrays(chart: Chart, gauge: Gauge) -> dict:
             gauge.alignment,
         ]
     )
+    out["info_json"] = np.array(json.dumps(chart.info, sort_keys=True, default=_jsonable))
     return out
+
+
+def _jsonable(value):
+    if isinstance(value, np.generic):
+        return value.item()
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    raise TypeError(f"not JSON serialisable: {type(value).__name__}")
 
 
 def chart_from_arrays(d) -> tuple[Chart, Gauge]:
@@ -313,6 +330,6 @@ def chart_from_arrays(d) -> tuple[Chart, Gauge]:
             )
         ),
         int(s[2]),
-        {},
+        json.loads(str(d["info_json"])) if "info_json" in d else {},
     )
     return chart, Gauge(sign=int(s[3]), shift=float(s[4]), alignment=float(s[5]))

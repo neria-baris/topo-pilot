@@ -10,7 +10,8 @@ rebinds their module-level names to this job's task digest, output store and led
 
 The stage is recorded as the Windows-safe label prefix "<stage>__<label>" (a colon would create
 an NTFS alternate data stream in log file names; legacy "<stage>:" entries are still counted).
-The release check (release.verify) reads git files directly and spawns no process before the Job Object exists.
+The release check (release.verify) reads git files directly and spawns no process before the
+Job Object exists.
 An exhausted or unreleased stage still runs, as a metered no-op child that exits 4, so the
 refusal is charged.
 

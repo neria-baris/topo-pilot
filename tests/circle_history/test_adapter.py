@@ -1,4 +1,4 @@
-"""Independent tests (author B) for adapter.py: TEST_PLAN item B7 (spec v2.2).
+"""Independent tests (author B) for adapter.py: TEST_PLAN items B7 and B10 (spec v2.3).
 
 Written from API.md and the public topo_pilot.contracts API only; no production code was read.
 Synthetic ObservationSet / HistoryIndex / Checkpoint / ActivationSet artifacts are saved with

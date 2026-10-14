@@ -39,6 +39,9 @@ Everything else is out of scope until exit point **E2** is reached. Extensions (
 
 ## 1. Read order (every new session, including after a handoff)
 
+Owner governance: before selecting or briefing new work, read the standing [research charter and reuse-first rule](../agent-handoff/NEXT_RESEARCH_AND_WORKFLOW.md#owner-research-charter). It governs the pilot's questions, priority order and scientific-selection principles. Include the charter's short reuse assessment in each new implementation brief. Independent references and frozen experimental isolation remain valid exceptions. This governance adds no experiment permission and never retrofits a frozen task; existing scientific specifications and owner gates remain binding.
+
+
 1. `state/PROGRESS.md`: where the project stands.
 2. `docs/CONVENTIONS.md`: how code, tests, and docs are written.
 3. `docs/STAGES.md`: build waves, run stages, gates, and exit points.

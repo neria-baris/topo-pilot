@@ -1,10 +1,12 @@
-"""X5 G1 training-study runtime controls (x5g1-train-v3 §8–§9).
+"""X5 G1 training-study runtime controls (x5g1-train-v4 §8–§9; API v4 §2).
 
 STOP from the owner file, ``request.json`` or ``worker_control.json`` always wins; malformed
 critical controls fail closed. A usage hold pauses the LIVE process (optimizer, scheduler and
 batch RNG stay in memory) and resumes only when both the coordinator hold and the worker's own
-usage hold are released; time never resumes it. The hold record is audit-only, never a resume
-checkpoint. Budget checks at boundaries are periodic, not an instruction-level CPU kill.
+usage hold are released; time never resumes it. The worker's own usage hold comes from an
+allow-listed ``runtime_state`` mode or the evidence latch of ``x5g1t_usage``. The hold record is
+audit-only, never a resume checkpoint. Budget checks at boundaries are periodic safety checks,
+not an instruction-level CPU kill: an atomic unit can exceed its estimate.
 """
 
 from __future__ import annotations
@@ -13,16 +15,20 @@ import json
 import os
 import time
 from collections.abc import Callable
+from datetime import datetime
 from pathlib import Path
 from typing import NamedTuple
 
 from .x4b_run import peak_memory_bytes
 from .x5g1_controls import BudgetExceeded, RunControls, StopRequested
 from .x5g1_safety import OutputExists
+from .x5g1t_usage import UsageMalformed, apply_usage
 
 EST = {"update": 0.383, "dev_ce": 3.92, "score": 3.906, "save": 1.0, "bootstrap": 120.0,
        "exports": 60.0}
 MAX_POLL_S = 45.0
+CONTINUE_MODES = frozenset({"WORKING", "WAITING", "USAGE_READY"})
+HOLD_MODES = frozenset({"WAIT_USAGE_RESET", "RUNTIME_BLOCKED", "NEEDS_USAGE_INFO"})
 AUDIT_KIND = "AUDIT_ONLY_NOT_A_RESUME_CHECKPOINT"
 
 
@@ -43,8 +49,9 @@ def _json(path: Path):
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
-def read_controls(mailbox: Path) -> ControlState:
-    """Precedence STOP > HOLD > CONTINUE (API §5); ``claude_usage.json`` is never read."""
+def read_controls(mailbox: Path, now: datetime | None = None) -> ControlState:
+    """Precedence STOP > HOLD > CONTINUE (API v4 §2): STOP file, request, worker_control,
+    allow-listed runtime mode and the usage-evidence latch; malformed or unknown fails closed."""
     mb = Path(mailbox)
     stop: list[str] = []
     hold: list[str] = []
@@ -73,10 +80,19 @@ def read_controls(mailbox: Path) -> ControlState:
     rs = mb / "runtime_state.json"
     if rs.exists():
         try:
-            if _json(rs)["mode"] == "WAIT_USAGE_RESET":
-                hold.append("worker_usage_hold")
+            mode = _json(rs)["mode"]
+            if not isinstance(mode, str) or mode not in CONTINUE_MODES | HOLD_MODES:
+                stop.append(f"runtime_state_unknown_mode:{mode!r}")
+            elif mode in HOLD_MODES:
+                hold.append(f"worker_mode_{mode}")
         except Exception as exc:  # noqa: BLE001
             stop.append(f"runtime_state_unreadable:{type(exc).__name__}")
+    try:
+        action, reasons = apply_usage(mb, now)
+        if action == "HOLD":
+            hold.extend(reasons)
+    except UsageMalformed as exc:
+        stop.append(f"usage_malformed:{exc}")
     if stop:
         return ControlState("STOP", tuple(stop))
     if hold:

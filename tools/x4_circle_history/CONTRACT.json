@@ -1,0 +1,263 @@
+{
+ "protocol": "x4-circle-history-k4-feas-v1",
+ "job_id": "0016",
+ "task_sha256": "5CFC6669404D6D559CEE94CCCA91883FE7E69D9D8556639A0911DA8322ADB4E9",
+ "design_source": {
+  "path": "docs/proposals/CIRCULAR_HISTORY_K4_PROTOCOL_DRAFT.md",
+  "commit": "8783adc122153d0e5697cd807686b04c80e4e199",
+  "sha256": "42FB2E9F2F8CD95C908241E5512E5C3D259501AB32F4EBE12C03ECD0F9CEE0FA"
+ },
+ "status": "IMPLEMENTATION_CONTRACT (job 0016: code + synthetic tests only; no real payload; no feasibility execution)",
+ "scope": {
+  "models": [
+   1729,
+   2718,
+   3141
+  ],
+  "step": 5000,
+  "hook": "resid_post_3",
+  "position": 32,
+  "family": "cylinder",
+  "emission_mode": "overlap",
+  "sigma": 1.25,
+  "K_target": [
+   1,
+   4,
+   32
+  ],
+  "K_contrast": 4,
+  "history_length_used": 32,
+  "excluded_token_column": 32,
+  "exposure": "all E4 test panels previously exposed (E4 + circular audit); every result exploratory"
+ },
+ "artifacts": {
+  "artifact_root": "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts",
+  "per_model": {
+   "1729": {
+    "checkpoint": "c3358e3cb9c352fb",
+    "ActivationSet": "0e001559534ee7ef",
+    "ObservationSet": "2a67b2c947e293ba",
+    "HistoryIndex": "afb6e7120c9477b1",
+    "EmissionSpec": "3633ac27dab50cf4"
+   },
+   "2718": {
+    "checkpoint": "98b0e703a337d513",
+    "ActivationSet": "ec17425cf67f1a54",
+    "ObservationSet": "95c4d118517ecd92",
+    "HistoryIndex": "908cb61ffbd956c6",
+    "EmissionSpec": "97838b9e13a26f74"
+   },
+   "3141": {
+    "checkpoint": "036b670743ffbbaf",
+    "ActivationSet": "069da84ce363d8f2",
+    "ObservationSet": "2e2cf22bb4820155",
+    "HistoryIndex": "7e7d27bd143ebeb5",
+    "EmissionSpec": "8c29c329c197c79e"
+   }
+  },
+  "shared": {
+   "WorldSpec": "21feee1d8ee5422e",
+   "TransitionSpec": "e4dafc7b9785c172"
+  },
+  "declared_activation_payload_checksums": {
+   "1729": "a134e8f3c68b105215834cdf5c4f11fa11eeae354faf71da1399fdca76869db5",
+   "2718": "d326ac0ae3339e76e3677484977deb12eb12edcbd488bce4ad80d7f83b5af2aa",
+   "3141": "22fb78ce44a5f54c44192db3589061748ae1990d055f6cf269717b595ea56ad3"
+  },
+  "checkpoint_payloads": "NEVER loaded",
+  "access": "metadata now; payload decoding only after a coordinator release; identity-only for panels 3-8"
+ },
+ "panels": {
+  "calibration": 1,
+  "validation": 2,
+  "scoring": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "panel_size": 512,
+  "scoring_rows": 3072,
+  "scoring_access": "LOCKED: identity/join/checksum only after release; no scored diagnostics, filtering, PH or endpoint before separate owner scoring release"
+ },
+ "ordering": {
+  "landmark_order": "ascending history_id (model-specific), used ONLY for chart landmark order and deterministic tie-breaking",
+  "evaluation_order": "ascending sequence_id (shared across models); all paired resampling uses this order",
+  "pairing_rule": "rows are paired across models by sequence_id with identical canonical 32-token history digests; any mismatch stops for review; no unpaired fallback"
+ },
+ "symbols": {
+  "canonical_emission": "E_canon = E_named[:, symbol_perm]",
+  "named_from_canonical": "named = symbol_perm[canonical]",
+  "canonical_from_named": "canonical = argsort(symbol_perm)[named]",
+  "canonical_history_digest": "sha256 of canonical tokens[:, :32] as uint8 bytes, row-wise"
+ },
+ "oracle": {
+  "kernels": "tools/x4_oracle_profile/oracle_profile.py (job 0014, unchanged; imported)",
+  "reference": "tests/oracle_profile/independent_reference.py (job 0014, unchanged; imported)",
+  "features": "c(z) = (cos(2*pi*x/12), sin(2*pi*x/12)), x = coords[:, 0]",
+  "suffix_convention": "restart at stationary pi, emit first, transitions only between emissions",
+  "process_tolerance": 1e-12,
+  "reference_rows_per_split_per_model": 4,
+  "reference_row_rule": "minimum: 4 lowest history_id rows of panel 1 and of panel 2 per model (K1/4/32, moment error <= 1e-10); SUBSUMED by the all-row certificate (ERROR_BOUND.md v2): every released calibration/validation row, K4/K32, moment error <= 1e-10",
+  "reference_K": [
+   1,
+   4,
+   32
+  ],
+  "reference_digits": 60,
+  "reference_max_moment_error": 1e-10
+ },
+ "chart": {
+  "landmarks": "all 512 panel-1 resid_post_3/p32 vectors, raw 128-D, float64 Euclidean distances",
+  "field": 47,
+  "bar": "largest strictly positive finite H1 lifetime; ties birth asc, death asc, index asc",
+  "scale": "midpoint (birth + death) / 2; edges with distance <= scale",
+  "ripser": {
+   "maxdim": 1,
+   "coeff": 47,
+   "distance_matrix": true,
+   "do_cocycles": true
+  },
+  "lift_bounds": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "lift_node_limit": 128,
+  "lift_cpu_cap_s": 30,
+  "lift_solver": "scipy.optimize.milp, zero objective, integrality all, threads 1, mip_rel_gap 0, presolve default",
+  "lift_rounding_tol": 1e-07,
+  "local_passes": 2,
+  "local_vertices": 128,
+  "primitive_root": 0,
+  "smoothing_residual_max": 1e-08,
+  "max_chart_constructions": 6,
+  "gauge": "s in (+1,-1) maximizing |mean(exp(i*s*phi) * conj(m32x + i*m32y))| on calibration landmarks; tie s=+1; phi <- (s*phi - arg(c)) mod 2pi; |c| must be finite and > 0",
+  "extension_k": 8,
+  "sigma": "median(d8_i) where d8_i = 8th smallest distance from landmark i to the OTHER landmarks (self excluded only)",
+  "support_radius": "2 * quantile(d8, 0.99, method=inverted_cdf)",
+  "weights": "exp(-0.5 * (d / sigma)^2)",
+  "duplicate_rule": "query with an exact zero distance: z = mean of exp(i*phi_j) over ALL landmarks at distance exactly 0; Invalid if 1 - |z| > 1e-8",
+  "support_min_resultant": 0.2,
+  "support_rule": "|z| >= 0.2 AND eighth-neighbour distance <= support_radius; every validation row required",
+  "fidelity_min_agreement": 0.8,
+  "phase_bins": 12,
+  "phase_bin_min_rows": 8,
+  "overall_resultant_max": 0.3,
+  "gate_rules": "support all rows; fidelity A >= .80; every one of 12 bins >= 8; overall resultant <= .30; criterion not met -> INCONCLUSIVE; Invalid (defect) -> FAIL_TECHNICAL"
+ },
+ "scores": {
+  "unit_vector": "u = (cos(phi), sin(phi)) of the saved extended phase",
+  "score": "X = u . (m32 - m4)",
+  "B4": "mean ||m32 - m4||",
+  "controls": {
+   "m1_unit": "m1 / ||m1||; exactly (0,0) -> (1,0)",
+   "m4_unit": "m4 / ||m4||; exactly (0,0) -> (1,0)",
+   "sha256_last4": "phase = 2*pi*int.from_bytes(sha256(bytes(canonical_last4_uint8)).digest()[:8], 'big') / 2**64; u = (cos, sin)"
+  },
+  "control_angular_instability": "flag (diagnostic only) rows with 0 < ||m|| <= certified moment-error bound; vector is the operational float result; never infer zero from a tolerance"
+ },
+ "precision": {
+  "validation_rows": 512,
+  "projected_N": 3072,
+  "delta": 0.01,
+  "alternative": 0.02,
+  "power": 0.8,
+  "alpha": 0.016666666666666666,
+  "sd_draws": 5000,
+  "sd_seed": 410201,
+  "centered_draws": 5000,
+  "centered_seed": 410202,
+  "rng": "numpy.random.Generator(numpy.random.PCG64(seed)); one rng.integers(0, 512, size=...) call per draw, shared by all models (joint whole-trajectory resampling in evaluation order)",
+  "model_order": [
+   1729,
+   2718,
+   3141
+  ],
+  "quantile_method": "inverted_cdf",
+  "normal_quantiles": "statistics.NormalDist().inv_cdf",
+  "B4_lower": "quantile(B4 draws from the SD draws, 0.05, inverted_cdf)",
+  "pass_rule": "every model: mde_upper <= .02 AND centered projected power >= .80; any other combination INCONCLUSIVE; report mde_lower, mde_upper and power",
+  "B4_pass_rule": "every model: B4 q.05 lower > .01; otherwise INCONCLUSIVE (criterion_met=false)"
+ },
+ "numerical_bound": {
+  "max_score_error": 0.0001,
+  "document": "tools/x4_circle_history/ERROR_BOUND.md (v2: per-row certificate against an independent Decimal reference plus proven reference envelope)",
+  "reference": "tests/oracle_profile/independent_reference.decimal_suffix_posterior (job 0014, unchanged), digits 60, inside a decimal context trapping Underflow/Subnormal/Overflow/Clamped/InvalidOperation/DivisionByZero",
+  "features_reference": "exact algebraic cos/sin of multiples of pi/6 at 80 digits",
+  "trig_reference": "Taylor series at 80 digits, truncation < 1e-75, explicit rounding envelope, 0 <= phi < 2pi",
+  "moment_check": 1e-10,
+  "outcomes": "CERTIFIED if every row bound <= 1e-4; INCONCLUSIVE if some finite bound > 1e-4; FAIL_TECHNICAL on trap/nonfinite/range/moment-check violation",
+  "coverage": "every released calibration and validation row for every model; reference posteriors computed once per unique canonical history after the cross-model join",
+  "instantiation": "only after coordinator release; scored rows locked (AccessDenied without scoring release)",
+  "process_law": "separate reported Z_bound (ERROR_BOUND.md section 6); never part of the score certificate"
+ },
+ "gates": [
+  "identity",
+  "process_and_reference",
+  "row_error_certificates",
+  "chart_calibration",
+  "gauge",
+  "validation_direct_chart",
+  "extension_support",
+  "fidelity_A",
+  "phase_bins",
+  "overall_resultant",
+  "B4_lower",
+  "precision_projection"
+ ],
+ "gate_policy": "All gates must PASS for overall PASS. FAIL_TECHNICAL (overall FAIL) only for invalid input, integrity, certificate, implementation or numerical defects. Every valid computed criterion not met (fidelity < .80, B4 lower <= .01, inadequate or straddling projected precision, unsupported rows, bins/resultant, lift/chart/certificate unresolved, resource exhaustion) is overall INCONCLUSIVE with criterion_met=false and exact gate/values/reason preserved. First non-PASS gate ends the cohort; no retry, refit, threshold change or data replacement. Equalities follow the written strict/non-strict inequalities with no added tolerance.",
+ "resources": {
+  "cumulative_cpu_cap_s": 3600,
+  "stop_new_work_at_s": 3480,
+  "stage_caps_s": {
+   "implementation": 400,
+   "identity": 200,
+   "oracle": 400,
+   "charts": 2200,
+   "precision": 200,
+   "export": 200
+  },
+  "job_0015_released_stages": [
+   "implementation",
+   "export"
+  ],
+  "job_0015_export_max_s": 80,
+  "export_unspent_reserve_after_0015_s": 120,
+  "threads": 1,
+  "memory_bytes": 8589934592,
+  "output_bytes": 134217728,
+  "native_operation_wall_s": 180,
+  "output_root": "X:/Downloads/projects/topo-pilot/x4-circle-history-feas-store-0015",
+  "implementation_shared_across": [
+   "0015",
+   "0016",
+   "review"
+  ]
+ },
+ "supersedes": {
+  "job": "0015",
+  "status": "BLOCKED (operational shared-worktree conflict)",
+  "draft_sha256": "0f5803d87b197d10b466839a03ab5306a91cdbac10f7d66ccf17b4000dfa374e"
+ },
+ "worktree": {
+  "path": "X:/Downloads/projects/topo-pilot/topo-pilot-circle-history-k4",
+  "branch": "x4-circle-k4-feas-isolated-0016",
+  "base": "8783adc122153d0e5697cd807686b04c80e4e199"
+ },
+ "study_group": "circle-k4-feasibility-0015",
+ "gate_status_values": [
+  "PASS",
+  "INCONCLUSIVE",
+  "FAIL_TECHNICAL"
+ ],
+ "environment": {
+  "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv (read-only; no install)",
+  "pythonpath": "X:/Downloads/projects/topo-pilot/topo-pilot-circle-history-k4/src",
+  "module_pinning": "runtime asserts topo_pilot, oracle_profile, independent_reference and x4_circle_history modules resolve under this worktree and match freeze hashes"
+ }
+}

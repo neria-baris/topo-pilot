@@ -6,6 +6,8 @@ public history ``w1..w32`` only (see ``x5g1t_oracle``); the target ``w33`` is ne
 
 from __future__ import annotations
 
+from collections.abc import Callable
+
 import numpy as np
 import torch
 from numpy.typing import NDArray
@@ -17,11 +19,12 @@ POSITION = 32
 
 
 @torch.no_grad()
-def p32_log_probs(model: torch.nn.Module, inputs: torch.Tensor,
-                  batch: int = SCORE_BATCH) -> NDArray[np.float64]:
+def p32_log_probs(model: torch.nn.Module, inputs: torch.Tensor, batch: int = SCORE_BATCH,
+                  guard: Callable[[str], None] | None = None) -> NDArray[np.float64]:
     """``log softmax(logits[:, 32, :])`` in float64, ``[R, V]``, computed ``batch`` rows at a time.
 
-    The model's training flag is restored afterwards.
+    ``guard(f"score batch {k}")`` and ``guard(f"score batch {k} done")`` bracket batch ``k`` (the
+    study controls: STOP, holds, budget, resources). The model's training flag is restored.
     """
     if inputs.ndim != 2 or inputs.shape[1] != POSITION + 1:
         raise StageFailure(ErrorCode.ALIGNMENT_ERROR, "experiment.X5G1T", "inputs",
@@ -29,9 +32,14 @@ def p32_log_probs(model: torch.nn.Module, inputs: torch.Tensor,
     was_training = model.training
     model.eval()
     try:
-        out = [torch.log_softmax(model(inputs[i:i + batch]).logits[:, POSITION, :]
-                                 .to(torch.float64), dim=-1).numpy()
-               for i in range(0, inputs.shape[0], batch)]
+        out = []
+        for k, i in enumerate(range(0, inputs.shape[0], batch)):
+            if guard:
+                guard(f"score batch {k}")
+            out.append(torch.log_softmax(model(inputs[i:i + batch]).logits[:, POSITION, :]
+                                         .to(torch.float64), dim=-1).numpy())
+            if guard:
+                guard(f"score batch {k} done")
     finally:
         model.train(was_training)
     return np.concatenate(out, axis=0)
@@ -64,6 +72,7 @@ def kl_from_log_probs(q: NDArray, logp: NDArray) -> NDArray[np.float64]:
 
 
 def regret_rows(model: torch.nn.Module, inputs: torch.Tensor, q: NDArray,
-                batch: int = SCORE_BATCH) -> NDArray[np.float64]:
-    """Per-history regret ``KL(q_C(h) || p_model(h))`` at p32, nats, ``[R]``."""
-    return kl_from_log_probs(q, p32_log_probs(model, inputs, batch))
+                batch: int = SCORE_BATCH,
+                guard: Callable[[str], None] | None = None) -> NDArray[np.float64]:
+    """Per-history regret ``KL(q_C(h) || p_model(h))`` at p32, nats, ``[R]`` (guarded batches)."""
+    return kl_from_log_probs(q, p32_log_probs(model, inputs, batch, guard))

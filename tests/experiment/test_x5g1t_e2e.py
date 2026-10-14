@@ -50,7 +50,7 @@ def test_full_staged_run(tmp_path):
     assert len(final["models"]) == 6 and set(final["test_pools"]) == set(ARMS)
     for d in ("pools", "dev_analysis", "final_test", "train/a0_310001"):
         assert _manifest_ok(tables / d)
-    ledger = json.loads((tmp_path / "study" / "ledger.json").read_text())
+    ledger = json.loads((tmp_path / "ledger.json").read_text())
     assert [e["status"] for e in ledger["entries"]].count("ok") >= 9
     assert not (tmp_path / "study" / "RUN.lock").exists()
 
@@ -62,7 +62,7 @@ def test_budget_stop_records_incomplete_and_inconclusive(tmp_path):
     o = json.loads((tmp_path / "study" / "outcomes" / "a0_310001.json").read_text())
     assert o["status"] == "INCOMPLETE" and o["cause"].startswith("BudgetExceeded")
     assert o["checkpoints"] == []
-    entry = json.loads((tmp_path / "study" / "ledger.json").read_text())["entries"][-1]
+    entry = json.loads((tmp_path / "ledger.json").read_text())["entries"][-1]
     assert entry["status"] == "budget"
     assert _cli(cfg, "dev-analysis") == 0
     res = json.loads((tmp_path / "study" / "tables" / "dev_analysis" / "verdict.json").read_text())

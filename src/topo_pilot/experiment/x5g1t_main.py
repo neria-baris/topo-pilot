@@ -1,12 +1,15 @@
-"""X5 G1 training-study CLI (x5g1-train-v3 §10). Stages run separately so that the root can
-authorise pools/training/dev analysis first and the fresh test last.
+"""X5 G1 training-study CLI (x5g1-train-v4 §10; API v4 §6). Stages run separately so that the root
+can authorise pools/training/dev analysis first and the fresh test last.
 
+``python -m topo_pilot.experiment.x5g1t_main --config <json> [--repo .] validate`` prints the
+read-only configuration report (no output, store, sampler, model or mailbox write).
 ``python -m topo_pilot.experiment.x5g1t_main --config <json> [--repo .] pools``
 ``... train --arm a0 --master 310001`` | ``... dev-analysis``
 | ``... final-test --authorized-final``
 ``python -m topo_pilot.experiment.x5g1t_main fixture --root <dir>`` builds the SYNTHETIC fixture.
 
-Exit codes: 0 done; 2 STOP/budget/resource/hold-stop; 3 failure or refusal.
+Exit codes: 0 done; 2 STOP/budget/resource/hold-stop; 3 refusal (ConfigInvalid, StudyFailed,
+ExportIncomplete, IntegrityFailed, RunLocked, OutputExists, LedgerCorrupt, UsageMalformed).
 """
 
 from __future__ import annotations
@@ -18,16 +21,17 @@ from pathlib import Path
 
 from .x5g1_controls import BudgetExceeded, LedgerCorrupt, StopRequested
 from .x5g1_safety import OutputExists
+from .x5g1t_checks import IntegrityFailed
+from .x5g1t_config import ConfigInvalid, load_config, validate_config
+from .x5g1t_exports import ExportIncomplete
 from .x5g1t_fixture import build_fixture
 from .x5g1t_runtime import ResourceExceeded, RunLocked
-from .x5g1t_stages import (
-    StudyConfig,
-    StudyFailed,
-    run_dev_analysis,
-    run_final_test,
-    run_pools,
-    run_train,
-)
+from .x5g1t_stages import StudyFailed, run_pools, run_train
+from .x5g1t_stages_eval import run_dev_analysis, run_final_test
+from .x5g1t_usage import UsageMalformed
+
+REFUSALS = (ConfigInvalid, StudyFailed, ExportIncomplete, IntegrityFailed, RunLocked,
+            OutputExists, LedgerCorrupt, UsageMalformed)
 
 log = logging.getLogger(__name__)
 
@@ -41,6 +45,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--config", type=Path)
     ap.add_argument("--repo", type=Path, default=Path("."))
     sub = ap.add_subparsers(dest="stage", required=True)
+    sub.add_parser("validate")
     sub.add_parser("pools")
     tr = sub.add_parser("train")
     tr.add_argument("--arm", required=True, choices=("a0", "a020"))
@@ -57,8 +62,11 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.config is None:
         ap.error("--config is required for study stages")
-    cfg = StudyConfig.load(args.config)
     try:
+        cfg = load_config(args.config)
+        if args.stage == "validate":
+            print(json.dumps(validate_config(cfg, args.repo), indent=1))  # noqa: T201
+            return 0
         if args.stage == "pools":
             res = {"pools": len(run_pools(cfg, args.repo)["pools"])}
         elif args.stage == "train":
@@ -71,7 +79,7 @@ def main(argv: list[str] | None = None) -> int:
     except (StopRequested, BudgetExceeded, ResourceExceeded) as exc:
         log.error("x5g1t %s stopped: %s: %s", args.stage, type(exc).__name__, exc)
         return 2
-    except (StudyFailed, RunLocked, OutputExists, LedgerCorrupt) as exc:
+    except REFUSALS as exc:
         log.error("x5g1t %s refused/failed: %s: %s", args.stage, type(exc).__name__, exc)
         return 3
     log.info("x5g1t %s: %s", args.stage, json.dumps(res))

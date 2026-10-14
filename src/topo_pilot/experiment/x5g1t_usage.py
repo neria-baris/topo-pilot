@@ -145,11 +145,14 @@ def usage_decision(usage, latch, now: datetime,
 
 def _read(path: Path):
     if not path.exists():
-        return None
+        return None  # only a MISSING file is absence; a present file must hold an object
     try:
-        return json.loads(path.read_text(encoding="utf-8-sig"))
+        obj = json.loads(path.read_text(encoding="utf-8-sig"))
     except (ValueError, OSError) as exc:
         raise UsageMalformed(f"{path.name}: {type(exc).__name__}: {exc}") from exc
+    if not isinstance(obj, dict):
+        raise UsageMalformed(f"{path.name}: present file holds {type(obj).__name__}, not an object")
+    return obj
 
 
 def _write(path: Path, obj) -> None:

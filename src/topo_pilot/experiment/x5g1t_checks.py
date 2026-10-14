@@ -4,6 +4,7 @@ artifacts and checkpoint identity against the model, arm, master and pools."""
 from __future__ import annotations
 
 import dataclasses
+import json
 
 from topo_pilot.contracts import ArtifactStore, Checkpoint
 from topo_pilot.learner import ModelConfig
@@ -14,6 +15,11 @@ from .x5g1t_train import study_run_key, study_train_config
 
 class IntegrityFailed(RuntimeError):
     """A used artifact failed full-hash verification or checkpoint identity checks."""
+
+
+def canonical(obj) -> str:
+    """Canonical JSON text: tuples and lists compare equal, key order is irrelevant."""
+    return json.dumps(obj, sort_keys=True, allow_nan=False)
 
 
 def verify_full(store: ArtifactStore, expected: dict, when: str) -> None:
@@ -48,7 +54,7 @@ def validate_checkpoints(store: ArtifactStore, outcome: dict, cfg, arm: str, mas
         expect = {**want_cfg, "step": c["step"]}
         if meta.artifact_type != "Checkpoint" or meta.payload_sha256 != sha:
             raise IntegrityFailed(f"{cid}: type/payload mismatch")
-        if dict(meta.config) != expect:
+        if canonical(dict(meta.config)) != canonical(expect):  # stored JSON list vs tuple
             raise IntegrityFailed(f"{cid}: config differs from the study identity")
         if tuple(meta.parent_ids) != want_parents:
             raise IntegrityFailed(f"{cid}: parents {meta.parent_ids} != {want_parents}")

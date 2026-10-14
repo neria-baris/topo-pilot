@@ -87,7 +87,9 @@ def _export(repo: Path, main_root: Path, out_root: Path, tables: Path, res: dict
     ids = [p["artifact_id"] for p in res.get("provenance", [])]
     ids += [x for x in (res.get("T_a020_id"),) + tuple(res["arms"].get(a, {}).get("obs_id")
                                                        for a in ARMS) if x]
-    if ids and not res["global_failed"]:
+
+    def save_metrics() -> None:
+        """The only scientific store save; runs inside the export guards (job 0008)."""
         rw = ArtifactStore(ReadThroughBackend(LocalFSBackend(main_root),
                                               LocalFSBackend(out_root / "store")),
                            producer_version=meta["producer_version"])
@@ -109,9 +111,11 @@ def _export(repo: Path, main_root: Path, out_root: Path, tables: Path, res: dict
             config={"stage": "X5G1_GATE", "protocol": PROTOCOL,
                     "protocol_doc_sha256": meta["protocol_doc_sha256"]},
             parents=sorted(set(ids)), seed_map={}, consumer="experiment")
+
     files = {"verdict.json": {k: res.get(k) for k in ("protocol", "verdict", "reason",
                                                        "global_failed", "global_inconclusive")},
              "result.json": res, "run.json": meta}
+
     def write(name: str, obj) -> None:
         (tables / name).write_text(json.dumps(_jsonable(obj), indent=1, default=str),
                                    encoding="utf-8")
@@ -120,7 +124,18 @@ def _export(repo: Path, main_root: Path, out_root: Path, tables: Path, res: dict
         sums = {f.name: _sha256(f) for f in sorted(tables.iterdir()) if f.name != "MANIFEST.json"}
         (tables / "MANIFEST.json").write_text(json.dumps(sums, indent=1), encoding="utf-8")
 
-    steps = [(n, (lambda n=n, o=o: write(n, o))) for n, o in files.items()]
+    main = ArtifactStore(LocalFSBackend(main_root))
+    missing = []
+    for aid in sorted(set(ids)):
+        try:
+            main.meta(aid)
+        except StageFailure:
+            missing.append(aid)
+    if missing:
+        meta["metric_records_skipped"] = f"missing parents in the main store: {missing}"
+    steps = ([("metric_records", save_metrics)]
+             if ids and not res["global_failed"] and not missing else [])
+    steps += [(n, (lambda n=n, o=o: write(n, o))) for n, o in files.items()]
     guarded_export(ctl, steps + [("manifest", manifest)], tables / "EXPORT_STATUS.json")
 
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import time
 from pathlib import Path
@@ -46,10 +47,15 @@ class RunControls:
             return {"entries": [], "cumulative_cpu_s": 0.0}
         try:
             data = json.loads(self.ledger_path.read_text(encoding="utf-8"))
-            float(data["cumulative_cpu_s"])
-            list(data["entries"])
+            cum = data["cumulative_cpu_s"]
+            entries = data["entries"]
         except (ValueError, KeyError, TypeError) as exc:
             raise LedgerCorrupt(f"{self.ledger_path}: {exc}") from exc
+        if (isinstance(cum, bool) or not isinstance(cum, (int, float)) or not math.isfinite(cum)
+                or cum < 0):
+            raise LedgerCorrupt(f"{self.ledger_path}: invalid cumulative_cpu_s {cum!r}")
+        if not isinstance(entries, list) or not all(isinstance(e, dict) for e in entries):
+            raise LedgerCorrupt(f"{self.ledger_path}: entries must be a list of objects")
         return data
 
     def cpu(self) -> float:

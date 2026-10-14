@@ -102,6 +102,7 @@ Behaviour:
 * **STOP created during the save step:** that save completes, the remaining steps are skipped, and the status file shows completed_steps ["metric_records"].
 * **Normal run:** exactly one save; run.json contains "metric_records_id"; MANIFEST.json lists the written files.
 * **`global_failed` non-empty:** no save, and the tables are still written.
+* **A parent ID missing from the main store** (clarified after the independent tests, job 0008): no save is attempted; `run.json` records `metric_records_skipped` naming the missing IDs; the tables are still written.
 
 ### 4.2 `RunControls` ledger validation
 

@@ -1,11 +1,9 @@
-"""Independent tests (author B) for error_bound.py: TEST_PLAN items B6 and B6b (spec v2.2,
-ERROR_BOUND.md v2.1).
+"""Independent tests (author B) for error_bound.py: B6, B6b, B10 (spec v2.3, ERROR_BOUND v2.1).
 
-Written from API.md, ERROR_BOUND.md, CONTRACT.json and TEST_PLAN.md only; no production code was
-read. Every envelope is re-derived here in exact Fractions; trigonometric references are exact
-rational Taylor partial sums with a proven tail; posteriors come from the job-0014 independent
-Decimal reference. reference_moments is not tested directly: its documented signature has no
-coords argument, so its feature map is unspecified (reported as an ambiguity).
+From API.md, ERROR_BOUND.md, CONTRACT.json, TEST_PLAN.md only (no production code read). Envelopes
+are re-derived in exact Fractions, trig references are exact rational Taylor sums, posteriors come
+from the job-0014 independent Decimal reference. reference_moments is not tested directly (its
+documented signature has no coords, so its feature map is unspecified).
 """
 
 from __future__ import annotations
@@ -126,10 +124,7 @@ def test_trapping_context_settings() -> None:
     for sig in (decimal.Inexact, decimal.Rounded, decimal.FloatOperation):
         assert not ctx.traps[sig], sig
     assert error_bound.trapping_context(80).prec == 80
-
-
-def test_trapping_context_raises_on_constructed_underflow_and_overflow() -> None:
-    with localcontext(error_bound.trapping_context(60)):
+    with localcontext(error_bound.trapping_context(60)):     # constructed traps
         with pytest.raises((decimal.Underflow, decimal.Subnormal, decimal.Clamped)):
             Decimal("1E-999999") / Decimal("1E+70")   # below Etiny = -1000058
         with pytest.raises(decimal.Overflow):
@@ -194,17 +189,12 @@ def test_taylor_constants_and_exact_tail_inequalities() -> None:
     assert X_MAX > F(2 * np.pi)
 
 
-def test_decimal_cos_sin_at_zero_is_exact() -> None:
-    c, s, eps_v = error_bound.decimal_cos_sin(0.0)
-    assert c == 1 and s == 0
-    assert eps_v == _eps_v()
-
-
-@pytest.mark.parametrize("x", [0.5, 1.0, math.pi / 2, 3.0, math.pi, 5.123456789, 6.28,
+@pytest.mark.parametrize("x", [0.0, 0.5, 1.0, math.pi / 2, 3.0, math.pi, 5.123456789, 6.28,
                                2 * math.pi])
 def test_decimal_cos_sin_against_exact_rational_taylor(x: float) -> None:
     c, s, eps_v = error_bound.decimal_cos_sin(x)
     assert isinstance(c, Decimal) and isinstance(s, Decimal) and isinstance(eps_v, Fraction)
+    assert x != 0.0 or (c == 1 and s == 0)                   # exact at x = 0
     assert eps_v == _eps_v()
     assert F(1, 10**75) < eps_v < F(1, 10**70)
     tail = F(1, 10**90)
@@ -249,12 +239,8 @@ def test_row_bound_equals_independently_assembled_fractions() -> None:
             <= F(1, 10000)
         assert error_bound.row_bound(float(big_r) + 1e-3, phi, M4_ROW, M32_ROW, eps4, eps32)[
             "B"] > F(1, 10000)
-
-
-def test_row_bound_phi_outside_analytic_interval_is_invalid() -> None:
-    eps = _eps_m(_beta(4, 3), 3)
-    with pytest.raises(errors.Invalid):
-        error_bound.row_bound(0.0, 7.0, M4_ROW, M32_ROW, eps, eps)
+    with pytest.raises(errors.Invalid):                       # phi outside the analytic interval
+        error_bound.row_bound(0.0, 7.0, M4_ROW, M32_ROW, eps4, eps32)
 
 
 # ---- certify_rows / reference_check_rows on a tiny HMM -------------------------------------------
@@ -271,14 +257,11 @@ HIST = np.array([[(r + t * (r + 1) + (t * t) // 3) % 3 for t in range(32)] for r
 PHI = np.array([0.3, 2.5, 5.9, 6.2])
 
 
-def test_fixture_hmm_is_exactly_stationary() -> None:
-    assert [sum(PI_EXACT[i] * T_EXACT[i][j] for i in range(3)) for j in range(3)] == PI_EXACT
-    assert all(sum(row) == 1 for row in T_EXACT + E_EXACT) and sum(PI_EXACT) == 1
-
-
 @pytest.fixture(scope="module")
 def pipeline():
     """The production float pipeline: oracle_moments -> unit_vectors -> scores."""
+    assert [sum(PI_EXACT[i] * T_EXACT[i][j] for i in range(3)) for j in range(3)] == PI_EXACT
+    assert all(sum(row) == 1 for row in T_EXACT + E_EXACT) and sum(PI_EXACT) == 1
     m = scores.oracle_moments(T, E, PI, HIST, oracle_profile.circle_features(COORDS))
     x_hat = scores.scores(scores.unit_vectors(PHI), m[32], m[4])
     return m, x_hat
@@ -358,16 +341,6 @@ def test_certify_rows_operational_range_and_nonfinite_fail_technical(pipeline) -
     assert _certify(m[4], m[32], x_hat, phi=np.nextafter(PHI, 0.0))["status"] == "CERTIFIED"
 
 
-def test_certify_rows_scoring_lock_precedes_any_computation(pipeline) -> None:
-    with pytest.raises(errors.AccessDenied):              # every other input is invalid
-        error_bound.certify_rows(None, "not-a-matrix", [], None, np.zeros((1, 33)),
-                                 np.array([99.0]), np.array([np.nan]), None, None, "scoring")
-    m, x_hat = pipeline
-    # Interpretation: any non-None scoring_release counts as a release token here.
-    out = _certify(m[4], m[32], x_hat, split="scoring", scoring_release="owner-release-token")
-    assert out["status"] == "CERTIFIED"
-
-
 # ---- B6b: reference_check_rows (early gate, K1/4/32) -------------------------------------------
 def test_reference_check_rows_pass_and_fail(pipeline) -> None:
     m, _ = pipeline
@@ -384,11 +357,42 @@ def test_reference_check_rows_pass_and_fail(pipeline) -> None:
         assert bad["moment_check_max"][k] > 1e-10
 
 
-def test_reference_check_rows_scoring_lock_precedes_any_computation(pipeline) -> None:
+# ---- B10 (spec v2.3): only an errors.ScoringAuthority unlocks split "scoring" -------------------
+def _auth(**changes) -> object:
+    fields = {"owner_record_path": "x", "owner_record_sha256": "0" * 64, "scope": ("scoring",),
+              "release_job_id": "0099"}
+    return errors.ScoringAuthority(**dict(fields, **changes))
+
+
+BAD_RELEASES = {"None": lambda: None, "False": lambda: False, "True": lambda: True,
+                "empty_dict": dict, "str": lambda: "token", "object": object,
+                "scope": lambda: _auth(scope=("feasibility",)),
+                "short_sha": lambda: _auth(owner_record_sha256="0" * 63)}
+
+
+@pytest.mark.parametrize("kind", sorted(BAD_RELEASES))
+def test_scoring_lock_precedes_any_computation(kind: str) -> None:
+    try:   # Interpretation: an authority that cannot even be constructed is also fail-closed.
+        release = BAD_RELEASES[kind]()
+    except (errors.AccessDenied, ValueError, TypeError):
+        return
     with pytest.raises(errors.AccessDenied):
-        error_bound.reference_check_rows(None, None, None, None, np.zeros((1, 33)),
-                                         {1: None}, (1, 4, 32), "scoring")
-    m, _ = pipeline
+        errors.require_scoring(release)
+    with pytest.raises(errors.AccessDenied):              # every other input is invalid
+        error_bound.certify_rows(None, "not-a-matrix", [], None, np.zeros((1, 33)),
+                                 np.array([99.0]), np.array([np.nan]), None, None, "scoring",
+                                 scoring_release=release)
+    with pytest.raises(errors.AccessDenied):
+        error_bound.reference_check_rows(None, None, None, None, np.zeros((1, 33)), {1: None},
+                                         (1, 4, 32), "scoring", scoring_release=release)
+
+
+def test_scoring_authority_unlocks_scoring(pipeline) -> None:
+    m, x_hat = pipeline
+    auth = _auth()
+    errors.require_scoring(auth)
+    out = _certify(m[4], m[32], x_hat, split="scoring", scoring_release=auth)
+    assert out["status"] == "CERTIFIED"
     out = error_bound.reference_check_rows(T, E, PI, COORDS, HIST, m, (1, 4, 32), "scoring",
-                                           scoring_release="owner-release-token")
+                                           scoring_release=auth)
     assert out["status"] == "PASS"

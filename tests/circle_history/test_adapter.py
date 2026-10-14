@@ -212,6 +212,52 @@ def test_panel_outside_calibration_validation_denied_before_any_load(
     assert len(spy.loads) == before
 
 
+# ---- B10 (spec v2.3): only an errors.ScoringAuthority unlocks panels outside {1, 2} -----------
+def _auth(**changes) -> object:
+    fields = {"owner_record_path": "x", "owner_record_sha256": "0" * 64, "scope": ("scoring",),
+              "release_job_id": "0099"}
+    return errors.ScoringAuthority(**dict(fields, **changes))
+
+
+BAD_RELEASES = {"None": lambda: None, "False": lambda: False, "True": lambda: True,
+                "empty_dict": dict, "str": lambda: "token", "object": object,
+                "scope": lambda: _auth(scope=("feasibility",)),
+                "short_sha": lambda: _auth(owner_record_sha256="0" * 63)}
+
+
+@pytest.mark.parametrize("kind", sorted(BAD_RELEASES))
+def test_invalid_scoring_release_denies_panel_3_before_any_load(valid, kind: str) -> None:
+    try:   # Interpretation: an authority that cannot even be constructed is also fail-closed.
+        release = BAD_RELEASES[kind]()
+    except (errors.AccessDenied, ValueError, TypeError):
+        return
+    store, manifest, _ = valid
+    spy = CountingStore(store)
+    ad = adapter.RestrictedE4Adapter(spy, manifest, scoring_release=release)
+    before = len(spy.loads)
+    with pytest.raises(errors.AccessDenied):
+        ad.panels(MODELS[0], (3,))
+    assert len(spy.loads) == before
+
+
+def test_scoring_authority_unlocks_panel_3(valid) -> None:
+    store, manifest, truth = valid
+    spy = CountingStore(store)
+    ad = adapter.RestrictedE4Adapter(spy, manifest, scoring_release=_auth())
+    for m in MODELS:
+        out = ad.panels(m, (3,))
+        assert sorted(out) == [3]
+        hids = truth[m]["panel_hids"][3]
+        assert np.asarray(out[3]["history_id"]).tolist() == hids
+        named = np.asarray(out[3]["named32"])
+        assert named.shape == (PANEL_SIZE, 32)
+        seq = np.asarray(out[3]["sequence_id"]).tolist()
+        assert np.array_equal(named, np.stack([truth[m]["named_of_seq"][s][:32] for s in seq]))
+        act = np.stack([truth[m]["act_of_hid"][h] for h in hids])
+        assert np.array_equal(np.asarray(out[3]["activation"]), act)
+    assert spy.loads and all(consumer == "analysis" for _, _, consumer in spy.loads)
+
+
 # ---- identity_report ----------------------------------------------------------------------------
 def _leaves(obj):
     if isinstance(obj, dict):

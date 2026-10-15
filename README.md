@@ -215,3 +215,7 @@ flowchart LR
   T --> AN
   PR & AN & EX --> X
 ```
+
+## License
+
+Code (`src/`, `tools/`, `tests/`, `configs/`, build files) is released under the MIT licence ([LICENSE](LICENSE)). Documentation, reports and research records are released under CC BY 4.0 ([LICENSE-docs](LICENSE-docs)).

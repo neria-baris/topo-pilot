@@ -30,6 +30,13 @@ def _cmean(values) -> complex:
     return complex(float(np.sum(values.real)) / n, float(np.sum(values.imag)) / n)
 
 
+def _wrap(phi) -> np.ndarray:
+    """Phases in [0, 2pi): a modulo result that rounds to exactly 2pi becomes 0.0 (F4)."""
+    out = np.asarray(phi, dtype=np.float64) % TWO_PI
+    out[out >= TWO_PI] = 0.0
+    return out
+
+
 def _cabs(z: complex) -> float:
     return math.hypot(z.real, z.imag)
 
@@ -183,7 +190,7 @@ def fit_gauge(chart: Chart, m32) -> Gauge:
 
 
 def apply_gauge(phi, gauge: Gauge) -> np.ndarray:
-    return (gauge.sign * np.asarray(phi, dtype=np.float64) - gauge.shift) % TWO_PI
+    return _wrap(gauge.sign * np.asarray(phi, dtype=np.float64) - gauge.shift)
 
 
 def extend(chart: Chart, gauge: Gauge, Q, cfg, timed=None) -> Extension:
@@ -210,7 +217,7 @@ def extend(chart: Chart, gauge: Gauge, Q, cfg, timed=None) -> Extension:
     resultant = np.abs(z)
     eighth = nearest[:, -1]
     supported = (resultant >= cfg["support_min_resultant"]) & (eighth <= chart.support_radius)
-    return Extension(np.angle(z) % TWO_PI, resultant, eighth, supported, duplicate)
+    return Extension(_wrap(np.angle(z)), resultant, eighth, supported, duplicate)
 
 
 def agreement(phi_a, phi_b) -> float:

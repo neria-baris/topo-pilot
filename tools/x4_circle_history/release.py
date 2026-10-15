@@ -8,6 +8,11 @@ job. It is accepted only if it matches all of these:
 - this contract;
 - the freeze record.
 
+Issuer (spec v2.5 item 1): "claude-coordinator" releases are bound to the designated
+coordinator's assumption record under the mailbox archive and to the live coordinator runtime
+mode; "codex-coordinator" releases verify as before but are refused while the Claude
+coordinator is active (Codex relinquished).
+
 `scoring_released` must be a strict boolean. Scoring is unlocked only by `scoring_authority()`,
 which requires scoring_released is True AND an owner_scoring_release_ref naming an existing
 immutable owner-approval record by path, sha256 and a scope that includes "scoring". A
@@ -27,6 +32,10 @@ REPO = HERE.parents[1]
 MAILBOX = Path(r"X:\Downloads\projects\topo-pilot\agent-handoff")
 SCHEMA = "x4-circle-history-release-v1"
 STAGES = {"identity", "oracle", "charts", "precision", "export", "implementation"}
+ISSUERS = ("claude-coordinator", "codex-coordinator")
+CLAUDE_FIELDS = ("coordinator_session_id", "coordinator_assumption_ref")
+CLAUDE_ACTIVE_MODE = "ACTIVE_CLAUDE_COORDINATOR"
+ASSUMPTION_SCHEMA = "coordinator-assumption-v1"
 
 
 class ReleaseError(RuntimeError):
@@ -92,8 +101,9 @@ def verify(path: Path, mailbox: Path = MAILBOX, out: Path | None = None) -> dict
     if not isinstance(rel, dict) or not required <= set(rel):
         raise ReleaseError("release missing required fields")
     job = str(rel["job_id"])
-    if rel["schema"] != SCHEMA or rel["issued_by"] != "codex-coordinator":
+    if rel["schema"] != SCHEMA or rel["issued_by"] not in ISSUERS:
         raise ReleaseError("release schema/issuer")
+    _verify_issuer(rel, mailbox)
     if path.resolve().parent != (mailbox / "jobs" / job).resolve():
         raise ReleaseError("release must live in the dispatched job's mailbox directory")
     live = (
@@ -122,6 +132,50 @@ def verify(path: Path, mailbox: Path = MAILBOX, out: Path | None = None) -> dict
     if rel["scoring_released"]:
         _owner_record(rel)
     return rel
+
+
+def _runtime_mode(mailbox: Path):
+    try:
+        runtime = json.loads((mailbox / "coordinator_runtime.json").read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        raise ReleaseError(f"coordinator_runtime.json unreadable: {type(exc).__name__}") from exc
+    return runtime.get("mode") if isinstance(runtime, dict) else None
+
+
+def _verify_issuer(rel: dict, mailbox: Path) -> None:
+    """Bind the issuer: Claude by its assumption record; Codex only while not relinquished."""
+    mode = _runtime_mode(Path(mailbox))
+    if rel["issued_by"] == "codex-coordinator":
+        if any(k in rel for k in CLAUDE_FIELDS):
+            raise ReleaseError("codex-coordinator release must not carry Claude coordinator fields")
+        if mode == CLAUDE_ACTIVE_MODE:
+            raise ReleaseError("codex-coordinator relinquished; the Claude coordinator is active")
+        return
+    session, ref = rel.get("coordinator_session_id"), rel.get("coordinator_assumption_ref")
+    if not isinstance(session, str) or not session:
+        raise ReleaseError("claude-coordinator release needs coordinator_session_id")
+    if not isinstance(ref, dict) or not {"path", "sha256"} <= set(ref):
+        raise ReleaseError(
+            "claude-coordinator release needs coordinator_assumption_ref {path, sha256}"
+        )
+    record = Path(ref["path"])
+    archive = (Path(mailbox) / "archive").resolve()
+    if archive not in record.resolve().parents or not record.is_file():
+        raise ReleaseError(
+            "coordinator assumption record must be an existing file under the archive"
+        )
+    if _sha(record) != str(ref["sha256"]).lower():
+        raise ReleaseError("coordinator assumption record hash mismatch")
+    try:
+        assumption = json.loads(record.read_text(encoding="utf-8-sig"))
+    except ValueError as exc:
+        raise ReleaseError("coordinator assumption record is not JSON") from exc
+    if not isinstance(assumption, dict) or assumption.get("schema") != ASSUMPTION_SCHEMA:
+        raise ReleaseError("coordinator assumption record schema")
+    if assumption.get("coordinator_session_id") != session:
+        raise ReleaseError("coordinator session differs from the assumption record")
+    if mode != CLAUDE_ACTIVE_MODE:
+        raise ReleaseError("coordinator runtime does not report the active Claude coordinator")
 
 
 def _owner_record(rel: dict) -> dict:

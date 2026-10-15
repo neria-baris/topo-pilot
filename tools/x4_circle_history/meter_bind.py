@@ -15,6 +15,11 @@ X: < 30 GB free). Before launch, a stale active marker of a killed attempt is ar
 recorded CONTRACT allocation is applied to the ledger cap metadata in this supervisor process
 (charged to this run; every entry preserved).
 
+Spec v2.5 (job 0017): under CONTRACT resources.cpu_policy "MEASURE_ONLY_OWNER_OVERRIDE" (owner
+override) no stage, cumulative or per-run CPU limit stops a run; every run is still metered and
+recorded. Release gating, the operation wall, the disk safe-STOP, STOP/INVALID, the wall limit
+and the output cap are unchanged.
+
 The stage is recorded as the Windows-safe label prefix "<stage>__<label>" (a colon would create
 an NTFS alternate data stream in log file names; legacy "<stage>:" entries are still counted).
 The release check (release.verify) reads git files directly and spawns no process before the
@@ -46,6 +51,7 @@ import release  # noqa: E402
 
 CONTRACT = json.loads((HERE / "CONTRACT.json").read_text(encoding="utf-8"))
 MARGIN_S = 1.0
+MEASURE_ONLY = "MEASURE_ONLY_OWNER_OVERRIDE"
 DISK_MIN_FREE = {"C:\\": 2_000_000_000, "X:\\": 30_000_000_000}
 _LEGACY_LIMIT = meter.limit_reason
 
@@ -61,9 +67,16 @@ def bind(job_id: str, task_sha256: str, out: Path, finalization: bool = False) -
     meter.ACTIVE = out / "METER_ACTIVE.lock"
     meter.LOG_DIR = out / "logs"
     res = CONTRACT["resources"]
-    meter.CAP_S = float(res["cumulative_cpu_cap_s"])
-    meter.STOP_NEW_S = meter.CAP_S if finalization else float(res["stop_new_work_at_s"])
+    if measure_only():
+        meter.CAP_S = meter.STOP_NEW_S = float("inf")
+    else:
+        meter.CAP_S = float(res["cumulative_cpu_cap_s"])
+        meter.STOP_NEW_S = meter.CAP_S if finalization else float(res["stop_new_work_at_s"])
     meter.OUTPUT_CAP = int(res["output_bytes"])
+
+
+def measure_only() -> bool:
+    return CONTRACT["resources"].get("cpu_policy") == MEASURE_ONLY
 
 
 def stage_caps(rel: dict | None) -> dict:
@@ -131,33 +144,52 @@ def make_stage_limiter(
 
 
 def sync_ledger_caps(ledger_path: Path) -> bool:
-    """Apply the recorded CONTRACT allocation to the ledger cap metadata (entries untouched)."""
+    """Apply the recorded CONTRACT allocation and CPU policy to the ledger metadata (entries
+    untouched)."""
     res = CONTRACT["resources"]
     ledger = json.loads(Path(ledger_path).read_text(encoding="utf-8"))
+    history = res.get("allocation_history", [])
     caps = {k: float(v) for k, v in res["stage_caps_s"].items()}
     current = {k: float(v) for k, v in ledger.get("stage_caps_s", {}).items()}
-    if current == caps:
-        return False
-    history = res.get("allocation_history", [])
-    previous = [{k: float(v) for k, v in h["stage_caps_s"].items()} for h in history]
-    if current not in previous:
-        raise SystemExit(
-            "meter_bind: ledger stage caps match neither the current nor a recorded allocation"
-        )
-    record = history[previous.index(current)]
+    stamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     entries_before = json.dumps(ledger["entries"], sort_keys=True)
-    updated = dict(ledger, stage_caps_s=dict(res["stage_caps_s"]))
-    updated["allocation_history"] = list(ledger.get("allocation_history", [])) + [
-        {
-            "from": ledger["stage_caps_s"],
-            "to": dict(res["stage_caps_s"]),
-            "authority": record["authority"],
-            "note": record["note"],
-            "applied_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "applied_by": "meter_bind supervisor (charged to this run)",
-            "entries_at_apply": len(ledger["entries"]),
-        }
-    ]
+    updated, records = dict(ledger), list(ledger.get("allocation_history", []))
+    if current != caps:
+        previous = [{k: float(v) for k, v in h["stage_caps_s"].items()} for h in history]
+        if current not in previous:
+            raise SystemExit(
+                "meter_bind: ledger stage caps match neither the current nor a recorded allocation"
+            )
+        record = history[previous.index(current)]
+        updated["stage_caps_s"] = dict(res["stage_caps_s"])
+        records.append(
+            {
+                "from": ledger["stage_caps_s"],
+                "to": dict(res["stage_caps_s"]),
+                "authority": record["authority"],
+                "note": record.get("note", record.get("effect")),
+                "applied_utc": stamp,
+                "applied_by": "meter_bind supervisor (charged to this run)",
+                "entries_at_apply": len(ledger["entries"]),
+            }
+        )
+    policy = res.get("cpu_policy")
+    if policy and ledger.get("cpu_policy") != policy:
+        record = next(h for h in reversed(history) if h.get("policy") == policy)
+        updated["cpu_policy"] = policy
+        records.append(
+            {
+                "policy": policy,
+                "authority": record["authority"],
+                "effect": record["effect"],
+                "applied_utc": stamp,
+                "applied_by": "meter_bind supervisor (charged to this run)",
+                "entries_at_apply": len(ledger["entries"]),
+            }
+        )
+    if updated == ledger:
+        return False
+    updated["allocation_history"] = records
     if "owner_override" in res:
         updated["owner_override"] = res["owner_override"]
     assert json.dumps(updated["entries"], sort_keys=True) == entries_before
@@ -193,7 +225,12 @@ def rewrite_argv(argv: list[str]) -> list[str]:
         op_guard.archive_stale(meter.OUT)
     caps = stage_caps(rel)
     spent = stage_spent(meter.LEDGER, stage)
-    remaining = (caps[stage] - spent) if stage in caps else 0.0
+    if stage not in caps:
+        remaining = 0.0
+    elif measure_only():
+        remaining = float("inf")
+    else:
+        remaining = caps[stage] - spent
     i = args.index("--label")
     args[i + 1] = f"{stage}__{args[i + 1]}"
     sep = args.index("--") if "--" in args else len(args)
@@ -204,10 +241,14 @@ def rewrite_argv(argv: list[str]) -> list[str]:
         )
         meter.limit_reason = make_stage_limiter(float("inf"), 0.0)
         return args[:sep] + ["--", sys.executable, "-I", "-c", "raise SystemExit(4)"]
-    meter.limit_reason = make_stage_limiter(
-        caps[stage], spent, op_marker=meter.OUT / op_guard.MARKER
-    )
-    if "--max-cpu" in args[:sep]:
+    ceiling = float("inf") if measure_only() else caps[stage]
+    meter.limit_reason = make_stage_limiter(ceiling, spent, op_marker=meter.OUT / op_guard.MARKER)
+    if measure_only():
+        if "--max-cpu" in args[:sep]:
+            del args[args.index("--max-cpu") : args.index("--max-cpu") + 2]
+            sep -= 2
+        args[sep:sep] = ["--max-cpu", "inf"]
+    elif "--max-cpu" in args[:sep]:
         j = args.index("--max-cpu")
         args[j + 1] = str(min(float(args[j + 1]), remaining - MARGIN_S))
     else:

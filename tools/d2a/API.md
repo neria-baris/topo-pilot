@@ -182,6 +182,8 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 
 ### 2.5 `d2a_decide.py`: bootstrap, flags, rules, report, stage drivers
 
+**Placement (job 0030, rulings Q1).** To keep five modules of at most 400 lines, the bootstrap primitives (`boot_counts`, `boot_totals`, `r2_columns`, `r2_from_sums`, `quantiles`, `interval`, `beta_draws`, `pooled_r2`) are defined in `d2a_world.py`; `d2a_decide` re-exports `boot_counts`, `r2_from_sums`, `interval` and `quantiles`. JSON record writing (`jsonable`, `write_json`, exclusive create) is in `d2a_train.py`. The licensed sentence in `DECISION.json` comes from `licences()`, which reads the quoted §1.4 sentences from the hash-bound frozen protocol (INCONCLUSIVE: "Descriptive reporting only."). Behaviour is unchanged.
+
 | Function | Behaviour |
 |---|---|
 | `boot_counts(n, B, scope, chunk=250)` | Yields int32 count matrices `[b, n]` (multinomial cluster resamples). Drawn as `rng.integers(0, n, size=(b, n))` then bincount per draw, with `rng = SeedTree(DATA).generator("d2a", "boot", *scope)` |

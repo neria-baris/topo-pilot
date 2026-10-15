@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -90,3 +91,15 @@ def test_store_sources_record_every_listed_store_explicitly():
         assert required in names
     assert any(n.startswith("b:X4-B2/") for n in names)
     assert any(n.startswith("b:X4/x4-history-feas/") for n in names)
+
+
+def test_store_file_hashes_bind_every_file_by_content(tmp_path):
+    (tmp_path / "s" / "sub").mkdir(parents=True)
+    (tmp_path / "s" / "a.json").write_text("{}", encoding="utf-8")
+    (tmp_path / "s" / "sub" / "b.npz").write_bytes(b"xyz")
+    got = rs.store_file_hashes(("s",), root=tmp_path)["s"]
+    assert got["n_files"] == 2 and set(got["files"]) == {"a.json", "sub/b.npz"}
+    assert got["files"]["sub/b.npz"] == hashlib.sha256(b"xyz").hexdigest()
+    (tmp_path / "s" / "sub" / "b.npz").write_bytes(b"xyw")
+    again = rs.store_file_hashes(("s",), root=tmp_path)["s"]
+    assert again["listing_sha256"] != got["listing_sha256"]

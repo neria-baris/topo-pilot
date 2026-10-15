@@ -234,6 +234,41 @@ def coverage(seqs_a: dict, hist_ids: dict, root=ROOT) -> dict:
     return rep
 
 
+SCANNED_STORES = ("x4-history-feas-store", "x4b-research-store", "x4b2-research-store",
+                  "x4-oracle-profile-store-0014", "x4-circle-history-feas-store-0015",
+                  "x4f-gates-research-store", "d1-seam-oracle-store", "chart-diag-store-0023",
+                  "x2a-stage0-oracle-store")
+NOT_SCANNED = {
+    "x5g1-research-store, x5g1t-research-store, x5g1t-fixture-run, x5g1-techbench-store":
+        "X5 G1 study stores (jobs 0009-0013, before C1-FROZEN-v1); not an X4/X4-B2/0014/K4/X4-F "
+        "store and not a post-C1-FROZEN-v1 job, so outside 2.4(b); 14 ObservationSets "
+        "(843,776 rows, layout 33) over the X5 arms' own TransitionSpecs",
+    "circular-audit-store": "circ-audit-v1 MetricRecords (2026-10-13), empty payload; no tokens",
+    "int-0021-store, int-0022-store, docs-0024-store":
+        "integration / documentation jobs: ledgers, meter logs and suite XML only; no histories",
+    "coord-scratch": "coordinator scratch (publish scripts, suite logs, pytest temp dirs with "
+        "synthetic fixtures); not a job store",
+    "c1prime-store": "this job's own output store (C1' freeze; no histories)",
+}
+
+
+def store_file_hashes(dirs=SCANNED_STORES, root=ROOT) -> dict:
+    """Content hash of every file of each scanned store (binding, not a filename listing)."""
+    out = {}
+    for name in dirs:
+        base = Path(root) / name
+        files = {f.relative_to(base).as_posix(): sha(f)
+                 for f in sorted(base.rglob("*")) if f.is_file()}
+        listing = hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
+        out[name] = {"n_files": len(files), "listing_sha256": listing, "files": files}
+    return out
+
+
+def history_index_hashes(root=ART) -> dict:
+    return {d.name: {f.name: sha(f) for f in sorted(d.iterdir()) if f.is_file()}
+            for d in sorted(p for p in (Path(root) / "HistoryIndex").iterdir() if p.is_dir())}
+
+
 def build(out_dir) -> dict:
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -261,6 +296,8 @@ def build(out_dir) -> dict:
     manifest = {"entries": reg["entries"], "missing": reg["missing"], "coverage": cov,
                 "contributions_by_source": by_source, "n_digests": reg["n_digests"],
                 "union_sha256": reg["union_sha256"], "n_sequence_ids": len(seq_all),
+                "store_files": store_file_hashes(), "history_index": history_index_hashes(),
+                "not_scanned": NOT_SCANNED,
                 "registry_v1_sha256": sha(out / "registry_v1.json")}
     with (out / "REGISTRY_MANIFEST_v1.json").open("x", encoding="utf-8") as f:
         f.write(json.dumps(manifest, indent=1, default=str))

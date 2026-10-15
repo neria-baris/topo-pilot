@@ -140,6 +140,7 @@ Decision ids refer to [`state/DECISIONS.md`](state/DECISIONS.md). Paths starting
   - Every gate passed: exact enumeration of all 37,190 reachable histories, float and 80-digit Decimal cross-checks, and controls.
   - Licence (agent-handoff/jobs/0020/review.md): "It is an existence result for an **orientability** distinction (cylinder vs Möbius, equal Betti numbers) that is unnecessary at horizon 1 on the decision phase and necessary at horizon 2, at reachable histories. The decisive witness is the posterior-isolation pair. It says nothing about square vs cylinder, β₁, B2, or trained models."
   - Record: [`tools/d1_seam/OUTPUTS_0020.md`](tools/d1_seam/OUTPUTS_0020.md).
+- **E4 circular coordinates (methodological caveat).** E4's circular coordinates (S7; `src/topo_pilot/topology/circular.py`) are computed at the midpoint scale of the selected H1 bar. As documented in that code, if the 1-skeleton at that scale is disconnected, each off-giant component receives an independent constant offset, and the construction certifies neither integer closure nor primitive winding. The descriptive agreement values reported in E4 (0.88–0.89) stand as reported. In the geometry-only diagnostic of job 0023 (panels 1–2, the three O models), at most one point per panel fell outside the giant component; record `agent-handoff/jobs/0023/report.md`. This caveat changes no E4 verdict.
 
 ## Reproduce (Windows, CPU)
 

@@ -76,6 +76,7 @@
   - כל השערים עברו: ספירה מדויקת של כל 37,190 ההיסטוריות הישיגות, בדיקות צולבות ב־float וב־Decimal בדיוק של 80 ספרות, והביקורות.
   - הרישיון, בנוסח המחייב באנגלית (agent-handoff/jobs/0020/review.md): "It is an existence result for an **orientability** distinction (cylinder vs Möbius, equal Betti numbers) that is unnecessary at horizon 1 on the decision phase and necessary at horizon 2, at reachable histories. The decisive witness is the posterior-isolation pair. It says nothing about square vs cylinder, β₁, B2, or trained models."
   - רשומה: `tools/d1_seam/OUTPUTS_0020.md`.
+- **קואורדינטות מעגליות ב־E4 (הסתייגות מתודולוגית).** הקואורדינטות המעגליות של E4 (S7; `src/topo_pilot/topology/circular.py`) מחושבות בסקאלת האמצע של פס ה־H1 שנבחר. כמתועד בקוד זה, אם שלד־1 בסקאלה זו אינו קשיר, כל רכיב שמחוץ לרכיב הענק מקבל היסט קבוע בלתי תלוי, והבנייה אינה מאשרת לא סגירות בשלמים (integer closure) ולא ליפוף פרימיטיבי (primitive winding). ערכי ההתאמה התיאוריים שדווחו ב־E4 (0.88–0.89) עומדים כפי שדווחו. באבחון הגאומטרי בלבד של משימה 0023 (לוחות 1–2, שלושת מודלי ה־O), לכל היותר נקודה אחת בכל לוח נפלה מחוץ לרכיב הענק; רשומה: `agent-handoff/jobs/0023/report.md`. הסתייגות זו אינה משנה אף הכרעה של E4.
 
 ## איך מתחילים
 

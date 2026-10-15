@@ -13,6 +13,10 @@ from pathlib import Path
 
 import numpy as np
 
+from topo_pilot.analysis import percentile_interval
+from topo_pilot.contracts import ErrorCode, ObservationSet, SeedTree, SequenceLayout, StageFailure
+from topo_pilot.dataset import HMMSampler
+
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 ROOT = REPO.parent
@@ -21,10 +25,6 @@ for _p in (HERE, REPO / "tools" / "d1_seam", REPO / "tools" / "x4_oracle_profile
         sys.path.insert(0, str(_p))
 
 import d1_seam as d1  # noqa: E402  (unchanged D-1 module)
-
-from topo_pilot.contracts import (  # noqa: E402
-    ErrorCode, ObservationSet, SeedTree, SequenceLayout, StageFailure)
-from topo_pilot.dataset import HMMSampler  # noqa: E402
 
 STORE = ROOT / "d2a-store"
 DATA, MODEL = 2026101531, 2026101532
@@ -307,3 +307,80 @@ def s0_bindings(job_id: str, task_sha256: str, session: str, store_root=STORE,
                session=session, checks=checks,
                status="PASS" if all(checks.values()) else "FAIL")
     return rec
+
+
+# Episode-cluster bootstrap and pooled-R² primitives (API §2.5; used by d2a_decide, d2a_eval)
+
+def boot_counts(n: int, B: int, scope, chunk: int = 250):
+    """Episode-cluster resamples as count matrices ``[b, n]`` (registered ``boot`` stream)."""
+    rng = SeedTree(DATA).generator("d2a", "boot", *scope)
+    for start in range(0, B, chunk):
+        idx = rng.integers(0, n, size=(min(chunk, B - start), n))
+        yield np.stack([np.bincount(r, minlength=n) for r in idx]).astype(np.int32)
+
+
+def boot_totals(columns, B: int, scope) -> np.ndarray:
+    """``[B, k]`` resampled totals of per-episode columns ``[n, k]``."""
+    cols = np.asarray(columns, float)
+    return np.concatenate([c @ cols for c in boot_counts(cols.shape[0], B, scope)])
+
+
+def r2_columns(n: int, ep, Y, pred, mean_cal) -> np.ndarray:
+    """Per-episode ``(sse, sst, count)`` for the pooled R² with the calibration mean."""
+    Y, P = np.asarray(Y, float).reshape(len(ep), -1), np.asarray(pred, float).reshape(len(ep), -1)
+    out = np.zeros((n, 3))
+    out[ep, 0] = ((Y - P) ** 2).sum(1)
+    out[ep, 1] = ((Y - np.asarray(mean_cal, float).reshape(1, -1)) ** 2).sum(1)
+    out[ep, 2] = Y.shape[1]
+    return out
+
+
+def r2_from_sums(sse, sst, count) -> np.ndarray:
+    """``1 - sse/sst``; NaN where ``sst ≤ 1e-12·count``, and NaN inputs propagate (6c)."""
+    sse, sst = np.asarray(sse, float), np.asarray(sst, float)
+    ok = sst > 1e-12 * np.asarray(count, float)
+    return np.where(ok, 1.0 - sse / np.where(ok, sst, 1.0), np.nan)
+
+
+def ratio_from_sums(num, den) -> np.ndarray:
+    num, den = np.asarray(num, float), np.asarray(den, float)
+    ok = np.isfinite(den) & (den > 0)
+    return np.where(ok, num / np.where(ok, den, 1.0), np.nan)
+
+
+def quantiles(draws, qs) -> list | None:
+    """None when any draw is undefined: the interval is invalidated, never redrawn (§6)."""
+    d = np.asarray(draws, float)
+    if d.size == 0 or not np.all(np.isfinite(d)):
+        return None
+    return [float(v) for v in np.quantile(d, qs, method="linear")]
+
+
+def interval(draws) -> tuple | None:
+    d = np.asarray(draws, float)
+    return None if d.size == 0 or not np.all(np.isfinite(d)) else percentile_interval(d)
+
+
+def beta_draws(ep, r, d, n, B, scope, extra=None) -> dict:
+    """Point and resampled β = Σrd/Σd² (and Σ r8·d for the window baseline), per episode."""
+    r, d = np.asarray(r, float).reshape(len(ep), -1), np.asarray(d, float).reshape(len(ep), -1)
+    cols = np.zeros((n, 3))
+    np.add.at(cols[:, 0], ep, (r * d).sum(1))
+    np.add.at(cols[:, 1], ep, (d * d).sum(1))
+    if extra is not None:
+        np.add.at(cols[:, 2], ep, (np.asarray(extra, float).reshape(len(ep), -1) * d).sum(1))
+    tot, pt = boot_totals(cols, B, scope), cols.sum(0)
+    return {"point": ratio_from_sums(pt[0], pt[1]).item(), "point8": ratio_from_sums(pt[2], pt[1])
+            .item(), "draws": ratio_from_sums(tot[:, 0], tot[:, 1]),
+            "draws8": ratio_from_sums(tot[:, 2], tot[:, 1])}
+
+
+def pooled_r2(cols: list, B: int, scope) -> tuple:
+    """``(point(i), draws(i))``: pooled R² of the i-th stacked ``(sse, sst, count)`` triple."""
+    allc = np.hstack(cols)
+    tot, pt = boot_totals(allc, B, scope), allc.sum(0)
+
+    def r2(x, i):
+        return r2_from_sums(x[..., 3 * i], x[..., 3 * i + 1], x[..., 3 * i + 2])
+
+    return (lambda i: r2(pt, i).item()), (lambda i: r2(tot, i))

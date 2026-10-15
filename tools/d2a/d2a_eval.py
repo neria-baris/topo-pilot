@@ -11,17 +11,16 @@ from pathlib import Path
 import numpy as np
 import torch
 
+from topo_pilot.analysis import rbf_bandwidth, rbf_features, rbf_map, standardizer
+from topo_pilot.contracts import Checkpoint, ErrorCode, SeedTree, SequenceLayout, StageFailure
+from topo_pilot.experiment.x4f_probe import nested_ridge
+from topo_pilot.learner import load_model
+from topo_pilot.learner.multihorizon import load_multi_horizon
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import d2a_targets as TG  # noqa: E402
 import d2a_world as W  # noqa: E402
 from d2a_world import d1  # noqa: E402
-
-from topo_pilot.analysis import rbf_bandwidth, rbf_features, rbf_map, standardizer  # noqa: E402
-from topo_pilot.contracts import (  # noqa: E402
-    Checkpoint, ErrorCode, SeedTree, SequenceLayout, StageFailure)
-from topo_pilot.experiment.x4f_probe import nested_ridge  # noqa: E402
-from topo_pilot.learner import load_model  # noqa: E402
-from topo_pilot.learner.multihorizon import load_multi_horizon  # noqa: E402
 
 HOOKS = ("embed", "resid_post_0", "resid_post_1", "resid_post_2", "resid_post_3",
          "ln_final_out")
@@ -57,7 +56,8 @@ def position_activations(model, tokens, rows, positions, hooks=HOOKS) -> dict:
         if i == 0:
             gap = float((res.logits - model(x).logits).abs().max())
             if gap > 1e-5:
-                raise StageFailure(ErrorCode.NUMERICAL_FAILURE, "d2a.eval", "hooked_plain", str(gap))
+                raise StageFailure(ErrorCode.NUMERICAL_FAILURE, "d2a.eval", "hooked_plain",
+                                   str(gap))
         at = torch.from_numpy(pos[i:i + BATCH].astype(np.int64))
         idx = torch.arange(x.shape[0])
         for h in hooks:
@@ -277,8 +277,6 @@ def _cells(kind: str) -> list:
 
 def collect_model(mid, run, step, H, data, store_root=W.STORE) -> dict:
     """One model's stage-3 pass: linear fits (+ shuffle), band-edge and two-step laws."""
-    import d2a_decide as DC
-
     model, cid = load_run(run, step, store_root)
     cm, out = mid.startswith("d2a-") and not mid.endswith("-N"), {"checkpoint_id": cid}
     recs, preds = model_pass(mid, model, H, data, shuffle=not mid.startswith("init"))
@@ -292,16 +290,14 @@ def collect_model(mid, run, step, H, data, store_root=W.STORE) -> dict:
         if p is not None:
             s, tg = key.split("|")[1:3]
             y = data["test"][s]["y"][tg]
-            cols.append(DC.r2_columns(n, data["test"][s]["rows"], y, p,
-                                      data["cal"][s]["y"][tg].mean(0)))
+            cols.append(W.r2_columns(n, data["test"][s]["rows"], y, p,
+                                     data["cal"][s]["y"][tg].mean(0)))
             keys.append(key)
     if cols:
-        tot = DC.boot_totals(np.hstack(cols), 2000, ("test", "B2000"))
+        draws = W.pooled_r2(cols, 2000, ("test", "B2000"))[1]
         for i, key in enumerate(keys):
-            ci = DC.interval(DC.r2_from_sums(tot[:, 3 * i], tot[:, 3 * i + 1],
-                                             tot[:, 3 * i + 2]))
-            recs[key]["ci"] = ci
-            recs[key]["half_width"] = None if ci is None else (ci[1] - ci[0]) / 2
+            ci = W.interval(draws(i))
+            recs[key].update(ci=ci, half_width=None if ci is None else (ci[1] - ci[0]) / 2)
     out["fits"] = recs
     if cm:
         tok = data["tok_test"]
@@ -323,8 +319,6 @@ def collect_model(mid, run, step, H, data, store_root=W.STORE) -> dict:
 
 def pipeline_null(model, store_root=W.STORE) -> dict:
     """Linear probe from resid_post_3 to the block tag Z_N: fit valN, score testN (§10.1)."""
-    import d2a_decide as DC
-
     tv, tt = W.load_tokens("valN", store_root), W.load_tokens("testN", store_root)
     zv, zt = W.load_private("valN", store_root)[1], W.load_private("testN", store_root)[1]
     out = {}
@@ -334,9 +328,8 @@ def pipeline_null(model, store_root=W.STORE) -> dict:
         Xt = position_activations(model, tt, rt, np.full(rt.size, t), (PRIMARY_HOOK,))
         yv, yt = zv[rv].astype(float), zt[rt].astype(float)
         f = fit(Xv[PRIMARY_HOOK], yv, 1 + rv % 6, Xt[PRIMARY_HOOK], yt, "linear")
-        cols = DC.r2_columns(tt.shape[0], rt, yt, f["pred"], yv.mean(0))
-        tot = DC.boot_totals(cols, 2000, ("testN", "B2000"))
-        ci = DC.interval(DC.r2_from_sums(tot[:, 0], tot[:, 1], tot[:, 2]))
+        cols = [W.r2_columns(tt.shape[0], rt, yt, f["pred"], yv.mean(0))]
+        ci = W.interval(W.pooled_r2(cols, 2000, ("testN", "B2000"))[1](0))
         out[t] = {"r2": f["r2"], "lam": f["lam"], "ci": ci, "upper": None if ci is None else ci[1]}
     return out
 

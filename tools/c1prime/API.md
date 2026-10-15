@@ -391,7 +391,7 @@ All bound functions take per-symbol data as Python lists of length V (36). Each 
   - `meter.CAP_S = meter.STOP_NEW_S = inf`;
   - `meter.OUTPUT_CAP = 16 GiB`;
   - `winjob.MEMORY_CAP = 12 GiB`;
-  - `meter.WORKER_SESSION` = the contract's worker session.
+  - `meter.WORKER_SESSION` = the authorized executing worker (protocol §18): the verified release's `worker_session`, which must be named in the job's task.md (`c1_release.authorized_worker`). Without the field, it is the contract's worker session (job 0035, ruling R10: worker rotations no longer require a re-freeze).
 
   It forces `--max-cpu inf --max-wall inf`. It installs `limit_reason` with the disk safe-STOP and the op-marker deadline, using `disk_reason` and `make_limiter`, which are extracted from K4 meter_bind with provenance. It never imports K4 `meter_bind`.
 

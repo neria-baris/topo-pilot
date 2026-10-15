@@ -105,12 +105,14 @@ def main() -> int:
     out = Path(RES["output_root"])
     argv, release_path = _pop_release(sys.argv[1:])
     job, task = CONTRACT["job_id"], CONTRACT["task_sha256"]
+    worker = RES["worker_session"]
     if release_path is not None:
         import c1_release  # standard library only; reads git files, spawns no process
 
         rel = c1_release.verify(Path(release_path))
         job, task = rel["job_id"], rel["task_sha256"]
-    bind(job, task, out, RES["worker_session"])
+        worker = c1_release.authorized_worker(rel, Path(release_path))
+    bind(job, task, out, worker)
     if not meter.ACTIVE.exists():
         op_guard.archive_stale(meter.OUT)
     reason = disk_reason()

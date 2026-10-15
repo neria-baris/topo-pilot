@@ -4,6 +4,8 @@
 
 **Order of work** (task 0028): this API, then the golden fixture (§4.6 commit A), then the independent tests (`tests/d2a/`, `tests/learner/test_multihorizon.py`, from the protocol and this file only), then the code, then preflight.
 
+**Corrections (job 0029)** per `planning/responses/d2a-0029-rulings.md` (Q3–Q6, 6a–6e), owner addendum 5 and `D2A-FROZEN-v1.coordinator-addendum-1.md` (S6 ceilings ×2). Precedence: the protocol and its addenda, then the rulings, then this file.
+
 **Conventions.**
 - Tokens: σ0 = 0, σ2 = 1, σ3 = 2, A = 3, B = 4. V = 5, BOS = 5.
 - A history `h = w_1..w_t` is 1-based. Token arrays are 0-based: `tokens[:, t-1] = w_t`.
@@ -101,6 +103,8 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 - `stage0`, `cal`, `val`, `test`: `("d2a", pool, "CM")`;
 - `stage0N`, `valN`, `testN`: `("d2a", base, "CC")` with base ∈ {stage0, val, test}.
 
+**Masters (ruling Q5).** The protocol registers exactly two masters: DATA `2026101531` (every pool above, the bin, template, shuffle, rbf and bootstrap streams) and MODEL `2026101532` (Trainer scopes and `("init_joint", "d2a", s)`). 999001 and 999002 are **not** frozen reservations. They may appear only as labelled development fixtures in synthetic dry runs and tests, and never in registered pools, the store or evidence.
+
 **Sequence ids:** `SEQ_CODE[pool]` is the 1-based position of the pool in `POOLS` order. The pools in that order are train-s1..s4, dev-s1..s4, trainN-s1, trainN-s2, devN-s1, devN-s2, stage0, stage0N, cal, val, test, valN, testN, giving codes 1..21. `sequence_id = SEQ_CODE[pool]·2³² + arange(n)` (int64).
 
 **Functions**
@@ -150,14 +154,15 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 | `checkpoint_callback(...)` | Copy of `x5g1t_train.checkpoint_callback` with `run_id` given. `config = {"run_key", "step", "model_config", "train_config", "horizon", "process", "threads"}`, `parents = [train id, dev id]` |
 | `boundary(classify, sleep, poll_s=30)` | `classify()` → (state, why). CONTINUE returns; HOLD sleeps and repeats; STOP or INVALID → `D2AStop(why)` |
 | `disk_reason(usage=shutil.disk_usage)` | `"disk safe-STOP: …"` if C: < 2,000,000,000 or X: < 30,000,000,000 bytes free, or unreadable; else None |
-| `Limits` | dataclass: `model_cpu_s = 3.5·3600`, `process_mem = 3·2³⁰`, `stage_cpu_s = {"preflight": 1, "stage0": 1, "stage1": 7, "stage2": 42, "stage3": 6}·3600`, `total_cpu_s = 57·3600`, `job_mem = 12·2³⁰`, `poll_s = 2.0` |
+| `Limits` | dataclass, S6 as amended by owner addendum 5: `model_cpu_s = 7·3600`, `process_mem = 3·2³⁰`, `stage_cpu_s = {"preflight": 2, "stage0": 2, "stage1": 14, "stage2": 84, "stage3": 12}·3600`, `total_cpu_s = 114·3600`, `job_mem = 12·2³⁰`, `poll_s = 2.0`. Cumulative accounting covers every stage; budgets never reset between stage jobs |
 | `stage_spent(ledger, stage)` | Sum of `charged_cpu_s` over ledger entries whose label starts with `stage + "__"`. `total_spent(ledger)` = `ledger["cumulative_cpu_s"]` |
 | `Supervisor(limits, cpu_of, mem_of, kill, clock=time.monotonic)` | Polling supervisor. `check(children, spent_stage, spent_total, stage)` takes `children` = {run_id: handle}. A child with `cpu_of(h) > model_cpu_s` → `kill(h)`, status `INCOMPLETE:MODEL_CPU`. `mem_of(h) > process_mem` → `INCOMPLETE:PROCESS_MEMORY`. `spent_stage + Σ cpu > stage budget` → kill all, `INCOMPLETE:STAGE_CPU`. Over total → `INCOMPLETE:TOTAL_CPU`. Returns `{run_id: reason}`. Every reason is recorded with `"polling_interval_s"` |
 | `admit(stage, spent_stage, spent_total, limits, need_s)` | Before a launch: False if the remaining stage or total budget is below `need_s` |
 | `verify_identity(mailbox, job_id, task_sha256, session, lock_path)` | `request.json` is RUN_NEXT for `job_id` with `task_sha256`. `jobs/{job_id}/task.json` has the same digest. `sha256(task.md)` matches. The RUN.lock `session` equals `session`. Any mismatch → `StageFailure(INVALID_CONFIG)` with the failing check (ruling D6) |
-| `bind_meter(meter, controls, winjob, out, job_id, task_sha256, session)` | Rebinds module names only (§11.3): `meter.OUT`, `LEDGER`, `LOCK`, `EMERGENCY`, `ACTIVE`, `LOG_DIR`; `CAP_S = STOP_NEW_S = inf`; `OUTPUT_CAP = 4·2³⁰`; `winjob.MEMORY_CAP = 12·2³⁰`; `controls.JOB_ID`, `TASK_SHA256`; `meter.WORKER_SESSION` |
+| `bind_meter(meter, controls, winjob, out, job_id, task_sha256, session)` | Rebinds module names only (§11.3): `meter.OUT`, `LEDGER`, `LOCK`, `EMERGENCY`, `ACTIVE`, `LOG_DIR`; `CAP_S = STOP_NEW_S = inf` (S6 is enforced by `Supervisor`/`admit`, not by the ledger caps); `OUTPUT_CAP = 4·2³⁰`; `winjob.MEMORY_CAP = 12·2³⁰`; `controls.JOB_ID`, `TASK_SHA256`; `meter.WORKER_SESSION` |
 | `child_main(run_id)` | CLI `child RUN`. Asserts `torch.get_num_threads() == 2` after `set_num_threads(2)` / `set_num_interop_threads(1)`; trains; at every checkpoint runs `boundary` before and after the save; writes `runs/{run_id}.json` |
 | `wave_main(wave)` | CLI `wave W`. Launches children (≤ 3) with thread variables set to 2, supervises them, applies the S5 rerun rule (one deterministic rerun after an infrastructure interruption; NONFINITE_LOSS → INVALID, no retry), and writes `waves/{W}.json` |
+| `WAVE_MAX_CPU_S`, `MAX_WALL_S` | Meter arguments per wave (ruling Q3): `--max-cpu` 50,400 s for W1 and 75,600 s for W2–W5; `--max-wall` 6 h. `--max-cpu inf` is not authorized for waves. A non-wave metered run (preflight, stage 0, stage 1, stage 3) passes `--max-cpu` equal to that stage's remaining ceiling |
 
 ### 2.4 `d2a_eval.py`: activations, model predictions, probes, behaviour
 
@@ -180,14 +185,14 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 | Function | Behaviour |
 |---|---|
 | `boot_counts(n, B, scope, chunk=250)` | Yields int32 count matrices `[b, n]` (multinomial cluster resamples). Drawn as `rng.integers(0, n, size=(b, n))` then bincount per draw, with `rng = SeedTree(DATA).generator("d2a", "boot", *scope)` |
-| `r2_from_sums(sse, sst)` | Per-draw `1 - sse/sst`; NaN where `sst ≤ 1e-12·count` |
-| `learned(beta1, beta1_lo, kappa1, diff_lo)` | `"PASS"` if all are defined and `beta1 ≥ 0.30`, `beta1_lo ≥ 0.15`, `kappa1 ≥ 0.20`, `diff_lo > 0`. `"FAIL"` if all are defined and any condition fails. Otherwise `"UNRESOLVED"`. `None` (missing or INVALID model) → `"FAIL"` |
+| `r2_from_sums(sse, sst, count)` | Per-draw `1 - sse/sst`; NaN where `sst ≤ 1e-12·count` (the reused pooled-R² zero-variance criterion, SST about the calibration mean). `count` is the resampled number of scalar target entries, pooled target columns included (scalar or per-draw array). Undefined (NaN) values propagate (ruling 6c) |
+| `learned(beta1, beta1_lo, kappa1, diff_lo, *, model_status="PRESENT")` | `model_status` ∈ {`"PRESENT"`, `"MISSING"`, `"INVALID"`}. MISSING or INVALID → `"FAIL"`. PRESENT with any required value undefined (None or non-finite), including all four → `"UNRESOLVED"`; an undefined value takes precedence over a failing comparison. Otherwise `"PASS"` if `beta1 ≥ 0.30`, `beta1_lo ≥ 0.15`, `kappa1 ≥ 0.20` and `diff_lo > 0`, else `"FAIL"` (ruling Q6) |
 | `stage1_decision(v1, v2)` | `"GO"` if either is PASS. `"NOT_LEARNED"` if both are FAIL. Otherwise `"LEARNING_UNRESOLVED"` |
 | `arm_value(values)` | 4 values. `"TRUE"` if ≥ 3 PASS; `"FALSE"` if PASS + UNRESOLVED < 3; else `"UNRESOLVED"` |
 | `carries(d, d_lo)` | `d ≥ 0.15 and d_lo > 0.05`. `low_increment(d)` = `d < 0.05`. `beta2_pass(b, lo)` = `b ≥ 0.30 and lo ≥ 0.15`. `None` → False |
 | `precision_ok(hw_r_pi_16, hw_r_pi_28, hw_c8_16, hw_c8_28)` | Each half-width defined, with `≤ 0.03` for R_π and `≤ 0.05` for C₈ |
 | `c_hor(mean, p2_5, per_seed)` | `per_seed` = 4 floats or None. Any None or undefined → `"UNRESOLVED"`. `"SUPPORTED"` iff `mean ≥ 0.10`, `p2_5 > 0` and ≥ 3 positive values. Else `"NOT_SUPPORTED"` |
-| `c_len(mean, p1_25, p98_75, per_seed, precision_all)` | `precision_all` False or any None → `"LENGTH_UNRESOLVED"` (ruling D1). Then `LENGTH_GAIN`, `LENGTH_LOSS`, else `LENGTH_NOT_DETECTED` (§10.4) |
+| `c_len(mean, p1_25, p98_75, per_seed, precision_all)` | `precision_all` False, or any required input undefined (None or non-finite: the mean, either interval endpoint or any per-seed value) → `"LENGTH_UNRESOLVED"`, checked before GAIN/LOSS (ruling D1, ruling 6b). Then `LENGTH_GAIN`, `LENGTH_LOSS`, else `LENGTH_NOT_DETECTED` (§10.4) |
 | `pipeline_null_ok(upper)` | `upper` = {(N-model, t): 95% upper bound of R²}, 4 keys. True iff all four are defined and ≤ 0.02 (ruling D3) |
 | `decide(flags)` | §10.5 rules 1–10 in order. `flags` schema below. Returns `{"outcome", "rule", "qualifiers": [...]}` |
 | `stage1_main()`, `stage3_main()` | CLI `stage1`, `stage3` |
@@ -215,25 +220,27 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 
 **Qualifiers** (outcomes 4–10 only):
 - `c_len`;
-- `PRECISION_LIMITED` if precision_ok fails for any H1 or H2 model, since every rule from 5 on involves H1 or H2. It turns rule 9 into rule 10;
+- `PRECISION_LIMITED` if precision_ok fails for any model entering the rule that fired (ruling 6a): H1 and H2 models for rules 4–7, 9 and 10; H2 models only for rule 8. It turns rule 9 into rule 10;
 - `WORLD_CONDITIONAL_CEILING` if `world_ceiling_28 ≥ 0.30`;
 - `CAVEAT_REREAD` if low_inc H1 holds in ≥ 3 seeds and beta2_ar_H1 in ≥ 3 seeds;
 - `BEHAVIOUR(H,t)` for each true cell.
 
-When rule 1 or 2 fires, the result has no qualifiers.
+When rule 1, 2 or 3 fires, the result has no qualifiers.
 
 ---
 
 ## 3. S0 bindings (gate 1)
 
-`s0_bindings(protocol, freeze_sha_file, mailbox, job_id, task_sha256, session, R="2babe9d", H=HEAD)` writes `S0.json` with:
+`s0_bindings(protocol, freeze_sha_file, mailbox, job_id, task_sha256, session, H, R="2babe9d")` writes `S0.json` with:
 - the protocol sha256, which must equal both `D2A-FROZEN-v1.sha256` and CBE3117F…C90B;
 - `request.json`, `task.json` and the `task.md` digest (via `verify_identity`);
-- H, the execution commit: full sha, and whether the worktree is clean;
+- H, the execution commit: full sha, and whether the worktree is clean. H is pinned (ruling Q4): supplied explicitly at the first stage, then read from the previously recorded S0, never a moving `HEAD`. The executing checkout's HEAD must equal H;
 - the `git diff --no-renames --name-status R H` over the §11.3 protected paths. Allowed entries are only `M src/topo_pilot/learner/trainer.py` and `A` entries for `src/topo_pilot/learner/multihorizon.py`, `tools/d2a/*`, `tests/d2a/*`, `tests/learner/test_multihorizon.py`, `tests/learner/test_trainer_golden.py` and `tests/learner/golden_default_trainer.json`;
 - `master_collisions` over `topo-pilot/artifacts`, `d1-seam-oracle-store`, `x2a-stage0-oracle-store` and `c1prime-store`; it must be empty.
 
 Any failure → S0, INVALID, nothing runs. S0 is re-run, and recorded, at the start of every stage command.
+
+**Stage jobs (ruling Q4).** Each stage job binds its own job id, task digest and worker session at dispatch, and keeps them fixed for its metered operation. The grid, pools, wave order, pinned H and cumulative ledger carry over; budgets never reset. Each stage's S0 record is kept, and each stage reruns the R → H protected-path check. The collision scan covers the external historical stores above, never `d2a-store` itself.
 
 ---
 
@@ -246,10 +253,10 @@ Primary and validity computations run first, then the decision. Then secondary a
    - for N models, also at valN/testN decision rows at t = 16 and 28;
    - compute next-symbol probabilities at band-edge rows (val and test), and direct and AR two-step laws at test decision rows (t = 16, 28).
 
-   Linear fits for every (stratum, target, hook) are done here, together with the model's shuffle control. Row-level predictions are persisted for the primary cells only: `resid_post_3`, linear, t ∈ {16, 28}, targets π and r₈, for model, shuffle, init, window8 and null.
+   Linear fits for every (stratum, target, hook) are done here, together with the model's shuffle control. Row-level predictions are persisted for the primary cells (`resid_post_3`, linear, t ∈ {16, 28}, targets π and r₈, for model, shuffle, init, window8 and null) and for the predictions the registered behavioural analyses need (§7.1, §11.3; ruling 6d).
 2. **Window8 and oracle ceilings:** linear fits; the full-belief positive control on val and on test.
 3. **Bootstrap (test, B = 2,000, scope `("test", "B2000")`)** for every primary flag and precision. Learned(m) on test uses band-edge rows (B = 2,000). Confirmatory C-HOR and C-LEN use B = 20,000, scope `("confirmatory", "B20000")`. The pipeline null uses 4 fits with scope `("testN", "B2000")`.
-4. **`decide(flags)`**, which writes `stage3/DECISION.json`.
+4. **`decide(flags)`**, which writes a provisional `stage3/DECISION.json` (`"provisional": true`). It is finalised after item 6 supplies the behavioural qualifier inputs (ruling 6d). An S6 interruption before finalisation keeps the overall result INCOMPLETE with explicit partial status; it is never reported as a completed registered analysis.
 5. **RBF secondary family** at the primary hook, for π, t ∈ {16, 28}: models, shuffle, init, window8 and the J₂→π ceiling.
 6. **Behaviour** (§9) for all 12 C/M models.
 7. **Descriptive work:** RBF for the remaining (stratum, target, hook) cells, model-major; emergence curves (checkpoints 1000–7500, decision rows of a 2¹² test subset, linear primary cell); history-matched pairs; split-half refits.

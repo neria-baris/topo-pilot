@@ -4,7 +4,7 @@ These files were written by independent test author B, a separate clean-context 
 
 | File | Lines | TEST_PLAN items |
 |---|---|---|
-| `test_b_identities.py` | 284 | B-1; B-4 item 5 |
+| `test_b_identities.py` | 287 | B-1; B-4 item 5 |
 | `test_b_inference.py` | 246 | B-2 (decision rule, tree mean, bootstrap streams, H5 wrapper, ranks, endpoint bounds); B-4 items 7 and 8 |
 | `test_b_precision.py` | 206 | B-2 (ladder, k rule, fresh fraction, H5 and V3 entry points) |
 | `test_b_fwl.py` | 211 | B-3 (FWL, the sequential-residualisation trap, F1, whitening, residual, forced state) |
@@ -70,6 +70,16 @@ The only tools used were file read, glob and grep on permitted paths, and file w
   - Nothing is taken from a c1prime function under test, apart from the composition checks noted in the files: for example, the `b_Y` and `b_Z` counts are built on `b_A` and `b_G`, as the §15.3.5 table counts them.
 - **Exact identities.** Where the protocol states an identity in exact rationals, the fixtures are dyadic, so every float64 operation of the prescribed kernel is exact. The identity is then asserted bitwise.
 - **Runtime estimate** (not measured): about 1–2 minutes for the author-B set on one thread. The largest costs are `test_b_decoder.py` (two 2048-feature ridge paths on 160 rows) and the ladder tests (5000-draw `centered_draws` at N = 16384).
+
+## Correction after the builder's dev run
+
+The builder's dev run reported one author-B failure, in `test_b_identities.py::test_log_softmax_form_differs_from_logit_form_by_the_normaliser_term`. The cause was the test's own precondition `abs(corr) > 1e-3`, which failed on row 1 of the seed-9 fixture (|corr| = 2.47·10⁻⁴). The fixture's random masses and logits had left δ_m·Δlse small on that row. The identity assertion itself held on every row: the residuals were at most 5.6·10⁻¹⁷.
+
+**Fix.** Only the fixture changed:
+- the masses are fixed at 1.06 and 0.95 through `_masses_fixture(9, (1.06, 0.95), rows=3)`, so δ_m ≈ 0.11;
+- the logits are now `zm = zp + 0.7 + 0.1·N(0, 1)`, so Δlse is about −0.7, give or take 0.35, on every row.
+
+Together these keep |corr| at about 0.02 or more, so the precondition now holds by construction. The precondition and the identity check (tolerance 10⁻¹³) are unchanged. The author executed nothing for this correction either, and still read no `tools/c1prime/*.py` file.
 
 ## Ambiguities and conflicts noticed
 

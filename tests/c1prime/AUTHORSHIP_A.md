@@ -114,3 +114,7 @@ TEST_PLAN reassigns items relative to the protocol's §17 lists. The chart-wrapp
 15. **NaN smoothing residual with finite f.** This cannot be reached through the unchanged kernel's arithmetic. The test induces it by replacing `numpy.linalg.norm` for one call; the frozen file is unchanged.
 16. **The enclosure branch of §3.2.** API.md exposes no dedicated function for it. The S1 fixture uses `interval_rule` with `posterior_envelope(32, N)` against a Decimal closed form built in the test.
 17. **Package and store paths.** API.md names `tools/c1prime/` and `c1prime-store/`, while protocol §18 and §17 name `tools/c1_state_forcing/` and `c1-state-forcing-store/`. API.md records these as task paths, not scientific choices. The tests only follow API.md §0 imports and use tmp_path stores.
+
+## Correction after the builder's first run
+
+This was a defect in the test's own reference, not in the module. In `test_a_oracle_named.py::test_decimal_reference_against_exact_rationals`, the reference surprisal was `s_exact = -exact_ln(...)`. The unary minus ran outside the 90-digit context, so Decimal negation rounded to the ambient 28 digits, and the reference differed from the module's 80-digit value by 8.4·10⁻²⁹. The line now reads `s_exact = -Fraction(exact_ln(...))`, which negates exactly in rationals. No tolerance and no other test changed. I made this correction under the same rules as before: without reading module source and without executing anything.

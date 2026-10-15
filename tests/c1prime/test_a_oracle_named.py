@@ -206,7 +206,7 @@ def test_decimal_reference_against_exact_rationals():
     assert all(isinstance(x, Decimal) for x in ref["b32"])
     assert rel_gap(ref["b31"], b31) <= tol and rel_gap(ref["b32"], b32) <= tol
     assert rel_gap(ref["q31"], q31) <= tol and rel_gap(ref["q32"], q32) <= tol
-    s_exact = -exact_ln(q31[int(h[31])])
+    s_exact = -Fraction(exact_ln(q31[int(h[31])]))  # negate exactly, not at ambient precision
     assert abs(Fraction(ref["s"]) - Fraction(s_exact)) <= Fraction(1, 10**45)
     for got, want in zip(ref["ln_q32"], q32):
         assert abs(Fraction(got) - Fraction(exact_ln(want))) <= Fraction(1, 10**45)

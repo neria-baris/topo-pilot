@@ -189,9 +189,12 @@ def test_oracle_perfect_readout_gives_G_minus_mass_correction(masses):
 
 
 def test_log_softmax_form_differs_from_logit_form_by_the_normaliser_term():
+    # Masses fixed at 1.06 and 0.95 (delta_m ~ 0.11) and zm = zp + 0.7 + 0.1 eps, so that
+    # lse(zp) - lse(zm) lies in [-0.7 - 0.1 max eps, -0.7 - 0.1 min eps] and |corr| >= ~0.01.
+    qp, qm = _masses_fixture(9, (1.06, 0.95), rows=3)
     rng = np.random.default_rng(9)
-    qp, qm = rng.random((3, V)) / 17.0, rng.random((3, V)) / 19.0
-    zp, zm = rng.normal(size=(3, V)), rng.normal(size=(3, V)) + 0.7
+    zp = rng.normal(size=(3, V))
+    zm = zp + 0.7 + 0.1 * rng.normal(size=(3, V))
     A_logit = _vec(c1_endpoint.A_hat(qp - qm, zp, zm))
     A_ls = _vec(c1_endpoint.A_logsoftmax(qp, qm, _log_softmax(zp), _log_softmax(zm)))
     with localcontext() as ctx:

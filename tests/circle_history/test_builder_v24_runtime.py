@@ -5,6 +5,7 @@ nothing waits 180 s. See BUILDER_TESTS.md."""
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -138,6 +139,9 @@ sys.path.insert(0, sys.argv[2]); sys.path.insert(0, sys.argv[3])
 import meter_bind
 out = Path(sys.argv[1])
 meter_bind.CONTRACT["resources"]["output_root"] = str(out)
+# hermetic (job 0021): the unchanged controls read this temporary mailbox, not the live one
+meter_bind.controls.MAILBOX = Path(sys.argv[6])
+meter_bind.CONTRACT["job_id"], meter_bind.CONTRACT["task_sha256"] = "9999", sys.argv[7]
 sys.argv = ["meter_bind", "--stage", "implementation", "--label", "opwall", "--max-wall", "60",
             "--", sys.argv[4], "-I", sys.argv[5], str(out), sys.argv[2]]
 sys.exit(meter_bind.main())
@@ -150,9 +154,23 @@ op_guard.timed_factory(sys.argv[1], 1.0)("sleepy", lambda: time.sleep(20))
 """
 
 
+def _synthetic_mailbox(tmp_path):
+    """Hermetic control inputs for the unchanged job-0014 controls (job 0021 revision)."""
+    box = tmp_path / "mailbox"
+    (box / "jobs" / "9999").mkdir(parents=True)
+    task = b"synthetic hermetic meter test task"
+    (box / "jobs" / "9999" / "task.md").write_bytes(task)
+    digest = hashlib.sha256(task).hexdigest().upper()
+    request = {"command": "RUN_NEXT", "job_id": "9999", "task_sha256": digest}
+    (box / "request.json").write_text(json.dumps(request), encoding="utf-8")
+    (box / "worker_control.json").write_text(json.dumps({"command": "CONTINUE"}), encoding="utf-8")
+    return box, digest
+
+
 def test_real_meter_kills_overdue_marked_operation(tmp_path):
     out = tmp_path / "store"
     out.mkdir()
+    box, digest = _synthetic_mailbox(tmp_path)
     caps = meter_bind.CONTRACT["resources"]["stage_caps_s"]
     (out / "cpu_ledger.json").write_text(json.dumps(_ledger(caps, [])), encoding="utf-8")
     lock = {"session": meter_bind.meter.WORKER_SESSION}
@@ -162,7 +180,7 @@ def test_real_meter_kills_overdue_marked_operation(tmp_path):
     oracle_tools = str(REPO / "tools" / "x4_oracle_profile")
     start = time.monotonic()
     cmd = [str(BASE_PYTHON), "-I", str(tmp_path / "driver.py"), str(out), str(TOOL), oracle_tools]
-    cmd += [sys.executable, str(tmp_path / "child.py")]
+    cmd += [sys.executable, str(tmp_path / "child.py"), str(box), digest]
     done = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
     assert time.monotonic() - start < 15, done.stderr
     entry = json.loads((out / "cpu_ledger.json").read_text(encoding="utf-8"))["entries"][-1]

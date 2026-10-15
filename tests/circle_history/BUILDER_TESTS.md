@@ -56,3 +56,12 @@ Revised builder tests:
 - `test_builder_v24_runtime.py` finds the caps record among the ledger history records.
 
 The earlier revisions are in git.
+
+## Post-closure revision (job 0021; K4 closed INCONCLUSIVE in job 0018)
+
+`test_builder_v24_runtime.py::test_real_meter_kills_overdue_marked_operation` is now hermetic. Its driver points the unchanged job-0014 controls at a temporary mailbox in tmp_path (`controls.MAILBOX`) and binds the test contract copy to the synthetic job 9999, whose request digest matches.
+
+Before this change, the live mailbox request.json decided whether the meter run was KILLED or REFUSED; jobs/0020/review.md records the failure.
+
+- No production module changed.
+- K4 is closed, so no re-freeze was made. The test file's hash therefore differs from the frozen K4 build e3049fee.

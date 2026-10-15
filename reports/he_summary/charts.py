@@ -41,8 +41,11 @@ def T(x, y, s, anchor="middle", size=13, weight=400, fill=INK, italic=False, ext
         ta = "start" if rtl else "end"
     d = ' direction="rtl"' if rtl else ' direction="ltr"'
     st = ' font-style="italic"' if italic else ""
+    body = re.sub(r"([_^])\{([^}]*)\}", lambda m: (
+        f'<tspan baseline-shift="{"sub" if m.group(1) == "_" else "super"}" '
+        f'font-size="72%">{m.group(2)}</tspan>'), esc(s))
     return (f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="{ta}"{d} font-size="{size}" '
-            f'font-weight="{weight}" fill="{fill}"{st}{extra}>{esc(s)}</text>')
+            f'font-weight="{weight}" fill="{fill}"{st}{extra}>{body}</text>')
 
 
 def ML(x, y, lines, size=13, lh=None, **kw):
@@ -233,7 +236,7 @@ def fig_decision():
     """F1 decision rule as a flow chart."""
     W, H = 680, 380
     b = ""
-    b += box(220, 14, 240, 50, ["לכל חזרה ולכל לוח:", "D = ΔS_cyl − ΔS_sq"],
+    b += box(220, 14, 240, 50, ["לכל חזרה ולכל לוח:", "D = ΔS_{cyl} − ΔS_{sq}"],
              fill=NEU_T, size=13.5, weight=700)
     b += arrow(340, 64, 340, 92)
     b += box(200, 94, 280, 46, "האם כל המודלים עברו את שער הלמידה?", fill="#ffffff", size=13.5)
@@ -245,7 +248,7 @@ def fig_decision():
              fill="#ffffff", size=13.5)
     b += arrow(340, 216, 340, 238)
     b += T(352, 231, "כן", anchor="left", size=12, fill=INK2)
-    b += box(170, 240, 340, 46, "(2) חציון D > u_r (מעטפת רעש הלוחות) בכל חזרה?",
+    b += box(170, 240, 340, 46, "(2) חציון D > u_{r} (מעטפת רעש הלוחות) בכל חזרה?",
              fill="#ffffff", size=13.5)
     b += path_arrow("M510,193 L590,193 L590,300")
     b += path_arrow("M510,263 L590,263")
@@ -259,7 +262,7 @@ def fig_decision():
              color=BAD)
     b += box(20, 304, 150, 44, ["לא מכריע", "(מדווח השער שנכשל)"], fill=WARN_T, stroke=WARN,
              size=13, weight=700, color=WARN)
-    b += T(340, 372, "ארבעת ערכי S מדווחים תמיד לצד D; הסף u_r נגזר מהנתונים עצמם ולא מבקרת השלילה",
+    b += T(340, 372, "ארבעת ערכי S מדווחים תמיד לצד D; הסף u_{r} נגזר מהנתונים עצמם ולא מבקרת השלילה",
            size=11.5, fill=INK2)
     return svg(W, H, b, "כלל ההכרעה F1")
 
@@ -423,15 +426,15 @@ def fig_ph():
 def fig_dcontrast():
     W, H = 680, 210
     b = ""
-    cells = [(470, 30, "גליל, אתחול", "S_cyl,init", CYL_T, CYL), (470, 110, "גליל, סוף", "S_cyl,final", CYL_T, CYL),
-             (250, 30, "ריבוע, אתחול", "S_sq,init", SQ_T, SQ), (250, 110, "ריבוע, סוף", "S_sq,final", SQ_T, SQ)]
+    cells = [(470, 30, "גליל, אתחול", "S_{cyl,init}", CYL_T, CYL), (470, 110, "גליל, סוף", "S_{cyl,final}", CYL_T, CYL),
+             (250, 30, "ריבוע, אתחול", "S_{sq,init}", SQ_T, SQ), (250, 110, "ריבוע, סוף", "S_{sq,final}", SQ_T, SQ)]
     for x, y, t, s, f, st in cells:
         b += box(x, y, 160, 56, [t, s], fill=f, stroke=st, size=13)
     b += arrow(550, 86, 550, 108)
     b += arrow(330, 86, 330, 108)
     b += T(560, 101, "ΔS גליל", anchor="left", size=12, fill=CYL)
     b += T(340, 101, "ΔS ריבוע", anchor="left", size=12, fill=SQ)
-    b += box(20, 70, 190, 64, ["D = ΔS_cyl − ΔS_sq", "אותו לוח בשני העולמות"],
+    b += box(20, 70, 190, 64, ["D = ΔS_{cyl} − ΔS_{sq}", "אותו לוח בשני העולמות"],
              fill="#ffffff", stroke=INK, size=12.5, weight=700, sw=1.5)
     b += path_arrow("M250,138 L222,120")
     b += T(340, 200, "ההפרש הכפול מנכה גם את מה שהארכיטקטורה מייצרת באתחול וגם הבדלים קבועים בין העולמות",
@@ -448,7 +451,7 @@ def chart_e0():
     x0, x1, yb, yt = 70, 640, 200, 30
     ay = Axis(0, 0.35, yb, yt)
     b = ygrid(ay, [0, 0.1, 0.2, 0.3], x0, x1)
-    groups = [("מטריקה שטוחה d_M", 0.299, 0.037), ("מטריקת גרף", 0.231, 0.067)]
+    groups = [("מטריקה שטוחה d_{M}", 0.299, 0.037), ("מטריקת גרף", 0.231, 0.067)]
     gw = (x1 - x0) / 2
     for k, (name, cyl, sq) in enumerate(groups):
         gx = x0 + k * gw + gw / 2
@@ -524,7 +527,7 @@ def chart_f1_panels():
     b += f'<line x1="{x0 + 3 * gw}" y1="{yt}" x2="{x0 + 3 * gw}" y2="{yb + 36}" stroke="{GRID}" stroke-width="1.5"/>'
     b += T(22, 130, "D", size=13, italic=True, fill=INK2)
     b += legend(650, 300, [("לוח בודד, O", CYL, "dot"), ("לוח בודד, P", VIOLET, "dot"),
-                           ("חציון", INK, "line"), ("u_r (מעטפת רעש)", BAD, "dash")])
+                           ("חציון", INK, "line"), ("u_{r} (מעטפת רעש)", BAD, "dash")])
     return svg(W, H, b, "הניגוד D לפי לוח")
 
 
@@ -572,7 +575,7 @@ def chart_dynamics():
         for xs_, lab in [(1, "50"), (2, "100")]:
             b += f'<line x1="{ax(xs_):.1f}" y1="{yt}" x2="{ax(xs_):.1f}" y2="{yb}" stroke="{INK2}" stroke-width="1" stroke-dasharray="3 3"/>'
         b += T(ax(1) - 3, yt - 6, "S עולה", anchor="right", size=11, fill=INK2)
-        b += T(ax(2) + 3, yt - 6, "regret < G_C", anchor="left", size=11, fill=INK2)
+        b += T(ax(2) + 3, yt - 6, "regret < G_{C}", anchor="left", size=11, fill=INK2)
         b += f'<line x1="{x0}" y1="{yb}" x2="{x1}" y2="{yb}" stroke="{INK2}"/>'
         # regret panel (log)
         yb2, yt2 = 460, 280
@@ -586,7 +589,7 @@ def chart_dynamics():
         gc = {"O": (0.2649, 0.2360), "P": (0.2658, 0.3248)}[cond]
         for g, col in zip(gc, (CYL, SQ)):
             b += f'<line x1="{x0}" y1="{ay2(g):.1f}" x2="{x1}" y2="{ay2(g):.1f}" stroke="{col}" stroke-width="1.2" stroke-dasharray="5 4"/>'
-        b += T(x1, ay2(max(gc)) - 5, "G_C", anchor="right", size=11, fill=INK2)
+        b += T(x1, ay2(max(gc)) - 5, "G_{C}", anchor="right", size=11, fill=INK2)
         b += f'<line x1="{x0}" y1="{yb2}" x2="{x1}" y2="{yb2}" stroke="{INK2}"/>'
         for i, s in enumerate(steps):
             if i in (0, 1, 2, 3, 4, 6, 8, 11):
@@ -594,7 +597,7 @@ def chart_dynamics():
                     b += T(ax(i), yy + 15, str(s), size=10.5, fill=INK2)
     b += T(340, 492, "צעד אימון (נקודות הבדיקה במרווחים שווים; הפריסה עצמה לוגריתמית)", size=11.5, fill=INK2)
     b += legend(560, 514, [("גליל (3 חזרות)", CYL, "line"), ("ריבוע (3 חזרות)", SQ, "line"),
-                           ("G_C (מקווקו)", INK2, "dash")])
+                           ("G_{C} (מקווקו)", INK2, "dash")])
     return svg(W, H, b, "דינמיקת אימון")
 
 

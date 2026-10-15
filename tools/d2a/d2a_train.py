@@ -70,11 +70,11 @@ MAX_WALL_S = 6 * 3600
 
 def make_trainer(run_id: str, model_cfg=None, train_cfg=None):
     """Trainer for a registered run (§4.5); H = 1 is exactly the default path."""
+    from d2a_world import MODEL
+
     from topo_pilot.contracts import SeedTree
     from topo_pilot.learner import Trainer
     from topo_pilot.learner.multihorizon import MultiHorizonLM, multi_horizon_loss
-
-    from d2a_world import MODEL
 
     s, H, _ = RUNS[run_id]
     args = (model_cfg or model_config(), train_cfg or train_config(), SeedTree(MODEL), ("d2a", s))
@@ -200,6 +200,21 @@ def _read(path):
     return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
 
+def jsonable(x):
+    if isinstance(x, dict):
+        return {(k if isinstance(k, str) else "|".join(map(str, k)) if isinstance(k, tuple)
+                 else str(k)): jsonable(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [jsonable(v) for v in x]
+    return x.tolist() if hasattr(x, "tolist") else x  # numpy arrays and scalars, stdlib only
+
+
+def write_json(path, rec) -> None:
+    """Exclusive-create JSON write of ``jsonable(rec)`` (stage records are never overwritten)."""
+    with Path(path).open("x", encoding="utf-8") as fh:
+        json.dump(jsonable(rec), fh, indent=1, default=str)
+
+
 def verify_identity(mailbox, job_id, task_sha256, session, lock_path) -> None:
     """Dispatch identities (ruling D6): request, task.json, task.md digest, RUN.lock session."""
     from topo_pilot.contracts import ErrorCode, StageFailure
@@ -252,23 +267,25 @@ def _set_threads():
 def child_main(run_id: str, store_root=STORE) -> int:
     """One training (CLI ``child RUN``): threads first, then train, saving every checkpoint."""
     torch = _set_threads()
-    from topo_pilot.contracts import ErrorCode, ObservationSet, SeedTree, SequenceLayout
-    from topo_pilot.contracts import StageFailure
-    from topo_pilot.dataset import PublicTokenDataset
-
     import d2a_world as W
+
+    from topo_pilot import contracts as C
+    from topo_pilot.dataset import PublicTokenDataset
 
     s, H, proc = RUNS[run_id]
     root, start = Path(store_root), time.perf_counter()
     pools, store = W.pool_index(root), W.open_store(root)
     names = (f"train-s{s}", f"dev-s{s}") if proc == "CM" else (f"trainN-s{s}", f"devN-s{s}")
     ids = [pools[n]["id"] for n in names]
-    sets = [PublicTokenDataset(store.load(ObservationSet, i, consumer="learner"),
-                               SequenceLayout()) for i in ids]
+    sets = [PublicTokenDataset(store.load(C.ObservationSet, i, consumer="learner"),
+                               C.SequenceLayout()) for i in ids]
     trainer, record, classify = make_trainer(run_id), [], bound_controls(root)
-    hook = (lambda step: boundary(classify))
+
+    def hook(step):
+        boundary(classify)
+
     cb = checkpoint_callback(store, ids[0], ids[1], run_id, H, proc, trainer.model_cfg,
-                             trainer.train_cfg, SeedTree(W.MODEL), trainer.run_key, hook, hook,
+                             trainer.train_cfg, C.SeedTree(W.MODEL), trainer.run_key, hook, hook,
                              record)
     rec = {"run_id": run_id, "seed": s, "horizon": H, "process": proc, "threads": THREADS,
            "torch": torch.__version__, "pools": dict(zip(names, ids)), "checkpoints": record}
@@ -277,8 +294,8 @@ def child_main(run_id: str, store_root=STORE) -> int:
         summary = trainer.fit(sets[0], sets[1], cb)
         rec.update(status="COMPLETE", final_train_loss=summary.final_train_loss,
                    train_wall_s=summary.wall_time_s)
-    except StageFailure as exc:
-        if exc.code != ErrorCode.NONFINITE_LOSS:
+    except C.StageFailure as exc:
+        if exc.code != C.ErrorCode.NONFINITE_LOSS:
             raise
         rec["status"], code = "INVALID:NONFINITE_LOSS", EXIT_NONFINITE
     except D2AStop as exc:

@@ -264,3 +264,18 @@ are injected.
   release-gated branch.
 - Cost probe: the job-0014 Decimal reference per-step time at S = 144 on a synthetic dense
   process, projected to 1024 histories × 36 steps.
+
+### Builder tests (v2.5, job 0017)
+
+- release: a claude-coordinator release with a valid assumption record verifies; a wrong
+  session id, a wrong sha256, a wrong schema, a record outside `<mailbox>/archive/`, missing
+  Claude fields, or a coordinator_runtime not reporting ACTIVE_CLAUDE_COORDINATOR is refused; a
+  codex-coordinator release still verifies against a mailbox whose runtime is not Claude-active,
+  is refused while the Claude coordinator is active, and is refused if it carries Claude fields;
+  an unknown issuer is refused.
+- meter_bind under the measure-only policy: no stage ceiling or per-run CPU stop (the limiter
+  returns no CPU reason for any spent amount), unbounded CAP_S/STOP_NEW_S and --max-cpu, an
+  unreleased stage is still a refused no-op, the operation-wall and disk reasons still fire, and
+  a real metered run is still recorded in the ledger; the ledger policy sync preserves entries.
+- chart phases: apply_gauge and extend map a value that would round to exactly 2π to 0.0, so
+  every phase is in [0, 2π).

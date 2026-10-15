@@ -7,7 +7,7 @@
   "commit": "8783adc122153d0e5697cd807686b04c80e4e199",
   "sha256": "42FB2E9F2F8CD95C908241E5512E5C3D259501AB32F4EBE12C03ECD0F9CEE0FA"
  },
- "status": "IMPLEMENTATION_CONTRACT spec v2.4 (job 0016: code + synthetic tests only; no real payload; no feasibility execution)",
+ "status": "IMPLEMENTATION_CONTRACT spec v2.5 (jobs 0016-0017: code + synthetic tests only; no real payload; no feasibility execution)",
  "scope": {
   "models": [
    1729,
@@ -271,6 +271,26 @@
     },
     "recorded_utc": "2026-10-14T20:17:04Z",
     "note": "prospective administrative reallocation of 500 CPU s from charts to oracle within the same 3600 total, recorded BEFORE any real oracle work (no oracle-stage ledger entry exists); synthetic cost_probe.json and earlier freezes immutable; sufficiency is a projection; an inadequate stage stops honestly and never borrows"
+   },
+   {
+    "policy": "MEASURE_ONLY_OWNER_OVERRIDE",
+    "stage_caps_s": {
+     "implementation": 400,
+     "identity": 200,
+     "oracle": 900,
+     "charts": 1700,
+     "precision": 200,
+     "export": 200
+    },
+    "effect": "no stage, cumulative or per-run CPU limit stops or refuses a run; every run still metered and recorded; stage_caps_s retained as history only",
+    "authority": {
+     "message_id": "owner-overnight-coordinator-transfer-20261014",
+     "owner_message_sha256": "13160D21CA0F52BEC04CCC9AA73BBE4016842C8A108E32994656F57E5B4E69CA",
+     "coordinator_review": "jobs/0016/review.md decision 3 (sha256 177c068d435b2cb3e09d1a73f0f93c23c9498985ba6631a90b7f7f5fa990c67e)",
+     "task": "jobs/0017/task.md 355F19CC6350264A42C6F862CC7249AC3A2E4DB949FB209C7D81B941E6500C71"
+    },
+    "recorded_utc": "2026-10-15T03:44:36Z",
+    "unchanged": "threads 1, memory 8 GiB, disk safe-STOP, native-operation wall, release gating, STOP/INVALID controls, non-hold wall limit, output cap; methodological bounds (lift 30 CPU s per chart, 180 s per native operation, six 512-row constructions, 128 nodes per bound)"
    }
   ],
   "owner_override": {
@@ -288,9 +308,10 @@
      "X:": 30000000000
     }
    },
-   "interim_binding": "until the incoming coordinator reviews a transparent binding change, the meter still enforces stage_caps_s (conservative), threads 1, memory 8 GiB; the disk safe-STOP is enforced by meter_bind",
+   "interim_binding": "superseded by job 0017: measure-only CPU (resources.cpu_policy); threads 1, memory 8 GiB and the disk safe-STOP unchanged",
    "methodological_bounds_unchanged": "lift 30 CPU s per chart, six 512-row constructions, 180 s per native operation, 128 nodes per bound, fixed search"
-  }
+  },
+  "cpu_policy": "MEASURE_ONLY_OWNER_OVERRIDE"
  },
  "supersedes": {
   "job": "0015",

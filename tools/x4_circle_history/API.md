@@ -1,4 +1,4 @@
-# x4_circle_history: public API (job 0016, spec v2.4; continues the BLOCKED job-0015 draft)
+# x4_circle_history: public API (jobs 0016-0017, spec v2.5; continues the BLOCKED job-0015 draft)
 
 Status: written specification, fixed BEFORE production implementation, for independent test
 authors. The machine contract is CONTRACT.json; the numerical bound is ERROR_BOUND.md. Every
@@ -627,6 +627,89 @@ items 7–12 are builder-tested runtime.
       whose caps match neither the current nor a recorded previous allocation.
     - Methodological bounds stay unchanged: lift 30 CPU s per chart, six 512-row constructions,
       180 s per native operation, 128 nodes per bound, fixed search.
+
+## Spec v2.5 clarifications (job 0017: coordinator review of 0016 and owner override; normative)
+
+Sources: jobs/0017/task.md (355F19CC…), jobs/0016/review.md (ACCEPT; decisions 3 and F4), owner
+overnight authorization (OWNER_MESSAGE 13160D21…). No scientific criterion, gate, threshold,
+order, seed or method changes. All three items are builder-tested runtime.
+
+1. **Release issuer binding (release.py).** `issued_by` is one of:
+   - `"claude-coordinator"`: the release MUST also carry `coordinator_session_id` (str) and
+     `coordinator_assumption_ref = {"path", "sha256"}`. verify() requires that the referenced
+     file lies under `<mailbox>/archive/`, exists, has that sha256 (hex, case-insensitive), parses
+     as JSON with `schema == "coordinator-assumption-v1"` and `coordinator_session_id` equal to
+     the release value; and that `<mailbox>/coordinator_runtime.json` currently reports
+     `mode == "ACTIVE_CLAUDE_COORDINATOR"`.
+   - `"codex-coordinator"`: verified exactly as before (old records stay verifiable), but it may
+     carry neither Claude field, and it is REFUSED while `coordinator_runtime.json` reports
+     `mode == "ACTIVE_CLAUDE_COORDINATOR"` (Codex relinquished; a new Codex-issued release would
+     be an impersonation).
+   - anything else is refused.
+
+   Every other check is unchanged: live RUN_NEXT job/task binding, release file inside the
+   dispatched job directory, task.md digest, known released_stages, source HEAD from the git
+   files, CONTRACT.json and FREEZE.json digests, strict-boolean `scoring_released` and, if True,
+   `owner_scoring_release_ref {path, sha256, scope containing "scoring"}` (the only route to a
+   ScoringAuthority).
+
+   **RELEASE.json schema** (`schema: "x4-circle-history-release-v1"`), written by the
+   coordinator at `<mailbox>/jobs/<job>/RELEASE.json`:
+
+   | field | type | meaning |
+   |---|---|---|
+   | schema | str | `"x4-circle-history-release-v1"` |
+   | job_id | str | the dispatched job (request.json job_id) |
+   | task_sha256 | str | sha256 of that job's task.md (= request.json task_sha256) |
+   | released_stages | list[str] | subset of identity, oracle, charts, precision, export, implementation |
+   | source_commit | str | 40-hex HEAD of the worktree the runner executes |
+   | freeze_sha256 | str | sha256 of `<output_root>/FREEZE.json` |
+   | contract_sha256 | str | sha256 of tools/x4_circle_history/CONTRACT.json |
+   | scoring_released | bool | strict boolean; false for feasibility |
+   | issued_by | str | `"claude-coordinator"` (or historical `"codex-coordinator"`) |
+   | coordinator_session_id | str | required for claude-coordinator |
+   | coordinator_assumption_ref | {path, sha256} | required for claude-coordinator; under `<mailbox>/archive/` |
+   | owner_scoring_release_ref | {path, sha256, scope} | required iff scoring_released is true |
+   | stage_ceilings_s | {stage: float} | optional; ignored under the measure-only CPU policy |
+
+   Example (feasibility, job 0018):
+   ```json
+   {
+    "schema": "x4-circle-history-release-v1",
+    "job_id": "0018",
+    "task_sha256": "<sha256 of jobs/0018/task.md>",
+    "released_stages": ["identity", "oracle", "charts", "precision", "export"],
+    "source_commit": "<40-hex commit of the frozen build>",
+    "freeze_sha256": "<sha256 of FREEZE.json>",
+    "contract_sha256": "<sha256 of CONTRACT.json>",
+    "scoring_released": false,
+    "issued_by": "claude-coordinator",
+    "coordinator_session_id": "c351b245-9ff3-4f5c-b324-60ee25725fd7",
+    "coordinator_assumption_ref": {
+     "path": "X:\\Downloads\\projects\\topo-pilot\\agent-handoff\\archive\\incoming-claude-coordinator-20261014T204705Z\\ASSUMPTION.json",
+     "sha256": "91d80ff1f005ef5bf0326fff68d9ab4da27f5a5ae91cf3f5d4623c4c2fad3407"
+    }
+   }
+   ```
+
+2. **CPU measurement only (meter_bind; CONTRACT resources.cpu_policy =
+   "MEASURE_ONLY_OWNER_OVERRIDE").** Every run is still metered and recorded in the single ledger
+   (child, supervisor, measured, tail and charged CPU; label `<stage>__<label>`), but no stage,
+   cumulative or per-run CPU limit stops or refuses a run: the stage limiter has no ceiling,
+   meter CAP_S and STOP_NEW_S are unbounded, and `--max-cpu` is unbounded. Unchanged and still
+   enforced: release gating of stages (an unreleased stage is still a refused no-op), the
+   native-operation wall marker, the owner disk safe-STOP (C: < 2 GB, X: < 30 GB), STOP / INVALID
+   controls, the non-hold wall limit (`--max-wall`, default 3600 s), the output cap, threads 1
+   and memory 8 GiB. The previous stage_caps_s values stay recorded (history); the policy change
+   is recorded in CONTRACT allocation_history and in the ledger metadata by meter_bind in the
+   supervisor process, preserving every entry. Methodological bounds are frozen and unchanged:
+   lift 30 CPU s per chart, 180 s per native operation, six 512-row constructions, 128 nodes per
+   bound.
+
+3. **Phase interval (F4).** chart.apply_gauge and chart.extend return phases in [0, 2π): after
+   the modulo, any value ≥ 2π (the float rounding of a tiny negative angle) is replaced by 0.0.
+   This is a numerical-correctness fix of the documented [0, 2π) convention; no gate or
+   threshold changes.
 
 ## Runtime (builder-tested; not part of the independent numerical tests)
 

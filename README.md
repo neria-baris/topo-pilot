@@ -82,6 +82,65 @@ The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic me
 
 **Not run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
 
+## After E4
+
+These are the follow-up studies run after E4, reported as they stand, negatives included. Each is labelled **pre-registered** (its protocol or rules were frozen before its result) or **exploratory**. Nothing here changes an E0–E4 verdict.
+
+Decision ids refer to [`state/DECISIONS.md`](state/DECISIONS.md). Paths starting with `agent-handoff/` or naming a `*-store` directory are execution records kept outside this repository.
+
+| Study | Label | Outcome |
+|---|---|---|
+| X4 Phase B: future-horizon separation (D-051–052) | pre-registered | **INCONCLUSIVE** |
+| X4 Phase B2: coverage (D-053–055) | pre-registered | **scoped NO-GO** (D-055); exact Q1-sufficiency UNRESOLVED |
+| Circular-baseline audit (D-056–057) | pre-registered, descriptive | BEYOND_SYMBOL_AND_MIXING, descriptive only |
+| X4-F: coordinate causal use (D-058–063) | pre-registered | **INCONCLUSIVE / FAMILY_UNMATCHED**; causal endpoint not run |
+| Circular-history oracle profile, job 0014 (D-074) | exploratory | accepted, with a qualified interpretation |
+| K8 history-origin cohort (x4-history-feas-v1) | pre-registered | **oracle-headroom FAIL** |
+| X5 G1: kernel-pair learning time (D-072–073, D-081) | pre-registered | **H5 REJECTED** on dev; closed with no fresh test |
+| K4 circular-history feasibility, jobs 0016–0018 (D-075–078) | pre-registered | **INCONCLUSIVE** at chart_calibration |
+| D-1: cylinder vs Möbius seam, oracle-only, jobs 0019–0020 (D-079–080) | pre-registered | **PASS** |
+
+- **X4 Phase B.**
+  - Ambient result ALLOWS_STABLE: tangent ranks Q1 = 35 and Q2 = 137.
+  - The four old pools were undercovered (49–66 eligible anchors against 128 required), so the screen is INCONCLUSIVE.
+  - Record: [`docs/proposals/X4_FEASIBILITY_REPORT.md`](docs/proposals/X4_FEASIBILITY_REPORT.md).
+- **X4 Phase B2.**
+  - Four fresh pools gave 159/141/159/156 eligible anchors and **zero** witnesses.
+  - This rules against the registered practical horizon-gap premise at those thresholds and that sampling resolution. It does not prove universal Q1-sufficiency.
+  - No model, activation or decoder was examined. Phase C / H4C-I was **not run**.
+  - Record: [`docs/proposals/X4B2_COVERAGE_REPORT.md`](docs/proposals/X4B2_COVERAGE_REPORT.md).
+- **Circular-baseline audit.**
+  - This was run on the already-unblinded E4 panels. In 24/24 panels the model's circular agreement (medians 0.884–0.892) exceeds an optimistic last-symbol bound (0.817) and the best available baseline (0.805).
+  - This resolves the missing last-symbol comparison descriptively. It is not independent confirmation and not evidence of long-history origin.
+  - Record: [`docs/proposals/CIRCULAR_BASELINE_AUDIT_REPORT.md`](docs/proposals/CIRCULAR_BASELINE_AUDIT_REPORT.md).
+- **X4-F.**
+  - The m32-targeted eraser removed linear recoverability, but a fixed RBF recovery stayed at 0.998 (LINEAR_COMPONENT_ONLY).
+  - 0 of 10,000 random erasers fell inside the frozen damage-matching window, so the comparison family is unmatched. The causal endpoint was **not run**.
+  - Records: [`docs/proposals/X4F_FEASIBILITY_GATES_REPORT.md`](docs/proposals/X4F_FEASIBILITY_GATES_REPORT.md) and the governing [`docs/proposals/X4F_COORDINATOR_REVIEW_ADDENDUM.md`](docs/proposals/X4F_COORDINATOR_REVIEW_ADDENDUM.md).
+- **Oracle profile (job 0014).**
+  - B_K = E‖m32 − m_K‖ for K = 1, 2, 4, 8, 16, 32 on calibration: 0.369, 0.198, 0.067, 0.0092, 0.00018, 0 (validation is similar).
+  - The first-harmonic oracle posterior converges quickly relative to 32 observations. Practical headroom against the 0.01 reference holds only among the evaluated K ≤ 4.
+  - This is not a memory horizon of the model or the world, and K8 still carries nonzero information.
+  - Record: `agent-handoff/jobs/0014/review.md`.
+- **K8 history-origin cohort.**
+  - B8 = 0.00925, with one-sided 95% upper endpoint 0.00949 < 0.01. The frozen headroom FAIL fired, so a ≥ 0.01 primary effect lacks headroom under this design.
+  - Identities and oracle checks passed. No model activations or PH were computed.
+  - Record: `x4-history-feas-store/GATE_REPORT.json`.
+- **X5 G1.**
+  - Paired learning delays (conductance vs flat kernel) were 250 / 0 / 0 steps. The registered all-three ≥ 250-step claim is rejected, because one pair's bootstrap q975 upper bound is 0 < 250.
+  - Closed without a fresh test (D-081).
+  - This is not a general geometry or curvature null: the kernel change is confounded with movement speed.
+  - Records: [`docs/proposals/X5_G1_TRAINING_PROTOCOL_V4.md`](docs/proposals/X5_G1_TRAINING_PROTOCOL_V4.md), `agent-handoff/jobs/0013/review.md`.
+- **K4.**
+  - The frozen circular-history feasibility pipeline passed identity and the exact process/reference gate (moment errors ≤ 8e-16). It then stopped at its first chart gate: at the frozen midpoint scale, the calibration landmark graph of the first model is disconnected.
+  - By rule there was no retry or refit, and scoring was not released.
+  - This is an operational result for the frozen chart rule. It is **not evidence about Δ4**.
+  - Records: [`docs/proposals/CIRCULAR_HISTORY_K4_PROTOCOL_DRAFT.md`](docs/proposals/CIRCULAR_HISTORY_K4_PROTOCOL_DRAFT.md), `agent-handoff/jobs/0018/report.md`.
+- **D-1.**
+  - Every gate passed: exact enumeration of all 37,190 reachable histories, float and 80-digit Decimal cross-checks, and controls.
+  - Licence (agent-handoff/jobs/0020/review.md): "It is an existence result for an **orientability** distinction (cylinder vs Möbius, equal Betti numbers) that is unnecessary at horizon 1 on the decision phase and necessary at horizon 2, at reachable histories. The decisive witness is the posterior-isolation pair. It says nothing about square vs cylinder, β₁, B2, or trained models."
+  - Record: [`tools/d1_seam/OUTPUTS_0020.md`](tools/d1_seam/OUTPUTS_0020.md).
+
 ## Reproduce (Windows, CPU)
 
 ```powershell

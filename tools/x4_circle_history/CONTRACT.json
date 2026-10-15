@@ -1,7 +1,7 @@
 {
  "protocol": "x4-circle-history-k4-feas-v1",
- "job_id": "0016",
- "task_sha256": "5CFC6669404D6D559CEE94CCCA91883FE7E69D9D8556639A0911DA8322ADB4E9",
+ "job_id": "0017",
+ "task_sha256": "355F19CC6350264A42C6F862CC7249AC3A2E4DB949FB209C7D81B941E6500C71",
  "design_source": {
   "path": "docs/proposals/CIRCULAR_HISTORY_K4_PROTOCOL_DRAFT.md",
   "commit": "8783adc122153d0e5697cd807686b04c80e4e199",
@@ -342,5 +342,12 @@
   "FAIL_TECHNICAL": "Invalid and JoinError: invalid input, integrity, checksum, lineage, canonical-join, persisted-ID, source-integrity, certificate, implementation or numerical defects (overall FAIL)",
   "INCONCLUSIVE": "Unresolved: valid criterion not met, unsupported rows, missing chart/lift, resource or operation exhaustion, inadequate precision (criterion_met=false)",
   "authority": "coordinator-0016-prospective-resource-allocation 9C7BE6D5DC185B9BAE58A1EA9325463C3E17412182F6B8CDEAF6D0F93742DBB2"
- }
+ },
+ "job_binding_history": [
+  {
+   "job_id": "0016",
+   "task_sha256": "5CFC6669404D6D559CEE94CCCA91883FE7E69D9D8556639A0911DA8322ADB4E9",
+   "status": "DONE, ACCEPTED (jobs/0016/review.md)"
+  }
+ ]
 }

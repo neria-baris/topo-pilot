@@ -102,3 +102,7 @@ No reference imports `d2a_targets` or `d2a_world` target code.
     - The G0-NUM identities are checked on a 400-episode batch from a test-only SeedTree master (4242).
 11. **T-LOAD "malformed state".** Read as garbage bytes, a payload without a `"model"` key, or a config whose shapes do not match. An H1 checkpoint loaded with `load_multi_horizon(·, 2)` must raise INVALID_CONFIG.
 12. **File name.** Protocol §11.4 names `tests/d2a/AUTHORSHIP.md`. Following the task instruction, this file is `AUTHORSHIP_A.md`.
+
+## Correction round (job 0029, R7)
+
+The job 0029 review (R7) ruled that D2A-FROZEN-v1 §2.4 registers 19 pools: train-s1..s4, dev-s1..s4, trainN-s1/s2, devN-s1/s2, stage0, stage0N, cal, val, test, valN and testN. The "21" in API.md §2.1 is a slip. I had copied that 21 into three assertions in `test_a_world.py`, although ORDER and EXPECTED list 19 pools. Those three assertions are now 19: `len(ORDER)` in `test_pool_table_follows_api`, and the distinct-seed and distinct-first-draw counts in `test_T_SEED_streams_pairwise_distinct`. Nothing else changed. This round I took the ruling as quoted in the task and opened no files other than these two. I compiled the file with `py_compile` and did not run pytest.

@@ -65,7 +65,7 @@ def test_constants():
 
 
 def test_pool_table_follows_api():
-    assert list(W.POOLS) == ORDER and len(ORDER) == 21
+    assert list(W.POOLS) == ORDER and len(ORDER) == 19
     for pool, ((proc, n, split, seed), _) in EXPECTED.items():
         got = tuple(W.POOLS[pool])
         assert got[:3] == (proc, n, split), pool
@@ -83,9 +83,9 @@ def test_T_SEED_pool_streams_follow_api_and_are_deterministic():
 
 def test_T_SEED_streams_pairwise_distinct():
     seeds = {pool: SeedTree(DATA).seed(*scope) for pool, (_, scope) in EXPECTED.items()}
-    assert len(set(seeds.values())) == 21
+    assert len(set(seeds.values())) == 19
     first = {tuple(W.pool_generator(p).random(4).tolist()) for p in ORDER}
-    assert len(first) == 21
+    assert len(first) == 19
     others = [("d2a", "bin", "val", b) for b in (1, 2, 3)] + [("d2a", "templates", 28)]
     assert not {SeedTree(DATA).seed(*s) for s in others} & set(seeds.values())
 

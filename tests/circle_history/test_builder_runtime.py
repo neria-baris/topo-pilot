@@ -32,6 +32,7 @@ def _ledger(tmp_path, entries):
 def bound(tmp_path, monkeypatch):
     contract = copy.deepcopy(meter_bind.CONTRACT)
     contract["resources"]["output_root"] = str(tmp_path)
+    contract["resources"].pop("cpu_policy", None)  # v2.5: these tests pin the legacy capped path
     monkeypatch.setattr(meter_bind, "CONTRACT", contract)
     for name in ("JOB_ID", "TASK_SHA256"):
         monkeypatch.setattr(meter_bind.controls, name, getattr(meter_bind.controls, name))
@@ -53,7 +54,7 @@ def bound(tmp_path, monkeypatch):
 def test_binding_points_unchanged_modules_at_this_job(bound):
     _ledger(bound, [])
     meter_bind.rewrite_argv(["--stage", "implementation", "--label", "x", "--", "cmd"])
-    assert meter_bind.controls.JOB_ID == "0016"
+    assert meter_bind.controls.JOB_ID == meter_bind.CONTRACT["job_id"]  # v2.5: job-bound
     assert meter_bind.controls.TASK_SHA256 == meter_bind.CONTRACT["task_sha256"].upper()
     assert meter_bind.meter.LEDGER == bound / "cpu_ledger.json"
     assert meter_bind.meter.CAP_S == 3600.0 and meter_bind.meter.STOP_NEW_S == 3480.0
@@ -100,6 +101,8 @@ def _mailbox(tmp_path, job="0099"):
     (box / "request.json").write_text(
         json.dumps({"command": "RUN_NEXT", "job_id": job, "task_sha256": digest}), encoding="utf-8"
     )
+    runtime = {"mode": "ISOLATED_IMPLEMENTATION_RUNNING"}  # v2.5: Codex-era runtime
+    (box / "coordinator_runtime.json").write_text(json.dumps(runtime), encoding="utf-8")
     out = tmp_path / "out"
     out.mkdir()
     (out / "FREEZE.json").write_text("{}", encoding="utf-8")

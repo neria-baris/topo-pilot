@@ -123,7 +123,8 @@ def test_ledger_allocation_sync_preserves_entries(tmp_path):
     new = json.loads(path.read_text(encoding="utf-8"))
     assert new["entries"] == entries and new["created_utc"] == "keep"
     assert new["stage_caps_s"] == res["stage_caps_s"]
-    assert new["allocation_history"][-1]["from"] == old and "owner_override" in new
+    moves = [h for h in new["allocation_history"] if "from" in h]  # v2.5: policy record follows
+    assert moves[-1]["from"] == old and "owner_override" in new
     assert meter_bind.sync_ledger_caps(path) is False
     path.write_text(json.dumps(_ledger({"oracle": 1}, entries)), encoding="utf-8")
     with pytest.raises(SystemExit, match="neither"):

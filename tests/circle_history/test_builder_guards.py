@@ -4,6 +4,7 @@ Synthetic counters and files only. See BUILDER_TESTS.md."""
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import subprocess
@@ -77,7 +78,10 @@ def restore_meter(monkeypatch):
         monkeypatch.setattr(meter_bind.controls, name, getattr(meter_bind.controls, name))
 
 
-def test_finalization_reserve_binding(tmp_path, restore_meter):
+def test_finalization_reserve_binding(tmp_path, restore_meter, monkeypatch):
+    legacy = copy.deepcopy(meter_bind.CONTRACT)  # v2.5: pins the legacy capped path
+    legacy["resources"].pop("cpu_policy", None)
+    monkeypatch.setattr(meter_bind, "CONTRACT", legacy)
     meter_bind.bind("0016", "AB", tmp_path, finalization=False)
     assert meter_bind.meter.STOP_NEW_S == 3480.0
     meter_bind.bind("0016", "AB", tmp_path, finalization=True)
@@ -176,6 +180,8 @@ def test_release_strict_boolean_in_verify(tmp_path):
         json.dumps({"command": "RUN_NEXT", "job_id": "0099", "task_sha256": digest}),
         encoding="utf-8",
     )
+    runtime = {"mode": "ISOLATED_IMPLEMENTATION_RUNNING"}  # v2.5: Codex-era runtime
+    (box / "coordinator_runtime.json").write_text(json.dumps(runtime), encoding="utf-8")
     out = tmp_path / "out"
     out.mkdir()
     (out / "FREEZE.json").write_text("{}", encoding="utf-8")

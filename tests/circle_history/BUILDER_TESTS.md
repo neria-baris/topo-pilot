@@ -42,3 +42,17 @@ Revised existing builder tests:
 - `test_builder_runtime.py`: the import-hygiene list was extended, and the fixture ledgers carry cap metadata.
 
 The earlier revisions are in git.
+
+## Spec v2.5 builder tests (job 0017)
+
+`test_builder_v25.py` was written by the same BUILDER and is NOT independent. It covers:
+- the claude-coordinator release binding: accepted with a valid assumption record; refused for a wrong session, a wrong sha256, a wrong schema, a record outside the archive, missing fields, an unknown issuer, a non-active runtime or a missing runtime file;
+- codex-coordinator releases: still verified while Codex is active, refused once the Claude coordinator is active or when the release carries Claude fields;
+- the measure-only CPU policy: no CPU stop and --max-cpu set to inf, an unreleased stage still a refused no-op, the disk reason still raised, and a ledger policy sync that preserves entries;
+- the phase interval F4: _wrap, apply_gauge and extend never return 2π.
+
+Revised builder tests:
+- `test_builder_runtime.py` and `test_builder_guards.py` pin the legacy capped path by removing cpu_policy from their copied contract, give their release mailboxes a Codex-era runtime file, and assert the job id from CONTRACT.
+- `test_builder_v24_runtime.py` finds the caps record among the ledger history records.
+
+The earlier revisions are in git.

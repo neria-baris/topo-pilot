@@ -159,13 +159,13 @@ The expected values are those of §3.2, §3.8, §4 and §3.6. `gate_G2` with a c
 | G0S | per world, a list of 12 vertex-link shapes such as ("arc", 3) or ("cycle", 4) |
 | G0O | per world, `boundary_components`, `consistent` (the orientation cocycle), `rank_gf3` and `nullity_gf2` |
 | G1 | `checks` only |
-| G2 | `N_t`, `HI_t`, `HI_mass_t`, `D_t`, `violations`, `max_branch_count`, `joint_pos_marginal_zero`, `named_reached`, `named_values_ok`, `named` (h_star and h_max as (P, π)) |
+| G2 | `N_t`, `HI_t`, `HI_mass_t`, `D_t`, `violations`, `control_counters`, `max_branch_count`, `joint_pos_marginal_zero`, `named_reached`, `named_values_ok`, `named` (h_star and h_max as (P, π)) |
 | G3 | `KL`, `KL_rev`, `MI` (80-digit Decimals, rendered to 32 characters) |
 | G4 | `max_errors` and `tolerances` (per §5.2 G4 quantity), `pair_tv`, `edge_tv1` |
 | G5 | `histories` (650) and `max_abs_error` |
 | G6 | per control, its exact quantities |
 
-G2 `violations` names: `lemmaB`, `thmCb`, `thmCa`, `mixture`, `thmA`, `D2`, `F1`, `F2`, `pi_not_half`, `tv1_nonzero` and `tv2_nonzero_HI`. Only the first eight gate the frozen run; the last three are the counters the N1 and N2 controls read.
+G2 `violations` holds exact-identity failure counts only: `lemmaB`, `thmCb`, `thmCa`, `mixture`, `thmA`, `D2`, `F1` and `F2`; all must be 0 for PASS. `control_counters` (`pi_not_half`, `tv1_nonzero`, `tv2_nonzero_HI`) are counters, not violations; the N1 and N2 controls read them, and in the frozen run they are legitimately nonzero (correction, job 0020: the first delta listed them under `violations`, contradicting the original contract).
 
 **Control harnesses (G6).**
 - N1: TV₂ is also evaluated at **every** enumerated node, not only 𝓗_I.

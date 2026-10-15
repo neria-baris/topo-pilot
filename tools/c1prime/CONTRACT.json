@@ -1,0 +1,388 @@
+{
+ "protocol": "C1prime-v1",
+ "protocol_file": "tools/c1prime/PROTOCOL_C1PRIME_v1.md",
+ "protocol_sha256": "0B1F107EC7BB241E97D812EE995AD91DFB1416D719B70942DC3A567B766CF33A",
+ "base_sha256": "D1DF1AEF98BB55DC8A7CE66039865AAAFF339DBDA9B9017CFEB556F048BA5DBA",
+ "delta_sha256": "4556EB91CF57D20BE5A5BA4D7577114FBB1BE25FE8166952CBCDA3D32DE29A58",
+ "job_id": "0026",
+ "task_sha256": "0C16E6D4C5919E95866CFC6125D147D823370952BCBC36E9C0646DED9A2AD9AB",
+ "status": "implementation contract (job 0026): code and synthetic tests only, no data",
+ "precedence": "PROTOCOL_C1PRIME_v1.md wins on any conflict with this file or API.md",
+ "models": [
+  1729,
+  2718,
+  3141
+ ],
+ "artifacts": {
+  "artifact_root": "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts",
+  "per_model": {
+   "1729": {
+    "checkpoint": "c3358e3cb9c352fb",
+    "EmissionSpec": "3633ac27dab50cf4"
+   },
+   "2718": {
+    "checkpoint": "98b0e703a337d513",
+    "EmissionSpec": "97838b9e13a26f74"
+   },
+   "3141": {
+    "checkpoint": "036b670743ffbbaf",
+    "EmissionSpec": "8c29c329c197c79e"
+   }
+  },
+  "shared": {
+   "WorldSpec": "21feee1d8ee5422e",
+   "TransitionSpec": "e4dafc7b9785c172"
+  },
+  "exposed_assets": {
+   "1729": {
+    "ObservationSet": "2a67b2c947e293ba",
+    "HistoryIndex": "afb6e7120c9477b1",
+    "ActivationSet": "0e001559534ee7ef"
+   },
+   "2718": {
+    "ObservationSet": "95c4d118517ecd92",
+    "HistoryIndex": "908cb61ffbd956c6",
+    "ActivationSet": "ec17425cf67f1a54"
+   },
+   "3141": {
+    "ObservationSet": "2e2cf22bb4820155",
+    "HistoryIndex": "7e7d27bd143ebeb5",
+    "ActivationSet": "069da84ce363d8f2"
+   }
+  },
+  "exposed_assets_use": "exposure registry only, never C1 data (\u00a72.1)"
+ },
+ "site": {
+  "hook": "resid_post_3",
+  "index": 32,
+  "bos": 36,
+  "input_length": 33,
+  "logits_index": 32,
+  "d_model": 128,
+  "vocab": 36
+ },
+ "symbols": {
+  "canonical_emission": "E_canon = E_named[:, symbol_perm]",
+  "named_from_canonical": "named = symbol_perm[canonical]",
+  "canonical_from_named": "canonical = argsort(symbol_perm)[named]",
+  "canonical_history_digest": "sha256 of canonical tokens[:, :32] as uint8 bytes, row-wise"
+ },
+ "splits": {
+  "block_size": 4096,
+  "cal_blocks": [
+   0,
+   1
+  ],
+  "val_blocks": [
+   0
+  ],
+  "test_blocks": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "panel_size": 1024,
+  "panel_rule": "panel = 4*block + floor(rank_in_block/1024), rank by ascending sequence_id",
+  "m0_rows": 1024,
+  "chart_rows": 512
+ },
+ "seeds": {
+  "scope_tag": "c1-sf-v1",
+  "master": 0,
+  "histories": [
+   "data",
+   "c1-sf-v1",
+   "<split>",
+   "<block>",
+   "cylinder",
+   "overlap",
+   "1.25"
+  ],
+  "sequence_ids": "make_sequence_ids(process_code('cylinder','overlap','1.25',f'c1-sf-v1/{split}/b{block}'), 'test', 4096)",
+  "frames": [
+   "c1-sf-v1",
+   "frame",
+   "<model_seed>",
+   "<r>"
+  ],
+  "rbf_bandwidth": [
+   "c1-sf-v1",
+   "rbf_bandwidth",
+   "<model_seed>",
+   "<target>"
+  ],
+  "rbf": [
+   "c1-sf-v1",
+   "rbf",
+   "<model_seed>",
+   "<target>"
+  ],
+  "targets": [
+   "w32",
+   "ymarg",
+   "m32"
+  ],
+  "bootstrap": {
+   "val_sd": 520501,
+   "val_centred": 520502,
+   "fresh_endpoint": 520503,
+   "val_v3": 520504,
+   "val_headroom": 520505,
+   "fresh_headroom": 520506,
+   "fresh_v3": 520507
+  },
+  "draws": 5000
+ },
+ "oracle": {
+  "symmetry_tol": 1e-14,
+  "closed_form_delta": 2e-12,
+  "closed_form_t_max": 1.5,
+  "named_canonical_rel_tol": 4e-12,
+  "G_cross_model_tol": 1e-12,
+  "decimal_rows_per_split": 4,
+  "decimal_digits": 60,
+  "decimal_context": 80,
+  "h3_rel_tol": 2e-12,
+  "h3_abs_a": 2e-12,
+  "surprisal_tol": 1e-10,
+  "G_decimal_allowance": "1e-30",
+  "validate_process_tol": 1e-12
+ },
+ "eligibility": {
+  "quantile": 0.999,
+  "method": "inverted_cdf",
+  "h4_min_fraction": 0.9,
+  "kappa_trigger": 0.01
+ },
+ "fwl": {
+  "columns": 41,
+  "cond_max": 100000000.0,
+  "sigma_ratio_min": 1e-06,
+  "sigma_w_eig_ratio_min": 1e-12
+ },
+ "frames": {
+  "count": 32,
+  "shape": [
+   128,
+   2
+  ]
+ },
+ "decoders": {
+  "features": 2048,
+  "bandwidth_rows": 1024,
+  "ridge_grid": [
+   0.001,
+   0.01,
+   0.1,
+   1.0,
+   10.0
+  ],
+  "ridge_equivalence_tol": 1e-10,
+  "m4_accuracy_min": 0.95,
+  "m4_r2_min": 0.5
+ },
+ "m1": {
+  "identity_rel_tol": 1e-10,
+  "orthonormality_tol": 1e-12
+ },
+ "m2": {
+  "Dw_max": 0.02,
+  "Dy_max": 0.05,
+  "Dw_match": 0.01,
+  "Dy_match": 0.02,
+  "dispersion_min_frames": 28,
+  "leakage_max": 0.25
+ },
+ "m3": {
+  "q": 0.99,
+  "floor": 0.05,
+  "slack": 0.02,
+  "match": 0.02,
+  "sup_S": 0.99,
+  "sup_other": 0.98
+ },
+ "v1": {
+  "min_agreement": 0.75
+ },
+ "v2": {
+  "kappa": [
+   0.5,
+   1.5
+  ],
+  "min_agreement": 0.8
+ },
+ "v3": {
+  "c": 0.3,
+  "alpha": "0.05/3",
+  "rank": 84
+ },
+ "h5": {
+  "threshold_nat": 0.01,
+  "p": 0.05,
+  "rank": 250
+ },
+ "endpoint": {
+  "c": 0.1,
+  "alpha": "0.05/3",
+  "ranks": [
+   84,
+   4917
+  ]
+ },
+ "ladder": {
+  "N": [
+   4096,
+   8192,
+   16384
+  ],
+  "power": 0.8,
+  "planning_theta": 0.2,
+  "slack": 0.02
+ },
+ "numerics": {
+  "tail_identity_tol": 1e-12,
+  "floor": "1e-9",
+  "p2_logit": 524288,
+  "p2_score": 2097152,
+  "p2_leaf": 8388608,
+  "p4_max": "1/2"
+ },
+ "chart": {
+  "field": 47,
+  "ripser": {
+   "maxdim": 1,
+   "coeff": 47,
+   "distance_matrix": true,
+   "do_cocycles": true
+  },
+  "bar": "largest strictly positive finite H1 lifetime; ties birth asc, death asc, index asc",
+  "scale": "midpoint (birth + death) / 2; edges with distance <= scale",
+  "lift_bounds": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "lift_node_limit": 128,
+  "lift_solver": "scipy.optimize.milp, zero objective, integrality all, threads 1, mip_rel_gap 0, presolve default",
+  "lift_rounding_tol": 1e-07,
+  "local_passes": 2,
+  "local_vertices": 128,
+  "primitive_root": 0,
+  "smoothing_residual_max": 1e-08,
+  "gauge": "fit_gauge(chart, m32[C*]) unchanged: s in (+1,-1) maximizing |mean(exp(i*s*phi) * conj(m32x + i*m32y))| over the C* landmarks; tie s=+1; phi <- (s*phi - arg(c)) mod 2pi; |c| finite and > 0; no other alignment threshold",
+  "extension_k": 8,
+  "sigma": "median(d8) over the charted landmarks C*: d8_i = 8th smallest distance from charted landmark i to the other charted landmarks (self excluded only)",
+  "weights": "exp(-0.5 * (d / sigma)^2)",
+  "duplicate_rule": "query with an exact zero distance: z = mean of exp(i*phi_j) over ALL landmarks at distance exactly 0; Invalid if 1 - |z| > 1e-8",
+  "support_min_resultant": 0.2,
+  "fidelity_min_agreement": 0.8,
+  "phase_bins": 12,
+  "phase_bin_min_rows": 8,
+  "overall_resultant_max": 0.3,
+  "max_chart_constructions": 6,
+  "inherited_from": "tools/x4_circle_history/CONTRACT.json (K4 freeze e3049fee...c94a), kernel parameters only; the frozen K4 CONTRACT is not edited",
+  "landmarks": "production: the 512 lowest-sequence_id rows of fresh cal block 0, every sampled row; direct comparator: the 512 lowest-sequence_id rows of val block 0; natural float64 resid_post_3/p32 activations; landmark_ids = 20-digit zero-padded sequence_id strings, ascending",
+  "restriction": "largest connected component C* of ({0..511}, edge_list(D, r)); ties to the component containing the smallest landmark index",
+  "giant": {
+   "n": 512,
+   "min_m": 487,
+   "rule": "100*m >= 95*512 (integers)"
+  },
+  "support_radius": "2 * quantile(d8, 0.99, method=inverted_cdf), d8 over D[np.ix_(C*, C*)]",
+  "scale_domain": "D[np.ix_(C*, C*)] (MERGE ruling 1)",
+  "val_support": {
+   "n": 512,
+   "min_supported": 507,
+   "rule": "100*n_sup >= 99*512 (integers)"
+  },
+  "fidelity_domain": "the direct chart's C*_val rows, in its landmark order, unmasked",
+  "bins_resultant_domain": "all 512 val-panel production-extension queries",
+  "support_rule": "C0-val: >= 507/512 supported (not every row); M3: fractions (protocol \u00a79)",
+  "gate_rules": "C0-cal: GIANT, lift, primitive, smoothing, gauge alignment finite > 0; C0-val: direct GIANT, support >= 507/512, fidelity >= 0.80, every bin >= 8, overall resultant <= 0.30; unmet -> INCONCLUSIVE/CHART_UNAVAILABLE",
+  "lift_cpu_cap_s": null,
+  "native_operation_wall_s": 600,
+  "construction_plan": {
+   "production": "1 per model at S4",
+   "direct": "1 per model at S5"
+  },
+  "chart_specific_invalid": [
+   "Invalid('not a cocycle mod p') from integer_lift -> INCONCLUSIVE/CHART_UNAVAILABLE, reason 'float32/float64 filtration boundary'",
+   "Invalid from smooth_phase with every f finite and a finite residual > 1e-8 -> INCONCLUSIVE/CHART_UNAVAILABLE (original message); non-finite f or residual, or unavailable diagnostics -> FAIL_TECHNICAL"
+  ]
+ },
+ "authority": {
+  "owner_decisions": {
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.md",
+   "sha256": "5BD1FDB0D66BCE5299644659B3E09436CA94B762A62D24D02E1AB064FDE537CD",
+   "decisions": [
+    "A2",
+    "A3"
+   ]
+  },
+  "chart_diag_spec_sha256": "11710D84FF991B097CDF28E47DCD103822CF4F5BF57D0202F0C84BF05E183793",
+  "diag_json_sha256": "d01d21c0c28d6af0a0f64b7f00ec548009b2158d61ce045b1625a618cedaffa5",
+  "diag_verdict": "GO",
+  "job_0023_review": "agent-handoff/jobs/0023/review.md",
+  "k4_freeze": {
+   "path": "x4-circle-history-feas-store-0015/FREEZE.json",
+   "sha256": "e3049feedf0fadfb004c9422effe560af031addb846a7b8d1c1bffd52ce3c94a",
+   "bound_files": [
+    "tools/x4_circle_history/chart.py",
+    "tools/x4_circle_history/cochain.py",
+    "tools/x4_circle_history/errors.py"
+   ]
+  }
+ },
+ "registry": {
+  "version_1_sources": [
+   "a: every ObservationSet in artifact_root",
+   "b: X4, X4-B2, job-0014, K4 (0015/0016 incl. 0018), X4-F, d1-seam-oracle-store, chart-diag-store-0023, any K4b store",
+   "c: every planning-feasibility history under agent-handoff"
+  ],
+  "version_2_adds": "d: every C1 cal and val H, H+ and H-"
+ },
+ "stages": {
+  "order": [
+   "oracle",
+   "calibration",
+   "validation",
+   "fresh"
+  ],
+  "PREREQUISITE": {
+   "oracle": null,
+   "calibration": "oracle",
+   "validation": "calibration",
+   "fresh": "validation"
+  },
+  "releases": {
+   "R1": [
+    "oracle"
+   ],
+   "R2": [
+    "calibration",
+    "validation"
+   ],
+   "R3": [
+    "fresh"
+   ]
+  }
+ },
+ "resources": {
+  "cpu_policy": "MEASURE_ONLY_OWNER_OVERRIDE",
+  "cpu_cap_s": null,
+  "threads": 1,
+  "memory_bytes": 12884901888,
+  "output_bytes": 17179869184,
+  "native_operation_wall_s": 600,
+  "output_root": "X:/Downloads/projects/topo-pilot/c1prime-store",
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "worker_session": "88eb0214-46ad-4376-b93b-3da3034423d6"
+ }
+}

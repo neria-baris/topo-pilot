@@ -137,3 +137,57 @@ The expected values are those of §3.2, §3.8, §4 and §3.6. `gate_G2` with a c
   - With the production float kernels passed directly, at least one mixture-posterior entry must differ from the rational posterior by more than 1e-19.
 - Each G6 control's expected outcome.
 - The module file has at most 400 lines.
+
+## Delta for job 0020 (addendum 2, sha256 2258ED96…3F6F; implementation choices only)
+
+**Module split.** There are two files, each at most 400 lines.
+- `d1_seam.py` holds: constants, `exact_world_T`, `exact_E`, `exact_model`, `_D1MobiusBuilder`, `build_worlds`, `float_model`, `exact_history`, `tv`, the enumerator, and `gate_G0`, `gate_G0S`, `gate_G0O`, `gate_G1`, `gate_G2` (including G2.11) and `gate_G3`.
+- `d1_seam_checks.py` holds `gate_G4`, `gate_G5`, `gate_G6`, `s0_check` and `run`. It does `import d1_seam`.
+- The last line of `d1_seam.py` re-exports `gate_G4`, `gate_G5`, `gate_G6` and `run` from `d1_seam_checks`, so `import d1_seam` exposes every API name. That module-end import avoids a circular import.
+
+**Gate signatures.**
+- `gate_G0(worlds, E_mix=None)`: `E_mix` defaults to `float_model()["E_mix"]`. The L1 harness passes the L1 mixture emission to evaluate the G0.6 block-equality criterion.
+- `gate_G1(variant="frozen")` and `gate_G2(variant="frozen", K=8)`: G6 uses the variant forms.
+- `gate_G4(enum)`: `enum` is the dict returned by `gate_G2()`. Its private `"_data"` key holds the exact per-node values (history, b_C, b_M, π, P, and the futures at 𝓗_I nodes); it is never written to the report.
+- `gate_G5()` and `gate_G6()` take no arguments.
+
+**`values` keys** (every gate also has `values["checks"]`, a dict from check name to bool; PASS means all are True):
+
+| Gate | Keys |
+|---|---|
+| G0 | `edges_C`, `edges_M` |
+| G0S | per world, a list of 12 vertex-link shapes such as ("arc", 3) or ("cycle", 4) |
+| G0O | per world, `boundary_components`, `consistent` (the orientation cocycle), `rank_gf3` and `nullity_gf2` |
+| G1 | `checks` only |
+| G2 | `N_t`, `HI_t`, `HI_mass_t`, `D_t`, `violations`, `max_branch_count`, `joint_pos_marginal_zero`, `named_reached`, `named_values_ok`, `named` (h_star and h_max as (P, π)) |
+| G3 | `KL`, `KL_rev`, `MI` (80-digit Decimals, rendered to 32 characters) |
+| G4 | `max_errors` and `tolerances` (per §5.2 G4 quantity), `pair_tv`, `edge_tv1` |
+| G5 | `histories` (650) and `max_abs_error` |
+| G6 | per control, its exact quantities |
+
+G2 `violations` names: `lemmaB`, `thmCb`, `thmCa`, `mixture`, `thmA`, `D2`, `F1`, `F2`, `pi_not_half`, `tv1_nonzero` and `tv2_nonzero_HI`. Only the first eight gate the frozen run; the last three are the counters the N1 and N2 controls read.
+
+**Control harnesses (G6).**
+- N1: TV₂ is also evaluated at **every** enumerated node, not only 𝓗_I.
+- L1: both detections are evaluated: (i) `gate_G0(worlds, E_mix=L1)` must report E_blocks False; (ii) the G2.4 (Theorem C(a)) check on L1 at K = 1 must count violations, and π(A) = 1/4.
+- L2: `gate_G1("L2")` must report its Theorem A row checks False, and the (3, 0) and (3, 2) rows must differ.
+
+**`run(out_dir, preflight)` report.**
+- `report["verdict"]` is PASS, FAIL or INVALID. `report["first_failed"]` names the gate.
+- `report["gates"][name]["status"]` is PASS, FAIL, INVALID or NOT_RUN, with that gate's values.
+- Also recorded: `report["preflight"]`, `report["S0"]` (`hashes_ok` over the protocol, both addenda and the request; `kernel_diff_empty` over `src/`, `tools/x4_oracle_profile/` and `tests/oracle_profile/` against 4f219d6; `head`), `model_sha256` and `cpu_s`.
+- **Order:** a failed or missing preflight gives INVALID. Otherwise an S0 mismatch gives INVALID. Otherwise G0…G6 run, stopping at the first FAIL. An exception while evaluating a gate is INVALID, as are builder exceptions under S2.
+- `report.json` is always written; `model.npz` (T_C, T_M, E, μ) is written once the worlds are built.
+- CLI: `python d1_seam_checks.py --out <dir> --preflight <preflight.json>`.
+
+**Metering and preflight** (not part of the module).
+- **Meter:** every run uses the unchanged job-0014 meter, bound by a store-local script `d1-seam-oracle-store/d1_meter_bind.py` that rebinds module names only, with the same pattern as job 0016's meter_bind:
+  - the store's own ledger and lock;
+  - CPU measure-only, per the owner override;
+  - the methodological 20 CPU-minute ceiling (S1) passed as `--max-cpu 1200` for the gate run;
+  - Job Object memory limited to 2 GiB (S1);
+  - one thread, set by the meter's environment variables.
+- **Preflight:** the record `d1-seam-oracle-store/preflight.json` is built from metered runs of:
+  - pytest on `tests/world`, `tests/process`, `tests/oracle` and `tests/oracle_profile` (regressions);
+  - pytest on `tests/d1_seam`, which covers registry hygiene, the geometry guards, the Decimal trap, the controls and the 400-line check;
+  - `tools/check_file_sizes.py`.

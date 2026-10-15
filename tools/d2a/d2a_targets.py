@@ -119,7 +119,8 @@ def _ab(x) -> np.ndarray:
 def band_edge_table(tokens, q_model=None) -> dict:
     """All (row, p), p = 1..32 with w_p in {σ0, σ2}: oracle d, window-8 r8 and model rm."""
     tok = np.asarray(tokens)
-    out = {k: [] for k in ("ep", "p", "d", "r8", "rm")}
+    keys = ("ep", "p", "d", "r8") + (() if q_model is None else ("rm",))  # rm only with q_model
+    out = {k: [] for k in keys}
     for p in range(1, 33):
         pos = np.where(np.isin(tok[:, p - 1], (W.S0_, W.S2_)), p, 0)
         rows, q = oracle_rows(tok, pos)

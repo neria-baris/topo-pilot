@@ -4,6 +4,7 @@ Written from D2A-FROZEN-v1 (§1.4 qualifiers, §10.4 ruling D1, §10.5 qualifier
 tools/d2a/API.md (§2.5 qualifier list) only; no tools/d2a source was read. Qualifiers are compared
 as sets; ``BEHAVIOUR(H, t)`` is matched by its prefix and its two integers (H number, t), because
 API.md does not fix its spelling.
+Corrected in job 0029 pre-dispatch per the d2a-0029 rulings (6a: PRECISION_LIMITED scope).
 """
 
 from __future__ import annotations
@@ -128,16 +129,33 @@ def test_length_qualifier_on_rule4_learning_unresolved():
     assert got == "LEARNING_UNRESOLVED" and "LENGTH_UNRESOLVED" in quals
 
 
+# §10.5: "any model entering the rule that fired" (ruling 6a). Rule 8 conditions only on H2
+# models; rules 4-7 and 10 involve both H1 and H2 models. Rule 9 is tested separately below.
+BOTH_ARMS = [c for c in CASES if c[0] not in (not_recovered, predictive)]
+
+
 @pytest.mark.parametrize("arm, slot, value", [
     ("H1", 0, F), ("H1", 3, None), ("H2", 1, F), ("H2", 2, None),
 ])
-@pytest.mark.parametrize("make, outcome", [c for c in CASES if c[0] is not not_recovered])
-def test_precision_limited_on_any_h1_or_h2_failure(make, outcome, arm, slot, value):
+@pytest.mark.parametrize("make, outcome", BOTH_ARMS)
+def test_precision_limited_on_h1_or_h2_failure_when_both_arms_enter(make, outcome, arm, slot,
+                                                                    value):
     f = make()
     f["precision_ok"][arm][slot] = value
     got, quals = run(f)
     assert got == outcome  # the qualifier only flags; rule 9 is the only outcome it changes
     assert "PRECISION_LIMITED" in quals
+
+
+@pytest.mark.parametrize("arm, slot, value, present", [
+    ("H1", 0, F, False), ("H1", 3, None, False), ("H2", 1, F, True), ("H2", 2, None, True),
+])
+def test_precision_limited_on_rule8_counts_only_h2_models(arm, slot, value, present):
+    f = predictive()
+    f["precision_ok"][arm][slot] = value
+    got, quals = run(f)
+    assert got == "PREDICTIVE_WITHOUT_LINEAR_POSTERIOR"
+    assert ("PRECISION_LIMITED" in quals) is present
 
 
 def test_precision_limited_turns_outcome9_into_inconclusive():

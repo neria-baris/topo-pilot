@@ -4,6 +4,7 @@ binding, supervisor, budgets, disk floors, STOP/HOLD propagation) plus RUNS, WAV
 Written from D2A-FROZEN-v1 (§4.1, §4.7, §10.7 S6/S8, §11.3, §11.5, ruling D6) and tools/d2a/API.md
 (§2.3) only; no tools/d2a source was read. Everything runs on tmp_path mailboxes, fake module
 namespaces and fake process handles; no real mailbox, store, meter or child process is touched.
+The S6 CPU limits follow D2A-FROZEN-v1 coordinator addendum 1 (owner addendum 5).
 """
 
 from __future__ import annotations
@@ -67,11 +68,11 @@ def test_training_and_model_configs():
 
 def test_limits_defaults_are_the_s6_values():
     lim = d2a_train.Limits()
-    assert lim.model_cpu_s == 3.5 * HOUR
+    assert lim.model_cpu_s == 7 * HOUR  # owner addendum 5 doubled every S6 CPU ceiling
     assert lim.process_mem == 3 * GIB
-    assert dict(lim.stage_cpu_s) == {"preflight": 1 * HOUR, "stage0": 1 * HOUR,
-                                     "stage1": 7 * HOUR, "stage2": 42 * HOUR, "stage3": 6 * HOUR}
-    assert lim.total_cpu_s == 57 * HOUR
+    assert dict(lim.stage_cpu_s) == {"preflight": 2 * HOUR, "stage0": 2 * HOUR,
+                                     "stage1": 14 * HOUR, "stage2": 84 * HOUR, "stage3": 12 * HOUR}
+    assert lim.total_cpu_s == 114 * HOUR
     assert lim.job_mem == 12 * GIB
     assert lim.poll_s == 2.0
 
@@ -266,10 +267,10 @@ def test_supervisor_reasons_record_the_polling_interval():
 # ---------------------------------------------------------------- admit and ledger spending
 
 @pytest.mark.parametrize("spent_stage, spent_total, need, ok", [
-    (25000.0, 25000.0, 200.0, True),            # remaining stage budget == need: admitted
-    (25000.0, 25000.0, 200.5, False),           # remaining stage budget < need
-    (0.0, 57 * HOUR - 100.0, 150.0, False),     # total budget binds although the stage is fresh
-    (0.0, 57 * HOUR - 150.0, 150.0, True),
+    (50200.0, 50200.0, 200.0, True),            # remaining stage budget == need: admitted
+    (50200.0, 50200.0, 200.5, False),           # remaining stage budget < need
+    (0.0, 114 * HOUR - 100.0, 150.0, False),    # total budget binds although the stage is fresh
+    (0.0, 114 * HOUR - 150.0, 150.0, True),
 ])
 def test_admit(spent_stage, spent_total, need, ok):
     lim = d2a_train.Limits()

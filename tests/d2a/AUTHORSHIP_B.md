@@ -5,13 +5,13 @@ Independent test author B wrote these files. Author B is a separate, clean-conte
 | File | Lines | Test functions | Protocol test ids |
 |---|---|---|---|
 | `test_b_targets.py` | 211 | 14 | T-BETA: `beta`, `band_edge_table`, β₂ on oracle decision contrasts |
-| `test_b_rules_flags.py` | 278 | 24 | T-RULES: `learned`, `stage1_decision`, `arm_value`, `carries`, `low_increment`, `beta2_pass`, `precision_ok`, `c_hor`, `c_len` (ruling D1), `pipeline_null_ok` (ruling D3) |
+| `test_b_rules_flags.py` | 292 | 25 | T-RULES: `learned`, `stage1_decision`, `arm_value`, `carries`, `low_increment`, `beta2_pass`, `precision_ok`, `c_hor`, `c_len` (ruling D1), `pipeline_null_ok` (ruling D3) |
 | `test_b_rules_decide.py` | 319 | 26 | T-RULES: `decide`, rules 1–10 in order, rule-4 combinations, rule-5 matched seeds, missing-seed convention, UNRESOLVED C-HOR |
-| `test_b_rules_qualifiers.py` | 213 | 12 | T-RULES: qualifiers (LENGTH, PRECISION_LIMITED, WORLD_CONDITIONAL_CEILING, CAVEAT_REREAD, BEHAVIOUR), none for outcomes 1–3 |
-| `test_b_resource.py` | 365 | 20 | T-RESOURCE: `verify_identity`, `bind_meter`, `Supervisor`, `admit`, `stage_spent`/`total_spent`, `disk_reason`, `boundary`/`D2AStop`; `Limits`, `RUNS`, `WAVES`, `TRAIN_CFG`/`MODEL_CFG` |
+| `test_b_rules_qualifiers.py` | 231 | 13 | T-RULES: qualifiers (LENGTH, PRECISION_LIMITED, WORLD_CONDITIONAL_CEILING, CAVEAT_REREAD, BEHAVIOUR), none for outcomes 1–3 |
+| `test_b_resource.py` | 366 | 20 | T-RESOURCE: `verify_identity`, `bind_meter`, `Supervisor`, `admit`, `stage_spent`/`total_spent`, `disk_reason`, `boundary`/`D2AStop`; `Limits`, `RUNS`, `WAVES`, `TRAIN_CFG`/`MODEL_CFG` |
 | `test_b_behaviour.py` | 148 | 12 | §9.3 `pair_scores`; §7.4 `shuffle_perm` |
 
-With parametrisation, 585 tests are collected.
+With parametrisation, 585 tests were collected at job 0028. The correction round below adds six parametrised cases (591, counted by hand; pytest was not run in that round).
 
 ## What was read
 
@@ -66,12 +66,12 @@ The total CPU used was well under a minute. No git command that writes was run, 
 ## Ambiguities found, and how the tests resolve them
 
 1. **`learned()` and `None` (the most important).** The API says "`None` (missing or INVALID model) → FAIL", but `beta()` returns `None` for an undefined slope.
-   - The tests take `learned(None, None, None, None) == "FAIL"` as the missing-model convention.
+   - *Resolved by ruling Q6 (d2a-0029).* A missing or INVALID model is now passed explicitly as `model_status="MISSING"` or `"INVALID"`, and gives `"FAIL"`. Four `None`s with the default status (a present model) give `"UNRESOLVED"`.
+   - The job-0028 tests had taken `learned(None, None, None, None) == "FAIL"` as the missing-model convention. That expectation was wrong: the old signature gave no evidence that the model was missing.
    - A single `None` among defined values must give `"UNRESOLVED"`. That is §6: an undefined statistic of a present model is never a defined FAIL. A NaN in any slot also gives `"UNRESOLVED"`.
-   - A present model whose four statistics are all undefined cannot be told apart from a missing one under this signature. The coordinator may want to fix how a missing model is passed.
 2. **Undefined values in the flag functions.**
    - `low_increment(NaN)` is False. An undefined increment fails every per-seed condition (§10.5); the API names only `None`.
-   - `c_len` with a NaN per-seed value gives `LENGTH_UNRESOLVED` (§10.4, "defined score"); the API names only `None`.
+   - `c_len` with a NaN per-seed value gives `LENGTH_UNRESOLVED` (§10.4, "defined score"); the API names only `None`. Ruling 6b (d2a-0029) confirms this and extends it to a NaN mean or interval endpoint, now tested too.
    - `c_hor` gets the same treatment, as the API says ("None or undefined").
 3. **`pipeline_null_ok` keys.** The tests use the keys `("d2a-s1-N", 16)`, `("d2a-s1-N", 28)`, `("d2a-s2-N", 16)` and `("d2a-s2-N", 28)`. The function's verdict must not depend on how the keys are spelled. A dict with only three keys gives False ("all four are defined").
 4. **The `decide()` result format.**
@@ -79,7 +79,12 @@ The total CPU used was well under a minute. No git command that writes was run, 
    - `BEHAVIOUR(H, t)` is matched by its prefix and its two integers, so `BEHAVIOUR(H2,28)` and `BEHAVIOUR(H2, 28)` both work.
    - Qualifiers are compared as sets.
 5. **No qualifiers for rule 3 (PIPELINE_INVALID).** API.md mentions only rules 1–2, but §1.4 attaches qualifiers to outcomes 4–10 only, so the tests expect none for rule 3.
-6. **PRECISION_LIMITED scope.** The tests apply the API's simplification ("any H1 or H2 model") to every outcome from 4 to 10, including rule-4 outcomes and INCONCLUSIVE. It does not change the outcome, except that outcome 9 becomes INCONCLUSIVE.
+6. **PRECISION_LIMITED scope.** *Corrected by ruling 6a (d2a-0029).* §10.5 scopes the qualifier to "any model entering the rule that fired"; the job-0028 tests had wrongly applied the API's "any H1 or H2 model" to every outcome from 4 to 10.
+   - Rule 8 (PREDICTIVE_WITHOUT_LINEAR_POSTERIOR) conditions only on H2 models. An H1-only precision failure leaves the qualifier absent; an H2 failure adds it.
+   - Rules 4 (MULTISTEP_ENABLES_LEARNING), 5, 6 and 7 involve both H1 and H2 models, so a failure in either arm adds it.
+   - Rule 9: a precision failure in any H1 or H2 model gives INCONCLUSIVE with the qualifier, unchanged.
+   - Still a reading, not a ruling: rule 10 (INCONCLUSIVE from `base()`) is treated as involving both arms. It is reached only after rules 5–9, all of which involve H1 or H2 models, and rule 9's own precision condition covers every H1 and H2 model.
+   - The qualifier never changes the outcome, except that outcome 9 becomes INCONCLUSIVE.
 7. **CAVEAT_REREAD counting.** Its two conditions are counted separately (≥ 3 seeds each), not as matched seeds, as §10.5 writes them.
 8. **`band_edge_table` return type and row order.**
    - The result may be a dict with the keys `ep`, `p`, `d`, `r8` and `rm`, or a tuple in that order.
@@ -105,3 +110,19 @@ The total CPU used was well under a minute. No git command that writes was run, 
     - Given E_contrast ≤ 0.5, the triangle inequality already forces 0.5Δ ≤ tv_pred ≤ 1.5Δ. The band's boundary cases therefore always coincide with E_contrast = 0.5 exactly.
     - Both boundaries are tested as reproduced, and the values just beyond them as not reproduced.
 16. **`WAVES` / `RUNS`.** Values are compared as tuples, including the order within each wave (§4.7). `TRAIN_CFG` and `MODEL_CFG` are compared by dataclass equality. `THREADS` is not tested, because its representation is unspecified.
+
+## Correction round (job 0029 pre-dispatch)
+
+The same author role, in a new clean-context Claude Opus 5.5 session, made these corrections on branch `d2a-0028` (from HEAD 0b691bc). They follow the coordinator rulings in `agent-handoff/planning/responses/d2a-0029-rulings.md` and the Codex rulings `coord-d2a-0029-rulings-20261015.codex.md`. The S6 change follows `D2A-FROZEN-v1.coordinator-addendum-1.md` (owner addendum 5).
+
+| Change | File | Ruling |
+|---|---|---|
+| Four `None`s give `UNRESOLVED`; `model_status="MISSING"` and `"INVALID"` give `FAIL`. The single-`None` tests are kept. | `test_b_rules_flags.py`, `test_learned_four_none_is_unresolved_unless_model_status_says_missing_or_invalid` | Q6 (Codex 1) |
+| A NaN mean, 1.25th or 98.75th percentile gives `LENGTH_UNRESOLVED`, on both the GAIN and LOSS bases. The missing-input and NaN-seed tests are kept. | `test_b_rules_flags.py`, `test_c_len_nan_mean_or_interval_endpoint_is_unresolved` | 6b |
+| The PRECISION_LIMITED expectations are split by firing rule: both arms for rules 4–7 and 10; H2 only for rule 8. The rule-9 test is unchanged. | `test_b_rules_qualifiers.py`, `test_precision_limited_on_h1_or_h2_failure_when_both_arms_enter`, `test_precision_limited_on_rule8_counts_only_h2_models` | 6a |
+| `Limits` now expects per model 7 CPU-h; stages 2/2/14/84/12 CPU-h; total 114 CPU-h. In `test_admit`, the stage-1 rows move from 25,000 to 50,200 s spent, so 200 s remain, as before. The total rows move to `114 * HOUR - 100.0` / `- 150.0`. | `test_b_resource.py`, `test_limits_defaults_are_the_s6_values`, `test_admit` | Q3 (Codex 3) with owner addendum 5 |
+| Ambiguities 1, 2 and 6 above are rewritten. | `AUTHORSHIP_B.md` | Q6, 6a, 6b |
+
+- **Wave arguments.** `test_b_resource.py` asserts no wave `--max-cpu`/`--max-wall` values. None were added, because there is no existing API name to assert them through.
+- **What was read in this round:** the three rulings/addendum files in full; D2A-FROZEN-v1 lines 775–830 only (§10.4–§10.5); author B's own test files; and a grep of `tools/d2a/API.md` for `max-cpu`/`wall`. No `tools/d2a/*.py`, `multihorizon.py` or author-A file was opened.
+- **What was executed:** `python -I -m py_compile` on each changed test file. Edits were made as bytes, which kept the LF line endings. No pytest run, and no formatter.

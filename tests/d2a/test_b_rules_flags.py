@@ -5,6 +5,7 @@ precision_ok, c_hor, c_len, pipeline_null_ok).
 Written from D2A-FROZEN-v1 (§0, §6, §10.1-§10.5, rulings D1 and D3) and tools/d2a/API.md (§2.5)
 only; no tools/d2a source was read. Thresholds are tested at the exact boundary in the direction
 the protocol writes (>= for effect thresholds, > 0 / < 0 for interval bounds).
+Corrected in job 0029 pre-dispatch per the d2a-0029 rulings (Q6, 6b).
 """
 
 from __future__ import annotations
@@ -70,8 +71,12 @@ def test_learned_single_none_statistic_of_present_model_is_unresolved(slot):
     assert dd.learned(*args) == "UNRESOLVED"
 
 
-def test_learned_missing_model_is_defined_fail():
-    assert dd.learned(None, None, None, None) == "FAIL"
+def test_learned_four_none_is_unresolved_unless_model_status_says_missing_or_invalid():
+    # ruling Q6 (d2a-0029): four Nones say nothing about the model being absent; only an explicit
+    # model_status of MISSING or INVALID gives the registered failing convention (§10.5)
+    assert dd.learned(None, None, None, None) == "UNRESOLVED"
+    assert dd.learned(None, None, None, None, model_status="MISSING") == "FAIL"
+    assert dd.learned(None, None, None, None, model_status="INVALID") == "FAIL"
 
 
 # ------------------------------------------------------------- stage1_decision, §6 / S4
@@ -240,6 +245,15 @@ def test_c_len_missing_input_is_unresolved(slot):
 def test_c_len_missing_or_undefined_seed_is_unresolved():
     assert dd.c_len(0.2, 0.05, 0.5, [0.2, 0.2, 0.2, None], True) == "LENGTH_UNRESOLVED"
     assert dd.c_len(0.2, 0.05, 0.5, [0.2, 0.2, 0.2, NAN], True) == "LENGTH_UNRESOLVED"
+
+
+@pytest.mark.parametrize("slot", range(3))  # the mean, the 1.25th and the 98.75th percentile
+@pytest.mark.parametrize("base", [GAIN, LOSS])
+def test_c_len_nan_mean_or_interval_endpoint_is_unresolved(base, slot):
+    # ruling 6b (d2a-0029): any undefined required input gives LENGTH_UNRESOLVED
+    args = list(base)
+    args[slot] = NAN
+    assert dd.c_len(*args, True) == "LENGTH_UNRESOLVED"
 
 
 # ----------------------------------------------------- pipeline null, §10.1, ruling D3

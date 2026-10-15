@@ -174,7 +174,7 @@ def stage1_main(store_root=W.STORE) -> str:
 
     torch.set_num_threads(6)
     root = Path(store_root)
-    rec = {"S0": W.s0_bindings(TR.JOB_ID, TR.TASK_SHA256, TR.SESSION, root), "models": {}}
+    rec = {"S0": W.s0_bindings(root), "models": {}}
     if rec["S0"]["status"] != "PASS":
         rec["decision"] = "INVALID"
     else:
@@ -356,7 +356,7 @@ def stage3_main(store_root=W.STORE) -> str:
         own = winjob.own_cpu_s()
         return TR.admit("stage3", base + own, tot0 + own, TR.Limits(), need)
 
-    rec = {"S0": W.s0_bindings(TR.JOB_ID, TR.TASK_SHA256, TR.SESSION, root), "not_run": [],
+    rec = {"S0": W.s0_bindings(root), "not_run": [],
            "status": "COMPLETE"}
     if rec["S0"]["status"] != "PASS":
         rec["outcome"] = "INVALID"

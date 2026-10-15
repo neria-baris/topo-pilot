@@ -362,10 +362,10 @@ def reported(tok0, zN_rate: float) -> dict:
     return out
 
 
-def stage0(job_id: str, task_sha256: str, session: str, store_root=W.STORE) -> str:
+def stage0(store_root=W.STORE) -> str:
     """CLI ``stage0``: S0, pools, gates in §10.6 order, STAGE0.json; returns the outcome."""
     root = Path(store_root)
-    s0 = W.s0_bindings(job_id, task_sha256, session, root)
+    s0 = W.s0_bindings(root)
     (root / "S0_stage0.json").write_text(json.dumps(s0, indent=1, default=str), "utf-8")
     rec: dict = {"S0": s0, "gates": {}}
     if s0["status"] != "PASS":

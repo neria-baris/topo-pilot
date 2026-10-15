@@ -3,6 +3,7 @@ tools/d2a/API.md §2.1, §3). D-1's 4x3 construction is imported unchanged from 
 
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -59,6 +60,7 @@ PROTECTED = ("src", "configs/stages.yaml", "docs/proposals/X4F_EXECUTION_PROTOCO
 ALLOWED_A = ("src/topo_pilot/learner/multihorizon.py", "tests/learner/test_multihorizon.py",
              "tests/learner/test_trainer_golden.py", "tests/learner/golden_default_trainer.json")
 PROTOCOL = ROOT / "agent-handoff/planning/responses/D2A-FROZEN-v1.md"
+DISPATCH = ("JOB_ID", "TASK_SHA256", "WORKER_SESSION", "H")  # d2a_meter_bind.py names
 PROTOCOL_SHA = "CBE3117F70DD7BA95046FA11D510132682A377782321A97723BE77E269C1C90B"
 _FM: dict = {}
 
@@ -277,34 +279,43 @@ def protected_diff(R: str = "2babe9d", H: str = "HEAD") -> tuple[list[str], list
     return entries, bad
 
 
-def s0_bindings(job_id: str, task_sha256: str, session: str, store_root=STORE,
-                mailbox=ROOT / "agent-handoff") -> dict:
-    """Gate 1 (§10.6): protocol hash, dispatch identities, pinned commit, protected-path diff,
-    master freshness. Returns the record; ``status`` is PASS or FAIL."""
+def dispatch(store_root=STORE) -> dict:
+    """Current dispatch identities and pinned H, from the store-local binding (ruling Q4)."""
+    tree = ast.parse((Path(store_root) / "d2a_meter_bind.py").read_text(encoding="utf-8"))
+    return {t.id: ast.literal_eval(n.value) for n in tree.body if isinstance(n, ast.Assign)
+            for t in n.targets if isinstance(t, ast.Name) and t.id in DISPATCH}
+
+
+def s0_bindings(store_root=STORE, mailbox=ROOT / "agent-handoff", R: str = "2babe9d") -> dict:
+    """Gate 1 (§10.6, API §3): protocol hash, dispatch identities from the store-local binding,
+    pinned H (= checkout, = any earlier S0), protected-path diff R → H, master freshness."""
     import d2a_train
 
     checks, rec = {}, {}
+    job_id, task_sha256, session, H = (dispatch(store_root).get(k) for k in DISPATCH)
     sha = _sha(PROTOCOL).upper()
     recorded = (PROTOCOL.parent / "D2A-FROZEN-v1.sha256").read_text().split()[0].upper()
     checks["protocol_hash"] = sha == recorded == PROTOCOL_SHA
     try:
-        d2a_train.verify_identity(mailbox, job_id, task_sha256, session,
+        d2a_train.verify_identity(mailbox, str(job_id), task_sha256, session,
                                   Path(store_root) / "RUN.lock")
-        checks["identity"] = True
+        checks["identity"] = None not in (job_id, task_sha256, session)
     except StageFailure as exc:
         checks["identity"], rec["identity_error"] = False, exc.detail
     head = _git("rev-parse", "HEAD").strip()
     dirty = [ln for ln in _git("status", "--porcelain").splitlines() if ln.strip()]
-    checks["commit_pinned"] = not dirty
-    entries, bad = protected_diff("2babe9d", head)
+    prior = Path(store_root) / "S0.json"
+    prior_H = json.loads(prior.read_text("utf-8"))["execution_commit"] if prior.exists() else H
+    checks["commit_pinned"] = not dirty and head == H == prior_H
+    entries, bad = protected_diff(R, H or "HEAD")
     checks["protected_diff"] = not bad
     roots = [ROOT / "topo-pilot/artifacts", ROOT / "d1-seam-oracle-store",
              ROOT / "x2a-stage0-oracle-store", ROOT / "c1prime-store"]
     hits = master_collisions(roots)
     checks["masters_fresh"] = not hits
-    rec.update(protocol_sha256=sha, execution_commit=head, dirty=dirty, diff=entries,
-               violations=bad, collisions=hits, job_id=job_id, task_sha256=task_sha256,
-               session=session, checks=checks,
+    rec.update(protocol_sha256=sha, execution_commit=H, checkout_head=head, dirty=dirty,
+               diff=entries, violations=bad, collisions=hits, job_id=job_id,
+               task_sha256=task_sha256, session=session, checks=checks,
                status="PASS" if all(checks.values()) else "FAIL")
     return rec
 

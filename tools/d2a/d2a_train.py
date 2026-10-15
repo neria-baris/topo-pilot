@@ -29,9 +29,6 @@ for _p in (HERE, REPO / "tools" / "x4_oracle_profile"):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
-JOB_ID = "0028"
-TASK_SHA256 = "D50F512E89B919C4AF4C4B0E31BAA149450ADEBFF689D563ABD4A6DFB55BEDC2"
-SESSION = "88eb0214-46ad-4376-b93b-3da3034423d6"
 RUNS = {f"d2a-s{s}-H{H}": (s, H, "CM") for s in (1, 2, 3, 4) for H in (1, 2, 3)}
 RUNS.update({f"d2a-s{s}-N": (s, 3, "CC") for s in (1, 2)})
 WAVES = {"W1": ("d2a-s1-H3", "d2a-s2-H3"), "W2": ("d2a-s1-H1", "d2a-s1-H2", "d2a-s2-H1"),
@@ -113,11 +110,11 @@ def checkpoint_callback(store, obs_train_id, obs_dev_id, run_id, horizon, proc, 
     return on_checkpoint
 
 
-def bound_controls(out=STORE):
-    """The job-0014 controls module bound to this job's identities (in this process)."""
+def bound_controls(out, job_id, task_sha256):
+    """The job-0014 controls module bound to the current dispatch identities (in this process)."""
     import controls
 
-    controls.JOB_ID, controls.TASK_SHA256 = JOB_ID, TASK_SHA256
+    controls.JOB_ID, controls.TASK_SHA256 = str(job_id), str(task_sha256).upper()
     return lambda: controls.classify_all([controls.MAILBOX], Path(out), "run")
 
 
@@ -279,7 +276,8 @@ def child_main(run_id: str, store_root=STORE) -> int:
     ids = [pools[n]["id"] for n in names]
     sets = [PublicTokenDataset(store.load(C.ObservationSet, i, consumer="learner"),
                                C.SequenceLayout()) for i in ids]
-    trainer, record, classify = make_trainer(run_id), [], bound_controls(root)
+    ident, trainer, record = W.dispatch(root), make_trainer(run_id), []
+    classify = bound_controls(root, ident["JOB_ID"], ident["TASK_SHA256"])
 
     def hook(step):
         boundary(classify)

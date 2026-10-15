@@ -233,7 +233,7 @@ When rule 1, 2 or 3 fires, the result has no qualifiers.
 
 ## 3. S0 bindings (gate 1)
 
-`s0_bindings(protocol, freeze_sha_file, mailbox, job_id, task_sha256, session, H, R="2babe9d")` writes `S0.json` with:
+`s0_bindings(store_root, mailbox, R="2babe9d")` returns the gate-1 record (written as `S0.json` at the first stage, and inside each stage record afterwards). The dispatch identities and H come from `dispatch(store_root)`, which reads the literal assignments `JOB_ID`, `TASK_SHA256`, `WORKER_SESSION` and `H` in the store-local `d2a_meter_bind.py` written at dispatch (ruling Q4; job 0031: the `d2a_train` identity constants are removed). The record covers:
 - the protocol sha256, which must equal both `D2A-FROZEN-v1.sha256` and CBE3117F…C90B;
 - `request.json`, `task.json` and the `task.md` digest (via `verify_identity`);
 - H, the execution commit: full sha, and whether the worktree is clean. H is pinned (ruling Q4): supplied explicitly at the first stage, then read from the previously recorded S0, never a moving `HEAD`. The executing checkout's HEAD must equal H;

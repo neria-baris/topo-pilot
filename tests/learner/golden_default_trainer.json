@@ -1,0 +1,116 @@
+{
+ "cases": {
+  "pilot/1": {
+   "checkpoints": [
+    {
+     "dev_ce": "1.6202837228775024",
+     "state_sha256": "e05abf61d22f1688fb8297439af89b44040e4cafaf064d3acb96e9a338040b98",
+     "step": 0
+    },
+    {
+     "dev_ce": "1.4066011905670166",
+     "state_sha256": "c891c3ea254e38326fad6fb7461cd5294a2f269ab7c77aaac98ff03d8d6c8811",
+     "step": 1
+    },
+    {
+     "dev_ce": "1.2889591455459595",
+     "state_sha256": "62f86e987ba5b84e13e926ee54c11415e6b0ac712414f6bf102afa0114ac8d42",
+     "step": 3
+    }
+   ],
+   "final_train_loss": "1.4183018207550049",
+   "threads": {
+    "interop": 1,
+    "intra": 1
+   }
+  },
+  "pilot/2": {
+   "checkpoints": [
+    {
+     "dev_ce": "1.6202837228775024",
+     "state_sha256": "e05abf61d22f1688fb8297439af89b44040e4cafaf064d3acb96e9a338040b98",
+     "step": 0
+    },
+    {
+     "dev_ce": "1.4066011905670166",
+     "state_sha256": "811561a30d662876f75f01b81950e0a09b7ac4eca62f910c294158e35e7f9e0f",
+     "step": 1
+    },
+    {
+     "dev_ce": "1.2889591455459595",
+     "state_sha256": "1def18ffbd96c19be2b579465ae7c64375d9fbe6e8a3802893fb0cc5083ae4e6",
+     "step": 3
+    }
+   ],
+   "final_train_loss": "1.4183018207550049",
+   "threads": {
+    "interop": 1,
+    "intra": 2
+   }
+  },
+  "tiny/1": {
+   "checkpoints": [
+    {
+     "dev_ce": "1.616676926612854",
+     "state_sha256": "60e0b096a0be1200c04361d7947b3a8d1c8e37e22d4b4f572e5d8a9b776fd02f",
+     "step": 0
+    },
+    {
+     "dev_ce": "1.5965646505355835",
+     "state_sha256": "00dd276b20f94a9a68546a57b86b5c9940b2cd714953c9cb86acbc2e3ad2d349",
+     "step": 2
+    },
+    {
+     "dev_ce": "1.5792427062988281",
+     "state_sha256": "023adf2c2997a38379746f90e5e35d3359050e2ba5d499af3a5a21d880585559",
+     "step": 4
+    }
+   ],
+   "final_train_loss": "1.5735321044921875",
+   "threads": {
+    "interop": 1,
+    "intra": 1
+   }
+  },
+  "tiny/2": {
+   "checkpoints": [
+    {
+     "dev_ce": "1.616676926612854",
+     "state_sha256": "60e0b096a0be1200c04361d7947b3a8d1c8e37e22d4b4f572e5d8a9b776fd02f",
+     "step": 0
+    },
+    {
+     "dev_ce": "1.5965646505355835",
+     "state_sha256": "9011a77b06c357f53e6bab3224d0737fa9e82664a1696ea4086487a06a79a6d4",
+     "step": 2
+    },
+    {
+     "dev_ce": "1.5792427062988281",
+     "state_sha256": "c49da4cd35397a5e1f6cbcdde4fa7e825f9768eb70b55c158292707b04cde4db",
+     "step": 4
+    }
+   ],
+   "final_train_loss": "1.5735321044921875",
+   "threads": {
+    "interop": 1,
+    "intra": 2
+   }
+  }
+ },
+ "environment": {
+  "fixture": "d1_seam.float_model CM; HMMSampler; SeedTree(7) golden/train 64, golden/dev 16; run_key (golden, name)",
+  "numpy": "2.2.6",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.10.6 (tags/v3.10.6:9c7b4bd, Aug  1 2022, 21:53:49) [MSC v.1932 64 bit (AMD64)]",
+  "source_commit": "5fbe9fdc7da0f032ca34cc2e8b69676659970884",
+  "torch": "2.14.1+cpu",
+  "torch_config_parallel": [
+   "ATen/Parallel:",
+   "\tat::get_num_threads() : 6",
+   "\tat::get_num_interop_threads() : 6",
+   "OpenMP 2019",
+   "\tomp_get_max_threads() : 6",
+   "Intel(R) oneAPI Math Kernel Library Version 2026.1-Product Build 20260612 for Intel(R) 64 architecture applications"
+  ]
+ }
+}

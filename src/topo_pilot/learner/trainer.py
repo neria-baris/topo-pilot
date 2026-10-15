@@ -89,10 +89,11 @@ class Trainer:
     """
 
     def __init__(self, model_cfg: ModelConfig, train_cfg: TrainConfig, seeds: SeedTree,
-                 run_key: tuple):
+                 run_key: tuple, *, model_factory=None, loss_fn=None):
         self.model_cfg, self.train_cfg = model_cfg, train_cfg
         self.seeds, self.run_key = seeds, tuple(run_key)
         self.model: TransformerLM | None = None
+        self.model_factory, self.loss_fn = model_factory, loss_fn
 
     def _check_config(self) -> None:
         c = self.train_cfg
@@ -148,7 +149,8 @@ class Trainer:
         cfg, device = self.train_cfg, resolve_device(self.train_cfg.device)
         with torch.random.fork_rng(devices=[]):
             torch.manual_seed(self.seeds.seed("init", *self.run_key))
-            model = TransformerLM(self.model_cfg)
+            model = self.model_factory(self.model_cfg) if self.model_factory else TransformerLM(
+                self.model_cfg)
         model.to(device).train()
         self.model = model
         x_tr, y_tr = (t.to(device) for t in _materialise(train))
@@ -174,7 +176,8 @@ class Trainer:
         start, loss_val = time.perf_counter(), float("nan")
         for step in range(1, cfg.steps + 1):
             idx = torch.from_numpy(rng.integers(0, x_tr.shape[0], size=cfg.batch_size)).to(device)
-            loss = lm_loss(model(x_tr[idx]).logits, y_tr[idx])
+            out = model(x_tr[idx])
+            loss = self.loss_fn(out, y_tr[idx]) if self.loss_fn else lm_loss(out.logits, y_tr[idx])
             _require_finite(loss, f"train step {step}")
             opt.zero_grad(set_to_none=True)
             loss.backward()

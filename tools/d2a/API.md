@@ -105,7 +105,7 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 
 **Masters (ruling Q5).** The protocol registers exactly two masters: DATA `2026101531` (every pool above, the bin, template, shuffle, rbf and bootstrap streams) and MODEL `2026101532` (Trainer scopes and `("init_joint", "d2a", s)`). 999001 and 999002 are **not** frozen reservations. They may appear only as labelled development fixtures in synthetic dry runs and tests, and never in registered pools, the store or evidence.
 
-**Sequence ids:** `SEQ_CODE[pool]` is the 1-based position of the pool in `POOLS` order. The pools in that order are train-s1..s4, dev-s1..s4, trainN-s1, trainN-s2, devN-s1, devN-s2, stage0, stage0N, cal, val, test, valN, testN, giving codes 1..21. `sequence_id = SEQ_CODE[pool]·2³² + arange(n)` (int64).
+**Sequence ids:** `SEQ_CODE[pool]` is the 1-based position of the pool in `POOLS` order. The pools in that order are train-s1..s4, dev-s1..s4, trainN-s1, trainN-s2, devN-s1, devN-s2, stage0, stage0N, cal, val, test, valN, testN, giving codes 1..19. `sequence_id = SEQ_CODE[pool]·2³² + arange(n)` (int64).
 
 **Functions**
 
@@ -121,7 +121,7 @@ Each module puts `tools/d2a`, `tools/d1_seam` and `tools/x4_oracle_profile` on `
 | `template_enumeration(t)` | t ∈ {16, 28}, `n = (t-12)//2`. Order: `for r1 in (A, B): for r9 in (A, B): for exc in product((S2, S0), repeat=n): for j in range(n+1)`. Base `(r1, S2, S3, S0, x5, S2, S3, S0, r9, S2, S3)`; each excursion `e ∈ exc` appends `(e, S3)`; one extra `S3` is inserted after excursion j (j = 0: right after the base). The pair is `(x5 = A member, x5 = B member)`. Returns a list of `(a, b)` tuples of length-t tuples (48 for t = 16, 9,216 for t = 28) |
 | `registered_templates(t)` | t = 16: all 48. t = 28: `idx = SeedTree(DATA).generator("d2a", "templates", 28).choice(9216, 256, replace=False)`, giving the pairs in `idx` order |
 | `template_hashes(t)` | sha256 of `bytes(a + b)` per registered pair |
-| `save_pools(store_root)` | Samples all 21 pools (POOLS order) and saves each as an `ObservationSet`. `config = {"d2a_pool": pool, "proc", "n", "stream": [...]}`, `parents=[]`, `seed_map={pool: seed}`, consumer `"experiment"`. Private sidecar `private/{pool}.npz`: `states` uint8, `Z = states[:,0] >= 12`. Writes `pools.json` with, per pool, id, payload sha256, sidecar sha256 and coverage counts (decision rows at 16 and 28, rows per bin). Refuses if `pools.json` exists |
+| `save_pools(store_root)` | Samples all 19 pools (POOLS order) and saves each as an `ObservationSet`. `config = {"d2a_pool": pool, "proc", "n", "stream": [...]}`, `parents=[]`, `seed_map={pool: seed}`, consumer `"experiment"`. Private sidecar `private/{pool}.npz`: `states` uint8, `Z = states[:,0] >= 12`. Writes `pools.json` with, per pool, id, payload sha256, sidecar sha256 and coverage counts (decision rows at 16 and 28, rows per bin). Refuses if `pools.json` exists |
 | `load_tokens(pool, store_root)` | Tokens of a saved pool. `pool ∈ {"test", "testN"}` requires `os.environ["D2A_STAGE"] == "3"`, else `StageFailure(LEAKAGE)` (S9) |
 | `load_private(pool, store_root)` | `(states, Z)`, with the same test guard |
 | `master_collisions(roots)` | Every `meta.json` under each root whose `seed_map` values or `config` text contain `DATA` or `MODEL` → a list of paths (§2.6) |

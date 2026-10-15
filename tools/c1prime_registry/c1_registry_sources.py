@@ -29,12 +29,24 @@ def sha(path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def _u8(tokens) -> np.ndarray:
+    """First 32 columns as uint8 after checking integer dtype and the 0..255 range (no silent
+    wrap-around in the cast)."""
+    tok = np.asarray(tokens)
+    if tok.ndim != 2 or tok.shape[1] < 32 or tok.dtype.kind not in "iu":
+        raise ValueError(f"token array must be integer [n, >=32], got {tok.dtype} {tok.shape}")
+    tok = tok[:, :32]
+    if tok.size and (tok.min() < 0 or tok.max() > 255):
+        raise ValueError("token value outside 0..255")
+    return tok.astype(np.uint8)
+
+
 def canonical32(named, perm) -> np.ndarray:
     """canonical = argsort(perm)[named] (K4 CONTRACT symbols), first 32 tokens."""
     named, perm = np.asarray(named, dtype=np.int64), np.asarray(perm, dtype=np.int64)
     if sorted(perm.tolist()) != list(range(len(perm))) or named.size and named.max() >= len(perm):
         raise ValueError("symbol_perm is not a permutation covering the tokens")
-    return np.argsort(perm, kind="stable")[named[:, :32]].astype(np.uint8)
+    return _u8(np.argsort(perm, kind="stable")[named[:, :32]])
 
 
 def _store():
@@ -70,10 +82,10 @@ def observation_set_sources(store=None, root=ART) -> tuple:
     return sources, seqs
 
 
-def _npz_tokens(key, cols=32):
+def _npz_tokens(key):
     def reader(path):
         with np.load(path, allow_pickle=False) as z:
-            return np.asarray(z[key])[:, :cols].astype(np.uint8)
+            return _u8(z[key])
     return reader
 
 
@@ -137,8 +149,11 @@ def store_sources(root=ROOT) -> list:
 def reference_cache_reader(path) -> np.ndarray:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     rows = [e["history"] for e in data["entries"] if int(e.get("K", 0)) == 32]
-    toks = [[int(h[i:i + 16], 16) for i in range(0, len(h), 16)] for h in rows]
-    return np.asarray(toks, dtype=np.int64).astype(np.uint8) if toks else EMPTY
+    # K4 reference_cache.history_hex: row.astype(np.int64).tobytes().hex(), little-endian
+    toks = [np.frombuffer(bytes.fromhex(h), dtype="<i8") for h in rows]
+    if any(t.shape != (32,) for t in toks):
+        raise ValueError("K = 32 reference-cache history does not decode to 32 symbols")
+    return _u8(np.stack(toks)) if toks else EMPTY
 
 
 def _token_lists(obj, found):

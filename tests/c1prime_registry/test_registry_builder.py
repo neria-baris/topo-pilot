@@ -35,13 +35,26 @@ def test_canonical32_rejects_a_non_permutation():
 
 
 def test_reference_cache_reader_keeps_only_32_symbol_entries(tmp_path):
-    h = np.arange(32) % 36
-    enc = "".join(f"{int(v):016x}" for v in h)
-    data = {"entries": [{"K": 32, "history": enc}, {"K": 4, "history": enc[:64]}]}
+    import reference_cache  # K4 producer of REFERENCE_CACHE.json (unchanged)
+
+    h = (np.arange(64).reshape(2, 32) * 7) % 36
+    enc = reference_cache.history_hex(h)
+    data = {"entries": [{"K": 32, "history": enc[0]}, {"K": 4, "history": enc[0][:64]},
+                        {"K": 32, "history": enc[1]}]}
     p = tmp_path / "ref.json"
     p.write_text(json.dumps(data), encoding="utf-8")
     got = rs.reference_cache_reader(p)
-    np.testing.assert_array_equal(got, h[None, :].astype(np.uint8))
+    np.testing.assert_array_equal(got, h.astype(np.uint8))
+
+
+def test_token_readers_reject_out_of_range_values_instead_of_wrapping():
+    with pytest.raises(ValueError):
+        rs._u8(np.full((1, 32), 256, dtype=np.int64))
+    with pytest.raises(ValueError):
+        rs._u8(np.full((1, 32), -1, dtype=np.int64))
+    with pytest.raises(ValueError):
+        rs._u8(np.zeros((1, 31), dtype=np.int64))
+    np.testing.assert_array_equal(rs._u8(np.arange(33)[None, :]), np.arange(32)[None, :])
 
 
 def test_handoff_scan_finds_token_lists_and_ignores_others(tmp_path):

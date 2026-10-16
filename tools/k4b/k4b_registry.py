@@ -41,11 +41,8 @@ def _npz_header(path) -> dict:
         for name in z.namelist():
             with z.open(name) as f:
                 version = np.lib.format.read_magic(f)
-                read = (
-                    np.lib.format.read_array_header_1_0
-                    if version == (1, 0)
-                    else np.lib.format.read_array_header_2_0
-                )
+                read = (np.lib.format.read_array_header_1_0 if version == (1, 0)
+                        else np.lib.format.read_array_header_2_0)
                 shape, _, dtype = read(f)
             out[name[:-4] if name.endswith(".npy") else name] = (dtype, shape)
     return out
@@ -65,18 +62,12 @@ def inventory(root=ROOT, exclude=()) -> dict:
     Directories in `exclude` are listed but not opened (their dedicated reader covers them)."""
     inv = {}
     for top in sorted(p for p in Path(root).iterdir() if p.is_dir()):
-        rec = {
-            "history_files": [],
-            "identity_refs": [],
-            "observation_set_roots": [],
-            "unreadable": [],
-            "excluded": top.name in exclude,
-        }
+        rec = {"history_files": [], "identity_refs": [], "observation_set_roots": [],
+               "unreadable": [], "excluded": top.name in exclude}
         if not rec["excluded"]:
-            for f in sorted(top.rglob("meta.json")):
-                if f.parent.parent.name == "ObservationSet":
-                    rec["observation_set_roots"].append(str(f.parent.parent.parent))
-            rec["observation_set_roots"] = sorted(set(rec["observation_set_roots"]))
+            roots = {str(f.parent.parent.parent) for f in top.rglob("meta.json")
+                     if f.parent.parent.name == "ObservationSet"}
+            rec["observation_set_roots"] = sorted(roots)
             for f in sorted(top.rglob("*.npz")):
                 try:
                     header = _npz_header(f)
@@ -95,26 +86,16 @@ def classify(inv, scanned_readers) -> dict:
     """SCANNED (a reader covers it), NOT_SCANNED (inventory found nothing), else INCOMPLETE."""
     out = {}
     for name, rec in inv.items():
-        found = (
-            len(rec["history_files"]),
-            len(rec["identity_refs"]),
-            len(rec["observation_set_roots"]),
-            len(rec.get("unreadable", [])),
-        )
+        found = (len(rec["history_files"]), len(rec["identity_refs"]),
+                 len(rec["observation_set_roots"]), len(rec.get("unreadable", [])))
         if name in scanned_readers:
             out[name] = {"class": "SCANNED", "reason": f"reader(s) {scanned_readers[name]}"}
         elif not any(found) and not rec.get("excluded"):
-            out[name] = {
-                "class": "NOT_SCANNED",
-                "reason": "inventory: 0 history-bearing files, "
-                "0 identity references, 0 ObservationSet roots, 0 unreadable files",
-            }
+            out[name] = {"class": "NOT_SCANNED", "reason": "inventory: 0 history-bearing files, "
+                         "0 identity references, 0 ObservationSet roots, 0 unreadable files"}
         else:
-            out[name] = {
-                "class": "INCOMPLETE",
-                "reason": "history-bearing source without a "
-                "reader (history, identity, OS roots, unreadable) = %s" % (found,),
-            }
+            out[name] = {"class": "INCOMPLETE", "reason": "history-bearing source without a "
+                         "reader (history, identity, OS roots, unreadable) = %s" % (found,)}
     return out
 
 
@@ -152,15 +133,8 @@ def source_d(store=ROOT / "c1prime-store") -> list:
     if sha != k4b_config.CONTRACT["registry"]["c1prime_registry_v1_sha256"]:
         raise C1GateFailure(LINEAGE, "registry_v1 sha256 mismatch")
     d1 = json.loads(reg.read_text(encoding="utf-8"))
-    out = [
-        {
-            "name": "d1:c1prime registry_v1",
-            "path": str(reg),
-            "sha256": sha,
-            "digests": set(d1["digests"]),
-            "sequence_ids": set(d1.get("sequence_ids", [])),
-        }
-    ]
+    out = [{"name": "d1:c1prime registry_v1", "path": str(reg), "sha256": sha,
+            "digests": set(d1["digests"]), "sequence_ids": set(d1.get("sequence_ids", []))}]
     for f in sorted(store.rglob("HIST_*.npz")):
         digests, seqs = set(), set()
         with np.load(f, allow_pickle=False) as z:
@@ -168,16 +142,14 @@ def source_d(store=ROOT / "c1prime-store") -> list:
                 digests |= set(np.asarray(z[key]).astype(str).tolist())
             if "sequence_id" in z.files:
                 seqs = set(np.asarray(z["sequence_id"], dtype=np.int64).tolist())
-        out.append(
-            {
-                "name": f"d2:{f.relative_to(store).as_posix()}",
-                "path": str(f),
-                "sha256": _sha(f),
-                "digests": digests,
-                "sequence_ids": seqs,
-            }
-        )
+        out.append({"name": f"d2:{f.relative_to(store).as_posix()}", "path": str(f),
+                    "sha256": _sha(f), "digests": digests, "sequence_ids": seqs})
     return out
+
+
+def _npz_raw32(path) -> np.ndarray:
+    with np.load(path, allow_pickle=False) as z:
+        return np.ascontiguousarray(np.asarray(z["tokens"])[:, :32]).astype(np.uint8)
 
 
 def _d2a_reader(store, pool, entry):
@@ -186,46 +158,27 @@ def _d2a_reader(store, pool, entry):
         from topo_pilot.contracts import ArtifactStore, ObservationSet
         from topo_pilot.contracts.backends import LocalFSBackend
 
-        path = store / "store" / "ObservationSet" / entry["id"] / "payload.npz"
-
         def reader(_path, oid=entry["id"]):
             obs = ArtifactStore(LocalFSBackend(store / "store")).load(
-                ObservationSet, oid, consumer="analysis"
-            )
+                ObservationSet, oid, consumer="analysis")
             return np.ascontiguousarray(np.asarray(obs.tokens)[:, :32]).astype(np.uint8)
-
-        return path, reader
-    for path in (
-        store / "pools" / f"{pool}.npz",
-        store / f"{pool}.npz",
-        store / pool / "tokens.npz",
-    ):
+        return store / "store" / "ObservationSet" / entry["id"] / "payload.npz", reader
+    for path in (store / "pools" / f"{pool}.npz", store / f"{pool}.npz",
+                 store / pool / "tokens.npz"):
         if path.is_file():
-
-            def reader(p):
-                with np.load(p, allow_pickle=False) as z:
-                    return np.ascontiguousarray(np.asarray(z["tokens"])[:, :32]).astype(np.uint8)
-
-            return path, reader
+            return path, _npz_raw32
     return None, None
 
 
 def source_e(store=ROOT / "d2a-store", pools_meta=None) -> dict:
     store, d2a = Path(store), k4b_config.CONTRACT["registry"]["d2a"]
-    res = {
-        "sources": [],
-        "sealed_ranges": {},
-        "ranges": {},
-        "predicates": ["sealed_d2a"],
-        "status": "PASS",
-        "problems": [],
-    }
+    res = {"sources": [], "sealed_ranges": {}, "ranges": {}, "predicates": ["sealed_d2a"],
+           "status": "PASS", "problems": []}
     if list(d2a.get("predicate_alphabet", [])) != [0, 1, 2, 3, 4]:
         res["problems"].append("unresolved predicate alphabet")
-    meta_path = store / "pools.json"
     if pools_meta is None:
         try:
-            pools_meta = json.loads(meta_path.read_text(encoding="utf-8"))
+            pools_meta = json.loads((store / "pools.json").read_text(encoding="utf-8"))
         except Exception as exc:  # noqa: BLE001  unresolved pool inventory
             res["problems"].append(f"pools.json unreadable: {exc!r}")
             pools_meta = {}
@@ -243,19 +196,9 @@ def source_e(store=ROOT / "d2a-store", pools_meta=None) -> dict:
         if path is None:
             res["problems"].append(f"pool {pool}: token array unresolved")
             continue
-        res["sources"].append(
-            {
-                "name": f"e:d2a/{pool}",
-                "path": path,
-                "reader": reader,
-                "meta": {
-                    "source": "e",
-                    "pool": pool,
-                    "n": entry["n"],
-                    "canonicalisation": "none (raw tokens[:, :32])",
-                },
-            }
-        )
+        res["sources"].append({"name": f"e:d2a/{pool}", "path": path, "reader": reader,
+                               "meta": {"source": "e", "pool": pool, "n": entry["n"],
+                                        "canonicalisation": "none (raw tokens[:, :32])"}})
     if res["problems"]:
         res["status"] = INCOMPLETE
     return res
@@ -291,6 +234,14 @@ def revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None) -> dict
     return {"ok": not missing, "missing": missing, "coverage": cov}
 
 
+def _try(problems, tag, fn):
+    try:
+        return fn()
+    except Exception as exc:  # noqa: BLE001  a failed source makes the registry INCOMPLETE
+        problems.append(f"{tag}: {exc!r}")
+        return None
+
+
 def build(version, out_dir, root=ROOT, extra=None) -> dict:
     """Builds K-REG1/K-REG2 from scratch; manifest and digest npz written by exclusive create."""
     from topo_pilot.contracts import ArtifactStore
@@ -302,110 +253,65 @@ def build(version, out_dir, root=ROOT, extra=None) -> dict:
     mpath, dpath = out_dir / f"{version}.json", out_dir / f"{version}_digests.npz"
     if mpath.exists() or dpath.exists():
         raise FileExistsError(mpath)
-    problems, readers = [], {}
+    problems, readers = [], {s: ["b"] for s in crs.SCANNED_STORES}
     art = root / "topo-pilot" / "artifacts"
     store = ArtifactStore(LocalFSBackend(art))
-    token_sources, digest_sources, seq_union = [], [], set()
-    try:
-        a_src, seqs = source_a(art, store)
-        token_sources += a_src
-        readers.setdefault("topo-pilot", []).append("a")
-    except Exception as exc:  # noqa: BLE001
-        problems.append(f"a: {exc!r}")
-        seqs = {}
-    token_sources += source_b(root)
-    for s in crs.SCANNED_STORES:
-        readers.setdefault(s, []).append("b")
-    try:
-        token_sources += source_c(root / "agent-handoff")
-        readers.setdefault("agent-handoff", []).append("c")
-    except Exception as exc:  # noqa: BLE001
-        problems.append(f"c: {exc!r}")
-    try:
-        digest_sources = source_d(root / "c1prime-store")
-        readers.setdefault("c1prime-store", []).append("d")
-    except Exception as exc:  # noqa: BLE001
-        problems.append(f"d: {exc!r}")
+    a_res = _try(problems, "a", lambda: source_a(art, store))
+    c_src = _try(problems, "c", lambda: source_c(root / "agent-handoff"))
+    d_src = _try(problems, "d", lambda: source_d(root / "c1prime-store"))
     e = source_e(root / "d2a-store")
-    token_sources += e["sources"]
     problems += [f"e: {p}" for p in e["problems"]]
-    if not e["problems"]:
-        readers.setdefault("d2a-store", []).append("e")
+    for name, tag, ok in (("topo-pilot", "a", a_res is not None),
+                          ("agent-handoff", "c", c_src is not None),
+                          ("c1prime-store", "d", d_src is not None),
+                          ("d2a-store", "e", not e["problems"])):
+        if ok:
+            readers.setdefault(name, []).append(tag)
+    a_src, seqs = a_res if a_res is not None else ([], {})
+    token_sources = a_src + source_b(root) + (c_src or []) + e["sources"]
     inv = inventory(root, exclude=tuple(OWN_READERS))
     for name, rec in inv.items():
-        if (
-            name not in readers
-            and rec["observation_set_roots"]
-            and not rec["history_files"]
-            and not rec["identity_refs"]
-            and not rec["unreadable"]
-        ):
+        if name not in readers and rec["observation_set_roots"] and not rec["history_files"] \
+                and not rec["identity_refs"] and not rec["unreadable"]:
             readers[name] = ["f"]
     classes = classify(inv, readers)
     token_sources += source_f(root, inv, classes)
     reg = c1_data.build_registry(token_sources)
     problems += [f"unreadable: {m['name']}" for m in reg["missing"]]
-    digests = set(reg["digests"])
-    for s in digest_sources:
+    digests, seq_union = set(reg["digests"]), set()
+    for s in d_src or []:
         digests |= s["digests"]
         seq_union |= s["sequence_ids"]
     for v in seqs.values():
         seq_union |= set(np.asarray(v, dtype=np.int64).tolist())
-    for tab in extra or []:
+    for tab in (extra or []):
         digests |= set(np.asarray(tab["digest"]).astype(str).tolist())
         seq_union |= set(np.asarray(tab["seq_ids"], dtype=np.int64).tolist())
-    hv = (
-        validate_handoff_json(root / "agent-handoff")
-        if (root / "agent-handoff").is_dir()
-        else {"ok": False, "n_files": 0, "failures": ["mailbox absent"]}
-    )
+    hv = validate_handoff_json(root / "agent-handoff")
     cov = revalidate_coverage(art, root, store=store)
     problems += [] if cov["ok"] else [f"coverage: {cov['missing']}"]
-    problems += [
-        f"class {k}: {v['reason']}" for k, v in classes.items() if v["class"] == "INCOMPLETE"
-    ]
+    problems += [f"class {k}: {v['reason']}" for k, v in classes.items()
+                 if v["class"] == "INCOMPLETE"]
     sorted_d = sorted(digests)
     seq_arr = np.array(sorted(seq_union), dtype=np.int64)
-    sources = [
-        {
-            "name": s["name"],
-            "path": str(s["path"]),
-            "sha256": s.get("sha256"),
-            "kind": "token",
-            "n": s.get("rows"),
-            "canonicalisation": s.get("meta", {}).get("canonicalisation"),
-        }
-        for s in reg["entries"]
-    ]
-    sources += [
-        {
-            "name": s["name"],
-            "path": s["path"],
-            "sha256": s["sha256"],
-            "kind": "digest",
-            "n": len(s["digests"]),
-            "canonicalisation": "C1' digest columns",
-        }
-        for s in digest_sources
-    ]
-    manifest = {
-        "version": version,
-        "status": INCOMPLETE if problems else "PASS",
-        "n_digests": len(sorted_d),
-        "problems": problems,
-        "digests_sha256": hashlib.sha256("\n".join(sorted_d).encode()).hexdigest(),
-        "seq_id_union_sha256": hashlib.sha256(seq_arr.tobytes()).hexdigest(),
-        "sealed_ranges": e["sealed_ranges"],
-        "d2a_ranges": e["ranges"],
-        "predicates": e["predicates"],
-        "sources": sources,
-        "classes": classes,
-        "not_scanned": {k: v["reason"] for k, v in classes.items() if v["class"] == "NOT_SCANNED"},
-        "coverage": cov,
-        "handoff_validation": hv,
-        "built_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "protocol_sha256": k4b_config.CONTRACT["protocol_sha256"],
-    }
+    sources = [{"name": s["name"], "path": str(s["path"]), "sha256": s.get("sha256"),
+                "kind": "token", "n": s.get("rows"),
+                "canonicalisation": s.get("meta", {}).get("canonicalisation")}
+               for s in reg["entries"]]
+    sources += [{"name": s["name"], "path": s["path"], "sha256": s["sha256"], "kind": "digest",
+                 "n": len(s["digests"]), "canonicalisation": "C1' digest columns"}
+                for s in d_src or []]
+    manifest = {"version": version, "status": INCOMPLETE if problems else "PASS",
+                "n_digests": len(sorted_d), "problems": problems,
+                "digests_sha256": hashlib.sha256("\n".join(sorted_d).encode()).hexdigest(),
+                "seq_id_union_sha256": hashlib.sha256(seq_arr.tobytes()).hexdigest(),
+                "sealed_ranges": e["sealed_ranges"], "d2a_ranges": e["ranges"],
+                "predicates": e["predicates"], "sources": sources, "classes": classes,
+                "not_scanned": {k: v["reason"] for k, v in classes.items()
+                                if v["class"] == "NOT_SCANNED"},
+                "coverage": cov, "handoff_validation": hv,
+                "built_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                "protocol_sha256": k4b_config.CONTRACT["protocol_sha256"]}
     stage_records.save_npz(dpath, digests=np.array(sorted_d), seq_ids=seq_arr)
     manifest["digest_file_sha256"] = _sha(dpath)
     stage_records.write_new(mpath, manifest)
@@ -421,10 +327,8 @@ def load(out_dir, version) -> tuple:
     with np.load(dpath, allow_pickle=False) as z:
         digests = set(z["digests"].astype(str).tolist())
         seqs = set(z["seq_ids"].astype(np.int64).tolist())
-    if (
-        hashlib.sha256("\n".join(sorted(digests)).encode()).hexdigest()
-        != manifest["digests_sha256"]
-    ):
+    if hashlib.sha256("\n".join(sorted(digests)).encode()).hexdigest() \
+            != manifest["digests_sha256"]:
         raise C1GateFailure(LINEAGE, "digest union does not match its manifest")
     ranges = {k: tuple(v) for k, v in manifest.get("d2a_ranges", {}).items()}
     return digests, seqs, ranges, list(manifest["predicates"]), manifest

@@ -193,9 +193,14 @@ def run_calibration(ctx) -> None:
             rep = c1_fit.m1_report(mm["white"]["W"], [st["Dp"][st["elig"]],
                                                       st["Dm"][st["elig"]]], st["Qt"],
                                    st["frames"], [st["cp"], st["cm"]], mm["white"]["W_inv"])
-            eq = max(d.equivalence for d in mm["dec"].values())
-            out[m] = dict(rep, ridge_equivalence=eq)
-            if rep["status"] != "PASS" or not eq <= 1e-10:
+            decs = mm["dec"].values()
+            eq = max(d.equivalence for d in decs)
+            eq_ok = all(d.equivalence <= d.eq_tol for d in decs)  # ruling R13 (job 0042)
+            out[m] = dict(rep, ridge_equivalence=eq, ridge_equivalence_ok=eq_ok,
+                          ridge_tol={t: d.eq_tol for t, d in mm["dec"].items()},
+                          ridge_kappa={t: d.kappa for t, d in mm["dec"].items()},
+                          ridge_lam={t: d.lam for t, d in mm["dec"].items()})
+            if rep["status"] != "PASS" or not eq_ok:
                 return {"status": "FAIL_TECHNICAL", "models": out}
         return {"status": "PASS", "models": out}
 

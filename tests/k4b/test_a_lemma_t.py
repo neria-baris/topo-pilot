@@ -2,7 +2,7 @@
 
 P* is a 3-state HMM (L = 4, K = 2). P_op perturbs pairs of equal entries of T*, E* and pi* by
 exactly +-kappa (relative), so every row stays stochastic and the relative deviation is
-exactly kappa = 1/40. Q is taken to be P_op itself. For scores f(h, r) that are 1-Lipschitz in
+exactly kappa = 1/100. Q is taken to be P_op itself. For scores f(h, r) that are 1-Lipschitz in
 r with |f| <= |r|, |E_Q f(h, r_op) - E_P* f(h, r_*)| <= 2(rho - 1) + 4 TV(Q, P*), with
 rho = ((1 + kappa)/(1 - kappa))^(2L + 1). Everything is exact Fraction arithmetic."""
 
@@ -24,7 +24,7 @@ for _sub in ("tools/k4b", "tools/c1prime", "tools/c1prime_registry",
         sys.path.insert(0, _p)
 
 S, V, L, K = 3, 3, 4, 2
-KAPPA = Fr(1, 40)
+KAPPA = Fr(1, 100)  # was 1/40: then zb ~ 1.153 >= 1 (correction round 1)
 H, Q4, Q5, F35 = Fr(1, 2), Fr(1, 4), Fr(1, 5), Fr(3, 5)
 UP, DN = 1 + KAPPA, 1 - KAPPA
 T_STAR = ((H, Q4, Q4), (Q4, H, Q4), (Q4, Q4, H))
@@ -150,6 +150,8 @@ def test_lemma_t_transport_bound(idx):
 def test_lemma_t_is_not_vacuous():
     hs, ho = history_law(STAR), history_law(OP)
     zb = z_bound()
+    # By hand: (1 + x)^n <= e^(nx); RHO = (1 + 2/99)^9 < e^(18/99) < 6/5, and
+    # 4 TV <= 2(UP^8 - 1) < 2(e^(8/100) - 1) < 0.167 (path-law bound above), so zb < 0.567.
     assert 0 < zb < 1
     diffs = []
     for f in _fields():

@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import time
 from pathlib import Path
 
 import k4b_cert
@@ -21,9 +22,10 @@ import k4b_scores
 import k4b_stats
 import numpy as np
 import op_guard
+import scores
 import stage_records
 from c1_records import C1GateFailure, classify_exception
-from k4b_config import MODELS, PANEL, SEEDS
+from k4b_config import MODELS, SEEDS
 
 GATE_ORDER = ("G0", "H1", "REG1", "H2", "ORACLE-VAL", "B4-VAL", "C0-CAL", "C0-VAL", "CERT-VAL",
               "P1")
@@ -36,6 +38,10 @@ AUTHORITY_FILES = {"addendum_3_sha256": "OWNER_DECISIONS.addendum-3.md",
 
 def _sha(path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _utc() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
 def run_gates(out, steps) -> list:
@@ -63,13 +69,12 @@ def begin_stage(out, stage) -> None:
     op_guard.write_marker(out, {"state": "idle", "stage": stage, "label": f"stage {stage}",
                                 "seq": 0})
     with (Path(out) / "STAGES.jsonl").open("a", encoding="utf-8") as h:
-        h.write(json.dumps({"stage": stage, "event": "BEGIN", "utc": stage_records._utc()}  # noqa: SLF001
-                           ) + "\n")
+        h.write(json.dumps({"stage": stage, "event": "BEGIN", "utc": _utc()}) + "\n")
 
 
 def complete_stage(out, stage, files) -> dict:
     out = Path(out)
-    rec = {"stage": stage, "event": "STAGE_COMPLETE", "utc": stage_records._utc(),  # noqa: SLF001
+    rec = {"stage": stage, "event": "STAGE_COMPLETE", "utc": _utc(),
            "files": {Path(f).resolve().relative_to(out.resolve()).as_posix(): _sha(f)
                      for f in files}}
     with (out / "STAGES.jsonl").open("a", encoding="utf-8") as h:
@@ -228,7 +233,7 @@ def oracle_val(out, ctx) -> dict:
 
 def b4_val(out, ctx) -> dict:
     m, refs, eps = ctx["moments"]["val"], ctx["refs_val"], ctx["eps"]
-    r4n = k4b_scores.scores.r4_norms(m[32], m[4])
+    r4n = scores.r4_norms(m[32], m[4])
     Bn = max(k4b_cert.norm_bound(r4n[i], ref[32], ref[4], eps[4], eps[32])
              for i, ref in enumerate(refs))
     g = k4b_cert.b4_guard(r4n, Bn, ctx["Z"], SEEDS["val_b4"], len(r4n))

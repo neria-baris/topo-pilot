@@ -4,7 +4,7 @@ Each gate fn returns a details dict or raises; run_gates records it and stops at
 non-PASS (later gates NOT_RUN). Gate fns share one context dict `ctx` (process, tables, arrays).
 """
 
-from __future__ import annotations
+from __future__ import annotations  # noqa: I001  (k4b_config sets sys.path first)
 
 import argparse
 import hashlib
@@ -12,9 +12,9 @@ import json
 import time
 from pathlib import Path
 
+import k4b_config
 import k4b_cert
 import k4b_charts
-import k4b_config
 import k4b_data
 import k4b_registry
 import k4b_release

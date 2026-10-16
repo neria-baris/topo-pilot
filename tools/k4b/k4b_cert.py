@@ -22,6 +22,7 @@ MOMENT_TOL = error_bound.MOMENT_TOL_EXACT
 NUMERICAL = "FAIL_TECHNICAL/NUMERICAL"
 D_LEMMA_N = 10**80
 S_ENVELOPE = 144
+CONTROL_K = {"init": 4, "delta1": 1, "delta2": 2}  # two-sided controls
 
 
 def _fr(x) -> Fraction:
@@ -161,3 +162,25 @@ def transport_bound(T, E, pi, coords) -> dict:
     if res.get("status") != "BOUNDED":
         raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"process law: {res.get('status')}")
     return dict(res, Z_bound=_fr(res["Z_bound"]))
+
+
+def control_bounds_all(controls, refs, eps) -> dict:
+    """Row certificates of every control entry (reported, never gating; R22 per side)."""
+    out = {}
+    for name, entries in controls.items():
+        out[name] = {}
+        for key, e in entries.items():
+            if "unavailable" in e:
+                out[name][key] = dict(e)
+            elif name in CONTROL_K:
+                b = endpoint_bounds(e, e["supported"], e["phi"], refs, eps,
+                                             CONTROL_K[name])["max"]
+                mx = max(b.values())
+                out[name][key] = {"max_B": mx, "max_B_minus": b["minus"], "max_B_plus": b["plus"],
+                                  "certified": cap_ok(mx) and p2_ok(
+                                      e["X_minus"]) and p2_ok(e["X_plus"])}
+            else:
+                mx = control_bounds(e["X"], e["phi"], refs, eps, K=4)["max"]
+                out[name][key] = {"max_B": mx, "certified": cap_ok(mx)
+                                  and p2_ok(e["X"])}
+    return out

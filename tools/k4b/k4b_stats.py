@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from fractions import Fraction
 from pathlib import Path
 
@@ -201,3 +202,17 @@ def check_unsealed(report) -> None:
     elif isinstance(report, (list, tuple)):
         for v in report:
             check_unsealed(v)
+
+
+def _ratio(num, den):
+    try:
+        den = float(den)
+    except (TypeError, ValueError):
+        return "undefined"
+    return float(num) / den if math.isfinite(den) and den > 0 else "undefined"
+
+
+def ratios(mean_X_minus, B4, delta4_orc_mean) -> dict:
+    """E X-/B4 (B4 = fresh_b4["point"], R20) and E X-/Delta4_orc; descriptive only (§9.6-9.7)."""
+    return {"EX_minus_over_B4": _ratio(mean_X_minus, B4),
+            "EX_minus_over_delta4_orc": _ratio(mean_X_minus, delta4_orc_mean)}

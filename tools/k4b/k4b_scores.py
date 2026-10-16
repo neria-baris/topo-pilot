@@ -7,7 +7,7 @@ the bounds -/+ ||r4||), §9 (controls), §10 (support reporting; sealed form, §
 from __future__ import annotations
 
 import c1_means
-import k4b_config  # noqa: F401  (sys.path)
+import k4b_config
 import numpy as np
 import scores
 from c1_records import C1GateFailure
@@ -116,3 +116,44 @@ def support_report(ext, R, r4n, phi, m32, m4, sealed) -> dict:
         rep["supported_contribution"] = _mean(A * x)
         rep["supported_conditional_mean"] = _mean(x[A])
     return rep
+
+
+def _one(phi, m32, m4) -> dict:
+    return {"X": phase_scores(phi, m32, m4), "phi": phi}
+
+
+def control_arrays(m, canon32, ext, init_ext, decoders) -> dict:
+    """API.md §14.2: the eight control families (two-sided: init, delta1, delta2)."""
+    import k4b_decoder  # k4b_decoder imports this module
+
+    m32, m4 = m[32], m[4]
+
+    def two(e, K):
+        if isinstance(e, dict):
+            return {"unavailable": str(e.get("unavailable", e.get("reason", "unavailable")))}
+        return dict(secondary_arrays(e.phase, e.supported, m, K), phi=e.phase,
+                    supported=np.asarray(e.supported, dtype=bool))
+
+    def dec(d):
+        if d.get("status") != "AVAILABLE":
+            return {"unavailable": str(d.get("reason", ""))}
+        return _one(k4b_decoder.predict_phase(d, canon32), m32, m4)
+
+    return {"m4_phase": {"all": _one(m4_phase(m4), m32, m4)},
+            "sha_suffix": {"all": _one(sha_phase(canon32), m32, m4)},
+            "init": {j: two(init_ext[j], 4) for j in k4b_config.MODELS},
+            "decoder": {j: dec(decoders[j]) for j in k4b_config.MODELS},
+            "delta1": {j: two(ext[j], 1) for j in k4b_config.MODELS},
+            "delta2": {j: two(ext[j], 2) for j in k4b_config.MODELS},
+            "delta4_orc": {"all": _one(oracle_phase(m32), m32, m4)},
+            "naive": {j: {"X": naive_scores(ext[j].phase, m32, m4),
+                          "phi": ext[j].phase} for j in k4b_config.MODELS}}
+
+
+def _radius(R, j) -> float:
+    return float(R[j]) if isinstance(R, dict) else float(R)
+
+
+def support_entries(ext, R, arrays, m) -> dict:
+    return {j: support_report(ext[j], _radius(R, j), arrays[j]["r4n"], ext[j].phase,
+                                         m[32], m[4], False) for j in k4b_config.MODELS}

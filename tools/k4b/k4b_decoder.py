@@ -6,7 +6,7 @@ One-hot canonical w29..w32 (position-major) -> saved standardisation -> random F
 
 from __future__ import annotations
 
-import k4b_config  # noqa: F401  (sys.path)
+import k4b_config
 import k4b_scores
 import numpy as np
 from k4b_config import SCOPE
@@ -108,3 +108,10 @@ def from_arrays(a) -> dict:
             v = np.asarray(a[k])
             dec[k] = float(v) if v.ndim == 0 else v
     return dec
+
+
+def decoder_agreement(ext, decoders, canon32) -> dict:
+    return {j: agreement(ext[j].phase, predict_phase(d, canon32),
+                                     ext[j].supported) if d.get("status") == "AVAILABLE"
+            else f"unavailable ({d.get('reason', '')})"
+            for j, d in ((j, decoders[j]) for j in k4b_config.MODELS)}

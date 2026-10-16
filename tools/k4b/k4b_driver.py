@@ -332,7 +332,7 @@ def cert_val(out, ctx) -> dict:
         arrays[j] = dict(a, phi=ext.phase, supported=ext.supported, bounds=b)
         primary[f"X_minus_{j}"] = {"X": a["X_minus"], "max_B": b["max"]["minus"]}
         primary[f"X_plus_{j}"] = {"X": a["X_plus"], "max_B": b["max"]["plus"]}
-        support[j] = {"val": k4b_scores.support_report(ext, cfg.get("support_radius", 0.0),
+        support[j] = {"val": k4b_scores.support_report(ext, ctx["prod"][j]["chart"].support_radius,
                                                        a["r4n"], ext.phase, m[32], m[4], True)}
     primary["n_hat"] = {"X": arrays[MODELS[0]]["r4n"], "max_B": max(
         arrays[j]["bounds"]["max"]["norm"] for j in MODELS)}

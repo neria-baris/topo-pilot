@@ -149,19 +149,31 @@
    "step5000": "c3358e3cb9c352fb",
    "step0": "bd8813115bbd970b",
    "emission": "3633ac27dab50cf4",
-   "init_seed": 1959191081547677733
+   "init_seed": 1959191081547677733,
+   "meta_payload_sha256": {
+    "step5000": "bcd024efc2ff30f76940d459dba95a693f536fb7cc3b2441c4ee5145dcf8596b",
+    "step0": "d49284f57b8d3194b0ef8667624b2181252977567683e9c541bc689e75740922"
+   }
   },
   "2718": {
    "step5000": "98b0e703a337d513",
    "step0": "5e6e6b7c446907f9",
    "emission": "97838b9e13a26f74",
-   "init_seed": 1650155370212577495
+   "init_seed": 1650155370212577495,
+   "meta_payload_sha256": {
+    "step5000": "48c5b743d0c500aa4d14c4f40e1b5f115a8421af01e6a383b1927ce006f05efc",
+    "step0": "ffe2fb57af77d7acd8addc208681f4cea7a0814671502828e77a0176f18ad4d1"
+   }
   },
   "3141": {
    "step5000": "036b670743ffbbaf",
    "step0": "995f11b1120ccb36",
    "emission": "8c29c329c197c79e",
-   "init_seed": 7028749409156379047
+   "init_seed": 7028749409156379047,
+   "meta_payload_sha256": {
+    "step5000": "ac7cff661c45bdba1e2fd13d668332bc58866715d9d4d475ec5af76c0814e062",
+    "step0": "9defde302fb3d57443f6a95c24a0a2608184af6b8738f3cb3695e9282bbd8cbb"
+   }
   }
  },
  "run_key": [

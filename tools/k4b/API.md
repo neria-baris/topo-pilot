@@ -314,3 +314,39 @@ Pure functions are side-effect free: they open no file and return plain dicts. T
 - **Q2 (B4 in E X−/B4).** §9.7 reports E X−/B4. Is B4 the test point E‖r̂4‖ (`fresh_b4["point"]`), or a certified bound (lower or upper)? `ratios` takes B4 as an argument and does not choose.
 - **Q3 (F_init).** §9.3 reads "L−_init,j − F_init,j > 0.01" without defining F_init. The signature above assumes the §5.5 rule applied to the init X− array, with the same Z_bound. Confirm, or name the intended F.
 - **Q4 (two-sided control bounds).** For the identified-set controls (init, Δ1, Δ2), are the "α and 1 − α bounds" taken from the X− and X+ draws respectively, as for the endpoint (the signature's reading), or reported for both sides?
+
+## 15. Coordinator rulings R19–R23 on the job-0047 questions and the dry inventory (coordinator 75dcd488, 2026-10-16; jobs/0047/review.md). Binding for job 0048 and for the author-B round
+
+**R19, Q1 (payload sha).** Explicit values are bound.
+- CONTRACT `checkpoints[j]["meta_payload_sha256"]` = {step5000, step0}. These are the `payload_sha256` fields read from the six `meta.json` files (metadata only).
+- `expected_meta` sets `payload_sha256` from these values; it is never None.
+- `check_checkpoint_meta` compares them exactly, as strings.
+- The bytes are bound separately by the ArtifactStore load-time integrity check, which runs unchanged inside `load_model64`/`stage.load_model`.
+- Protocol §6 row 1 requires the payload sha check. This makes it explicit.
+
+**R20, Q2 (B4 in E X−/B4).** B4 is the fresh-test point value `fresh_b4["point"]` (the tree mean of ‖r̂4‖ over the test rows), and E X− is the test point mean of X−. The ratio is descriptive (§9.7); it is never a gate and carries no certificate claim. `ratios(mean_X_minus, fresh_b4["point"], delta4_orc_mean)`.
+
+**R21, Q3 (F_init).** F_init,j is the §5.5 margin applied to the init X− array of model j:
+- F_init,j = max(B_num(init X−_j), 1e-9) + Z_bound, with B_num from `c1_bounds.B_constant` on the init array's own row bounds and max |X̂|, using the same Z_bound as the endpoint.
+- An init array whose B exceeds the cap is "uncertified", and then `init_qualifier` = "unavailable (uncertified)".
+
+**R22, Q4 (two-sided controls: init, Δ1, Δ2).** Report as for the endpoint:
+- the α bound from the X− draws and the 1 − α bound from the X+ draws;
+- for each side separately, the point value and central 95% interval (`point_minus`/`point_plus`, `central95_minus`/`central95_plus`), with the certified B for each side.
+
+No status is computed for a control.
+
+**R23, registry classification (dry inventory, jobs/0047/report.md).** These rules are amendments to `k4b_registry.inventory`/`classify`/`build`. They tighten coverage and never loosen it.
+1. **ObservationSet stores with their own payloads** (x5g1-research-store, x5g1t-research-store, x5g1t-fixture-run, and any directory of that shape):
+   - they are SCANNED through source (f): `observation_set_sources(store=ArtifactStore(LocalFSBackend(<dir>/store or <dir>/study/store)), root=<that store root>)`;
+   - they are canonicalised by their EmissionSpec perm when it resolves, otherwise they contribute raw `tokens[:, :32]`;
+   - a history file that lies inside a scanned ObservationSet root counts as covered;
+   - any other history file in the directory → INCOMPLETE.
+2. **Synthetic-fixture classification ("only synthetic test fixtures", RC7).** A directory, or a subtree of main, is NOT_SCANNED with reason "synthetic test fixtures" only when **every** history-bearing, identity-bearing or unreadable file in it meets both conditions:
+   - **(a)** its path contains a pytest basetemp segment: `pytest-of-*`, a directory whose name starts with `bt` or `pt-` directly under a `tmp-*` or `coord-scratch` directory, or a `--basetemp` root;
+   - **(b)** every history array it holds has at most 1,024 rows, read from the header.
+
+   Any file that fails (a) or (b) makes the directory INCOMPLETE. The manifest lists every such file, with its path and header shape.
+3. **Main (`topo-pilot`) is also inventoried deep.** Reader (a) covers main's artifact store. Every other history-bearing file in main's tree, including `tests/` fixtures and `.venv`, must satisfy rule 2(a′): its path is under `tests/`, under a pytest basetemp segment, or under `.venv`, and it has at most 1,024 rows. Otherwise main is INCOMPLETE. The manifest states this explicitly.
+4. **Unreadable files** (deliberately truncated fixtures) count under rule 2 only if they satisfy 2(a). Otherwise INCOMPLETE.
+5. **The dedicated-reader directories stay excluded from the generic deep scan** (agent-handoff, c1prime-store, d2a-store), so no sealed D-2a payload is ever opened by the generic scan.

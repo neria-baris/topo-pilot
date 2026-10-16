@@ -28,6 +28,8 @@ VERSIONS = ("K-REG1", "K-REG2")
 HISTORY_KEYS = ("tokens", "canon32", "named32", "H", "canonical32", "canonical_tokens")
 IDENTITY_KEYS = ("sequence_id", "seq_ids", "ids", "history_id", "canonical_ids")
 OWN_READERS = {"agent-handoff": "c", "c1prime-store": "d", "d2a-store": "e"}
+MAIN, MAIN_FIXTURES = "topo-pilot", ("tests", ".venv")  # R23 rule 3
+FIXTURES, FIXTURE_ROWS = "synthetic test fixtures", 1024  # R23 rule 2
 
 
 def _sha(path) -> str:
@@ -48,22 +50,20 @@ def _npz_header(path) -> dict:
     return out
 
 
-def _history_bearing(header) -> bool:
-    for key, (dtype, shape) in header.items():
-        if key in HISTORY_KEYS or key.startswith("digest_"):
-            return True
-        if dtype.kind in "iu" and len(shape) >= 2 and shape[-1] in (32, 33):
-            return True
-    return False
+def _history_arrays(header) -> dict:
+    """{key: shape} of the history arrays of one npz header (§3.4 history detection)."""
+    return {k: list(shape) for k, (dtype, shape) in header.items()
+            if k in HISTORY_KEYS or k.startswith("digest_")
+            or (dtype.kind in "iu" and len(shape) >= 2 and shape[-1] in (32, 33))}
 
 
 def inventory(root=ROOT, exclude=()) -> dict:
-    """Every top-level directory of root, recursively: history files, identity refs, OS roots.
-    Directories in `exclude` are listed but not opened (their dedicated reader covers them)."""
+    """Every top-level directory of root (main too, R23 rule 3), recursively: history files with
+    header shapes, identity refs, OS roots, unreadable files; `exclude`d ones are not opened."""
     inv = {}
     for top in sorted(p for p in Path(root).iterdir() if p.is_dir()):
-        rec = {"history_files": [], "identity_refs": [], "observation_set_roots": [],
-               "unreadable": [], "excluded": top.name in exclude}
+        rec = {"path": str(top), "history_files": [], "history_shapes": {}, "identity_refs": [],
+               "observation_set_roots": [], "unreadable": [], "excluded": top.name in exclude}
         if not rec["excluded"]:
             roots = {str(f.parent.parent.parent) for f in top.rglob("meta.json")
                      if f.parent.parent.name == "ObservationSet"}
@@ -71,32 +71,85 @@ def inventory(root=ROOT, exclude=()) -> dict:
             for f in sorted(top.rglob("*.npz")):
                 try:
                     header = _npz_header(f)
-                except Exception as exc:  # noqa: BLE001  unreadable -> INCOMPLETE
+                except Exception as exc:  # noqa: BLE001  unreadable -> rule 4
                     rec["unreadable"].append({"path": str(f), "error": repr(exc)})
                     continue
                 if _history_bearing(header):
                     rec["history_files"].append(str(f))
+                    rec["history_shapes"][str(f)] = _history_arrays(header)
                 elif any(k in IDENTITY_KEYS for k in header):
                     rec["identity_refs"].append(str(f))
         inv[top.name] = rec
     return inv
 
 
+def _under(path, base) -> bool:
+    try:
+        Path(path).resolve().relative_to(Path(base).resolve())
+    except ValueError:
+        return False
+    return True
+
+
+def _in_segment(dirs) -> bool:
+    """R23 rule 2(a): a pytest-of-* directory, or bt*/pt-* directly under tmp-*/coord-scratch."""
+    return any(d.startswith("pytest-of-") for d in dirs) or any(
+        dirs[i].startswith(("bt", "pt-")) and (dirs[i - 1].startswith("tmp-")
+                                              or dirs[i - 1] == "coord-scratch")
+        for i in range(1, len(dirs)))
+
+
+def _fixture(name, top, path, shapes) -> bool:
+    """R23 rules 2-4: path rule (main: tests/, .venv or a segment) and <= 1,024 history rows."""
+    dirs = (name,) + Path(path).resolve().relative_to(Path(top).resolve()).parts[:-1]
+    where = _in_segment(dirs) or (name == MAIN and len(dirs) > 1 and dirs[1] in MAIN_FIXTURES)
+    return where and all((s[0] if s else 1) <= FIXTURE_ROWS for s in (shapes or {}).values())
+
+
 def classify(inv, scanned_readers) -> dict:
-    """SCANNED (a reader covers it), NOT_SCANNED (inventory found nothing), else INCOMPLETE."""
-    out = {}
+    """SCANNED (a reader covers it), NOT_SCANNED (nothing found, or only synthetic test fixtures),
+    else INCOMPLETE (R23 rules 1-5; the INCOMPLETE entry lists every offending file)."""
+    out, art = {}, Path(crs.ART)
     for name, rec in inv.items():
-        found = (len(rec["history_files"]), len(rec["identity_refs"]),
-                 len(rec["observation_set_roots"]), len(rec.get("unreadable", [])))
-        if name in scanned_readers:
-            out[name] = {"class": "SCANNED", "reason": f"reader(s) {scanned_readers[name]}"}
-        elif not any(found) and not rec.get("excluded"):
+        readers = list(scanned_readers.get(name, []))
+        if rec.get("excluded") or (readers and name != MAIN):
+            out[name] = {"class": "SCANNED", "reason": f"reader(s) {readers}"} if readers else \
+                {"class": "INCOMPLETE", "reason": "excluded from the deep scan without a reader"}
+            continue
+        roots = rec["observation_set_roots"]
+        f_roots = [r for r in roots if not _under(r, art)]
+        covered = f_roots + [r for r in roots if "a" in readers and _under(r, art)]
+        readers += ["f"] if f_roots else []
+        top, shapes = rec.get("path", name), rec.get("history_shapes", {})
+        cov = [Path(r).resolve().parts for r in covered]
+        loose = [p for p in rec["history_files"] + rec["identity_refs"] if not any(
+            Path(p).resolve().parts[:len(c)] == c for c in cov)]
+        unread = rec.get("unreadable", [])
+        bad = [{"path": p, "shape": shapes.get(p, "identity")} for p in loose
+               if not _fixture(name, top, p, shapes.get(p))]
+        bad += [{"path": u["path"], "shape": f"unreadable {u['error']}"} for u in unread
+                if not _fixture(name, top, u["path"], None)]
+        fixtures = len(loose) + len(unread) - len(bad)
+        bad += [{"path": r, "shape": "ObservationSet root without a reader"}
+                for r in roots if r not in covered]
+        if bad:
+            out[name] = {"class": "INCOMPLETE", "files": bad, "reason": f"{len(bad)} history-"
+                         "bearing, identity-bearing or unreadable file(s) or OS root(s) not "
+                         "covered by a reader or the synthetic-fixture rule (R23)"}
+        elif readers:
+            out[name] = {"class": "SCANNED", "reason": f"reader(s) {readers}" + (
+                f"; {fixtures} other file(s): {FIXTURES}" if fixtures else "")}
+        elif fixtures:
+            out[name] = {"class": "NOT_SCANNED", "reason": f"{FIXTURES} ({fixtures} file(s) "
+                         "under a pytest basetemp segment, <= 1,024 history rows; R23)"}
+        else:
             out[name] = {"class": "NOT_SCANNED", "reason": "inventory: 0 history-bearing files, "
                          "0 identity references, 0 ObservationSet roots, 0 unreadable files"}
-        else:
-            out[name] = {"class": "INCOMPLETE", "reason": "history-bearing source without a "
-                         "reader (history, identity, OS roots, unreadable) = %s" % (found,)}
     return out
+
+
+def _history_bearing(header) -> bool:
+    return bool(_history_arrays(header))
 
 
 def validate_handoff_json(root) -> dict:
@@ -205,7 +258,8 @@ def source_e(store=ROOT / "d2a-store", pools_meta=None) -> dict:
 
 
 def source_f(root, inv, classes) -> list:
-    """ObservationSet stores under other directories, canonicalised by their EmissionSpec."""
+    """ObservationSet stores under other directories, canonicalised by their EmissionSpec perm
+    when it resolves, else raw tokens[:, :32] (R23 rule 1)."""
     from topo_pilot.contracts import ArtifactStore
     from topo_pilot.contracts.backends import LocalFSBackend
 
@@ -216,8 +270,23 @@ def source_f(root, inv, classes) -> list:
         for art in rec["observation_set_roots"]:
             if Path(art).resolve() == Path(crs.ART).resolve():
                 continue
-            out += crs.observation_set_sources(ArtifactStore(LocalFSBackend(Path(art))), art)[0]
+            store = ArtifactStore(LocalFSBackend(Path(art)))
+            for s in crs.observation_set_sources(store, art)[0]:
+                raw = not s["meta"]["emission_spec"]  # R23 rule 1: no perm resolves -> raw
+                out.append(dict(s, name="f:" + s["name"].split(":", 1)[1], meta=dict(
+                    s["meta"], source="f", canonicalisation="none (raw tokens[:, :32]; no "
+                    "EmissionSpec resolves)" if raw else s["meta"]["canonicalisation"]),
+                    reader=_raw_reader(store, Path(s["path"]).parent.name) if raw
+                    else s["reader"]))
     return out
+
+
+def _raw_reader(store, oid):
+    def reader(path):
+        from topo_pilot.contracts import ObservationSet
+        obs = store.load(ObservationSet, oid, consumer="analysis")
+        return np.ascontiguousarray(np.asarray(obs.tokens)[:, :32], dtype=np.uint8)
+    return reader
 
 
 def revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None) -> dict:
@@ -270,12 +339,8 @@ def build(version, out_dir, root=ROOT, extra=None) -> dict:
     a_src, seqs = a_res if a_res is not None else ([], {})
     token_sources = a_src + source_b(root) + (c_src or []) + e["sources"]
     inv = inventory(root, exclude=tuple(OWN_READERS))
-    for name, rec in inv.items():
-        if name not in readers and rec["observation_set_roots"] and not rec["history_files"] \
-                and not rec["identity_refs"] and not rec["unreadable"]:
-            readers[name] = ["f"]
-    classes = classify(inv, readers)
-    token_sources += source_f(root, inv, classes)
+    classes = classify(inv, readers)  # adds source (f) to OS-store directories (R23)
+    token_sources += _try(problems, "f", lambda: source_f(root, inv, classes)) or []
     reg = c1_data.build_registry(token_sources)
     problems += [f"unreadable: {m['name']}" for m in reg["missing"]]
     digests, seq_union = set(reg["digests"]), set()

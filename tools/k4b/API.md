@@ -265,3 +265,52 @@ Items both authors left unpinned (simplest form consistent with the protocol):
 24. **`k4b_data.duplicates`**: `n_duplicate_rows = n_rows − n_unique` (the extra copies beyond the first of each digest).
 25. **`k4b_meter_bind.disk_reason`** on unreadable free space: `"disk safe-STOP: <drive> free space unreadable (<type(exc).__name__>: <exc>)"`.
 26. **`k4b_registry.source_d`** on a registry_v1 sha256 that differs from CONTRACT: raises `C1GateFailure("FAIL_TECHNICAL/LINEAGE", "registry_v1 sha256 mismatch")`.
+
+## 14. Contract completion (job 0047; ruling R17 of jobs/0046/review.md). Signatures before code
+
+Pure functions are side-effect free: they open no file and return plain dicts. The protocol wins on conflict. §14.4 lists open protocol questions; the signatures below do not decide them.
+
+### 14.1 `k4b_driver`: checkpoint-meta check (§9 `h1`; §2.2)
+
+| Function | Contract |
+|---|---|
+| `checkpoint_meta(artifact_root, artifact_id) -> dict` | Reads only `<artifact_root>/Checkpoint/<artifact_id>/meta.json` (JSON; no payload or state file). `artifact_root` = `ROOT/"topo-pilot"/"artifacts"`. Unreadable or malformed → `C1GateFailure("FAIL_TECHNICAL/IDENTITY", …)` |
+| `expected_meta(model, step_label) -> dict` | From CONTRACT: `{"artifact_id": checkpoints[str(model)][step_label], "artifact_type": "Checkpoint", "run_key": [run_key[0], run_key[1], model], "step": steps["trained"] if step_label == "step5000" else steps["init"], "status": "complete", "init_seed_key": f"init/{run_key[0]}/{run_key[1]}/{model}", "init_seed": checkpoints[str(model)]["init_seed"], "payload_sha256": None (see §14.4 Q1)}`. `step_label` ∈ {"step5000", "step0"}; `model` is an int of MODELS |
+| `check_checkpoint_meta(meta, expected) -> dict` | Pure. Compares each item exactly (`==` with `type(...) is` for ints, so a str seed, str step or str model fails): `meta["artifact_id"]`, `meta["artifact_type"]`, `meta["config"]["run_key"]` (a list `[family, mode, int model]`), `meta["config"]["step"]` (int), `meta["status"]`, `meta["seed_map"][init_seed_key]` against `init_seed`, and `meta["payload_sha256"]` against `expected["payload_sha256"]` when that is not None. A missing key is a mismatch. Returns `{"status": "PASS" \| "FAIL_TECHNICAL/IDENTITY", "mismatches": [{"field", "expected", "found"}], "checked": [field names in the order above]}` |
+| `h1(out, ctx)` (addition) | For each model j and step_label in ("step5000", "step0"): `check_checkpoint_meta(checkpoint_meta(root, id), expected_meta(j, step_label))` **before** `c1_model.load_model64`. The first non-PASS raises `C1GateFailure("FAIL_TECHNICAL/IDENTITY", <mismatches as JSON>)`. The gate record carries every result under `checkpoint_meta` (`{"1729/step5000": result, …}`) |
+
+### 14.2 `k4b_fresh`: control arrays, summaries, agreement, ratios, init qualifier, support (§9, §10, §11)
+
+`CONTROL_NAMES = ("m4_phase", "sha_suffix", "init", "decoder", "delta1", "delta2", "delta4_orc", "naive")`.
+- An entry is **two-sided** (`{"X_minus", "X_plus", "phi", "supported"}`: init, delta1, delta2) or **one-sided** (`{"X", "phi"}`: the others).
+- Model-free controls (m4_phase, sha_suffix, delta4_orc) are keyed `"all"`; the others by int model.
+- An unavailable entry is `{"unavailable": "<reason>"}`.
+
+| Function | Contract |
+|---|---|
+| `control_arrays(m, canon32, ext, init_ext, decoders) -> dict` | Pure. Inputs: `m` = `{K: float64 [n, 2]}`, the test oracle moments (K ∈ KS); `ext` = `{j: chart.Extension}`, the frozen production charts on the test rows; `init_ext` = `{j: Extension or {"unavailable": reason}}`, the frozen step-0 charts; `decoders` = `{j: decoder dict}`. Returns `{name: {key: entry}}` with these entries:<br>• m4_phase: `{"X": phase_scores(m4_phase(m4), m32, m4), "phi"}`<br>• sha_suffix: `{"X": phase_scores(sha_phase(canon32), m32, m4), "phi"}`<br>• init[j]: `endpoint_arrays(init_ext[j].phase, init_ext[j].supported, m32, m4)` plus `phi`, `supported`<br>• decoder[j]: `{"X": phase_scores(ψ_j, m32, m4), "phi": ψ_j}` with ψ_j = `predict_phase(decoders[j], canon32)`, on every row<br>• delta1[j], delta2[j]: `secondary_arrays(ext[j].phase, ext[j].supported, m, K)` (K = 1, 2) plus `phi`, `supported`<br>• delta4_orc: `{"X": phase_scores(oracle_phase(m32), m32, m4), "phi"}`<br>• naive[j]: `{"X": naive_scores(ext[j].phase, m32, m4), "phi": ext[j].phase}` |
+| `control_bounds_all(controls, refs, eps) -> dict` | Same keys; each entry is `{"max_B": Fraction, "certified": bool}`. One-sided: `k4b_cert.control_bounds(X, phi, refs, eps, K=4)`. Two-sided: `k4b_cert.endpoint_bounds(entry, supported, phi, refs, eps, K)` with K = 4 (init), 1 (delta1), 2 (delta2); `max_B` = the max of the minus, plus and norm maxima. `certified` = `cap_ok(max_B)` and `p2_ok` of every array. Never gating |
+| `bootstrap_inputs(arrays, controls) -> dict` | The one ordered dict for the single `joint_bootstrap(…, 610103)`: first `f"X:{j}:-"`, `f"X:{j}:+"` for every j in MODELS order; then each available control entry in `CONTROL_NAMES` order, as `f"{name}:{key}:-"`/`f"{name}:{key}:+"` (two-sided) or `f"{name}:{key}"` (one-sided) |
+| `control_summary(draws, controls, bounds_all) -> dict` | Pure. Per control entry: `{"point", "central95", "alpha_bound", "one_minus_alpha_bound", "max_B": str(Fraction), "certified": bool, "label"}`.<br>• `point`: tree mean of X, or the pair (mean X−, mean X+).<br>• `central95`: ((lo, 125), (hi, 4875)) per side.<br>• `alpha_bound`: `quantile_with_rank` of the X draws (or the X− draws), at ALPHA.<br>• `one_minus_alpha_bound`: the same for the X draws (or the X+ draws), at 1 − ALPHA.<br>• `label`: `"uncertified"` iff not certified, else absent.<br>Unavailable entries pass through unchanged. Rank checks as in `k4b_stats.bounds` |
+| `decoder_agreement(ext, decoders, canon32) -> dict` | `{j: k4b_decoder.agreement(ext[j].phase, predict_phase(decoders[j], canon32), ext[j].supported)}`; an UNAVAILABLE decoder gives `"unavailable (<reason>)"` |
+| `ratios(mean_X_minus, B4, delta4_orc_mean) -> dict` | Pure. Returns `{"EX_minus_over_B4": r1, "EX_minus_over_delta4_orc": r2}`, each a float numerator/denominator, or the string `"undefined"` when the denominator is None, non-finite or ≤ 0 (§9.6, §9.7). Called per model j with that model's mean X̂− |
+| `init_qualifier(init_entry, L_init, F_init) -> bool \| str` | Pure. `"unavailable (<reason>)"` if the entry is unavailable; else `Fraction(L_init) − Fraction(F_init) > Fraction(1, 100)` (strict, exact; §9.3). `L_init` = the rank-84 bound of the init X− draws. `F_init` = `margin(b_num(max_B_init_minus, max abs X−_init, n), Z_bound)` (see §14.4 Q3) |
+| `support_entries(ext, R, arrays, m) -> dict` | `{j: support_report(ext[j], R, arrays[j]["r4n"], ext[j].phase, m[32], m[4], sealed=False)}`. RESULT `per_model[j]["support"]` is that dict and `per_model[j]["missing_mass"]` is its `missing_mass` (on fresh rows the unsealed form is allowed) |
+
+### 14.3 `k4b_fresh.endpoint`, `load_frozen` and `main` (E2, release B)
+
+| Function | Contract |
+|---|---|
+| `endpoint(arrays, controls, bounds_all, fresh_b4, Z_bound, decoders, ext, canon32, m, R) -> dict` | **Inputs:** `arrays` = `{j: endpoint_arrays plus "bounds" (endpoint_bounds)}` from T-PRE; `controls` = `control_arrays(...)`; `bounds_all` = `control_bounds_all(...)`; `fresh_b4` = the `b4_guard` result with `FRESH_B4_LOW`.<br>**Computation:** one `joint_bootstrap(bootstrap_inputs(arrays, controls), 610103)`. Per model: `bounds`; B_num per side (`max_b` = the side's max row bound, `max_abs` = max abs X̂ of that side, n = test rows); `margin`; `model_status`. Then `overall`.<br>**Returns** the RESULT dict with exactly the §11 keys:<br>• `per_model[j]`: L, U, L_rank, U_rank, F_minus, F_plus, B_num_minus, B_num_plus, status, labels, status_without_F, central95_minus, central95_plus, point_minus, point_plus, width, missing_mass, support<br>• `controls[name][key]` (`control_summary`), `decoder_agreement`, `ratios[j]` (`ratios(point_minus_j, B4, delta4_orc point)`), `fresh_B4`, `init_qualifier[j]`, `overall`, `Z_bound`, `N`, `k`, `c1prime_disclosure`<br>Writes nothing; Fractions are given as str |
+| `load_frozen(out) -> dict` | `k4b_charts.require_frozen(out)` first. Returns `{"prod": {j: {"chart", "gauge"}}, "init": {j: {"chart", "gauge"} or {"unavailable": reason}}, "decoders": {j: decoder}}`, read from `stages/S4a/CHART_<j>.npz`, `INIT_CHART_<j>.npz` (`chart.chart_from_arrays`) and `DECODER_<j>.npz` (`k4b_decoder.from_arrays`). No refit, no gauge |
+| `main(argv=None) -> int` | **Flags:** `--release` (release B, required), `--session` (required), `--out` (default STORE), `--mailbox`.<br>**Steps:**<br>1. `require_release_b`.<br>2. `k4b_data.load_process()`.<br>3. The six checkpoints: `check_checkpoint_meta`, then `load_model64`.<br>4. The cal b0 and val b0 tables from `stages/S3/HIST_*.npz`, each re-hashed against its STAGE_COMPLETE record.<br>5. `load_frozen`.<br>6. `sample_test` (the reservation is verified first).<br>7. `run_gates` over `("H2-FRESH", "T-PRE", "ENDPOINT")`: T-PRE builds `controls` and `bounds_all`; ENDPOINT calls `endpoint`.<br>8. On ENDPOINT PASS, `export(out, result)`.<br>Returns 0 iff every fresh gate is PASS. K-REG2 is built earlier by `kreg2_step` (a W2 job), never by `main` |
+
+### 14.4 Open protocol questions (not decided here)
+
+- **Q1 (payload sha).**
+  - §9 `h1` names "payload sha", but CONTRACT `checkpoints` binds only the artifact IDs, not a payload sha256.
+  - The meta `payload_sha256` of `c3358e3c…` is `bcd024ef…`. That is not the byte sha256 of `payload.npz`, so the store's own hashing rule applies.
+  - Question: which expected value binds? Either the ArtifactStore's load-time integrity check alone (`expected["payload_sha256"] = None`, as pinned above), or explicit values added to the contract.
+- **Q2 (B4 in E X−/B4).** §9.7 reports E X−/B4. Is B4 the test point E‖r̂4‖ (`fresh_b4["point"]`), or a certified bound (lower or upper)? `ratios` takes B4 as an argument and does not choose.
+- **Q3 (F_init).** §9.3 reads "L−_init,j − F_init,j > 0.01" without defining F_init. The signature above assumes the §5.5 rule applied to the init X− array, with the same Z_bound. Confirm, or name the intended F.
+- **Q4 (two-sided control bounds).** For the identified-set controls (init, Δ1, Δ2), are the "α and 1 − α bounds" taken from the X− and X+ draws respectively, as for the endpoint (the signature's reading), or reported for both sides?

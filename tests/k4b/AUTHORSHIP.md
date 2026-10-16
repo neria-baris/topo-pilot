@@ -16,3 +16,5 @@ The worker checked syntax only: each file was compiled in memory with `compile()
 **Corrections.** Only a file's own author may correct it (§11.4). **No formatter is ever run over `tests/k4b`.**
 
 **Author A:** correction round 1 (2026-10-16): test_lemma_t_is_not_vacuous asserted `0 < zb < 1`, but with KAPPA = 1/40 the toy bound is zb ~ 1.1533 (implementer report), so the bound was nearly vacuous and the assertion false. Fix in `test_a_lemma_t.py`: KAPPA 1/40 -> 1/100 (docstring updated), assertion kept, hand proof added as a comment: RHO = (101/99)^9 < e^(18/99) < 6/5 and 4 TV <= 2(1.01^8 - 1) < 0.167, so zb < 0.567. Nothing else changed. Author A read only the allowed inputs (protocol sections, API.md, CONTRACT.json, TEST_PLAN.md, CERTIFICATE.md, own test file); read no `tools/k4b/*.py` module code, executed nothing, ran no formatter.
+
+**Author B:** round 2 (2026-10-16): added test_b_h1_meta, test_b_endpoint, test_b_registry_rules from API §14–§15; read no module code.

@@ -246,3 +246,22 @@ Identity-only access: token arrays and identity columns only. Every function tak
 13. **Unsupported-row certificate**: X∓ = ∓n̂ is exact in float, so its row bound is Lemma N's B_N (§5.3).
 14. **Validation-report sealing** is enforced by key name (`SEALED_KEYS`), recursively, at the report writer.
 15. **Store paths**: every function takes `out` (the store root) as an argument, so tests use temporary stores.
+
+### 13.1 Pinned return formats (job 0046; ruling of jobs/0045/review.md; pinned before the module code)
+
+Authors' readings, binding where §1–§12 are silent:
+
+16. **`k4b_stats.bounds`** returns `{"L": (value, rank), "U": (value, rank), "L_rank": 84, "U_rank": 4917, "central95_minus": ((lo, 125), (hi, 4875)), "central95_plus": ((lo, 125), (hi, 4875))}`; each value is a float from `quantile_with_rank` (author A accepts a float or a `(value, rank)` tuple).
+17. **`k4b_stats.width_diagnostic`** returns `{"per_model": {j: int}, "joint": int}` (author A); `D_bar` is `{j: float}`.
+18. **`k4b_stats.model_status`**: `status_without_F` is the §8.1 status with F− = F+ = 0, i.e. `"SUPPORT"`, `"EXCLUDE"` or `"UNRESOLVED"` (author A). Reference-moment inputs may be Decimal pairs (A); they enter certified comparisons through `Fraction`.
+19. **`k4b_charts.c0_cal`** returns `{"status", "per_model": {j: build result}}`; `freeze_production(out, charts, init, decoders)` and `c0_val_gate(models, prod, …)` take `c0_cal(...)["per_model"]`. `init_charts` returns `{"status", "per_model": {j: build result or {"status": "INIT_UNAVAILABLE", "reason"}}}` (author B reads `res.get("per_model", res)`).
+20. **`k4b_release.needs_owner(correction)`**: `correction = {"defect": str, "quantities": [{"name", "outcome_bearing": bool, "changed": bool, "at_or_after_failure": bool}]}`; True iff some quantity is outcome-bearing and (changed or at_or_after_failure) (author B).
+21. **`k4b_release.restore_records(out, verified)`**: `verified` maps a record file name (relative to `out`) to its verified bytes. **`archive_attempt(out, job, files, record_suffixes)`**: `files` is a list of paths inside `out`; `record_suffixes` maps a record file name to the appended suffix text; each suffix is written as `superseded/<job>/records/<name>.suffix` (author B).
+22. **D-2a `pools.json`** is `{pool: {"n": n}}` (author B).
+
+Items both authors left unpinned (simplest form consistent with the protocol):
+
+23. **`k4b_stats.write_sealed(out, arrays)`**: `arrays` maps a `SEALED_KEYS` name to a 1-D float64 array, or to a dict (int model or str control name → array, nested at most twice). The file holds `{"protocol_sha256", "means": <same nesting, tree means as floats, keys as str>}`. Exclusive create; an existing file raises and is left byte-unchanged.
+24. **`k4b_data.duplicates`**: `n_duplicate_rows = n_rows − n_unique` (the extra copies beyond the first of each digest).
+25. **`k4b_meter_bind.disk_reason`** on unreadable free space: `"disk safe-STOP: <drive> free space unreadable (<type(exc).__name__>: <exc>)"`.
+26. **`k4b_registry.source_d`** on a registry_v1 sha256 that differs from CONTRACT: raises `C1GateFailure("FAIL_TECHNICAL/LINEAGE", "registry_v1 sha256 mismatch")`.

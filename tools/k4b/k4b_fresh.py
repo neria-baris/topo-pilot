@@ -158,8 +158,9 @@ def endpoint(out, ctx) -> dict:
     per, statuses = {}, {}
     for j in MODELS:
         bd = k4b_stats.bounds(draws[f"minus_{j}"], draws[f"plus_{j}"])
-        Bm = k4b_cert.b_num(a[j]["bounds"]["max"]["minus"], float(np.max(np.abs(a[j]["X_minus"]))), n)
-        Bp = k4b_cert.b_num(a[j]["bounds"]["max"]["plus"], float(np.max(np.abs(a[j]["X_plus"]))), n)
+        mx = a[j]["bounds"]["max"]
+        Bm = k4b_cert.b_num(mx["minus"], float(np.max(np.abs(a[j]["X_minus"]))), n)
+        Bp = k4b_cert.b_num(mx["plus"], float(np.max(np.abs(a[j]["X_plus"]))), n)
         Fm, Fp = k4b_cert.margin(Bm, ctx["Z"]), k4b_cert.margin(Bp, ctx["Z"])
         st = k4b_stats.model_status(bd["L"], bd["U"], Fm, Fp)
         statuses[j] = st["status"]

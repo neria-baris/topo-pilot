@@ -25,7 +25,7 @@ import op_guard
 import scores
 import stage_records
 from c1_records import C1GateFailure, classify_exception
-from k4b_config import MODELS, SEEDS
+from k4b_config import MODELS, SEEDS, check_checkpoint_meta, expected_meta  # noqa: F401
 
 GATE_ORDER = ("G0", "H1", "REG1", "H2", "ORACLE-VAL", "B4-VAL", "C0-CAL", "C0-VAL", "CERT-VAL",
               "P1")
@@ -34,6 +34,8 @@ OWNER_DIR = Path("archive") / "owner-decisions-20261015"
 AUTHORITY_FILES = {"addendum_3_sha256": "OWNER_DECISIONS.addendum-3.md",
                    "addendum_10_sha256": "OWNER_DECISIONS.addendum-10.md",
                    "owner_decisions_v1_a2_sha256": "OWNER_DECISIONS.v1-a73c869.md"}
+ARTIFACTS = k4b_config.ROOT / "topo-pilot" / "artifacts"
+IDENTITY = "FAIL_TECHNICAL/IDENTITY"
 
 
 def _sha(path) -> str:
@@ -136,8 +138,31 @@ def load_checkpoint(artifact_id):
     from topo_pilot.contracts import ArtifactStore, Checkpoint
     from topo_pilot.contracts.backends import LocalFSBackend
 
-    store = ArtifactStore(LocalFSBackend(k4b_config.ROOT / "topo-pilot" / "artifacts"))
+    store = ArtifactStore(LocalFSBackend(ARTIFACTS))
     return store.load(Checkpoint, artifact_id, consumer="experiment")
+
+
+def checkpoint_meta(artifact_root, artifact_id) -> dict:
+    """API.md §14.1: reads only <root>/Checkpoint/<id>/meta.json."""
+    try:
+        meta = json.loads((Path(artifact_root) / "Checkpoint" / artifact_id / "meta.json")
+                          .read_bytes().decode("utf-8"))
+        assert isinstance(meta, dict), "not a JSON object"
+    except Exception as exc:  # noqa: BLE001
+        raise C1GateFailure(IDENTITY, f"checkpoint meta {artifact_id}: {exc!r}") from exc
+    return meta
+
+
+def check_checkpoints(artifact_root=ARTIFACTS) -> dict:
+    """All six meta checks before any checkpoint load; the first non-PASS raises."""
+    res = {}
+    for j, label in ((j, s) for j in MODELS for s in ("step5000", "step0")):
+        exp = expected_meta(j, label)
+        res[f"{j}/{label}"] = r = check_checkpoint_meta(checkpoint_meta(artifact_root,
+                                                                         exp["artifact_id"]), exp)
+        if r["status"] != "PASS":
+            raise C1GateFailure(IDENTITY, json.dumps(r["mismatches"], default=str)[:2000])
+    return res
 
 
 def h1(out, ctx) -> dict:
@@ -146,6 +171,7 @@ def h1(out, ctx) -> dict:
     import oracle_profile
     import torch
 
+    meta = check_checkpoints()
     try:
         proc = k4b_data.load_process()
         models, shas = {}, {}
@@ -166,8 +192,9 @@ def h1(out, ctx) -> dict:
     if threads != 1:
         raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"{threads} threads")
     ctx.update(proc=proc, models=models, Z=tb["Z_bound"])
-    return {"state_sha": shas, "Z_bound": str(tb["Z_bound"]), "z_job0018_report_only":
-            k4b_config.CONTRACT["certificate"]["z_bound_job0018_report_only"],
+    return {"checkpoint_meta": meta, "state_sha": shas, "Z_bound": str(tb["Z_bound"]),
+            "z_job0018_report_only": k4b_config.CONTRACT["certificate"][
+                "z_bound_job0018_report_only"],
             "a1_selftest": selftest, "threads": threads}
 
 

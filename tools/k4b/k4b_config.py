@@ -112,3 +112,57 @@ def require_int_keys(d, what) -> dict:
     ):
         raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"{what}: keys must be the int seeds")
     return d
+
+
+def expected_meta(model, step_label) -> dict:
+    if type(model) is not int or model not in MODELS or step_label not in ("step5000", "step0"):
+        raise ValueError(f"no checkpoint {model!r}/{step_label!r}")
+    c, ck = CONTRACT, CONTRACT["checkpoints"][str(model)]
+    fam, mode = c["run_key"][0], c["run_key"][1]
+    return {
+        "artifact_id": ck[step_label],
+        "artifact_type": "Checkpoint",
+        "run_key": [fam, mode, model],
+        "status": "complete",
+        "step": c["steps"]["trained" if step_label == "step5000" else "init"],
+        "init_seed_key": f"init/{fam}/{mode}/{model}",
+        "init_seed": ck["init_seed"],
+        "payload_sha256": ck["meta_payload_sha256"][step_label],
+    }
+
+
+def _same(a, b) -> bool:  # exact and type-strict; lists element-wise
+    return type(a) is type(b) and (
+        all(map(_same, a, b)) and len(a) == len(b) if isinstance(a, list) else a == b
+    )
+
+
+def check_checkpoint_meta(meta, expected) -> dict:
+    """Pure (API.md §14.1, R19); a missing key is a mismatch, never an exception."""
+    sk, missing, mismatches = expected["init_seed_key"], object(), []
+    items = [
+        ("artifact_id", ("artifact_id",), "artifact_id"),
+        ("artifact_type", ("artifact_type",), "artifact_type"),
+        ("config.run_key", ("config", "run_key"), "run_key"),
+        ("config.step", ("config", "step"), "step"),
+        ("status", ("status",), "status"),
+        (f"seed_map[{sk}]", ("seed_map", sk), "init_seed"),
+        ("payload_sha256", ("payload_sha256",), "payload_sha256"),
+    ]
+    for field, path, key in items:
+        found = meta
+        for k in path:
+            found = found.get(k, missing) if isinstance(found, dict) else missing
+        if found is missing or not _same(found, expected[key]):
+            mismatches.append(
+                {
+                    "field": field,
+                    "expected": expected[key],
+                    "found": None if found is missing else found,
+                }
+            )
+    return {
+        "status": "FAIL_TECHNICAL/IDENTITY" if mismatches else "PASS",
+        "mismatches": mismatches,
+        "checked": [f for f, _, _ in items],
+    }

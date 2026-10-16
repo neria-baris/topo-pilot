@@ -283,6 +283,7 @@ def c0_cal_stage(out, ctx) -> dict:
     import k4b_decoder
 
     cfg, t, m32 = k4b_config.chart_cfg(), ctx["tables"]["cal"], ctx["moments"]["cal"][32]
+    begin_stage(out, "S4a")
     acts = ctx["acts_cal"] = _acts(ctx, "cal")
     land = np.asarray(t["landmark"], dtype=bool)
     ids = t["seq_ids"][land]
@@ -298,6 +299,9 @@ def c0_cal_stage(out, ctx) -> dict:
                                 acts[(j, "step5000")][~land], cfg)
         dec[j] = k4b_decoder.fit(t["canon32"][~land], t["seq_ids"][~land], ext.phase, j)
     rec = k4b_charts.freeze_production(out, cal["per_model"], init, dec)
+    d = _stage_dir(out, "S4a")  # the stored cal b0 activations of the T-PRE determinism check
+    stage_records.save_npz(d / "ACTS_cal_b0.npz", **{f"{j}_{s}": a for (j, s), a in acts.items()})
+    complete_stage(out, "S4a", sorted(f for f in d.rglob("*") if f.is_file()))
     ctx.update(prod=cal["per_model"], init=init["per_model"], decoders=dec)
     return {"chart_diagnostics": {j: r["diagnostics"] for j, r in cal["per_model"].items()},
             "init": {j: r["status"] for j, r in init["per_model"].items()},

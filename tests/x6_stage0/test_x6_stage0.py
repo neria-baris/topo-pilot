@@ -7,7 +7,7 @@ from __future__ import annotations
 import itertools
 import sys
 from collections import Counter
-from decimal import Decimal, localcontext
+from decimal import Context, Decimal, localcontext
 from fractions import Fraction as F
 from pathlib import Path
 
@@ -297,12 +297,13 @@ def test_04_witness_path_sums():  # section 10.4 test 4
                 laws.append(qs[-1])
             tv = sum(abs(a - b) for a, b in zip(laws[0][15:], laws[1][15:])) * 5 / 2
             assert tv == lam(n + 1)  # cue-normalised (the cue mass is 1/5)
-            mix = [(a + b) / 2 for a, b in zip(*laws)]
-            ref = (dkl(laws[0], mix) + dkl(laws[1], mix)) / 2
+            mix, got = [(a + b) / 2 for a, b in zip(*laws)], xe.set_gap(laws)
             bar = [(1 - lam(n + 1)) / 3 + (lam(n + 1) / 2 if k else 0) for k in range(3)]
-            assert abs(ref - (dent(bar) - dent(mu(n + 1, 0))) / 5) < Decimal("1e-40")
-            assert abs(xe.set_gap(laws) - ref) < Decimal("1e-40")
-            assert abs(ref - Decimal(gap)) < Decimal("1e-6")
+            with localcontext(Context(prec=100)):  # every reference Decimal op at 100 digits
+                ref = (dkl(laws[0], mix) + dkl(laws[1], mix)) / 2
+                assert abs(ref - (dent(bar) - dent(mu(n + 1, 0))) / 5) < Decimal("1e-40")
+                assert abs(got - ref) < Decimal("1e-40")
+                assert abs(ref - Decimal(gap)) < Decimal("1e-6")
     hs = [hol((ANC,) + w_path("W3", o), lab) for o in ORDS]
     mult = Counter(NAME[h] for h in hs)
     assert mult == {"e": 16, "c": 4, "c2": 4} and F(mult["c"] + mult["c2"], 24) == F(1, 3)
@@ -355,16 +356,16 @@ def test_09_block_comparator():  # section 10.4 test 9
         post[o] = {z: v / sum(un.values()) for z, v in un.items()}
         exp = (1, 1) if truth[o] == "e" else (F(1, 5), F(4, 5))  # r_add(e), r_add(truth)
         assert (post[o]["e"], post[o][truth[o]]) == exp
-    bc = xe.block_comparator(0)
+    bc, q_rot, q_id = xe.block_comparator(0), mu(32, 1), mu(32, 0)
     assert {o: {z: p.get(z, 0) for z in prior} for o, p in bc["posteriors"].items()} == post
     assert dict(bc["truth"]) == truth and bc["accuracy"] == 1
-    logloss = dec(F(5, 4)).ln() / 3  # mean -ln r_add(truth): 16 x 0 and 8 x ln(5/4)
-    q_rot, q_id = mu(32, 1), mu(32, 0)
-    regret = dkl(q_rot, [F(4, 5) * a + F(1, 5) * b for a, b in zip(q_rot, q_id)]) / 15
-    assert abs(bc["holonomy_logloss"] - logloss) < Decimal("1e-40")
-    assert abs(bc["regret"] - regret) < Decimal("1e-40")
-    assert abs(logloss - Decimal("0.0743812")) < Decimal("1e-6")
-    assert abs(regret - Decimal("0.0022197")) < Decimal("1e-6")
+    with localcontext(Context(prec=100)):  # every reference Decimal op at 100 digits
+        logloss = dec(F(5, 4)).ln() / 3  # mean -ln r_add(truth): 16 x 0 and 8 x ln(5/4)
+        regret = dkl(q_rot, [F(4, 5) * a + F(1, 5) * b for a, b in zip(q_rot, q_id)]) / 15
+        assert abs(bc["holonomy_logloss"] - logloss) < Decimal("1e-40")
+        assert abs(bc["regret"] - regret) < Decimal("1e-40")
+        assert abs(logloss - Decimal("0.0743812")) < Decimal("1e-6")
+        assert abs(regret - Decimal("0.0022197")) < Decimal("1e-6")
     assert bc["accuracy"] == 1 and bc["regret"] > 0  # exact classification, imperfect calibration
     r = xe.block_posterior(prior, [{"e": F(1, 16), "c": F(1, 4), "c2": F(0)}] * 2)
     assert {z: r.get(z, 0) for z in prior} == {"e": F(1, 5), "c": F(4, 5), "c2": 0}

@@ -10,7 +10,7 @@ import math
 import shutil
 import sys
 from collections import Counter
-from decimal import Decimal, localcontext
+from decimal import Context, Decimal, localcontext
 from fractions import Fraction as F
 from pathlib import Path
 
@@ -175,12 +175,12 @@ def test_10_decimal_inputs_pass_through():  # section 10.4 test 10
     assert xd.to_decimal(F(1, 3), 90) == dec(F(1, 3))
     assert xd.to_decimal(F(1, 3), 130) == dec(F(1, 3), 130)
     suffix = (15, 13, 14, 3)  # cue y = 0, then 14, 15, 3 (one x+ crossing)
-    b = filt(Tf, Ef, suffix)[2][-1]
-    post = decimal_suffix_posterior(T, E, pi, suffix, 80)
+    b, post = filt(Tf, Ef, suffix)[2][-1], decimal_suffix_posterior(T, E, pi, suffix, 80)
     assert all(type(p) is Decimal for p in post)
-    assert max(abs(p - dec(r)) for p, r in zip(post, b)) <= Decimal("1e-45")
     post_f = decimal_suffix_posterior([[float(v) for v in r] for r in T], E, pi, suffix, 80)
-    assert max(abs(p - dec(r)) for p, r in zip(post_f, b)) > Decimal("1e-45")  # floats differ
+    with localcontext(Context(prec=100)):  # reference differences at 100 digits
+        assert max(abs(p - dec(r)) for p, r in zip(post, b)) <= Decimal("1e-45")
+        assert max(abs(p - dec(r)) for p, r in zip(post_f, b)) > Decimal("1e-45")  # floats differ
 
 
 def test_11_enclosures_certification_memo():  # section 10.4 test 11
@@ -217,11 +217,12 @@ def test_11_enclosures_certification_memo():  # section 10.4 test 11
     assert xd.memo_key(80, "next", 7, w, 1) == (80, "next", 7, (F(1, 2), F(1, 2), F(0)), 1)
     for kind, m in (("next", 8), ("fibre", 7)):
         first, again = xd.kl_term(80, kind, 7, w, 2), xd.kl_term(80, kind, 7, w, 2)
-        fresh = xd.kl_term_uncached(80, kind, 7, w, 2)
+        fresh, hi = xd.kl_term_uncached(80, kind, 7, w, 2), xd.kl_term(120, kind, 7, w, 2)
         assert first == again == fresh and str(first) == str(fresh)
         mix = [lam(m) * a + (1 - lam(m)) / 3 for a in (F(1, 2), F(1, 2), F(0))]
-        assert abs(first - dkl(mu(m, 2), mix, 80)) < Decimal("1e-70")
-        assert abs(xd.kl_term(120, kind, 7, w, 2) - dkl(mu(m, 2), mix, 120)) < Decimal("1e-110")
+        with localcontext(Context(prec=140)):  # reference differences at 140 digits
+            assert abs(first - dkl(mu(m, 2), mix, 80)) < Decimal("1e-70")
+            assert abs(hi - dkl(mu(m, 2), mix, 120)) < Decimal("1e-110")
         assert {xd.memo_key(p, kind, 7, w, 2) for p in (80, 120)} <= set(xd.MEMO)
     assert len(xd.MEMO) == 4  # one entry per (precision, kind): never shared
     xd.memo_clear()

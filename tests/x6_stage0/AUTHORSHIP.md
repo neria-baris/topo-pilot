@@ -30,3 +30,5 @@ One test function per §10.4 required test, 17 in all, each tagged with its numb
 ## Corrections
 
 Corrections to a test file are made only by its author (§10.4).
+
+- correction round 1 (2026-10-18): Decimal reference arithmetic moved into ≥80-digit localcontext in tests 04, 09 [+ 10, 11 in test_x6_stage0_dp.py]; read no module code. Module calls (`set_gap`, `block_comparator`, `kl_term`, `decimal_suffix_posterior`) stay outside the context; both files remain 400 lines, LF. Nothing executed.

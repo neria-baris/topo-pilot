@@ -22,3 +22,5 @@ The worker checked syntax only: each file was compiled in memory with `compile()
 **Author B:** round 2 (2026-10-16): added test_b_h1_meta, test_b_endpoint, test_b_registry_rules from API §14–§15; read no module code.
 
 **Author B:** correction round 3 (2026-10-17): test_b_registry_fixes for D2/D3 (R26); read no module code.
+
+**Author B:** correction round 4 (2026-10-17): test_b_store_reader for R28/D5; read no module code.

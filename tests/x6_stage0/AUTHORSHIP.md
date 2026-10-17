@@ -1,0 +1,32 @@
+# tests/x6_stage0: independence record (job 0058)
+
+**Author:** an independent test author: a clean-context Claude Code subagent (general-purpose, agent id a52637b1adc1fdf6f), launched on 2026-10-17 by the worker session 3e84174c-98d1-400d-acea-7a15ee753836. It is a separate agent from the module author. It worked after the protocol was frozen (X6-FROZEN-v1, sha256 61DDA37B…B572) and after `tools/x6_stage0/API.md` was committed (af17d5e, sha256 f97e2064…8477), and before any module file existed (none existed at that commit or while it worked). It did not write, and will not write, the module. This record is written by the worker from the author's final report (§10.4: the worker records what was read, not read and executed).
+
+**Files written by the author:**
+- `tests/x6_stage0/test_x6_stage0.py`: 399 lines, 8 test functions (§10.4 tests 1–5, 9, 13, 14).
+- `tests/x6_stage0/test_x6_stage0_dp.py`: 399 lines, 9 test functions (§10.4 tests 6–8, 10–12, 15–17). It imports reference helpers from `test_x6_stage0.py`.
+
+One test function per §10.4 required test, 17 in all, each tagged with its number. No line exceeds 100 characters.
+
+## What the author read
+
+- `tools/x6_stage0/PROTOCOL_X6_v1.md`, lines 1–953 (§0–§10).
+- `tools/x6_stage0/API.md`.
+- `pyproject.toml`.
+- `src/topo_pilot/world/`: `__init__.py`, `complex.py`, `registry.py`, `lattice.py`, `identification.py`.
+- `src/topo_pilot/process/`: `__init__.py`, `transition.py`, `_geometry.py` (lines 40–69); `emission.py` by content search only.
+- `tests/oracle_profile/independent_reference.py`.
+
+## What the author did not read
+
+- Any `tools/x6_stage0/*.py` file: never opened, listed, globbed or searched.
+- Any other test directory, the git history, any store, report, transcript or log.
+
+## What was executed
+
+- By the author: nothing. No Python, pytest, shell, git or formatter; only file reads, writes and content searches.
+- By the worker (job 0058): an in-memory syntax check only (`compile` of each file's source, plus an `ast` listing of the test functions and the maximum line length). The tests have never been run; PF runs them (job 0059). No formatter has been or may be run over `tests/x6_stage0`.
+
+## Corrections
+
+Corrections to a test file are made only by its author (§10.4).

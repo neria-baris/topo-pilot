@@ -1,0 +1,661 @@
+{
+ "protocol": "K4B-MERGED-v3 (frozen as K4B-FROZEN-v1)",
+ "protocol_file": "tools/k4b/PROTOCOL_K4B_v1.md",
+ "protocol_sha256": "957f0d5e70870bbd2323fbbae7bf5a8b814735b00a6525346562e7f1dd35b485",
+ "request_sha256": "ecdfa7c447fada80e0a8adae95a0b85ea8baf8963d563911ae7b290816bfa162",
+ "contract_job": "0045",
+ "status": "CONTRACT (written before any module code; the protocol wins on conflict)",
+ "precedence": [
+  "tools/k4b/PROTOCOL_K4B_v1.md",
+  "tools/k4b/CONTRACT.json",
+  "tools/k4b/API.md"
+ ],
+ "authority": {
+  "addendum_3_sha256": "222578fe865c7fffad5b4cf6919f734a5b1a7e7b296c1d706f0d5ec4138b38a4",
+  "addendum_10_sha256": "e28bde0c1b2fe989fff945af282aa62f378fb4ef93987c7c1c2e3874993722a2",
+  "owner_decisions_v1_a2_sha256": "5bd1fdb0d66bce5299644659b3e09436ca94b762a62d24d02e1ab064fde537cd",
+  "owner_decisions_md_bound": false,
+  "gap_doc": {
+   "path": "docs/proposals/GAP_CLOSING_EXPERIMENTS_HE.md",
+   "commit": "89b9bab5ef20f369a6104909bf24fb8f05531eba",
+   "blob_sha256": "8b5c7049817696bb92221471cc26f0be437b6787caddb439a776d9f5a957f091",
+   "git_blob_id": "62268af62baf1b3e619ade30587d2299a3e8dd15"
+  },
+  "k4_freeze_sha256": "e3049feedf0fadfb004c9422effe560af031addb846a7b8d1c1bffd52ce3c94a",
+  "k4_freeze_checked_files": [
+   "chart.py",
+   "cochain.py",
+   "errors.py"
+  ],
+  "window_w1_evidence": [
+   "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-10.md",
+   "jobs/0044/review.md",
+   "jobs/0033/review.md",
+   "main commit 4bc0b16"
+  ],
+  "c1prime_disclosure": "C1' ended INCONCLUSIVE/FAMILY_UNMATCHED at S4 M2-cal; its LCC charts passed C0-cal in all three models; C0-val was not reached. No K4b parameter was changed in response."
+ },
+ "commits": {
+  "r_ref": "c460e249785a0b0c66633aefb31ace400edd05bb",
+  "c1prime_exec": "93350d7e9016ad9c88108ecb50d0ec2f9c233d44",
+  "h_exec": null,
+  "h_exec_rule": "pinned at dispatch; S0 allowlisted-diff rule (protocol 11.5)"
+ },
+ "s0": {
+  "protected_paths": [
+   "src",
+   "src/topo_pilot/analysis/x4f_scores.py",
+   "src/topo_pilot/dataset/sampler.py",
+   "src/topo_pilot/experiment/x4f_probe.py",
+   "src/topo_pilot/learner/stage.py",
+   "src/topo_pilot/prediction/ridge.py",
+   "tests/oracle_profile/independent_reference.py",
+   "tools/c1prime/c1_bounds.py",
+   "tools/c1prime/c1_cert.py",
+   "tools/c1prime/c1_chart.py",
+   "tools/c1prime/c1_config.py",
+   "tools/c1prime/c1_data.py",
+   "tools/c1prime/c1_means.py",
+   "tools/c1prime/c1_model.py",
+   "tools/c1prime/c1_oracle.py",
+   "tools/c1prime/c1_records.py",
+   "tools/c1prime_registry/c1_registry_sources.py",
+   "tools/x4_circle_history/chart.py",
+   "tools/x4_circle_history/cochain.py",
+   "tools/x4_circle_history/error_bound.py",
+   "tools/x4_circle_history/errors.py",
+   "tools/x4_circle_history/op_guard.py",
+   "tools/x4_circle_history/precision.py",
+   "tools/x4_circle_history/process_law.py",
+   "tools/x4_circle_history/scores.py",
+   "tools/x4_circle_history/stage_records.py",
+   "tools/x4_oracle_profile/config.json",
+   "tools/x4_oracle_profile/controls.py",
+   "tools/x4_oracle_profile/inputs.py",
+   "tools/x4_oracle_profile/meter.py",
+   "tools/x4_oracle_profile/oracle_profile.py",
+   "tools/x4_oracle_profile/winjob.py",
+   "tools/x4_circle_history/ERROR_BOUND.md",
+   "tools/check_file_sizes.py",
+   "tools/k4b",
+   "tests/circle_history",
+   "tests/c1prime",
+   "tests/c1prime_registry",
+   "tests/oracle_profile",
+   "tests/oracle",
+   "tests/dataset",
+   "tests/contracts",
+   "tests/prediction",
+   "tests/analysis",
+   "tests/experiment",
+   "tests/learner",
+   "tests/k4b"
+  ],
+  "content_checked": {
+   "tools/c1prime/CONTRACT.json": "chart section at H_exec == chart section at R_ref"
+  },
+  "allowlist": [
+   "tools/k4b/*",
+   "tests/k4b/*"
+  ],
+  "allowed_status": "A",
+  "command": "git diff --no-renames --name-status R_ref H_exec -- <protected_paths>"
+ },
+ "reuse_sha256": {
+  "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+  "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_bounds.py": "e6a2c1fc9594aa37664a8e50effc34bb1563bdde742edf0ff56395197da73435",
+  "tools/c1prime/c1_cert.py": "b0cb037a52071e80a80e246d538185e2dfc44c45456b15f543b8c2d274c560d8",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/c1prime/c1_data.py": "262418b2f0272e8425a038c53bb120c8f40402a4100b8a71e257f71b560106e9",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_oracle.py": "077ea1489262d15075624fd6116900c74a6e5b0eb2fe02e5d4f6127cbc0323b3",
+  "tools/c1prime_registry/c1_registry_sources.py": "4f40840d8eb88d515556aeb7058640761d4b44a7a6ee8045fb3bce9987a5a253",
+  "tests/oracle_profile/independent_reference.py": "e08d02ad03ca840017feaf882e6a113638609426ce28d287dfcd939b1c59a681",
+  "src/topo_pilot/analysis/x4f_scores.py": "03e2d736a734cf8d45d158112d1955b4faba267b235777064814dee3bafc563b",
+  "src/topo_pilot/experiment/x4f_probe.py": "d6315bc94869dc8fdfb6c12e8dd47cfb42666eb5ef1bf1dd2597f34e11e78171",
+  "src/topo_pilot/prediction/ridge.py": "e63de356d0aa258d4035c86526c2487e574a5dc5445b47c4a5aa9a4de33e2b45",
+  "src/topo_pilot/dataset/sampler.py": "a94ffd3e7310e45d3e6351e8457864f6e64abe6e1b318211daed3d0c2f17b0d2",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/chart.py": "938821a0fd6651ce9b3fae9ccb6d40dfe1577ff861b76e4e5ebd136cda399ccb",
+  "tools/x4_circle_history/cochain.py": "e53f6725d6596000770bc8242c33916f5402a10398ee5b43f960bd6438f93075",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/inputs.py": "2ce1492e4388499e90b197784fc6b0bc84181d76831ef0980c6a1ee50bb81df0",
+  "tools/x4_oracle_profile/config.json": "624b3a90def9924e332f374bba68157389cb2d811a3fc788f2e9db5c9208d3be",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "src/topo_pilot/learner/stage.py": "b6170ca6037c8f957edbeeaf628fb111c5e39c50098fed2abd53fe17d7e24413"
+ },
+ "protected_sha256": {
+  "tools/x4_circle_history/ERROR_BOUND.md": "ccbf55c80ff5c014aa00c7dca0d97b4990e6d646d8fcffb351aea9dc68086705",
+  "tools/check_file_sizes.py": "b32593dfdf924a5f0da8cda473e208dffdebd75bdce22eee66764e5b6aa0e85c",
+  "tools/c1prime/PROTOCOL_C1PRIME_v1.md": "0b1f107ec7bb241e97d812ee995ad91dfb1416d719b70942dc3a567b766cf33a"
+ },
+ "models": [
+  1729,
+  2718,
+  3141
+ ],
+ "checkpoints": {
+  "1729": {
+   "step5000": "c3358e3cb9c352fb",
+   "step0": "bd8813115bbd970b",
+   "emission": "3633ac27dab50cf4",
+   "init_seed": 1959191081547677733,
+   "meta_payload_sha256": {
+    "step5000": "bcd024efc2ff30f76940d459dba95a693f536fb7cc3b2441c4ee5145dcf8596b",
+    "step0": "d49284f57b8d3194b0ef8667624b2181252977567683e9c541bc689e75740922"
+   }
+  },
+  "2718": {
+   "step5000": "98b0e703a337d513",
+   "step0": "5e6e6b7c446907f9",
+   "emission": "97838b9e13a26f74",
+   "init_seed": 1650155370212577495,
+   "meta_payload_sha256": {
+    "step5000": "48c5b743d0c500aa4d14c4f40e1b5f115a8421af01e6a383b1927ce006f05efc",
+    "step0": "ffe2fb57af77d7acd8addc208681f4cea7a0814671502828e77a0176f18ad4d1"
+   }
+  },
+  "3141": {
+   "step5000": "036b670743ffbbaf",
+   "step0": "995f11b1120ccb36",
+   "emission": "8c29c329c197c79e",
+   "init_seed": 7028749409156379047,
+   "meta_payload_sha256": {
+    "step5000": "ac7cff661c45bdba1e2fd13d668332bc58866715d9d4d475ec5af76c0814e062",
+    "step0": "9defde302fb3d57443f6a95c24a0a2608184af6b8738f3cb3695e9282bbd8cbb"
+   }
+  }
+ },
+ "run_key": [
+  "cylinder",
+  "O",
+  "<seed>"
+ ],
+ "steps": {
+  "trained": 5000,
+  "init": 0
+ },
+ "world_spec": "21feee1d8ee5422e",
+ "transition_spec": "e4dafc7b9785c172",
+ "process": {
+  "family": "cylinder",
+  "mode": "overlap",
+  "sigma": "1.25",
+  "symbols": 36,
+  "states": 144,
+  "grid": [
+   12,
+   12
+  ],
+  "periodic_axis": 0
+ },
+ "site": {
+  "hook": "resid_post_3",
+  "index": 32,
+  "bos": 36,
+  "d_model": 128,
+  "input": "[BOS=36, named w1..w32]",
+  "dtype": "float64 cast of frozen float32 weights (c1_model.load_model64)",
+  "logits": "discarded unread",
+  "w33": "never stored or read"
+ },
+ "splits": {
+  "block_rows": 3072,
+  "panel_rows": 512,
+  "scope": "k4b-sf-v1",
+  "cal": {
+   "blocks": [
+    0
+   ]
+  },
+  "val": {
+   "blocks": [
+    0
+   ]
+  },
+  "test": {
+   "blocks": "0..k-1",
+   "k_allowed": [
+    1,
+    2,
+    4
+   ]
+  },
+  "sequence_id_split_arg": "test",
+  "process_code_replicate": "k4b-sf-v1/{split}/b{block}",
+  "cal_reference_rows": 4,
+  "decoder_rows": 2560,
+  "decoder_panels": 5
+ },
+ "seeds": {
+  "history": {
+   "master": 0,
+   "name": "data",
+   "scope": [
+    "k4b-sf-v1",
+    "<split>",
+    "<block:int>",
+    "cylinder",
+    "overlap",
+    "1.25"
+   ]
+  },
+  "val_sd": 610101,
+  "val_b4": 610102,
+  "endpoint": 610103,
+  "fresh_b4": 610104,
+  "val_projection": 610105,
+  "decoder_bw": {
+   "master": 0,
+   "name": "k4b-sf-v1",
+   "scope": [
+    "suffix_rbf_bw",
+    "<model:int>"
+   ]
+  },
+  "decoder_rf": {
+   "master": 0,
+   "name": "k4b-sf-v1",
+   "scope": [
+    "suffix_rbf",
+    "<model:int>"
+   ]
+  }
+ },
+ "oracle": {
+  "Ks": [
+   1,
+   2,
+   4,
+   32
+  ],
+  "primary_K": 4,
+  "suffix_convention": "restart at pi, emit first, transitions between emissions",
+  "kernel": "oracle_profile.posterior_means",
+  "moment_tol_exact": "1/10000000000",
+  "reference": "error_bound.reference_moments (60-digit posterior, 80-digit features)",
+  "envelope_S": 144
+ },
+ "certificate": {
+  "cap": "1/10000",
+  "p2_max_abs": 4,
+  "lemma_n_D": "10**80",
+  "lemma_n_constant": "3/2",
+  "floor": "1/1000000000",
+  "b_num": "c1_bounds.B_constant(max_b, max_abs, n)",
+  "F": "max(B_num, floor) + Z_bound",
+  "F_plan": "max(B_constant(1/10000, 4, 12288), floor) + Z_bound",
+  "z_bound_job0018_report_only": 2.12e-12
+ },
+ "stats": {
+  "draws": 5000,
+  "alpha": "5/300",
+  "margin": "1/100",
+  "ranks": {
+   "alpha": 84,
+   "one_minus_alpha": 4917,
+   "b4_lower_0.05": 250,
+   "central_lo": 125,
+   "central_hi": 4875
+  },
+  "bootstrap": "c1_means.bootstrap_means (one rng.integers(0, n, size=n) per draw, shared by all arrays)"
+ },
+ "b4": {
+  "val_seed": 610102,
+  "fresh_seed": 610104,
+  "lower_rank": 250,
+  "guard": "c1_bounds.guard_H5(lower, B_H + Z_bound)",
+  "threshold": "1/100",
+  "fresh": "report only; flag FRESH_B4_LOW if certified lower <= 0.01"
+ },
+ "ladder": {
+  "candidates": [
+   3072,
+   6144,
+   12288
+  ],
+  "alpha": "5/300",
+  "power": 0.8,
+  "mde_max": 0.02,
+  "support_alternative": 0.02,
+  "exclusion_point": 0.0,
+  "min_successes": 4000,
+  "draws": 5000,
+  "sd_seed": 610101,
+  "projection_seed": 610105,
+  "sd_quantile_rank": 4917
+ },
+ "decoder": {
+  "input": "one-hot canonical w29..w32 (4 x 36 = 144 columns)",
+  "rows": "the 2,560 non-landmark rows of cal b0",
+  "target": "(cos phi_j, sin phi_j), production extension phase",
+  "n_sub": 1024,
+  "n_features": 2048,
+  "grid": [
+   0.001,
+   0.01,
+   0.1,
+   1.0,
+   10.0
+  ],
+  "ties": "larger lambda",
+  "panels": "rank among the 2,560 rows by ascending sequence_id // 512",
+  "equivalence_tol": "max(1e-10, 64*eps*kappa2(Xc'Xc + lam*I)*max|pred|), Xc = Ft - mean(Ft, axis=0)",
+  "gating": false
+ },
+ "chart": {
+  "field": 47,
+  "ripser": {
+   "maxdim": 1,
+   "coeff": 47,
+   "distance_matrix": true,
+   "do_cocycles": true
+  },
+  "bar": "largest strictly positive finite H1 lifetime; ties birth asc, death asc, index asc",
+  "scale": "midpoint (birth + death) / 2; edges with distance <= scale",
+  "lift_bounds": [
+   1,
+   2,
+   4,
+   8,
+   16
+  ],
+  "lift_node_limit": 128,
+  "lift_solver": "scipy.optimize.milp, zero objective, integrality all, threads 1, mip_rel_gap 0, presolve default",
+  "lift_rounding_tol": 1e-07,
+  "local_passes": 2,
+  "local_vertices": 128,
+  "primitive_root": 0,
+  "smoothing_residual_max": 1e-08,
+  "gauge": "fit_gauge(chart, m32[C*]) unchanged: s in (+1,-1) maximizing |mean(exp(i*s*phi) * conj(m32x + i*m32y))| over the C* landmarks; tie s=+1; phi <- (s*phi - arg(c)) mod 2pi; |c| finite and > 0; no other alignment threshold",
+  "extension_k": 8,
+  "sigma": "median(d8) over the charted landmarks C*: d8_i = 8th smallest distance from charted landmark i to the other charted landmarks (self excluded only)",
+  "weights": "exp(-0.5 * (d / sigma)^2)",
+  "duplicate_rule": "query with an exact zero distance: z = mean of exp(i*phi_j) over ALL landmarks at distance exactly 0; Invalid if 1 - |z| > 1e-8",
+  "support_min_resultant": 0.2,
+  "fidelity_min_agreement": 0.8,
+  "phase_bins": 12,
+  "phase_bin_min_rows": 8,
+  "overall_resultant_max": 0.3,
+  "max_chart_constructions": {
+   "trained": 6,
+   "init": 3,
+   "total": 9
+  },
+  "inherited_from": "tools/c1prime/CONTRACT.json chart section at R_ref c460e24 (kernel keys, giant, val_support copied verbatim; equality checked by k4b_config.check_chart_equality); the frozen C1' CONTRACT is not edited",
+  "landmarks": "production: the 512 lowest-sequence_id rows of k4b cal b0 (3,072 rows), every sampled row; direct comparator: the 512 lowest-sequence_id rows of k4b val b0; step-0 control: the same 512 cal b0 landmarks; natural float64 resid_post_3/p32 activations; landmark_ids = 20-digit zero-padded sequence_id strings, ascending",
+  "restriction": "largest connected component C* of ({0..511}, edge_list(D, r)); ties to the component containing the smallest landmark index",
+  "giant": {
+   "n": 512,
+   "min_m": 487,
+   "rule": "100*m >= 95*512 (integers)"
+  },
+  "support_radius": "2 * quantile(d8, 0.99, method=inverted_cdf), d8 over D[np.ix_(C*, C*)]",
+  "scale_domain": "D[np.ix_(C*, C*)] (MERGE ruling 1)",
+  "val_support": {
+   "n": 512,
+   "min_supported": 507,
+   "rule": "100*n_sup >= 99*512 (integers)"
+  },
+  "fidelity_domain": "the direct chart's C*_val rows, in its landmark order, unmasked",
+  "bins_resultant_domain": "all 512 val-panel production-extension queries",
+  "support_rule": "C0-val: >= 507/512 supported (not every row); no fresh-test support gate (protocol 10)",
+  "gate_rules": "C0-cal: GIANT, lift, primitive, smoothing, gauge alignment finite > 0; C0-val: direct GIANT, support >= 507/512, fidelity >= 0.80, every bin >= 8, overall resultant <= 0.30; unmet -> INCONCLUSIVE/CHART_UNAVAILABLE",
+  "lift_cpu_cap_s": null,
+  "native_operation_wall_s": 600,
+  "construction_plan": {
+   "production": "1 per trained model at S4a (C0-CAL), trained ledger",
+   "direct": "1 per trained model at S4b (C0-VAL), trained ledger",
+   "init_production": "1 per step-0 model at S4a, step-0 ledger (role 'production' only)"
+  },
+  "chart_specific_invalid": [
+   "Invalid('not a cocycle mod p') from integer_lift -> INCONCLUSIVE/CHART_UNAVAILABLE, reason 'float32/float64 filtration boundary'",
+   "Invalid from smooth_phase with every f finite and a finite residual > 1e-8 -> INCONCLUSIVE/CHART_UNAVAILABLE (original message); non-finite f or residual, or unavailable diagnostics -> FAIL_TECHNICAL"
+  ]
+ },
+ "registry": {
+  "versions": [
+   "K-REG1",
+   "K-REG2"
+  ],
+  "sources": [
+   "a: c1_registry_sources.observation_set_sources (explicit store for a non-default root)",
+   "b: c1_registry_sources.store_sources",
+   "c: c1_registry_sources.handoff_sources (JSON pre-validated)",
+   "d1: c1prime-store/registry/registry_v1.json digest list",
+   "d2: digest_H, digest_Hp, digest_Hm of every c1prime-store HIST_*.npz incl. superseded/",
+   "e: d2a-store permitted pools (raw tokens[:, :32] uint8); sealed pools by predicate and derived sequence-id ranges",
+   "f: every other directory under the project root (scanned, or NOT_SCANNED with an inventory-backed reason)"
+  ],
+  "c1prime_registry_v1_sha256": "ebcebe186103d7a4ed01d8f011c05742419f9f418af03775549a80d0d5c77d9e",
+  "d2a": {
+   "pools": [
+    "train-s1",
+    "train-s2",
+    "train-s3",
+    "train-s4",
+    "dev-s1",
+    "dev-s2",
+    "dev-s3",
+    "dev-s4",
+    "trainN-s1",
+    "trainN-s2",
+    "devN-s1",
+    "devN-s2",
+    "stage0",
+    "stage0N",
+    "cal",
+    "val",
+    "test",
+    "valN",
+    "testN"
+   ],
+   "seq_code": "1-based POOLS position; sequence_id = SEQ_CODE[pool]*2**32 + arange(n)",
+   "sealed": [
+    "test",
+    "testN"
+   ],
+   "predicate_alphabet": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "predicate_length": 32,
+   "predicate_reason": "potential overlap with sealed D-2a histories"
+  },
+  "root": "X:/Downloads/projects/topo-pilot"
+ },
+ "statuses": {
+  "gate": [
+   "PASS",
+   "INCONCLUSIVE/<reason>",
+   "FAIL_TECHNICAL/<reason>",
+   "NOT_RUN"
+  ],
+  "model": [
+   "SUPPORT",
+   "EXCLUDE",
+   "UNRESOLVED",
+   "UNRESOLVED/NUMERICAL"
+  ],
+  "model_labels": [
+   "NEGATIVE_ALIGNMENT"
+  ],
+  "overall": [
+   "SUPPORT",
+   "EXCLUSION",
+   "MIXED",
+   "INCONCLUSIVE",
+   "INCONCLUSIVE/NUMERICAL",
+   "INCONCLUSIVE/<gate reason>",
+   "FAIL_TECHNICAL/<reason>"
+  ],
+  "init": [
+   "PASS",
+   "INIT_UNAVAILABLE"
+  ],
+  "decoder": [
+   "AVAILABLE",
+   "UNAVAILABLE"
+  ],
+  "flags": [
+   "FRESH_B4_LOW"
+  ]
+ },
+ "gates": [
+  {
+   "id": "S0",
+   "stage": "dispatch",
+   "name": "BINDING",
+   "on_failure": "INVALID"
+  },
+  {
+   "id": "PF",
+   "stage": "dispatch",
+   "name": "PREFLIGHT",
+   "on_failure": "INVALID"
+  },
+  {
+   "id": "G0",
+   "stage": "release_A",
+   "name": "AUTHORITY_AND_WINDOW",
+   "on_failure": "INCONCLUSIVE/AUTHORITY | FAIL_TECHNICAL/<reason>"
+  },
+  {
+   "id": "H1",
+   "stage": "release_A",
+   "name": "IDENTITY",
+   "on_failure": "FAIL_TECHNICAL/IDENTITY"
+  },
+  {
+   "id": "REG1",
+   "stage": "release_A",
+   "name": "REGISTRY_V1",
+   "on_failure": "INCONCLUSIVE/REGISTRY_INCOMPLETE"
+  },
+  {
+   "id": "H2",
+   "stage": "S3",
+   "name": "SEPARATION",
+   "on_failure": "FAIL_TECHNICAL/LINEAGE | INCONCLUSIVE/REGISTRY_INCOMPLETE"
+  },
+  {
+   "id": "ORACLE-VAL",
+   "stage": "S3",
+   "name": "ORACLE",
+   "on_failure": "FAIL_TECHNICAL/ORACLE"
+  },
+  {
+   "id": "B4-VAL",
+   "stage": "S3",
+   "name": "HEADROOM",
+   "on_failure": "INCONCLUSIVE/HEADROOM | INCONCLUSIVE/NUMERICAL"
+  },
+  {
+   "id": "C0-CAL",
+   "stage": "S4a",
+   "name": "CHART_CAL",
+   "on_failure": "INCONCLUSIVE/CHART_UNAVAILABLE | FAIL_TECHNICAL/<reason>"
+  },
+  {
+   "id": "C0-VAL",
+   "stage": "S4b",
+   "name": "CHART_VAL",
+   "on_failure": "INCONCLUSIVE/CHART_UNAVAILABLE | FAIL_TECHNICAL/<reason>"
+  },
+  {
+   "id": "CERT-VAL",
+   "stage": "S5",
+   "name": "CERTIFICATE",
+   "on_failure": "INCONCLUSIVE/NUMERICAL | FAIL_TECHNICAL/NUMERICAL"
+  },
+  {
+   "id": "P1",
+   "stage": "S5",
+   "name": "PRECISION",
+   "on_failure": "INCONCLUSIVE/UNDERPOWERED"
+  },
+  {
+   "id": "RELEASE-B",
+   "stage": "release",
+   "name": "ACCEPT_KREG2_RELEASE_B",
+   "on_failure": "no release, no fresh data"
+  },
+  {
+   "id": "H2-FRESH",
+   "stage": "S7",
+   "name": "SEPARATION_FRESH",
+   "on_failure": "FAIL_TECHNICAL/LINEAGE | INCONCLUSIVE/REGISTRY_INCOMPLETE | STOP/LINEAGE_REVIEW"
+  },
+  {
+   "id": "T-PRE",
+   "stage": "S7",
+   "name": "TEST_PRECHECK",
+   "on_failure": "FAIL_TECHNICAL/ORACLE | FAIL_TECHNICAL/DETERMINISM | FAIL_TECHNICAL/NUMERICAL | INCONCLUSIVE/NUMERICAL"
+  },
+  {
+   "id": "ENDPOINT",
+   "stage": "S8",
+   "name": "ENDPOINT",
+   "on_failure": "FAIL_TECHNICAL/NUMERICAL"
+  }
+ ],
+ "resources": {
+  "cpu_policy": "MEASURE_ONLY",
+  "cpu_cap_s": null,
+  "max_cpu_flag": "inf",
+  "max_wall_flag": "inf",
+  "threads": 1,
+  "memory_bytes": 12884901888,
+  "output_bytes": 4294967296,
+  "native_operation_wall_s": 600,
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "store": "X:/Downloads/projects/topo-pilot/k4b-store",
+  "temp": "X:/Downloads/projects/topo-pilot/k4b-store/tmp-<job>",
+  "worker_session": null,
+  "worker_session_rule": "from the verified release (R10 pattern)"
+ },
+ "store_layout": [
+  "FREEZE.json",
+  "registry/",
+  "stages/<stage>/",
+  "GATES.jsonl",
+  "STAGES.jsonl",
+  "CHART_CONSTRUCTIONS_trained.json",
+  "CHART_CONSTRUCTIONS_init.json",
+  "SEALED_VALIDATION.json",
+  "superseded/",
+  "logs/",
+  "cpu_ledger.json"
+ ],
+ "modules": {
+  "k4b_config.py": 100,
+  "k4b_data.py": 220,
+  "k4b_registry.py": 320,
+  "k4b_scores.py": 220,
+  "k4b_decoder.py": 120,
+  "k4b_charts.py": 220,
+  "k4b_cert.py": 250,
+  "k4b_stats.py": 260,
+  "k4b_driver.py": 380,
+  "k4b_fresh.py": 330,
+  "k4b_release.py": 220,
+  "k4b_meter_bind.py": 140,
+  "max_lines": 400
+ }
+}

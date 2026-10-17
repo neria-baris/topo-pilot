@@ -238,8 +238,10 @@ def statistic(S: str, kappa):
 ZC_WITNESS = ((10, 14, 2, 6, 6, 6, 6, 6), (10, 9, 5, 1, 13, 9, 5, 6))
 
 # ---- closed-form oracle (API 3.7, Theorem 1) ----
+@lru_cache(maxsize=None)
 def lam(m: int, eta=ETA) -> Fraction:
     return (1 - Fraction(eta)) ** m
+@lru_cache(maxsize=None)
 def point_law(m: int, z: int, eta=ETA) -> tuple:
     lm = lam(m, eta)
     return tuple((1 - lm) / 3 + (lm if k == z else 0) for k in range(3))

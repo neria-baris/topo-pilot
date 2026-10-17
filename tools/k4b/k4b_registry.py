@@ -2,7 +2,8 @@
 
 Sources: (a) ObservationSets, (b) the C1' store list, (c) the mailbox (JSON pre-validated),
 (d) C1' digest list and digest columns, (e) permitted D-2a pools (sealed pools by predicate and
-derived sequence-id ranges, never opened), (f) other ObservationSet stores under the root.
+derived sequence-id ranges, never opened), (f) other ObservationSet stores under the root,
+(k) K4b's own store (k4b_registry_k.source_k, R28).
 """
 
 from __future__ import annotations
@@ -10,7 +11,6 @@ from __future__ import annotations
 import hashlib
 import json
 import time
-import zipfile
 from pathlib import Path
 
 import c1_data
@@ -19,42 +19,25 @@ import k4b_config
 import numpy as np
 import stage_records
 from c1_records import C1GateFailure
+from k4b_registry_k import (  # noqa: F401  re-exports
+    HISTORY_KEYS,
+    IDENTITY_KEYS,
+    INCOMPLETE,
+    _history_arrays,
+    _npz_header,
+    _sha,
+    source_k,
+    summary,
+)
 
 ROOT = k4b_config.ROOT
 ART = crs.ART
-INCOMPLETE = "INCONCLUSIVE/REGISTRY_INCOMPLETE"
 LINEAGE = "FAIL_TECHNICAL/LINEAGE"
 VERSIONS = ("K-REG1", "K-REG2")
-HISTORY_KEYS = ("tokens", "canon32", "named32", "H", "canonical32", "canonical_tokens")
-IDENTITY_KEYS = ("sequence_id", "seq_ids", "ids", "history_id", "canonical_ids")
-OWN_READERS = {"agent-handoff": "c", "c1prime-store": "d", "d2a-store": "e"}
+KS = "k4b-store"
+OWN_READERS = {"agent-handoff": "c", "c1prime-store": "d", "d2a-store": "e", KS: "k"}  # R28
 MAIN, MAIN_FIXTURES = "topo-pilot", ("tests", ".venv")  # R23 rule 3
 FIXTURES, FIXTURE_ROWS = "synthetic test fixtures", 1024  # R23 rule 2
-
-
-def _sha(path) -> str:
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-
-
-def _npz_header(path) -> dict:
-    """{key: (dtype, shape)} from the .npy headers only (no array data, no pickle)."""
-    out = {}
-    with zipfile.ZipFile(path) as z:
-        for name in z.namelist():
-            with z.open(name) as f:
-                version = np.lib.format.read_magic(f)
-                read = (np.lib.format.read_array_header_1_0 if version == (1, 0)
-                        else np.lib.format.read_array_header_2_0)
-                shape, _, dtype = read(f)
-            out[name[:-4] if name.endswith(".npy") else name] = (dtype, shape)
-    return out
-
-
-def _history_arrays(header) -> dict:
-    """{key: shape} of the history arrays of one npz header (§3.4 history detection)."""
-    return {k: list(shape) for k, (dtype, shape) in header.items()
-            if k in HISTORY_KEYS or k.startswith("digest_")
-            or (dtype.kind in "iu" and len(shape) >= 2 and shape[-1] in (32, 33))}
 
 
 def inventory(root=ROOT, exclude=()) -> dict:
@@ -331,21 +314,27 @@ def build(version, out_dir, root=ROOT, extra=None) -> dict:
     d_src = _try(problems, "d", lambda: source_d(root / "c1prime-store"))
     e = source_e(root / "d2a-store")
     problems += [f"e: {p}" for p in e["problems"]]
+    k = _try(problems, "k", lambda: source_k(root / KS)) if (root / KS).is_dir() else None
     for name, tag, ok in (("topo-pilot", "a", a_res is not None),
                           ("agent-handoff", "c", c_src is not None),
                           ("c1prime-store", "d", d_src is not None),
-                          ("d2a-store", "e", not e["problems"])):
+                          ("d2a-store", "e", not e["problems"]), (KS, "k", k is not None)):
         if ok:
             readers.setdefault(name, []).append(tag)
     a_src, seqs = a_res if a_res is not None else ([], {})
-    token_sources = a_src + source_b(root) + (c_src or []) + e["sources"]
+    k_src = k["sources"] if k is not None else []
+    token_sources = a_src + source_b(root) + (c_src or []) + e["sources"] + k_src
     inv = inventory(root, exclude=tuple(OWN_READERS))
     classes = classify(inv, readers)  # adds source (f) to OS-store directories (R23)
+    if k is not None and k["other"]:  # §16 item 2 (d)
+        classes[KS] = {"class": "INCOMPLETE", "files": summary(k)["other"]["files"],
+                       "reason": f"reader k: {len(k['other'])} history-bearing, identity-bearing"
+                       " or unreadable file(s) outside the derived records and stage tables"}
     token_sources += _try(problems, "f", lambda: source_f(root, inv, classes)) or []
     reg = c1_data.build_registry(token_sources)
     problems += [f"unreadable: {m['name']}" for m in reg["missing"]]
     digests, seq_union = set(reg["digests"]), set()
-    for s in d_src or []:
+    for s in (d_src or []) + k_src:
         digests |= s["digests"]
         seq_union |= s["sequence_ids"]
     for v in seqs.values():
@@ -375,7 +364,7 @@ def build(version, out_dir, root=ROOT, extra=None) -> dict:
                 "predicates": e["predicates"], "sources": sources, "classes": classes,
                 "not_scanned": {k: v["reason"] for k, v in classes.items()
                                 if v["class"] == "NOT_SCANNED"},
-                "coverage": cov, "handoff_validation": hv,
+                "coverage": cov, "handoff_validation": hv, "k4b_store": summary(k),
                 "built_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                 "protocol_sha256": k4b_config.CONTRACT["protocol_sha256"]}
     stage_records.save_npz(dpath, digests=np.array(sorted_d), seq_ids=seq_arr)

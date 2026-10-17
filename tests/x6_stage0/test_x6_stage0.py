@@ -393,7 +393,7 @@ def test_13_registry_and_geometry_guards(monkeypatch):  # section 10.4 test 13
 
 
 def test_14_file_line_limits():  # section 10.4 test 14
-    names = ("x6_model.py", "x6_dp.py", "x6_exact.py", "x6_run.py")
+    names = ("x6_model.py", "x6_dp.py", "x6_exact.py", "x6_run.py", "x6_store.py")
     assert {p.name for p in TOOLS.glob("*.py")} == set(names)
     here = Path(__file__).resolve().parent
     for p in [TOOLS / n for n in names] + sorted(here.glob("*.py")):

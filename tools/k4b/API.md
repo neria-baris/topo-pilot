@@ -246,6 +246,7 @@ Identity-only access: token arrays and identity columns only. Every function tak
 13. **Unsupported-row certificate**: X∓ = ∓n̂ is exact in float, so its row bound is Lemma N's B_N (§5.3).
 14. **Validation-report sealing** is enforced by key name (`SEALED_KEYS`), recursively, at the report writer.
 15. **Store paths**: every function takes `out` (the store root) as an argument, so tests use temporary stores.
+16. **Coverage from populated source-(a) ids** (R26 D3, job 0052): `revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None, seqs_a=None)`. The pinned call stays valid. `crs.observation_set_sources` fills its `seqs` map lazily, inside each reader, so `build` passes `seqs_a` = the map its `build_registry` run populated, and source (a) is not read twice. With `seqs_a=None`, the source-(a) readers are run once inside the function, through `c1_data.build_registry`; a fresh, unread map is never used. `missing` lists the `crs.coverage` keys with missing ids, plus every uncovered x4b id and `extra_ids` entry by value (`"id <n>"`). x4f misses are reported by key only. Handoff JSON validation reads with `utf-8-sig`, as the reused reader does (R26 D2).
 
 ### 13.1 Pinned return formats (job 0046; ruling of jobs/0045/review.md; pinned before the module code)
 

@@ -74,7 +74,7 @@ def inventory(root=ROOT, exclude=()) -> dict:
                 except Exception as exc:  # noqa: BLE001  unreadable -> rule 4
                     rec["unreadable"].append({"path": str(f), "error": repr(exc)})
                     continue
-                if _history_bearing(header):
+                if _history_arrays(header):
                     rec["history_files"].append(str(f))
                     rec["history_shapes"][str(f)] = _history_arrays(header)
                 elif any(k in IDENTITY_KEYS for k in header):
@@ -148,15 +148,11 @@ def classify(inv, scanned_readers) -> dict:
     return out
 
 
-def _history_bearing(header) -> bool:
-    return bool(_history_arrays(header))
-
-
 def validate_handoff_json(root) -> dict:
     failures, files = [], sorted(Path(root).rglob("*.json"))
     for f in files:
-        try:
-            json.loads(f.read_text(encoding="utf-8"))
+        try:  # utf-8-sig, as the reused handoff reader (R26 D2)
+            json.loads(f.read_text(encoding="utf-8-sig"))
         except Exception as exc:  # noqa: BLE001  any parse failure is recorded
             failures.append({"path": str(f), "error": repr(exc)})
     return {"ok": not failures, "n_files": len(files), "failures": failures}
@@ -289,17 +285,22 @@ def _raw_reader(store, oid):
     return reader
 
 
-def revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None) -> dict:
-    """crs.coverage unchanged, then every referenced id must resolve to a covered source."""
+def revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None, seqs_a=None) -> dict:
+    """crs.coverage on populated source-(a) ids (R26 D3), then x4b and extra ids by value."""
     try:
-        seqs = source_a(root_art, store)[1]
-        hist = crs.history_index_ids(store, root_art)
-        cov = crs.coverage(seqs, hist, Path(root))
+        if seqs_a is None:  # the source-(a) readers fill `seqs` lazily: run each once
+            srcs, seqs_a = source_a(root_art, store)
+            c1_data.build_registry(srcs)  # unreadable sources simply contribute no ids
+        cov = crs.coverage(seqs_a, crs.history_index_ids(store, root_art), Path(root))
+        refs = set(extra_ids or ())
+        for f in sorted((Path(root) / "x4b-research-store" / "exports").glob("pool_*.npz")):
+            with np.load(f, allow_pickle=False) as z:  # the x4b ids crs.coverage checks
+                refs |= {int(c.split("|")[1]) for c in z["canonical_ids"].tolist()}
     except Exception as exc:  # noqa: BLE001  unresolvable coverage -> INCOMPLETE
         return {"ok": False, "missing": [f"coverage unresolved: {exc!r}"]}
     missing = [k for k, v in cov.items() if isinstance(v, dict) and v.get("missing")]
-    covered = set().union(*(set(v.tolist()) for v in seqs.values())) if seqs else set()
-    missing += [f"id {i}" for i in sorted(set(extra_ids or ()) - covered)]
+    covered = set().union(*(np.asarray(v).tolist() for v in seqs_a.values()))
+    missing += [f"id {i}" for i in sorted(refs - covered)]
     return {"ok": not missing, "missing": missing, "coverage": cov}
 
 
@@ -353,7 +354,7 @@ def build(version, out_dir, root=ROOT, extra=None) -> dict:
         digests |= set(np.asarray(tab["digest"]).astype(str).tolist())
         seq_union |= set(np.asarray(tab["seq_ids"], dtype=np.int64).tolist())
     hv = validate_handoff_json(root / "agent-handoff")
-    cov = revalidate_coverage(art, root, store=store)
+    cov = revalidate_coverage(art, root, store=store, seqs_a=seqs if a_res else None)
     problems += [] if cov["ok"] else [f"coverage: {cov['missing']}"]
     problems += [f"class {k}: {v['reason']}" for k, v in classes.items()
                  if v["class"] == "INCOMPLETE"]

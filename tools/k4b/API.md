@@ -351,3 +351,17 @@ No status is computed for a control.
 3. **Main (`topo-pilot`) is also inventoried deep.** Reader (a) covers main's artifact store. Every other history-bearing file in main's tree, including `tests/` fixtures and `.venv`, must satisfy rule 2(a′): its path is under `tests/`, under a pytest basetemp segment, or under `.venv`, and it has at most 1,024 rows. Otherwise main is INCOMPLETE. The manifest states this explicitly.
 4. **Unreadable files** (deliberately truncated fixtures) count under rule 2 only if they satisfy 2(a). Otherwise INCOMPLETE.
 5. **The dedicated-reader directories stay excluded from the generic deep scan** (agent-handoff, c1prime-store, d2a-store), so no sealed D-2a payload is ever opened by the generic scan.
+
+## 16. Coordinator ruling R28 (job 0053 review): K4b's own store gets a dedicated reader "k" (D5). Binding
+
+**Defect D5.** The generic inventory deep-scanned `k4b-store` and found the superseded K-REG1 digest file (`superseded/0051/registry/K-REG1_digests.npz`, which holds `seq_ids`). The store had no reader, so REG1 was INCOMPLETE. The same would happen at K-REG2 with K4b's own stage tables. Correction 1 of at most 2 for D5.
+
+1. **Exclusion.** `OWN_READERS` gains `"k4b-store": "k"`, so `k4b-store` is excluded from the generic deep scan. `build` adds reader `k` for it.
+2. **`source_k(store_root) -> dict`** returns `{"sources": [...], "derived": [...], "other": [...], "status"}`. It classifies every file under `k4b-store`:
+   - **(a) Derived registry lineage records:** `registry/K-REG*.json` and `registry/K-REG*_digests.npz`, plus the same under `superseded/*/registry/`. These are unions of other scanned sources. Each is listed in `derived` with its path and sha256. They contribute nothing, and they are never INCOMPLETE.
+   - **(b) K4b's own history tables:** every history-bearing npz under `stages/` or `superseded/*/stages/`, using the existing history-detection rule. Each is contributed as a token/digest source (in addition to `build(..., extra=…)`) and recorded with its path and sha256. Superseded attempts' tables are included too, which is the conservative choice.
+   - **(c) Free files:** `FREEZE.json`, `tests/`, `logs/`, `operations/`, `tmp-*`, the record files, and `SHA256SUMS`. These are not history files and are ignored, unless they are history-bearing or identity-bearing.
+   - **(d) Anything else** that is history-bearing, identity-bearing or unreadable is listed in `other`, and that makes the `k4b-store` class INCOMPLETE.
+3. **Failure.** If `source_k` raises or reads anything partially, `k4b-store` is INCOMPLETE. A failure never becomes an empty contribution.
+4. **Manifest.** It records `k4b_store`: the counts and sha256s of `derived`, `sources` and `other`.
+5. **No threshold, tolerance or scientific rule changes.** This only gives K4b's own lineage records a reader.

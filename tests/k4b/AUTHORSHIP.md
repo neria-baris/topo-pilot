@@ -20,3 +20,5 @@ The worker checked syntax only: each file was compiled in memory with `compile()
 **Author A:** correction round 2 (2026-10-16): test_a_transport_bound (ruling R25; 7 functions, 10 tests) added: `k4b_cert.transport_bound` on the documented law loaded by `inputs.load_config()`/`inputs.load_process(cfg)` with the bitwise-shared canonical E (status BOUNDED, `Z_bound` a Fraction equal to `Fraction(process_law_bound(...)["Z_bound"]["exact_upper"])`, 0 < Z_bound < 1e-6), a monkeypatched synthetic report (exact_upper "3/7" -> Fraction(3, 7); non-BOUNDED -> FAIL_TECHNICAL/IDENTITY), the unpatched UNAVAILABLE path, and downstream `margin`/`F_plan`. Read only API.md, CONTRACT.json, AUTHORSHIP.md, own test_a files, `process_law.py`, `inputs.py` and `c1_records.C1GateFailure`; read no module code, executed nothing, ran no formatter.
 
 **Author B:** round 2 (2026-10-16): added test_b_h1_meta, test_b_endpoint, test_b_registry_rules from API §14–§15; read no module code.
+
+**Author B:** correction round 3 (2026-10-17): test_b_registry_fixes for D2/D3 (R26); read no module code.

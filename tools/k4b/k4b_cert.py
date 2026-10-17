@@ -161,7 +161,11 @@ def transport_bound(T, E, pi, coords) -> dict:
     res = process_law.process_law_bound(T, E, pi, coords)
     if res.get("status") != "BOUNDED":
         raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"process law: {res.get('status')}")
-    return dict(res, Z_bound=_fr(res["Z_bound"]))
+    z = res["Z_bound"]  # process_law._report: {"exact_upper": str, "float": float}
+    z = z["exact_upper"] if isinstance(z, dict) else z
+    if not isinstance(z, (Fraction, str)):
+        raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"Z_bound report {type(z).__name__}")
+    return dict(res, Z_bound=Fraction(z))
 
 
 def control_bounds_all(controls, refs, eps) -> dict:

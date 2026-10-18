@@ -165,7 +165,7 @@ def gate_G6(rows, g4) -> dict:
         res, info, rr = bf.run(tk[:, :32]), _row_info(tk[:, :32], m["labels"]), np.arange(len(tk))
         qs, b, w33 = res.q[:, 32], res.b[:, 31], tk[:, 32].astype(np.int64)
         fib = b.reshape(-1, 16, 3).sum(axis=1)
-        st["ifib"].append(math.log(3) - _kl_rows(fib, np.ones_like(fib)))  # ln 3 - H(fibre)
+        st["ifib"].append(math.log(3) + _kl_rows(fib, np.ones_like(fib)))  # ln 3 - H(fibre)
         sp8 = suffix_posterior(m["Tf"], m["Ef"], m["pif"], tk[:, :32], 8)
         st["W8"].append(_kl_rows(qs, fo.F1(sp8)))
         for S in LADDER:

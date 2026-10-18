@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-17",
+  "scope": "owner-requested prospective runtime and documentation maintenance",
+  "scientific_execution": false,
+  "historical_verdicts_changed": false,
+  "active_experiment_modified": false,
+  "python": "3.10.6",
+  "checks": {
+    "affected": {
+      "tests": 1962,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 491.534,
+      "junit_path": "tmp/remediation-affected-results.xml",
+      "junit_sha256": "3cb054dc347325a5dddf5725b83c1e175598388d6bb59c3fd5f82b3227d87c15"
+    },
+    "final_targeted": {
+      "tests": 91,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 22.312,
+      "junit_path": "tmp/remediation-final-targeted-results.xml",
+      "junit_sha256": "3a592595216fe0557f6ea897d27970112909b0324f7b9f439d0e5d162a6f55a4"
+    },
+    "final_process_tree": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 7.8,
+      "junit_path": "tmp/remediation-final-lease-results.xml",
+      "junit_sha256": "8c53d6f0b83977e08cb7ab40c986ac8044a2084730151e4be5860f9a984698d5"
+    }
+  },
+  "ruff": "PASS for all changed Python files",
+  "imports": "PASS (155 source files)",
+  "git_diff_check": "PASS",
+  "decision_log_exact_historical_prefix": true,
+  "file_size_check": {
+    "changed_python_files": "PASS (all <= 400 lines)",
+    "repository": "existing unrelated violation",
+    "legacy_file": "reports/he_summary/charts.py",
+    "legacy_lines": 712,
+    "legacy_unchanged": true
+  },
+  "validation_order": "Affected suites started before final projector checks and wave lease. The final targeted run covered the stricter projector checks and lease. The last process-tree run covered the added path-component guard.",
+  "source_sha256": {
+    "tools/d2a/d2a_train.py": "a26a263020a4a04038e42b73889f77835a75a562a35cfb2e02e792e2b8396551",
+    "tools/d2a/process_tree.py": "253551cd7f52eb62eae8c732ef1c86191338cad7088873422438b919afa5df94",
+    "src/topo_pilot/analysis/x4f_erasure.py": "43c1d078ac4513471b60d16448aec5999600d3b00b137871012c7d67257a0673",
+    "src/topo_pilot/experiment/x4f_run.py": "c05a00b93c2ee8db996ba04b58be0de1ecebe533c3746206ee6fc44187ccb67a",
+    "src/topo_pilot/experiment/x4f_gates.py": "b6536273bf575d0c8e970e6240be81ed2ac35c1f374d44eeb5fa090cb21203ba",
+    "src/topo_pilot/experiment/x4f_damage.py": "6d65654a9d45819e3919cc07c6e92a84cc2a11fbd6595863234a4529ea100ea5",
+    "src/topo_pilot/experiment/x4f_probe.py": "d9e72d233ae3e841714173efbded5340fab99ec6707109dd653b7cca214c9b69",
+    "tests/d2a/test_process_tree_repair.py": "0021f6255bd8b02311f0257ebd8118e6e616787304ffea9aa86299db45ea9928",
+    "tests/analysis/test_x4f_family_maintenance.py": "9ca1b31ac3aae948dfc1849decaceafd360d36dc30c38af188a89c0d482f3516",
+    "tests/experiment/test_x4f_maintenance.py": "5191dc6b8033ade5f4e466fe80146343490eca902228434d628b55d498191226"
+  },
+  "research_limitations": [
+    "C1prime/X4F intervention redesign is a separate C2 proposal",
+    "D2 and X5 successor plans are unexecuted and not frozen",
+    "K4b job 0051 remains recorded RUNNING; active reservation is respected"
+  ]
+}

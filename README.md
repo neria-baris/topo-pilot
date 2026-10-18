@@ -80,7 +80,24 @@ The rows for b¹ and the emission field are identical under O and P. P permutes 
 
 The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
 
-**Not run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
+**At the E4 exit, not yet run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Later follow-ups are recorded below. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
+
+## Current follow-up status (17 October 2026)
+
+- **D-2a closed NOT_LEARNED:** both H3 validation models completed 10,000 updates and failed
+  the learnability gate; the remaining 12 models and stage 3 did not run
+  ([review 0033](../agent-handoff/jobs/0033/review.md)).
+- **C1′ closed INCONCLUSIVE/FAMILY_UNMATCHED at M2-cal:** charts passed, but the intervention
+  changed protected readouts and controls did not match. No validation or fresh causal
+  endpoint ran. R13's numerical-tolerance change was ratified in owner addendum 10
+  ([review 0044](../agent-handoff/jobs/0044/review.md)).
+- **K4b:** the technical Z_bound integration defect was fixed and accepted in job 0050.
+  Job 0051 is recorded RUNNING, with no final report at this inspection; that status alone
+  is not an independent liveness check ([status](../agent-handoff/jobs/0051/status.json)).
+- **Maintenance:** D-2a process-tree monitoring and duplicate-run protection, X4-F map
+  validation/export, inner-loop STOP checks and exception-safe accounting were repaired
+  prospectively. Closed scientific verdicts stand. See the
+  [repair record and successor plans](docs/REMEDIATION_PLAN_HE.md).
 
 ## After E4
 

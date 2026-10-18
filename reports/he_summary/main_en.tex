@@ -1,0 +1,789 @@
+% English translation of reports/he_summary/main.tex at commit 727af56 (job 0068). The Hebrew original is authoritative.
+% Hebrew research summary for topo-pilot. Build: python build.py (LuaLaTeX, two passes).
+\documentclass[12pt,a4paper]{article}
+
+% ---- language, fonts ----------------------------------------------------------------------
+\usepackage[bidi=basic,layout=tabular.lists.graphics]{babel}
+\babelprovide[main,import]{english}
+\babelprovide[import]{hebrew}
+\babelfont{rm}[Path=./fonts/,Extension=.ttf,UprightFont=*-Regular,BoldFont=*-Bold]{DavidLibre}
+\babelfont{tt}[Scale=0.85]{Consolas}
+\newcommand{\en}[1]{\foreignlanguage{english}{#1}}   % isolate an English phrase
+\DeclareRobustCommand{\code}[1]{\en{\texttt{\detokenize{#1}}}}
+
+% ---- page ---------------------------------------------------------------------------------
+\usepackage[a4paper,top=2.5cm,bottom=2.3cm,left=2.2cm,right=2.2cm,headsep=0.8cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\usepackage[font=small,labelfont=bf,justification=justified,singlelinecheck=false]{caption}
+\usepackage[section]{placeins}
+\usepackage{float}
+\makeatletter\setlength{\@fptop}{0pt}\setlength{\@fpsep}{12pt}\makeatother
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[unicode,hidelinks,bookmarksnumbered]{hyperref}
+
+\linespread{1.12}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\exhyphenpenalty=10000          % never break a numeric range after its dash
+\emergencystretch=4em
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.5}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{topnumber}{3}
+\setlist{itemsep=0.25em,topsep=0.3em}
+
+% ---- colours (same tokens as the figures) -------------------------------------------------
+\definecolor{ink}{HTML}{0B0B0B}
+\definecolor{ink2}{HTML}{52514E}
+\definecolor{rule}{HTML}{E4E3DF}
+\definecolor{accent}{HTML}{2A78D6}
+\definecolor{aqua}{HTML}{1BAF7A}
+\definecolor{goodc}{HTML}{1F7A3A}
+\definecolor{badc}{HTML}{B42318}
+\definecolor{warnc}{HTML}{A15C00}
+\definecolor{neuc}{HTML}{52514E}
+
+% ---- headings, header/footer --------------------------------------------------------------
+\titleformat{\section}{\LARGE\bfseries}{\thesection.}{0.5em}{}[\vspace{2pt}{\color{ink}\titlerule[1.2pt]}]
+\titlespacing*{\section}{0pt}{0pt}{1em}
+\titleformat{\subsection}{\Large\bfseries}{\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{1.4em}{0.5em}
+\titleformat{\subsubsection}[runin]{\bfseries}{}{0pt}{}[.]
+\titlespacing*{\subsubsection}{0pt}{0.9em}{0.5em}
+\newcommand{\chapterbreak}{\clearpage}
+\let\oldsection\section
+\renewcommand{\section}{\chapterbreak\oldsection}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\small\color{ink2}Topology of a latent world in \en{Transformer} representations}
+\fancyhead[L]{\small\color{ink2}\nouppercase{\leftmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+
+% ---- boxes and verdict chips --------------------------------------------------------------
+\tcbset{hebox/.style={enhanced,breakable,arc=0pt,outer arc=0pt,boxrule=0pt,rightrule=3pt,
+  leftrule=0pt,left=10pt,right=10pt,top=6pt,bottom=6pt,before skip=0.9em,after skip=0.9em,
+  fonttitle=\bfseries,coltitle=ink,attach title to upper={\par\smallskip}}}
+\newtcolorbox{keybox}[1][]{hebox,colback=accent!6,colframe=accent,title={#1}}
+\newtcolorbox{meaningbox}[1][Meaning in light of the research questions]{hebox,colback=aqua!7,colframe=aqua,title={#1}}
+\newtcolorbox{caveat}[1][Caveat]{hebox,colback=warnc!6,colframe=warnc,title={#1}}
+\newcommand{\chip}[2]{\tcbox[on line,arc=6pt,boxrule=0.5pt,colframe=#1,colback=#1!8,
+  left=3pt,right=3pt,top=0pt,bottom=0pt,boxsep=1pt,fontupper=\footnotesize\bfseries\color{#1}]{#2}}
+\newcommand{\good}[1]{\chip{goodc}{#1}}
+\newcommand{\bad}[1]{\chip{badc}{#1}}
+\newcommand{\warn}[1]{\chip{warnc}{#1}}
+\newcommand{\neu}[1]{\chip{neuc}{#1}}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\fig}[3][\linewidth]{%
+  \begin{figure}[!ht]\centering\includegraphics[width=#1]{figs/#2}\caption{#3}\label{fig:#2}\end{figure}}
+
+% ---- notation -----------------------------------------------------------------------------
+\newcommand{\Sc}[3][]{S^{\mathrm{#2}}_{\mathrm{#3}#1}}
+\newcommand{\bel}[1]{b^{(#1)}}
+\newcommand{\GC}{G_{C}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\dgeom}{\Delta_{\mathrm{geom}}}
+
+\hypersetup{pdftitle={Topology of a latent world in Transformer representations},pdfauthor={topo-pilot}}
+
+\begin{document}
+
+% =========================================================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{5cm}
+{\large\color{ink2} Summary research report · project \en{topo-pilot}\par}
+\vspace{0.6cm}
+{\fontsize{34}{40}\selectfont\bfseries Topology of a latent world\par in \en{Transformer} representations\par}
+\vspace{0.6cm}
+{\Large\color{ink2} The research questions, the workflow, the methodology of each stage,\par the experiment results and their meaning\par}
+\vspace{1.2cm}
+{\color{rule}\rule{\linewidth}{0.6pt}}\par
+{\color{ink2} Version 2.0 · 15 October 2026 · typeset with \en{LuaLaTeX}\par
+Based on the \en{topo-pilot} repository (branch \en{main}), on the reports \code{reports/E0-E4}, on the preregistration files and on the records of the follow-up studies.\par}
+\vspace{0.8cm}
+\good{E4 reached}\quad \bad{reproduction gate G-H failed and documented}\quad \neu{no causal claim}
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{2}
+\tableofcontents
+\vspace{1em}
+\begin{keybox}[How to read the report]
+The report is built in three layers. Sections 1–3 give an overall picture: what we asked, how the research flows and how decisions are made. Section 4 details the methodology of each stage, including the rationale for each choice. Sections 5–7 present the results, and beside each result a green box explains its meaning in light of the research questions. Orange boxes mark caveats. The binding decisions are worded in English in \code{README.md}; this report is an explanation in Hebrew, and changes no decision.
+\end{keybox}
+
+\clearpage
+\pagenumbering{arabic}
+
+% =========================================================================================
+\section{Executive summary}\label{sec:summary}
+
+The research tests a basic question about language models: when a \en{Transformer} is trained to predict the next symbol in a sequence, does its internal representation learn something about \textbf{the shape of the world} that generated the sequence? So that it can be answered without guessing, we built a synthetic world in which everything is known: two worlds of size $12\times12$, a \textbf{cylinder} (which has one ``hole'', $\beta_1=1$) and a \textbf{square} (which has no hole, $\beta_1=0$). An agent moves in them by a random walk, and at each step emits a noisy symbol out of 36 symbols. The model sees only the symbols. After training we checked, using \textbf{persistent homology} (\en{Persistent Homology, PH}), whether the model's activation cloud contains the cylinder's circle, and compared it with an exact Bayesian predictor computed from the generator.
+
+The work progressed in stages \en{S0--S8}, with five exit points (\en{E0--E4}). Every decision rule was frozen in a preregistration before the relevant result was seen. 17 models were trained on CPU only. After \en{E4} nine follow-up studies were performed, most of them preregistered.
+
+\begin{keybox}[The five main findings]
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Under smooth emission (O), training creates an $H_1$ signal that distinguishes cylinder from square} (F1 supported): $D>0$ in 8 of 8 panels in each of the three replicates, and the median (0.158–0.176) is above the noise envelope (0.084–0.097). The leading $H_1$ class is indeed the world's periodic circle: agreement of 0.88–0.89 with the hidden angle, against 0.92 for the exact belief.
+\item \textbf{The geometry of the representation tracks the belief built from the whole history}, and not only the last symbol (H2: $\dgeom>0$ in 48 of 48 panels, also within pairs of histories with the same last symbol).
+\item \textbf{Under shuffled emission (P) there is no $H_1$ contrast}, but this is an uninformative result in advance, because even the exact belief does not distinguish between the worlds there. Nevertheless, the representation aligns with the geometry of the Bayesian belief under P too (H3$'$ supported).
+\item \textbf{The timing hypothesis (H4) was rejected:} the $H_1$ score already rises at step 50, before the model starts using the history (step 100), and in both worlds. The origin of the structure, history integration or symbol-level statistics, remains \textbf{open}.
+\item \textbf{No causal evidence.} All findings are representational. Linear \en{probes} decode the belief from the activations at the same level, and not better, than from the exact next-symbol distribution. The intervention attempt (\en{X4-F}) stopped at a feasibility gate.
+\end{enumerate}
+\end{keybox}
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}l>{\raggedleft\arraybackslash}p{0.33\linewidth}l Y@{}}
+\toprule
+\textbf{Hypothesis} & \textbf{What it says} & \textbf{Verdict} & \textbf{Meaning in brief} \\
+\midrule
+\textbf{F1} & Training increases an $H_1$ signal that distinguishes cylinder from square (under O) & \good{supported} & The representation carries the topology of the world \\
+\textbf{H2} & The geometry tracks the 32-symbol belief more than the last symbol & \good{sign-consistent} & History is used, at least in the geometry \\
+\textbf{H3} & The signal also survives under P & \bad{rejected} & Uninformative; cannot be decided in this direction \\
+\textbf{H3$'$} & Under P the geometry aligns with the belief, beyond initialisation and the mixing baselines & \good{supported} & Alignment with belief even without an $H_1$ contrast \\
+\textbf{H4} & $S$ rises only after the model starts using the history & \bad{rejected} & The early rise is not specific to the cylinder \\
+\textbf{H0} & With identical emissions nothing is learned & \good{holds} & No information leakage; the pipeline is sound \\
+\textbf{G-H} & Clean reproduction from scratch & \bad{failed} & 307/307 shared artifacts bitwise identical; one historical record missing \\
+\bottomrule
+\end{tabularx}
+\caption{The hypotheses and their verdicts at a glance.}\label{tab:verdicts}
+\end{table}
+
+% =========================================================================================
+\section{Research questions and hypotheses}\label{sec:questions}
+
+\subsection{The central question}
+When a model is trained to predict the next symbol on sequences generated from a world of known topology, three questions arise, each built on the previous one:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{The existence question (RQ1):} does a structure that reflects the topology of the hidden world form in the model's \en{residual stream}?
+\item \textbf{The origin question (RQ2):} if so, where does it come from? There are three possible sources: (a) \textbf{the geometry of the observations}, i.e. the similarity between symbols emitted from nearby places; (b) \textbf{the accumulated belief} about the agent's location, built from the whole history; (c) only \textbf{what is needed to predict the next symbol}, without excess.
+\item \textbf{The use question (RQ3):} does the model \textbf{use} this structure in order to predict, or is it only a by-product?
+\end{enumerate}
+The original plan explicitly answered only RQ1 and part of RQ2. RQ3 requires an intervention on the activations, and was defined in advance as an extension. This distinction is important for reading all the results: \textbf{the project detects structure and measures its correlation with prediction; it does not show that the model needs the structure.}
+
+\subsection{The falsifiable hypotheses}
+Each question was translated into a hypothesis with a defined measure and with a falsification condition fixed in advance (Table~\ref{tab:hyp}). There is only one primary hypothesis (F1), so as not to spread the decision power over many tests. The other hypotheses are meant to interpret it.
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}l Y >{\raggedleft\arraybackslash}p{0.2\linewidth} Y l@{}}
+\toprule
+\textbf{ID} & \textbf{Hypothesis} & \textbf{Measure} & \textbf{Falsified or limited when} & \textbf{Question}\\
+\midrule
+\textbf{F1} & Training increases a persistent $H_1$ signal that distinguishes cylinder from square & $D_{r,i}$ & Some condition of the decision rule fails, when all gates passed & RQ1\\
+\textbf{H2} & The geometry tracks the 32-symbol belief more than the last-symbol belief & $\dgeom$, also in pairs with the same last symbol & $\dgeom\le 0$, or the effect disappears when conditioning on the last symbol & RQ2(b)\\
+\textbf{H3} & Under P still $D>0$, i.e. the structure is learned from the dynamics and not only from the emission geometry & The F1 rule under P & The rule fails under P although the model passed the learning gate & RQ2(a)\\
+\textbf{H4} & $S$ rises only after the model starts using the history & Curves over 12 checkpoints & $S$ rises before history use & RQ2(b)\\
+\textbf{H0} & With identical emissions nothing can be learned about the state & \en{NLL} vs $H(W)$ & \en{NLL} lower than $H(W)$: leakage or a bug & Sanity\\
+\bottomrule
+\end{tabularx}
+\caption{The preregistered hypotheses, the measures and the falsification conditions.}\label{tab:hyp}
+\end{table}
+
+\subsection{Detection, use and necessity}
+These three concepts were kept separate throughout the work. \textbf{Detection} means that there is a measurable structure in the activation cloud, for example a long $H_1$ bar. \textbf{Use} means that the model relies on the structure in computing the prediction, and this can be shown only by intervention: change the structure and check whether prediction is harmed. \textbf{Necessity} means that one cannot predict well without the structure, and this is a claim about the task and not about the model. The future spaces $F_1,F_2$ show which distinctions are needed for prediction up to horizon 2, and no more.
+
+In addition, the project does not assume that activations or beliefs are manifolds. The homology of a \en{Vietoris--Rips} complex is a property of a point cloud and of a metric at a given scale. It does not prove a homeomorphism, and a high $S$ is not equivalent to $\beta_1=1$.
+
+\subsection{Guiding methodological principles}
+\begin{itemize}[leftmargin=*]
+\item \textbf{Preregistration.} The hypotheses, measures, thresholds and decision rules were written and saved in \en{git} before the relevant results were seen (\code{PREREGISTRATION.md} at the end of S2; \code{PREREGISTRATION_X4.md} for the secondary analyses). A change to a closed decision requires stopping and the owner's approval (point H3).
+\item \textbf{Exit points.} Each stage ends with a valid, presentable product. If the work stops, what has already been done stands on its own, and what has not been done is explicitly marked ``not run''.
+\item \textbf{Validity gates.} Before a result is interpreted, it is checked that the measurement itself works (\en{G-A} to \en{G-H}). If the model did not learn, an absence of structure means ``the model did not learn'', not a negative finding.
+\item \textbf{Sign consistency instead of a \en{p-value}.} Points in one cloud are not independent observations, so there are no significance tests on pairs. The decision is based on a consistent direction in three replicates and eight disjoint panels, and on a noise envelope derived from the data.
+\item \textbf{Matched controls.} Every claim is accompanied by a control that neutralises an alternative explanation: initialisation (R0), last symbol (R1), simple mixing (R2, R3), a Gaussian floor, shuffled emission (P), identical emission (N) and a visible state (U).
+\item \textbf{Separation between confirmatory and exploratory.} Every observation made after the results were unsealed is written in a separate file (\code{exploratory.md}, \code{interpretation.md}), and changes no decision.
+\item \textbf{Independent tests.} In the critical modules (world, topology, oracle, the F1 rule) the tests were written by an agent other than the one that wrote the code, according to a written test plan.
+\end{itemize}
+
+% =========================================================================================
+\section{Research flow}\label{sec:flow}
+
+\subsection{The flow of data and analysis}
+Figure~\ref{fig:pipeline} shows the path of information from the generator to the decision. The central principle is \textbf{two parallel branches on the same histories}. In the learning branch, a \en{Transformer} is trained from scratch on the symbols only, and a point cloud is built from its activations. In the oracle branch, an exact Bayesian predictor computes from the same histories the belief about the hidden state and the future distributions. The two branches meet in shared sample panels, and there they pass through exactly the same analysis pipeline. This makes it possible to ask whether the geometry the model built resembles the geometry of what an ideal predictor would know.
+
+\fig[0.92\linewidth]{pipeline}{The flow of data and analysis. The generator (top row) is fully known. The coordinates of the states are available only to the generator and the analysis, and never to the model. The two branches meet in 8 disjoint panels of 512 histories, and all the analyses run on the same histories in every space and at every checkpoint.}
+
+\subsection{Stages, gates and exit points}
+The research was divided into nine run stages (Figure~\ref{fig:stages}). Each stage has an automatic gate that must pass before continuing, and at four points the work stops for the owner's approval: H1 after the calibration and the preregistration; H2 before the training runs, with a time estimate; H3 before any change to a closed decision; H4 before writing the finding. Five exit points define what may be claimed at each stop (Table~\ref{tab:exits}). The building itself was done in parallel ``waves'' (\en{W0--W5}), each of which enables the corresponding run stage.
+
+\fig[0.86\linewidth]{stages}{The research stages. Stages \en{S0--S8} on the right, the automatic gate of each stage, the owner's approval points (diamonds) and the exit points. Gate \en{G-H} failed at stage S8 (Section~\ref{sec:repro}).}
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}l l Y c@{}}
+\toprule
+\textbf{Exit} & \textbf{After} & \textbf{What may be claimed} & \textbf{Training runs}\\
+\midrule
+\textbf{E0} & S1 & The PH pipeline detects the known topology; graph cycles are not surface holes & 0\\
+\textbf{E1} & S2 & The topological differences exist in principle, without a model & 0\\
+\textbf{E2} & S4 & A decision on F1 (supported, rejected or inconclusive) and the H2 result & 7\\
+\textbf{E3} & S5 + S6 & H3 and H4 & 13\\
+\textbf{E4} & S7 + S8 & A strengthened interpretation: controls, \en{probes}, circular coordinates, sensitivity, reproduction & 17\\
+\bottomrule
+\end{tabularx}
+\caption{The exit points and what may be claimed at each.}\label{tab:exits}
+\end{table}
+
+\subsection{The decision logic}
+The decision on the primary hypothesis is made by a deterministic rule, written before any data were collected from the models (Figure~\ref{fig:decision}). It has three possible outcomes, not two: ``inconclusive'' is reserved for the case where a validity gate failed, so that a technical failure is not mistakenly read as a negative finding.
+
+\fig[0.9\linewidth]{decision}{The F1 decision rule. The first condition requires consistency of direction (at least 7 of 8 panels in each replicate). The second condition requires that the effect be larger than the between-panel variation within the same run. The same rule, unchanged, was also applied under P, in each of the viewpoints \en{V0--V5} and in each sensitivity variant.}
+
+Beside the rule, an \textbf{interpretation table} was written in advance (Table~\ref{tab:interp}), which fixes what may be inferred from each combination of results. This prevents a situation in which the interpretation is fitted to the result after the fact.
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedleft\arraybackslash}p{0.36\linewidth} Y@{}}
+\toprule
+\textbf{Combination of results} & \textbf{Allowed conclusion}\\
+\midrule
+F1, H2 and H3 supported & An $H_1$ signal learned from the history and the dynamics that distinguishes between the worlds; still not proof of use\\
+F1 supported under O and not under P & The structure most likely passes through from the emission field, \textbf{unless} the exact belief also does not distinguish under P (and this is what happened, Section~\ref{sec:e1})\\
+F1 supported, H2 rejected & The structure is explained by the last symbol\\
+F1 supported, and R2 or R3 show $D$ of the same order of magnitude & The signal is explained by simple symbol mixing; the conclusion then rests on P\\
+F1 rejected, the model learned, and the beliefs distinguish & Good prediction without a raw $H_1$ signal in this measurement; encoding in another geometry is possible\\
+The unlearned spaces do not distinguish & No expected signature; the question cannot be decided in this setup\\
+The pipeline does not detect the known cylinder & A measurement failure; activations are not interpreted\\
+\bottomrule
+\end{tabularx}
+\caption{The interpretation table fixed in advance.}\label{tab:interp}
+\end{table}
+
+% =========================================================================================
+\section{Research methodology by stage}\label{sec:method}
+This section explains each stage: what was done in it, why exactly this way, and which gate guarantees that its product can be trusted. The choices are explained here because most of them were meant to close off a particular alternative explanation, and the reader needs to know which.
+
+\subsection{Stage S0: infrastructure, contracts and quality control}
+Before any experiment a layer of \textbf{contracts} was built: fixed data types for every artifact (world spec, emission spec, observation set, oracle outputs, checkpoint, activation set, metric records, gate reports and more). Every artifact is saved in an \textbf{artifact store} with an identifier derived from its content and its parents, and with a \en{checksum} of the payload. Two properties follow from this. First, every number in the report can be traced to the artifact that produced it. Second, reproduction is checked by comparing identifiers and \en{checksums}, not by comparing rounded numbers.
+
+The code was divided into modules with public interfaces only, and built in parallel waves. In the critical modules (\code{world}, \code{topology}, \code{oracle}, \code{analysis}) the test writer was an agent other than the implementer, and worked from a written test plan, so that a test would not ``adapt itself'' to a bug. The S0 gate: the contracts test suite passes, and the check of the dependencies between modules is clean. The environment was locked (\code{requirements.lock}) and everything ran on CPU, without a \en{GPU}.
+
+\subsection{Stage S1: the worlds and the topological ground truth}
+\subsubsection{The worlds}
+The two worlds are a lattice of $12\times12$ states with 4-neighbourhood (Figure~\ref{fig:world}). In the square there is no gluing. In the cylinder the $x$ axis is periodic: leaving the rightmost column leads to the leftmost column. Choosing the same size ($N=144$) in both worlds removes a difference in the number of states. A $16\times4$ ``strip'' world, which appeared in an early draft, was replaced, because half of its states sat on the boundary.
+
+\fig[0.9\linewidth]{world}{The two worlds. 144 states in each world. The dashed arcs in the cylinder mark the gluing between the two extreme columns. The diamonds are the 36 emission centres (Section~\ref{sec:s2}); they are not states.}
+
+\subsubsection{The ground truth: a graph is not a surface}
+The true topology was computed from an explicit \textbf{cubical complex}: vertices, edges and filled square faces. The Betti numbers were computed from the ranks of the boundary matrices $\partial_1,\partial_2$ over the field $\mathbb{F}_2$, with a check that $\partial_1\partial_2=0$. The distinction matters: the transition graph of the square has 121 independent cycles, one around each face, and the cylinder's has 133. But in the complex the faces are filled, so they are not holes. A ``cycle in the graph'' and a ``hole in the surface'' are different things, and the whole analysis is aimed at the second.
+
+\subsubsection{The dynamics}
+The agent moves by a \textbf{lazy} random walk: with probability 0.2 it stays in place, and with probability 0.2 it moves in each of the four directions. An attempt to leave the boundary becomes staying. In general form, for every pair of neighbours $i\sim j$:
+\begin{equation}
+T_{ij}=\frac{1-p_{\mathrm{stay}}}{D_{\max}},\qquad
+T_{ii}=1-\deg(i)\,\frac{1-p_{\mathrm{stay}}}{D_{\max}},\qquad
+p_{\mathrm{stay}}=0.2,\; D_{\max}=4 .
+\end{equation}
+The matrix is symmetric and doubly stochastic, so the stationary distribution $\pi$ is uniform. Self-loops guarantee that the chain is aperiodic. The differences that remain between the worlds (the staying rate at the boundary, the diameter, the spectral gap) were measured and reported: this is a comparison between two processes, not an intervention on the topology alone.
+
+\subsubsection{The metric and gate \en{G-A}}
+The primary metric is the flat intrinsic distance $d_M$, with a periodic minimum on the $x$ axis in the cylinder:
+\begin{equation}
+d_M\big((x,y),(x',y')\big)=\sqrt{\min\!\big(|x-x'|,\,12-|x-x'|\big)^2+(y-y')^2},
+\end{equation}
+in the cylinder, and without the minimum in the square. The sensitivity metric is graph distance. Gate \en{G-A} checks that the whole pipeline works on known ground truth, before it is applied to activations. It requires three things: (1) correct Betti numbers in both worlds; (2) \en{VR} on $d_M$ gives a long $H_1$ bar for the cylinder only, with thresholds fixed in advance ($S\ge0.2$ for the cylinder, $S\le0.1$ for the square); (3) synthetic circle and disc clouds, embedded in $\mathbb{R}^{128}$ with noise and 512 points, are classified correctly in at least 19 of 20 draws.
+
+\subsection{Stage S2: emissions, exact predictor and calibration}\label{sec:s2}
+\subsubsection{Four emission conditions}
+Each state emits a symbol according to an emission matrix $E$. Four conditions were built, and each answers a different question (Table~\ref{tab:emissions}).
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}l >{\raggedleft\arraybackslash}p{0.42\linewidth} Y l@{}}
+\toprule
+\textbf{Code} & \textbf{Definition} & \textbf{Role} & \textbf{Stage}\\
+\midrule
+\textbf{O} & 36 centres on a $6\times6$ grid, $c_{ab}=(0.5+2a,\,0.5+2b)$; $E_{zj}\propto\exp\!\big(-d_M(z,c_j)^2/2\sigma^2\big)$; symbol names shuffled & The central experiment: continuous uncertainty that the history reduces & S4\\
+\textbf{P} & A per-axis permutation of O: $E_P[(x,y)]=E_O[(\sigma_x(x),\sigma_y(y))]$ & Matched control: the same rows, the same entropy, the same factorisation; the smoothness is destroyed & S5\\
+\textbf{N} & $E_{zw}=1/36$ & Negative control: nothing to learn about the state & S4, S7\\
+\textbf{U} & A unique symbol for each state, $V=144$ & Sanity control: the state is visible, only dynamics is learned & S7\\
+\bottomrule
+\end{tabularx}
+\caption{The emission conditions.}\label{tab:emissions}
+\end{table}
+
+\textbf{Why P is built per axis.} The literature review revealed that emission O factors exactly into a product:
+\begin{equation}
+E_O\big[(x,y),(a,b)\big]=E^{x}[x,a]\;E^{y}[y,b].
+\end{equation}
+Each symbol is in effect a pair of noisy readings, one per axis. Earlier studies show that models tend to represent nearly independent factors in separate subspaces. A general permutation of the 144 states would break both the smoothness and the factorisation, and would confound the two effects. A per-axis permutation breaks only the smoothness, so the difference between O and P isolates the contribution of the observation geometry (Figure~\ref{fig:emission}).
+
+\fig[0.9\linewidth]{emission}{The emission field of one symbol. Under O (right) the probability of emitting the symbol is high in one continuous region, and in the cylinder it continues across the seam to the other side. Under P (left) exactly the same values are scattered among rows and columns that are not neighbours. The columns and rows are kept as units, so both the factorisation and the row distribution are preserved.}
+
+\subsubsection{The exact Bayesian predictor}
+The sequences are generated as follows: an initial state from $\pi$, and at each step an emission followed by a transition, up to 33 symbols. The model receives $[\mathrm{BOS},w_1,\dots,w_{32}]$ and predicts the next symbol at every position. Because every trajectory starts from $\pi$, one can compute exactly what an ideal predictor would know at that position, by Bayesian filtering (row vectors, \en{float64}):
+\begin{equation}
+a_1=\pi,\qquad
+b_t=\frac{a_t\odot E_{:,w_t}}{a_t\,E_{:,w_t}},\qquad
+a_{t+1}=b_t\,T,\qquad
+q_t=b_t\,T\,E .
+\end{equation}
+From this the reference spaces are derived: $\bel{32}$, the belief about the state after all 32 symbols; $\bel{1}=r_{w_{32}}$, the belief from the last symbol alone, where $r_w=\pi\odot E_{:,w}/(\pi E_{:,w})$; $F_1=b\,TE$, the distribution of the next symbol; and $F_2$, the joint distribution of the next two symbols:
+\begin{equation}
+F_2[i,j]=b\,T\,\mathrm{diag}(E_{:,i})\,T\,E_{:,j}.
+\end{equation}
+The comparison between $\bel{32}$ and $\bel{1}$ makes it possible to ask what the history adds, without exposing the true state. Zero evidence raises an explicit error, without silent correction by an epsilon.
+
+The \textbf{context usefulness} measure measures how much the full history improves prediction beyond the last symbol, at position 32:
+\begin{equation}
+\GC=\overline{\KL\big(q_C\,\|\,q_{\mathrm{last}}\big)},\qquad q_{\mathrm{last}}=r_{w_{32}}\,T\,E .
+\end{equation}
+If it is small, there is no reason to expect the model to build a belief from the history.
+
+\subsubsection{Calibration of $\sigma$}
+The emission width $\sigma$ was chosen \textbf{from the generator only}, before any training, in a fixed order ($1.25$, then $0.75$, then $2.0$). The first value that meets three conditions in both worlds is chosen: the mean entropy of $\bel{1}$ is at least $\log 2$ (the state is not almost visible); $\GC\ge0.10$ \en{nats} (the history has real value); and every symbol appears with probability $p(w)\ge0.5/V$. The first value, $\sigma=1.25$, met all the conditions ($\GC=0.265$ in the cylinder and $0.236$ in the square), so the fallback path was not needed.
+
+\subsubsection{Gates \en{G-B}, \en{G-C}, \en{G-D} and the preregistration}
+\en{G-B} checks that the oracle matches brute-force full enumeration on small cases, and that controls U and N behave as expected. \en{G-C} checks that $\sigma$ was chosen by the rule. \en{G-D} checks that there is no field in the public data that exposes the hidden state, and that the leakage tests pass. At the end of the stage the distinction table of the unlearned spaces was computed (\en{E1}, Section~\ref{sec:e1}), and the preregistration was written, with a \en{hash} of the configuration.
+
+\subsection{Stage S3: the model, training and the learning gate}
+The model is a \en{decoder-only} \en{Transformer} with \en{pre-LN}: 4 blocks, dimension 128, 4 heads, \en{MLP} of width 512, learned positional \en{embedding}, final \en{LayerNorm} and untied \en{unembedding}; about 0.8 million parameters. Training: \en{AdamW} with learning rate $10^{-3}$, 200 warm-up steps and \en{cosine} decay to 5000 steps, batch of 128, about 21 million targets per run. For each replicate 131,072 training trajectories, 4,096 for development and 4,096 for test. Three seeds (1729, 2718, 3141) jointly change the data, the initialisation, the symbol names and the batch order.
+
+\textbf{Checkpoints on a logarithmic schedule} are always saved: 0, 50, 100, 200, 400, 700, 1000, 1500, 2000, 3000, 4000, 5000. The primary analysis is done at step 5000 and at step 0, without choosing the ``prettiest'' checkpoint.
+
+\textbf{The learning gate.} The primary prediction measure is the distance from the exact predictor, computed exactly for every history, and from it the fraction of the context usefulness that the model captured is derived:
+\begin{equation}
+\mathrm{regret}=\overline{\KL\big(q_C\,\|\,p_{\mathrm{model}}\big)},\qquad
+\mathrm{captured}=1-\frac{\mathrm{regret}}{\GC}\;\ge\;0.8 .
+\end{equation}
+Gate \en{G-E} was run on one trial run (cylinder, O, seed 1729), and also checked that the computation would fit in the budget. In practice a run took about 15 minutes on CPU, so all the training ran locally.
+
+\subsection{Stage S4: the central experiment under O}\label{sec:s4}
+\subsubsection{The runs}
+Six runs (2 worlds $\times$ 3 seeds) and one N model, in an order that pairs worlds by seed, so that stopping in the middle would leave complete pairs. Activations were saved at all 12 checkpoints for panel 1, and at steps 0 and 5000 for all panels.
+
+\subsubsection{Sampling and panels}
+From the test trajectories, \textbf{eight disjoint panels} of 512 trajectories were fixed in advance. From each trajectory one history is taken, at position 32, so there are no two points from the same trajectory. The panels are shared by all layers, checkpoints and spaces. The primary viewpoint is \code{resid_post_3}, the \en{residual stream} after the last block and before the final \en{LN}, in raw Euclidean metric, without \en{PCA}. It was forbidden to use \en{UMAP} or \en{t-SNE} as evidence, a \en{k-NN}-based geodesic distance (the choice of $k$ creates or erases connectivity), and averages by the true state (which insert the world's structure from outside).
+
+\subsubsection{Persistent homology and the measure $S$}
+On every cloud a \en{Vietoris--Rips} filtration is built over $\mathbb{F}_2$, in dimensions 0 and 1. The idea: gradually increase a radius around each point, and track ``holes'' that form and close. A hole that lives over a wide range of radii is a stable structure, and a short-lived hole is noise (Figure~\ref{fig:ph}). The primary measure is the length of the longest finite bar in $H_1$, normalised by the scale of the cloud:
+\begin{equation}
+S=\max_{(u,v)\in D_1,\;v<\infty}\frac{v-u}{s},\qquad s=q_{95}\big(\{d(x,x')>0\}\big),
+\end{equation}
+and $S=0$ if there is no finite $H_1$ bar.
+
+\fig[0.9\linewidth]{ph}{Persistent homology (illustration). A cloud arranged around a circle produces one long $H_1$ bar and many short bars. Normalising by the scale makes it possible to compare clouds of different sizes, for example activations at initialisation and at the end of training.}
+
+\subsubsection{The contrast $D$ and the noise envelope}
+For every replicate $r$ and every panel $i$, with \textbf{the same panel index} in both worlds, a double difference is computed (Figure~\ref{fig:dcontrast}):
+\begin{equation}
+D_{r,i}=\big(\Sc[,i]{cyl}{final}-\Sc[,i]{cyl}{init}\big)-\big(\Sc[,i]{sq}{final}-\Sc[,i]{sq}{init}\big).
+\end{equation}
+\fig[0.9\linewidth]{dcontrast}{The structure of the contrast $D$. The difference within each world removes what the architecture already produces at initialisation; the difference between the worlds removes what training produces in each world. The four values of $S$ are always reported beside $D$, so that $D$ does not hide the source of the difference.}
+
+The noise envelope measures how much $S$ changes only because of the choice of sample:
+\begin{equation}
+u_r=\max_{c}\;q_{95}\big\{|S_{c,i}-S_{c,j}|:i<j\big\},\qquad c\in\{\text{cyl-final},\text{cyl-init},\text{sq-final},\text{sq-init}\}.
+\end{equation}
+The choice to measure it from the data, and not from control N, was meant to prevent a circularity that appeared in one of the early drafts.
+
+\subsubsection{Context: the Gaussian floor and H0}
+For every cloud, $S$ was also computed for 20 Gaussian clouds of identical size and dimension, isotropic and covariance-matched. They are not a decision threshold, but context: earlier work shows that a Gaussian cloud of this size produces hundreds of spurious $H_1$ bars, so bars must not be counted without a reference. Model N was checked for leakage: its \en{NLL} must not be lower than $H(W)=\ln 36$ beyond the confidence interval.
+
+\subsubsection{H2: geometry of history versus last symbol}
+Over all pairs of histories in a panel, a \en{Spearman} correlation is computed between the activation distances $d_A$ and the belief distances (in the \en{Hellinger} metric, $d_H(p,q)=\|\sqrt p-\sqrt q\|_2/\sqrt2$):
+\begin{equation}
+\dgeom=\rho_s\big(d_A,d_{B32}\big)-\rho_s\big(d_A,d_{B1}\big).
+\end{equation}
+The computation is done once over all pairs, and once only over pairs \textbf{with the same last symbol}. In such pairs $\bel{1}$ is identical, so any agreement with the belief must come from earlier information in the history. The decision is by sign consistency over 3 replicates and 8 panels.
+
+\subsubsection{Representation baselines}
+Four alternative representations pass through \textbf{exactly the same pipeline}, each in place of the final checkpoint: \textbf{R0}, the model at initialisation; \textbf{R1}, the \en{embedding} of the last symbol in the trained model; \textbf{R2}, the average $\tfrac12[\phi(w_{32})+\phi(w_{31})]$ of a spectral \en{embedding} $\phi$ of the symbol-to-symbol transition matrix $E^{\top}\mathrm{diag}(\pi)TE$; \textbf{R3}, the average $\tfrac1{32}\sum_t\phi(w_t)$ over the whole context, which is what nearly uniform \en{attention} computes. R2 and R3 are built without a model. If they reproduce the signal, Bayesian filtering is not needed to explain it.
+
+\subsubsection{Secondary analysis \en{X4}: viewpoints on the representation}
+A separately preregistered analysis tested the F1 rule in six viewpoints: V0 (the raw one), V1 (after \en{LN} normalisation without the learned parameters), V2 (the output of the final \en{LN}), V3 (the component the \en{unembedding} sees), V4 (the component the \en{unembedding} does not see), and V5 (the prediction distribution itself). The goal is to ask \textbf{where} the structure sits, not only whether it exists.
+
+\subsection{Stage S5: the matched control P}
+Six more runs, completely identical to the S4 runs except for the emission matrix. The logic: if the structure under O is learned from the dynamics and the history, it should survive even when the emission is not smooth. If it is only a copy of the emission geometry, it should disappear.
+
+Already at stage S2 it turned out that this control is \textbf{one-sided}. Under P, even the exact belief $\bel{32}$ does not stably distinguish between the worlds (5 of 8 panels). So even an ideal predictor would fail the F1 rule under P. A failure under P cannot teach that the structure comes from the emission; only a success under P would have been informative. This one-sided reading was written in the preregistration \textbf{before} the P runs were run.
+
+So that the stage would not be left without an informative question, an additional rule, \textbf{H3$'$}, was proposed and approved by the owner at point H3 (decision \en{D-037}), before P results were seen: under P, at step 5000, $\rho_s(d_A,d_{B32})$ must exceed both its value at initialisation and $\max(\mathrm{R2},\mathrm{R3})$, in all 3 replicates and in at least 7 of 8 panels. H3$'$ does not ask about a hole; it asks whether the model's geometry aligns with the Bayesian belief.
+
+\subsection{Stage S6: training dynamics}
+H4 asks about \textbf{order}: does the structure appear before the model uses the history, or after. The rule was fixed (\en{D-034}) before any S4 result. For each run, on panel 1 and at the 12 checkpoints:
+\begin{equation}
+t_h=\min\{t:\mathrm{regret}_t<\GC\},\qquad t_s=\min\{t:S_t-S_0>u_r\}.
+\end{equation}
+$t_h$ is the first checkpoint at which the model is already better than any predictor that uses only the last symbol. A cylinder run is ``consistent'' if $t_s\ge t_h$. H4 is supported if the three cylinder runs under O are consistent, and rejected if one of them violates the order. The square and P runs are reported descriptively.
+
+Two additional descriptive analyses: \textbf{a checkpoint-order \en{null}} (1000 shuffles, to check whether the change in $S$ is concentrated at the start of training more than a random order would give), and \textbf{a layer sweep}, the same F1 contrast at every \en{hook} and on the concatenation of all of them.
+
+\subsection{Stage S7: controls, \en{probes}, circular coordinates and sensitivity}
+All operational details of S7 were frozen (\en{D-047}) before any run or analysis in the stage.
+
+\subsubsection{Controls U and N}
+Two U models (visible state, seed 1729) and two additional N models. In U the last symbol exposes the state, so $\GC=0$ and the learning gate is undefined. In its place, $\mathrm{captured}_U$ is checked against the usefulness over the marginal symbol distribution, $G_U=\KL(q_C\,\|\,\pi E)$. The belief cloud of U is the vertices of the simplex, so U is not a positive control for PH.
+
+\subsubsection{Linear \en{probes}}
+\en{Ridge} regression from the activations to $\bel{32}$. The fit is done on development panels 1–6, the parameter $\lambda$ is chosen on development panels 7–8, and the score is measured only once on the 8 test panels. The target is compared with four competitors: activations at initialisation; a \en{one-hot} encoding of the last symbol (the upper bound for any decoder that uses only it); the exact $F_1$ (how much of the belief can be recovered from what the prediction task requires); and shuffled labels (a control that the protocol does not produce agreement out of nothing).
+
+\subsubsection{Circular coordinates}
+From the leading $H_1$ class in the activation cloud a cocycle is computed (over $\mathbb{F}_{47}$, at the middle of the bar's life), and from it a circular coordinate $\varphi$ for every history. The agreement with the hidden angle $\theta=2\pi x(z_{32})/12$ is measured as
+\begin{equation}
+A=\max\Big(\big|\overline{e^{\,i(\varphi-\theta)}}\big|,\;\big|\overline{e^{\,i(\varphi+\theta)}}\big|\Big)\in[0,1].
+\end{equation}
+The measure is insensitive to rotation and reflection of the circle. The comparisons fixed in advance: initialisation, the non-periodic $y$ axis, the square runs, and a ceiling from the exact belief. This is the only analysis that uses the true state, so it is marked ``privileged evaluation'' and is descriptive only.
+
+\subsubsection{Sensitivity}
+Changing one factor at a time: the \en{chord} metric (distance between normalised vectors), \en{PCA} to 32 dimensions fitted on the development data, panels of 256 histories instead of 512, and $\sqrt{\mathrm{JSD}}$ instead of \en{Hellinger} for the beliefs. These variants test the robustness of a decision, and never replace it.
+
+\subsection{Stage S8: clean reproduction}
+A fresh clone of the repository at the current \en{commit}, with an \textbf{empty} artifact store, and a rerun of S0 through S3, including full training of one run. Every artifact produced is compared with the original store by identifier and by the \en{checksum} of the payload. In addition, the integrity of the whole store, the reproduction of reports \en{E0--E3} from the metric records alone, and all the test suites are checked. Gate \en{G-H} requires all parts to pass. Records that contain measured runtime are compared without the time rows (\en{D-048}).
+
+\subsection{Methodology of the follow-up studies}
+After \en{E4} two questions remained open: the origin of the structure (history versus last symbol) and causal use. The follow-up studies were built on a fixed template. First a protocol was written in \textbf{two independent planning tracks}, merged into one draft. Then the protocol was \textbf{frozen} with a \en{hash}, before any computation. The run passes through a series of \textbf{feasibility gates}, and the first that fails stops everything, without a retry and without refitting. Finally, for every result a ``licence'' is written: a sentence that defines exactly what may and may not be claimed from it. Many results end at a feasibility gate, and this is deliberate: it is better to stop with ``inconclusive'' than to interpret an invalid measurement.
+
+% =========================================================================================
+\section{Experiment results and their meaning}\label{sec:results}
+
+\subsection{\en{E0}: the pipeline detects the known topology}
+\fig[0.85\linewidth]{e0}{$S$ of the worlds themselves. In both metrics the cylinder has a long $H_1$ bar, and the square does not. The dashed lines are the \en{G-A} gate thresholds fixed in advance (decision \en{D-016}).}
+
+\begin{table}[H]\small\centering
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{World} & \textbf{Graph cycles} & \textbf{$\beta_1$ over $\mathbb{F}_2$} & \textbf{$S$, flat metric} & \textbf{$S$, graph metric}\\
+\midrule
+Square & 121 & 0 & 0.037 & 0.067\\
+Cylinder & 133 & 1 & 0.299 & 0.231\\
+\bottomrule
+\end{tabular}
+\caption{The ground truth: graph cycles versus the Betti number and $S$.}\label{tab:e0}
+\end{table}
+
+In the synthetic calibration (512 points in $\mathbb{R}^{128}$) the mean $S$ of a circle was 0.460, and the maximal $S$ of a disc 0.045; all 20 draws were classified correctly. Gate \en{G-A} passed.
+
+\begin{meaningbox}[Meaning]
+This is the result that licenses interpreting everything else. It shows two things. First, the measure $S$ distinguishes a world with a hole from a world without a hole, with a margin larger than the thresholds. Second, it distinguishes \textbf{even though} both graphs have more than 120 cycles: what is measured is a hole in the surface, not a count of cycles in the graph. Had the gate failed, every analysis of activations would have been a measurement failure.
+\end{meaningbox}
+
+\subsection{\en{E1}: the difference exists in principle, even before any model}\label{sec:e1}
+\fig{e1}{Median $S$ over eight panels, in the unlearned spaces (replicate 1729, $\sigma=1.25$, \en{Hellinger} distances). On the right under O, on the left under P. The Gaussian floor is at most 0.10.}
+
+Under O all reference spaces distinguish between the worlds in 8 of 8 panels, 3 to 8 times the Gaussian floor (Figure~\ref{fig:e1}). The exact belief $\bel{32}$ shows the strongest contrast (0.671 vs 0.321), and it is also much stronger than that of the last-symbol belief (0.324 vs 0.165). Under P the picture reverses: the exact belief hardly distinguishes (0.323 vs 0.310, 5 of 8 panels), and in the future spaces the direction even reverses (1 and 2 of 8). The last-symbol belief and the emission field are identical in both conditions, because P only swaps labels of states, so their point cloud is identical up to renaming.
+
+\begin{meaningbox}
+\begin{itemize}[leftmargin=*]
+\item \textbf{RQ1 can be decided under O.} There is an expected topological signature, and an ideal predictor would display it. Had the spaces not distinguished even under O, the project would have stopped here according to the cut path fixed in advance.
+\item \textbf{The history strengthens the signature.} The contrast in $\bel{32}$ is larger than that of $\bel{1}$, so H2 has something to measure.
+\item \textbf{H3 is one-sided.} Since under P even the exact belief does not distinguish, a failure of the model under P could not be evidence against it. This was the most important methodological conclusion of the stage, and it was recorded before the P runs.
+\end{itemize}
+\end{meaningbox}
+
+\subsection{\en{E2}: the central experiment under O}\label{sec:e2}
+\subsubsection{The models learned}
+All six runs passed the learning gate by a wide margin: $\mathrm{captured}$ of 0.985–0.986 in the cylinder and 0.992 in the square, i.e. \en{regret} of 0.002–0.004 \en{nats} against $\GC$ of 0.24–0.26. Run time was 13–16 minutes on CPU.
+
+\subsubsection{F1: supported}
+\fig{f1panels}{The contrast $D$ by panel. Each point is one panel (8 per replicate). The black line is the median and the red dashed line is the noise envelope $u_r$. Under O (right) all 24 panels are positive and the median is above the envelope in every replicate. Under P (left) the median is below the envelope in every replicate (Section~\ref{sec:e3p}).}
+
+\begin{table}[H]\small\centering
+\begin{tabular}{@{}cccccccc@{}}
+\toprule
+\textbf{Replicate} & \textbf{$\Sc{cyl}{init}$} & \textbf{$\Sc{cyl}{final}$} & \textbf{$\Sc{sq}{init}$} & \textbf{$\Sc{sq}{final}$} & \textbf{Panels $D>0$} & \textbf{Median $D$} & \textbf{$u_r$}\\
+\midrule
+1729 & 0.058 & 0.307 & 0.062 & 0.129 & 8/8 & 0.158 & 0.097\\
+2718 & 0.057 & 0.321 & 0.058 & 0.137 & 8/8 & 0.176 & 0.084\\
+3141 & 0.058 & 0.304 & 0.059 & 0.126 & 8/8 & 0.173 & 0.084\\
+\bottomrule
+\end{tabular}
+\caption{The F1 rule under O: median $S$ over eight panels, \code{resid_post_3}, step 0 vs step 5000.}\label{tab:f1}
+\end{table}
+
+The four values of $S$ show where the contrast comes from (Table~\ref{tab:f1}): at initialisation the two worlds are identical (about 0.06), and at the end the cylinder reaches about 0.31 and the square about 0.13. The square also rises, but much less. The $S$ of the cylinder on panel 1 (0.23–0.27) is twice or more the 95th percentile of the covariance-matched Gaussian floor (0.10–0.12).
+
+\subsubsection{The representation baselines: the R1 limitation}
+\fig[0.9\linewidth]{baselines}{How much of the contrast each baseline reproduces: the ratio between the baseline's median $D$ and the model's median $D$. The \en{embedding} of the last symbol (R1) reproduces 0.47–0.89 of the contrast; the mixing baselines R2 and R3 at most 0.20.}
+
+The simple mixing baselines do not explain the signal, but the \en{embedding} of the last symbol alone reproduces a substantial part of it (Figure~\ref{fig:baselines}). That is, under O, a large part of the structure already exists at the level of the \en{embedding} of a single symbol, before the model mixes information between positions.
+
+\subsubsection{H2: sign-consistent}
+\begin{table}[H]\small\centering
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{World} & \textbf{Median $\dgeom$, all pairs} & \textbf{Panels $>0$} & \textbf{Median $\dgeom$, same last symbol} & \textbf{Panels $>0$}\\
+\midrule
+Cylinder (3 replicates) & 0.124–0.127 & 24/24 & 0.935–0.939 & 24/24\\
+Square (3 replicates) & 0.087–0.090 & 24/24 & 0.977–0.979 & 24/24\\
+\bottomrule
+\end{tabular}
+\caption{H2 under O.}\label{tab:h2}
+\end{table}
+Over all pairs, the activation distances correlate with the 32-symbol belief more than with the last-symbol belief, in 48 of 48 panels (Table~\ref{tab:h2}). Within pairs with the same last symbol, in which R1 is constant and cannot explain anything, the correlation with the full belief is very high (0.94–0.98) and exceeds R2 and R3 in every panel (\en{X4-d}).
+
+\subsubsection{Controls and \en{X4}}
+Model N: \en{NLL} of 3.5835, equal to $H(W)=\ln 36$ within a confidence interval of 0.0002. No leakage, and gate \en{G-F} passed. In the \en{X4} analysis, the F1 rule is supported in all six viewpoints, including V4, the component the \en{unembedding} does not see. The positive control of \en{X4-b} (agreement of the prediction distribution with the exact $F_1$) stood at 0.999 in every run.
+
+\begin{meaningbox}
+\begin{itemize}[leftmargin=*]
+\item \textbf{RQ1: yes, under O.} Training for next-symbol prediction creates in the representation an $H_1$ signal that distinguishes cylinder from square, consistent in every panel and every replicate, above the noise and above the Gaussian floor.
+\item \textbf{RQ2, part (b): history is used, in the geometry.} H2 shows that the distances between representations track the full belief, even when the last symbol is identical.
+\item \textbf{RQ2, part (a): the symbol geometry cannot be ruled out.} R1 carries up to 89\% of the contrast. F1 alone does not show that history integration is what creates the hole. So the decision on the origin passed to P.
+\item \textbf{Location:} the structure exists both in the component visible to the output and in the component hidden from it (\en{X4-c}: ``\en{both}''). This shows that it exists there, not that it is needed for prediction.
+\end{itemize}
+\end{meaningbox}
+
+\subsection{\en{E3}: the matched control P}\label{sec:e3p}
+All six P runs passed the learning gate ($\mathrm{captured}$ 0.874–0.914). Nevertheless the F1 rule was \textbf{rejected} under P: median $D$ of 0.021–0.034, below the noise envelope (0.066–0.089) in every replicate, and in two replicates also fewer than 7 positive panels (Figure~\ref{fig:f1panels}, left). The \en{embedding} of the last symbol, which carried most of the contrast under O, collapses under P (median $D$ from $0.140$ to $-0.035$ in replicate 1729).
+
+In contrast, \textbf{H3$'$ is supported}: under P, $\rho_s(d_A,d_{B32})$ rises from 0.06–0.11 at initialisation to 0.70 at the end of training, and exceeds the better of R2 and R3 (0.39) in 48 of 48 panels. Also within pairs with the same last symbol (\en{X4-d}) the model exceeds the mixing baselines, with a correlation of about 0.82.
+
+\begin{table}[H]\small\centering
+\begin{tabularx}{\linewidth}{@{}Y cc@{}}
+\toprule
+\textbf{Item} & \textbf{Under O} & \textbf{Under P}\\
+\midrule
+The F1 rule, in each of the viewpoints \en{V0--V5} & \good{supported} & \bad{rejected}\\
+H3$'$ (alignment with the belief), V0 and V1 & \good{supported} (comparison) & \good{supported} (decision)\\
+\en{X4-d} (same last symbol, vs R2/R3) & \good{supported} & \good{supported}\\
+\en{X4-c} (where the structure sits) & in both components & in neither\\
+Median $\dgeom$, all pairs & 0.088–0.125 & 0.041–0.072\\
+\bottomrule
+\end{tabularx}
+\caption{O versus P.}\label{tab:op}
+\end{table}
+
+\begin{meaningbox}
+\begin{itemize}[leftmargin=*]
+\item \textbf{The rejection of H3 is not evidence that the structure comes from the emission.} As recorded in advance, even a perfect predictor would fail here, because the exact belief itself does not carry the hole under P. The result simply does not answer the question.
+\item \textbf{Alignment with belief $\neq$ an $H_1$ contrast.} H3$'$ shows that the model learns a geometry that tracks the Bayesian belief even when there is no hole to detect. An $H_1$ contrast is expected only when the geometry of the belief itself carries the world's hole. This is one of the central insights of the project.
+\item \textbf{RQ2 remains open.} The collapse of R1 under P shows that the R1 contrast under O is not static emission geometry, because P preserves the emission cloud. But it does not distinguish between history integration and transition statistics learned at the symbol level.
+\end{itemize}
+\end{meaningbox}
+
+\subsection{\en{E3}: training dynamics (H4)}
+\fig{dynamics}{$S$ and \en{regret} over training, panel 1. Each line is a run. In both conditions, $S$ already jumps at step 50 in both worlds, and the \en{regret} drops below $\GC$ only at step 100. Under O (right) the gap between the cylinder and the square opens mainly between step 100 and step 200.}
+
+In all three cylinder runs under O, $t_h=100$ and $t_s=50$ (Figure~\ref{fig:dynamics}). By the rule, a run in which $S$ rises before history use violates H4, so \textbf{H4 was rejected}. An identical pattern appears in all square runs under O, and a similar pattern under P (where only one run, square 2718, is consistent with the rule). The checkpoint-order \en{null} is inconclusive ($p$ between 0.07 and 0.18 in the cylinder runs).
+
+\fig[0.9\linewidth]{layers}{Layer sweep: median $D$ for each \en{hook}. Under O the contrast already exists in the \en{embedding} (about 0.11) and grows along the layers up to the final \en{LN} (about 0.28). Under P it is close to zero in all layers. Descriptive only.}
+
+\begin{meaningbox}
+\begin{itemize}[leftmargin=*]
+\item \textbf{The early rise is not specific to the cylinder.} At step 50 the square also rises (0.17–0.23, against 0.24–0.25 in the cylinder). This is a general rise of structure in the cloud, not the appearance of the hole.
+\item \textbf{The contrast itself appears later.} The difference between the cylinder and the square on panel 1 is 0.02–0.07 at step 50 and 0.18–0.23 at step 200, i.e. after history use begins. But this is an exploratory observation: the preregistered rule referred to the raw $S$ of the cylinder, not to the contrast. It does not change the rejection of H4.
+\item \textbf{The contrast already exists in the \en{embedding}} (Figure~\ref{fig:layers}). This reinforces the R1 limitation: under O part of the structure is created at the level of the single symbol, before any mixing between positions.
+\end{itemize}
+\end{meaningbox}
+
+\subsection{\en{E4}: controls U and N}
+Two additional N models: the \en{NLL} equals $\ln 36$ within $2\cdot10^{-5}$, and the $S$ of the activations stays at noise level (0.002–0.077). The U models learned the dynamics almost completely ($\mathrm{captured}_U=0.999$, \en{regret} of 0.005 \en{nats} against a usefulness of 3.4 \en{nats}). In U the cylinder reached an $S$ of 0.215 and the square 0.147, with positive $D$ in 8 of 8 panels.
+
+\begin{meaningbox}[Meaning]
+N confirms that there is no leakage and that the architecture alone does not produce the signal. U shows something important for the origin question: when the state is visible, and there is no need at all for multi-step inference, a circle aligned with the $x$ axis still forms in the representation (Section~\ref{sec:circ}). That is, \textbf{transition statistics at the symbol level can suffice} to create such a circle. This is evidence that the alternative route exists, not that it is the route that operated under O.
+\end{meaningbox}
+
+\subsection{\en{E4}: linear \en{probes}}
+\fig{probes}{What can be decoded linearly ($R^2$ on test, median over 6 runs per condition). The top two rows are almost identical: the activations do not decode the belief better than the exact next-symbol distribution.}
+
+Training raises the decodability of the belief far above initialisation (0.83 vs 0.48 under O) and above any last-symbol decoder (0.42). The shuffled-label control is at zero, so the protocol does not produce agreement. But the preregistered descriptive pattern, that the activations would exceed all three competitors, appeared in only one run of six in each condition, because they do not exceed $F_1$ (Figure~\ref{fig:probes}). The activations decode the last-symbol belief almost perfectly (0.97).
+
+\begin{meaningbox}
+Regarding RQ2(c): \textbf{in the linear sense, the representation carries roughly what the prediction task requires, and no more.} There is no evidence here of belief content beyond the needs of the next symbol. This does not contradict H2 and H3$'$, which concern the geometry of distances and not linear decoding, but it qualifies them: agreement with the belief geometry is also consistent with encoding only what is needed for prediction. The decoding is linear only, so non-linear components are not ruled out.
+\end{meaningbox}
+\begin{caveat}
+Under O, the chosen $\lambda$ was the smallest value in the grid ($10^{-3}$) in all runs, so the grid did not bracket the optimum. The effect is probably small, but $R^2$ under O may be slightly underestimated. The grid was frozen in \en{D-047} and was not changed after the fact.
+\end{caveat}
+
+\subsection{\en{E4}: circular coordinates}\label{sec:circ}
+\fig{circular}{Agreement of the circular coordinate with the hidden angle of the $x$ axis (median agreement $A$). The cylinder models trained under O reach 0.89, about 97\% of the ceiling of the exact belief (0.915).}
+
+Under O, training turns the cylinder's leading $H_1$ class into a coordinate on the world's periodic axis: agreement of 0.884–0.892 in the three runs, against 0.06–0.12 at initialisation, 0.10 against the non-periodic $y$ axis, and 0.21–0.30 in the square runs. Under P the agreement stays at the floor (0.05).
+
+\begin{meaningbox}
+This is the most direct evidence that the signal detected in F1 is \textbf{the cylinder's circle}, and not some other loop in the cloud. It identifies \textbf{which} loop F1 measures. It is not evidence of causal use, and it does not distinguish between history integration and last-symbol structure: this statistic had no last-symbol baseline (checked later, Section~\ref{sec:origin}), and the U result shows that such a circle can also arise from symbol-level statistics.
+\end{meaningbox}
+\begin{caveat}[Caveats]
+(1) The angle-shuffling \en{null} is weak: even at initialisation 15 of 24 panels pass its 95th percentile. The informative comparisons are those fixed in advance. (2) The coordinates are computed at the midpoint scale of the bar; if the skeleton at this scale is disconnected, components outside the giant component receive an arbitrary offset. A later geometric diagnostic (job 0023) found at most one point per panel outside the giant component. The reported values stand.
+\end{caveat}
+
+\subsection{\en{E4}: sensitivity}
+\begin{table}[H]\small\centering
+\begin{tabularx}{\linewidth}{@{}Y cccc@{}}
+\toprule
+\textbf{Variant (one factor)} & \textbf{F1 under O} & \textbf{F1 under P} & \textbf{H3$'$ under P} & \textbf{Rate of $\dgeom>0$ (O / P)}\\
+\midrule
+Primary (raw Euclidean, $M=512$) & \good{supported} & \bad{rejected} & \good{supported} & \en{1.00 / 1.00}\\
+\en{chord} metric & \good{supported} & \bad{rejected} & \good{supported} & \en{1.00 / 0.90}\\
+\en{PCA-32} fitted on \en{dev} & \good{supported} & \bad{rejected} & \good{supported} & \en{1.00 / 1.00}\\
+256 histories per panel & \good{supported} & \bad{rejected} & \good{supported} & \en{1.00 / 1.00}\\
+$\sqrt{\mathrm{JSD}}$ for the beliefs & unchanged & unchanged & \good{supported} & \en{1.00 / 0.71}\\
+\bottomrule
+\end{tabularx}
+\caption{Sensitivity variants, one factor at a time.}\label{tab:sens}
+\end{table}
+\begin{meaningbox}[Meaning]
+The primary verdicts do not depend on any of the four analytic choices tested (Table~\ref{tab:sens}). This is robustness against four particular changes, not against every possible choice: the \en{hook}, the checkpoint, the filtration, the coefficient field, $\sigma$ and the world size were not changed.
+\end{meaningbox}
+
+\subsection{\en{E4}: reproduction (S8)}\label{sec:repro}
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedleft\arraybackslash}p{0.3\linewidth} Y c@{}}
+\toprule
+\textbf{Check} & \textbf{Result} & \textbf{Status}\\
+\midrule
+Artifacts shared by the reproduction and the original store & 307/307 bitwise identical, including 12 checkpoints and 12 activation sets of the retrained run & \good{passed}\\
+Gate verdicts & 6/6 identical & \good{passed}\\
+Artifact present only in the reproduction & one timing record (\code{run_timing}), whose writing code was added after the original run & \bad{failed}\\
+Store integrity & 785/785 artifacts with valid parents and \en{checksums} & \good{passed}\\
+Reproduction of reports \en{E0--E3} & 9/9 files byte-identical & \good{passed}\\
+Tests & 511 in the modules, 3 slow, 4 integration & \good{passed}\\
+\bottomrule
+\end{tabularx}
+\caption{Gate \en{G-H}.}\label{tab:repro}
+\end{table}
+\begin{meaningbox}[Meaning]
+CPU training is bitwise deterministic in this environment, and all numbers in the report can be reproduced from the records. Gate \en{G-H} nevertheless \textbf{failed}, and the verdict remained ``failed'' (\en{D-049}): the check defined in advance required a full match of the store, and it did not hold. This is a documentation gap created by the evolution of the code, not a numerical difference, but it must not be read as ``passed''. The scope of the reproduction is limited: the same machine, the same environment, and only one of the 17 training runs was retrained.
+\end{meaningbox}
+
+% =========================================================================================
+\section{Follow-up studies after \en{E4}}\label{sec:followups}
+After \en{E4} the origin question (history or last symbol) and the use question remained open. Nine follow-up studies tried to advance them (Figure~\ref{fig:followups}, Table~\ref{tab:followups}). None of them changes a verdict of \en{E0--E4}.
+
+\fig[0.95\linewidth]{followups}{Map of the follow-up studies, grouped by the question each tried to advance.}
+
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}Y l l@{}}
+\toprule
+\textbf{Study} & \textbf{Label} & \textbf{Outcome}\\
+\midrule
+\en{X4} Phase B: future-horizon separation (\en{D-051--052}) & preregistered & \warn{inconclusive}\\
+\en{X4} Phase B2: coverage (\en{D-053--055}) & preregistered & \bad{scoped \en{NO-GO}}\\
+Circular-baseline audit (\en{D-056--057}) & preregistered, descriptive & \neu{beyond symbol and mixing}\\
+\en{X4-F}: causal use of the coordinate (\en{D-058--063}) & preregistered & \warn{inconclusive}\\
+Circular-history oracle profile (0014, \en{D-074}) & exploratory & \neu{accepted, qualified}\\
+K8 history-origin cohort & preregistered & \bad{headroom \en{FAIL}}\\
+\en{X5 G1}: kernel-pair learning time (\en{D-072--073}, \en{D-081}) & preregistered & \bad{H5 rejected}\\
+K4: circular-history feasibility (0016–0018, \en{D-075--078}) & preregistered & \warn{inconclusive}\\
+\en{D-1}: cylinder vs Möbius band, oracle only (0019–0020) & preregistered & \good{\en{PASS}}\\
+\bottomrule
+\end{tabularx}
+\caption{The follow-up studies.}\label{tab:followups}
+\end{table}
+
+\subsection{Is the structure needed for prediction? (\en{X4 B, B2})}
+\textbf{Method.} The question here is whether there are pairs of histories that look identical in $F_1$ but differ at horizon 2. If there are, an ideal predictor must represent more than the next symbol, and one can check whether the model does so. \textbf{Result.} In the ambient space, the tangent ranks ($Q_1=35$, $Q_2=137$) allow such separation in principle. But in Phase B the four sample pools were not covered sufficiently (49–66 eligible anchors against 128 required), so the result is inconclusive. In Phase B2, with four new pools (141–159 anchors each), \textbf{zero} witnesses were found.
+\begin{meaningbox}[Meaning]
+At the thresholds and the sampling resolution fixed, there is no practical gap between horizon 1 and horizon 2. This does not prove that $F_1$ always suffices, but it rules out the premise on which Phase C rested, so it was not run. No model, activations or decoder were examined.
+\end{meaningbox}
+
+\subsection{Does the structure come from the history? (circular audit, 0014, K8, K4)}\label{sec:origin}
+\textbf{The circular-baseline audit} closed, descriptively, the gap noted in \en{E4}: in 24 of 24 panels, the model's circular agreement (0.884–0.892) exceeds an optimistic last-symbol bound (0.817) and the best available baseline (0.805). The audit ran on panels already unsealed, so it is not independent confirmation and not evidence of an origin in long history.
+
+\textbf{The oracle profile (job 0014)} asked how much information about the circular angle a longer history adds, and measured the difference between the posterior from 32 observations and the posterior from the last $K$ observations (Figure~\ref{fig:oracle}):
+\begin{equation}
+B_K=\mathbb{E}\,\big\|m_{32}-m_K\big\|,\qquad K\in\{1,2,4,8,16,32\}.
+\end{equation}
+
+\fig[0.85\linewidth]{oracle}{How much information the history adds beyond the last $K$ observations (the oracle profile, calibration data). The difference drops fast: already at $K=8$ it is below the reference value 0.01.}
+
+The meaning: the oracle posterior converges quickly relative to 32 observations, so there is practical ``headroom'' for a history-origin experiment only in comparison with small $K$ (up to 4). This is not a memory horizon of the model or of the world, and $K=8$ still carries non-zero information. \textbf{The K8 cohort} nevertheless tried to compare against $K=8$, and the frozen headroom gate failed: $B_8=0.00925$, with a one-sided 95\% upper endpoint at 0.00949, below 0.01. There is no room in this design for an effect of at least 0.01. \textbf{K4} therefore moved to $K=4$ and passed the identity and process gates (moment errors up to $8\cdot10^{-16}$), but stopped at the first map gate: at the frozen scale, the landmark graph of the first model is disconnected. By the rule there was no retry, and the scoring was not released.
+
+\begin{meaningbox}[Meaning in light of RQ2]
+The origin question remains open, but it has been defined more sharply. First, the circle the model builds is better than what the last symbol alone allows (descriptively). Second, history beyond the last few steps adds almost no information about the angle, so any experiment that tries to separate ``long'' history from ``short'' must work with a very small $K$. Third, the K4 map rule is not robust enough, and this is an operational result, not evidence about the effect itself.
+\end{meaningbox}
+
+\subsection{Does the model use the structure? (\en{X4-F})}
+\textbf{Method.} Erase from the activations the direction that carries the circular coordinate, and compare the damage to prediction with the damage from random erasers that cause similar ``damage''. \textbf{Result.} The targeted eraser removed the linear recoverability of the coordinate, but non-linear recovery (\en{RBF}) stayed at 0.998: the information was not erased, only its linear component. In addition, none of 10,000 random erasers fell inside the frozen damage-matching window, so there was no comparison family. The causal endpoint was \textbf{not run}.
+\begin{meaningbox}[Meaning in light of RQ3]
+The use question remains entirely open. The result teaches something methodological: the information about the circle is encoded non-linearly and in a distributed way, so linear erasure is not enough to test it. A future intervention experiment needs a different tool.
+\end{meaningbox}
+
+\subsection{Extensions (\en{X5 G1}, \en{D-1})}
+\textbf{\en{X5 G1}} tested whether a change of geometry (a ``conductance'' kernel versus a flat kernel) delays learning. The paired delays were 250, 0 and 0 steps, and the registered claim, a delay of at least 250 steps in all three pairs, was rejected. This is not a general null result for geometry: the kernel change is confounded with movement speed. \textbf{\en{D-1}} tested, in the oracle only and by full enumeration of the 37,190 reachable histories, an \textbf{orientability} distinction between a cylinder and a Möbius band, which have the same Betti numbers. All gates passed: the distinction is not needed at horizon 1 and is needed at horizon 2. This is an existence result about the task, and says nothing about trained models.
+
+% =========================================================================================
+\section{Discussion: what we learned about the research questions}\label{sec:discussion}
+
+\subsection{RQ1: does a topological structure form? Yes, under O}
+The chain of evidence is complete and consistent. (1) The pipeline detects the hole on known ground truth (\en{E0}). (2) An ideal predictor would display the difference (\en{E1}). (3) The models learned (the learning gate). (4) The F1 rule, frozen in advance, holds in every panel and every replicate, above the noise and above the Gaussian floor (\en{E2}). (5) It is robust to four analysis changes (S7). (6) The detected class is the world's periodic circle, close to the ceiling of the exact belief (S7). The answer to RQ1 is positive, within the limits of one toy world and one small model.
+
+\subsection{RQ2: where does the structure come from? The answer is partial}
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedleft\arraybackslash}p{0.17\linewidth} Y Y c@{}}
+\toprule
+\textbf{Possible source} & \textbf{Evidence for} & \textbf{Evidence against or limiting} & \textbf{Status}\\
+\midrule
+\textbf{(a) Observation geometry} & R1 carries 0.47–0.89 of the contrast; the contrast already exists in the \en{embedding}; U shows that symbol-level statistics suffice to create a circle & P preserves the emission cloud and R1 nevertheless collapses, so this is not static emission geometry & \warn{not ruled out}\\
+\textbf{(b) Belief from the history} & H2 in all 48 panels, also with the same last symbol; H3$'$ under P; the circular coordinate exceeds the last-symbol bound & H4 rejected; K8 failed on headroom; K4 stopped; history beyond 8 steps adds almost no information & \warn{partially supported}\\
+\textbf{(c) Only the needs of prediction} & \en{probes}: the activations do not decode the belief better than $F_1$; B2: no practical gap between horizon 1 and 2 & linear \en{probes} only & \neu{consistent with the data}\\
+\bottomrule
+\end{tabularx}
+\caption{Evidence map for the origin question.}\label{tab:evidence}
+\end{table}
+The careful reading of Table~\ref{tab:evidence}: the representation aligns with the geometry of the Bayesian belief, and in the cylinder under O this geometry carries the world's circle. But there is no evidence that it carries more than next-symbol prediction requires, and it was not decided whether the structure is built from history integration or from symbol-level statistics. Both routes are possible, and both have evidence.
+
+\subsection{RQ3: does the model use the structure? Not tested successfully}
+There is no causal evidence in the project. The only intervention attempt (\en{X4-F}) stopped at a feasibility gate, because the information is encoded non-linearly and no matched comparison family was found. The distinction between ``detection'' and ``use'' set at the start remains in force.
+
+\subsection{Methodological insights}
+\begin{itemize}[leftmargin=*]
+\item \textbf{A matched control must be checked on the oracle before training.} Without the \en{E1} table, the rejection of H3 would have been read as evidence that the structure comes from the emission. In fact it is a one-sided control.
+\item \textbf{Alignment with belief and a topological contrast are different properties.} One can get the first without the second (P), and the second is expected only when the geometry of the belief itself carries the hole.
+\item \textbf{``$S$ rises'' and ``the contrast rises'' are different measures.} The H4 rule was worded on the raw $S$, and the interesting timing was found in the contrast. The wording of a rule determines what it can discover.
+\item \textbf{Feasibility gates save wrong conclusions.} Most follow-up studies stopped at a gate. Each such stop prevented the interpretation of an invalid measurement, and taught something about the task (fast convergence of the posterior, non-linear encoding, a fragile map rule).
+\end{itemize}
+
+% =========================================================================================
+\section{Limitations}\label{sec:limits}
+\begin{enumerate}[leftmargin=*]
+\item \textbf{No causal claims.} All the evidence is representational: PH of clouds, rank correlations, linear \en{probes} and circular coordinates.
+\item \textbf{The R1 limitation stands.} Whether the structure comes from history integration or from symbol-level statistics was not decided.
+\item \textbf{P is one-sided.} A failure under P says nothing about learning.
+\item \textbf{One toy setup.} A $12\times12$ lattice, two topologies, one $\sigma$, a 4-layer \en{Transformer} of dimension 128 trained from scratch on synthetic \en{HMM} sequences. There is no evidence here about large natural-language models.
+\item \textbf{Statistics.} Three replicates per cell. The panels are partitions of a sample within a run, not replicates. The F1 rule is sign consistency and an envelope, not a significance test. The U models are one replicate per world.
+\item \textbf{PH choices.} \en{Vietoris--Rips} over $\mathbb{F}_2$, $M=512$, $S$ as the longest bar. The sensitivity covered four single changes only.
+\item \textbf{Circular coordinates.} One cocycle at the middle of the bar's life; the measure is insensitive to rotation and reflection but is sensitive to non-linear distortion of the circle, so it may underestimate.
+\item \textbf{Scope of the reproduction.} The same machine, operating system and environment; one training run out of 17. Determinism across platforms and on \en{GPU} was not tested. Integration tests I03 and I05 were not built.
+\end{enumerate}
+
+% =========================================================================================
+\section{Appendices}\label{sec:appendix}
+\subsection{Glossary}
+\begin{table}[H]\small
+\begin{tabularx}{\linewidth}{@{}>{\raggedleft\arraybackslash}p{0.25\linewidth} Y@{}}
+\toprule
+\textbf{Term} & \textbf{Explanation}\\
+\midrule
+Persistent homology (PH) & A method for measuring ``holes'' in a point cloud across a range of scales; a hole that lives over a wide range is considered stable\\
+$H_1$, $\beta_1$ & Homology of dimension 1 (loops) and the first Betti number, the number of independent one-dimensional holes\\
+$S$ & The length of the longest finite $H_1$ bar, normalised by the scale of the cloud\\
+$D$, $u_r$ & The double contrast cylinder-square and final-initialisation; and the noise envelope between panels\\
+$\bel{32}$, $\bel{1}$ & The Bayesian belief about the state after 32 symbols, and after the last symbol alone\\
+$F_1$, $F_2$ & The distribution of the next symbol, and the joint distribution of the next two symbols\\
+$\GC$, \en{regret}, \en{captured} & The context usefulness; the distance from the exact predictor; and the fraction of the context usefulness the model captured\\
+$\dgeom$ & The difference between the agreement of the geometry with the full belief and its agreement with the last-symbol belief\\
+R0–R3 & Representation baselines: initialisation, last-symbol \en{embedding}, mixing with the previous symbol, context average\\
+O, P, N, U & Emission conditions: smooth, shuffled per axis, identical, and a unique symbol per state\\
+\en{V0--V5} & Viewpoints on the representation in the \en{X4} analysis, from the raw one to the prediction distribution\\
+Panel (\en{panel}) & A disjoint set of 512 test histories, one per trajectory, shared by all analyses\\
+Gate (\en{gate}) & An automatic check that must pass before the products of the stage are interpreted\\
+\bottomrule
+\end{tabularx}
+\caption{Glossary.}\label{tab:glossary}
+\end{table}
+
+\subsection{Sources within the repository}
+\begin{itemize}[leftmargin=*]
+\raggedleft
+\item Questions, hypotheses and closed decisions: \code{docs/RESEARCH_SUMMARY.md}, \code{docs/RESEARCH_PLAN_HE.md}, \code{PREREGISTRATION.md}, \code{PREREGISTRATION_X4.md}.
+\item Stages and gates: \code{docs/STAGES.md}. Decisions: \code{state/DECISIONS.md}.
+\item Results: \code{reports/E0-E4/summary.md}, \code{reports/E3/condition_P.md}, \code{reports/E4/interpretation.md}.
+\item Follow-up studies: the ``\en{After E4}'' section in \code{README.md} and the records it points to.
+\item The dynamics curves (Figure~\ref{fig:dynamics}) and the $D$ values by panel (Figure~\ref{fig:f1panels}) were read directly from the metric records in the artifact store, read-only (\code{extract_data.py}). The other numbers are copied from the reports. Figures \ref{fig:world}–\ref{fig:dcontrast} are illustrations.
+\end{itemize}
+
+\end{document}

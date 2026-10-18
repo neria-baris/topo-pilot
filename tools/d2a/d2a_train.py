@@ -7,7 +7,6 @@ under the base interpreter, and the wave parent does supervision only (no numeri
 
 from __future__ import annotations
 
-import ctypes
 import dataclasses
 import hashlib
 import json
@@ -304,79 +303,87 @@ def child_main(run_id: str, store_root=STORE) -> int:
     return code
 
 
-def _mem_of(handle) -> int:
-    import winjob
+def _launch(run_id, root):
+    from process_tree import TrainingProcess
 
-    c = winjob.MemoryCounters()
-    c.cb = ctypes.sizeof(c)
-    if not winjob.psapi.GetProcessMemoryInfo(handle, ctypes.byref(c), c.cb):
-        return 0
-    return int(c.PagefileUsage)
-
-
-def _launch(run_id, root) -> subprocess.Popen:
     env = dict(os.environ, **{v: str(THREADS["intra"]) for v in THREAD_VARS},
                PYTHONPATH=str(REPO / "src"), PYTHONDONTWRITEBYTECODE="1")
     log = (Path(root) / "logs" / f"child_{run_id}_{time.strftime('%Y%m%dT%H%M%SZ')}.txt")
     with log.open("xb") as out:
-        return subprocess.Popen([str(VENV_PY), str(HERE / "d2a_train.py"), "child", run_id],
-                                stdout=out, stderr=subprocess.STDOUT, env=env, cwd=str(REPO))
+        return TrainingProcess([str(VENV_PY), str(HERE / "d2a_train.py"), "child", run_id],
+                               stdout=out, stderr=subprocess.STDOUT, env=env, cwd=str(REPO))
 
 
 def wave_main(wave: str, store_root=STORE, limits=Limits()) -> int:
-    """CLI ``wave W``: ≤ 3 children, supervised; the S5 rerun rule; waves/{W}.json."""
-    import winjob
+    from process_tree import wave_lease
 
+    with wave_lease(Path(store_root), wave):
+        return _wave_main(wave, store_root, limits)
+
+
+def _wave_main(wave: str, store_root, limits) -> int:
+    """CLI ``wave W``: ≤ 3 children, supervised; the S5 rerun rule; waves/{W}.json."""
     root, stage, runs = Path(store_root), WAVE_STAGE[wave], WAVES[wave]
+    outputs = [root / "waves" / f"{wave}.json"]
+    outputs += [root / "runs" / f"{r}{suffix}.json" for r in runs for suffix in ("", ".attempt")]
+    if any(path.exists() for path in outputs):
+        raise FileExistsError("wave or run records already exist; refusing duplicate training")
     ledger = _read(root / "cpu_ledger.json")
     base_stage, base_total = stage_spent(ledger, stage), total_spent(ledger)
-    sup = Supervisor(limits, lambda p: winjob.process_cpu_s(int(p._handle)),
-                     lambda p: _mem_of(int(p._handle)),
-                     lambda p: winjob.k32.TerminateProcess(int(p._handle), 76))
+    sup = Supervisor(limits, lambda p: p.cpu_s(), lambda p: p.memory_bytes(),
+                     lambda p: p.terminate())
     rec = {"wave": wave, "stage": stage, "runs": {}, "polling_interval_s": limits.poll_s}
     attempts = {r: 0 for r in runs}
     pending, live, done_cpu = list(runs), {}, 0.0
-    while pending or live:
-        while pending and len(live) < 3:
-            run = pending.pop(0)
-            if not admit(stage, base_stage + done_cpu, base_total + done_cpu, limits):
-                rec["runs"][run] = {"status": "INCOMPLETE:NOT_ADMITTED"}
-                continue
-            attempts[run] += 1
-            live[run] = _launch(run, root)
-        time.sleep(limits.poll_s)
-        disk = disk_reason()
-        killed = sup.check(live, base_stage + done_cpu, base_total + done_cpu, stage)
-        if disk:
-            for run, p in live.items():
-                winjob.k32.TerminateProcess(int(p._handle), 77)
-                killed[run] = {"reason": "INCOMPLETE:DISK", "detail": disk}
-            pending.clear()
-        for run, p in list(live.items()):
-            if p.poll() is None and run not in killed:
-                continue
-            p.wait()
-            cpu = winjob.process_cpu_s(int(p._handle))
-            done_cpu += cpu
-            del live[run]
-            att = root / "runs" / f"{run}.attempt.json"
-            entry = {"exit_code": p.returncode, "cpu_s": cpu, "attempts": attempts[run]}
-            if run in killed:
-                entry.update(status=killed[run]["reason"], supervisor=killed[run])
-            elif p.returncode in (0, EXIT_NONFINITE, EXIT_STOP) and att.exists():
-                entry.update(_read(att), cpu_s=cpu)
-            elif attempts[run] == 1:
-                rec.setdefault("interruptions", []).append({"run": run, **entry})
-                pending.insert(0, run)
-                continue
-            else:
-                entry["status"] = "INCOMPLETE:INTERRUPTED_TWICE"
-            entry["rerun"] = attempts[run] > 1
-            rec["runs"][run] = entry
-            with (root / "runs" / f"{run}.json").open("x", encoding="utf-8") as f:
-                json.dump(entry, f, indent=1)
-            if att.exists():
-                att.unlink()
+    try:
+        while pending or live:
+            while pending and len(live) < 3:
+                run = pending.pop(0)
+                if not admit(stage, base_stage + done_cpu, base_total + done_cpu, limits):
+                    rec["runs"][run] = {"status": "INCOMPLETE:NOT_ADMITTED"}
+                    continue
+                attempts[run] += 1
+                live[run] = _launch(run, root)
+            time.sleep(limits.poll_s)
+            disk = disk_reason()
+            killed = sup.check(live, base_stage + done_cpu, base_total + done_cpu, stage)
+            if disk:
+                for run, p in live.items():
+                    p.terminate()
+                    killed[run] = {"reason": "INCOMPLETE:DISK", "detail": disk}
+                pending.clear()
+            for run, p in list(live.items()):
+                if p.poll() is None and run not in killed:
+                    continue
+                p.wait()
+                cpu = p.cpu_s()
+                p.close()
+                done_cpu += cpu
+                del live[run]
+                att = root / "runs" / f"{run}.attempt.json"
+                entry = {"exit_code": p.returncode, "cpu_s": cpu, "attempts": attempts[run]}
+                if run in killed:
+                    entry.update(status=killed[run]["reason"], supervisor=killed[run])
+                elif p.returncode in (0, EXIT_NONFINITE, EXIT_STOP) and att.exists():
+                    entry.update(_read(att), cpu_s=cpu)
+                elif attempts[run] == 1:
+                    rec.setdefault("interruptions", []).append({"run": run, **entry})
+                    pending.insert(0, run)
+                    continue
+                else:
+                    entry["status"] = "INCOMPLETE:INTERRUPTED_TWICE"
+                entry["rerun"] = attempts[run] > 1
+                rec["runs"][run] = entry
+                with (root / "runs" / f"{run}.json").open("x", encoding="utf-8") as f:
+                    json.dump(entry, f, indent=1)
+                if att.exists():
+                    att.unlink()
+    finally:
+        for child in live.values():
+            try:
+                child.terminate()
+            finally:
+                child.close()
     (root / "waves").mkdir(exist_ok=True)
     with (root / "waves" / f"{wave}.json").open("x", encoding="utf-8") as f:
         json.dump(rec, f, indent=1)

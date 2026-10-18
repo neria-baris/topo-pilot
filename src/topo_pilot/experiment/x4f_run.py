@@ -1,4 +1,4 @@
-"""X4-F calibration/validation gate run (x4f-exec-v2; handoff job 0003). No fresh test, no ΔR.
+"""Prospective X4-F maintenance runner; the historical x4f-exec-v2 cohort stays closed.
 
 ``python -m topo_pilot.experiment.x4f_run --main-store <artifacts> --out-store <dir>
 --tables <dir> --mailbox <dir>``. Gates run in order G1..G5 over all three models; a later gate
@@ -32,19 +32,16 @@ from topo_pilot.learner import load_model
 from .config import load_config, producer_version
 from .s4_analysis import AnalysisJob
 from .x4b import ReadThroughBackend, provenance_row
-from .x4b_run import Budget, BudgetExceeded, _sha256, listing_hash, peak_memory_bytes
+from .x4b_run import Budget, _sha256, listing_hash, peak_memory_bytes
 from .x4f_damage import g3, g4, g5
 from .x4f_data import SEEDS, extract, load_model_data, resolve
 from .x4f_gates import ValForward, control_targets, g1, g2
+from .x5g1_controls import BudgetExceeded, RunControls, StopRequested
 
 log = logging.getLogger(__name__)
-PROTOCOL = "x4f-exec-v2"
-PROTOCOL_DOC = "docs/proposals/X4F_EXECUTION_PROTOCOL_V2.md"
+PROTOCOL = "x4f-maintenance-v1"
+PROTOCOL_DOC = "docs/proposals/X4F_MAINTENANCE_V1.md"
 CPU_CAP_S, CUMULATIVE_CAP_S = 3600.0, 10800.0
-
-
-class StopRequested(RuntimeError):
-    """The mailbox STOP file appeared."""
 
 
 def _gate(status: str) -> str:
@@ -52,17 +49,31 @@ def _gate(status: str) -> str:
 
 
 def run_gates(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox: Path) -> dict:
+    """Prospective maintenance runner; never overwrite an earlier cohort's exports."""
+    for path in (tables, out_root / "exports"):
+        if path.exists() and any(path.iterdir()):
+            raise FileExistsError(f"refusing to overwrite prior outputs: {path}")
+    ctl = RunControls(out_root / "cpu_ledger.json", CPU_CAP_S, mailbox / "STOP",
+                      PROTOCOL, CUMULATIVE_CAP_S)
+    with ctl:
+        ctl.guard("before inputs")
+        summary = _run_gates(repo, main_root, out_root, tables, ctl)
+        ctl.outcome = summary["overall"]
+        ctl.guard("exports complete")
+        return summary
+
+
+def _run_gates(repo, main_root, out_root, tables, ctl):
     ledger_path = out_root / "cpu_ledger.json"
     ledger = (json.loads(ledger_path.read_text(encoding="utf-8")) if ledger_path.exists()
               else {"entries": [], "cumulative_cpu_s": 0.0})
     if ledger["cumulative_cpu_s"] >= CUMULATIVE_CAP_S:
         raise BudgetExceeded("cumulative X4-F cap already reached")
     budget = Budget(min(CPU_CAP_S, CUMULATIVE_CAP_S - ledger["cumulative_cpu_s"]))
+    budget.t0, budget.steps = ctl.t0, ctl.steps
 
     def checkpoint(step: str) -> None:
-        if (mailbox / "STOP").exists():
-            raise StopRequested(step)
-        budget.check(step)
+        ctl.guard(step)
 
     before = listing_hash(main_root)
     main = ArtifactStore(LocalFSBackend(main_root))
@@ -72,6 +83,7 @@ def run_gates(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox
     aj = AnalysisJob("S4", load_config(repo / "configs" / "stages.yaml", repo), main)
     ids, act_ids, data, models = {}, {}, {}, {}
     for s in SEEDS:
+        checkpoint(f"before inputs {s}")
         ids[s] = resolve(aj, main, s)
         act_ids[s] = extract(rw, ids[s])
         data[s] = load_model_data(rw, ids[s], act_ids[s], s)
@@ -80,7 +92,7 @@ def run_gates(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox
     rec = {s: {} for s in SEEDS}
     status = {s: {} for s in SEEDS}
     for s in SEEDS:
-        rec[s]["G1"] = g1(data[s])
+        rec[s]["G1"] = g1(data[s], checkpoint)
         status[s]["G1"] = _gate(rec[s]["G1"]["status"])
         checkpoint(f"G1 {s}")
     state = {}
@@ -100,26 +112,22 @@ def run_gates(repo: Path, main_root: Path, out_root: Path, tables: Path, mailbox
                 state[s] = {"wh": wh, "primary": primary, "vf": ValForward(models[s], d)}
                 rec[s]["G2"] = g2(d, models[s], state[s]["vf"], primary)
             elif gate == "G3":
-                rec[s]["G3"] = g3(d, state[s]["wh"], state[s]["primary"])
+                rec[s]["G3"] = g3(d, state[s]["wh"], state[s]["primary"], checkpoint)
             elif gate == "G4":
                 rec[s]["G4"], state[s]["clouds"] = g4(d, state[s]["vf"], state[s]["wh"],
-                                                     state[s]["primary"], control_targets(d))
+                                                     state[s]["primary"], control_targets(d),
+                                                     checkpoint)
+                state[s]["maps"] = rec[s]["G4"].pop("_maps", {})
             else:
                 rec[s]["G5"] = g5(d, state[s]["clouds"])
             status[s][gate] = _gate(rec[s][gate]["status"])
             checkpoint(f"{gate} {s}")
     overall, reason = gate_verdict(status)
     after = listing_hash(main_root)
-    cpu = time.process_time() - budget.t0
-    ledger["entries"].append({"job": "0003", "protocol": PROTOCOL, "cpu_s": round(cpu, 2),
-                              "utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
-    ledger["cumulative_cpu_s"] = round(ledger["cumulative_cpu_s"] + cpu, 2)
-    out_root.mkdir(parents=True, exist_ok=True)
-    ledger_path.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
     summary = {"protocol": PROTOCOL, "overall": overall, "reason": reason, "status": status,
                "main_store_unchanged": after == before}
     _export(repo, main, rw, out_root, tables, ids, act_ids, data, rec, state, summary, budget,
-            before, after, ledger)
+            before, after, ledger, checkpoint)
     return summary
 
 
@@ -136,12 +144,13 @@ def _jsonable(obj):
 
 
 def _export(repo, main, rw, out_root, tables, ids, act_ids, data, rec, state, summary, budget,
-            before, after, ledger) -> None:
+            before, after, ledger, checkpoint=lambda _: None) -> None:
     tables.mkdir(parents=True, exist_ok=True)
     exports = out_root / "exports"
     exports.mkdir(parents=True, exist_ok=True)
     prov, sums = [], {}
     for s in SEEDS:
+        checkpoint(f"before export {s}")
         prov += [provenance_row(main, v, f"{k}[{s}]") for k, v in ids[s].items()]
         prov.append(provenance_row(rw, act_ids[s], f"dev_activations[{s}]"))
         d, st = data[s], state.get(s, {})
@@ -150,9 +159,14 @@ def _export(repo, main, rw, out_root, tables, ids, act_ids, data, rec, state, su
         if "primary" in st:
             arrays.update(primary_M=st["primary"].M, primary_mu=st["primary"].mu,
                           whitening_k=np.array(st["wh"].k))
+        for name, (mu, M, rank, status) in st.get("maps", {}).items():
+            arrays.update({f"map_{name}_mu": mu, f"map_{name}_M": M,
+                           f"map_{name}_rank": np.array(rank),
+                           f"map_{name}_status": np.array(status)})
         path = exports / f"x4f_gates_{s}.npz"
         np.savez(path, **arrays)
         sums[path.name] = _sha256(path)
+        checkpoint(f"export {s} complete")
     parents = tuple(sorted({r["artifact_id"] for r in prov}))
     meta = {"protocol": PROTOCOL, "protocol_doc_sha256": _sha256(repo / PROTOCOL_DOC),
             "producer_version": producer_version(repo), "python": sys.executable,
@@ -162,7 +176,8 @@ def _export(repo, main, rw, out_root, tables, ids, act_ids, data, rec, state, su
             "cpu_s": round(time.process_time() - budget.t0, 2),
             "wall_s": round(time.time() - budget.w0, 2), "cpu_cap_s": budget.cap,
             "peak_memory_bytes": peak_memory_bytes(), "budget_steps": budget.steps,
-            "ledger": ledger, "main_store_listing_before": before,
+            "ledger_before_run": ledger, "ledger_path": str(out_root / "cpu_ledger.json"),
+            "main_store_listing_before": before,
             "main_store_listing_after": after, "exports_sha256": sums}
     rows = [MetricRow(run_id="X4F_GATES", space="x4f:gate", metric_id=f"{g}={v}", value=1.0,
                       replicate=s, world="cylinder", condition="O", checkpoint=5000,
@@ -178,6 +193,7 @@ def _export(repo, main, rw, out_root, tables, ids, act_ids, data, rec, state, su
         parents=parents, seed_map={}, consumer="experiment")
     files = {"inputs.json": prov, "gates.json": rec, "verdict.json": summary, "run.json": meta}
     for name, obj in files.items():
+        checkpoint(f"export table {name}")
         (tables / name).write_text(json.dumps(_jsonable(obj), indent=1, default=str),
                                    encoding="utf-8")
     _profiles_csv(tables / "profiles.csv", rec)

@@ -31,7 +31,8 @@ class NestedResult:
     fold_mse: dict[float, float] = field(default_factory=dict)
 
 
-def _ridge_path(X_fit: NDArray, Y_fit: NDArray, grid: tuple[float, ...]):
+def _ridge_path(X_fit: NDArray, Y_fit: NDArray, grid: tuple[float, ...],
+                checkpoint=lambda _: None):
     """Standardise on ``X_fit`` and return ``(mean, scale, y_bar, [W_lam])``."""
     mean, scale = standardizer(X_fit)
     Xs = (X_fit - mean) / scale
@@ -39,7 +40,11 @@ def _ridge_path(X_fit: NDArray, Y_fit: NDArray, grid: tuple[float, ...]):
     Xc, Yc = Xs - x_bar, Y_fit - y_bar
     gram, cross = Xc.T @ Xc, Xc.T @ Yc
     eye = np.eye(gram.shape[0])
-    Ws = [cho_solve(cho_factor(gram + lam * eye), cross) for lam in grid]
+    Ws = []
+    for lam in grid:
+        checkpoint(f"ridge solve {lam}")
+        Ws.append(cho_solve(cho_factor(gram + lam * eye), cross))
+        checkpoint(f"ridge solve {lam} complete")
     return mean, scale, x_bar, y_bar, Ws
 
 
@@ -48,7 +53,8 @@ def _predict(X: NDArray, mean, scale, x_bar, y_bar, W) -> NDArray[np.float64]:
 
 
 def nested_ridge(X_cal: NDArray, Y_cal: NDArray, panel_cal: NDArray, X_val: NDArray,
-                 Y_val: NDArray, grid: tuple[float, ...] = GRID) -> NestedResult:
+                 Y_val: NDArray, grid: tuple[float, ...] = GRID,
+                 checkpoint=lambda _: None) -> NestedResult:
     """Leave-one-panel-out selection over calibration panels, refit, score once.
 
     Ties of the mean fold MSE resolve to the larger lambda.
@@ -58,17 +64,19 @@ def nested_ridge(X_cal: NDArray, Y_cal: NDArray, panel_cal: NDArray, X_val: NDAr
     panels = np.asarray(panel_cal)
     mse = {lam: [] for lam in grid}
     for p in sorted(set(panels.tolist())):
+        checkpoint(f"ridge fold {p}")
         held = panels == p
-        stats = _ridge_path(X[~held], Y[~held], grid)
+        stats = _ridge_path(X[~held], Y[~held], grid, checkpoint)
         for lam, W in zip(grid, stats[4]):
             pred = _predict(X[held], *stats[:4], W)
             mse[lam].append(float(np.mean((pred - Y[held]) ** 2)))
     fold_mse = {lam: float(np.mean(v)) for lam, v in mse.items()}
     best = min(fold_mse.values())
     lam = max(lam for lam, v in fold_mse.items() if v == best)
-    stats = _ridge_path(X, Y, (lam,))
+    stats = _ridge_path(X, Y, (lam,), checkpoint)
     Xv = np.asarray(X_val, dtype=np.float64)
     pred = _predict(Xv, *stats[:4], stats[4][0])
     Yv = np.asarray(Y_val, dtype=np.float64).reshape(Xv.shape[0], -1)
     r2, status = r2_pooled(pred, Yv, Y.mean(axis=0))
+    checkpoint("ridge validation complete")
     return NestedResult(lam, r2, status, pred, fold_mse)

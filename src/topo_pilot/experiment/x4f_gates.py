@@ -42,28 +42,31 @@ def _split(d: ModelData, X):
     return X[d.cal], X[d.val]
 
 
-def probe(d: ModelData, X, Y) -> dict:
+def probe(d: ModelData, X, Y, checkpoint=lambda _: None) -> dict:
     """Nested ridge of ``X -> Y`` (calibration selection, one validation score)."""
     (Xc, Xv), (Yc, Yv) = _split(d, X), _split(d, Y)
-    r = nested_ridge(Xc, Yc, d.panel[d.cal], Xv, Yv)
+    r = nested_ridge(Xc, Yc, d.panel[d.cal], Xv, Yv, checkpoint=checkpoint)
     return {"lam": r.lam, "r2": r.r2, "status": r.r2_status}
 
 
-def shuffled(d: ModelData, X, Y, target: str) -> dict:
+def shuffled(d: ModelData, X, Y, target: str, checkpoint=lambda _: None) -> dict:
     """20 shuffled-calibration-target refits through the identical pipeline; q95."""
     (Xc, Xv), (Yc, Yv) = _split(d, X), _split(d, Y)
     vals = []
     for k in range(N_SHUFFLE):
+        checkpoint(f"shuffle {target} {k}")
         perm = gen("shuffle", target, d.seed, k).permutation(Yc.shape[0])
-        vals.append(nested_ridge(Xc, Yc[perm], d.panel[d.cal], Xv, Yv).r2)
+        vals.append(nested_ridge(Xc, Yc[perm], d.panel[d.cal], Xv, Yv,
+                                 checkpoint=checkpoint).r2)
     ok = [v for v in vals if v is not None]
     q95 = float(np.quantile(ok, 0.95)) if len(ok) == N_SHUFFLE else None
     return {"values": vals, "q95": q95,
             "status": "ok" if q95 is not None else "SHUFFLE_UNDEFINED"}
 
 
-def rbf_probe(d: ModelData, Xc_feat, Xv_feat, Yc, Yv) -> dict:
+def rbf_probe(d: ModelData, Xc_feat, Xv_feat, Yc, Yv, checkpoint=lambda _: None) -> dict:
     """RBF random-feature ridge (calibration standardisation and median bandwidth)."""
+    checkpoint("rbf features")
     mean, scale = standardizer(Xc_feat)
     Xs = (Xc_feat - mean) / scale
     ell, status = rbf_bandwidth(Xs, gen("rbf_bandwidth", d.seed))
@@ -71,14 +74,20 @@ def rbf_probe(d: ModelData, Xc_feat, Xv_feat, Yc, Yv) -> dict:
         return {"r2": None, "status": status, "ell": None}
     omega, b = rbf_map(Xs.shape[1], N_RBF, ell, gen("rbf", d.seed))
     r = nested_ridge(rbf_features(Xs, omega, b), Yc, d.panel[d.cal],
-                     rbf_features((Xv_feat - mean) / scale, omega, b), Yv)
+                     rbf_features((Xv_feat - mean) / scale, omega, b), Yv,
+                     checkpoint=checkpoint)
     return {"r2": r.r2, "status": r.r2_status, "ell": ell, "lam": r.lam}
 
 
-def g1(d: ModelData) -> dict:
+def g1(d: ModelData, checkpoint=lambda _: None) -> dict:
     """G1-primary, G1-r2 and the descriptive short-context comparators."""
+    from functools import partial
+
+    probe_guarded = partial(probe, checkpoint=checkpoint)
+    shuffle_guarded = partial(shuffled, checkpoint=checkpoint)
     h, t = d.acts["resid_post_1"], d.targets
-    out = {"m32": probe(d, h, t["m32"]), "m32_shuffle": shuffled(d, h, t["m32"], "m32")}
+    out = {"m32": probe_guarded(d, h, t["m32"]),
+           "m32_shuffle": shuffle_guarded(d, h, t["m32"], "m32")}
     m32c, r2c = t["m32"][d.cal], t["r2"][d.cal]
     var_m32 = float(np.sum(m32c.var(axis=0)))
     var_r2 = float(np.sum(r2c.var(axis=0)))
@@ -96,19 +105,19 @@ def g1(d: ModelData) -> dict:
     if var_r2 < 0.01 * var_m32 or var_r2 <= 1e-6:
         out["r2_gate"] = "R2_DROPPED_LOW_VARIANCE"
     else:
-        out["r2"] = probe(d, h, t["r2"])
-        out["r2_shuffle"] = shuffled(d, h, t["r2"], "r2")
+        out["r2"] = probe_guarded(d, h, t["r2"])
+        out["r2_shuffle"] = shuffle_guarded(d, h, t["r2"], "r2")
         v, q = out["r2"]["r2"], out["r2_shuffle"]["q95"]
         out["r2_gate"] = ("R2_RECOVERABLE" if v is not None and q is not None
                           and v >= G1_R2 and v > q else "R2_NOT_RECOVERABLE")
     m2v, m32v = t["m2"][d.val], t["m32"][d.val]
     out["cmp_direct_m2"] = r2_pooled(m2v, m32v, m32c.mean(axis=0))
     out["cmp_direct_m1"] = r2_pooled(t["m1"][d.val], m32v, m32c.mean(axis=0))
-    out["cmp_affine_m2"] = probe(d, t["m2"], t["m32"])
-    out["cmp_affine_m1"] = probe(d, t["m1"], t["m32"])
-    out["cmp_m2_plus_h"] = probe(d, np.hstack([t["m2"], h]), t["m32"])
-    out["desc_embed"] = probe(d, d.acts["embed"], t["m32"])
-    out["desc_resid_post_3"] = probe(d, d.acts["resid_post_3"], t["m32"])
+    out["cmp_affine_m2"] = probe_guarded(d, t["m2"], t["m32"])
+    out["cmp_affine_m1"] = probe_guarded(d, t["m1"], t["m32"])
+    out["cmp_m2_plus_h"] = probe_guarded(d, np.hstack([t["m2"], h]), t["m32"])
+    out["desc_embed"] = probe_guarded(d, d.acts["embed"], t["m32"])
+    out["desc_resid_post_3"] = probe_guarded(d, d.acts["resid_post_3"], t["m32"])
     return out
 
 

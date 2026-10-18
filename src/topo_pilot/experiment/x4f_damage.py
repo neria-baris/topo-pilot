@@ -27,7 +27,7 @@ from .x4f_gates import (
 )
 
 
-def g3(d: ModelData, wh, primary) -> dict:
+def g3(d: ModelData, wh, primary, checkpoint=lambda _: None) -> dict:
     """Primary eraser validity and post-erasure linear / RBF recoverability of m32."""
     out = {"whitening_k": wh.k, "whitening_status": wh.status, "rank": primary.rank,
            "eraser_status": primary.status, "checks": primary.checks}
@@ -36,8 +36,8 @@ def g3(d: ModelData, wh, primary) -> dict:
         return out
     h, m32 = d.acts["resid_post_1"], d.targets["m32"]
     hp = apply_map(h, primary.mu, primary.M)
-    out["linear"] = probe(d, hp, m32)
-    out["rbf"] = rbf_probe(d, hp[d.cal], hp[d.val], m32[d.cal], m32[d.val])
+    out["linear"] = probe(d, hp, m32, checkpoint=checkpoint)
+    out["rbf"] = rbf_probe(d, hp[d.cal], hp[d.val], m32[d.cal], m32[d.val], checkpoint)
     r2 = out["linear"]["r2"]
     if r2 is None:
         out["status"] = "INCONCLUSIVE:R2_UNDEFINED_ZERO_VARIANCE"
@@ -49,14 +49,17 @@ def g3(d: ModelData, wh, primary) -> dict:
     return out
 
 
-def _profile(d: ModelData, vf: ValForward, mu, M, base_q1: dict, d_primary_val, scale) -> dict:
+def _profile(d: ModelData, vf: ValForward, mu, M, base_q1: dict, d_primary_val, scale,
+             checkpoint=lambda _: None) -> dict:
     """Damage profile of one map on validation (units kept separate)."""
     h, t = d.acts["resid_post_1"], d.targets
     hp = apply_map(h, mu, M)
-    q1 = probe(d, hp, t["Q1"])
-    lin = probe(d, hp, t["m32"])
-    rbf = rbf_probe(d, hp[d.cal], hp[d.val], t["m32"][d.cal], t["m32"][d.val])
+    q1 = probe(d, hp, t["Q1"], checkpoint=checkpoint)
+    lin = probe(d, hp, t["m32"], checkpoint=checkpoint)
+    rbf = rbf_probe(d, hp[d.cal], hp[d.val], t["m32"][d.cal], t["m32"][d.val], checkpoint)
+    checkpoint("damage model forward")
     kl, kl_status = vf.kl(vf.patch("resid_post_1", hp[d.val]))
+    checkpoint("damage model forward complete")
     dv = displacements(h[d.val], hp[d.val])
     return {"dR2_Q1": (None if base_q1["r2"] is None or q1["r2"] is None
                        else base_q1["r2"] - q1["r2"]),
@@ -67,36 +70,41 @@ def _profile(d: ModelData, vf: ValForward, mu, M, base_q1: dict, d_primary_val, 
             "patched_val": hp[d.val]}
 
 
-def g4(d: ModelData, vf: ValForward, wh, primary, controls: dict) -> tuple[dict, dict]:
+def g4(d: ModelData, vf: ValForward, wh, primary, controls: dict,
+       checkpoint=lambda _: None) -> tuple[dict, dict]:
     """F-primary construction plus damage profiles; returns (gate record, patched clouds)."""
     h = d.acts["resid_post_1"]
     hp_cal = apply_map(h[d.cal], primary.mu, primary.M)
     target = float(np.mean(displacements(h[d.cal], hp_cal)))
     fam = random_family(h[d.cal], wh, primary.rank, target,
-                        lambda j: gen("random_eraser", "F-primary", d.seed, j))
+                        lambda j: gen("random_eraser", "F-primary", d.seed, j),
+                        checkpoint=checkpoint)
     out = {"target_disp_cal": target, "family_status": fam.status, "n_draws": fam.n_draws,
            "n_degenerate": fam.n_degenerate_draws, "accepted": fam.accepted_draws,
            "family_disp_cal": fam.mean_displacements}
+    maps = {"primary": (primary.mu, primary.M, primary.rank, "ok")}
+    maps.update({f"random_{j}": (wh.mu, M, primary.rank, "ok")
+                 for j, M in zip(fam.accepted_draws, fam.maps)})
+    for name in CONTROLS:
+        checkpoint(f"control map {name}")
+        er = fit_oblique_eraser(h[d.cal], controls[name][d.cal], wh)
+        maps[name] = (er.mu, er.M, er.rank, er.status)
+        out[f"control_{name}"] = {"rank": er.rank, "status": er.status, "checks": er.checks}
+    out["_maps"] = maps
     if fam.status != "ok":
         out["status"] = "INCONCLUSIVE:" + fam.status
         return out, {}
     scale = float(np.mean(np.linalg.norm(h[d.val] - h[d.cal].mean(axis=0), axis=1)))
     d_prim = displacements(h[d.val], apply_map(h[d.val], primary.mu, primary.M))
-    base_q1 = probe(d, h, d.targets["Q1"])
+    base_q1 = probe(d, h, d.targets["Q1"], checkpoint=checkpoint)
     out["base_r2_Q1"] = base_q1["r2"]
     prof, clouds = {}, {}
-    maps = {"primary": (primary.mu, primary.M, primary.rank, "ok")}
-    maps.update({f"random_{j}": (wh.mu, M, primary.rank, "ok")
-                 for j, M in zip(fam.accepted_draws, fam.maps)})
-    for name in CONTROLS:
-        er = fit_oblique_eraser(h[d.cal], controls[name][d.cal], wh)
-        maps[name] = (er.mu, er.M, er.rank, er.status)
-        out[f"control_{name}"] = {"rank": er.rank, "status": er.status, "checks": er.checks}
     for name, (mu, M, rank, status) in maps.items():
+        checkpoint(f"damage profile {name}")
         if status != "ok":
             prof[name] = {"status": status, "rank": rank}
             continue
-        p = _profile(d, vf, mu, M, base_q1, d_prim, scale)
+        p = _profile(d, vf, mu, M, base_q1, d_prim, scale, checkpoint)
         clouds[name] = p.pop("patched_val")
         prof[name] = {"status": "ok", "rank": rank, **p,
                       "matched_to_primary": rank == primary.rank and abs(

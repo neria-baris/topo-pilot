@@ -154,6 +154,8 @@ class Decoder:
     probe: RidgeProbe
     lam: float
     equivalence: float
+    eq_tol: float = 1e-10
+    kappa: float = float("nan")
 
     def features(self, a) -> np.ndarray:
         return xs.rbf_features((np.asarray(a, dtype=np.float64) - self.mu_a) / self.s_a,
@@ -161,6 +163,22 @@ class Decoder:
 
     def predict(self, a) -> np.ndarray:
         return self.probe.predict((self.features(a) - self.mu_F) / self.s_F)
+
+
+EQ_C = 64.0  # ruling R13 (job 0042): forward-error constant for the solver-equivalence check
+
+
+def equivalence_tolerance(Ft, lam, pred) -> tuple:
+    """R13: the M1 cho_solve-vs-lstsq tolerance. Both solvers are backward stable on the same
+    normal equations (Xc'Xc + λI) w = Xc'Y, so their predictions may differ by at most about
+    c·ε·κ₂(Xc'Xc + λI)·‖pred‖∞ (Higham, forward error of a backward-stable solve). Returns
+    (max(1e-10, EQ_C·ε·κ·‖pred‖∞), κ): the frozen 1e-10 when well conditioned, else the
+    floating-point floor; a genuine implementation mismatch (O(1) differences) still fails."""
+    Xc = np.asarray(Ft, dtype=np.float64) - np.mean(Ft, axis=0)
+    ev = np.linalg.eigvalsh(Xc.T @ Xc + float(lam) * np.eye(Xc.shape[1]))
+    kappa = float(ev[-1] / ev[0]) if ev[0] > 0 else float("inf")
+    scale = float(np.max(np.abs(pred))) if np.size(pred) else 0.0
+    return max(1e-10, EQ_C * float(np.finfo(np.float64).eps) * kappa * scale), kappa
 
 
 def fit_decoder(a_cal, Y_cal, panel_cal, model_seed, target) -> Decoder:
@@ -181,7 +199,8 @@ def fit_decoder(a_cal, Y_cal, panel_cal, model_seed, target) -> Decoder:
     probe = RidgeProbe([res.lam]).fit(Ft, Y, Ft, Y)
     pred = probe.predict(Ft)
     eq = float(np.max(np.abs(pred - np.asarray(res.pred_val).reshape(pred.shape))))
-    return Decoder(mu_a, s_a, omega, b, mu_F, s_F, probe, float(res.lam), eq)
+    tol, kappa = equivalence_tolerance(Ft, res.lam, pred)
+    return Decoder(mu_a, s_a, omega, b, mu_F, s_F, probe, float(res.lam), eq, tol, kappa)
 
 
 def w_hat(dec_w, a) -> np.ndarray:
@@ -191,7 +210,8 @@ def w_hat(dec_w, a) -> np.ndarray:
 def decoder_arrays(dec) -> dict:
     return {"mu_a": dec.mu_a, "s_a": dec.s_a, "omega": dec.omega, "b": dec.b, "mu_F": dec.mu_F,
             "s_F": dec.s_F, "W": dec.probe.W, "bias": dec.probe.b, "lam": np.array(dec.lam),
-            "equivalence": np.array(dec.equivalence)}
+            "equivalence": np.array(dec.equivalence), "eq_tol": np.array(dec.eq_tol),
+            "kappa": np.array(dec.kappa)}
 
 
 def decoder_from_arrays(a) -> Decoder:
@@ -199,4 +219,6 @@ def decoder_from_arrays(a) -> Decoder:
     probe = RidgeProbe([float(a["lam"])])
     probe.W, probe.b, probe.lam = np.asarray(a["W"]), np.asarray(a["bias"]), float(a["lam"])
     return Decoder(a["mu_a"], a["s_a"], a["omega"], a["b"], a["mu_F"], a["s_F"], probe,
-                   float(a["lam"]), float(a["equivalence"]))
+                   float(a["lam"]), float(a["equivalence"]),
+                   float(a["eq_tol"]) if "eq_tol" in a else 1e-10,
+                   float(a["kappa"]) if "kappa" in a else float("nan"))

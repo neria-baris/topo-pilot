@@ -111,6 +111,19 @@ def _stage_fields(rel: dict) -> None:
         _bound_file(rel.get("registry_v2"), "registry_v2")
 
 
+def authorized_worker(rel: dict, path) -> str:
+    """The executing worker session (protocol §18: "the authorized executing worker session").
+    A verified release may name it as `worker_session`; the dispatched task.md must name the
+    same session. Without the field, the CONTRACT default applies (job-0026 behaviour)."""
+    worker = rel.get("worker_session")
+    if worker is None:
+        return str(c1_config.CONTRACT["resources"]["worker_session"])
+    task = Path(path).resolve().parent / "task.md"
+    if not isinstance(worker, str) or not worker or worker not in task.read_text(encoding="utf-8"):
+        raise ReleaseError("release worker_session must be a session named in the job's task.md")
+    return worker
+
+
 def verify(path, mailbox=MAILBOX, out=None, head=None,
            contract_path=c1_config.CONTRACT_PATH) -> dict:
     path, mailbox = Path(path), Path(mailbox)

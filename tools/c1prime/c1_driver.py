@@ -115,7 +115,8 @@ def _process(ctx) -> dict:
     canon = {int(m): canonical_emission(proc["E_named"][m], proc["perm"][m])
              for m in proc["E_named"]}
     return dict(proc, ids_ok=ids_ok, canon=canon, perm={int(k): np.asarray(v)
-                                                       for k, v in proc["perm"].items()})
+                                                       for k, v in proc["perm"].items()},
+                E_named={int(k): v for k, v in proc["E_named"].items()})  # job 0039 R11
 
 
 def h1(ctx) -> dict:

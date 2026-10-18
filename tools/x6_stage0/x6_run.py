@@ -108,7 +108,7 @@ def _decimal_reference(na) -> dict:
         if h in edge:
             d120 = decimal_suffix_posterior(*dm[120], h, 120)
             new["repeat_120"] = max(abs(Fraction(a) - Fraction(b)) for a, b in zip(d80, d120))
-        err = {k: max(x, err.get(k, x)) for k, x in new.items()}
+        err.update({k: max(x, err.get(k, x)) for k, x in new.items()})
     h30 = [(w,) for w in range(18)] + bi[:12]
     enum = all(enumerate_posterior(m["T"], m["E"], m["pi"], h) ==
                xe.fraction_filter(m["T"], m["E"], m["pi"], h)["b"][-1] for h in h30)

@@ -5,6 +5,7 @@ json and the independent helpers of test_x6_stage0.py. Stores live under pytest'
 from __future__ import annotations
 
 import hashlib
+import inspect
 import json
 import math
 import shutil
@@ -172,8 +173,7 @@ def test_10_decimal_inputs_pass_through():  # section 10.4 test 10
     assert all(T[i][j] == dec(Tf[i][j]) for i in range(48) for j in range(48))
     assert all(E[i][j] == dec(Ef[i][j]) for i in range(48) for j in range(18))
     assert pi == [dec(F(1, 48))] * 48 and T[0][12] == dec(F(74, 375))
-    assert xd.to_decimal(F(1, 3), 90) == dec(F(1, 3))
-    assert xd.to_decimal(F(1, 3), 130) == dec(F(1, 3), 130)
+    assert [xd.to_decimal(F(1, 3), p) for p in (90, 130)] == [dec(F(1, 3), p) for p in (90, 130)]
     suffix = (15, 13, 14, 3)  # cue y = 0, then 14, 15, 3 (one x+ crossing)
     b, post = filt(Tf, Ef, suffix)[2][-1], decimal_suffix_posterior(T, E, pi, suffix, 80)
     assert all(type(p) is Decimal for p in post)
@@ -183,9 +183,17 @@ def test_10_decimal_inputs_pass_through():  # section 10.4 test 10
         assert max(abs(p - dec(r)) for p, r in zip(post_f, b)) > Decimal("1e-45")  # floats differ
 
 
+def test_g5_reference_inputs_and_tolerances():  # X7/D1 (structural: the helper is unpinned)
+    assert list(inspect.signature(xr.gate_G5).parameters) == ["rows"]  # narrowest pinned entry
+    assert (xm.TOL_DEC, xm.TOL_NUM, xm.TOL_LOGEV) == (Decimal("1e-45"), 1e-12, 1e-10)  # T16-T20
+    assert dict(xd.DIV_PREC) == {80: 90, 120: 130} and tuple(xd.PRECS) == (80, 120)
+    T, E, pi, Tf = (*xd.decimal_model("AB", 120), lift("AB"))  # edge (iii): the 120 repeat
+    assert all(T[i][j] == dec(Tf[i][j], 130) for i in range(48) for j in range(48))
+    assert pi == [dec(F(1, 48), 130)] * 48 and all(type(v) is Decimal for r in E for v in r)
+
+
 def test_11_enclosures_certification_memo():  # section 10.4 test 11
-    with localcontext() as ctx:
-        ctx.prec = 200
+    with localcontext(Context(prec=200)):
         v, eps, tiny = Decimal("0.5"), Decimal("3e-60"), Decimal("1e-80")
         enc = xd.enclosure(v, v + Decimal("1e-70"), Decimal(3), 10)
         assert (enc["type"], enc["N"], enc["eps"]) == ("enclosure", 10, eps)
@@ -210,8 +218,7 @@ def test_11_enclosures_certification_memo():  # section 10.4 test 11
     for lo, up, cert in ((F(1, 10), F(3, 20), "PASS"), (F(1, 32), F(1, 16), "PASS"),
                          (F(1, 64), F(1, 40), "FAIL"), (F(1, 64), F(1, 32), "UNCERTIFIED")):
         assert xd.certify_mass(lo, up, F(1, 32)) == cert
-    with pytest.raises(ValueError):
-        xd.kl_decimal([F(1), F(0)], [F(0), F(1)], 80)
+    pytest.raises(ValueError, xd.kl_decimal, [F(1), F(0)], [F(0), F(1)], 80)
     xd.memo_clear()
     w = (F(2, 4), F(1, 2), 0)
     assert xd.memo_key(80, "next", 7, w, 1) == (80, "next", 7, (F(1, 2), F(1, 2), F(0)), 1)
@@ -273,10 +280,9 @@ def test_12_outcome_logic():  # section 10.4 test 12
 
 
 def test_15_indicator_se_and_rs_keys():  # section 10.4 test 15
-    n = 2 ** 18
+    n = 2 ** 18  # z below: p = 0 with zero hits passes
     assert xr.indicator_se(F(1, 4), n) == pytest.approx(math.sqrt(0.25 * 0.75 / n), rel=1e-12)
-    zero = xr.indicator_check(0, n, F(0))  # p = 0 with zero hits passes
-    assert zero["pass"] is True and zero["exact"] == 0.0 and zero["se"] == 0.0
+    assert (z := xr.indicator_check(0, n, F(0)))["pass"] is True and z["exact"] == z["se"] == 0.0
     for hits, p, ok in ((0, F(15, n + 16), True), (0, F(17, n + 16), False), (1, F(0), False),
                         (n // 4, F(1, 4), True)):  # zero hits fail iff p > 16/(2^18 + 16)
         res = xr.indicator_check(hits, n, p)
@@ -317,8 +323,7 @@ def test_16_rerun_and_lineage_rule(tmp_path):  # section 10.4 test 16
     assert xr.write_preflight(store, rec)["status"] == "INVALID" and not run.exists()
     stray.unlink()
     xr.write_marker(run, "G0")
-    with pytest.raises(FileExistsError):
-        xr.write_marker(run, "G0")
+    pytest.raises(FileExistsError, xr.write_marker, run, "G0")
     xr.write_gate(run, "G0", "PASS", {"value": F(1, 3), "cpu_s": 1.5, "out_dir": "X:/a"})
     gdir = run / "gates" / "G0"
     assert (gdir / "values.json").read_bytes() == json.dumps(
@@ -344,8 +349,7 @@ def test_16_rerun_and_lineage_rule(tmp_path):  # section 10.4 test 16
     assert xr.compare_attempt(dest, same)["status"] == "PASS"  # volatile fields excluded
     xr.write_marker(bad, "G0")
     put(bad / "gates" / "G0" / "values.json", b'{"value":"1/4"}')  # one byte differs
-    res = xr.compare_attempt(dest, bad)
-    assert res["status"] == INV and list(res["mismatch"])
+    assert (res := xr.compare_attempt(dest, bad))["status"] == INV and list(res["mismatch"])
     assert xr.compare_attempt(dest, bad, affected=("G0",))["status"] == "PASS"
     empty.mkdir()
     assert xr.compare_attempt(dest, empty)["status"] == "PASS"  # not yet produced: missing only
@@ -372,8 +376,7 @@ def test_17_eta1_markers_manifests(tmp_path):  # section 10.4 test 17
     assert all(xd.ambiguous(cls, y) for y in range(3)) and set(cls) >= {C, C2}
     assert all(list(xm.point_law(m, z, eta=F(1))) == [F(1, 3)] * 3  # ... with equal laws
                for m in range(1, 9) for z in range(3))  # hence q* = q_H1 = q_Parikh
-    store = tmp_path / "s0"
-    put(store / "run" / "preflight.json", b"{}")
+    put((store := tmp_path / "s0") / "run" / "preflight.json", b"{}")
     assert xr.s0_lineage(store)["status"] == "PASS"
     for extra in ("GATES.jsonl", "gates/PF/STARTED", "gates/S0/values.json", "gates/"):
         target = store / "run" / extra
@@ -382,18 +385,15 @@ def test_17_eta1_markers_manifests(tmp_path):  # section 10.4 test 17
         shutil.rmtree(store / "run" / "gates", ignore_errors=True)
         (store / "run" / "GATES.jsonl").unlink(missing_ok=True)
     assert xr.s0_lineage(store)["status"] == "PASS"
-    st = tmp_path / "lin"
-    att = st / "superseded" / "0058-a1"
+    st, att = tmp_path / "lin", tmp_path / "lin" / "superseded" / "0058-a1"
     f = put(att / "run" / "preflight.json", b"{}")
     put(att / "SHA256SUMS", f"{sha(f)}  run/preflight.json\n".encode("ascii"))
     assert xr.lineage_precheck(st)["status"] == "PASS"  # the manifest need not hash itself
     rel = "superseded/0058-a1/run/preflight.json"
     f.write_bytes(b"{ }")
-    res = xr.lineage_precheck(st)
-    assert res["status"] == INV and rel in list(res["mismatch"])
+    assert (res := xr.lineage_precheck(st))["status"] == INV and rel in list(res["mismatch"])
     f.unlink()
-    res = xr.lineage_precheck(st)
-    assert res["status"] == INV and rel in list(res["missing"])
+    assert (res := xr.lineage_precheck(st))["status"] == INV and rel in list(res["missing"])
     put(f, b"{}")
     assert xr.lineage_precheck(st)["status"] == "PASS"
     shutil.copytree(att, st / "superseded" / "0058-b1")  # not a recorded attempt name

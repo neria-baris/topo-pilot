@@ -151,7 +151,8 @@ class Family:
 
 def random_family(X_cal: NDArray, wh: Whitening, rank: int, target_mean_disp: float,
                   rng_for: Callable[[int], np.random.Generator], n_accept: int = 20,
-                  max_draws: int = 10_000, tol: float = 0.05) -> Family:
+                  max_draws: int = 10_000, tol: float = 0.05,
+                  checkpoint: Callable[[str], None] = lambda _: None) -> Family:
     """Random rank-``rank`` erasers in the retained range, matched in mean displacement.
 
     Math
@@ -174,14 +175,29 @@ def random_family(X_cal: NDArray, wh: Whitening, rank: int, target_mean_disp: fl
         return done(RANK_EXCEEDS_RETAINED)
     acc, maps, disp, deg, j = [], [], [], 0, 0
     for j in range(max_draws):
+        checkpoint(f"random_family draw {j}")
         Q, R = np.linalg.qr(rng_for(j).standard_normal((wh.k, rank)))
         diag = np.abs(np.diag(R))
         if diag.min() <= _ZERO * diag.max():
             deg += 1
             continue
-        _, M = eraser_from_basis(wh, Q)
+        E, M = eraser_from_basis(wh, Q)
+        if not np.isfinite(M).all() or not np.isfinite(E).all():
+            return done(ERASER_INVALID, acc, maps, disp, j + 1, deg)
         D = float(np.mean(displacements(X, apply_map(X, wh.mu, M))))
+        checkpoint(f"random_family draw {j} complete")
         if abs(D - target_mean_disp) <= tol * target_mean_disp:
+            P = wh.U_keep @ wh.U_keep.T
+            scale_M = max(1.0, float(np.max(np.abs(M))))
+            scale_E = max(1.0, float(np.max(np.abs(E))))
+            valid = (np.isfinite(M).all() and np.isfinite(E).all()
+                     and np.max(np.abs(M @ M - M)) <= 1e-10 * scale_M
+                     and np.max(np.abs(M + E - np.eye(M.shape[0]))) <= 1e-10 * scale_M
+                     and _rank(E, 1e-8) == rank
+                     and np.max(np.abs(P @ E - E)) <= 1e-8 * scale_E
+                     and np.max(np.abs(E @ P - E)) <= 1e-8 * scale_E)
+            if not valid:
+                return done(ERASER_INVALID, acc, maps, disp, j + 1, deg)
             acc.append(j)
             maps.append(M)
             disp.append(D)

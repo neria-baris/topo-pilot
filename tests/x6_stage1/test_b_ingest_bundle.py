@@ -1,7 +1,6 @@
-"""Author B (cloud): T-INGEST, T-ENV normalisation (X6S1-FROZEN-v1 §5.6-§5.8, §12 items 9-10;
-API.md §5.6, §5.7, §6). A tiny CPU lineage (ticket steps 2, K 1) stands in for a Colab export
-snapshot; its records claim a CUDA device so that the provenance gate can pass. Synthetic only.
-"""
+"""Author B: T-INGEST, T-ENV normalisation, T-S0 auth_ok (protocol §5.6-§5.8, §8 row 0b, §12;
+API.md §5.6, §5.7, §6, §11.1). A tiny CPU lineage (ticket steps 2, K 1) stands in for a Colab
+export snapshot; its records claim a CUDA device so that the provenance gate can pass."""
 from __future__ import annotations
 
 import copy
@@ -27,6 +26,7 @@ sys.path.insert(0, str(REPO / "tools" / "x6_stage1"))
 import x6s1_cloud as sc  # noqa: E402
 import x6s1_data as sd  # noqa: E402
 import x6s1_ingest as si  # noqa: E402
+import x6s1_run as sr  # noqa: E402
 from topo_pilot.contracts import (  # noqa: E402
     ObservationSet, SeedTree, SequenceLayout, canonical_json)
 from topo_pilot.dataset import PublicTokenDataset  # noqa: E402
@@ -40,35 +40,25 @@ WH, PROV, DATA, CHAIN = ("FAIL_TECHNICAL/WEIGHTS_HASH", "FAIL_TECHNICAL/CLOUD_PR
                          "FAIL_TECHNICAL/DATA_ID", "FAIL_TECHNICAL/CHAIN")
 
 
-def _sha(b):
-    return hashlib.sha256(b).hexdigest()
-
-
-def _fsha(p):
-    return _sha(Path(p).read_bytes())
-
-
-def _cj(obj):
-    return canonical_json(obj).encode("utf-8")
+def _sha(b): return hashlib.sha256(b).hexdigest()  # noqa: E704
+def _fsha(p): return _sha(Path(p).read_bytes())  # noqa: E704
+def _cj(obj): return canonical_json(obj).encode("utf-8")  # noqa: E704
 
 
 def _put(root, rel, obj):
-    p = Path(root) / rel
-    p.parent.mkdir(parents=True, exist_ok=True)
+    (p := Path(root) / rel).parent.mkdir(parents=True, exist_ok=True)
     p.write_bytes(_cj(obj))
     return _fsha(p)
 
 
 def _head():
-    return subprocess.run(["git", "-C", str(REPO), "rev-parse", "HEAD"], capture_output=True,
-                          text=True, check=True).stdout.strip()
+    return subprocess.check_output(["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True).strip()
 
 
 def _ckpt_edit(path):
-    ck = torch.load(path, weights_only=False)
+    ck, buf = torch.load(path, weights_only=False), io.BytesIO()
     key = sorted(ck["model"])[0]
     ck["model"][key] = ck["model"][key] + 1.0
-    buf = io.BytesIO()
     torch.save(ck, buf)
     Path(path).write_bytes(buf.getvalue())
 
@@ -185,10 +175,7 @@ def snap(base, tmp_path):
     return dict(copy.deepcopy({k: v for k, v in base.items() if k != "root"}), root=root)
 
 
-def _remanifest(s):
-    p = s["root"] / "exports" / UTC / "MANIFEST.json"
-    p.write_bytes(_cj(s["manifest"]))
-    return _fsha(p)
+def _remanifest(s): return _put(s["root"], f"exports/{UTC}/MANIFEST.json", s["manifest"])  # noqa
 
 
 # ---------------------------------------------------------------- T-INGEST
@@ -391,3 +378,22 @@ def test_executed_cell_normalisation(raw, want):
     assert sc.normalise_source(raw) == want
     assert [sc.normalise_source(t) for t in sc.CELL_TEMPLATES] == list(sc.CELL_TEMPLATES)
     assert sc.executed_sources() == []  # outside IPython
+
+
+# ---------------------------------------------------------------- T-S0 (owner authorisation, Q4)
+AUTH = {"protocol_sha256": sd.PROTOCOL_SHA256.upper(), "local_budget": "70 CPU-h",
+        "cloud_use": "Colab free tier", "smoke_preflight": "yes", "transfers": ["up"],
+        "owner_sessions": {"C0": 1}}
+AUTH_EDITS = {"hash": {"protocol_sha256": "0" * 64}, "empty_str": {"local_budget": ""},
+              "empty_list": {"transfers": []}, "empty_obj": {"owner_sessions": {}},
+              "null": {"smoke_preflight": None}}
+
+
+@pytest.mark.parametrize("case", ["valid", *AUTH_EDITS, "missing", "absent", "garbage", "array"])
+def test_auth_ok(tmp_path, case):
+    auth = {k: v for k, v in dict(AUTH, **AUTH_EDITS.get(case, {})).items()
+            if not (case == "missing" and k == "cloud_use")}
+    text = {"garbage": "{not json", "array": json.dumps([AUTH])}.get(case, json.dumps(auth))
+    if case != "absent":
+        (tmp_path / "AUTH.json").write_text(text, encoding="utf-8")
+    assert sr.auth_ok(tmp_path, sd.PROTOCOL_SHA256) is (case == "valid")  # never raises

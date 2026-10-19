@@ -26,3 +26,37 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
 ## Notes
 - The list of read files is as instructed and as reported by the author; the worker did not audit the subagent's transcript.
 - API ambiguities reported by the author are recorded in `agent-handoff/jobs/0069/report.md`. Corrections to these files are made only by this author (§14.3).
+
+## Correction round (job 0070)
+- **Authority:** review of job 0069, ruling Q4 (no isolated S0 owner-authorisation check). The API.md erratum at commit d0e31d3 (sha256 e7403ad99bb3ed0dc58d197d1d9b19e75f87f85a6b163b71419f0f995c41178d) added `x6s1_run.auth_ok(store, protocol_sha256) -> bool`.
+- **Author:** the same author-B subagent (agent id a97c557b125e6d7e9), resumed with SendMessage. Not a successor.
+  - Phase 1 was read-only. The author reported the exact schemas its tests use, and these were recorded in API.md §13.1 B1–B16 (ruling Q3). It used 0 tool calls.
+  - Phase 2 wrote the tests, with 20 tool calls.
+- **Read:**
+  - the amended API.md (§11.1, §13.1);
+  - its own `test_b_*.py` files;
+  - inputs allowed in job 0069.
+- **Not read:** `tools/x6_stage1/*.py` (none exist), notebooks, `test_a_*`.
+- **Executed:** nothing. No formatter was run.
+- **Change:** `test_b_ingest_bundle.py` gains `test_auth_ok`, parametrised over synthetic `tmp_path` stores:
+  - a valid record (upper-case stored hash, so the match must be case-insensitive);
+  - a wrong protocol hash;
+  - a missing field;
+  - empty string, list and object, and a null field;
+  - an absent file;
+  - unparsable JSON;
+  - a JSON array.
+
+  Each case asserts `is True` or `is False`.
+- **Compacted to make room (the author's own code only):** `_sha`, `_fsha`, `_cj`, `_remanifest`, `_put`, `_head`, `_ckpt_edit` and the module docstring.
+- **Line counts:**
+
+| File | Lines |
+|---|---|
+| `test_b_seed_pool_reg.py` | 398 |
+| `test_b_train_chain.py` | 400 |
+| `test_b_chain_ops.py` | 396 |
+| `test_b_ingest_bundle.py` | 399 |
+| `test_b_nb_s0_ops.py` | 400 |
+
+- **The worker's check:** an in-memory compile only. The file compiles, uses LF line endings, and has no line over 100 characters. There are now 90 author-B test functions.

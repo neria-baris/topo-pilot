@@ -341,6 +341,7 @@ Inputs are plain dicts; a missing or INVALID model is represented by `None` valu
 - `notebook_sha_ok(worktree, head, freeze) -> bool`.
 - `seed_fresh(seed_maps) -> bool`: neither master appears in any recorded seed map or config (values compared as ints, recursively).
 - `s0_check(worktree, head, store, dispatch, freeze) -> dict`: items `"i"`…`"ix"` → `{"status", "detail"}`, and `"status"` (PASS iff all PASS).
+- `auth_ok(store, protocol_sha256) -> bool` (erratum, ruling Q4; §15 D2, §8 row 0b AUTH-ADMIT and row 10): True iff `<store>/AUTH.json` exists, parses as a JSON object, and has every field `protocol_sha256`, `local_budget`, `cloud_use`, `smoke_preflight`, `transfers`, `owner_sessions` present and non-empty (not null, not an empty string, list or object), with `protocol_sha256` equal to the argument (case-insensitive). An absent or unparsable file, a missing or empty field, or a mismatched hash returns False; it never raises for these cases. `s0_check` uses it for the owner-authorisation record.
 - `meter_bind_check(path, expected_sha256, import_dir) -> None`: raises `RuntimeError` if the store-local `x6s1_meter_bind.py` sha256 differs or the meter would import from a directory other than `<worktree>/tools/x4_oracle_profile`. `METER_VALUES = {"OUTPUT_CAP": 16 * 2**30, "MEMORY_CAP": 12 * 2**30, "CAP_S": inf, "STOP_NEW_S": inf}`.
 - `dispatch_identities(mailbox, job_id, task_sha256, session, lock_path) -> None` = `d2a_train.verify_identity` (unchanged).
 
@@ -352,7 +353,7 @@ Inputs are plain dicts; a missing or INVALID model is represented by `None` valu
 - `env_local() -> dict` (§2.2, OS 3): `python`, `numpy`, `torch`, `blas` (`numpy.show_config(mode="dicts")` and `torch.__config__.show()` text), `cpu` (`platform.processor()`, `os.cpu_count()`), `threads` (`{"intra", "interop"}` from torch), `thread_env` (OMP_NUM_THREADS, MKL_NUM_THREADS, OPENBLAS_NUM_THREADS values or null), `batch` (`EVAL_BATCH`), `commit` (H). Every evaluating stage record holds `"env_local"`.
 - `env_changed(a, b) -> list[str]`: keys whose values differ (excluding volatile keys).
 - `seal(store, name, obj) -> str`: exclusive create `sealed/<name>`; returns sha256; recorded in the stage record. `unseal(store, name, sha256) -> dict` refuses before E3 or a stop (`RuntimeError`).
-- `VOLATILE_KEYS = x6_store.VOLATILE_KEYS | {"session_id", "pid", "peak_mem_bytes", "built_utc", "env_local"}`; `strip_volatile`, `reports_equal`, `archive_attempt`, `compare_attempt`, `lineage_precheck`, `write_manifest`, `read_manifest` are the `x6_store` generics (unchanged; reused by import).
+- `VOLATILE_KEYS = x6_store.VOLATILE_KEYS | {"session_id", "pid", "peak_mem_bytes", "built_utc", "env_local"}`; `strip_volatile`, `archive_attempt`, `compare_attempt`, `lineage_precheck`, `write_manifest`, `read_manifest` are the `x6_store` generics (unchanged; reused by import). `reports_equal(a, b)` is the thin x6s1 wrapper of §13.1 (erratum, ruling Q3).
 - `retrain_route_ok(store, model) -> bool` = `x6s1_ingest.retrain_eligible(store, model, <store evaluation log>)`.
 
 ### 11.4 Stage records and report keys
@@ -401,7 +402,7 @@ ROOT = _hits[0]
 print("ROOT", ROOT[len("/content/drive/MyDrive/"):])
 ```
 
-**Cell 3 (Verify)** — lines 2–9 are the inline hashlib bootstrap (§5.11)
+**Cell 3 (Verify)** — lines 2–8 are the inline hashlib bootstrap (§5.11)
 ```python
 # X6S1 cell 3: verify
 import hashlib, sys, tarfile
@@ -437,7 +438,7 @@ x6s1_cloud.finalise(ROOT)
 drive.flush_and_unmount()
 ```
 
-`bootstrap_check` (§11.2) executes template 3 lines 2–9 (from `import hashlib` through the second `raise`) with `ROOT` and `BUNDLE_SHA256` bound, reading files from a local bundle directory. `cell_templates_sha256` in the ticket is `[sha256_bytes(t.encode("utf-8")) for t in CELL_TEMPLATES]`.
+`bootstrap_check` (§11.2) executes template 3 lines 2–8 (from `import hashlib` through the second `raise`) with `ROOT` and `BUNDLE_SHA256` bound, reading files from a local bundle directory. `cell_templates_sha256` in the ticket is `[sha256_bytes(t.encode("utf-8")) for t in CELL_TEMPLATES]`.
 
 ## 13. Implementation choices (open in the protocol; simplest option)
 
@@ -456,3 +457,45 @@ drive.flush_and_unmount()
 13. The designed history composes `prefix + cue(y) + loop tokens` exactly as `x6_exact.witness_tokens` does for named prefixes; its readout is at `t = len(history)`.
 14. LOSS-ECHO and the learning curves are computed in the E1/E2 jobs after admission, with the same `ModelPredictor`-style float64 loading (float32 copy for the float32 echo).
 15. `x6s1_cloud.main` provides the local `train` child command; local children run `python -s` with `PYTHONPATH=<worktree>/src`.
+
+### 13.1 Readings fixed by the independent tests (ruling Q3)
+
+Erratum (job 0070; review of job 0069, ruling Q3). Each literal reading below is the one the independent tests use, and it is **binding**: modules implement to it, and no test is edited by the implementer. Where a reading conflicts with the frozen protocol, the implementer reports BLOCKED with the exact conflict and does not resolve it in code.
+
+**Author A readings:**
+
+| # | Function | Reading |
+|---|---|---|
+| A1 | `sp.designed_history(prefix, letters, y)` | Composed as `x6_exact.witness_tokens` does for W2: `prefix + (15 + y,) + tok(v)` for v in `(9, 5) + loops + S7 tail`, where loops are `x6_exact.LOOPS[l]` (or `FLAT_FACE` for `"F"`). Readout `t = L + 18` for W2 (protocol §2.5) |
+| A2 | `designed_set(...)["W3"]` | The 72 W3 histories as token tuples at t = 32 |
+| A3 | `se.designed_stats(pred, D_arrays, qstar_fn, tables)` | `qstar_fn` is a callable `(tokens, t) -> se.qstar("NA", tokens, t)`, i.e. `functools.partial(se.qstar, "NA")` |
+| A4 | `ss.two_stage_law(N, informative)` | `informative` is the list of informative row indices. The law depends only on their number, so an int count is accepted as the same reading. Keys are count-vector tuples; values are exact `Fraction`s |
+| A5 | `sdc.cord(mean, lb, adjusted, tail_status, resolved)` | `adjusted` is the report's `{s: value}` dict with keys `s = 1..4` |
+| A6 | `sdc.seed_flags(adj, lb_adj, U025, xbar, hw95, g0_lo)` | `U025` is the `eb_report` `"U"` Decimal string; `xbar` is its float |
+| A7 | `sdc.designed_counts(statuses)` | `statuses` is a list of per-seed ordD status strings |
+| A8 | `sdc.decide(ev)` | `ev["validity"]["INCOMPLETE"]` is a gate status: `"FAIL"` means a registered model is incomplete (rule 1 → `"INCOMPLETE"`) |
+| A9 | `sdc.qualifiers(ev)` | Takes the same `ev` dict as `decide` |
+| A10 | `sp.validate_tables(tables)` | Checks the layers present (partial tables, e.g. `n_max = 19`, are valid input) |
+
+**Author B readings:**
+
+| # | Item | Schema used by the tests |
+|---|---|---|
+| B1 | `si.ingest(..., local, ...)` | Dict keyed by model name: `{"SMOKE": {"data_sha256": str (64 hex), "token_sha256": str, "init_weights_sha256": str, "expected": list}}`; `expected` in `sc.expected_digests` form `{"step": int, "batch_sha256": str or None, "pcg64_state_sha256": str}` |
+| B2 | `si.ingest(..., frozen)` and `gate_cloud_prov(..., frozen)` | `{"code_commit": str (40 hex), "protocol_sha256": str, "bundle_sha256": str, "ticket_sha256": str, "ticket": dict (full §5.6 ticket), "steps": int, "K": int}` |
+| B3 | `sg.separation(reg2, pools)` | `reg2` is a `sg.DigestSet` (from `DigestSet.build([uint8[n, 32]], run_dir, run=8)`); `pools` is a dict, pool name (`"train_NA_s1"`, `"test_NA"`, …) → `ObservationSet(split, V=18, sequence_id int64, tokens uint8[n, 33])`; returns a dict with `"status"` |
+| B4 | `sr.seed_fresh(seed_maps)` | A list of dicts with nested dicts/lists; values int or `np.int64`; an empty list is allowed; returns a `bool` |
+| B5 | Manifest `models` | A **list** of dicts, each with key `"model"`; full entry keys as §5.6. `gate_train_complete` reads only `model`, `chain`, `status`, `marker`, `final_file_sha256`, `final_weights_sha256` |
+| B6 | `si.refinalised(snapshots)` | A list of two snapshot directories (`Path` to `exports/<utc>`), earliest first; returns `True`/`False` (a `bool`) |
+| B7 | FREEZE.json | `sr.notebook_sha_ok(worktree, head, {"notebook_sha256": <64 hex lowercase>})` returns a `bool`; no other FREEZE key is relied on |
+| B8 | `sc.finalise(root, env)` with a hand-built env | The session-start record keys (§5.6) plus `"bundle"` (the return value of `sc.verify_bundle`): `schema`, `kind = "start"`, `session_id` (of an existing start record), `utc` (ISO), `python`, `numpy`, `torch`, `cuda` (str), `cudnn` (int), `gpu {name, driver, memory}`, `flags {deterministic, tf32_matmul, tf32_cudnn, matmul_precision, cublas_workspace_config}`, `code_commit`, `code_tar_sha256`, `ticket_sha256`, `sha256sums_sha256`, `env_compare` (`[]`), `models [{model, resume_step, status}]`, `orphans` (`[]`), `stops` (`[]`), `executed_cells` (templates 1–5) |
+| B9 | Session-finalisation record | `start_record = {"file": "<utc>-<session_id>.start.json", "sha256": <sha256 of the start record's canonical bytes>}` |
+| B10 | `si.check_execution(records, templates)` | `records` is a list of record dicts `{schema, kind, session_id, executed_cells[, start_record]}`; returns `{"status": "PASS" or "FAIL", …}` |
+| B11 | Integrity gates and `ingest` result | Each gate returns at least `{gate, model, status, detail}`; `ingest` returns `{model: {"admitted": bool, "gates": [gate dicts], …}}`; `verify_admitted` returns `{"status": "PASS" or "INVALID", …}` |
+| B12 | `si.build_bundle(..., pools, inits, ...)` | `pools`: `{model: {"path", "file_sha256", "n_rows", "token_sha256", "data_seed"}}`; `inits`: `{model: {"path", "file_sha256", "weights_sha256"}}` |
+| B13 | Registry inputs | `sg.inventory_x6(project_root, scratch_roots: list[Path], registered: {sha256: name})`, with `"unclassified"` a list of paths; `sg.handoff_rows(mailbox=Path)`, with `"rows"` an iterable of length-32 arrays or lists |
+| B14 | Child CLI | `sc.main(["train", root, "SMOKE", "--device", "cpu"[, "--max-chunks", N]])` reads `root/ticket_C0.json`; exit 0 = PAUSED or DONE, 3 = INVALID:NONFINITE, 2 = STOP |
+| B15 | `sr.supervise(children, limits, stage)` | Called as `supervise({name: handle}, limits, "E3")` and returns `{name: {"status": …, …}}`. On STOP it either raises `D2AStop` or returns a result containing `"STOP"`. Tests stub STOP/HOLD by patching `bound_controls` and `boundary` on both `d2a_train` and `x6s1_run`, so `x6s1_run` must reference them as module attributes it calls at run time |
+| B16 | Small helpers | `sr.write_stage` returns the record path, and a second write raises `FileExistsError`; `sr.meter_bind_check` returns `None` on success; `sg.DigestSet.n` counts duplicates; `sd.sample_pool` honours an overridden `spec["rows"]` |
+
+**`reports_equal` rule (ruling Q3).** The extended `VOLATILE_KEYS` of §11.3 must actually be stripped before comparison. `x6s1_run` provides a thin wrapper `reports_equal(a, b)` that removes every key in the x6s1 `VOLATILE_KEYS` (recursively) from both reports and then calls the reused, unchanged `x6_store.reports_equal`. `x6_store` itself is not modified.

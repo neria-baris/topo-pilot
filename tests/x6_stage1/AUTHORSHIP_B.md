@@ -98,3 +98,19 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
 - **Change** (`test_handoff_rows_keeps_x6_valid_lists` only): the literal `"junk": [0] * 32` became `"junk": [0, 2] * 16`. This list is not X6-valid, because 0 → 2 is not an edge, so `x6_model.parse` rejects it. No other edit.
 - **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
 - **Result:** the file is still 398 lines, LF line endings, no line over 100 characters.
+
+## Correction round (job 0080, T-SIZE per addendum 3)
+- **Authority:** `agent-handoff/planning/responses/X6S1-FROZEN-v1.coordinator-addendum-3.md` (coordinator addendum 3, sha256 fd1c7d501c7921505a494deb29325c58afab7a07b248803bd7ba8ee94c810fa3), ruling R-0079-1 (§2 item 2) and consequent change §4(a). This is a protocol-driven amendment, not a test defect.
+- **Author:** an author-B successor subagent with a clean context (not the original author a97c557b125e6d7e9), brief `agent-handoff/jobs/0080/task.md`.
+- **Read:**
+  - addendum 3, §2 and §4 only (a heading list of the file was used to locate them);
+  - in `test_b_nb_s0_ops.py`, `test_module_set_line_limits_and_test_files` (T-SIZE) and the definitions of the names it uses (`REPO`, `TOOL`, `sr`, and line 196, which defines `A, NOTES`). A `grep` used to locate them also listed the import lines and the `def` lines of the file (names only), and the excerpt used to view T-SIZE (lines 266-301) also showed the first lines of `FakeTree`;
+  - this file.
+- **Not read:** `tools/x6_stage1/*.py` or any other module code, notebooks, the bodies of other tests (`test_a_*`, the other `test_b_*` files and the other functions of this file).
+- **Change** (`test_module_set_line_limits_and_test_files` only):
+  - a local tuple `big = ("cloud", "registry", "ingest", "run", "stage_pre", "stage_post")`;
+  - the module set is the eleven names, `big` plus data, pairs, stats, decide and eval. The `sorted(sr.MODULES)` equality stays;
+  - each module in `big` is ≤ 560 lines, the other five ≤ 400, and the total over all modules ≤ 4,500 (was 3,600). The line count is still `len(read_bytes().splitlines())`.
+  - The notes-file rule and the test-file rules (≤ 5 per author, names, ≤ 400 lines) are unchanged. The limit assertion now fits on one line, which makes room for `big`.
+- **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
+- **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.

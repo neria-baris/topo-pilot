@@ -267,12 +267,12 @@ def test_notebook_sha_binding():
 # ---------------------------------------------------------------- T-SIZE
 def test_module_set_line_limits_and_test_files():
     mods = sorted(p.name for p in TOOL.glob("*.py"))
+    big = ("cloud", "registry", "ingest", "run", "stage_pre", "stage_post")  # R-0079-1
     assert mods == sorted(sr.MODULES) and set(mods) == {f"x6s1_{m}.py" for m in (
-        "data", "pairs", "cloud", "ingest", "eval", "decide", "run", "registry", "stats")}
+        *big, "data", "pairs", "stats", "decide", "eval")}
     assert {p.name for p in TOOL.iterdir() if p.is_file()} - set(mods) == set(NOTES)
     n = {m[5:-3]: len((TOOL / m).read_bytes().splitlines()) for m in mods}  # R-0073-1
-    assert all(v <= (560 if k in ("cloud", "registry", "ingest", "run") else 400)
-               for k, v in n.items()) and sum(n.values()) <= 3600
+    assert all(v <= (560 if k in big else 400) for k, v in n.items()) and sum(n.values()) <= 4500
     tests = sorted(p.name for p in (REPO / "tests" / "x6_stage1").glob("*.py"))
     for tag, mine in ((g, [t for t in tests if t.startswith(f"test_{g}_")]) for g in "ab"):
         assert len(mine) <= 5 and all(re.fullmatch(rf"test_{tag}_[a-z0-9_]+\.py", t) for t in mine)

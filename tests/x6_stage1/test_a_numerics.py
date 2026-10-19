@@ -176,8 +176,8 @@ def test_eb_constants_registered_table():
         c = ss.eb_constants(delta, 2**21)
         for key, want in zip(("L", "a", "b", "BL3n", "sqrt2Ln"), vals):
             assert float(Decimal(c[key])) == pytest.approx(want, rel=1e-5), key   # 6-digit table
-        L = ref_ln(Fraction(2) / delta)
-        assert L <= Decimal(c["L"]) <= L + Decimal("1e-54")
+        L, cl = ref_ln(Fraction(2) / delta), Decimal(c["L"])
+        assert L <= cl and cl - L <= Decimal("1e-54")   # exact-then-round difference (D3)
     w = my_U(0, 0, 2**21, Fraction(1, 160))                  # zero-variance width (§7.3 remark)
     assert float(w) == pytest.approx(1.163e-4, rel=1e-3)
 
@@ -247,6 +247,8 @@ def two_stage_by_hand(N, n_inf):
     law, p = {}, Fraction(n_inf, N)
     for M in range(N + 1):
         pm = math.comb(N, M) * p ** M * (1 - p) ** (N - M)
+        if pm == 0:                                   # keep only positive-probability vectors (D4)
+            continue
         for seq in itertools.product(range(n_inf), repeat=M):
             c = tuple(seq.count(i) for i in range(n_inf))
             law[c] = law.get(c, 0) + pm * Fraction(1, n_inf ** M)

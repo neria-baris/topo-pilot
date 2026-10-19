@@ -26,3 +26,16 @@ test_a_pairs.py (15 tests; T-PAIR, T-BETA), test_a_designed.py (10; T-DESIGN), t
 ## Notes
 - The list of read files is as instructed and as reported by the author; the worker did not audit the subagent's transcript.
 - API ambiguities reported by the author are recorded in `agent-handoff/jobs/0069/report.md`. Corrections to these files are made only by this author (§14.3).
+
+## Correction round (job 0072)
+- **Authority:** review of job 0071, ruling R-0071-1, covering defects D3 and D4 in `test_a_numerics.py`. The contract is API.md at bdbdab1, the erratum that sets 35 pools.
+- **Author:** the same author-A subagent (agent ae36420f529903722), resumed with SendMessage. It used 5 tool calls.
+- **Read:**
+  - the D3 and D4 entries of `agent-handoff/jobs/0071/report.md` §5, and `jobs/0071/review.md`;
+  - API.md;
+  - its own test file.
+- **Not read:** `tools/x6_stage1/*.py`, `test_b_*`, and any job-0071 module code or diff.
+- **Executed:** nothing. No formatter was run.
+- **D3** (`test_eb_constants_registered_table`): the upper check now compares `cl = Decimal(c["L"])` exactly against the reference L, with `L <= cl and cl - L <= Decimal("1e-54")`. Before, it compared against `L + 1e-54`, which was rounded in the default 28-digit context.
+- **D4** (`test_two_stage_bootstrap_equals_full_row_multinomial`): the helper `two_stage_by_hand` skips zero-probability count vectors (`if pm == 0: continue`), as the full-row law does.
+- **Result:** the file is 374 lines (was 372) with LF line endings. The worker compiled it in memory only.

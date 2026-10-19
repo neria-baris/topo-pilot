@@ -68,10 +68,10 @@ def test_seed_fresh_compares_values_recursively(maps, fresh):
 
 def test_data_streams_distinct_and_scoped():
     streams = [tuple(s["stream"]) for s in _specs()]
-    assert len(streams) == 36 and len(set(streams)) == 36
+    assert len(streams) == 35 and len(set(streams)) == 35  # §6.1: 32 non-test + 3 test pools
     assert all(st[0] == "x6s1" for st in streams)
     seeds = {SeedTree(sd.DATA_MASTER).seed(*st) for st in streams}
-    assert len(seeds) == 36
+    assert len(seeds) == 35
     extra = [("x6s1", "prefix_len"), ("x6s1", "feas")]
     assert not {SeedTree(sd.DATA_MASTER).seed(*e) for e in extra} & seeds
 
@@ -122,7 +122,7 @@ def test_parse_model_refuses(bad):
 
 # ---------------------------------------------------------------- T-POOL
 def test_pool_table_order_sizes_splits_names():
-    assert len(sd.NONTEST_POOLS) == 33 and len(sd.TEST_POOLS) == 3
+    assert len(sd.NONTEST_POOLS) == 32 and len(sd.TEST_POOLS) == 3  # §6.1 (35 pools in all)
     names = [s["name"] for s in _specs()]
     head = ["smoke", "gate_NA", "gate_AB", "gate_ZC", "prefix", "val_NA", "val_AB", "val_ZC"]
     tail = [f"{p}_{a}_s{s}" for a in sd.ARMS for s in sd.SEEDS for p in ("train", "dev")]

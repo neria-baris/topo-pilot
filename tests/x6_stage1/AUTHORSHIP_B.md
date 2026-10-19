@@ -60,3 +60,16 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
 | `test_b_nb_s0_ops.py` | 400 |
 
 - **The worker's check:** an in-memory compile only. The file compiles, uses LF line endings, and has no line over 100 characters. There are now 90 author-B test functions.
+
+## Correction round (job 0072)
+- **Authority:** review of job 0071, ruling R-0071-1, covering defects D1 and D2 in `test_b_seed_pool_reg.py`. The contract is API.md at bdbdab1, the erratum that sets 35 pools per protocol §6.1.
+- **Author:** the same author-B subagent (agent a97c557b125e6d7e9), resumed with SendMessage. It used 8 tool calls.
+- **Read:**
+  - the D1 and D2 entries of `agent-handoff/jobs/0071/report.md` §5, and `jobs/0071/review.md`;
+  - API.md and the protocol;
+  - its own test file.
+- **Not read:** `tools/x6_stage1/*.py`, `test_a_*`, and any job-0071 module code or diff.
+- **Executed:** nothing. No formatter was run.
+- **D1** (`test_pool_table_order_sizes_splits_names`): the assertion `len(sd.NONTEST_POOLS) == 33` became `== 32`, with the comment `# §6.1 (35 pools in all)`.
+- **D2** (`test_data_streams_distinct_and_scoped`): the three counts of 36 became 35. These are the streams, the distinct streams and the distinct seeds.
+- **Result:** the file is still 398 lines, with LF line endings. The worker compiled it in memory only.

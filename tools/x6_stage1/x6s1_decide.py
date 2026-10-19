@@ -12,8 +12,11 @@ from decimal import Decimal, InvalidOperation
 from fractions import Fraction
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent)) if str(
-    Path(__file__).resolve().parent) not in sys.path else None
+REPO = Path(__file__).resolve().parents[2]
+_EXTRA = [REPO / p for p in ("tools/x6_stage1", "tools/x6_stage0", "tools/x4_oracle_profile",
+                             "tools/d2a", "tools/k4b", "tools/c1prime_registry",
+                             "tests/oracle_profile")]
+sys.path[:0] = [str(p) for p in _EXTRA if str(p) not in sys.path]
 import x6s1_data as sd  # noqa: E402
 
 SEEDS = sd.SEEDS

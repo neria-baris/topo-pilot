@@ -1,0 +1,458 @@
+# tools/x6_stage1: written contract (job 0069; derived from X6S1-FROZEN-v1)
+
+**Authority:** `tools/x6_stage1/PROTOCOL_X6S1_v1.md`, a byte-for-byte copy of `agent-handoff/planning/responses/X6S1-FROZEN-v1.md` (sha256 2A909ACE38231FBC6647E8FFDB5E6B5F22669A7C92182AE84240F32CD36EFB9E), and its coordinator addendum 1 (`X6S1-FROZEN-v1.coordinator-addendum-1.md`, sha256 BD9DD7338F32635F55860CF9B1A6933D5BECC07FCFFA48BB4761C5DE2620FFE6), which binds R and the D-2a repair P. Section numbers (§n), gate names (S0, PF, G0-ORC, …, E3.9), stop rules (S0–S13), tolerance ids (T1–T27), RC/MD/RU numbers and test names (T-PAIR … T-SIZE) refer to the protocol.
+
+**Precedence:** the protocol is authoritative. This contract fixes names, signatures, shapes, dtypes, streams, sequence-id codes, file layouts, record schemas, report keys and the six notebook cells, so that the independent tests (§14.3) can be written before any module exists. It changes no scientific choice: no parameter, threshold, tolerance, gate, stop rule, outcome rule or licence. Where this contract and the protocol differ, the protocol wins and the difference is a contract defect (report it; never resolve it in code). Details the protocol leaves open are fixed in §13 "Implementation choices", always with the simplest option.
+
+**No training, data generation, cloud use or test run is authorised by this contract** (§15 D2, S10).
+
+## 1. Files and line budgets (§14.1)
+
+| File | Contents (sections of this contract) | Budget (planned) |
+|---|---|---|
+| `x6s1_data.py` | constants, bindings, stage-0 constant map, seed map, pool table, sampling, ObservationSet storage, digests, stage-0 regeneration, init states (§3) | ≤ 400 (≈ 330) |
+| `x6s1_pairs.py` | class tables, exact backward partner sampler, exhaustive n ≤ 6 check, designed set D, oracle cue laws for the references (§4) | ≤ 400 (≈ 340) |
+| `x6s1_cloud.py` | bundle verification, environment and session records, `train_chunked`, checkpoint/record I/O, chain validation and quarantine, `run_wave`, `finalise`, `weights_digest`, the registered cell templates (§5) | ≤ 400 (≈ 390) |
+| `x6s1_ingest.py` | CLOUD-PREP (bundles, tickets, expected digests), the four integrity gates, admission lock, store import, LOSS-ECHO, learning-curve record (§6) | ≤ 400 (≈ 340) |
+| `x6s1_eval.py` | predictor interface, float64 model wrapper, oracle wrappers, quantiser, scoring, cue mass, pair terms, designed statistics, E3.A chunk outputs (§7) | ≤ 400 (≈ 360) |
+| `x6s1_stats.py` (**overflow 2: planned in use**) | empirical-Bernstein bound (outward), certified log tables, `quantile` wrapper, bootstraps, TAIL (§8) | ≤ 400 (≈ 300) |
+| `x6s1_decide.py` | learned, C-ORD, SHARP/TARGET, flags, precision, placebos, ordD, ordered rules, qualifiers, licence fill, report (§9) | ≤ 400 (≈ 330) |
+| `x6s1_registry.py` (**overflow 1: planned in use**) | REG1/REG2, sources, separation, diagnostics, extended inventory, bounded-memory K-REG2 reader (§10) | ≤ 400 (≈ 380) |
+| `x6s1_run.py` | S0, PF record, NB-STATIC, stage drivers and CLI, sealing, lineage, local evaluation waves under the repaired supervisor, RUNTIME-ACCT, local environment record, meter-binding check (§11) | ≤ 400 (≈ 380) |
+| `X6S1_colab.ipynb` | six code cells exactly as §12 | ≤ 60 code lines (36 planned) |
+
+Planned total ≈ 3,150 module lines (inside the protocol's 2,600–3,200 and the 3,600 ceiling). A tenth module, a module over 400 lines or a notebook over its limits is S7: stop before writing and escalate. No `src/` change; no change to any existing file.
+
+**Import convention.** Every module except `x6s1_cloud` computes `REPO = Path(__file__).resolve().parents[2]` and prepends, if absent, `tools/x6_stage1`, `tools/x6_stage0`, `tools/x4_oracle_profile`, `tools/d2a`, `tools/k4b`, `tools/c1prime_registry` and `tests/oracle_profile` (under `REPO`) to `sys.path`. `x6s1_cloud` imports only the standard library, `numpy`, `torch` and `topo_pilot.{learner, contracts, dataset}` and edits no `sys.path` (it runs from `code.tar`, which holds only `src`, `tools/x6_stage1` and `pyproject.toml`). Module dependency order: `x6s1_cloud` (leaf) ← `x6s1_data` ← `x6s1_pairs` ← `x6s1_stats` ← `x6s1_eval` ← `x6s1_registry` ← `x6s1_ingest` ← `x6s1_decide` ← `x6s1_run`. Importing a module performs no I/O and no computation beyond small constants.
+
+**Test imports.** A test file inserts `REPO / "tools" / "x6_stage1"` at `sys.path[0]` (REPO = `Path(__file__).resolve().parents[2]`) and imports by bare name with these aliases: `import x6s1_data as sd`, `x6s1_pairs as sp`, `x6s1_cloud as sc`, `x6s1_ingest as si`, `x6s1_eval as se`, `x6s1_stats as ss`, `x6s1_decide as sdc`, `x6s1_registry as sg`, `x6s1_run as sr`. Reused code: `import x6_model as xm`, `x6_dp as xd`, `x6_exact as xe`, `x6_run as xr`, `x6_store as xs`, `d2a_train`, `process_tree`, `winjob`, `k4b_registry`, `k4b_registry_k`, `c1_registry_sources`, `oracle_profile`.
+
+## 2. Conventions
+
+- Everything in `tools/x6_stage0/API.md` §2 holds: vertices `i = 4x + y`, anchor `ANCHOR = 10`, `N(a★) = {6, 9, 11, 14}`, tokens `tok(i) ∈ 0..14`, cues `15 + x`, `V = 18`, BOS = 18, seam letters `"x+", "x-", "y+", "y-"`, κ = Parikh vector in that letter order, emit-then-transition, stationary start.
+- **Histories.** Arrays of tokens `w_1..w_33` are `uint8[n, 33]`, C-contiguous; Python column 0 is `w_1`. A history of length `t < 33` is padded with `0` in columns `t..32`. A **readout at t** is the law of `w_{t+1}` given `w_{1:t}`: model input `[BOS, w_1..w_32]` (int64 `[n, 33]`), logits index `t` (0-based), so `logits[:, t]` predicts `w_{t+1}` (§2.2; T-EVAL).
+- **Segment parse at t** (`x6s1_pairs.segment`): `s` = index (1-based) of the last cue token in `w_{1:t}` (0 if none), `y = w_s − 15`, `n = t − s` (age), `v_t = vertex(w_t)`, κ = Parikh vector of the seam letters of the base path `v_s → v_{s+1} → … → v_t` (with `v_s = ANCHOR`). **R_ord(t)**: `s ≥ 1` and `n ≥ 8` and `v_t ∈ N(a★)`.
+- **Laws.** Raw predictors and oracle laws are `float64[n, 18]`. Cue-normalised laws are `float64[n, 3]` (entries 15..17 divided by their sum). Exact laws are tuples of 18 `Fraction`.
+- **Exact numbers:** `fractions.Fraction` and `decimal.Decimal`; counts are Python `int`. Stage-0 constants are Decimal strings (§3.3).
+- **Hashes:** lowercase 64-hex sha256 everywhere in files and records; comparisons with owner-relayed or protocol hashes are case-insensitive (both `.lower()`).
+- **Canonical JSON** (records, tickets, manifests, tables): `topo_pilot.contracts.canonical_json(obj).encode("utf-8")` (sorted keys, compact). `sha256_json(obj)` = sha256 of that byte string.
+- **UTC stamps:** `utc_stamp()` = `time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())` in file names; ISO `"%Y-%m-%dT%H:%M:%SZ"` in record fields.
+- **Statuses** (exact strings): gates `"PASS"`, `"FAIL"`, `"INVALID"`, `"HOLD"`, `"UNRESOLVED"`, `"NUMERICALLY_UNRESOLVED"`, `"NOT_RUN"`; per-model `"DONE"`, `"HOLD:CLOUD_INCOMPLETE"`, `"HOLD:CLOUD_UNAVAILABLE"`, `"HOLD:MARKER"` (unreadable/ambiguous terminal marker, coordinator review), `"TRANSFER_RETRY"`, `"FAIL_TECHNICAL/WEIGHTS_HASH"`, `"FAIL_TECHNICAL/CLOUD_PROV"`, `"FAIL_TECHNICAL/DATA_ID"`, `"FAIL_TECHNICAL/CHAIN"`, `"INVALID:NONFINITE"`, `"INVALID"`, `"INCOMPLETE"`; registry `"FAIL_TECHNICAL/LINEAGE"`, `"INCONCLUSIVE/REGISTRY_INCOMPLETE"`; study outcomes exactly the §11 names (`"INVALID"`, `"CONSTRUCTION_FAIL"`, `"FEASIBILITY_NO_GO"`, `"FAIL_TECHNICAL/LINEAGE"`, `"INCONCLUSIVE/REGISTRY_INCOMPLETE"`, `"INCOMPLETE"`, `"NOT_LEARNED"`, `"LEARNING_UNRESOLVED"`, `"PIPELINE_INVALID"`, `"LEARNING_NOT_ROBUST"`, `"ORDER_USE_NATURAL_AND_DESIGNED"`, `"ORDER_USE_NATURAL"`, `"ORDER_USE_DESIGNED_ONLY"`, `"ORDER_NOT_DETECTED"`, `"INCONCLUSIVE"`).
+- **Model names:** `"NA-s1"…"NA-s4"`, `"AB-s1"…"AB-s4"`, `"ZC-s1"…"ZC-s4"`; step-0 predictors `"init-s1"…"init-s4"`; the smoke model `"SMOKE"`. Oracle/reference predictors: `"qstar"`, `"q_empty"`, `"q_parity"`, `"q_counts"`, `"q_H1"`, `"q_Parikh"`, `"q_8"`, `"h_last"`, `"h_first"`, `"h_rev"`.
+
+## 3. x6s1_data.py
+
+### 3.1 Bindings and paths
+`PROTOCOL_ID = "X6S1-FROZEN-v1"`, `PROTOCOL_SHA256 = "2a909ace38231fbc6647e8ffdb5e6b5f22669a7c92182ae84240f32cd36efb9e"`, `ADDENDUM1_SHA256 = "bd9dd7338f32635f55860cf9b1a6933d5becc07fcffa48bb4761c5de2620ffe6"`, `REQUEST_SHA256 = "1d567d297f0aab8946a2d98708043f189c508e00283473100c67a065acb8e401"`, `R_COMMIT = "72ad039e36ae56340ec48e34059ff6afeeefe02f"`, `P_COMMIT = "0c341aa4b101f2f6e0d9b500c36d9a2084072784"`.
+
+`REPAIR_BLOBS` (addendum 1 §1; path → (sha256, git blob)):
+- `tools/d2a/process_tree.py`: `253551cd7f52eb62eae8c732ef1c86191338cad7088873422438b919afa5df94`, `9dd679dede436ce3bf78646173a40c09f937b887`
+- `tools/d2a/d2a_train.py`: `a26a263020a4a04038e42b73889f77835a75a562a35cfb2e02e792e2b8396551`, `58495d9feabcdcf18380fd37e3c984dcc27c4a22`
+- `tests/d2a/test_process_tree_repair.py`: `0021f6255bd8b02311f0257ebd8118e6e616787304ffea9aa86299db45ea9928`, `6014683c4fe9ca87ae47c833f1133207f5f86ec6`
+- `docs/proposals/D2A_RUNTIME_MAINTENANCE_V1.md`: `a89e6314a0e50d7f15c5d81dfcfeeba110d4b899ae71ddeb2b6abb488b032262`, `51a56175d86dc504e1681d740573fb2cf50fec18`
+- `tools/x4_oracle_profile/winjob.py` (reused, unchanged by P): `3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785`, `1e354d54f473d9c1fb65de1c054ef40d18834c2f`
+
+Paths: `STORE = "X:/Downloads/projects/topo-pilot/x6-stage1-store"`, `WORKTREE = "X:/Downloads/projects/topo-pilot/topo-pilot-x6s1"`, `SCRATCH_ROOT = "X:/Downloads/topo-scratch"`, `MAILBOX = "X:/Downloads/projects/topo-pilot/agent-handoff"`, `PROJECT_ROOT = "X:/Downloads/projects/topo-pilot"`, `STAGE0_STORE = "X:/Downloads/projects/topo-pilot/x6-stage0-oracle-store"`, `K4B_STORE = "X:/Downloads/projects/topo-pilot/k4b-store"`, `KREG_DIR = K4B_STORE + "/registry"`.
+
+`STAGE0_FILES` (§8 S0 (v); relative to `STAGE0_STORE`): `"run/report.json": "e7846911b33d5c06eaadb633cf3cf4a2dae4a3e49dc6c0b50209f3fc09333aca"`, `"run/GATES.jsonl": "c871f5e487c7f79e9ebb57cecc6acb4bdc584106e6bd86e64e48189614082462"`, `"run/model.npz": "e1b9a753de211da4320b289b2737f0e3d0c7ee88eb4cecb07046d02b590f230b"`; `STAGE0_OUTCOME = "GO_X6_NATURAL"` (report key `outcome.outcome`).
+
+`KREG2_FILES` (§15 D5): `"K-REG2.json": "3a2698849f3de80883c2571b7c7c026577afb5ff986cce44ce76defa7900bb90"`, `"K-REG2_digests.npz": "28897ebb43350dcf54eb5ba10bdf3edaeb1d3688c9e112a449c14f6b61290b44"`; `KREG2_N_DIGESTS = 6024521`.
+
+### 3.2 Constants
+`SCOPE = "x6s1"`, `DATA_MASTER = 2026101861`, `MODEL_MASTER = 2026101862`, `ARMS = ("NA", "AB", "ZC")`, `SEEDS = (1, 2, 3, 4)`, `MODELS` = the 12 names in order NA-s1..4, AB-s1..4, ZC-s1..4, `INITS = ("init-s1", "init-s2", "init-s3", "init-s4")`, `PREDICTORS = MODELS + INITS` (the 16 E3.A predictors). `WAVES = {"C0": ("SMOKE",), "C1": ("NA-s1", "NA-s2", "ZC-s1"), "C2": ("NA-s3", "NA-s4", "AB-s1", "AB-s2", "AB-s3", "AB-s4", "ZC-s2", "ZC-s3", "ZC-s4")}` (ticket order = this order).
+
+`T_STAR = 32`, `N_OBS = 33`, `V = 18`, `BOS = 18`, `N_MIN = 8` (age restriction), `PROFILE_T = (16, 24)`, `EMERGENCE_STEPS = (1000, 3000, 10000, 20000)`, `LC_STEPS = (0, 1000, 2000, 3000, 5000, 7000, 10000, 15000, 20000, 25000, 30000)`, `N_PROFILE = 2**17`, `N_EMERGE = 2**14`, `N_DET = 1024`, `N_SMOKE_EVAL = 1024`.
+
+Model and recipe: `MODEL_CFG = ModelConfig(vocab_in=19, vocab_out=18)`; `TRAIN_CFG = TrainConfig(steps=30000)` (all other fields default; `checkpoint_steps` unused by `train_chunked`); `K = 1000`; `SMOKE_CFG = TrainConfig(steps=200, warmup=10)`, `K_SMOKE = 100`; `EQUIV_CFG = TrainConfig(steps=60, warmup=10, checkpoint_steps=(0, 20, 40, 60))`, `K_EQUIV = 20`; `ACCT_CFG = TrainConfig(steps=50, warmup=10)`.
+
+Readout and statistics: `Q = 2**20`, `EPS = Fraction(1, 10**6)`, `B_EB = 17`, `E_ROW = Fraction(1, 10**12)`, `SUM_TOL = 1e-12` (softmax precondition, T20), `FLOOR = Fraction(1012287, 10**12)` (oracle-readout floor 1.012287e-6) and `FLOOR_SLACK = Fraction(1, 10**12)`, `DELTA_SHARP = Fraction(1, 160)` (0.00625), `DELTA_LEARN = Fraction(1, 40)` (0.025), `B_GATE = 2000`, `B_CORD = 20000`, `B_MODEL = 2000`, `BAND = Fraction(1, 10**9)` (designed band), `XCHECK_TOL = 1e-9`, `DET_TOL = 1e-12`.
+
+Thresholds (§10.1; Fractions unless stated): `CORD_MEAN = Fraction(1, 4)`, `CORD_LB = Fraction(1, 20)`, `PLACEBO = Fraction(1, 10)`, `RHO_MAX = Fraction(1, 4)`, `CUE_MASS_MIN = Fraction(1, 10)`, `W2_BETA = Fraction(1, 4)`, `REGRET_FRAC = Fraction(3, 4)`, `TARGET_FRAC = Fraction(3, 4)`, `LOWN = Fraction(1, 10)`, `PREC_BETA = Fraction(1, 10)`, `PREC_FRAC = Fraction(1, 4)` (× G_Parikh lo, §7.6), `TAIL_D1 = Fraction(1, 100)`, `TAIL_D2 = Fraction(1, 50)`, `Z975 = 1.959964` (float), `FEAS_PAIRS = 24000`, `FEAS_SE = 0.04`, `ACCT_CPU_MIN = 10.0`, `ACCT_MEM_MIN = 200 * 10**6`, `ACCT_KILL_CPU = 5.0`, `ACCT_KILL_SLACK_S = 10.0`, `ACCT_POLL_S = 2.0`.
+
+Resources (§13.4): `THREADS = {"intra": 2, "interop": 1}`, `EVAL_BATCH = 1024`, `MAX_CHILDREN = 3`, `PROCESS_MEM = 3 * 2**30`, `JOB_MEM = 12 * 2**30`, `OUTPUT_CAP = 16 * 2**30`, `MAX_WALL_S = 43200`, `ALARM_CPU_S = 90 * 3600` (notification only), `REG_RUN = 2**22` (registry run size, identities per sorted run), `ORACLE_CHUNK = 2**16`.
+
+### 3.3 Stage-0 constant map (§2.1, T24; S0 (v))
+`CONST_MAP: dict[str, dict]`: name → `{"path": <JSON path in run/report.json>, "lo": str, "hi": str}` for enclosures, or `{"path": ..., "value": str}` for central values. JSON paths are `/`-separated keys from the report root. S0 asserts exact string equality of every listed field (`check_stage0_constants`). Derived thresholds use `Fraction(lo)` exactly.
+
+| Name | Path | Field(s) and complete Decimal string(s) |
+|---|---|---|
+| `G_Parikh_32` (G0⁻ = lo) | `natural/NA/G/Parikh/32` | lo `0.0026358964806790516544074195299418525190876670746427621626951934793579293430931071`; hi `0.0026358964806790516544074195299418525190876670746427621626971934793579293430931071` |
+| `G_8_32` (G_8.lo = lo) | `natural/NA/G_k/8/32` | lo `0.0088553050512358844408577637624772307516013467873269249611029142273162701006695055`; hi `0.0088553050512358844408577637624772307516013467873269249611049142273162701006695055` |
+| `G_empty_32` | `natural/NA/G/empty/32` | lo `0.010593527986497549359252006084138555993127156334917732289525354912438293374555259`; hi `0.010593527986497549359252006084138555993127156334917732289527354912438293374555259` |
+| `G_parity_32` | `natural/NA/G/parity/32` | lo `0.0077918136361268966093229003778309576632577318464705699718604667184601923814331744`; hi `0.0077918136361268966093229003778309576632577318464705699718624667184601923814331744` |
+| `G_H1_32` | `natural/NA/G/H1/32` | lo `0.0029868330805394917008518103703350360446063062121711452599965280377903897431099882`; hi `0.0029868330805394917008518103703350360446063062121711452599985280377903897431099882` |
+| `G_counts_32` | `natural/NA/G/counts/32` | lo `0.0027360466251330357283986671289765521159094130432521006187981248848235868652143178`; hi `0.0027360466251330357283986671289765521159094130432521006188001248848235868652143178` |
+| `G_Parikh_16` | `natural/NA/G/Parikh/16` | lo `0.00087481878390924800028049215495243428442769052148881691765265451850816780319221880`; hi `0.00087481878390924800028049215495243428442769052148881691765465451850816780319221880` |
+| `G_Parikh_24` | `natural/NA/G/Parikh/24` | lo `0.0018950636053054594572854707040565480586105007720591051905464316715473854993561797`; hi `0.0018950636053054594572854707040565480586105007720591051905484316715473854993561797` |
+| `D_blk_32` | `blocks/kblk/NA/D_blk` | lo `0.0013097210879466838286281212242406617310575248163552880055774825009415866752451283`; hi `0.0013097210879466838286281212242406617310575248163552880055794825009415866752451283` |
+| `J_8_32` | `natural/NA/J/8/32` | lo `0.000037201925132837002548644427563472653549075986721412848440177176632924088968581341`; hi `0.000037201925132837002548644427563472653549075986721412848442177176632924088968581341` |
+| `Delta_W2` (central) | `exact/G3/set_gaps/W2|0` | value `0.061119371341896547955524807971231695289846551087376421303896009064819738013445345` |
+| `Delta_W3` (central) | `challenge/challenge/delta_challenge/0` | value `0.037832084794304540254080229574490474113844007878061695581602399097047383150353710` |
+| `E_cue_hits` | `mc/hits/E_cue` | value `200306` (int) |
+| `amb_nb_hits` | `mc/hits/amb_nb` | value `13402` (int) |
+
+Δ_W2^lo and Δ_W3^lo are **not** in the report; G0-ORC (g) reconstructs their enclosures (`x6s1_pairs.gap_enclosures`) and checks the central value of each against `value` within T6 (1e-40).
+
+### 3.4 Functions
+- `parse_model(name) -> tuple[str, int | str]`: `"NA-s3" → ("NA", 3)`, `"init-s2" → ("init", 2)`, `"SMOKE" → ("NA", "smoke")`; `ValueError` otherwise.
+- `run_key(name) -> tuple`: `("x6s1", s)` for an arm model or init; `("x6s1", "smoke")` for `"SMOKE"`.
+- `init_seed(name) -> int` = `SeedTree(MODEL_MASTER).seed("init", *run_key(name))`; `batch_generator(name) -> np.random.Generator` = `SeedTree(MODEL_MASTER).generator("batch_order", *run_key(name))`.
+- `pool_spec(pool, arm="NA", s=None) -> dict` with keys `"pool"`, `"arm"`, `"s"`, `"name"`, `"rows"`, `"split"`, `"stream"`, `"code"`, `"replicate"`. Rows, split and stream (`SeedTree(DATA_MASTER).generator(*stream)`):
+
+| pool | arms | rows | split | stream | name |
+|---|---|---|---|---|---|
+| `train` | NA, AB, ZC × s | 2²⁰ | train | `("x6s1", "train", arm, s)` | `train_<arm>_s<s>` |
+| `dev` | NA, AB, ZC × s | 2¹² | dev | `("x6s1", "dev", arm, s)` | `dev_<arm>_s<s>` |
+| `smoke` | NA | 2¹² | dev | `("x6s1", "smoke", "NA")` | `smoke` |
+| `gate` | NA (2¹⁶), AB, ZC (2¹⁴) | | dev | `("x6s1", "gate", arm)` | `gate_<arm>` |
+| `prefix` | NA | 2¹² | dev | `("x6s1", "prefix")` | `prefix` |
+| `val` | NA, AB, ZC | 2¹⁵ | dev | `("x6s1", "val", arm)` | `val_<arm>` |
+| `test` | NA, AB, ZC | 2²¹ | test | `("x6s1", "test", arm)` | `test_<arm>` |
+
+  Sequence-id codes: `code = process_code("x6s1", arm, pool, replicate)` with `replicate = s` for train and dev and `replicate = 0` otherwise; ids `make_sequence_ids(code, split, rows)` (int64). `ValueError` for an unregistered (pool, arm, s).
+- `NONTEST_POOLS: tuple[dict]` (draw order): smoke, gate_NA, gate_AB, gate_ZC, prefix, val_NA, val_AB, val_ZC, then for arm in ARMS, for s in SEEDS: train, dev. `TEST_POOLS`: test_NA, test_AB, test_ZC. 36 pools in all.
+- `sequence_ids(spec) -> np.ndarray` int64 `[rows]`.
+- `arm_model(arm) -> dict` = `x6_model.model(arm)` (cached).
+- `sample_pool(spec) -> np.ndarray` uint8 `[rows, 33]`: `HMMSampler(m["Tf"], m["Ef"], m["pif"], SequenceLayout()).sample(rows, generator)`; the returned states are discarded inside the function and never stored or returned.
+- `observation_set(spec, tokens) -> ObservationSet` (`split`, `V = 18`, ids, tokens).
+- `token_digest(tokens) -> str`: sha256 of `np.ascontiguousarray(tokens, dtype=np.uint8).tobytes()` (the "raw token digest").
+- `save_pool(path, tokens) -> str`: `np.save` of the uint8 array (no pickle) by exclusive create; returns the file sha256. `load_pool(path, file_sha256) -> np.ndarray` refuses a hash mismatch (`ValueError`).
+- `init_state(name) -> dict`: `{"model": state_dict}` of `TransformerLM(MODEL_CFG)` built on CPU inside `torch.random.fork_rng(devices=[])` after `torch.manual_seed(init_seed(name))`, exactly as `Trainer._fit` (§4.3 item 1).
+- `regenerate_stage0() -> dict[str, np.ndarray]`: for arm in `x6_model.MC_ARMS` order, `x6_run.sample(arm, MC_ROWS[arm], SeedTree(x6_model.MASTER_SEED))[0]` (tokens only).
+- `stage0_counts(na_tokens) -> dict` `{"E_cue": int, "amb_nb": int}` with stage-0 G6 `hits` semantics (reusing `x6_run`/`x6_dp` code unchanged).
+- `stage0_count_check(counts) -> str`: `"PASS"` iff both equal `CONST_MAP` values, else `"FAIL_TECHNICAL/LINEAGE"`.
+- `stage0_value(report, name) -> dict` (the object at `CONST_MAP[name]["path"]`); `check_stage0_constants(report) -> dict` `{"status": "PASS" | "FAIL", "mismatches": [name, ...]}`.
+- `g0_lo() -> Fraction`, `g8_lo() -> Fraction`, `target_threshold() -> Fraction` (= `TARGET_FRAC * g0_lo()`), `regret_bar(dw2_lo: Fraction) -> Fraction` (= `REGRET_FRAC * dw2_lo`), `prec_delta() -> Fraction` (= `PREC_FRAC * g0_lo()`), `ladder_lo(S) -> Fraction` for S ∈ `x6_model.LADDER` and `"blk"`.
+
+## 4. x6s1_pairs.py
+
+### 4.1 Class tables (§2.3; G0-ORC (c))
+- `class_tables(arm="NA", n_max=31) -> dict[int, dict[tuple, int]]`: `tables[m][(v, kappa)] = Σ_g x6_dp.classes(layer_m, "Parikh")` counts from `x6_dp.segment_dp(arm, n_max)` (Python ints); `tables[0] == {(10, (0, 0, 0, 0)): 1}`. κ is a 4-tuple of ints.
+- `tables_bytes(tables) -> bytes`: canonical JSON of `[[m, v, list(kappa), c] …]` sorted by (m, v, kappa). `save_tables(path, tables) -> str` (exclusive create; returns sha256); `load_tables(path, sha256) -> dict` (refuses mismatch).
+- `validate_tables(tables) -> dict` `{"status", "totals_ok", "detail"}`: Σ_{v ≠ a★, κ} c_m = `x6_dp.avoid_counts(31)` totals for every m ≥ 1.
+
+### 4.2 Segment parse and partner sampler
+- `segment(tokens, t) -> dict | None`: keys `"s"`, `"y"`, `"n"`, `"v_t"`, `"kappa"`, `"path"` (vertices `v_s..v_t`); `None` if no cue in `w_{1:t}`.
+- `in_r_ord(tokens, t) -> bool`.
+- `predecessors(tables, m, v, kappa) -> list[tuple[int, tuple, int]]`: the weighted predecessors `(u, kappa_prev, weight)` of state `(v, kappa)` at layer m, in `NEIGHBOURS[v]` order (§2.3; zero weights kept out).
+- `sample_segment(tables, v_t, kappa, n, rnd: random.Random) -> tuple[int, ...]`: vertices `v′_{s+1}..v′_t` (length n, last = v_t), by backward sampling with `rnd.randrange(c_m(v_m, κ_m))` per step and cumulative big-integer weights.
+- `partner_seed(pool, t, row) -> int` = `SeedTree(DATA_MASTER).seed("x6s1", "partner", pool, t, row)`.
+- `partner(tables, tokens, t, pool, row) -> tuple | None`: h′ (tokens `w′_1..w′_t`, `w′_{1:s} = w_{1:s}` and `tok(v′)` after) or `None` if the row is not in R_ord(t). `pool` is the pool name string (e.g. `"test_NA"`), `row` the 0-based row index.
+- `partners(tables, pool_tokens, t, pool, rows=None) -> dict` `{"rows": int64[r], "tokens": uint8[r, 33]}` for the R_ord(t) rows (padded after t).
+- `sampler_law(tables, v_t, kappa, n) -> dict[tuple, Fraction]`: the exact law of `sample_segment` (product of step probabilities), by enumeration (for n ≤ 6).
+- `exhaustive_check(n_max=6) -> dict` `{"status", "classes", "detail"}`: every class probability equals `1/|class|` (G0-ORC (d)).
+
+### 4.3 Designed set D (§2.5, §6.3)
+- `FLAT_FACE = (4, 8, 9, 5)`; `CONTROL_SETS = {"C1": (("A+", "A-"), ("A-", "A+")), "C2": (("A+", "F"), ("F", "A+")), "C3": (("B+", "B-"), ("B-", "B+")), "C4": (("B+", "F"), ("F", "B+"))}`; `STAGE0_PREFIXES = ("P0", "P1", "P3", "P6")` with the y₀ values of S0 (Π0 alone; Π1, Π3, Π6 with y₀ ∈ {0, 1, 2}: 1 + 3·… = 6 named prefixes total as `x6_exact.prefix_tokens(name, y0)`).
+- `natural_prefixes(prefix_tokens, rnd_len: np.random.Generator) -> list[tuple]`: for row i in order, `L_max = int(rnd_len.integers(1, 15))` (one call per row, including skipped rows), the largest `L ≤ L_max` with `vertex(w_L) ∈ N(a★) ∪ {a★}`; skip rows with none; return the first 1,024 prefixes `w_1..w_L`. `rnd_len = SeedTree(DATA_MASTER).generator("x6s1", "prefix_len")`.
+- `designed_history(prefix, letters, y) -> tuple`: `prefix + (cue(y),) + tokens of the loops named in letters` (loops from `x6_exact.LOOPS`, `"F"` = `FLAT_FACE`), as `x6_exact.witness_tokens` composes them; readout `t = len(history)`.
+- `designed_set(prefix_pool) -> dict`: keys `"prefixes"` (1,030 entries `(label, tokens)`: 6 stage-0 then 1,024 natural), `"W2"` (3,090 pairs), `"C1"`…`"C4"` (3,090 pairs each), `"W3"` (72 histories at t = 32), `"W3p"`, `"W1"` (stage-0 prefixes; W1 also with the natural prefixes, t = L + 8). A pair is `{"a": tokens, "b": tokens, "y": int, "prefix": int, "t": int}`.
+- `designed_arrays(D) -> dict[str, np.ndarray]`: per family `"<fam>_a"`, `"<fam>_b"` uint8 `[n, 33]` padded, `"<fam>_t"` int16 `[n]`, `"<fam>_y"` int8 `[n]`; `designed_sha256(arrays) -> str` (sha256 of canonical concatenation in sorted key order).
+- `gap_enclosures() -> dict` `{"Delta_W2": enc, "Delta_W3": enc}` with `enc = {"lo", "hi", "v80", "v120"}` Decimal strings, from the unchanged exact laws and `x6_exact.set_gap`/`challenge_values` Decimal method.
+
+### 4.4 Oracle laws for the references
+- `q_exact(arm, tokens, t) -> tuple[Fraction, ...]` = `x6_model.closed_form(arm, tokens[:t])` law of `w_{t+1}` (18 entries).
+- `q_stat(S, tokens, t) -> tuple[Fraction, ...]`: the exact Bayes law given `R_S` (S ∈ `LADDER`), from the class tables (`x6_dp.weights`).
+- `q_window(tokens, t, k=8) -> np.ndarray` float64 `[18]`: exact window-k Bayes law via `oracle_profile.suffix_posterior`.
+- `q_heuristic(kind, tokens, t) -> tuple[Fraction, ...]` for kind ∈ `("last", "first", "rev")`, via `x6_exact.competitor_holonomy`.
+
+## 5. x6s1_cloud.py (Colab and local)
+
+### 5.1 Layout under ROOT (`My Drive/X6S1/<bundle-id>/` in Colab; any directory locally)
+- Bundle (read-only): `code.tar`, `X6S1_colab.ipynb`, `data/train_<arm>_s<s>.npy` (C0: `data/smoke.npy`), `init/init_s<s>.pt` (C0: `init/init_smoke.pt`), `ticket_<wave>.json`, `SHA256SUMS`.
+- Lineage: `out/<model>/ckpt/<step:06d>.pt`, `out/<model>/ckpt/<step:06d>.pt.part`, `out/<model>/rec/<step:06d>.json`, `out/<model>/rec/<step:06d>.json.part`, `out/<model>/rec/NONFINITE.json`; `orphans/<utc>-<model>/<original relative path>`; `sessions/<utc>-<session_id>.start.json`, `sessions/<utc>-<session_id>.final.json`; `exports/<utc>/MANIFEST.json`.
+- `SHA256SUMS`: one line per file, `<sha256>  <relative posix path>` (two spaces), sorted by path, LF endings, final LF; covers every bundle file except the notebook and itself. `BUNDLE_SHA256` = sha256 of the `SHA256SUMS` bytes. `bundle_id = f"{wave}-{BUNDLE_SHA256[:12]}"` (lowercase).
+
+### 5.2 Constants and errors
+`CELL_TEMPLATES: tuple[str, str, str, str, str, str]` (the six sources of §12, verbatim, LF line endings, no trailing newline); `HASH_PLACEHOLDER = "PASTE_BUNDLE_SHA256_HERE"`; `TICKET_SCHEMA = "x6s1-ticket-v1"`, `RECORD_SCHEMA = "x6s1-record-v1"`, `MARKER_SCHEMA = "x6s1-nonfinite-v1"`, `SESSION_SCHEMA = "x6s1-session-v1"`, `MANIFEST_SCHEMA = "x6s1-manifest-v1"`.
+`class CloudStop(RuntimeError)`: its message is the exact `STOP: …` line printed (`"STOP: BUNDLE HASH MISMATCH"`, `"STOP: BUNDLE DIRECTORY"`, `"STOP: CHAIN BROKEN <model>"`, `"STOP: RNG STATE MISMATCH <model>"`, `"STOP: BATCH-ID MISMATCH <model>"`, `"STOP: DUPLICATE STEP <model> <step>"`, `"STOP: MARKER UNREADABLE <model>"`, `"STOP: HOLD <model> <reason>"`, `"STOP: NO GPU"`, `"STOP: ENV <field>"`, `"STOP: TICKET <reason>"`).
+
+### 5.3 Hashing and digests
+- `sha256_bytes(b) -> str`; `sha256_file(path) -> str`; `sha256_json(obj) -> str`.
+- `weights_digest(state_dict) -> str`: sha256 over the keys in sorted order of: UTF-8 key, `b"\x00"`, `str(t.dtype).removeprefix("torch.")` as UTF-8 (e.g. `"float32"`), `b"\x00"`, `np.asarray(t.shape, "<i8").tobytes()`, then the tensor's contiguous little-endian bytes on CPU (§5.5). Independent of pickling and device.
+- `batch_digest(index_arrays) -> str`: sha256 of the concatenation of `np.asarray(a, "<i8").tobytes()` over the chunk's arrays in step order (§5.4 step 6).
+- `pcg64_state(gen) -> dict` = `gen.bit_generator.state` (JSON-safe ints); `pcg64_digest(state) -> str` = `sha256_json(state)`; `generator_from_state(state) -> np.random.Generator`.
+- `draw_indices(gen, n_rows, k, batch=128) -> list[np.ndarray]`: k arrays, one `gen.integers(0, n_rows, size=batch)` call each (int64); advances `gen`.
+- `expected_digests(model_master, run_key, n_rows, steps, k, batch=128) -> list[dict]`: for step 0, K, …, steps: `{"step", "batch_sha256", "pcg64_state_sha256"}`; step 0 has `batch_sha256 = None` and the fresh generator's state digest; generator `SeedTree(model_master).generator("batch_order", *run_key)`.
+
+### 5.4 Training core (Trainer-equivalent, §4.3)
+- `class TrainState`: fields `model`, `opt`, `sched`, `gen` (numpy Generator), `step` (int), `device` (torch.device), `model_cfg` (ModelConfig), `train_cfg` (TrainConfig).
+- `build_optimizer(model, train_cfg) -> torch.optim.AdamW`: two groups in this order, `[{"params": decay, "weight_decay": train_cfg.weight_decay}, {"params": plain, "weight_decay": 0.0}]`, `lr = train_cfg.lr`; a parameter is in `decay` iff `p.ndim == 2` and its name does not start with `"tok_emb"` or `"pos_emb"` (identical groups and order to `Trainer._optimizer`).
+- `build_scheduler(opt, train_cfg) -> LambdaLR` = `LambdaLR(opt, WarmupCosine(train_cfg.warmup, train_cfg.steps))`.
+- `set_precision(device) -> dict`: TF32 off (`torch.backends.cuda.matmul.allow_tf32 = False`, `torch.backends.cudnn.allow_tf32 = False`), `torch.set_float32_matmul_precision("highest")`, `torch.use_deterministic_algorithms(True, warn_only=True)`, `os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")`; returns the flags as a dict.
+- `fresh_state(init_sd, model_cfg, train_cfg, gen, device) -> TrainState`: model built on CPU (`TransformerLM(model_cfg)`), init weights loaded strictly, moved to device, `.train()`; optimiser, scheduler built; step 0.
+- `restore_state(ckpt: dict, model_cfg, train_cfg, device) -> TrainState`: model state, then `build_optimizer`, `build_scheduler`, then `opt.load_state_dict`, `sched.load_state_dict`; generator from `ckpt["rng"]["pcg64"]`; `.train()`; step = `ckpt["step"]`.
+- `check_internal(ckpt, record, expected) -> list[str]`: mismatches among checkpoint `step`, `scheduler["last_epoch"] == step`, optimiser structure (two groups; group sizes equal the registered groups), PCG64 state digest = record's = expected's. Empty list = consistent.
+- `train_chunk(st, x, y, idx_arrays) -> dict`: for each index array, `idx = torch.from_numpy(a).to(device)`; `out = model(x[idx])`; `loss = lm_loss(out.logits, y[idx])`; if not finite return immediately `{"finite": False, "step": step_of_failure, "loss_bits": struct hex of float32 or float64 loss}`; `opt.zero_grad(set_to_none=True)`; `loss.backward()`; `clip_grad_norm_(model.parameters(), train_cfg.grad_clip)`; `opt.step()`; `sched.step()`; `st.step += 1`. Returns `{"finite": True, "loss_first": float, "loss_last": float}`.
+- `snapshot_bytes(st) -> bytes`: one `torch.save` into a `BytesIO` of `{"model": CPU float32 state_dict, "optimizer": opt.state_dict(), "scheduler": sched.state_dict(), "rng": {"pcg64": pcg64_state(gen), "torch_cpu": torch.get_rng_state(), "torch_cuda": torch.cuda.get_rng_state_all() if CUDA else []}, "step": int}`.
+- `load_checkpoint(path, device) -> dict` = `torch.load(path, map_location=device, weights_only=False)` (cloud resume); local verification uses `weights_only=True` on the model part (§6).
+- `materialise(tokens) -> tuple[torch.Tensor, torch.Tensor]`: `learner.trainer._materialise(PublicTokenDataset(ObservationSet("train", 18, ids, tokens), SequenceLayout()))` with `ids = make_sequence_ids(process_code("x6s1", arm, "train", s), "train", n)` (C0: `process_code("x6s1", "NA", "smoke", 0)` and split `"dev"`, as §3.4).
+
+### 5.5 Atomic I/O and the chain (§5.4, §5.5)
+- `write_checkpoint(model_dir, step, data: bytes) -> str`: target `ckpt/<step:06d>.pt`; if it exists → `CloudStop("STOP: DUPLICATE STEP …")`; write `data` to `.part`, flush, `os.fsync`, re-read and compare sha256 with `sha256_bytes(data)`, `os.replace` to the target only if the target is still absent; returns the sha256. Exactly one serialisation per checkpoint.
+- `write_json_atomic(path, obj) -> str`: same protocol for canonical JSON bytes (refuses an existing target).
+- `record_sha(rec) -> str`: `sha256_json` of `rec` without the `record_sha256` key.
+- `make_record(model, step, file_sha, weights_sha, batch_sha, pcg_state, prev_sha, session_id, device_name, cuda_capability, loss_first, loss_last, loss_finite, wall_s) -> dict` (§5.6 schema below; `record_sha256` filled last).
+- `valid_record(model_dir, rec) -> bool`: parses; `record_sha256 == record_sha(rec)`; the named checkpoint exists with `file_sha256`.
+- `discover(model_dir, entry, steps, k) -> dict` keys: `"chain"` (valid records in step order, from step 0, consecutive), `"last_step"` (int or None), `"terminal"` (marker dict or None), `"orphans"` (relative paths outside the chain: `.part` files, checkpoint without record, record without checkpoint, truncated record, anything after the chain's last valid element), `"status"` ∈ `{"OK", "HOLD", "CHAIN_BROKEN", "MARKER_UNREADABLE"}`. Step-0 link: `prev_record_sha256 == sha256_json(entry)`; checkpoint weights digest equal to the record's. A read failure or an incomplete listing → `"HOLD"` (no quarantine). A broken **interior** link (a record at step jK whose link or digest fails while a later valid-linked record exists) → `"CHAIN_BROKEN"`.
+- `read_marker(model_dir) -> dict | None`: `None` if `rec/NONFINITE.json` is absent; raises `CloudStop("STOP: MARKER UNREADABLE …")` if present but unparsable, its `marker_sha256` does not verify, or more than one candidate exists.
+- `write_marker(model_dir, info) -> dict`: exclusive create of `rec/NONFINITE.json`.
+- `quarantine(root, model, orphans, utc) -> list[dict]`: for each nonterminal orphan: copy to `orphans/<utc>-<model>/<relpath>`, re-hash the copy, then remove the original only after the copy verifies; returns `[{"original": relpath, "preserved": relpath, "sha256": hex}]`. Never applied to a valid chain element or to the terminal marker. Nothing is deleted without a verified preservation copy.
+- `train_chunked(root, entry, ticket, env, device, max_chunks=None, log=print) -> str`: the per-model loop of §5.4 steps 0–10 under `root/out/<model>/`; returns `"DONE"`, `"INVALID:NONFINITE"` or `"PAUSED"` (stopped after `max_chunks` chunks; used by TRAIN-EQUIV for fresh-process resumes). Raises `CloudStop` on every `STOP:` condition. For the C0 ticket (`smoke_resume: true`), after the first chunk it discards every in-memory object and re-enters from step 1 (discover) once (§5.9).
+
+### 5.6 Schemas
+**Ticket** `ticket_<wave>.json` (canonical JSON): `schema`, `wave`, `bundle_files` (sorted relative paths in SHA256SUMS), `protocol_id`, `protocol_sha256`, `code_commit` (H, 40 hex), `data_master`, `model_master`, `model_config` (`dataclasses.asdict(ModelConfig)`), `train_config` (`dataclasses.asdict(TrainConfig)` of the wave's recipe), `steps`, `K`, `batch_size`, `smoke_resume` (bool; true only for C0), `cell_templates_sha256` (list of 6 sha256 of `CELL_TEMPLATES`), `models` (list in wave order). A model entry: `model`, `arm`, `seed` (int, or `"smoke"`), `run_key` (list), `init_seed` (int), `batch_stream` (`["batch_order", *run_key]`), `data_stream` (list), `data_seed` (int, the pool generator's seed), `data_file`, `data_sha256` (file), `token_sha256` (raw token digest), `n_rows`, `init_file`, `init_file_sha256`, `init_weights_sha256`, `expected` (the `expected_digests` list). `entry_sha256` of a model = `sha256_json(entry)`.
+
+**Record** `rec/<step:06d>.json`: `schema`, `model`, `step`, `file` (relative path of the checkpoint), `file_sha256`, `weights_sha256`, `batch_sha256`, `pcg64_state`, `pcg64_state_sha256`, `prev_record_sha256`, `record_sha256`, `session_id`, `device_name`, `cuda_capability` (string `"<major>.<minor>"` or `None` on CPU), `train_loss_first`, `train_loss_last`, `loss_finite`, `wall_s`, `utc`. Step 0: `batch_sha256`, `train_loss_first`, `train_loss_last`, `loss_finite`, `wall_s` are `null`; `pcg64_state` is the fresh generator's state; `prev_record_sha256 = entry_sha256`.
+
+**Terminal marker** `rec/NONFINITE.json`: `schema`, `model`, `step` (the failing update), `chunk` (index of the chunk, 1-based), `session_id`, `loss_bits` (hex), `prev_record_sha256` (last valid record), `utc`, `marker_sha256` (sha of the canonical JSON without it).
+
+**Session-start record** `sessions/<utc>-<session_id>.start.json`: `schema`, `kind = "start"`, `session_id` (uuid4 hex), `utc`, `python`, `numpy`, `torch`, `cuda` (`torch.version.cuda`), `cudnn` (`torch.backends.cudnn.version()`), `gpu` (`{"name", "driver", "memory"}` from `nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader`), `flags` (`set_precision` result, incl. `deterministic`, `tf32_matmul`, `tf32_cudnn`, `matmul_precision`, `cublas_workspace_config`), `code_commit` (from `tarfile.open(code.tar).pax_headers["comment"]`, i.e. `git get-tar-commit-id`), `code_tar_sha256`, `ticket_sha256`, `sha256sums_sha256`, `env_compare` (list of `{"field", "old", "new"}` against the lineage's previous session; empty if none), `models` (list of `{"model", "resume_step", "status"}`), `orphans` (quarantine results), `stops` (list of STOP lines), `executed_cells` (normalised sources executed so far, in order, from `executed_sources()`).
+**Session-finalisation record** `sessions/<utc>-<session_id>.final.json`: `schema`, `kind = "final"`, `session_id`, `start_record` (file name and sha256 of this session's start record), `utc`, `executed_cells` (all, through cell 6), `models` (final statuses), `export` (relative path of the snapshot).
+
+**Manifest** `exports/<utc>/MANIFEST.json`: `schema`, `protocol_id`, `protocol_sha256`, `code_commit`, `code_tar_sha256`, `bundle_sha256`, `bundle_id`, `ticket_sha256`, `models` (per model: `model`, `arm`, `seed`, `run_key`, `model_master`, `data_master`, `batch_stream`, `data_stream`, `data_sha256`, `init_weights_sha256`, `chain` (every record verbatim, step order), `final_file_sha256`, `final_weights_sha256` (null unless DONE), `status` ∈ {DONE, INVALID:NONFINITE, INCOMPLETE}, `devices` (sorted distinct `device_name`), `marker` (verbatim or null)), `orphans` (all preservation entries), `inventory` (canonical dict relative path → sha256 of every checkpoint, record, terminal marker and session-record file in the exported state, excluding `MANIFEST.json`, `.part` files and any inventory file). `MANIFEST_SHA256` = sha256 of the manifest bytes.
+
+### 5.7 Notebook-facing functions
+- `executed_sources() -> list[str]`: the raw sources of the cells executed in this IPython kernel, in order (`get_ipython().user_ns["In"][1:]`); `[]` outside IPython.
+- `normalise_source(src) -> str`: `\r\n → \n`; strip trailing whitespace of each line and trailing newlines; replace the cell-2 line `BUNDLE_SHA256 = "<64 hex>"` (regex `BUNDLE_SHA256 = "[0-9A-Fa-f]{64}"`) by `BUNDLE_SHA256 = "PASTE_BUNDLE_SHA256_HERE"`.
+- `verify_bundle(root, bundle_sha256) -> dict`: re-checks `SHA256SUMS` against `bundle_sha256`, every listed file against `SHA256SUMS`, the ticket schema, the `code.tar` commit = ticket `code_commit`; prints `BUNDLE OK <first 8 hex upper>… wave <wave>, <n> models, code <first 7 of H>`; returns `{"root", "bundle_sha256", "bundle_id", "ticket", "ticket_sha256", "code_commit"}`. Mismatch → `CloudStop("STOP: BUNDLE HASH MISMATCH")`.
+- `environment(root, bundle) -> dict`: requires CUDA (`CloudStop("STOP: NO GPU")`), calls `set_precision`, collects the session-start fields, creates `session_id`; prints `ENV OK torch <v> cuda <v> <gpu name>`; returns the env dict (keys of the session-start record plus `"bundle"`); stored as the module's current environment.
+- `precheck(root, env) -> dict`: compares versions with the lineage's previous session (prints `ENV CHANGED <field>: <old> → <new>` for each change), then for every model not DONE/terminal: `discover`, restore the recorded PCG64 state and check it against the ticket, and the batch-ID pre-check of its next chunk; prints `PRECHECK OK <k>/<n>`; raises `CloudStop` otherwise.
+- `run_wave(root, env) -> dict`: writes the session-start record, then `train_chunked` for each ticket model in order; progress lines `[<model>] step <step:05d>/<steps:05d> ok ckpt <file_sha[:8]> <wall:.1f> s`, `MODEL DONE <model> weights <weights_sha[:4]>…`, finally `WAVE DONE <k>/<n>` (k = DONE or terminal INVALID:NONFINITE). Returns `{model: status}`.
+- `finalise(root, env=None) -> dict`: `env=None` uses the module's current environment (`RuntimeError` if none); independently revalidates every chain from storage (`discover`); writes the finalisation record and a new snapshot `exports/<utc>/MANIFEST.json`; refuses `WAVE DONE` (raises `CloudStop("STOP: HOLD …")`) unless every model is DONE or terminal INVALID:NONFINITE; prints `WAVE DONE <k>/<n>` and `MANIFEST_SHA256 = <64 hex>`; returns `{"manifest": relpath, "manifest_sha256": hex, "statuses": {…}}`. Earlier snapshots are never modified.
+- `main(argv=None) -> int`: local CLI `python -s x6s1_cloud.py train <root> <model> [--max-chunks N] [--device cpu]` (runs `train_chunked` with a CPU environment record; used by TRAIN-EQUIV and RUNTIME-ACCT children). Exit 0 for DONE/PAUSED, 3 for INVALID:NONFINITE, 2 for a `CloudStop`.
+
+## 6. x6s1_ingest.py (local)
+
+### 6.1 CLOUD-PREP (§5.3; gate 9)
+- `ALLOWED = ("code.tar", "X6S1_colab.ipynb", "SHA256SUMS", "ticket_<wave>.json", "data/train_<arm>_s<s>.npy", "data/smoke.npy", "init/init_s<s>.pt", "init/init_smoke.pt")` (patterns); `allowed_class(relpath, wave, models) -> bool`: a train or smoke pool only of the wave's own models, an init only of their seeds.
+- `forbidden(relpath) -> bool`: true for any name containing `val`, `test`, `gate`, `prefix`, `dev`, `sealed`, `registry`, `state` or `latent` (path components, case-insensitive), or any file outside `ALLOWED`.
+- `code_tar(worktree, head, out_path) -> str`: `git archive --format=tar <H> -- src tools/x6_stage1 pyproject.toml`; returns its sha256.
+- `make_ticket(wave, head, pools, inits) -> dict` (§5.6 schema); `pools`/`inits`: dicts model → `{"path", "file_sha256", "token_sha256", "n_rows", "data_seed"}` / `{"path", "file_sha256", "weights_sha256"}`.
+- `build_bundle(wave, out_root, head, worktree, pools, inits, notebook) -> dict` `{"bundle_dir", "bundle_id", "bundle_sha256", "files"}`: builds under `out_root/<bundle-id>/` (out_root = `X:/Downloads/topo-scratch/<job>/cloud_bundle/`), writes `SHA256SUMS`, asserts `check_bundle`; one immutable directory per bundle id (exclusive create of the directory).
+- `check_bundle(bundle_dir, wave) -> dict` `{"status": "PASS" | "INVALID", "refused": [relpath], "bundle_sha256"}` (T-BUNDLE).
+
+### 6.2 Integrity gates (§5.8; gates 12, 14, 18)
+Each gate returns `{"gate", "model", "status", "detail"}`; `status` is `"PASS"` or the §5.8 status.
+- `gate_weights_hash(snapshot, manifest_sha256, model, redownload_ok=False) -> dict`: `snapshot` is the downloaded bundle directory; (a) manifest sha = relayed hash; (b) exact inventory coverage with the §5.6 exclusions, every file's sha, inventory checkpoints = chain `file_sha256`s; (c) every checkpoint's model weights (`torch.load(weights_only=True)`) digest = record; final = manifest. (a)–(b) failure → `"TRANSFER_RETRY"` while `redownload_ok` and fewer than 3 downloads; otherwise `"FAIL_TECHNICAL/WEIGHTS_HASH"`.
+- `gate_cloud_prov(snapshot, manifest, model, frozen) -> dict`: every §5.6 field present and well typed; code commit = H; protocol sha; BUNDLE_SHA256 = released; ticket sha and its seeds, configuration, `steps`, K = frozen; every available execution record validates (`check_execution`); versions recorded; CUDA device in every chunk; TF32 off and deterministic on in every session. Failure → `"FAIL_TECHNICAL/CLOUD_PROV"`.
+- `check_execution(records, templates=CELL_TEMPLATES) -> dict` `{"status", "detail"}`: each record's `executed_cells` (normalised) is a sequence of registered templates in permitted order with permitted repetitions: a session is `1 2 3 4 5` or `1 2 3 4 6` or `1 2 3 4 5 6`, where any contiguous run may be re-executed (a cell `j` may be followed by any cell `i ≤ j + 1`, the first executed cell is 1, cell 5 or 6 never before 4 in the session); any non-template source → FAIL. A start record must hold exactly the cells through the first cell-5 execution; a final record references an existing start record of the same session. A session without a final record is accepted.
+- `gate_data_id(snapshot, manifest, model, local) -> dict`: data file sha and raw token digest = local pool; step-0 weights digest = local init digest; every chunk's `batch_sha256` and `pcg64_state_sha256` = local expected; each checkpoint's internal consistency (`x6s1_cloud.check_internal`). Failure → `"FAIL_TECHNICAL/DATA_ID"`.
+- `gate_train_complete(manifest, model, steps, k) -> dict`: records for 0, K, …, steps exactly once, linked, status DONE, no terminal marker → PASS. A valid prefix ending before `steps` → `"HOLD:CLOUD_INCOMPLETE"`; gap, duplicate, bad link or out-of-order → `"FAIL_TECHNICAL/CHAIN"`; valid terminal marker → `"INVALID:NONFINITE"`; unreadable or ambiguous marker → `"HOLD:MARKER"`.
+- `ingest(snapshot, manifest_sha256, wave, store, local, frozen) -> dict`: per model, the four gates in order WEIGHTS-HASH → CLOUD-PROV → DATA-ID → TRAIN-COMPLETE (stop at the first non-PASS); on four PASS, `write_admission_lock` then `import_model`; returns `{model: {"status", "gates": [...], "admitted": bool}}`. The wave's gates run once per snapshot.
+
+### 6.3 Admission, import and retrain eligibility (§5.7, §12 items 9–10)
+- `write_admission_lock(store, model, info) -> Path`: exclusive create of `cloud/ADMITTED/<model>.json` with `model`, `bundle_id`, `manifest_sha256`, `final_file_sha256`, `final_weights_sha256`, `chain_record_sha256` (list), `utc`. An existing lock → `FileExistsError` (a later retrain is blocked).
+- `admitted(store, model) -> dict | None`.
+- `import_model(snapshot, store, wave, model, manifest) -> dict`: exclusive-create copies into `cloud/<wave>/<model>/` (`ckpt/`, `rec/`, `MANIFEST.json`) with `STORE_MANIFEST.json` (relative path → sha256).
+- `verify_admitted(store, model) -> dict` (E3.0): final checkpoint sha256 and weights digest equal the admission lock; re-downloaded byte-identical artifacts are accepted; different weights → `"INVALID"`.
+- `retrain_eligible(store, model, evaluations) -> bool`: true iff no admission lock exists and `evaluations` (the store's record of local evaluations of any candidate checkpoint of this model: LOSS-ECHO, dev curves, validation, test, emergence, other) is empty.
+- `refinalised(snapshots) -> bool`: two snapshot directories of one bundle are distinct and the earlier is unchanged (RC7).
+
+### 6.4 Descriptive local records
+- `loss_echo(store, wave, model, pool) -> dict` `{"model", "chunks": [{"step", "cloud", "local32", "local64"}], "max_abs_32", "max_abs_64"}` (after admission).
+- `learning_curve(store, models, dev_pools) -> dict` `{model: {step: ce}}` for `LC_STEPS`, float64 `lm_loss` on dev; written to `sealed/learning_curve.json` by `x6s1_run.seal`.
+
+## 7. x6s1_eval.py
+
+- `set_threads() -> None`: `d2a_train._set_threads()` with `THREADS` (2, 1); asserts.
+- `pad(histories, n_obs=33) -> np.ndarray` uint8 `[n, 33]` (zero padding after each history).
+- `model_inputs(tokens) -> torch.Tensor` int64 `[n, 33]` = `[BOS, w_1..w_32]`.
+- `class ModelPredictor`: `__init__(self, ckpt_path, file_sha256, weights_sha256)` verifies the file sha, loads the model weights (`torch.load(weights_only=True)`), checks `weights_digest`, builds `Checkpoint(run_id=<model>, step=<step>, observation_id="x6s1", state=<bytes of torch.save({"model": sd})>, model_config=asdict(MODEL_CFG))`, `load_model`, `.double()`, `.eval()`. `__call__(self, tokens, t) -> np.ndarray` float64 `[n, 18]`: softmax of `logits[i, t_i]` under `torch.no_grad()`, batches of `EVAL_BATCH`; `t` an int or int array `[n]`. `ModelPredictor.from_state(sd, name)` builds from an in-memory init state (init predictors).
+- `OraclePredictor(arm, kind)`: `__call__(tokens, t) -> float64[n, 18]` for kind ∈ `("qstar", "q_empty", "q_parity", "q_counts", "q_H1", "q_Parikh", "q_8", "h_last", "h_first", "h_rev")` (float of the exact laws of §4.4; `q_8` from `q_window`).
+- `qstar(arm, tokens, t) -> tuple[np.ndarray, np.ndarray]`: `(q float64[n, 18], codes int16[n, 18])`: `codes` index `stats_tables["qvals"]` (code 0 is the entry 0; nonzero entries are the finite set of §7.4 item 1).
+- `class QuantInvalid(ValueError)`.
+- `quantise(s) -> np.ndarray` int64 `[n, 18]`: §2.2 steps 1–3 (precondition `|Σs − 1| ≤ SUM_TOL` and `s ≥ 0`; `0 ≤ R ≤ 18`; the R largest fractional parts get +1, ties by lower token index); raises `QuantInvalid`.
+- `readout(k) -> np.ndarray` float64 `[n, 18]` = `(1 − ε)·k/Q + ε/18` (float of the exact rational; descriptive use only).
+- `readout_exact(k_row) -> tuple[Fraction, ...]`.
+- `score(codes, k, tables) -> np.ndarray` float64 `[n]`: x̂_i = Σ_j (`tables["qlnq"][codes]` − `tables["fl_q"][codes]`·`tables["lnp"][k]`) with `qlnq[0] = fl_q[0] = 0` (§7.4 item 3).
+- `kl_rows(q, p) -> np.ndarray` float64 `[n]`: raw full-vocabulary KL(q‖p) with `0·ln 0 = 0`; `+inf` where q > 0 = p.
+- `cue_mass(p) -> np.ndarray` = `p[:, 15:18].sum(1)`; `cue_normalise(p) -> np.ndarray` float64 `[n, 3]` (NaN rows where the cue sum is 0 or non-finite).
+- `pair_terms(ph, ph2, qh, qh2) -> tuple[np.ndarray, np.ndarray]`: cue-normalised differences; `num_i = ⟨Δp̂_c, Δq*_c⟩`, `den_i = ‖Δq*_c‖²` (float64 `[r]`).
+- `beta_fsum(num, den) -> float` = `math.fsum(num) / math.fsum(den)` (`nan` if the denominator is 0; T7).
+- `beta_exact(num, den, informative=None) -> Fraction` via `x6_exact.beta` on the pairs with `den > 0` (E3.5 XCHECK; zero-oracle-difference pairs omitted).
+- `designed_stats(pred, D_arrays, qstar_fn, tables) -> dict`: keys `"beta_W2"`, `"beta_W2_y"` (list of 3), `"R_W2"`, `"Delta_W3"`, `"rho_C"`, `"rho_W2"`, `"cue_mass_median"`, `"beta_W1"`, `"beta_W3"`, `"beta_W3_bal"`, `"beta_W3p"`, `"nonfinite"` (bool). `rho_C` = mean_{C1–C4 pairs}‖Δp̂_c‖² / mean_{W2 pairs}‖Δq*_c(NA)‖²; `rho_W2` = mean_{W2}‖Δp̂_c‖² / the same denominator.
+- `natural_pairs(pred, test_tokens, partner_tokens, rows, t=32) -> dict` `{"rows", "num", "den", "cue_mass_h", "cue_mass_h2", "nonfinite"}`.
+- `own_arm(pred, arm, tokens, tables) -> dict` `{"xhat": float64[N], "raw_kl": float64[N], "cue_mass": float64[N]}` (QuantInvalid propagates).
+- `eval_chunk(name, plan, out_dir) -> dict`: one E3.A chunk for predictor `name` (§13.3): writes by exclusive create `out_dir/<name>/own.npz` (`xhat`, `raw_kl`, `cue_mass`), `pairs.npz` (`rows`, `num`, `den`, `cue_mass_h`, `cue_mass_h2`, `p_h`, `p_h2` float64 `[r, 18]`), `designed.json`, `emergence.json` (NA models), `profile.npz` (NA models; t ∈ {16, 24}), `gamma.json` (NA models), `chunk.json` (sha256 of each file, `env_local`, `name`); returns `chunk.json`'s content.
+
+## 8. x6s1_stats.py
+
+- `eb_constants(delta, n, B=17) -> dict` of Decimal strings: `L` (= ln(2/δ)), `a`, `b`, `BL3n`, `sqrt2Ln` (60 digits, outward as §7.4 item 5).
+- `outward_inputs(xhat, e_row=E_ROW) -> tuple[Fraction, Fraction]`: `X̄⁺ = Σ x̂ / n + e_row` and `Z̄⁺ = (1/m) Σ_k (|x̂_{2k−1} − x̂_{2k}| + 2e_row)² / 2` (exact `Fraction` of the float64 values; pairs (0,1), (2,3), … in row order; n even).
+- `eb_bound(xbar_plus, zbar_plus, n, delta, B=17) -> Decimal`: Theorem EB with δ₁ = δ₂ = δ/2, in a 60-digit context with `ROUND_CEILING`, `ln` + 10⁻⁵⁵, each sqrt + 10⁻⁵⁵.
+- `eb_report(xhat, delta) -> dict` `{"U": str, "xbar_plus": str, "zbar_plus": str, "xbar": float, "n": int, "delta": str}` (`U_report = U⁺`, no separation term).
+- `eb_reference(xbar, zbar, n, delta, B=17, prec=80) -> Decimal`: plain (non-outward) evaluation of the same formula, for the SCORE self-test.
+- `qvals() -> tuple[Fraction, ...]`: 0 followed by the sorted distinct nonzero q* entries of §7.4 item 1 for m = 1..32.
+- `log_tables(Q=2**20, eps=EPS) -> dict`: `"lnp"` float64 `[Q + 1]` (`ln p^Q(k)`), `"qlnq"` float64 `[len(qvals)]`, `"fl_q"` float64 `[len(qvals)]`, `"qvals"` (strings of the Fractions), `"max_diag"` (max |v₈₀ − v₁₂₀| as a Decimal string), `"sha256"` (of the canonical npz bytes); raises `ValueError` if any diagnostic exceeds 10⁻⁶⁰. `table_entry(x: Fraction, kind) -> dict` `{"v80", "v120", "float"}` with kind ∈ `("ln", "qlnq")`.
+- `decimal_kl(q, pq, prec=80) -> Decimal` (SCORE spot check).
+- `quantile(x, level) -> float` = `float(np.quantile(np.asarray(x, np.float64), level, method="linear"))`. Registered levels: `LB_975 = 0.025`, `UB_975 = 0.975`; 95 % half-width = (q(0.975) − q(0.025)) / 2.
+- `boot_means(x, B, gen) -> np.ndarray` float64 `[B]`: per draw `idx = gen.integers(0, n, size=n)`, mean of `x[idx]` (gate and per-model intervals).
+- `boot_beta(num, den, B, gen) -> np.ndarray`: same draws applied to the ratio Σnum/Σden.
+- `cord_draws(num, den, N, B, gen) -> tuple[np.ndarray, np.ndarray]`: `num` float64 `[P, n_inf]` (one row per predictor, informative rows only), `den` float64 `[n_inf]`; per draw `M = gen.binomial(N, n_inf / N)`, then `idx = gen.integers(0, n_inf, size=M)`, `c = np.bincount(idx, minlength=n_inf)`; returns `(num_sums float64[B, P], den_sums float64[B])` (§7.5).
+- `two_stage_law(N, informative) -> dict[tuple, Fraction]`: the exact law of the informative-row count vector produced by the two-stage scheme (small cases; for T-STAT).
+- `tail(num_obs, den_obs, mean, lb_perc, draws_mean) -> dict` `{"D1": bool, "D2": bool, "status": "PASS" | "FAIL", "lb_norm": float}`: D1 `max_i |num_i(m)| ≤ TAIL_D1 · Σ_i den_i` for every predictor row; D2 `|lb_perc − (mean − Z975 · sd)| ≤ TAIL_D2` with `sd = np.std(draws_mean, ddof=1)`.
+- `boot_stream(statistic_id, model=None) -> np.random.Generator` = `SeedTree(DATA_MASTER).generator("x6s1", "boot", statistic_id[, model])`. Registered statistic ids: `"learn"` (gate, per model), `"cord"` (C-ORD), `"beta"` (per-model β_ord interval, per model), `"cseed"` (per-seed C_s, model = `"s<s>"`), `"feas"` (FEAS-POWER); the FEAS synthetic coin uses `SeedTree(DATA_MASTER).generator("x6s1", "feas")`.
+
+## 9. x6s1_decide.py
+
+Inputs are plain dicts; a missing or INVALID model is represented by `None` values and fails every per-seed condition (§7.9).
+- `learned_val(ub, g8_lo, nonfinite=False) -> str`: `"FAIL"` if `nonfinite`; `"UNRESOLVED"` if `ub` is None or not finite; `"PASS"` iff `Fraction(ub) < g8_lo`; else `"FAIL"`.
+- `learn_decision(status_s1, status_s2) -> str`: `"GO"` iff either is PASS; `"NOT_LEARNED"` iff both FAIL; else `"LEARNING_UNRESOLVED"`.
+- `learned_test(U, g8_lo) -> str`: `"PASS"` iff `U` (Decimal string) `< g8_lo` exactly; `"UNRESOLVED"` if `U` is None/non-finite; else `"FAIL"`.
+- `ctrl(b_init, b_ab, b_zc) -> float`: `max(b_init, mean(b_ab), mean(b_zc))`; `None` if any input is None or non-finite (b_ab, b_zc: 4 values each).
+- `cord(mean, lb, adjusted, tail_status, resolved) -> str`: `"UNRESOLVED"` unless `resolved` and `tail_status == "PASS"`; `"SUPPORTED"` iff `mean ≥ 1/4` and `lb > 1/20` and `adjusted[s] > 0` for ≥ 3 of 4; else `"NOT_SUPPORTED"`.
+- `sharp_target(U, g0_lo) -> dict` `{"SHARP": bool, "TARGET": bool, "status"}`: `SHARP` iff `U < g0_lo`, `TARGET` iff `U < (3/4)·g0_lo` (exact; equality not supported); status `"TARGET_MET"`, `"GAIN_BELOW_TARGET"` or `"NOT_CERTIFIED"`; `U` None → NOT_CERTIFIED.
+- `cue_ok(median) -> bool`: `median ≥ 1/10` and finite.
+- `placebo_natural(betas) -> dict` `{"failed": [names], "ok": bool}` (`|β| ≤ 1/10`; a non-finite β fails).
+- `ord_d(na, init, ab, zc, dw2_lo) -> dict` `{"status": "PASS" | "FAIL" | "NUMERICALLY_UNRESOLVED" | "UNRESOLVED", "control_limited": bool, "reason"}`: arguments are `designed_stats` dicts of NA-s, init(s), AB-s, ZC-s; §2.5 exactly (band `BAND`, bar `(3/4)·dw2_lo`).
+- `seed_flags(adj, lb_adj, U025, xbar, hw95, g0_lo) -> dict` `{"orderN", "lowN", "precision_ok"}` (§7.6).
+- `designed_counts(statuses) -> dict` `{"PASS": k, "FAIL": f, "UNRESOLVED": u}` (NUMERICALLY_UNRESOLVED and UNRESOLVED both count as UNRESOLVED).
+- `decide(ev) -> dict`: §7.9 rules 1–9 in order; returns `{"outcome", "rule"}` with `rule` ∈ `("1", "2", "3", "4", "5", "6", "6'", "7", "8", "9")`. `ev` keys: `"validity"` (`{"S0", "PF", "SMOKE_INGEST", "G0_ORC", "SCORE", "G0_POS", "G0_FEAS", "REGISTRY", "INCOMPLETE"}` statuses), `"learn"` (GO/NOT_LEARNED/LEARNING_UNRESOLVED), `"pipeline"` (`{"DET", "XCHECK", "QUANT"}`), `"learn_test"` (dict NA-s → PASS/FAIL/UNRESOLVED), `"cord"` (SUPPORTED/NOT_SUPPORTED/UNRESOLVED), `"placebo_natural_ok"` (bool), `"ord_d"` (dict s → status), `"lowN"` (dict s → bool), `"precision_ok"` (dict s → bool), `"checks_ok"` (bool: every required validity and placebo check passed).
+- `qualifiers(ev) -> list[str]`: in the §7.9 listed order, each as `"NAME(args)"`, e.g. `"SHARP_NATURAL(2/4)"`, `"CONTROLS_LEARNED(AB 3/4, ZC 4/4)"`, `"CONTROL_LIMITED(natural, AB-s2)"`, `"DESIGNED_UNRESOLVED(1)"`, `"MIXED_DEVICE(NA-s1)"`; only the applicable ones.
+- `licence(outcome, values) -> str`: the §3 sentence of the outcome with brackets filled from `values` (`beta_bar`, `lb`, `k`, `f`, `u`).
+- `report(ev, values) -> dict`: report keys of §11.4.
+
+## 10. x6s1_registry.py
+
+- `class RegistryError(RuntimeError)`: attribute `status` ∈ `{"FAIL_TECHNICAL/LINEAGE", "INCONCLUSIVE/REGISTRY_INCOMPLETE"}`.
+- `row_digests(tokens) -> np.ndarray` uint8 `[n, 32]`: sha256 of each row's `w_1..w_32` bytes (uint8).
+- `digest_keys(digests) -> np.ndarray` uint64 `[n]`: the first 8 digest bytes read **big-endian** (so key order equals byte-lexicographic digest order).
+- `hex_to_digests(hex_array) -> np.ndarray` uint8 `[n, 32]`.
+- `class DigestSet`: built from sorted runs on disk under a directory; `DigestSet.build(chunks, run_dir, run=REG_RUN) -> DigestSet` (each chunk: uint8 `[k, 32]` digests; sorts runs of ≤ `run` identities, writes them as `run_<i>.npy`, merges keys); attributes `keys` (sorted uint64, with duplicates), `n`; methods `contains(digests) -> np.ndarray` bool `[n]` (key candidate search, then full-digest confirmation against the runs), `sha256() -> str` (sha256 of the sorted unique full digests, 32 bytes each, concatenated).
+- `iter_kreg2(out_dir, version="K-REG2", run=REG_RUN) -> Iterator[np.ndarray]`: streams the `digests` member of `<version>_digests.npz` (via `zipfile` and the `.npy` header; no full load) in stored order, chunks of ≤ `run` entries as `<U64` arrays. `iter_kreg2_seq_ids(out_dir, version, run)` likewise for `seq_ids` (int64).
+- `read_kreg2(out_dir, version="K-REG2", run=REG_RUN) -> dict` `{"n_digests", "n_seq_ids", "dtype": "<U64", "shape": [n], "seq_dtype": "int64", "digests_sha256", "seq_id_union_sha256", "digest_file_sha256", "keys": uint64 sorted, "manifest": dict}`: re-hashes the npz against the manifest's `digest_file_sha256`; while streaming checks dtype `<U64`, 1-D shape, strict ascending order (sorted unique), count = `n_digests`, `sha256("\n".join(digests))` = `digests_sha256` (computed incrementally), seq ids strictly ascending and `sha256(seq_ids.tobytes())` = `seq_id_union_sha256`. Any mismatch raises `RegistryError("FAIL_TECHNICAL/LINEAGE")`. Never materialises the full Unicode array, a Python digest set or the joined string.
+- `stage0_rows() -> dict` (the REG1 (a) sources: regenerated MC tokens per arm and the stage-0 constructed histories).
+- `handoff_rows(mailbox=MAILBOX) -> dict` `{"status", "rows": uint8[r, 32] or list, "failures"}`: `k4b_registry.validate_handoff_json(mailbox)` first (a failure → `"INCONCLUSIVE/REGISTRY_INCOMPLETE"`), then `c1_registry_sources.handoff_sources(mailbox)`; keeps 32- and 33-element lists that `x6_model.parse` accepts (first 32 symbols).
+- `foreign_sources(k4b_store=K4B_STORE) -> dict` = `k4b_registry_k.source_k(k4b_store)` classification plus `read_kreg2`.
+- `inventory_x6(project_root, scratch_roots, registered) -> dict` `{"status": "PASS" | "INCONCLUSIVE/REGISTRY_INCOMPLETE", "components", "unclassified": [path], "foreign": [{"path", "reason"}]}`: runs `k4b_registry.inventory(project_root)` as one component, then scans every named X6 scratch root (`X:/Downloads/topo-scratch/<job>/` of every X6S1 job, incl. `cloud_bundle/`, `cloud_in/`) for `.npz`, `.npy`, ObservationSet roots and registered history-bearing JSON; each X6 history-bearing source must be registered or a hash-identical copy of a registered one (`registered`: sha256 → name), else it is unclassified → INCOMPLETE. Foreign classifications carry a recorded reason.
+- `build_reg1(store, sources) -> dict` and `build_reg2(store, reg1, pools) -> dict`: manifest `{"version": "X6-REG1" | "X6-REG2", "status", "n", "sources": [{"name", "kind", "n", "sha256"}], "digest_sha256", "collision_mass": str, "built_utc"}` written by exclusive create under `registry/`, with the runs.
+- `separation(reg2, pools) -> dict` `{"status": "PASS" | "FAIL_TECHNICAL/LINEAGE", "checks": {…}, "duplicates": {pool: int}}`: §6.5 exactly (test ∩ REG2 = ∅ per arm; tests pairwise disjoint; val ∩ (REG1 ∪ train ∪ dev ∪ gate ∪ smoke ∪ prefix) = ∅; gate, prefix, smoke disjoint from train and dev; sequence ids disjoint via `check_disjoint`); within-split duplicates counted.
+- `collision_mass(n) -> Fraction` = `n · Fraction(1, 16) · Fraction(1, 5**31)`.
+- `id_reuse(pools, other_sets) -> dict` and `cross_process(reg) -> dict`: diagnostics only.
+
+## 11. x6s1_run.py
+
+### 11.1 S0 and binding (§8 row 1; §14.5)
+- `PROTECTED = ("src", "pyproject.toml", "tools/x4_oracle_profile", "tools/x6_stage0", "tools/d2a", "tools/k4b", "tools/c1prime", "tools/c1prime_registry", "tools/x4_circle_history", "tools/check_file_sizes.py", "tools/check_imports.py", "tools/x6_stage1", "tests/learner", "tests/dataset", "tests/contracts", "tests/oracle", "tests/oracle_profile", "tests/world", "tests/process", "tests/x6_stage0", "tests/d2a", "tests/k4b", "tests/c1prime_registry", "tests/x6_stage1")`.
+- `MODULES = ("x6s1_data.py", "x6s1_pairs.py", "x6s1_cloud.py", "x6s1_ingest.py", "x6s1_eval.py", "x6s1_decide.py", "x6s1_run.py", "x6s1_registry.py", "x6s1_stats.py")`; `ALLOWLIST` = `tools/x6_stage1/{API.md, PROTOCOL_X6S1_v1.md, X6S1_colab.ipynb}` + `tools/x6_stage1/<each of MODULES>` + `tests/x6_stage1/AUTHORSHIP_A.md`, `tests/x6_stage1/AUTHORSHIP_B.md`, and `tests/x6_stage1/test_a_<name>.py` (≤ 5) and `tests/x6_stage1/test_b_<name>.py` (≤ 5) (`<name>` matches `[a-z0-9_]+`).
+- `allowlist_ok(lines) -> bool`: every line of `git diff --no-renames --name-status R H -- <PROTECTED>` is `A\t<allowlisted path>`, with at most 5 `test_a_*` and 5 `test_b_*` files.
+- `repair_ok(worktree, head) -> dict` `{"status", "detail"}`: P is an ancestor of R (`git merge-base --is-ancestor`); the blob sha256 of each `REPAIR_BLOBS` file at H equals FREEZE.json's (and `REPAIR_BLOBS`); `git diff --name-only P H -- tools/d2a` is empty.
+- `notebook_sha_ok(worktree, head, freeze) -> bool`.
+- `seed_fresh(seed_maps) -> bool`: neither master appears in any recorded seed map or config (values compared as ints, recursively).
+- `s0_check(worktree, head, store, dispatch, freeze) -> dict`: items `"i"`…`"ix"` → `{"status", "detail"}`, and `"status"` (PASS iff all PASS).
+- `meter_bind_check(path, expected_sha256, import_dir) -> None`: raises `RuntimeError` if the store-local `x6s1_meter_bind.py` sha256 differs or the meter would import from a directory other than `<worktree>/tools/x4_oracle_profile`. `METER_VALUES = {"OUTPUT_CAP": 16 * 2**30, "MEMORY_CAP": 12 * 2**30, "CAP_S": inf, "STOP_NEW_S": inf}`.
+- `dispatch_identities(mailbox, job_id, task_sha256, session, lock_path) -> None` = `d2a_train.verify_identity` (unchanged).
+
+### 11.2 NB-STATIC (§5.11; T-NB)
+- `nb_static(path) -> dict` `{"status", "detail"}`: JSON parses; `nbformat == 4`; exactly six code cells; each code cell's source (joined, normalised by `x6s1_cloud.normalise_source`) equals `CELL_TEMPLATES[i]`; no outputs and `execution_count` null in every code cell; total code lines ≤ 60; markdown cells allowed.
+- `bootstrap_check(bundle_dir, bundle_sha256) -> str`: runs cell 3's inline hashlib bootstrap (the first eight code lines of template 3, executed with `ROOT` and `BUNDLE_SHA256` bound, without importing the module) against a bundle directory; returns `"OK"` or the `STOP:` message.
+
+### 11.3 Local environment, sealing and lineage
+- `env_local() -> dict` (§2.2, OS 3): `python`, `numpy`, `torch`, `blas` (`numpy.show_config(mode="dicts")` and `torch.__config__.show()` text), `cpu` (`platform.processor()`, `os.cpu_count()`), `threads` (`{"intra", "interop"}` from torch), `thread_env` (OMP_NUM_THREADS, MKL_NUM_THREADS, OPENBLAS_NUM_THREADS values or null), `batch` (`EVAL_BATCH`), `commit` (H). Every evaluating stage record holds `"env_local"`.
+- `env_changed(a, b) -> list[str]`: keys whose values differ (excluding volatile keys).
+- `seal(store, name, obj) -> str`: exclusive create `sealed/<name>`; returns sha256; recorded in the stage record. `unseal(store, name, sha256) -> dict` refuses before E3 or a stop (`RuntimeError`).
+- `VOLATILE_KEYS = x6_store.VOLATILE_KEYS | {"session_id", "pid", "peak_mem_bytes", "built_utc", "env_local"}`; `strip_volatile`, `reports_equal`, `archive_attempt`, `compare_attempt`, `lineage_precheck`, `write_manifest`, `read_manifest` are the `x6_store` generics (unchanged; reused by import).
+- `retrain_route_ok(store, model) -> bool` = `x6s1_ingest.retrain_eligible(store, model, <store evaluation log>)`.
+
+### 11.4 Stage records and report keys
+- `write_gate(store, gate, status, values) -> dict`: appends to `GATES.jsonl` `{"gate", "status", "values", "utc"}`; `write_stage(store, stage, record) -> Path`: exclusive create `stages/<stage>/record.json` and one `STAGES.jsonl` line.
+- Gate names (exact): `IMPL`, `AUTH-ADMIT`, `S0`, `PF`, `G0-ORC`, `SCORE`, `G0-POS`, `REG`, `G0-FEAS`, `HEADROOM-D`, `CLOUD-PREP`, `AUTH-VERIFY`, `SMOKE-INGEST`, `INGEST-C1`, `LEARN`, `LC-1`, `INGEST-C2`, `LC-2`, `E3.0`, `E3.1`, `E3.A`, `E3.2`, `E3.3`, `E3.4`, `E3.5`, `E3.6`, `E3.7`, `E3.8`, `E3.9`.
+- **Report** `stages/E3z/report.json` keys: `protocol_id`, `protocol_sha256`, `head`, `outcome`, `rule`, `qualifiers`, `licence`, `gates` (gate → status), `models` (model → status), `learn` (`{"NA-s1", "NA-s2", "decision"}` statuses), `learn_test` (model → status), `natural` (`{"beta_ord": {predictor: float}, "ctrl": {s: float}, "adjusted": {s: float}, "mean": float, "lb": float, "tail": {…}, "cord": status, "C_s": {s: {"value", "lb", "ub"}}}`), `sharp_target` (NA-s → `{"U", "SHARP", "TARGET", "status"}`), `designed` (predictor → `designed_stats` dict; `ord_d` s → status; `counts`), `readout` (predictor → `{"natural", "designed"}` medians), `placebo` (`{"natural": {…}, "designed": {…}}`), `flags` (s → `seed_flags`), `descriptive` (`ladder`, `length_profile`, `references`, `spurious_ratio`, `abelian_spread`, `matched_excess`, `paired_gain`, `raw`, `emergence`, `gamma`, `headroom`, `learning_curve`, `loss_echo`), `sealed_released` (name → sha256), `env_local`, `cpu_s`, `wall_s`. Volatile: `VOLATILE_KEYS`.
+- **Static output manifest** (store, §12 item 1): `FREEZE.json`, `AUTH.json`, `registry/{X6-REG1.json, X6-REG2.json, runs/}`, `pools/` (ArtifactStore of the 36 ObservationSets + `POOLS.json` with sha256 per pool), `tables/{class_tables_NA.json, log_tables.npz, designed.npz}`, `cloud/<wave>/<model>/…`, `cloud/ADMITTED/<model>.json`, `stages/<stage>/…` (E0, E0b, E1, E2, E3a, E3w<k>, E3z), `GATES.jsonl`, `STAGES.jsonl`, `sealed/{learn.json, learning_curve.json, headroom.json, zc_s1.json}`, `waves/<wave>.lock` (transient leases), `superseded/<job>-a<k>/`, `logs/`, `cpu_ledger.json`, `x6s1_meter_bind.py`.
+
+### 11.5 Local waves (E3.A, RUNTIME-ACCT) under the repaired supervisor
+- `limits(model_cpu_s=math.inf) -> d2a_train.Limits`: `Limits(model_cpu_s, process_mem=PROCESS_MEM, stage_cpu_s={"E3": inf, "PF": inf}, total_cpu_s=inf, job_mem=JOB_MEM, poll_s=ACCT_POLL_S)`.
+- `launch(args, log_path) -> process_tree.TrainingProcess` (stdout/stderr to `log_path`; env with `PYTHONPATH=<worktree>/src` and the thread variables).
+- `supervise(children, limits, stage, clock=time.monotonic) -> dict`: `d2a_train.Supervisor(limits, cpu_of=lambda h: h.cpu_s(), mem_of=lambda h: h.memory_bytes(), kill=lambda h: h.terminate())` polled every `poll_s` until every child's `poll()` is not None; per child `{"status": "DONE" | "FAILED" | "INCOMPLETE:MODEL_CPU" | "INCOMPLETE:PROCESS_MEMORY", "cpu_s", "peak_mem_bytes", "returncode", "killed_at", "exited_at"}`; children are terminated and closed in a `finally` block. A STOP/HOLD from `d2a_train.bound_controls` + `boundary` propagates between polls.
+- `eval_wave(store, wave_name, names) -> dict`: under `process_tree.wave_lease(store, wave_name)`, ≤ `MAX_CHILDREN` children of `python -s x6s1_run.py eval-chunk <name>`; refuses a wave whose outputs already exist.
+- `runtime_acct(scratch) -> dict` `{"status", "children": {…}, "meter_cpu_s"}`: §4.6 RUNTIME-ACCT items 1–5.
+- `train_equiv(scratch) -> dict` `{"status", "mismatches": [...]}`: §4.6 TRAIN-EQUIV.
+
+### 11.6 Drivers and CLI
+- `run_stage(stage, store, dispatch) -> dict` for stage ∈ `("E0", "E0b", "E1", "E2", "E3a", "E3w", "E3z")`; each checks `disk_reason()` and the boundary at every gate; the first non-PASS validity gate stops the stage and later gates are NOT_RUN.
+- `main(argv=None) -> int`: `python -s x6s1_run.py <stage> --store <store> --job <id> --task-sha256 <hex> --session <id>` and the child commands `eval-chunk <name>`; exit 0 on a recorded result, 2 on a validity stop.
+
+## 12. §cloud: the six notebook cells (verbatim; `CELL_TEMPLATES`)
+
+The notebook `X6S1_colab.ipynb` (nbformat 4) holds exactly these six code cells in this order (markdown cells with the §5.10 runbook lines may precede each), outputs and execution counts stripped. Each template below is the exact cell source (LF line endings, no trailing newline). 36 code lines in total.
+
+**Cell 1 (GPU)**
+```python
+# X6S1 cell 1: GPU
+import subprocess, torch
+print(subprocess.run(["nvidia-smi", "--query-gpu=name,driver_version,memory.total", "--format=csv,noheader"], capture_output=True, text=True).stdout.strip())
+if not torch.cuda.is_available():
+    raise SystemExit("NO GPU")
+print("GPU OK:", torch.cuda.get_device_name(0))
+```
+
+**Cell 2 (Drive)**
+```python
+# X6S1 cell 2: Drive
+import glob
+from google.colab import drive
+drive.mount("/content/drive")
+BUNDLE_SHA256 = "PASTE_BUNDLE_SHA256_HERE"
+_hits = glob.glob("/content/drive/MyDrive/X6S1/*-" + BUNDLE_SHA256.strip().lower()[:12])
+if len(_hits) != 1:
+    raise SystemExit("STOP: BUNDLE DIRECTORY")
+ROOT = _hits[0]
+print("ROOT", ROOT[len("/content/drive/MyDrive/"):])
+```
+
+**Cell 3 (Verify)** — lines 2–9 are the inline hashlib bootstrap (§5.11)
+```python
+# X6S1 cell 3: verify
+import hashlib, sys, tarfile
+def _h(p): return hashlib.sha256(open(p, "rb").read()).hexdigest()
+if _h(ROOT + "/SHA256SUMS") != BUNDLE_SHA256.strip().lower():
+    raise SystemExit("STOP: BUNDLE HASH MISMATCH")
+_sums = {l[66:]: l[:64] for l in open(ROOT + "/SHA256SUMS", encoding="utf-8").read().splitlines()}
+if _h(ROOT + "/code.tar") != _sums.get("code.tar"):
+    raise SystemExit("STOP: BUNDLE HASH MISMATCH")
+tarfile.open(ROOT + "/code.tar").extractall("/content/x6s1")
+sys.path[:0] = ["/content/x6s1/src", "/content/x6s1/tools/x6_stage1"]
+import x6s1_cloud
+BUNDLE = x6s1_cloud.verify_bundle(ROOT, BUNDLE_SHA256.strip().lower())
+```
+
+**Cell 4 (Environment)**
+```python
+# X6S1 cell 4: environment
+ENV = x6s1_cloud.environment(ROOT, BUNDLE)
+x6s1_cloud.precheck(ROOT, ENV)
+```
+
+**Cell 5 (Train)**
+```python
+# X6S1 cell 5: train
+x6s1_cloud.run_wave(ROOT, ENV)
+```
+
+**Cell 6 (Finalise)**
+```python
+# X6S1 cell 6: finalise
+x6s1_cloud.finalise(ROOT)
+drive.flush_and_unmount()
+```
+
+`bootstrap_check` (§11.2) executes template 3 lines 2–9 (from `import hashlib` through the second `raise`) with `ROOT` and `BUNDLE_SHA256` bound, reading files from a local bundle directory. `cell_templates_sha256` in the ticket is `[sha256_bytes(t.encode("utf-8")) for t in CELL_TEMPLATES]`.
+
+## 13. Implementation choices (open in the protocol; simplest option)
+
+1. Both pre-allowlisted overflow modules exist from the start: `x6s1_registry.py` (as planned) and `x6s1_stats.py` (EB, log tables, quantile, bootstraps, TAIL), so that test authors see stable names; the module set stays the allowlisted nine.
+2. The smoke model, TRAIN-EQUIV and RUNTIME-ACCT use the run key `("x6s1", "smoke")` (init seed `SeedTree(MODEL_MASTER).seed("init", "x6s1", "smoke")`, batch stream `("batch_order", "x6s1", "smoke")`) over the smoke pool, so no scientific seed stream is consumed outside its model. The C0 init file is `init/init_smoke.pt`.
+3. The prefix pool is drawn from `SeedTree(DATA_MASTER).generator("x6s1", "prefix")` (the protocol's listed stream, no arm), and L_max uses one `integers(1, 15)` call per prefix-pool row in row order from `("x6s1", "prefix_len")`.
+4. Pools without a seed use sequence-id replicate `0`; `SMOKE` uses `process_code("x6s1", "NA", "smoke", 0)` with split `"dev"` when materialised for training.
+5. Registry keys are the first 8 digest bytes **big-endian**; runs of ≤ `REG_RUN = 2**22` identities are stored as `.npy` files under `registry/runs/`.
+6. Hex digests are lowercase in all files; the owner-pasted BUNDLE_SHA256 is `.strip().lower()`ed in the notebook.
+7. `finalise(ROOT)` uses the module's current environment set by `environment()` (cells 1–4 always run before cell 6).
+8. Execution-record validation (CLOUD-PROV) accepts only the registered templates, in the cell order rule of §6.2 `check_execution`; re-running a cell is a permitted repetition.
+9. Checkpoint `torch_cuda` RNG is `torch.cuda.get_rng_state_all()` on CUDA and `[]` on CPU; `cuda_capability` is `null` on CPU.
+10. The terminal marker's `loss_bits` is the hex of the IEEE bits of the non-finite float32 loss (`struct.pack("<f", v).hex()`).
+11. Bootstrap draws use `gen.integers(0, n, size=n)` per draw for the gate and per-model intervals; C-ORD uses `binomial` then `integers` per draw (§7.5), all from `boot_stream`.
+12. `quantile` uses `method="linear"`; the 97.5 % one-sided lower bound is the 0.025 quantile and the upper bound the 0.975 quantile.
+13. The designed history composes `prefix + cue(y) + loop tokens` exactly as `x6_exact.witness_tokens` does for named prefixes; its readout is at `t = len(history)`.
+14. LOSS-ECHO and the learning curves are computed in the E1/E2 jobs after admission, with the same `ModelPredictor`-style float64 loading (float32 copy for the float32 echo).
+15. `x6s1_cloud.main` provides the local `train` child command; local children run `python -s` with `PYTHONPATH=<worktree>/src`.

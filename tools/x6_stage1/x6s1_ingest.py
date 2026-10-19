@@ -236,10 +236,10 @@ def check_execution(records, templates=sc.CELL_TEMPLATES) -> dict:
         kind = r.get("kind") if isinstance(r, dict) else None
         if not s or r.get("schema") != sc.SESSION_SCHEMA or kind not in ("start", "final"):
             bad.append(f"record {i}: schema, kind or a non-template source")
-        elif s[0] != 1 or any(b > a + 1 for a, b in zip(s, s[1:])):
+        elif s[0] != 1 or any(b > a + 1 and (a, b) != (4, 6) for a, b in zip(s, s[1:])):
             bad.append(f"record {i}: cell order {s}")
-        elif kind == "start" and s[-1] != 5:
-            bad.append(f"record {i}: a start record must end with its cell-5 execution")
+        elif kind == "start" and s[-1] not in (4, 5):  # 4: written by cell 6 (API.md §13 item 26)
+            bad.append(f"record {i}: a start record must end with cell 4 or 5")
         elif kind == "final":
             ref, sid = r.get("start_record"), r.get("session_id")
             ref = ref if isinstance(ref, dict) else {}

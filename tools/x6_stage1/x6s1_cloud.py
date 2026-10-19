@@ -453,13 +453,21 @@ def precheck(root, env) -> dict:
                               "status": status})
     print(f"PRECHECK OK {len(env['models'])}/{len(ticket['models'])}")
     return env
-def run_wave(root, env) -> dict:
-    root, ticket = Path(root), env["bundle"]["ticket"]
-    stamp = env["utc"].replace("-", "").replace(":", "")
+def _start_of(root, sid) -> list:
+    return [p for p in _sessions(root, "start") if p.name.endswith(f"-{sid}.start.json")]
+def _write_start(root, env, cells) -> list:
+    """The session-start record (§5.6): by cell 5, or by cell 6 if cell 5 never ran (item 26)."""
+    root, sid = Path(root), env["session_id"]
+    _req(not _start_of(root, sid),
+         f"STOP: SESSION STARTED {sid[:8]}: run cell 4 again, then cell 5")
     rec = {k: v for k, v in env.items() if k not in ("bundle", "device_name", "cuda_capability")}
     (root / "sessions").mkdir(exist_ok=True)
-    write_json_atomic(root / "sessions" / f"{stamp}-{env['session_id']}.start.json",
-                      dict(rec, executed_cells=_cells() or env["executed_cells"]))
+    path = root / "sessions" / f"{env['utc'].replace('-', '').replace(':', '')}-{sid}.start.json"
+    write_json_atomic(path, dict(rec, executed_cells=cells))
+    return [path]
+def run_wave(root, env) -> dict:
+    root, ticket = Path(root), env["bundle"]["ticket"]
+    _write_start(root, env, _cells() or env["executed_cells"])
     out = {e["model"]: train_chunked(root, e, ticket, env, torch.device("cuda"))
            for e in ticket["models"]}
     print(f"WAVE DONE {sum(s in _TERMINAL for s in out.values())}/{len(out)}")
@@ -484,7 +492,7 @@ def finalise(root, env=None) -> dict:
                          "final_file_sha256": ch[-1]["file_sha256"] if done else None,
                          "final_weights_sha256": ch[-1]["weights_sha256"] if done else None,
                          "devices": sorted({r["device_name"] for r in ch})})
-    start = [p for p in _sessions(root, "start") if p.name.endswith(f"-{sid}.start.json")]
+    start = _start_of(root, sid) or _write_start(root, env, list(env.get("executed_cells", [])))
     _req(len(start) == 1, f"STOP: HOLD session start record {sid}")
     export = f"exports/{utc}/MANIFEST.json"
     write_json_atomic(root / "sessions" / f"{utc}-{sid}.final.json", {

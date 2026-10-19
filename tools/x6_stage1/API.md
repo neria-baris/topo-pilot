@@ -457,6 +457,8 @@ drive.flush_and_unmount()
 13. The designed history composes `prefix + cue(y) + loop tokens` exactly as `x6_exact.witness_tokens` does for named prefixes; its readout is at `t = len(history)`.
 14. LOSS-ECHO and the learning curves are computed in the E1/E2 jobs after admission, with the same `ModelPredictor`-style float64 loading (float32 copy for the float32 echo).
 15. `x6s1_cloud.main` provides the local `train` child command; local children run `python -s` with `PYTHONPATH=<worktree>/src`.
+16. Module style (job 0071): the modules use the compact style of `tools/x6_stage0` and carry a module-level `# fmt: off` after the docstring, so `ruff format` (run by file name on module files only) leaves them unchanged and the ≤ 400-line budgets of §1 stay meaningful; `ruff check` (rules E, F, W, I, line length 100) is clean on every module.
+17. `x6s1_data.holonomy_classes(arm, n_max)` (job 0071): the cached per-statistic holonomy class counts `{S: {n: {(v, sig): {g: count}}}}` from `x6_dp.segment_dp`/`x6_dp.classes` (unchanged), shared by `stage0_counts`, `x6s1_pairs.class_tables` and `q_stat`.
 
 ### 13.1 Readings fixed by the independent tests (ruling Q3)
 

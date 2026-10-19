@@ -270,14 +270,14 @@ def test_module_set_line_limits_and_test_files():
     assert mods == sorted(sr.MODULES) and set(mods) == {f"x6s1_{m}.py" for m in (
         "data", "pairs", "cloud", "ingest", "eval", "decide", "run", "registry", "stats")}
     assert {p.name for p in TOOL.iterdir() if p.is_file()} - set(mods) == set(NOTES)
-    assert all(len((TOOL / m).read_bytes().splitlines()) <= 400 for m in mods)
+    n = {m[5:-3]: len((TOOL / m).read_bytes().splitlines()) for m in mods}  # R-0073-1
+    assert all(v <= (560 if k in ("cloud", "registry", "ingest", "run") else 400)
+               for k, v in n.items()) and sum(n.values()) <= 3600
     tests = sorted(p.name for p in (REPO / "tests" / "x6_stage1").glob("*.py"))
-    for tag in "ab":
-        mine = [t for t in tests if t.startswith(f"test_{tag}_")]
+    for tag, mine in ((g, [t for t in tests if t.startswith(f"test_{g}_")]) for g in "ab"):
         assert len(mine) <= 5 and all(re.fullmatch(rf"test_{tag}_[a-z0-9_]+\.py", t) for t in mine)
     assert all(t.startswith(("test_a_", "test_b_")) for t in tests)
-    assert all(len((REPO / "tests" / "x6_stage1" / t).read_bytes().splitlines()) <= 400
-               for t in tests)
+    assert all(len((REPO / "tests/x6_stage1" / t).read_bytes().splitlines()) <= 400 for t in tests)
 
 
 # ---------------------------------------------------------------- T-RESOURCE

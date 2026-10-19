@@ -73,3 +73,16 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
 - **D1** (`test_pool_table_order_sizes_splits_names`): the assertion `len(sd.NONTEST_POOLS) == 33` became `== 32`, with the comment `# §6.1 (35 pools in all)`.
 - **D2** (`test_data_streams_distinct_and_scoped`): the three counts of 36 became 35. These are the streams, the distinct streams and the distinct seeds.
 - **Result:** the file is still 398 lines, with LF line endings. The worker compiled it in memory only.
+
+## Correction round (job 0074, T-SIZE)
+- **Authority:** `agent-handoff/planning/responses/X6S1-FROZEN-v1.coordinator-addendum-2.md` (coordinator addendum 2, sha256 cb851e26c6f1a12bfe8a6909928ff9024324487b3348f690ded90449359d562a), ruling R-0073-1 (§2) and consequent change §3(a). This is a protocol-driven amendment, not a test defect.
+- **Author:** an author-B successor subagent with a clean context (not the original author a97c557b125e6d7e9).
+- **Read:**
+  - addendum 2, §2 and §3 only;
+  - in `test_b_nb_s0_ops.py`, only `test_module_set_line_limits_and_test_files` (T-SIZE);
+  - this file.
+- **Not read:** `tools/x6_stage1/*.py` or any other module code, notebooks, other tests (`test_a_*` and the other `test_b_*` files).
+- **Change** (`test_module_set_line_limits_and_test_files` only): the assertion `<= 400` for every module became the §2 limits. `x6s1_cloud.py`, `x6s1_registry.py`, `x6s1_ingest.py` and `x6s1_run.py` are each ≤ 560 lines, the other five ≤ 400, and the total over all nine ≤ 3,600. The line count is still `len(read_bytes().splitlines())`.
+- **Compacted to make room (same function, same meaning):** the per-author test-file loop builds `mine` in its `for` header, and the test-file line-limit assertion is on one line (`REPO / "tests/x6_stage1"`).
+- **Executed:** `python -m py_compile` (compiles) and `ruff check` (only the pre-existing I001 import-order finding at lines 25-30, also present at HEAD). No formatter and no pytest were run.
+- **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.

@@ -86,3 +86,15 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
 - **Compacted to make room (same function, same meaning):** the per-author test-file loop builds `mine` in its `for` header, and the test-file line-limit assertion is on one line (`REPO / "tests/x6_stage1"`).
 - **Executed:** `python -m py_compile` (compiles) and `ruff check` (only the pre-existing I001 import-order finding at lines 25-30, also present at HEAD). No formatter and no pytest were run.
 - **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.
+
+## Correction round (job 0076, D-0075-1)
+- **Authority:** `agent-handoff/jobs/0075/review.md`, ruling R-0075-1. D-0075-1 is a test defect: `[0] * 32` is X6-valid (vertex 0 has the lazy self-loop), so the module correctly keeps it.
+- **Author:** an author-B successor subagent with a clean context (not the original author a97c557b125e6d7e9).
+- **Read:**
+  - `jobs/0075/review.md`, the section "Ruling R-0075-1";
+  - in `test_b_seed_pool_reg.py`, `test_handoff_rows_keeps_x6_valid_lists` and the helper `_x6_rows`. The excerpt used to view them (lines 265-295) also showed `test_handoff_rows_malformed_json_is_incomplete`, `_scratch` and the first lines of `test_inventory_registered_copy_passes`;
+  - this file.
+- **Not read:** `tools/x6_stage1/*.py` or any other module code, notebooks, other tests (`test_a_*` and the other `test_b_*` files).
+- **Change** (`test_handoff_rows_keeps_x6_valid_lists` only): the literal `"junk": [0] * 32` became `"junk": [0, 2] * 16`. This list is not X6-valid, because 0 → 2 is not an edge, so `x6_model.parse` rejects it. No other edit.
+- **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
+- **Result:** the file is still 398 lines, LF line endings, no line over 100 characters.

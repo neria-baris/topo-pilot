@@ -275,7 +275,7 @@ def test_handoff_rows_malformed_json_is_incomplete(tmp_path):
 
 def test_handoff_rows_keeps_x6_valid_lists(tmp_path):
     rows = _x6_rows(3)
-    body = {"a": rows[0].tolist(), "b": rows[1, :32].tolist(), "junk": [0] * 32}
+    body = {"a": rows[0].tolist(), "b": rows[1, :32].tolist(), "junk": [0, 2] * 16}
     (tmp_path / "rec.json").write_text(json.dumps(body), encoding="utf-8")
     out = sg.handoff_rows(mailbox=tmp_path)
     assert out["status"] != INCOMPLETE

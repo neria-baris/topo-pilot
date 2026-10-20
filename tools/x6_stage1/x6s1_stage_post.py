@@ -34,12 +34,7 @@ REFS, VALIDITY = ("h_rev", "h_last", "h_first"), ("S0", "PF", "SMOKE-INGEST", "G
                                                   "G0-POS", "G0-FEAS")
 
 
-def _clean(v):  # canonical JSON refuses NaN and inf: a non-finite float is recorded as None
-    if isinstance(v, dict):
-        return {k: _clean(x) for k, x in v.items()}
-    if isinstance(v, (list, tuple)):
-        return [_clean(x) for x in v]
-    return (float(v) if math.isfinite(v) else None) if isinstance(v, (float, np.floating)) else v
+_clean = se._clean  # canonical JSON refuses NaN and inf: a non-finite float is recorded as None
 def _r(ok, values=None, bad="FAIL") -> dict:
     return {"status": "PASS" if ok else bad, "values": _clean(values)}
 def _gates(store) -> dict:  # gate → its GATES.jsonl records, in order

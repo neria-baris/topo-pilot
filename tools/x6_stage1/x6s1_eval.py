@@ -358,8 +358,16 @@ def _npz(path: Path, arrays: dict) -> str:
     return _excl(path, buf.getvalue())
 
 
-def _json(path: Path, obj) -> str:
-    return _excl(path, canonical_json(obj).encode("utf-8"))
+def _clean(v):  # canonical JSON refuses NaN and inf: a non-finite float is recorded as None
+    if isinstance(v, dict):
+        return {k: _clean(x) for k, x in v.items()}
+    if isinstance(v, (list, tuple)):
+        return [_clean(x) for x in v]
+    return (float(v) if math.isfinite(v) else None) if isinstance(v, (float, np.floating)) else v
+
+
+def _json(path: Path, obj) -> str:  # non-finite values are written as null (R-0082-5)
+    return _excl(path, canonical_json(_clean(obj)).encode("utf-8"))
 
 
 def eval_chunk(name, plan, out_dir) -> dict:

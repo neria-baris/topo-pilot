@@ -130,3 +130,18 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
   - the notes-file rule and the test-file rules are unchanged. No other edit (the `# R-0079-1` comment on `big` is kept).
 - **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
 - **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.
+
+## Correction round (job 0085, T-SIZE per addendum 5)
+- **Authority:** `agent-handoff/planning/responses/X6S1-FROZEN-v1.coordinator-addendum-5.md` (coordinator addendum 5, sha256 76d90d91271f6947c382bb9d13e22e693b4f7d5ba4a509d9e7c44c253e9178fe), ruling R-0084-0 (§2). This is a protocol-driven amendment, not a test defect.
+- **Author:** an author-B successor subagent with a clean context (not the original author a97c557b125e6d7e9), brief `agent-handoff/jobs/0085/task.md`.
+- **Read:**
+  - addendum 5, §2 only (a heading list of the file was used to locate it);
+  - in `test_b_nb_s0_ops.py`, only `test_module_set_line_limits_and_test_files` (T-SIZE). A `grep` used to locate it also listed the name of the next `def` line (`_quiet_controls`), and the excerpt used to view T-SIZE (lines 268-300) also showed the T-RESOURCE banner and the first lines of `FakeTree`;
+  - this file.
+- **Not read:** `tools/x6_stage1/*.py` or any other module code, notebooks, the bodies of other tests (`test_a_*`, the other `test_b_*` files and the other functions of this file).
+- **Change** (`test_module_set_line_limits_and_test_files` only):
+  - the per-module limit is now 600 for `run` (`x6s1_run.py`), 560 for the rest of `big` (cloud, registry, ingest, stage_pre, stage_post, eval) and 400 for data, pairs, stats and decide. The line count is still `len(read_bytes().splitlines())`;
+  - the total over all modules is still ≤ 4,800. To keep the file at 400 lines, the total check moved from the per-module limit assertion to the end of the test-file-prefix assertion (`... for t in tests) and sum(n.values()) <= 4800`). Same meaning;
+  - the module set (`big` unchanged, the `sorted(sr.MODULES)` equality), the notes-file rule and the test-file rules are unchanged. No other edit.
+- **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
+- **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.

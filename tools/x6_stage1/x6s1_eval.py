@@ -5,6 +5,7 @@ the quantised readout, scoring, cue mass, pair terms, designed statistics and th
 
 from __future__ import annotations
 
+import copy
 import io
 import json
 import math
@@ -86,16 +87,27 @@ class ModelPredictor:
         torch.save({"model": sd_}, buf)
         ck = Checkpoint(run_id=str(name), step=step, observation_id="x6s1", state=buf.getvalue(),
                         model_config=asdict(sd.MODEL_CFG))
-        self.name, self.step = str(name), step
+        self.name, self.step, self.m32 = str(name), step, None
         self.model = load_model(ck).double().eval()
 
     def __call__(self, tokens, t) -> np.ndarray:
+        return self._run(self.model, tokens, t)
+
+    def float32(self, tokens, t) -> np.ndarray:
+        """The same readout from a float32 copy (the weights are float32, so the copy is exact):
+        the §2.8 float32-versus-float64 difference (R-0082-2)."""
+        if self.m32 is None:
+            self.m32 = copy.deepcopy(self.model).float().eval()
+        return self._run(self.m32, tokens, t)
+
+    @staticmethod
+    def _run(model, tokens, t) -> np.ndarray:
         tok = np.asarray(tokens)
         ts, out = _ts(t, len(tok)), np.empty((len(tok), 18), np.float64)
         with torch.no_grad():
             for a in range(0, len(tok), sd.EVAL_BATCH):
                 b = min(a + sd.EVAL_BATCH, len(tok))
-                lg = self.model(model_inputs(tok[a:b])).logits
+                lg = model(model_inputs(tok[a:b])).logits
                 row = lg[torch.arange(b - a), torch.from_numpy(ts[a:b])]
                 out[a:b] = torch.softmax(row, -1).numpy()
         return out
@@ -301,11 +313,32 @@ def natural_pairs(pred, test_tokens, partner_tokens, rows, t=32) -> dict:
             "nonfinite": not (np.isfinite(ph).all() and np.isfinite(ph2).all())}
 
 
-def own_arm(pred, arm, tokens, tables, t=32) -> dict:
-    p = pred(tokens, t)
+def own_arm(pred, arm, tokens, tables, t=32, p=None) -> dict:
+    p = pred(tokens, t) if p is None else p  # p: the readout of `tokens` if already computed
     q, codes = qstar(arm, tokens, t)
     return {"xhat": score(codes, quantise(p), tables), "raw_kl": kl_rows(q, p),
             "cue_mass": cue_mass(p)}
+
+
+def own_pairs(pred, tokens, partner_tokens, rows, t=32, p_h=None) -> dict:
+    """§2.8 abelian own-process spread (R-0082-2): per own-process R_ord(t) pair, the within-
+    Parikh-class spread ||Δp̂_c||² of the cue-normalised readouts (the own oracle's is exactly 0:
+    an abelian q* is a function of the Parikh class)."""
+    h = np.asarray(tokens)[np.asarray(rows, np.int64)]
+    ph, ph2 = pred(h, t) if p_h is None else p_h, pred(partner_tokens, t)
+    dp = cue_normalise(ph) - cue_normalise(ph2)
+    return {"rows": np.asarray(rows, np.int64), "spread": (dp * dp).sum(1),
+            "nonfinite": not (np.isfinite(ph).all() and np.isfinite(ph2).all())}
+
+
+def float32_diff(pred, tokens, t=32) -> dict:
+    """§2.8 raw values (R-0082-2): a float32 forward next to the float64 one on the same rows;
+    the maximum absolute readout difference and the raw full-vocabulary log-loss of each."""
+    p64, p32 = pred(tokens, t), pred.float32(tokens, t)
+    q = qstar("NA", tokens, t)[0]
+    k64, k32 = _mean(kl_rows(q, p64)), _mean(kl_rows(q, p32))
+    return {"rows": len(p64), "max_abs": float(np.max(np.abs(p32 - p64))), "raw_kl_f64": k64,
+            "raw_kl_f32": k32, "raw_kl_diff": k32 - k64}
 
 
 def _cue_rows(x, cue, name) -> np.ndarray:
@@ -375,8 +408,16 @@ def eval_chunk(name, plan, out_dir) -> dict:
     d = Path(out_dir) / name
     d.mkdir(parents=True, exist_ok=False)
     pred, tab, files = _predictor(name, plan["predictor"]), plan["tables"], {}
-    own = own_arm(pred, plan["arm"], plan["own_tokens"], tab)
-    files["own.npz"] = _npz(d / "own.npz", own)
+    own_tok, orows = plan["own_tokens"], plan.get("own_rows")
+    p_own = pred(own_tok, 32)
+    files["own.npz"] = _npz(d / "own.npz", own_arm(pred, plan["arm"], own_tok, tab, p=p_own))
+    if orows is not None:  # AB/ZC: the own-process pairs (§2.8; R-0082-2)
+        o = own_pairs(pred, own_tok, plan["own_partner_tokens"], orows,
+                      p_h=p_own[np.asarray(orows, np.int64)])
+        files["own_pairs.npz"] = _npz(d / "own_pairs.npz", {k: o[k] for k in ("rows", "spread")})
+    del p_own
+    files["float32.json"] = _json(d / "float32.json", float32_diff(
+        pred, np.asarray(plan["test_tokens"])[:sd.N_DET]))  # the E3.1 (DET) rows, t = 32
     pr = natural_pairs(pred, plan["test_tokens"], plan["partner_tokens"], plan["rows"])
     files["pairs.npz"] = _npz(d / "pairs.npz", {k: v for k, v in pr.items() if k != "nonfinite"})
     des = designed_stats(pred, plan["designed"], lambda tk, t: qstar("NA", tk, t), tab)

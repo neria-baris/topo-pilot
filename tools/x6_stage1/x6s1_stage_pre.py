@@ -302,14 +302,17 @@ def reg2_sep(ctx) -> dict:
 
 # ---- G0-FEAS and HEADROOM-D (§8 rows 7-8; oracle only) ----
 def g0_feas(ctx) -> dict:
-    """(a)-(d) (FEASIBILITY_NO_GO, S3). The test partners (t = 32) are drawn and persisted with
-    den and the informative flags; test-derived numbers are released only as PASS/FAIL (§12
-    item 11). FEAS-POWER: one fair registered coin per val(NA) row; the full-row bootstrap."""
+    """(a)-(d) (FEASIBILITY_NO_GO, S3). The test partners (t = 32) are drawn and persisted: test(NA)
+    with den and the informative flags, test(AB), test(ZC) for the §2.8 own-process spread; test-
+    derived numbers are released only as PASS/FAIL (§12 item 11). FEAS-POWER: one fair registered
+    coin per val(NA) row; the full-row bootstrap."""
     te, va, D = _pairs(ctx, "test_NA"), _pairs(ctx, "val_NA"), ctx["D"]
     nv = len(_tok(ctx, "val_NA"))
     inf = te["den"] > 0
     psha = se._npz(_e0(ctx["store"], "partners_test_NA_t32.npz"), {
         "rows": te["rows"], "tokens": te["tokens"], "den": te["den"], "informative": inf})
+    osha = {a: se._npz(_e0(ctx["store"], f"partners_test_{a}_t32.npz"), sp.partners(  # R-0082-2
+        sp.class_tables("NA"), _tok(ctx, f"test_{a}"), 32, f"test_{a}")) for a in ("AB", "ZC")}
     coin = SeedTree(sd.DATA_MASTER).generator("x6s1", "feas").integers(0, 2, size=nv)[va["rows"]]
     par = se.OraclePredictor("NA", "q_Parikh")
     num = np.where(coin == 1, va["den"], se.pair_terms(par(va["h"], 32), par(va["tokens"], 32),
@@ -322,7 +325,7 @@ def g0_feas(ctx) -> dict:
          "c": {"se": fse, "ok": fse <= sd.FEAS_SE},
          "d": {"prefixes": len(D["prefixes"]) == 1030, "W2": len(D["W2"]) == 3090, "W3": len(
              D["W3"]) == 72, "controls": sum(len(D[c]) for c in sp.CONTROL_SETS) == 12360}}
-    return _r(_ok(v), {**v, "partners_sha256": psha})
+    return _r(_ok(v), {**v, "partners_sha256": psha, "own_partners_sha256": osha})
 def headroom(ctx) -> dict:
     """β_8 and mean ||d||² over all val(NA) rows (oracle only; se.gamma, R-0081-1: rows where q*
     has no cue mass contribute 0) → sealed/headroom.json (§2.8; API.md §13 item 30)."""

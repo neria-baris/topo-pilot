@@ -29,7 +29,6 @@ import x6s1_stats as ss
 
 NA, SEEDS, TERMINAL = tuple(f"NA-s{s}" for s in sd.SEEDS), sd.SEEDS, ("DONE", "INVALID:NONFINITE")
 BINS = ((8, 15), (16, 23), (24, 31))  # β_ord by age bin at t = 32 (§2.8)
-NOT_COMPUTED = {"status": "NOT_COMPUTED", "reason": "not in the eval_chunk outputs (D-0082-2)"}
 REFS, VALIDITY = ("h_rev", "h_last", "h_first"), ("S0", "PF", "SMOKE-INGEST", "G0-ORC", "SCORE",
                                                   "G0-POS", "G0-FEAS")
 
@@ -54,9 +53,10 @@ def _npz(path, sha) -> dict:
         return {k: z[k] for k in z.files}
 def _tables(store, e0) -> dict:
     return _npz(Path(store) / "tables/log_tables.npz", e0["SCORE"]["tables"]["file_sha256"])
-def _partners(store, e0) -> dict:
-    return _npz(Path(store) / "stages/E0/partners_test_NA_t32.npz",
-                e0["G0-FEAS"]["partners_sha256"])
+def _partners(store, e0, arm="NA") -> dict:  # the E0 partners of test(arm) (AB, ZC: R-0082-2)
+    g = e0["G0-FEAS"]
+    f = g["partners_sha256"] if arm == "NA" else g["own_partners_sha256"][arm]
+    return _npz(Path(store) / f"stages/E0/partners_test_{arm}_t32.npz", f)
 def _tok(store, name) -> np.ndarray: return pre.load_obs(store, name).tokens
 def _status(store) -> dict:  # model → its status in the last INGEST-C1 and INGEST-C2 records
     return {m: v["status"] for g in ("INGEST-C1", "INGEST-C2")
@@ -200,6 +200,9 @@ def chunk_plan(store, name) -> dict:  # the E3.A inputs, re-verified (§13 item 
             "test_tokens": test, "partner_tokens": P["tokens"], "rows": P["rows"],
             "designed": _npz(store / "tables/designed.npz", g["designed"]["file_sha256"]),
             "tables": _tables(store, e0), "env_local": sr.env_local()}
+    if arm in ("AB", "ZC"):  # the own-process pairs (§2.8 abelian spread; R-0082-2)
+        o = _partners(store, e0, arm)
+        plan.update(own_rows=o["rows"], own_partner_tokens=o["tokens"])
     if arm == "NA":  # the profile partners (t = 16, 24; first N_PROFILE rows), emergence, val
         ct = sp.load_tables(store / "tables/class_tables_NA.json", g["c"]["tables_sha256"])
         d, e, _ = si._store_chain(store, name)
@@ -320,6 +323,7 @@ def _descriptive(ctx) -> dict:  # §2.8, from the chunk outputs (no model run)
     kl[keep] = se.kl_rows(se.qstar("NA", test[keep], 32)[0],
                           se.OraclePredictor("NA", "q_Parikh")(test[keep], 32))
     hi = kl >= float(xm.THETA_ROW)  # the stage-0 M_32 rows
+    ab = {m: np.load(d[m] / "own_pairs.npz")["spread"] for m in sd.MODELS[4:] if d[m] is not None}
     for m in na:
         g = kl - np.load(d[m] / "own.npz")["xhat"]
         pg[m] = {"all": _mean(g), "M32_rows": _mean(g[hi]), "other_rows": _mean(g[~hi])}
@@ -328,12 +332,15 @@ def _descriptive(ctx) -> dict:  # §2.8, from the chunk outputs (no model run)
             "references": {k: se.beta_fsum(*se.pair_terms(o(h, 32), o(h2, 32), *ctx["qh"])) for
                            k, o in ((k, se.OraclePredictor("NA", k)) for k in REFS)},
             "spurious_ratio": {n: a["spur"] for n, a in nat.items()},
-            "abelian_spread": NOT_COMPUTED, "paired_gain": pg | {"M32_row_share": _mean(hi)},
+            "abelian_spread": {m: {"spread": _mean(s), "ratio": _mean(s) / _mean(P["den"][inf]),
+                                   "pairs": len(s)} for m, s in ab.items()},  # R-0082-2
+            "paired_gain": pg | {"M32_row_share": _mean(hi)},
             "matched_excess": {m: eb[m]["xbar"] - eb[z]["xbar"] for m, z in zip(
                 NA, sd.MODELS[8:]) if m in eb and z in eb} | {
                 "G_Parikh_lo": G["G_Parikh_32"]["lo"]},
-            "raw": {"beta_full": {n: a["raw"] for n, a in nat.items()}, "float32_vs_float64":
-                    NOT_COMPUTED, "raw_kl": {m: e["raw_kl"] for m, e in eb.items()}},
+            "raw": {"beta_full": {n: a["raw"] for n, a in nat.items()}, "float32_vs_float64": {
+                n: sr._load(p / "float32.json") for n, p in d.items() if p is not None},
+                    "raw_kl": {m: e["raw_kl"] for m, e in eb.items()}},
             "emergence": {m: sr._load(d[m] / "emergence.json") for m in na},
             "gamma": {m: sr._load(d[m] / "gamma.json") for m in na}}
 def stats(ctx) -> dict:  # E3.6: β_ord, intervals, ctrl, β̃, C_s, ordD, §2.8

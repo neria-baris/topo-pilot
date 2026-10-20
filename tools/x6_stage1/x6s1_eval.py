@@ -320,7 +320,7 @@ def gamma(pred, val_tokens, t=32) -> dict:
     """gamma_m (§2.8; descriptive; R-0081-1): beta = sum<p_c - q_Parikh,c, d> / sum ||d||^2 with
     d = q*_c - q_Parikh,c over all val(NA) rows; a row where q* has no cue mass has d = 0 and
     contributes 0 to both sums. Other undefined cases raise, except the predictor's own zero cue
-    mass, which makes beta_m and gamma NaN (counted in "p_undefined"; §2.6)."""
+    mass: beta_m and gamma are then None, undefined (canonical JSON; "p_undefined" rows, §2.6)."""
     q, qp = qstar("NA", val_tokens, t)[0], OraclePredictor("NA", "q_Parikh")(val_tokens, t)
     q8, p = OraclePredictor("NA", "q_8")(val_tokens, t), pred(val_tokens, t)
     cue = cue_mass(q) > 0
@@ -331,10 +331,11 @@ def gamma(pred, val_tokens, t=32) -> dict:
         raise ValueError("gamma: sum ||d||^2 = 0 on val(NA)")
     def beta(c): return math.fsum(((c - c0) * d).sum(1)) / dd
     cp = cue_normalise(np.asarray(p)[cue])
-    b_m, b_8 = beta(cp), beta(_cue_rows(q8, cue, "q_8"))
+    b_m, b_8 = beta(cp) if np.isfinite(cp).all() else None, beta(_cue_rows(q8, cue, "q_8"))
     if b_8 == 1:
         raise ValueError("gamma: beta_8 = 1")
-    return {"beta_m": b_m, "beta_8": b_8, "gamma": (b_m - b_8) / (1 - b_8), "d2_mean": dd / len(q),
+    g = None if b_m is None else (b_m - b_8) / (1 - b_8)
+    return {"beta_m": b_m, "beta_8": b_8, "gamma": g, "d2_mean": dd / len(q),
             "rows": int(cue.sum()), "p_undefined": int((~np.isfinite(cp).all(1)).sum())}
 
 

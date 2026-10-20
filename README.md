@@ -1,5 +1,8 @@
 # topo-pilot: topology of a latent world in transformer representations
 
+> ## 📄 READ ME FIRST: [Summary of the Research So Far (PDF)](00_READ_ME_FIRST_Research_Summary_So_Far/READ_ME_FIRST_Research_Summary_So_Far.pdf)
+> A detailed, paper-style account of every experiment, the methodology, the results so far and the related literature, written for readers and agents new to this repository. It is a living document, updated as runs complete. LaTeX sources: [`docs/research_summary/`](docs/research_summary/).
+
 > **Status: exit level E4 reached** (2026-10-13), **with a documented failed gate (G-H, see below)**. 17 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, 3 N controls and 2 U controls. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md); every S7/S8 operational detail was fixed before any S7 result (D-047, D-048). No primary verdict changed at E4.
 
 ## Current finding (E4)

@@ -15,6 +15,7 @@ import re
 import shutil
 import subprocess
 import uuid
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -223,13 +224,30 @@ def gate_weights_hash(snapshot, manifest_sha256, model, redownload_ok=False, tra
     except Exception as exc:  # an absent model, a malformed entry or an unloadable checkpoint
         probs.append(f"(c) {exc!r}")
     return _gate(g, model, WEIGHTS_HASH if probs else "PASS", probs)
-def _seq(cells, templates):
+_SKIPPED = re.compile(r"record \d+: non-compiling source \d+ skipped")  # D-0090-1: not a problem
+def _compiles(src) -> bool:  # D-0090-1 (API.md §13 item 40): a SyntaxError source ran nothing
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")  # so a warning never becomes a SyntaxError here
+        try:
+            compile(src, "<cell>", "exec")
+        except SyntaxError:
+            return False
+        except ValueError:  # null bytes (Python < 3.12): kept, a non-template source as before
+            pass
+    return True
+def _seq(cells, templates):  # -> (template numbers or None, indices of non-compiling sources)
     ok = isinstance(cells, list) and all(isinstance(c, str) for c in cells)
-    norm = [sc.normalise_source(c) for c in cells] if ok else [None]
-    return [templates.index(c) + 1 for c in norm] if all(c in templates for c in norm) else None
+    skip = [k for k, c in enumerate(cells) if not _compiles(c)] if ok else []
+    norm = [sc.normalise_source(c) for k, c in enumerate(cells) if k not in skip] if ok else [None]
+    seq = [templates.index(c) + 1 for c in norm] if all(c in templates for c in norm) else None
+    return seq, skip
 def check_execution(records, templates=sc.CELL_TEMPLATES) -> dict:
     tpl, bad = tuple(sc.normalise_source(t) for t in templates), []
-    seqs = [_seq(r.get("executed_cells"), tpl) if isinstance(r, dict) else None for r in records]
+    pairs = [_seq(r.get("executed_cells"), tpl) if isinstance(r, dict) else (None, [])
+             for r in records]
+    seqs = [s for s, _ in pairs]
+    notes = [f"record {i}: non-compiling source {k} skipped"
+             for i, (_, skip) in enumerate(pairs) for k in skip]
     starts = {(r.get("session_id"), sc.sha256_json(r)): s for r, s in zip(records, seqs)
               if isinstance(r, dict) and r.get("kind") == "start"}
     for i, (r, s) in enumerate(zip(records, seqs)):
@@ -247,7 +265,7 @@ def check_execution(records, templates=sc.CELL_TEMPLATES) -> dict:
             if s[-1] != 6 or st is None or s[:len(st)] != st or \
                     not str(ref.get("file", "")).endswith(f"-{sid}.start.json"):
                 bad.append(f"record {i}: final record without its start record or cell 6")
-    return {"status": "FAIL" if bad else "PASS", "detail": bad}
+    return {"status": "FAIL" if bad else "PASS", "detail": bad + notes}
 def _diff(rows) -> list: return [n for n, a, b in rows if a != b]
 def _prov(root: Path, man, model, frozen) -> list:
     tk, h = json.loads(_cj(frozen["ticket"])), _lo(frozen["code_commit"])  # tuples as lists
@@ -307,7 +325,8 @@ def gate_cloud_prov(snapshot, manifest, model, frozen) -> dict:
         probs = _prov(Path(snapshot), manifest, model, frozen)
     except Exception as exc:  # a missing or badly typed field, or an unreadable file
         probs = [f"unreadable or malformed: {exc!r}"]
-    return _gate("CLOUD-PROV", model, CLOUD_PROV if probs else "PASS", probs)
+    bad = [p for p in probs if not _SKIPPED.fullmatch(p)]  # skipped-source notes alone pass
+    return _gate("CLOUD-PROV", model, CLOUD_PROV if bad else "PASS", probs)
 def gate_data_id(snapshot, manifest, model, local) -> dict:
     try:
         root, e, loc, probs = Path(snapshot), _entry(manifest, model), local[model], []

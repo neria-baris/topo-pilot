@@ -501,6 +501,9 @@ def run_stage(stage, store, dispatch) -> dict:
     _CTX.update(store=str(store), job=str(disp["job"]), task=str(disp["task_sha256"]))
     classify = bound_controls(store, disp["job"], disp["task_sha256"])
     ctx = {"store": store, "dispatch": disp, "head": disp["head"], "stage": stage, "res": {}}
+    rep = (store / "stages" / stage / "record.json").exists()  # the s0 rule, set first (R-0084-1)
+    ctx["stage_dir"] = (f"E3w{int((disp.get('waves') or [1])[0])}" if stage == "E3w"
+                        else f"{stage}-{disp['job']}" if rep else stage)
     rec, t0, w0 = {"stage": stage, "head": disp["head"], "gates": {}, "values": {}, "stop": None,
                    "env_local": env_local()}, time.process_time(), time.perf_counter()
     for step, fn, validity in _stage(stage).PLAN[stage]:
@@ -527,7 +530,7 @@ def run_stage(stage, store, dispatch) -> dict:
         if validity and rec["stop"] is None and res["status"] != "PASS":
             rec["stop"] = gate
     rec.update(cpu_s=time.process_time() - t0, wall_s=time.perf_counter() - w0)
-    write_stage(store, ctx.get("stage_dir", stage), rec)
+    write_stage(store, ctx["stage_dir"], rec)
     return rec
 def main(argv=None) -> int:
     import argparse

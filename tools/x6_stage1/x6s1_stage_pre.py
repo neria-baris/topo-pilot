@@ -324,14 +324,10 @@ def g0_feas(ctx) -> dict:
              D["W3"]) == 72, "controls": sum(len(D[c]) for c in sp.CONTROL_SETS) == 12360}}
     return _r(_ok(v), {**v, "partners_sha256": psha})
 def headroom(ctx) -> dict:
-    """β_8 and mean ||d||² on val(NA) (oracle only) → sealed/headroom.json (§2.8). se.gamma reads
-    cue-normalised laws, undefined where q* has no cue mass (a★ not adjacent to v_32; there d = 0),
-    so it runs on the other rows and the mean is taken over all val(NA) rows (§13 item 29)."""
-    tok = _tok(ctx, "val_NA")
-    keep = np.array([xm.ANCHOR in xm.NEIGHBOURS[xm.vertex(int(w))] for w in tok[:, 31]])
-    r = se.gamma(se.OraclePredictor("NA", "q_Parikh"), tok[keep])
-    sha = sr.seal(ctx["store"], "headroom.json", {"beta_8": r["beta_8"], "rows": int(keep.sum()),
-                                                  "d2_mean": r["d2_mean"] * keep.sum() / len(tok)})
+    """β_8 and mean ||d||² over all val(NA) rows (oracle only; se.gamma, R-0081-1: rows where q*
+    has no cue mass contribute 0) → sealed/headroom.json (§2.8; API.md §13 item 30)."""
+    r = se.gamma(se.OraclePredictor("NA", "q_Parikh"), _tok(ctx, "val_NA"))
+    sha = sr.seal(ctx["store"], "headroom.json", {k: r[k] for k in ("beta_8", "d2_mean", "rows")})
     return _r(True, {"sealed": {"headroom.json": sha}})
 
 # ---- CLOUD-PREP (§8 row 9; §5.3) ----

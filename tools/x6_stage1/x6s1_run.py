@@ -57,6 +57,7 @@ GATES = ("IMPL", "AUTH-ADMIT", "S0", "PF", "G0-ORC", "SCORE", "G0-POS", "REG", "
          "INGEST-C2", "LC-2", "E3.0", "E3.1", "E3.A", "E3.2", "E3.3", "E3.4", "E3.5", "E3.6",
          "E3.7", "E3.8", "E3.9")
 STAGES = ("E0", "E0b", "E1", "E2", "E3a", "E3w", "E3z")
+STUDY_ROWS = ("S0", "S1", "S2", "S3", "S3R", "S4", "S6", "S7", "S9", "S10", "S11", "S12", "S13")
 METER_VALUES = {"OUTPUT_CAP": 16 * 2**30, "MEMORY_CAP": 12 * 2**30, "CAP_S": math.inf,
                 "STOP_NEW_S": math.inf}
 VOLATILE_KEYS = xs.VOLATILE_KEYS | {"session_id", "pid", "peak_mem_bytes", "built_utc", "env_local"}
@@ -92,8 +93,7 @@ def allowlist_ok(lines) -> bool:
         tests += [m.group(1)] if m else []
     return tests.count("a") <= 5 and tests.count("b") <= 5
 def repair_ok(worktree, head, freeze=None) -> dict:
-    """§8 S0 (iv): P an ancestor of R; repair blobs at H = REPAIR_BLOBS (= FREEZE.json's when
-    given, key "repair_blobs"); tools/d2a byte-identical P → H."""
+    """§8 S0 (iv): P ancestor of R; blobs at H = REPAIR_BLOBS (= FREEZE's); tools/d2a P = H."""
     bad, wt = [], Path(worktree)
     if subprocess.run(["git", "-C", str(wt), "merge-base", "--is-ancestor", sd.P_COMMIT,
                        sd.R_COMMIT]).returncode != 0:
@@ -125,8 +125,7 @@ def seed_fresh(seed_maps) -> bool:
         return isinstance(v, (int, np.integer)) and not isinstance(v, bool) and int(v) in masters
     return not any(hit(m) for m in seed_maps)
 def _seed_maps(project_root, store) -> list:
-    """§6.2: the seed maps and configs of every ArtifactStore meta.json under the project's
-    stores (D-2a master_collisions pattern), except this lineage's own store."""
+    """§6.2: seed maps and configs of the project's other ArtifactStores (D-2a pattern)."""
     out = []
     for root in sorted(Path(project_root).glob("*store*")):
         if root.is_dir() and _norm(root) != _norm(store):
@@ -153,8 +152,7 @@ def meter_bind_check(path, expected_sha256, import_dir) -> None:
 def dispatch_identities(mailbox, job_id, task_sha256, session, lock_path) -> None:
     d2a_train.verify_identity(mailbox, job_id, task_sha256, session, lock_path)
 def store_lineage(store, accepted=None) -> dict:
-    """§12 item 8: x6_store lineage, plus the static store files and the recorded outputs of
-    earlier accepted jobs (`accepted`: relpath → sha256, from the dispatch record)."""
+    """§12 item 8: x6_store lineage + static files + earlier accepted outputs (relpath → sha)."""
     store, acc = Path(store), {k: str(v).lower() for k, v in (accepted or {}).items()}
     out = lineage_precheck(store)
     out["unrecognised"] = [r for r in out["unrecognised"] if r not in STORE_FILES and not (
@@ -250,10 +248,15 @@ def _strip(obj):
         return {k: _strip(v) for k, v in obj.items() if k not in VOLATILE_KEYS}
     return [_strip(v) for v in obj] if isinstance(obj, (list, tuple)) else obj
 def reports_equal(a, b) -> bool: return xs.reports_equal(_strip(a), _strip(b))
-def _released(store) -> bool:  # E3 has begun or a stop is recorded (sealed files may open)
-    p = Path(store) / "STAGES.jsonl"
+def _released(store) -> bool:  # S9 (R-0082-4): an E3 stage record without a stop, or a study stop
+    p, q = Path(store) / "STAGES.jsonl", Path(store) / "stages" / "STUDY_STOP.json"
     recs = [json.loads(ln) for ln in p.read_text("utf-8").splitlines()] if p.is_file() else []
-    return any(r["stage"].startswith("E3") or r.get("stop") for r in recs)
+    return q.is_file() or any(r["stage"].startswith("E3") and not r.get("stop") for r in recs)
+def study_stop(store, row, stage, reason) -> str:  # a coordinator decision, recorded in a review
+    if row not in STUDY_ROWS or stage not in STAGES or not str(reason or "").strip():
+        raise ValueError(f"not a study stop: {row} {stage} (S5, S8 and a HOLD never are)")
+    rec = {"row": row, "stage": stage, "reason": str(reason), "utc": _utc()}
+    return si._xwrite(Path(store) / "stages" / "STUDY_STOP.json", _cj(rec))  # exclusive create
 def seal(store, name, obj) -> str:
     (Path(store) / "sealed").mkdir(parents=True, exist_ok=True)
     return si._xwrite(Path(store) / "sealed" / name, _cj(obj))
@@ -492,9 +495,8 @@ def _stage(stage):  # lazy: the stage modules import this one (no cycle, no impo
     import importlib
     return importlib.import_module("x6s1_stage_pre" if stage in STAGES[:2] else "x6s1_stage_post")
 def run_stage(stage, store, dispatch) -> dict:
-    """PLAN[stage] steps (step, fn(ctx) -> {"status", "values"}, validity) in §8 order, disk floor
-    and boundary first; the first non-PASS validity gate stops, later gates NOT_RUN; "G/part"
-    records G only on failure (a later "G" records it); a defect raised in a step is G's INVALID."""
+    """PLAN[stage] (step, fn(ctx), validity) in §8 order after the disk floor and boundary; the
+    first non-PASS validity gate stops (later NOT_RUN); "G/part" records G only on failure."""
     store, disp = Path(store), _load(dispatch)
     _CTX.update(store=str(store), job=str(disp["job"]), task=str(disp["task_sha256"]))
     classify = bound_controls(store, disp["job"], disp["task_sha256"])
@@ -530,11 +532,14 @@ def run_stage(stage, store, dispatch) -> dict:
 def main(argv=None) -> int:
     import argparse
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("cmd", choices=STAGES + ("eval-chunk",))
+    ap.add_argument("cmd", choices=STAGES + ("eval-chunk", "study-stop"))
     ap.add_argument("name", nargs="?")
-    for opt in ("--store", "--job", "--task-sha256", "--session", "--dispatch", "--out"):
+    for opt in ("--store", "--job", "--task-sha256", "--session", "--dispatch", "--out", "--row",
+                "--stage", "--reason"):
         ap.add_argument(opt)
     a = ap.parse_args(argv)
+    if a.cmd == "study-stop":  # stages/STUDY_STOP.json (R-0082-4)
+        return print(study_stop(a.store or sd.STORE, a.row, a.stage, a.reason)) or 0
     _CTX.update(store=a.store or sd.STORE, job=a.job, task=a.task_sha256)
     if a.cmd == "eval-chunk":
         import x6s1_eval as se

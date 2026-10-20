@@ -91,8 +91,22 @@ def _draw(ctx, specs) -> None:
 # ---- AUTH-ADMIT, S0, REG1 and the non-test pools (§8 rows 0b, 1, 6; §6.4) ----
 def auth_admit(ctx) -> dict:
     return _r(sr.auth_ok(ctx["store"], sd.PROTOCOL_SHA256), {"AUTH.json": "present"}, "INVALID")
+def _s0_dispatch(ctx) -> dict:
+    """E0 only (D-0087-2, R-0087-3; API.md §13 item 39): a GATES.jsonl holding exactly this
+    run's one AUTH-ADMIT record is an accepted output of S0 (viii); else the dispatch as given."""
+    disp, p = ctx["dispatch"], Path(ctx["store"]) / "GATES.jsonl"
+    if ctx["stage"] != "E0" or not p.is_file():
+        return disp
+    try:
+        recs = [json.loads(x) for x in p.read_bytes().splitlines() if x.strip()]
+    except ValueError:
+        return disp
+    if len(recs) != 1 or not isinstance(recs[0], dict) or recs[0].get("gate") != "AUTH-ADMIT":
+        return disp
+    acc = {**(disp.get("accepted_outputs") or {}), "GATES.jsonl": sc.sha256_file(p)}
+    return {**disp, "accepted_outputs": acc}  # a new dict: the caller's dispatch is unchanged
 def s0(ctx) -> dict:
-    out = sr.s0_check(sr.REPO, ctx["head"], ctx["store"], ctx["dispatch"],
+    out = sr.s0_check(sr.REPO, ctx["head"], ctx["store"], _s0_dispatch(ctx),
                       Path(ctx["store"]) / "FREEZE.json")
     return {"status": out["status"], "values": out}
 def _man(m) -> dict: return {k: m[k] for k in ("version", "n", "digest_sha256", "collision_mass")}

@@ -308,15 +308,34 @@ def own_arm(pred, arm, tokens, tables, t=32) -> dict:
             "cue_mass": cue_mass(p)}
 
 
+def _cue_rows(x, cue, name) -> np.ndarray:
+    """Cue-normalised rows of a reference law where q* has cue mass; undefined there raises."""
+    c = cue_normalise(np.asarray(x)[cue])
+    if not np.isfinite(c).all():
+        raise ValueError(f"gamma: {name} has no cue mass on a row where q* has (R-0081-1)")
+    return c
+
+
 def gamma(pred, val_tokens, t=32) -> dict:
-    """gamma_m (§2.8; descriptive): cue-normalised alignment with d = q* - q_Parikh on val(NA)."""
+    """gamma_m (§2.8; descriptive; R-0081-1): beta = sum<p_c - q_Parikh,c, d> / sum ||d||^2 with
+    d = q*_c - q_Parikh,c over all val(NA) rows; a row where q* has no cue mass has d = 0 and
+    contributes 0 to both sums. Other undefined cases raise, except the predictor's own zero cue
+    mass, which makes beta_m and gamma NaN (counted in "p_undefined"; §2.6)."""
     q, qp = qstar("NA", val_tokens, t)[0], OraclePredictor("NA", "q_Parikh")(val_tokens, t)
     q8, p = OraclePredictor("NA", "q_8")(val_tokens, t), pred(val_tokens, t)
-    d, c0 = cue_normalise(q) - cue_normalise(qp), cue_normalise(qp)
+    cue = cue_mass(q) > 0
+    c0 = _cue_rows(qp, cue, "q_Parikh")
+    d = _cue_rows(q, cue, "q*") - c0
     dd = math.fsum((d * d).sum(1))
-    b_m = math.fsum(((cue_normalise(p) - c0) * d).sum(1)) / dd
-    b_8 = math.fsum(((cue_normalise(q8) - c0) * d).sum(1)) / dd
-    return {"beta_m": b_m, "beta_8": b_8, "gamma": (b_m - b_8) / (1 - b_8), "d2_mean": dd / len(d)}
+    if not dd > 0:
+        raise ValueError("gamma: sum ||d||^2 = 0 on val(NA)")
+    def beta(c): return math.fsum(((c - c0) * d).sum(1)) / dd
+    cp = cue_normalise(np.asarray(p)[cue])
+    b_m, b_8 = beta(cp), beta(_cue_rows(q8, cue, "q_8"))
+    if b_8 == 1:
+        raise ValueError("gamma: beta_8 = 1")
+    return {"beta_m": b_m, "beta_8": b_8, "gamma": (b_m - b_8) / (1 - b_8), "d2_mean": dd / len(q),
+            "rows": int(cue.sum()), "p_undefined": int((~np.isfinite(cp).all(1)).sum())}
 
 
 # ---- E3.A chunk (§13.3; API.md §13 item 21) ----

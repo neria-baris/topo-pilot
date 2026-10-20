@@ -42,7 +42,7 @@ SUITES = tuple(f"tests/{d}" for d in (
     "learner", "dataset", "contracts", "oracle", "oracle_profile", "world", "process", "x6_stage0",
     "d2a", "k4b", "c1prime_registry", "x6_stage1"))
 BIG = tuple(f"tools/x6_stage1/x6s1_{m}.py" for m in (
-    "cloud", "registry", "ingest", "run", "stage_pre", "stage_post"))  # ≤ 560 lines (R-0079-1)
+    "cloud", "registry", "ingest", "run", "stage_pre", "stage_post", "eval"))  # ≤ 560 (R-0082-0)
 LADDER_G = (("q_empty", "G_empty_32"), ("q_parity", "G_parity_32"), ("q_counts", "G_counts_32"),
             ("q_H1", "G_H1_32"), ("q_Parikh", "G_Parikh_32"), ("q_8", "G_8_32"))
 
@@ -127,7 +127,7 @@ def _run(ctx, name, args, env) -> subprocess.CompletedProcess:
         fh.write(r.stdout + r.stderr)
     return r
 def sizes_ok(report) -> bool:
-    """check_file_sizes lists no X6S1 file but the six ≤ 560-line modules (§13 items 22, 28)."""
+    """check_file_sizes lists no X6S1 file but the seven ≤ 560-line modules (§13 items 28, 32)."""
     rows = [ln.split(": ") for ln in report.splitlines() if "x6_stage1/" in ln]
     return all(r[0] in BIG and int(r[1].split()[0]) <= 560 for r in rows)
 def pf(ctx) -> dict:

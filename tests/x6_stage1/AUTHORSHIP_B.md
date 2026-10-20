@@ -114,3 +114,19 @@ test_b_seed_pool_reg.py (28 tests), test_b_train_chain.py (10), test_b_chain_ops
   - The notes-file rule and the test-file rules (≤ 5 per author, names, ≤ 400 lines) are unchanged. The limit assertion now fits on one line, which makes room for `big`.
 - **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
 - **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.
+
+## Correction round (job 0083, T-SIZE per addendum 4)
+- **Authority:** `agent-handoff/planning/responses/X6S1-FROZEN-v1.coordinator-addendum-4.md` (coordinator addendum 4, sha256 eabf5c69ece6b7b1b517866c7a7a9514a62d6989dcf61eb173d3665e80326129), ruling R-0082-0 (§2). This is a protocol-driven amendment, not a test defect.
+- **Author:** an author-B successor subagent with a clean context (not the original author a97c557b125e6d7e9), brief `agent-handoff/jobs/0083/task.md`.
+- **Read:**
+  - addendum 4, §2 only (a heading list of the file was used to locate it);
+  - in `test_b_nb_s0_ops.py`, only `test_module_set_line_limits_and_test_files` (T-SIZE). A `grep` used to locate it also listed the names of the next two `def` lines (`_quiet_controls`, `test_limits_and_resource_constants`), the excerpt used to view T-SIZE (lines 268-301) also showed the T-RESOURCE banner and the first lines of `FakeTree`, and the `git diff` context showed the `test_notebook_sha_binding` header line;
+  - this file (its heading list and the rounds for jobs 0074, 0076 and 0080).
+- **Not read:** `tools/x6_stage1/*.py` or any other module code, notebooks, the bodies of other tests (`test_a_*`, the other `test_b_*` files and the other functions of this file).
+- **Change** (`test_module_set_line_limits_and_test_files` only):
+  - `"eval"` joined the tuple `big` (the ≤ 560 group), which is now cloud, registry, ingest, run, stage_pre, stage_post and eval;
+  - the module-set literal no longer lists `"eval"` separately, so the set is still the same eleven names with `eval` exactly once (through `big`). The `sorted(sr.MODULES)` equality stays;
+  - the total over all modules is ≤ 4,800 (was 4,500). data, pairs, stats and decide stay ≤ 400. The line count is still `len(read_bytes().splitlines())`;
+  - the notes-file rule and the test-file rules are unchanged. No other edit (the `# R-0079-1` comment on `big` is kept).
+- **Executed:** `python -m py_compile` only (compiles). No formatter and no pytest were run.
+- **Result:** the file is still 400 lines, LF line endings, no BOM, longest line 99 characters.

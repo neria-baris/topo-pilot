@@ -1,0 +1,83 @@
+{
+ "generated_utc": "2026-10-20T13:36:38Z",
+ "studies": [
+  {
+   "label": "X5 G1 (6 models)",
+   "store": "x5g1-research-store",
+   "kind": "training",
+   "cumulative_cpu_s": 16134.174
+  },
+  {
+   "label": "D-2a (2 models)",
+   "store": "d2a-store",
+   "kind": "training",
+   "cumulative_cpu_s": 16884.06875
+  },
+  {
+   "label": "X6 stage 0",
+   "store": "x6-stage0-oracle-store",
+   "kind": "oracle",
+   "cumulative_cpu_s": 8870.378125
+  },
+  {
+   "label": "X6 stage 1 (so far)",
+   "store": "x6-stage1-store",
+   "kind": "eval",
+   "cumulative_cpu_s": 10603.25625
+  },
+  {
+   "label": "C1\u2032 (S3, S4; incl. tests)",
+   "store": "c1prime-store",
+   "kind": "oracle+model",
+   "cumulative_cpu_s": 4960.5875
+  },
+  {
+   "label": "K4b (E1, E2)",
+   "store": "k4b-store",
+   "kind": "oracle+model",
+   "cumulative_cpu_s": 4887.640625
+  },
+  {
+   "label": "X2a stage 0",
+   "store": "x2a-stage0-oracle-store",
+   "kind": "oracle",
+   "cumulative_cpu_s": 1769.415625
+  },
+  {
+   "label": "D-1",
+   "store": "d1-seam-oracle-store",
+   "kind": "oracle",
+   "cumulative_cpu_s": 633.296875
+  },
+  {
+   "label": "K4 (impl. + run)",
+   "store": "x4-circle-history-feas-store-0015",
+   "kind": "oracle+model",
+   "cumulative_cpu_s": 508.5125
+  },
+  {
+   "label": "X4-F gates",
+   "store": "x4f-gates-research-store",
+   "kind": "model",
+   "cumulative_cpu_s": 506.46
+  },
+  {
+   "label": "Oracle profile (0014)",
+   "store": "x4-oracle-profile-store-0014",
+   "kind": "oracle",
+   "cumulative_cpu_s": 69.534375
+  },
+  {
+   "label": "K8 cohort",
+   "store": "x4-history-feas-store",
+   "kind": "oracle",
+   "cumulative_cpu_s": 54.046875
+  },
+  {
+   "label": "Chart diagnostic (0023)",
+   "store": "chart-diag-store-0023",
+   "kind": "model",
+   "cumulative_cpu_s": 4.940625
+  }
+ ]
+}

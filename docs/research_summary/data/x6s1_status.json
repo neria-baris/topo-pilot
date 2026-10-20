@@ -1,0 +1,295 @@
+{
+ "generated_utc": "2026-10-20T13:36:38Z",
+ "source": "x6-stage1-store: GATES.jsonl (gate,status,utc only), STAGES.jsonl (stage,stop,utc), superseded/*/GATES.jsonl (gate,status,utc), cpu_ledger.json (accounting only), stages/E0/frozen_C*.json (bundle_id, steps, K only)",
+ "gates": [
+  {
+   "utc": "2026-10-20T05:33:50Z",
+   "gate": "AUTH-ADMIT",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T05:33:53Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T05:48:06Z",
+   "gate": "PF",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:03:51Z",
+   "gate": "G0-ORC",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:11:49Z",
+   "gate": "SCORE",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:13:05Z",
+   "gate": "G0-POS",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:15:47Z",
+   "gate": "REG",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:20:48Z",
+   "gate": "G0-FEAS",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:21:16Z",
+   "gate": "HEADROOM-D",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:21:30Z",
+   "gate": "CLOUD-PREP",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T07:23:26Z",
+   "gate": "AUTH-VERIFY",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T08:41:52Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T08:41:52Z",
+   "gate": "SMOKE-INGEST",
+   "status": "INVALID"
+  },
+  {
+   "utc": "2026-10-20T09:46:07Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T09:46:55Z",
+   "gate": "SMOKE-INGEST",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T10:57:16Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T10:58:04Z",
+   "gate": "INGEST-C1",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T11:03:15Z",
+   "gate": "LEARN",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T11:11:13Z",
+   "gate": "LC-1",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T12:47:41Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T12:50:47Z",
+   "gate": "INGEST-C2",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T13:32:30Z",
+   "gate": "LC-2",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T13:35:40Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T13:35:49Z",
+   "gate": "E3.0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T13:35:54Z",
+   "gate": "E3.1",
+   "status": "PASS"
+  }
+ ],
+ "superseded_gates": {
+  "0087-a1": [
+   {
+    "utc": "2026-10-20T04:09:41Z",
+    "gate": "AUTH-ADMIT",
+    "status": "PASS"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "S0",
+    "status": "INVALID"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "REG",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "PF",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "G0-ORC",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "SCORE",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "G0-POS",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "G0-FEAS",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "HEADROOM-D",
+    "status": "NOT_RUN"
+   },
+   {
+    "utc": "2026-10-20T04:09:43Z",
+    "gate": "CLOUD-PREP",
+    "status": "NOT_RUN"
+   }
+  ]
+ },
+ "stages": [
+  {
+   "utc": "2026-10-20T07:21:30Z",
+   "stage": "E0",
+   "stop": null
+  },
+  {
+   "utc": "2026-10-20T08:41:52Z",
+   "stage": "E0b",
+   "stop": "SMOKE-INGEST"
+  },
+  {
+   "utc": "2026-10-20T09:46:55Z",
+   "stage": "E0b-0092",
+   "stop": null
+  },
+  {
+   "utc": "2026-10-20T11:11:13Z",
+   "stage": "E1",
+   "stop": null
+  },
+  {
+   "utc": "2026-10-20T13:32:30Z",
+   "stage": "E2",
+   "stop": null
+  }
+ ],
+ "ledger": [
+  {
+   "label": "E0__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T04:09:37Z",
+   "utc_end": "2026-10-20T04:09:43Z",
+   "measured_cpu_s": 5.03125,
+   "wall_s": 6.812,
+   "exit_code": 2
+  },
+  {
+   "label": "E0__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T05:33:43Z",
+   "utc_end": "2026-10-20T07:21:34Z",
+   "measured_cpu_s": 6478.171875,
+   "wall_s": 6471.547,
+   "exit_code": 0
+  },
+  {
+   "label": "E0b__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T08:41:36Z",
+   "utc_end": "2026-10-20T08:41:53Z",
+   "measured_cpu_s": 14.453125,
+   "wall_s": 17.141,
+   "exit_code": 2
+  },
+  {
+   "label": "E0b__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T09:45:45Z",
+   "utc_end": "2026-10-20T09:46:56Z",
+   "measured_cpu_s": 106.859375,
+   "wall_s": 71.172,
+   "exit_code": 0
+  },
+  {
+   "label": "E1__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T10:56:57Z",
+   "utc_end": "2026-10-20T11:11:13Z",
+   "measured_cpu_s": 1462.734375,
+   "wall_s": 856.531,
+   "exit_code": 0
+  },
+  {
+   "label": "E2__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T12:47:06Z",
+   "utc_end": "2026-10-20T13:32:31Z",
+   "measured_cpu_s": 2535.40625,
+   "wall_s": 2724.797,
+   "exit_code": 0
+  },
+  {
+   "label": "E3a__run",
+   "status": "STARTED",
+   "utc_started": "2026-10-20T13:35:05Z",
+   "utc_end": null,
+   "measured_cpu_s": null,
+   "wall_s": null,
+   "exit_code": null
+  }
+ ],
+ "cumulative_cpu_s": 10603.25625,
+ "waves": {
+  "C0": {
+   "bundle_id": "C0-4e602e691b01",
+   "steps": 200,
+   "K": 100
+  },
+  "C1": {
+   "bundle_id": "C1-97a8b8950072",
+   "steps": 30000,
+   "K": 1000
+  },
+  "C2": {
+   "bundle_id": "C2-7a03d762d0a8",
+   "steps": 30000,
+   "K": 1000
+  }
+ }
+}

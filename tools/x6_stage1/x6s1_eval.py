@@ -389,12 +389,13 @@ def eval_chunk(name, plan, out_dir) -> dict:
             prof |= {f"num_t{t}": q["num"], f"den_t{t}": q["den"], f"rows_t{t}": q["rows"],
                      f"xhat_t{t}": o["xhat"]}
         files["profile.npz"] = _npz(d / "profile.npz", prof)
-        em = {}
+        em, n = {}, plan.get("emergence_rows", sd.N_EMERGE)
+        sel = np.asarray(plan["rows"]) < n  # the pairs among the first 2**14 rows (R-0082-3)
         for step, spec in sorted(plan.get("emergence", {}).items()):
-            ep, n = _predictor(name, spec), plan["emergence_rows"]
-            q = natural_pairs(ep, plan["test_tokens"], plan["partner_tokens"][:n],
-                              plan["rows"][:n])
-            em[str(step)] = {"beta_ord": beta_fsum(q["num"], q["den"]),
+            ep = _predictor(name, spec)
+            q = natural_pairs(ep, plan["test_tokens"], np.asarray(plan["partner_tokens"])[sel],
+                              np.asarray(plan["rows"])[sel])
+            em[str(step)] = {"beta_ord": beta_fsum(q["num"], q["den"]), "pairs": int(sel.sum()),
                              "delta_nat": _mean(own_arm(ep, "NA", plan["own_tokens"][:n],
                                                         tab)["xhat"])}
         files["emergence.json"] = _json(d / "emergence.json", em)

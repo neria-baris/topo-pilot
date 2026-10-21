@@ -259,15 +259,20 @@ def test_haar_frames_streams(j, count, p):
 
 # ---- T-SIZE ----
 MODULES = ("c2_config.py", "c2_data.py", "c2_registry.py", "c2_oracle.py", "c2_model.py",
-           "c2_code.py", "c2_stats.py", "c2_attrib.py", "c2_decide.py", "c2_driver.py")
+           "c2_code.py", "c2_stats.py", "c2_attrib.py", "c2_decide.py", "c2_driver.py",
+           "c2_stage_pre.py", "c2_stage_post.py")  # 12 modules: coordinator addendum 3 R-0103-1
 
 
 def test_module_set_and_400_line_limit():
     pkg = REPO / "tools" / "c2_readout"
     found = sorted(p.name for p in pkg.glob("*.py"))  # run time only (TEST_PLAN.md §3)
-    assert found == sorted(MODULES)
+    assert len(MODULES) == 12 and found == sorted(MODULES)
+    total = 0
     for name in MODULES:
-        assert len((pkg / name).read_bytes().splitlines()) <= 400, name
+        n = len((pkg / name).read_bytes().splitlines())
+        assert n <= 400, name
+        total += n
+    assert total <= 4800  # 12 x 400 ceiling (R-0103-1 item 3)
     mine = sorted((REPO / "tests" / "c2_readout").glob("test_b_*.py"))
     assert 1 <= len(mine) <= 6
     for f in mine:

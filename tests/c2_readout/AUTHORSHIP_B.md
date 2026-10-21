@@ -56,3 +56,8 @@
 - **`test_b_registry.py`:** `test_namespace_unrelated_collision_is_lineage` now gives its parametrize short explicit `ids`. Before, the 1 MiB payload ended up in the test id and in `PYTEST_CURRENT_TEST`, beyond the Windows environment limit. The cases themselves are unchanged.
 - **`test_b_lineage.py`:** the `errors.py` expectation now uses the full binding hash `8aa309c4…eb99f`. Addendum 2 (E-0102-1) rules that the protocol's abbreviation "…f99f" is a typo.
 - **Executed:** only an in-memory `ast.parse` + `compile` again. No formatter was run, and `tools/c2_readout/*.py` was not read.
+
+## Amendment (coordinator addendum 3, R-0103-1)
+- **Driven by the protocol, not a test defect.** Requested by coordinator dcecc9ff. The author read `agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-3.md`, ruling R-0103-1.
+- **`test_b_policy.py`:** the T-SIZE module set is now 12 modules: the previous 10 plus `c2_stage_pre.py` and `c2_stage_post.py`. Each module is limited to 400 lines, with a total ceiling of 4,800 lines.
+- **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run, and `tools/c2_readout/*.py` was not read.

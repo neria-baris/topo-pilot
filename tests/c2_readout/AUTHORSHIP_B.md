@@ -50,3 +50,9 @@
   - synthetic stores, registries, mailboxes, X6-style stores and project roots under pytest's `tmp_path`.
 - The registry, namespace and G0 tests redirect the `c2_config` path constants (and `CONTRACT["paths"]`) into `tmp_path`, so no real store is opened or hashed.
 - The G0 binding tests hash only the repository's own pinned code and documents, at run time.
+
+## Correction round (0102 review)
+- Requested by coordinator dcecc9ff. The coordinator's message was read, and so was `agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-2.md` §E-0102-1.
+- **`test_b_registry.py`:** `test_namespace_unrelated_collision_is_lineage` now gives its parametrize short explicit `ids`. Before, the 1 MiB payload ended up in the test id and in `PYTEST_CURRENT_TEST`, beyond the Windows environment limit. The cases themselves are unchanged.
+- **`test_b_lineage.py`:** the `errors.py` expectation now uses the full binding hash `8aa309c4…eb99f`. Addendum 2 (E-0102-1) rules that the protocol's abbreviation "…f99f" is a typo.
+- **Executed:** only an in-memory `ast.parse` + `compile` again. No formatter was run, and `tools/c2_readout/*.py` was not read.

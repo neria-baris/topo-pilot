@@ -72,15 +72,14 @@ Compiled from the repository (\fpath{topo-pilot}, branch \fpath{main}), the coor
 mailbox (\fpath{agent-handoff}) and the execution stores beside it. Every number is taken from
 a cited file. X6 stage~1 reached its preregistered decision on 21 October 2026; its decision-stage report
 is cited where its numbers are used.
-The text was drafted by the project's coordinating agent (Claude) from the project's
-records; it changes no decision. Where it summarises, the cited reviews, reports and frozen
+This text changes no decision. Where it summarises, the cited reviews, reports and frozen
 protocols are authoritative.\par}
 \end{titlepage}
 
 % =========================================================================================
 \begin{abstract}
 \noindent
-We ask whether a small causal transformer, trained from scratch only to predict the next
+I ask whether a small causal transformer, trained from scratch only to predict the next
 symbol of sequences emitted by a hidden random walk on a world of known topology, develops
 internal structure that reflects that topology, where such structure comes from, and whether
 the model uses it. The pilot compares a $12\times12$ cylinder with a $12\times12$ square under
@@ -95,7 +94,7 @@ than the last-symbol posterior. A timing hypothesis was rejected, the matched pe
 control turned out to be one-sided, the last-symbol embedding alone carries 0.47--0.89 of the
 contrast, linear probes recover no more belief than the exact next-symbol law does, and a
 clean-rerun gate failed on one missing historical record. More than a dozen follow-up
-studies, almost all preregistered, then attacked the origin of the circular structure, its causal use, and the necessity
+studies, almost all preregistered, then went after the origin of the circular structure, its causal use, and the necessity
 of topological distinctions for longer prediction horizons. Most stopped at preregistered
 feasibility gates (INCONCLUSIVE) or returned scoped negatives; positive results are oracle
 facts about designed processes (D-1, X2a, X6 stage~0). In the most direct origin test (K4b),
@@ -152,14 +151,16 @@ Two secondary programmes extend the question: X5 (does geometry change learning 
 X6 (topology richer than $H_1$: non-abelian transport, where the \emph{order} in which loops
 are traversed matters).
 
-The project is also an experiment in research process. Every decision rule is frozen before
-the data it decides exist; protocols are planned twice independently and reviewed result-blind
-before freezing; critical tests are written by authors who never see the implementation;
-compute is metered; fresh test histories are protected by exposure registries; and failures
-are classified as technical (correctable at most twice), inconclusive, or scientific. Much of
-the work was carried out by language-model agents (a coordinator and workers) communicating
-through a version-controlled mailbox, under a human owner who approved every scientific
-decision point.
+The project is also an experiment in research process. I froze every decision rule before
+the data it decides existed. Each protocol was planned twice independently and reviewed
+result-blind before freezing, and the critical tests were written by authors who never saw the
+implementation. Compute is metered, fresh test histories are protected by exposure registries,
+and failures are classified as technical (correctable at most twice), inconclusive, or
+scientific. I did much of the work with language-model agents: OpenAI Codex and Anthropic
+Claude models served as independent planners, result-blind reviewers, implementers and test
+authors, and a Claude session acted as coordinator (issuing rulings and writing reviews under my
+authority) with workers launched per job, all communicating through a version-controlled
+mailbox. I approved every scientific decision point.
 
 \paragraph{Summary of findings.} Table~\ref{tab:headline} lists the main outcomes;
 Figure~\ref{fig:fig01_timeline} places all of them in time.
@@ -178,7 +179,9 @@ feasibility gates before any causal endpoint was scored (\S\ref{sec:causal}).
 orientability distinction that is invisible at horizon~1 and needed at horizon~2 (D-1), but a
 trained-model study of it failed its learnability gate (D-2a). An $S_3$ transport process was
 certified to carry order information beyond every commutative statistic (X6 stage~0); the
-trained follow-up (X6 stage~1) is under way and sealed (\S\ref{sec:horizons}, \S\ref{sec:x6}).
+trained follow-up (X6 stage~1) reached its preregistered decision, INCONCLUSIVE: a weak but
+reproducible natural order sensitivity, far below the registered size (\S\ref{sec:horizons},
+\S\ref{sec:x6}, \S\ref{sec:x6s1results}).
 \end{enumerate}
 
 \begin{table}[t]\centering\small
@@ -205,7 +208,7 @@ D-2a (trained) & NOT\_LEARNED & both gate models failed the band-edge criterion\
 \Cp\ (causal) & INCONCLUSIVE/\allowbreak FAMILY\_UNMATCHED & intervention moved protected readouts\\
 K4b (origin) & EXCLUSION & $|\Delta_4|<0.01$ in 3/3 models; oracle comparator 0.0085\\
 X6 stage 0 (oracle) & GO\_X6\_NATURAL & order effect certified beyond Parikh statistics\\
-X6 stage 1 (trained) & in progress; sealed & E0--E2 PASS; LEARN = GO; 12 models admitted; outcome at E3\\
+X6 stage 1 (trained) & INCONCLUSIVE (rule 9) & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -275,7 +278,7 @@ symbol embedding; R3, context average), together with the trained last-symbol em
 (\fpath{docs/RESEARCH_SUMMARY.md} \S7.2, \S7.6). The claim of the pilot is accordingly narrow:
 the general phenomenon ``periodic latent dynamics can shape periodic geometry'' has prior art
 \citep{jerpelea2026planting}; the pilot contributes a matched two-topology comparison with these
-controls. The project never claims to be first.
+controls. I do not claim priority.
 
 \subsection{Formal languages, automata, groups and state tracking}
 Theoretical work bounds what fixed-depth self-attention can compute: hard and soft attention
@@ -295,9 +298,9 @@ circuits \citep{chughtai2023toy}, that language models track permutation state w
 and parity-associative mechanisms \citep{li2025track}, and a recent preprint argues that standard
 transformers learn cosets of normal subgroups \citep{zhang2026cosets}.
 
-\emph{Relation.} X6 builds on exactly this distinction. Its transport group $S_3$ is
+\emph{Relation.} X6 rests on this distinction. Its transport group $S_3$ is
 non-abelian but solvable, so the composition task is expressible at fixed depth
-\citep{liu2023shortcuts}; the question is not expressivity but whether next-token training on a
+\citep{liu2023shortcuts}, so expressivity is not in doubt; the question is whether next-token training on a
 \emph{topologically generated, implicitly observed} group word yields order-sensitive predictions
 beyond commutative summaries. The commutative competitors of X6 form a ladder (parity, which is
 the quotient $S_3/A_3$; signed crossing counts, i.e.\ the $H_1$ class; unsigned counts; the full
@@ -342,7 +345,7 @@ behind apparently sudden transitions \citep{nanda2023progress}, and different ru
 different algorithms for the same modular task \citep{zhong2023clock}. \emph{Relation.} H4 asks a
 timing question of this kind (does topology appear only after history use begins?), and X6
 stage~1 trains for 30,000 updates because D-2a's 10,000-update recipe showed a flat dev loss
-from step 1,000 (\fpath{agent-handoff/jobs/0033/review.md}); the longer run is an owner choice,
+from step 1,000 (\fpath{agent-handoff/jobs/0033/review.md}); I chose the longer run; it is
 not a tuned value.
 
 \subsection{Topological data analysis of representations}
@@ -389,8 +392,8 @@ and tooling undermines single-run claims \citep{henderson2018matters,bouthillier
 and reproducibility programmes have been proposed \citep{pineau2021reproducibility}. Data leakage
 and test contamination are a recurrent source of invalid results
 \citep{kaufman2012leakage,kapoor2023leakage,magar2022contamination,sainz2023contamination}.
-\emph{Relation.} The project's methods (\S\ref{sec:methods}) are a deliberately strict response:
-frozen rules, result-blind review, three-valued outcomes, exposure registries for fresh test
+\emph{Relation.} The methods of \S\ref{sec:methods} are meant as a strict response to these
+problems: frozen rules, result-blind review, three-valued outcomes, exposure registries for fresh test
 histories, sealed validation quantities, and bitwise rerun checks.
 
 % =========================================================================================
@@ -405,7 +408,7 @@ H2 (E2), ran the permuted-emission control and the timing analysis (E3), and add
 probes, circular coordinates, sensitivity analyses and a clean rerun (E4). Four human
 checkpoints (H1--H4) required owner approval. Seventeen models were trained on CPU.
 
-\textbf{Phase 2: follow-ups on origin, use and horizons (13--17 October).} After E4 the owner
+\textbf{Phase 2: follow-ups on origin, use and horizons (13--17 October).} After E4 I
 fixed the charter priorities quoted in \S\ref{sec:intro}. Each follow-up was a separate,
 frozen protocol: X4 Phase B/B2 (do horizon-2 distinctions exist that horizon 1 hides?), the
 circular-baseline audit, X4-F (causal use by erasure), the oracle profile (how fast does the
@@ -424,7 +427,7 @@ models on it, on a free cloud GPU, with all evaluation local.
 between ``observation geometry'' and ``history'' (the R1 limitation). The origin studies sharpened
 RQ2 into a quantitative question about suffix lengths, which the oracle profile showed can only
 be asked at small $K$, because the circular posterior converges quickly. The causal studies
-attacked RQ3 directly and stopped at feasibility gates, which taught that the circular
+went at RQ3 directly and stopped at feasibility gates; they showed that the circular
 information is encoded nonlinearly and that naive interventions are not specific. The horizon
 studies moved from a scoped negative on the pilot world (B2) to a constructed world where a
 topological distinction is provably needed only at horizon~2 (D-1); the trained version
@@ -541,12 +544,12 @@ and since K4b an \emph{oracle-scale check} that compares margins with what the o
 achieves (the ``K4b lesson'', \S\ref{sec:origin}).
 
 \subsection{Dual-track planning and independent review}
-From 14 October every planning task ran twice, independently, under
+From 14 October I had every planning task done twice, independently, under
 \fpath{agent-handoff/planning/PLANNING_PROTOCOL.md}: track~X by Codex in a read-only sandbox and
 track~L by a clean-context Claude subagent, with identical request files and base commits and
 no access to each other's output. The coordinator wrote a merge document recording agreements,
 conflicts, the decision on each and what each track caught that the other missed. A third,
-result-blind review (Codex, or a clean-context Claude reviewer when Codex was unavailable) had to
+result-blind LLM review (Codex, or a clean-context Claude reviewer when Codex was unavailable) had to
 return its required changes, and a confirmation pass had to return CONFIRM\_FOR\_FREEZE before
 any freeze. For example, C1 went through 13, then 7, then 4 required corrections; X6S1 through
 14 required changes, including a verification of the empirical-Bernstein proof. The merge of
@@ -554,8 +557,8 @@ the C1 tracks found that half of one track's ``random controls'' exactly reprodu
 intervention (\fpath{agent-handoff/MORNING_REPORT_20261015_EN.md}).
 
 \subsection{Independent test authors}
-For critical modules the tests are written from a written API contract (\fpath{API.md}) by an
-author who never reads the implementation, and they are committed before the module enters the
+For critical modules the tests are written from a written API contract (\fpath{API.md}) by a
+separate LLM author who never reads the implementation, and they are committed before the module enters the
 repository; X6S1 used two independent authors (A and B). Corrections to an author's tests are
 made by the same author or a clean-context successor that reads only the governing ruling and
 the test, never module code. The implementer never writes the acceptance tests.
@@ -768,7 +771,7 @@ no retry, no refit and no scoring (\fpath{agent-handoff/jobs/0018/review.md}). B
 the K4 chart by its own freeze, C1 was blocked at the same moment. A geometry-only diagnostic
 (CHART-DIAG-FROZEN-v1) then found that the disconnection was a single isolated smallest-norm point
 and that the largest connected component held at least 99.8\% of landmarks in all six cases (GO).
-The owner approved a new rule---the largest component, gated at $\ge95\%$---for future studies
+I approved a new rule (the largest component, gated at $\ge95\%$) for future studies
 only; K4 stayed closed.
 
 \subsection{K4b: does the learned phase covary with information beyond four symbols?}
@@ -794,8 +797,9 @@ as designed.
 \textbf{Interpretation and caveat.} The licensed sentence is that, for this chart rule, site and
 process, a covariance of either sign at or beyond 0.01 is excluded. But the phase-only oracle
 comparator itself achieves only $\Delta_4^{orc}=0.00854$ [0.00791, 0.00933], below the margin, and
-the models reach 83--95\% of it; all lower bounds are positive. EXCLUSION therefore means
-``small in absolute terms'', \emph{not} ``the learned phase lacks beyond-four-symbol information''.
+the models reach 83--95\% of it; all lower bounds are positive. EXCLUSION therefore means only
+that the covariance is small in absolute terms; it does not show that the learned phase lacks
+beyond-four-symbol information.
 The protocol registered no ``positive but below margin'' status, so no stronger claim is licensed
 (\fpath{agent-handoff/jobs/0057/review.md}). \textbf{Lesson.} Margins must be checked against the
 oracle's own achievable value before freezing; X6S1 adopted this as its oracle-scale check.
@@ -851,18 +855,21 @@ against a ceiling of 0.02) and shifted the decoded $y$-marginal by 2.5--3.2 time
 variance (ceiling 0.05), while the matched controls barely moved $\hat w$ ($<0.001$); only 6, 0 and 4
 of 32 frames matched, against 28 required. The coordinator found no implementation defect: the gap
 is a property of the fitted direction, not of displacement size (\fpath{agent-handoff/jobs/0044/review.md}).
-\textbf{Governance flag.} R13 changed a tolerance after data without the owner, in tension with
+\textbf{Governance flag.} Ruling R13 changed a tolerance after data existed, without my prior approval, in tension with
 the protocol's own \S19.3 and \S19.8. The M2 values do not depend on R13 (charts and earlier gate
 values are bit-identical), and under a strict reading the outcome would have been FAIL\_TECHNICAL
-at M1, which licenses the same ``assay infeasible as specified''. The owner ratified R13 in
+at M1, which licenses the same ``assay infeasible as specified''. I ratified R13 in
 addendum 10. Since then every protocol carries a tolerance-attainability table fixed before data.
 
-\textbf{Interpretation for RQ3.} No causal endpoint has been scored. Both failures are informative
-about the instruments, not about use: the information is nonlinear, and the obvious linear
+\textbf{Interpretation for RQ3.} No causal endpoint has been scored. Both failures tell me about
+the instruments and nothing about use: the information is nonlinear, and the obvious linear
 intervention direction is entangled with the last-symbol readout. A successor design (C2,
 constraining the intervention to preserve the last-symbol and $y$ readouts and the pre-LayerNorm
-mean and variance) is being drafted by another owner session and is neither reviewed nor frozen
-(\fpath{docs/proposals/C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md}, untracked at the time of writing).
+mean and variance) was the first of two independent plans. After a comparison, a merge and three
+rounds of result-blind review, I froze the successor as C2-FROZEN-v1
+(\fpath{docs/proposals/planning/responses/C2-FROZEN-v1.md}). It asks whether the position-32 readout
+uses a registered circle code, by exact interchange of natural donor histories at the LayerNorm
+output and at layer~2; its implementation is under way.
 
 % =========================================================================================
 \section{Necessity and prediction horizons (charter priority 3)}\label{sec:horizons}
@@ -907,7 +914,7 @@ $\kappa_1$ $-0.890$ and $-1.301$), below the exact window-8 predictor's $\beta_1
 (Figure~\ref{fig:fig09_d2a_gate}); the remaining 12 models were not trained
 (\fpath{agent-handoff/jobs/0033/review.md}). Dev cross-entropy was flat at about 1.12 from step 1,000.
 \textbf{Licence.} ``This recipe failed the registered learnability gate''---a scoped feasibility
-result, not a negative about representations.
+result that says nothing negative about representations.
 
 \fig[0.82\linewidth]{fig09_d2a_gate}{D-2a learnability gate on validation: (a) band-edge alignment
 $\beta_1$ with its 95\% lower bound against the threshold 0.30 and the exact window-8 value; (b)
@@ -966,7 +973,7 @@ stage-0 values quoted in \fpath{agent-handoff/planning/responses/X6S1-FROZEN-v1.
 \subsection{Stage 1: do trained transformers use crossing order?}\label{sec:x6s1}
 \textbf{Question.} Do small causal transformers trained only by next-symbol prediction on natural NA
 histories make predictions that depend on the order of seam crossings, beyond the Parikh
-statistic and its coarsenings? The claim is behavioural, not mechanistic
+statistic and its coarsenings? The claim is behavioural; no mechanism is claimed
 (\fpath{X6S1-FROZEN-v1.md} \S1).
 
 \textbf{Design} (Figure~\ref{fig:fig12_x6s1_design}). Arms NA, AB and ZC $\times$ seeds 1--4: 12
@@ -980,7 +987,7 @@ and scoring checks, bundles), E0b (smoke ingest), E1 (ingest C1, learnability ga
 curves), E2 (ingest C2, learning curves), E3 (evaluation, decision, unsealing).
 
 \fig{fig12_x6s1_design}{X6 stage~1 design: three arms $\times$ four seeds sharing four initial states,
-two training waves, and the alternation of local and owner-run cloud stages. Source:
+two training waves, and the alternation of local and cloud stages that I ran. Source:
 \fpath{agent-handoff/planning/responses/X6S1-FROZEN-v1.md} \S4.1--\S4.4, \S5, \S8;
 wave parameters (C0: 200 steps, $K=100$; C1 and C2: 30,000 steps, $K=1{,}000$) from
 \fpath{x6-stage1-store/stages/E0/frozen_C*.json} (bundle id, steps and $K$ only), via
@@ -1028,14 +1035,14 @@ the decision are released; the statistics are sealed.
 \item \emph{Implementation} (jobs 0069--0086): API contract and two independent test authors, eleven
 modules within line limits set by coordinator addenda 2--5 (footprint only; no scientific
 change), a coordinator full suite of 4,288 passed at code freeze H.
-\item \emph{Authorisation}: owner addendum 17 authorised the frozen protocol (SHA-256 2A909ACE\ldots),
+\item \emph{Authorisation}: my addendum 17 authorised the frozen protocol (SHA-256 2A909ACE\ldots),
 a local budget of about 43 CPU-h (forecast range 23--70), and cloud use of about 1--4 GPU-h.
 \item \emph{E0, attempt 1} (job 0087): AUTH-ADMIT PASS, S0 INVALID; nothing scientific ran. Two
 defects: a constant path one level short of its value (D-0087-1) and S0's lineage check refusing
 the AUTH-ADMIT record written by the same run (D-0087-2). Corrected in job 0088.
 \item \emph{E0, attempt 2} (job 0089): all ten gates PASS (AUTH-ADMIT, S0, PF, G0-ORC, SCORE, G0-POS,
 REG, G0-FEAS, HEADROOM-D, CLOUD-PREP), then AUTH-VERIFY PASS; bundles C0, C1, C2 built.
-\item \emph{C0 and E0b} (jobs 0090--0092): the owner ran the smoke in Colab. The first ingest was
+\item \emph{C0 and E0b} (jobs 0090--0092): I ran the smoke in Colab. The first ingest was
 INVALID at CLOUD-PROV because a hash pasted with a line break produced a cell that did not compile
 but was still recorded; the provenance check treated every recorded source as executed (D-0090-1).
 The fix skips sources that do not compile, which cannot have executed anything; the second
@@ -1043,7 +1050,7 @@ ingest on the same snapshot PASSED. An open defect (D-0090-2) records that no bu
 mechanism exists for the retrain route; it is not needed unless a retrain occurs.
 \item \emph{C1 and E1} (job 0093): INGEST-C1 PASS (all four integrity gates for the three models),
 \textbf{LEARN PASS with the released decision GO (NA-s1 PASS, NA-s2 PASS)}, LC-1 PASS.
-\item \emph{C2 and E2} (job 0094): the owner ran C2; S0, INGEST-C2 (all four integrity gates for
+\item \emph{C2 and E2} (job 0094): I ran C2; S0, INGEST-C2 (all four integrity gates for
 the nine C2 models) and LC-2 PASSED, so all 12 models are admitted. The coordinator accepted E2 and
 scheduled the E3.A waves and then E3z.
 \item \emph{E3} (jobs 0095, 0097--0099): the first evaluation attempt (0095) was INVALID because
@@ -1054,8 +1061,8 @@ was re-frozen; the regenerated initialisation chunk was bit-identical. E3.A then
 16 predictor chunks (0097, 0098), and E3z (0099) passed every step E3.2--E3.9 and unsealed.
 \end{itemize}
 Total local compute was 79.55 CPU-h, about 21 CPU-h of it in the failed attempt
-(Figure~\ref{fig:fig11_compute}b); the owner extended the budget beyond the approved 23--70
-CPU-h (owner addendum 18). Cloud training took one Colab session per wave, about 10~s (C0),
+(Figure~\ref{fig:fig11_compute}b); I extended the budget beyond the approved 23--70
+CPU-h (my addendum 18). Cloud training took one Colab session per wave, about 10~s (C0),
 24~min (C1) and 69~min (C2) by the session records.
 
 \subsubsection{Results (decision stage E3z)}\label{sec:x6s1results}
@@ -1117,26 +1124,26 @@ via the snapshot \fpath{docs/research_summary/data/x6s1_status.json}; stage orde
 \section{Engineering and process}\label{sec:engineering}
 
 \subsection{Coordinator, workers and the mailbox}
-Execution was organised around a separate git repository, \fpath{agent-handoff}, holding the
+I organised execution around a separate git repository, \fpath{agent-handoff}, holding the
 protocol (\fpath{PROTOCOL.md}), one directory per job (\fpath{task.md}, \fpath{status.json},
 \fpath{report.md}, \fpath{review.md}), the request and control files, planning requests and responses,
 owner decisions (immutable files plus numbered addenda) and the coordinator's state
-(\fpath{COORDINATOR_STATE.md}, newest ``CURSOR'' first). Codex coordinated until 14 October; a chain of
-Claude coordinator sessions followed (c351b245, 0cb12c0f, e4713512, 75dcd488, dcecc9ff). Each
+(\fpath{COORDINATOR_STATE.md}, newest ``CURSOR'' first). Codex acted as coordinator until 14 October, followed by a chain of
+Claude coordinator sessions (c351b245, 0cb12c0f, e4713512, 75dcd488, dcecc9ff). Each
 takeover wrote an assumption record, because release verifiers bind the issuer's identity; one
 takeover race was resolved by having the late session stand down. Workers were headless
 sessions launched per job, with context caps that forced rotation to fresh sessions; a transfer
 record registers each new worker identity. 94 jobs had been created by 20 October. Two
 operational hazards recurred: a shared subscription hitting usage limits (handled by waiting,
 never by switching accounts), and permission classifiers blocking some actions (never
-bypassed). An automatic-resume scheduler was installed after the owner approved it.
+bypassed). I approved and installed an automatic-resume scheduler.
 
 \subsection{The cloud training pipeline and its integrity gates}
 X6S1 is the first study trained on a GPU. The coordinator builds deterministic bundles (code
 archive, data, initial states, a ticket with seeds, steps and checkpoint interval, expected batch
-and RNG digests for every chunk) and releases a bundle hash to the owner, who runs a fixed
+and RNG digests for every chunk) and releases a bundle hash to me, and I run a fixed
 notebook in the browser; only one cell (the bundle hash) may be edited. Every chunk records its
-batch digest and PCG64 state digest; the export carries a manifest whose hash the owner relays.
+batch digest and PCG64 state digest; the export carries a manifest whose hash I relay.
 Locally, four gates run per model before any evaluation: WEIGHTS-HASH (manifest, inventory and
 canonical weights digests), CLOUD-PROV (every session and execution record matches the permitted
 cell templates, commit, protocol and bundle), DATA-ID (data, initial state, per-chunk batch and
@@ -1175,11 +1182,11 @@ metered job and attempt. Sources: \fpath{<store>/cpu_ledger.json} for the stores
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
 \item \textbf{X6 stage~1} is decided: INCONCLUSIVE (rule~9; \S\ref{sec:x6s1results}). No study is
-running. Natural follow-ups for the owner to plan include the ZC-s1 designed-placebo response,
+running. Natural follow-ups for me to plan include the ZC-s1 designed-placebo response,
 the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the registered
 size ($0.25$) under longer training or larger models, and the open retrain mechanism (D-0090-2).
 \item \textbf{Causal use.} The C2 constrained-intervention draft awaits dual-track planning and review.
-\item \textbf{Other options} recorded by the coordinator and the owner include an independent
+\item \textbf{Other options} recorded by the coordinator and by me include an independent
 replication of the E4 O models (R1), a mean-rate-matched X5 successor, a D-2 learnability
 redesign, a follow-up on the K4b margin and comparator scale, and the remaining tasks of a
 seven-task project reorganisation. None is authorised.
@@ -1211,9 +1218,9 @@ models are not fresh.
 one-sided; X5's kernel is confounded with speed.
 \item \textbf{Reproducibility scope.} One machine and environment; one of 17 pilot trainings was
 retrained; G-H formally failed; GPU training in X6S1 is not reproducible by design.
-\item \textbf{Process.} One post-data tolerance change (R13) occurred without the owner and was
-ratified afterwards. Agent-written records were reviewed by agents; the owner approved decision
-points but did not audit every computation. This summary was itself written by an agent.
+\item \textbf{Process.} One post-data tolerance change (R13) occurred without my prior approval and I
+ratified it afterwards. Records written by agents were reviewed by other agents; I approved decision
+points but did not audit every computation. The text of this summary was produced with LLM assistance.
 \end{enumerate}
 
 % =========================================================================================
@@ -1224,11 +1231,11 @@ symbol permits. Where it comes from is only partly known: the last-symbol embedd
 it, beliefs converge after a few symbols, and the beyond-four-symbol covariance of the learned phase
 is below a margin that even the oracle's phase does not reach. Whether the model uses it is
 unknown. The follow-up programme mostly produced well-defined stops rather than findings, and the
-stops were informative: about one-sided controls, nonlinear encodings, non-specific interventions,
+stops taught something about one-sided controls, nonlinear encodings, non-specific interventions,
 fragile chart rules and margins set without oracle checks. X6 stage~1 is designed to avoid each of
-these failure modes on a process where order provably matters. It ran cleanly to its decision and
+these failure modes on a process where order provably matters. It reached its decision with every validity gate passed and
 found weak but reproducible natural order sensitivity in every seed, far below the registered
-effect size, so its preregistered verdict is INCONCLUSIVE rather than a claim of order use.
+effect size, so its preregistered verdict is INCONCLUSIVE and not a claim of order use.
 
 % =========================================================================================
 \clearpage
@@ -1296,7 +1303,7 @@ X6S1 E0 & 10-20 & AUTH-ADMIT \ldots\ CLOUD-PREP, AUTH-VERIFY & attempt 1 INVALID
 X6S1 E0b & 10-20 & SMOKE-INGEST & attempt 1 INVALID; attempt 2 PASS & jobs 0090, 0092\\
 X6S1 E1 & 10-20 & INGEST-C1, LEARN, LC-1 & PASS; LEARN = GO & job 0093\\
 X6S1 E2 & 10-20 & INGEST-C2, LC-2 & PASS; 12 models admitted & job 0094\\
-X6S1 E3 & --- & E3.0--E3.9 & not run; sealed & ---\\
+X6S1 E3 & --- & E3.0--E3.9 & all PASS; INCONCLUSIVE (rule 9) & 0095--0099\\
 \bottomrule
 \end{longtable}
 \normalsize

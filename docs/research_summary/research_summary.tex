@@ -63,15 +63,15 @@
 X4, X5, the oracle profile, K4, K4b, \Cp, D-1, D-2a, X2a, X6 stage 0 and X6 stage 1), the
 results including the negative and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
-{\large 20 October 2026\par}
+{\large 21 October 2026\par}
 \vspace{0.3cm}
 {\large\itshape Living document; updated as runs complete.\par}
 \vfill
 {\small\color{ink2}
 Compiled from the repository (\fpath{topo-pilot}, branch \fpath{main}), the coordination
 mailbox (\fpath{agent-handoff}) and the execution stores beside it. Every number is taken from
-a cited file. The results of X6 stage~1 are sealed until its decision stage E3 by
-preregistration; this document reports only its gate statuses, compute and design.
+a cited file. X6 stage~1 reached its preregistered decision on 21 October 2026; its decision-stage report
+is cited where its numbers are used.
 The text was drafted by the project's coordinating agent (Claude) from the project's
 records; it changes no decision. Where it summarises, the cited reviews, reports and frozen
 protocols are authoritative.\par}
@@ -104,7 +104,12 @@ observations do not determine was excluded from beyond a $\pm0.01$ margin in all
 the registered margin, however, lies above what the oracle's own phase achieves. The current
 study, X6 stage~1, trains twelve models on a non-abelian ($S_3$) transport process to test
 whether trained transformers use the order of seam crossings beyond every commutative summary;
-its preregistered learnability gate has released GO, and its outcome is sealed until stage E3.
+all validity gates passed and the preregistered outcome is INCONCLUSIVE (rule~9). In every seed
+the trained models carry a small but clearly non-zero order-dependent component on natural
+histories (mean $\tilde\beta=0.061$, lower bound $0.0595$; commutative controls and
+initialisations near zero), an order of magnitude below the registered effect size of $0.25$,
+and they do not beat the designed W2 bar; one commutative control's designed placebo response
+prevents the registered ORDER\_NOT\_DETECTED verdict.
 No causal claim about any trained model has been established.
 \end{abstract}
 
@@ -586,8 +591,9 @@ until the fresh result was recorded; in X6 stage~1 the learnability-gate statist
 learning curves and the headroom diagnostics are sealed, and the gate record releases only
 PASS/FAIL/UNRESOLVED and the decision (\fpath{X6S1-FROZEN-v1.md} \S4.7, \S9 S9, \S12 item 11). Any
 model prediction on test histories before E3 is defined as leakage. This document follows the
-same rule: \textbf{the X6S1 results are sealed until stage E3 by preregistration}, and nothing
-below reports a model-performance number from that study.
+same rule: no X6S1 model-performance number was reported in earlier versions, and the numbers
+in \S\ref{sec:x6s1results} come only from the decision-stage report written by E3.9 after
+unsealing (\fpath{x6-stage1-store/stages/E3z/report.json}).
 
 \subsection{The technical-correction rules}
 A documented implementation or environment defect may be corrected by a coordinator ruling
@@ -1039,17 +1045,66 @@ mechanism exists for the retrain route; it is not needed unless a retrain occurs
 \textbf{LEARN PASS with the released decision GO (NA-s1 PASS, NA-s2 PASS)}, LC-1 PASS.
 \item \emph{C2 and E2} (job 0094): the owner ran C2; S0, INGEST-C2 (all four integrity gates for
 the nine C2 models) and LC-2 PASSED, so all 12 models are admitted. The coordinator accepted E2 and
-scheduled E3.A as two metered jobs of three supervisor waves each (jobs 0095 and 0096), then E3z.
+scheduled the E3.A waves and then E3z.
+\item \emph{E3} (jobs 0095, 0097--0099): the first evaluation attempt (0095) was INVALID because
+every model chunk exceeded the 3~GiB per-process supervisor limit (S6; defect D-0095-1, a
+full-pool vectorised forward peaking at about 3.0~GiB against a forecast of 1.2~GB). The
+correction evaluates in row blocks of $2^{16}$ with byte-identical outputs (peak 1.11~GiB) and
+was re-frozen; the regenerated initialisation chunk was bit-identical. E3.A then completed all
+16 predictor chunks (0097, 0098), and E3z (0099) passed every step E3.2--E3.9 and unsealed.
 \end{itemize}
-Local compute so far is 2.95 CPU-h (Figure~\ref{fig:fig11_compute}b). Cloud GPU time is not
-measured in the records used here; the protocol forecast is 0.8--4 GPU-h.
+Total local compute was 79.55 CPU-h, about 21 CPU-h of it in the failed attempt
+(Figure~\ref{fig:fig11_compute}b); the owner extended the budget beyond the approved 23--70
+CPU-h (owner addendum 18). Cloud training took one Colab session per wave, about 10~s (C0),
+24~min (C1) and 69~min (C2) by the session records.
 
-\textbf{What is sealed.} The values behind every gate (in particular LEARN), the learning curves,
-the headroom diagnostic, all test pools, partners and every model evaluation are sealed until
-E3 by preregistration. The X6S1 result is therefore not reported here. When E3 completes, the
-outcome will be one of the licensed sentences of \fpath{X6S1-FROZEN-v1.md} \S3 (ORDER\_USE\_NATURAL\_AND\_DESIGNED,
-ORDER\_USE\_NATURAL, ORDER\_USE\_DESIGNED\_ONLY, ORDER\_NOT\_DETECTED, LEARNING\_NOT\_ROBUST, or
-INCONCLUSIVE), and this section will be updated.
+\subsubsection{Results (decision stage E3z)}\label{sec:x6s1results}
+All numbers in this subsection are from \fpath{x6-stage1-store/stages/E3z/report.json}
+(sha256 \texttt{90be2081\ldots}), written by E3.9 after unsealing, and the coordinator's review
+\fpath{agent-handoff/jobs/0099/review.md}. Figure~\ref{fig:fig14_x6s1_results} summarises them.
+
+\textbf{Outcome.} \textbf{INCONCLUSIVE} by rule~9 of \S7.9, with licence ``descriptive only'' and
+qualifiers CONTROL\_LIMITED(designed, s1), CONTROLS\_LEARNED(AB 4/4, ZC 4/4),
+LADDER(NA-s1..s4: parity), DESIGNED\_UNRESOLVED(1) and LENGTH\_PROFILE. Every validity gate passed,
+all 12 models were admitted and learned (LEARN GO; LEARN-TEST PASS for all twelve), the natural
+placebos were clean, the tail diagnostic passed and precision was adequate in every seed.
+
+\textbf{Natural order use.} On the informative natural partner pairs at $t=32$ (the oracle has
+$\beta_{\mathrm{ord}}=1$, the Parikh-class predictor $0$), the four NA models reach
+$\beta_{\mathrm{ord}}=0.047,\ 0.090,\ 0.072,\ 0.049$, the AB controls $0.001$--$0.004$, the ZC
+controls $0.001$--$0.008$ and the initialisations about $0$. The per-seed contrasts are
+$C_s=0.044,\ 0.088,\ 0.064,\ 0.045$, each with a 95\% interval far from zero, and the mean is
+$\tilde\beta=0.061$ with $\mathrm{LB}_{0.975}=0.0595$. The registered C-ORD claim requires a mean of
+at least $0.25$, so C-ORD is \emph{not supported}; lowN ($\tilde\beta(s)<0.10$) holds in all four
+seeds and orderN in none.
+
+\textbf{Designed order use.} On the designed W2 witnesses the NA models' regret is
+$R_{W2}\approx0.080$--$0.087$, above the bar $(3/4)\Delta_{W2}^{\mathrm{lo}}\approx0.0458$, so
+ordD fails in seeds 2--4. Seed~1 is unresolved because the commutative control ZC-s1 responded
+to the designed W2 contrast (placebo $\beta_{W2}=0.209$; other controls $\le0.006$ in magnitude).
+Descriptively, the ZC controls reach a W2 regret similar to the NA models' ($0.077$--$0.094$)
+while the AB controls stay near $0.20$, so the designed regret does not separate order-sensitive
+from commutative models. SHARP and TARGET were certified for no NA model, and the finest
+commutative ladder rung the NA models beat is parity.
+
+\textbf{Why rule 9.} Rule~8 (ORDER\_NOT\_DETECTED) needs all four designed flags resolved. Every
+other condition of rule~8 holds; the single designed placebo failure of ZC-s1 leaves ordD(s1)
+unresolved, and the rules are applied as registered, without reclassification.
+
+\textbf{Reading.} Within the licence: next-token training on natural non-abelian transport
+histories produced a weak but reproducible sensitivity to the order of seam crossings,
+present in every seed and absent from the commutative controls, at about one sixteenth of the
+oracle's order information. It falls far short of the order use the study was designed to
+detect, and the designed probes do not show it. Whether more training, larger models or a
+different curriculum would close the gap is a new question.
+
+\fig[0.98\linewidth]{fig14_x6s1_results}{X6 stage~1 decision (E3z). (a) Natural
+$\beta_{\mathrm{ord}}$ per predictor on the informative $t=32$ partner pairs. (b) Per-seed
+C-ORD contrast $C_s$ with 95\% intervals, the mean and $\mathrm{LB}_{0.975}$, against the
+registered effect size $0.25$. (c) Designed W2 regret against the bar
+$(3/4)\Delta_{W2}^{\mathrm{lo}}$. (d) Designed placebo $\beta_{W2}$ of the controls (ZC-s1
+fails). Source: \fpath{x6-stage1-store/stages/E3z/report.json} via the snapshot
+\fpath{docs/research_summary/data/x6s1_result.json}.}
 
 \fig{fig13_x6s1_pipeline}{X6 stage~1 gate pipeline with statuses. Filled: PASS; outlined dashed:
 not yet run; ``S'': the gate's values are sealed until E3; arrows below a box give the status
@@ -1119,9 +1174,10 @@ metered job and attempt. Sources: \fpath{<store>/cpu_ledger.json} for the stores
 % =========================================================================================
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
-\item \textbf{X6 stage~1} is the only active study. E2 completed (all 12 models admitted). Next
-are the E3 evaluation waves (E3a and E3w, jobs 0095 and 0096; about 38 CPU-h forecast, in jobs of at
-most 12 hours) and E3z, the decision and unsealing.
+\item \textbf{X6 stage~1} is decided: INCONCLUSIVE (rule~9; \S\ref{sec:x6s1results}). No study is
+running. Natural follow-ups for the owner to plan include the ZC-s1 designed-placebo response,
+the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the registered
+size ($0.25$) under longer training or larger models, and the open retrain mechanism (D-0090-2).
 \item \textbf{Causal use.} The C2 constrained-intervention draft awaits dual-track planning and review.
 \item \textbf{Other options} recorded by the coordinator and the owner include an independent
 replication of the E4 O models (R1), a mean-rate-matched X5 successor, a D-2 learnability
@@ -1170,7 +1226,9 @@ is below a margin that even the oracle's phase does not reach. Whether the model
 unknown. The follow-up programme mostly produced well-defined stops rather than findings, and the
 stops were informative: about one-sided controls, nonlinear encodings, non-specific interventions,
 fragile chart rules and margins set without oracle checks. X6 stage~1 is designed to avoid each of
-these failure modes on a process where order provably matters; its outcome is sealed until E3.
+these failure modes on a process where order provably matters. It ran cleanly to its decision and
+found weak but reproducible natural order sensitivity in every seed, far below the registered
+effect size, so its preregistered verdict is INCONCLUSIVE rather than a claim of order use.
 
 % =========================================================================================
 \clearpage

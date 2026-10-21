@@ -345,7 +345,8 @@ def test_namespace_legitimate_continuation(tmp_path, monkeypatch):
     ("x9-research-store/notes.json", b'{"scope": "c2-v1"}'),  # a foreign store record
     ("other-dir/FREEZE_old.json", b'{"scope": "c2-v1"}'),  # FREEZE*.json anywhere
     ("c2-readout-store/extra.json", b'{"tag": "c2-v1"}'),  # outside the lineage manifest
-    ("big-store/big.txt", b"x" * (2**20 - 2) + b"c2-v1" + b"y" * 9)])  # across a 1 MiB chunk
+    ("big-store/big.txt", b"x" * (2**20 - 2) + b"c2-v1" + b"y" * 9)],  # across a 1 MiB chunk
+    ids=["foreign-store", "freeze-anywhere", "store-unlisted", "chunk-boundary"])  # short ids
 def test_namespace_unrelated_collision_is_lineage(tmp_path, monkeypatch, rel, data):
     root, _, pinned, lineage = _ns_root(tmp_path, monkeypatch)
     assert cd.namespace_scan(root, pinned, lineage)["status"] == "PASS"

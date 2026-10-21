@@ -433,7 +433,7 @@ Inventoried on 2026-10-21 by file names and JSON metadata only (no array payload
 | `int-0021-store`, `int-0022-store` | EXCLUSION | ledgers, meter bindings, suite XML, logs; no histories |
 | `k4b-store` | READER `k` | K4b stage tables `stages/S3/HIST_cal_b0`, `HIST_val_b0`, `stages/S7/HIST_test_b0` (and superseded copies); K-REG1/K-REG2 listed as derived: `k4b_registry_k.source_k` |
 | `tmp-0027` | EXCLUSION | synthetic test fixtures under `pytest-of-pc2/` (≤ 1,024 rows; K4b R23 rule) |
-| `tmp-0028` … `tmp-0047` (19 directories: 0028, 0029, 0031, 0032, 0033, 0034, 0035c, 0036, 0039, 0039c, 0041, 0042, 0042c, 0044, 0045, 0046, 0046r, 0047) | EXCLUSION | job temporaries; 0 history-bearing files (K-REG2) |
+| `tmp-0028` … `tmp-0047` (18 directories: 0028, 0029, 0031, 0032, 0033, 0034, 0035c, 0036, 0039, 0039c, 0041, 0042, 0042c, 0044, 0045, 0046, 0046r, 0047) | EXCLUSION | job temporaries; 0 history-bearing files (K-REG2) |
 | `topo-pilot` (main) | READER `a` | 72 ObservationSets in `artifacts/` (E4 training/dev/test and exposed assets): `k4b_registry.source_a`, coverage by `revalidate_coverage`; `tests/` fixtures by the R23 rule; `docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz` not history-bearing |
 | `topo-pilot-c1p`, `topo-pilot-c2`, `topo-pilot-causal-planning-codex`, `topo-pilot-circle-history-k4`, `topo-pilot-d1`, `topo-pilot-d2a`, `topo-pilot-int`, `topo-pilot-k4b`, `topo-pilot-reorg`, `topo-pilot-verify`, `topo-pilot-x2a`, `topo-pilot-x4-history-feas`, `topo-pilot-x4b`, `topo-pilot-x6`, `topo-pilot-x6s1` | EXCLUSION | git worktrees (code and docs); the only array file is the `verification_arrays.npz` copy (not history-bearing); no ObservationSet root |
 | `x2a-stage0-oracle-store` | READER `b` | empty record: model arrays, PH diagrams, summaries (T² process); no stored histories |
@@ -501,6 +501,46 @@ Inventoried on 2026-10-21 by file names and JSON metadata only (no array payload
 - **C-44** M statistics use β_s = 0 in the NUM guard: the P₂ error has no closed-form propagation through block 3 (its GLS-REF δ_P is recorded; open question Q4).
 - **C-45** GATES.jsonl keeps the `stage_records.record_gate` line format; C2 does not use `stage_records.begin`/`c1_records.run_c1_gate` (they stop at the first non-PASS gate, which C2's model-scope rule forbids).
 - **C-46** Reused files outside the §13.1 table (`c1_cert`, `error_bound`, `stage_records`, `independent_reference`, the job-0014 `inputs`/`oracle_profile`/`config.json` and meter files, the K4b and X6S1 registry readers and their imports, `x4f_probe`, `ridge`) have their blob sha256 at R in `CONTRACT.json` `hashes.reused_extra`, and G0 (iii) checks them at H too ("every reused file"); the §13.5 protected-path diff binds most of them already.
+
+### 19.1 Readings fixed by the independent tests (erratum, ruling R-0101-1, job 0102)
+
+Recorded before any module code (job 0102, step 1). Where this contract leaves a format open, the module adopts the reading of the test's `API-AMBIGUITY` or `API-ASSUMPTION` comment (`tests/c2_readout/test_*.py`, `AUTHORSHIP_A.md`, `AUTHORSHIP_B.md`). Where the protocol and this contract conflict, the protocol wins. No threshold, tolerance, seed, gate, stop rule, outcome rule or licence changes.
+
+**Protocol wins over this contract (two cases).**
+- **E-1 (A item 1, T-ORACLE grid).** The §13.3 "4 × 4 cylinder" is read as the smallest cylinder on which the frozen index maps act: 12 periodic x-cells by the mirror rows y = 5, 6 (24 states). `c2_data.rho_R_index`, `rho_m_index` and `symmetry_report_R` look states up by their rounded coordinates, so they accept any coordinate set that is closed under (x, y) ↦ (x, 11 − y) and ((x + m) mod 12, y).
+- **E-2 (B, C2-M licences).** Every C2-M licence (§11.2 `licence`, family "M") carries the protocol §3.2 caveats as well as its sentence and Q-CODE: the words "radial support screen" (N2 assesses neither the joint law nor compatibility with the source prefix's keys and values) and "residual skip" (the residual skip is part of every M effect), plus "only position 32 is tested" and "self-repair can lower τ_M". No M licence uses the words "natural support" or "naturalness".
+
+**Formats left open, fixed by the tests (author A).**
+- **E-3 (A2, GLS-REF fixture 5).** `c2_stats.theta(q)` and `enclosure` take u_D = ½·10^{1−p} with p = the precision of the active `decimal` context (`decimal.getcontext().prec`); `gls_ref` runs inside `decimal.localcontext(dctx(prec))`.
+- **E-4 (A3, GLS-REF fixtures 1, 2, 6).** `gls_ref` calls `dsolve` through the module attribute `c2_stats.dsolve` at call time (never a bound alias), with the first solve as `dsolve(A [n × n], X_n [n × m])` and the second as `dsolve(𝒢* [m × m], Y*ᵀ [m × n])`; `dinverse` may call `dsolve` with an m × m right-hand side. Tests replace `c2_stats.dsolve` and identify the two solves by these shapes.
+- **E-5 (A4).** `c2_oracle.oracle_role(T, E, pi, tokens32, coords=None)`: the key `"m32"` is present only when `coords` is given; `oracle_split` passes `coords`, so every role of a split carries `"m32"`.
+- **E-6 (A5, B).** `c2_decide.r_model(b, y_active)` and `m_model(b, y2_active)` take one model's `b = {statistic: {"mean", "L", "U", "rank_L", "rank_U", "g"}}`, keyed by the §11.1 statistic names without the model suffix (the report.json `per_model.bounds` layout of §15.2). Their outputs `resp`, `spec`, `negative`, `coarse.gt010`, `coarse.lt050` are Python booleans.
+- **E-7 (A6, M rule 6).** When L(Ztau) > g and U(Ztau) < −g both fail and a bound of Ztau is NUMERICALLY_UNRESOLVED, the M status is `"INC/NUMERICAL"` (the guard hit is what left the transmission statement undeclared, §6.4 rule 3); otherwise `"INC"`. C-38 is extended by Ztau for M.
+- **E-8 (A7).** `variant_category(b, variant, primary)`: `primary` is the model's `r_model` output. `qualifiers(family, per_model, variants, y_active, p1)`: `per_model = {model: r_model output}`, `variants = {model: {variant: category}}`, `p1` = the `c2_stats.p1` result (its `"precision_limited"` list).
+- **E-9 (A8).** `endpoint_status(model, family, gate_history)`: `gate_history` is the list of GATES.jsonl records as dicts (§15.1). A T-PRE-MODEL exclusion gives `"NOT_RUN/T-PRE"` (protocol §7 row 24).
+- **E-10 (A9).** `c2_attrib.post_desc(arrays)` takes `{name: {"num": float64[n], "den": float64[n], "E": bool[n], "gate": str}}` and returns `{name: {"value": float, "label": "unlicensed (gate <gate>); computed after the outcome"}}` with value = mean(num[E]) / mean(den[E]).
+- **E-11 (A10).** `desc_intervals` returns, per (num, den) pair, the key `"<num>/<den>"` with `{"L": float, "U": float}` or the string `"UNDEFINED"`.
+- **E-12 (A11).** `licence(family, outcome, values)` takes one dict of the §11.2 bracket names with scalar (or string) values; a bracket whose key is absent is filled with `"[ ]"`.
+- **E-13 (A12).** `c2_stats.p1` and `mde_report` call `precision.sd_b4_draws`, `precision.centered_draws` and `precision.precision_summary` through the module attribute `precision` at call time, so tests can replace them.
+- **E-14 (A13).** `n_test(N_by_family)` receives only the alive families, each with an integer N_F.
+
+**Formats left open, fixed by the tests (author B).**
+- **E-15.** `overall(family, statuses, cnhs)`: `cnhs` is the list of models with status CNHS (protocol §6.5 rule 2, §7 row 16).
+- **E-16.** The N2 functions (`n2_fit`, `dm`, `n2_gate`) are dimension-agnostic: states are `float64[·, p]` for any p (128 at layer 2).
+- **E-17.** `l1_complete_scores(Y, preds, w32, class_means_fit)`: `preds` is keyed by the decoder kinds `"D0"`, `"Dcode"`, `"Dlin"`; the result holds `"R2_D0"`, `"R2_Dcode"`, `"R2_Dlin"` and `"R2_code_over_lin"`.
+- **E-18.** `GATE_ORDER` is a tuple of gate-name strings (exactly the §12.1 names, in order); the stage of each gate is the separate map `GATE_STAGE`.
+- **E-19.** `check_sequence(gates_jsonl)` takes the path of a GATES.jsonl file.
+- **E-20.** `Registry.sealed_ranges` (and the registry manifest's `sealed_ranges`) is `{pool: (lo, hi)}`, the K4b layout, half-open: an id is inside iff lo ≤ id < hi.
+- **E-21.** `build(version, store, root, extra)`: `extra` is the dict `{split: history_table}` (the layout of `separation`'s `tables`).
+- **E-22.** `release_ok(ctx, stage)` returns `{"ok": bool, "status": "PASS" | "REFUSED", "reason": str}`; it never raises for a missing or unparsable release.
+- **E-23.** `supersede(ctx, job, attempt, paths, ruling)`: `ruling` is a dict with at least `"defect"`, `"ruling_path"` and `"ruling_sha256"` (other keys are ignored).
+
+**Test assumptions the modules honour.**
+- **E-24.** The `c2_config` path constants (`PROJECT_ROOT`, `STORE`, `WORKTREE`, `MAILBOX`, `ARTIFACT_ROOT`, `C1P_STORE`, `X6S1_STORE`, `K4_FREEZE`) and `CONTRACT` are read at call time through the `c2_config` module (default arguments are `None`, resolved inside the function), so a monkeypatch of `c2_config` (or of the same names on a module that holds them) takes effect.
+- **E-25.** `g0(ctx)` returns its item dict and does not raise for a failed item.
+- **E-26.** The policy seam: model code calls only `policy.require(kind)` before forming logits and `policy.require_write(kind)` before writing an endpoint array or summary, so a subclass of `LogitPolicy` overriding these two methods is a valid policy.
+
+**Contract defect corrected.** §18: "`tmp-0028` … `tmp-0047` (19 directories: …)" names 18 directories; it now reads "18 directories". With `tmp-0027` the table has 19 `tmp-*` rows, which is what `CONTRACT.json` `registry.inventory` holds (unchanged).
 
 ## 20. Open questions for the coordinator (not decided here)
 

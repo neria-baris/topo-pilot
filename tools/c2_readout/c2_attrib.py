@@ -339,3 +339,33 @@ def closed_streams(F, y, o, perm) -> dict:
     if "S*" in q:
         out["S*"] = r_arrays(q["S*"], qy["S*"], o["G_x"], Ex, Ey, y_name="Y1*")
     return out
+
+
+def lowid(E, seq, n) -> np.ndarray:
+    """The n lowest-sequence-id rows among the eligible rows E."""
+    rows = np.flatnonzero(np.asarray(E, dtype=bool))
+    return rows[np.argsort(np.asarray(seq)[rows], kind="stable")[: int(n)]]
+
+
+def x1_arms(P, o, seq, w32) -> dict:
+    """X1 arms of one model (§7 row 17): the natural arms; the R interchange arms on every
+    eligible row; S*, the variants and the rotation arms on the 1,024 lowest-id eligible rows.
+    Interchange arms carry arm 2's tokens (C-23). P: inp, y, z (natural logits), F."""
+    E = {"x": np.asarray(o["E_x"], bool), "y": np.asarray(o["E_y"], bool)}
+    arms = {f"nat_{r}": (P["inp"][r], P["y"][r], P["z"][r], seq) for r in cc.ROLES}
+    for p, f in P["F"]["prob"].items():
+        if not f["ok"] or p == "M":
+            continue
+        for pr, (a, b) in cc.PAIRS.items():
+            rows = np.flatnonzero(E[pr]) if p == "R" else lowid(E[pr], seq, cc.X1_LOWID_ROWS)
+            ys = ck.interchange(P["y"][a][rows], P["y"][b][rows], f["P_S"])
+            for tag, yy in zip(("21", "12"), ys):
+                arms[f"{p}_{pr}_{tag}"] = (P["inp"][b][rows], yy, None, seq[rows])
+    R = P["F"]["prob"]["R"]
+    if R["ok"]:
+        rows = lowid(E["x"], seq, cc.X1_LOWID_ROWS)
+        for m, th in cc.ROT_DOSES:
+            for sg, tag in ((1, "plus"), (-1, "minus")):
+                yr = y_rot(P["y"]["H"][rows], R["alpha"], w32[rows], R["B"], R["L_B"], sg * th)
+                arms[f"rot_{m}_{tag}"] = (P["inp"]["H"][rows], yr, None, seq[rows])
+    return arms

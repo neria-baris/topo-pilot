@@ -34,7 +34,7 @@ STATE_SHA = {"1729": "062d0a0aa71c41ad5afd9d3f76e58cf38a81419d629defcf2e3ac6316f
 CHARTS = {"1729": "6154af0ee1a5ad01d378b507272365d1f0e797b4a843835d7dc09525d5c9cc71",
           "2718": "6a5d8c1cbe4aea9909b85aff258a31d2dfdfb8d12c1f93f33a79b245d69370da",
           "3141": "ce0c0192d243ff9e8fa4ddc6b07750db31a637ff059a4e8cc55535b8dd21cf2d"}  # §2.4
-BLOBS = {  # protocol §13.1 (three K4 kernel files are given there as prefix…suffix)
+BLOBS = {  # protocol §13.1 (chart, cochain as prefix…suffix; errors.py in full, E-0102-1)
     "src/topo_pilot/learner/model.py":
         "ee1c124ce83da147ccc2a4b4c0be167de902d61ecd00ead5748b8566f62ae039",
     "src/topo_pilot/learner/patch.py":
@@ -57,7 +57,8 @@ BLOBS = {  # protocol §13.1 (three K4 kernel files are given there as prefix…
         "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
     "tools/x4_circle_history/chart.py": ("938821a0", "9ccb"),
     "tools/x4_circle_history/cochain.py": ("e53f6725", "3075"),
-    "tools/x4_circle_history/errors.py": ("8aa309c4", "f99f"),
+    "tools/x4_circle_history/errors.py":  # addendum 2 E-0102-1: "…f99f" was a typo
+        "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
     "tools/x4_circle_history/precision.py":
         "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
     "tools/x4_circle_history/scores.py":

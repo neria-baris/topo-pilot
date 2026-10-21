@@ -93,3 +93,12 @@ formatter was run. All fixtures are synthetic.
     precision_summary` (and same-named attributes of `c2_stats`, if any) to record seeds, cfg and
     gated arrays; arrays are identified by a marker value in their first entry.
 13. **`cs.n_test`**: the input holds only alive families (no `None` entries).
+
+## Correction round (0102 review)
+
+Defect reported by the implementer through the coordinator: in `test_a_gls.py`, `_pa` built
+the T-LADDER parametrize table with `dict(base[name], **row)`, whose int model keys raise
+`TypeError: keywords must be strings` at collection. Fixed by the author to
+`{**base[name], **row}` (same meaning). No other change. Checked again only by in-memory
+`ast.parse` + `compile` and the line-length/line-count/LF checks; nothing executed, no
+formatter, no `tools/c2_readout/*.py` read.

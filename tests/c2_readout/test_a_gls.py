@@ -365,7 +365,7 @@ def _pa(**kw):
     base = {n: {j: 4096 for j in MODELS} for n in ("Z010", "Z050", "Ztau", "ZM010", "VM",
                                                     "Vabs")}
     for name, row in kw.items():
-        base[name] = dict(base[name], **row)
+        base[name] = {**base[name], **row}  # int model keys (0102 review correction)
     return base
 
 

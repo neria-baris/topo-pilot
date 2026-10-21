@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-20T13:36:38Z",
+ "generated_utc": "2026-10-21T10:09:57Z",
  "studies": [
   {
    "label": "X5 G1 (6 models)",
@@ -23,7 +23,7 @@
    "label": "X6 stage 1 (so far)",
    "store": "x6-stage1-store",
    "kind": "eval",
-   "cumulative_cpu_s": 10603.25625
+   "cumulative_cpu_s": 286396.265625
   },
   {
    "label": "C1\u2032 (S3, S4; incl. tests)",

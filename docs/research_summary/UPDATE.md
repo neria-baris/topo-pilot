@@ -55,3 +55,10 @@ Every plotted number must come from a file named in the figure caption and in a 
 to the number in `make_figures.py`. Numbers transcribed from Markdown reports are typed in by
 hand with their source path; numbers read at build time come from the snapshots in `data/`.
 Never invent or estimate a value. Every `refs.bib` entry must be a verified real publication.
+
+## After the X6S1 decision (2026-10-21)
+
+- **New input:** E3z has unsealed, so `--refresh` now also copies selected fields of `x6-stage1-store/stages/E3z/report.json` into `data/x6s1_result.json`. Those fields are the outcome, rule, licence, qualifiers, the natural and designed statistics, and the flags.
+- **Why this is allowed:** that file is the decision-stage report written by E3.9 after unsealing.
+- **What feeds it:** Figure 14 (`fig14_x6s1_results`) and the section "Results (decision stage E3z)".
+- **Still never read:** `sealed/` and the per-chunk payloads.

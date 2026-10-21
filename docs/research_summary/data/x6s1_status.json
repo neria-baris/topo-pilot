@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-20T13:36:38Z",
+ "generated_utc": "2026-10-21T10:09:57Z",
  "source": "x6-stage1-store: GATES.jsonl (gate,status,utc only), STAGES.jsonl (stage,stop,utc), superseded/*/GATES.jsonl (gate,status,utc), cpu_ledger.json (accounting only), stages/E0/frozen_C*.json (bundle_id, steps, K only)",
  "gates": [
   {
@@ -126,6 +126,86 @@
    "utc": "2026-10-20T13:35:54Z",
    "gate": "E3.1",
    "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T17:39:34Z",
+   "gate": "E3.A",
+   "status": "INVALID"
+  },
+  {
+   "utc": "2026-10-20T19:22:48Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-20T19:34:57Z",
+   "gate": "E3.0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T03:30:33Z",
+   "gate": "E3.A",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T04:35:43Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T04:51:16Z",
+   "gate": "E3.0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:33:11Z",
+   "gate": "E3.A",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:35:51Z",
+   "gate": "S0",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:43:25Z",
+   "gate": "E3.2",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:44:38Z",
+   "gate": "E3.3",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:44:38Z",
+   "gate": "E3.4",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T09:51:09Z",
+   "gate": "E3.5",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T10:05:33Z",
+   "gate": "E3.6",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T10:05:33Z",
+   "gate": "E3.7",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T10:06:00Z",
+   "gate": "E3.8",
+   "status": "PASS"
+  },
+  {
+   "utc": "2026-10-21T10:06:01Z",
+   "gate": "E3.9",
+   "status": "PASS"
   }
  ],
  "superseded_gates": {
@@ -207,6 +287,26 @@
    "utc": "2026-10-20T13:32:30Z",
    "stage": "E2",
    "stop": null
+  },
+  {
+   "utc": "2026-10-20T17:39:34Z",
+   "stage": "E3a",
+   "stop": "E3.A"
+  },
+  {
+   "utc": "2026-10-21T03:30:33Z",
+   "stage": "E3w2",
+   "stop": null
+  },
+  {
+   "utc": "2026-10-21T09:33:11Z",
+   "stage": "E3w5",
+   "stop": null
+  },
+  {
+   "utc": "2026-10-21T10:06:01Z",
+   "stage": "E3z",
+   "stop": null
   }
  ],
  "ledger": [
@@ -266,15 +366,42 @@
   },
   {
    "label": "E3a__run",
-   "status": "STARTED",
+   "status": "FINISHED",
    "utc_started": "2026-10-20T13:35:05Z",
-   "utc_end": null,
-   "measured_cpu_s": null,
-   "wall_s": null,
-   "exit_code": null
+   "utc_end": "2026-10-20T17:39:35Z",
+   "measured_cpu_s": 76277.6875,
+   "wall_s": 14670.406,
+   "exit_code": 2
+  },
+  {
+   "label": "E3w__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-20T19:22:28Z",
+   "utc_end": "2026-10-21T03:30:34Z",
+   "measured_cpu_s": 132945.15625,
+   "wall_s": 29286.344,
+   "exit_code": 0
+  },
+  {
+   "label": "E3w__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-21T04:34:57Z",
+   "utc_end": "2026-10-21T09:33:12Z",
+   "measured_cpu_s": 64766.75,
+   "wall_s": 17895.844,
+   "exit_code": 0
+  },
+  {
+   "label": "E3z__run",
+   "status": "FINISHED",
+   "utc_started": "2026-10-21T09:35:03Z",
+   "utc_end": "2026-10-21T10:06:03Z",
+   "measured_cpu_s": 1803.015625,
+   "wall_s": 1860.5,
+   "exit_code": 0
   }
  ],
- "cumulative_cpu_s": 10603.25625,
+ "cumulative_cpu_s": 286396.265625,
  "waves": {
   "C0": {
    "bundle_id": "C0-4e602e691b01",

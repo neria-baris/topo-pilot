@@ -132,6 +132,19 @@ def refresh() -> None:
         f = load_json(STORE_X6S1 / "stages" / "E0" / f"frozen_{w}.json")
         s["waves"][w] = {"bundle_id": f["bundle_id"], "steps": f["steps"], "K": f["K"]}
     (DATA / "x6s1_status.json").write_text(json.dumps(s, indent=1), encoding="utf-8")
+    rep = STORE_X6S1 / "stages" / "E3z" / "report.json"
+    if rep.is_file():  # written by E3.9, which unseals; only the decision-stage report is read
+        r = load_json(rep)
+        keep_r = {k: r[k] for k in ("outcome", "rule", "licence", "qualifiers", "beta_bar", "lb",
+                                    "learn", "learn_test", "models", "flags", "sharp_target")}
+        keep_r["natural"] = {k: r["natural"][k] for k in ("beta_ord", "C_s", "mean", "lb", "cord",
+                                                          "tail", "ctrl")}
+        keep_r["designed"] = {m: {k: v for k, v in d.items() if k in ("R_W2", "beta_W2",
+                              "Delta_W3", "rho_W2")} for m, d in r["designed"].items()
+                              if isinstance(d, dict) and "R_W2" in d}
+        keep_r["ord_d"] = r["designed"]["ord_d"]
+        keep_r["source"] = "x6-stage1-store/stages/E3z/report.json (E3.9, after unsealing)"
+        (DATA / "x6s1_result.json").write_text(json.dumps(keep_r, indent=1), encoding="utf-8")
     comp = {"generated_utc": s["generated_utc"], "studies": []}
     for label, store, kind in LEDGERS:
         p = ROOT / store / "cpu_ledger.json"
@@ -686,7 +699,7 @@ STATUS_COL = {"PASS": GOOD, "INVALID": CRIT, "FAIL": CRIT, "NOT_RUN": "#ffffff",
 def _stage_status(st):
     """Assign each GATES.jsonl record (gate, status, utc only) to a stage in time order.
     AUTH-ADMIT opens E0; after E0's CLOUD-PREP, every S0 opens the next local stage of the
-    protocol sequence (E0b ran twice: jobs 0090 and 0092). Returns {stage: {gate: [statuses]}}."""
+    protocol sequence (E0b ran twice: jobs 0090 and 0092; E3 ran as jobs 0095, 0097, 0098 and 0099). Returns {stage: {gate: [statuses]}}."""
     out = {"E0": {}, "E0b": {}, "E1": {}, "E2": {}, "E3": {}}
     after_e0 = iter(["E0b", "E0b", "E1", "E2", "E3"])
     stage = None
@@ -694,7 +707,7 @@ def _stage_status(st):
         if r["gate"] == "AUTH-ADMIT":
             stage = "E0"
         elif r["gate"] == "S0" and not (stage == "E0" and "CLOUD-PREP" not in out["E0"]):
-            stage = next(after_e0)
+            stage = next(after_e0, "E3")  # E3a, E3w and E3z jobs each start with S0
         out[stage].setdefault(r["gate"], []).append(r["status"])
     return out
 
@@ -748,6 +761,59 @@ def fig_x6s1_pipeline() -> None:
     save(fig, "fig13_x6s1_pipeline")
 
 
+
+def fig_x6s1_results() -> None:
+    p = DATA / "x6s1_result.json"
+    if not p.is_file():
+        return
+    r = load_json(p)
+    col = {"NA": S1, "AB": S2, "ZC": S3, "in": MUTED}
+    fig, ax = plt.subplots(2, 2, figsize=(9.2, 6.4))
+    # (a) natural beta_ord per predictor
+    b = r["natural"]["beta_ord"]
+    names = [n for n in b if not n.startswith("init")] + [n for n in b if n.startswith("init")]
+    a = ax[0, 0]
+    a.bar(range(len(names)), [b[n] for n in names], color=[col[n[:2]] for n in names])
+    a.set_xticks(range(len(names)), names, rotation=70)
+    a.axhline(0, color=INK2, lw=0.8)
+    a.set_ylabel(r"natural $\beta_{ord}$ (oracle = 1)")
+    a.set_title("(a) Order-dependent share, natural pairs (t = 32)", loc="left", fontsize=9)
+    # (b) C_s per seed with 95% interval, against the registered 0.25 threshold
+    a = ax[0, 1]
+    cs = r["natural"]["C_s"]; seeds = sorted(cs, key=int)
+    v = [cs[s]["value"] for s in seeds]
+    err = [[cs[s]["value"] - cs[s]["lb"] for s in seeds], [cs[s]["ub"] - cs[s]["value"] for s in seeds]]
+    a.errorbar(range(len(seeds)), v, yerr=err, fmt="o", color=S1, capsize=4)
+    a.axhline(0.25, color=CRIT, ls="--", lw=1.2, label="registered C-ORD size (0.25)")
+    a.axhline(r["natural"]["mean"], color=S7, lw=1.0, label=f"mean {r['natural']['mean']:.3f}")
+    a.axhline(r["natural"]["lb"], color=S7, ls=":", lw=1.0, label=f"LB$_{{0.975}}$ {r['natural']['lb']:.4f}")
+    a.set_xticks(range(len(seeds)), [f"seed {s}" for s in seeds]); a.set_ylim(0, 0.3)
+    a.set_ylabel(r"$C_s$ (NA minus controls)"); a.legend(fontsize=7, loc="upper right")
+    a.set_title("(b) C-ORD per seed: clearly > 0, far below 0.25", loc="left", fontsize=9)
+    # (c) designed W2 regret against the bar
+    a = ax[1, 0]
+    d = r["designed"]; mods = [m for m in d if not m.startswith("init")]
+    a.bar(range(len(mods)), [d[m]["R_W2"] for m in mods], color=[col[m[:2]] for m in mods])
+    a.axhline(0.0458395285, color=CRIT, ls="--", lw=1.2, label=r"bar $(3/4)\Delta_{W2}^{lo}\approx0.0458$")
+    a.set_xticks(range(len(mods)), mods, rotation=70); a.legend(fontsize=7)
+    a.set_ylabel(r"designed W2 regret $R_{W2}$")
+    a.set_title("(c) Designed W2 regret: bar not beaten", loc="left", fontsize=9)
+    # (d) designed placebo beta_W2 of the controls
+    a = ax[1, 1]
+    ctr = [m for m in d if m[:2] in ("AB", "ZC") or m.startswith("init")]
+    a.bar(range(len(ctr)), [d[m]["beta_W2"] for m in ctr], color=[col[m[:2]] for m in ctr])
+    a.set_xticks(range(len(ctr)), ctr, rotation=70); a.axhline(0, color=INK2, lw=0.8)
+    a.set_ylabel(r"designed placebo $\beta_{W2}$")
+    a.set_title("(d) Designed placebo: ZC-s1 responds (control-limited)", loc="left", fontsize=9)
+    fig.legend(handles=[Patch(color=col[k], label=l) for k, l in
+                        (("NA", "NA (non-abelian)"), ("AB", "AB control"), ("ZC", "ZC control"),
+                         ("in", "init"))], loc="lower center", ncol=4, fontsize=7.5,
+               frameon=False, bbox_to_anchor=(0.5, -0.02))
+    fig.suptitle(f"X6 stage 1 outcome: {r['outcome']} (rule {r['rule']})", fontsize=10)
+    fig.tight_layout(rect=(0, 0.03, 1, 0.97))
+    save(fig, "fig14_x6s1_results")
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--refresh", action="store_true",
@@ -757,7 +823,7 @@ def main(argv=None) -> int:
         refresh()
     for f in (fig_timeline, fig_outcomes, fig_e1, fig_f1, fig_dynamics, fig_layers,
               fig_probes_circular, fig_origin, fig_d2a, fig_x6_ladder, fig_compute,
-              fig_x6s1_design, fig_x6s1_pipeline):
+              fig_x6s1_design, fig_x6s1_pipeline, fig_x6s1_results):
         f()
     return 0
 

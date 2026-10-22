@@ -1,8 +1,11 @@
-"""C2 data: sampling (scope c2-v1), sequence ids, panels, the sigma donor, the rho_R and rho^(m)
-index maps, the rho_R symmetry report, history tables with the H^R digest, the coverage tally,
-namespace admission and store admission (API.md §4; C2-FROZEN-v1 §2.2, §2.11, §5.2-§5.5, §11).
+"""C2 data: sampling (scope c2-v1), sequence ids, panels, the y-translation donor H^Y (the sign
+rule k_Y and the off-grid rule), the rho^(m) index map, history tables with the H^Y digest where
+defined, the coverage tally, namespace admission and store admission (API.md §4, §19.3;
+C2-FROZEN-v2 §2.2, §2.11, §5.2-§5.5, §11).
 
-Nothing here samples at import. w33 and the latent states are dropped inside sample_block.
+Nothing here samples at import. w33 and the latent states are dropped inside sample_block. An
+OFF_GRID_Y row forms no H^Y: its token row is OFF (an index error, never a symbol), and every
+use of H^Y goes through role_arrays, which keeps only the defined rows.
 """
 
 from __future__ import annotations
@@ -24,7 +27,7 @@ from topo_pilot.contracts import SeedTree, SequenceLayout
 from topo_pilot.dataset import HMMSampler
 from topo_pilot.dataset.checks import make_sequence_ids, process_code
 
-N_SIDE_X, Y_MAX = 12, 11
+N_SIDE_X, OFF = 12, 255
 LINEAGE = "FAIL_TECHNICAL/LINEAGE"
 SPLITS = ("fit", "feas", "val", "test")
 
@@ -66,96 +69,86 @@ def lowest(seq_ids, n) -> np.ndarray:
     return c1_data.lowest(seq_ids, n)
 
 
-# ---- donors and index maps (§2.2, §2.11; API.md §4.2) ----------------------------------------
-def sigma(canonical) -> np.ndarray:
-    """y-reflection of canonical symbols: 6a + b -> 6a + (5 - b)."""
-    c = np.asarray(canonical).astype(np.int64)
-    return 6 * (c // 6) + (5 - c % 6)
+# ---- donors and index maps (§2.2, §2.11; API.md §4.2, §19.3) -------------------------------
+def k_y(b31, coords) -> np.ndarray:
+    """k_Y(H) = +1 iff ybar(b31(H)) < 11/2, else -1 (toward the interior; fy_alt.py)."""
+    ybar = np.asarray(b31, dtype=np.float64) @ np.asarray(coords, dtype=np.float64)[:, 1]
+    return np.where(ybar < float(cc.Y_MID), 1, -1).astype(np.int64)
 
 
-def reflect_donor(canon32) -> np.ndarray:
-    """H^R = (sigma(w1..w31), w32), int64 [n, 32]."""
+def y_donor(canon32, k) -> tuple:
+    """H^Y = (6a + (b + k) on w1..w31, w32) and Y_def; an off-grid row is OFF in full (never
+    clamped or wrapped)."""
     H = np.asarray(canon32).astype(np.int64)
+    a, b = H[:, :31] // 6, H[:, :31] % 6
+    nb = b + np.asarray(k, dtype=np.int64)[:, None]
+    ok = np.all((nb >= 0) & (nb <= 5), axis=1)
     out = H.copy()
-    out[:, :31] = sigma(H[:, :31])
-    return out
+    out[:, :31] = 6 * a + nb
+    out[~ok] = OFF
+    return out, ok
 
 
-def donors4(canon32) -> tuple:
-    """(H, H+, H-, H^R) in ROLES order (c1_oracle.donors for the first three)."""
-    return (*c1_oracle.donors(canon32), reflect_donor(canon32))
+def donors4(canon32, k) -> tuple:
+    """(H, H+, H-, H^Y) in ROLES order (c1_oracle.donors for the first three)."""
+    return (*c1_oracle.donors(canon32), y_donor(canon32, k)[0])
 
 
-def _positions(coords) -> tuple:
-    xy = np.rint(np.asarray(coords, dtype=np.float64)).astype(np.int64)
-    return xy, {(int(x), int(y)): i for i, (x, y) in enumerate(xy)}
-
-
-def rho_R_index(coords) -> np.ndarray:
-    """idx[i] = the state with coordinates (x_i, 11 - y_i)."""
-    xy, pos = _positions(coords)
-    return np.array([pos[(int(x), Y_MAX - int(y))] for x, y in xy], dtype=np.int64)
+def role_arrays(canon32, k) -> dict:
+    """{role: (tokens, rows)}: every row for H, H+, H-; the Y_def rows only for H^Y."""
+    roles = c1_oracle.donors(canon32)
+    out = {r: (H, np.arange(len(H))) for r, H in zip(cc.ROLES[:3], roles)}
+    HY, ok = y_donor(canon32, k)
+    rows = np.flatnonzero(ok)
+    return dict(out, HY=(HY[rows], rows))
 
 
 def rho_m_index(coords, m) -> np.ndarray:
     """idx[i] = the state with coordinates ((x_i + m) mod 12, y_i), one grid cell per unit."""
-    xy, pos = _positions(coords)
+    xy = np.rint(np.asarray(coords, dtype=np.float64)).astype(np.int64)
+    pos = {(int(x), int(y)): i for i, (x, y) in enumerate(xy)}
     return np.array([pos[((int(x) + int(m)) % N_SIDE_X, int(y))] for x, y in xy], dtype=np.int64)
 
 
-def symmetry_report_R(T, E, pi, coords) -> dict:
-    """The rho_R/sigma analogue of c1_oracle.symmetry_report (§7 row 6, T2)."""
-    T, E, pi = (np.asarray(a, dtype=np.float64) for a in (T, E, pi))
-    N, V = E.shape
-    rho, s = rho_R_index(coords), sigma(np.arange(V))
-    Er = E[rho][:, s]
-    dev = max(
-        float(np.abs(T[np.ix_(rho, rho)] - T).max()),
-        float(np.abs(Er - E).max()),
-        float(np.abs(pi - 1.0 / N).max()),
-    )
-    exact = bool(np.array_equal(T[np.ix_(rho, rho)], T) and np.array_equal(pi[rho], pi))
-    r_E = max(
-        abs(c1_oracle.F(Er[z, v]) / c1_oracle.F(E[z, v]) - 1) for z in range(N) for v in range(V)
-    )
-    eps = r_E / (1 - r_E) if r_E < 1 else None
-    return {
-        "max_dev": dev,
-        "symmetry_ok": dev <= float(cc.frac(cc.T_SYM_R)),
-        "exact_invariance": exact,
-        "r_E": r_E,
-        "eps_sym": eps,
-    }
-
-
 # ---- history tables and the coverage tally (§5.3, §5.5; API.md §4.3) -------------------------
-def history_table(canon32, seq_ids, panel) -> dict:
-    roles = donors4(canon32)
+def history_table(canon32, seq_ids, panel, k) -> dict:
+    """Canonical tokens, ids, panels, k_Y, Y_def and the four digest columns ("" where H^Y is
+    not defined)."""
+    n = len(canon32)
     out = {
         "canonical": np.asarray(canon32, dtype=np.uint8),
         "sequence_id": np.asarray(seq_ids, dtype=np.int64),
         "panel": np.asarray(panel, dtype=np.int64),
+        "k_Y": np.asarray(k, dtype=np.int8),
     }
-    for role, H in zip(cc.ROLES, roles):
-        out[f"digest_{role}"] = np.array(scores.history_digests(H), dtype="<U64")
+    for role, (H, rows) in role_arrays(canon32, k).items():
+        col = np.full(n, "", dtype="<U64")
+        col[rows] = np.array(scores.history_digests(H), dtype="<U64") if len(rows) else col[rows]
+        out[f"digest_{role}"] = col
+    out["Y_def"] = out["digest_HY"] != ""
     return out
+
+
+def table_roles(table) -> dict:
+    return role_arrays(table["canonical"], table["k_Y"])
 
 
 def table_digests(table) -> set:
     out = set()
     for role in cc.ROLES:
         out |= set(np.asarray(table[f"digest_{role}"]).astype(str).tolist())
-    return out
+    return out - {""}
 
 
 REASONS = (
     "S_PLUS",
     "S_MINUS",
-    "S_REFL",
+    "S_Y",
     "LIK_H",
     "LIK_PLUS",
     "LIK_MINUS",
-    "LIK_REFL",
+    "LIK_Y",
+    "OFF_GRID_Y",
     "ZERO_MOD_H",
     "ZERO_MOD_PLUS",
     "ZERO_MOD_MINUS",

@@ -1,7 +1,7 @@
 """C2 code: the K = 1, 2, 3 FWL fit, Ledoit-Wolf, the whitened-design checks, the QR-route GLS
 operator and its Euclidean variant, the Lemma G1 identities, the interchange, the code phase,
 the R1 wrapper with the zero-modulus overrides, the N2 radial support screen, the Haar frames and
-the masked S* features (API.md §8; C2-FROZEN-v1 §2.4, §2.5, §2.8, §2.10, §2.11, §6.6).
+the masked S* features (API.md §8, §19.3; C2-FROZEN-v2 §2.4, §2.5, §2.8, §2.10, §2.11, §6.6).
 
 Activations and oracle quantities only: nothing here reads a logit (§5.3 L4). No column is ever
 dropped for rank (§2.4); a deficient design is reported, never repaired.
@@ -128,28 +128,37 @@ def gls(Gamma, B, Sigma=None) -> dict:
     return out
 
 
+def _mx(x) -> float:
+    m = float(np.max(np.abs(x))) if np.size(x) else 0.0
+    return m if np.isfinite(m) else float("inf")
+
+
 def gls_identities(g, Gamma, B, Sigma=None) -> dict:
-    """Lemma G1 by max-abs <= 1e-10: L X_n = I, idempotence, orthogonality, P_S Gamma = 0,
-    P_G B = 0 and W-self-adjointness (W = Sigma^-1, or I)."""
+    """Lemma G1 in the scale-invariant form of v2 §2.5 (D-0104-2) on the production L and
+    P = X_n L: the dimensionless identities absolute <= 1e-10; P_S Gamma and P_G B relative to
+    |Gamma|_max and |B|_max; self-adjointness of the whitened P~ = R^-T P R' (Sigma = R'R, R =
+    Lc'), formed from P by a triangular solve (Euclidean: P - P')."""
     Gamma, B = np.asarray(Gamma, dtype=np.float64), np.asarray(B, dtype=np.float64)
-    Xn, PS, PG = np.hstack((Gamma, B)), g["P_S"], g["P_G"]
-    P = PS + PG
+    Xn, PS, PG, L = np.hstack((Gamma, B)), g["P_S"], g["P_G"], g["L"]
     with np.errstate(all="ignore"):
-        W = np.eye(len(P)) if Sigma is None else np.linalg.inv(np.asarray(Sigma, np.float64))
-        devs = (
-            g["L"] @ Xn - np.eye(Xn.shape[1]),
-            PS @ PS - PS,
-            PG @ PG - PG,
-            PS @ PG,
-            PG @ PS,
-            PS @ Gamma,
-            PG @ B,
-            W @ P - P.T @ W,
-        )
-        worst = max(float(np.max(np.abs(x))) for x in devs)
-    if not np.isfinite(worst):
-        worst = float("inf")
-    return {"max_abs": worst, "ok": _le(worst, cc.T_GLS_ID)}
+        P = Xn @ L
+        dims = {"L_Xn": L @ Xn - np.eye(Xn.shape[1]), "PS2": PS @ PS - PS, "PG2": PG @ PG - PG}
+        dims.update(PS_PG=PS @ PG, PG_PS=PG @ PS, sum=PS + PG - P, P2=P @ P - P)
+        checks = {k: _mx(v) for k, v in dims.items()}
+        rel = {"PS_Gamma": (_mx(PS @ Gamma), _mx(Gamma)), "PG_B": (_mx(PG @ B), _mx(B))}
+        try:
+            Lc = None if Sigma is None else np.linalg.cholesky(np.asarray(Sigma, np.float64))
+            Pt = P if Lc is None else solve_triangular(Lc, P @ Lc, lower=True)
+            sym = _mx(Pt - Pt.T)
+        except (np.linalg.LinAlgError, ValueError):
+            sym = float("inf")
+    worst = max(checks.values())
+    rel_ok = all(
+        np.isfinite(a) and np.isfinite(b) and Fraction(a) <= cc.frac(cc.T_GLS_ID) * Fraction(b)
+        for a, b in rel.values()
+    )
+    ok = _le(worst, cc.T_GLS_ID) and rel_ok and _le(sym, cc.T_GLS_ID)
+    return {"max_abs": worst, "rel": rel, "sym": sym, "checks": checks, "ok": ok}
 
 
 def interchange(y1, y2, P_S) -> tuple:

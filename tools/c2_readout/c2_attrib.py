@@ -78,7 +78,7 @@ def random_ref(M, Sigma, dy, e_full) -> dict:
     """r = a e_full + b tau_K w'w (Lemma RS2), tau_K = tr(C M Sigma M' C), w'w = dy' Sigma^-1 dy."""
     CM = _CM(M)
     tau_K = float(np.trace(CM @ _f(Sigma) @ CM.T))
-    w = solve_triangular(np.linalg.cholesky(_f(Sigma)), _f(dy).T, lower=True)
+    w = solve_triangular(np.linalg.cholesky(_f(Sigma)), _f(dy).T, lower=True, check_finite=False)
     wtw = np.sum(w * w, axis=0)
     r = float(cc.RS_A) * _f(e_full) + float(cc.RS_B) * tau_K * wtw
     return {"r": r, "tau_K": tau_K, "wtw": wtw}

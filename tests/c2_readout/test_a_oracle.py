@@ -1,18 +1,18 @@
-"""Independent tests, author A (job 0101): T-ORACLE and T-ROT (RC-14) (C2-FROZEN-v1 2.2, 2.3,
-2.11, 13.3), and T-LADDER (RC-15; 6.7; targets cs.p1, cs.n_test), moved here from
-test_a_gls.py by the v2 update (the 400-line limit).
+"""Independent tests, author A (job 0101; v2 update, job 0105): T-ORACLE with the y-translation
+donor H^Y (D-0104-1) and T-ROT (RC-14) (C2-FROZEN-v2 2.2, 2.3, 2.11, 5.4, 5.5, 13.3), and
+T-LADDER (RC-15; 6.7; targets cs.p1, cs.n_test), moved here from test_a_gls.py (400 lines).
 
-Targets (API.md 4.2, 6.2, 6.4, 10): cd.sigma, cd.reflect_donor, cd.donors4, cd.rho_R_index,
-cd.rho_m_index, cd.symmetry_report_R, co2.oracle_role, co2.oracle_split, co2.rotation_oracle,
+Targets (API.md 4.2, 6.2, 6.4, 10 and erratum 19.3): cd.OFF, cd.k_y, cd.y_donor, cd.donors4,
+cd.role_arrays, cd.REASONS, cd.coverage_tally, cd.rho_m_index, co2.oracle_role,
+co2.oracle_split, co2.eligibility, co2.reason_flags, co2.x_leakage, co2.rotation_oracle,
 ca.rotation_block, ca.y_rot, ca.rotation_arm, ck.gls.
 
-Tiny cylinder HMM with exact rational (dyadic) weights. API-AMBIGUITY: protocol 13.3 asks for
-a 4 x 4 cylinder, but the index maps fixed by protocol 2.2/2.11 and API.md 4.2 are the 12-grid
-maps (x, 11 - y) and ((x + m) mod 12, y), and c1_oracle.m32 needs x in 0..11. The fixture is
-therefore the smallest cylinder on which those maps act: 12 x-cells (periodic) by the two
-mirror rows y = 5, 6 (24 states), with a max-degree-4 lazy walk (3/16 per neighbour) and a
-factorised emission E = Ex(x, a) Ey(y, b) invariant under (rho_R, sigma) and (tau shifts).
-Reference posteriors are computed in exact Fractions in this file.
+Tiny cylinder HMM with exact rational (dyadic) weights and 36 symbols c = 6a + b: 12 periodic
+x-cells (c1_oracle.m32 and the rotation index maps need x in 0..11; API.md erratum E-1) by the
+two cell rows y = 5, 6, so the posterior mean row ybar(b31) falls on both sides of 5.5 and both
+signs of k_Y occur. Max-degree-4 lazy walk (3/16 per neighbour), factorised emission
+E = Ex(x, a) Ey(y, b). The H^Y oracle quantities are checked against an exact Fraction filter
+written here; no closed form or symmetry report is used for H^Y (v2 2.2, C-4).
 """
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ import precision  # noqa: E402
 EX = [Fraction(1, 2), Fraction(1, 8), Fraction(1, 32), Fraction(1, 32), Fraction(1, 16),
       Fraction(1, 4)]  # by circular offset (a - x // 2) mod 6
 EY5 = [Fraction(1, 16), Fraction(1, 4), Fraction(1, 2), Fraction(1, 8), Fraction(1, 32),
-       Fraction(1, 32)]  # row y = 5; row y = 6 is its mirror: Ey(6, b) = Ey(5, 5 - b)
+       Fraction(1, 32)]  # row y = 5 by symbol row b; row y = 6 uses Ey(6, b) = Ey(5, 5 - b)
 
 
 def _hmm():
@@ -73,34 +73,142 @@ def _filter(T, E, pi, tokens):
     return bs[30], bs[31]
 
 
-def _canon(n=6, seed=0):
-    return np.random.default_rng(seed).integers(0, 36, (n, 32)).astype(np.uint8)
+def _canon(n=6, seed=0, rows=(1, 4)):
+    """Canonical histories whose prefix symbols lie in symbol rows rows[0]..rows[1]."""
+    rng = np.random.default_rng(seed)
+    a, b = rng.integers(0, 6, (n, 32)), rng.integers(rows[0], rows[1] + 1, (n, 32))
+    b[:, 31] = rng.integers(0, 6, n)  # w32 anywhere (it is never shifted)
+    return (6 * a + b).astype(np.uint8)
 
 
-# ---- T-ORACLE --------------------------------------------------------------------------------
-def test_sigma_and_reflect_donor():
-    c = np.arange(36)
-    assert np.array_equal(cd.sigma(c), 6 * (c // 6) + 5 - c % 6)
-    assert np.array_equal(cd.sigma(cd.sigma(c)), c)
-    H = _canon()
-    R = cd.reflect_donor(H)
-    assert R.shape == (6, 32) and R.dtype == np.int64
-    assert np.array_equal(R[:, :31], cd.sigma(H[:, :31].astype(np.int64)))
-    assert np.array_equal(R[:, 31], H[:, 31].astype(np.int64))
-    four = cd.donors4(H)
-    ref = c1_oracle.donors(H)
-    assert len(four) == 4 and all(np.array_equal(a, b) for a, b in zip(four[:3], ref))
-    assert np.array_equal(four[3], R)
+def _hy_ref(H, k):
+    """Independent H^Y (v2 2.2): b -> b + k on w1..w31, a and w32 kept; Y_def per row."""
+    H = np.asarray(H, dtype=np.int64)
+    a, b = H[:, :31] // 6, H[:, :31] % 6
+    nb = b + np.asarray(k)[:, None]
+    ok = np.all((nb >= 0) & (nb <= 5), axis=1)
+    D = H.copy()
+    D[:, :31] = 6 * a + nb
+    return D, ok
 
 
-def test_rho_R_and_rho_m_index_maps_on_the_full_grid():
+def _split(T, E, pi, coords, H):
+    oH = co2.oracle_role(T, E, pi, H, coords)
+    k = cd.k_y(oH["b31"], coords)
+    return co2.oracle_split(T, E, pi, coords, H, k), oH, k
+
+
+# ---- T-ORACLE: the y-translation donor H^Y (D-0104-1) ----------------------------------------
+def test_k_y_sign_rule_with_the_tie_going_to_minus_one():
+    coords = _hmm()[0]
+    lo, hi = np.flatnonzero(coords[:, 1] == 5), np.flatnonzero(coords[:, 1] == 6)
+    b = np.zeros((4, 24))
+    b[0, lo] = 1.0 / len(lo)  # ybar = 5
+    b[1, hi[3]] = 1.0  # ybar = 6
+    b[2, lo[0]], b[2, hi[0]] = 0.5, 0.5  # ybar = 5.5 exactly: -1
+    b[3, lo[0]], b[3, hi[0]] = 0.5 + 2.0 ** -20, 0.5 - 2.0 ** -20  # ybar just below 5.5: +1
+    assert (b[2] @ coords[:, 1]) == 5.5
+    k = cd.k_y(b, coords)
+    assert k.dtype == np.int64 and list(k) == [1, -1, -1, 1]
+    full = np.array([(x, y) for x in range(12) for y in range(12)], dtype=np.float64)
+    assert list(cd.k_y(np.eye(144)[[0, 11, 5, 6]], full)) == [1, -1, 1, -1]  # y = 0, 11, 5, 6
+
+
+def test_y_donor_shifts_the_symbol_row_and_keeps_column_and_w32():
+    H = _canon(n=40, seed=1)  # prefix rows 1..4: defined under both signs
+    k = np.where(np.arange(40) % 2 == 0, 1, -1)
+    HY, ydef = cd.y_donor(H, k)
+    ref, ok = _hy_ref(H, k)
+    assert HY.dtype == np.int64 and HY.shape == (40, 32) and bool(np.all(ydef)) and np.all(ok)
+    assert np.array_equal(HY, ref)
+    assert np.array_equal(HY[:, :31] // 6, H[:, :31].astype(np.int64) // 6)  # column a kept
+    shift = HY[:, :31] % 6 - H[:, :31].astype(np.int64) % 6
+    assert np.array_equal(shift, np.broadcast_to(k[:, None], (40, 31)))
+    assert np.array_equal(HY[:, 31], H[:, 31].astype(np.int64))  # w32 kept
+    four = cd.donors4(H, k)
+    assert all(np.array_equal(x, y) for x, y in zip(four[:3], c1_oracle.donors(H)))
+    assert np.array_equal(four[3], HY)
+
+
+def test_off_grid_rule_never_clamps_or_wraps_and_forms_no_HY():
+    H = _canon(n=6, seed=2).astype(np.int64)
+    k = np.array([1, -1, 1, -1, 1, -1])
+    H[0, 4] = 6 * 2 + 5  # row 5 under k = +1: off grid
+    H[1, 9] = 6 * 3 + 0  # row 0 under k = -1: off grid
+    H[2, 31] = 6 * 1 + 5  # only w32 in row 5: defined (w32 is never shifted)
+    H[3, 7] = 6 * 4 + 5  # row 5 under k = -1: defined
+    H[4, 7] = 6 * 0 + 0  # row 0 under k = +1: defined
+    H = H.astype(np.uint8)
+    HY, ydef = cd.y_donor(H, k)
+    assert list(ydef) == [False, False, True, True, True, True]
+    assert cd.OFF == 255 and np.all(HY[~ydef] == cd.OFF)  # never a clamped or wrapped symbol
+    ref, ok = _hy_ref(H, k)
+    assert np.array_equal(ok, ydef) and np.array_equal(HY[ydef], ref[ydef])
+    roles = cd.role_arrays(H, k)
+    for role in ("H", "Hp", "Hm"):
+        assert np.array_equal(roles[role][1], np.arange(6))
+    assert np.array_equal(roles["HY"][1], np.flatnonzero(ydef))
+    assert np.array_equal(roles["HY"][0], ref[ydef]) and not np.any(roles["HY"][0] == cd.OFF)
+    assert {"S_Y", "LIK_Y", "OFF_GRID_Y"} <= set(cd.REASONS)
+    assert not {"S_REFL", "LIK_REFL"} & set(cd.REASONS)
+    tally = cd.coverage_tally({r: (~ydef if r == "OFF_GRID_Y" else np.zeros(6, bool))
+                               for r in cd.REASONS})
+    assert tally["OFF_GRID_Y"] == 2 and sum(tally.values()) == 2
+
+
+def test_oracle_split_HY_by_exact_forward_eligibility_f_y_and_x_leakage():
+    coords, _, (Tq, Eq, piq), (T, E, pi) = _hmm()
+    H = _canon(n=4, seed=3).astype(np.int64)
+    H[2, 5], H[2, 6] = 6 * 1 + 5, 6 * 2 + 0  # rows 5 and 0 in one prefix: off grid either way
+    H = H.astype(np.uint8)
+    o, oH, k = _split(T, E, pi, coords, H)
+    assert np.array_equal(k, np.where(oH["b31"] @ coords[:, 1] < 5.5, 1, -1))
+    HY, ydef = _hy_ref(H, k)
+    assert list(ydef) == [True, True, False, True]
+    assert np.array_equal(o["Y_def"], ydef) and np.array_equal(o["k_Y"], k)
+    TE = [[sum(Tq[i][j] * Eq[j][v] for j in range(24)) for v in range(36)] for i in range(24)]
+    toks = dict(zip(("H", "Hp", "Hm"), c1_oracle.donors(H)), HY=HY)
+    for role, tk in toks.items():
+        for i in range(4):
+            if role == "HY" and not ydef[i]:
+                for key in ("b31", "b32", "q", "qbar", "s", "le"):
+                    assert np.all(np.isnan(o["HY"][key][i]))  # no H^Y formed here
+                continue
+            b31, b32 = _filter(Tq, Eq, piq, [int(v) for v in tk[i]])
+            q = [sum(b32[j] * TE[j][v] for j in range(24)) for v in range(36)]
+            for key, ref in (("b31", b31), ("b32", b32), ("q", q)):
+                got = np.asarray(o[role][key][i])
+                assert np.max(np.abs(got / np.array([float(x) for x in ref]) - 1)) <= 1e-12
+            assert abs(o[role]["qbar"][i].sum() - 1) <= 1e-15
+    G, d = c1_oracle.G_hat(o["H"]["qbar"][ydef], o["HY"]["qbar"][ydef])[:2]
+    assert np.array_equal(o["d_y"][ydef], d) and np.allclose(o["G_y"][ydef], G, 0, 1e-15)
+    assert np.all(np.isnan(o["d_y"][~ydef])) and np.all(np.isnan(o["G_y"][~ydef]))
+    G, d = c1_oracle.G_hat(o["Hp"]["qbar"], o["Hm"]["qbar"])[:2]
+    assert np.array_equal(o["d_x"], d) and np.allclose(o["G_x"], G, 0, 1e-15)
+    cached = co2.oracle_split(T, E, pi, coords, H, k, o_H=oH)
+    for role in ("H", "HY"):
+        assert np.array_equal(cached[role]["b32"], o[role]["b32"], equal_nan=True)
+    el = co2.eligibility(o, 1e9)
+    le_y = np.where(ydef, o["HY"]["le"], np.nan)
+    assert np.array_equal(el["E_y"], ydef & np.isfinite(o["H"]["le"]) & np.isfinite(le_y))
+    assert float(np.mean(el["E_y"])) == 0.75  # f_y = |E_y| / N: the OFF_GRID_Y row counts
+    small = co2.eligibility(o, -1.0)
+    assert not np.any(small["E_y"]) and not np.any(small["E_x"])
+    fl = co2.reason_flags(o, -1.0)
+    assert np.array_equal(fl["OFF_GRID_Y"], ~ydef)
+    assert np.array_equal(fl["S_Y"], ydef) and not np.any(fl["LIK_Y"])  # not evaluated off grid
+    lam = co2.x_leakage(o, el["E_x"], el["E_y"], coords)
+    for key in ("b31", "b32"):
+        mm = lambda r: c1_oracle.m32(o[r][key], coords)  # noqa: E731
+        num = np.linalg.norm(mm("HY")[ydef] - mm("H")[ydef], axis=1).mean()
+        den = np.linalg.norm(mm("Hp") - mm("Hm"), axis=1).mean()
+        assert abs(lam[key] - num / den) <= 1e-12 * max(1.0, num / den)
+
+
+def test_rho_m_index_maps_on_the_full_grid():
     rng = np.random.default_rng(1)
     coords = np.array([(x, y) for x in range(12) for y in range(12)], float)[rng.permutation(144)]
     pos = {(int(x), int(y)): i for i, (x, y) in enumerate(coords)}
-    R = cd.rho_R_index(coords)
-    assert R.dtype == np.int64
-    assert all(R[i] == pos[(int(x), 11 - int(y))] for i, (x, y) in enumerate(coords))
-    assert np.array_equal(R[R], np.arange(144))
     for m in (-2, -1, 1, 2):
         idx = cd.rho_m_index(coords, m)
         assert all(idx[i] == pos[((int(x) + m) % 12, int(y))] for i, (x, y) in enumerate(coords))
@@ -109,79 +217,11 @@ def test_rho_R_and_rho_m_index_maps_on_the_full_grid():
         assert np.array_equal(cd.rho_m_index(coords, 2 * k), c1_oracle.rho_index(coords, k))
 
 
-def test_symmetry_report_R_exact_and_perturbed():
-    coords, _, _, (T, E, pi) = _hmm()
-    rep = cd.symmetry_report_R(T, E, pi, coords)
-    assert bool(rep["exact_invariance"]) and bool(rep["symmetry_ok"])
-    assert rep["max_dev"] <= 1e-14 and rep["r_E"] == 0 and rep["eps_sym"] == 0
-    h = 2.0 ** -30
-    E2 = E.copy()
-    E2[0, 0] += h
-    E2[0, 1] -= h  # dyadic, exact, rows still sum to one
-    R = cd.rho_R_index(coords)
-    s = cd.sigma(np.arange(36))
-    r_E = max(abs(Fraction(E2[R[z], s[v]]) / Fraction(E2[z, v]) - 1)
-              for z in range(24) for v in range(36))
-    rep2 = cd.symmetry_report_R(T, E2, pi, coords)
-    assert rep2["r_E"] == r_E and rep2["eps_sym"] == r_E / (1 - r_E)
-    assert not bool(rep2["symmetry_ok"]) and bool(rep2["exact_invariance"])
-    T2 = T.copy()
-    T2[0, 2] += h
-    T2[0, 0] -= h
-    assert not bool(cd.symmetry_report_R(T2, E, pi, coords)["exact_invariance"])
-
-
-def test_exact_reflection_identity_and_closed_form_b32_of_HR():
-    coords, idx, (Tq, Eq, piq), (T, E, pi) = _hmm()
-    H = _canon(n=3, seed=2)
-    HR = cd.reflect_donor(H)
-    R = cd.rho_R_index(coords)
-    for i in range(3):
-        b31, _ = _filter(Tq, Eq, piq, [int(v) for v in H[i]])
-        b31R, b32R = _filter(Tq, Eq, piq, [int(v) for v in HR[i]])
-        assert all(b31R[R[z]] == b31[z] for z in range(24))  # b31(sigma H) = rho_R b31(H)
-        u = [sum(b31R[k] * Tq[k][j] for k in range(24)) * Eq[j][int(H[i, 31])]
-             for j in range(24)]
-        assert b32R == [x / sum(u) for x in u]  # b32(H^R) closed form, exactly
-    o = co2.oracle_split(T, E, pi, coords, H)
-    cf = c1_oracle.closed_form_b32(o["H"]["b31"], T, E, H[:, 31].astype(np.int64), R)
-    assert np.max(np.abs(o["HR"]["b32"] / cf - 1)) <= 1e-12
-
-
-def test_oracle_split_roles_match_exact_filter_and_normalised_predictive():
-    coords, _, (Tq, Eq, piq), (T, E, pi) = _hmm()
-    n = 2
-    H = _canon(n=n, seed=3)
-    o = co2.oracle_split(T, E, pi, coords, H)
-    TE = [[sum(Tq[k][j] * Eq[j][v] for j in range(24)) for v in range(36)] for k in range(24)]
-    roles = dict(zip(("H", "Hp", "Hm", "HR"), cd.donors4(H)))
-    for role, toks in roles.items():
-        for key in ("b31", "b32", "q", "qbar", "s", "le"):
-            assert key in o[role]
-        for i in range(n):
-            b31, b32 = _filter(Tq, Eq, piq, [int(v) for v in toks[i]])
-            q = [sum(b32[k] * TE[k][v] for k in range(24)) for v in range(36)]
-            for got, ref in ((o[role]["b31"][i], b31), (o[role]["b32"][i], b32),
-                             (o[role]["q"][i], q)):
-                assert np.max(np.abs(np.asarray(got) / np.array([float(x) for x in ref]) - 1)) \
-                    <= 1e-12
-        qb = o[role]["qbar"]
-        assert np.max(np.abs(qb.sum(axis=1) - 1)) <= 1e-15
-        assert np.max(np.abs(qb - o[role]["q"] / o[role]["q"].sum(1, keepdims=True))) <= 1e-16
-    for pair, (a, b) in (("x", ("Hp", "Hm")), ("y", ("H", "HR"))):
-        G, d = c1_oracle.G_hat(o[a]["qbar"], o[b]["qbar"])[:2]
-        assert np.array_equal(o["d_" + pair], d) and np.allclose(o["G_" + pair], G, 0, 1e-15)
-        assert np.all(o["G_" + pair] >= 0)
-    assert o["nuis"].shape == (n, 5)
-    single = co2.oracle_role(T, E, pi, H)  # API.md 6.2 signature (no coords): m32 not asserted
-    assert np.array_equal(single["qbar"], o["H"]["qbar"])
-
-
 @pytest.mark.parametrize("m", [1, 2])
 def test_rotation_oracle_rolls_b31_and_reapplies_w32(m):
     coords, idx, _, (T, E, pi) = _hmm()
     H = _canon(n=5, seed=4)
-    o = co2.oracle_split(T, E, pi, coords, H)
+    o = _split(T, E, pi, coords, H)[0]
     w32 = H[:, 31].astype(np.int64)
     rot = co2.rotation_oracle(o["H"]["b31"], T, E, w32, coords, m)
     for sgn, key in ((1, "b_plus"), (-1, "b_minus")):

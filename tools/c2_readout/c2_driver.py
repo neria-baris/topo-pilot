@@ -1,11 +1,12 @@
-"""C2 driver (API.md §12; C2-FROZEN-v1 §5.7, §7, §11): gate order, LogitPolicy, sealing, records,
-lineage, release, G0, PF, meter check, stage frame, CLI. Paths via c2_config (E-24). The S1-S5
-stage bodies would exceed 400 lines (S14, escalated by job 0103): run_stage refuses."""
+"""C2 driver (API.md §12, §19.2-§19.3; C2-FROZEN-v2 §5.7, §7, §11): gate order, LogitPolicy,
+sealing, records, lineage, release, G0, meter check, lazy stage dispatch, CLI. Gate bodies:
+c2_stage_pre (S1-S3), c2_stage_val (S4), c2_stage_post (S5), helpers c2_stage_base (R-0104-1)."""
 
 from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib
 import json
 import os
 import subprocess
@@ -38,8 +39,11 @@ STATE_SHA["2718"] = "501d9c9ad80d4ffe272d7e03003cdee24b7fe3b25bed40e044f2111afd6
 STATE_SHA["3141"] = "197cccd6cf5491143171fe8ccd6ce79f71cb2f16995aa99af4e9dffe4bec94c8"  # §4
 PREREQ = {"S1": None, "S2": "S1", "S3": "S2", "S4": "S3", "S5": "S4"}
 APPEND, SKIP_DIRS = ("GATES.jsonl", "STAGES.jsonl"), ("manifests", "superseded")
-OWNER = ("path", "sha256", "owner_verbatim", "granted_utc")
-BLOCKED = "stage bodies S1-S5 not implemented: c2_driver.py would exceed 400 lines (S14)"
+OWNER, AUTH_KEYS = ("path", "sha256", "owner_verbatim", "granted_utc"), ("budget", "coordinator")
+AUTH_KEYS += ("written_utc",)
+STAGE_MODULE = {s: f"c2_stage_{m}" for s, m in zip(PREREQ, ("pre",) * 3 + ("val", "post"))}
+StageRefused = sr.StageRefused
+ALWAYS, META = ("REPORT",), ("status", "reason", "records", "model", "family", "problem", "scope")
 
 
 # ---- the policy (§5.7, §7, NEW-2; API.md §12.1) ----------------------------------------------
@@ -113,17 +117,21 @@ def _js(v):
 
 
 def run_gate(ctx, gate, fn, scope, model=None, family=None, problem=None) -> dict:
+    """One GATES.jsonl line, or one per entry of res["records"] (API.md §19.2); an exception is
+    classified and recorded with scope study. "stop": a study-scope line not PASS/NOT_RUN."""
     try:
         res = dict(fn() or {})
     except Exception as exc:  # noqa: BLE001  every failure is classified and recorded
-        full, reason = classify_exception(exc)
-        res = {"status": full, "reason": reason}
-    full = str(res.get("status", "PASS"))
-    vals = _js({k: v for k, v in res.items() if k not in ("status", "reason")})
-    who = {"model": model, "family": family, "problem": problem, "scope": scope}
-    rec = {"full_status": full, "reason": res.get("reason"), "values": vals, **who}
-    sr.record_gate(ctx.store, gate, cc.status_of(full)[0], stage=ctx.data.get("stage"), **rec)
-    return dict(res, status=full)
+        res, scope = dict(zip(("status", "reason"), classify_exception(exc))), "study"
+    res["status"], stop = str(res.get("status", "PASS")), False
+    for r in res.get("records") or [dict(res, model=model, family=family, problem=problem)]:
+        full, sc = str(r.get("status", "PASS")), r.get("scope", scope)
+        vals = r["values"] if "values" in r else {k: v for k, v in r.items() if k not in META}
+        rec = {"full_status": full, "reason": r.get("reason"), "values": _js(vals), "scope": sc}
+        rec.update({k: r.get(k) for k in ("model", "family", "problem")})
+        sr.record_gate(ctx.store, gate, cc.status_of(full)[0], stage=ctx.data.get("stage"), **rec)
+        stop = stop or (sc == "study" and full not in OK)
+    return dict(res, stop=stop)
 
 
 def _jr(path):
@@ -169,8 +177,8 @@ def auth_ok(store) -> bool:
     try:
         o = a["owner_record"]
         ok = a["schema"] == "c2-auth-v1" and _eq(a["protocol_sha256"], cc.PROTOCOL_SHA256)
-        ok = ok and _eq(o["sha256"], cc.AUTH_SHA256) and all(o.get(k) for k in OWNER)
-        return bool(ok and all(a.get(k) for k in ("budget", "coordinator", "written_utc")))
+        ok = ok and bool(cc.AUTH_SHA256) and _eq(o["sha256"], cc.AUTH_SHA256)  # v2 AUTH bound
+        return bool(ok and all(map(o.get, OWNER)) and all(map(a.get, AUTH_KEYS)))
     except (TypeError, KeyError, AttributeError):
         return False
 
@@ -226,8 +234,8 @@ def g0(ctx, stage=None) -> dict:
     wt, store = Path(ctx.worktree), Path(ctx.store)
     stage, fz = stage or ctx.data.get("stage"), _jr(store / "FREEZE.json") or {}
     pkg, lin = wt / "tools" / "c2_readout", recognised(store)
-    proto, mail = pkg / "PROTOCOL_C2_v1.md", Path(cc.MAILBOX) / "planning" / "responses"
-    mail, c2c = mail / "C2-FROZEN-v1.md", pkg / "CONTRACT.json"
+    proto, c2c = pkg / Path(cc.PROTOCOL_FILE).name, pkg / "CONTRACT.json"
+    mail = Path(cc.PROJECT_ROOT) / cc.CONTRACT["protocol"]["mailbox_file"]  # R-0105-1
     iv = ((cc.K4_FREEZE, H["k4_freeze"]),)
     iv += ((pkg.parent / "c1prime" / "CONTRACT.json", H["c1prime_contract"]),)
     pins = {f"tools/c2_readout/{p.name}": S(p) for p in pkg.glob("*") if p.is_file()}
@@ -255,28 +263,6 @@ def g0(ctx, stage=None) -> dict:
     cls = "LINEAGE" if bad and set(bad) <= {"vi", "vii"} else "AUTHORITY"
     out["status"] = f"FAIL_TECHNICAL/{cls}" if bad else "PASS"
     return out
-
-
-SUITES = "learner dataset contracts oracle process world analysis prediction experiment"
-SUITES += " circle_history c1prime c1prime_registry c2_readout"
-
-
-def pf(ctx) -> dict:
-    scratch = Path(cc.SCRATCH_ROOT) / str(ctx.job)
-    tmp, base = scratch / "tmp", scratch / "pt"
-    tmp.mkdir(parents=True, exist_ok=True)
-    env = dict(os.environ, TEMP=str(tmp), TMP=str(tmp), TMPDIR=str(tmp))
-    env["PYTHONPATH"] = str(Path(ctx.worktree) / "src")
-    py, kw = [sys.executable, "-s"], {"cwd": ctx.worktree, "env": env}
-    tests = [f"tests/{s}" for s in SUITES.split()]
-    run = [py + ["-m", "pytest", *tests, "-p", "no:cacheprovider", "--basetemp", str(base)]]
-    codes = [subprocess.run(c, **kw).returncode for c in run + [py + ["tools/check_imports.py"]]]
-    out = subprocess.run(py + ["tools/check_file_sizes.py"], capture_output=True, text=True, **kw)
-    lines = out.stdout.splitlines()
-    mine = [x for x in lines if "/c2_readout/" in x.replace("\\", "/")]
-    ok = all(c == 0 for c in codes) and not mine
-    res = {"status": "PASS" if ok else "FAIL_TECHNICAL/PF", "codes": codes, "c2_sizes": mine}
-    return dict(res, temp=str(tmp), basetemp=str(base), pre_existing_sizes=lines)
 
 
 def _skip(rel) -> bool:
@@ -347,9 +333,6 @@ def regen_compare(ctx, path, archived_sha256) -> bool:
     return _eq(sr.sha256(path), archived_sha256)
 
 
-StageRefused = sr.StageRefused
-
-
 def begin_stage(ctx, stage) -> None:
     store, stages, gates = Path(ctx.store), sr.stages_so_far(ctx.store), sr.gates_so_far(ctx.store)
     rel, prior = release_ok(ctx, stage), PREREQ[stage]
@@ -372,9 +355,28 @@ def complete_stage(ctx, stage, files) -> None:
 
 
 def run_stage(stage, ctx) -> dict:
+    """Lazy dispatch (API.md §19.2-§19.3): PLAN steps in order; NOT_RUN after a study stop."""
     if stage not in PREREQ:
         raise ValueError(f"unknown stage {stage}")
-    raise StageRefused(f"{stage}: {BLOCKED}")
+    plan = importlib.import_module(STAGE_MODULE[stage]).PLAN[stage]
+    begin_stage(ctx, stage)
+    ctx.release, ctx.data["stage"] = release_ok(ctx, stage), stage
+    ctx.policy = LogitPolicy(done=[g["gate"] for g in sr.gates_so_far(ctx.store)])
+    stopped, seen = None, {}
+    for gate, fn, scope in plan:
+        run = fn if stopped is None or gate in ALWAYS else (lambda c: {"status": "NOT_RUN"})
+        ctx.policy.begin(gate)
+        try:
+            res = run_gate(ctx, gate, lambda: run(ctx), scope)
+        finally:
+            ctx.policy.end(gate)
+        seen[gate], stopped = res["status"], stopped or (gate if res["stop"] else None)
+    rel, ctx.data["stopped"] = f"stages/{stage}/record.json", stopped
+    (Path(ctx.store) / rel).parent.mkdir(parents=True, exist_ok=True)
+    sr.write_new(Path(ctx.store) / rel, _js({"stage": stage, "gates": seen, "stopped": stopped}))
+    complete_stage(ctx, stage, ctx.data.setdefault("files", []) + [rel])
+    write_manifest(ctx, stage)
+    return {"stage": stage, "stopped": stopped}
 
 
 def main(argv=None) -> int:
@@ -384,9 +386,8 @@ def main(argv=None) -> int:
         ap.add_argument(opt, required=True)
     a = ap.parse_args(argv)
     wt = Path(__file__).resolve().parents[2]
-    git = ["git", "-C", str(wt), "rev-parse", "HEAD"]
-    head = subprocess.run(git, capture_output=True, text=True).stdout.strip()
-    ctx = Ctx(Path(a.store), wt, head, a.job, a.task_sha256, a.session, None, None)
+    git = subprocess.run(["git", "-C", str(wt), "rev-parse", "HEAD"], capture_output=1, text=1)
+    ctx = Ctx(Path(a.store), wt, git.stdout.strip(), a.job, a.task_sha256, a.session, None, None)
     try:
         res = run_stage(a.stage, ctx)
     except StageRefused as exc:

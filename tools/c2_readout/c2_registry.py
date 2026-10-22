@@ -1,6 +1,7 @@
 """C2 exposure registry c2-reg-v1: the R and R' sources (the reused C1'/K4b readers a-f, k and
 the X6S1 reader x6), the run-time inventory against the frozen table, builds, loading and the
-split separation (API.md §5, §18; C2-FROZEN-v1 §5.3, §7 rows 4, 5, 22). Identity-only access.
+split separation (API.md §5, §18, §19.3; C2-FROZEN-v2 §5.3, §7 rows 4, 5, 22). Identity-only
+access; H^Y enters only where it is defined.
 
 Paths are read through c2_config at call time (API.md §19.1 E-24). x6s1_registry is imported
 lazily inside the reader-x6 functions (API.md §1).
@@ -357,14 +358,15 @@ class Registry:
 
 
 def separation(reg, tables) -> dict:
-    """Every split's four-role union disjoint from R and from every other split; sequence ids
+    """Every split's role union (H^Y where defined) disjoint from R and from every other split; ids
     pairwise disjoint and outside the sealed D-2a ranges; duplicates counted and kept; a
     sealed_d2a predicate hit -> INCONCLUSIVE/REGISTRY_INCOMPLETE (API.md C-11)."""
     names = list(tables)
     U = {s: sorted(cd.table_digests(tables[s])) for s in names}
     coll = {f"{s}_R": int(np.count_nonzero(reg.contains(np.array(U[s], "<U64")))) for s in names}
     coll.update({f"{a}_{b}": len(set(U[a]) & set(U[b])) for a, b in combinations(names, 2)})
-    dup = {s: 4 * len(tables[s]["sequence_id"]) - len(U[s]) for s in names}
+    roles = {s: cd.table_roles(tables[s]) for s in names}
+    dup = {s: sum(len(r[1]) for r in roles[s].values()) - len(U[s]) for s in names}
     ids = {s: np.asarray(tables[s]["sequence_id"], dtype=np.int64) for s in names}
     problems = []
     try:
@@ -375,8 +377,8 @@ def separation(reg, tables) -> dict:
     in_ranges = sum(int(((v >= lo) & (v < hi)).sum()) for v in ids.values() for lo, hi in rng)
     if in_ranges:
         problems.append(f"{in_ranges} sequence id(s) inside the sealed D-2a ranges")
-    roles = [H for s in names for H in cd.donors4(tables[s]["canonical"])]
-    hits = sum(sum(k4b_data.predicate_check(H, reg.predicates)["hits"].values()) for H in roles)
+    toks = [H for s in names for H, rows in roles[s].values() if len(rows)]
+    hits = sum(sum(k4b_data.predicate_check(H, reg.predicates)["hits"].values()) for H in toks)
     lineage = any(coll.values()) or problems
     status = LINEAGE if lineage else INCOMPLETE if hits else "PASS"
     out = {"status": status, "collisions": coll, "duplicates": dup, "sealed_ranges": in_ranges}

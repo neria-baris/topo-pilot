@@ -1,22 +1,39 @@
 {
  "schema": "c2-contract-v1",
- "precedence": "The protocol (tools/c2_readout/PROTOCOL_C2_v1.md) wins on any conflict; API.md fixes names and layouts; this file holds the machine-readable values. Fractions and tolerances are exact strings read with fractions.Fraction.",
+ "precedence": "The protocol (tools/c2_readout/PROTOCOL_C2_v2.md) wins on any conflict; API.md fixes names and layouts; this file holds the machine-readable values. Fractions and tolerances are exact strings read with fractions.Fraction.",
  "protocol": {
-  "id": "C2-FROZEN-v1",
-  "file": "tools/c2_readout/PROTOCOL_C2_v1.md",
-  "sha256": "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8",
-  "mailbox_file": "agent-handoff/planning/responses/C2-FROZEN-v1.md",
+  "id": "C2-FROZEN-v2",
+  "file": "tools/c2_readout/PROTOCOL_C2_v2.md",
+  "sha256": "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583",
+  "mailbox_file": "agent-handoff/planning/responses/C2-FROZEN-v2.md",
+  "supersedes": {"id": "C2-FROZEN-v1", "sha256": "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8", "note": "pre-data revision (v2 21); the v1 byte copy is removed from the execution tree; historical v1 records stay archived"},
   "addendum_1": {
    "file": "agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-1.md",
    "sha256": "2db09007a1ff9f9706ffe323c0c1d2c49197648473c481c1776a46ae884011a8"
   },
+  "addendum_2": {
+   "file": "agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-2.md",
+   "sha256": "fb6b52e4dfe8494c6ca94cdc3e80b1e489458ca3548ad77d1cd160eb773521e5"
+  },
+  "addendum_3": {
+   "file": "agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-3.md",
+   "sha256": "5cdfca2f717aec0f3def7c65abc9f6099a01fd90fca0d982af8678578818129e",
+   "status": "superseded by v2 21 C-7 (R-0104-1, 14 modules)"
+  },
+  "owner_addendum_23": {
+   "file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-23.md",
+   "sha256": "21c941a14aacf35a2eacd88d1c8310ddc62037136715aef327973fa7c2b135ab"
+  },
   "R": "d44548b073523d402cc31fbfc5440c0d6df37a23",
   "base_commit": "967605c256bcb554f43d4681326d32efc95bfcc9",
   "auth": {
-   "file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-22.md",
-   "sha256": "5a8430f36eb1432030c3ca8c2b3fa3a152193a4d3d80931a73015c413b3fe786"
+   "file": null,
+   "sha256": null,
+   "pending": "owner AUTH addendum naming the v2 sha256 51f78976...4583 and the forecast (v2 14 D2, gate 0b); bound here and in c2_config.AUTH_PATH/AUTH_SHA256 by the coordinator before H; until then auth_ok refuses (fail closed)",
+   "v1_auth_historical": {"file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-22.md", "sha256": "5a8430f36eb1432030c3ca8c2b3fa3a152193a4d3d80931a73015c413b3fe786", "note": "named the v1 sha256; does not authorise v2"}
   },
-  "job": "0100"
+  "job": "0100",
+  "revision_job": "0105"
  },
  "scope": "c2-v1",
  "registry_version": "c2-reg-v1",
@@ -115,7 +132,8 @@
   "rs_b": "121/344043",
   "psi_random_share": "6/127",
   "kappa_m": "1/100",
-  "h4": "9/10",
+  "h4_x": "9/10",
+  "h4_y": "17/20",
   "h5_nat": "1/100",
   "l1_r2_code_0": "1/2",
   "l1_rho_inc": "9/10",
@@ -142,8 +160,8 @@
   "x1_attainability_form": "4 * 128 * 2**-53 * kappa_X1 <= 1e-10 (kappa_X1 <= 1.76e3 rounded)",
   "readout_rank_ratio": "1e-8",
   "t1_tau_symmetry": "1e-14",
-  "t2_rho_R_symmetry": "1e-14",
-  "t3_closed_form": "t + t^2, t = 2*delta/(1-delta) + 62*eps_sym, delta = 2e-12",
+  "t2": "withdrawn (v2 9.3; D-0104-1): H^Y has no symmetry; its oracle quantities are checked by the Decimal rows (T4-T6)",
+  "t3_closed_form": "x pair only: t + t^2, t = 2*delta/(1-delta) + 62*eps_sym, delta = 2e-12",
   "t4_decimal_posterior_predictive_relative": "2e-12",
   "t5_decimal_surprisal": "1e-10",
   "t6_decimal_G": "2e-11 * (1 + max_v |lambda_v|)",
@@ -151,6 +169,7 @@
   "t8_cross_model_G": "1e-12",
   "q_sum": "1e-12",
   "t11_gls_identities": "1e-10",
+  "t11_form": "scale-invariant (v2 2.5, D-0104-2): absolute for ||L Xn - I||, P_S^2 - P_S, P_G^2 - P_G, P_S P_G, P_G P_S, P_S + P_G - P, P^2 - P and the whitened ||P~ - P~'||_max (P~ = R_Sigma^-T P R_Sigma', Sigma = R_Sigma' R_Sigma; Euclidean: ||P - P'||_max); relative ||P_S Gamma||_max <= 1e-10 ||Gamma||_max and ||P_G B||_max <= 1e-10 ||B||_max",
   "cond_max": "1e8",
   "sv_ratio_min": "1e-6",
   "lw_ratio_min": "1e-12",
@@ -162,6 +181,20 @@
   "guard_relative": "1e-9",
   "equivalence": "c1_fit.equivalence_tolerance: max(1e-10, 64 * eps * kappa * ||pred||_inf)"
  },
+ "y_donor": {
+  "name": "H^Y (one-symbol-row y-translation toward the interior, w32 kept; v2 2.2, owner addendum 23 option A)",
+  "map": "upsilon_k(6a + b) = 6a + (b + k) on w1..w31, defined iff 0 <= b + k <= 5",
+  "sign_rule": "k_Y(H) = +1 iff ybar(b31(H)) < 11/2, else -1; ybar(b) = sum_z b(z) coords[z, 1]",
+  "ybar_threshold": "11/2",
+  "off_grid": "OFF_GRID_Y: a shifted prefix symbol would leave rows 0..5; the row is ineligible for the y pair, counted in the tally and in f_y's denominator; no H^Y tokens, digest, oracle or forward; never clamped or wrapped",
+  "reference": {"file": "X:/Downloads/topo-scratch/0104/fy_alt.py", "sha256": "0e1113ede9939f87895ffa80b51c37c29bc7b4ca9e3dbf35b5b95583327763aa"}
+ },
+ "coverage_reasons": {
+  "oracle": ["S_PLUS", "S_MINUS", "S_Y", "LIK_H", "LIK_PLUS", "LIK_MINUS", "LIK_Y", "OFF_GRID_Y", "ZERO_MOD_H", "ZERO_MOD_PLUS", "ZERO_MOD_MINUS"],
+  "model": ["UNSUPPORTED_H", "UNSUPPORTED_PLUS", "UNSUPPORTED_MINUS", "ZERO_CODE_PLUS", "ZERO_CODE_MINUS", "R1_ZERO", "R1_UNSELECTED"]
+ },
+ "modules": ["c2_config.py", "c2_data.py", "c2_registry.py", "c2_oracle.py", "c2_model.py", "c2_code.py", "c2_stats.py", "c2_attrib.py", "c2_decide.py", "c2_driver.py", "c2_stage_base.py", "c2_stage_pre.py", "c2_stage_val.py", "c2_stage_post.py"],
+ "module_limits": {"lines_per_module": 400, "ceiling": 5600, "authority": "v2 13.2, 21 C-7 (R-0104-1)"},
  "rotation": {"doses": [{"m": 1, "theta": "pi/6"}, {"m": 2, "theta": "pi/3"}], "orientation": "block k = [[cos k theta, -sin k theta], [sin k theta, cos k theta]] on (cos k phi, sin k phi); +theta paired with the oracle roll x -> x + m"},
  "chart": {
   "contract": "tools/c1prime/CONTRACT.json",

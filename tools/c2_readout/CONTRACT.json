@@ -27,9 +27,9 @@
   "R": "d44548b073523d402cc31fbfc5440c0d6df37a23",
   "base_commit": "967605c256bcb554f43d4681326d32efc95bfcc9",
   "auth": {
-   "file": null,
-   "sha256": null,
-   "pending": "owner AUTH addendum naming the v2 sha256 51f78976...4583 and the forecast (v2 14 D2, gate 0b); bound here and in c2_config.AUTH_PATH/AUTH_SHA256 by the coordinator before H; until then auth_ok refuses (fail closed)",
+   "file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-24.md",
+   "sha256": "b550fc9d057ac5201e40e3f37d000e5431973e4e6129d50bcad45b43237a5480",
+   "bound": "owner addendum 24 (2026-10-22) names C2-FROZEN-v2 51f78976 and the forecast; bound by the coordinator before H",
    "v1_auth_historical": {"file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-22.md", "sha256": "5a8430f36eb1432030c3ca8c2b3fa3a152193a4d3d80931a73015c413b3fe786", "note": "named the v1 sha256; does not authorise v2"}
   },
   "job": "0100",

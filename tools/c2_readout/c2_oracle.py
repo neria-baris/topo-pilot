@@ -1,7 +1,8 @@
 """C2 oracle: process loading, the H1 static checks, the canonical oracle for the four
-histories, the normalised predictive, d and G for the x and y pairs, the five nuisance
-covariates, eligibility, kappa_m, zero-modulus flags, the H3 composition with the Decimal rows
-for H^R, and the rotation oracle (API.md §6; C2-FROZEN-v1 §2.2, §2.3, §2.11, §5.4, §7 rows 3, 6).
+histories (H^Y by the exact oracle forward on its defined rows only), the normalised predictive,
+d and G for the x and y pairs, the five nuisance covariates, eligibility, kappa_m, the x leakage
+of the y pair, zero-modulus flags, the H3 composition with the Decimal rows, and the rotation
+oracle (API.md §6, §19.3; C2-FROZEN-v2 §2.2, §2.3, §2.11, §2.12, §5.4, §7 rows 3, 6).
 
 The oracle is canonical; every d is converted to the model's named order only by
 c1_oracle.named_from_canonical (RC-1). c2_model is imported inside the functions that use its
@@ -82,7 +83,7 @@ def h1_static(proc) -> dict:
     return {"status": "PASS" if all(checks.values()) else IDENTITY, "checks": checks, "p0": p0}
 
 
-# ---- oracle rows (§2.3, §5.4; API.md §6.2) ---------------------------------------------------
+# ---- oracle rows (§2.2, §2.3, §5.4; API.md §6.2, §19.3) --------------------------------------
 def oracle_role(T, E, pi, tokens32, coords=None) -> dict:
     """c1_oracle.run_oracle plus q-bar; "m32" only when coords is given (API.md §19.1 E-5)."""
     r = c1_oracle.run_oracle(T, E, pi, tokens32)
@@ -100,10 +101,37 @@ def oracle_role(T, E, pi, tokens32, coords=None) -> dict:
     return out
 
 
-def oracle_split(T, E, pi, coords, canon32) -> dict:
-    o = {role: oracle_role(T, E, pi, H, coords) for role, H in zip(cc.ROLES, cd.donors4(canon32))}
-    for pair, (a, b) in cc.PAIRS.items():
-        o[f"G_{pair}"], o[f"d_{pair}"] = c1_oracle.G_hat(o[a]["qbar"], o[b]["qbar"])[:2]
+SHAPES = {"b31": (cc.N_STATES,), "b32": (cc.N_STATES,), "q": (cc.V,), "qbar": (cc.V,)}
+SHAPES.update(s=(), le=(), m32=(2,))
+
+
+def _scatter(o, rows, n) -> dict:
+    """n-row arrays of a role computed on `rows` only (NaN elsewhere: no H^Y is formed there)."""
+    out = {k: np.full((n,) + shape, np.nan) for k, shape in SHAPES.items()}
+    for k in o:
+        out[k][rows] = o[k]
+    return out
+
+
+def oracle_split(T, E, pi, coords, canon32, k, o_H=None) -> dict:
+    """The four roles (H from the H2 cache o_H when given; H^Y by the exact oracle forward on
+    the Y_def rows only), Y_def, k_Y, d and G of both pairs (y pair on Y_def rows), nuisance."""
+    n, o, roles = len(canon32), {}, cd.role_arrays(canon32, k)
+    for role, (H, rows) in roles.items():
+        if role == "H" and o_H is not None:
+            o[role] = o_H
+        elif role == "HY":
+            o[role] = _scatter(oracle_role(T, E, pi, H, coords) if len(rows) else {}, rows, n)
+        else:
+            o[role] = oracle_role(T, E, pi, H, coords)
+    y_def = np.zeros(n, dtype=bool)
+    y_def[roles["HY"][1]] = True
+    o.update(Y_def=y_def, k_Y=np.asarray(k, dtype=np.int64))
+    o["G_x"], o["d_x"] = c1_oracle.G_hat(o["Hp"]["qbar"], o["Hm"]["qbar"])[:2]
+    G, d = np.full(n, np.nan), np.full((n, cc.V), np.nan)
+    if y_def.any():
+        G[y_def], d[y_def] = c1_oracle.G_hat(o["H"]["qbar"][y_def], o["HY"]["qbar"][y_def])[:2]
+    o["G_y"], o["d_y"] = G, d
     o["nuis"] = nuisance5(o["H"]["b32"], coords)
     return o
 
@@ -128,14 +156,17 @@ def s_max(s_fit_H) -> float:
 
 
 def eligibility(o, smax) -> dict:
+    """E_x (c1_oracle.eligible); E_y = Y_def, s(H^Y) <= s_max, finite log-evidence of H, H^Y."""
     le = {r: np.asarray(o[r]["le"]) for r in cc.ROLES}
     E_x = c1_oracle.eligible(o["Hp"]["s"], o["Hm"]["s"], smax, le["H"], le["Hp"], le["Hm"])
-    E_y = (np.asarray(o["HR"]["s"]) <= smax) & np.isfinite(le["H"]) & np.isfinite(le["HR"])
-    return {"E_x": np.asarray(E_x, dtype=bool), "E_y": np.asarray(E_y, dtype=bool)}
+    with np.errstate(invalid="ignore"):
+        s_ok = np.asarray(o["HY"]["s"]) <= smax
+    E_y = np.asarray(o["Y_def"], bool) & s_ok & np.isfinite(le["H"]) & np.isfinite(le["HY"])
+    return {"E_x": np.asarray(E_x, dtype=bool), "E_y": E_y}
 
 
-def kappa_m(m32_H, m32_HR, E_y_fit, m32_H_fit) -> float:
-    diff = (np.asarray(m32_H) - np.asarray(m32_HR))[np.asarray(E_y_fit, dtype=bool)]
+def kappa_m(m32_H, m32_HY, E_y_fit, m32_H_fit) -> float:
+    diff = (np.asarray(m32_H) - np.asarray(m32_HY))[np.asarray(E_y_fit, dtype=bool)]
     num = float(np.mean(np.sum(diff * diff, axis=1)))
     return num / float(np.trace(np.cov(np.asarray(m32_H_fit, dtype=np.float64).T, ddof=0)))
 
@@ -149,6 +180,19 @@ def kappa_nu(o_fit, E_x_fit, coords) -> float:
     return c1_oracle.kappa_nu(nu["Hp"], nu["Hm"], nu["H"], E_x_fit)
 
 
+def x_leakage(o, E_x, E_y, coords) -> dict:
+    """lambda_x at b31 and b32: mean_{E_y} |m32(H^Y) - m32(H)| / mean_{E_x} |m32(H+) - m32(H-)|
+    (v2 §2.12; a known, reported property of the y pair, not a gate)."""
+    Ex, Ey, out = np.asarray(E_x, bool), np.asarray(E_y, bool), {}
+    for b in ("b31", "b32"):
+        m = {r: c1_oracle.m32(np.nan_to_num(o[r][b]), coords) for r in cc.ROLES}
+        num = np.linalg.norm(m["HY"] - m["H"], axis=1)[Ey]
+        den = np.linalg.norm(m["Hp"] - m["Hm"], axis=1)[Ex]
+        ok = num.size and den.size and float(np.mean(den)) > 0
+        out[b] = float(np.mean(num) / np.mean(den)) if ok else float("nan")
+    return out
+
+
 def phi_star(m32) -> tuple:
     """Oracle x-phase arg m32 and m_valid = |m32| > 1e-12; the phase is 0.0 on invalid rows."""
     m = np.asarray(m32, dtype=np.float64)
@@ -157,10 +201,12 @@ def phi_star(m32) -> tuple:
 
 
 def reason_flags(o, smax) -> dict:
-    """The §5.5 oracle reasons of c2_data.REASONS (every applicable reason of every row)."""
-    tag = {"H": "H", "Hp": "PLUS", "Hm": "MINUS", "HR": "REFL"}
-    out = {f"S_{tag[r]}": np.asarray(o[r]["s"]) > smax for r in ("Hp", "Hm", "HR")}
+    """The §5.5 oracle reasons of c2_data.REASONS; S_Y and LIK_Y only where H^Y is defined."""
+    tag, y_def = {"H": "H", "Hp": "PLUS", "Hm": "MINUS", "HY": "Y"}, np.asarray(o["Y_def"], bool)
+    with np.errstate(invalid="ignore"):
+        out = {f"S_{tag[r]}": np.asarray(o[r]["s"]) > smax for r in ("Hp", "Hm", "HY")}
     out.update({f"LIK_{tag[r]}": ~np.isfinite(np.asarray(o[r]["le"])) for r in cc.ROLES})
+    out["S_Y"], out["LIK_Y"], out["OFF_GRID_Y"] = out["S_Y"] & y_def, out["LIK_Y"] & y_def, ~y_def
     out.update(
         {
             f"ZERO_MOD_{tag[r]}": np.linalg.norm(o[r]["m32"], axis=1) <= cc.ZERO_MOD
@@ -170,7 +216,7 @@ def reason_flags(o, smax) -> dict:
     return {k: out[k] for k in cd.REASONS}
 
 
-# ---- H3 (§7 row 6; T1-T8; API.md §6.3) -------------------------------------------------------
+# ---- H3 (§7 row 6; T1, T3-T8; API.md §6.3, §19.3) --------------------------------------------
 def _rel_rows(xh, xr, tol) -> bool:
     return all(c1_oracle.rel_agree(a, b, tol) for a, b in zip(xh, xr))
 
@@ -179,73 +225,76 @@ def _worst(a, b) -> str:
     return a if _RANK[a] >= _RANK[b] else b
 
 
-def _closed_forms(T, E, coords, canon, o, tols) -> bool:
+def _closed_forms(T, E, coords, canon, o, tol) -> bool:
+    """The x pair only (T3): b32(H+-) = (rho_+-1 b31(H) T) * E[:, w32]; H^Y has no closed form."""
     w32 = np.asarray(canon)[:, 31].astype(np.int64)
-    maps = (
-        ("Hp", c1_oracle.rho_index(coords, 1), tols["tau"]),
-        ("Hm", c1_oracle.rho_index(coords, -1), tols["tau"]),
-        ("HR", cd.rho_R_index(coords), tols["rho_R"]),
-    )
     return all(
-        _rel_rows(o[role]["b32"], c1_oracle.closed_form_b32(o["H"]["b31"], T, E, w32, rho), tol[1])
-        for role, rho, tol in maps
+        _rel_rows(
+            o[role]["b32"],
+            c1_oracle.closed_form_b32(o["H"]["b31"], T, E, w32, c1_oracle.rho_index(coords, k)),
+            tol[1],
+        )
+        for role, k in (("Hp", 1), ("Hm", -1))
     )
 
 
 def _named_and_cross(T, pi, perms, E_named, canon, o) -> tuple:
-    roles = dict(zip(cc.ROLES, cd.donors4(canon)))
+    roles, y_def = cd.role_arrays(canon, o["k_Y"]), np.asarray(o["Y_def"], bool)
     named_ok = cross_ok = True
     for j in cc.MODELS:
         perm = np.asarray(perms[j])
-        for role, H in roles.items():
+        for role, (H, rows) in roles.items():
+            if not len(rows):
+                continue
             qn = c1_oracle.run_oracle(T, E_named[j], pi, perm[H])["q"]
-            named_ok &= _rel_rows(
-                c1_oracle.canonical_from_named_cols(qn, perm), o[role]["q"], cc.T_NAMED
-            )
+            qc = c1_oracle.canonical_from_named_cols(qn, perm)
+            named_ok &= _rel_rows(qc, o[role]["q"][rows], cc.T_NAMED)
         for pair, (a, b) in cc.PAIRS.items():
-            G, d, lam = c1_oracle.G_hat(o[a]["qbar"], o[b]["qbar"])[:3]
+            rows = y_def if pair == "y" else np.ones(len(y_def), bool)
+            G, d, lam = c1_oracle.G_hat(o[a]["qbar"][rows], o[b]["qbar"][rows])[:3]
             Gn = c1_oracle.G_named(d, lam, perm)
-            cross_ok &= bool(np.max(np.abs(Gn - o[f"G_{pair}"])) <= float(cc.T_CROSS_G))
+            dev = np.abs(Gn - o[f"G_{pair}"][rows])
+            cross_ok &= bool(np.all(dev <= float(cc.T_CROSS_G)))
     return named_ok, cross_ok
 
 
+def _lowest(E, seq, n=None) -> np.ndarray:
+    rows = np.flatnonzero(np.asarray(E, dtype=bool))
+    return rows[np.argsort(np.asarray(seq)[rows], kind="stable")[: n or cc.H3_ROWS]]
+
+
 def h3(T, E, pi, coords, perms, E_named, splits, p0=None) -> dict:
-    """H3 in the API.md §6.3 order; `splits` = {split: (canon32, o, E_x, E_y, seq_ids)}.
+    """H3 in the API.md §6.3/§19.3 order; `splits` = {split: (canon32, o, E_x, E_y, seq_ids)}.
     SYMBOL-ORDER (c) runs on the d arrays of the FIT split (S1) or the TEST split (T-PRE)."""
     import c2_model as cm
 
     T, E, pi = (np.asarray(a, dtype=np.float64) for a in (T, E, pi))
-    sym = {
-        "tau": c1_oracle.symmetry_report(T, E, pi, coords),
-        "rho_R": cd.symmetry_report_R(T, E, pi, coords),
-    }
-    out = {
-        "status": ORACLE,
-        "checks": {},
-        "symmetry": {k: {a: str(b) for a, b in v.items()} for k, v in sym.items()},
-    }
-    if not all(s["symmetry_ok"] and s["exact_invariance"] for s in sym.values()):
+    sym = c1_oracle.symmetry_report(T, E, pi, coords)
+    out = {"status": ORACLE, "checks": {}, "symmetry": {"tau": {a: str(b) for a, b in sym.items()}}}
+    if not (sym["symmetry_ok"] and sym["exact_invariance"]):
         return out
-    tols = {k: c1_oracle.closed_form_tolerance(s["eps_sym"]) for k, s in sym.items()}
-    if any(t is None for t in tols.values()):
+    tol = c1_oracle.closed_form_tolerance(sym["eps_sym"])
+    if tol is None:
         return out
     p0 = c1_cert.p0(T, [E], pi) if p0 is None else p0
     ck = {"closed_form": True, "named": True, "G_cross": True, "q_sum": True, "order_c": True}
     decimal = "PASS"
     for split, (canon, o, E_x, E_y, seq) in splits.items():
-        ck["closed_form"] &= _closed_forms(T, E, coords, canon, o, tols)
+        ck["closed_form"] &= _closed_forms(T, E, coords, canon, o, tol)
         named_ok, cross_ok = _named_and_cross(T, pi, perms, E_named, canon, o)
         ck["named"], ck["G_cross"] = ck["named"] and named_ok, ck["G_cross"] and cross_ok
-        ck["q_sum"] &= all(
-            bool(np.max(np.abs(np.sum(o[r]["q"], axis=1) - 1.0)) <= float(cc.T_QSUM))
-            for r in cc.ROLES
-        )
-        both = np.flatnonzero(np.asarray(E_x, dtype=bool) & np.asarray(E_y, dtype=bool))
-        rows = both[np.argsort(np.asarray(seq)[both], kind="stable")[: cc.H3_ROWS]]
-        decimal = _worst(decimal, decimal_rows(T, E, pi, canon, o, rows, p0))
+        y_def = np.asarray(o["Y_def"], bool)
+        for r in cc.ROLES:
+            rows = y_def if r == "HY" else np.ones(len(y_def), bool)
+            dev = np.abs(np.sum(o[r]["q"][rows], axis=1) - 1.0)
+            ck["q_sum"] &= bool(np.all(dev <= float(cc.T_QSUM)))
+        rows = (_lowest(E_x, seq), _lowest(E_y, seq))
+        decimal = _worst(decimal, decimal_rows(T, E, pi, canon, o, *rows, p0))
         if split in ("fit", "test"):
             ck["order_c"] &= all(
-                bool(cm.symbol_order_c(o[f"d_{p}"], perms[j])) for j in cc.MODELS for p in cc.PAIRS
+                bool(cm.symbol_order_c(o["d_x"], perms[j]))
+                and bool(cm.symbol_order_c(o["d_y"][y_def], perms[j]))
+                for j in cc.MODELS
             )
     out["checks"] = dict(ck, decimal=decimal)
     oracle_ok = ck["closed_form"] and ck["named"] and ck["G_cross"] and ck["q_sum"]
@@ -253,25 +302,28 @@ def h3(T, E, pi, coords, perms, E_named, splits, p0=None) -> dict:
     return out
 
 
-def decimal_rows(T, E, pi, canon32, o, rows, p0) -> str:
-    """C1' H3 Decimal rows for the four roles with the C1' fast-path rule (API.md C-7):
-    b31, b32 and q by h3_compare, surprisal (T5), and G of the x and y pairs (T6)."""
-    roles = dict(zip(cc.ROLES, cd.donors4(canon32)))
+def decimal_rows(T, E, pi, canon32, o, rows_x, rows_y, p0) -> str:
+    """C1' H3 Decimal rows with the C1' fast-path rule (API.md C-7): b31, b32 and q by
+    h3_compare and the surprisal (T5) of every role checked, G of the pair (T6); H, H+, H- and
+    G_x on rows_x, H, H^Y and G_y on rows_y (no closed form or eps_sym for H^Y; v2 §2.2)."""
+    tokens = dict(zip(cc.ROLES, cd.donors4(canon32, o["k_Y"])))
     beta = Fraction(error_bound.posterior_envelope(32, p0["N"]))
     status = "PASS"
-    for i in np.asarray(rows, dtype=np.int64).tolist():
-        refs = {}
-        for role, H in roles.items():
-            ref = refs[role] = c1_oracle.decimal_reference(T, E, pi, H[i])
-            ref0 = c1_cert.reference_oracle(T, E, pi, H[i : i + 1])
-            p1 = bool(c1_cert.p1(ref0["nu_min"], ref0["finite"], p0["nu0"])[0])
-            for key, dkey in (("b31", "b31"), ("b32", "b32"), ("q", "q32")):
-                status = _worst(status, c1_oracle.h3_compare(o[role][key][i], ref[dkey], p1, beta))
-            if abs(Fraction(float(o[role]["s"][i])) - Fraction(ref["s"])) > cc.frac(
-                cc.T_DEC_SURPRISAL
-            ):
-                status = ORACLE
-        for pair, (a, b) in cc.PAIRS.items():
+    for pair, rows in (("x", rows_x), ("y", rows_y)):
+        a, b = cc.PAIRS[pair]
+        for i in np.asarray(rows, dtype=np.int64).tolist():
+            refs = {}
+            for role in ("H", a, b) if pair == "x" else (a, b):
+                H = tokens[role]
+                ref = refs[role] = c1_oracle.decimal_reference(T, E, pi, H[i])
+                ref0 = c1_cert.reference_oracle(T, E, pi, H[i : i + 1])
+                p1 = bool(c1_cert.p1(ref0["nu_min"], ref0["finite"], p0["nu0"])[0])
+                for key, dkey in (("b31", "b31"), ("b32", "b32"), ("q", "q32")):
+                    cmp = c1_oracle.h3_compare(o[role][key][i], ref[dkey], p1, beta)
+                    status = _worst(status, cmp)
+                tol_s = cc.frac(cc.T_DEC_SURPRISAL)
+                if abs(Fraction(float(o[role]["s"][i])) - Fraction(ref["s"])) > tol_s:
+                    status = ORACLE
             Gt = Fraction(c1_oracle.decimal_G(refs[a]["q32"], refs[b]["q32"]))
             lam = np.log(o[a]["qbar"][i]) - np.log(o[b]["qbar"][i])
             bound = cc.frac(cc.T_DEC_G) * (1 + Fraction(float(np.max(np.abs(lam)))))

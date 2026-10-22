@@ -601,6 +601,8 @@ A non-finite value fails. The check runs for every problem (R, R_K1, R_K2, R_E, 
 
 `c2_driver.STAGE_MODULE = {"S1": "c2_stage_pre", "S2": "c2_stage_pre", "S3": "c2_stage_pre", "S4": "c2_stage_val", "S5": "c2_stage_post"}`. Everything else in §19.2 holds (the PLAN form, the step returns, the stage entry, the lazy dispatch, the `ctx` keys). Added `ctx.data` key: `"oH:<split>"` (the H2/H2′ natural-oracle cache).
 
+**Helper placement (amendment, job 0105; line budget).** The gate rows are assigned as in the table above. The shared helpers are placed as follows: `c2_stage_base` holds the stage entry (rows 0b, 1), the store loaders, the `ctx` caches, the gate history, the per-model split state (`bundle`, `prob`, `afull`) and the split checks (`sample` with the Y-donor preparation, `save_oracle`, `h5_bounds`, `l1_check`, `r1_check`, `n2_check`, `support`). `c2_stage_val` also holds the helpers that S5 reuses: the C2-M patch arms (`cm_pair`, `placebo_m`), `closed_streams`, `x1_arms`, `x1_run`, the bound wrapper `bounds`/`sg`, and the REPORT descriptive compositions (`rotation`, `cm_intervals`, `describe`, `unsealed`). `c2_stage_pre.oracle_splits` (the four-role oracle from the H2/H2′ cache) is reused by T-PRE. Dependency order: `c2_driver` ← `c2_stage_base` ← `c2_stage_pre`, `c2_stage_val` ← `c2_stage_post`; `c2_stage_post` imports the other three.
+
 **Outputs added or changed (§16.1).**
 - `hist/HIST_<split>_b<k>.npz` adds `k_Y`, `Y_def` and `digest_HY`.
 - `oracle/ORACLE_<split>.npz` holds `HY_*` (NaN on OFF_GRID_Y rows), `Y_def` and `k_Y`.

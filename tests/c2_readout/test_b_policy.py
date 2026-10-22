@@ -1,6 +1,6 @@
 """Author B (job 0101): T-POLICY (RC-13, NEW-2), T-SEED, T-SIZE, T-METER.
 
-C2-FROZEN-v1 §13.3, §5.1, §5.2, §5.7, §7, §13.2; API.md §1, §4.1, §8.5, §12, §13, §14. Written
+C2-FROZEN-v2 §13.3, §5.1, §5.2, §5.7, §7, §13.2; API.md §1, §4.1, §8.5, §12, §13, §14. Written
 from the protocol, API.md and CONTRACT.json only. tools/c2_readout/*.py is never read by the
 author; T-SIZE lists that directory at run time only (TEST_PLAN.md §3). Synthetic stores in
 pytest's tmp_path.
@@ -9,7 +9,9 @@ pytest's tmp_path.
 from __future__ import annotations
 
 import hashlib
+import json
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np
@@ -186,6 +188,101 @@ def test_val_sealed_arrays_refused_before_the_outcome(tmp_path):
     assert np.array_equal(np.asarray(out["x"]), np.arange(3.0))
 
 
+def test_y_donor_preparation_order_new10():
+    # v2 §7 note (NEW-10): the Y-donor preparation runs inside H2 (H2' at REG2), after REG
+    # (REG') has passed; no model output there; H3 (T-PRE) starts only after H2 (REG2) ends.
+    p = cdr.LogitPolicy(done=ORDER[:ORDER.index("REG")])
+    _refused(lambda: p.begin("H2"))  # no sampling or preparation before REG
+    for gate, nxt in (("H2", "H3"), ("REG2", "T-PRE")):
+        pol = _at(gate)
+        for kind in ALLOWED:  # no fit-time or model-output evaluation in the preparation
+            _refused(lambda: pol.require(kind))
+        _refused(lambda: pol.begin(nxt))  # the contrasts wait for the preparation's end
+        pol.end(gate)
+        pol.begin(nxt)
+
+
+# ---- T-G0 (in part): the release binding (API.md 12.6, 19.1 E-22) ----
+PROTO = "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"  # C2-FROZEN-v2
+
+
+def _sha(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _write(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(json.dumps(data).encode())
+    return _sha(path)
+
+
+def _rctx(store):
+    return cdr.Ctx(store=store, worktree=REPO, head="1" * 40, job="0199", task_sha256="a" * 64,
+                   session="synthetic", release=None, policy=None, data={})
+
+
+def _released(ctx, stage):
+    # a pass is {"ok": True} (API.md 19.1 E-22); a raised error also counts as a refusal
+    try:
+        res = cdr.release_ok(ctx, stage)
+    except Exception:  # noqa: BLE001
+        return False
+    if isinstance(res, dict):
+        return res.get("ok") is True or res.get("status") == "PASS"
+    return bool(res)
+
+
+def _release(store, ctx, k, **over):
+    rec = {"schema": "c2-release-v1", "release": f"R{k}", "stages": [f"S{k}"], "job": ctx.job,
+           "task_sha256": ctx.task_sha256, "head": ctx.head, "protocol_sha256": PROTO,
+           "freeze_sha256": _sha(store / "FREEZE.json"), "N_test": None, "k": None,
+           "accept_review_sha256": None, "coordinator": "synthetic", "utc": "x"}
+    rec.update(over)
+    _write(store / f"RELEASE_R{k}.json", rec)
+
+
+@pytest.mark.parametrize("over", [{"job": "0198"}, {"task_sha256": "b" * 64},
+                                  {"head": "2" * 40}, {"protocol_sha256": "0" * 64},
+                                  {"freeze_sha256": "0" * 64}, {"stages": ["S2"]},
+                                  {"schema": "c2-release-v0"}])
+def test_release_binding_refusals(tmp_path, over):
+    _write(tmp_path / "FREEZE.json", {"schema": "c2-freeze-v1", "protocol_sha256": PROTO})
+    ctx = _rctx(tmp_path)
+    _release(tmp_path, ctx, 1)
+    assert _released(ctx, "S1")
+    (tmp_path / "RELEASE_R1.json").unlink()
+    _release(tmp_path, ctx, 1, **over)
+    assert not _released(ctx, "S1")
+
+
+def test_release_r5_must_carry_n_test_and_k(tmp_path):
+    _write(tmp_path / "FREEZE.json", {"schema": "c2-freeze-v1", "protocol_sha256": PROTO})
+    ctx = _rctx(tmp_path)
+    _release(tmp_path, ctx, 5)  # N_test, k and accept_review_sha256 null
+    assert not _released(ctx, "S5")
+    assert not _released(ctx, "S2")  # no RELEASE_R2.json
+
+
+
+# ---- T-REG (in part): the v2 sign rule, coverage reasons and H4 ----
+def test_k_y_sign_rule():
+    coords = np.array([(i % 12, i // 12) for i in range(144)], dtype=np.float64)
+    b31 = np.zeros((5, 144))
+    for r, y in enumerate((5, 6, 0, 11)):
+        b31[r, 12 * y] = 1.0
+    b31[4, 12 * 5], b31[4, 12 * 6] = 0.5, 0.5  # ybar = 5.5 exactly: -1
+    assert cd.k_y(b31, coords).tolist() == [1, -1, 1, -1, -1]
+
+
+def test_v2_coverage_reasons_and_h4():
+    want = ("S_PLUS", "S_MINUS", "S_Y", "LIK_H", "LIK_PLUS", "LIK_MINUS", "LIK_Y", "OFF_GRID_Y",
+            "ZERO_MOD_H", "ZERO_MOD_PLUS", "ZERO_MOD_MINUS")  # v2 §5.5
+    assert tuple(cd.REASONS) == want == tuple(cc.CONTRACT["coverage_reasons"]["oracle"])
+    assert cc.H4 == {"x": Fraction(9, 10), "y": Fraction(17, 20)}  # v2 §5.4 (owner add. 23)
+    assert cc.CONTRACT["thresholds"]["h4_y"] == "17/20"
+    assert cc.ROLES == ("H", "Hp", "Hm", "HY") and cc.PAIRS["y"] == ("H", "HY")
+
+
 # ---- T-SEED ----
 def test_scope_and_history_streams():
     assert cc.SCOPE == "c2-v1" == cc.CONTRACT["scope"]
@@ -260,19 +357,22 @@ def test_haar_frames_streams(j, count, p):
 # ---- T-SIZE ----
 MODULES = ("c2_config.py", "c2_data.py", "c2_registry.py", "c2_oracle.py", "c2_model.py",
            "c2_code.py", "c2_stats.py", "c2_attrib.py", "c2_decide.py", "c2_driver.py",
-           "c2_stage_pre.py", "c2_stage_post.py")  # 12 modules: coordinator addendum 3 R-0103-1
+           "c2_stage_base.py", "c2_stage_pre.py", "c2_stage_val.py", "c2_stage_post.py")  # R-0104-1
 
 
 def test_module_set_and_400_line_limit():
     pkg = REPO / "tools" / "c2_readout"
     found = sorted(p.name for p in pkg.glob("*.py"))  # run time only (TEST_PLAN.md §3)
-    assert len(MODULES) == 12 and found == sorted(MODULES)
+    assert len(MODULES) == 14 and found == sorted(MODULES)
+    assert tuple(cc.CONTRACT["modules"]) == MODULES
+    assert cc.CONTRACT["module_limits"]["lines_per_module"] == 400
+    assert cc.CONTRACT["module_limits"]["ceiling"] == 5600
     total = 0
     for name in MODULES:
         n = len((pkg / name).read_bytes().splitlines())
         assert n <= 400, name
         total += n
-    assert total <= 4800  # 12 x 400 ceiling (R-0103-1 item 3)
+    assert total <= 5600  # 14 x 400 ceiling (v2 §21 C-7, R-0104-1)
     mine = sorted((REPO / "tests" / "c2_readout").glob("test_b_*.py"))
     assert 1 <= len(mine) <= 6
     for f in mine:
@@ -295,14 +395,3 @@ def test_meter_binding_sha_and_import_directory(tmp_path):
                              / "x4_oracle_profile")
     with pytest.raises(Exception):
         cdr.meter_bind_check(tmp_path / "absent.py", sha, good)
-
-
-def test_measure_only_caps_in_the_contract():
-    res = cc.CONTRACT["resources"]
-    assert "--max-cpu inf" in res["cpu_policy"] and "--max-wall inf" in res["cpu_policy"]
-    assert res["cpu_policy"].startswith("measure-only")
-    assert res["disk_min_free_bytes"] == {"C:": 2000000000, "X:": 30000000000}
-    assert res["ledger_schema"] == "x4-oracle-profile-ledger-v1"
-    assert cc.CONTRACT["numerics"]["threads"] == 1
-    assert cc.CONTRACT["hashes"]["c1_meter_bind"] == (
-        "3c1439fc5e053091c683c863ad7b5f0b3fe56253eb2394c57e62fdb0c4b1458d")

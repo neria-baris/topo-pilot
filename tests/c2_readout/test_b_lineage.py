@@ -1,5 +1,5 @@
-"""Author B (job 0101): T-G0 (RC-16) and T-LINEAGE (C2-FROZEN-v1 §13.3, §4, §7 row 1, §11,
-§13.1; API.md §3.1, §12.3, §12.5, §12.6, §16.2; CONTRACT.json hashes).
+"""Author B (job 0101): T-G0 (RC-16), T-LINEAGE and T-NAMESPACE (RC-11; three tests)
+(C2-FROZEN-v2 §13.3, §4, §5.2, §7 row 1, §11, §13.1; API.md §3.1, §4.4, §12, §16, §19.3).
 
 Written from the protocol, API.md and CONTRACT.json only; tools/c2_readout/*.py never read.
 Refusal fixtures use synthetic stores and worktrees under pytest's tmp_path with the c2_config
@@ -26,8 +26,9 @@ import c2_driver as cdr  # noqa: E402
 import c2_registry as cg  # noqa: E402
 import stage_records  # noqa: E402
 
-PROTO = "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8"
-AUTH_SHA = "5a8430f36eb1432030c3ca8c2b3fa3a152193a4d3d80931a73015c413b3fe786"
+PROTO = "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"  # C2-FROZEN-v2
+V1 = "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8"  # superseded
+LINEAGE = "FAIL_TECHNICAL/LINEAGE"
 STATE_SHA = {"1729": "062d0a0aa71c41ad5afd9d3f76e58cf38a81419d629defcf2e3ac6316ffaf8f8",
              "2718": "501d9c9ad80d4ffe272d7e03003cdee24b7fe3b25bed40e044f2111afd69aa5c",
              "3141": "197cccd6cf5491143171fe8ccd6ce79f71cb2f16995aa99af4e9dffe4bec94c8"}  # §4
@@ -99,11 +100,17 @@ def _ctx(store, worktree=REPO, job="0199", task="a" * 64):
 
 # ---- T-G0: the frozen bindings ----
 def test_protocol_and_authority_bindings():
-    assert _sha(REPO / "tools" / "c2_readout" / "PROTOCOL_C2_v1.md") == PROTO
-    assert cc.PROTOCOL_SHA256 == PROTO == cc.CONTRACT["protocol"]["sha256"]
-    assert cc.PROTOCOL_ID == "C2-FROZEN-v1" and cc.AUTH_SHA256 == AUTH_SHA
-    assert cc.ADDENDUM1_SHA256 == (
-        "2db09007a1ff9f9706ffe323c0c1d2c49197648473c481c1776a46ae884011a8")
+    pkg = REPO / "tools" / "c2_readout"
+    assert _sha(pkg / "PROTOCOL_C2_v2.md") == PROTO  # the sole active byte copy (v2 §21)
+    assert not (pkg / "PROTOCOL_C2_v1.md").exists()  # the v1 copy is removed before H
+    assert Path(cc.PROTOCOL_FILE).name == "PROTOCOL_C2_v2.md"
+    assert cc.PROTOCOL_SHA256 == PROTO == cc.CONTRACT["protocol"]["sha256"] != V1
+    assert cc.V1_SHA256 == V1 == cc.CONTRACT["protocol"]["supersedes"]["sha256"]
+    assert cc.PROTOCOL_ID == "C2-FROZEN-v2" == cc.CONTRACT["protocol"]["id"]
+    assert cc.CONTRACT["protocol"]["mailbox_file"].endswith("C2-FROZEN-v2.md")
+    auth = cc.CONTRACT["protocol"]["auth"]  # pending until an owner AUTH names v2 (14 D2)
+    assert cc.AUTH_SHA256 == auth["sha256"] and (auth["sha256"] is None
+                                                 or len(auth["sha256"]) == 64)
     assert cc.R_COMMIT == "d44548b073523d402cc31fbfc5440c0d6df37a23" == cc.CONTRACT["protocol"]["R"]
 
 
@@ -147,12 +154,16 @@ def test_load_contract_refuses_a_protocol_mismatch(tmp_path):
 def _g0_env(tmp_path, monkeypatch, alter):
     root = _isolate(monkeypatch, tmp_path / "proj")
     wt = root / "topo-pilot-c2"
-    for name in ("PROTOCOL_C2_v1.md", "CONTRACT.json"):
+    for name in ("PROTOCOL_C2_v2.md", "CONTRACT.json"):
         _write(wt / "tools" / "c2_readout" / name,
                (REPO / "tools" / "c2_readout" / name).read_bytes())
-    proto = (REPO / "tools" / "c2_readout" / "PROTOCOL_C2_v1.md").read_bytes()
+    proto = (REPO / "tools" / "c2_readout" / "PROTOCOL_C2_v2.md").read_bytes()
     mail = proto[:-1] + bytes([proto[-1] ^ 1]) if alter else proto
-    _write(root / "agent-handoff" / "planning" / "responses" / "C2-FROZEN-v1.md", mail)
+    rel = cc.CONTRACT["protocol"]["mailbox_file"]  # agent-handoff/planning/responses/...
+    # API-AMBIGUITY: API.md 19.3 says MAILBOX / mailbox_file, while the CONTRACT path starts
+    # at the project root; the copy is written at both readings.
+    for base in (root, root / "agent-handoff"):
+        _write(base / rel, mail)
     task = _write(root / "agent-handoff" / "jobs" / "0199" / "task.md", b"synthetic task")
     (root / "c2-readout-store").mkdir()
     return _ctx(root / "c2-readout-store", worktree=wt, task=task)
@@ -177,9 +188,25 @@ def test_g0_item_i_accepts_the_exact_copy(tmp_path, monkeypatch):
 
 
 # ---- T-G0: AUTH-ADMIT and the release binding ----
+SYN_AUTH = ("agent-handoff/archive/synthetic/OWNER_DECISIONS.addendum-v2.md", "e" * 64)
+
+
+@pytest.fixture
+def bound_auth(monkeypatch):
+    """The v2 AUTH is pending (CONTRACT protocol.auth null); bind a synthetic one for the test.
+    API-AMBIGUITY: API.md 12.3 names the constants, not where auth_ok reads them; c2_config,
+    the driver's module names and CONTRACT["protocol"]["auth"] are all patched."""
+    path, sha = SYN_AUTH
+    for mod in (cc, cdr):
+        monkeypatch.setattr(mod, "AUTH_PATH", path, raising=False)
+        monkeypatch.setattr(mod, "AUTH_SHA256", sha, raising=False)
+    monkeypatch.setitem(cc.CONTRACT["protocol"], "auth", {"file": path, "sha256": sha})
+    return path, sha
+
+
 def _auth(**over):
     rec = {"schema": "c2-auth-v1", "protocol_sha256": PROTO,
-           "owner_record": {"path": cc.AUTH_PATH, "sha256": AUTH_SHA,
+           "owner_record": {"path": SYN_AUTH[0], "sha256": SYN_AUTH[1],
                             "owner_verbatim": "synthetic owner text",
                             "granted_utc": "2026-10-21T00:00:00Z"},
            "budget": {"central_cpu_h": 2.1, "range_cpu_h": [0.9, 4.8],
@@ -197,58 +224,22 @@ def _auth(**over):
     ({}, True), ({"protocol_sha256": PROTO.upper()}, True), ({"schema": "c2-auth-v0"}, False),
     ({"protocol_sha256": "0" * 64}, False), ({"owner_sha256": "0" * 64}, False),
     ({"owner_owner_verbatim": ""}, False), ({"coordinator": ""}, False)])
-def test_auth_ok(tmp_path, over, ok):
+def test_auth_ok(tmp_path, bound_auth, over, ok):
     _write(tmp_path / "AUTH.json", _auth(**over))
     assert bool(cdr.auth_ok(tmp_path)) is ok
 
 
-def test_auth_ok_missing_or_unparsable_never_raises(tmp_path):
+def test_auth_ok_refuses_while_the_v2_auth_is_pending(tmp_path):
+    if cc.AUTH_SHA256 is not None:
+        pytest.skip("the v2 AUTH has been bound")
+    _write(tmp_path / "AUTH.json", _auth())  # no AUTH names v2 yet: fail closed (v2 14 D2)
+    assert not cdr.auth_ok(tmp_path)
+
+
+def test_auth_ok_missing_or_unparsable_never_raises(tmp_path, bound_auth):
     assert not cdr.auth_ok(tmp_path)
     (tmp_path / "AUTH.json").write_bytes(b"{not json")
     assert not cdr.auth_ok(tmp_path)
-
-
-def _released(ctx, stage):
-    # API-AMBIGUITY: API.md 12.6 release_ok returns "dict" without naming its verdict key; a
-    # pass is read as {"ok": True} or {"status": "PASS"}, a refusal also as a raised error.
-    try:
-        res = cdr.release_ok(ctx, stage)
-    except Exception:  # noqa: BLE001
-        return False
-    if isinstance(res, dict):
-        return res.get("ok") is True or res.get("status") == "PASS"
-    return bool(res)
-
-
-def _release(store, ctx, k, **over):
-    rec = {"schema": "c2-release-v1", "release": f"R{k}", "stages": [f"S{k}"], "job": ctx.job,
-           "task_sha256": ctx.task_sha256, "head": ctx.head, "protocol_sha256": PROTO,
-           "freeze_sha256": _sha(store / "FREEZE.json"), "N_test": None, "k": None,
-           "accept_review_sha256": None, "coordinator": "synthetic", "utc": "x"}
-    rec.update(over)
-    _write(store / f"RELEASE_R{k}.json", rec)
-
-
-@pytest.mark.parametrize("over", [{"job": "0198"}, {"task_sha256": "b" * 64},
-                                  {"head": "2" * 40}, {"protocol_sha256": "0" * 64},
-                                  {"freeze_sha256": "0" * 64}, {"stages": ["S2"]},
-                                  {"schema": "c2-release-v0"}])
-def test_release_binding_refusals(tmp_path, over):
-    _write(tmp_path / "FREEZE.json", {"schema": "c2-freeze-v1", "protocol_sha256": PROTO})
-    ctx = _ctx(tmp_path)
-    _release(tmp_path, ctx, 1)
-    assert _released(ctx, "S1")
-    (tmp_path / "RELEASE_R1.json").unlink()
-    _release(tmp_path, ctx, 1, **over)
-    assert not _released(ctx, "S1")
-
-
-def test_release_r5_must_carry_n_test_and_k(tmp_path):
-    _write(tmp_path / "FREEZE.json", {"schema": "c2-freeze-v1", "protocol_sha256": PROTO})
-    ctx = _ctx(tmp_path)
-    _release(tmp_path, ctx, 5)  # N_test, k and accept_review_sha256 null
-    assert not _released(ctx, "S5")
-    assert not _released(ctx, "S2")  # no RELEASE_R2.json
 
 
 # ---- T-LINEAGE ----
@@ -315,3 +306,90 @@ def test_regen_compare_bit_identical(tmp_path):
     except Exception:  # noqa: BLE001  FAIL_TECHNICAL/LINEAGE may be raised
         return
     assert not same
+
+
+# ---- T-NAMESPACE ----
+def _ns_root(tmp_path, monkeypatch):
+    root = _isolate(monkeypatch, tmp_path / "proj")
+    pin = _write(root / "topo-pilot-c2" / "tools" / "c2_readout" / "CONTRACT.json",
+                 {"scope": "c2-v1"})
+    store = root / "c2-readout-store"
+    lineage = {"FREEZE.json": _write(store / "FREEZE.json", {
+        "schema": "c2-freeze-v1", "protocol_id": "C2-FROZEN-v2", "protocol_sha256": PROTO,
+        "scope": "c2-v1"}), "AUTH.json": _write(store / "AUTH.json", {
+            "schema": "c2-auth-v1", "protocol_sha256": PROTO, "scope": "c2-v1"})}
+    _write(store / "cpu_ledger.json", {"schema": "x4-oracle-profile-ledger-v1"})
+    _write(root / "topo-pilot-c2" / ".git" / "CONTRACT.json", {"scope": "c2-v1"})  # skipped
+    return root, store, {"tools/c2_readout/CONTRACT.json": pin}, lineage
+
+
+def test_namespace_initial_admission(tmp_path, monkeypatch):
+    root, store, pinned, lineage = _ns_root(tmp_path, monkeypatch)
+    ns = cd.namespace_scan(root, pinned, lineage)
+    assert ns["status"] == "PASS" and ns["hits"]
+    assert {h["class"] for h in ns["hits"]} <= {"PINNED", "LINEAGE"}
+    assert cd.store_admission(store, lineage, True)["status"] == "PASS"
+    _write(store / "hist" / "HIST_fit_b0.npz", b"payload")  # prior scientific data
+    adm = cd.store_admission(store, lineage, True)
+    assert adm["status"] == LINEAGE
+    assert any(str(p).replace("\\", "/").endswith("hist/HIST_fit_b0.npz") for p in
+               adm["payload"])
+
+
+def test_namespace_legitimate_continuation(tmp_path, monkeypatch):
+    root, store, pinned, _ = _ns_root(tmp_path, monkeypatch)
+    ctx = cdr.Ctx(store=store, worktree=root / "topo-pilot-c2", head="0" * 40, job="0102",
+                  task_sha256="a" * 64, session="synthetic", release=None, policy=None,
+                  data={})
+    _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 1")
+    rul = root / "agent-handoff" / "rulings" / "R1.md"
+    rsha = _write(rul, b"synthetic ruling")
+    cdr.supersede(ctx, "0102", 1, ["hist/HIST_fit_b0.npz"],
+                  {"defect": "D1 (synthetic)", "path": str(rul), "ruling_path": str(rul),
+                   "sha256": rsha, "ruling_sha256": rsha})
+    hsha = _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 2")
+    gsha = _write(store / "GATES.jsonl", b'{"gate": "H2", "scope": "c2-v1"}\n')
+    ssha = _write(store / "STAGES.jsonl", b'{"event": "STARTED", "stage": "S1"}\n')
+    msha = _write(store / "manifests" / "0102.json", {
+        "schema": "c2-manifest-v1", "job": "0102", "stage": "S1", "head": "0" * 40,
+        "files": {"hist/HIST_fit_b0.npz": hsha},
+        "append_only": {"GATES.jsonl": gsha, "STAGES.jsonl": ssha}, "utc": "x"})
+    _write(store / "manifests" / "0102.accepted.json", {
+        "job": "0102", "manifest_sha256": msha, "review_path": "r", "review_sha256": "c" * 64,
+        "coordinator": "synthetic", "utc": "x"})
+    lineage = cdr.recognised(store)
+    keys = {str(k).replace("\\", "/"): v for k, v in lineage.items()}
+    assert keys.get("hist/HIST_fit_b0.npz") == hsha and "FREEZE.json" in keys
+    assert cd.store_admission(store, lineage, False)["status"] == "PASS"
+    assert cd.namespace_scan(root, pinned, lineage)["status"] == "PASS"
+    _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 2 altered")  # one altered hash
+    adm = cd.store_admission(store, lineage, False)
+    assert adm["status"] == LINEAGE and adm["unrecognised"]
+
+
+@pytest.mark.parametrize("rel, data", [
+    ("x9-research-store/notes.json", b'{"scope": "c2-v1"}'),  # a foreign store record
+    ("other-dir/FREEZE_old.json", b'{"scope": "c2-v1"}'),  # FREEZE*.json anywhere
+    ("c2-readout-store/extra.json", b'{"tag": "c2-v1"}'),  # outside the lineage manifest
+    ("big-store/big.txt", b"x" * (2**20 - 2) + b"c2-v1" + b"y" * 9)],  # across a 1 MiB chunk
+    ids=["foreign-store", "freeze-anywhere", "store-unlisted", "chunk-boundary"])  # short ids
+def test_namespace_unrelated_collision_is_lineage(tmp_path, monkeypatch, rel, data):
+    root, _, pinned, lineage = _ns_root(tmp_path, monkeypatch)
+    assert cd.namespace_scan(root, pinned, lineage)["status"] == "PASS"
+    _write(root / rel, data)
+    ns = cd.namespace_scan(root, pinned, lineage)
+    assert ns["status"] == LINEAGE
+    foreign = [h for h in ns["hits"] if h["class"] == "FOREIGN"]
+    assert any(str(h["path"]).replace("\\", "/").endswith(rel.split("/")[-1]) for h in foreign)
+
+
+# ---- T-METER (in part) ----
+def test_measure_only_caps_in_the_contract():
+    res = cc.CONTRACT["resources"]
+    assert "--max-cpu inf" in res["cpu_policy"] and "--max-wall inf" in res["cpu_policy"]
+    assert res["cpu_policy"].startswith("measure-only")
+    assert res["disk_min_free_bytes"] == {"C:": 2000000000, "X:": 30000000000}
+    assert res["ledger_schema"] == "x4-oracle-profile-ledger-v1"
+    assert cc.CONTRACT["numerics"]["threads"] == 1
+    assert cc.CONTRACT["hashes"]["c1_meter_bind"] == (
+        "3c1439fc5e053091c683c863ad7b5f0b3fe56253eb2394c57e62fdb0c4b1458d")

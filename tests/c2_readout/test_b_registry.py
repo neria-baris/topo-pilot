@@ -1,5 +1,5 @@
-"""Author B (job 0101): T-REG and T-NAMESPACE (RC-11; three tests) (C2-FROZEN-v1 §13.3, §5.2,
-§5.3, §11 item 7; API.md §4.4, §5, §16, §18).
+"""Author B (job 0101): T-REG with the v2 H^Y donor and the NEW-10 Y-donor preparation fixture
+(C2-FROZEN-v2 §13.3, §2.2, §5.2-§5.5, §7 rows 4-6; API.md §5, §16, §18, §19.3).
 
 Written from the protocol, API.md and CONTRACT.json only; tools/c2_readout/*.py never read.
 Every store, registry, mailbox and project root is synthetic under pytest's tmp_path; the
@@ -23,10 +23,10 @@ import c2_config as cc  # noqa: E402  (first: the sys.path convention)
 import c2_data as cd  # noqa: E402
 import c2_driver as cdr  # noqa: E402
 import c2_registry as cg  # noqa: E402
+import c2_oracle as co2  # noqa: E402
 import x6s1_registry as xr  # noqa: E402
 
 LINEAGE, INCOMPLETE = "FAIL_TECHNICAL/LINEAGE", "INCONCLUSIVE/REGISTRY_INCOMPLETE"
-PROTO = "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8"
 PATHS = {"PROJECT_ROOT": "", "STORE": "c2-readout-store", "WORKTREE": "topo-pilot-c2",
          "MAILBOX": "agent-handoff", "ARTIFACT_ROOT": "topo-pilot/artifacts",
          "C1P_STORE": "c1prime-store", "X6S1_STORE": "x6-stage1-store",
@@ -52,24 +52,50 @@ def _write(path, data):
     return _sha(path)
 
 
+ROLE_KEYS = ("digest_H", "digest_Hp", "digest_Hm", "digest_HY")
+
+
 def _hist(seed, n):
-    return np.random.default_rng(seed).integers(0, 36, size=(n, 32)).astype(np.uint8)
+    """y-rows 1..4 only, so both one-row shifts stay on the grid (Y_def on every row)."""
+    rng = np.random.default_rng(seed)
+    return (6 * rng.integers(0, 6, (n, 32)) + rng.integers(1, 5, (n, 32))).astype(np.uint8)
 
 
-def _table(seed, n, id0):
-    canon = _hist(seed, n)
+def _k(n):
+    return np.where(np.arange(n) % 2 == 0, 1, -1).astype(np.int64)
+
+
+def _table(seed, n, id0, off=()):
+    canon, k = _hist(seed, n), _k(n)
+    for i in off:  # OFF_GRID_Y: a prefix symbol in the row the shift would leave
+        canon[i, 3] = 6 * 2 + (5 if k[i] > 0 else 0)
     ids = np.arange(id0, id0 + n, dtype=np.int64)
-    return cd.history_table(canon, ids, np.zeros(n, dtype=np.int64))
+    return cd.history_table(canon, ids, np.zeros(n, dtype=np.int64), k)
+
+
+def _redo(table, canon=None, ids=None):
+    canon = table["canonical"] if canon is None else canon
+    ids = table["sequence_id"] if ids is None else ids
+    return cd.history_table(canon, ids, table["panel"], np.asarray(table["k_Y"], np.int64))
+
+
+def _hex(tokens):
+    return [hashlib.sha256(np.asarray(r).astype(np.uint8).tobytes()).hexdigest() for r in tokens]
+
+
+def _expected_hy(canon, k):  # the v2 §2.2 map, written independently (fy_alt.py rule)
+    a, b = canon[:, :31].astype(np.int64) // 6, canon[:, :31].astype(np.int64) % 6
+    nb = b + np.asarray(k, np.int64)[:, None]
+    ok = np.all((nb >= 0) & (nb <= 5), axis=1)
+    return np.column_stack((6 * a + nb, canon[:, 31].astype(np.int64))), ok
 
 
 def _digests(table):
-    return set().union(*(set(np.asarray(table[k]).tolist()) for k in
-                         ("digest_H", "digest_Hp", "digest_Hm", "digest_HR")))
+    return set().union(*(set(np.asarray(table[c]).tolist()) for c in ROLE_KEYS)) - {""}
 
 
 class _Reg:
-    """Registry stand-in for separation (API-AMBIGUITY: API.md 5.3 fixes the attributes, not
-    the sealed_ranges layout; the K4b layout {pool: (lo, hi)} is used)."""
+    """Registry stand-in for separation (sealed_ranges {pool: (lo, hi)}, API.md 19.1 E-20)."""
 
     def __init__(self, digests=(), ranges=None):
         self.digests, self.x6, self.manifest = set(digests), None, {}
@@ -79,40 +105,84 @@ class _Reg:
         return np.array([h in self.digests for h in np.asarray(hex_digests).tolist()], bool)
 
 
+# ---- T-REG: the H^Y donor (v2 §2.2, §5.3, §5.5; API.md 19.3) ----
+def test_y_donor_map_and_off_grid_rows():
+    rng = np.random.default_rng(71)
+    canon = rng.integers(0, 36, (40, 32)).astype(np.uint8)
+    canon[:20] = _hist(72, 20)  # half defined under either sign
+    k = rng.choice(np.array([-1, 1]), 40)
+    hy, ok = cd.y_donor(canon, k)
+    want, want_ok = _expected_hy(canon, k)
+    assert np.array_equal(np.asarray(ok, bool), want_ok) and want_ok[:20].all()
+    assert not want_ok[20:].all()
+    assert np.array_equal(hy[want_ok], want[want_ok])
+    assert np.all(hy[~want_ok] == cd.OFF) and cd.OFF == 255  # never clamped or wrapped
+    assert np.array_equal(hy[want_ok][:, 31], canon[want_ok][:, 31].astype(np.int64))
+
+
+def test_history_table_with_the_y_donor():
+    t = _table(73, 8, 500, off=(3, 6))
+    canon, k = t["canonical"], np.asarray(t["k_Y"], np.int64)
+    assert t["k_Y"].dtype == np.int8 and t["k_Y"].tolist() == _k(8).tolist()
+    hy, ok = _expected_hy(canon, k)
+    assert np.asarray(t["Y_def"], bool).tolist() == ok.tolist() and (~ok).sum() == 2
+    assert list(t["digest_HY"][~ok]) == ["", ""]
+    assert list(t["digest_HY"][ok]) == _hex(hy[ok])
+    assert list(t["digest_H"]) == _hex(canon)
+    assert _digests(t) == set(cd.table_digests(t))
+    roles = cd.table_roles(t)
+    assert np.array_equal(roles["HY"][1], np.flatnonzero(ok))
+    assert np.array_equal(roles["HY"][0], hy[ok]) and len(roles["H"][1]) == 8
+
+
 # ---- T-REG: separation ----
 def _tables():
-    fit, feas, val = _table(1, 12, 10_000), _table(2, 6, 20_000), _table(3, 6, 30_000)
-    return {"fit": fit, "feas": feas, "val": val}
+    fit, feas = _table(1, 12, 10_000), _table(2, 6, 20_000, off=(4,))
+    return {"fit": fit, "feas": feas, "val": _table(3, 6, 30_000)}
 
 
 def test_separation_pass_with_duplicates_kept():
     t = _tables()
     canon = t["fit"]["canonical"].copy()
-    canon[11] = canon[0]  # a within-split duplicate history (distinct sequence id)
-    t["fit"] = cd.history_table(canon, t["fit"]["sequence_id"], t["fit"]["panel"])
+    canon[10] = canon[0]  # a within-split duplicate history (same k_Y, distinct id)
+    t["fit"] = _redo(t["fit"], canon=canon)
     res = cg.separation(_Reg({"f" * 64}), t)
     assert res["status"] == "PASS" and res["seq_ids"] == "PASS"
-    assert res["duplicates"]["fit"] >= 1 and res["duplicates"]["val"] == 0
+    every = [d for c in ROLE_KEYS for d in t["fit"][c].tolist() if d != ""]
+    assert len(every) == 3 * 12 + int(np.sum(t["fit"]["Y_def"]))
+    assert res["duplicates"]["fit"] == len(every) - len(set(every)) == 4
+    assert res["duplicates"]["feas"] == 0 and res["duplicates"]["val"] == 0
 
 
 def test_collision_with_R_is_lineage():
     t = _tables()
-    res = cg.separation(_Reg({str(t["fit"]["digest_HR"][3])}), t)
+    res = cg.separation(_Reg({str(t["fit"]["digest_HY"][3])}), t)
     assert res["status"] == LINEAGE and res["collisions"]["fit_R"] >= 1
+
+
+def test_off_grid_rows_form_no_donor():
+    t = _tables()  # feas row 4 is OFF_GRID_Y
+    canon, k = t["feas"]["canonical"][4:5], np.asarray(t["feas"]["k_Y"][4:5], np.int64)
+    a, b = canon[:, :31].astype(np.int64) // 6, canon[:, :31].astype(np.int64) % 6
+    near = [np.column_stack((6 * a + f(b + k[:, None]), canon[:, 31:])) for f in
+            (lambda x: np.clip(x, 0, 5), lambda x: np.mod(x, 6))]  # clamped, wrapped
+    full = np.full((1, 32), cd.OFF)
+    res = cg.separation(_Reg(_hex(np.vstack(near + [full]))), t)
+    assert res["status"] == "PASS"
 
 
 def test_cross_split_collision_and_seq_id_overlap_are_lineage():
     t = _tables()
     canon = t["val"]["canonical"].copy()
-    canon[2] = t["fit"]["canonical"][5]
-    t["val"] = cd.history_table(canon, t["val"]["sequence_id"], t["val"]["panel"])
+    canon[2] = t["fit"]["canonical"][4]  # row 4 of fit and row 2 of val share k_Y = +1
+    t["val"] = _redo(t["val"], canon=canon)
     res = cg.separation(_Reg(), t)
-    hits = [v for k, v in res["collisions"].items() if "fit" in k and "val" in k]
+    hits = [v for c, v in res["collisions"].items() if "fit" in c and "val" in c]
     assert res["status"] == LINEAGE and hits and max(hits) >= 1
     t = _tables()
     ids = t["val"]["sequence_id"].copy()
     ids[0] = t["fit"]["sequence_id"][4]
-    t["val"] = cd.history_table(t["val"]["canonical"], ids, t["val"]["panel"])
+    t["val"] = _redo(t["val"], ids=ids)
     res = cg.separation(_Reg(), t)
     assert res["status"] == LINEAGE and res["seq_ids"] != "PASS"
     res = cg.separation(_Reg(ranges={"d2a_sealed": (10_005, 10_006)}), _tables())
@@ -123,7 +193,7 @@ def test_sealed_d2a_predicate_hit_is_incomplete():
     t = _tables()
     canon = t["feas"]["canonical"].copy()
     canon[1] = 1  # every symbol in {0..4}: the sealed D-2a alphabet
-    t["feas"] = cd.history_table(canon, t["feas"]["sequence_id"], t["feas"]["panel"])
+    t["feas"] = _redo(t["feas"], canon=canon)
     res = cg.separation(_Reg(), t)
     assert res["status"] == INCOMPLETE and res["predicate"]["hits"] >= 1
 
@@ -282,76 +352,36 @@ def test_pytest_basetemp_is_outside_the_project_root(tmp_path):
     assert root not in tp.parents and tp != root
 
 
-# ---- T-NAMESPACE ----
-def _ns_root(tmp_path, monkeypatch):
-    root = _isolate(monkeypatch, tmp_path / "proj")
-    pin = _write(root / "topo-pilot-c2" / "tools" / "c2_readout" / "CONTRACT.json",
-                 {"scope": "c2-v1"})
-    store = root / "c2-readout-store"
-    lineage = {"FREEZE.json": _write(store / "FREEZE.json", {
-        "schema": "c2-freeze-v1", "protocol_id": "C2-FROZEN-v1", "protocol_sha256": PROTO,
-        "scope": "c2-v1"}), "AUTH.json": _write(store / "AUTH.json", {
-            "schema": "c2-auth-v1", "protocol_sha256": PROTO, "scope": "c2-v1"})}
-    _write(store / "cpu_ledger.json", {"schema": "x4-oracle-profile-ledger-v1"})
-    _write(root / "topo-pilot-c2" / ".git" / "CONTRACT.json", {"scope": "c2-v1"})  # skipped
-    return root, store, {"tools/c2_readout/CONTRACT.json": pin}, lineage
+# ---- T-POLICY NEW-10: the Y-donor preparation in H2/H2' (v2 §7 note; API.md 19.3) ----
+def _toy_process():
+    rng = np.random.default_rng(1010)
+    T, E = rng.dirichlet(np.full(144, 0.3), 144), rng.dirichlet(np.ones(36), 144)
+    coords = np.array([(i % 12, i // 12) for i in range(144)], dtype=np.float64)
+    return T, E, np.full(144, 1.0 / 144), coords
 
 
-def test_namespace_initial_admission(tmp_path, monkeypatch):
-    root, store, pinned, lineage = _ns_root(tmp_path, monkeypatch)
-    ns = cd.namespace_scan(root, pinned, lineage)
-    assert ns["status"] == "PASS" and ns["hits"]
-    assert {h["class"] for h in ns["hits"]} <= {"PINNED", "LINEAGE"}
-    assert cd.store_admission(store, lineage, True)["status"] == "PASS"
-    _write(store / "hist" / "HIST_fit_b0.npz", b"payload")  # prior scientific data
-    adm = cd.store_admission(store, lineage, True)
-    assert adm["status"] == LINEAGE
-    assert any(str(p).replace("\\", "/").endswith("hist/HIST_fit_b0.npz") for p in
-               adm["payload"])
-
-
-def test_namespace_legitimate_continuation(tmp_path, monkeypatch):
-    root, store, pinned, _ = _ns_root(tmp_path, monkeypatch)
-    ctx = cdr.Ctx(store=store, worktree=root / "topo-pilot-c2", head="0" * 40, job="0102",
-                  task_sha256="a" * 64, session="synthetic", release=None, policy=None,
-                  data={})
-    _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 1")
-    rul = root / "agent-handoff" / "rulings" / "R1.md"
-    rsha = _write(rul, b"synthetic ruling")
-    cdr.supersede(ctx, "0102", 1, ["hist/HIST_fit_b0.npz"],
-                  {"defect": "D1 (synthetic)", "path": str(rul), "ruling_path": str(rul),
-                   "sha256": rsha, "ruling_sha256": rsha})
-    hsha = _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 2")
-    gsha = _write(store / "GATES.jsonl", b'{"gate": "H2", "scope": "c2-v1"}\n')
-    ssha = _write(store / "STAGES.jsonl", b'{"event": "STARTED", "stage": "S1"}\n')
-    msha = _write(store / "manifests" / "0102.json", {
-        "schema": "c2-manifest-v1", "job": "0102", "stage": "S1", "head": "0" * 40,
-        "files": {"hist/HIST_fit_b0.npz": hsha},
-        "append_only": {"GATES.jsonl": gsha, "STAGES.jsonl": ssha}, "utc": "x"})
-    _write(store / "manifests" / "0102.accepted.json", {
-        "job": "0102", "manifest_sha256": msha, "review_path": "r", "review_sha256": "c" * 64,
-        "coordinator": "synthetic", "utc": "x"})
-    lineage = cdr.recognised(store)
-    keys = {str(k).replace("\\", "/"): v for k, v in lineage.items()}
-    assert keys.get("hist/HIST_fit_b0.npz") == hsha and "FREEZE.json" in keys
-    assert cd.store_admission(store, lineage, False)["status"] == "PASS"
-    assert cd.namespace_scan(root, pinned, lineage)["status"] == "PASS"
-    _write(store / "hist" / "HIST_fit_b0.npz", b"attempt 2 altered")  # one altered hash
-    adm = cd.store_admission(store, lineage, False)
-    assert adm["status"] == LINEAGE and adm["unrecognised"]
-
-
-@pytest.mark.parametrize("rel, data", [
-    ("x9-research-store/notes.json", b'{"scope": "c2-v1"}'),  # a foreign store record
-    ("other-dir/FREEZE_old.json", b'{"scope": "c2-v1"}'),  # FREEZE*.json anywhere
-    ("c2-readout-store/extra.json", b'{"tag": "c2-v1"}'),  # outside the lineage manifest
-    ("big-store/big.txt", b"x" * (2**20 - 2) + b"c2-v1" + b"y" * 9)],  # across a 1 MiB chunk
-    ids=["foreign-store", "freeze-anywhere", "store-unlisted", "chunk-boundary"])  # short ids
-def test_namespace_unrelated_collision_is_lineage(tmp_path, monkeypatch, rel, data):
-    root, _, pinned, lineage = _ns_root(tmp_path, monkeypatch)
-    assert cd.namespace_scan(root, pinned, lineage)["status"] == "PASS"
-    _write(root / rel, data)
-    ns = cd.namespace_scan(root, pinned, lineage)
-    assert ns["status"] == LINEAGE
-    foreign = [h for h in ns["hits"] if h["class"] == "FOREIGN"]
-    assert any(str(h["path"]).replace("\\", "/").endswith(rel.split("/")[-1]) for h in foreign)
+def test_y_donor_preparation_from_the_cached_natural_oracle():
+    T, E, pi, coords = _toy_process()
+    canon = _hist(1011, 6)
+    canon[5, 2], canon[5, 3] = 6 + 5, 6 + 0  # rows 5 and 0 in the prefix: OFF for either k
+    o_H = co2.oracle_role(T, E, pi, canon, coords)  # H2: the natural histories only
+    k = cd.k_y(o_H["b31"], coords)  # b31(H) is used only for k_Y, Y_def and the donors
+    want = np.where(o_H["b31"] @ coords[:, 1] < 5.5, 1, -1)
+    assert np.asarray(k).tolist() == want.tolist()
+    table = cd.history_table(canon, np.arange(6, dtype=np.int64), np.zeros(6, np.int64), k)
+    ok = np.asarray(table["Y_def"], bool)
+    assert ok.tolist() == [True] * 5 + [False]
+    res = cg.separation(_Reg(), {"fit": table})  # over every defined donor role, before H3
+    every = [d for c in ROLE_KEYS for d in table[c].tolist() if d != ""]
+    assert res["status"] == "PASS" and len(every) == 3 * 6 + 5
+    assert res["duplicates"]["fit"] == len(every) - len(set(every))
+    cache = dict(o_H, s=np.asarray(o_H["s"]) + 1.0)  # a marked cache
+    o = co2.oracle_split(T, E, pi, coords, canon, k, o_H=cache)  # H3 consumes the cache
+    assert np.array_equal(np.asarray(o["H"]["s"]), cache["s"])  # not recomputed
+    assert np.array_equal(np.asarray(o["H"]["b31"]), np.asarray(o_H["b31"]))
+    hy, _ = _expected_hy(canon, np.asarray(k, np.int64))
+    ref = co2.oracle_role(T, E, pi, hy[ok], coords)
+    q = np.asarray(o["HY"]["q"])
+    assert np.allclose(q[ok], ref["q"], rtol=1e-12, atol=0) and np.isnan(q[~ok]).all()
+    assert np.isnan(np.asarray(o["G_y"])[~ok]).all() and np.isfinite(o["G_y"][ok]).all()
+    assert np.asarray(o["Y_def"], bool).tolist() == ok.tolist()

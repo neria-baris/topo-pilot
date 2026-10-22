@@ -1,9 +1,10 @@
-"""Independent tests, author A (job 0101), the c2_stats items: T-GLS part 2, the GLS-REF fixtures
-1-6 of NEW-1 (C2-FROZEN-v1 2.5, 9.2, 13.3), and T-LADDER (RC-15; 6.7). T-GLS part 1 (Lemmas
-G1-G3, the whitened-design fixtures) is in test_a_readout.py.
+"""Independent tests, author A (job 0101; v2 update): T-GLS part 2, the G1 scale-invariance
+fixture of D-0104-2 and the GLS-REF fixtures 1-6 of NEW-1 (C2-FROZEN-v2 2.5, 9.2, 13.3). T-GLS
+part 1 (Lemmas G1-G3, the whitened-design fixtures) is in test_a_readout.py; T-LADDER moved to
+test_a_oracle.py (the 400-line limit).
 
-Targets (API.md 8.2, 9.1, 9.3): ck.gls (projector inputs only), cs.gls_ref, cs.enclosure,
-cs.dsolve, cs.dinverse, cs.dctx, cs.D, cs.p1, cs.n_test. Expected values come from the
+Targets (API.md 8.2, 9.1): ck.gls, ck.gls_identities, cs.gls_ref, cs.enclosure,
+cs.dsolve, cs.dinverse, cs.dctx, cs.D. Expected values come from the
 protocol and from an independent exact Fraction/Decimal implementation written in this file.
 The protocol's fixture 1 (Sigma = I3, X = [e1, eps e2]) is evaluated literally by that
 independent implementation; for the module it is embedded in R^8 with 5 nuisance columns and
@@ -28,7 +29,6 @@ if str(REPO / "tools" / "c2_readout") not in sys.path:
 import c2_config as cc  # noqa: E402,F401
 import c2_code as ck  # noqa: E402
 import c2_stats as cs  # noqa: E402
-import precision  # noqa: E402
 
 DEG = "INCONCLUSIVE/PATCH_MODEL_DEGENERATE"
 EPS, DELTA = 1e-3, 1e-19
@@ -93,6 +93,48 @@ def _problem(p=12, K=1, seed=0, spread=1.0):
     U = np.linalg.qr(rng.normal(size=(p, p)))[0]
     Sigma = (U * np.exp(rng.uniform(-spread, spread, p))) @ U.T
     return Gamma, B, (Sigma + Sigma.T) / 2
+
+
+# ---- the G1 scale-invariance fixture (D-0104-2; v2 2.5, 13.3 T-GLS) -------------------------
+def _whit_asym(P, Sigma):
+    R = np.linalg.cholesky(Sigma).T  # Sigma = R'R
+    Pt = np.linalg.solve(R.T, P @ R.T)  # P~ = R^-T P R'
+    return np.max(np.abs(Pt - Pt.T))
+
+
+def _planted(g, Gamma, B, V):
+    """An oblique projector in the metric V: every G1 identity except self-adjointness holds."""
+    Xn = np.hstack((Gamma, B))
+    L = np.linalg.solve(Xn.T @ V @ Xn, Xn.T @ V)
+    out = dict(g, L=L, L_G=L[:5], L_B=L[5:], P_S=B @ L[5:], P_G=Gamma @ L[:5])
+    out["P_rest"] = np.eye(len(Xn)) - out["P_S"] - out["P_G"]
+    return out
+
+
+def test_g1_check_is_scale_invariant_and_rejects_a_non_self_adjoint_projector():
+    Gamma0, B0, Sigma0 = _problem(p=12, K=2, seed=19, spread=2.0)
+    V = np.linalg.inv(_problem(p=12, K=2, seed=20, spread=2.0)[2])
+    P_ref = ck.gls(Gamma0, B0, Sigma0)["P_S"]
+    for c in (1e-8, 1.0, 1e8):  # Sigma by c, [Gamma, B] by sqrt(c)
+        Gamma, B, Sigma = np.sqrt(c) * Gamma0, np.sqrt(c) * B0, c * Sigma0
+        g = ck.gls(Gamma, B, Sigma)
+        assert g["status"] == "PASS" and bool(ck.gls_identities(g, Gamma, B, Sigma)["ok"])
+        assert np.max(np.abs(g["P_S"] - P_ref)) <= 1e-10  # P is unchanged up to rounding
+        P = g["P_S"] + g["P_G"]
+        assert _whit_asym(P, Sigma) <= 1e-10
+        W = np.linalg.inv(Sigma)
+        if c == 1e-8:  # v1's absolute check of W P - P'W scales with 1/lambda_min(Sigma)
+            assert np.max(np.abs(W @ P - P.T @ W)) > 1e-10
+        bad = _planted(g, Gamma, B, V)
+        Xn = np.hstack((Gamma, B))
+        assert np.max(np.abs(bad["L"] @ Xn - np.eye(9))) <= 1e-10
+        assert np.max(np.abs(bad["P_S"] @ bad["P_S"] - bad["P_S"])) <= 1e-10
+        assert _whit_asym(bad["P_S"] + bad["P_G"], Sigma) > 1e-6
+        assert not bool(ck.gls_identities(bad, Gamma, B, Sigma)["ok"])  # fails at every c
+        e = ck.gls(Gamma, B)  # Euclidean variant: the check is ||P - P'||_max
+        Pe = e["P_S"] + e["P_G"]
+        assert bool(ck.gls_identities(e, Gamma, B)["ok"]) and np.max(np.abs(Pe - Pe.T)) <= 1e-10
+        assert not bool(ck.gls_identities(_planted(e, Gamma, B, V), Gamma, B)["ok"])
 
 
 # ---- GLS-REF (NEW-1) -------------------------------------------------------------------------
@@ -303,87 +345,3 @@ def test_dctx_dsolve_dinverse_against_exact_rationals():
         for r, s in zip(got, ref):
             for a, b in zip(r, s):
                 assert abs(Fraction(a) - b) <= Fraction(1, 10**70) * (1 + abs(b))
-
-
-# ---- T-LADDER (RC-15) ------------------------------------------------------------------------
-MODELS = [1729, 2718, 3141]
-SEEDS = {"R": (620501, 620502), "M": (620511, 620507), "S*": (620512, 620514)}
-
-
-def _ladder(monkeypatch, family, pass_at):
-    """Stub the kernels: record their arguments; per-model pass/fail by (array, N)."""
-    rec = {"sd": [], "c": [], "cfg": [], "names": []}
-    gated = ("Ztau",) if family == "M" else ("Z010", "Z050")
-    arrays = {name: {j: np.full(4096, 10.0 + i) for j in MODELS}
-              for i, name in enumerate(gated + ("ZM010", "VM", "Vabs"))}
-    afull = {j: np.full(4096, 1.0 + 0.5 * k) for k, j in enumerate(MODELS)}
-
-    def sd_b4(X, r4n, models, seed, draws, size):
-        rec["sd"].append((seed, draws, size))
-        return np.zeros((draws, len(models))), np.zeros((draws, len(models)))
-
-    def centered(X, models, seed, draws, size):
-        rec["c"].append((seed, draws, size))
-        rec["names"].append(int(round(float(X[models[0]][0]) - 10.0)))
-        return np.zeros((draws, len(models)))
-
-    def summary(sd, e, models, cfg):
-        rec["cfg"].append(dict(cfg))
-        name = (gated + ("ZM010", "VM", "Vabs"))[rec["names"][-1]]
-        per = {j: {"mde_upper": 0.0 if pass_at[name][j] and cfg["projected_N"] >=
-                   pass_at[name][j] else 1e9, "power": 1.0, "sd_lower": 0.0, "sd_upper": 0.0,
-                   "mde_lower": 0.0, "q_alpha": 0.0} for j in models}
-        met = all(v["mde_upper"] <= cfg["alternative"] for v in per.values())
-        return {"models": per, "status": "PASS" if met else "INCONCLUSIVE", "criterion_met": met}
-
-    for name, fn in (("sd_b4_draws", sd_b4), ("centered_draws", centered),
-                     ("precision_summary", summary)):
-        monkeypatch.setattr(precision, name, fn)
-        if hasattr(cs, name):
-            monkeypatch.setattr(cs, name, fn)
-    return cs.p1(family, arrays, afull, MODELS, cc.ALPHA[family]), rec, gated
-
-
-@pytest.mark.parametrize("family", ["R", "M", "S*"])
-def test_p1_calls_kernels_with_the_registered_cfg_and_seeds(monkeypatch, family):
-    every = {n: {j: 4096 for j in MODELS} for n in ("Z010", "Z050", "Ztau", "ZM010", "VM",
-                                                     "Vabs")}
-    out, rec, gated = _ladder(monkeypatch, family, every)
-    sd_seed, c_seed = SEEDS[family]
-    assert {s for s, _, _ in rec["sd"]} == {sd_seed} and {s for s, _, _ in rec["c"]} == {c_seed}
-    assert all(d == 5000 and size == 4096 for _, d, size in rec["sd"])
-    assert sorted({size for _, _, size in rec["c"]}) == [4096, 8192, 16384]
-    assert {(gated + ("ZM010", "VM", "Vabs"))[i] for i in rec["names"]} == set(gated)
-    for cfg in rec["cfg"]:
-        assert cfg["alpha"] == float(cc.ALPHA[family]) and cfg["power"] == 0.80
-        assert cfg["delta"] == 0.0 and cfg["projected_N"] in (4096, 8192, 16384)
-        assert abs(cfg["alternative"] - 0.10 * 1.0) <= 1e-12
-    assert out["N_F"] == 4096 and out["status"] == "PASS" and list(out["precision_limited"]) == []
-
-
-def _pa(**kw):
-    base = {n: {j: 4096 for j in MODELS} for n in ("Z010", "Z050", "Ztau", "ZM010", "VM",
-                                                    "Vabs")}
-    for name, row in kw.items():
-        base[name] = {**base[name], **row}  # int model keys (0102 review correction)
-    return base
-
-
-@pytest.mark.parametrize("pass_at, n_f, limited, status", [
-    (_pa(Z010={1729: 8192}), 8192, [], "PASS"),
-    (_pa(Z050={3141: None}), 4096, [3141], "PASS"),
-    (_pa(Z010={2718: 16384}, Z050={3141: 8192}), 16384, [], "PASS"),
-    (_pa(Z010={2718: 16384}, Z050={3141: None}), 16384, [3141], "PASS"),
-    (_pa(Z010={1729: None, 2718: None}), None, None, "INCONCLUSIVE/UNDERPOWERED"),
-])
-def test_p1_n_f_rules_and_precision_limited(monkeypatch, pass_at, n_f, limited, status):
-    out, _, _ = _ladder(monkeypatch, "R", pass_at)
-    assert out["status"] == status and out["N_F"] == n_f
-    if limited is not None:
-        assert sorted(out["precision_limited"]) == limited
-
-
-def test_n_test_is_the_max_over_alive_families():
-    assert tuple(cs.n_test({"R": 8192, "M": 4096, "S*": 16384})) == (16384, 4)
-    assert tuple(cs.n_test({"R": 4096, "S*": 8192})) == (8192, 2)
-    assert tuple(cs.n_test({"R": 4096})) == (4096, 1)

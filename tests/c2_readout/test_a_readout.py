@@ -1,5 +1,6 @@
 """Independent tests, author A (job 0101): T-READOUT, T-ORDER and T-GLS part 1 (Lemmas G1-G3,
-the whitened-design fixtures, "B in the nuisance span") (C2-FROZEN-v1 2.1, 2.3, 2.5, 13.3).
+the whitened-design fixtures, "B in the nuisance span"; G1 in the v2 whitened form, D-0104-2)
+(C2-FROZEN-v2 2.1, 2.3, 2.5, 13.3).
 T-GLS part 2 (GLS-REF) is in test_a_gls.py.
 
 Targets (API.md 6.2, 7.2, 7.3, 8.1, 8.2): cm.helmert, cm.readout_basis, cm.readout_coords,
@@ -293,8 +294,7 @@ def test_g1_identities_and_closed_form(K):
     Gamma, B, Sigma = _problem(p=15, K=K, seed=K)
     g = ck.gls(Gamma, B, Sigma)
     assert g["status"] == "PASS" and g["rank_Xt"] == 5 + 2 * K and g["cond_Xt"] <= 1e8
-    ids = ck.gls_identities(g, Gamma, B, Sigma)
-    assert bool(ids["ok"]) and ids["max_abs"] <= 1e-10
+    assert bool(ck.gls_identities(g, Gamma, B, Sigma)["ok"])
     Xn, W = np.hstack((Gamma, B)), np.linalg.inv(Sigma)
     L_ref = np.linalg.solve(Xn.T @ W @ Xn, Xn.T @ W)
     assert np.max(np.abs(g["L"] - L_ref)) <= 1e-10
@@ -302,9 +302,13 @@ def test_g1_identities_and_closed_form(K):
     assert np.max(np.abs(g["L"] @ Xn - np.eye(5 + 2 * K))) <= 1e-10
     assert np.max(np.abs(PS - B @ g["L_B"])) <= 1e-12
     assert np.max(np.abs(PG - Gamma @ g["L_G"])) <= 1e-12
-    for lhs, rhs in ((PS @ PS, PS), (PG @ PG, PG), (PS @ PG, 0 * I), (PG @ PS, 0 * I),
-                     (PS @ Gamma, 0 * Gamma), (PG @ B, 0 * B), (W @ (PS + PG), (PS + PG).T @ W)):
-        assert np.max(np.abs(lhs - rhs)) <= 1e-9
+    for lhs, rhs in ((PS @ PS, PS), (PG @ PG, PG), (PS @ PG, 0 * I), (PG @ PS, 0 * I)):
+        assert np.max(np.abs(lhs - rhs)) <= 1e-10  # dimensionless: absolute 1e-10 (v2 2.5)
+    assert np.max(np.abs(PS @ Gamma)) <= 1e-10 * np.max(np.abs(Gamma))  # relative bounds
+    assert np.max(np.abs(PG @ B)) <= 1e-10 * np.max(np.abs(B))
+    R = np.linalg.cholesky(Sigma).T  # Sigma = R'R (protocol factor convention)
+    Pt = np.linalg.solve(R.T, (PS + PG) @ R.T)  # whitened P~ = R^-T P R'
+    assert np.max(np.abs(Pt - Pt.T)) <= 1e-10
     assert np.max(np.abs(g["P_rest"] - (I - PS - PG))) <= 1e-12
 
 

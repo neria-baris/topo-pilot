@@ -1,5 +1,6 @@
 """Independent tests, author A (job 0101): T-ORACLE and T-ROT (RC-14) (C2-FROZEN-v1 2.2, 2.3,
-2.11, 13.3).
+2.11, 13.3), and T-LADDER (RC-15; 6.7; targets cs.p1, cs.n_test), moved here from
+test_a_gls.py by the v2 update (the 400-line limit).
 
 Targets (API.md 4.2, 6.2, 6.4, 10): cd.sigma, cd.reflect_donor, cd.donors4, cd.rho_R_index,
 cd.rho_m_index, cd.symmetry_report_R, co2.oracle_role, co2.oracle_split, co2.rotation_oracle,
@@ -33,6 +34,8 @@ import c2_attrib as ca  # noqa: E402
 import c2_code as ck  # noqa: E402
 import c2_data as cd  # noqa: E402
 import c2_oracle as co2  # noqa: E402
+import c2_stats as cs  # noqa: E402
+import precision  # noqa: E402
 
 EX = [Fraction(1, 2), Fraction(1, 8), Fraction(1, 32), Fraction(1, 32), Fraction(1, 16),
       Fraction(1, 4)]  # by circular offset (a - x // 2) mod 6
@@ -271,3 +274,87 @@ def test_exact_sign_fixture_plus_theta_moves_toward_the_plus_rolled_belief(m, th
     sel = zero["A_rot"][Eh]
     assert half["s_rot"] == np.count_nonzero(sel > 0) / np.count_nonzero(Eh)
     assert m in (1, 2)
+
+
+# ---- T-LADDER (RC-15) ------------------------------------------------------------------------
+MODELS = [1729, 2718, 3141]
+SEEDS = {"R": (620501, 620502), "M": (620511, 620507), "S*": (620512, 620514)}
+
+
+def _ladder(monkeypatch, family, pass_at):
+    """Stub the kernels: record their arguments; per-model pass/fail by (array, N)."""
+    rec = {"sd": [], "c": [], "cfg": [], "names": []}
+    gated = ("Ztau",) if family == "M" else ("Z010", "Z050")
+    arrays = {name: {j: np.full(4096, 10.0 + i) for j in MODELS}
+              for i, name in enumerate(gated + ("ZM010", "VM", "Vabs"))}
+    afull = {j: np.full(4096, 1.0 + 0.5 * k) for k, j in enumerate(MODELS)}
+
+    def sd_b4(X, r4n, models, seed, draws, size):
+        rec["sd"].append((seed, draws, size))
+        return np.zeros((draws, len(models))), np.zeros((draws, len(models)))
+
+    def centered(X, models, seed, draws, size):
+        rec["c"].append((seed, draws, size))
+        rec["names"].append(int(round(float(X[models[0]][0]) - 10.0)))
+        return np.zeros((draws, len(models)))
+
+    def summary(sd, e, models, cfg):
+        rec["cfg"].append(dict(cfg))
+        name = (gated + ("ZM010", "VM", "Vabs"))[rec["names"][-1]]
+        per = {j: {"mde_upper": 0.0 if pass_at[name][j] and cfg["projected_N"] >=
+                   pass_at[name][j] else 1e9, "power": 1.0, "sd_lower": 0.0, "sd_upper": 0.0,
+                   "mde_lower": 0.0, "q_alpha": 0.0} for j in models}
+        met = all(v["mde_upper"] <= cfg["alternative"] for v in per.values())
+        return {"models": per, "status": "PASS" if met else "INCONCLUSIVE", "criterion_met": met}
+
+    for name, fn in (("sd_b4_draws", sd_b4), ("centered_draws", centered),
+                     ("precision_summary", summary)):
+        monkeypatch.setattr(precision, name, fn)
+        if hasattr(cs, name):
+            monkeypatch.setattr(cs, name, fn)
+    return cs.p1(family, arrays, afull, MODELS, cc.ALPHA[family]), rec, gated
+
+
+@pytest.mark.parametrize("family", ["R", "M", "S*"])
+def test_p1_calls_kernels_with_the_registered_cfg_and_seeds(monkeypatch, family):
+    every = {n: {j: 4096 for j in MODELS} for n in ("Z010", "Z050", "Ztau", "ZM010", "VM",
+                                                     "Vabs")}
+    out, rec, gated = _ladder(monkeypatch, family, every)
+    sd_seed, c_seed = SEEDS[family]
+    assert {s for s, _, _ in rec["sd"]} == {sd_seed} and {s for s, _, _ in rec["c"]} == {c_seed}
+    assert all(d == 5000 and size == 4096 for _, d, size in rec["sd"])
+    assert sorted({size for _, _, size in rec["c"]}) == [4096, 8192, 16384]
+    assert {(gated + ("ZM010", "VM", "Vabs"))[i] for i in rec["names"]} == set(gated)
+    for cfg in rec["cfg"]:
+        assert cfg["alpha"] == float(cc.ALPHA[family]) and cfg["power"] == 0.80
+        assert cfg["delta"] == 0.0 and cfg["projected_N"] in (4096, 8192, 16384)
+        assert abs(cfg["alternative"] - 0.10 * 1.0) <= 1e-12
+    assert out["N_F"] == 4096 and out["status"] == "PASS" and list(out["precision_limited"]) == []
+
+
+def _pa(**kw):
+    base = {n: {j: 4096 for j in MODELS} for n in ("Z010", "Z050", "Ztau", "ZM010", "VM",
+                                                    "Vabs")}
+    for name, row in kw.items():
+        base[name] = {**base[name], **row}  # int model keys (0102 review correction)
+    return base
+
+
+@pytest.mark.parametrize("pass_at, n_f, limited, status", [
+    (_pa(Z010={1729: 8192}), 8192, [], "PASS"),
+    (_pa(Z050={3141: None}), 4096, [3141], "PASS"),
+    (_pa(Z010={2718: 16384}, Z050={3141: 8192}), 16384, [], "PASS"),
+    (_pa(Z010={2718: 16384}, Z050={3141: None}), 16384, [3141], "PASS"),
+    (_pa(Z010={1729: None, 2718: None}), None, None, "INCONCLUSIVE/UNDERPOWERED"),
+])
+def test_p1_n_f_rules_and_precision_limited(monkeypatch, pass_at, n_f, limited, status):
+    out, _, _ = _ladder(monkeypatch, "R", pass_at)
+    assert out["status"] == status and out["N_F"] == n_f
+    if limited is not None:
+        assert sorted(out["precision_limited"]) == limited
+
+
+def test_n_test_is_the_max_over_alive_families():
+    assert tuple(cs.n_test({"R": 8192, "M": 4096, "S*": 16384})) == (16384, 4)
+    assert tuple(cs.n_test({"R": 4096, "S*": 8192})) == (8192, 2)
+    assert tuple(cs.n_test({"R": 4096})) == (4096, 1)

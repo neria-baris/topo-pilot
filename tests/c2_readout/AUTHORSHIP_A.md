@@ -9,10 +9,10 @@ Assignment: Author A, algebra, statistics and oracle (TEST_PLAN.md §2).
 | File | §13.3 items |
 |---|---|
 | `test_a_readout.py` | T-READOUT; T-ORDER (RC-1, NEW-7); T-GLS part 1 (Lemmas G1-G3, Euclidean variant, whitened-design fixtures, "B in the nuisance span") |
-| `test_a_gls.py` | T-GLS part 2 (GLS-REF, NEW-1 fixtures 1-6, Lemmas GR and INV, dctx/dsolve/dinverse); T-LADDER (RC-15) |
+| `test_a_gls.py` | T-GLS part 2 (v2 G1 scale-invariance fixture D-0104-2; GLS-REF, NEW-1 fixtures 1-6, Lemmas GR and INV, dctx/dsolve/dinverse) |
 | `test_a_partition.py` | T-PARTITION; T-RANDOM; T-ENERGY (RC-4); T-HEADKERNEL; T-BOOT part (C2-M descriptive stream NEW-5, indicator form) |
 | `test_a_scope.py` | T-SCOPE (RC-2, NEW-4; R and S*); T-LEAK (RC-7); T-PROJ |
-| `test_a_oracle.py` | T-ORACLE; T-ROT (RC-14) |
+| `test_a_oracle.py` | T-ORACLE (v2: the H^Y donor, D-0104-1); T-ROT (RC-14); T-LADDER (RC-15; moved here in v2) |
 | `test_a_inference.py` | T-FAMILY (Lemma FW, FW-M); T-RULES (RC-8, RC-13, NEW-6); T-BOOT part (shared index stream, Fraction ranks) |
 
 TEST_PLAN.md §2 places T-GLS (all), T-LADDER and the whole of T-BOOT in other files; they were
@@ -102,3 +102,40 @@ the T-LADDER parametrize table with `dict(base[name], **row)`, whose int model k
 `{**base[name], **row}` (same meaning). No other change. Checked again only by in-memory
 `ast.parse` + `compile` and the line-length/line-count/LF checks; nothing executed, no
 formatter, no `tools/c2_readout/*.py` read.
+
+## v2 update (C2-FROZEN-v2, job 0105)
+
+Coordinator instruction: bring the tests to C2-FROZEN-v2 (`agent-handoff/planning/responses/
+C2-FROZEN-v2.md`, sha256 51f78976...4583; D-0104-1, D-0104-2).
+
+- **Read:** C2-FROZEN-v2 21 (the change log), 2.2, 2.3, 2.5 (Lemma G1 and the new G1 check),
+  5.4, 5.5, 7 row 6 and 13.3 (T-GLS, T-ORACLE); `API.md` erratum 19.3 (commit 9c81b54, the
+  H^Y donor API, the whitened G1 identity) and 19.1; `topo-scratch/0104/fy_alt.py` (sha256
+  0e1113ed...63aa, the construction v2 2.2 names); the job 0105 task. Not read:
+  `tools/c2_readout/*.py` (never listed or searched), `PROTOCOL_C2_v2.md` (the mailbox file
+  was read instead), stores, author B's tests.
+- **T-ORACLE (`test_a_oracle.py`):** the H^R tests (sigma, reflect_donor, rho_R_index,
+  symmetry_report_R, the closed form of b32(H^R)) are removed. New: the k_Y sign rule with
+  ybar = 5.5 giving -1; the shift b -> b + k on w1..w31 with a and w32 kept; the off-grid rule
+  (row 5 under +1, row 0 under -1; w32 never shifted; OFF = 255 rows; no clamp, no wrap;
+  role_arrays forms H^Y only on Y_def rows); REASONS and the OFF_GRID_Y tally; oracle_split
+  with the H^Y oracle by the exact forward against an exact Fraction filter (NaN off grid; the
+  o_H cache path); E_y and f_y with OFF_GRID_Y rows ineligible; reason_flags (S_Y, LIK_Y not
+  evaluated off grid); the descriptive x leakage lambda_x. The rotation-oracle and T-ROT tests
+  are unchanged apart from the new oracle_split signature.
+- **T-GLS:** `test_a_readout.py` G1 test in the v2 form (dimensionless identities absolute
+  1e-10, P_S Gamma and P_G B relative to max|Gamma|, max|B|, whitened self-adjointness
+  ||P~ - P~'||_max <= 1e-10 with P~ = R^-T P R'). `test_a_gls.py` adds the scale-invariance
+  fixture: Sigma by c in {1e-8, 1, 1e8} and [Gamma, B] by sqrt(c); the check passes and P is
+  unchanged at every c, v1's absolute ||W P - P'W||_max exceeds 1e-10 at c = 1e-8, a planted
+  oblique (non-self-adjoint) projector that satisfies every other identity fails at every c,
+  and the Euclidean variant reduces to ||P - P'||_max.
+- **T-LEAK (`test_a_scope.py`):** the y-placebo arrays renamed to the H^Y nomenclature; no
+  behaviour change (the fixture is donor-agnostic). T-PARTITION never used the reflection.
+- **File balance:** T-LADDER moved unchanged from `test_a_gls.py` to `test_a_oracle.py`
+  (400-line limit).
+- **Executed:** nothing; in-memory `ast.parse` + `compile`, the line/LF checks and the
+  bytecode-name check only. No formatter.
+- **API-AMBIGUITY:** none new; the tests follow erratum 19.3 as written (`k_y`, `y_donor`,
+  `OFF`, `donors4(canon32, k_y)`, `role_arrays`, `oracle_split(..., k_y, o_H=None)`,
+  `eligibility`, `reason_flags`, `x_leakage` returning {b31, b32}).

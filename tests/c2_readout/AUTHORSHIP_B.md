@@ -61,3 +61,31 @@
 - **Driven by the protocol, not a test defect.** Requested by coordinator dcecc9ff. The author read `agent-handoff/planning/responses/C2-FROZEN-v1.coordinator-addendum-3.md`, ruling R-0103-1.
 - **`test_b_policy.py`:** the T-SIZE module set is now 12 modules: the previous 10 plus `c2_stage_pre.py` and `c2_stage_post.py`. Each module is limited to 400 lines, with a total ceiling of 4,800 lines.
 - **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run, and `tools/c2_readout/*.py` was not read.
+
+## v2 update (C2-FROZEN-v2, sha256 51f78976…4583; job 0105)
+- **Why.** This update follows the protocol and is not a test defect. The coordinator dcecc9ff requested it.
+- **Read:**
+  - `agent-handoff/planning/responses/C2-FROZEN-v2.md`: §21 and the parts it touches (§2.2, §2.3, §5.2–§5.7, §7 rows 1–8 with the Y-donor preparation note, §13.1, §13.3 Author B);
+  - `API.md` §19.1–§19.3 (erratum 19.3, commit 9c81b54);
+  - the `CONTRACT.json` v2 diff (dbe3aa4).
+- **Not read:** `tools/c2_readout/*.py` (including the v2 `c2_config.py` change).
+- **T-SIZE** (`test_b_policy.py`): 14 modules, each ≤ 400 lines, total ceiling 5,600 lines. The test also requires `CONTRACT.json` `modules` and `module_limits` to match.
+- **T-G0** (`test_b_lineage.py`):
+  - The byte copy is `PROTOCOL_C2_v2.md` with the v2 hash, and the v1 copy must be absent. `V1_SHA256` is the superseded hash, and the mailbox file is `C2-FROZEN-v2.md`.
+  - The AUTH is pending (`None`) until an owner AUTH names v2. `auth_ok` must refuse while it is pending; its other cases run against a synthetic bound AUTH.
+  - The G0 mailbox copy is written at both readings of `mailbox_file`.
+- **H^Y donor** (`test_b_registry.py`):
+  - `y_donor`, the `OFF` rows, the `k_y` sign rule, `history_table(..., k_y)`, `digest_HY` and `table_roles` are checked.
+  - The separation duplicate formula is (3n + |Y_def|) − |U|.
+  - OFF_GRID_Y rows form no donor: no clamped or wrapped variant is formed.
+  - Every separation fixture uses H^Y in place of H^R.
+- **Coverage and H4:** the reasons S_Y, LIK_Y and OFF_GRID_Y, and H4 = {x: 9/10, y: 17/20}.
+- **NEW-10:**
+  - Policy fixture: no preparation before REG; no model output inside H2 or REG2; H3 and T-PRE begin only after H2 and REG2 end.
+  - Data fixture: k_Y is computed from the cached natural b31 only. Separation runs over the defined donors before H3. `oracle_split` consumes the cache (a marked cache value comes through), and HY is formed only on Y_def rows.
+- **The whitened G1 identity (D-0104-2):** no file of author B checked the old WP − PᵀW form, so nothing changed.
+- **Files rebalanced to stay ≤ 400 lines (meaning unchanged):**
+  - T-NAMESPACE moved from `test_b_registry.py` to `test_b_lineage.py`.
+  - The release-binding tests and the measure-only caps test were exchanged between `test_b_lineage.py` and `test_b_policy.py`.
+  - The k_Y sign rule, the coverage reasons and the H4 test sit in `test_b_policy.py`.
+- **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run.

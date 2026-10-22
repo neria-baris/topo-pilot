@@ -207,17 +207,18 @@ def test_interaction_fixture_is_orthogonal_to_the_additive_regressors():
 
 # ---- T-LEAK (RC-7) ---------------------------------------------------------------------------
 def _placebo(out, coef_code, coef_other, n=1200, seed=31):
+    """The y pair (H, H^Y) of v2 2.2 on its E_y rows: dyY = y(H) - y(H^Y), d^Y, A^Y."""
     g, W = out["g"], out["W"]
     b0, q = out["fit"]["B"][:, 0], W["V"][:, 0]
     r = np.linalg.lstsq(np.vstack((b0, q)), np.array([coef_code, coef_other]), rcond=None)[0]
     t = np.random.default_rng(seed).uniform(0.5, 1.5, n)[:, None]
     a = 1.0 if coef_other == 0 else 5.0
     c = 0.0 if coef_other == 0 else 6.0
-    dyR = t * (a * b0 + c * q)
-    MR = np.outer(W["u"], r)
-    z = dyR @ MR.T
-    dR = (z - z.mean(1, keepdims=True)) / np.max(np.abs(z))
-    part = ca.partition(dR, MR, dyR, g["P_S"], g["P_G"])
+    dyY = t * (a * b0 + c * q)
+    MY = np.outer(W["u"], r)
+    z = dyY @ MY.T
+    dY = (z - z.mean(1, keepdims=True)) / np.max(np.abs(z))
+    part = ca.partition(dY, MY, dyY, g["P_S"], g["P_G"])
     return part["A_S"] - 0.1 * part["A_full"], part
 
 

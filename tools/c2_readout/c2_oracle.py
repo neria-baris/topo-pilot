@@ -101,13 +101,10 @@ def oracle_role(T, E, pi, tokens32, coords=None) -> dict:
     return out
 
 
-SHAPES = {"b31": (cc.N_STATES,), "b32": (cc.N_STATES,), "q": (cc.V,), "qbar": (cc.V,)}
-SHAPES.update(s=(), le=(), m32=(2,))
-
-
-def _scatter(o, rows, n) -> dict:
+def _scatter(o, rows, n, N, V) -> dict:
     """n-row arrays of a role computed on `rows` only (NaN elsewhere: no H^Y is formed there)."""
-    out = {k: np.full((n,) + shape, np.nan) for k, shape in SHAPES.items()}
+    shapes = {"b31": (N,), "b32": (N,), "q": (V,), "qbar": (V,), "s": (), "le": (), "m32": (2,)}
+    out = {k: np.full((n,) + shape, np.nan) for k, shape in shapes.items()}
     for k in o:
         out[k][rows] = o[k]
     return out
@@ -121,7 +118,8 @@ def oracle_split(T, E, pi, coords, canon32, k, o_H=None) -> dict:
         if role == "H" and o_H is not None:
             o[role] = o_H
         elif role == "HY":
-            o[role] = _scatter(oracle_role(T, E, pi, H, coords) if len(rows) else {}, rows, n)
+            ov = oracle_role(T, E, pi, H, coords) if len(rows) else {}
+            o[role] = _scatter(ov, rows, n, *np.shape(E))
         else:
             o[role] = oracle_role(T, E, pi, H, coords)
     y_def = np.zeros(n, dtype=bool)

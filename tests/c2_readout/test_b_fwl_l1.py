@@ -1,6 +1,6 @@
-"""Author B (job 0101): T-FWL (RC-12) and T-L1 (RC-3) (C2-FROZEN-v1 §13.3; §2.4, §2.5, §6.6).
+"""Author B (job 0101): T-FWL (RC-12) and T-L1 (RC-3) (C2-FROZEN-v2 §13.3; §2.4, §2.5, §6.6).
 
-Written from PROTOCOL_C2_v1.md, API.md §8.1, §8.2, §9.2 and CONTRACT.json only;
+Written from PROTOCOL_C2_v2.md, API.md §8.1, §8.2, §9.2 and CONTRACT.json only;
 tools/c2_readout/*.py never read. Synthetic Gaussian fixtures with fixed seeds; tolerances are
 derived from each fixture's n and noise level.
 """

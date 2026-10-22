@@ -1,6 +1,6 @@
 """Author B (job 0101): T-R1 (RC-14, NEW-3), T-N2 (RC-6), T-CMODE (RC-5, RC-6).
 
-C2-FROZEN-v1 §13.3, §2.10, §2.11, §3.2, §6.4-§6.6; API.md §6.2, §8.3-§8.5, §10, §11. Written
+C2-FROZEN-v2 §13.3, §2.10, §2.11, §3.2, §6.4-§6.6; API.md §6.2, §8.3-§8.5, §10, §11. Written
 from the protocol, API.md and CONTRACT.json only; tools/c2_readout/*.py never read. Synthetic
 fixtures only.
 """

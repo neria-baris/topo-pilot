@@ -1,6 +1,6 @@
-"""Author B (job 0101): T-PATCH and T-X1 (C2-FROZEN-v1 §13.3; §2.1, §2.7, §7 rows 9 and 17).
+"""Author B (job 0101): T-PATCH and T-X1 (C2-FROZEN-v2 §13.3; §2.1, §2.7, §7 rows 9 and 17).
 
-Written from PROTOCOL_C2_v1.md, API.md §7 and CONTRACT.json only; tools/c2_readout/*.py never
+Written from PROTOCOL_C2_v2.md, API.md §7 and CONTRACT.json only; tools/c2_readout/*.py never
 read. Synthetic fixtures: a tiny float64 TransformerLM (4 blocks, d_model 128, n_ctx 33) with a
 random final LayerNorm; random token inputs; no checkpoint, no store.
 """

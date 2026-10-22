@@ -554,6 +554,64 @@ Recorded before the stage-module code (job 0104, step 1). It supersedes §1 "exa
 - **`ctx` keys.** `Ctx` fields as §12.2. `ctx.data` (one process, one stage): `"stage"`; `"files"` (store-relative paths this stage wrote: the COMPLETED evidence); `"stopped"`; caches loaded or formed once per process (the process, the models, history tables, ORACLE arrays, FIT arrays and decoders, per-model split activations, readout coordinates and phases; natural logits only from their pass to the end of X1 or T-PRE; the TEST stream arrays and bounds from NUM to REPORT). Across stages only store files carry data (§16.1); nothing is kept in memory between stages.
 - **`pf` moves** from `c2_driver` to `c2_stage_pre` (row 2 is a gate body; the driver line budget). Its behaviour is §12.3 unchanged; `g0`, `auth_ok`, `release_ok`, `meter_bind_check`, sealing, records and lineage stay in the driver.
 
+### 19.3 C2-FROZEN-v2 (erratum, job 0105; v2 §21 C-1..C-10, owner addendum 23, R-0104-1)
+
+Recorded before the v2 code (job 0105, step 2). **Authority:** `tools/c2_readout/PROTOCOL_C2_v2.md`, a byte copy of `agent-handoff/planning/responses/C2-FROZEN-v2.md` (sha256 `51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583`); the v1 copy is removed (v2 §21, coordinator note 2). Every reference in this contract to C2-FROZEN-v1, `PROTOCOL_C2_v1.md`, H^R, ρ_R, σ, d^R, A^R, S_REFL, LIK_REFL, T2 or `"HR"` is read through this erratum; where an earlier section and this one differ, this one wins. No threshold, tolerance, seed, gate, stop rule, outcome rule or licence changes beyond v2 §21.
+
+**Bindings (§3.1).** `PROTOCOL_ID = "C2-FROZEN-v2"`, `PROTOCOL_FILE = HERE / "PROTOCOL_C2_v2.md"`, `PROTOCOL_SHA256 = "51f78976…4583"`, `V1_SHA256` (superseded), `ADDENDUM1_SHA256`, `ADDENDUM2_SHA256`, `OWNER23_SHA256`. `AUTH_PATH` and `AUTH_SHA256` are read from `CONTRACT["protocol"]["auth"]`; they are `None` until the coordinator binds the owner AUTH addendum naming the v2 sha256 (v2 §14 D2, gate 0b), and `auth_ok` refuses while `AUTH_SHA256` is `None` (fail closed). `g0` item (i) compares `PROTOCOL_FILE` with `MAILBOX / CONTRACT["protocol"]["mailbox_file"]` (`C2-FROZEN-v2.md`). Constants: `H4 = {"x": 9/10, "y": 17/20}` (was `H4 = 9/10`); `Y_MID = 11/2`; `T_SYM_R` removed; `MODULES` (the 14 module names of `CONTRACT["modules"]`).
+
+**Roles and pairs (§2).** `ROLES = ("H", "Hp", "Hm", "HY")`, `PAIRS = {"x": ("Hp", "Hm"), "y": ("H", "HY")}`. "HY" (H^Y) replaces "HR" in every key: `digest_HY`, `HY_q`, `HY_qbar`, `HY_s`, `HY_le`, `HY_m32`, the X1 arm `nat_HY`, the activation keys `HY_<hook>`. The y-pair contrast is `d_y = q̄(H) − q̄(H^Y)` (canonical; named by `d_named`), and `G_y = G_hat(q̄(H), q̄(H^Y))`.
+
+**The H^Y donor (§4.2; v2 §2.2, C-1, C-2; it mirrors `topo-scratch/0104/fy_alt.py`, sha256 0e1113ed…63aa).** Removed: `sigma`, `reflect_donor`, `rho_R_index`, `symmetry_report_R` (the y pair has no symmetry, closed form or ε_sym). New in `c2_data`:
+- `OFF = 255`: the value of every position of an undefined H^Y row. It is an index error in `E[:, ·]` and `perm[·]`, so an unmasked use fails loudly; it is never a symbol.
+- `k_y(b31, coords) -> int64[n]`: ȳ = `b31 @ coords[:, 1]` (the posterior mean of the cell row under the natural history's filter after 31 symbols); +1 where ȳ < 5.5, else −1 (ȳ = 5.5 gives −1).
+- `y_donor(canon32, k) -> (int64[n, 32], bool[n])`: b = w mod 6 and a = w div 6 on w1..w31; `nb = b + k[:, None]`; `Y_def` = all(0 ≤ nb ≤ 5) per row; H^Y[:, :31] = 6a + nb and H^Y[:, 31] = w32. Rows with `Y_def` False are set to `OFF` in full (OFF_GRID_Y: never clamped, never wrapped).
+- `donors4(canon32, k_y) -> (H, Hp, Hm, HY)` (`c1_oracle.donors` for the first three).
+- `role_arrays(canon32, k_y) -> {role: (tokens int64[m, 32], rows int64[m])}`: every row for H, Hp and Hm; only the Y_def rows for HY. Every oracle run, digest, model forward and predicate check of H^Y goes through it, so no H^Y is formed on an OFF_GRID_Y row.
+- `history_table(canon32, seq_ids, panel, k_y) -> dict` (k_y is required): keys `canonical`, `sequence_id`, `panel`, `k_Y` (int8), `Y_def` (bool), `digest_H`, `digest_Hp`, `digest_Hm`, `digest_HY` (`""` on OFF_GRID_Y rows). `table_digests(table)` is the union of the four columns without `""`. `table_roles(table)` = `role_arrays(table["canonical"], table["k_Y"])`.
+- `REASONS = ("S_PLUS", "S_MINUS", "S_Y", "LIK_H", "LIK_PLUS", "LIK_MINUS", "LIK_Y", "OFF_GRID_Y", "ZERO_MOD_H", "ZERO_MOD_PLUS", "ZERO_MOD_MINUS")` (v2 §5.5). S_Y and LIK_Y are False on OFF_GRID_Y rows, where they are not evaluated.
+- `c2_registry.separation` and `build` take the roles from `table_roles` (H^Y only where defined); `duplicates` = (3n + |Y_def|) − |U|.
+
+**The Y-donor preparation in H2 and H2′ (v2 §7 note; NEW-10).** After REG (REG′) passes and a split's natural histories are sampled, the stage runs `c2_oracle.oracle_role(T, E, pi, canon32, coords)` on the natural histories only, computes `k_y` from its `b31`, builds the table with the defined H^Y donors, writes `hist/`, and caches the natural oracle result in `ctx.data["oH:<split>"]` for H3 (for T-PRE on TEST). Separation runs over every defined donor role before the gate returns. Nothing else is formed: no donor contrast, no fit, no model output. H3 (T-PRE) consumes the cache and validates it (the Decimal rows include H).
+
+**The H^Y oracle (§6.2, §6.3; v2 §2.2, §7 row 6, C-4).**
+- `oracle_split(T, E, pi, coords, canon32, k_y, o_H=None) -> dict`: H from `o_H` when it is given (the H2 cache), else computed; Hp and Hm on every row; HY by the exact oracle forward (`run_oracle`) on the Y_def rows only, scattered into n-row arrays with NaN elsewhere; `"Y_def"`, `"k_Y"`; `G_x`, `d_x`; `G_y`, `d_y` on the Y_def rows (NaN elsewhere); `nuis`.
+- `eligibility(o, smax)`: E_y = Y_def ∧ s(H^Y) ≤ s_max ∧ finite log-evidence of H and H^Y. f_y = |E_y|/N over all rows, so OFF_GRID_Y rows count as ineligible.
+- `x_leakage(o, E_x, E_y, coords) -> {"b31", "b32"}`: λ_x = mean_{E_y}‖m32(b(H^Y)) − m32(b(H))‖ / mean_{E_x}‖m32(b(H⁺)) − m32(b(H⁻))‖ at b31 and at b32 (v2 §2.12; descriptive, per split, recorded at H4 and T-PRE).
+- `h3(...)`: the τ symmetry report, exact invariance and the closed forms for the x pair only (T1, T3); no ρ_R report (T2 is withdrawn); named = canonical, cross-model G and Σq = 1 on every defined row of every role (G_y included). Decimal rows: `decimal_rows(T, E, pi, canon32, o, rows_x, rows_y, p0)` checks H, H⁺, H⁻ and G_x on the 4 lowest-id E_x rows, and H, H^Y and G_y on the 4 lowest-id E_y rows (H is checked at both, which validates the H2 cache). SYMBOL-ORDER (c) runs on the FIT (TEST) d_x and on d_y's defined rows. This supersedes C-8.
+- `kappa_m(m32_H, m32_HY, E_y_fit, m32_H_fit)`, and `reason_flags(o, smax)` with the v2 reasons.
+
+**H4 (§12.2; v2 §5.4, C-3).** PASS iff f_x ≥ 9/10 and f_y ≥ 17/20 on FIT, FEAS and VAL (exact `Fraction` comparisons).
+
+**The whitened G1 identity (§8.2; v2 §2.5, C-6).** `gls_identities(g, Gamma, B, Sigma=None) -> {"max_abs", "rel", "sym", "checks", "ok"}`, on the production L̂ and P̂ = X_n L̂:
+- dimensionless, absolute ≤ 1e-10: ‖L̂X_n − I‖_max, ‖P̂_S² − P̂_S‖_max, ‖P̂_Γ² − P̂_Γ‖_max, ‖P̂_SP̂_Γ‖_max, ‖P̂_ΓP̂_S‖_max, ‖P̂_S + P̂_Γ − P̂‖_max and ‖P̂² − P̂‖_max (`max_abs` is their maximum);
+- relative: ‖P̂_SΓ‖_max ≤ 1e-10·‖Γ‖_max and ‖P̂_ΓB‖_max ≤ 1e-10·‖B‖_max (`rel` holds the two ratios);
+- whitened self-adjointness: with Σ = L_c L_cᵀ (`numpy.linalg.cholesky`, so R_Σ = L_cᵀ), P̃ = `solve_triangular(L_c, P̂ @ L_c, lower=True)` (= R_Σ^{−ᵀ}P̂R_Σᵀ, formed from P̂, never from X̃) and ‖P̃ − P̃ᵀ‖_max ≤ 1e-10 (`sym`); Euclidean: ‖P̂ − P̂ᵀ‖_max ≤ 1e-10.
+
+A non-finite value fails. The check runs for every problem (R, R_K1, R_K2, R_E, M, S*); a failure is EXCLUDED/NUMERICAL (primary) or NOT_COMPUTED (variant).
+
+**The 14-module stage split (§1, §12.2, §19.2; R-0104-1, v2 §13.2, C-7).** `MODULES` = 14: the ten of §1 plus `c2_stage_base.py`, `c2_stage_pre.py`, `c2_stage_val.py` and `c2_stage_post.py`, each ≤ 400 lines (ceiling 5,600; T-SIZE). It supersedes §19.2's 12-module set. Dependency order: `c2_driver` ← `c2_stage_base` ← `c2_stage_pre`, `c2_stage_val` ← `c2_stage_post`. A stage module imports the driver and the other modules; the driver imports no stage module at import time. The exact gate-row-to-module assignment (§7 rows):
+
+| Module | `PLAN` stages | §7 rows (gates) |
+|---|---|---|
+| `c2_stage_base` | none (no `PLAN`) | The stage-entry step bodies shared by every `PLAN`: 0b `AUTH-ADMIT` and 1 `G0`. Also the store loaders, the `ctx` caches and the gate-history helpers (alive, prior, family stop); the per-model split state (activations, readout coordinates, phases, natural logits); and the split-level checks that later stages and T-PRE reuse: the H2/H2′ sampling with the Y-donor preparation and separation, the ORACLE writer, the H5 bound, L1, R1, N2, support, the X1 run, the closed-form stream compositions and the VAL/TEST bound wrapper |
+| `c2_stage_pre` | `S1`, `S2`, `S3` | 0 `IMPL`, 2 `PF`, 3 `H1`, 4 `REG`, 5 `H2`, 6 `H3`, 7 `H4`, 8 `H5`; 9 `M0`, 10 `C0c`, 11 `F1`; 12 `C0v`, 13 `L1`, 14 `R1`, 15 `N2`, 16 `SURVIVAL` |
+| `c2_stage_val` | `S4` | 17 `X1`, 18 `V3x` and `V3y`, 19 `Y1`, `Y1*` and `Y2`, 20 `P1` |
+| `c2_stage_post` | `S5` | 21 `ACCEPT`, 22 `REG2` (REG′/H2′), 23 `T-PRE`, 24 `T-PRE-MODEL`, 25 `RESP-SPEC`, 26 `NUM`, 27 `ENDPOINT`, 28 `REPORT` (POST-DESC inside REPORT) |
+
+`c2_driver.STAGE_MODULE = {"S1": "c2_stage_pre", "S2": "c2_stage_pre", "S3": "c2_stage_pre", "S4": "c2_stage_val", "S5": "c2_stage_post"}`. Everything else in §19.2 holds (the PLAN form, the step returns, the stage entry, the lazy dispatch, the `ctx` keys). Added `ctx.data` key: `"oH:<split>"` (the H2/H2′ natural-oracle cache).
+
+**Outputs added or changed (§16.1).**
+- `hist/HIST_<split>_b<k>.npz` adds `k_Y`, `Y_def` and `digest_HY`.
+- `oracle/ORACLE_<split>.npz` holds `HY_*` (NaN on OFF_GRID_Y rows), `Y_def` and `k_Y`.
+- `stages/S1/coverage.json` holds the oracle tally per split, with OFF_GRID_Y and λ_x.
+- `stages/S3/coverage.json` and `stages/S5/coverage.json` hold the per-model, per-family tallies: UNSUPPORTED_H/PLUS/MINUS (R and M), ZERO_CODE_PLUS/MINUS, R1_ZERO and R1_UNSELECTED. S5 also holds the TEST oracle tally and λ_x.
+- `stages/S3/L1_DESC.json` holds the complete-decoder scores (`l1_complete_scores`) and the RFF decoder of f₁ from P_rest y (C-27).
+- `sealed/VAL_ROT_<j>.npz` holds the VAL rotation arm (A_rot and G_rot per dose). `sealed/VAL_M_<j>.npz` also holds the 8 VAL M Haar frames (ψ_M,R on the 1,024 lowest-id eligible rows) and the block-3 LayerNorm scale ratios (C-30).
+- Activation arrays of HY are NaN on OFF_GRID_Y rows; no forward runs there.
+
+**PF size scope (§7 row 2; E-0102-2, coordinator addendum 2, carried by v2 §21 C-9).** PF's file-size item passes iff no line of the `tools/check_file_sizes.py` report names a file under `tools/c2_readout/` or `tests/c2_readout/`. Other lines are recorded in `stages/S1/pf.json` as pre-existing, with their line counts. `check_file_sizes.py` itself is unchanged; the 14-module set and the 5,600-line ceiling are T-SIZE's.
+
 ## 20. Open questions for the coordinator (not decided here)
 
 - **Q1** §7 row 6 (H3 "interval rule off the fast path", "C1′ H3 unchanged") needs C1′'s fast-path test, which lives in `c1_cert` and `error_bound`; §13.2 field 2 lists `c1_cert` as not used. Choice C-7 reuses `c1_cert.p0/p1/reference_oracle` unchanged for H3 only (tools/c1prime is a protected path, so the R→H diff binds them; their blobs are recorded in `CONTRACT.json` `hashes.reused_extra`). Confirm, or rule the relative 2e-12 rule alone.

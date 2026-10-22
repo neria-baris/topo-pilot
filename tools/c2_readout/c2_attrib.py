@@ -2,10 +2,11 @@
 the energies, the exact random-6-plane reference r, nu_S, the operator decomposition, psi_max,
 E|A_S| and its Cauchy-Schwarz bound, the rotation arm and s_rot, the C2-M quantities, the
 descriptive ratio intervals (seed 620518), the other §2.12 descriptives and the POST-DESC values
-(API.md §10; C2-FROZEN-v1 §2.6, §2.8-§2.12, §5.7, §6.1).
+(API.md §10, §19.3; C2-FROZEN-v2 §2.6, §2.8-§2.12, §5.7, §6.1).
 
 The family stream arrays are assembled here in indicator form (API.md §11.1); bounds and
-decisions are c2_decide's.
+decisions are c2_decide's. The per-split compositions (the closed-form streams of one model, the
+X1 arms) live in c2_stage_base (R-0104-1).
 """
 
 from __future__ import annotations
@@ -18,7 +19,6 @@ import c2_config as cc  # first: the API.md §1 sys.path convention
 import c1_endpoint
 import c1_means
 import c2_code as ck
-import c2_oracle as co2
 import numpy as np
 from c1_records import C1GateFailure
 from scipy.linalg import solve_triangular
@@ -315,57 +315,55 @@ def point_ratios(family, q, E) -> dict:
     return out
 
 
-# ---- one model on one split (driver composition) ---------------------------------------------
-def closed_streams(F, y, o, perm) -> dict:
-    """The x/y pair quantities of every passing ln_final problem and the R and S* streams of one
-    model on one split. F = {"M": M, "prob": {p: {"P_S", "P_G", "Sigma", "ok"}}}, y = {role: y},
-    o = the split's ORACLE arrays (canonical q-bar; d converted to named order, RC-1)."""
-    dx = co2.d_named(o["Hp_qbar"] - o["Hm_qbar"], perm)
-    dR = co2.d_named(o["H_qbar"] - o["HR_qbar"], perm)
-    Ex, Ey, M = np.asarray(o["E_x"], bool), np.asarray(o["E_y"], bool), F["M"]
-    ok = {p: f for p, f in F["prob"].items() if f["ok"] and p != "M"}
-    q = {p: pair(dx, M, y["Hp"], y["Hm"], f["P_S"], f["P_G"], f["Sigma"]) for p, f in ok.items()}
-    for v in q.values():
-        v["G"] = _f(o["G_x"])
-    qy = {
-        p: pair(dR, M, y["H"], y["HR"], ok[p]["P_S"], ok[p]["P_G"], ok[p]["Sigma"])
-        for p in ("R", "S*")
-        if p in ok
-    }
-    out = {"q": q, "qy": qy, "d_x": dx, "d_y": dR}
-    if "R" in q:
-        var = {v: q[v] for v in cc.VARIANTS if v in q}
-        out["R"] = r_arrays(q["R"], qy["R"], o["G_x"], Ex, Ey, var)
-    if "S*" in q:
-        out["S*"] = r_arrays(q["S*"], qy["S*"], o["G_x"], Ex, Ey, y_name="Y1*")
+# ---- the REPORT descriptives of one model (§2.12; descriptive only) ------------------------
+def _ratio(a, b, E) -> float:
+    den = float(np.mean(_f(b)[E])) if np.any(E) else 0.0
+    return float(np.mean(_f(a)[E])) / den if den != 0 else float("nan")
+
+
+def shares(q, E) -> dict:
+    """psi_S, psi_Gamma, psi_rest and eta_S of one pair() result on its eligible rows."""
+    E = np.asarray(E, dtype=bool)
+    out = {k: _ratio(q[k], q["A_full"], E) for k in ("A_S", "A_G", "A_rest")}
+    return dict(out, eta_S=_ratio(q["e_S"], q["e_full"], E))
+
+
+def descriptives(q, d, M, P_S, P_G, J, E, frames=(), aff=None, z_pm=None, ys=None) -> dict:
+    """nu_S, psi_max, E|A_S| and its CS bound, the operator decompositions of P_S and P_G, the
+    Haar shares, the Fisher energy, the affine readout change and the |y_S|/|y| ratios of one
+    x-pair pair() result q (eligible rows E); nothing here selects a projector (§2.12)."""
+    E, dy = np.asarray(E, dtype=bool), _f(q["dy"])
+    out = {"nu_S": nu_S(J, P_S, dy[E]), "psi_max": psi_max(d, M, dy, E)}
+    out.update(abs_A_S=abs_mean(q["A_S"], E), cs_bound=cs_bound(d, q["e_S"], E))
+    dec = {}
+    for tag, P in (("S", P_S), ("G", P_G)):
+        x = decomposition(d, M, dy, P, J)
+        dec[tag] = {k: _ratio(x[k], q["A_full"], E) for k in ("A_vis", "A_null")}
+        dec[tag].update({k: _ratio(x[k], q["e_full"], E) for k in ("e_vis", "e_null")})
+    out["decomposition"], out["haar_shares"] = dec, []
+    for P_R in frames:
+        v = _through(dy, P_R, M)
+        h = {
+            "psi": _ratio(half_dot(d, v), q["A_full"], E),
+            "eta": _ratio(energy(v), q["e_full"], E),
+        }
+        out["haar_shares"].append(h)
+    if z_pm is not None:
+        eF = {k: fisher_energy(M, dy, P, *z_pm) for k, P in (("S", P_S), ("full", np.eye(len(J))))}
+        out["fisher_energy"] = {
+            "e_S": float(np.mean(eF["S"][E])),
+            "share": _ratio(eF["S"], eF["full"], E),
+        }
+    if aff is not None:
+        out["readout_change"] = {k: readout_change(R, dy, P_S, E) for k, R in aff.items()}
+    if ys is not None:
+        y1, y2 = _f(ys[0]), _f(ys[1])
+        sh, nrm = dy @ _f(P_S).T, np.linalg.norm
+        r = {
+            "21": nrm(y2 + sh, axis=1) / nrm(y2, axis=1),
+            "12": nrm(y1 - sh, axis=1) / nrm(y1, axis=1),
+        }
+        out["norm_ratio"] = {
+            k: {"mean": float(np.mean(v[E])), "max": float(np.max(v[E]))} for k, v in r.items()
+        }
     return out
-
-
-def lowid(E, seq, n) -> np.ndarray:
-    """The n lowest-sequence-id rows among the eligible rows E."""
-    rows = np.flatnonzero(np.asarray(E, dtype=bool))
-    return rows[np.argsort(np.asarray(seq)[rows], kind="stable")[: int(n)]]
-
-
-def x1_arms(P, o, seq, w32) -> dict:
-    """X1 arms of one model (§7 row 17): the natural arms; the R interchange arms on every
-    eligible row; S*, the variants and the rotation arms on the 1,024 lowest-id eligible rows.
-    Interchange arms carry arm 2's tokens (C-23). P: inp, y, z (natural logits), F."""
-    E = {"x": np.asarray(o["E_x"], bool), "y": np.asarray(o["E_y"], bool)}
-    arms = {f"nat_{r}": (P["inp"][r], P["y"][r], P["z"][r], seq) for r in cc.ROLES}
-    for p, f in P["F"]["prob"].items():
-        if not f["ok"] or p == "M":
-            continue
-        for pr, (a, b) in cc.PAIRS.items():
-            rows = np.flatnonzero(E[pr]) if p == "R" else lowid(E[pr], seq, cc.X1_LOWID_ROWS)
-            ys = ck.interchange(P["y"][a][rows], P["y"][b][rows], f["P_S"])
-            for tag, yy in zip(("21", "12"), ys):
-                arms[f"{p}_{pr}_{tag}"] = (P["inp"][b][rows], yy, None, seq[rows])
-    R = P["F"]["prob"]["R"]
-    if R["ok"]:
-        rows = lowid(E["x"], seq, cc.X1_LOWID_ROWS)
-        for m, th in cc.ROT_DOSES:
-            for sg, tag in ((1, "plus"), (-1, "minus")):
-                yr = y_rot(P["y"]["H"][rows], R["alpha"], w32[rows], R["B"], R["L_B"], sg * th)
-                arms[f"rot_{m}_{tag}"] = (P["inp"]["H"][rows], yr, None, seq[rows])
-    return arms

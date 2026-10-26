@@ -15,19 +15,23 @@ import c2_attrib as ca
 import c2_code as ck
 import c2_config as cc
 import c2_data as cd
+import c2_decide as cdc
 import c2_model as cm
 import c2_oracle as co2
 import c2_registry as cg
 import c2_stats as cs
+import nd_attrib as nat
 import nd_data as nda
 import nd_decoy as ndy
 import nd_registry as nrg
 import nd_stage_base as sb
 import numpy as np
+import torch
 from c1_records import C1GateFailure
-from nd_stage_base import EXC, J1, OK, X3, bundle, c2fit, js, npz, orc, proc, put
+from nd_stage_base import EXC, J1, OK, X3, bundle, c2fit, js, npz, orc, problem, proc, put, rec
 
-KINDS = cs.KINDS
+KINDS, X2 = cs.KINDS, ("Hp", "Hm")
+DREF = {k: "RT" if k in nc.COORD_DECOYS else "RD" for k in nc.DECOYS}
 
 
 # ---- helpers reused by S4, S5 (API.md §10) ---------------------------------------------------
@@ -199,3 +203,141 @@ def m0_rows(ctx, split, j) -> tuple:
         return rows, inp, acts, z, cm.readout_basis(m64)
 
     return sb.cache(ctx, f"m0:{split}:{j}", make)
+
+
+# ---- per-model quantities (base, decoys) -----------------------------------------------------
+def bounds(arrays, guards, seed, alpha=nc.VAL_ALPHA, draws=nc.VAL_DRAWS) -> dict:
+    b = cdc.stream_bounds(arrays, nc.seed(seed), alpha, draws) if arrays else {}
+    return {k: dict(v, g=guards[k]) for k, v in b.items()}
+
+
+def split_b(b, j) -> dict:
+    return {k.rsplit("|", 1)[0]: v for k, v in b.items() if k.endswith(f"|{j}")}
+
+
+def E(ctx, split, p) -> np.ndarray:
+    return orc(ctx, split)[f"E_{p}"].astype(bool)
+
+
+def lowid(Ex, seq, n=nc.LOWID_ROWS) -> np.ndarray:
+    rows = np.flatnonzero(Ex)
+    return rows[np.argsort(np.asarray(seq)[rows], kind="stable")[: int(n)]]
+
+
+def ys(ctx, split, j, kind=None) -> dict:
+    """Readout coordinates per role: y, or y @ T.T for a coordinate decoy."""
+    X, T = bundle(ctx, split, j), move_T(ctx, j)
+    return {r: X[r]["y"] @ T.T if kind in nc.COORD_DECOYS else X[r]["y"] for r in cc.ROLES}
+
+
+def readout(ctx, j, kind) -> np.ndarray:
+    return c2fit(ctx, j)["M"] if kind in (None, "D0") else decoys(ctx, j)[kind][1]["M"]
+
+
+def quant(ctx, split, j, kind=None, P=None) -> dict:
+    """x and y pair quantities under the readout of `kind` (None: base) and the problem P
+    (default: the frozen C2 R for the base, the refit RD / RT for a decoy)."""
+    P = P or problem(ctx, j, DREF[kind] if kind else "R")
+    y, M, ob = ys(ctx, split, j, kind), readout(ctx, j, kind), orc(ctx, split)
+    dx, dY = afull(ctx, split, j, "x")[0], afull(ctx, split, j, "y")[0]
+    qx = nat.nr_quantities(dx, M, y["Hp"], y["Hm"], P["P_S"])
+    qx.update(ca.pair(dx, M, y["Hp"], y["Hm"], P["P_S"], P["P_G"], P["Sigma"]))
+    qy = ca.pair(dY, M, y["H"], y["HY"], P["P_S"], P["P_G"], P["Sigma"])
+    geo = {"M": M, "x": (dx, qx["dy"], E(ctx, split, "x"))}
+    geo["y"] = (dY, qy["dy"], E(ctx, split, "y"))
+    return {"qx": qx, "qy": qy, "geo": geo, "P": P, "G_x": ob["G_x"], "G_y": ob["G_y"]}
+
+
+def head_logits(dec, u) -> np.ndarray:
+    """The decoy's natural logits from the base ln_final_out (head-only path, §9)."""
+    with torch.no_grad():
+        x = torch.as_tensor(np.asarray(u, np.float64))
+        x = dec.ln_final[1](x) if isinstance(dec.ln_final, torch.nn.Sequential) else x
+        return dec.unembed(x).numpy().copy()
+
+
+# ---- X1 and DX (ephemeral identity diagnostics; reused at T-PRE) -----------------------------
+def _arms(X, y, rows, P, prefix, seq) -> dict:
+    """The x interchange arms 21, 12 (arm 2's tokens, C2 C-23) on `rows`."""
+    ab = ck.interchange(y["Hp"][rows], y["Hm"][rows], P)
+    inp = X["Hm"]["inp"][rows]
+    return {f"{prefix}_x_{t}": (inp, v, None, seq[rows]) for t, v in zip(("21", "12"), ab)}
+
+
+def x1_model(ctx, split, j) -> list:
+    """§3 row 19: base natural, R interchange and direct complement arms (compared with
+    A_full - A_S) on every eligible row, the variant complement arms on the 1,024 lowest-id
+    eligible rows; DNULL's arms on every eligible row, the other decoys' on the low-id rows."""
+    X, m64 = bundle(ctx, split, j, kind="x1"), sb.models(ctx)[j][0]
+    F, Ex, seq = c2fit(ctx, j), E(ctx, split, "x"), sb.table(ctx, split)["sequence_id"]
+    rows, low, yd = np.flatnonzero(Ex), lowid(Ex, seq), sb.table(ctx, split)["Y_def"]
+    y, P = {r: X[r]["y"] for r in cc.ROLES}, problem(ctx, j, "R")
+    nr = {r: np.flatnonzero(yd) if r == "HY" else np.arange(len(seq)) for r in cc.ROLES}
+    arms = {f"nat_{r}": (X[r]["inp"][i], y[r][i], X[r]["z"][i], seq[i]) for r, i in nr.items()}
+    arms.update(_arms(X, y, rows, P["P_S"], "R", seq))
+    yC, inp2 = nat.comp_arm(y["Hp"][rows], y["Hm"][rows], P["P_S"]), X["Hm"]["inp"][rows]
+    zC = cm.patched_logits(m64, inp2, "ln_final_out", cm.placed(yC, F), ctx.policy, "x1")
+    arms["comp_x"] = (inp2, yC, zC, seq[rows])
+    d = afull(ctx, split, j, "x")[0][rows]
+    A_comp = nat.nr_quantities(d, F["M"], y["Hp"][rows], y["Hm"][rows], P["P_S"])["A_comp"]
+    dev = np.abs(nat.a_comp_direct(d, zC, X["Hm"]["z"][rows]) - A_comp)
+    tol = float(nc.frac(nc.TAU_X1)) * np.maximum(1.0, np.abs(zC).max(axis=1, initial=0.0))
+    comp_ok = bool(np.all(dev <= tol))  # |1/2 d'v| <= |v|_inf since |d|_1 <= 2
+    for v in [v for v in nc.VARIANTS if problem(ctx, j, v)["ok"]]:
+        yv = nat.comp_arm(y["Hp"][low], y["Hm"][low], problem(ctx, j, v)["P_S"])
+        arms[f"{v}_comp_x"] = (X["Hm"]["inp"][low], yv, None, seq[low])
+    r = cm.x1(m64, arms, F, ctx.policy)
+    r["comp_direct"] = {"max_dev": float(dev.max(initial=0.0)), "ok": comp_ok}
+    out, u = [rec(r["status"] if comp_ok else "FAIL_TECHNICAL/X1", r, model=j)], {}
+    u = {q: X[q]["a"]["ln_final_out"] for q in X2}
+    for kind, (dec, B) in decoys(ctx, j).items():
+        Pk = problem(ctx, j, DREF[kind])
+        if not Pk["ok"]:
+            continue
+        yk, rr = ys(ctx, split, j, kind), rows if kind == "DNULL" else low
+        arms = {
+            f"nat_{q}": (X[q]["inp"][rr], yk[q][rr], head_logits(dec, u[q][rr]), seq[rr])
+            for q in X2
+        }
+        arms.update(_arms(X, yk, rr, Pk["P_S"], DREF[kind], seq))
+        rk = cm.x1(dec, arms, B, ctx.policy)
+        st = "PASS" if rk["status"] == "PASS" else "FAIL_TECHNICAL/DECOY"
+        out.append(rec(st, rk, model=j, family="D", decoy=kind, scope="family"))
+    for b in X.values():
+        b["z"] = None
+    return out
+
+
+def dx_model(ctx, split, j) -> dict:
+    """§3 row 20 with the construction projector (the frozen C2 R P_S) on the eligible rows."""
+    F, Ex, T = c2fit(ctx, j), E(ctx, split, "x"), move_T(ctx, j)
+    P_S, d, arrays, base = F["R_P_S"], afull(ctx, split, j, "x")[0][Ex], {}, ys(ctx, split, j)
+    for kind, (dec, B) in decoys(ctx, j).items():
+        y = ys(ctx, split, j, kind)
+        P = T @ P_S @ np.linalg.inv(T) if kind in nc.COORD_DECOYS else P_S
+        q = nat.nr_quantities(d, B["M"], y["Hp"][Ex], y["Hm"][Ex], P)
+        if kind == "DDOSE":
+            q["A_S_base"] = nat.nr_quantities(d, F["M"], base["Hp"][Ex], base["Hm"][Ex], P_S)["A_S"]
+        if kind == "DID":  # logit changes: the constant head offset cancels (ND-C45)
+            q = {"z": q["dy"] @ B["M"].T, "z_base": (base["Hp"][Ex] - base["Hm"][Ex]) @ F["M"].T}
+        arrays[kind] = q
+    return ndy.dx(arrays, ctx.policy)
+
+
+# ---- C2-M arms (§2.4; patched forwards in context H) -----------------------------------------
+def cm_pair(ctx, split, j, kind) -> dict:
+    X, P2, m64 = bundle(ctx, split, j), problem(ctx, j, "M")["P_S"], sb.models(ctx)[j][0]
+    h, inp = X["H"]["a"]["resid_post_2"], X["H"]["inp"]
+    reps = [ca.cm_replacements(h, X[r]["a"]["resid_post_2"], P2) for r in X2]
+    z = {
+        k: tuple(
+            cm.patched_logits(m64, inp, "resid_post_2", rp[k], ctx.policy, kind) for rp in reps
+        )
+        for k in "FSC"
+    }
+    d, _, A = afull(ctx, split, j, "x")
+    eps = float(m64.blocks[3].ln1.eps)
+    lnr = {
+        f"lnr_{k}_{r}": ca.ln_scale_ratio(rp[k], h, eps) for k in "SC" for r, rp in zip(X2, reps)
+    }
+    return dict(ca.cm_quantities(d, z, A), A_full=A, **lnr)

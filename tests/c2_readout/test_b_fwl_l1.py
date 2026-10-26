@@ -1,4 +1,5 @@
-"""Author B (job 0101): T-FWL (RC-12) and T-L1 (RC-3) (C2-FROZEN-v2 §13.3; §2.4, §2.5, §6.6).
+"""Author B (job 0101): T-FWL (RC-12) and T-L1 (RC-3) (C2-FROZEN-v2 §13.3; §2.4, §2.5, §6.6);
+also the D-0107-1 G0 (vii) regression (T-NAMESPACE in part; R-0107-2).
 
 Written from PROTOCOL_C2_v2.md, API.md §8.1, §8.2, §9.2 and CONTRACT.json only;
 tools/c2_readout/*.py never read. Synthetic Gaussian fixtures with fixed seeds; tolerances are
@@ -306,3 +307,87 @@ def test_l1_denominator_fixtures_fail_link():
     for ssel in (8.0, 9.0):  # SSE_0 - SSE_lin = 0 and < 0
         res = cs.l1(Y, _pred_with_sse(4, 8.0), _pred_with_sse(4, 2.0), _pred_with_sse(4, ssel))
         assert res["status"] == "EXCLUDED/LINK" and res["rho_inc"] is None
+
+
+# ---- T-NAMESPACE (in part): G0 (vii) and the stage's own pre-G0 records (D-0107-1) ----
+# R-0107-2 (agent-handoff/jobs/0107/review.md): GATES.jsonl and STAGES.jsonl are admitted iff
+# each is an accepted prefix (empty without an accepted manifest; else the leading lines whose
+# sha256 is the lineage append_only value) plus this stage's own pre-G0 lines: one STARTED
+# line in STAGES.jsonl; only IMPL / AUTH-ADMIT gate lines of this stage, scope study.
+# API-AMBIGUITY: c2_data.own_records(store, stage, lineage) is not yet in API.md; it is read
+# as returning {relpath: sha256} for the admitted files, with the accepted prefix sha256 taken
+# from lineage["GATES.jsonl"] / lineage["STAGES.jsonl"] (absent: empty prefix).
+import hashlib  # noqa: E402
+import json  # noqa: E402
+
+import c2_data as cd  # noqa: E402
+
+V2 = "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"
+
+
+def _jl(**rec):
+    return json.dumps(rec, sort_keys=True) + "\n"
+
+
+def _gate(gate, stage="S1", scope="study"):
+    return _jl(gate=gate, status="PASS", criterion_met=True, utc="2026-10-26T00:00:00Z",
+               full_status="PASS", reason="", stage=stage, model=None, family=None,
+               problem=None, scope=scope, values={})
+
+
+def _event(stage="S1", event="STARTED"):
+    return _jl(stage=stage, event=event, utc="2026-10-26T00:00:00Z")
+
+
+def _own_store(tmp_path, gates, stages, prefix=("", "")):
+    store, lin = tmp_path / "store", {}
+    store.mkdir()
+    for name, schema in (("FREEZE.json", "c2-freeze-v1"), ("AUTH.json", "c2-auth-v1")):
+        (store / name).write_bytes(json.dumps({"schema": schema, "protocol_sha256": V2}).encode())
+        lin[name] = hashlib.sha256((store / name).read_bytes()).hexdigest()
+    (store / "GATES.jsonl").write_bytes((prefix[0] + "".join(gates)).encode())
+    (store / "STAGES.jsonl").write_bytes((prefix[1] + "".join(stages)).encode())
+    return store, lin
+
+
+def _admitted(store, stage, lin, first):
+    own = cd.own_records(store, stage, lin)
+    return own, cd.store_admission(store, {**lin, **own}, first)["status"] == "PASS"
+
+
+def test_own_pre_g0_records_admitted_at_s1(tmp_path):
+    store, lin = _own_store(tmp_path, [_gate("IMPL"), _gate("AUTH-ADMIT")], [_event()])
+    assert cd.store_admission(store, lin, True)["status"] != "PASS"  # the D-0107-1 defect
+    own, ok = _admitted(store, "S1", lin, True)
+    for name in ("GATES.jsonl", "STAGES.jsonl"):
+        assert own[name] == hashlib.sha256((store / name).read_bytes()).hexdigest()
+    assert ok
+
+
+@pytest.mark.parametrize("gates, stages", [
+    ([_gate("IMPL"), _gate("AUTH-ADMIT"), _gate("G0")], [_event()]),  # an extra gate
+    ([_gate("IMPL"), _gate("AUTH-ADMIT"), _gate("PF")], [_event()]),
+    ([_gate("IMPL"), _gate("AUTH-ADMIT", stage="S2")], [_event()]),  # another stage
+    ([_gate("IMPL"), _gate("AUTH-ADMIT", scope="model")], [_event()]),  # not study scope
+    ([_gate("IMPL"), _gate("AUTH-ADMIT")], [_event(), _event()]),  # two STARTED lines
+    ([_gate("IMPL"), _gate("AUTH-ADMIT")], [_event("S2")]),  # STARTED of another stage
+    ([_gate("IMPL"), _gate("AUTH-ADMIT")], [_event(), _event(event="COMPLETED")]),
+    ([_gate("IMPL"), _jl(foreign="c2-v1")], [_event()]),  # a foreign line
+], ids=["extra-G0", "extra-PF", "other-stage", "scope", "two-started", "started-S2",
+        "completed", "foreign"])
+def test_own_records_near_misses_are_not_admitted(tmp_path, gates, stages):
+    store, lin = _own_store(tmp_path, gates, stages)
+    assert not _admitted(store, "S1", lin, True)[1]
+
+
+def test_later_stage_accepted_prefix_plus_own_lines(tmp_path):
+    pre_g = "".join(_gate(g) for g in ("IMPL", "AUTH-ADMIT", "G0", "PF", "H1"))
+    pre_s = _event() + _event(event="COMPLETED")
+    store, lin = _own_store(tmp_path, [_gate("AUTH-ADMIT", stage="S2")], [_event("S2")],
+                            prefix=(pre_g, pre_s))
+    lin["GATES.jsonl"] = hashlib.sha256(pre_g.encode()).hexdigest()  # accepted append_only
+    lin["STAGES.jsonl"] = hashlib.sha256(pre_s.encode()).hexdigest()
+    assert _admitted(store, "S2", lin, False)[1]
+    bad = pre_g.replace('"PF"', '"PG"', 1)  # one altered byte in the accepted prefix
+    (store / "GATES.jsonl").write_bytes((bad + _gate("AUTH-ADMIT", stage="S2")).encode())
+    assert not _admitted(store, "S2", lin, False)[1]

@@ -89,3 +89,13 @@
   - The release-binding tests and the measure-only caps test were exchanged between `test_b_lineage.py` and `test_b_policy.py`.
   - The k_Y sign rule, the coverage reasons and the H4 test sit in `test_b_policy.py`.
 - **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run.
+
+## D-0107-1 regression (job 0108; ruling R-0107-2)
+- **Why.** The coordinator dcecc9ff asked for this regression test after a defect.
+- **Read:** `agent-handoff/jobs/0107/review.md` (D-0107-1, R-0107-2) and the coordinator's message giving `c2_data.own_records(store, stage, lineage) -> dict[str, str]`. The API.md erratum for `own_records` had not landed when this was written, so the review's rule and that signature were followed (API-AMBIGUITY comment in the file).
+- **Where:** `test_b_fwl_l1.py` (T-NAMESPACE in part), because it had room within 400 lines. All stores are synthetic, under `tmp_path`.
+- **Cases covered:**
+  - **S1 accepted:** one STARTED line, and only IMPL and AUTH-ADMIT gate lines (stage S1, scope study). `own_records` returns both files with their sha256, and `store_admission(first_sampling=True)` passes with the merged map. The defect itself (no merge, no PASS) is asserted too.
+  - **Near misses, none admitted:** an extra G0 or PF gate, another stage, a non-study scope, two STARTED lines, a STARTED line of another stage, a COMPLETED line, and a foreign line.
+  - **Later stage (S2):** an accepted prefix whose sha256 equals the lineage `append_only` value, followed by this stage's STARTED and AUTH-ADMIT lines, is accepted; with one altered byte in the prefix it is not.
+- **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run, and `tools/c2_readout/*.py` was not read.

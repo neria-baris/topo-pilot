@@ -115,7 +115,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/analysis/__init__.py
 ### `src/topo_pilot/contracts/__init__.py`
 - -> src/topo_pilot/contracts/backends.py, src/topo_pilot/contracts/base.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/contracts/ids.py, src/topo_pilot/contracts/layout.py, src/topo_pilot/contracts/schemas.py, src/topo_pilot/contracts/store.py
-- <- docs/proposals/X4F_GATES_OUTPUTS/family_diagnostic_script.py, reports/he_summary/extract_data.py, src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/analysis/baselines.py, src/topo_pilot/analysis/circular.py, src/topo_pilot/analysis/circular_bound.py, src/topo_pilot/analysis/discriminability.py, src/topo_pilot/analysis/dynamics.py, src/topo_pilot/analysis/f1.py, src/topo_pilot/analysis/geometry.py, src/topo_pilot/analysis/horizon.py, src/topo_pilot/analysis/horizon_pools.py, src/topo_pilot/analysis/pointset.py, src/topo_pilot/analysis/readout.py, src/topo_pilot/analysis/sensitivity.py, src/topo_pilot/analysis/sigma.py, src/topo_pilot/analysis/spaces.py, src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/analysis/x4f_targets.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/public.py, src/topo_pilot/dataset/sampler.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/executors/_outputs.py, src/topo_pilot/executors/base.py, src/topo_pilot/executors/bundle.py, src/topo_pilot/executors/entry.py, src/topo_pilot/executors/local.py, src/topo_pilot/executors/run_bundle_script.py, src/topo_pilot/executors/ssh.py, src/topo_pilot/experiment/circ_audit.py, src/topo_pilot/experiment/cli.py, src/topo_pilot/experiment/config.py, src/topo_pilot/experiment/prereg.py, src/topo_pilot/experiment/report.py, src/topo_pilot/experiment/report_e2.py, src/topo_pilot/experiment/report_e3.py, src/topo_pilot/experiment/report_e4.py, src/topo_pilot/experiment/report_e4_s7.py, src/topo_pilot/experiment/report_x4.py, src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/s4.py, src/topo_pilot/experiment/s4_analysis.py, src/topo_pilot/experiment/s6.py, src/topo_pilot/experiment/s7.py, src/topo_pilot/experiment/s7_circular.py, src/topo_pilot/experiment/s7_controls.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/s7_jobs.py, src/topo_pilot/experiment/s7_probes.py, src/topo_pilot/experiment/s7_sensitivity.py, src/topo_pilot/experiment/s8.py, src/topo_pilot/experiment/stages.py, src/topo_pilot/experiment/x4.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4b.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x4b2_run.py, src/topo_pilot/experiment/x4b_audit.py, src/topo_pilot/experiment/x4b_run.py, src/topo_pilot/experiment/x4f_data.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_controls.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_oracle.py, src/topo_pilot/experiment/x5g1_run.py, src/topo_pilot/experiment/x5g1_safety.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1_verify.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_config.py, src/topo_pilot/experiment/x5g1t_fixture.py, src/topo_pilot/experiment/x5g1t_lineage.py, src/topo_pilot/experiment/x5g1t_score.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, src/topo_pilot/oracle/_common.py, src/topo_pilot/oracle/_filter.py, src/topo_pilot/oracle/_futures.py, src/topo_pilot/oracle/stage.py, src/topo_pilot/prediction/metrics.py, src/topo_pilot/prediction/ngram.py, src/topo_pilot/prediction/ridge.py, src/topo_pilot/prediction/stage.py, src/topo_pilot/process/_diagnostics.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/centers.py, src/topo_pilot/process/conductance.py, src/topo_pilot/process/emission.py, src/topo_pilot/process/stage.py, src/topo_pilot/process/transition.py, src/topo_pilot/topology/circular.py, src/topo_pilot/topology/distance.py, src/topo_pilot/topology/metrics.py, src/topo_pilot/topology/persistence.py, src/topo_pilot/topology/shapes.py, src/topo_pilot/world/complex.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, src/topo_pilot/world/stage.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/analysis/test_circular_bound.py, tests/analysis/test_f1_rule.py, tests/analysis/test_horizon.py, tests/analysis/test_readout.py, tests/analysis/test_sensitivity_circular.py, tests/analysis/test_spaces.py, tests/analysis/test_x4f_scores.py, tests/analysis/test_x4f_targets.py, tests/analysis/test_x5_endpoint.py, tests/analysis/test_x5_endpoint_bootstrap.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_registry.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/contracts/conftest.py, tests/contracts/test_fixtures.py, tests/contracts/test_ids.py, tests/contracts/test_layout.py, tests/contracts/test_schemas.py, tests/contracts/test_store.py, tests/d2a/test_a_pad.py, tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_a_world.py, tests/d2a/test_b_behaviour.py, tests/d2a/test_b_resource.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/executors/conftest.py, tests/executors/exec_helpers.py, tests/executors/stub_stage.py, tests/executors/test_bundle.py, tests/executors/test_exporter.py, tests/executors/test_local.py, tests/experiment/test_report_e2.py, tests/experiment/test_report_e3.py, tests/experiment/test_report_x4.py, tests/experiment/test_runner.py, tests/experiment/test_s7.py, tests/experiment/test_s8_e4.py, tests/experiment/test_x4.py, tests/experiment/test_x4b.py, tests/experiment/test_x4b2.py, tests/experiment/test_x5g1_controls.py, tests/experiment/test_x5g1_export_integration.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1_safety.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_identity.py, tests/experiment/test_x5g1t_identity_eval.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/integration/_mini_pipeline.py, tests/integration/test_leakage_end_to_end.py, tests/integration/test_s1.py, tests/integration/test_s2_mini.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/oracle/test_oracle.py, tests/prediction/test_metrics.py, tests/prediction/test_ngram.py, tests/prediction/test_ridge.py, tests/prediction/test_stage.py, tests/process/conftest.py, tests/process/test_conductance.py, tests/process/test_controls.py, tests/process/test_geometry.py, tests/process/test_overlap.py, tests/process/test_transition.py, tests/topology/test_metrics.py, tests/topology/test_persistence.py, tests/world/test_world.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/chart_diag/chart_diag.py, tools/check_process_rebuild.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/theory_exact/theory_exact.py, tools/theory_exact/theory_exact2.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_ph.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- docs/proposals/X4F_GATES_OUTPUTS/family_diagnostic_script.py, reports/he_summary/extract_data.py, src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/analysis/baselines.py, src/topo_pilot/analysis/circular.py, src/topo_pilot/analysis/circular_bound.py, src/topo_pilot/analysis/discriminability.py, src/topo_pilot/analysis/dynamics.py, src/topo_pilot/analysis/f1.py, src/topo_pilot/analysis/geometry.py, src/topo_pilot/analysis/horizon.py, src/topo_pilot/analysis/horizon_pools.py, src/topo_pilot/analysis/pointset.py, src/topo_pilot/analysis/readout.py, src/topo_pilot/analysis/sensitivity.py, src/topo_pilot/analysis/sigma.py, src/topo_pilot/analysis/spaces.py, src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/analysis/x4f_targets.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/public.py, src/topo_pilot/dataset/sampler.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/executors/_outputs.py, src/topo_pilot/executors/base.py, src/topo_pilot/executors/bundle.py, src/topo_pilot/executors/entry.py, src/topo_pilot/executors/local.py, src/topo_pilot/executors/run_bundle_script.py, src/topo_pilot/executors/ssh.py, src/topo_pilot/experiment/circ_audit.py, src/topo_pilot/experiment/cli.py, src/topo_pilot/experiment/config.py, src/topo_pilot/experiment/prereg.py, src/topo_pilot/experiment/report.py, src/topo_pilot/experiment/report_e2.py, src/topo_pilot/experiment/report_e3.py, src/topo_pilot/experiment/report_e4.py, src/topo_pilot/experiment/report_e4_s7.py, src/topo_pilot/experiment/report_x4.py, src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/s4.py, src/topo_pilot/experiment/s4_analysis.py, src/topo_pilot/experiment/s6.py, src/topo_pilot/experiment/s7.py, src/topo_pilot/experiment/s7_circular.py, src/topo_pilot/experiment/s7_controls.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/s7_jobs.py, src/topo_pilot/experiment/s7_probes.py, src/topo_pilot/experiment/s7_sensitivity.py, src/topo_pilot/experiment/s8.py, src/topo_pilot/experiment/stages.py, src/topo_pilot/experiment/x4.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4b.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x4b2_run.py, src/topo_pilot/experiment/x4b_audit.py, src/topo_pilot/experiment/x4b_run.py, src/topo_pilot/experiment/x4f_data.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_controls.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_oracle.py, src/topo_pilot/experiment/x5g1_run.py, src/topo_pilot/experiment/x5g1_safety.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1_verify.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_config.py, src/topo_pilot/experiment/x5g1t_fixture.py, src/topo_pilot/experiment/x5g1t_lineage.py, src/topo_pilot/experiment/x5g1t_score.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, src/topo_pilot/oracle/_common.py, src/topo_pilot/oracle/_filter.py, src/topo_pilot/oracle/_futures.py, src/topo_pilot/oracle/stage.py, src/topo_pilot/prediction/metrics.py, src/topo_pilot/prediction/ngram.py, src/topo_pilot/prediction/ridge.py, src/topo_pilot/prediction/stage.py, src/topo_pilot/process/_diagnostics.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/centers.py, src/topo_pilot/process/conductance.py, src/topo_pilot/process/emission.py, src/topo_pilot/process/stage.py, src/topo_pilot/process/transition.py, src/topo_pilot/topology/circular.py, src/topo_pilot/topology/distance.py, src/topo_pilot/topology/metrics.py, src/topo_pilot/topology/persistence.py, src/topo_pilot/topology/shapes.py, src/topo_pilot/world/complex.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, src/topo_pilot/world/stage.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/analysis/test_circular_bound.py, tests/analysis/test_f1_rule.py, tests/analysis/test_horizon.py, tests/analysis/test_readout.py, tests/analysis/test_sensitivity_circular.py, tests/analysis/test_spaces.py, tests/analysis/test_x4f_scores.py, tests/analysis/test_x4f_targets.py, tests/analysis/test_x5_endpoint.py, tests/analysis/test_x5_endpoint_bootstrap.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_registry.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/contracts/conftest.py, tests/contracts/test_fixtures.py, tests/contracts/test_ids.py, tests/contracts/test_layout.py, tests/contracts/test_schemas.py, tests/contracts/test_store.py, tests/d2a/test_a_pad.py, tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_a_world.py, tests/d2a/test_b_behaviour.py, tests/d2a/test_b_resource.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/executors/conftest.py, tests/executors/exec_helpers.py, tests/executors/stub_stage.py, tests/executors/test_bundle.py, tests/executors/test_exporter.py, tests/executors/test_local.py, tests/experiment/test_report_e2.py, tests/experiment/test_report_e3.py, tests/experiment/test_report_x4.py, tests/experiment/test_runner.py, tests/experiment/test_s7.py, tests/experiment/test_s8_e4.py, tests/experiment/test_x4.py, tests/experiment/test_x4b.py, tests/experiment/test_x4b2.py, tests/experiment/test_x5g1_controls.py, tests/experiment/test_x5g1_export_integration.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1_safety.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_identity.py, tests/experiment/test_x5g1t_identity_eval.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/integration/_mini_pipeline.py, tests/integration/test_leakage_end_to_end.py, tests/integration/test_s1.py, tests/integration/test_s2_mini.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/oracle/test_oracle.py, tests/prediction/test_metrics.py, tests/prediction/test_ngram.py, tests/prediction/test_ridge.py, tests/prediction/test_stage.py, tests/process/conftest.py, tests/process/test_conductance.py, tests/process/test_controls.py, tests/process/test_geometry.py, tests/process/test_overlap.py, tests/process/test_transition.py, tests/topology/test_metrics.py, tests/topology/test_persistence.py, tests/world/test_world.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/chart_diag/chart_diag.py, tools/check_process_rebuild.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/theory_exact/theory_exact.py, tools/theory_exact/theory_exact2.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_ph.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_const.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_store.py
 ### `src/topo_pilot/contracts/_bundle.py`
 - -> src/topo_pilot/contracts/base.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/contracts/ids.py, src/topo_pilot/contracts/schemas.py, src/topo_pilot/contracts/store.py
 - <- src/topo_pilot/contracts/store.py
@@ -385,7 +385,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/experiment/x5g1t_main.py, src/topo_pilot/experiment/x5g1t_runtime.py, tests/experiment/test_x5g1t_usage.py, tests/experiment/test_x5g1t_usage_files.py
 ### `src/topo_pilot/learner/__init__.py`
 - -> src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py
-- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/c2_readout/test_b_patch.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_run.py
+- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/c2_readout/test_b_patch.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_dry.py
 ### `src/topo_pilot/learner/config.py`
 - -> none
 - <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/c2_readout/test_a_readout.py
@@ -1507,7 +1507,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/x6_stage0/test_x6_stage0.py, tests/x6_stage0/test_x6_stage0_dp.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_pairs.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage0/x6_run.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py
 ### `tools/x6_stage0/x6_model.py`
 - -> src/topo_pilot/process/__init__.py, src/topo_pilot/world/__init__.py, src/topo_pilot/world/complex.py, src/topo_pilot/world/metrics.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/x6_stage0/test_x6_stage0.py, tests/x6_stage0/test_x6_stage0_dp.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_run.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage0/test_x6_stage0.py, tests/x6_stage0/test_x6_stage0_dp.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_run.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_const.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6_stage0/x6_run.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/oracle/__init__.py, tests/oracle_profile/independent_reference.py, tools/x4_oracle_profile/oracle_profile.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage0/x6_store.py
 - <- tests/x6_stage0/test_x6_stage0_dp.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_stage_pre.py
@@ -1519,46 +1519,67 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tools/x6_stage1/x6s1_cloud.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/trainer.py
-- <- tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_train_chain.py, tools/x6_stage1/X6S1_colab.ipynb, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_train_chain.py, tools/x6_stage1/X6S1_colab.ipynb, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_dry.py
 ### `tools/x6_stage1/x6s1_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/__init__.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_model.py, tools/x6_stage0/x6_run.py
-- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_a_rules.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_a_rules.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_const.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
 ### `tools/x6_stage1/x6s1_decide.py`
 - -> tools/x6_stage1/x6s1_data.py
-- <- tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_rules.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_rules.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6zc/x6zc_stage_a.py
 ### `tools/x6_stage1/x6s1_eval.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/stage.py, tools/d2a/d2a_train.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_stats.py
-- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6_stage1/x6s1_ingest.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/trainer.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py
 - <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `tools/x6_stage1/x6s1_pairs.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/oracle/__init__.py, tools/x4_oracle_profile/oracle_profile.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py
-- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6_stage1/x6s1_registry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/dataset/checks.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_registry_k.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py
 - <- tests/c2_readout/test_b_registry.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/c2_readout/c2_registry.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `tools/x6_stage1/x6s1_run.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/__init__.py, tools/d2a/d2a_train.py, tools/d2a/process_tree.py, tools/x4_oracle_profile/winjob.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py
-- <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
 ### `tools/x6_stage1/x6s1_stage_post.py`
 - -> tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py
 - <- none
 ### `tools/x6_stage1/x6s1_stage_pre.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/x6_stage0/x6_dp.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stats.py
-- <- tools/x6_stage1/x6s1_stage_post.py, tools/x6zc/x6zc_run.py
+- <- tools/x6_stage1/x6s1_stage_post.py, tools/x6zc/x6zc_stage_a.py
 ### `tools/x6_stage1/x6s1_stats.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py
-- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_run.py
+- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_decide.py, tools/x6zc/x6zc_dry.py
 ### `tools/x6zc/x6zc_census.py`
 - -> tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_core.py
-- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_run.py
+- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
+### `tools/x6zc/x6zc_const.py`
+- -> src/topo_pilot/contracts/__init__.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py
+- <- tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_decide.py
 ### `tools/x6zc/x6zc_core.py`
-- -> src/topo_pilot/contracts/__init__.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_stats.py
-- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_run.py
+- -> src/topo_pilot/contracts/__init__.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_const.py, tools/x6zc/x6zc_decide.py
+- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
+### `tools/x6zc/x6zc_decide.py`
+- -> tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_const.py
+- <- tools/x6zc/x6zc_core.py
+### `tools/x6zc/x6zc_dry.py`
+- -> src/topo_pilot/learner/__init__.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
+- <- tools/x6zc/x6zc_run.py
+### `tools/x6zc/x6zc_pipeline.py`
+- -> tools/x6_stage1/x6s1_eval.py, tools/x6zc/x6zc_core.py
+- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6zc/x6zc_run.py`
-- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/__init__.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py
+- -> tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
 - <- tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py
+### `tools/x6zc/x6zc_stage_a.py`
+- -> tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
+- <- tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_bc.py
+### `tools/x6zc/x6zc_stage_bc.py`
+- -> tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
+- <- tools/x6zc/x6zc_run.py
+### `tools/x6zc/x6zc_store.py`
+- -> src/topo_pilot/contracts/__init__.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_core.py
+- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 
 ## (c) Dependency trees per entry-point group
 
@@ -7455,112 +7476,146 @@ tests/x6zc/test_x6zc_core.py
             tools/x6_stage1/x6s1_data.py (see above)
             tools/x6_stage1/x6s1_eval.py (see above)
             tools/x6_stage1/x6s1_pairs.py (see above)
-            tools/x6_stage1/x6s1_stats.py (see above)
+            tools/x6zc/x6zc_const.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+                tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6zc/x6zc_decide.py
+                tools/x6_stage1/x6s1_stats.py (see above)
+                tools/x6zc/x6zc_const.py (see above)
     tools/x6zc/x6zc_core.py (see above)
 tests/x6zc/test_x6zc_decide.py
     tools/x6zc/x6zc_census.py (see above)
     tools/x6zc/x6zc_core.py (see above)
     tools/x6zc/x6zc_run.py
-        src/topo_pilot/contracts/__init__.py (see above)
-        src/topo_pilot/learner/__init__.py (see above)
-        tools/x6_stage0/x6_model.py (see above)
-        tools/x6_stage1/x6s1_cloud.py (see above)
-        tools/x6_stage1/x6s1_data.py (see above)
-        tools/x6_stage1/x6s1_decide.py
-            tools/x6_stage1/x6s1_data.py (see above)
-        tools/x6_stage1/x6s1_eval.py (see above)
-        tools/x6_stage1/x6s1_pairs.py (see above)
-        tools/x6_stage1/x6s1_run.py
-            src/topo_pilot/contracts/__init__.py (see above)
-            src/topo_pilot/dataset/__init__.py (see above)
-            src/topo_pilot/dataset/checks.py (see above)
+        tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_dry.py
             src/topo_pilot/learner/__init__.py (see above)
-            tools/d2a/d2a_train.py (see above)
-            tools/d2a/process_tree.py (see above)
-            tools/x4_oracle_profile/winjob.py (see above)
-            tools/x6_stage0/x6_store.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
             tools/x6_stage1/x6s1_cloud.py (see above)
             tools/x6_stage1/x6s1_data.py (see above)
             tools/x6_stage1/x6s1_eval.py (see above)
-            tools/x6_stage1/x6s1_ingest.py
+            tools/x6_stage1/x6s1_pairs.py (see above)
+            tools/x6_stage1/x6s1_stats.py (see above)
+            tools/x6zc/x6zc_census.py (see above)
+            tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_pipeline.py
+                tools/x6_stage1/x6s1_eval.py (see above)
+                tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_store.py
                 src/topo_pilot/contracts/__init__.py (see above)
-                src/topo_pilot/learner/__init__.py (see above)
-                src/topo_pilot/learner/trainer.py (see above)
+                tools/x6_stage1/x6s1_data.py (see above)
+                tools/x6_stage1/x6s1_run.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/__init__.py (see above)
+                    src/topo_pilot/dataset/checks.py (see above)
+                    src/topo_pilot/learner/__init__.py (see above)
+                    tools/d2a/d2a_train.py (see above)
+                    tools/d2a/process_tree.py (see above)
+                    tools/x4_oracle_profile/winjob.py (see above)
+                    tools/x6_stage0/x6_store.py (see above)
+                    tools/x6_stage1/x6s1_cloud.py (see above)
+                    tools/x6_stage1/x6s1_data.py (see above)
+                    tools/x6_stage1/x6s1_eval.py (see above)
+                    tools/x6_stage1/x6s1_ingest.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/learner/__init__.py (see above)
+                        src/topo_pilot/learner/trainer.py (see above)
+                        tools/x6_stage1/x6s1_cloud.py (see above)
+                        tools/x6_stage1/x6s1_data.py (see above)
+                        tools/x6_stage1/x6s1_eval.py (see above)
+                tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_pipeline.py (see above)
+        tools/x6zc/x6zc_stage_a.py
+            tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6_stage1/x6s1_decide.py
+                tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6_stage1/x6s1_eval.py (see above)
+            tools/x6_stage1/x6s1_pairs.py (see above)
+            tools/x6_stage1/x6s1_run.py (see above)
+            tools/x6_stage1/x6s1_stage_pre.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/contracts/backends.py (see above)
+                tools/x6_stage0/x6_dp.py (see above)
+                tools/x6_stage0/x6_exact.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+                tools/x6_stage0/x6_run.py (see above)
                 tools/x6_stage1/x6s1_cloud.py (see above)
                 tools/x6_stage1/x6s1_data.py (see above)
                 tools/x6_stage1/x6s1_eval.py (see above)
-        tools/x6_stage1/x6s1_stage_pre.py
-            src/topo_pilot/contracts/__init__.py (see above)
-            src/topo_pilot/contracts/backends.py (see above)
-            tools/x6_stage0/x6_dp.py (see above)
-            tools/x6_stage0/x6_exact.py (see above)
-            tools/x6_stage0/x6_model.py (see above)
-            tools/x6_stage0/x6_run.py (see above)
-            tools/x6_stage1/x6s1_cloud.py (see above)
-            tools/x6_stage1/x6s1_data.py (see above)
-            tools/x6_stage1/x6s1_eval.py (see above)
-            tools/x6_stage1/x6s1_ingest.py (see above)
-            tools/x6_stage1/x6s1_pairs.py (see above)
-            tools/x6_stage1/x6s1_registry.py
-                src/topo_pilot/contracts/__init__.py (see above)
-                src/topo_pilot/contracts/errors.py (see above)
-                src/topo_pilot/dataset/checks.py (see above)
-                tools/c1prime_registry/c1_registry_sources.py
+                tools/x6_stage1/x6s1_ingest.py (see above)
+                tools/x6_stage1/x6s1_pairs.py (see above)
+                tools/x6_stage1/x6s1_registry.py
                     src/topo_pilot/contracts/__init__.py (see above)
-                    src/topo_pilot/contracts/backends.py (see above)
-                    tools/c1prime/c1_config.py
-                    tools/c1prime/c1_data.py
+                    src/topo_pilot/contracts/errors.py (see above)
+                    src/topo_pilot/dataset/checks.py (see above)
+                    tools/c1prime_registry/c1_registry_sources.py
                         src/topo_pilot/contracts/__init__.py (see above)
-                        src/topo_pilot/dataset/__init__.py (see above)
-                        src/topo_pilot/dataset/checks.py (see above)
-                        tools/c1prime/c1_config.py (see above)
-                        tools/c1prime/c1_oracle.py
-                            src/topo_pilot/oracle/__init__.py (see above)
-                            tests/oracle_profile/independent_reference.py (see above)
+                        src/topo_pilot/contracts/backends.py (see above)
+                        tools/c1prime/c1_config.py
+                        tools/c1prime/c1_data.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/dataset/__init__.py (see above)
+                            src/topo_pilot/dataset/checks.py (see above)
                             tools/c1prime/c1_config.py (see above)
-                            tools/c1prime/c1_records.py
-                                src/topo_pilot/contracts/__init__.py (see above)
-                                tools/c1prime/c1_config.py (see above)
-                                tools/x4_circle_history/stage_records.py
-                                    tools/x4_circle_history/errors.py
-                                tools/x4_oracle_profile/oracle_profile.py (see above)
-                            tools/x4_circle_history/error_bound.py
+                            tools/c1prime/c1_oracle.py
+                                src/topo_pilot/oracle/__init__.py (see above)
                                 tests/oracle_profile/independent_reference.py (see above)
-                                tools/x4_circle_history/errors.py (see above)
-                            tools/x4_oracle_profile/oracle_profile.py (see above)
-                        tools/x4_circle_history/scores.py
-                            tools/x4_circle_history/errors.py (see above)
-                            tools/x4_oracle_profile/oracle_profile.py (see above)
-                tools/k4b/k4b_registry.py
-                    src/topo_pilot/contracts/__init__.py (see above)
-                    src/topo_pilot/contracts/backends.py (see above)
-                    tools/c1prime/c1_data.py (see above)
-                    tools/c1prime/c1_records.py (see above)
-                    tools/c1prime_registry/c1_registry_sources.py (see above)
-                    tools/k4b/k4b_config.py
-                        tools/c1prime/c1_bounds.py
-                            tools/c1prime/c1_cert.py
                                 tools/c1prime/c1_config.py (see above)
-                                tools/c1prime/c1_oracle.py (see above)
-                                tools/c1prime/c1_records.py (see above)
-                                tools/x4_circle_history/error_bound.py (see above)
-                            tools/c1prime/c1_config.py (see above)
-                        tools/c1prime/c1_config.py (see above)
-                        tools/c1prime/c1_means.py
-                            tools/c1prime/c1_config.py (see above)
-                            tools/c1prime/c1_records.py (see above)
+                                tools/c1prime/c1_records.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                                    tools/c1prime/c1_config.py (see above)
+                                    tools/x4_circle_history/stage_records.py
+                                        tools/x4_circle_history/errors.py
+                                    tools/x4_oracle_profile/oracle_profile.py (see above)
+                                tools/x4_circle_history/error_bound.py
+                                    tests/oracle_profile/independent_reference.py (see above)
+                                    tools/x4_circle_history/errors.py (see above)
+                                tools/x4_oracle_profile/oracle_profile.py (see above)
+                            tools/x4_circle_history/scores.py
+                                tools/x4_circle_history/errors.py (see above)
+                                tools/x4_oracle_profile/oracle_profile.py (see above)
+                    tools/k4b/k4b_registry.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/contracts/backends.py (see above)
+                        tools/c1prime/c1_data.py (see above)
                         tools/c1prime/c1_records.py (see above)
-                    tools/k4b/k4b_registry_k.py
-                    tools/x4_circle_history/stage_records.py (see above)
-                tools/k4b/k4b_registry_k.py (see above)
-                tools/x6_stage0/x6_exact.py (see above)
-                tools/x6_stage0/x6_model.py (see above)
-                tools/x6_stage1/x6s1_data.py (see above)
-            tools/x6_stage1/x6s1_run.py (see above)
-            tools/x6_stage1/x6s1_stats.py (see above)
-        tools/x6_stage1/x6s1_stats.py (see above)
-        tools/x6zc/x6zc_census.py (see above)
-        tools/x6zc/x6zc_core.py (see above)
+                        tools/c1prime_registry/c1_registry_sources.py (see above)
+                        tools/k4b/k4b_config.py
+                            tools/c1prime/c1_bounds.py
+                                tools/c1prime/c1_cert.py
+                                    tools/c1prime/c1_config.py (see above)
+                                    tools/c1prime/c1_oracle.py (see above)
+                                    tools/c1prime/c1_records.py (see above)
+                                    tools/x4_circle_history/error_bound.py (see above)
+                                tools/c1prime/c1_config.py (see above)
+                            tools/c1prime/c1_config.py (see above)
+                            tools/c1prime/c1_means.py
+                                tools/c1prime/c1_config.py (see above)
+                                tools/c1prime/c1_records.py (see above)
+                            tools/c1prime/c1_records.py (see above)
+                        tools/k4b/k4b_registry_k.py
+                        tools/x4_circle_history/stage_records.py (see above)
+                    tools/k4b/k4b_registry_k.py (see above)
+                    tools/x6_stage0/x6_exact.py (see above)
+                    tools/x6_stage0/x6_model.py (see above)
+                    tools/x6_stage1/x6s1_data.py (see above)
+                tools/x6_stage1/x6s1_run.py (see above)
+                tools/x6_stage1/x6s1_stats.py (see above)
+            tools/x6zc/x6zc_census.py (see above)
+            tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_pipeline.py (see above)
+            tools/x6zc/x6zc_store.py (see above)
+        tools/x6zc/x6zc_stage_bc.py
+            tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage1/x6s1_eval.py (see above)
+            tools/x6_stage1/x6s1_pairs.py (see above)
+            tools/x6zc/x6zc_census.py (see above)
+            tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_pipeline.py (see above)
+            tools/x6zc/x6zc_stage_a.py (see above)
+            tools/x6zc/x6zc_store.py (see above)
+        tools/x6zc/x6zc_store.py (see above)
 tests/x6zc/test_x6zc_dryrun.py
     src/topo_pilot/contracts/__init__.py (see above)
     src/topo_pilot/learner/__init__.py (see above)
@@ -10541,109 +10596,150 @@ tools/x6zc/x6zc_census.py
         tools/x6_stage1/x6s1_data.py (see above)
         tools/x6_stage1/x6s1_eval.py (see above)
         tools/x6_stage1/x6s1_pairs.py (see above)
-        tools/x6_stage1/x6s1_stats.py (see above)
+        tools/x6zc/x6zc_const.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage1/x6s1_data.py (see above)
+        tools/x6zc/x6zc_decide.py
+            tools/x6_stage1/x6s1_stats.py (see above)
+            tools/x6zc/x6zc_const.py (see above)
+tools/x6zc/x6zc_const.py (see above)
 tools/x6zc/x6zc_core.py (see above)
-tools/x6zc/x6zc_run.py
-    src/topo_pilot/contracts/__init__.py (see above)
+tools/x6zc/x6zc_decide.py (see above)
+tools/x6zc/x6zc_dry.py
     src/topo_pilot/learner/__init__.py (see above)
     tools/x6_stage0/x6_model.py (see above)
     tools/x6_stage1/x6s1_cloud.py (see above)
     tools/x6_stage1/x6s1_data.py (see above)
-    tools/x6_stage1/x6s1_decide.py
-        tools/x6_stage1/x6s1_data.py (see above)
     tools/x6_stage1/x6s1_eval.py (see above)
     tools/x6_stage1/x6s1_pairs.py (see above)
-    tools/x6_stage1/x6s1_run.py
-        src/topo_pilot/contracts/__init__.py (see above)
-        src/topo_pilot/dataset/__init__.py (see above)
-        src/topo_pilot/dataset/checks.py (see above)
-        src/topo_pilot/learner/__init__.py (see above)
-        tools/d2a/d2a_train.py (see above)
-        tools/d2a/process_tree.py (see above)
-        tools/x4_oracle_profile/winjob.py (see above)
-        tools/x6_stage0/x6_store.py (see above)
-        tools/x6_stage1/x6s1_cloud.py (see above)
-        tools/x6_stage1/x6s1_data.py (see above)
-        tools/x6_stage1/x6s1_eval.py (see above)
-        tools/x6_stage1/x6s1_ingest.py
-            src/topo_pilot/contracts/__init__.py (see above)
-            src/topo_pilot/learner/__init__.py (see above)
-            src/topo_pilot/learner/trainer.py (see above)
-            tools/x6_stage1/x6s1_cloud.py (see above)
-            tools/x6_stage1/x6s1_data.py (see above)
-            tools/x6_stage1/x6s1_eval.py (see above)
-    tools/x6_stage1/x6s1_stage_pre.py
-        src/topo_pilot/contracts/__init__.py (see above)
-        src/topo_pilot/contracts/backends.py (see above)
-        tools/x6_stage0/x6_dp.py (see above)
-        tools/x6_stage0/x6_exact.py (see above)
-        tools/x6_stage0/x6_model.py (see above)
-        tools/x6_stage0/x6_run.py (see above)
-        tools/x6_stage1/x6s1_cloud.py (see above)
-        tools/x6_stage1/x6s1_data.py (see above)
-        tools/x6_stage1/x6s1_eval.py (see above)
-        tools/x6_stage1/x6s1_ingest.py (see above)
-        tools/x6_stage1/x6s1_pairs.py (see above)
-        tools/x6_stage1/x6s1_registry.py
-            src/topo_pilot/contracts/__init__.py (see above)
-            src/topo_pilot/contracts/errors.py (see above)
-            src/topo_pilot/dataset/checks.py (see above)
-            tools/c1prime_registry/c1_registry_sources.py
-                src/topo_pilot/contracts/__init__.py (see above)
-                src/topo_pilot/contracts/backends.py (see above)
-                tools/c1prime/c1_config.py
-                tools/c1prime/c1_data.py
-                    src/topo_pilot/contracts/__init__.py (see above)
-                    src/topo_pilot/dataset/__init__.py (see above)
-                    src/topo_pilot/dataset/checks.py (see above)
-                    tools/c1prime/c1_config.py (see above)
-                    tools/c1prime/c1_oracle.py
-                        src/topo_pilot/oracle/__init__.py (see above)
-                        tests/oracle_profile/independent_reference.py (see above)
-                        tools/c1prime/c1_config.py (see above)
-                        tools/c1prime/c1_records.py
-                            src/topo_pilot/contracts/__init__.py (see above)
-                            tools/c1prime/c1_config.py (see above)
-                            tools/x4_circle_history/stage_records.py
-                                tools/x4_circle_history/errors.py
-                            tools/x4_oracle_profile/oracle_profile.py (see above)
-                        tools/x4_circle_history/error_bound.py
-                            tests/oracle_profile/independent_reference.py (see above)
-                            tools/x4_circle_history/errors.py (see above)
-                        tools/x4_oracle_profile/oracle_profile.py (see above)
-                    tools/x4_circle_history/scores.py
-                        tools/x4_circle_history/errors.py (see above)
-                        tools/x4_oracle_profile/oracle_profile.py (see above)
-            tools/k4b/k4b_registry.py
-                src/topo_pilot/contracts/__init__.py (see above)
-                src/topo_pilot/contracts/backends.py (see above)
-                tools/c1prime/c1_data.py (see above)
-                tools/c1prime/c1_records.py (see above)
-                tools/c1prime_registry/c1_registry_sources.py (see above)
-                tools/k4b/k4b_config.py
-                    tools/c1prime/c1_bounds.py
-                        tools/c1prime/c1_cert.py
-                            tools/c1prime/c1_config.py (see above)
-                            tools/c1prime/c1_oracle.py (see above)
-                            tools/c1prime/c1_records.py (see above)
-                            tools/x4_circle_history/error_bound.py (see above)
-                        tools/c1prime/c1_config.py (see above)
-                    tools/c1prime/c1_config.py (see above)
-                    tools/c1prime/c1_means.py
-                        tools/c1prime/c1_config.py (see above)
-                        tools/c1prime/c1_records.py (see above)
-                    tools/c1prime/c1_records.py (see above)
-                tools/k4b/k4b_registry_k.py
-                tools/x4_circle_history/stage_records.py (see above)
-            tools/k4b/k4b_registry_k.py (see above)
-            tools/x6_stage0/x6_exact.py (see above)
-            tools/x6_stage0/x6_model.py (see above)
-            tools/x6_stage1/x6s1_data.py (see above)
-        tools/x6_stage1/x6s1_run.py (see above)
-        tools/x6_stage1/x6s1_stats.py (see above)
     tools/x6_stage1/x6s1_stats.py (see above)
     tools/x6zc/x6zc_census.py (see above)
     tools/x6zc/x6zc_core.py (see above)
+    tools/x6zc/x6zc_pipeline.py
+        tools/x6_stage1/x6s1_eval.py (see above)
+        tools/x6zc/x6zc_core.py (see above)
+    tools/x6zc/x6zc_store.py
+        src/topo_pilot/contracts/__init__.py (see above)
+        tools/x6_stage1/x6s1_data.py (see above)
+        tools/x6_stage1/x6s1_run.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/dataset/__init__.py (see above)
+            src/topo_pilot/dataset/checks.py (see above)
+            src/topo_pilot/learner/__init__.py (see above)
+            tools/d2a/d2a_train.py (see above)
+            tools/d2a/process_tree.py (see above)
+            tools/x4_oracle_profile/winjob.py (see above)
+            tools/x6_stage0/x6_store.py (see above)
+            tools/x6_stage1/x6s1_cloud.py (see above)
+            tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6_stage1/x6s1_eval.py (see above)
+            tools/x6_stage1/x6s1_ingest.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/learner/__init__.py (see above)
+                src/topo_pilot/learner/trainer.py (see above)
+                tools/x6_stage1/x6s1_cloud.py (see above)
+                tools/x6_stage1/x6s1_data.py (see above)
+                tools/x6_stage1/x6s1_eval.py (see above)
+        tools/x6zc/x6zc_core.py (see above)
+tools/x6zc/x6zc_pipeline.py (see above)
+tools/x6zc/x6zc_run.py
+    tools/x6zc/x6zc_core.py (see above)
+    tools/x6zc/x6zc_dry.py (see above)
+    tools/x6zc/x6zc_pipeline.py (see above)
+    tools/x6zc/x6zc_stage_a.py
+        tools/x6_stage1/x6s1_data.py (see above)
+        tools/x6_stage1/x6s1_decide.py
+            tools/x6_stage1/x6s1_data.py (see above)
+        tools/x6_stage1/x6s1_eval.py (see above)
+        tools/x6_stage1/x6s1_pairs.py (see above)
+        tools/x6_stage1/x6s1_run.py (see above)
+        tools/x6_stage1/x6s1_stage_pre.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/contracts/backends.py (see above)
+            tools/x6_stage0/x6_dp.py (see above)
+            tools/x6_stage0/x6_exact.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage0/x6_run.py (see above)
+            tools/x6_stage1/x6s1_cloud.py (see above)
+            tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6_stage1/x6s1_eval.py (see above)
+            tools/x6_stage1/x6s1_ingest.py (see above)
+            tools/x6_stage1/x6s1_pairs.py (see above)
+            tools/x6_stage1/x6s1_registry.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/contracts/errors.py (see above)
+                src/topo_pilot/dataset/checks.py (see above)
+                tools/c1prime_registry/c1_registry_sources.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/contracts/backends.py (see above)
+                    tools/c1prime/c1_config.py
+                    tools/c1prime/c1_data.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/__init__.py (see above)
+                        src/topo_pilot/dataset/checks.py (see above)
+                        tools/c1prime/c1_config.py (see above)
+                        tools/c1prime/c1_oracle.py
+                            src/topo_pilot/oracle/__init__.py (see above)
+                            tests/oracle_profile/independent_reference.py (see above)
+                            tools/c1prime/c1_config.py (see above)
+                            tools/c1prime/c1_records.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                tools/c1prime/c1_config.py (see above)
+                                tools/x4_circle_history/stage_records.py
+                                    tools/x4_circle_history/errors.py
+                                tools/x4_oracle_profile/oracle_profile.py (see above)
+                            tools/x4_circle_history/error_bound.py
+                                tests/oracle_profile/independent_reference.py (see above)
+                                tools/x4_circle_history/errors.py (see above)
+                            tools/x4_oracle_profile/oracle_profile.py (see above)
+                        tools/x4_circle_history/scores.py
+                            tools/x4_circle_history/errors.py (see above)
+                            tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/k4b/k4b_registry.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/contracts/backends.py (see above)
+                    tools/c1prime/c1_data.py (see above)
+                    tools/c1prime/c1_records.py (see above)
+                    tools/c1prime_registry/c1_registry_sources.py (see above)
+                    tools/k4b/k4b_config.py
+                        tools/c1prime/c1_bounds.py
+                            tools/c1prime/c1_cert.py
+                                tools/c1prime/c1_config.py (see above)
+                                tools/c1prime/c1_oracle.py (see above)
+                                tools/c1prime/c1_records.py (see above)
+                                tools/x4_circle_history/error_bound.py (see above)
+                            tools/c1prime/c1_config.py (see above)
+                        tools/c1prime/c1_config.py (see above)
+                        tools/c1prime/c1_means.py
+                            tools/c1prime/c1_config.py (see above)
+                            tools/c1prime/c1_records.py (see above)
+                        tools/c1prime/c1_records.py (see above)
+                    tools/k4b/k4b_registry_k.py
+                    tools/x4_circle_history/stage_records.py (see above)
+                tools/k4b/k4b_registry_k.py (see above)
+                tools/x6_stage0/x6_exact.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+                tools/x6_stage1/x6s1_data.py (see above)
+            tools/x6_stage1/x6s1_run.py (see above)
+            tools/x6_stage1/x6s1_stats.py (see above)
+        tools/x6zc/x6zc_census.py (see above)
+        tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_pipeline.py (see above)
+        tools/x6zc/x6zc_store.py (see above)
+    tools/x6zc/x6zc_stage_bc.py
+        tools/x6_stage0/x6_model.py (see above)
+        tools/x6_stage1/x6s1_eval.py (see above)
+        tools/x6_stage1/x6s1_pairs.py (see above)
+        tools/x6zc/x6zc_census.py (see above)
+        tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_pipeline.py (see above)
+        tools/x6zc/x6zc_stage_a.py (see above)
+        tools/x6zc/x6zc_store.py (see above)
+    tools/x6zc/x6zc_store.py (see above)
+tools/x6zc/x6zc_stage_a.py (see above)
+tools/x6zc/x6zc_stage_bc.py (see above)
+tools/x6zc/x6zc_store.py (see above)
 ```
 
 ### topo_pilot.experiment.cli

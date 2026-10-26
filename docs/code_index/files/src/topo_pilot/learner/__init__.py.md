@@ -97,7 +97,7 @@
 - [tools/x6_stage1/x6s1_data.py](../../../tools/x6_stage1/x6s1_data.py.md) (line 255, import)
 - [tools/x6_stage1/x6s1_ingest.py](../../../tools/x6_stage1/x6s1_ingest.py.md) (line 28, import)
 - [tools/x6_stage1/x6s1_run.py](../../../tools/x6_stage1/x6s1_run.py.md) (line 446, import)
-- [tools/x6zc/x6zc_run.py](../../../tools/x6zc/x6zc_run.py.md) (line 334, import)
+- [tools/x6zc/x6zc_dry.py](../../../tools/x6zc/x6zc_dry.py.md) (line 83, import)
 
 ## Top-level constants
 

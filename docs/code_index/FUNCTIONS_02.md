@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `standardizer` | function | `standardizer` | [src/topo_pilot/analysis/x4f_scores.py:16](../../src/topo_pilot/analysis/x4f_scores.py#L16) | Fit-row mean and population std; columns with std <= 1e-12 get scale 1 (centred only). |
+| `standin_cls` | function | `standin_cls` | [tests/activations/conftest.py:101](../../tests/activations/conftest.py#L101) |  |
 | `StandInLM` | class | `StandInLM` | [tests/activations/conftest.py:23](../../tests/activations/conftest.py#L23) | Stand-in for ``learner.TransformerLM`` implementing only its public interface. |
 | `start_reservation` | function | `start_reservation` | [tools/k4b/k4b_release.py:124](../../tools/k4b/k4b_release.py#L124) |  |
 | `stat` | function | `stat` | [tests/x6_stage0/test_x6_stage0_dp.py:38](../../tests/x6_stage0/test_x6_stage0_dp.py#L38) |  |
@@ -58,7 +60,7 @@
 | `stream` | function | `stream` | [src/topo_pilot/experiment/x5g1t_lineage.py:27](../../src/topo_pilot/experiment/x5g1t_lineage.py#L27) |  |
 | `stream` | function | `stream` | [tools/c2_readout/c2_stage_post.py:166](../../tools/c2_readout/c2_stage_post.py#L166) | The whole family stream of one admitted model (§11.1), its guards (§9.2; M: C-44) and the |
 | `stream` | function | `stream` | [tools/d2a/d2a_world.py:94](../../tools/d2a/d2a_world.py#L94) |  |
-| `stream` | function | `stream` | [tools/x6zc/x6zc_core.py:71](../../tools/x6zc/x6zc_core.py#L71) |  |
+| `stream` | function | `stream` | [tools/x6zc/x6zc_const.py:61](../../tools/x6zc/x6zc_const.py#L61) |  |
 | `stream_bounds` | function | `stream_bounds` | [tools/c2_readout/c2_decide.py:38](../../tools/c2_readout/c2_decide.py#L38) | One shared index stream; per key the tree mean and the ranked bounds at alpha, 1 - alpha. |
 | `stream_guards` | function | `stream_guards` | [tools/c2_readout/c2_decide.py:79](../../tools/c2_readout/c2_decide.py#L79) | Guards of one R/S* stream; geo: M, x/y = (d, dy, E), proj = {prefix: (P_S, delta_P)}. |
 | `strict_verdict` | function | `strict_verdict` | [src/topo_pilot/analysis/horizon_pools.py:174](../../src/topo_pilot/analysis/horizon_pools.py#L174) | SUFFICIENT_AMBIENT iff the ambient map factorizes; otherwise UNRESOLVED (numerical |
@@ -107,7 +109,7 @@
 | `survival` | function | `survival` | [tools/c2_readout/c2_stage_pre.py:292](../../tools/c2_readout/c2_stage_pre.py#L292) | Each family needs >= 2 ok models; the FEAS per-model, per-family coverage tally. |
 | `svg` | function | `svg` | [reports/he_summary/charts.py:57](../../reports/he_summary/charts.py#L57) |  |
 | `Sym` | class | `Sym` | [tools/c1prime/c1_bounds.py:109](../../tools/c1prime/c1_bounds.py#L109) | Counting value for L5: nodes, formal monomials (with multiplicity) and degree. |
-| `sym_arrays` | function | `sym_arrays` | [tools/x6zc/x6zc_core.py:310](../../tools/x6zc/x6zc_core.py#L310) |  |
+| `sym_arrays` | function | `sym_arrays` | [tools/x6zc/x6zc_core.py:281](../../tools/x6zc/x6zc_core.py#L281) |  |
 | `symbol_only_bound` | function | `symbol_only_bound` | [src/topo_pilot/analysis/circular_bound.py:17](../../src/topo_pilot/analysis/circular_bound.py#L17) | Largest agreement any function of ``symbols`` can reach with ``theta`` on these rows. |
 | `symbol_order_a` | function | `symbol_order_a` | [tools/c2_readout/c2_model.py:207](../../tools/c2_readout/c2_model.py#L207) | (a): the named input tokens are perm[w], by the independent inverse route canonical32. |
 | `symbol_order_b` | function | `symbol_order_b` | [tools/c2_readout/c2_model.py:215](../../tools/c2_readout/c2_model.py#L215) | (b): named_from_canonical(e_c, perm) = e_{perm[c]} for every canonical c (bitwise). |
@@ -123,7 +125,7 @@
 | `synthetic_chart` | function | `synthetic_chart` | [tests/c1prime/test_a_chart_val.py:41](../../tests/c1prime/test_a_chart_val.py#L41) |  |
 | `synthetic_process` | function | `synthetic_process` | [tests/k4b/test_b_data.py:38](../../tests/k4b/test_b_data.py#L38) |  |
 | `synthetic_process` | function | `synthetic_process` | [tools/x4_circle_history/cost_probe.py:28](../../tools/x4_circle_history/cost_probe.py#L28) |  |
-| `SyntheticPredictor` | class | `SyntheticPredictor` | [tools/x6zc/x6zc_core.py:270](../../tools/x6zc/x6zc_core.py#L270) |  |
+| `SyntheticPredictor` | class | `SyntheticPredictor` | [tools/x6zc/x6zc_core.py:241](../../tools/x6zc/x6zc_core.py#L241) |  |
 | `SyntheticShapes` | class | `SyntheticShapes` | [src/topo_pilot/topology/shapes.py:55](../../src/topo_pilot/topology/shapes.py#L55) | Samples of shapes with known Betti numbers, embedded in ``R^ambient``. |
 | `T` | function | `T` | [reports/he_summary/charts.py:32](../../reports/he_summary/charts.py#L32) | Text with a *visual* anchor: 'left' = text starts at x and runs right, |
 | `t_base_exact` | function | `t_base_exact` | [tools/x6_stage0/x6_model.py:144](../../tools/x6_stage0/x6_model.py#L144) |  |
@@ -2710,14 +2712,14 @@
 | `validate_pool` | function | `validate_pool` | [src/topo_pilot/experiment/x5g1t_checks.py:35](../../src/topo_pilot/experiment/x5g1t_checks.py#L35) | ``{pool_id: (ObservationSet, sha)}`` once the pool is proven to be ``split/arm/master``: |
 | `validate_pools` | function | `validate_pools` | [src/topo_pilot/experiment/x5g1t_stages.py:130](../../src/topo_pilot/experiment/x5g1t_stages.py#L130) | Semantic identity of each ``(split, arm, master)`` pool in the table (API v4.1 §B). |
 | `validate_process` | function | `validate_process` | [tools/x4_oracle_profile/oracle_profile.py:69](../../tools/x4_oracle_profile/oracle_profile.py#L69) | Check shapes, finiteness, nonnegativity, stochastic rows and stationarity of ``pi``. |
-| `validate_report` | function | `validate_report` | [tools/x6zc/x6zc_run.py:267](../../tools/x6zc/x6zc_run.py#L267) |  |
+| `validate_report` | function | `validate_report` | [tools/x6zc/x6zc_pipeline.py:108](../../tools/x6zc/x6zc_pipeline.py#L108) |  |
 | `validate_tables` | function | `validate_tables` | [tools/x6_stage1/x6s1_pairs.py:76](../../tools/x6_stage1/x6s1_pairs.py#L76) | Σ_{v ≠ a★, κ} c_m equals x6_dp.avoid_counts totals for every layer m ≥ 1 present. |
 | `validity` | function | `validity` | [tools/x2a_stage0/x2a_ph.py:144](../../tools/x2a_stage0/x2a_ph.py#L144) |  |
-| `variant_arrays` | function | `variant_arrays` | [tools/x6zc/x6zc_core.py:105](../../tools/x6zc/x6zc_core.py#L105) |  |
+| `variant_arrays` | function | `variant_arrays` | [tools/x6zc/x6zc_core.py:76](../../tools/x6zc/x6zc_core.py#L76) |  |
 | `variant_category` | function | `variant_category` | [tools/c2_readout/c2_decide.py:164](../../tools/c2_readout/c2_decide.py#L164) | The R category rule on the variant arrays, with the primary RESP/SPEC prerequisites. |
-| `variant_history` | function | `variant_history` | [tools/x6zc/x6zc_core.py:102](../../tools/x6zc/x6zc_core.py#L102) |  |
+| `variant_history` | function | `variant_history` | [tools/x6zc/x6zc_core.py:73](../../tools/x6zc/x6zc_core.py#L73) |  |
 | `variant_model` | function | `variant_model` | [tools/x2a_stage0/x2a_model.py:105](../../tools/x2a_stage0/x2a_model.py#L105) |  |
-| `variant_path` | function | `variant_path` | [tools/x6zc/x6zc_core.py:98](../../tools/x6zc/x6zc_core.py#L98) |  |
+| `variant_path` | function | `variant_path` | [tools/x6zc/x6zc_core.py:69](../../tools/x6zc/x6zc_core.py#L69) |  |
 | `vector_phase` | function | `vector_phase` | [tools/k4b/k4b_scores.py:35](../../tools/k4b/k4b_scores.py#L35) |  |
 | `verdict` | method | `F1Decision.verdict` | [src/topo_pilot/analysis/f1.py:105](../../src/topo_pilot/analysis/f1.py#L105) | Apply the rule to ``[(D_r, u_r)]`` with one learning-gate flag per replicate. |
 | `verdict` | function | `verdict` | [src/topo_pilot/experiment/report_e2.py:115](../../src/topo_pilot/experiment/report_e2.py#L115) | ``(status, reasons)`` of the F1 verdict row; ``("not run", "")`` if absent. |
@@ -2816,10 +2818,10 @@
 | `write_new` | function | `write_new` | [tools/x4_oracle_profile/freeze.py:101](../../tools/x4_oracle_profile/freeze.py#L101) |  |
 | `write_preflight` | function | `write_preflight` | [tools/x6_stage0/x6_store.py:231](../../tools/x6_stage0/x6_store.py#L231) |  |
 | `write_prereg` | function | `write_prereg` | [src/topo_pilot/experiment/prereg.py:115](../../src/topo_pilot/experiment/prereg.py#L115) | Write ``PREREGISTRATION.md`` at the repository root; returns its path. |
-| `write_ruling` | function | `write_ruling` | [tools/x6zc/x6zc_run.py:87](../../tools/x6zc/x6zc_run.py#L87) |  |
+| `write_ruling` | function | `write_ruling` | [tools/x6zc/x6zc_store.py:79](../../tools/x6zc/x6zc_store.py#L79) |  |
 | `write_sealed` | function | `write_sealed` | [tools/k4b/k4b_stats.py:185](../../tools/k4b/k4b_stats.py#L185) | The only writer of SEALED_VALIDATION.json (exclusive create, once); returns its sha256. |
 | `write_stage` | function | `write_stage` | [tools/x6_stage1/x6s1_run.py:289](../../tools/x6_stage1/x6s1_run.py#L289) |  |
-| `write_stage` | function | `write_stage` | [tools/x6zc/x6zc_run.py:81](../../tools/x6zc/x6zc_run.py#L81) |  |
+| `write_stage` | function | `write_stage` | [tools/x6zc/x6zc_store.py:73](../../tools/x6zc/x6zc_store.py#L73) |  |
 | `write_tables` | function | `write_tables` | [tools/x4_oracle_profile/run_profile.py:109](../../tools/x4_oracle_profile/run_profile.py#L109) |  |
 | `wrong_filter` | function | `wrong_filter` | [tests/oracle_profile/test_oracle_profile_traps.py:76](../../tests/oracle_profile/test_oracle_profile_traps.py#L76) | Plain float forward filter with switchable MISTAKES (test-only, never production). |
 | `x1` | function | `x1` | [tools/c2_readout/c2_model.py:261](../../tools/c2_readout/c2_model.py#L261) | Closed form vs the network on every arm; arms[name] = (inputs, y_hat, z_ref, seq_ids), |
@@ -2838,11 +2840,11 @@
 | `X4Stage` | class | `X4Stage` | [src/topo_pilot/experiment/x4.py:339](../../src/topo_pilot/experiment/x4.py#L339) | X4: secondary readout-geometry analyses on the stored runs of ``X4.sources``. |
 | `x5_overall_verdict` | function | `x5_overall_verdict` | [src/topo_pilot/analysis/x5_context.py:33](../../src/topo_pilot/analysis/x5_context.py#L33) | Precedence FAILED > INCONCLUSIVE > WEAK_CONTEXT > FEASIBLE (a weak arm never conceals an |
 | `x6_source` | function | `x6_source` | [tools/c2_readout/c2_registry.py:99](../../tools/c2_readout/c2_registry.py#L99) | X6-REG2 (re-hashed, manifest bound by CONTRACT.json) as base plus every other history- |
-| `x6s1_inventory` | function | `x6s1_inventory` | [tools/x6zc/x6zc_run.py:99](../../tools/x6zc/x6zc_run.py#L99) |  |
+| `x6s1_inventory` | function | `x6s1_inventory` | [tools/x6zc/x6zc_store.py:91](../../tools/x6zc/x6zc_store.py#L91) |  |
 | `x_interval` | function | `x_interval` | [tools/chart_diag/chart_diag.py:63](../../tools/chart_diag/chart_diag.py#L63) | X's interval [l_max, d): descriptive only. |
 | `x_leakage` | function | `x_leakage` | [tools/c2_readout/c2_oracle.py:181](../../tools/c2_readout/c2_oracle.py#L181) | lambda_x at b31 and b32: mean_{E_y} \|m32(H^Y) - m32(H)\| / mean_{E_x} \|m32(H+) - m32(H-)\| |
 | `xcheck` | function | `xcheck` | [tools/x6_stage1/x6s1_stage_post.py:297](../../tools/x6_stage1/x6s1_stage_post.py#L297) |  |
-| `xwrite` | function | `xwrite` | [tools/x6zc/x6zc_run.py:54](../../tools/x6zc/x6zc_run.py#L54) |  |
+| `xwrite` | function | `xwrite` | [tools/x6zc/x6zc_store.py:46](../../tools/x6zc/x6zc_store.py#L46) |  |
 | `y1` | function | `y1` | [tools/c2_readout/c2_stage_val.py:269](../../tools/c2_readout/c2_stage_val.py#L269) |  |
 | `y1s` | function | `y1s` | [tools/c2_readout/c2_stage_val.py:273](../../tools/c2_readout/c2_stage_val.py#L273) |  |
 | `y2` | function | `y2` | [tools/c2_readout/c2_stage_val.py:277](../../tools/c2_readout/c2_stage_val.py#L277) | Y2 (M): activity L(A^Y_M,F - 0.10 A^Y_full) > g, then U(A^Y_M,S - 0.10 A^Y_M,F) < -g. |

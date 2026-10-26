@@ -4,5 +4,5 @@
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
-| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `standin_cls` | 4615 |
-| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `StandInLM` | `zt` | 2859 |
+| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `standardise_nuisance` | 4613 |
+| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `standardizer` | `zt` | 2861 |

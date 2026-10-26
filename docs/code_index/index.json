@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 292,
-  "code files": 511,
+  "code files": 518,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 874,
+  "files indexed": 881,
   "functions and methods (incl. tests)": 7181,
   "import cycles (strongly connected components)": 6,
-  "import statements, external": 748,
+  "import statements, external": 754,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2080,
+  "import statements, internal resolved": 2110,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2124,
-  "internal edges (file to file, with kind and line)": 2112,
-  "python files": 510
+  "import statements, standard library": 2155,
+  "internal edges (file to file, with kind and line)": 2142,
+  "python files": 517
  },
  "cycles": [
   [
@@ -12562,160 +12562,340 @@
    12
   ],
   [
+   "tools/x6zc/x6zc_const.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   24
+  ],
+  [
+   "tools/x6zc/x6zc_const.py",
+   "tools/x6_stage0/x6_model.py",
+   "import",
+   22
+  ],
+  [
+   "tools/x6zc/x6zc_const.py",
+   "tools/x6_stage1/x6s1_data.py",
+   "import",
+   18
+  ],
+  [
    "tools/x6zc/x6zc_core.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   34
+   46
   ],
   [
    "tools/x6zc/x6zc_core.py",
    "tools/x6_stage0/x6_exact.py",
    "import",
-   28
+   40
   ],
   [
    "tools/x6zc/x6zc_core.py",
    "tools/x6_stage0/x6_model.py",
    "import",
-   29
+   41
   ],
   [
    "tools/x6zc/x6zc_core.py",
    "tools/x6_stage1/x6s1_data.py",
    "import",
-   24
+   42
   ],
   [
    "tools/x6zc/x6zc_core.py",
    "tools/x6_stage1/x6s1_eval.py",
    "import",
-   30
+   43
   ],
   [
    "tools/x6zc/x6zc_core.py",
    "tools/x6_stage1/x6s1_pairs.py",
    "import",
-   31
+   44
   ],
   [
    "tools/x6zc/x6zc_core.py",
-   "tools/x6_stage1/x6s1_stats.py",
+   "tools/x6zc/x6zc_const.py",
+   "import",
+   21
+  ],
+  [
+   "tools/x6zc/x6zc_core.py",
+   "tools/x6zc/x6zc_decide.py",
    "import",
    32
   ],
   [
-   "tools/x6zc/x6zc_run.py",
-   "src/topo_pilot/contracts/__init__.py",
-   "import",
-   31
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "src/topo_pilot/learner/__init__.py",
-   "import",
-   334
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage0/x6_model.py",
-   "import",
-   304
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage0/x6_model.py",
-   "import",
-   313
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage0/x6_model.py",
-   "import",
-   759
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_cloud.py",
-   "import",
-   331
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_data.py",
-   "import",
-   139
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_data.py",
-   "import",
-   332
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_data.py",
-   "import",
-   704
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_decide.py",
-   "import",
-   588
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_eval.py",
-   "import",
-   27
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_pairs.py",
-   "import",
-   28
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_run.py",
-   "import",
-   113
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_run.py",
-   "import",
-   554
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_run.py",
-   "import",
-   705
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
-   "tools/x6_stage1/x6s1_stage_pre.py",
-   "import",
-   629
-  ],
-  [
-   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_decide.py",
    "tools/x6_stage1/x6s1_stats.py",
    "import",
-   504
+   18
   ],
   [
-   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_decide.py",
+   "tools/x6zc/x6zc_const.py",
+   "import",
+   12
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "src/topo_pilot/learner/__init__.py",
+   "import",
+   83
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage0/x6_model.py",
+   "import",
+   53
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage0/x6_model.py",
+   "import",
+   62
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage1/x6s1_cloud.py",
+   "import",
+   80
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage1/x6s1_data.py",
+   "import",
+   81
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage1/x6s1_eval.py",
+   "import",
+   17
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage1/x6s1_pairs.py",
+   "import",
+   18
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6_stage1/x6s1_stats.py",
+   "import",
+   253
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
    "tools/x6zc/x6zc_census.py",
    "import",
-   29
+   19
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6zc/x6zc_core.py",
+   "import",
+   13
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6zc/x6zc_pipeline.py",
+   "import",
+   22
+  ],
+  [
+   "tools/x6zc/x6zc_dry.py",
+   "tools/x6zc/x6zc_store.py",
+   "import",
+   25
+  ],
+  [
+   "tools/x6zc/x6zc_pipeline.py",
+   "tools/x6_stage1/x6s1_eval.py",
+   "import",
+   14
+  ],
+  [
+   "tools/x6zc/x6zc_pipeline.py",
+   "tools/x6zc/x6zc_core.py",
+   "import",
+   10
   ],
   [
    "tools/x6zc/x6zc_run.py",
    "tools/x6zc/x6zc_core.py",
    "import",
+   14
+  ],
+  [
+   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_dry.py",
+   "import",
+   30
+  ],
+  [
+   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_pipeline.py",
+   "import",
+   25
+  ],
+  [
+   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_stage_a.py",
+   "import",
+   33
+  ],
+  [
+   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_stage_bc.py",
+   "import",
+   38
+  ],
+  [
+   "tools/x6zc/x6zc_run.py",
+   "tools/x6zc/x6zc_store.py",
+   "import",
+   18
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_data.py",
+   "import",
+   206
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_decide.py",
+   "import",
+   90
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_eval.py",
+   "import",
+   20
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_pairs.py",
+   "import",
+   21
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_run.py",
+   "import",
+   56
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_run.py",
+   "import",
+   207
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6_stage1/x6s1_stage_pre.py",
+   "import",
+   131
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6zc/x6zc_census.py",
+   "import",
+   22
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6zc/x6zc_core.py",
+   "import",
+   16
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6zc/x6zc_pipeline.py",
+   "import",
+   25
+  ],
+  [
+   "tools/x6zc/x6zc_stage_a.py",
+   "tools/x6zc/x6zc_store.py",
+   "import",
+   28
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6_stage0/x6_model.py",
+   "import",
+   52
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6_stage1/x6s1_eval.py",
+   "import",
+   14
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6_stage1/x6s1_pairs.py",
+   "import",
+   15
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6zc/x6zc_census.py",
+   "import",
+   16
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6zc/x6zc_core.py",
+   "import",
+   10
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6zc/x6zc_pipeline.py",
+   "import",
+   19
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6zc/x6zc_stage_a.py",
+   "import",
    23
+  ],
+  [
+   "tools/x6zc/x6zc_stage_bc.py",
+   "tools/x6zc/x6zc_store.py",
+   "import",
+   27
+  ],
+  [
+   "tools/x6zc/x6zc_store.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   23
+  ],
+  [
+   "tools/x6zc/x6zc_store.py",
+   "tools/x6_stage1/x6s1_data.py",
+   "import",
+   131
+  ],
+  [
+   "tools/x6zc/x6zc_store.py",
+   "tools/x6_stage1/x6s1_run.py",
+   "import",
+   105
+  ],
+  [
+   "tools/x6zc/x6zc_store.py",
+   "tools/x6zc/x6zc_core.py",
+   "import",
+   18
   ]
  ],
  "excluded_prefixes": [
@@ -17927,9 +18107,9 @@
   },
   "tools/x6zc/API.md": {
    "kind": "markdown",
-   "lines": 395,
+   "lines": 409,
    "purpose": "tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1)",
-   "sha256": "4e16be6c5c26df5e21ee8c2577380840db75ac3f7f6d604595a4d13e16f44b67"
+   "sha256": "60fa34499f8035aed68e4a28a40eed5fe4e9c9e4bff456267304fd438a7eaf0a"
   },
   "tools/x6zc/CONTRACT.json": {
    "kind": "json",
@@ -17955,17 +18135,59 @@
    "purpose": "X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5",
    "sha256": "a050543aef837a6bf5ff80fb13c7fc4d31e61b443ca8713c3c69fd61ca0b3d5b"
   },
+  "tools/x6zc/x6zc_const.py": {
+   "kind": "python",
+   "lines": 66,
+   "purpose": "X6ZC constants: CONTRACT loading, names and bindings, streams (X6ZC-DESIGN-v1; API.md",
+   "sha256": "47d60396c755ab023358665cc6002013b881b7254070b15958904b38297e391e"
+  },
   "tools/x6zc/x6zc_core.py": {
    "kind": "python",
-   "lines": 574,
-   "purpose": "X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0)",
-   "sha256": "f51c21ad056eeee4ab44cacb26b96e232fd0470985e0994728e5db3a357cea88"
+   "lines": 373,
+   "purpose": "X6ZC core: fresh prefixes and loop-sign variants, exact geometry (K0) and the q*_NA cache,",
+   "sha256": "311456d60a70281828babad30313f7019d197e5d2a83af9b9a0211571c214aac"
+  },
+  "tools/x6zc/x6zc_decide.py": {
+   "kind": "python",
+   "lines": 191,
+   "purpose": "X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision,",
+   "sha256": "f93798c2bd20ad54c58e07bd179e834c56aa6788a744e9a1415c9d75aafca709"
+  },
+  "tools/x6zc/x6zc_dry.py": {
+   "kind": "python",
+   "lines": 278,
+   "purpose": "X6ZC stage 0: the synthetic dry run of every CONTRACT fixture through the pipeline",
+   "sha256": "5966dcab1cbbe135da85bf3a80706a76fe944bb764927da353fb88406a0a8f62"
+  },
+  "tools/x6zc/x6zc_pipeline.py": {
+   "kind": "python",
+   "lines": 122,
+   "purpose": "X6ZC pipeline: the pure Stage-C functions shared by Stage C, the sensitivity lines and the dry",
+   "sha256": "bed8940be290eb57d8bc4f3515fe12cb0ba13bb8ebfbfdb2e733d07602f0d83c"
   },
   "tools/x6zc/x6zc_run.py": {
    "kind": "python",
-   "lines": 989,
-   "purpose": "X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store",
-   "sha256": "d2a7dd17105aa9ea5ee2454ff27f2abaee7833a597684c1a6201159fd915e65b"
+   "lines": 84,
+   "purpose": "X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run and stage",
+   "sha256": "0f7d2fb8c605485d50ef385f64af647f7e279eacc68cfb356e3fbcd8d4947e57"
+  },
+  "tools/x6zc/x6zc_stage_a.py": {
+   "kind": "python",
+   "lines": 241,
+   "purpose": "X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit,",
+   "sha256": "a7e7220ce44e78aaac4bc2876eeb0f11056e26fc6031a2aa029b4d41a5dd96ec"
+  },
+  "tools/x6zc/x6zc_stage_bc.py": {
+   "kind": "python",
+   "lines": 228,
+   "purpose": "X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C",
+   "sha256": "a12a02ea2b844e4c68e66b7c06bebe7deb96cdf6f7440d94172a7006fd3e3559"
+  },
+  "tools/x6zc/x6zc_store.py": {
+   "kind": "python",
+   "lines": 180,
+   "purpose": "X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings),",
+   "sha256": "ccb02f42f0d3b4267611206835dbb9e31471afde2bb8efe4859dd7e49bdd544e"
   }
  },
  "problems": [
@@ -182973,7 +183195,7 @@
    ],
    "syspath": []
   },
-  "tools/x6zc/x6zc_core.py": {
+  "tools/x6zc/x6zc_const.py": {
    "constants": [
     "ANSWERS",
     "CELLS",
@@ -182983,12 +183205,250 @@
     "T",
     "VARIANTS",
     "W1_CROSS_STEPS",
+    "_MISS"
+   ],
+   "doc": "X6ZC constants: CONTRACT loading, names and bindings, streams (X6ZC-DESIGN-v1; API.md\n§3, §20 C-52). Re-exported by x6zc_core. Import reads CONTRACT.json and the protocol only.",
+   "doc1": "X6ZC constants: CONTRACT loading, names and bindings, streams (X6ZC-DESIGN-v1; API.md",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "x6s1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_data.py"
+     ],
+     "top": "x6s1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "x6_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage0/x6_model.py"
+     ],
+     "top": "x6_model"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 32,
+     "kind": "function",
+     "name": "load_contract",
+     "qual": "load_contract",
+     "sig": "def load_contract(path=CONTRACT_PATH) -> dict",
+     "start": 28
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 33,
+     "kind": "function",
+     "name": "frac",
+     "qual": "frac",
+     "sig": "def frac(s) -> Fraction",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 62,
+     "kind": "function",
+     "name": "stream",
+     "qual": "stream",
+     "sig": "def stream(name) -> np.random.Generator",
+     "start": 61
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "function",
+     "name": "dry_stream",
+     "qual": "dry_stream",
+     "sig": "def dry_stream(*names) -> np.random.Generator",
+     "start": 63
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "function",
+     "name": "_fl",
+     "qual": "_fl",
+     "sig": "def _fl(x) -> float",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 66,
+     "kind": "function",
+     "name": "_ints",
+     "qual": "_ints",
+     "sig": "def _ints(row) -> tuple",
+     "start": 66
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/x6_stage1",
+      "tools/x6zc"
+     ],
+     "expr": "str(_p)",
+     "line": 17
+    }
+   ]
+  },
+  "tools/x6zc/x6zc_core.py": {
+   "constants": [
     "_K2",
-    "_MISS",
     "_MK"
    ],
-   "doc": "X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0)\nand the q*_NA cache, synthetic predictors, pair terms and K1-K3/F1, the paired cluster bootstrap,\nratio intervals, B9 sizing, the §9 decision, qualifiers, licences and the reuse verdict\n(X6ZC-DESIGN-v1; API.md §3-§9, §20). Import reads CONTRACT.json and the protocol bytes only.",
-   "doc1": "X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0)",
+   "doc": "X6ZC core: fresh prefixes and loop-sign variants, exact geometry (K0) and the q*_NA cache,\nsynthetic predictors, pair terms and K1-K3/F1 (X6ZC-DESIGN-v1; API.md §4-§7, §20 C-52). It\nre-exports x6zc_const (constants, bindings) and x6zc_decide (bootstrap, B9, decision), so\nevery API name stays reachable as zc.<name>. Import reads CONTRACT.json and the protocol only.",
+   "doc1": "X6ZC core: fresh prefixes and loop-sign variants, exact geometry (K0) and the q*_NA cache,",
    "dynamic": [],
    "error": "",
    "imports": [
@@ -183046,21 +183506,6 @@
      "line": 11,
      "module": "",
      "names": [
-      "json"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "json"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 12,
-     "module": "",
-     "names": [
       "math"
      ],
      "status": "stdlib",
@@ -183073,7 +183518,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 13,
+     "line": 12,
      "module": "",
      "names": [
       "sys"
@@ -183088,7 +183533,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 14,
+     "line": 13,
      "module": "collections",
      "names": [
       "Counter"
@@ -183103,7 +183548,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 15,
+     "line": 14,
      "module": "fractions",
      "names": [
       "Fraction"
@@ -183118,7 +183563,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 16,
+     "line": 15,
      "module": "functools",
      "names": [
       "lru_cache"
@@ -183133,7 +183578,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 17,
+     "line": 16,
      "module": "pathlib",
      "names": [
       "Path"
@@ -183144,20 +183589,109 @@
     },
     {
      "candidates": [],
-     "form": "import",
-     "how": "sys.path edit",
+     "form": "from",
+     "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 24,
-     "module": "",
+     "line": 21,
+     "module": "x6zc_const",
      "names": [
-      "x6s1_data"
+      "HERE",
+      "REPO",
+      "CONTRACT_PATH",
+      "PROTOCOL_FILE",
+      "load_contract",
+      "frac",
+      "CONTRACT",
+      "KC",
+      "_PA",
+      "_X",
+      "PROTOCOL_ID",
+      "PROTOCOL_SHA256",
+      "PROJECT_ROOT",
+      "X6S1_STORE",
+      "STORE",
+      "WORKTREE",
+      "SCRATCH_ROOT",
+      "DRY_STORE",
+      "METER_IMPORT_DIR",
+      "NA_DIR",
+      "H3",
+      "MERGE_COMMIT",
+      "CLOSURE",
+      "X6ZC_MASTER",
+      "FAMILIES",
+      "VARIANT_ORDER",
+      "VARIANT_SIGN",
+      "W1_TAIL",
+      "VARIANTS",
+      "W1_CROSS_STEPS",
+      "READOUT_OFFSET",
+      "LAMBDA_INDEX",
+      "ANSWERS",
+      "CELLS",
+      "CELL_ORDER",
+      "_PR",
+      "MODELS",
+      "INITS",
+      "STAGE_B_ORDER",
+      "FOCAL",
+      "K5_MODELS",
+      "NA_MODELS",
+      "K6_CONTROLS",
+      "K6_MIN",
+      "T",
+      "B_DRAWS",
+      "N_FLOOR",
+      "N_D",
+      "N_LADDER",
+      "_S3N",
+      "_MISS",
+      "stream",
+      "dry_stream",
+      "_fl",
+      "_ints"
      ],
      "status": "internal",
      "targets": [
-      "tools/x6_stage1/x6s1_data.py"
+      "tools/x6zc/x6zc_const.py"
      ],
-     "top": "x6s1_data"
+     "top": "x6zc_const"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "x6zc_decide",
+     "names": [
+      "cluster_sums",
+      "paired_cluster_boot",
+      "interval",
+      "ratio_interval",
+      "_ratio",
+      "cell_statistics",
+      "halfwidth",
+      "choose_n",
+      "_ascii",
+      "_lt",
+      "_gt",
+      "_unstable",
+      "_cell_rule",
+      "decide_x6zc",
+      "_lkey",
+      "licence",
+      "not_licensed",
+      "qualifiers",
+      "reuse_verdict"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_decide.py"
+     ],
+     "top": "x6zc_decide"
     },
     {
      "candidates": [],
@@ -183165,7 +183699,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 39,
      "module": "",
      "names": [
       "numpy"
@@ -183180,7 +183714,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 40,
      "module": "",
      "names": [
       "x6_exact"
@@ -183197,7 +183731,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 29,
+     "line": 41,
      "module": "",
      "names": [
       "x6_model"
@@ -183211,10 +183745,27 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "sys.path edit",
+     "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 30,
+     "line": 42,
+     "module": "",
+     "names": [
+      "x6s1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_data.py"
+     ],
+     "top": "x6s1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 43,
      "module": "",
      "names": [
       "x6s1_eval"
@@ -183228,10 +183779,10 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "sys.path edit",
+     "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 44,
      "module": "",
      "names": [
       "x6s1_pairs"
@@ -183244,28 +183795,11 @@
     },
     {
      "candidates": [],
-     "form": "import",
-     "how": "sys.path edit",
-     "lazy": false,
-     "level": 0,
-     "line": 32,
-     "module": "",
-     "names": [
-      "x6s1_stats"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/x6_stage1/x6s1_stats.py"
-     ],
-     "top": "x6s1_stats"
-    },
-    {
-     "candidates": [],
      "form": "from",
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 34,
+     "line": 46,
      "module": "topo_pilot.contracts",
      "names": [
       "SeedTree",
@@ -183282,723 +183816,466 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 42,
+     "end": 56,
      "kind": "function",
-     "name": "load_contract",
-     "qual": "load_contract",
-     "sig": "def load_contract(path=CONTRACT_PATH) -> dict",
-     "start": 38
+     "name": "prefix_yields",
+     "qual": "prefix_yields",
+     "sig": "def prefix_yields(prefix_tokens, rnd_len) -> list",
+     "start": 50
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 43,
+     "end": 68,
      "kind": "function",
-     "name": "frac",
-     "qual": "frac",
-     "sig": "def frac(s) -> Fraction",
-     "start": 43
+     "name": "fresh_prefixes",
+     "qual": "fresh_prefixes",
+     "sig": "def fresh_prefixes(prefix_tokens, d_prefixes) -> dict",
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "",
      "end": 72,
      "kind": "function",
-     "name": "stream",
-     "qual": "stream",
-     "sig": "def stream(name) -> np.random.Generator",
-     "start": 71
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 74,
-     "kind": "function",
-     "name": "dry_stream",
-     "qual": "dry_stream",
-     "sig": "def dry_stream(*names) -> np.random.Generator",
-     "start": 73
+     "name": "variant_path",
+     "qual": "variant_path",
+     "sig": "def variant_path(family, variant, member) -> tuple",
+     "start": 69
     },
     {
      "decorators": [],
      "doc": "",
      "end": 75,
      "kind": "function",
-     "name": "_fl",
-     "qual": "_fl",
-     "sig": "def _fl(x) -> float",
-     "start": 75
+     "name": "variant_history",
+     "qual": "variant_history",
+     "sig": "def variant_history(family, variant, member, prefix, y) -> tuple",
+     "start": 73
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 76,
+     "end": 83,
      "kind": "function",
-     "name": "_ints",
-     "qual": "_ints",
-     "sig": "def _ints(row) -> tuple",
+     "name": "variant_arrays",
+     "qual": "variant_arrays",
+     "sig": "def variant_arrays(prefixes, family) -> dict",
      "start": 76
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 85,
-     "kind": "function",
-     "name": "prefix_yields",
-     "qual": "prefix_yields",
-     "sig": "def prefix_yields(prefix_tokens, rnd_len) -> list",
-     "start": 79
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 97,
-     "kind": "function",
-     "name": "fresh_prefixes",
-     "qual": "fresh_prefixes",
-     "sig": "def fresh_prefixes(prefix_tokens, d_prefixes) -> dict",
-     "start": 86
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 101,
-     "kind": "function",
-     "name": "variant_path",
-     "qual": "variant_path",
-     "sig": "def variant_path(family, variant, member) -> tuple",
-     "start": 98
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 104,
-     "kind": "function",
-     "name": "variant_history",
-     "qual": "variant_history",
-     "sig": "def variant_history(family, variant, member, prefix, y) -> tuple",
-     "start": 102
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 112,
-     "kind": "function",
-     "name": "variant_arrays",
-     "qual": "variant_arrays",
-     "sig": "def variant_arrays(prefixes, family) -> dict",
-     "start": 105
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 113,
+     "end": 84,
      "kind": "function",
      "name": "d_cluster",
      "qual": "d_cluster",
      "sig": "def d_cluster(n_rows) -> np.ndarray",
-     "start": 113
+     "start": 84
     },
     {
      "decorators": [
       "lru_cache(maxsize=None)"
      ],
      "doc": "",
-     "end": 117,
+     "end": 88,
      "kind": "function",
      "name": "_qx",
      "qual": "_qx",
      "sig": "def _qx(arm, h) -> tuple",
+     "start": 88
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 92,
+     "kind": "function",
+     "name": "qx",
+     "qual": "qx",
+     "sig": "def qx(arm, history) -> tuple",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 96,
+     "kind": "function",
+     "name": "crossings",
+     "qual": "crossings",
+     "sig": "def crossings(path) -> list",
+     "start": 93
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 104,
+     "kind": "function",
+     "name": "holonomy_missing",
+     "qual": "holonomy_missing",
+     "sig": "def holonomy_missing(arm, segment, skip) -> tuple",
+     "start": 97
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 109,
+     "kind": "function",
+     "name": "missed_law",
+     "qual": "missed_law",
+     "sig": "def missed_law(history, which) -> tuple",
+     "start": 105
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 114,
+     "kind": "function",
+     "name": "answer_names",
+     "qual": "answer_names",
+     "sig": "def answer_names(history) -> dict",
+     "start": 110
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 115,
+     "kind": "function",
+     "name": "_cn",
+     "qual": "_cn",
+     "sig": "def _cn(q) -> tuple",
+     "start": 115
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 116,
+     "kind": "function",
+     "name": "_dna",
+     "qual": "_dna",
+     "sig": "def _dna(lam, y) -> list",
+     "start": 116
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 120,
+     "kind": "function",
+     "name": "_w1_stats",
+     "qual": "_w1_stats",
+     "sig": "def _w1_stats(h, p) -> tuple",
      "start": 117
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 121,
-     "kind": "function",
-     "name": "qx",
-     "qual": "qx",
-     "sig": "def qx(arm, history) -> tuple",
-     "start": 118
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 125,
-     "kind": "function",
-     "name": "crossings",
-     "qual": "crossings",
-     "sig": "def crossings(path) -> list",
-     "start": 122
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 133,
-     "kind": "function",
-     "name": "holonomy_missing",
-     "qual": "holonomy_missing",
-     "sig": "def holonomy_missing(arm, segment, skip) -> tuple",
-     "start": 126
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 138,
-     "kind": "function",
-     "name": "missed_law",
-     "qual": "missed_law",
-     "sig": "def missed_law(history, which) -> tuple",
-     "start": 134
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 143,
-     "kind": "function",
-     "name": "answer_names",
-     "qual": "answer_names",
-     "sig": "def answer_names(history) -> dict",
-     "start": 139
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 144,
-     "kind": "function",
-     "name": "_cn",
-     "qual": "_cn",
-     "sig": "def _cn(q) -> tuple",
-     "start": 144
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 145,
-     "kind": "function",
-     "name": "_dna",
-     "qual": "_dna",
-     "sig": "def _dna(lam, y) -> list",
-     "start": 145
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 149,
-     "kind": "function",
-     "name": "_w1_stats",
-     "qual": "_w1_stats",
-     "sig": "def _w1_stats(h, p) -> tuple",
-     "start": 146
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 179,
+     "end": 150,
      "kind": "function",
      "name": "_k0_pair",
      "qual": "_k0_pair",
      "sig": "def _k0_pair(ha, hb, family, v, lam)",
-     "start": 150
+     "start": 121
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 200,
+     "end": 171,
      "kind": "function",
      "name": "oracle_geometry",
      "qual": "oracle_geometry",
      "sig": "def oracle_geometry(arrays, family, keys=VARIANT_ORDER) -> dict",
-     "start": 180
+     "start": 151
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 204,
+     "end": 175,
      "kind": "function",
      "name": "_cos",
      "qual": "_cos",
      "sig": "def _cos(u, d) -> tuple",
-     "start": 201
+     "start": 172
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 218,
+     "end": 189,
      "kind": "function",
      "name": "coupling_table",
      "qual": "coupling_table",
      "sig": "def coupling_table() -> dict",
-     "start": 205
+     "start": 176
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "q*_NA rows computed once per distinct (w_{1:t}, t); bitwise equal to se.qstar(\"NA\").",
-     "end": 259,
+     "end": 230,
      "kind": "class",
      "name": "QStarCache",
      "qual": "QStarCache",
-     "start": 219
+     "start": 190
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 221,
+     "end": 192,
      "kind": "method",
      "name": "__init__",
      "qual": "QStarCache.__init__",
      "sig": "def __init__(self, table)",
-     "start": 221
+     "start": 192
     },
     {
      "decorators": [
       "staticmethod"
      ],
      "doc": "",
-     "end": 225,
+     "end": 196,
      "kind": "method",
      "name": "key",
      "qual": "QStarCache.key",
      "sig": "def key(row, t) -> str",
-     "start": 223
+     "start": 194
     },
     {
      "decorators": [
       "classmethod"
      ],
      "doc": "",
-     "end": 237,
+     "end": 208,
      "kind": "method",
      "name": "build",
      "qual": "QStarCache.build",
      "sig": "def build(cls, array_dicts) -> QStarCache",
-     "start": 227
+     "start": 198
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 215,
+     "kind": "method",
+     "name": "__call__",
+     "qual": "QStarCache.__call__",
+     "sig": "def __call__(self, tokens, t) -> tuple",
+     "start": 209
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 223,
+     "kind": "method",
+     "name": "save",
+     "qual": "QStarCache.save",
+     "sig": "def save(self, path) -> str",
+     "start": 216
+    },
+    {
+     "decorators": [
+      "classmethod"
+     ],
+     "doc": "",
+     "end": 230,
+     "kind": "method",
+     "name": "load",
+     "qual": "QStarCache.load",
+     "sig": "def load(cls, path, sha256) -> QStarCache",
+     "start": 225
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 238,
+     "kind": "function",
+     "name": "member_of",
+     "qual": "member_of",
+     "sig": "def member_of(history) -> str",
+     "start": 233
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 239,
+     "kind": "function",
+     "name": "_mix",
+     "qual": "_mix",
+     "sig": "def _mix(*terms) -> tuple",
+     "start": 239
+    },
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "",
+     "end": 279,
+     "kind": "class",
+     "name": "SyntheticPredictor",
+     "qual": "SyntheticPredictor",
+     "start": 241
     },
     {
      "decorators": [],
      "doc": "",
      "end": 244,
      "kind": "method",
-     "name": "__call__",
-     "qual": "QStarCache.__call__",
-     "sig": "def __call__(self, tokens, t) -> tuple",
-     "start": 238
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 252,
-     "kind": "method",
-     "name": "save",
-     "qual": "QStarCache.save",
-     "sig": "def save(self, path) -> str",
-     "start": 245
-    },
-    {
-     "decorators": [
-      "classmethod"
-     ],
-     "doc": "",
-     "end": 259,
-     "kind": "method",
-     "name": "load",
-     "qual": "QStarCache.load",
-     "sig": "def load(cls, path, sha256) -> QStarCache",
-     "start": 254
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 267,
-     "kind": "function",
-     "name": "member_of",
-     "qual": "member_of",
-     "sig": "def member_of(history) -> str",
-     "start": 262
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 268,
-     "kind": "function",
-     "name": "_mix",
-     "qual": "_mix",
-     "sig": "def _mix(*terms) -> tuple",
-     "start": 268
-    },
-    {
-     "bases": [],
-     "decorators": [],
-     "doc": "",
-     "end": 308,
-     "kind": "class",
-     "name": "SyntheticPredictor",
-     "qual": "SyntheticPredictor",
-     "start": 270
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 273,
-     "kind": "method",
      "name": "__init__",
      "qual": "SyntheticPredictor.__init__",
      "sig": "def __init__(self, kind, **params)",
-     "start": 271
+     "start": 242
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 303,
+     "end": 274,
      "kind": "method",
      "name": "exact",
      "qual": "SyntheticPredictor.exact",
      "sig": "def exact(self, history) -> tuple",
-     "start": 274
+     "start": 245
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 308,
+     "end": 279,
      "kind": "method",
      "name": "__call__",
      "qual": "SyntheticPredictor.__call__",
      "sig": "def __call__(self, tokens, t) -> np.ndarray",
-     "start": 304
+     "start": 275
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 309,
+     "end": 280,
      "kind": "function",
      "name": "oracle",
      "qual": "oracle",
      "sig": "def oracle(arm, kind) -> se.OraclePredictor",
-     "start": 309
+     "start": 280
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 283,
+     "kind": "function",
+     "name": "sym_arrays",
+     "qual": "sym_arrays",
+     "sig": "def sym_arrays(p_a, p_b) -> tuple",
+     "start": 281
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 296,
+     "kind": "function",
+     "name": "pair_arrays",
+     "qual": "pair_arrays",
+     "sig": "def pair_arrays(pred, arrays, key, qstar_fn) -> dict",
+     "start": 286
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 306,
+     "kind": "function",
+     "name": "pair_stats",
+     "qual": "pair_stats",
+     "sig": "def pair_stats(terms) -> dict",
+     "start": 297
     },
     {
      "decorators": [],
      "doc": "",
      "end": 312,
      "kind": "function",
-     "name": "sym_arrays",
-     "qual": "sym_arrays",
-     "sig": "def sym_arrays(p_a, p_b) -> tuple",
-     "start": 310
+     "name": "k1_check",
+     "qual": "k1_check",
+     "sig": "def k1_check(terms) -> dict",
+     "start": 307
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 325,
+     "end": 324,
      "kind": "function",
-     "name": "pair_arrays",
-     "qual": "pair_arrays",
-     "sig": "def pair_arrays(pred, arrays, key, qstar_fn) -> dict",
+     "name": "k2_check",
+     "qual": "k2_check",
+     "sig": "def k2_check(terms_by_ref, family) -> dict",
      "start": 315
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 335,
+     "end": 332,
      "kind": "function",
-     "name": "pair_stats",
-     "qual": "pair_stats",
-     "sig": "def pair_stats(terms) -> dict",
-     "start": 326
+     "name": "beta_exact_pi0",
+     "qual": "beta_exact_pi0",
+     "sig": "def beta_exact_pi0(law_fn, family, variant, ys=(0, 1, 2)) -> Fraction",
+     "start": 325
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 341,
+     "end": 337,
      "kind": "function",
-     "name": "k1_check",
-     "qual": "k1_check",
-     "sig": "def k1_check(terms) -> dict",
-     "start": 336
+     "name": "k2_exact_variants",
+     "qual": "k2_exact_variants",
+     "sig": "def k2_exact_variants(family) -> dict",
+     "start": 333
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 344,
+     "kind": "function",
+     "name": "k3_grid",
+     "qual": "k3_grid",
+     "sig": "def k3_grid() -> list",
+     "start": 338
     },
     {
      "decorators": [],
      "doc": "",
      "end": 353,
      "kind": "function",
-     "name": "k2_check",
-     "qual": "k2_check",
-     "sig": "def k2_check(terms_by_ref, family) -> dict",
-     "start": 344
+     "name": "k3_exact",
+     "qual": "k3_exact",
+     "sig": "def k3_exact(family) -> dict",
+     "start": 345
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 361,
+     "end": 363,
      "kind": "function",
-     "name": "beta_exact_pi0",
-     "qual": "beta_exact_pi0",
-     "sig": "def beta_exact_pi0(law_fn, family, variant, ys=(0, 1, 2)) -> Fraction",
+     "name": "k3_float_check",
+     "qual": "k3_float_check",
+     "sig": "def k3_float_check(family, arrays, qstar_fn) -> dict",
      "start": 354
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 366,
-     "kind": "function",
-     "name": "k2_exact_variants",
-     "qual": "k2_exact_variants",
-     "sig": "def k2_exact_variants(family) -> dict",
-     "start": 362
     },
     {
      "decorators": [],
      "doc": "",
      "end": 373,
      "kind": "function",
-     "name": "k3_grid",
-     "qual": "k3_grid",
-     "sig": "def k3_grid() -> list",
-     "start": 367
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 382,
-     "kind": "function",
-     "name": "k3_exact",
-     "qual": "k3_exact",
-     "sig": "def k3_exact(family) -> dict",
-     "start": 374
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 392,
-     "kind": "function",
-     "name": "k3_float_check",
-     "qual": "k3_float_check",
-     "sig": "def k3_float_check(family, arrays, qstar_fn) -> dict",
-     "start": 383
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 402,
-     "kind": "function",
      "name": "f1",
      "qual": "f1",
      "sig": "def f1(k3) -> dict",
-     "start": 393
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 409,
-     "kind": "function",
-     "name": "cluster_sums",
-     "qual": "cluster_sums",
-     "sig": "def cluster_sums(values, cluster, P) -> np.ndarray",
-     "start": 405
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 419,
-     "kind": "function",
-     "name": "paired_cluster_boot",
-     "qual": "paired_cluster_boot",
-     "sig": "def paired_cluster_boot(num, den, B, gen) -> dict",
-     "start": 410
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 424,
-     "kind": "function",
-     "name": "interval",
-     "qual": "interval",
-     "sig": "def interval(draws, q) -> tuple",
-     "start": 420
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 431,
-     "kind": "function",
-     "name": "ratio_interval",
-     "qual": "ratio_interval",
-     "sig": "def ratio_interval(draws_v, draws_pp, sign, q) -> dict",
-     "start": 425
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 432,
-     "kind": "function",
-     "name": "_ratio",
-     "qual": "_ratio",
-     "sig": "def _ratio(a, b)",
-     "start": 432
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 453,
-     "kind": "function",
-     "name": "cell_statistics",
-     "qual": "cell_statistics",
-     "sig": "def cell_statistics(point, draws, cell) -> dict",
-     "start": 433
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 456,
-     "kind": "function",
-     "name": "halfwidth",
-     "qual": "halfwidth",
-     "sig": "def halfwidth(n, se_d, beta_d, z) -> float",
-     "start": 454
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 471,
-     "kind": "function",
-     "name": "choose_n",
-     "qual": "choose_n",
-     "sig": "def choose_n(n_avail, se) -> dict",
-     "start": 457
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 474,
-     "kind": "function",
-     "name": "_ascii",
-     "qual": "_ascii",
-     "sig": "def _ascii(rule) -> str",
-     "start": 474
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 475,
-     "kind": "function",
-     "name": "_lt",
-     "qual": "_lt",
-     "sig": "def _lt(x, bar) -> bool",
-     "start": 475
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 476,
-     "kind": "function",
-     "name": "_gt",
-     "qual": "_gt",
-     "sig": "def _gt(x, bar) -> bool",
-     "start": 476
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 480,
-     "kind": "function",
-     "name": "_unstable",
-     "qual": "_unstable",
-     "sig": "def _unstable(s) -> bool",
-     "start": 477
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 499,
-     "kind": "function",
-     "name": "_cell_rule",
-     "qual": "_cell_rule",
-     "sig": "def _cell_rule(ev, c) -> tuple",
-     "start": 481
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 526,
-     "kind": "function",
-     "name": "decide_x6zc",
-     "qual": "decide_x6zc",
-     "sig": "def decide_x6zc(ev) -> dict",
-     "start": 500
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 530,
-     "kind": "function",
-     "name": "_lkey",
-     "qual": "_lkey",
-     "sig": "def _lkey(outcome, table, case=None) -> str",
-     "start": 527
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 537,
-     "kind": "function",
-     "name": "licence",
-     "qual": "licence",
-     "sig": "def licence(outcome, values, case=None) -> str",
-     "start": 531
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 539,
-     "kind": "function",
-     "name": "not_licensed",
-     "qual": "not_licensed",
-     "sig": "def not_licensed(outcome, case=None) -> str",
-     "start": 538
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 557,
-     "kind": "function",
-     "name": "qualifiers",
-     "qual": "qualifiers",
-     "sig": "def qualifiers(ev, decision, census) -> dict",
-     "start": 540
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 574,
-     "kind": "function",
-     "name": "reuse_verdict",
-     "qual": "reuse_verdict",
-     "sig": "def reuse_verdict(ev, decision) -> dict",
-     "start": 558
+     "start": 364
     }
    ],
    "syspath": [
     {
      "dirs": [
-      "tools/x6_stage1",
       "tools/x6zc"
      ],
-     "expr": "str(_p)",
-     "line": 23
+     "expr": "str(Path(__file__).resolve().parent)",
+     "line": 19
     }
    ]
   },
-  "tools/x6zc/x6zc_run.py": {
-   "constants": [
-    "BIND_TEMPLATE",
-    "CELL_KEYS",
-    "TOP",
-    "_A2_ROW",
-    "_OUTS"
-   ],
-   "doc": "X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store\nno-write inventory, environment, closure and master checks, the meter binding and its template,\nledger and pause points, the pure Stage-C pipeline, the report and its schema, the stage-0 dry\nrun, stages A, B and C with model chunk children, and the CLI (X6ZC-DESIGN-v1 §4-§15; API.md §11,\n§15, §20). Torch-heavy X6S1 modules are imported lazily inside the functions that need them.",
-   "doc1": "X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store",
+  "tools/x6zc/x6zc_decide.py": {
+   "constants": [],
+   "doc": "X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision,\nlicences, qualifiers and the reuse verdict (X6ZC-DESIGN-v1 §5, §7-§9; API.md §8-§9, §20 C-52).\nRe-exported by x6zc_core. No I/O.",
+   "doc1": "X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision,",
    "dynamic": [],
    "error": "",
    "imports": [
@@ -184008,7 +184285,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 8,
+     "line": 6,
      "module": "__future__",
      "names": [
       "annotations"
@@ -184023,37 +184300,313 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 10,
+     "line": 8,
      "module": "",
      "names": [
-      "argparse"
+      "math"
      ],
      "status": "stdlib",
      "targets": [],
-     "top": "argparse"
+     "top": "math"
     },
     {
      "candidates": [],
-     "form": "import",
+     "form": "from",
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 11,
-     "module": "",
+     "line": 9,
+     "module": "fractions",
      "names": [
-      "hashlib"
+      "Fraction"
      ],
      "status": "stdlib",
      "targets": [],
-     "top": "hashlib"
+     "top": "fractions"
     },
     {
      "candidates": [],
-     "form": "import",
-     "how": "",
+     "form": "from",
+     "how": "same directory",
      "lazy": false,
      "level": 0,
      "line": 12,
+     "module": "x6zc_const",
+     "names": [
+      "CONTRACT",
+      "KC",
+      "NA_DIR",
+      "VARIANT_ORDER",
+      "CELLS",
+      "CELL_ORDER",
+      "T",
+      "N_FLOOR",
+      "N_D",
+      "N_LADDER",
+      "_fl"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_const.py"
+     ],
+     "top": "x6zc_const"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "x6s1_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_stats.py"
+     ],
+     "top": "x6s1_stats"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 26,
+     "kind": "function",
+     "name": "cluster_sums",
+     "qual": "cluster_sums",
+     "sig": "def cluster_sums(values, cluster, P) -> np.ndarray",
+     "start": 22
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 36,
+     "kind": "function",
+     "name": "paired_cluster_boot",
+     "qual": "paired_cluster_boot",
+     "sig": "def paired_cluster_boot(num, den, B, gen) -> dict",
+     "start": 27
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 41,
+     "kind": "function",
+     "name": "interval",
+     "qual": "interval",
+     "sig": "def interval(draws, q) -> tuple",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "function",
+     "name": "ratio_interval",
+     "qual": "ratio_interval",
+     "sig": "def ratio_interval(draws_v, draws_pp, sign, q) -> dict",
+     "start": 42
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 49,
+     "kind": "function",
+     "name": "_ratio",
+     "qual": "_ratio",
+     "sig": "def _ratio(a, b)",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 70,
+     "kind": "function",
+     "name": "cell_statistics",
+     "qual": "cell_statistics",
+     "sig": "def cell_statistics(point, draws, cell) -> dict",
+     "start": 50
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 73,
+     "kind": "function",
+     "name": "halfwidth",
+     "qual": "halfwidth",
+     "sig": "def halfwidth(n, se_d, beta_d, z) -> float",
+     "start": 71
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 88,
+     "kind": "function",
+     "name": "choose_n",
+     "qual": "choose_n",
+     "sig": "def choose_n(n_avail, se) -> dict",
+     "start": 74
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "function",
+     "name": "_ascii",
+     "qual": "_ascii",
+     "sig": "def _ascii(rule) -> str",
+     "start": 91
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 92,
+     "kind": "function",
+     "name": "_lt",
+     "qual": "_lt",
+     "sig": "def _lt(x, bar) -> bool",
+     "start": 92
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 93,
+     "kind": "function",
+     "name": "_gt",
+     "qual": "_gt",
+     "sig": "def _gt(x, bar) -> bool",
+     "start": 93
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 97,
+     "kind": "function",
+     "name": "_unstable",
+     "qual": "_unstable",
+     "sig": "def _unstable(s) -> bool",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 116,
+     "kind": "function",
+     "name": "_cell_rule",
+     "qual": "_cell_rule",
+     "sig": "def _cell_rule(ev, c) -> tuple",
+     "start": 98
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 143,
+     "kind": "function",
+     "name": "decide_x6zc",
+     "qual": "decide_x6zc",
+     "sig": "def decide_x6zc(ev) -> dict",
+     "start": 117
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 147,
+     "kind": "function",
+     "name": "_lkey",
+     "qual": "_lkey",
+     "sig": "def _lkey(outcome, table, case=None) -> str",
+     "start": 144
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 154,
+     "kind": "function",
+     "name": "licence",
+     "qual": "licence",
+     "sig": "def licence(outcome, values, case=None) -> str",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 156,
+     "kind": "function",
+     "name": "not_licensed",
+     "qual": "not_licensed",
+     "sig": "def not_licensed(outcome, case=None) -> str",
+     "start": 155
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 174,
+     "kind": "function",
+     "name": "qualifiers",
+     "qual": "qualifiers",
+     "sig": "def qualifiers(ev, decision, census) -> dict",
+     "start": 157
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 191,
+     "kind": "function",
+     "name": "reuse_verdict",
+     "qual": "reuse_verdict",
+     "sig": "def reuse_verdict(ev, decision) -> dict",
+     "start": 175
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_dry.py": {
+   "constants": [],
+   "doc": "X6ZC stage 0: the synthetic dry run of every CONTRACT fixture through the pipeline\n(X6ZC-DESIGN-v1 §12; API.md §15, §20 C-52). Synthetic data only.",
+   "doc1": "X6ZC stage 0: the synthetic dry run of every CONTRACT fixture through the pipeline",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
      "module": "",
      "names": [
       "io"
@@ -184068,22 +184621,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 13,
-     "module": "",
-     "names": [
-      "json"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "json"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 14,
+     "line": 8,
      "module": "",
      "names": [
       "math"
@@ -184098,67 +184636,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 15,
-     "module": "",
-     "names": [
-      "os"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "os"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 16,
-     "module": "",
-     "names": [
-      "re"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "re"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 17,
-     "module": "",
-     "names": [
-      "subprocess"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "subprocess"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 18,
-     "module": "",
-     "names": [
-      "sys"
-     ],
-     "status": "stdlib",
-     "targets": [],
-     "top": "sys"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "",
-     "lazy": false,
-     "level": 0,
-     "line": 19,
+     "line": 9,
      "module": "",
      "names": [
       "time"
@@ -184173,7 +184651,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 20,
+     "line": 10,
      "module": "fractions",
      "names": [
       "Fraction"
@@ -184188,7 +184666,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 21,
+     "line": 11,
      "module": "pathlib",
      "names": [
       "Path"
@@ -184203,7 +184681,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 13,
      "module": "",
      "names": [
       "x6zc_core"
@@ -184220,7 +184698,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 16,
      "module": "",
      "names": [
       "numpy"
@@ -184235,7 +184713,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 17,
      "module": "",
      "names": [
       "x6s1_eval"
@@ -184252,7 +184730,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 18,
      "module": "",
      "names": [
       "x6s1_pairs"
@@ -184269,7 +184747,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 29,
+     "line": 19,
      "module": "",
      "names": [
       "x6zc_census"
@@ -184283,19 +184761,44 @@
     {
      "candidates": [],
      "form": "from",
-     "how": "package root",
+     "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 31,
-     "module": "topo_pilot.contracts",
+     "line": 22,
+     "module": "x6zc_pipeline",
      "names": [
-      "canonical_json"
+      "predict_variants",
+      "stage_c_statistics",
+      "decide_report"
      ],
      "status": "internal",
      "targets": [
-      "src/topo_pilot/contracts/__init__.py"
+      "tools/x6zc/x6zc_pipeline.py"
      ],
-     "top": "topo_pilot"
+     "top": "x6zc_pipeline"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "x6zc_store",
+     "names": [
+      "_utc",
+      "_sha",
+      "_norm",
+      "_cj",
+      "xwrite",
+      "ledger_cpu",
+      "pause_check"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_store.py"
+     ],
+     "top": "x6zc_store"
     },
     {
      "candidates": [],
@@ -184303,41 +184806,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 113,
-     "module": "",
-     "names": [
-      "x6s1_run"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/x6_stage1/x6s1_run.py"
-     ],
-     "top": "x6s1_run"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "unique basename",
-     "lazy": true,
-     "level": 0,
-     "line": 139,
-     "module": "",
-     "names": [
-      "x6s1_data"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/x6_stage1/x6s1_data.py"
-     ],
-     "top": "x6s1_data"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "unique basename",
-     "lazy": true,
-     "level": 0,
-     "line": 304,
+     "line": 53,
      "module": "",
      "names": [
       "x6_model"
@@ -184354,7 +184823,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 313,
+     "line": 62,
      "module": "",
      "names": [
       "x6_model"
@@ -184371,7 +184840,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 330,
+     "line": 79,
      "module": "",
      "names": [
       "torch"
@@ -184386,7 +184855,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 331,
+     "line": 80,
      "module": "",
      "names": [
       "x6s1_cloud"
@@ -184403,7 +184872,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 332,
+     "line": 81,
      "module": "",
      "names": [
       "x6s1_data"
@@ -184420,7 +184889,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 334,
+     "line": 83,
      "module": "topo_pilot.learner",
      "names": [
       "TransformerLM"
@@ -184437,7 +184906,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 504,
+     "line": 253,
      "module": "",
      "names": [
       "x6s1_stats"
@@ -184447,6 +184916,833 @@
       "tools/x6_stage1/x6s1_stats.py"
      ],
      "top": "x6s1_stats"
+    }
+   ],
+   "symbols": [
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "p = Z + sum_k f_k(prefix) (P_k - Z), Z = q*_ZC, P_k a SyntheticPredictor selected by",
+     "end": 51,
+     "kind": "class",
+     "name": "Planted",
+     "qual": "Planted",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 38,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "Planted.__init__",
+     "sig": "def __init__(self, name, comps, paths)",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "method",
+     "name": "__call__",
+     "qual": "Planted.__call__",
+     "sig": "def __call__(self, tokens, t)",
+     "start": 39
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 51,
+     "kind": "method",
+     "name": "_info",
+     "qual": "Planted._info",
+     "sig": "def _info(self, row, t)",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "function",
+     "name": "sd_parse",
+     "qual": "sd_parse",
+     "sig": "def sd_parse(row) -> dict",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 60,
+     "kind": "function",
+     "name": "_jitter",
+     "qual": "_jitter",
+     "sig": "def _jitter(prefixes, fid) -> dict",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 69,
+     "kind": "function",
+     "name": "_pool",
+     "qual": "_pool",
+     "sig": "def _pool(gen, rows=4096) -> np.ndarray",
+     "start": 61
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 76,
+     "kind": "function",
+     "name": "_ev",
+     "qual": "_ev",
+     "sig": "def _ev(**kw) -> dict",
+     "start": 70
+    },
+    {
+     "decorators": [],
+     "doc": "Stage 0: every CONTRACT dry-run fixture through the pipeline on synthetic data only.",
+     "end": 277,
+     "kind": "function",
+     "name": "dry",
+     "qual": "dry",
+     "sig": "def dry(scratch=zc.DRY_STORE, fixtures=None, faults=None) -> dict",
+     "start": 77
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 278,
+     "kind": "function",
+     "name": "se_qstar",
+     "qual": "se_qstar",
+     "sig": "def se_qstar(tok, t)",
+     "start": 278
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_pipeline.py": {
+   "constants": [
+    "CELL_KEYS",
+    "TOP",
+    "_OUTS"
+   ],
+   "doc": "X6ZC pipeline: the pure Stage-C functions shared by Stage C, the sensitivity lines and the dry\nrun, the licence values, decide_report and the report schema (API.md §11.4, §11.6, §20 C-52).",
+   "doc1": "X6ZC pipeline: the pure Stage-C functions shared by Stage C, the sensitivity lines and the dry",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "math"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "math"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "x6zc_core"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_core.py"
+     ],
+     "top": "x6zc_core"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "x6s1_eval"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_eval.py"
+     ],
+     "top": "x6s1_eval"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 23,
+     "kind": "function",
+     "name": "predict_variants",
+     "qual": "predict_variants",
+     "sig": "def predict_variants(pred, arrays_by_family) -> dict",
+     "start": 20
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "function",
+     "name": "stage_c_statistics",
+     "qual": "stage_c_statistics",
+     "sig": "def stage_c_statistics(outputs, arrays_by_family, qstar_fn, gen, drop_pairs=None, drop_clusters=None) -> dict",
+     "start": 24
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 62,
+     "kind": "function",
+     "name": "_f4",
+     "qual": "_f4",
+     "sig": "def _f4(x) -> str",
+     "start": 62
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 86,
+     "kind": "function",
+     "name": "licence_values",
+     "qual": "licence_values",
+     "sig": "def licence_values(cell, stats, dc, ev) -> dict",
+     "start": 63
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 96,
+     "kind": "function",
+     "name": "decide_report",
+     "qual": "decide_report",
+     "sig": "def decide_report(stats, ev_base, census=None) -> dict",
+     "start": 87
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 107,
+     "kind": "function",
+     "name": "_outcome_ok",
+     "qual": "_outcome_ok",
+     "sig": "def _outcome_ok(o) -> bool",
+     "start": 105
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 122,
+     "kind": "function",
+     "name": "validate_report",
+     "qual": "validate_report",
+     "sig": "def validate_report(report) -> list",
+     "start": 108
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_run.py": {
+   "constants": [],
+   "doc": "X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run and stage\nmodules (API.md §1, §20 C-52), so every API name stays reachable as zr.<name>. Torch-heavy X6S1\nmodules are imported lazily inside the functions that need them.",
+   "doc1": "X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run and stage",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "argparse"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "argparse"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "x6zc_core"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_core.py"
+     ],
+     "top": "x6zc_core"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "x6zc_store",
+     "names": [
+      "_utc",
+      "_sha",
+      "_norm",
+      "_js",
+      "_cj",
+      "xwrite",
+      "_append",
+      "_lines",
+      "log_exposure",
+      "guard",
+      "log_evaluation",
+      "write_stage",
+      "write_ruling",
+      "rulings",
+      "x6s1_inventory",
+      "inventory_equal",
+      "env_check",
+      "closure_diff",
+      "_hit",
+      "master_fresh",
+      "meter_bind_check",
+      "BIND_TEMPLATE",
+      "bind_template",
+      "ledger_cpu",
+      "pause_check",
+      "_head",
+      "_frozen"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_store.py"
+     ],
+     "top": "x6zc_store"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "x6zc_pipeline",
+     "names": [
+      "predict_variants",
+      "stage_c_statistics",
+      "_f4",
+      "licence_values",
+      "decide_report",
+      "TOP",
+      "CELL_KEYS",
+      "_OUTS",
+      "_outcome_ok",
+      "validate_report"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_pipeline.py"
+     ],
+     "top": "x6zc_pipeline"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "x6zc_dry",
+     "names": [
+      "Planted",
+      "sd_parse",
+      "_jitter",
+      "_pool",
+      "_ev",
+      "dry",
+      "se_qstar"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_dry.py"
+     ],
+     "top": "x6zc_dry"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 33,
+     "module": "x6zc_stage_a",
+     "names": [
+      "RUN",
+      "_x6",
+      "_payload",
+      "_npz",
+      "_dirs",
+      "_record",
+      "_begin",
+      "_finish",
+      "_find",
+      "_passes",
+      "a1_check",
+      "_A2_ROW",
+      "a2_check",
+      "stage_a",
+      "_cache",
+      "_spec",
+      "_predictor",
+      "_Memo",
+      "_children",
+      "chunk"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_stage_a.py"
+     ],
+     "top": "x6zc_stage_a"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 38,
+     "module": "x6zc_stage_bc",
+     "names": [
+      "_terms",
+      "_boot",
+      "_arm",
+      "stage_b",
+      "_ev_base",
+      "stage_c"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_stage_bc.py"
+     ],
+     "top": "x6zc_stage_bc"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 82,
+     "kind": "function",
+     "name": "main",
+     "qual": "main",
+     "sig": "def main(argv=None) -> int",
+     "start": 41
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_stage_a.py": {
+   "constants": [
+    "RUN",
+    "_A2_ROW"
+   ],
+   "doc": "X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit,\nthe A2 code audit, stage A (A-audit, A3, K0, the q* cache, K1-K3/F1, A4) and the Stage-B/C\nchunk child (X6ZC-DESIGN-v1 §6; API.md §11.4, §20 C-52). Runs only after FREEZE and AUTH.",
+   "doc1": "X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "io"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "io"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "x6zc_core"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_core.py"
+     ],
+     "top": "x6zc_core"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "x6s1_eval"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_eval.py"
+     ],
+     "top": "x6s1_eval"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "x6s1_pairs"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_pairs.py"
+     ],
+     "top": "x6s1_pairs"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "x6zc_census"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_census.py"
+     ],
+     "top": "x6zc_census"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "x6zc_pipeline",
+     "names": [
+      "predict_variants"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_pipeline.py"
+     ],
+     "top": "x6zc_pipeline"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "x6zc_store",
+     "names": [
+      "_utc",
+      "_sha",
+      "_cj",
+      "xwrite",
+      "_append",
+      "_lines",
+      "log_exposure",
+      "write_stage",
+      "x6s1_inventory",
+      "inventory_equal",
+      "env_check",
+      "closure_diff",
+      "meter_bind_check",
+      "ledger_cpu",
+      "pause_check",
+      "_head",
+      "_frozen"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_store.py"
+     ],
+     "top": "x6zc_store"
     },
     {
      "candidates": [],
@@ -184454,7 +185750,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 554,
+     "line": 56,
      "module": "",
      "names": [
       "x6s1_run"
@@ -184471,7 +185767,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 588,
+     "line": 90,
      "module": "",
      "names": [
       "x6s1_decide"
@@ -184488,7 +185784,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 629,
+     "line": 131,
      "module": "",
      "names": [
       "x6s1_stage_pre"
@@ -184505,7 +185801,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 704,
+     "line": 206,
      "module": "",
      "names": [
       "x6s1_data"
@@ -184522,7 +185818,723 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 705,
+     "line": 207,
+     "module": "",
+     "names": [
+      "x6s1_run"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_run.py"
+     ],
+     "top": "x6s1_run"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 37,
+     "kind": "function",
+     "name": "_x6",
+     "qual": "_x6",
+     "sig": "def _x6(rel) -> Path",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "_payload",
+     "qual": "_payload",
+     "sig": "def _payload(store, stage, rel, sha, purpose) -> bytes",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 46,
+     "kind": "function",
+     "name": "_npz",
+     "qual": "_npz",
+     "sig": "def _npz(data) -> dict",
+     "start": 44
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 51,
+     "kind": "function",
+     "name": "_dirs",
+     "qual": "_dirs",
+     "sig": "def _dirs(store, stage) -> list",
+     "start": 47
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "function",
+     "name": "_record",
+     "qual": "_record",
+     "sig": "def _record(store, stage) -> tuple",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 66,
+     "kind": "function",
+     "name": "_begin",
+     "qual": "_begin",
+     "sig": "def _begin(store, stage) -> dict",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 81,
+     "kind": "function",
+     "name": "_finish",
+     "qual": "_finish",
+     "sig": "def _finish(store, ctx, stop=None, n=None) -> int",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 85,
+     "kind": "function",
+     "name": "_find",
+     "qual": "_find",
+     "sig": "def _find(obj, key) -> list",
+     "start": 82
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 88,
+     "kind": "function",
+     "name": "_passes",
+     "qual": "_passes",
+     "sig": "def _passes(obj, name) -> bool",
+     "start": 86
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 118,
+     "kind": "function",
+     "name": "a1_check",
+     "qual": "a1_check",
+     "sig": "def a1_check(closure) -> dict",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 129,
+     "kind": "function",
+     "name": "a2_check",
+     "qual": "a2_check",
+     "sig": "def a2_check() -> dict",
+     "start": 120
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 188,
+     "kind": "function",
+     "name": "stage_a",
+     "qual": "stage_a",
+     "sig": "def stage_a(store=zc.STORE) -> int",
+     "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 192,
+     "kind": "function",
+     "name": "_cache",
+     "qual": "_cache",
+     "sig": "def _cache(store) -> zc.QStarCache",
+     "start": 189
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 198,
+     "kind": "function",
+     "name": "_spec",
+     "qual": "_spec",
+     "sig": "def _spec(m) -> tuple",
+     "start": 193
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 201,
+     "kind": "function",
+     "name": "_predictor",
+     "qual": "_predictor",
+     "sig": "def _predictor(m) -> se.ModelPredictor",
+     "start": 199
+    },
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "",
+     "end": 204,
+     "kind": "class",
+     "name": "_Memo",
+     "qual": "_Memo",
+     "start": 202
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 203,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "_Memo.__init__",
+     "sig": "def __init__(self, rows)",
+     "start": 203
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 204,
+     "kind": "method",
+     "name": "__call__",
+     "qual": "_Memo.__call__",
+     "sig": "def __call__(self, tokens, t)",
+     "start": 204
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 218,
+     "kind": "function",
+     "name": "_children",
+     "qual": "_children",
+     "sig": "def _children(store, stage, names, out_dir) -> dict",
+     "start": 205
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 241,
+     "kind": "function",
+     "name": "chunk",
+     "qual": "chunk",
+     "sig": "def chunk(stage, model, out, store=zc.STORE) -> int",
+     "start": 219
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_stage_bc.py": {
+   "constants": [],
+   "doc": "X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C\nwith its sensitivity lines and report (X6ZC-DESIGN-v1 §7-§9; API.md §11.4, §11.6, §20 C-52).",
+   "doc1": "X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "x6zc_core"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_core.py"
+     ],
+     "top": "x6zc_core"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "x6s1_eval"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_eval.py"
+     ],
+     "top": "x6s1_eval"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "x6s1_pairs"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_pairs.py"
+     ],
+     "top": "x6s1_pairs"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "x6zc_census"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_census.py"
+     ],
+     "top": "x6zc_census"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "x6zc_pipeline",
+     "names": [
+      "predict_variants",
+      "stage_c_statistics",
+      "decide_report",
+      "validate_report"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_pipeline.py"
+     ],
+     "top": "x6zc_pipeline"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "x6zc_stage_a",
+     "names": [
+      "_payload",
+      "_npz",
+      "_record",
+      "_begin",
+      "_finish",
+      "_cache",
+      "_spec",
+      "_predictor",
+      "_children"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_stage_a.py"
+     ],
+     "top": "x6zc_stage_a"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "x6zc_store",
+     "names": [
+      "_cj",
+      "xwrite",
+      "_lines",
+      "log_exposure",
+      "log_evaluation",
+      "rulings",
+      "ledger_cpu",
+      "_head"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_store.py"
+     ],
+     "top": "x6zc_store"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 52,
+     "module": "",
+     "names": [
+      "x6_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage0/x6_model.py"
+     ],
+     "top": "x6_model"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 40,
+     "kind": "function",
+     "name": "_terms",
+     "qual": "_terms",
+     "sig": "def _terms(pa, pb, A, key, qfn) -> dict",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 49,
+     "kind": "function",
+     "name": "_boot",
+     "qual": "_boot",
+     "sig": "def _boot(terms_by_key, gen, P) -> dict",
+     "start": 41
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 50,
+     "kind": "function",
+     "name": "_arm",
+     "qual": "_arm",
+     "sig": "def _arm(m) -> str",
+     "start": 50
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 142,
+     "kind": "function",
+     "name": "stage_b",
+     "qual": "stage_b",
+     "sig": "def stage_b(store=zc.STORE) -> int",
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 151,
+     "kind": "function",
+     "name": "_ev_base",
+     "qual": "_ev_base",
+     "sig": "def _ev_base(store) -> dict",
+     "start": 143
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 228,
+     "kind": "function",
+     "name": "stage_c",
+     "qual": "stage_c",
+     "sig": "def stage_c(store=zc.STORE) -> int",
+     "start": 152
+    }
+   ],
+   "syspath": []
+  },
+  "tools/x6zc/x6zc_store.py": {
+   "constants": [
+    "BIND_TEMPLATE"
+   ],
+   "doc": "X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings),\nthe stage-1 store no-write inventory, environment, closure and master checks, the meter binding\nand its template, ledger and pause points, the freeze check (API.md §11.1-§11.3, §20 C-52).",
+   "doc1": "X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings),",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "math"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "math"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "subprocess"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "subprocess"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "x6zc_core"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6zc/x6zc_core.py"
+     ],
+     "top": "x6zc_core"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "canonical_json"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 105,
      "module": "",
      "names": [
       "x6s1_run"
@@ -184539,718 +186551,278 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 759,
+     "line": 131,
      "module": "",
      "names": [
-      "x6_model"
+      "x6s1_data"
      ],
      "status": "internal",
      "targets": [
-      "tools/x6_stage0/x6_model.py"
+      "tools/x6_stage1/x6s1_data.py"
      ],
-     "top": "x6_model"
+     "top": "x6s1_data"
     }
    ],
    "symbols": [
     {
      "decorators": [],
      "doc": "",
-     "end": 35,
+     "end": 27,
      "kind": "function",
      "name": "_utc",
      "qual": "_utc",
      "sig": "def _utc() -> str",
-     "start": 35
+     "start": 27
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 36,
+     "end": 28,
      "kind": "function",
      "name": "_sha",
      "qual": "_sha",
      "sig": "def _sha(b: bytes) -> str",
-     "start": 36
+     "start": 28
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 37,
+     "end": 29,
      "kind": "function",
      "name": "_norm",
      "qual": "_norm",
      "sig": "def _norm(p) -> str",
-     "start": 37
+     "start": 29
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "_js",
+     "qual": "_js",
+     "sig": "def _js(v)",
+     "start": 30
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "_cj",
+     "qual": "_cj",
+     "sig": "def _cj(obj) -> bytes",
+     "start": 43
     },
     {
      "decorators": [],
      "doc": "",
      "end": 50,
      "kind": "function",
-     "name": "_js",
-     "qual": "_js",
-     "sig": "def _js(v)",
-     "start": 38
+     "name": "xwrite",
+     "qual": "xwrite",
+     "sig": "def xwrite(path, data: bytes) -> str",
+     "start": 46
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 51,
+     "end": 55,
      "kind": "function",
-     "name": "_cj",
-     "qual": "_cj",
-     "sig": "def _cj(obj) -> bytes",
+     "name": "_append",
+     "qual": "_append",
+     "sig": "def _append(path, obj) -> dict",
      "start": 51
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 58,
-     "kind": "function",
-     "name": "xwrite",
-     "qual": "xwrite",
-     "sig": "def xwrite(path, data: bytes) -> str",
-     "start": 54
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 63,
-     "kind": "function",
-     "name": "_append",
-     "qual": "_append",
-     "sig": "def _append(path, obj) -> dict",
-     "start": 59
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 67,
+     "end": 59,
      "kind": "function",
      "name": "_lines",
      "qual": "_lines",
      "sig": "def _lines(path) -> list",
-     "start": 64
+     "start": 56
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 73,
+     "end": 65,
      "kind": "function",
      "name": "log_exposure",
      "qual": "log_exposure",
      "sig": "def log_exposure(store, stage, artifact, expected_sha256, purpose) -> dict",
-     "start": 68
+     "start": 60
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 76,
+     "end": 68,
      "kind": "function",
      "name": "guard",
      "qual": "guard",
      "sig": "def guard(stage, set_name) -> None",
-     "start": 74
+     "start": 66
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 80,
+     "end": 72,
      "kind": "function",
      "name": "log_evaluation",
      "qual": "log_evaluation",
      "sig": "def log_evaluation(store, model, kind, stage, set_name) -> dict",
-     "start": 77
+     "start": 69
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 86,
+     "end": 78,
      "kind": "function",
      "name": "write_stage",
      "qual": "write_stage",
      "sig": "def write_stage(store, stage, record) -> Path",
-     "start": 81
+     "start": 73
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 93,
+     "end": 85,
      "kind": "function",
      "name": "write_ruling",
      "qual": "write_ruling",
      "sig": "def write_ruling(store, rid, check, stage, cause_identified, affects_beta, cause, defect_md=None, setup=False) -> Path",
-     "start": 87
+     "start": 79
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 96,
+     "end": 88,
      "kind": "function",
      "name": "rulings",
      "qual": "rulings",
      "sig": "def rulings(store) -> list",
-     "start": 94
+     "start": 86
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 109,
+     "end": 101,
      "kind": "function",
      "name": "x6s1_inventory",
      "qual": "x6s1_inventory",
      "sig": "def x6s1_inventory(store=zc.X6S1_STORE) -> dict",
-     "start": 99
+     "start": 91
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 111,
+     "end": 103,
      "kind": "function",
      "name": "inventory_equal",
      "qual": "inventory_equal",
      "sig": "def inventory_equal(a, b) -> bool",
-     "start": 110
+     "start": 102
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 116,
+     "end": 108,
      "kind": "function",
      "name": "env_check",
      "qual": "env_check",
      "sig": "def env_check(env) -> dict",
-     "start": 112
+     "start": 104
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 120,
+     "end": 112,
      "kind": "function",
      "name": "closure_diff",
      "qual": "closure_diff",
      "sig": "def closure_diff(worktree=zc.WORKTREE) -> list",
-     "start": 117
+     "start": 109
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 126,
+     "end": 118,
      "kind": "function",
      "name": "_hit",
      "qual": "_hit",
      "sig": "def _hit(v, master) -> bool",
-     "start": 121
+     "start": 113
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 140,
+     "end": 132,
      "kind": "function",
      "name": "master_fresh",
      "qual": "master_fresh",
      "sig": "def master_fresh(project_root=zc.PROJECT_ROOT, master=zc.X6ZC_MASTER) -> dict",
-     "start": 127
+     "start": 119
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 145,
+     "end": 137,
      "kind": "function",
      "name": "meter_bind_check",
      "qual": "meter_bind_check",
      "sig": "def meter_bind_check(path, expected_sha256, import_dir) -> None",
-     "start": 141
+     "start": 133
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 162,
+     "end": 154,
      "kind": "function",
      "name": "bind_template",
      "qual": "bind_template",
      "sig": "def bind_template(out, session, store=zc.STORE, import_dir=zc.METER_IMPORT_DIR) -> str",
-     "start": 160
+     "start": 152
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 165,
+     "end": 157,
      "kind": "function",
      "name": "ledger_cpu",
      "qual": "ledger_cpu",
      "sig": "def ledger_cpu(store) -> float",
-     "start": 163
+     "start": 155
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 176,
+     "end": 168,
      "kind": "function",
      "name": "pause_check",
      "qual": "pause_check",
      "sig": "def pause_check(boundary, cumulative_s, stage_s, n=None) -> dict",
-     "start": 166
+     "start": 158
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 182,
-     "kind": "function",
-     "name": "predict_variants",
-     "qual": "predict_variants",
-     "sig": "def predict_variants(pred, arrays_by_family) -> dict",
-     "start": 179
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 220,
-     "kind": "function",
-     "name": "stage_c_statistics",
-     "qual": "stage_c_statistics",
-     "sig": "def stage_c_statistics(outputs, arrays_by_family, qstar_fn, gen, drop_pairs=None, drop_clusters=None) -> dict",
-     "start": 183
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 221,
-     "kind": "function",
-     "name": "_f4",
-     "qual": "_f4",
-     "sig": "def _f4(x) -> str",
-     "start": 221
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 245,
-     "kind": "function",
-     "name": "licence_values",
-     "qual": "licence_values",
-     "sig": "def licence_values(cell, stats, dc, ev) -> dict",
-     "start": 222
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 255,
-     "kind": "function",
-     "name": "decide_report",
-     "qual": "decide_report",
-     "sig": "def decide_report(stats, ev_base, census=None) -> dict",
-     "start": 246
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 266,
-     "kind": "function",
-     "name": "_outcome_ok",
-     "qual": "_outcome_ok",
-     "sig": "def _outcome_ok(o) -> bool",
-     "start": 264
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 281,
-     "kind": "function",
-     "name": "validate_report",
-     "qual": "validate_report",
-     "sig": "def validate_report(report) -> list",
-     "start": 267
-    },
-    {
-     "bases": [],
-     "decorators": [],
-     "doc": "p = Z + sum_k f_k(prefix) (P_k - Z), Z = q*_ZC, P_k a SyntheticPredictor selected by",
-     "end": 302,
-     "kind": "class",
-     "name": "Planted",
-     "qual": "Planted",
-     "start": 284
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 289,
-     "kind": "method",
-     "name": "__init__",
-     "qual": "Planted.__init__",
-     "sig": "def __init__(self, name, comps, paths)",
-     "start": 288
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 299,
-     "kind": "method",
-     "name": "__call__",
-     "qual": "Planted.__call__",
-     "sig": "def __call__(self, tokens, t)",
-     "start": 290
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 302,
-     "kind": "method",
-     "name": "_info",
-     "qual": "Planted._info",
-     "sig": "def _info(self, row, t)",
-     "start": 300
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 305,
-     "kind": "function",
-     "name": "sd_parse",
-     "qual": "sd_parse",
-     "sig": "def sd_parse(row) -> dict",
-     "start": 303
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 311,
-     "kind": "function",
-     "name": "_jitter",
-     "qual": "_jitter",
-     "sig": "def _jitter(prefixes, fid) -> dict",
-     "start": 306
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 320,
-     "kind": "function",
-     "name": "_pool",
-     "qual": "_pool",
-     "sig": "def _pool(gen, rows=4096) -> np.ndarray",
-     "start": 312
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 327,
-     "kind": "function",
-     "name": "_ev",
-     "qual": "_ev",
-     "sig": "def _ev(**kw) -> dict",
-     "start": 321
-    },
-    {
-     "decorators": [],
-     "doc": "Stage 0: every CONTRACT dry-run fixture through the pipeline on synthetic data only.",
-     "end": 528,
-     "kind": "function",
-     "name": "dry",
-     "qual": "dry",
-     "sig": "def dry(scratch=zc.DRY_STORE, fixtures=None, faults=None) -> dict",
-     "start": 328
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 529,
-     "kind": "function",
-     "name": "se_qstar",
-     "qual": "se_qstar",
-     "sig": "def se_qstar(tok, t)",
-     "start": 529
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 532,
-     "kind": "function",
-     "name": "_x6",
-     "qual": "_x6",
-     "sig": "def _x6(rel) -> Path",
-     "start": 532
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 538,
-     "kind": "function",
-     "name": "_payload",
-     "qual": "_payload",
-     "sig": "def _payload(store, stage, rel, sha, purpose) -> bytes",
-     "start": 533
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 541,
-     "kind": "function",
-     "name": "_npz",
-     "qual": "_npz",
-     "sig": "def _npz(data) -> dict",
-     "start": 539
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 544,
+     "end": 172,
      "kind": "function",
      "name": "_head",
      "qual": "_head",
      "sig": "def _head() -> str",
-     "start": 542
+     "start": 170
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 549,
-     "kind": "function",
-     "name": "_dirs",
-     "qual": "_dirs",
-     "sig": "def _dirs(store, stage) -> list",
-     "start": 545
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 552,
-     "kind": "function",
-     "name": "_record",
-     "qual": "_record",
-     "sig": "def _record(store, stage) -> tuple",
-     "start": 550
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 564,
-     "kind": "function",
-     "name": "_begin",
-     "qual": "_begin",
-     "sig": "def _begin(store, stage) -> dict",
-     "start": 553
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 579,
-     "kind": "function",
-     "name": "_finish",
-     "qual": "_finish",
-     "sig": "def _finish(store, ctx, stop=None, n=None) -> int",
-     "start": 565
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 583,
-     "kind": "function",
-     "name": "_find",
-     "qual": "_find",
-     "sig": "def _find(obj, key) -> list",
-     "start": 580
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 586,
-     "kind": "function",
-     "name": "_passes",
-     "qual": "_passes",
-     "sig": "def _passes(obj, name) -> bool",
-     "start": 584
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 616,
-     "kind": "function",
-     "name": "a1_check",
-     "qual": "a1_check",
-     "sig": "def a1_check(closure) -> dict",
-     "start": 587
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 627,
-     "kind": "function",
-     "name": "a2_check",
-     "qual": "a2_check",
-     "sig": "def a2_check() -> dict",
-     "start": 618
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 686,
-     "kind": "function",
-     "name": "stage_a",
-     "qual": "stage_a",
-     "sig": "def stage_a(store=zc.STORE) -> int",
-     "start": 628
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 690,
-     "kind": "function",
-     "name": "_cache",
-     "qual": "_cache",
-     "sig": "def _cache(store) -> zc.QStarCache",
-     "start": 687
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 696,
-     "kind": "function",
-     "name": "_spec",
-     "qual": "_spec",
-     "sig": "def _spec(m) -> tuple",
-     "start": 691
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 699,
-     "kind": "function",
-     "name": "_predictor",
-     "qual": "_predictor",
-     "sig": "def _predictor(m) -> se.ModelPredictor",
-     "start": 697
-    },
-    {
-     "bases": [],
-     "decorators": [],
-     "doc": "",
-     "end": 702,
-     "kind": "class",
-     "name": "_Memo",
-     "qual": "_Memo",
-     "start": 700
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 701,
-     "kind": "method",
-     "name": "__init__",
-     "qual": "_Memo.__init__",
-     "sig": "def __init__(self, rows)",
-     "start": 701
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 702,
-     "kind": "method",
-     "name": "__call__",
-     "qual": "_Memo.__call__",
-     "sig": "def __call__(self, tokens, t)",
-     "start": 702
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 716,
-     "kind": "function",
-     "name": "_children",
-     "qual": "_children",
-     "sig": "def _children(store, stage, names, out_dir) -> dict",
-     "start": 703
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 739,
-     "kind": "function",
-     "name": "chunk",
-     "qual": "chunk",
-     "sig": "def chunk(stage, model, out, store=zc.STORE) -> int",
-     "start": 717
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 747,
-     "kind": "function",
-     "name": "_terms",
-     "qual": "_terms",
-     "sig": "def _terms(pa, pb, A, key, qfn) -> dict",
-     "start": 740
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 756,
-     "kind": "function",
-     "name": "_boot",
-     "qual": "_boot",
-     "sig": "def _boot(terms_by_key, gen, P) -> dict",
-     "start": 748
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 757,
-     "kind": "function",
-     "name": "_arm",
-     "qual": "_arm",
-     "sig": "def _arm(m) -> str",
-     "start": 757
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 849,
-     "kind": "function",
-     "name": "stage_b",
-     "qual": "stage_b",
-     "sig": "def stage_b(store=zc.STORE) -> int",
-     "start": 758
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 858,
-     "kind": "function",
-     "name": "_ev_base",
-     "qual": "_ev_base",
-     "sig": "def _ev_base(store) -> dict",
-     "start": 850
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 935,
-     "kind": "function",
-     "name": "stage_c",
-     "qual": "stage_c",
-     "sig": "def stage_c(store=zc.STORE) -> int",
-     "start": 859
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 945,
+     "end": 180,
      "kind": "function",
      "name": "_frozen",
      "qual": "_frozen",
      "sig": "def _frozen(store) -> dict",
-     "start": 938
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 987,
-     "kind": "function",
-     "name": "main",
-     "qual": "main",
-     "sig": "def main(argv=None) -> int",
-     "start": 946
+     "start": 173
     }
    ],
    "syspath": []
@@ -185289,5 +186861,5 @@
    ]
   }
  },
- "sources_digest": "d340ffcfa648ec1048a0546832759a326e114ea056295c8dc905d197ab907a8c"
+ "sources_digest": "577eac3b6752437b27e0b05f8e972c7fdcd8bfa0b41b2dafe9a3cd66b5a30fc1"
 }

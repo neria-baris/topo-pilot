@@ -72,7 +72,7 @@
 - [tools/x6_stage1/x6s1_run.py](x6s1_run.py.md) (line 30, import)
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 21, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 29, import)
-- [tools/x6zc/x6zc_run.py](../x6zc/x6zc_run.py.md) (line 331, import)
+- [tools/x6zc/x6zc_dry.py](../x6zc/x6zc_dry.py.md) (line 80, import)
 
 ## Top-level constants
 

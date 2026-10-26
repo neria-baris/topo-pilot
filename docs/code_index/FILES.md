@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 874 tracked files; 511 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 881 tracked files; 518 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1295,10 +1295,17 @@ The generated index itself (`docs/code_index/`) is not indexed. 874 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 395 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
+| `API.md` | markdown | 409 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
 | `CONTRACT.json` | json | 1910 lines |  |
 | `PROTOCOL_X6ZC_v1.md` | markdown | 930 lines | X6ZC-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training) |
 | `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |
 | [x6zc_census.py](files/tools/x6zc/x6zc_census.py.md) | python | 314 lines | X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5 |
-| [x6zc_core.py](files/tools/x6zc/x6zc_core.py.md) | python | 574 lines | X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0) |
-| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 989 lines | X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store |
+| [x6zc_const.py](files/tools/x6zc/x6zc_const.py.md) | python | 66 lines | X6ZC constants: CONTRACT loading, names and bindings, streams (X6ZC-DESIGN-v1; API.md |
+| [x6zc_core.py](files/tools/x6zc/x6zc_core.py.md) | python | 373 lines | X6ZC core: fresh prefixes and loop-sign variants, exact geometry (K0) and the q*_NA cache, |
+| [x6zc_decide.py](files/tools/x6zc/x6zc_decide.py.md) | python | 191 lines | X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision, |
+| [x6zc_dry.py](files/tools/x6zc/x6zc_dry.py.md) | python | 278 lines | X6ZC stage 0: the synthetic dry run of every CONTRACT fixture through the pipeline |
+| [x6zc_pipeline.py](files/tools/x6zc/x6zc_pipeline.py.md) | python | 122 lines | X6ZC pipeline: the pure Stage-C functions shared by Stage C, the sensitivity lines and the dry |
+| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 84 lines | X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run and stage |
+| [x6zc_stage_a.py](files/tools/x6zc/x6zc_stage_a.py.md) | python | 241 lines | X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit, |
+| [x6zc_stage_bc.py](files/tools/x6zc/x6zc_stage_bc.py.md) | python | 228 lines | X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C |
+| [x6zc_store.py](files/tools/x6zc/x6zc_store.py.md) | python | 180 lines | X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings), |

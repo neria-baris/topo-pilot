@@ -53,7 +53,9 @@
 - [tests/x6zc/test_x6zc_core.py](../../tests/x6zc/test_x6zc_core.py.md) (line 20, import)
 - [tests/x6zc/test_x6zc_decide.py](../../tests/x6zc/test_x6zc_decide.py.md) (line 17, import)
 - [tests/x6zc/test_x6zc_dryrun.py](../../tests/x6zc/test_x6zc_dryrun.py.md) (line 19, import)
-- [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 29, import)
+- [tools/x6zc/x6zc_dry.py](x6zc_dry.py.md) (line 19, import)
+- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 22, import)
+- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 16, import)
 
 ## Top-level constants
 

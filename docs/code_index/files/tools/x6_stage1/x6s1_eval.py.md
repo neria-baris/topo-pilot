@@ -71,8 +71,11 @@
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 23, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 30, import)
 - [tools/x6zc/x6zc_census.py](../x6zc/x6zc_census.py.md) (line 18, import)
-- [tools/x6zc/x6zc_core.py](../x6zc/x6zc_core.py.md) (line 30, import)
-- [tools/x6zc/x6zc_run.py](../x6zc/x6zc_run.py.md) (line 27, import)
+- [tools/x6zc/x6zc_core.py](../x6zc/x6zc_core.py.md) (line 43, import)
+- [tools/x6zc/x6zc_dry.py](../x6zc/x6zc_dry.py.md) (line 17, import)
+- [tools/x6zc/x6zc_pipeline.py](../x6zc/x6zc_pipeline.py.md) (line 14, import)
+- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 20, import)
+- [tools/x6zc/x6zc_stage_bc.py](../x6zc/x6zc_stage_bc.py.md) (line 14, import)
 
 ## Top-level constants
 

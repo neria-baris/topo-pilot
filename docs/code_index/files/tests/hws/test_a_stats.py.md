@@ -2,7 +2,7 @@
 
 - Source: [tests/hws/test_a_stats.py](../../../../../tests/hws/test_a_stats.py)
 - Kind: python
-- Lines: 236
+- Lines: 286
 
 ## Module docstring
 
@@ -55,6 +55,9 @@
 - `CENTRES`
 - `CONTRACT`
 - `HWS_DIR`
+- `KC9_CASES`
+- `KC9_EXACT`
+- `KC9_ULP_UP`
 - `REPO`
 - `TWO_PI`
 - `ZCASES`
@@ -80,4 +83,9 @@
 - **test `test_e5_resultant_boundary`** [L212-220]: `def test_e5_resultant_boundary(monkeypatch, plus, minus, ok)` decorators: @pytest.mark.parametrize('plus, minus, ok', [(33, 15, True), (34, 14, False)])
 - **test `test_e5_phase_conventions`** [L223-229]: `def test_e5_phase_conventions()`
 - **test `test_pinsker_violations_counts_only_below_minus_tol`** [L232-236]: `def test_pinsker_violations_counts_only_below_minus_tol()`
+- **function `_kc9_floor`** [L247-248]: `def _kc9_floor()`
+- **function `_kc9_pass`** [L251-252]: `def _kc9_pass(exact, mean, se)`
+- **test `test_kc9_float_floor_contract_key`** [L255-262]: `def test_kc9_float_floor_contract_key()`
+- **test `test_kc9_float_floor_rule`** [L273-277]: `def test_kc9_float_floor_rule(name, exact, mean, se, ok)` decorators: @pytest.mark.parametrize('name, exact, mean, se, ok', KC9_CASES)
+- **test `test_kc9_row_constant_summary`** [L280-286]: `def test_kc9_row_constant_summary()`
 

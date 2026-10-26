@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `some_prefixes` | function | `some_prefixes` | [tests/x6_stage1/test_a_designed.py:93](../../tests/x6_stage1/test_a_designed.py#L93) |  |
+| `sorted_rows` | function | `sorted_rows` | [tests/topology/test_persistence.py:48](../../tests/topology/test_persistence.py#L48) |  |
 | `source_a` | function | `source_a` | [tools/k4b/k4b_registry.py:144](../../tools/k4b/k4b_registry.py#L144) |  |
 | `source_b` | function | `source_b` | [tools/k4b/k4b_registry.py:150](../../tools/k4b/k4b_registry.py#L150) |  |
 | `source_c` | function | `source_c` | [tools/k4b/k4b_registry.py:154](../../tools/k4b/k4b_registry.py#L154) |  |
@@ -1274,6 +1276,9 @@
 | `test_kappa_is_known_exactly` | test | `test_kappa_is_known_exactly` | [tests/k4b/test_a_lemma_t.py:92](../../tests/k4b/test_a_lemma_t.py#L92) |  |
 | `test_kappa_nu_population_covariance_and_eligible_mean` | test | `test_kappa_nu_population_covariance_and_eligible_mean` | [tests/c1prime/test_a_eligibility_support.py:76](../../tests/c1prime/test_a_eligibility_support.py#L76) |  |
 | `test_kappa_x1_matches_the_written_formula` | test | `test_kappa_x1_matches_the_written_formula` | [tests/c2_readout/test_b_patch.py:294](../../tests/c2_readout/test_b_patch.py#L294) |  |
+| `test_kc9_float_floor_contract_key` | test | `test_kc9_float_floor_contract_key` | [tests/hws/test_a_stats.py:255](../../tests/hws/test_a_stats.py#L255) |  |
+| `test_kc9_float_floor_rule` | test | `test_kc9_float_floor_rule` | [tests/hws/test_a_stats.py:273](../../tests/hws/test_a_stats.py#L273) |  |
+| `test_kc9_row_constant_summary` | test | `test_kc9_row_constant_summary` | [tests/hws/test_a_stats.py:280](../../tests/hws/test_a_stats.py#L280) |  |
 | `test_kernel_matches_fraction_formula` | test | `test_kernel_matches_fraction_formula` | [tests/x2a_stage0/test_x2a_stage0.py:167](../../tests/x2a_stage0/test_x2a_stage0.py#L167) |  |
 | `test_kernel_rejects_abs_a_ge_1` | test | `test_kernel_rejects_abs_a_ge_1` | [tests/process/test_conductance.py:235](../../tests/process/test_conductance.py#L235) |  |
 | `test_kernel_rejects_bad_state_order` | test | `test_kernel_rejects_bad_state_order` | [tests/process/test_conductance.py:216](../../tests/process/test_conductance.py#L216) |  |

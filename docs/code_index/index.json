@@ -6,7 +6,7 @@
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 888,
-  "functions and methods (incl. tests)": 7340,
+  "functions and methods (incl. tests)": 7345,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 766,
   "import statements, internal ambiguous": 2,
@@ -17002,9 +17002,9 @@
   },
   "tests/hws/test_a_stats.py": {
    "kind": "python",
-   "lines": 236,
+   "lines": 286,
    "purpose": "Author A (job 0119): z constants, bounds, ranks, nulls, E5 and the Pinsker count.",
-   "sha256": "ba66195fb564f4bce0c0af04cfa0c9eb06f7f9e591d948f7a59410b55c15b187"
+   "sha256": "15fc6d36e14b9f6f1d646f911c9b71e15c45b01f5f40b3db7cbf135fb7cf966a"
   },
   "tests/hws/test_b_exact.py": {
    "kind": "python",
@@ -17980,15 +17980,15 @@
   },
   "tools/hws/API.md": {
    "kind": "markdown",
-   "lines": 366,
+   "lines": 367,
    "purpose": "tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1)",
-   "sha256": "86f9b1892284c83b21ccc66047196e473b7f76a763f30337b5709d64b03b806a"
+   "sha256": "6ff8af8c2c567ea87c1cb3c35169aa47d8db92b04adbd3307ef2b60c14507574"
   },
   "tools/hws/CONTRACT.json": {
    "kind": "json",
-   "lines": 1366,
+   "lines": 1367,
    "purpose": "",
-   "sha256": "b4a07a978e6b7cd5b4b4670852e868284b4b66ed7f0fdd94e3b1b7683590a5d3"
+   "sha256": "15e2ea5e243c1f48110391910f6545e0ed6f96d714f0cd0d7bf9fdcc42d655dd"
   },
   "tools/hws/PROTOCOL_HWS_v1.md": {
    "kind": "markdown",
@@ -18022,9 +18022,9 @@
   },
   "tools/hws/hws_known.py": {
    "kind": "python",
-   "lines": 286,
+   "lines": 288,
    "purpose": "HWS known-answer checks: stage S0 (KC1-KC14, protocol §3) and the exact and numerical dry-run",
-   "sha256": "a0f7eb50652a6b5ffd9b5554e4abf94b61ab5664b1ba50aa120d910fc690d4c2"
+   "sha256": "b93ee92c6acee92990129ed3e25f841141cdc8fd36b7dbeff4ab7e1d06dfff9d"
   },
   "tools/hws/hws_meter_bind.py": {
    "kind": "python",
@@ -109507,6 +109507,9 @@
     "CENTRES",
     "CONTRACT",
     "HWS_DIR",
+    "KC9_CASES",
+    "KC9_EXACT",
+    "KC9_ULP_UP",
     "REPO",
     "TWO_PI",
     "ZCASES"
@@ -109884,6 +109887,58 @@
      "qual": "test_pinsker_violations_counts_only_below_minus_tol",
      "sig": "def test_pinsker_violations_counts_only_below_minus_tol()",
      "start": 232
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 248,
+     "kind": "function",
+     "name": "_kc9_floor",
+     "qual": "_kc9_floor",
+     "sig": "def _kc9_floor()",
+     "start": 247
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 252,
+     "kind": "function",
+     "name": "_kc9_pass",
+     "qual": "_kc9_pass",
+     "sig": "def _kc9_pass(exact, mean, se)",
+     "start": 251
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 262,
+     "kind": "test",
+     "name": "test_kc9_float_floor_contract_key",
+     "qual": "test_kc9_float_floor_contract_key",
+     "sig": "def test_kc9_float_floor_contract_key()",
+     "start": 255
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('name, exact, mean, se, ok', KC9_CASES)"
+     ],
+     "doc": "",
+     "end": 277,
+     "kind": "test",
+     "name": "test_kc9_float_floor_rule",
+     "qual": "test_kc9_float_floor_rule",
+     "sig": "def test_kc9_float_floor_rule(name, exact, mean, se, ok)",
+     "start": 273
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 286,
+     "kind": "test",
+     "name": "test_kc9_row_constant_summary",
+     "qual": "test_kc9_row_constant_summary",
+     "sig": "def test_kc9_row_constant_summary()",
+     "start": 280
     }
    ],
    "syspath": [
@@ -160933,7 +160988,7 @@
     {
      "decorators": [],
      "doc": "KC1-KC14 on the S0 rows (§3; tolerance rule with the sweep's own per-row SD).",
-     "end": 90,
+     "end": 92,
      "kind": "function",
      "name": "known_cases",
      "qual": "known_cases",
@@ -160943,132 +160998,132 @@
     {
      "decorators": [],
      "doc": "§3: w0 at 32,768 rows, U and N at 4,096; KC1-KC14 gate; freezes g4* and g4A*.",
-     "end": 132,
+     "end": 134,
      "kind": "function",
      "name": "run_s0",
      "qual": "run_s0",
      "sig": "def run_s0(out, auth) -> dict",
-     "start": 93
+     "start": 95
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 141,
      "kind": "function",
      "name": "_dry",
      "qual": "_dry",
      "sig": "def _dry(proc, case, n, Ks=(1, 2, 4), layout=TINY) -> dict",
-     "start": 138
+     "start": 140
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 143,
+     "end": 145,
      "kind": "function",
      "name": "_fixed_tok",
      "qual": "_fixed_tok",
      "sig": "def _fixed_tok(n=64, V=36, a=11, b=5) -> np.ndarray",
-     "start": 142
+     "start": 144
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 166,
+     "end": 168,
      "kind": "function",
      "name": "dr1",
      "qual": "dr1",
      "sig": "def dr1(out)",
-     "start": 146
+     "start": 148
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 176,
+     "end": 178,
      "kind": "function",
      "name": "dr2",
      "qual": "dr2",
      "sig": "def dr2(out)",
-     "start": 169
+     "start": 171
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 185,
+     "end": 187,
      "kind": "function",
      "name": "dr3",
      "qual": "dr3",
      "sig": "def dr3(out)",
-     "start": 179
+     "start": 181
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 206,
+     "end": 208,
      "kind": "function",
      "name": "dr4",
      "qual": "dr4",
      "sig": "def dr4(out)",
-     "start": 188
+     "start": 190
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 220,
+     "end": 222,
      "kind": "function",
      "name": "dr5",
      "qual": "dr5",
      "sig": "def dr5(out)",
-     "start": 209
+     "start": 211
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 231,
+     "end": 233,
      "kind": "function",
      "name": "dr6",
      "qual": "dr6",
      "sig": "def dr6(out)",
-     "start": 223
+     "start": 225
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 246,
+     "end": 248,
      "kind": "function",
      "name": "_artifacts",
      "qual": "_artifacts",
      "sig": "def _artifacts(root) -> dict",
-     "start": 234
+     "start": 236
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 259,
+     "end": 261,
      "kind": "function",
      "name": "_seal",
      "qual": "_seal",
      "sig": "def _seal(root, metas, base) -> None",
-     "start": 249
+     "start": 251
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 275,
+     "end": 277,
      "kind": "function",
      "name": "dr7",
      "qual": "dr7",
      "sig": "def dr7(out)",
-     "start": 262
+     "start": 264
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 286,
+     "end": 288,
      "kind": "function",
      "name": "dr8",
      "qual": "dr8",
      "sig": "def dr8(out)",
-     "start": 278
+     "start": 280
     }
    ],
    "syspath": []
@@ -190735,5 +190790,5 @@
    ]
   }
  },
- "sources_digest": "faee021b808c66be1d2d9e3efe49b69bbd005a85d9e77891649c57e6bc0ee891"
+ "sources_digest": "235427445ee001fbd00984929649806801c4b535b45aa2d6e3d645b3bd5bdcda"
 }

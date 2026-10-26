@@ -912,7 +912,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 888 tracked file
 | [test_a_classify.py](files/tests/hws/test_a_classify.py.md) | python | 387 lines | Author A (job 0119): floors, criteria, eligibility, classes, ranking, annotations, finalists, |
 | [test_a_identities.py](files/tests/hws/test_a_identities.py.md) | python | 400 lines | Author A (job 0119): identities on a tiny rational HMM by exact enumeration (TEST_PLAN §2). |
 | [test_a_outcomes.py](files/tests/hws/test_a_outcomes.py.md) | python | 318 lines | Author A (job 0119): S3 evaluation, selection, every outcome branch and the licences. |
-| [test_a_stats.py](files/tests/hws/test_a_stats.py.md) | python | 236 lines | Author A (job 0119): z constants, bounds, ranks, nulls, E5 and the Pinsker count. |
+| [test_a_stats.py](files/tests/hws/test_a_stats.py.md) | python | 286 lines | Author A (job 0119): z constants, bounds, ranks, nulls, E5 and the Pinsker count. |
 | [test_b_exact.py](files/tests/hws/test_b_exact.py.md) | python | 283 lines | Author B (job 0119), TEST_PLAN §3 `test_b_exact.py`: p_D2a against brute force (tiny world, |
 | [test_b_kc1.py](files/tests/hws/test_b_kc1.py.md) | python | 378 lines | Author B (job 0119), TEST_PLAN §3 `test_b_kc1.py` (KC1, DR7, RC-2) plus the G0 seed-scope |
 | [test_b_oracle.py](files/tests/hws/test_b_oracle.py.md) | python | 304 lines | Author B (job 0119), TEST_PLAN §3 `test_b_oracle.py`: stream scopes (§6.6), one |
@@ -1180,14 +1180,14 @@ The generated index itself (`docs/code_index/`) is not indexed. 888 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 366 lines | tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1) |
-| `CONTRACT.json` | json | 1366 lines |  |
+| `API.md` | markdown | 367 lines | tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1) |
+| `CONTRACT.json` | json | 1367 lines |  |
 | `PROTOCOL_HWS_v1.md` | markdown | 850 lines | HWS-MERGED-v2: an oracle-only world sweep for the history-source question (stage A, no training) |
 | `TEST_PLAN.md` | markdown | 63 lines | HWS test plan v1 (job 0118) |
 | [hws_driver.py](files/tools/hws/hws_driver.py.md) | python | 369 lines | HWS driver: G0, stages S0, S1, X1, S2, S3, the null re-check, pauses, resume and the CLI |
 | [hws_dry.py](files/tools/hws/hws_dry.py.md) | python | 329 lines | HWS synthetic dry run: the decision, records and meter cases DR9-DR13, the R-0118-1 design |
 | [hws_exact.py](files/tools/hws/hws_exact.py.md) | python | 364 lines | HWS exact pieces: symbol law, A_eff, p_D2a, enumeration, spot checks, tier-0 law report and |
-| [hws_known.py](files/tools/hws/hws_known.py.md) | python | 286 lines | HWS known-answer checks: stage S0 (KC1-KC14, protocol §3) and the exact and numerical dry-run |
+| [hws_known.py](files/tools/hws/hws_known.py.md) | python | 288 lines | HWS known-answer checks: stage S0 (KC1-KC14, protocol §3) and the exact and numerical dry-run |
 | [hws_meter_bind.py](files/tools/hws/hws_meter_bind.py.md) | python | 71 lines | HWS meter binding (API.md §7; protocol §9.2, §12.1, RC-9). |
 | [hws_oracle.py](files/tools/hws/hws_oracle.py.md) | python | 169 lines | HWS oracle: streams, sampling, per-row arrays, nulls, P4 (API.md §3). |
 | [hws_records.py](files/tools/hws/hws_records.py.md) | python | 370 lines | HWS records: STAGES events, histories, look records, tree hashes, resume archive, |

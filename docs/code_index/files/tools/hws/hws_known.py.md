@@ -2,7 +2,7 @@
 
 - Source: [tools/hws/hws_known.py](../../../../../tools/hws/hws_known.py)
 - Kind: python
-- Lines: 286
+- Lines: 288
 
 ## Module docstring
 
@@ -73,18 +73,18 @@
 - **function `_tol`** [L37-40]: `def _tol(x, ref, s, n_r) -> dict`
 - **function `_ok`** [L43-44]: `def _ok(flag) -> str`
 - **function `zero_max`** [L47-50]: `def zero_max(rows) -> float`
-- **function `known_cases`** [L53-90]: `def known_cases(w0, ex0, rec0, look0, zero) -> dict` - KC1-KC14 on the S0 rows (§3; tolerance rule with the sweep's own per-row SD).
-- **function `run_s0`** [L93-132]: `def run_s0(out, auth) -> dict` - §3: w0 at 32,768 rows, U and N at 4,096; KC1-KC14 gate; freezes g4* and g4A*.
-- **function `_dry`** [L138-139]: `def _dry(proc, case, n, Ks=(1, 2, 4), layout=TINY) -> dict`
-- **function `_fixed_tok`** [L142-143]: `def _fixed_tok(n=64, V=36, a=11, b=5) -> np.ndarray`
-- **function `dr1`** [L146-166]: `def dr1(out)`
-- **function `dr2`** [L169-176]: `def dr2(out)`
-- **function `dr3`** [L179-185]: `def dr3(out)`
-- **function `dr4`** [L188-206]: `def dr4(out)`
-- **function `dr5`** [L209-220]: `def dr5(out)`
-- **function `dr6`** [L223-231]: `def dr6(out)`
-- **function `_artifacts`** [L234-246]: `def _artifacts(root) -> dict`
-- **function `_seal`** [L249-259]: `def _seal(root, metas, base) -> None`
-- **function `dr7`** [L262-275]: `def dr7(out)`
-- **function `dr8`** [L278-286]: `def dr8(out)`
+- **function `known_cases`** [L53-92]: `def known_cases(w0, ex0, rec0, look0, zero) -> dict` - KC1-KC14 on the S0 rows (§3; tolerance rule with the sweep's own per-row SD).
+- **function `run_s0`** [L95-134]: `def run_s0(out, auth) -> dict` - §3: w0 at 32,768 rows, U and N at 4,096; KC1-KC14 gate; freezes g4* and g4A*.
+- **function `_dry`** [L140-141]: `def _dry(proc, case, n, Ks=(1, 2, 4), layout=TINY) -> dict`
+- **function `_fixed_tok`** [L144-145]: `def _fixed_tok(n=64, V=36, a=11, b=5) -> np.ndarray`
+- **function `dr1`** [L148-168]: `def dr1(out)`
+- **function `dr2`** [L171-178]: `def dr2(out)`
+- **function `dr3`** [L181-187]: `def dr3(out)`
+- **function `dr4`** [L190-208]: `def dr4(out)`
+- **function `dr5`** [L211-222]: `def dr5(out)`
+- **function `dr6`** [L225-233]: `def dr6(out)`
+- **function `_artifacts`** [L236-248]: `def _artifacts(root) -> dict`
+- **function `_seal`** [L251-261]: `def _seal(root, metas, base) -> None`
+- **function `dr7`** [L264-277]: `def dr7(out)`
+- **function `dr8`** [L280-288]: `def dr8(out)`
 

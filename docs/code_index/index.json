@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 286,
-  "code files": 507,
+  "code files": 509,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 868,
-  "functions and methods (incl. tests)": 6923,
+  "files indexed": 872,
+  "functions and methods (incl. tests)": 6929,
   "import cycles (strongly connected components)": 6,
-  "import statements, external": 741,
+  "import statements, external": 747,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2032,
+  "import statements, internal resolved": 2036,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2080,
-  "internal edges (file to file, with kind and line)": 2064,
-  "python files": 506
+  "import statements, standard library": 2084,
+  "internal edges (file to file, with kind and line)": 2068,
+  "python files": 508
  },
  "cycles": [
   [
@@ -11026,6 +11026,30 @@
    18
   ],
   [
+   "tools/theory_exact/check_ceiling.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   11
+  ],
+  [
+   "tools/theory_exact/check_hybrids.py",
+   "src/topo_pilot/process/emission.py",
+   "import",
+   11
+  ],
+  [
+   "tools/theory_exact/check_hybrids.py",
+   "src/topo_pilot/world/__init__.py",
+   "import",
+   12
+  ],
+  [
+   "tools/theory_exact/check_hybrids.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   13
+  ],
+  [
    "tools/theory_exact/kappa_ceiling.py",
    "tools/theory_exact/theory_exact.py",
    "import",
@@ -12771,6 +12795,18 @@
    "purpose": "אפשרויות להוכחה מקיפה יותר",
    "sha256": "323755f7211ec51ac02948cd5b3387ee86c13151211e94b757db2471d57258c9"
   },
+  "docs/proposals/THEORY_OUTPUTS/check_ceiling_n1000.json": {
+   "kind": "json",
+   "lines": 294,
+   "purpose": "",
+   "sha256": "8d2728966ecdb5f544af5a81eb2898531477b0c80bbae2b5819c4d957d3f1703"
+  },
+  "docs/proposals/THEORY_OUTPUTS/check_hybrids_n1000.json": {
+   "kind": "json",
+   "lines": 290,
+   "purpose": "",
+   "sha256": "af569f6d9723b330db4b57fbed72d14fc07e92b43f51667a6c4c5ae1d2f6f775"
+  },
   "docs/proposals/THEORY_OUTPUTS/kappa_ceiling_500_1000_2000.json": {
    "kind": "json",
    "lines": 200,
@@ -12815,9 +12851,9 @@
   },
   "docs/proposals/THEORY_TRACK_HE.md": {
    "kind": "markdown",
-   "lines": 631,
+   "lines": 647,
    "purpose": "מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה",
-   "sha256": "c02b74605aeda65a5aa46a0147b8e11e882dd57784db0f87eeb323777159ca1e"
+   "sha256": "bf70fc2c02c136452aebdad076f84f1f085ba388e6cbf4bc05d93f80b4b163ae"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -17219,9 +17255,21 @@
   },
   "tools/theory_exact/README.md": {
    "kind": "markdown",
-   "lines": 14,
+   "lines": 16,
    "purpose": "theory_exact",
-   "sha256": "0f7a464b2fd02970f36c50ad5fa66727a41faf803a43ddcf59dfe51753e83597"
+   "sha256": "2884a0f45751d7770f05abc6fdc4883f5b83f3513faba869079ef25391d3282b"
+  },
+  "tools/theory_exact/check_ceiling.py": {
+   "kind": "python",
+   "lines": 106,
+   "purpose": "Reviewer check: kappa <= Pi on the SAME cloud for every searched map (with winding), F2 vs F3",
+   "sha256": "8f42caab1037b44584173c33b2fc91afa297d5d88b476bf95452efd6747212fc"
+  },
+  "tools/theory_exact/check_hybrids.py": {
+   "kind": "python",
+   "lines": 69,
+   "purpose": "Reviewer check of section 5.7: for all 8 hybrid cells, map-free ceilings Pi of belief and",
+   "sha256": "5d3cfd3da81bc2ca1196e4bd57c6297765b64cf73414f01af34b197df8a1a788"
   },
   "tools/theory_exact/kappa_ceiling.py": {
    "kind": "python",
@@ -158318,6 +158366,322 @@
    ],
    "syspath": []
   },
+  "tools/theory_exact/check_ceiling.py": {
+   "constants": [],
+   "doc": "Reviewer check: kappa <= Pi on the SAME cloud for every searched map (with winding), F2 vs F3\nceilings, and attainability of Pi by a cocycle-derived (de Silva style) circular coordinate.",
+   "doc1": "Reviewer check: kappa <= Pi on the SAME cloud for every searched map (with winding), F2 vs F3",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 3,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "ripser",
+     "names": [
+      "ripser"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "ripser"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "scipy.sparse",
+     "names": [
+      "coo_matrix"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "scipy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "scipy.sparse.linalg",
+     "names": [
+      "lsqr"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "scipy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "amp",
+      "build",
+      "certificate",
+      "filt",
+      "hellinger_matrix",
+      "sample"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 20,
+     "kind": "function",
+     "name": "bars",
+     "qual": "bars",
+     "sig": "def bars(D, p)",
+     "start": 14
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "function",
+     "name": "cocycle_map",
+     "qual": "cocycle_map",
+     "sig": "def cocycle_map(D, p=47, fracs=(0.3, 0.6, 0.9, 0.99))",
+     "start": 23
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 95,
+     "kind": "function",
+     "name": "run",
+     "qual": "run",
+     "sig": "def run(family, n, seed)",
+     "start": 57
+    }
+   ],
+   "syspath": []
+  },
+  "tools/theory_exact/check_hybrids.py": {
+   "constants": [],
+   "doc": "Reviewer check of section 5.7: for all 8 hybrid cells, map-free ceilings Pi of belief and\nprediction clouds, belief kappa (world x-phase), prediction kappa with the symbol-column map, and a\nprediction map defined through the WORLD state (linear readout of the next-state x-phase from\nsqrt(q), fitted on an independent training cloud).",
+   "doc1": "Reviewer check of section 5.7: for all 8 hybrid cells, map-free ceilings Pi of belief and",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "ripser",
+     "names": [
+      "ripser"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "ripser"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "topo_pilot.process.emission",
+     "names": [
+      "axis_state_perm",
+      "draw_axis_permutation"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/process/emission.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "topo_pilot.world",
+     "names": [
+      "WorldConfig",
+      "build_world"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/world/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "amp",
+      "build",
+      "certificate",
+      "filt",
+      "hellinger_matrix",
+      "sample"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 18,
+     "kind": "function",
+     "name": "kap",
+     "qual": "kap",
+     "sig": "def kap(D, th)",
+     "start": 16
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 24,
+     "kind": "function",
+     "name": "Pi",
+     "qual": "Pi",
+     "sig": "def Pi(D)",
+     "start": 21
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 53,
+     "kind": "function",
+     "name": "cell",
+     "qual": "cell",
+     "sig": "def cell(world, chart, permuted, n, rng)",
+     "start": 27
+    }
+   ],
+   "syspath": []
+  },
   "tools/theory_exact/kappa_ceiling.py": {
    "constants": [
     "D"
@@ -180617,5 +180981,5 @@
    ]
   }
  },
- "sources_digest": "2a5c1ddc708a22b5f1fcc48edfca85c3e9b11558c2b3a858a4d069be175b3b75"
+ "sources_digest": "018153060ced59975ca0b778181ff9b0e53e39e64dd7814f7e98b12caa0203cb"
 }

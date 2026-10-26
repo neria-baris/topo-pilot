@@ -1828,6 +1828,7 @@
 | `barcodes` | function | `barcodes` | [tools/theory_exact/theory_exact3.py:111](../../tools/theory_exact/theory_exact3.py#L111) |  |
 | `bare_steps` | method | `Resolver.bare_steps` | [tools/code_index/resolve.py:67](../../tools/code_index/resolve.py#L67) |  |
 | `bars` | function | `bars` | [tests/topology/test_persistence.py:43](../../tests/topology/test_persistence.py#L43) |  |
+| `bars` | function | `bars` | [tools/theory_exact/check_ceiling.py:14](../../tools/theory_exact/check_ceiling.py#L14) |  |
 | `base` | function | `base` | [tests/d2a/test_b_rules_decide.py:30](../../tests/d2a/test_b_rules_decide.py#L30) | Every arm learned, nothing carried, nothing low: falls to rule 10 (INCONCLUSIVE). |
 | `base` | function | `base` | [tests/d2a/test_b_rules_qualifiers.py:30](../../tests/d2a/test_b_rules_qualifiers.py#L30) |  |
 | `base` | function | `base` | [tests/x6_stage1/test_b_ingest_bundle.py:167](../../tests/x6_stage1/test_b_ingest_bundle.py#L167) |  |
@@ -2014,6 +2015,7 @@
 | `CausalSelfAttention` | class | `CausalSelfAttention` | [src/topo_pilot/learner/model.py:35](../../src/topo_pilot/learner/model.py#L35) | Multi-head causal self-attention: softmax(Q K^T / sqrt(d_head) + causal mask) V. |
 | `ceiling` | function | `ceiling` | [tools/theory_exact/kappa_ceiling.py:17](../../tools/theory_exact/kappa_ceiling.py#L17) |  |
 | `cell` | function | `cell` | [tools/code_index/render_pages.py:13](../../tools/code_index/render_pages.py#L13) |  |
+| `cell` | function | `cell` | [tools/theory_exact/check_hybrids.py:27](../../tools/theory_exact/check_hybrids.py#L27) |  |
 | `centered` | function | `centered` | [tools/k4b/k4b_stats.py:110](../../tools/k4b/k4b_stats.py#L110) |  |
 | `centered_draws` | function | `centered_draws` | [tools/x4_circle_history/precision.py:39](../../tools/x4_circle_history/precision.py#L39) |  |
 | `centers` | method | `CenterStrategy.centers` | [src/topo_pilot/process/centers.py:42](../../src/topo_pilot/process/centers.py#L42) | Return the ``[V, D]`` center coordinates. |
@@ -2162,6 +2164,7 @@
 | `cm_tokens` | function | `cm_tokens` | [tests/d2a/test_a_targets.py:82](../../tests/d2a/test_a_targets.py#L82) |  |
 | `coboundary` | function | `coboundary` | [tests/circle_history/test_cochain.py:62](../../tests/circle_history/test_cochain.py#L62) |  |
 | `coboundary` | function | `coboundary` | [tests/circle_history/test_cochain_lift.py:86](../../tests/circle_history/test_cochain_lift.py#L86) |  |
+| `cocycle_map` | function | `cocycle_map` | [tools/theory_exact/check_ceiling.py:23](../../tools/theory_exact/check_ceiling.py#L23) |  |
 | `cocycle_to_edges` | function | `cocycle_to_edges` | [tools/x4_circle_history/chart.py:87](../../tools/x4_circle_history/chart.py#L87) | Centred, oriented integer representative of a ripser F_p cocycle on ``edges``. |
 | `code` | function | `code` | [tools/code_index/render_pages.py:8](../../tools/code_index/render_pages.py#L8) |  |
 | `code_name` | function | `code_name` | [tests/oracle/test_oracle.py:36](../../tests/oracle/test_oracle.py#L36) |  |
@@ -3071,6 +3074,7 @@
 | `k8_reproduction` | function | `k8_reproduction` | [tools/x4_oracle_profile/validation.py:37](../../tools/x4_oracle_profile/validation.py#L37) | Recorded calibration B8/V8 from actual T/E/pi/tokens (never cached m8/r8). |
 | `k_blocks` | function | `k_blocks` | [tools/c1prime/c1_endpoint.py:118](../../tools/c1prime/c1_endpoint.py#L118) |  |
 | `k_y` | function | `k_y` | [tools/c2_readout/c2_data.py:74](../../tools/c2_readout/c2_data.py#L74) | k_Y(H) = +1 iff ybar(b31(H)) < 11/2, else -1 (toward the interior; fy_alt.py). |
+| `kap` | function | `kap` | [tools/theory_exact/check_hybrids.py:16](../../tools/theory_exact/check_hybrids.py#L16) |  |
 | `kappa` | function | `kappa` | [tools/theory_exact/theory_exact3.py:25](../../tools/theory_exact/theory_exact3.py#L25) |  |
 | `kappa_m` | function | `kappa_m` | [tools/c2_readout/c2_oracle.py:166](../../tools/c2_readout/c2_oracle.py#L166) |  |
 | `kappa_nu` | function | `kappa_nu` | [tools/c1prime/c1_oracle.py:197](../../tools/c1prime/c1_oracle.py#L197) |  |
@@ -3664,6 +3668,7 @@
 | `PHConfig` | class | `PHConfig` | [src/topo_pilot/topology/persistence.py:25](../../src/topo_pilot/topology/persistence.py#L25) | Persistent-homology configuration. |
 | `phi_star` | function | `phi_star` | [tools/c2_readout/c2_oracle.py:194](../../tools/c2_readout/c2_oracle.py#L194) | Oracle x-phase arg m32 and m_valid = \|m32\| > 1e-12; the phase is 0.0 on invalid rows. |
 | `physical_cores` | function | `physical_cores` | [src/topo_pilot/experiment/s3.py:50](../../src/topo_pilot/experiment/s3.py#L50) | Physical core count (logical / 2 when hyper-threaded is assumed), at least 1. |
+| `Pi` | function | `Pi` | [tools/theory_exact/check_hybrids.py:21](../../tools/theory_exact/check_hybrids.py#L21) |  |
 | `pi_max` | method | `Summaries.pi_max` | [src/topo_pilot/topology/summaries.py:35](../../src/topo_pilot/topology/summaries.py#L35) | Max death/birth over finite bars with birth > 0 (bars born at 0 ignored); 0.0 if none. |
 | `pick` | function | `pick` | [tests/c1prime/test_a_chart.py:128](../../tests/c1prime/test_a_chart.py#L128) | API.md names the giant-record fields but not their keys; accept protocol or info names. |
 | `pick` | function | `pick` | [tests/c1prime/test_a_chart_lcc512.py:71](../../tests/c1prime/test_a_chart_lcc512.py#L71) |  |
@@ -4115,6 +4120,7 @@
 | `run` | function | `run` | [tools/c1prime/c1_driver_late.py:255](../../tools/c1prime/c1_driver_late.py#L255) |  |
 | `run` | function | `run` | [tools/chart_diag/chart_diag.py:162](../../tools/chart_diag/chart_diag.py#L162) |  |
 | `run` | function | `run` | [tools/d1_seam/d1_seam_checks.py:277](../../tools/d1_seam/d1_seam_checks.py#L277) | Mandatory preflight, S0, then G0..G6 in order; stop at the first FAIL or INVALID. |
+| `run` | function | `run` | [tools/theory_exact/check_ceiling.py:57](../../tools/theory_exact/check_ceiling.py#L57) |  |
 | `run` | function | `run` | [tools/theory_exact/theory_exact.py:134](../../tools/theory_exact/theory_exact.py#L134) |  |
 | `run` | function | `run` | [tools/x2a_stage0/x2a_ph.py:315](../../tools/x2a_stage0/x2a_ph.py#L315) |  |
 | `run` | function | `run` | [tools/x4_circle_history/precision_stage.py:91](../../tools/x4_circle_history/precision_stage.py#L91) |  |
@@ -4551,8 +4557,3 @@
 | `T` | function | `T` | [reports/he_summary/charts.py:32](../../reports/he_summary/charts.py#L32) | Text with a *visual* anchor: 'left' = text starts at x and runs right, |
 | `t_base_exact` | function | `t_base_exact` | [tools/x6_stage0/x6_model.py:144](../../tools/x6_stage0/x6_model.py#L144) |  |
 | `t_pre` | function | `t_pre` | [tools/c2_readout/c2_stage_post.py:63](../../tools/c2_readout/c2_stage_post.py#L63) | §7 row 23 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE. |
-| `t_pre` | function | `t_pre` | [tools/k4b/k4b_fresh.py:114](../../tools/k4b/k4b_fresh.py#L114) | Oracle + references on every test row; determinism; extension; certificate; fresh B4. |
-| `t_pre_model` | function | `t_pre_model` | [tools/c2_readout/c2_stage_post.py:100](../../tools/c2_readout/c2_stage_post.py#L100) | §7 row 24: Sup(TEST), L1 and R1 with the frozen FIT decoders, N2 (M); TEST tallies. |
-| `table` | function | `table` | [tools/c2_readout/c2_stage_base.py:81](../../tools/c2_readout/c2_stage_base.py#L81) |  |
-| `table_digests` | function | `table_digests` | [tools/c2_readout/c2_data.py:137](../../tools/c2_readout/c2_data.py#L137) |  |
-| `table_entry` | function | `table_entry` | [tools/x6_stage1/x6s1_stats.py:101](../../tools/x6_stage1/x6s1_stats.py#L101) |  |

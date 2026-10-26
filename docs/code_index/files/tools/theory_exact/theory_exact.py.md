@@ -45,6 +45,8 @@
 
 ## Imported by
 
+- [tools/theory_exact/check_ceiling.py](check_ceiling.py.md) (line 11, import)
+- [tools/theory_exact/check_hybrids.py](check_hybrids.py.md) (line 13, import)
 - [tools/theory_exact/kappa_ceiling.py](kappa_ceiling.py.md) (line 14, import)
 - [tools/theory_exact/null_kappa.py](null_kappa.py.md) (line 2, import)
 - [tools/theory_exact/theory_exact2.py](theory_exact2.py.md) (line 13, import)

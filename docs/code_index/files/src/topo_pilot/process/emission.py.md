@@ -52,6 +52,7 @@
 - [tests/process/test_controls.py](../../../tests/process/test_controls.py.md) (line 33, import)
 - [tests/x2a_stage0/test_x2a_stage0.py](../../../tests/x2a_stage0/test_x2a_stage0.py.md) (line 21, import)
 - [tests/x6_stage0/test_x6_stage0.py](../../../tests/x6_stage0/test_x6_stage0.py.md) (line 376, import)
+- [tools/theory_exact/check_hybrids.py](../../../tools/theory_exact/check_hybrids.py.md) (line 11, import)
 - [tools/theory_exact/theory_exact3.py](../../../tools/theory_exact/theory_exact3.py.md) (line 20, import)
 - [tools/x2a_stage0/x2a_model.py](../../../tools/x2a_stage0/x2a_model.py.md) (line 26, import)
 

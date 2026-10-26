@@ -654,7 +654,9 @@
     "layout": "hist/<stage>/<key>.npz, uint8 [n, 32] canonical tokens (w1..w32), superseded copies included (HWS-DESIGN-v1 section 11 row 10 and 12.3; RC-8)",
     "frozen_marker": "FREEZE.json",
     "present_on_2026-10-26": false,
-    "reader": "every *.npz/*.npy outside registry/, sealed/, payload.npz, state.pt: x6s1_registry._history_bearing, then the c2_registry._x6_member rule; every hist/** file must be read; unreadable -> INCOMPLETE"
+    "reader": "every *.npz/*.npy outside registry/, sealed/, payload.npz, state.pt: x6s1_registry._history_bearing, then the c2_registry._x6_member rule; every hist/** file must be read; unreadable -> INCOMPLETE",
+    "dry_hist": "hws-dry/hist",
+    "dry_hist_rule": "R-0116-3 (jobs/0116/review.md): reader hws also reads <scratch_root>/hws-dry/hist/** when present (same uint8 [n, 32] token format and digest rule; unreadable -> REGISTRY_INCOMPLETE); resolved at call time from nd_config.SCRATCH_ROOT"
    },
    "x6zc": {
     "store": "X:/Downloads/projects/topo-pilot/x6zc-store",
@@ -662,10 +664,10 @@
      "file": "agent-handoff/planning/responses/X6ZC-DESIGN-v1.md",
      "sha256": "2a711d16d0c3b5e7cdfc0c96e7342a86c0e500b3f31592868ba5b661ef324193"
     },
-    "layout": "OPEN: the X6ZC history format is not fixed by its round (its store layout, X6ZC-DESIGN-v1 section 14, lists no history file); bind from X6ZC-FROZEN-v1 or x6zc-store/FREEZE.json if that round fixes one",
+    "layout": {"non_history": ["stages/A/qstar_NA.npz", "stages/B/<model>/pairs.npz", "stages/C/<model>/variants.npz"], "model_component": "one path component", "rule": "R-0116-4 (jobs/0116/review.md): X6ZC samples no histories (its prefixes come from the X6 stage-1 pool, covered by reader x6); the listed model-output and pair arrays are NON_HISTORY (path and size recorded, never opened); FREEZE.json is required if the store exists; any other .npz/.npy file -> REGISTRY_INCOMPLETE"},
     "frozen_marker": "FREEZE.json",
     "present_on_2026-10-26": false,
-    "reader": "the generic rule of the hws reader without the hist/** requirement (API.md ND-C13)"
+    "reader": "nd_registry.source_parallel(store, 'x6zc') with the layout rule above (API.md section 20, R-0116-4; replaces ND-C13)"
    }
   },
   "never_read": ["payload.npz", "state.pt", "*.pt", "any path with a sealed component"],
@@ -885,7 +887,7 @@
   "needle": "c2nd-v1",
   "c2_needle": "c2_config.SCOPE (never written as a literal in this file)",
   "parallel_needles_hex": ["6877732d7631"],
-  "x6zc_needle": "OPEN: the X6ZC scope string, if that round names one (X6ZC-FROZEN-v1); add it hex-encoded before the C2ND freeze",
+  "x6zc_needle": null,
   "hygiene": "no C2ND file in the C2 scanned set (CONTRACT*.json, FREEZE*.json, STAGES*.jsonl, GATES*.jsonl anywhere; .json/.jsonl/.md/.txt/.py inside *-store*) contains C2's scope or a parallel round's scope; the protocol copy lives in tools/c2_nd only"
  },
  "modules": ["nd_config.py", "nd_data.py", "nd_registry.py", "nd_decoy.py", "nd_attrib.py", "nd_decide.py", "nd_driver.py", "nd_stage_pre.py", "nd_stage_val.py", "nd_stage_post.py", "nd_dry.py"],

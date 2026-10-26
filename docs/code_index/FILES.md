@@ -97,7 +97,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 862 tracked file
 | `RESEARCH_ROADMAP.md` | markdown | 186 lines | Topo Pilot: priorities and roadmap after E4 |
 | `REVISION_AFTER_E4.md` | markdown | 75 lines | Revision after E4: evidence, changes and decision log |
 | `STRONGER_EVIDENCE_OPTIONS_HE.md` | markdown | 105 lines | אפשרויות להוכחה מקיפה יותר |
-| `THEORY_TRACK_HE.md` | markdown | 493 lines | מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה |
+| `THEORY_TRACK_HE.md` | markdown | 543 lines | מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה |
 | `X4B2_COVERAGE_PROTOCOL.md` | markdown | 113 lines | X4 Phase B2 — frozen coverage-extension protocol (x4b2-v1) |
 | `X4B2_COVERAGE_REPORT.md` | markdown | 118 lines | X4 Phase B2: coverage-extension report |
 | `X4F_COORDINATE_CAUSAL_PROTOCOL_DRAFT.md` | markdown | 175 lines | X4-F: coordinate-associated causal use — protocol draft (x4f-draft-1) |

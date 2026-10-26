@@ -12767,9 +12767,9 @@
   },
   "docs/proposals/THEORY_TRACK_HE.md": {
    "kind": "markdown",
-   "lines": 493,
+   "lines": 543,
    "purpose": "מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה",
-   "sha256": "dbc251517d4a094fde5d55005c3a3dc94c6fbafc5673544de041c9dfa97d7e0e"
+   "sha256": "443172acaad49c496a7e2e11a53ab0ca40a4eb03a8d3e9519880257785e12f01"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -17191,13 +17191,13 @@
    "kind": "python",
    "lines": 174,
    "purpose": "Exact process-only computations for THEORY_TRACK_HE.md (owner go-ahead 2026-10-26).",
-   "sha256": "8bdbcecb995192d37f24aa65dde9b846c4d616561b3f7884dde6cd2fe6d8f288"
+   "sha256": "333b541110b3c5117c874866b41e7d647248ced40db1cb0bee6a44365e99ed7e"
   },
   "tools/theory_exact/theory_exact2.py": {
    "kind": "python",
    "lines": 136,
    "purpose": "Exact process-only computations, part 2.",
-   "sha256": "6fb2b3d865f733dea31f84f5b2a3b9f2c7a7433fd900cb4ae906fab0ce8909ac"
+   "sha256": "4b06276cb927843cf7285c519dcebc81cb1c8307f475cdafe52b2de35728b696"
   },
   "tools/x2a_stage0/API.md": {
    "kind": "markdown",
@@ -180253,5 +180253,5 @@
    ]
   }
  },
- "sources_digest": "db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906"
+ "sources_digest": "f11450450bd844c810211b9b007751e4176603b2d24eaa098689becd5e81f083"
 }

@@ -13,7 +13,7 @@ Excluded by project rule (public research summary, for external readers only): `
 
 Input: `git ls-files` minus the excluded prefixes and minus `docs/code_index/` itself. No code is imported or executed (Python is parsed with `ast`). Output is sorted, has no timestamps, uses `/` separators, LF newlines and UTF-8.
 
-Sources digest: `db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906`
+Sources digest: `f11450450bd844c810211b9b007751e4176603b2d24eaa098689becd5e81f083`
 
 ## Layout
 

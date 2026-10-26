@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 6,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 811,
+  "files indexed": 819,
   "functions and methods (incl. tests)": 6227,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 691,
@@ -11217,6 +11217,12 @@
    "purpose": "",
    "sha256": "68adacbc5376fa867e0d6829996daeb6138c7bebe85f11a8f2623a8c1881102a"
   },
+  "CLAUDE.md": {
+   "kind": "markdown",
+   "lines": 49,
+   "purpose": "Claude project instructions",
+   "sha256": "e2692bb729002406472a30a03f91563d4f9ce4d6fbecdcfb064e6740279bbf2a"
+  },
   "LICENSE": {
    "kind": "other",
    "lines": 21,
@@ -11409,6 +11415,18 @@
    "purpose": "",
    "sha256": "02917a0b30fba0956213b3221c74d5d86ea7be238940ca5a5bd90c226b6b22ee"
   },
+  "docs/proposals/C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md": {
+   "kind": "markdown",
+   "lines": 228,
+   "purpose": "C2 — ניסוי חלופי לשימוש מקומי במידע המעגלי",
+   "sha256": "e9465164fb0ee96e53eb2fdb6536ec8c5e24b06ed0749f6146971125cd3e01bd"
+  },
+  "docs/proposals/C2_INDEPENDENT_PLANNING_REQUEST_HE.md": {
+   "kind": "markdown",
+   "lines": 31,
+   "purpose": "בקשת תכנון וביקורת עצמאית: חלופה ל־C1′",
+   "sha256": "8c9f62290cae0ec954520b575f5019816a16fbdad74c850c59747aef56ca5ec2"
+  },
   "docs/proposals/CAUSAL_CIRCLE_STATE_FORCING_PROTOCOL_DRAFT.md": {
    "kind": "markdown",
    "lines": 97,
@@ -11486,6 +11504,12 @@
    "lines": 201,
    "purpose": "תוכנית ניסויים לסגירת הפערים ב-Topo-Pilot",
    "sha256": "8b5c7049817696bb92221471cc26f0be437b6787caddb439a776d9f5a957f091"
+  },
+  "docs/proposals/NEXT_ROUND_SHARPER_ANSWERS_HE.md": {
+   "kind": "markdown",
+   "lines": 123,
+   "purpose": "הסבב הבא: איך לקבל תשובות חדות יותר",
+   "sha256": "3301876cae3f07293a658368c17c566f113cee5fcf71d22e3dd7ce85ca53486e"
   },
   "docs/proposals/RESEARCH_HARNESS_ARCHITECTURE.md": {
    "kind": "markdown",
@@ -12248,6 +12272,30 @@
    "lines": 2011,
    "purpose": "C1-MERGED-v4: crossed counterfactual state forcing at the final readout of the E4 cylinder-O models",
    "sha256": "c2d64a79da076abf5651229a60e33a934102b4161c79c2f4a16195ba3c27ea89"
+  },
+  "docs/proposals/planning/responses/C2-FROZEN-v1.md": {
+   "kind": "markdown",
+   "lines": 1311,
+   "purpose": "C2-MERGED-v3: does the learned circle matter for prediction? Exact readout attribution of natural counterfactual responses to a registered circle-code interchange (C2-R), with an upstream interchange family (C2-M), an oracle-phase secondary (C2-S*) and a report-only rotation arm",
+   "sha256": "4d97d8e258cfab906ccfe1d99564d4dd74202edd96dd63eb836abd64c277a3d8"
+  },
+  "docs/proposals/planning/responses/C2-FROZEN-v1.sha256": {
+   "kind": "sha256",
+   "lines": 1,
+   "purpose": "",
+   "sha256": "0437e7eeb0782e53523a58eb373a7b81721416c64dd849624f773b1060c7cbf0"
+  },
+  "docs/proposals/planning/responses/C2-FROZEN-v2.md": {
+   "kind": "markdown",
+   "lines": 1398,
+   "purpose": "C2-FROZEN-v2 (candidate; frozen v1 = C2-MERGED-v3): does the learned circle matter for prediction? Exact readout attribution of natural counterfactual responses to a registered circle-code interchange (C2-R), with an upstream interchange family (C2-M), an oracle-phase secondary (C2-S*) and a report-only rotation arm",
+   "sha256": "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"
+  },
+  "docs/proposals/planning/responses/C2-FROZEN-v2.sha256": {
+   "kind": "sha256",
+   "lines": 1,
+   "purpose": "",
+   "sha256": "3a51bdee8899409fcd3bc37c74832d40f657b5cef458882d3f304f40e418c059"
   },
   "docs/proposals/planning/responses/CHART-DIAG-FROZEN-v1.md": {
    "kind": "markdown",
@@ -164953,5 +165001,5 @@
    ]
   }
  },
- "sources_digest": "444eba282503b8410471bf86e1a61d7ee702cfd724564c01304aa0b285866563"
+ "sources_digest": "75a4a1860a23aa9914678a926c37e81b61b190a1c27bf825754a33056603f93d"
 }

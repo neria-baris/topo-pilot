@@ -2,13 +2,14 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 811 tracked files; 475 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 819 tracked files; 475 code files (linked to their pages).
 
 ## (repo root)
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | `.gitignore` | other | 16 lines |  |
+| `CLAUDE.md` | markdown | 49 lines | Claude project instructions |
 | `LICENSE` | other | 21 lines |  |
 | `LICENSE-docs` | other | 16 lines |  |
 | `Makefile` | makefile | 25 lines |  |
@@ -79,6 +80,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 811 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
+| `C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md` | markdown | 228 lines | C2 — ניסוי חלופי לשימוש מקומי במידע המעגלי |
+| `C2_INDEPENDENT_PLANNING_REQUEST_HE.md` | markdown | 31 lines | בקשת תכנון וביקורת עצמאית: חלופה ל־C1′ |
 | `CAUSAL_CIRCLE_STATE_FORCING_PROTOCOL_DRAFT.md` | markdown | 97 lines | Causal circle state forcing — protocol draft C1 |
 | `CIRCULAR_BASELINE_AUDIT_PROTOCOL.md` | markdown | 127 lines | E4 circular-baseline audit — frozen protocol (circ-audit-v1) |
 | `CIRCULAR_BASELINE_AUDIT_REPORT.md` | markdown | 119 lines | E4 circular-baseline audit — report |
@@ -87,6 +90,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 811 tracked file
 | `D2_LEARNABILITY_DIAGNOSTIC_V1.md` | markdown | 97 lines | D2 development diagnostic v1 — proposed successor, not a rerun of D-2a |
 | `GAP_CLOSING_EXPERIMENTS_EN.md` | markdown | 203 lines | Experiment plan for closing the gaps in Topo-Pilot |
 | `GAP_CLOSING_EXPERIMENTS_HE.md` | markdown | 201 lines | תוכנית ניסויים לסגירת הפערים ב-Topo-Pilot |
+| `NEXT_ROUND_SHARPER_ANSWERS_HE.md` | markdown | 123 lines | הסבב הבא: איך לקבל תשובות חדות יותר |
 | `RESEARCH_HARNESS_ARCHITECTURE.md` | markdown | 168 lines | Minimal reusable mathematical research harness |
 | `RESEARCH_LANDSCAPE.md` | markdown | 170 lines | Topo Pilot: research landscape |
 | `RESEARCH_ROADMAP.md` | markdown | 186 lines | Topo Pilot: priorities and roadmap after E4 |
@@ -274,6 +278,10 @@ The generated index itself (`docs/code_index/`) is not indexed. 811 tracked file
 | `C1-MERGED-v3.md` | markdown | 1692 lines | C1-MERGED-v3: crossed counterfactual state forcing at the final readout of the E4 cylinder-O models |
 | `C1-MERGED-v4.changes.md` | markdown | 44 lines | C1-MERGED-v4: review-fix change record |
 | `C1-MERGED-v4.md` | markdown | 2011 lines | C1-MERGED-v4: crossed counterfactual state forcing at the final readout of the E4 cylinder-O models |
+| `C2-FROZEN-v1.md` | markdown | 1311 lines | C2-MERGED-v3: does the learned circle matter for prediction? Exact readout attribution of natural counterfactual responses to a registered circle-code interchange (C2-R), with an upstream interchange family (C2-M), an oracle-phase secondary (C2-S*) and a report-only rotation arm |
+| `C2-FROZEN-v1.sha256` | sha256 | 1 lines |  |
+| `C2-FROZEN-v2.md` | markdown | 1398 lines | C2-FROZEN-v2 (candidate; frozen v1 = C2-MERGED-v3): does the learned circle matter for prediction? Exact readout attribution of natural counterfactual responses to a registered circle-code interchange (C2-R), with an upstream interchange family (C2-M), an oracle-phase secondary (C2-S*) and a report-only rotation arm |
+| `C2-FROZEN-v2.sha256` | sha256 | 1 lines |  |
 | `CHART-DIAG-FROZEN-v1.md` | markdown | 33 lines | CHART-DIAG-FROZEN-v1: geometry-only chart diagnostic, with its reading rule fixed before execution |
 | `CHART-DIAG-FROZEN-v1.sha256` | sha256 | 1 lines |  |
 | `D1-FROZEN-v1.coordinator-addendum-2.md` | markdown | 23 lines | D1-FROZEN-v1: coordinator addendum 2. Module binding amended to two files (S6 escalation, job 0019) |

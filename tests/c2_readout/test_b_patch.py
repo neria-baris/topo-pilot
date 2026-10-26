@@ -309,3 +309,67 @@ def test_x1_attainability_product_form_exact():
     assert cm.x1_attainable(1759.0) and not cm.x1_attainable(1760.0)  # "1.76e3" is rounded
     assert cm.x1_attainable(50.0)
     assert cc.CONTRACT["tolerances"]["x1_attainability"] == "1e-10"
+
+
+# --- D-0109-1 regression (job 0110; ruling R-0109-1) -----------------------------------------
+# METER_ACTIVE.lock at the store root is meter bookkeeping (API.md §16.1, erratum §19.5 if landed;
+# otherwise the ruling text in jobs/0109/review.md). Synthetic stores under tmp_path only.
+import hashlib  # noqa: E402
+import json  # noqa: E402
+
+import c2_data as cd  # noqa: E402
+
+_V2 = "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"
+_STAMP = "2026-10-26T00:00:00Z"
+
+
+def _jl(**rec):
+    return json.dumps(rec, sort_keys=True) + "\n"
+
+
+def _gate(gate):
+    return _jl(gate=gate, status="PASS", criterion_met=True, utc=_STAMP, full_status="PASS",
+               reason="", stage="S1", model=None, family=None, problem=None, scope="study",
+               values={})
+
+
+def _g0_store(tmp_path):
+    """An S1 store at G0 time: coordinator files, one STARTED line, IMPL and AUTH-ADMIT."""
+    store, lin = tmp_path / "store", {}
+    store.mkdir()
+    for name, schema in (("FREEZE.json", "c2-freeze-v1"), ("AUTH.json", "c2-auth-v1")):
+        (store / name).write_bytes(json.dumps({"schema": schema, "protocol_sha256": _V2}).encode())
+        lin[name] = hashlib.sha256((store / name).read_bytes()).hexdigest()
+    (store / "GATES.jsonl").write_bytes((_gate("IMPL") + _gate("AUTH-ADMIT")).encode())
+    started = _jl(stage="S1", event="STARTED", utc=_STAMP)
+    (store / "STAGES.jsonl").write_bytes(started.encode())
+    return store, lin
+
+
+def _adm(store, lin):
+    return cd.store_admission(store, {**lin, **cd.own_records(store, "S1", lin)}, True)
+
+
+def test_meter_active_lock_admitted_at_s1(tmp_path):
+    store, lin = _g0_store(tmp_path)
+    assert _adm(store, lin)["status"] == "PASS"  # control: no lock
+    (store / "METER_ACTIVE.lock").write_bytes(b"12345\n")
+    adm = _adm(store, lin)
+    assert adm["status"] == "PASS" and not adm["unrecognised"]
+
+
+@pytest.mark.parametrize("rel", [
+    "METER_ACTIVE.lock.bak",
+    "METER_ACTIVE.json",
+    # API-AMBIGUITY: §16.1 says "at the store root" (R-0109-1); a copy in a subdirectory other
+    # than logs/ is read as not meter bookkeeping.
+    "registry/METER_ACTIVE.lock",
+], ids=["lock-bak", "json", "registry-subdir"])
+def test_meter_active_lock_near_misses_stay_unrecognised(tmp_path, rel):
+    store, lin = _g0_store(tmp_path)
+    (store / "METER_ACTIVE.lock").write_bytes(b"12345\n")  # the real lock is admitted anyway
+    (store / rel).parent.mkdir(parents=True, exist_ok=True)
+    (store / rel).write_bytes(b"x\n")
+    adm = _adm(store, lin)
+    assert adm["status"] != "PASS"
+    assert any(str(p).replace("\\", "/").endswith(rel) for p in adm["unrecognised"])

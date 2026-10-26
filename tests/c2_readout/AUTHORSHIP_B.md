@@ -99,3 +99,13 @@
   - **Near misses, none admitted:** an extra G0 or PF gate, another stage, a non-study scope, two STARTED lines, a STARTED line of another stage, a COMPLETED line, and a foreign line.
   - **Later stage (S2):** an accepted prefix whose sha256 equals the lineage `append_only` value, followed by this stage's STARTED and AUTH-ADMIT lines, is accepted; with one altered byte in the prefix it is not.
 - **Executed:** only an in-memory `ast.parse` + `compile`. No formatter was run, and `tools/c2_readout/*.py` was not read.
+
+## D-0109-1 regression (job 0110; ruling R-0109-1)
+- **Why.** The coordinator 23e2334b asked for this regression test after a defect: while a metered run is active the meter keeps `METER_ACTIVE.lock` at the store root; `c2_data.store_admission` reported it unrecognised, so G0 item (vii) failed at every stage.
+- **Read:** `agent-handoff/jobs/0110/task.md` (Author B), `agent-handoff/jobs/0109/review.md` (D-0109-1, R-0109-1), API.md §16 and §19.4. The §19.5 erratum had not landed when this was written, so the ruling text was followed (API-AMBIGUITY comment in the file).
+- **Where:** `test_b_patch.py` (appended section; 311 lines before), because it had room within 400 lines. All stores are synthetic, under `tmp_path`.
+- **Cases covered:**
+  - **S1 admitted with the lock:** a store at G0 time (FREEZE, AUTH, one STARTED line, IMPL and AUTH-ADMIT lines) plus `METER_ACTIVE.lock`; `store_admission(store, {**lin, **own_records(store, "S1", lin)}, True)` has status PASS and an empty `unrecognised` list. The same store without the lock passes too (control).
+  - **Near misses, none admitted:** `METER_ACTIVE.lock.bak` and `METER_ACTIVE.json` at the root, and `registry/METER_ACTIVE.lock` in a subdirectory other than `logs/`. Each makes the status not PASS and is named in `unrecognised`. The subdirectory case rests on the ruling's words "at the store root" and §16.1's list of bookkeeping by path; it is marked API-AMBIGUITY.
+  - **Not covered:** a later stage (S2-S5) with the lock; the ruling names it, but the S2 prefix fixture is already covered for the records themselves (D-0107-1 entry) and the lock rule is stage-independent.
+- **Executed:** only an in-memory `ast.parse` + `compile`. No pytest, no formatter, and `tools/c2_readout/*.py` was not read.

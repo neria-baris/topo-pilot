@@ -180,6 +180,8 @@ def m0d(ctx) -> dict:
             if p["status"] != "PASS" and k != "DNULL":
                 v = {"items": p["items"]}
                 recs.append(rec(p["status"], v, model=j, family="D", decoy=k, scope="model"))
+        if ctx.dry:  # §10.1 pass criteria 3 and 5 and the forbidden accesses (diagnostic)
+            putj(ctx, f"stages/S2/DRY_CHECKS_{j}.json", sb.dry(ctx).checks(ctx, j, inp, acts, z))
     return sb.lines(recs)
 
 

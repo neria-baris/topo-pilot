@@ -899,6 +899,26 @@
    "620101",
    "620103"
   ],
+  "g0_declaration_fragments": [
+   "/tools/hws/",
+   "/tests/hws/",
+   "/agent-handoff/",
+   "/hws-store/",
+   "/topo-scratch/hws-dry/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/tools/c2_nd/",
+   "/tests/c2_nd/",
+   "/tools/x6zc/",
+   "/tests/x6zc/"
+  ],
+  "g0_declaration_note": "API.md section 15 erratum E10: a G0 hit is hws_declaration iff its path, with backslashes as slashes, contains one of these fragments or starts with one of g0_hws_job_scratch (R-0118-5); every other hit is unclassified and fails closed",
+  "g0_hws_job_scratch": [
+   "X:/Downloads/topo-scratch/0118/",
+   "X:/Downloads/topo-scratch/0119a/",
+   "X:/Downloads/topo-scratch/0119b/",
+   "X:/Downloads/topo-scratch/0122/"
+  ],
   "sample_calls_per_world_look": 1
  },
  "s0": {

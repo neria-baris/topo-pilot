@@ -6,13 +6,13 @@
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 888,
-  "functions and methods (incl. tests)": 7338,
+  "functions and methods (incl. tests)": 7340,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 766,
   "import statements, internal ambiguous": 2,
   "import statements, internal resolved": 2168,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2189,
+  "import statements, standard library": 2190,
   "internal edges (file to file, with kind and line)": 2200,
   "python files": 524
  },
@@ -10704,47 +10704,41 @@
    "tools/hws/hws_driver.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   24
+   25
   ],
   [
    "tools/hws/hws_driver.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   324
+   332
   ],
   [
    "tools/hws/hws_driver.py",
    "tools/c1prime/c1_records.py",
    "import",
-   323
+   331
   ],
   [
    "tools/hws/hws_driver.py",
    "tools/hws/hws_dry.py",
    "import",
-   196
+   204
   ],
   [
    "tools/hws/hws_driver.py",
    "tools/hws/hws_exact.py",
    "import",
-   16
+   17
   ],
   [
    "tools/hws/hws_driver.py",
    "tools/hws/hws_known.py",
    "import",
-   189
+   197
   ],
   [
    "tools/hws/hws_driver.py",
    "tools/hws/hws_oracle.py",
-   "import",
-   17
-  ],
-  [
-   "tools/hws/hws_driver.py",
-   "tools/hws/hws_records.py",
    "import",
    18
   ],
@@ -10752,7 +10746,7 @@
    "tools/hws/hws_driver.py",
    "tools/hws/hws_records.py",
    "import",
-   22
+   19
   ],
   [
    "tools/hws/hws_driver.py",
@@ -10762,33 +10756,39 @@
   ],
   [
    "tools/hws/hws_driver.py",
-   "tools/hws/hws_select.py",
+   "tools/hws/hws_records.py",
    "import",
-   19
+   24
   ],
   [
    "tools/hws/hws_driver.py",
-   "tools/hws/hws_stats.py",
+   "tools/hws/hws_select.py",
    "import",
    20
   ],
   [
    "tools/hws/hws_driver.py",
-   "tools/hws/hws_worlds.py",
-   "import",
-   15
-  ],
-  [
-   "tools/hws/hws_driver.py",
-   "tools/x4_circle_history/stage_records.py",
+   "tools/hws/hws_stats.py",
    "import",
    21
   ],
   [
    "tools/hws/hws_driver.py",
+   "tools/hws/hws_worlds.py",
+   "import",
+   16
+  ],
+  [
+   "tools/hws/hws_driver.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   22
+  ],
+  [
+   "tools/hws/hws_driver.py",
    "tools/x4_oracle_profile/oracle_profile.py",
    "import",
-   322
+   330
   ],
   [
    "tools/hws/hws_dry.py",
@@ -17014,9 +17014,9 @@
   },
   "tests/hws/test_b_kc1.py": {
    "kind": "python",
-   "lines": 340,
+   "lines": 378,
    "purpose": "Author B (job 0119), TEST_PLAN §3 `test_b_kc1.py` (KC1, DR7, RC-2) plus the G0 seed-scope",
-   "sha256": "9b5f099a05bab273f6203995a8de5b98b8d4e4ccdaafd2b3850f68a91258b697"
+   "sha256": "40c96591de84f5de655bf4b126cb9956645fcf12c88f6ed77aed33943b119772"
   },
   "tests/hws/test_b_oracle.py": {
    "kind": "python",
@@ -17980,9 +17980,9 @@
   },
   "tools/hws/API.md": {
    "kind": "markdown",
-   "lines": 365,
+   "lines": 366,
    "purpose": "tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1)",
-   "sha256": "10a6cd51795814b174dec00a06188c086c9f0cef0b17c66b1bd774f7ebe8facc"
+   "sha256": "86f9b1892284c83b21ccc66047196e473b7f76a763f30337b5709d64b03b806a"
   },
   "tools/hws/CONTRACT.json": {
    "kind": "json",
@@ -18004,9 +18004,9 @@
   },
   "tools/hws/hws_driver.py": {
    "kind": "python",
-   "lines": 361,
+   "lines": 369,
    "purpose": "HWS driver: G0, stages S0, S1, X1, S2, S3, the null re-check, pauses, resume and the CLI",
-   "sha256": "ee5e21465cfe81a280b919c9916eb7697cf514caa7d816949b68ebcb35736067"
+   "sha256": "03dcb81ec55c2f784436071c15328aab5a62df1ece344cecb805e6fbc35d21b1"
   },
   "tools/hws/hws_dry.py": {
    "kind": "python",
@@ -18604,7 +18604,7 @@
    ],
    "file": "tools/hws/hws_driver.py",
    "how": "unique basename",
-   "line": 321,
+   "line": 329,
    "status": "ambiguous",
    "text": "import errors"
   }
@@ -110420,7 +110420,9 @@
     "REPO",
     "SEEDS",
     "SKIPPED",
-    "TAMPERS"
+    "TAMPERS",
+    "TOKEN_HIT",
+    "TOKEN_NO_HIT"
    ],
    "doc": "Author B (job 0119), TEST_PLAN §3 `test_b_kc1.py` (KC1, DR7, RC-2) plus the G0 seed-scope\nsearch of `test_b_records.py` (§6.6, choice 33, ruling R-0118-5), which shares the \"never opened\"\nproof: patched `open`/`io.open`/`Path.open`/`os.open`/`np.load` record every touched path.",
    "doc1": "Author B (job 0119), TEST_PLAN §3 `test_b_kc1.py` (KC1, DR7, RC-2) plus the G0 seed-scope",
@@ -110890,6 +110892,16 @@
      "qual": "test_classify_seed_hits_fails_closed_outside",
      "sig": "def test_classify_seed_hits_fails_closed_outside(outside)",
      "start": 336
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 378,
+     "kind": "test",
+     "name": "test_d0127_1_numeric_needles_match_whole_tokens",
+     "qual": "test_d0127_1_numeric_needles_match_whole_tokens",
+     "sig": "def test_d0127_1_numeric_needles_match_whole_tokens(tmp_path)",
+     "start": 363
     }
    ],
    "syspath": [
@@ -158968,6 +158980,21 @@
      "line": 12,
      "module": "",
      "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
       "time"
      ],
      "status": "stdlib",
@@ -158980,7 +159007,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 13,
+     "line": 14,
      "module": "pathlib",
      "names": [
       "Path"
@@ -158995,7 +159022,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 15,
+     "line": 16,
      "module": "",
      "names": [
       "hws_worlds"
@@ -159012,7 +159039,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 16,
+     "line": 17,
      "module": "",
      "names": [
       "hws_exact"
@@ -159029,7 +159056,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 17,
+     "line": 18,
      "module": "",
      "names": [
       "hws_oracle"
@@ -159046,7 +159073,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 18,
+     "line": 19,
      "module": "",
      "names": [
       "hws_records"
@@ -159063,7 +159090,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 19,
+     "line": 20,
      "module": "",
      "names": [
       "hws_select"
@@ -159080,7 +159107,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 20,
+     "line": 21,
      "module": "",
      "names": [
       "hws_stats"
@@ -159097,7 +159124,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 21,
+     "line": 22,
      "module": "",
      "names": [
       "stage_records"
@@ -159114,7 +159141,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 22,
+     "line": 23,
      "module": "hws_records",
      "names": [
       "append_stage_event",
@@ -159134,7 +159161,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 24,
      "module": "hws_records",
      "names": [
       "look_record",
@@ -159152,7 +159179,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 24,
+     "line": 25,
      "module": "topo_pilot.contracts",
      "names": [
       "SequenceLayout"
@@ -159169,7 +159196,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 189,
+     "line": 197,
      "module": "",
      "names": [
       "hws_known"
@@ -159186,7 +159213,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 196,
+     "line": 204,
      "module": "",
      "names": [
       "hws_dry"
@@ -159206,7 +159233,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 321,
+     "line": 329,
      "module": "",
      "names": [
       "errors"
@@ -159221,7 +159248,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 322,
+     "line": 330,
      "module": "",
      "names": [
       "oracle_profile"
@@ -159238,7 +159265,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 323,
+     "line": 331,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -159255,7 +159282,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 324,
+     "line": 332,
      "module": "topo_pilot.contracts",
      "names": [
       "StageFailure"
@@ -159274,221 +159301,231 @@
      ],
      "decorators": [],
      "doc": "A 3x trigger fired at a world or stage boundary (§9.3); exit 4.",
-     "end": 36,
+     "end": 37,
      "kind": "class",
      "name": "Paused",
      "qual": "Paused",
-     "start": 35
+     "start": 36
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 40,
+     "end": 41,
      "kind": "function",
      "name": "_rel",
      "qual": "_rel",
      "sig": "def _rel(out, path) -> str",
-     "start": 39
+     "start": 40
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 44,
+     "end": 45,
      "kind": "function",
      "name": "_gate",
      "qual": "_gate",
      "sig": "def _gate(out, gate, status, **details) -> str",
-     "start": 43
+     "start": 44
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 53,
+     "end": 54,
      "kind": "function",
      "name": "_skip_dir",
      "qual": "_skip_dir",
      "sig": "def _skip_dir(parent: Path, name: str) -> bool",
-     "start": 50
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "D-0127-1: an all-digit needle matches only as a whole token; others stay substrings.",
+     "end": 61,
+     "kind": "function",
+     "name": "_needle_in",
+     "qual": "_needle_in",
+     "sig": "def _needle_in(needle, line) -> bool",
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "§6.6 G0 discovery search; excluded folders are pruned before any listing or open.",
-     "end": 70,
+     "end": 78,
      "kind": "function",
      "name": "seed_search",
      "qual": "seed_search",
      "sig": "def seed_search(root, needles) -> list",
-     "start": 56
+     "start": 64
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 82,
+     "end": 90,
      "kind": "function",
      "name": "classify_seed_hits",
      "qual": "classify_seed_hits",
      "sig": "def classify_seed_hits(hits) -> dict",
-     "start": 73
+     "start": 81
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 93,
+     "end": 101,
      "kind": "function",
      "name": "g0",
      "qual": "g0",
      "sig": "def g0(out, root=hw.ROOT, stage='S0') -> dict",
-     "start": 85
+     "start": 93
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 100,
+     "end": 108,
      "kind": "function",
      "name": "_json",
      "qual": "_json",
      "sig": "def _json(path)",
-     "start": 99
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "FREEZE (missing: refusal; mismatch: FAIL_TECHNICAL/FREEZE) and AUTH, before sampling.",
-     "end": 116,
+     "end": 124,
      "kind": "function",
      "name": "_preflight",
      "qual": "_preflight",
      "sig": "def _preflight(out, stages, auth)",
-     "start": 103
+     "start": 111
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 121,
+     "end": 129,
      "kind": "function",
      "name": "_ledger_cpu",
      "qual": "_ledger_cpu",
      "sig": "def _ledger_cpu(out) -> float",
-     "start": 119
+     "start": 127
     },
     {
      "decorators": [],
      "doc": "§9.3 both triggers at a world or stage boundary; a continued stage is exempt.",
-     "end": 133,
+     "end": 141,
      "kind": "function",
      "name": "_pause",
      "qual": "_pause",
      "sig": "def _pause(ctx, stage, stage_cpu, stage_fc) -> None",
-     "start": 124
+     "start": 132
     },
     {
      "decorators": [],
      "doc": "§8 S3 spot checks (E6) and the tier-0 report-only law bound.",
-     "end": 148,
+     "end": 156,
      "kind": "function",
      "name": "_spot",
      "qual": "_spot",
      "sig": "def _spot(proc, tok) -> dict",
-     "start": 139
+     "start": 147
     },
     {
      "decorators": [],
      "doc": "§5.3 item 5: one fresh NULLCHK look; halt only if the same null exceeds again.",
-     "end": 162,
+     "end": 170,
      "kind": "function",
      "name": "null_recheck",
      "qual": "null_recheck",
      "sig": "def null_recheck(out, proc, stage, look, n, Ks) -> dict",
-     "start": 151
+     "start": 159
     },
     {
      "decorators": [],
      "doc": "One world-look: sample once, keep the tokens, aggregate, null rule, write the record.",
-     "end": 184,
+     "end": 192,
      "kind": "function",
      "name": "world_record",
      "qual": "world_record",
      "sig": "def world_record(out, proc, exact, stage, n, Ks, floors, seed=None, known=False, origin=None)",
-     "start": 165
+     "start": 173
     },
     {
      "decorators": [],
      "doc": "§3 stage S0 (KC1-KC14); implemented in hws_known (erratum E16).",
-     "end": 191,
+     "end": 199,
      "kind": "function",
      "name": "run_s0",
      "qual": "run_s0",
      "sig": "def run_s0(out, auth) -> dict",
-     "start": 187
+     "start": 195
     },
     {
      "decorators": [],
      "doc": "§13 synthetic dry run DR1-DR13; implemented in hws_known (erratum E16).",
-     "end": 198,
+     "end": 206,
      "kind": "function",
      "name": "run_dry",
      "qual": "run_dry",
      "sig": "def run_dry(out=hw.DRY_STORE) -> dict",
-     "start": 194
+     "start": 202
     },
     {
      "decorators": [],
      "doc": "One stage over its worklist with resume at world boundaries (RC-5, choice 40).",
-     "end": 250,
+     "end": 258,
      "kind": "function",
      "name": "_stage",
      "qual": "_stage",
      "sig": "def _stage(ctx, stage, worlds, kinds=None) -> list",
-     "start": 204
+     "start": 212
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 260,
+     "end": 268,
      "kind": "function",
      "name": "_accept",
      "qual": "_accept",
      "sig": "def _accept(out, s0_accept)",
-     "start": 253
+     "start": 261
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 264,
+     "end": 272,
      "kind": "function",
      "name": "_world_of",
      "qual": "_world_of",
      "sig": "def _world_of(r)",
-     "start": 263
+     "start": 271
     },
     {
      "decorators": [],
      "doc": "S1 -> (X1) -> (S2) -> S3 under the frozen rules (§6), then the outcome and report.",
-     "end": 313,
+     "end": 321,
      "kind": "function",
      "name": "run_sweep",
      "qual": "run_sweep",
      "sig": "def run_sweep(out, auth, s0_accept, cont=None) -> dict",
-     "start": 267
+     "start": 275
     },
     {
      "decorators": [],
      "doc": "Choice 43 exception map.",
-     "end": 330,
+     "end": 338,
      "kind": "function",
      "name": "status_of",
      "qual": "status_of",
      "sig": "def status_of(exc) -> str",
-     "start": 319
+     "start": 327
     },
     {
      "decorators": [],
      "doc": "Exit codes: 0 complete, 2 refused (nothing sampled), 3 STOP, 4 PAUSE.",
-     "end": 357,
+     "end": 365,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 333
+     "start": 341
     }
    ],
    "syspath": []
@@ -190698,5 +190735,5 @@
    ]
   }
  },
- "sources_digest": "fb4fb1e326aac24ec358971e6c9dd84c9bfc9b84e354fe09d85b5b1636e458e9"
+ "sources_digest": "faee021b808c66be1d2d9e3efe49b69bbd005a85d9e77891649c57e6bc0ee891"
 }

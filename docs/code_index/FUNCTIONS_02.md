@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `source_a` | function | `source_a` | [tools/k4b/k4b_registry.py:144](../../tools/k4b/k4b_registry.py#L144) |  |
+| `source_b` | function | `source_b` | [tools/k4b/k4b_registry.py:150](../../tools/k4b/k4b_registry.py#L150) |  |
 | `source_c` | function | `source_c` | [tools/k4b/k4b_registry.py:154](../../tools/k4b/k4b_registry.py#L154) |  |
 | `source_d` | function | `source_d` | [tools/k4b/k4b_registry.py:161](../../tools/k4b/k4b_registry.py#L161) |  |
 | `source_e` | function | `source_e` | [tools/k4b/k4b_registry.py:205](../../tools/k4b/k4b_registry.py#L205) |  |
@@ -91,7 +93,7 @@
 | `status_lines` | function | `status_lines` | [src/topo_pilot/experiment/cli.py:40](../../src/topo_pilot/experiment/cli.py#L40) | At most 40 lines: artifact counts per type, the latest verdict per gate, config hash. |
 | `status_of` | function | `status_of` | [tools/c1prime/c1_config.py:53](../../tools/c1prime/c1_config.py#L53) | 'INCONCLUSIVE/SUPPORT' -> ('INCONCLUSIVE', 'SUPPORT'); 'PASS' -> ('PASS', None). |
 | `status_of` | function | `status_of` | [tools/c2_readout/c2_config.py:88](../../tools/c2_readout/c2_config.py#L88) |  |
-| `status_of` | function | `status_of` | [tools/hws/hws_driver.py:319](../../tools/hws/hws_driver.py#L319) | Choice 43 exception map. |
+| `status_of` | function | `status_of` | [tools/hws/hws_driver.py:327](../../tools/hws/hws_driver.py#L327) | Choice 43 exception map. |
 | `status_of` | function | `status_of` | [tools/k4b/k4b_config.py:100](../../tools/k4b/k4b_config.py#L100) |  |
 | `stencil_filter` | function | `stencil_filter` | [tools/x2a_stage0/x2a_model.py:189](../../tools/x2a_stage0/x2a_model.py#L189) |  |
 | `SteppingClock` | class | `SteppingClock` | [tests/circle_history/test_cochain_lift.py:123](../../tests/circle_history/test_cochain_lift.py#L123) | Reading k (k = 0, 1, ...) returns k * step. |
@@ -716,6 +718,7 @@
 | `test_cumulative_cap_exceeded` | test | `test_cumulative_cap_exceeded` | [tests/experiment/test_x5g1_controls.py:130](../../tests/experiment/test_x5g1_controls.py#L130) |  |
 | `test_cumulative_thresholds_of_the_protocol_table` | test | `test_cumulative_thresholds_of_the_protocol_table` | [tests/hws/test_a_budget.py:99](../../tests/hws/test_a_budget.py#L99) |  |
 | `test_custom_threshold` | test | `test_custom_threshold` | [tests/experiment/test_x5g1t_usage.py:123](../../tests/experiment/test_x5g1t_usage.py#L123) |  |
+| `test_d0127_1_numeric_needles_match_whole_tokens` | test | `test_d0127_1_numeric_needles_match_whole_tokens` | [tests/hws/test_b_kc1.py:363](../../tests/hws/test_b_kc1.py#L363) |  |
 | `test_D01_deterministic_cycle_known_answer` | test | `test_D01_deterministic_cycle_known_answer` | [tests/dataset/test_sampler.py:12](../../tests/dataset/test_sampler.py#L12) |  |
 | `test_D02_empirical_frequencies_match_T_E_pi` | test | `test_D02_empirical_frequencies_match_T_E_pi` | [tests/dataset/test_sampler.py:25](../../tests/dataset/test_sampler.py#L25) |  |
 | `test_D03_emission_before_transition` | test | `test_D03_emission_before_transition` | [tests/dataset/test_sampler.py:45](../../tests/dataset/test_sampler.py#L45) |  |
@@ -2947,7 +2950,7 @@
 | `world_key` | function | `world_key` | [tools/hws/hws_worlds.py:72](../../tools/hws/hws_worlds.py#L72) |  |
 | `world_look` | function | `world_look` | [tools/hws/hws_oracle.py:162](../../tools/hws/hws_oracle.py#L162) |  |
 | `world_ph` | function | `world_ph` | [src/topo_pilot/experiment/s1.py:49](../../src/topo_pilot/experiment/s1.py#L49) | Diagrams (H0, H1) of the world's ``dist`` or ``dist_graph`` and the scale s (q95). |
-| `world_record` | function | `world_record` | [tools/hws/hws_driver.py:165](../../tools/hws/hws_driver.py#L165) | One world-look: sample once, keep the tokens, aggregate, null rule, write the record. |
+| `world_record` | function | `world_record` | [tools/hws/hws_driver.py:173](../../tools/hws/hws_driver.py#L173) | One world-look: sample once, keep the tokens, aggregate, null rule, write the record. |
 | `WorldBuilder` | class | `WorldBuilder` | [src/topo_pilot/world/registry.py:15](../../src/topo_pilot/world/registry.py#L15) | Builds a :class:`WorldSpec` for one family. |
 | `WorldConfig` | class | `WorldConfig` | [src/topo_pilot/world/config.py:10](../../src/topo_pilot/world/config.py#L10) | Configuration of a latent world. |
 | `WorldSpec` | class | `WorldSpec` | [src/topo_pilot/contracts/_schemas_world.py:22](../../src/topo_pilot/contracts/_schemas_world.py#L22) | A latent world: states, the cubical complex defining the surface, metrics, homology. |

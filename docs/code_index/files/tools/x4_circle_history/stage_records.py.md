@@ -61,7 +61,7 @@
 - [tools/c2_readout/c2_driver.py](../c2_readout/c2_driver.py.md) (line 24, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 27, import)
 - [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 31, import)
-- [tools/hws/hws_driver.py](../hws/hws_driver.py.md) (line 21, import)
+- [tools/hws/hws_driver.py](../hws/hws_driver.py.md) (line 22, import)
 - [tools/hws/hws_dry.py](../hws/hws_dry.py.md) (line 22, import)
 - [tools/hws/hws_known.py](../hws/hws_known.py.md) (line 25, import)
 - [tools/hws/hws_records.py](../hws/hws_records.py.md) (line 25, import)

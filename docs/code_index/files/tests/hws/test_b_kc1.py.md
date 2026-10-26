@@ -2,7 +2,7 @@
 
 - Source: [tests/hws/test_b_kc1.py](../../../../../tests/hws/test_b_kc1.py)
 - Kind: python
-- Lines: 340
+- Lines: 378
 
 ## Module docstring
 
@@ -71,6 +71,8 @@
 - `SEEDS`
 - `SKIPPED`
 - `TAMPERS`
+- `TOKEN_HIT`
+- `TOKEN_NO_HIT`
 
 ## Classes and functions
 
@@ -92,4 +94,5 @@
 - **function `_hits`** [L323-324]: `def _hits(paths)`
 - **test `test_classify_seed_hits_declarations_pass`** [L330-332]: `def test_classify_seed_hits_declarations_pass()`
 - **test `test_classify_seed_hits_fails_closed_outside`** [L336-340]: `def test_classify_seed_hits_fails_closed_outside(outside)` decorators: @pytest.mark.parametrize('outside', OUTSIDE)
+- **test `test_d0127_1_numeric_needles_match_whole_tokens`** [L363-378]: `def test_d0127_1_numeric_needles_match_whole_tokens(tmp_path)`
 

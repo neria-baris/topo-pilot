@@ -63,7 +63,7 @@
 - [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 14, import)
 - [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 34, import)
 - [tools/d2a/d2a_targets.py](../d2a/d2a_targets.py.md) (line 16, import)
-- [tools/hws/hws_driver.py](../hws/hws_driver.py.md) (line 322, import)
+- [tools/hws/hws_driver.py](../hws/hws_driver.py.md) (line 330, import)
 - [tools/hws/hws_exact.py](../hws/hws_exact.py.md) (line 23, import)
 - [tools/hws/hws_known.py](../hws/hws_known.py.md) (line 24, import)
 - [tools/hws/hws_oracle.py](../hws/hws_oracle.py.md) (line 13, import)

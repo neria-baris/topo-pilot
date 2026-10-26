@@ -61,7 +61,7 @@
 
 ## Imported by
 
-- [tools/hws/hws_driver.py](hws_driver.py.md) (line 196, import)
+- [tools/hws/hws_driver.py](hws_driver.py.md) (line 204, import)
 
 ## Top-level constants
 

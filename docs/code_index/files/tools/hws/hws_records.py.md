@@ -60,9 +60,9 @@
 
 ## Imported by
 
-- [tools/hws/hws_driver.py](hws_driver.py.md) (line 18, import)
-- [tools/hws/hws_driver.py](hws_driver.py.md) (line 22, import)
+- [tools/hws/hws_driver.py](hws_driver.py.md) (line 19, import)
 - [tools/hws/hws_driver.py](hws_driver.py.md) (line 23, import)
+- [tools/hws/hws_driver.py](hws_driver.py.md) (line 24, import)
 - [tools/hws/hws_dry.py](hws_dry.py.md) (line 18, import)
 - [tools/hws/hws_known.py](hws_known.py.md) (line 19, import)
 

@@ -46,9 +46,13 @@
 
 ## Imported by
 
+- [tests/hws/test_b_oracle.py](../../tests/hws/test_b_oracle.py.md) (line 27, import)
 - [tests/k4b/test_a_theorem_a.py](../../tests/k4b/test_a_theorem_a.py.md) (line 238, import)
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 30, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 28, import)
+- [tools/hws/hws_known.py](../hws/hws_known.py.md) (line 22, import)
+- [tools/hws/hws_oracle.py](../hws/hws_oracle.py.md) (line 11, import)
+- [tools/hws/hws_stats.py](../hws/hws_stats.py.md) (line 15, import)
 - [tools/k4b/k4b_decoder.py](k4b_decoder.py.md) (line 10, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 21, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 23, import)

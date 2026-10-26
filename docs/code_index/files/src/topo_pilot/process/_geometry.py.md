@@ -47,9 +47,11 @@
 - [src/topo_pilot/process/stage.py](stage.py.md) (line 11, import)
 - [src/topo_pilot/process/transition.py](transition.py.md) (line 12, import)
 - [tests/d1_seam/test_d1_seam.py](../../../tests/d1_seam/test_d1_seam.py.md) (line 17, import)
+- [tests/hws/test_b_worlds.py](../../../tests/hws/test_b_worlds.py.md) (line 38, import)
 - [tests/process/test_geometry.py](../../../tests/process/test_geometry.py.md) (line 11, import)
 - [tests/x2a_stage0/test_x2a_stage0.py](../../../tests/x2a_stage0/test_x2a_stage0.py.md) (line 20, import)
 - [tests/x6_stage0/test_x6_stage0.py](../../../tests/x6_stage0/test_x6_stage0.py.md) (line 375, import)
+- [tools/hws/hws_worlds.py](../../../tools/hws/hws_worlds.py.md) (line 30, import)
 
 ## Top-level constants
 

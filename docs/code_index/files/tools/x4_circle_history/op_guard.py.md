@@ -45,10 +45,12 @@
 ## Imported by
 
 - [tests/circle_history/test_builder_v24_runtime.py](../../tests/circle_history/test_builder_v24_runtime.py.md) (line 25, import)
+- [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 37, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 29, import)
 - [tests/k4b/test_b_rerun.py](../../tests/k4b/test_b_rerun.py.md) (line 26, import)
 - [tools/c1prime/c1_driver.py](../c1prime/c1_driver.py.md) (line 20, import)
 - [tools/c1prime/c1_meter_bind.py](../c1prime/c1_meter_bind.py.md) (line 29, import)
+- [tools/hws/hws_meter_bind.py](../hws/hws_meter_bind.py.md) (line 17, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 24, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 20, import)
 - [tools/x4_circle_history/live_context.py](live_context.py.md) (line 106, import)

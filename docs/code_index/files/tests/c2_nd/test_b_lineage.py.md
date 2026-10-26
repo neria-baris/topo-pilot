@@ -17,12 +17,12 @@
 - `import nd_config` -> [tools/c2_nd/nd_config.py](../../tools/c2_nd/nd_config.py.md) (line 17, via sys.path edit)
 - `import c2_config` -> [tools/c2_readout/c2_config.py](../../tools/c2_readout/c2_config.py.md) (line 20, via unique basename)
 - `import nd_data` -> [tools/c2_nd/nd_data.py](../../tools/c2_nd/nd_data.py.md) (line 21, via sys.path edit)
+- `import nd_driver` -> [tools/c2_nd/nd_driver.py](../../tools/c2_nd/nd_driver.py.md) (line 22, via sys.path edit)
 - `from topo_pilot.contracts import SeedTree` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 26, via package root)
 - `from topo_pilot.dataset.checks import make_sequence_ids, process_code` -> [src/topo_pilot/dataset/checks.py](../../src/topo_pilot/dataset/checks.py.md) (line 27, via package root)
 
 ### External (third-party)
 
-- `nd_driver` (lines 22)
 - `numpy` (lines 23)
 - `pytest` (lines 24)
 

@@ -55,6 +55,7 @@
 - [tools/c1prime/c1_data.py](../../../tools/c1prime/c1_data.py.md) (line 17, import)
 - [tools/c1prime/c1_driver.py](../../../tools/c1prime/c1_driver.py.md) (line 149, import)
 - [tools/c2_nd/nd_data.py](../../../tools/c2_nd/nd_data.py.md) (line 23, import)
+- [tools/c2_nd/nd_dry.py](../../../tools/c2_nd/nd_dry.py.md) (line 38, import)
 - [tools/c2_readout/c2_data.py](../../../tools/c2_readout/c2_data.py.md) (line 29, import)
 - [tools/c2_readout/c2_registry.py](../../../tools/c2_readout/c2_registry.py.md) (line 29, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 20, import)

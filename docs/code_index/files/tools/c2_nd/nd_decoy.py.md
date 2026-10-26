@@ -54,6 +54,10 @@
 - [tests/c2_nd/test_a_decoy_maths.py](../../tests/c2_nd/test_a_decoy_maths.py.md) (line 26, import)
 - [tests/c2_nd/test_a_identity.py](../../tests/c2_nd/test_a_identity.py.md) (line 27, import)
 - [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 27, import)
+- [tools/c2_nd/nd_dry.py](nd_dry.py.md) (line 28, import)
+- [tools/c2_nd/nd_split.py](nd_split.py.md) (line 26, import)
+- [tools/c2_nd/nd_stage_post.py](nd_stage_post.py.md) (line 24, import)
+- [tools/c2_nd/nd_stage_pre.py](nd_stage_pre.py.md) (line 24, import)
 
 ## Top-level constants
 

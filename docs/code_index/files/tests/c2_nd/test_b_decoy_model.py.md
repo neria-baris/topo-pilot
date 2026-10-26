@@ -17,11 +17,11 @@
 - `import c2_model` -> [tools/c2_readout/c2_model.py](../../tools/c2_readout/c2_model.py.md) (line 25, via unique basename)
 - `import nd_attrib` -> [tools/c2_nd/nd_attrib.py](../../tools/c2_nd/nd_attrib.py.md) (line 26, via sys.path edit)
 - `import nd_decoy` -> [tools/c2_nd/nd_decoy.py](../../tools/c2_nd/nd_decoy.py.md) (line 27, via sys.path edit)
+- `import nd_driver` -> [tools/c2_nd/nd_driver.py](../../tools/c2_nd/nd_driver.py.md) (line 28, via sys.path edit)
 - `from topo_pilot.learner import ModelConfig, TransformerLM, forward_with_patch` -> [src/topo_pilot/learner/__init__.py](../../src/topo_pilot/learner/__init__.py.md) (line 33, via package root)
 
 ### External (third-party)
 
-- `nd_driver` (lines 28)
 - `numpy` (lines 29)
 - `pytest` (lines 30)
 - `torch` (lines 31)

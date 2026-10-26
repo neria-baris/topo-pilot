@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 884 tracked files; 521 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 892 tracked files; 529 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1114,7 +1114,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 884 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 497 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `API.md` | markdown | 508 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
 | `CONTRACT.json` | json | 940 lines |  |
 | `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
 | `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
@@ -1123,7 +1123,20 @@ The generated index itself (`docs/code_index/`) is not indexed. 884 tracked file
 | [nd_data.py](files/tools/c2_nd/nd_data.py.md) | python | 163 lines | C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene |
 | [nd_decide.py](files/tools/c2_nd/nd_decide.py.md) | python | 396 lines | C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M, |
 | [nd_decoy.py](files/tools/c2_nd/nd_decoy.py.md) | python | 373 lines | C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis |
+| [nd_driver.py](files/tools/c2_nd/nd_driver.py.md) | python | 396 lines | C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND |
+| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 316 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
 | [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 399 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
+| [nd_split.py](files/tools/c2_nd/nd_split.py.md) | python | 400 lines | C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of |
+| [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 383 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |
+| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 391 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
+| [nd_stage_pre.py](files/tools/c2_nd/nd_stage_pre.py.md) | python | 302 lines | C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order, |
+| [nd_stage_val.py](files/tools/c2_nd/nd_stage_val.py.md) | python | 362 lines | C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX, |
+
+## tools/c2_nd/store_template/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| [nd_meter_bind.py](files/tools/c2_nd/store_template/nd_meter_bind.py.md) | python | 137 lines | Store-local binding of the unchanged job-0014 meter for the C2ND runs (C2ND API.md 9.8; the |
 
 ## tools/c2_readout/
 

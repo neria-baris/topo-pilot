@@ -58,6 +58,8 @@
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 16, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 15, import)
 - [tools/c2_nd/nd_attrib.py](../c2_nd/nd_attrib.py.md) (line 18, import)
+- [tools/c2_nd/nd_stage_post.py](../c2_nd/nd_stage_post.py.md) (line 16, import)
+- [tools/c2_nd/nd_stage_val.py](../c2_nd/nd_stage_val.py.md) (line 12, import)
 - [tools/c2_readout/c2_attrib.py](../c2_readout/c2_attrib.py.md) (line 19, import)
 - [tools/c2_readout/c2_stage_post.py](../c2_readout/c2_stage_post.py.md) (line 13, import)
 - [tools/c2_readout/c2_stage_val.py](../c2_readout/c2_stage_val.py.md) (line 13, import)

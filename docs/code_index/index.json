@@ -1,20 +1,20 @@
 {
  "counts": {
-  "classes": 289,
-  "code files": 521,
-  "dynamic imports, dynamic expression or unresolved": 7,
-  "dynamic imports, internal": 13,
+  "classes": 291,
+  "code files": 529,
+  "dynamic imports, dynamic expression or unresolved": 8,
+  "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 884,
-  "functions and methods (incl. tests)": 7261,
-  "import cycles (strongly connected components)": 6,
-  "import statements, external": 764,
+  "files indexed": 892,
+  "functions and methods (incl. tests)": 7451,
+  "import cycles (strongly connected components)": 7,
+  "import statements, external": 768,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2108,
+  "import statements, internal resolved": 2220,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2146,
-  "internal edges (file to file, with kind and line)": 2140,
-  "python files": 520
+  "import statements, standard library": 2185,
+  "internal edges (file to file, with kind and line)": 2254,
+  "python files": 528
  },
  "cycles": [
   [
@@ -26,6 +26,11 @@
    "tools/c1prime/c1_driver_cal.py",
    "tools/c1prime/c1_driver_fresh.py",
    "tools/c1prime/c1_driver_late.py"
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_stage_base.py"
   ],
   [
    "tools/d1_seam/d1_seam.py",
@@ -4427,6 +4432,12 @@
   ],
   [
    "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
    "tools/c2_readout/c2_attrib.py",
    "import",
    22
@@ -4496,6 +4507,12 @@
    "tools/c2_nd/nd_decide.py",
    "import",
    26
+  ],
+  [
+   "tests/c2_nd/test_a_inference.py",
+   "tools/c2_nd/nd_stage_val.py",
+   "import",
+   27
   ],
   [
    "tests/c2_nd/test_a_inference.py",
@@ -4571,6 +4588,12 @@
   ],
   [
    "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   28
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
    "tools/c2_readout/c2_attrib.py",
    "import",
    24
@@ -4643,6 +4666,12 @@
   ],
   [
    "tests/c2_nd/test_b_lineage.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   22
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
    "tools/c2_readout/c2_config.py",
    "import",
    20
@@ -4670,6 +4699,12 @@
    "tools/c2_nd/nd_decide.py",
    "import",
    19
+  ],
+  [
+   "tests/c2_nd/test_b_policy.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   20
   ],
   [
    "tests/c2_nd/test_b_registry.py",
@@ -9640,6 +9675,186 @@
    23
   ],
   [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_data.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_dry.py",
+   "dynamic",
+   354
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_driver.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   36
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "src/topo_pilot/dataset/__init__.py",
+   "import",
+   37
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "src/topo_pilot/dataset/checks.py",
+   "import",
+   38
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "src/topo_pilot/learner/config.py",
+   "import",
+   39
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "src/topo_pilot/learner/model.py",
+   "import",
+   40
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c1prime/c1_data.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c1prime/c1_oracle.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   34
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   15
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   28
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   29
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   30
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   31
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_dry.py",
+   "tools/c2_readout/c2_stats.py",
+   "import",
+   26
+  ],
+  [
    "tools/c2_nd/nd_registry.py",
    "tools/c1prime/c1_data.py",
    "import",
@@ -9680,6 +9895,480 @@
    "tools/x6_stage1/x6s1_registry.py",
    "import",
    44
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c1prime/c1_means.py",
+   "import",
+   13
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   31
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   10
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_data.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   28
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   32
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   14
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   15
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   17
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_registry.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_split.py",
+   "tools/c2_readout/c2_stats.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c1prime/c1_chart.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c1prime/c1_model.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   29
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_nd/nd_dry.py",
+   "dynamic",
+   280
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/x4_circle_history/chart.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_stage_base.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   28
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c1prime/c1_endpoint.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   13
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_split.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   28
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   32
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_stage_pre.py",
+   "import",
+   29
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   17
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   13
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_split.py",
+   "import",
+   29
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   42
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   17
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_stage_pre.py",
+   "tools/c2_readout/c2_stats.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c1prime/c1_endpoint.py",
+   "import",
+   12
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   17
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   9
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_split.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_nd/nd_stage_pre.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   13
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   14
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   15
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/c2_readout/c2_stats.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_stage_val.py",
+   "tools/x4_circle_history/precision.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/store_template/nd_meter_bind.py",
+   "tools/x4_oracle_profile/controls.py",
+   "import",
+   65
+  ],
+  [
+   "tools/c2_nd/store_template/nd_meter_bind.py",
+   "tools/x4_oracle_profile/meter.py",
+   "import",
+   66
+  ],
+  [
+   "tools/c2_nd/store_template/nd_meter_bind.py",
+   "tools/x4_oracle_profile/winjob.py",
+   "import",
+   67
   ],
   [
    "tools/c2_readout/c2_attrib.py",
@@ -17345,9 +18034,9 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 497,
+   "lines": 508,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "4d26bba699e079f861718cd01c0a135a8d4260398678e407099bd4a5c7314d79"
+   "sha256": "3fec1d8e905d7f7452915e1069ec62a51c804faee2749a9a8cf898447cb2543b"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
@@ -17397,11 +18086,59 @@
    "purpose": "C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis",
    "sha256": "bc6b6a7114d4e83551bb9d334ed312b408afc4260567f5d915670be1c145da31"
   },
+  "tools/c2_nd/nd_driver.py": {
+   "kind": "python",
+   "lines": 396,
+   "purpose": "C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND",
+   "sha256": "1c5194f215e3f1879f704ff3287a0796258efbde28f3dedee212368840aa2384"
+  },
+  "tools/c2_nd/nd_dry.py": {
+   "kind": "python",
+   "lines": 316,
+   "purpose": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised",
+   "sha256": "e0c2c565fefa3fcb0ede26843eb8ae9990ff8726a7c37ae5df2251d5923837bb"
+  },
   "tools/c2_nd/nd_registry.py": {
    "kind": "python",
    "lines": 399,
    "purpose": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
    "sha256": "e88157400cd638f1d71a629c63477813496cd0da2c001afeb64bac6cb8ef814e"
+  },
+  "tools/c2_nd/nd_split.py": {
+   "kind": "python",
+   "lines": 400,
+   "purpose": "C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of",
+   "sha256": "e6c874c289c5978ecdb465c21d851605a74b71d063d67754a3966d2d16f485d8"
+  },
+  "tools/c2_nd/nd_stage_base.py": {
+   "kind": "python",
+   "lines": 383,
+   "purpose": "C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern,",
+   "sha256": "b001b9f377edfffaacdec3e47c4bd3dffe13aba2619682f7a2231aa63d393a97"
+  },
+  "tools/c2_nd/nd_stage_post.py": {
+   "kind": "python",
+   "lines": 391,
+   "purpose": "C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT,",
+   "sha256": "50c360edea41b87e55f47e6c85778306c7ea2618f8d19af227102249f049de29"
+  },
+  "tools/c2_nd/nd_stage_pre.py": {
+   "kind": "python",
+   "lines": 302,
+   "purpose": "C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order,",
+   "sha256": "652fa7d40d59816baac33d73b040db33af9c629f4ac53b2542e640cc38f9079d"
+  },
+  "tools/c2_nd/nd_stage_val.py": {
+   "kind": "python",
+   "lines": 362,
+   "purpose": "C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX,",
+   "sha256": "217d0d2e219186db78c226ace179d38dc3aba4b6bd1a374c5eb8c45924753fa2"
+  },
+  "tools/c2_nd/store_template/nd_meter_bind.py": {
+   "kind": "python",
+   "lines": 137,
+   "purpose": "Store-local binding of the unchanged job-0014 meter for the C2ND runs (C2ND API.md 9.8; the",
+   "sha256": "0e177af0fe3940851c055b7363a844099ca541e4af7992c29f22bdb2d9ac4017"
   },
   "tools/c2_readout/API.md": {
    "kind": "markdown",
@@ -71316,7 +72053,7 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 27,
@@ -71324,8 +72061,10 @@
      "names": [
       "nd_driver"
      ],
-     "status": "external",
-     "targets": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
      "top": "nd_driver"
     }
    ],
@@ -72479,7 +73218,7 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 27,
@@ -72487,8 +73226,10 @@
      "names": [
       "nd_stage_val"
      ],
-     "status": "external",
-     "targets": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_val.py"
+     ],
      "top": "nd_stage_val"
     }
    ],
@@ -73359,7 +74100,7 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 28,
@@ -73367,8 +74108,10 @@
      "names": [
       "nd_driver"
      ],
-     "status": "external",
-     "targets": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
      "top": "nd_driver"
     },
     {
@@ -74339,7 +75082,7 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 22,
@@ -74347,8 +75090,10 @@
      "names": [
       "nd_driver"
      ],
-     "status": "external",
-     "targets": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
      "top": "nd_driver"
     },
     {
@@ -74856,7 +75601,7 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 20,
@@ -74864,8 +75609,10 @@
      "names": [
       "nd_driver"
      ],
-     "status": "external",
-     "targets": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
      "top": "nd_driver"
     },
     {
@@ -146435,6 +147182,1193 @@
    ],
    "syspath": []
   },
+  "tools/c2_nd/nd_driver.py": {
+   "constants": [
+    "ALLOWED",
+    "GATE_ORDER",
+    "GATE_STAGE",
+    "META",
+    "PREREQ",
+    "STAGE_MODULE",
+    "STATE_SHA",
+    "_ST"
+   ],
+   "doc": "C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND\nLogitPolicy, records, sealing, AUTH and release binding, G0 (i)-(x), the meter check, lazy stage\ndispatch (no stage module at import time) and the CLI. Loaders, caches and lineage records live\nin nd_stage_base (ND-C43) and are re-exported here under their API.md §9 names.",
+   "doc1": "C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND",
+   "dynamic": [
+    {
+     "expr": "'nd_dry'",
+     "func": "import_module",
+     "label": "nd_dry",
+     "line": 354,
+     "literal": "nd_dry",
+     "paths": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_dry.py"
+     ]
+    },
+    {
+     "expr": "STAGE_MODULE[stage]",
+     "func": "import_module",
+     "label": "dynamic: STAGE_MODULE[stage]",
+     "line": 355,
+     "literal": null,
+     "paths": [],
+     "status": "dynamic",
+     "targets": []
+    }
+   ],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "argparse"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "argparse"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "importlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "importlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "subprocess"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "subprocess"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "zipfile"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "zipfile"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "dataclasses",
+     "names": [
+      "dataclass",
+      "field"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "dataclasses"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "nd_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_data.py"
+     ],
+     "top": "nd_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure",
+      "classify_exception"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    }
+   ],
+   "symbols": [
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "class",
+     "name": "LogitPolicy",
+     "qual": "LogitPolicy",
+     "start": 63
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "LogitPolicy.__init__",
+     "sig": "def __init__(self, done=())",
+     "start": 64
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 74,
+     "kind": "method",
+     "name": "begin",
+     "qual": "LogitPolicy.begin",
+     "sig": "def begin(self, gate) -> None",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 77,
+     "kind": "method",
+     "name": "end",
+     "qual": "LogitPolicy.end",
+     "sig": "def end(self, gate) -> None",
+     "start": 76
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 82,
+     "kind": "method",
+     "name": "require",
+     "qual": "LogitPolicy.require",
+     "sig": "def require(self, kind) -> None",
+     "start": 79
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 86,
+     "kind": "method",
+     "name": "require_write",
+     "qual": "LogitPolicy.require_write",
+     "sig": "def require_write(self, kind) -> None",
+     "start": 84
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "method",
+     "name": "require_release",
+     "qual": "LogitPolicy.require_release",
+     "sig": "def require_release(self, gate, values) -> None",
+     "start": 88
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 95,
+     "kind": "function",
+     "name": "require_release",
+     "qual": "require_release",
+     "sig": "def require_release(policy, gate, values) -> None",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 107,
+     "kind": "function",
+     "name": "check_sequence",
+     "qual": "check_sequence",
+     "sig": "def check_sequence(gates_jsonl) -> bool",
+     "start": 98
+    },
+    {
+     "bases": [],
+     "decorators": [
+      "dataclass"
+     ],
+     "doc": "",
+     "end": 121,
+     "kind": "class",
+     "name": "Ctx",
+     "qual": "Ctx",
+     "start": 111
+    },
+    {
+     "decorators": [],
+     "doc": "One GATES.jsonl line per record (C2 API §19.2) plus the key `decoy`; a release-only gate",
+     "end": 144,
+     "kind": "function",
+     "name": "run_gate",
+     "qual": "run_gate",
+     "sig": "def run_gate(ctx, gate, fn, scope, model=None, family=None, problem=None) -> dict",
+     "start": 125
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 159,
+     "kind": "function",
+     "name": "seal",
+     "qual": "seal",
+     "sig": "def seal(ctx, name, arrays) -> str",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 172,
+     "kind": "function",
+     "name": "unseal",
+     "qual": "unseal",
+     "sig": "def unseal(ctx, name, sha256) -> dict",
+     "start": 162
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 184,
+     "kind": "function",
+     "name": "auth_ok",
+     "qual": "auth_ok",
+     "sig": "def auth_ok(store, name='AUTH.json') -> bool",
+     "start": 176
+    },
+    {
+     "decorators": [],
+     "doc": "A FREEZE-free scratch store under SCRATCH_ROOT holding a valid AUTH_IMPL.json (§10.1).",
+     "end": 191,
+     "kind": "function",
+     "name": "is_dry_store",
+     "qual": "is_dry_store",
+     "sig": "def is_dry_store(store) -> bool",
+     "start": 187
+    },
+    {
+     "decorators": [],
+     "doc": "FREEZE.json; in a dry-run store DRY.json (H, contract and meter bindings, ND-C42).",
+     "end": 196,
+     "kind": "function",
+     "name": "binding_path",
+     "qual": "binding_path",
+     "sig": "def binding_path(ctx) -> Path",
+     "start": 194
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 210,
+     "kind": "function",
+     "name": "_release_why",
+     "qual": "_release_why",
+     "sig": "def _release_why(ctx, stage, r) -> str",
+     "start": 199
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 220,
+     "kind": "function",
+     "name": "release_ok",
+     "qual": "release_ok",
+     "sig": "def release_ok(ctx, stage) -> dict",
+     "start": 213
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 228,
+     "kind": "function",
+     "name": "meter_bind_check",
+     "qual": "meter_bind_check",
+     "sig": "def meter_bind_check(path, expected_sha256, import_dir) -> None",
+     "start": 223
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 233,
+     "kind": "function",
+     "name": "_git",
+     "qual": "_git",
+     "sig": "def _git(wt, *args) -> bytes",
+     "start": 232
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 247,
+     "kind": "function",
+     "name": "_blobs_ok",
+     "qual": "_blobs_ok",
+     "sig": "def _blobs_ok(wt, head) -> bool",
+     "start": 236
+    },
+    {
+     "decorators": [],
+     "doc": "(iv): every C2 store file re-hashes; 0115.accepted names the 0115 manifest; the FIT/DEC",
+     "end": 265,
+     "kind": "function",
+     "name": "_c2_store_ok",
+     "qual": "_c2_store_ok",
+     "sig": "def _c2_store_ok(ctx) -> bool",
+     "start": 250
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 272,
+     "kind": "function",
+     "name": "_item",
+     "qual": "_item",
+     "sig": "def _item(fn) -> dict",
+     "start": 268
+    },
+    {
+     "decorators": [],
+     "doc": "Items \"i\"-\"x\", never raising; FAIL_TECHNICAL/LINEAGE iff only (vi)-(vii) fail.",
+     "end": 316,
+     "kind": "function",
+     "name": "g0",
+     "qual": "g0",
+     "sig": "def g0(ctx, stage=None) -> dict",
+     "start": 275
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 320,
+     "kind": "function",
+     "name": "_same",
+     "qual": "_same",
+     "sig": "def _same(a, b) -> bool",
+     "start": 319
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 339,
+     "kind": "function",
+     "name": "begin_stage",
+     "qual": "begin_stage",
+     "sig": "def begin_stage(ctx, stage) -> None",
+     "start": 324
+    },
+    {
+     "decorators": [],
+     "doc": "sr.complete, then the C2 store re-hash of G0 (iv) at the end of every stage (L7).",
+     "end": 345,
+     "kind": "function",
+     "name": "complete_stage",
+     "qual": "complete_stage",
+     "sig": "def complete_stage(ctx, stage, files) -> list",
+     "start": 342
+    },
+    {
+     "decorators": [],
+     "doc": "Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT",
+     "end": 374,
+     "kind": "function",
+     "name": "run_stage",
+     "qual": "run_stage",
+     "sig": "def run_stage(stage, ctx) -> dict",
+     "start": 348
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 392,
+     "kind": "function",
+     "name": "main",
+     "qual": "main",
+     "sig": "def main(argv=None) -> int",
+     "start": 377
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_dry.py": {
+   "constants": [
+    "CFG"
+   ],
+   "doc": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised\nTransformerLMs with the trained architecture whose head reads a planted 6-d harmonic code of a\nsynthetic phase with share 0.85), the synthetic C2-prerequisite fixture (the c2/ stand-in of the\nC2 store: FIT projectors, decoders, N2 fit, frozen oracle constants, made by the C2 kernels on\nsynthetic activations of cylinder-O histories from a dry-only stream), the synthetic phase, the\nbroken decoys of pass criterion 3 (the J-built decoy fails; the Euclidean one is reported,\nE-C2ND-2) and the forbidden-access and planted-collision checks. Every function refuses with\nFAIL_TECHNICAL/AUTHORITY outside a dry-run store (G0 (x)); no trained weight, no C2 store file\nand no c2nd-v1 stream is touched.",
+   "doc1": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_data.py"
+     ],
+     "top": "c1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c1_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_oracle.py"
+     ],
+     "top": "c1_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "c2_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_stats.py"
+     ],
+     "top": "c2_stats"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 33,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 34,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 36,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree",
+      "SequenceLayout"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 37,
+     "module": "topo_pilot.dataset",
+     "names": [
+      "HMMSampler"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/dataset/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 38,
+     "module": "topo_pilot.dataset.checks",
+     "names": [
+      "make_sequence_ids",
+      "process_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/dataset/checks.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 39,
+     "module": "topo_pilot.learner.config",
+     "names": [
+      "ModelConfig"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/learner/config.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 40,
+     "module": "topo_pilot.learner.model",
+     "names": [
+      "TransformerLM"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/learner/model.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "function",
+     "name": "guard",
+     "qual": "guard",
+     "sig": "def guard(ctx) -> None",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 57,
+     "kind": "function",
+     "name": "_model",
+     "qual": "_model",
+     "sig": "def _model(state=None, seed=0) -> TransformerLM",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "{j: (model64, sha256 of its c2/models file)}, the file re-hashed against c2/TABLE.json.",
+     "end": 67,
+     "kind": "function",
+     "name": "planted_models",
+     "qual": "planted_models",
+     "sig": "def planted_models(ctx) -> dict",
+     "start": 60
+    },
+    {
+     "decorators": [],
+     "doc": "phi = atan2 of resid_post_3 (centred) on the two leading within-symbol principal",
+     "end": 76,
+     "kind": "function",
+     "name": "synthetic_phase",
+     "qual": "synthetic_phase",
+     "sig": "def synthetic_phase(ctx, j, a3) -> tuple",
+     "start": 70
+    },
+    {
+     "decorators": [],
+     "doc": "mu and the two leading principal directions of resid_post_3 minus its symbol means.",
+     "end": 85,
+     "kind": "function",
+     "name": "_chart",
+     "qual": "_chart",
+     "sig": "def _chart(a3, w) -> dict",
+     "start": 79
+    },
+    {
+     "decorators": [],
+     "doc": "One 4,096-row block of the dry-only stream (scope c2nd-dry-v1, split c2prereq).",
+     "end": 97,
+     "kind": "function",
+     "name": "_sample",
+     "qual": "_sample",
+     "sig": "def _sample(P, b) -> tuple",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 102,
+     "kind": "function",
+     "name": "_write",
+     "qual": "_write",
+     "sig": "def _write(ctx, rel, arrays=None, obj=None) -> None",
+     "start": 100
+    },
+    {
+     "decorators": [],
+     "doc": "The head: least squares of the oracle's named log-predictive on y, split into the code",
+     "end": 120,
+     "kind": "function",
+     "name": "_plant",
+     "qual": "_plant",
+     "sig": "def _plant(m64, y, d, dy, Ex, G, logq, P_S) -> dict",
+     "start": 105
+    },
+    {
+     "decorators": [],
+     "doc": "PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the",
+     "end": 222,
+     "kind": "function",
+     "name": "prepare",
+     "qual": "prepare",
+     "sig": "def prepare(ctx) -> dict",
+     "start": 123
+    },
+    {
+     "decorators": [],
+     "doc": "Wrong g_D, another model's projector, transposed P_S and the J-built decoy must fail M0-D",
+     "end": 256,
+     "kind": "function",
+     "name": "broken_decoys",
+     "qual": "broken_decoys",
+     "sig": "def broken_decoys(ctx, j, inputs, acts, z, d, dy) -> dict",
+     "start": 226
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 264,
+     "kind": "function",
+     "name": "_refused",
+     "qual": "_refused",
+     "sig": "def _refused(fn) -> bool",
+     "start": 259
+    },
+    {
+     "decorators": [],
+     "doc": "§10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction",
+     "end": 306,
+     "kind": "function",
+     "name": "checks",
+     "qual": "checks",
+     "sig": "def checks(ctx, j, inputs, acts, z) -> dict",
+     "start": 267
+    },
+    {
+     "decorators": [],
+     "doc": "A sealed/ read before the TEST outcome must be refused (§10.1 forbidden access).",
+     "end": 316,
+     "kind": "function",
+     "name": "sealed_check",
+     "qual": "sealed_check",
+     "sig": "def sealed_check(ctx) -> dict",
+     "start": 309
+    }
+   ],
+   "syspath": []
+  },
   "tools/c2_nd/nd_registry.py": {
    "constants": [
     "ARRAYS",
@@ -146919,6 +148853,3509 @@
     }
    ],
    "syspath": []
+  },
+  "tools/c2_nd/nd_split.py": {
+   "constants": [
+    "DREF"
+   ],
+   "doc": "C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of\nnd_stage_pre by function group): sampling with the Y-donor preparation, the oracle writer and\nH3, H5 bounds, the decoy builder and its S4/S5 rebuild check, the M0 rows, and the L1, R1, N2\nand support checks of DFEAS that T-PRE reuses on DTEST (API.md §10).",
+   "doc1": "C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "c1_means"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_means.py"
+     ],
+     "top": "c1_means"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_registry.py"
+     ],
+     "top": "c2_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_stats.py"
+     ],
+     "top": "c2_stats"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_data.py"
+     ],
+     "top": "nd_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "nd_stage_base",
+     "names": [
+      "EXC",
+      "J1",
+      "OK",
+      "X3",
+      "bundle",
+      "c2fit",
+      "js",
+      "npz",
+      "orc",
+      "problem",
+      "proc",
+      "put",
+      "rec"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 40,
+     "kind": "function",
+     "name": "w32",
+     "qual": "w32",
+     "sig": "def w32(ctx, split) -> np.ndarray",
+     "start": 39
+    },
+    {
+     "decorators": [],
+     "doc": "(d named, dy, A_full) of the natural x or y pair under the readout M (base default).",
+     "end": 48,
+     "kind": "function",
+     "name": "afull",
+     "qual": "afull",
+     "sig": "def afull(ctx, split, j, pair, M=None) -> tuple",
+     "start": 43
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 53,
+     "kind": "function",
+     "name": "move_T",
+     "qual": "move_T",
+     "sig": "def move_T(ctx, j)",
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 59,
+     "kind": "function",
+     "name": "Yof",
+     "qual": "Yof",
+     "sig": "def Yof(src, X, r, T=None) -> np.ndarray",
+     "start": 56
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "function",
+     "name": "zt",
+     "qual": "zt",
+     "sig": "def zt(ctx, split, j, src) -> np.ndarray",
+     "start": 62
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 72,
+     "kind": "function",
+     "name": "decs",
+     "qual": "decs",
+     "sig": "def decs(ctx, j, src) -> dict",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "({kind: decoy}, move map, base basis) from the frozen C2 problem R (§2.6, Lemma DC4).",
+     "end": 85,
+     "kind": "function",
+     "name": "build_decoys",
+     "qual": "build_decoys",
+     "sig": "def build_decoys(ctx, j) -> tuple",
+     "start": 75
+    },
+    {
+     "decorators": [],
+     "doc": "{kind: (decoy, basis)} rebuilt at S4/S5; decoy_sha64 must equal the S2 record.",
+     "end": 99,
+     "kind": "function",
+     "name": "decoys",
+     "qual": "decoys",
+     "sig": "def decoys(ctx, j) -> dict",
+     "start": 88
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 108,
+     "kind": "function",
+     "name": "l1_check",
+     "qual": "l1_check",
+     "sig": "def l1_check(ctx, split, j, src) -> tuple",
+     "start": 103
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 118,
+     "kind": "function",
+     "name": "r1_check",
+     "qual": "r1_check",
+     "sig": "def r1_check(ctx, split, j, src) -> tuple",
+     "start": 111
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 131,
+     "kind": "function",
+     "name": "n2_check",
+     "qual": "n2_check",
+     "sig": "def n2_check(ctx, split, j) -> tuple",
+     "start": 121
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 137,
+     "kind": "function",
+     "name": "support",
+     "qual": "support",
+     "sig": "def support(ctx, split, j) -> dict",
+     "start": 134
+    },
+    {
+     "decorators": [],
+     "doc": "Rank-250 lower bounds (5,000 draws, seed 630518, one call per pair) of mean G | E.",
+     "end": 147,
+     "kind": "function",
+     "name": "h5_bounds",
+     "qual": "h5_bounds",
+     "sig": "def h5_bounds(ob, level=nc.H5) -> dict",
+     "start": 140
+    },
+    {
+     "decorators": [],
+     "doc": "H2 / REG2: the splits (scope c2nd-v1, or c2nd-dry-v1 in a dry-run store), the Y-donor",
+     "end": 173,
+     "kind": "function",
+     "name": "sample",
+     "qual": "sample",
+     "sig": "def sample(ctx, blocks, version) -> dict",
+     "start": 150
+    },
+    {
+     "decorators": [],
+     "doc": "The four-role oracle per split from the sampling cache, eligibility with the frozen C2",
+     "end": 193,
+     "kind": "function",
+     "name": "h3_run",
+     "qual": "h3_run",
+     "sig": "def h3_run(ctx, splits) -> tuple",
+     "start": 176
+    },
+    {
+     "decorators": [],
+     "doc": "(rows, inputs, hooks, natural logits, basis) on the 1,024 lowest-id rows (M0, M0-D).",
+     "end": 206,
+     "kind": "function",
+     "name": "m0_rows",
+     "qual": "m0_rows",
+     "sig": "def m0_rows(ctx, split, j) -> tuple",
+     "start": 196
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 212,
+     "kind": "function",
+     "name": "bounds",
+     "qual": "bounds",
+     "sig": "def bounds(arrays, guards, seed, alpha=nc.VAL_ALPHA, draws=nc.VAL_DRAWS) -> dict",
+     "start": 210
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 216,
+     "kind": "function",
+     "name": "split_b",
+     "qual": "split_b",
+     "sig": "def split_b(b, j) -> dict",
+     "start": 215
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 220,
+     "kind": "function",
+     "name": "E",
+     "qual": "E",
+     "sig": "def E(ctx, split, p) -> np.ndarray",
+     "start": 219
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 225,
+     "kind": "function",
+     "name": "lowid",
+     "qual": "lowid",
+     "sig": "def lowid(Ex, seq, n=nc.LOWID_ROWS) -> np.ndarray",
+     "start": 223
+    },
+    {
+     "decorators": [],
+     "doc": "Readout coordinates per role: y, or y @ T.T for a coordinate decoy.",
+     "end": 231,
+     "kind": "function",
+     "name": "ys",
+     "qual": "ys",
+     "sig": "def ys(ctx, split, j, kind=None) -> dict",
+     "start": 228
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 235,
+     "kind": "function",
+     "name": "readout",
+     "qual": "readout",
+     "sig": "def readout(ctx, j, kind) -> np.ndarray",
+     "start": 234
+    },
+    {
+     "decorators": [],
+     "doc": "x and y pair quantities under the readout of `kind` (None: base) and the problem P",
+     "end": 249,
+     "kind": "function",
+     "name": "quant",
+     "qual": "quant",
+     "sig": "def quant(ctx, split, j, kind=None, P=None) -> dict",
+     "start": 238
+    },
+    {
+     "decorators": [],
+     "doc": "The decoy's natural logits from the base ln_final_out (head-only path, §9).",
+     "end": 257,
+     "kind": "function",
+     "name": "head_logits",
+     "qual": "head_logits",
+     "sig": "def head_logits(dec, u) -> np.ndarray",
+     "start": 252
+    },
+    {
+     "decorators": [],
+     "doc": "The x interchange arms 21, 12 (arm 2's tokens, C2 C-23) on `rows`.",
+     "end": 265,
+     "kind": "function",
+     "name": "_arms",
+     "qual": "_arms",
+     "sig": "def _arms(X, y, rows, P, prefix, seq) -> dict",
+     "start": 261
+    },
+    {
+     "decorators": [],
+     "doc": "§3 row 19: base natural, R interchange and direct complement arms (compared with",
+     "end": 309,
+     "kind": "function",
+     "name": "x1_model",
+     "qual": "x1_model",
+     "sig": "def x1_model(ctx, split, j) -> list",
+     "start": 268
+    },
+    {
+     "decorators": [],
+     "doc": "§3 row 20 with the construction projector (the frozen C2 R P_S) on the eligible rows.",
+     "end": 325,
+     "kind": "function",
+     "name": "dx_model",
+     "qual": "dx_model",
+     "sig": "def dx_model(ctx, split, j) -> dict",
+     "start": 312
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 344,
+     "kind": "function",
+     "name": "cm_pair",
+     "qual": "cm_pair",
+     "sig": "def cm_pair(ctx, split, j, kind) -> dict",
+     "start": 329
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 349,
+     "kind": "function",
+     "name": "_m",
+     "qual": "_m",
+     "sig": "def _m(x, E) -> float",
+     "start": 348
+    },
+    {
+     "decorators": [],
+     "doc": "Eligible-row point ratios of one model (DTEST; descriptive).",
+     "end": 366,
+     "kind": "function",
+     "name": "point",
+     "qual": "point",
+     "sig": "def point(fam, q, E) -> dict",
+     "start": 352
+    },
+    {
+     "decorators": [],
+     "doc": "The bracket values of the §7 sentences: claim models, point values, declared bounds.",
+     "end": 383,
+     "kind": "function",
+     "name": "lic_values",
+     "qual": "lic_values",
+     "sig": "def lic_values(fam, outcome, pm) -> dict",
+     "start": 369
+    },
+    {
+     "decorators": [],
+     "doc": "Point means of every opened VAL bundle (secondary, after every outcome).",
+     "end": 393,
+     "kind": "function",
+     "name": "_unsealed",
+     "qual": "_unsealed",
+     "sig": "def _unsealed(ctx, sealed, unseal) -> dict",
+     "start": 386
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 400,
+     "kind": "function",
+     "name": "_c2_outcome",
+     "qual": "_c2_outcome",
+     "sig": "def _c2_outcome(ctx)",
+     "start": 396
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_stage_base.py": {
+   "constants": [
+    "COORD",
+    "PROB_KEYS",
+    "SCHEMA",
+    "SRC"
+   ],
+   "doc": "C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern,\nND-C6): store loaders and caches with the read-only C2 store, lineage records, the gate history\n(the §3 scope rule), per-model split state (inputs, hooks, readout coordinates, phases) and the\nsplit-level checks reused by S3 and T-PRE (L1, R1, N2, support, H5). It never imports nd_driver\nor a stage module; nd_dry is imported lazily in a dry-run store only. Nothing runs at import.",
+   "doc1": "C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern,",
+   "dynamic": [
+    {
+     "expr": "'nd_dry'",
+     "func": "import_module",
+     "label": "nd_dry",
+     "line": 280,
+     "literal": "nd_dry",
+     "paths": [],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_dry.py"
+     ]
+    }
+   ],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "importlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "importlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "functools",
+     "names": [
+      "partial"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "functools"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c1_chart"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_chart.py"
+     ],
+     "top": "c1_chart"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c1_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_model.py"
+     ],
+     "top": "c1_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "chart"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/chart.py"
+     ],
+     "top": "chart"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 45,
+     "kind": "function",
+     "name": "_jr",
+     "qual": "_jr",
+     "sig": "def _jr(path)",
+     "start": 41
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 49,
+     "kind": "function",
+     "name": "_eq",
+     "qual": "_eq",
+     "sig": "def _eq(a, b) -> bool",
+     "start": 48
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 53,
+     "kind": "function",
+     "name": "_sha_ok",
+     "qual": "_sha_ok",
+     "sig": "def _sha_ok(path, want) -> bool",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 68,
+     "kind": "function",
+     "name": "_js",
+     "qual": "_js",
+     "sig": "def _js(v)",
+     "start": 56
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 73,
+     "kind": "function",
+     "name": "_npz",
+     "qual": "_npz",
+     "sig": "def _npz(path) -> dict",
+     "start": 71
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 79,
+     "kind": "function",
+     "name": "cache",
+     "qual": "cache",
+     "sig": "def cache(ctx, key, fn)",
+     "start": 76
+    },
+    {
+     "decorators": [],
+     "doc": "(root, {rel: sha256}): the C2 store and its CONTRACT table, or in a dry-run store its c2/",
+     "end": 88,
+     "kind": "function",
+     "name": "c2_store",
+     "qual": "c2_store",
+     "sig": "def c2_store(ctx) -> tuple",
+     "start": 82
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 93,
+     "kind": "function",
+     "name": "c2_rehash",
+     "qual": "c2_rehash",
+     "sig": "def c2_rehash(ctx) -> list",
+     "start": 91
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 103,
+     "kind": "function",
+     "name": "_load",
+     "qual": "_load",
+     "sig": "def _load(ctx, rel, kind, c2)",
+     "start": 96
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 107,
+     "kind": "function",
+     "name": "npz",
+     "qual": "npz",
+     "sig": "def npz(ctx, rel, c2=False) -> dict",
+     "start": 106
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 111,
+     "kind": "function",
+     "name": "js",
+     "qual": "js",
+     "sig": "def js(ctx, rel, c2=False) -> dict",
+     "start": 110
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 115,
+     "kind": "function",
+     "name": "c2npz",
+     "qual": "c2npz",
+     "sig": "def c2npz(ctx, rel) -> dict",
+     "start": 114
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 119,
+     "kind": "function",
+     "name": "c2js",
+     "qual": "c2js",
+     "sig": "def c2js(ctx, rel) -> dict",
+     "start": 118
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 125,
+     "kind": "function",
+     "name": "_abs",
+     "qual": "_abs",
+     "sig": "def _abs(ctx, rel) -> Path",
+     "start": 122
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 129,
+     "kind": "function",
+     "name": "put",
+     "qual": "put",
+     "sig": "def put(ctx, rel, **arrays) -> None",
+     "start": 128
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 133,
+     "kind": "function",
+     "name": "putj",
+     "qual": "putj",
+     "sig": "def putj(ctx, rel, obj) -> None",
+     "start": 132
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 139,
+     "kind": "function",
+     "name": "_skip",
+     "qual": "_skip",
+     "sig": "def _skip(rel) -> bool",
+     "start": 137
+    },
+    {
+     "decorators": [],
+     "doc": "manifests/<job>.json; a dry-run store runs every stage in one job: <job>-<stage>.",
+     "end": 144,
+     "kind": "function",
+     "name": "manifest_stem",
+     "qual": "manifest_stem",
+     "sig": "def manifest_stem(ctx, stage) -> str",
+     "start": 142
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 158,
+     "kind": "function",
+     "name": "write_manifest",
+     "qual": "write_manifest",
+     "sig": "def write_manifest(ctx, stage) -> Path",
+     "start": 147
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 168,
+     "kind": "function",
+     "name": "_coord_ok",
+     "qual": "_coord_ok",
+     "sig": "def _coord_ok(p) -> bool",
+     "start": 161
+    },
+    {
+     "decorators": [],
+     "doc": "{rel: sha256}: coordinator records, the bound meter file, every accepted manifest's files",
+     "end": 196,
+     "kind": "function",
+     "name": "recognised",
+     "qual": "recognised",
+     "sig": "def recognised(store) -> dict",
+     "start": 171
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 212,
+     "kind": "function",
+     "name": "supersede",
+     "qual": "supersede",
+     "sig": "def supersede(ctx, job, attempt, paths, ruling) -> Path",
+     "start": 199
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 216,
+     "kind": "function",
+     "name": "regen_compare",
+     "qual": "regen_compare",
+     "sig": "def regen_compare(ctx, path, archived_sha256) -> bool",
+     "start": 215
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 221,
+     "kind": "function",
+     "name": "gates",
+     "qual": "gates",
+     "sig": "def gates(ctx) -> list",
+     "start": 220
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 226,
+     "kind": "function",
+     "name": "_applies",
+     "qual": "_applies",
+     "sig": "def _applies(g, j, fam) -> bool",
+     "start": 224
+    },
+    {
+     "decorators": [],
+     "doc": "The first exclusion, CNHS or stop for (j, fam); report-only records never apply",
+     "end": 237,
+     "kind": "function",
+     "name": "prior",
+     "qual": "prior",
+     "sig": "def prior(ctx, j, fam)",
+     "start": 229
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 241,
+     "kind": "function",
+     "name": "alive",
+     "qual": "alive",
+     "sig": "def alive(ctx, j, fam) -> bool",
+     "start": 240
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 246,
+     "kind": "function",
+     "name": "fstop",
+     "qual": "fstop",
+     "sig": "def fstop(ctx, fam)",
+     "start": 244
+    },
+    {
+     "decorators": [],
+     "doc": "None while >= 2 models remain, else the 2-of-3 rule's outcome (C2 §6.5 rule 2).",
+     "end": 255,
+     "kind": "function",
+     "name": "family_stop",
+     "qual": "family_stop",
+     "sig": "def family_stop(ctx, fam)",
+     "start": 249
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 259,
+     "kind": "function",
+     "name": "rec",
+     "qual": "rec",
+     "sig": "def rec(status, values=None, **who) -> dict",
+     "start": 258
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 264,
+     "kind": "function",
+     "name": "lines",
+     "qual": "lines",
+     "sig": "def lines(recs) -> dict",
+     "start": 262
+    },
+    {
+     "decorators": [],
+     "doc": "One line per alive (model, family); fn(j, fam) -> (status, values).",
+     "end": 270,
+     "kind": "function",
+     "name": "per",
+     "qual": "per",
+     "sig": "def per(ctx, fams, fn) -> dict",
+     "start": 267
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 274,
+     "kind": "function",
+     "name": "frac",
+     "qual": "frac",
+     "sig": "def frac(mask) -> Fraction",
+     "start": 273
+    },
+    {
+     "decorators": [],
+     "doc": "nd_dry, only in a dry-run store (its functions refuse otherwise; G0 (x)).",
+     "end": 280,
+     "kind": "function",
+     "name": "dry",
+     "qual": "dry",
+     "sig": "def dry(ctx)",
+     "start": 278
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 284,
+     "kind": "function",
+     "name": "proc",
+     "qual": "proc",
+     "sig": "def proc(ctx) -> dict",
+     "start": 283
+    },
+    {
+     "decorators": [],
+     "doc": "{j: (model64, state_sha)}: the C2 checkpoints, or the planted dry-run models.",
+     "end": 289,
+     "kind": "function",
+     "name": "models",
+     "qual": "models",
+     "sig": "def models(ctx) -> dict",
+     "start": 287
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 293,
+     "kind": "function",
+     "name": "_models",
+     "qual": "_models",
+     "sig": "def _models(ctx) -> dict",
+     "start": 292
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 302,
+     "kind": "function",
+     "name": "table",
+     "qual": "table",
+     "sig": "def table(ctx, split) -> dict",
+     "start": 296
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 306,
+     "kind": "function",
+     "name": "orc",
+     "qual": "orc",
+     "sig": "def orc(ctx, split) -> dict",
+     "start": 305
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 310,
+     "kind": "function",
+     "name": "c2fit",
+     "qual": "c2fit",
+     "sig": "def c2fit(ctx, j) -> dict",
+     "start": 309
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 314,
+     "kind": "function",
+     "name": "frozen_oracle",
+     "qual": "frozen_oracle",
+     "sig": "def frozen_oracle(ctx) -> dict",
+     "start": 313
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 318,
+     "kind": "function",
+     "name": "inputs",
+     "qual": "inputs",
+     "sig": "def inputs(ctx, j, H) -> np.ndarray",
+     "start": 317
+    },
+    {
+     "decorators": [],
+     "doc": "(phi, supported) of resid_post_3 rows: the frozen production chart (C2), or the dry-run",
+     "end": 332,
+     "kind": "function",
+     "name": "phase",
+     "qual": "phase",
+     "sig": "def phase(ctx, j, a3) -> tuple",
+     "start": 321
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 346,
+     "kind": "function",
+     "name": "_state",
+     "qual": "_state",
+     "sig": "def _state(ctx, j, H, rows, n, kind) -> tuple",
+     "start": 335
+    },
+    {
+     "decorators": [],
+     "doc": "Per role: inputs, the three hooks, y (frozen C2 basis), for H, H+, H- the phase and",
+     "end": 369,
+     "kind": "function",
+     "name": "bundle",
+     "qual": "bundle",
+     "sig": "def bundle(ctx, split, j, kind=None, roles=cc.ROLES) -> dict",
+     "start": 349
+    },
+    {
+     "decorators": [],
+     "doc": "The projector problem p of model j: C2's frozen R, R_E, R_K1, R_K2, M, or the refit RD,",
+     "end": 383,
+     "kind": "function",
+     "name": "problem",
+     "qual": "problem",
+     "sig": "def problem(ctx, j, p) -> dict",
+     "start": 373
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_stage_post.py": {
+   "constants": [
+    "FLAGS",
+    "PLAN",
+    "T0"
+   ],
+   "doc": "C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT,\nREG2, T-PRE, T-PRE-MODEL, RESP-SPEC, NUM, ENDPOINT, REPORT (licences, unsealing, descriptives,\nPOST-DESC). Endpoint arrays exist only for admitted models and only after T-PRE; RESP/SPEC run\nfirst on each family stream, then the endpoint arrays with the same seed and rows (T-BOOT).",
+   "doc1": "C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "platform"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "platform"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "c1_endpoint"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_endpoint.py"
+     ],
+     "top": "c1_endpoint"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_split"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_split.py"
+     ],
+     "top": "nd_split"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "nd_stage_pre"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_pre.py"
+     ],
+     "top": "nd_stage_pre"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "nd_stage_base",
+     "names": [
+      "EXC",
+      "OK",
+      "alive",
+      "js",
+      "orc",
+      "problem",
+      "put",
+      "putj",
+      "rec"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "y_on",
+     "qual": "y_on",
+     "sig": "def y_on(ctx, fam, j) -> bool",
+     "start": 39
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 46,
+     "kind": "function",
+     "name": "tb",
+     "qual": "tb",
+     "sig": "def tb(arrays, guards, fam) -> dict",
+     "start": 45
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 51,
+     "kind": "function",
+     "name": "keyed",
+     "qual": "keyed",
+     "sig": "def keyed(per_model) -> tuple",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 58,
+     "kind": "function",
+     "name": "accept",
+     "qual": "accept",
+     "sig": "def accept(ctx) -> dict",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks.",
+     "end": 68,
+     "kind": "function",
+     "name": "reg2",
+     "qual": "reg2",
+     "sig": "def reg2(ctx) -> dict",
+     "start": 61
+    },
+    {
+     "decorators": [],
+     "doc": "§3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1",
+     "end": 110,
+     "kind": "function",
+     "name": "t_pre",
+     "qual": "t_pre",
+     "sig": "def t_pre(ctx) -> dict",
+     "start": 71
+    },
+    {
+     "decorators": [],
+     "doc": "§3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only),",
+     "end": 131,
+     "kind": "function",
+     "name": "t_pre_model",
+     "qual": "t_pre_model",
+     "sig": "def t_pre_model(ctx) -> dict",
+     "start": 113
+    },
+    {
+     "decorators": [],
+     "doc": "V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream.",
+     "end": 145,
+     "kind": "function",
+     "name": "first",
+     "qual": "first",
+     "sig": "def first(ctx, j, fam) -> tuple",
+     "start": 135
+    },
+    {
+     "decorators": [],
+     "doc": "(arrays, guards, quantities) of the whole family stream of one admitted model.",
+     "end": 174,
+     "kind": "function",
+     "name": "stream",
+     "qual": "stream",
+     "sig": "def stream(ctx, j, fam) -> tuple",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 188,
+     "kind": "function",
+     "name": "resp_spec",
+     "qual": "resp_spec",
+     "sig": "def resp_spec(ctx) -> dict",
+     "start": 177
+    },
+    {
+     "decorators": [],
+     "doc": "Form the admitted models' endpoint arrays; record every bound inside its guard.",
+     "end": 205,
+     "kind": "function",
+     "name": "num",
+     "qual": "num",
+     "sig": "def num(ctx) -> dict",
+     "start": 191
+    },
+    {
+     "decorators": [],
+     "doc": "KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed",
+     "end": 220,
+     "kind": "function",
+     "name": "_kc_extra",
+     "qual": "_kc_extra",
+     "sig": "def _kc_extra(ctx) -> dict",
+     "start": 209
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 260,
+     "kind": "function",
+     "name": "endpoint",
+     "qual": "endpoint",
+     "sig": "def endpoint(ctx) -> dict",
+     "start": 223
+    },
+    {
+     "decorators": [],
+     "doc": "lambda_D, eta_comp, iota_M and the LN-scale shares with intervals (seed 630508).",
+     "end": 292,
+     "kind": "function",
+     "name": "_descriptives",
+     "qual": "_descriptives",
+     "sig": "def _descriptives(ctx) -> dict",
+     "start": 264
+    },
+    {
+     "decorators": [],
+     "doc": "C2 §5.7: unlicensed point ratios for the models stopped at T-PRE or RESP-SPEC.",
+     "end": 312,
+     "kind": "function",
+     "name": "post_desc",
+     "qual": "post_desc",
+     "sig": "def post_desc(ctx, G, stop)",
+     "start": 295
+    },
+    {
+     "decorators": [],
+     "doc": "Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak,",
+     "end": 385,
+     "kind": "function",
+     "name": "report",
+     "qual": "report",
+     "sig": "def report(ctx) -> dict",
+     "start": 315
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_stage_pre.py": {
+   "constants": [
+    "ENTRY",
+    "PLAN",
+    "S1",
+    "S2",
+    "S3",
+    "SUITES"
+   ],
+   "doc": "C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order,\nthe decoy builder and the split-level helpers reused by S4, S5 and T-PRE (sampling, oracle,\nL1, R1, N2, support, H5). DFEAS reads no logit; DFIT logits only on the M0/M0-D rows (L2).",
+   "doc1": "C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "subprocess"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "subprocess"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_stats.py"
+     ],
+     "top": "c2_stats"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "nd_split",
+     "names": [
+      "build_decoys",
+      "h3_run",
+      "h5_bounds",
+      "l1_check",
+      "m0_rows",
+      "move_T",
+      "n2_check",
+      "r1_check",
+      "sample",
+      "support",
+      "w32"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_split.py"
+     ],
+     "top": "nd_split"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 42,
+     "module": "nd_stage_base",
+     "names": [
+      "EXC",
+      "bundle",
+      "c2fit",
+      "npz",
+      "orc",
+      "proc",
+      "put",
+      "putj",
+      "rec"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 52,
+     "kind": "function",
+     "name": "auth_admit",
+     "qual": "auth_admit",
+     "sig": "def auth_admit(ctx) -> dict",
+     "start": 48
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 57,
+     "kind": "function",
+     "name": "g0_step",
+     "qual": "g0_step",
+     "sig": "def g0_step(ctx) -> dict",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "function",
+     "name": "impl",
+     "qual": "impl",
+     "sig": "def impl(ctx) -> dict",
+     "start": 60
+    },
+    {
+     "decorators": [],
+     "doc": "API.md §9.3; the basetemp has a test_ component (§20.4 row-9 trap).",
+     "end": 87,
+     "kind": "function",
+     "name": "pf",
+     "qual": "pf",
+     "sig": "def pf(ctx) -> dict",
+     "start": 72
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 92,
+     "kind": "function",
+     "name": "h1",
+     "qual": "h1",
+     "sig": "def h1(ctx) -> dict",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 98,
+     "kind": "function",
+     "name": "reg_files",
+     "qual": "reg_files",
+     "sig": "def reg_files(ctx, version) -> None",
+     "start": 95
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 105,
+     "kind": "function",
+     "name": "reg",
+     "qual": "reg",
+     "sig": "def reg(ctx) -> dict",
+     "start": 101
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 109,
+     "kind": "function",
+     "name": "h2",
+     "qual": "h2",
+     "sig": "def h2(ctx) -> dict",
+     "start": 108
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 114,
+     "kind": "function",
+     "name": "h3",
+     "qual": "h3",
+     "sig": "def h3(ctx) -> dict",
+     "start": 112
+    },
+    {
+     "decorators": [],
+     "doc": "f_x >= 9/10, f_y >= 17/20 on DFIT, DFEAS, DVAL (frozen s_max); the coverage tally.",
+     "end": 122,
+     "kind": "function",
+     "name": "h4",
+     "qual": "h4",
+     "sig": "def h4(ctx) -> dict",
+     "start": 117
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 127,
+     "kind": "function",
+     "name": "h5",
+     "qual": "h5",
+     "sig": "def h5(ctx) -> dict",
+     "start": 125
+    },
+    {
+     "decorators": [],
+     "doc": "(i) the oracle's own log-predictive gives G per DVAL row under each model's symbol",
+     "end": 144,
+     "kind": "function",
+     "name": "oracle_feas",
+     "qual": "oracle_feas",
+     "sig": "def oracle_feas(ctx) -> dict",
+     "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 159,
+     "kind": "function",
+     "name": "m0",
+     "qual": "m0",
+     "sig": "def m0(ctx) -> dict",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "nd_decoy.m0d on the M0 rows; decoys/DECOY_<j>.json and decoys/HEAD_<j>.npz.",
+     "end": 185,
+     "kind": "function",
+     "name": "m0d",
+     "qual": "m0d",
+     "sig": "def m0d(ctx) -> dict",
+     "start": 162
+    },
+    {
+     "decorators": [],
+     "doc": "Chart sha256 (a dry-run store: the c2/ stand-in table) and Sup(DFIT) >= 0.99; DFIT",
+     "end": 203,
+     "kind": "function",
+     "name": "c0c",
+     "qual": "c0c",
+     "sig": "def c0c(ctx) -> dict",
+     "start": 188
+    },
+    {
+     "decorators": [],
+     "doc": "One refit problem on DFIT natural rows: C2 F1 exactly, decoders, m-tilde (§3 row 13).",
+     "end": 219,
+     "kind": "function",
+     "name": "refit",
+     "qual": "refit",
+     "sig": "def refit(ctx, j, p, Y, aux, arr, dec) -> tuple",
+     "start": 206
+    },
+    {
+     "decorators": [],
+     "doc": "The refits R@D (y) and R@T (y @ T.T) per model (§2.8); fits/REFIT_<j>, DEC_<j>; the",
+     "end": 258,
+     "kind": "function",
+     "name": "f1",
+     "qual": "f1",
+     "sig": "def f1(ctx) -> dict",
+     "start": 222
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 267,
+     "kind": "function",
+     "name": "sup",
+     "qual": "sup",
+     "sig": "def sup(ctx) -> dict",
+     "start": 262
+    },
+    {
+     "decorators": [],
+     "doc": "The family records plus the report-only R@T records of D (problem RT; never exclude).",
+     "end": 275,
+     "kind": "function",
+     "name": "_with_rt",
+     "qual": "_with_rt",
+     "sig": "def _with_rt(ctx, check) -> dict",
+     "start": 270
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 279,
+     "kind": "function",
+     "name": "l1",
+     "qual": "l1",
+     "sig": "def l1(ctx) -> dict",
+     "start": 278
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 283,
+     "kind": "function",
+     "name": "r1",
+     "qual": "r1",
+     "sig": "def r1(ctx) -> dict",
+     "start": 282
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 287,
+     "kind": "function",
+     "name": "n2",
+     "qual": "n2",
+     "sig": "def n2(ctx) -> dict",
+     "start": 286
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 292,
+     "kind": "function",
+     "name": "survival",
+     "qual": "survival",
+     "sig": "def survival(ctx) -> dict",
+     "start": 290
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_stage_val.py": {
+   "constants": [
+    "C1",
+    "DREF",
+    "MDE",
+    "PLAN",
+    "S4"
+   ],
+   "doc": "C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX,\nV3x, V3y, Y1, V3x', Y1', V3x'-g1, KC, KC-R, P1 (p1_nd, the sealed VAL bundle, the R-0116-2\nequivalence check in the dry run), and the helpers S5 reuses (quantities of the base model and\nthe decoys, X1, DX, the C2-M arms, the bound wrapper). KC, KC-R, V3x', V3x'-g1 and Y1' release\nPASS/FAIL only; method statistics use the refit projectors only (S12).",
+   "doc1": "C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "c1_endpoint"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_endpoint.py"
+     ],
+     "top": "c1_endpoint"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "c2_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_stats.py"
+     ],
+     "top": "c2_stats"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "nd_split"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_split.py"
+     ],
+     "top": "nd_split"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "nd_stage_pre"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_pre.py"
+     ],
+     "top": "nd_stage_pre"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "precision"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/precision.py"
+     ],
+     "top": "precision"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "nd_stage_base",
+     "names": [
+      "EXC",
+      "alive",
+      "bundle",
+      "orc",
+      "problem",
+      "putj",
+      "rec"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 34,
+     "kind": "function",
+     "name": "x1",
+     "qual": "x1",
+     "sig": "def x1(ctx) -> dict",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "dx",
+     "qual": "dx",
+     "sig": "def dx(ctx) -> dict",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "V3x (N-R, N-M: MODEL_HEADROOM) or V3y (Y1 activity only; excludes no model), base.",
+     "end": 57,
+     "kind": "function",
+     "name": "v3",
+     "qual": "v3",
+     "sig": "def v3(ctx, pair, seed, fams, fail) -> dict",
+     "start": 45
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "function",
+     "name": "v3x",
+     "qual": "v3x",
+     "sig": "def v3x(ctx) -> dict",
+     "start": 60
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "function",
+     "name": "v3y",
+     "qual": "v3y",
+     "sig": "def v3y(ctx) -> dict",
+     "start": 64
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 69,
+     "kind": "function",
+     "name": "y_on",
+     "qual": "y_on",
+     "sig": "def y_on(ctx, j, key='V3y') -> bool",
+     "start": 68
+    },
+    {
+     "decorators": [],
+     "doc": "Y1-type array and guard on the y pair under Q's projector (frozen C2 or RD).",
+     "end": 76,
+     "kind": "function",
+     "name": "_y1",
+     "qual": "_y1",
+     "sig": "def _y1(Q) -> tuple",
+     "start": 72
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 89,
+     "kind": "function",
+     "name": "y1",
+     "qual": "y1",
+     "sig": "def y1(ctx) -> dict",
+     "start": 79
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 93,
+     "kind": "function",
+     "name": "_d_alive",
+     "qual": "_d_alive",
+     "sig": "def _d_alive(ctx) -> list",
+     "start": 92
+    },
+    {
+     "decorators": [],
+     "doc": "V3x' and V3y' (one call, seed 630514; ND-C4) for DNULL under RD; PASS/FAIL release.",
+     "end": 116,
+     "kind": "function",
+     "name": "v3x_d",
+     "qual": "v3x_d",
+     "sig": "def v3x_d(ctx) -> dict",
+     "start": 96
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 138,
+     "kind": "function",
+     "name": "y1_d",
+     "qual": "y1_d",
+     "sig": "def y1_d(ctx) -> dict",
+     "start": 119
+    },
+    {
+     "decorators": [],
+     "doc": "V3x'-g1 (report-only): the unamplified decoy DNULL1 under RD; never excludes.",
+     "end": 154,
+     "kind": "function",
+     "name": "v3x_g1",
+     "qual": "v3x_g1",
+     "sig": "def v3x_g1(ctx) -> dict",
+     "start": 141
+    },
+    {
+     "decorators": [],
+     "doc": "KC / KC-R case guards: C2 stream_guards on the R keys; beta_A (coef 1) on the",
+     "end": 169,
+     "kind": "function",
+     "name": "case_guards",
+     "qual": "case_guards",
+     "sig": "def case_guards(arrays, Q) -> dict",
+     "start": 157
+    },
+    {
+     "decorators": [],
+     "doc": "(arrays, guards) keyed \"<case>:<stat>|<j>\" of the given cases of model j.",
+     "end": 181,
+     "kind": "function",
+     "name": "kc_arrays",
+     "qual": "kc_arrays",
+     "sig": "def kc_arrays(ctx, split, j, cases) -> tuple",
+     "start": 172
+    },
+    {
+     "decorators": [],
+     "doc": "{j: {case: PASS | CONTRADICTED | UNRESOLVED | NOT_COMPUTED}} (one bootstrap call).",
+     "end": 201,
+     "kind": "function",
+     "name": "kc_eval",
+     "qual": "kc_eval",
+     "sig": "def kc_eval(ctx, split, seed, cases, alpha=nc.VAL_ALPHA, draws=nc.VAL_DRAWS) -> dict",
+     "start": 184
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 210,
+     "kind": "function",
+     "name": "kc",
+     "qual": "kc",
+     "sig": "def kc(ctx) -> dict",
+     "start": 204
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 219,
+     "kind": "function",
+     "name": "kc_r",
+     "qual": "kc_r",
+     "sig": "def kc_r(ctx) -> dict",
+     "start": 213
+    },
+    {
+     "decorators": [],
+     "doc": "The c2_stats._summaries loop with explicit integer seeds (kernels called directly).",
+     "end": 236,
+     "kind": "function",
+     "name": "summaries",
+     "qual": "summaries",
+     "sig": "def summaries(arrays, r4n, models, seeds, alpha, alternative) -> dict",
+     "start": 223
+    },
+    {
+     "decorators": [],
+     "doc": "§4.5: N_F = the smallest N at which every model passes every gated array, else the",
+     "end": 261,
+     "kind": "function",
+     "name": "p1_nd",
+     "qual": "p1_nd",
+     "sig": "def p1_nd(family, arrays, afull_or_G, models, alpha) -> dict",
+     "start": 239
+    },
+    {
+     "decorators": [],
+     "doc": "Bitwise equality of nested summaries (arrays by dtype, shape and bytes).",
+     "end": 271,
+     "kind": "function",
+     "name": "_same",
+     "qual": "_same",
+     "sig": "def _same(a, b) -> bool",
+     "start": 264
+    },
+    {
+     "decorators": [],
+     "doc": "R-0116-2: the direct kernel path with C2's seeds reproduces c2_stats._summaries.",
+     "end": 279,
+     "kind": "function",
+     "name": "p1_equivalence",
+     "qual": "p1_equivalence",
+     "sig": "def p1_equivalence(arrays, afull, models, alpha) -> dict",
+     "start": 274
+    },
+    {
+     "decorators": [],
+     "doc": "(stream arrays, P1 base array, sealed quantities) of one family and model on DVAL.",
+     "end": 294,
+     "kind": "function",
+     "name": "_fam_arrays",
+     "qual": "_fam_arrays",
+     "sig": "def _fam_arrays(ctx, fam, j) -> tuple",
+     "start": 282
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 302,
+     "kind": "function",
+     "name": "_bnd",
+     "qual": "_bnd",
+     "sig": "def _bnd(b) -> dict",
+     "start": 301
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 356,
+     "kind": "function",
+     "name": "p1",
+     "qual": "p1",
+     "sig": "def p1(ctx) -> dict",
+     "start": 305
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/store_template/nd_meter_bind.py": {
+   "constants": [
+    "DISK_MIN_FREE",
+    "GIB",
+    "IMPORT_DIR",
+    "METER_FILES",
+    "OUT",
+    "RECORD",
+    "WORKTREE"
+   ],
+   "doc": "Store-local binding of the unchanged job-0014 meter for the C2ND runs (C2ND API.md 9.8; the\nC2 c2_meter_bind.py pattern). Template: the coordinator copies it into c2nd-store (or into a\ndry-run store) and binds its sha256 in FREEZE.json (DRY.json) \"meter_bind_sha256\".",
+   "doc1": "Store-local binding of the unchanged job-0014 meter for the C2ND runs (C2ND API.md 9.8; the",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "shutil"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "shutil"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 65,
+     "module": "",
+     "names": [
+      "controls"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/controls.py"
+     ],
+     "top": "controls"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 66,
+     "module": "",
+     "names": [
+      "meter"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/meter.py"
+     ],
+     "top": "meter"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 67,
+     "module": "",
+     "names": [
+      "winjob"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/winjob.py"
+     ],
+     "top": "winjob"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "_norm",
+     "qual": "_norm",
+     "sig": "def _norm(p)",
+     "start": 41
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 46,
+     "kind": "function",
+     "name": "_sha",
+     "qual": "_sha",
+     "sig": "def _sha(p)",
+     "start": 45
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 50,
+     "kind": "function",
+     "name": "_fail",
+     "qual": "_fail",
+     "sig": "def _fail(why)",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 92,
+     "kind": "function",
+     "name": "disk_reason",
+     "qual": "disk_reason",
+     "sig": "def disk_reason(usage=shutil.disk_usage)",
+     "start": 84
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 105,
+     "kind": "function",
+     "name": "make_limiter",
+     "qual": "make_limiter",
+     "sig": "def make_limiter(disk=disk_reason, legacy=None)",
+     "start": 95
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 111,
+     "kind": "function",
+     "name": "_drop",
+     "qual": "_drop",
+     "sig": "def _drop(args, flag)",
+     "start": 108
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 120,
+     "kind": "function",
+     "name": "rewrite_argv",
+     "qual": "rewrite_argv",
+     "sig": "def rewrite_argv(argv)",
+     "start": 114
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 133,
+     "kind": "function",
+     "name": "main",
+     "qual": "main",
+     "sig": "def main()",
+     "start": 123
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [],
+     "expr": "str(IMPORT_DIR)",
+     "line": 63
+    }
+   ]
   },
   "tools/c2_readout/c2_attrib.py": {
    "constants": [
@@ -187685,5 +193122,5 @@
    ]
   }
  },
- "sources_digest": "14837fefa1a687790714c9b9d8d667784e476d4bb9bb48a822485cd14a8c60d5"
+ "sources_digest": "3d7cd2a051b0a0881038540d693582b1a6224d20fa7e9ac88573ee943a1a8845"
 }

@@ -16,10 +16,10 @@
 - `import c2_attrib` -> [tools/c2_readout/c2_attrib.py](../../tools/c2_readout/c2_attrib.py.md) (line 24, via unique basename)
 - `import c2_stats` -> [tools/c2_readout/c2_stats.py](../../tools/c2_readout/c2_stats.py.md) (line 25, via unique basename)
 - `import nd_decide` -> [tools/c2_nd/nd_decide.py](../../tools/c2_nd/nd_decide.py.md) (line 26, via sys.path edit)
+- `import nd_stage_val` -> [tools/c2_nd/nd_stage_val.py](../../tools/c2_nd/nd_stage_val.py.md) (line 27, via sys.path edit)
 
 ### External (third-party)
 
-- `nd_stage_val` (lines 27)
 - `numpy` (lines 15)
 
 ### Standard library

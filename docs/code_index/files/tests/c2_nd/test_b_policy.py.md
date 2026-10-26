@@ -16,11 +16,11 @@
 - `import nd_config` -> [tools/c2_nd/nd_config.py](../../tools/c2_nd/nd_config.py.md) (line 15, via sys.path edit)
 - `import nd_attrib` -> [tools/c2_nd/nd_attrib.py](../../tools/c2_nd/nd_attrib.py.md) (line 18, via sys.path edit)
 - `import nd_decide` -> [tools/c2_nd/nd_decide.py](../../tools/c2_nd/nd_decide.py.md) (line 19, via sys.path edit)
+- `import nd_driver` -> [tools/c2_nd/nd_driver.py](../../tools/c2_nd/nd_driver.py.md) (line 20, via sys.path edit)
 - `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../../tools/c1prime/c1_records.py.md) (line 23, via unique basename)
 
 ### External (third-party)
 
-- `nd_driver` (lines 20)
 - `numpy` (lines 21)
 - `pytest` (lines 22)
 

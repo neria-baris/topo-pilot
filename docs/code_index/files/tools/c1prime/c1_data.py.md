@@ -57,6 +57,7 @@
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 12, import)
 - [tools/c1prime_registry/c1_registry_sources.py](../c1prime_registry/c1_registry_sources.py.md) (line 21, import)
 - [tools/c2_nd/nd_data.py](../c2_nd/nd_data.py.md) (line 16, import)
+- [tools/c2_nd/nd_dry.py](../c2_nd/nd_dry.py.md) (line 18, import)
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 24, import)
 - [tools/c2_readout/c2_data.py](../c2_readout/c2_data.py.md) (line 22, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 21, import)

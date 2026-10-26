@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import fnmatch
 import hashlib
+import json
 import os
 from pathlib import Path
 
@@ -284,3 +285,47 @@ def store_admission(store, lineage, first_sampling) -> dict:
             unrecognised.append(rel)
     ok = not unrecognised and not (first_sampling and payload)
     return {"status": "PASS" if ok else LINEAGE, "unrecognised": unrecognised, "payload": payload}
+
+
+OWN_GATES = ("IMPL", "AUTH-ADMIT")
+
+
+def _own_suffix_ok(name, rows, stage) -> bool:
+    """R-0107-2: STAGES.jsonl gets exactly one STARTED line of this stage; GATES.jsonl only
+    this stage's study-scope IMPL / AUTH-ADMIT lines."""
+    if name == "STAGES.jsonl":
+        one = len(rows) == 1
+        return one and rows[0].get("stage") == stage and rows[0].get("event") == "STARTED"
+    return all(
+        r.get("stage") == stage and r.get("gate") in OWN_GATES and r.get("scope") == "study"
+        for r in rows
+    )
+
+
+def own_records(store, stage, lineage) -> dict:
+    """G0 (vii), R-0107-2 (D-0107-1): {name: sha256} for GATES.jsonl and STAGES.jsonl, each an
+    accepted prefix (empty, or the line-boundary prefix whose sha256 is the lineage's
+    append_only value) plus this stage's own pre-G0 lines; a file failing the rule is omitted."""
+    lin, out = _norm(lineage), {}
+    for name in ("GATES.jsonl", "STAGES.jsonl"):
+        path = Path(store) / name
+        if not path.is_file():
+            continue
+        try:
+            lines = path.read_bytes().splitlines(keepends=True)
+        except OSError:
+            continue
+        want = lin.get(name)
+        h = hashlib.sha256()
+        cut = 0 if want in (None, h.hexdigest()) else None
+        for i, line in enumerate(lines, 1):
+            h.update(line)
+            cut = i if want is not None and h.hexdigest() == want else cut
+        try:
+            rows = None if cut is None else [json.loads(x) for x in lines[cut:]]
+        except ValueError:
+            continue
+        if rows is not None and all(isinstance(r, dict) for r in rows):
+            if _own_suffix_ok(name, rows, stage):
+                out[name] = file_sha(path)
+    return out

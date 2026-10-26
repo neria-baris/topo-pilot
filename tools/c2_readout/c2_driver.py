@@ -236,8 +236,8 @@ def g0(ctx, stage=None) -> dict:
     pkg, lin = wt / "tools" / "c2_readout", recognised(store)
     proto, c2c = pkg / Path(cc.PROTOCOL_FILE).name, pkg / "CONTRACT.json"
     mail = Path(cc.PROJECT_ROOT) / cc.CONTRACT["protocol"]["mailbox_file"]  # R-0105-1
-    iv = ((cc.K4_FREEZE, H["k4_freeze"]),)
-    iv += ((pkg.parent / "c1prime" / "CONTRACT.json", H["c1prime_contract"]),)
+    c1p = pkg.parent / "c1prime" / "CONTRACT.json"
+    iv = ((cc.K4_FREEZE, H["k4_freeze"]), (c1p, H["c1prime_contract"]))
     pins = {f"tools/c2_readout/{p.name}": S(p) for p in pkg.glob("*") if p.is_file()}
     blobs = {**H["reused_blobs"], **H["reused_extra"]}
     charts = {Path(cc.C1P_STORE) / Path(p).name: s for p, s in H["charts"].items()}
@@ -245,8 +245,7 @@ def g0(ctx, stage=None) -> dict:
     mb, mdir = (store / "c2_meter_bind.py", fz.get("meter_bind_sha256")), pkg.parent
 
     def viii():
-        ok = _eq(S(task), ctx.task_sha256) and bool(ctx.session)
-        ok = ok and release_ok(ctx, stage or "S1")["ok"]
+        ok = _eq(S(task), ctx.task_sha256) and ctx.session and release_ok(ctx, stage or "S1")["ok"]
         meter_bind_check(*mb, mdir / "x4_oracle_profile")
         return ok and Path(cc.__file__).resolve().parent == pkg.resolve()
 
@@ -257,7 +256,8 @@ def g0(ctx, stage=None) -> dict:
     out["iv"] = _item(lambda: all(S(p) == s for p, s in iv))
     out["v"] = _item(lambda: all(S(p) == s for p, s in charts.items()))
     out["vi"] = _item(lambda: cd.namespace_scan(cc.PROJECT_ROOT, pins, lin)["status"] == "PASS")
-    out["vii"] = _item(lambda: cd.store_admission(store, lin, stage == "S1")["status"] == "PASS")
+    adm = {**lin, **cd.own_records(store, stage, lin)}  # R-0107-2: own pre-G0 lines
+    out["vii"] = _item(lambda: cd.store_admission(store, adm, stage == "S1")["status"] == "PASS")
     out["viii"] = _item(viii)
     bad = [k for k, v in out.items() if v["status"] != "PASS"]
     cls = "LINEAGE" if bad and set(bad) <= {"vi", "vii"} else "AUTHORITY"

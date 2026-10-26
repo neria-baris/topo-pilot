@@ -75,8 +75,10 @@ def known_cases(w0, ex0, rec0, look0, zero) -> dict:
         q = ho.predictive(oracle_profile.suffix_posterior(T, E, pi, tok, K), T, E)
         msq = np.sum(rows["m"][K] ** 2, axis=1)
         mc9[K] = {"E_m_sq": hs.summary(msq), "E_Hq": hs.summary(ho.entropy_rows(q))}
-    ok9 = all(abs(ex9[K][q] - v["mean"]) <= 4 * v["se"] for K in mc9 for q, v in mc9[K].items())
-    kc["KC9"] = {"status": _ok(ok9), "value": {"exact": ex9, "mc": mc9}}
+    floor9 = float(Fraction(S0C["KC9"]["kc9_float_floor"]))  # D-0130-1 (owner addendum 30)
+    tol9 = {K: {q: max(4 * v["se"], floor9) for q, v in mc9[K].items()} for K in mc9}
+    ok9 = all(abs(ex9[K][q] - v["mean"]) <= tol9[K][q] for K in mc9 for q, v in mc9[K].items())
+    kc["KC9"] = {"status": _ok(ok9), "value": {"exact": ex9, "mc": mc9, "tolerance": tol9}}
     dec = he.decimal_spot_check(w0, tok[:16], (1, 2, 4, 32))
     bay = he.bayes_cross_check(w0, tok[:1024])
     kc["KC10"] = {"status": _ok(dec["pass"] and bay["pass"]), "value": [dec, bay]}

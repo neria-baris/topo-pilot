@@ -338,3 +338,41 @@ def test_classify_seed_hits_fails_closed_outside(outside):
     assert res["status"] == "FAIL_TECHNICAL/SEED_SCOPE"
     text = json.dumps(res, default=str)
     assert outside in text and DECLARED[0] in text  # every hit is listed
+
+
+# ------------------------------------------------- D-0127-1 regression (job 0128, author B)
+# Review 0127: a seed "appears" only as a whole token. A digit-only needle hits only when not
+# preceded or followed by [0-9A-Za-z_]; the scope needle "hws-v1" keeps substring matching.
+# The no-hit texts are the 0127 false hits (fraction, hex digest, float mantissa, count).
+
+TOKEN_NO_HIT = {
+    "c1prime-store/CERT_val.json": '{"value": "66201016285"}\n',
+    "c1prime-store/registry/registry_v1.json": '{"sha256": "f6201019b8"}\n',
+    "artifacts/ProcessDiagnostics/a/extra.json": '{"mi": 6.662010328e-50}\n',
+    "x6-store/tables/class_tables_NA.json": '{"count": 254342562010128}\n',
+}
+TOKEN_HIT = {
+    "old/seed_map.json": ('{"seed": 620101}\n', "620101"),
+    "old/list.json": ("[620101]\n", "620101"),
+    "old/manifest.txt": ("bootstrap seeds 620103, 7\n", "620103"),
+    "old/record.json": ('{"s": "620101"}\n', "620101"),
+    "old/scope.md": ("xhws-v1y\n", "hws-v1"),
+}
+
+
+def test_d0127_1_numeric_needles_match_whole_tokens(tmp_path):
+    root = tmp_path / "tree"
+    plant = dict(TOKEN_NO_HIT, **{rel: text for rel, (text, _) in TOKEN_HIT.items()})
+    for rel, text in plant.items():
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (root / rel).write_text(text, encoding="utf-8")
+    hits = hd.seed_search(root, ["hws-v1", "620101", "620103"])
+    found = {rel: set() for rel in plant}
+    for h in hits:
+        p = str(h["path"]).replace("\\", "/")
+        owners = [rel for rel in plant if p == rel or p.endswith("/" + rel)]
+        assert len(owners) == 1, p
+        found[owners[0]].add(h["needle"])
+    bad = [(rel, found[rel]) for rel in TOKEN_NO_HIT if found[rel]]
+    bad += [(rel, found[rel]) for rel, (_, nd) in TOKEN_HIT.items() if found[rel] != {nd}]
+    assert bad == []

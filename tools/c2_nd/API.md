@@ -1,0 +1,452 @@
+# tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)
+
+**Authority:** `tools/c2_nd/PROTOCOL_C2ND_v1.md`, a byte copy of `agent-handoff/planning/responses/C2ND-DESIGN-v1.md` (sha256 `4381655dc0b1e0f8ce50b48c91c756e5eb8e7fae3d4c8592599ab84368d8f0fd`), the design freeze candidate. C2ND-FROZEN-v1 is byte-identical to it (§3 row 0c). Owner authority: addendum 29 (`agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-29.md`, sha256 `e595e41694eb8fbfc4160c0b56c1fb5db561aacd8e80017b5a8b21fc90f20c37`): standing AUTH-IMPL and AUTH-RUN for C2ND while the combined measured CPU of HWS, X6ZC and C2ND stays below 12 CPU-h; every protocol §15 question answered with its default (10 % / 50 % lines kept; N-M included as a secondary family; g_D = 6 accepted; the "specificity not established" rule). Codex is frozen (addendum 28). Section numbers (§n), gate rows (§3 rows 0a–34), lemmas, stop rules (S1–S14 as substituted by §12), test names (T-N1 … T-SIZE) refer to the protocol. "C2 §x" refers to `tools/c2_readout/PROTOCOL_C2_v2.md`, "C2 API §x" to `tools/c2_readout/API.md` (both frozen at H″ `3e234b38077f84ddebfa380120938b8847f40e03`).
+
+**Precedence.** The protocol is authoritative. This contract fixes names, signatures, shapes, dtypes, random streams, sequence-id codes, file layouts, record schemas, report keys, the gate order, the registry sources and the inventory, so that the independent test authors A and B and the implementer bind to the same names before any module exists (§11.4). It changes no scientific choice: no threshold, tolerance, seed, decoy, gain, dose, site, donor, chart, split size, gate, stop rule, outcome rule or licence. Where this contract and the protocol differ, the protocol wins and the difference is a contract defect (report it; never resolve it in code). Details the protocol leaves open are fixed in §18 "Choices" (items ND-C1 …), always with the simplest option consistent with the protocol. `CONTRACT.json` holds the machine-readable values; where it and the protocol differ, the protocol wins.
+
+**Nothing here authorises a run.** No sampling, model forward, oracle run, registry build or test run follows from this contract. Module code comes after the independent tests (§11.4, §13 step 3).
+
+## 1. Files, budgets, imports (§11.3)
+
+| File | Contents (sections of this contract) | Budget |
+|---|---|---|
+| `nd_config.py` | CONTRACT loading, bindings, constants, exact `Fraction` levels and ranks, seeds, paths, sys.path convention (§3) | ≤ 400 (≈ 150) |
+| `nd_data.py` | `c2nd-v1` samplers and ids, history tables through `c2_data`, the needle scan and the cross-lineage hygiene check, store admission (§4) | ≤ 400 (≈ 220) |
+| `nd_registry.py` | readers `c2`, `c2scratch`, `hws`, `x6zc`; the scratch scan; R_ND and R′_ND builds composing the `c2_registry` readers; the ND inventory adapter; separation; the reservation check (§5) | ≤ 400 (≈ 280) |
+| `nd_decoy.py` | head edits, V₀, U, T, the coordinate wrapper and its basis adapter, `decoy_sha64`, M0-D, DX (§6) | ≤ 400 (≈ 340) |
+| `nd_attrib.py` | N-R, N-M and D arrays, the variant arrays, the leak, canonical angles, κ_leak, the LN-scale decomposition, the oracle response identity (§7) | ≤ 400 (≈ 300) |
+| `nd_decide.py` | guards, `nr_model`, `d_model`, `nm_model`, rule-6 statements and the nested entry, variant categories and qualifiers, KC/KC-R rules, overall rules, licences, union display (§8) | ≤ 400 (≈ 380) |
+| `nd_driver.py` | `GATE_ORDER`, `LogitPolicy`, records, sealing, G0, AUTH and release binding, meter check, store loaders and caches, `run_stage`, CLI (§9) | ≤ 400 (≈ 350) |
+| `nd_stage_pre.py` | `PLAN["S1"]`, `PLAN["S2"]`, `PLAN["S3"]` (§3 rows 0–18) and the split-level checks reused by T-PRE (§10) | ≤ 400 |
+| `nd_stage_val.py` | `PLAN["S4"]` (§3 rows 19–26) and the arm, stream and bound helpers reused by S5 (§10) | ≤ 400 (≈ 380) |
+| `nd_stage_post.py` | `PLAN["S5"]` (§3 rows 27–34), REPORT, POST-DESC (§10) | ≤ 400 |
+| `nd_dry.py` | planted synthetic models and the synthetic C2-prerequisite fixture, refused by G0 outside a dry-run store (§11) | ≤ 400 (≈ 200) |
+| `API.md`, `PROTOCOL_C2ND_v1.md`, `CONTRACT.json`, `TEST_PLAN.md` | this contract; the protocol copy; machine-readable values; the test plan | — |
+| store-local `nd_meter_bind.py` | outside the repository, in the store (§9.8) | — |
+
+Exactly these eleven modules (`MODULES` in `CONTRACT.json`; ceiling 4,400 lines; T-SIZE). No `src/` change and no change to any existing file (§11.2 item 4); `tools/c2_readout` stays bitwise at H″.
+
+**Import convention.** Every module imports `nd_config` first. `nd_config` computes `HERE = Path(__file__).resolve().parent`, `REPO = HERE.parents[1]`, prepends `REPO / "tools" / "c2_readout"` and then `HERE` to `sys.path` (if absent; `HERE` ends at index 0), and imports `c2_config` (which applies the C2 convention unchanged: `tools/c2_readout`, `tools/c1prime`, `tools/c1prime_registry`, `tools/k4b`, `tools/x6_stage1`, `tools/x4_circle_history`, `tools/x4_oracle_profile`, `tests/oracle_profile`). Reused modules are imported by bare name. `x6s1_registry` is imported only inside the functions that need it (lazy; as `c2_registry`). Module dependency order (no cycles): `nd_config` ← `nd_data` ← `nd_registry` ← `nd_decoy` ← `nd_attrib` ← `nd_decide` ← `nd_driver` ← `nd_stage_pre` ← `nd_stage_val` ← `nd_stage_post`; `nd_dry` imports `nd_config`, `nd_data`, `nd_decoy`, `nd_attrib` and the C2 kernels and is imported only by `nd_driver.run_stage` when the store is a dry-run store (§11). The driver imports no stage module at import time (`STAGE_MODULE`, §9.2). Importing a module performs no I/O beyond reading the two `CONTRACT.json` files (C2's through `c2_config`, ND's through `nd_config`) and no computation beyond small constants.
+
+**Test imports.** A test file inserts `REPO / "tools" / "c2_nd"` at `sys.path[0]` (`REPO = Path(__file__).resolve().parents[2]`), imports `nd_config` first, then the modules by bare name with these aliases: `import nd_config as nc`, `nd_data as nda`, `nd_registry as nrg`, `nd_decoy as ndy`, `nd_attrib as nat`, `nd_decide as ndc`, `nd_driver as ndr`, `nd_stage_pre as nsp`, `nd_stage_val as nsv`, `nd_stage_post as nso`, `nd_dry as ndd`. The C2 modules keep the C2 aliases (`c2_config as cc`, `c2_data as cd`, `c2_registry as cg`, `c2_oracle as co2`, `c2_model as cm`, `c2_code as ck`, `c2_stats as cs`, `c2_attrib as ca`, `c2_decide as cdc`). Tests never import `c2_driver` or a `c2_stage_*` module (C2 stage code is not reused, §11.2).
+
+## 2. Conventions
+
+- **Everything of C2 API §2 holds unless stated here:** roles `("H", "Hp", "Hm", "HY")` (C2 API §19.3), pairs `{"x": ("Hp", "Hm"), "y": ("H", "HY")}`, named/canonical symbol order (one convention), model inputs, shapes (`y` `float64[n, 127]`, `Q0` `[128, 127]`, `M` `[36, 127]`, `WU` `[36, 128]`, `a2` `[n, 128]`), row-vector convention (`y = (u − beta) @ Q0`, `z = WUbeta + y @ M.T`, projectors act as `dy @ P.T`), float64 and one torch thread, exact `Fraction`/`Decimal`, model keys (`int` in memory, decimal strings in JSON), indicator form `np.where(E, s, 0.0)` (`c2_attrib.ind`), hashes, JSON writing (`stage_records.write_new`, sorted keys, indent 1, exclusive create; `Fraction` as `"p/q"`; non-finite floats as strings), UTC formats.
+- **Row convention for decoys.** Matrices that act on a readout vector act as `y @ X.T`. `Pi_S = Q0 @ P_S @ Q0.T` (`[128, 128]`). `T`, `Tinv` act on y as `y @ T.T`, so the coordinate decoys' readout is `y_prime = y @ T.T`.
+- **Families** (exact strings): `FAMILIES = ("N-R", "D", "N-M")`; file tags `FILE_FAMILY = {"N-R": "NR", "D": "D", "N-M": "NM"}`.
+- **Decoys** (exact keys; display names in parentheses): `"D0"` (D0, the base model), `"DNULL"` (D-NULL), `"DNULL1"` (D-NULL₁), `"DONLY"` (D-ONLY), `"DDOSE"` (D-DOSE), `"DNULLR"` (D-NULL-R), `"DID"` (D-ID). `HEAD_EDITS = ("DNULL", "DNULL1", "DONLY", "DDOSE")`, `COORD_DECOYS = ("DNULLR", "DID")`, `KC_CASES = ("D0", "DONLY", "DDOSE")`, `KCR_CASES = ("DNULLR", "DID")`.
+- **Refit problems:** `"RD"` (R@D: base coordinates y, serving D0, DONLY, DDOSE, DNULL, DNULL1) and `"RT"` (R@T: y @ T.T, serving DNULLR, DID). The frozen C2 problems keep the C2 names (`"R"`, `"R_E"`, `"R_K1"`, `"R_K2"`, `"M"`). `VARIANTS = ("R_E", "R_K1", "R_K2")`.
+- **Statuses.** Gate statuses and FAIL_TECHNICAL / INCONCLUSIVE / EXCLUDED / INVALID forms as C2 API §2, plus FAIL_TECHNICAL class `DECOY`; INCONCLUSIVE/EXCLUDED reasons `KNOWN_CASE_UNRESOLVED`, `CONSTRUCTION`, `ORACLE_FEASIBILITY`; `NOT_COMPUTED` for a report-only case or variant that could not be formed.
+- **Per-model statuses** (keyed by model, no `_j` suffix; ND-C1): N-R `"NECESSARY"`, `"COMPLEMENT_LOW_ALIGNED"`, `"CODE_DOMINANT"`, `"NOT_NECESSARY"`, `"INC"`, `"INC/NUMERICAL"`, `"CNHS"`, `"EXCLUDED/<reason>"`; D `"DECOY_USED"`, `"DECOY_PARTIAL"`, `"DECOY_LOW_ALIGNED"`, `"DECOY_NOT_USED"`, `"INC"`, `"INC/NUMERICAL"`, `"CNHS"`, `"EXCLUDED/<reason>"`, `"KNOWN_CASE_CONTRADICTED"`; N-M `"ROUTED"`, `"NECESSARY_M"`, `"COMPLEMENT_LOW_ALIGNED_M"`, `"CODE_DOMINANT_M"`, `"NOT_NECESSARY_M"`, `"INC"`, `"INC/NUMERICAL"`, `"CNHS"`, `"EXCLUDED/<reason>"`. Endpoint statuses as C2 (`"SCORED"`, `"NOT_RUN/<gate>"`, `"SEALED_UNSCORED/<gate>"`).
+- **Family outcomes** (exact strings): N-R `"NECESSARY"`, `"COMPLEMENT_LOW_ALIGNED"`, `"CODE_DOMINANT"`, `"NOT_NECESSARY"`, `"MIXED"`, `"CIRCLE_NOT_HISTORY_SENSITIVE"`, `"INCONCLUSIVE/<reason>"`, `"FAIL_TECHNICAL/<class>"`; D `"DECOY_NOT_USED"`, `"DECOY_LOW_ALIGNED"`, `"DECOY_PARTIAL"`, `"DECOY_USED"`, `"KNOWN_CASE_CONTRADICTED"`, `"MIXED"`, `"CIRCLE_NOT_HISTORY_SENSITIVE"`, INCONCLUSIVE, FAIL_TECHNICAL; N-M `"ROUTED_AROUND"`, `"NECESSARY_M"`, `"COMPLEMENT_LOW_ALIGNED_M"`, `"CODE_DOMINANT_M"`, `"NOT_NECESSARY_M"`, `"MIXED"`, `"CNHS-2"`, INCONCLUSIVE, FAIL_TECHNICAL. Study: `"VALID"`, `"INVALID/INTERRUPTED"`, `"INVALID/LEAKAGE"`.
+- **Statement flags** (per model, booleans in the per-model result): `"rule6a"` (COMPLEMENT_POSITIVE_BELOW_MARGIN), `"nested"` (CODE_SHARE_POSITIVE_BELOW_MARGIN), `"rule6b"` (DECOY_POSITIVE_BELOW_MARGIN), `"rule6c"` (COMPLEMENT_M_POSITIVE_BELOW_MARGIN), coarse `"gt010"`, `"lt050"`.
+- **Qualifiers** (exact formats, in this order, models ascending): `"SPECIFICITY_NOT_ESTABLISHED"`, `"NEGATIVE_COMPLEMENT(1729)"`, `"NEGATIVE_ALIGNED_CONTRIBUTION(1729)"`, `"PROJECTOR_DEPENDENT_NR(1729)"`, `"HARMONIC_DEPENDENT_NR(1729, 1)"`, `"DECOY_LOCATION_DEPENDENT(1729)"`, `"MOVE_CASE_CONTRADICTED(1729, DNULLR)"`, `"KC_TEST_DISAGREES(1729, DDOSE)"`, `"PRECISION_LIMITED(1729)"`, `"DISSENT(1729: CODE_DOMINANT)"`.
+- **Gate names** are ASCII; the protocol's primes are written `'`: `"V3x'"`, `"Y1'"`, `"V3x'-g1"` (ND-C2).
+
+## 3. nd_config.py
+
+### 3.1 Bindings and paths
+`PROTOCOL_ID = "C2ND-FROZEN-v1"` (the design freeze candidate is `"C2ND-DESIGN-v1"`, byte-identical), `PROTOCOL_FILE = HERE / "PROTOCOL_C2ND_v1.md"`, `PROTOCOL_SHA256 = "4381655d…f0fd"` (full value in CONTRACT), `MAILBOX_FILE = "agent-handoff/planning/responses/C2ND-DESIGN-v1.md"` (relative to the project root). `AUTH_PATH`, `AUTH_SHA256` from `CONTRACT["protocol"]["auth"]` (addendum 29). `BASE_COMMIT = "b67f3327e9220a0a17f665eec888f39859cc4096"`, `C2_H2 = "3e234b38077f84ddebfa380120938b8847f40e03"`. `CONTRACT_PATH = HERE / "CONTRACT.json"`; `CONTRACT = load_contract()`.
+
+Paths (read through `nd_config` at call time; defaults `None` resolve inside the function, as C2 API §19.1 E-24): `PROJECT_ROOT = Path("X:/Downloads/projects/topo-pilot")`, `STORE = PROJECT_ROOT / "c2nd-store"`, `C2_STORE = PROJECT_ROOT / "c2-readout-store"`, `WORKTREE = PROJECT_ROOT / "topo-pilot-c2nd"`, `MAILBOX = PROJECT_ROOT / "agent-handoff"`, `HWS_STORE = PROJECT_ROOT / "hws-store"`, `X6ZC_STORE = PROJECT_ROOT / "x6zc-store"`, `SCRATCH_ROOT = Path("X:/Downloads/topo-scratch")`. The C2 path constants (`ARTIFACT_ROOT`, `C1P_STORE`, `X6S1_STORE`, `K4_FREEZE`) are read from `c2_config` unchanged.
+
+### 3.2 Functions
+- `load_contract(path=CONTRACT_PATH) -> dict`: `json.loads` (utf-8); `ValueError` unless `contract["protocol"]["sha256"] == PROTOCOL_SHA256`.
+- `frac(s) -> Fraction` = `c2_config.frac`; `status_of(full)` = `c2_config.status_of`.
+- `seed(name) -> int`: `CONTRACT["seeds"][name]` (names §12.2).
+- `rank(draws, p) -> int` = `c1_means.rank_for(p, draws)`.
+
+### 3.3 Constants (values in `CONTRACT.json`; names fixed here)
+`SCOPE = "c2nd-v1"`, `DRY_SCOPE = "c2nd-dry-v1"`, `REG_VERSION = "c2nd-reg-v1"`, `REG_NAMES = ("ND-REG1", "ND-REG2")`, `MODELS = (1729, 2718, 3141)`, `ROLES`, `PAIRS`, `SITES`, `INDEX = 32`, `BLOCK = 4096`, `SPLIT_BLOCKS = {"fit": 2, "feas": 1, "val": 1}`, `TEST_K = (1, 2, 4)`, `N_LADDER = (4096, 8192, 16384)`, `PROCESS = ("cylinder", "overlap", "1.25")`, `M0_ROWS = 1024`, `LOWID_ROWS = 1024`, `H3_ROWS = 4`, `FAMILIES`, `FILE_FAMILY`, `DECOYS`, `HEAD_EDITS`, `COORD_DECOYS`, `KC_CASES`, `KCR_CASES`, `VARIANTS`, `MODULES`.
+
+Split names (ND-C3; §6.1 "the `c2_data` lines 37–55 recipe with the scope replaced"): `SPLITS = ("fit", "feas", "val", "test")` for the protocol's DFIT, DFEAS, DVAL, DTEST. They are the SeedTree split values, the sequence-id scope tails and the file-name split tags; only the scope (`c2nd-v1`) differs from C2.
+
+Decoy constants (exact): `G_D = 6`, `RHO = Fraction(23, 25)` (0.92), `DECOY_VERSION = "c2nd-decoy-v1"`, `NULL_SV_REL = Fraction(1, 10**12)` (ker(M) cut: singular values ≤ 1e-12·σ_max), `U_SV_RATIO = Fraction(1, 10**6)`, `T_COND_MAX = 10**8`.
+
+Levels (Fractions): `ALPHA = {"N-R": 1/300, "D": 1/300, "N-M": 1/360}`, `VAL_ALPHA = 1/60`, `H5_ALPHA = 1/20`, `DESC_ALPHA = 1/40` (two-sided 95 %), `TEST_DRAWS = 20000`, `VAL_DRAWS = 5000`, `DESC_DRAWS = 5000`. Ranks (asserted at import against `c1_means.rank_for`): `(20000, 1/300) → (67, 19934)`, `(20000, 1/360) → (56, 19945)`, `(5000, 1/60) → (84, 4917)`, `(5000, 1/20) → 250`, `(5000, 1/40) → (125, 4875)`.
+
+Thresholds (Fractions; C2's owner-approved values, unchanged): `PSI_LOW = 1/10`, `PSI_HIGH = 1/2`, `PSI_090 = 9/10`, `NEG_LOW = −1/10` (the Wc line), `V3 = 3/10`, `PLACEBO = 1/10`, `TAU_M = 1/10`, `E_ABS = 1/10`, `E_RAND = 127/60`, `RS_A = 887/344043`, `RS_B = 121/344043`, `KAPPA_M = 1/100`, `H4 = {"x": 9/10, "y": 17/20}`, `H5 = 1/100`, `ORACLE_HEADROOM = 1/50` (ORACLE-FEAS (ii)), `L1_R2 = 1/2`, `L1_RHO = 9/10`, `R1 = 3/4`, `N2_FLOOR = 1/20`, `N2_SLACK = 1/50`, `SUP_MIN = 99/100`, `F_DRIFT = 1/50`, `P1_ALT_NR_NM = 1/10` (× min_j mean(A_full·1_E)), `P1_ALT_D = 3/100` (× min_j mean(G·1_{E_x})).
+
+Tolerances (CONTRACT strings, read with `frac`): `TAU_X1 = 1e-9`, `X1_ATTAIN = 1e-10`, `ORACLE_ID = 1e-12`, `M0D_READOUT = 1e-9`, `M0D_COORD = 1e-12`, `ADAPTER = 1e-10`, `DX_A = 1e-9`, `DX_E = 1e-18`, `GUARD_REL = 1e-9`, and every C2 tolerance used by a reused kernel (unchanged, read by that kernel from `c2_config`).
+
+## 4. nd_data.py
+
+### 4.1 Sampling and identifiers (§6.1)
+- `history_generator(split, block, scope=None) -> np.random.Generator` = `SeedTree(0).generator("data", scope, split, int(block), "cylinder", "overlap", "1.25")`; `scope` defaults to `SCOPE`; `DRY_SCOPE` only inside a dry-run store (§11). `split ∈ SPLITS`, else `ValueError`.
+- `sequence_ids(split, block, scope=None) -> int64[4096]` = `make_sequence_ids(process_code("cylinder", "overlap", "1.25", f"{scope}/{split}/b{int(block)}"), "test", 4096)`. Codes in §12.3.
+- `sample_block(T, E_canon, pi, split, block, scope=None) -> (uint8[4096, 32], int64[4096])`: one `HMMSampler(T, E_canon, pi, SequenceLayout()).sample(4096, history_generator(...))` call; columns 0..31 kept; w33 and the states deleted before return (as `c2_data.sample_block`).
+- `sample_split(T, E_canon, pi, split, blocks, scope=None) -> (uint8[n, 32], int64[n], int64[n])`: blocks `0..blocks−1` in order; panels `c1_data.panels(ids_b, b)`. DFIT 2 blocks, DFEAS and DVAL 1, DTEST k (S5 only, after ACCEPT).
+- Donors, H^Y, tables and the tally are the C2 functions unchanged: `c2_data.k_y`, `y_donor`, `donors4`, `role_arrays`, `history_table`, `table_roles`, `table_digests`, `coverage_tally`, `lowest` (§17).
+
+### 4.2 Namespace scan and hygiene (§6.6)
+- `NEEDLE = nd_config.SCOPE.encode("ascii")`; `C2_NEEDLE = c2_config.SCOPE.encode("ascii")` (C2's scope, never written as a literal in a C2ND file of C2's scanned set); `PARALLEL_NEEDLES = tuple(bytes.fromhex(h) for h in CONTRACT["namespace"]["parallel_needles_hex"])` (the HWS scope; the X6ZC scope once that round names one; hex-encoded so that the C2ND CONTRACT never contains a parallel round's scope string, §6.6; ND-C14).
+- `namespace_scan(root=None, pinned=None, lineage=None) -> dict` `{"status": "PASS" | "FAIL_TECHNICAL/LINEAGE", "hits": [{"path", "sha256", "class"}], "scanned": int}`: the loop of `c2_data.namespace_scan` with the needle `NEEDLE` passed to `c2_data.contains_scope(path, needle=NEEDLE)`, the file set of `c2_data._walk(root, c2_data.SKIP_DIRS)` and `c2_data._scanned(rel_parts)`, and the classes `"PINNED"` (path inside `WORKTREE/tools/c2_nd/`, or sha256 in `pinned`), `"LINEAGE"` (store-relative path under `STORE` with sha256 in `lineage`), else `"FOREIGN"` (a hit inside `HWS_STORE` or `X6ZC_STORE` is FOREIGN, §6.6, RC-11).
+- `hygiene_check(root=None) -> dict` `{"status", "hits": [path]}`: every C2ND file in C2's scanned set (`c2_data._scanned`) — files under `WORKTREE/tools/c2_nd/` other than `PROTOCOL_C2ND_v1.md`, and every file under `STORE` — must not contain `C2_NEEDLE`, and no file under `STORE` may contain a `PARALLEL_NEEDLES` entry; a hit → `"FAIL_TECHNICAL/LINEAGE"`. The protocol copy lives in `tools/c2_nd/` only, never in the store.
+
+### 4.3 Store admission (§3 row 1 (vii); §10.2)
+- `PAYLOAD_DIRS = ("hist", "oracle", "fits", "decoys", "registry", "stages", "sealed")`.
+- `store_admission(store, lineage, first_sampling) -> dict` `{"status", "unrecognised", "payload"}` = `c2_data.store_admission(store, lineage, first_sampling)` and, when `first_sampling`, additionally every file under `decoys/` or `registry/` listed in `"payload"` (status `"FAIL_TECHNICAL/LINEAGE"` if any). Meter bookkeeping as `c2_data.METER_FILES` plus `logs/**` and root `LOCK_RELEASED_*.json` (unchanged; C2 API §19.5).
+- `own_records(store, stage, lineage) -> dict` = `c2_data.own_records` (unchanged; the ND own pre-G0 gates are also `IMPL` and `AUTH-ADMIT`).
+
+## 5. nd_registry.py (§6.2–§6.5; version `c2nd-reg-v1`)
+
+### 5.1 Sources
+
+| Row | Tag | Function | Reads | Covers |
+|---|---|---|---|---|
+| 1 | `a`, `b`, `c`, `d`, `e`, `f`, `k`, `x6` | `c2_registry.token_sources(root)`, `c2_registry.x6_source(store, run_dir)`, `k4b_registry.source_f` through the ND inventory (§5.2) | as C2 API §5.1 (unchanged) | everything C2-REG1/REG2 covered |
+| 2 | `c2` | `source_c2(store=None)` | `C2_STORE/hist/HIST_*.npz`, columns `digest_H`, `digest_Hp`, `digest_Hm`, `digest_HY` | every C2 block (fit b0, b1, feas b0, val b0, test b0) |
+| 3 | `c2sup` | `source_c2_superseded(store=None)` | names under `C2_STORE/superseded/**` | the superseded C2 attempts 0107-a1, 0107-a2, 0109-a1 |
+| 4–6, 9 | `c2scratch` | `source_scratch(root=None)` | every `HIST_*.npz` under `SCRATCH_ROOT` outside an excluded tree | C2 dry runs 0104, 0105; live copies 0109-pre; C2ND's own dry run; any other C2-format history |
+| 7 | `hws` | `source_parallel(HWS_STORE, "hws")` | history-bearing arrays of `hws-store` | the HWS round, if the store exists |
+| 8 | `x6zc` | `source_parallel(X6ZC_STORE, "x6zc")` | history-bearing arrays of `x6zc-store` | the X6ZC round, if the store exists |
+
+Every source returns `{"status": "PASS" | "INCONCLUSIVE/REGISTRY_INCOMPLETE" | "FAIL_TECHNICAL/LINEAGE", "digests": set[str] (hex), "files": [{"path", "sha256", "keys", "rows"}], "other": [{"path", "reason"}]}`. A non-empty `other` → INCOMPLETE. No source of rows 2–9 opens `payload.npz`, `state.pt`, `*.pt` or any path with a `sealed` component (§6.3, S12): such a file that is history-bearing by its name or header → `other` (reason `"not read: payload/sealed"`) → INCOMPLETE (ND-C10).
+
+- `source_c2(store=None)`: the five files of `CONTRACT["registry"]["c2_hist"]` must exist and re-hash (`c2_data.file_sha`) to their CONTRACT sha256 (missing → INCOMPLETE; mismatch → `"FAIL_TECHNICAL/LINEAGE"`), then `np.load(allow_pickle=False)`; digests = the union of the four `digest_*` columns without `""` (as `c2_data.table_digests`). Any further `HIST_*.npz` under `C2_STORE/hist/` is read by the same rule and listed (no CONTRACT hash; ND-C11).
+- `source_c2_superseded(store=None)`: walks `C2_STORE/superseded/`; PASS iff no file has suffix `.npz`, `.npy` or `.pt` (the directories hold JSON, JSONL and SHA256SUMS only, §6.2 row 3); otherwise INCOMPLETE (fail closed, nothing opened). Digests: empty.
+- `source_scratch(root=None)`: every file named `HIST_*.npz` under `SCRATCH_ROOT` (walk in sorted order), **excluding any file with a path component whose name starts with `test_`** (`CONTRACT["registry"]["scratch_exclude_prefix"] = "test_"`). A file is in the C2 table format iff its npz header (`x6s1_registry._headers`) holds the keys `digest_H`, `digest_Hp`, `digest_Hm` (and optionally `digest_HY`) as `<U64` arrays; then the digest columns are read (`""` dropped). Any other `HIST_*.npz` → `"non_c2_format": [{"path", "bytes"}]` (not read; not a failure). An unreadable header → `other` → INCOMPLETE. The rows 4–5 roots (`CONTRACT["registry"]["scratch_roots_expected"]`) must each exist and contribute at least one C2-format file, else INCOMPLETE (ND-C12). The C2ND dry-run root (row 6) is covered by the same walk.
+- `source_parallel(store, tag)`: if `store` does not exist → PASS with no digests and `"present": False`. If it exists: (i) `store/FREEZE.json` must exist (an unfrozen store → INCOMPLETE; OPEN-1 closed); (ii) every `*.npz`/`*.npy` file outside `registry/`, `sealed/` and any `payload.npz`/`state.pt` is checked with `x6s1_registry._history_bearing(path)`; history-bearing files are read member by member with the rule of `c2_registry._x6_member` (integer arrays with last dimension 32 or 33: columns 0..31 digested by `x6s1_registry.row_digests`; `digest*` hex columns by `x6s1_registry.hex_to_digests`; hex digests are written into `digests` as lowercase hex); an unreadable file or a member that the rule cannot digest → `other` → INCOMPLETE; (iii) for `hws` the rule also requires every file under `store/hist/**` to be read (HWS-DESIGN-v1 §11 row 10, RC-8: uint8 `[n, 32]` canonical tokens under `hist/<stage>/<key>.npz`, superseded copies included); a `hist/` file that is not history-bearing → INCOMPLETE. The x6zc history format is not fixed by its round (§6.2 row 8); the same generic rule is the frozen x6zc reader (ND-C13).
+
+### 5.2 The ND inventory adapter (§6.2 "Inventory classes")
+- `INVENTORY = CONTRACT["registry"]["inventory"]` (§16): C2's frozen table with `c2-readout-store` → READER `c2`, plus `c2nd-store` (OWN), `hws-store` (READER `hws`, may be absent), `x6zc-store` (READER `x6zc`, may be absent), `topo-pilot-c2nd`, `topo-pilot-hws`, `topo-pilot-x6zc` (EXCLUSION, git worktrees).
+- `EXCLUDE = ("agent-handoff", "c1prime-store", "d2a-store", "k4b-store", "x6-stage1-store", "c2-readout-store", "c2nd-store", "hws-store", "x6zc-store")` (not deep-scanned by `k4b_registry.inventory`; covered by their own readers).
+- `inventory(root=None, readers=None) -> dict` `{"status", "inv", "classes", "unlisted", "violations"}`: `inv = k4b_registry.inventory(root, exclude=EXCLUDE)`; `inv.pop("c2nd-store", None)` (own store); `classes = k4b_registry.classify(inv, readers)` with `readers` = C2's static map (`c2_registry._static_readers()`) plus `{"c2-readout-store": ["c2"], "hws-store": ["hws"], "x6zc-store": ["x6zc"]}`, tags added only for readers that succeeded (as `c2_registry._ok_readers`). Rules (i)–(iv) of C2 API §5.2 against `INVENTORY`, with one addition: a `READER_IF_PRESENT` entry (`hws-store`, `x6zc-store`) is no violation when absent, and when present must be classed `SCANNED` with its tag (ND-C9). Violations → `"INCONCLUSIVE/REGISTRY_INCOMPLETE"`.
+
+### 5.3 Builds, loading, separation (§6.2, §6.4)
+- `build(version, store=None, root=None, extra=None) -> dict`: `version ∈ REG_NAMES`; `extra` only for `"ND-REG2"` (`{split: history_table}` of DFIT, DFEAS, DVAL); refuses (`FileExistsError`) if any output exists. Composition, in this order: (1) the C2 recipe of `c2_registry.build` lines 241–302 verbatim in substance with the ND inventory: `src = c2_registry.token_sources(root)`; `x6 = c2_registry.x6_source(root / "x6-stage1-store", out_dir / "runs" / version)`; `inv = inventory(root, readers)`; source f via `k4b_registry.source_f(root, inv["inv"], inv["classes"])`; `reg = c1_data.build_registry(tokens)`; digest sources d and k unioned; coverage by `k4b_registry.revalidate_coverage`; (2) the rows 2–9 sources of §5.1, their digests unioned into the in-memory digest set (ND-C8); (3) `extra` tables' digests (`c2_data.table_digests`) and sequence ids (ND-REG2). Writes `registry/<version>_digests.npz` (`stage_records.save_npz`; keys `digests` `<U64` sorted unique, `seq_ids` int64 sorted unique) and `registry/<version>.json` with the C2 manifest schema (C2 API §16.3; `registry_version = "c2nd-reg-v1"`, `protocol_sha256` = the ND protocol sha256) plus the key `"nd_sources"`: `{tag: {"status", "n", "files", "other", "non_c2_format", "present"}}` for tags `c2`, `c2sup`, `c2scratch`, `hws`, `x6zc`. Status: `"FAIL_TECHNICAL/LINEAGE"` on any binding mismatch (registry_v1, X6-REG2 manifest, a C2 hist sha256), else `"INCONCLUSIVE/REGISTRY_INCOMPLETE"` on any problem, else `"PASS"`. Because the manifest and digest file keep C2's format, `c2_registry.Registry.load(store, version)` loads it unchanged (re-hash of the digest file and the x6 runs).
+- `load(store=None, version="ND-REG1") -> c2_registry.Registry` = `c2_registry.Registry.load(store, version)`.
+- `separation(reg, tables) -> dict` = `c2_registry.separation(reg, tables)` unchanged (all roles, H^Y where defined; collisions → `"FAIL_TECHNICAL/LINEAGE"`; sealed D-2a predicate hit → INCOMPLETE; duplicates counted and kept). H2: `tables` keyed `"fit"`, `"feas"`, `"val"` against ND-REG1. REG2: `{"test": table}` against ND-REG2.
+- `first_token_ok(table, T, E_canon, pi, split)` = `c2_registry.first_token_ok`.
+
+### 5.4 The reservation record (§6.5)
+- File `RESERVATION_<stage>.json` at the store root, written by the coordinator before S1 (covers H2) and before S5 (covers REG2): `{"schema": "c2nd-reservation-v1", "stage": "S1" | "S5", "job", "no_live_reservation": true, "other_reservations": [{"study", "state", "utc"}], "parallel_stores": {"hws-store": {"exists": bool, "freeze_sha256": str | null}, "x6zc-store": {"exists": bool, "freeze_sha256": str | null}}, "coordinator", "utc"}`.
+- `reservation_check(store, stage, root=None) -> dict` `{"status", "detail"}`: PASS iff the file for `stage ∈ ("S1", "S5")` exists, parses, has the schema, names the stage, `no_live_reservation` is `true`, and for each parallel store `exists` equals the filesystem state at the check and, if it exists, its `FREEZE.json` re-hashes to `freeze_sha256`. Failure → `"FAIL_TECHNICAL/AUTHORITY"` (G0). S2–S4 G0 check only that `RESERVATION_S1.json` is unchanged (lineage-recognised).
+
+## 6. nd_decoy.py (§2.6–§2.7; Lemmas DC1–DC4)
+
+### 6.1 Inputs
+`base_inputs(c2_fit: dict, basis: dict) -> dict` with keys `"Q0"`, `"M"`, `"beta"`, `"WU"`, `"WUbeta"` (from `c2_model.readout_basis(model64)`, checked equal to the C2 FIT keys `Q0`, `M`, `beta`, `WU`, `WUbeta` bitwise at M0-D (i)) and the frozen C2 problem R: `"P_S"` (`R_P_S`), `"B"` (`R_B`), `"L_B"` (`R_L[5:]`), `"Gamma"` (`R_Gamma`). `c2_fit` is the `fits/FIT_<j>.npz` dict of the C2 store, re-hashed against CONTRACT before loading.
+
+### 6.2 Head edits (Lemma DC1–DC3)
+- `pi_S(Q0, P_S) -> float64[128, 128]` = `Q0 @ P_S @ Q0.T`.
+- `head_edit(kind, WU, Q0, P_S, g=G_D, rho=RHO) -> float64[36, 128]`: `"DNULL"` `g·WU @ (I − Pi_S)`; `"DNULL1"` `WU @ (I − Pi_S)`; `"DONLY"` `WU @ Pi_S`; `"DDOSE"` `g·WU @ (I − float(rho)·Pi_S)`. Computed in float64 in exactly this association (ND-C15).
+- `make_head_decoy(model64, W) -> TransformerLM`: `copy.deepcopy(model64)` with only `unembed.weight` replaced by `torch.from_numpy(W)` (float64), `eval()`; every other parameter and buffer bitwise the base's.
+
+### 6.3 Coordinate decoys (Lemma DC4)
+- `null_basis(M) -> float64[127, k0]`: `U_, s, Vt = np.linalg.svd(M)` (full); `r = count(s > 1e-12·s[0])`; `V0 = Vt[r:].T`; `k0 = 127 − r ≥ 91`.
+- `move_map(B, L_B, M) -> dict` `{"V0", "U", "T", "Tinv", "sv", "rank", "cond_T", "ok", "status"}`: `A = L_B @ V0` (`[6, k0]`); `sv = np.linalg.svd(A, compute_uv=False)`; `U = V0 @ np.linalg.pinv(A)`; `T = I127 + (U − B) @ L_B`; `Tinv = I127 + (B − U) @ L_B`; `cond_T = np.linalg.cond(T, 2)`; ok iff `rank = count(sv > 0) == 6`, `sv[-1]/sv[0] ≥ 1e-6` and `cond_T ≤ 1e8`; else status `"EXCLUDED/CONSTRUCTION"` (those report-only cases NOT_COMPUTED).
+- `class CoordMap(torch.nn.Module)`: buffers `beta` `[128]`, `Q0` `[128, 127]`, `T` `[127, 127]` (float64); `forward(u) = beta + ((u − beta) @ Q0) @ T.T @ Q0.T` over the last dimension.
+- `make_coord_decoy(model64, kind, Q0, beta, T, Tinv, WU, g=G_D) -> TransformerLM`: deep copy with `ln_final` replaced by `torch.nn.Sequential(<the base ln_final, deep-copied>, CoordMap(beta, Q0, T))` and `unembed.weight` = `g·WU` (`"DNULLR"`) or `WU @ Q0 @ Tinv @ Q0.T` (`"DID"`). It is an instance of the base class, but `ln_final.weight` does not exist; `forward_with_patch` applies unchanged (it calls `model.ln_final` and `model.unembed` only; `_check` reads `training`, `cfg`, `hook_names`).
+- `coord_basis(decoy, base_basis) -> dict` (the ND basis adapter, §11.2): the keys of `c2_model.readout_basis` with `gamma`, `beta`, `N1`, `Q0`, `R_diag`, `rank_ok`, `ln_eps` from `base_basis`, `WU` = the decoy's `unembed.weight` (float64 numpy), `M = WU @ Q0`, `WUbeta = WU @ beta`. Valid because `u′ − beta ∈ col(Q0)` (Lemma DC4 (iii)); its readout coordinates are `y_prime = c2_model.readout_coords(u_prime, basis)`.
+
+### 6.4 Identity
+- `decoy_sha64(decoy, record) -> str`: sha256 over, for each key of `decoy.state_dict()` in sorted order, `key.encode("utf-8") + b"\0" + str(tuple(shape)).encode("ascii") + b"\0" + <the C-contiguous float64 bytes of the tensor>`, followed by `json.dumps(record, sort_keys=True, separators=(",", ":")).encode("utf-8")`. `record = {"version": DECOY_VERSION, "kind", "model", "base_state_sha": CONTRACT["models"][j]["state_sha_f32"], "c2_fit_sha256": CONTRACT["c2_store"]["files"]["fits/FIT_<j>.npz"], "g_D": "6", "rho": "23/25"}` (strings for the constants).
+- `construction_record(j, kind, decoy, extra) -> dict`: `record` plus `"decoy_sha64"`, and for coordinate decoys `"cond_T"`, `"sv_LBV0"`, `"k0"`, `"U_over_B_frob"` (‖U‖_F/‖B‖_F). Written to `decoys/DECOY_<j>.json` (all kinds of model j) with the head arrays in `decoys/HEAD_<j>.npz` (keys `<kind>_WU` for the six non-base kinds, `T`, `Tinv`, `U`, `V0`).
+
+### 6.5 M0-D (§3 row 11) and DX (§3 row 20)
+- `m0d(j, model64, decoys: dict, base_basis, c2_fit, inputs, acts, z_base, policy) -> dict` `{"status", "checks": {item: bool}, "values", "per_decoy": {kind: {"status", ...}}}` on the 1,024 lowest-id DFIT rows; `policy.require("m0")` and `policy.require("construction")` first. Items: (i) `head_edit`/`move_map` recomputed from the bound inputs equals the decoy weights bitwise and `decoy_sha64` recorded; (ii) every non-head parameter bitwise the base's (`ln_final` sub-module 0 too for coordinate decoys); (iii) the decoy's `ln_final_out` hook equals the base's bitwise (head edits) or equals `beta + ((u − beta) @ Q0) @ T.T @ Q0.T` within `1e-12·max(1, ‖·‖∞)` per row (coordinate decoys); (iv) identity patch at `ln_final_out` bitwise (as `c2_model.identity_patch` for that one site); (v) `‖z′ − (WU′beta + y′ @ M′.T)‖∞ ≤ 1e-9·max(1, ‖z′‖∞)` per row (`c2_model.readout_identity` with the decoy's basis); (vi) `move_map` ok; (vii) the adapter identities of `adapter_identities` (below) ≤ 1e-10; (viii) `c2_model.kappa_x1` of each decoy head and `c2_model.x1_attainable`. Status: (i)–(v), (vii) on a head edit → `"FAIL_TECHNICAL/DECOY"`; (vi), (vii) on a coordinate decoy → that kind `"EXCLUDED/CONSTRUCTION"` (NOT_COMPUTED; D unaffected); (viii) false → `"INCONCLUSIVE/NUMERICAL"` for that decoy (for DNULL: family D).
+- `adapter_identities(V0, U, T, Tinv, B, Gamma, L_B, M, heads) -> dict[str, float]`: `"V0tV0"` ‖V0ᵀV0 − I‖_max; `"LBU"` ‖L_B U − I6‖_max; `"MU"` ‖MU‖_max/(‖M‖_max‖U‖_max); `"TTinv"` ‖T Tinv − I‖_max; `"TB"` ‖TB − U‖_max/‖U‖_max; `"TG"` ‖TΓ − Γ‖_max/‖Γ‖_max; `"LBT"` ‖L_B T − L_B‖_max/‖L_B‖_max; `"null_<kind>"` ‖C M′B‖_max/(‖C M′‖_max‖B‖_max) for DNULL, DNULL1 (M′ = W′ Q0, C = centring over the 36 outputs); `"pred_DNULLR"` and `"pred_DID"` max_i ‖Δz_a − Δz_b‖∞/max(1, ‖Δz_b‖∞) over the 1,024 rows (Δz = z(H⁺) − z(H⁻); a = DNULLR vs b = DNULL; a = DID vs b = base). All compared with `ADAPTER = 1e-10`.
+- `dx(arrays: dict[str, dict], policy) -> dict` `{"status", "per_decoy": {kind: {"max_rel", "n_over"}}, "ids_over"}`; `policy.require("dx")` and `policy.require("construction")` first; per row with the **construction** projector P_S: DNULL, DNULL1, DNULLR `|A′_S| ≤ 1e-9·max(1, |A′_full|)` and `e′_S ≤ 1e-18·max(1, e′_full)`; DONLY `|A′_comp| ≤ 1e-9·max(1, |A′_full|)`; DDOSE `|A′_S − g_D(1 − ρ)A_S| ≤ 1e-9·max(1, |A′_S|)`; DID `‖C(z″ − z)‖∞ ≤ 1e-9·max(1, ‖z‖∞)`. Diagnostics only (ephemeral; no array kept). Failure → `"FAIL_TECHNICAL/DECOY"` (scope family D).
+
+## 7. nd_attrib.py (closed forms; d = d_named; Δy = y¹ − y²; arm 1 = H⁺, arm 2 = H⁻)
+
+### 7.1 N-R (§2.3, §4.2)
+- `comp_arm(y1, y2, P_S) -> float64[n, 127]` = `y2 + (y1 − y2) @ (I − P_S).T` (y_C^{2←1}; Lemma N1 (i): equals `y1 − (y1 − y2) @ P_S.T`).
+- `nr_quantities(d, M, y1, y2, P_S) -> dict` `{"A_full", "A_S", "A_comp", "e_full", "e_S", "e_comp", "cross", "dy"}`: `A_full`, `A_S`, `e_full`, `e_S` as `c2_attrib.partition`/`energies`; `A_comp = A_full − A_S` (by subtraction); `e_comp = c2_attrib.energy((dy @ (I − P_S).T) @ M.T)`; `cross = e_full − e_S − e_comp`.
+- `a_comp_direct(d, z_C, z_2) -> float64[n]` = `c2_attrib.half_dot(d, z_C − z_2)` (the patched complement arm against arm 2's natural logits; X1 compares it with `A_comp`).
+- `nr_stream(q, qy, G_x, E_x, E_y, variants=None) -> dict` (one model; indicator form; keys exactly): `"V3x"` = ind(`c1_endpoint.Zfull_hat(A_full, G_x)`, E_x); `"Y1"` = ind(qy.A_S − 0.10·qy.A_full, E_y) (frozen C2 projector); `"Zc010"` = ind(A_comp − 0.10·A_full, E_x); `"Zc050"` (0.50); `"Wc"` = ind(A_comp + 0.10·A_full, E_x); `"Vc"` = ind(e_comp − 0.10·e_full, E_x); `"NEGc"` = ind(A_comp, E_x); `"Zc090"` (0.90); `"Zc100"` = ind(A_comp − A_full, E_x); `"Z090"` = ind(A_S − 0.90·A_full, E_x) (report-only check; Zc010 ≡ −Z090 to rounding); for v in `VARIANTS` present in `variants` (`{v: nr_quantities(...)}` with the frozen `{v}_P_S`): `"<v>:Zc010"`, `"<v>:Zc050"` = ind(A_full − A_S^v − c·A_full, E_x). 16 arrays with three variants. Coefficients are the exact Fractions as floats.
+
+### 7.2 N-M (§2.4)
+- C2-M interventions unchanged: `c2_attrib.cm_replacements(a2_H, a2_D, P2)` and `c2_attrib.cm_quantities(d, z, A_full)` (keys `A_F`, `A_S`, `A_C`, `e_F`, `e_S`, `e_C`, `I_M`, `A_ctx`).
+- `nm_stream(cm, A_full, G_x, E_x) -> dict` (keys exactly): `"V3x"`; `"Ztau"` = ind(A_F − 0.10·A_full, E_x); `"ZMc010"` = ind(A_C − 0.10·A_F, E_x); `"ZMc050"` (0.50); `"WMc"` = ind(A_C + 0.10·A_F, E_x); `"VMc"` = ind(e_C − 0.10·e_F, E_x); `"NEGMc"` = ind(A_C, E_x). 7 arrays.
+- `ln_scale_ratio` per S and C state: `c2_attrib.ln_scale_ratio(rep, a2_H, eps)` (eps of block 3's first LayerNorm; C2 API C-30).
+
+### 7.3 D (§2.8, §4.2)
+- Decoy pairs use `c2_attrib.pair(d, M_prime, y1, y2, P_hat_S, P_hat_G, Sigma_hat)` with the decoy's readout `M_prime` (`[36, 127]`) and the **refit** problem's projectors and Ledoit–Wolf Σ̂ (`random_ref` on M′; Vrand′ as C2).
+- `d_stream(qx, qy, G_x, E_x, E_y, qx_r=None, refit=None) -> dict`: `c2_attrib.r_arrays(qx, qy, G_x, E_x, E_y)` (keys `"V3x"`, `"Y1"`, `"Z010"`, `"Z050"`, `"Vabs"`, `"Vrand"`, `"NEG"`) for DNULL with RD; and, report-only, `c2_attrib.threshold_arrays(qx_r, E_x, prefix="DNULLR:")` plus `"DNULLR:NEG"` = ind(qx_r.A_S, E_x) for DNULLR with RT (12 arrays). `refit` must be a dict with `"problem" ∈ ("RD", "RT")`; a projector dict tagged `"construction"` (or the C2 FIT problem `"R"`) raises `C1GateFailure("INVALID/LEAKAGE", …)` (S12; §2.8).
+- `case_arrays(case, qx, qy, G_x, G_y, E_x, E_y) -> dict` (KC, KC-R): `r_arrays` keys prefixed `"<case>:"`, the case's own y response `"<case>:V3y"` = ind(`Zfull_hat(qy.A_full, G_y)`, E_y) (its Y1 activity, ND-C31), and for `DONLY`, `DDOSE` (necessity listed, §5.2) also the N-R keys `"<case>:Zc010"`, `"<case>:Zc050"`, `"<case>:Wc"`, `"<case>:Vc"`, `"<case>:NEGc"` with A_comp = A′_full − A′_S under the refit projector.
+- `leak(d, M_prime, dy, P_hat, P_S) -> float64[n]` = `half_dot(d, (dy @ (P_hat − P_S).T) @ M_prime.T)` (T-LEAK; equals A′_S for DNULL exactly in exact arithmetic).
+- `canonical_angles(B_hat, B) -> float64[6]`: `Q1 = qr(B_hat)`, `Q2 = qr(B)` (reduced), `s = svd(Q1.T @ Q2)`, angles `arccos(clip(s, −1, 1))` ascending (radians).
+- `kappa_leak(M, P_S, B_hat) -> float` = ‖C M (I − P_S) B̂‖₂ / ‖C M B̂‖₂ (C centres the 36 outputs).
+- `ln_split(y1, y2, s1, s2) -> (dy_dir, dy_sig)`: `r = s1/s2` per row; `dy_sig = (1 − r)[:, None]·y1`; `dy_dir = r[:, None]·y1 − y2` (exact: `dy_dir + dy_sig = y1 − y2`). `sigma(a3, eps) -> float64[n]` = `sqrt(np.var(a3, axis=1) + eps)` on `resid_post_3`[:, 32] with `eps` = `ln_final.eps`. Symmetric version: `0.5·(dy_sig(y1, y2, s1, s2) − dy_sig(y2, y1, s2, s1))`.
+
+### 7.4 Oracle response identity (§3 row 9 (i))
+- `oracle_identity(qbar_p, qbar_m, d_named, perm, G) -> dict` `{"max_dev", "n_over", "ok"}`: `lp = c1_oracle.named_from_canonical(np.log(qbar), perm)` for both arms; `A_or = c2_attrib.half_dot(d_named, lp_p − lp_m)`; per row `|A_or − G| ≤ 1e-12·max(1, |G|)` on every DVAL row (non-finite → over).
+
+### 7.5 Descriptives (§2.8, §2.9; report only)
+`descriptives_nd(...) -> dict` with keys `"lambda_D"` (E[A′_S]/E[A′_full] and the energy analogue), `"canonical_angles"`, `"kappa_leak"`, `"leak_decomposition"` (`c2_attrib.decomposition(d, M′, dy, P̂_S, J′)`), `"ln_share_comp"`, `"ln_share_code"`, `"ln_share_sym"`, `"ln_share_decoy"`, `"eta_comp"`, `"cross"`, `"iota_M"`, `"nr_variants_point"`, plus the C2 §2.12 set for the base model on DTEST (`c2_attrib.descriptives`). Intervals: one `c2_attrib.ratio_intervals(nums, dens, pairs, seed=630508, draws=5000)` call (UNDEFINED on a zero or non-finite denominator, no redraw).
+
+## 8. nd_decide.py
+
+### 8.1 Bounds and guards (§4.1, §4.4)
+- `stream_bounds(arrays, seed, alpha, draws)` = `c2_decide.stream_bounds` (keys `"<stat>|<model>"`); `guard`, `beta_A`, `beta_E`, `sign`, `model_bounds` = the `c2_decide` functions.
+- `nr_guards(arrays, geo) -> dict`: `geo = {"M", "x": (d, dy, E_x), "y": (dY, dyY, E_y), "P_S", "delta_P", "variants": {v: (P_S_v, delta_v)}}`. V3x: `guard(s)`; Y1: `beta_A(dY, M, dyY, delta_P, 1, E_y)`; Zc010, Zc050, Wc, NEGc, Zc090, Zc100, Z090: `beta_A(d, M, dy, delta_P, 1, E_x)` (the A_S coefficient is 1 in every A_comp-type array; ND-C16); Vc: `beta_E(M, dy, I − P_S, delta_P, 1, E_x)`; `<v>:Zc010`, `<v>:Zc050`: `beta_A` with `delta_v` (`FIT_<j>.json` "delta"[v]).
+- `d_guards(arrays, geo_D, geo_R) -> dict`: `c2_decide.stream_guards` on the seven DNULL arrays with `geo_D = {"M": M′, "x", "y", "proj": {"": (P̂_S(RD), δ_P(RD))}}`, and on the five `"DNULLR:"` arrays with `geo_R = {"M": g_D·M, "x": (d, dy @ T.T, E_x), "y": …, "proj": {"DNULLR:": (P̂_S(RT), δ_P(RT))}}`. δ_P from the refit's own GLS-REF (`c2_stats.delta_p(ref)`). No construction-error term (§4.4, MD-15).
+- `nm_guards(arrays) -> dict`: `guard(s, 0.0)` for every array (β = 0).
+
+### 8.2 Per-model rules (§2.3, §2.4, §4.3)
+All take one model's `b = {stat: {"mean", "L", "U", "rank_L", "rank_U", "g"}}` (C2 API §19.1 E-6 layout) and use `sign(L or U, g)`.
+- `nr_model(b, y_active) -> dict` `{"status", "resp", "spec", "coarse": {"gt010", "lt050"}, "rule6a", "nested", "negative", "unresolved", "endpoint_formed"}`: RESP = sign(L(V3x)) = +1, else `"EXCLUDED/MODEL_HEADROOM"`; SPEC = y_active and sign(U(Y1)) = −1; Y1 active and SPEC undeclared → `"EXCLUDED/NUISANCE_IN_S"`; then with l1, u1, l5, u5 the signs of L/U(Zc010), L/U(Zc050): NECESSARY iff u1 = −1, u5 = −1, sign(L(Wc)) = +1, sign(U(Vc)) = −1; COMPLEMENT_LOW_ALIGNED iff u1 = u5 = −1 and not NECESSARY; CODE_DOMINANT iff l1 = +1 and u5 = −1; NOT_NECESSARY iff l5 = +1 and l1 = +1; else `"INC/NUMERICAL"` if 0 ∈ (l1, u1, l5, u5), else `"INC"`. `gt010` = l1 = +1, `lt050` = u5 = −1 (only when formed). `rule6a` = formed ∧ sign(L(NEGc)) = +1 ∧ u1 = −1 ∧ u5 = −1. `nested` = status NOT_NECESSARY ∧ sign(L(Zc090)) = +1 ∧ sign(U(Zc100)) = −1. `negative` (NEGATIVE_COMPLEMENT) = formed ∧ sign(U(NEGc)) = −1.
+- `nr_variant_category(b, v, primary) -> str`: an EXCLUDED primary → its status; `"<v>:Zc010"` absent → `"NOT_COMPUTED"`; else on v:Zc010, v:Zc050: COMPLEMENT_LOW_ALIGNED (u1 = u5 = −1), CODE_DOMINANT (l1 = +1, u5 = −1), NOT_NECESSARY (l5 = l1 = +1), else INC/NUMERICAL or INC (the `c2_decide.variant_category` pattern; no energy or lower-bound conjunct).
+- `d_model(b, y_active) -> dict`: `r = c2_decide.r_model(b, y_active)` on the seven DNULL keys; status mapped `USED → DECOY_USED`, `PARTIAL → DECOY_PARTIAL`, `LOW_ALIGNED → DECOY_LOW_ALIGNED`, `NOT_USED → DECOY_NOT_USED` (others unchanged); plus `rule6b` = `endpoint_formed` ∧ sign(L(NEG)) = +1 ∧ sign(U(Z010)) = −1 ∧ sign(U(Z050)) = −1; `negative` (NEGATIVE_ALIGNED_CONTRIBUTION) from `r`. `y_active` is Y1′ activity (C2 y_active ∧ V3y′ PASS).
+- `dnullr_category(b, primary) -> str` = `c2_decide.variant_category(b, "DNULLR", primary)` mapped as `d_model` (report-only; feeds DECOY_LOCATION_DEPENDENT).
+- `nm_model(b) -> dict` `{"status", "resp", "transmission": {"gt010", "routed"}, "rule6c", "unresolved", "endpoint_formed"}`: RESP = sign(L(V3x)) = +1 else `"EXCLUDED/MODEL_HEADROOM"`; ROUTED iff sign(U(Ztau)) = −1; else if sign(L(Ztau)) = +1 the four categories of `nr_model` on ZMc010, ZMc050, WMc, VMc with the `_M` suffix; else `"INC/NUMERICAL"` if a Ztau bound is unresolved (C2 API E-7), else `"INC"`. `rule6c` = sign(L(Ztau)) = +1 ∧ sign(L(NEGMc)) = +1 ∧ sign(U(ZMc010)) = −1 ∧ sign(U(ZMc050)) = −1 (with RESP). No placebo and no SPEC (§2.4).
+
+### 8.3 Known cases (§3 rows 24–25, §5.2–§5.3)
+- `KNOWN = {"D0": ("USED", None), "DONLY": ("USED", "NECESSARY"), "DDOSE": ("PARTIAL", "NOT_NECESSARY")}`, `KNOWN_R = {"DNULLR": ("NOT_USED", None), "DID": ("USED", None)}` (generic C2 category names).
+- `kc_case(case, b_case, y_active) -> str`: `"PASS"`, `"CONTRADICTED"` or `"UNRESOLVED"`. `y_active` is the C2 `y_active` (κ_m rule); the case's Y1 is active iff `y_active` ∧ sign(L(`<case>:V3y`)) = +1 (ND-C31). The category is `c2_decide.r_model` on the case keys (prefix stripped), the necessity `nr_model` on its N-R keys plus the same V3x and Y1 where listed. Any listed statement declared and ≠ its known value → CONTRADICTED (it takes precedence); else any listed statement not declared (INC, INC/NUMERICAL, EXCLUDED/<r>, CNHS) → UNRESOLVED (ND-C17); else PASS.
+- `kc_gate(results: dict[str, str]) -> dict` per model: `{"status": "PASS" | "FAIL", "full_status": "PASS" | "KNOWN_CASE_CONTRADICTED" | "EXCLUDED/KNOWN_CASE_UNRESOLVED", "cases": {case: "PASS" | "FAIL"}}`; CONTRADICTED anywhere wins over UNRESOLVED. `kcr_gate(results) -> dict` per model: `{"status": "PASS" | "FAIL" | "NOT_RUN", "full_status": "PASS" | "MOVE_CASE_CONTRADICTED" | "UNRESOLVED" | "NOT_COMPUTED", "cases": {case: "PASS" | "FAIL"}}`: NOT_COMPUTED (status NOT_RUN) when a case could not be formed (row 11 (vi)/(vii) or row 13 R@T failed); a contradiction → FAIL/`MOVE_CASE_CONTRADICTED` (qualifier only); a formed but undeclared case → FAIL/`UNRESOLVED` (no qualifier, no effect; ND-C18). KC-R never stops D and never changes its outcome.
+- Releases are PASS/FAIL per (case, model) only (§6.7 L5): the gate record holds no mean, bound or declared category.
+
+### 8.4 Overall rules (§4.3; C2 §6.5)
+- `overall(family, statuses: dict[int, str], cnhs: list, kc_contradicted=False) -> str`: fatal statuses first (FAIL_TECHNICAL / INCONCLUSIVE / INVALID), ≥ 2 CNHS → `"CIRCLE_NOT_HISTORY_SENSITIVE"` (N-R, D) or `"CNHS-2"` (N-M), fewer than 2 valid models → `"INCONCLUSIVE/<reason>"` (the `c2_decide.overall` reason order, with `KNOWN_CASE_UNRESOLVED` and `CONSTRUCTION` appended to it), then ≥ 2 models in one category: N-R `NECESSARY`; `COMPLEMENT_LOW_ALIGNED` (≥ 2 in {NECESSARY, COMPLEMENT_LOW_ALIGNED}); `CODE_DOMINANT`; `NOT_NECESSARY`. D: through `c2_decide.overall("R", generic statuses, cnhs)` mapped to the DECOY_ names; `kc_contradicted` → `"KNOWN_CASE_CONTRADICTED"` before every other D rule except a fatal status. N-M: `ROUTED_AROUND` first, then the four `_M` outcomes. Else `"MIXED"` (≥ 2 resolved) or `"INCONCLUSIVE/PRECISION"`.
+- `statement_count(per_model, flag) -> dict` `{"models": [j], "licensed": bool}`: a rule-6 statement or the nested entry is licensed "in [k] models" iff ≥ 2 models declare it.
+- `endpoint_status(model, family, gate_history)` = `c2_decide.endpoint_status` semantics with the ND gate names (variant problems are R_E, R_K1, R_K2; report-only DNULLR/DID records never exclude).
+- `qualifiers(family, per_model, extra, y_active, p1) -> list[str]` in the §2 order: N-R: SPECIFICITY_NOT_ESTABLISHED (Y1 inactive), NEGATIVE_COMPLEMENT, PROJECTOR_DEPENDENT_NR (R_E category ≠ primary), HARMONIC_DEPENDENT_NR (K = 1, 2), PRECISION_LIMITED, DISSENT; the primary NECESSARY is compared as COMPLEMENT_LOW_ALIGNED (ND-C19). D: SPECIFICITY_NOT_ESTABLISHED (Y1′ inactive), NEGATIVE_ALIGNED_CONTRIBUTION, DECOY_LOCATION_DEPENDENT (the DNULLR category is neither `None` nor `NOT_COMPUTED` and ≠ DNULL's status; the C2 `differs` rule), MOVE_CASE_CONTRADICTED (KC-R), KC_TEST_DISAGREES (DTEST report-only core-case category ≠ known), PRECISION_LIMITED, DISSENT. N-M: PRECISION_LIMITED, DISSENT. `extra = {"variants": {j: {v: cat}}, "dnullr": {j: cat}, "kcr": {j: [case]}, "kc_test": {j: [case]}}`.
+- `licence(family, outcome, values) -> str`: the §7.2–§7.4 sentence verbatim with every `[…]` filled in order (`format(x, ".4g")`; models `"1729, 2718"`; bounds `"(L, U)"`; a missing key → `"[ ]"`), then one space and the Q-CODE clause of §7.1 verbatim (N-R: the C2 Q-CODE plus the identity sentence; N-M: the M clause, the C2-M caveats with the words "residual skip", "radial support screen", "only position 32 is tested", "self-repair can lower τ_M", and the KM3 sentence; D: Q-CODE-D, followed by the disclosure sentence "The decoy's remaining readout is amplified by a gain of 6, fixed in advance, and the readout of the code is removed by an exact edit of the output head." (ND-C32)). Rule-6 sentences and the nested entry by `statement_licence(kind, values)` (§7.2, §7.3, §7.4 texts verbatim). No template says "necessary" outside NECESSARY/NECESSARY_M, and none says "sufficient and necessary" unless N-R is NECESSARY.
+- `package_statement(c2_outcome, nr, d) -> str | None`: the §7.5 sentence iff C2-R `USED` ∧ N-R ∈ {CODE_DOMINANT, NECESSARY} ∧ D `DECOY_NOT_USED`, with Q-CODE and Q-CODE-D appended.
+- `UNION_DISPLAY = {"package": "0.15", "c2nd": "0.1417", "c2r_plus_c2nd": "0.1917", "all_six": "0.2917 (<= 0.30)"}` (§8.3; ND-only displays exact strings).
+- `c2_caveat(d_outcome) -> str | None`: `"specificity not established on the decoy"` iff the D outcome is DECOY_PARTIAL or DECOY_USED (owner default; §7.3); the C2 verdict is never changed.
+
+## 9. nd_driver.py
+
+### 9.1 Gate order and the policy (§3)
+`GATE_ORDER = ("IMPL", "AUTH-ADMIT", "G0", "PF", "H1", "REG", "H2", "H3", "H4", "H5", "ORACLE-FEAS", "M0", "M0-D", "C0c", "F1", "SUP", "L1", "R1", "N2", "SURVIVAL", "X1", "DX", "V3x", "V3y", "Y1", "V3x'", "Y1'", "V3x'-g1", "KC", "KC-R", "P1", "ACCEPT", "REG2", "T-PRE", "T-PRE-MODEL", "RESP-SPEC", "NUM", "ENDPOINT", "REPORT")`. `GATE_STAGE`: IMPL → "IMPL"; AUTH-ADMIT … ORACLE-FEAS → "S1"; M0 … F1 → "S2"; SUP … SURVIVAL → "S3"; X1 … P1 → "S4"; ACCEPT → "ACCEPT"; REG2 … REPORT → "S5". `STAGE_ENTRY = ("AUTH-ADMIT", "G0")`. AUTH-IMPL, DRY and FREEZE are coordinator steps outside the driver.
+
+`class LogitPolicy(done=())`: `begin`, `end`, `check_sequence` with C2 semantics (C2 API §12.1) on the ND `GATE_ORDER`. `require(kind)` with `ALLOWED = {"m0": {"M0", "M0-D", "T-PRE"}, "x1": {"X1", "T-PRE"}, "dx": {"DX", "T-PRE"}, "val_gate": {"V3x", "V3y", "Y1", "V3x'", "Y1'", "V3x'-g1"}, "val_kc": {"KC", "KC-R"}, "val_sealed": {"P1"}, "construction": {"M0-D", "F1", "DX", "T-PRE"}, "test_endpoint": {"RESP-SPEC", "NUM", "ENDPOINT", "REPORT"}}` (test_endpoint also requires `"T-PRE"` and `"T-PRE-MODEL"` in `done`); refusal → `C1GateFailure("FAIL_TECHNICAL", …)`. `require_write(kind)` refuses any endpoint-array, KC/KC-R array or summary write while the current gate is X1, DX or T-PRE, or outside `ALLOWED[kind]` (`"INVALID/LEAKAGE"`). `require_release(gate, values)` raises `C1GateFailure("INVALID/LEAKAGE", …)` if a record of `"V3x'"`, `"Y1'"`, `"V3x'-g1"`, `"KC"` or `"KC-R"` carries any value key other than `"result"`, `"cases"`, `"model"` (T-SEAL-ND). Closed-form logits count as logits: no DFEAS logit; no DFIT logit outside the M0/M0-D rows. No DTEST token before ACCEPT (RELEASE_R5.json).
+
+### 9.2 Stages and dispatch
+`PREREQ = {"S1": None, "S2": "S1", "S3": "S2", "S4": "S3", "S5": "S4"}`; `STAGE_MODULE = {"S1": "nd_stage_pre", "S2": "nd_stage_pre", "S3": "nd_stage_pre", "S4": "nd_stage_val", "S5": "nd_stage_post"}`. `class Ctx` (dataclass): `store`, `worktree`, `head`, `job`, `task_sha256`, `session`, `release`, `policy`, `data`, `dry` (bool). `run_stage(stage, ctx) -> dict` and `run_gate(ctx, gate, fn, scope, model=None, family=None, problem=None) -> dict` with the C2 semantics of C2 API §19.2 (PLAN form, lazy dispatch, study-scope stop, REPORT always runs); `begin_stage`, `complete_stage`, `write_manifest`, `recognised`, `supersede`, `regen_compare` as C2 API §12.2, §12.5 with the ND schemas (§15). Store loaders and caches (C2's `c2_stage_base` pattern, ND-C6): `npz(ctx, rel)`, `js(ctx, rel)`, `c2npz(rel)` / `c2js(rel)` (C2 store files, re-hashed against `CONTRACT["c2_store"]["files"]` on first load in the process; mismatch → `"FAIL_TECHNICAL/LINEAGE"`), `cache(ctx, key, fn)`.
+
+### 9.3 G0 (§3 row 1) and AUTH
+- `auth_ok(store, name="AUTH.json") -> bool`: schema `"c2nd-auth-v1"`, `protocol_sha256` = PROTOCOL_SHA256, `owner_record.sha256` = AUTH_SHA256 (addendum 29), every field non-empty; `AUTH_IMPL.json` (schema `"c2nd-auth-impl-v1"`) for the dry-run store. Never raises.
+- `g0(ctx) -> dict` items → `{"status", "detail"}`, `"status"` PASS iff all PASS: (i) `PROTOCOL_C2ND_v1.md` sha256 = PROTOCOL_SHA256 and equal bytes to `MAILBOX_FILE`; (ii) `CONTRACT.json` sha256 = FREEZE.json `contract_sha256`; `CONTRACT["models"][j]["state_sha_f32"]` = the §2.1 strings; (iii) reused blobs at H: every `tools/c2_readout` file's git blob and sha256 = `CONTRACT["c2_code"]` (the H″ list); every `CONTRACT["hashes"]["reused_blobs"]` and `["reused_extra"]` path's blob sha256 (C2's lists, unchanged); (iv) every `CONTRACT["c2_store"]["files"]` entry re-hashes (`c2_data.file_sha`) to its sha256 and `manifests/0115.accepted.json` names `manifest_sha256` = the 0115 manifest sha256; the FIT/DEC key sets of §2.1 present (npz member names from the zip directory only: `zipfile.ZipFile(path).namelist()`; no array read before S2; ND-C7); (v) charts, K4 FREEZE, C1′ CONTRACT, registry v1 sha256 (CONTRACT `hashes`); (vi) `nd_data.namespace_scan` and `nd_data.hygiene_check`; (vii) `nd_data.store_admission(first_sampling = stage == "S1")` with `own_records`; (viii) dispatch identity (task sha256, session, release names the job and task), `meter_bind_check`, import directory (`nd_config.__file__` under `<worktree>/tools/c2_nd`, `c2_config.__file__` under `<worktree>/tools/c2_readout`, meter under `<worktree>/tools/x4_oracle_profile`); (ix) `nd_registry.reservation_check` (S1 and S5; S2–S4 the S1 record unchanged); (x) dry-run guard: `ctx.dry` is true iff the store is a dry-run store (FREEZE-free scratch store under `SCRATCH_ROOT` with `AUTH_IMPL.json`); the dry-run switch outside such a store, or `DRY_SCOPE` with a non-dry store, → `"FAIL_TECHNICAL/AUTHORITY"`. Failure classes: AUTHORITY (i)–(v), (viii)–(x); LINEAGE (vi), (vii). The C2 store re-hash of (iv) also runs at the end of every stage (`complete_stage`; L7).
+- `meter_bind_check(path, expected_sha256, import_dir)` as C2 (store-local `nd_meter_bind.py`).
+- `pf(ctx)` lives in `nd_stage_pre` (C2 API §19.2): `python -s -m pytest tests/{learner, dataset, contracts, oracle, process, world, analysis, prediction, experiment, circle_history, c1prime, c1prime_registry, c2_readout, c2_nd} -p no:cacheprovider --basetemp <SCRATCH_ROOT>/<job>/pt`, TEMP/TMP/TMPDIR under `<SCRATCH_ROOT>/<job>/tmp`, `PYTHONPATH=<worktree>/src`; then `tools/check_file_sizes.py` (PASS iff no report line names a file under `tools/c2_nd/` or `tests/c2_nd/`) and `tools/check_imports.py`.
+
+### 9.4 Sealing (§6.7 L5)
+- `seal(ctx, name, arrays) -> str`: exclusive create `sealed/<name>.npz`; `require_write("val_sealed")`; recorded in `stages/S4/SEALED.json`. At P1 the VAL bundle per model is sealed: `sealed/ACT_VAL_<j>.npz` (the four roles × three hooks), `sealed/VAL_NR_<j>.npz` (base A_S, A_comp and the N-R arrays), `sealed/VAL_D_<j>.npz` (DNULL A′_S, e′_S, the V3x′, V3y′, V3x′-g1, Y1′ arrays and their bounds), `sealed/VAL_NM_<j>.npz` (A_M,*), `sealed/VAL_KC_<j>.npz` (KC and KC-R arrays and bounds).
+- `unseal(ctx, name, sha256) -> dict`: refused (`"INVALID/LEAKAGE"`) unless every alive family's ENDPOINT record exists or a study stop record exists; the file must re-hash.
+
+### 9.5 Lineage
+As C2 API §12.5 with schema names `"c2nd-manifest-v1"`, `"c2nd-release-v1"` (§15).
+
+### 9.6 Release binding
+`release_ok(ctx, stage) -> {"ok", "status", "reason"}` as C2 API §12.6/E-22: `RELEASE_R<k>.json` names the stage, job, task sha256, H, protocol sha256, FREEZE.json sha256; R5 also `N_test`, `k` (= the S4 P1 record) and `accept_review_sha256`; R3 and R4 may be one record.
+
+### 9.7 CLI
+`main(argv=None) -> int`: `python -s tools/c2_nd/nd_driver.py <stage> --store <store> --job <id> --task-sha256 <hex> --session <id> [--dry]`, normally under the meter: `python -I <store>/nd_meter_bind.py --label <stage>__run --max-cpu inf -- <venv python> -s tools/c2_nd/nd_driver.py …` with `PYTHONPATH=<worktree>/src`. Exit 0 on a recorded result (also a model- or family-scope exclusion), 2 on a study-scope stop, 3 on a refusal (no gate record).
+
+### 9.8 Store-local `nd_meter_bind.py`
+A copy of the C2 `c2_meter_bind.py` pattern (C2 API §12.8) with the ND store paths, job id and task digest; sha256 in FREEZE.json `meter_bind_sha256`; `cpu_ledger.json` pre-created (schema `x4-oracle-profile-ledger-v1`); `--max-cpu inf --max-wall inf`; disk floors C: 2 GB, X: 30 GB.
+
+## 10. Stage modules (§3; PLAN form of C2 API §19.2)
+
+`PLAN: dict[str, tuple[tuple[str, Callable[[Ctx], dict], str], ...]]`; every stage starts with `("AUTH-ADMIT", …, "study")`, `("G0", …, "study")`; S1 starts with `("IMPL", …)` (FREEZE.json `H` equals the run's head). Step functions return `{"status", "values", "reason"?, "records"?}` and never write `GATES.jsonl`.
+
+| Module | Stage | Steps (gate, scope) and content |
+|---|---|---|
+| `nd_stage_pre` | S1 | IMPL; PF (study); H1 (study: `c2_oracle.h1_static`); REG (study: `nd_registry.build("ND-REG1")`); H2 (study: DFIT 2 blocks, DFEAS, DVAL with the Y-donor preparation of C2 API §19.3, `hist/`, `separation` against ND-REG1, `first_token_ok`, SYMBOL-ORDER (a)); H3 (study: `c2_oracle.h3` on the three splits with the H2 cache; Decimal rows); H4 (study: f_x ≥ 9/10, f_y ≥ 17/20 with the **frozen C2 s_max** = `ORACLE_FROZEN.json` "s_max"; tally); H5 (study: DVAL rank-250 lower bounds of mean G_x over E_x and G_y over E_y, `c1_means.c1_bootstrap_means` with `PCG64(630518)`, two calls; > 1/100); ORACLE-FEAS (study: (i) `oracle_identity` on DVAL → FAIL_TECHNICAL/ORACLE; (ii) the H5 bounds > 1/50 → INCONCLUSIVE/ORACLE_FEASIBILITY) |
+| `nd_stage_pre` | S2 | M0 (study: `c2_model.m0` per base model on the 1,024 lowest-id DFIT rows); M0-D (study/model: `nd_decoy.m0d`; writes `decoys/`); C0c (model: chart sha256, Sup(DFIT) ≥ 0.99); F1 (model, problems RD, RT: `c2_stats.f1_problem` on DFIT natural rows with the frozen chart phase (`c1_chart.extend_phase` of the production charts on `resid_post_3`, as C2), the decoders `c2_stats.fit_decoders`, m̃ = `c2_code.zero_code_threshold`; for RD the blind leak diagnostic `canonical_angles(B̂, B)` and `kappa_leak` under `require("construction")`; writes `fits/REFIT_<j>.npz`, `fits/REFIT_<j>.json`, `fits/DEC_<j>.npz`) |
+| `nd_stage_pre` | S3 | SUP (model: Sup(DFEAS) ≥ 0.99; C0v not rerun); L1 (model × family: N-R with the frozen C2 decoders `R` of `C2_STORE/fits/DEC_<j>.npz`; D with the RD and RT DFIT decoders; N-M with the frozen C2 `M` decoders); R1 (model × family: `c2_code.r1` with the matching m̃); N2 (model, N-M: `c2_code.n2_gate` with the frozen C2 N2 fit, S and C states only, no forward); SURVIVAL (family: ≥ 2 ok models) |
+| `nd_stage_val` | S4 | X1 (study; arms of §3 row 19: `nat_<role>`, `R_x_21`, `R_x_12`, `comp_x` (direct complement, compared with A_full − A_S), `<v>_comp_x` for v ∈ VARIANTS on the 1,024 lowest-id eligible rows, `DNULL_nat_<role>`, `DNULL_RD_x_21`, `DNULL_RD_x_12`, and the low-id arms of DONLY, DDOSE, DNULL1, DID, DNULLR); DX (study, decoy-confined → family D); V3x (630511), V3y (630512), Y1 (630513) for the base model with the frozen C2 projector; V3x′ and V3y′ (630514, one call; ND-C4), Y1′ (630515), V3x′-g1 (630519) for DNULL / DNULL1 with RD; KC (630506; 5,000 draws, α = 1/60); KC-R (630506, separate call; ND-C5); P1 (§4.5 with seeds 630516/630517; sealing) |
+| `nd_stage_post` | S5 | ACCEPT (`release_ok(ctx, "S5")`); REG2 (`nd_registry.build("ND-REG2", extra=DFIT/DFEAS/DVAL tables)`, k DTEST blocks, separation, first token, SYMBOL-ORDER (a)); T-PRE (H1, DTEST oracle, H3 on 4 rows, \|f − f_DVAL\| ≤ 1/50, H5 on DTEST, M0 and M0-D identity checks on 1,024 DTEST rows, X1 and DX on DTEST); T-PRE-MODEL (Sup, L1, R1 with the frozen decoders, N2); RESP-SPEC (first call of each family stream); NUM; ENDPOINT (N-R 630503, D 630504, N-M 630505 at 20,000 draws; KC/KC-R DTEST report 630507 at 5,000, ranks 125/4,875); REPORT (licences, unsealing, descriptives 630508, POST-DESC of C2 §5.7) |
+
+Arm and stream helpers reused by S5 live in `nd_stage_val` (`x1_arms`, `dx_arrays`, `streams`, `bounds`); split checks reused by T-PRE live in `nd_stage_pre` (`sample`, `oracle_splits`, `h5`, `l1_check`, `r1_check`, `n2_check`, `support`). Dependency order `nd_driver` ← `nd_stage_pre` ← `nd_stage_val` ← `nd_stage_post`.
+
+**P1 (§4.5).** `p1_nd(family, arrays, afull_or_G, models, alpha) -> dict` with the C2 `p1` output keys: per gated array (N-R `Zc010`, `Zc050`; D `Z010`, `Z050`; N-M `Ztau`) one `precision.sd_b4_draws(X, r4n, models, seed=630516, draws=5000, size=4096)` and per N one `precision.centered_draws(X, models, seed=630517, draws=5000, size=N)` and `precision.precision_summary(sd, e, models, c2_stats._cfg(alpha, alternative, N))` (ND-C20: `c2_stats._summaries` resolves seeds by C2 CONTRACT name and cannot take the ND seeds). Alternatives: N-R and N-M `1/10·min_j mean(A_full·1_E)`; D `3/100·min_j mean(G_x·1_{E_x})` on DVAL (oracle-only). `r4n` for D is the DVAL `G_x·1_{E_x}` array (ND-C21). N_F, N_test, k as C2 (`c2_stats.n_test`). MDE reports (not gated): Wc, Vc, NEGc, Vabs, Vrand, NEG (D), ZMc010, ZMc050, WMc, VMc.
+
+## 11. nd_dry.py (§10.1)
+- `planted_models(seed=0) -> dict[int, TransformerLM]`: three random-initialised float64 models with the trained architecture (`ModelConfig` of the C2 models) and planted heads: `unembed.weight` set so that a planted 6-d harmonic code of a synthetic phase is read with share ≈ 0.85.
+- `synthetic_prereqs(models, tables) -> dict`: the stand-ins for the C2 prerequisites produced by the C2 kernels (`c2_code.problem`, `c2_stats.fit_decoders`, `c2_code.n2_fit`, frozen-oracle constants) on the synthetic activations, written inside the dry-run store (`c2/` subtree mirroring the C2 store layout, with its own `c2_store` hash table in the dry-run `AUTH_IMPL.json`).
+- `synthetic_phase(acts) -> float64[n]`: the dry-run phase replacing the chart phase.
+- `broken_decoys(...) -> dict`: wrong g_D, the other model's projector, transposed P_S, the Euclidean projector (T-ILLUSION) — each must fail M0-D or DX (pass criterion 3).
+- Every function raises `C1GateFailure("FAIL_TECHNICAL/AUTHORITY", …)` unless `ctx.dry` (G0 (x)). Scope `DRY_SCOPE`; histories from the real cylinder-O process.
+
+## 12. Random streams, seeds, scope
+
+### 12.1 Named streams (all `SeedTree(0)`)
+| Use | Stream | Draws |
+|---|---|---|
+| Histories, split s, block b | `generator("data", "c2nd-v1", s, b, "cylinder", "overlap", "1.25")` | one `HMMSampler.sample(4096, rng)` |
+| Dry-run histories | the same with `"c2nd-dry-v1"` | as above |
+
+No other SeedTree stream (no Haar frames, no rotation arm, no RFF decoder in C2ND). DTEST blocks are sampled only after ACCEPT.
+
+### 12.2 Bootstrap seeds (PCG64; `CONTRACT["seeds"]`; disjoint from C2's 6205xx and the parallel rounds' 6201xx)
+| Name | Seed | Use |
+|---|---|---|
+| `test_NR` | 630503 | N-R family stream (16 arrays per model), RESP/SPEC first |
+| `test_D` | 630504 | D family stream (12 arrays per model) |
+| `test_NM` | 630505 | N-M family stream (7 arrays per model) |
+| `val_KC` | 630506 | KC and KC-R at DVAL (5,000 draws, α = 1/60; two calls) |
+| `test_KC` | 630507 | KC and KC-R report on DTEST (5,000 draws, ranks 125/4,875) |
+| `desc` | 630508 | descriptive ratio intervals (`c2_attrib.ratio_intervals`) |
+| `val_V3x` / `val_V3y` / `val_Y1` | 630511 / 630512 / 630513 | base VAL gates |
+| `val_V3xD` | 630514 | V3x′ and V3y′ (one call) |
+| `val_Y1D` | 630515 | Y1′ |
+| `val_p1_sd` / `val_p1_c` | 630516 / 630517 | P1 SD / centred (every family) |
+| `h5` | 630518 | H5 and ORACLE-FEAS (ii), DVAL and DTEST (two calls each: G_x, G_y) |
+| `val_V3xD_g1` | 630519 | V3x′-g1 |
+
+### 12.3 Sequence-id codes (§6.1)
+`code = process_code("cylinder", "overlap", "1.25", f"c2nd-v1/{split}/b{block}")`; ids `make_sequence_ids(code, "test", 4096)` = `(code << 32) | (3 << 28) | index`.
+
+| split/block | code | first id | last id |
+|---|---|---|---|
+| fit/b0 | 154628954 | 664126301249994752 | 664126301249998847 |
+| fit/b1 | 984718538 | 4229333917280239616 | 4229333917280243711 |
+| feas/b0 | 1060161320 | 4553358198689497088 | 4553358198689501183 |
+| val/b0 | 1752527724 | 7527049260718620672 | 7527049260718624767 |
+| test/b0 | 445333687 | 1912693622277406720 | 1912693622277410815 |
+| test/b1 | 259588243 | 1114923014916407296 | 1114923014916411391 |
+| test/b2 | 1642364128 | 7053900218688864256 | 7053900218688868351 |
+| test/b3 | 1645678858 | 7068136875633934336 | 7068136875633938431 |
+
+Dry-run scope `c2nd-dry-v1` (inside a dry-run store only): fit/b0 706028483, fit/b1 747828900, feas/b0 834991698, val/b0 1893459205, test/b0 1607421132, test/b1 2080041843, test/b2 1149916795, test/b3 1395843078 (`CONTRACT["sequence_ids"]["dry_codes"]`). Every code above differs from every C2 code (C2 API §14). "Lowest-sequence-id rows" are taken over the whole split (DFIT: both blocks). The values were computed with the unchanged `process_code`/`make_sequence_ids` (job 0116; no sampling); T-SEED recomputes them.
+
+## 13. Gate table (§3; scope and failure statuses)
+
+| # | Gate | Scope | Failure status |
+|---|---|---|---|
+| 0d | AUTH-ADMIT | study | refusal, exit 3 |
+| 1 | G0 | study | FAIL_TECHNICAL/AUTHORITY or /LINEAGE |
+| 2 | PF | study | FAIL_TECHNICAL/PF |
+| 3 | H1 | study | FAIL_TECHNICAL/IDENTITY |
+| 4 | REG | study | INCONCLUSIVE/REGISTRY_INCOMPLETE (FAIL_TECHNICAL/LINEAGE on a binding mismatch) |
+| 5 | H2 | study | FAIL_TECHNICAL/LINEAGE; (a) FAIL_TECHNICAL/IDENTITY; predicate INCONCLUSIVE/REGISTRY_INCOMPLETE |
+| 6 | H3 | study | FAIL_TECHNICAL/ORACLE; INCONCLUSIVE/NUMERICAL |
+| 7 | H4 | study | INCONCLUSIVE/ELIGIBILITY |
+| 8 | H5 | study | INCONCLUSIVE/HEADROOM |
+| 9 | ORACLE-FEAS | study | (i) FAIL_TECHNICAL/ORACLE; (ii) INCONCLUSIVE/ORACLE_FEASIBILITY |
+| 10 | M0 | study | FAIL_TECHNICAL/MODEL; INCONCLUSIVE/NUMERICAL |
+| 11 | M0-D | study / model | head edits FAIL_TECHNICAL/DECOY; coordinate decoys EXCLUDED/CONSTRUCTION (report-only NOT_COMPUTED); (viii) INCONCLUSIVE/NUMERICAL (D if DNULL) |
+| 12 | C0c | model | EXCLUDED/CHART_UNAVAILABLE |
+| 13 | F1 | model | RD: EXCLUDED/PATCH_MODEL_DEGENERATE or EXCLUDED/NUMERICAL (D); RT: NOT_COMPUTED |
+| 14 | SUP | model | EXCLUDED/CHART_UNAVAILABLE |
+| 15 | L1 | model (family) | EXCLUDED/LINK |
+| 16 | R1 | model (family) | CNHS |
+| 17 | N2 | model (N-M) | EXCLUDED/RADIAL_SUPPORT |
+| 18 | SURVIVAL | family | family stops |
+| 19 | X1 | study (decoy-confined: D) | FAIL_TECHNICAL/X1; decoy arms only → FAIL_TECHNICAL/DECOY (D) |
+| 20 | DX | study (decoy-confined: D) | FAIL_TECHNICAL/DECOY |
+| 21 | V3x, V3y | model | V3x: EXCLUDED/MODEL_HEADROOM (N-R, N-M); V3y: Y1 inactive |
+| 22 | Y1 | model | EXCLUDED/NUISANCE_IN_S (N-R) |
+| 23 | V3x′, Y1′, V3x′-g1 | model | EXCLUDED/MODEL_HEADROOM or NUISANCE_IN_S (D); V3x′-g1 none |
+| 24 | KC | model | KNOWN_CASE_CONTRADICTED (D stops for j; S13); EXCLUDED/KNOWN_CASE_UNRESOLVED (D) |
+| 25 | KC-R | model | qualifier MOVE_CASE_CONTRADICTED only; NOT_COMPUTED |
+| 26 | P1 | family | INCONCLUSIVE/UNDERPOWERED; PRECISION_LIMITED(j) |
+| 27 | ACCEPT | study | stop |
+| 28 | REG2 | study | FAIL_TECHNICAL/LINEAGE |
+| 29 | T-PRE | study | INCONCLUSIVE/TEST_GATE; FAIL_TECHNICAL (identity, X1, DX; decoy-confined → FAIL_TECHNICAL/DECOY, D) |
+| 30 | T-PRE-MODEL | model | EXCLUDED/TEST_GATE |
+| 31 | RESP-SPEC | model | EXCLUDED/MODEL_HEADROOM or NUISANCE_IN_S |
+| 32 | NUM | model | INC/NUMERICAL |
+| 33 | ENDPOINT | family | outcome |
+| 34 | REPORT | — | — |
+
+## 14. Records and report keys
+
+### 14.1 GATES.jsonl and STAGES.jsonl
+As C2 API §15.1 (keys `gate`, `status`, `criterion_met`, `utc`, `full_status`, `reason`, `stage`, `model`, `family`, `problem`, `scope`, `values`). Additional key `decoy` (kind or null). For `V3x'`, `Y1'`, `V3x'-g1`, `KC`, `KC-R` the `values` hold only `{"result": "PASS" | "FAIL"}` (KC/KC-R: `{"cases": {case: "PASS" | "FAIL"}}`) before the TEST outcome (§6.7 L5).
+
+### 14.2 Report `stages/S5/report.json`
+Keys: `protocol_id`, `protocol_sha256`, `contract_sha256`, `head`, `c2_h2`, `study`, `union_display` (§8.4 `UNION_DISPLAY`), `package_statement` (or null), `c2_caveat` (or null), `families` → `{"N-R", "D", "N-M"}` each `{"outcome", "licence", "statements": {"rule6a" | "rule6b" | "rule6c" | "nested": {"models", "licensed", "licence"}}, "qualifiers", "coarse", "N_F", "per_model": {j: {"status", "endpoint_status", "bounds": {stat: {"mean", "L", "U", "rank_L", "rank_U", "g"}}, "signs", "point", "variants" (N-R), "dnullr" (D), "kc_test" (D)}}}`; `point` per family: N-R `psi_comp`, `psi`, `theta_full`, `eta_comp`, `cross`; D `psi_prime`, `theta_prime`, `eta_prime`, `lambda_D`; N-M `tau_M`, `psi_M_comp`, `eta_M_C`, `iota_M`; `kc` (S4 PASS/FAIL per case and model, and after the outcome the unsealed categories); `decoys` (`decoy_sha64` per model and kind, cond_T, ‖U‖_F/‖B‖_F); `leak` (`canonical_angles`, `kappa_leak`, `lambda_D` with interval); `ln_scale`; `unamplified` (V3x′-g1 result and, unsealed, θ′(DNULL1)); `descriptives`; `val_unsealed`; `post_desc`; `sealed_released`; `gates`; `coverage`; `env`; `cpu_s`, `wall_s`.
+
+## 15. Store layout and lineage records (§6.8)
+
+### 15.1 `X:/Downloads/projects/topo-pilot/c2nd-store/`
+Before S1 (coordinator): `FREEZE.json`, `AUTH.json`, `RELEASE_R1.json`, `RESERVATION_S1.json`, `nd_meter_bind.py`, `cpu_ledger.json`. Meter bookkeeping: `logs/**`, `cpu_ledger.json`, `RUN.lock`, `OPERATION_ACTIVE.json`, `OPERATIONS.jsonl`, `METER_ACTIVE.lock`, `LOCK_RELEASED_*.json`.
+- **S1:** `registry/ND-REG1.json`, `registry/ND-REG1_digests.npz`, `registry/runs/ND-REG1/run_*.npy`; `hist/HIST_fit_b0.npz`, `hist/HIST_fit_b1.npz`, `hist/HIST_feas_b0.npz`, `hist/HIST_val_b0.npz` (keys of `c2_data.history_table`); `oracle/ORACLE_<split>.npz` for fit, feas, val (C2 keys, C2 API §16.1, §19.3); `stages/S1/{record.json, pf.json, coverage.json, oracle_feas.json}`.
+- **S2:** `decoys/DECOY_<j>.json`, `decoys/HEAD_<j>.npz`; `fits/REFIT_<j>.npz` (`zt_mu`, `zt_sd`, and per problem p ∈ (`RD`, `RT`): `<p>_alpha`, `<p>_Gamma`, `<p>_B`, `<p>_Sigma`, `<p>_L`, `<p>_P_S`, `<p>_P_G`, `<p>_mtilde`; `J_D` (null projector of the DNULL readout)), `fits/REFIT_<j>.json` (status, conds, LW ratios, identities, GLS-REF dicts, `delta`, the blind leak diagnostic), `fits/DEC_<j>.npz` (`<p>_<D0|Dcode|Dlin>_<field>`, p ∈ RD, RT); `stages/S2/ACT_FIT_<j>.npz` (`H_rp3`, `H_ln`, `H_phi`, `H_sup`); `stages/S2/record.json`.
+- **S3:** `stages/S3/ACT_FEAS_<j>.npz`; `stages/S3/{record.json, coverage.json}`.
+- **S4:** `sealed/` (§9.4); `stages/S4/{record.json, gates.json, P1.json, coverage.json, SEALED.json}`.
+- **S5:** `registry/ND-REG2*`, `hist/HIST_test_b<k>.npz`, `oracle/ORACLE_test.npz`, `stages/S5/ACT_TEST_<j>.npz`, `stages/S5/{tpre.json, bounds.json, report.json, record.json}`, `stages/S5/ENDPOINT_<NR|D|NM>_<j>.npz`, `stages/S5/POST_DESC.json` (when run). Also `RESERVATION_S5.json`, `RELEASE_R5.json` (coordinator).
+- Always: `GATES.jsonl`, `STAGES.jsonl`, `manifests/<job>.json`, `manifests/<job>.accepted.json`, `superseded/<job>-a<k>/…`.
+
+### 15.2 Coordinator records
+- `FREEZE.json`: `{"schema": "c2nd-freeze-v1", "protocol_id": "C2ND-FROZEN-v1", "protocol_sha256" (= the C2ND-DESIGN-v1 sha256), "protocol_path": "tools/c2_nd/PROTOCOL_C2ND_v1.md", "protocol_mailbox_path", "H", "branch", "worktree", "api_sha256", "contract_sha256", "test_plan_sha256", "modules": {name: {"sha256", "git_blob", "lines"}}, "tests": {path: sha256}, "dry_run": {"job", "store", "report_path", "report_sha256", "cpu_s"}, "c2_bindings": {"c2_freeze_sha256", "c2_h2", "c2_manifest_0115_sha256", "c2_accepted_sha256"}, "auth_impl": {"path", "sha256"}, "protected_diff": [lines], "meter_bind_sha256", "meter_import_dir", "coordinator", "created_utc"}`. The protocol text is never changed for these bindings (§3 row 0c).
+- `AUTH_IMPL.json` (dry-run store) and `AUTH.json` (execution store): `{"schema": "c2nd-auth-impl-v1" | "c2nd-auth-v1", "protocol_sha256", "owner_record": {"path", "sha256", "owner_verbatim", "granted_utc"}, "budget": {"central_cpu_h", "range_cpu_h", "cpu_policy", "combined_cap_cpu_h": 12}, "coordinator", "written_utc"}`.
+- `RELEASE_R<k>.json`: `{"schema": "c2nd-release-v1", "release", "stages", "job", "task_sha256", "head", "protocol_sha256", "freeze_sha256", "N_test", "k", "accept_review_sha256", "coordinator", "utc"}`.
+- `manifests/<job>.json` (`"c2nd-manifest-v1"`), `manifests/<job>.accepted.json`, `superseded/<job>-a<k>/{SHA256SUMS, SUPERSEDED.json}` as C2 API §16.2.
+- `RESERVATION_<stage>.json`: §5.4.
+
+## 16. Registry sources and the inventory (§6.2; frozen table; `CONTRACT.json` `registry`)
+
+Inventoried on 2026-10-26 by directory listings and file names only (no array payload, no `sealed/` opened). Every top-level directory under `X:/Downloads/projects/topo-pilot/` is listed. The C2 frozen table (C2 API §18, `tools/c2_readout/CONTRACT.json` `registry.inventory`) holds unchanged except the rows below.
+
+| Directory | Decision | Reader / reason |
+|---|---|---|
+| (every C2 row except `c2-readout-store`) | as C2 API §18 | unchanged |
+| `c2-readout-store` | READER `c2` (+ `c2sup`) | rows 2–3: the five C2 `hist/HIST_*.npz` digest columns (sha256 bound) and a fail-closed name scan of `superseded/` (C2's own store in C2; READER in C2ND, §6.2) |
+| `c2nd-store` | OWN | this lineage's store; removed from the run-time inventory; G0 (vi)–(vii) govern it; its DFIT/DFEAS/DVAL tables enter R′_ND (REG2) |
+| `hws-store` | READER_IF_PRESENT `hws` | row 7; absent at inventory time; if present at REG or REG2: frozen (`FREEZE.json`) and readable, else REGISTRY_INCOMPLETE |
+| `x6zc-store` | READER_IF_PRESENT `x6zc` | row 8; absent at inventory time; same rule |
+| `topo-pilot-c2nd`, `topo-pilot-hws`, `topo-pilot-x6zc` | EXCLUSION | git worktrees (branches `c2nd-impl`, `hws-impl`, `x6zc-impl`); the only array file is the non-history `verification_arrays.npz` copy |
+
+**Scratch sources (outside the project root; explicit additional sources, MD-10).** Row 4: `X:/Downloads/topo-scratch/0104/dry/{frc1, frc2, nat2, nat3}/hist/`, `X:/Downloads/topo-scratch/0105/dry/{full_forced, full_natural, smoke1, smoke2, smoke3}/hist/`; row 5: `X:/Downloads/topo-scratch/0109-pre/livecopy-{0112, 0113, 0114, 0115}/hist/`; row 6: the C2ND dry-run store `X:/Downloads/topo-scratch/<job>/dry/`; row 9: every other `HIST_*.npz` under `X:/Downloads/topo-scratch/`, excluding paths with a component starting with `test_`. All read by `source_scratch` (§5.1).
+
+**Top-level files** (not directories): C2's EXCLUSION list unchanged (six files).
+
+## 17. Reused unchanged functions (§11.1; real signatures at 1d629bc, where `tools/c2_readout` and `src/topo_pilot/learner` equal H″ and b67f332)
+
+| Module | Function (signature) | line |
+|---|---|---|
+| `c2_attrib` | `ind(s, E)` 34; `half_dot(d, v)` 43; `centre(v)` 49; `energy(v)` 54; `partition(d, M, dy, P_S, P_G)` 62; `energies(M, dy, P_S)` 68; `random_ref(M, Sigma, dy, e_full)` 77; `pair(d, M, y1, y2, P_S, P_G, Sigma)` 87; `null_projector(M)` 96; `decomposition(d, M, dy, P, J)` 104; `nu_S(J, P_S, dy)` 115; `cm_replacements(a2_H, a2_D, P2)` 191; `cm_quantities(d, z, A_full)` 197; `ln_scale_ratio(rep, a2_H, eps)` 215; `ratio_intervals(nums, dens, pairs, seed, draws)` 221; `threshold_arrays(q, E, prefix="")` 260; `r_arrays(qx, qy, G_x, E_x, E_y, variants=None, y_name="Y1")` 267; `point_ratios(family, q, E)` 291; `descriptives(q, d, M, P_S, P_G, J, E, frames=(), aff=None, z_pm=None, ys=None)` 331 | |
+| `c2_code` | `harmonics(phi, K)` 37; `standardise(z_fit)` 46; `fwl(Y, w32, zt, f)` 50; `f1_fwl(fit)` 71; `ledoit_wolf(resid)` 83; `gls(Gamma, B, Sigma=None)` 104; `gls_identities(g, Gamma, B, Sigma=None)` 136; `interchange(y1, y2, P_S)` 164; `code_phase(Y, alpha, w32, L_B)` 176; `zero_code_threshold(mod_fit)` 182; `r1(phi_c_p, phi_c_m, mod_p, mod_m, m32_p, m32_m, thr_code)` 189; `n2_fit(a2_fit, w32_fit)` 218; `n2_gate(fit, w32, D2, S, C)` 243; `problem(Y, w32, zt, f, euclidean=False, fit=None)` 287 | |
+| `c2_stats` | `gls_ref(A, Gamma, B, P_S_hat, P_G_hat, euclidean=False, prec=80)` 185; `delta_p(ref, tag="S")` 205; `fit_decoder(F_fit, Y_fit, panel_fit)` 234; `decoder_features(kind, w32, zt, code=None, full=None)` 250; `decoder_from_arrays(d)` 264; `l1(Y, pred0, pred_code, pred_lin)` 275; `_cfg(alpha, alternative, N)` 305; `_summaries(arrays, afull, models, seeds, alpha, alternative)` 310 (not called; ND-C20); `f1_problem(Y, w32, zt, f, euclidean=False, fit=None)` 370; `fit_decoders(w32, zt, code, full, target, panel)` 385; `l1_split(decs, w32, zt, code, full, target)` 392; `n_test(N_by_family)` 364 | |
+| `c2_model` | `load_models()` 35; `activations3(model64, inputs, batch=1024)` 80; `natural_pass(model64, inputs, policy, kind, batch=1024)` 85; `patched_logits(model64, inputs, site, rep, policy, kind, batch=1024)` 90; `helmert(n=128)` 103; `readout_basis(model64)` 114; `readout_coords(u, basis)` 139; `closed_logits(y, basis)` 143; `placed(y_hat, basis)` 148; `identity_patch(model64, inputs, acts, policy)` 155; `readout_identity(z_net, y, basis)` 174; `kappa_x1(u, y, basis, z)` 180; `x1_attainable(kappa)` 187; `two_route(d_canon, d_named, z_named, perm)` 192; `symbol_order_a(named_inputs, canon32, perm)` 207; `symbol_order_b(perm)` 215; `symbol_order_c(d_canon, perm)` 221; `m0(model64, sha, contract_j, inputs, acts, z_net, basis, d_canon, perm, policy)` 228; `x1(model64, arms, basis, policy)` 261 | |
+| `c2_decide` | `stream_bounds(arrays, seed, alpha, draws=20000)` 38; `guard(s, beta=0.0)` 49; `beta_A(d, M, dy, delta_P, coef, E=None)` 58; `beta_E(M, dy, P_S, delta_P, coef, E=None)` 65; `sign(b, g)` 75; `stream_guards(arrays, geo)` 79; `model_bounds(res, guards, model)` 95; `r_model(b, y_active)` 137; `m_model(b, y2_active)` 148 (pattern only); `variant_category(b, variant, primary)` 164; `overall(family, statuses, cnhs)` 182; `endpoint_status(model, family, gate_history)` 212 | |
+| `c2_oracle` | `load_process()` 31; `h1_static(proc)` 61; `oracle_role(T, E, pi, tokens32, coords=None)` 87; `oracle_split(T, E, pi, coords, canon32, k, o_H=None)` 113; `nuisance5(b32, coords)` 137; `d_named(d_canon, perm)` 148; `eligibility(o, smax)` 156; `phi_star(m32)` 194; `reason_flags(o, smax)` 201; `h3(T, E, pi, coords, perms, E_named, splits, p0=None)` 264; `decimal_rows(T, E, pi, canon32, o, rows_x, rows_y, p0)` 303 | |
+| `c2_data` | `k_y(b31, coords)` 74; `y_donor(canon32, k)` 80; `donors4(canon32, k)` 93; `role_arrays(canon32, k)` 98; `history_table(canon32, seq_ids, panel, k)` 115; `table_roles(table)` 133; `table_digests(table)` 137; `coverage_tally(flags)` 168; `file_sha(path)` 189; `contains_scope(path, needle=NEEDLE)` 197; `_walk(top, skip=())` 218; `_scanned(rel_parts)` 225; `store_admission(store, lineage, first_sampling)` 281; `own_records(store, stage, lineage)` 311 | |
+| `c2_registry` | `x6_source(store=None, run_dir=None)` 99; `token_sources(root=None)` 132; `_static_readers()` 162; `inventory(root=None, readers=None)` 192 (pattern only; it reads the C2 table); `_ok_readers(src, x6_ok)` 215; `_x6_member(xr, key, arr, entry)` 63; `class Registry(digests, x6, sealed_ranges, predicates, manifest, seq_ids=())` 306, `Registry.load(store=None, version="C2-REG1")` 313, `contains(hex_digests)` 350; `separation(reg, tables)` 360; `first_token_ok(table, T, E_canon, pi, split)` 389 | |
+| other | `c1_endpoint.A_hat(d, z_plus, z_minus)` 28, `Zfull_hat(A_full, G)` 46; `c1_means.tree_mean(X)` 15, `bootstrap_means(arrays, seed, draws=5000)` 31, `c1_bootstrap_means(x, rng, draws)` 46, `rank_for(p, draws=5000)` 57, `quantile_with_rank(values, p)` 71; `precision.sd_b4_draws(X, r4n, models, seed, draws, size)` 22, `centered_draws(X, models, seed, draws, size)` 39, `precision_summary(sd, e, models, cfg)` 73; `scores.history_digests(canonical32)` 49; `c1_model.state_sha(model)` 20, `load_model64(checkpoint)` 28, `model_inputs(named32)` 41; `c1_oracle.donors(canon32)` 44, `G_hat(qp, qm)` 139, `named_from_canonical(x, perm)` 146, `canonical_from_named_cols(x, perm)` 153; `x6s1_registry.row_digests(tokens)` 58, `hex_to_digests(hex_array)` 75, `_headers(path)` 297, `_history_bearing(path)` 311; `k4b_registry.inventory(root=ROOT, exclude=())` 43, `classify(inv, scanned_readers)` 92, `source_f(root, inv, classes)` 239, `revalidate_coverage(root_art, root=ROOT, extra_ids=None, store=None, seqs_a=None)` 271; `TransformerLM.forward(inputs, *, return_hooks=())` (`model.py` 108); `forward_with_patch(model, inputs, site, index, replacement, *, return_hooks=())` (`patch.py` 66; `_check` 34) | |
+
+`c2_registry.build` (241) and `c2_data.namespace_scan` (245), `history_generator`/`sequence_ids`/`sample_block` (37–55), `c2_driver.LogitPolicy` (50), `c2_stats.p1` (326) are **not** called (§11.2 item 2).
+
+## 18. Choices (where the protocol leaves something open; simplest option)
+
+- **ND-C1** Per-model statuses are strings without `_j`, keyed by model; qualifiers carry the model in parentheses (C2 API C-1).
+- **ND-C2** Gate and statistic names are ASCII: ′ is written `'` in gate names (`V3x'`, `Y1'`, `V3x'-g1`). Within the D stream the DNULL arrays use the C2 names (`V3x`, `Y1`, `Z010`, `Z050`, `Vabs`, `Vrand`, `NEG`) so that `c2_decide.r_model` applies unchanged; the report-only D-NULL-R arrays carry the prefix `DNULLR:`.
+- **ND-C3** Split names are C2's (`fit`, `feas`, `val`, `test`) for the protocol's DFIT, DFEAS, DVAL, DTEST: §6.1 prescribes the C2 recipe "with the scope replaced". Streams and sequence ids differ from C2's through the scope alone (§12.3).
+- **ND-C4** V3y′ (needed for Y1′ activity, §3 row 23) has no seed of its own in §4.1; it is computed in the V3x′ bootstrap call (seed 630514) as a second array, recorded inside the `V3x'` gate (no own gate; GATE_ORDER unchanged).
+- **ND-C5** KC-R uses seed 630506 in its own `stream_bounds` call ("same seed stream, separate arrays"): identical indices, independent arrays.
+- **ND-C6** The C2 stage helpers (`c2_stage_base`) are not reused (they read C2 store-relative paths); their ND equivalents live in `nd_driver` (loaders, caches) and `nd_stage_pre`/`nd_stage_val` (split checks, arms, bounds). The protocol's 11-module list is kept.
+- **ND-C7** G0 (iv) checks the FIT/DEC key sets from the npz zip directory (`zipfile.ZipFile(path).namelist()`), which reads no array content, after the file's sha256 matches.
+- **ND-C8** The rows 2–9 digest sets join the in-memory digest set of the build (as sources d and k in C2); only the X6S1 component stays an on-disk `DigestSet`. The manifest therefore keeps C2's format and `c2_registry.Registry.load` loads ND-REG1/ND-REG2 unchanged.
+- **ND-C9** `hws-store` and `x6zc-store` are `READER_IF_PRESENT`: absence is not a violation; presence requires `FREEZE.json` and a successful reader (OPEN-1 closed).
+- **ND-C10** The new readers (rows 2–9) never open `payload.npz`, `state.pt`, `*.pt` or a path with a `sealed` component; a history-bearing candidate there makes R_ND INCOMPLETE (fail closed). Row 1 is C2's readers unchanged, including their reading of ObservationSet `tokens` (Q-1 below).
+- **ND-C11** Reader `c2` reads every `hist/HIST_*.npz` of the C2 store; the five bound files must re-hash to CONTRACT; a further file (none expected; the store is frozen) is read and listed.
+- **ND-C12** Rows 4–5 are mandatory: each listed scratch root must exist and contribute at least one C2-format `HIST_*.npz`, else INCOMPLETE (a vanished copy cannot be shown to be covered).
+- **ND-C13** The x6zc reader is the generic history-bearing-array rule (C2's reader-x6 member rule) because the X6ZC history format is not fixed; if that round later fixes a format the rule cannot digest, R_ND fails closed (INCOMPLETE) and the coordinator must decide before C2ND's freeze.
+- **ND-C14** `PARALLEL_NEEDLES` holds the HWS scope (HWS-DESIGN-v1), stored hex-encoded in CONTRACT (`6877732d7631`) so that `tools/c2_nd/CONTRACT.json`, a file in every C2-pattern scanned set, contains neither C2's nor a parallel round's scope string; the X6ZC scope string is OPEN in CONTRACT and added before the freeze if that round names one.
+- **ND-C15** Head edits are formed as `g·(WU @ (I − Pi_S))` with `Pi_S = Q0 @ P_S @ Q0.T` in float64; M0-D (i) recomputes the same expression and compares bitwise.
+- **ND-C16** Every A_comp-type N-R array (Zc010, Zc050, Wc, NEGc, Zc090, Zc100, Z090 and the variant arrays) uses β_A with coefficient 1 (its A_S coefficient); Vc uses β_E with `I − P_S`.
+- **ND-C17** A known case counts as unresolved when any listed statement is undeclared (INC, INC/NUMERICAL, EXCLUDED/<reason>, CNHS); a declared statement that differs from its known value makes the case CONTRADICTED, which takes precedence.
+- **ND-C18** KC-R: a case that cannot be formed is NOT_COMPUTED; a formed but undeclared case is recorded FAIL/`"UNRESOLVED"` with no qualifier and no effect (report-only).
+- **ND-C19** The variant rule has no NECESSARY category, so a primary NECESSARY is compared as COMPLEMENT_LOW_ALIGNED for PROJECTOR_DEPENDENT_NR / HARMONIC_DEPENDENT_NR; otherwise C2's string comparison (`None`/`NOT_COMPUTED` never qualify).
+- **ND-C20** P1 calls the precision kernels directly with the ND integer seeds (630516, 630517) and `c2_stats._cfg`; `c2_stats._summaries` cannot be called because it resolves seeds by C2 CONTRACT name (protocol §4.5 says "through `_summaries`").
+- **ND-C21** For D, the P1 SD kernel's `r4n` input is the DVAL `G_x·1_{E_x}` array (the oracle-only alternative of §4.5; no decoy gate mean enters).
+- **ND-C22** The D-NULL-R category for DECOY_LOCATION_DEPENDENT uses the D stream (630504, 20,000 draws, α_D) with DNULL's RESP/SPEC as prerequisites (`c2_decide.variant_category` pattern); the 630507 DTEST report covers the KC cases and the KC-R cases (D-NULL-R included) at 5,000 draws, two-sided 95 %.
+- **ND-C23** The frozen C2 s_max, κ_m and y_active (`C2_STORE/oracle/ORACLE_FROZEN.json`) are used; C2ND writes no ORACLE_FROZEN of its own. Y1 is active iff `y_active` ∧ V3y PASS; Y1′ iff `y_active` ∧ V3y′ PASS.
+- **ND-C24** ORACLE-FEAS (i) runs on every DVAL row (all 4,096; the oracle predictive has full support); a non-finite value fails.
+- **ND-C25** All VAL endpoint-bearing arrays, including KC/KC-R and the V3x′/V3x′-g1/Y1′ arrays and bounds, are sealed in one bundle at P1 (`require_write("val_sealed")`); KC and KC-R keep their arrays in process memory until P1.
+- **ND-C26** The construction projector is reachable only through `nd_decoy` functions that call `policy.require("construction")` (allowed at M0-D, F1 for κ_leak, DX, T-PRE); `nd_attrib.d_stream`/`case_arrays` refuse a projector not tagged `RD`/`RT` (S12 test hook).
+- **ND-C27** The coordinate wrapper is a deep copy of the base `TransformerLM` with `ln_final` replaced by a `Sequential` (LayerNorm, `CoordMap`) and the head replaced; `coord_basis` adapts `readout_basis`.
+- **ND-C28** `decoy_sha64` byte layout as §6.4 (key, shape, float64 bytes; then the record as compact sorted JSON).
+- **ND-C29** The N-M stream has no specificity qualifier (no placebo statement, §2.4).
+- **ND-C30** The reservation record is a store-root JSON per stage (S1, S5) checked by G0 (ix); "the manifests' sha256" of a parallel store is its `FREEZE.json` sha256.
+- **ND-C31** Each known case has its own RESP and SPEC (§3 row 24): RESP on the case's V3x; its Y1 is active iff the C2 `y_active` holds and the case's own y response passes (`<case>:V3y`, L > g in the KC call), as the C2 activity rule.
+- **ND-C32** The §7.1 requirement "every D licence also discloses the gain ×6 and the head edit" is met by one fixed sentence appended after Q-CODE-D (§8.4 `licence`).
+- **ND-C33** `nd_decoy` and `nd_attrib` functions take every dimension from their inputs (d_model, number of readout coordinates, vocabulary, K); no 36/127/128 is hard-coded there, so that the independent tests can use tiny `TransformerLM` instances (e.g. d_model 32, 8 outputs: ker(M) then has dimension 23 ≥ 6). The real-model dimensions are asserted only by G0 and M0/M0-D.
+
+## 19. Open questions for the coordinator (not decided here)
+
+- **Q-1** §6.3 says "no `payload.npz` … is read by the registry", while row 1 reuses C2's readers unchanged, and readers a and x6 read ObservationSet `payload.npz` token arrays (C2 API §5.1). ND-C10 keeps row 1 as C2 did and applies the prohibition to rows 2–9. Confirm.
+- **Q-2** §4.5 asks for `c2_stats._summaries` with the ND seeds; it resolves seeds through the C2 CONTRACT (`cc.seed(name)`). ND-C20 calls the precision kernels directly. Confirm.
+- **Q-3** HWS dry-run histories (`X:/Downloads/topo-scratch/hws-dry/hist/**`) are not named `HIST_*.npz` and are not covered by row 9. Should reader `hws` also read that scratch root?
+- **Q-4** The X6ZC store layout (X6ZC-DESIGN-v1 §14) holds no history files and its variant-history format is not fixed; ND-C13 uses the generic rule. Confirm, or bind the format before the C2ND freeze.
+- **Q-5** V3y′ has no seed (ND-C4). Confirm 630514.
+- **Q-6** §5.1 T-NEC-KNOWN lists "half and half → PARTIAL and CODE_DOMINANT". By Lemma N1 (ψ_comp = 1 − ψ) these cannot hold together: PARTIAL needs 0.10 < ψ < 0.50, CODE_DOMINANT needs 0.50 < ψ < 0.90, and ψ = 0.50 is a threshold where neither is declared. `TEST_PLAN.md` replaces the fixture by ψ = 0.3 → PARTIAL and NOT_NECESSARY, ψ = 0.7 → USED and CODE_DOMINANT, and ψ = 0.5 → neither (INC on both). This is a protocol text defect; the protocol is not edited here. Confirm (a correction note at the freeze, or a new candidate).

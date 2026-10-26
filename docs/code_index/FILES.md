@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 862 tracked files; 505 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 866 tracked files; 505 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1158,6 +1158,15 @@ The generated index itself (`docs/code_index/`) is not indexed. 862 tracked file
 | [d2a_train.py](files/tools/d2a/d2a_train.py.md) | python | 399 lines | D-2a training: runs, waves, children, resource supervisor, controls and meter binding |
 | [d2a_world.py](files/tools/d2a/d2a_world.py.md) | python | 397 lines | D-2a world, pools, seed map, bins, templates and S0 bindings (D2A-FROZEN-v1 §2, §9.2, §11.3; |
 | [process_tree.py](files/tools/d2a/process_tree.py.md) | python | 88 lines | Windows training process tree: nested Job Object, attached before any child runs. |
+
+## tools/hws/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 342 lines | tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1) |
+| `CONTRACT.json` | json | 1346 lines |  |
+| `PROTOCOL_HWS_v1.md` | markdown | 850 lines | HWS-MERGED-v2: an oracle-only world sweep for the history-source question (stage A, no training) |
+| `TEST_PLAN.md` | markdown | 63 lines | HWS test plan v1 (job 0118) |
 
 ## tools/k4b/
 

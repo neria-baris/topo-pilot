@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 862,
+  "files indexed": 866,
   "functions and methods (incl. tests)": 6917,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 737,
@@ -17060,6 +17060,30 @@
    "lines": 88,
    "purpose": "Windows training process tree: nested Job Object, attached before any child runs.",
    "sha256": "253551cd7f52eb62eae8c732ef1c86191338cad7088873422438b919afa5df94"
+  },
+  "tools/hws/API.md": {
+   "kind": "markdown",
+   "lines": 342,
+   "purpose": "tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1)",
+   "sha256": "570fb5e853ff00513ac23d4c1e08bc9e27fd411bfd3998272babe7b50ae9e668"
+  },
+  "tools/hws/CONTRACT.json": {
+   "kind": "json",
+   "lines": 1346,
+   "purpose": "",
+   "sha256": "f0b14cbf92cf55b46a23a44d0eed00f747ebf6db8c0b6569eaf8166f70c79f55"
+  },
+  "tools/hws/PROTOCOL_HWS_v1.md": {
+   "kind": "markdown",
+   "lines": 850,
+   "purpose": "HWS-MERGED-v2: an oracle-only world sweep for the history-source question (stage A, no training)",
+   "sha256": "d96906097ab8b6ec464a2dbd4b477353b2950aa58e5b5995b7b6086ce68963a9"
+  },
+  "tools/hws/TEST_PLAN.md": {
+   "kind": "markdown",
+   "lines": 63,
+   "purpose": "HWS test plan v1 (job 0118)",
+   "sha256": "76bc91708f3790fd08b93be24bd9cd32451858fb702bbddfb4e620b2e7fca71c"
   },
   "tools/k4b/API.md": {
    "kind": "markdown",
@@ -180253,5 +180277,5 @@
    ]
   }
  },
- "sources_digest": "db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906"
+ "sources_digest": "4c190759e6fa202f8643ce106c648f7573a1a310f949af7aea205d0efb727a1f"
 }

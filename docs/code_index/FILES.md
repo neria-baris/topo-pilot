@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 852 tracked files; 501 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 853 tracked files; 501 code files (linked to their pages).
 
 ## (repo root)
 
@@ -80,6 +80,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 852 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
+| `ARCHITECTURES_AND_GDL_OPTIONS_HE.md` | markdown | 223 lines | מעבר לטרנספורמר: סוגי מודלים אחרים, הקשר ל־GDL ומבנה מודולרי |
 | `C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md` | markdown | 228 lines | C2 — ניסוי חלופי לשימוש מקומי במידע המעגלי |
 | `C2_INDEPENDENT_PLANNING_REQUEST_HE.md` | markdown | 31 lines | בקשת תכנון וביקורת עצמאית: חלופה ל־C1′ |
 | `CAUSAL_CIRCLE_STATE_FORCING_PROTOCOL_DRAFT.md` | markdown | 97 lines | Causal circle state forcing — protocol draft C1 |

@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 852,
+  "files indexed": 853,
   "functions and methods (incl. tests)": 6899,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 733,
@@ -12566,6 +12566,12 @@
    "lines": 66,
    "purpose": "",
    "sha256": "02917a0b30fba0956213b3221c74d5d86ea7be238940ca5a5bd90c226b6b22ee"
+  },
+  "docs/proposals/ARCHITECTURES_AND_GDL_OPTIONS_HE.md": {
+   "kind": "markdown",
+   "lines": 223,
+   "purpose": "מעבר לטרנספורמר: סוגי מודלים אחרים, הקשר ל־GDL ומבנה מודולרי",
+   "sha256": "bfa1e567158bca2bf7d97ee4dea6a50881c478c96b65a2be1c39e4c95449bd87"
   },
   "docs/proposals/C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md": {
    "kind": "markdown",
@@ -179602,5 +179608,5 @@
    ]
   }
  },
- "sources_digest": "fc5814b4bdc61a010c22a066eb979c29a8bb1d3cd6a7c1105eb235ffd23035f9"
+ "sources_digest": "b62e1a3e9b9a5a9b0bc5ace9dba9942d3fa3000757f4c20b7b67ef125da3ffbe"
 }

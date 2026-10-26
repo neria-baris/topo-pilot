@@ -10,5 +10,7 @@ Run from this folder with the project venv:
 - `python null_kappa.py`: null calibration of kappa (section 5.6).
 - `python theory_exact3.py 1000 <seed>` (seeds 1, 2, 3): searched circle maps on the square cloud, hybrid worlds for the axis-permuted prediction loop, and ripser H1 barcodes (sections 5.6–5.7). Writes `theory_exact3_results_n1000_s<seed>.json`.
 - `python kappa_ceiling.py 500,1000,2000`: the ceiling of Corollary 2.2 (largest death/birth ratio over H1 bars) next to the fixed-map kappa, by sample size and seed (Conjecture 1.5, section 5.6).
+- `python check_ceiling.py 1000` (independent review): kappa <= Pi on the same cloud for every searched map, F2 versus F3 ceilings, and cocycle-based circular coordinates (Corollary 2.2, section 5.6).
+- `python check_hybrids.py 1000` (independent review): the eight hybrid cells at seeds 11-13 with Pi and a map defined through the world state (section 5.7).
 
 Outputs used in the document are in `docs/proposals/THEORY_OUTPUTS/`. The null-calibration numbers are quoted in section 5.6 from the console output.

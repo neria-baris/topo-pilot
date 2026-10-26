@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_store.py](../../../../../tools/x6zc/x6zc_store.py)
 - Kind: python
-- Lines: 180
+- Lines: 309
 
 ## Module docstring
 
@@ -86,9 +86,9 @@
 - **function `_hit`** [L113-118]: `def _hit(v, master) -> bool`
 - **function `master_fresh`** [L119-132]: `def master_fresh(project_root=zc.PROJECT_ROOT, master=zc.X6ZC_MASTER) -> dict`
 - **function `meter_bind_check`** [L133-137]: `def meter_bind_check(path, expected_sha256, import_dir) -> None`
-- **function `bind_template`** [L152-154]: `def bind_template(out, session, store=zc.STORE, import_dir=zc.METER_IMPORT_DIR) -> str`
-- **function `ledger_cpu`** [L155-157]: `def ledger_cpu(store) -> float`
-- **function `pause_check`** [L158-168]: `def pause_check(boundary, cumulative_s, stage_s, n=None) -> dict`
-- **function `_head`** [L170-172]: `def _head() -> str`
-- **function `_frozen`** [L173-180]: `def _frozen(store) -> dict`
+- **function `bind_template`** [L278-283]: `def bind_template(out, session=None, store=zc.STORE, worktree=zc.WORKTREE) -> str` - Writes the store-local binding (exclusive create); `session` is ignored (C-53: the worker
+- **function `ledger_cpu`** [L284-286]: `def ledger_cpu(store) -> float`
+- **function `pause_check`** [L287-297]: `def pause_check(boundary, cumulative_s, stage_s, n=None) -> dict`
+- **function `_head`** [L299-301]: `def _head() -> str`
+- **function `_frozen`** [L302-309]: `def _frozen(store) -> dict`
 

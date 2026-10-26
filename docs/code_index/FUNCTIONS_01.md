@@ -670,7 +670,7 @@
 | `_frame_of` | function | `_frame_of` | [tools/c1prime/c1_records.py:122](../../tools/c1prime/c1_records.py#L122) |  |
 | `_frames` | function | `_frames` | [tools/c1prime/c1_records.py:111](../../tools/c1prime/c1_records.py#L111) |  |
 | `_from` | function | `_from` | [tests/analysis/test_x5_endpoint.py:46](../../tests/analysis/test_x5_endpoint.py#L46) |  |
-| `_frozen` | function | `_frozen` | [tools/x6zc/x6zc_store.py:173](../../tools/x6zc/x6zc_store.py#L173) |  |
+| `_frozen` | function | `_frozen` | [tools/x6zc/x6zc_store.py:302](../../tools/x6zc/x6zc_store.py#L302) |  |
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_ingest_bundle.py:44](../../tests/x6_stage1/test_b_ingest_bundle.py#L44) |  |
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_nb_s0_ops.py:37](../../tests/x6_stage1/test_b_nb_s0_ops.py#L37) |  |
 | `_fwp` | function | `_fwp` | [tests/c2_readout/test_b_patch.py:87](../../tests/c2_readout/test_b_patch.py#L87) |  |
@@ -745,7 +745,7 @@
 | `_head` | function | `_head` | [tests/x6_stage1/test_b_nb_s0_ops.py:38](../../tests/x6_stage1/test_b_nb_s0_ops.py#L38) |  |
 | `_head` | function | `_head` | [tests/x6_stage1/test_b_train_chain.py:43](../../tests/x6_stage1/test_b_train_chain.py#L43) |  |
 | `_head` | function | `_head` | [tools/x4_circle_history/release.py:63](../../tools/x4_circle_history/release.py#L63) | HEAD commit id read from the git files (worktree aware; loose or packed refs). |
-| `_head` | function | `_head` | [tools/x6zc/x6zc_store.py:170](../../tools/x6zc/x6zc_store.py#L170) |  |
+| `_head` | function | `_head` | [tools/x6zc/x6zc_store.py:299](../../tools/x6zc/x6zc_store.py#L299) |  |
 | `_headers` | function | `_headers` | [tools/x6_stage1/x6s1_registry.py:297](../../tools/x6_stage1/x6s1_registry.py#L297) | [(key, dtype, shape)] from .npy headers only (a .npy file, or each .npz member). |
 | `_hellinger` | function | `_hellinger` | [src/topo_pilot/experiment/s4_analysis.py:58](../../src/topo_pilot/experiment/s4_analysis.py#L58) |  |
 | `_helmert_ref` | function | `_helmert_ref` | [tests/c2_readout/test_a_readout.py:41](../../tests/c2_readout/test_a_readout.py#L41) |  |
@@ -1971,7 +1971,7 @@
 | `bind` | function | `bind` | [tools/x6_stage1/x6s1_stage_post.py:158](../../tools/x6_stage1/x6s1_stage_post.py#L158) |  |
 | `bind_meter` | function | `bind_meter` | [tools/d2a/d2a_train.py:239](../../tools/d2a/d2a_train.py#L239) | Store-local rebinding of the unchanged job-0014 meter (§11.3; module names only). |
 | `bind_stage_records` | function | `bind_stage_records` | [tools/c1prime/c1_records.py:56](../../tools/c1prime/c1_records.py#L56) |  |
-| `bind_template` | function | `bind_template` | [tools/x6zc/x6zc_store.py:152](../../tools/x6zc/x6zc_store.py#L152) |  |
+| `bind_template` | function | `bind_template` | [tools/x6zc/x6zc_store.py:278](../../tools/x6zc/x6zc_store.py#L278) | Writes the store-local binding (exclusive create); `session` is ignored (C-53: the worker |
 | `bit_generator` | method | `_RecGen.bit_generator` | [tests/x6_stage1/test_b_train_chain.py:126](../../tests/x6_stage1/test_b_train_chain.py#L126) |  |
 | `Block` | class | `Block` | [src/topo_pilot/learner/model.py:52](../../src/topo_pilot/learner/model.py#L52) | Pre-LN block: ``x = x + Attn(LN(x)); x = x + MLP(LN(x))``. |
 | `block_comparator` | function | `block_comparator` | [tools/x6_stage0/x6_exact.py:255](../../tools/x6_stage0/x6_exact.py#L255) |  |
@@ -3301,7 +3301,7 @@
 | `leaves` | method | `Sym.leaves` | [tools/c1prime/c1_bounds.py:140](../../tools/c1prime/c1_bounds.py#L140) |  |
 | `leaves` | function | `leaves` | [tests/k4b/test_a_ranks_ladder.py:38](../../tests/k4b/test_a_ranks_ladder.py#L38) |  |
 | `ledger_claims` | function | `ledger_claims` | [tests/k4b/test_b_charts.py:90](../../tests/k4b/test_b_charts.py#L90) |  |
-| `ledger_cpu` | function | `ledger_cpu` | [tools/x6zc/x6zc_store.py:155](../../tools/x6zc/x6zc_store.py#L155) |  |
+| `ledger_cpu` | function | `ledger_cpu` | [tools/x6zc/x6zc_store.py:284](../../tools/x6zc/x6zc_store.py#L284) |  |
 | `ledger_path` | function | `ledger_path` | [tests/c1prime/test_a_chart_val.py:187](../../tests/c1prime/test_a_chart_val.py#L187) |  |
 | `LedgerCorrupt` | class | `LedgerCorrupt` | [src/topo_pilot/experiment/x5g1_controls.py:22](../../src/topo_pilot/experiment/x5g1_controls.py#L22) | The existing ledger cannot be parsed; it is left untouched. |
 | `ledoit_wolf` | function | `ledoit_wolf` | [src/topo_pilot/analysis/x4f_scores.py:78](../../src/topo_pilot/analysis/x4f_scores.py#L78) | Ledoit-Wolf (2004) shrinkage of the population covariance toward ``mu_tr I``. |
@@ -3804,7 +3804,7 @@
 | `path_arrow` | function | `path_arrow` | [reports/he_summary/charts.py:82](../../reports/he_summary/charts.py#L82) |  |
 | `path_letters` | function | `path_letters` | [tools/x6_stage0/x6_model.py:225](../../tools/x6_stage0/x6_model.py#L225) |  |
 | `path_prob` | function | `path_prob` | [tests/k4b/test_a_lemma_t.py:71](../../tests/k4b/test_a_lemma_t.py#L71) |  |
-| `pause_check` | function | `pause_check` | [tools/x6zc/x6zc_store.py:158](../../tools/x6zc/x6zc_store.py#L158) |  |
+| `pause_check` | function | `pause_check` | [tools/x6zc/x6zc_store.py:287](../../tools/x6zc/x6zc_store.py#L287) |  |
 | `payload_checksum` | function | `payload_checksum` | [src/topo_pilot/contracts/base.py:170](../../src/topo_pilot/contracts/base.py#L170) | Canonical content checksum: sha256 over, for each array or blob in name order, its name, |
 | `pc_scores` | function | `pc_scores` | [src/topo_pilot/analysis/x4f_targets.py:79](../../src/topo_pilot/analysis/x4f_targets.py#L79) | ``(Z - pc.mean) @ pc.components`` -> ``[n, c]``. |
 | `pcg64_digest` | function | `pcg64_digest` | [tools/x6_stage1/x6s1_cloud.py:105](../../tools/x6_stage1/x6s1_cloud.py#L105) |  |
@@ -4614,4 +4614,3 @@
 | `stages_so_far` | function | `stages_so_far` | [tools/x4_circle_history/stage_records.py:55](../../tools/x4_circle_history/stage_records.py#L55) |  |
 | `standard_normal` | method | `_DuplicatingGenerator.standard_normal` | [tests/analysis/test_x4f_erasure_family.py:190](../../tests/analysis/test_x4f_erasure_family.py#L190) |  |
 | `standardise` | function | `standardise` | [tools/c2_readout/c2_code.py:46](../../tools/c2_readout/c2_code.py#L46) |  |
-| `standardise_nuisance` | function | `standardise_nuisance` | [tools/c1prime/c1_fit.py:21](../../tools/c1prime/c1_fit.py#L21) |  |

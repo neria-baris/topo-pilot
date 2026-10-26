@@ -18107,9 +18107,9 @@
   },
   "tools/x6zc/API.md": {
    "kind": "markdown",
-   "lines": 409,
+   "lines": 410,
    "purpose": "tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1)",
-   "sha256": "60fa34499f8035aed68e4a28a40eed5fe4e9c9e4bff456267304fd438a7eaf0a"
+   "sha256": "90b00b1bb0e8f8e0ea9c007463d122d1833d9eb68f439db9a67aee1ccea7483b"
   },
   "tools/x6zc/CONTRACT.json": {
    "kind": "json",
@@ -18185,9 +18185,9 @@
   },
   "tools/x6zc/x6zc_store.py": {
    "kind": "python",
-   "lines": 180,
+   "lines": 309,
    "purpose": "X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings),",
-   "sha256": "ccb02f42f0d3b4267611206835dbb9e31471afde2bb8efe4859dd7e49bdd544e"
+   "sha256": "5f53852321755c2ba8b3c687faf792e201542f62b970a7b0b1d60385a694d94a"
   }
  },
  "problems": [
@@ -186776,53 +186776,53 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 154,
+     "doc": "Writes the store-local binding (exclusive create); `session` is ignored (C-53: the worker",
+     "end": 283,
      "kind": "function",
      "name": "bind_template",
      "qual": "bind_template",
-     "sig": "def bind_template(out, session, store=zc.STORE, import_dir=zc.METER_IMPORT_DIR) -> str",
-     "start": 152
+     "sig": "def bind_template(out, session=None, store=zc.STORE, worktree=zc.WORKTREE) -> str",
+     "start": 278
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 157,
+     "end": 286,
      "kind": "function",
      "name": "ledger_cpu",
      "qual": "ledger_cpu",
      "sig": "def ledger_cpu(store) -> float",
-     "start": 155
+     "start": 284
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 168,
+     "end": 297,
      "kind": "function",
      "name": "pause_check",
      "qual": "pause_check",
      "sig": "def pause_check(boundary, cumulative_s, stage_s, n=None) -> dict",
-     "start": 158
+     "start": 287
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 172,
+     "end": 301,
      "kind": "function",
      "name": "_head",
      "qual": "_head",
      "sig": "def _head() -> str",
-     "start": 170
+     "start": 299
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 180,
+     "end": 309,
      "kind": "function",
      "name": "_frozen",
      "qual": "_frozen",
      "sig": "def _frozen(store) -> dict",
-     "start": 173
+     "start": 302
     }
    ],
    "syspath": []
@@ -186861,5 +186861,5 @@
    ]
   }
  },
- "sources_digest": "577eac3b6752437b27e0b05f8e972c7fdcd8bfa0b41b2dafe9a3cd66b5a30fc1"
+ "sources_digest": "afae25ba9be8b332424c82df6b2a0b08f6ba056a4195f8a0b3e54aa2efe03186"
 }

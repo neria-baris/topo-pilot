@@ -1295,7 +1295,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 881 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 409 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
+| `API.md` | markdown | 410 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
 | `CONTRACT.json` | json | 1910 lines |  |
 | `PROTOCOL_X6ZC_v1.md` | markdown | 930 lines | X6ZC-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training) |
 | `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |
@@ -1308,4 +1308,4 @@ The generated index itself (`docs/code_index/`) is not indexed. 881 tracked file
 | [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 84 lines | X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run and stage |
 | [x6zc_stage_a.py](files/tools/x6zc/x6zc_stage_a.py.md) | python | 241 lines | X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit, |
 | [x6zc_stage_bc.py](files/tools/x6zc/x6zc_stage_bc.py.md) | python | 228 lines | X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C |
-| [x6zc_store.py](files/tools/x6zc/x6zc_store.py.md) | python | 180 lines | X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings), |
+| [x6zc_store.py](files/tools/x6zc/x6zc_store.py.md) | python | 309 lines | X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings), |

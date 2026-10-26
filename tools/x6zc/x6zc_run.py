@@ -882,7 +882,8 @@ def stage_c(store=zc.STORE) -> int:
     outs = {m: (lambda P: {F: {v: (P[f"{F}|{v}|a"], P[f"{F}|{v}|b"]) for v in VO} for F in FAM})(
         _npz((d / m / "p.npz").read_bytes())) for m in names}
     extra = {"qstar_NA": predict_variants(zc.oracle("NA", "qstar"), VA), **{
-        f"K3:{k}|{p}": predict_variants(zc.SyntheticPredictor(k, **p), VA)
+        "K3:" + k + ":" + ",".join(f"{a}={b}" for a, b in sorted(p.items())):
+            predict_variants(zc.SyntheticPredictor(k, **p), VA)
         for k, p in zc.k3_grid()}}
     stats = stage_c_statistics({**outs, **extra}, VA, cache, zc.stream("boot_C"))
     mask = {F: {v: np.isin(np.arange(3 * n), av["a4_pair_mask"][F][v]) for v in VO} for F in FAM}

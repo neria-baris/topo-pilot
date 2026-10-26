@@ -128,6 +128,9 @@ def test_shapes_and_pi_s(base):
     assert np.max(np.abs(Pi - ref)) <= 1e-13 * max(1.0, np.max(np.abs(ref)))
 
 
+# API-AMBIGUITY: API.md §6.2 writes DNULL as `g·WU @ (I − Pi_S)` while ND-C15 says
+# `g·(WU @ (I − Pi_S))`; the two associations round differently, so the formula is checked to
+# 1e-13 relative here, not bitwise (M0-D (i) is bitwise against the implementer's own form).
 @pytest.mark.parametrize("kind", HEAD)
 def test_head_edit_formula(base, kind):
     bs = base["basis"]

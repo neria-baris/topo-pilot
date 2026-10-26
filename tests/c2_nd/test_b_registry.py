@@ -182,6 +182,9 @@ def test_source_scratch(scratch, expected_roots, loads):
     assert nrg.source_scratch(scratch)["status"] == INC
 
 
+# API-AMBIGUITY: API.md §5.1 does not say whether the "test_" exclusion looks at components
+# relative to the scanned root or at the absolute path; the scratch roots here have no "test_"
+# component above them (tmp_path_factory.mktemp), so both readings give the same answer.
 def test_source_scratch_skips_test_trees(scratch, expected_roots, loads):
     good = scratch / "0109-pre" / "livecopy-0115" / "hist"
     save(good / "HIST_val_b0.npz", **table(8))
@@ -240,6 +243,8 @@ def test_parallel_hws_reader(tmp_path, scratch):
     assert nrg.source_parallel(store, "hws")["status"] == INC
 
 
+# API-AMBIGUITY: R-0116-3 names X:/Downloads/topo-scratch/hws-dry/hist/** but no signature
+# carries it; it is taken as nd_config.SCRATCH_ROOT / "hws-dry" / "hist", read at call time.
 def test_parallel_hws_dry_scratch(tmp_path, scratch):
     """R-0116-3: reader hws also reads <SCRATCH_ROOT>/hws-dry/hist/** when present."""
     store = frozen(tmp_path / "hws-store")
@@ -261,6 +266,8 @@ def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, wh
     assert not [p for p in loads if p.endswith(where)]
 
 
+# API-AMBIGUITY: R-0116-4 lists the X6ZC names as NON_HISTORY "path and size recorded" but no
+# result key is named; only the status and the absence of any np.load are checked.
 def test_parallel_x6zc_layout(tmp_path, scratch, loads):
     store = frozen(tmp_path / "x6zc-store")
     names = ("stages/A/qstar_NA.npz", "stages/B/1729/pairs.npz", "stages/C/1729/variants.npz")

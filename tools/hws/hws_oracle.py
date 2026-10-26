@@ -14,6 +14,7 @@ import oracle_profile
 import scores
 from topo_pilot.contracts import SeedTree, SequenceLayout
 from topo_pilot.dataset.sampler import HMMSampler
+from topo_pilot.oracle import context_gain
 
 KS_SCREEN = (1, 2, 4, 8, 16, 32)
 KS_S0 = (1, 2, 3, 4, 8, 16, 32)
@@ -137,6 +138,8 @@ def row_arrays(proc, tok, Ks) -> dict:
     rows["weak_ind"] = (rows["m_norm"] < 0.1).astype(np.float64)
     rows["m_sq"] = rows["m_norm"] ** 2
     rows["norm_err"] = float(max(np.max(np.abs(v.sum(axis=1) - 1.0)) for v in b.values()))
+    if 1 in rows["G"]:  # choice 9: E6 cross-check against the repository context gain
+        rows["gc_check"] = abs(context_gain(qL, q[1]) - float(np.mean(rows["G"][1])))
     return rows
 
 

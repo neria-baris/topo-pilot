@@ -1825,6 +1825,7 @@
 | `b_Zf` | function | `b_Zf` | [tools/c1prime/c1_bounds.py:69](../../tools/c1prime/c1_bounds.py#L69) |  |
 | `band_edge_table` | function | `band_edge_table` | [tools/d2a/d2a_targets.py:119](../../tools/d2a/d2a_targets.py#L119) | All (row, p), p = 1..32 with w_p in {σ0, σ2}: oracle d, window-8 r8 and model rm. |
 | `band_select` | function | `band_select` | [tools/x2a_stage0/x2a_ph.py:62](../../tools/x2a_stage0/x2a_ph.py#L62) |  |
+| `barcodes` | function | `barcodes` | [tools/theory_exact/theory_exact3.py:111](../../tools/theory_exact/theory_exact3.py#L111) |  |
 | `bare_steps` | method | `Resolver.bare_steps` | [tools/code_index/resolve.py:67](../../tools/code_index/resolve.py#L67) |  |
 | `bars` | function | `bars` | [tests/topology/test_persistence.py:43](../../tests/topology/test_persistence.py#L43) |  |
 | `base` | function | `base` | [tests/d2a/test_b_rules_decide.py:30](../../tests/d2a/test_b_rules_decide.py#L30) | Every arm learned, nothing carried, nothing low: falls to rule 10 (INCONCLUSIVE). |
@@ -2011,6 +2012,7 @@
 | `caught` | function | `caught` | [tests/c1prime/test_a_chart_exceptions.py:40](../../tests/c1prime/test_a_chart_exceptions.py#L40) |  |
 | `caught` | function | `caught` | [tests/c1prime/test_a_exceptions.py:58](../../tests/c1prime/test_a_exceptions.py#L58) |  |
 | `CausalSelfAttention` | class | `CausalSelfAttention` | [src/topo_pilot/learner/model.py:35](../../src/topo_pilot/learner/model.py#L35) | Multi-head causal self-attention: softmax(Q K^T / sqrt(d_head) + causal mask) V. |
+| `ceiling` | function | `ceiling` | [tools/theory_exact/kappa_ceiling.py:17](../../tools/theory_exact/kappa_ceiling.py#L17) |  |
 | `cell` | function | `cell` | [tools/code_index/render_pages.py:13](../../tools/code_index/render_pages.py#L13) |  |
 | `centered` | function | `centered` | [tools/k4b/k4b_stats.py:110](../../tools/k4b/k4b_stats.py#L110) |  |
 | `centered_draws` | function | `centered_draws` | [tools/x4_circle_history/precision.py:39](../../tools/x4_circle_history/precision.py#L39) |  |
@@ -3069,6 +3071,7 @@
 | `k8_reproduction` | function | `k8_reproduction` | [tools/x4_oracle_profile/validation.py:37](../../tools/x4_oracle_profile/validation.py#L37) | Recorded calibration B8/V8 from actual T/E/pi/tokens (never cached m8/r8). |
 | `k_blocks` | function | `k_blocks` | [tools/c1prime/c1_endpoint.py:118](../../tools/c1prime/c1_endpoint.py#L118) |  |
 | `k_y` | function | `k_y` | [tools/c2_readout/c2_data.py:74](../../tools/c2_readout/c2_data.py#L74) | k_Y(H) = +1 iff ybar(b31(H)) < 11/2, else -1 (toward the interior; fy_alt.py). |
+| `kappa` | function | `kappa` | [tools/theory_exact/theory_exact3.py:25](../../tools/theory_exact/theory_exact3.py#L25) |  |
 | `kappa_m` | function | `kappa_m` | [tools/c2_readout/c2_oracle.py:166](../../tools/c2_readout/c2_oracle.py#L166) |  |
 | `kappa_nu` | function | `kappa_nu` | [tools/c1prime/c1_oracle.py:197](../../tools/c1prime/c1_oracle.py#L197) |  |
 | `kappa_nu` | function | `kappa_nu` | [tools/c2_readout/c2_oracle.py:176](../../tools/c2_readout/c2_oracle.py#L176) |  |
@@ -3564,6 +3567,7 @@
 | `overall_verdict` | function | `overall_verdict` | [src/topo_pilot/analysis/horizon_pools.py:180](../../src/topo_pilot/analysis/horizon_pools.py#L180) | ``(GO \| NO-GO \| INCONCLUSIVE, reason)`` per protocol x4b-v1 section 7. |
 | `overdue` | function | `overdue` | [tools/x4_circle_history/op_guard.py:74](../../tools/x4_circle_history/op_guard.py#L74) | Kill reason if the marker shows an active operation past its deadline, else None. |
 | `overdue_marker` | function | `overdue_marker` | [tests/k4b/test_b_meter.py:178](../../tests/k4b/test_b_meter.py#L178) |  |
+| `overlap_E` | function | `overlap_E` | [tools/theory_exact/theory_exact3.py:68](../../tools/theory_exact/theory_exact3.py#L68) |  |
 | `OverlapGaussian` | class | `OverlapGaussian` | [src/topo_pilot/process/emission.py:130](../../src/topo_pilot/process/emission.py#L130) | O: ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)``, no truncation, symbols renamed. |
 | `own_arm` | function | `own_arm` | [tools/x6_stage1/x6s1_eval.py:331](../../tools/x6_stage1/x6s1_eval.py#L331) | Blocks of EVAL_ROWS rows. p: the readout of `tokens` if already computed; keep: row indices |
 | `own_cpu_s` | function | `own_cpu_s` | [tools/x4_oracle_profile/winjob.py:114](../../tools/x4_oracle_profile/winjob.py#L114) |  |
@@ -3736,6 +3740,7 @@
 | `predict` | method | `RidgeProbe.predict` | [src/topo_pilot/prediction/ridge.py:72](../../src/topo_pilot/prediction/ridge.py#L72) | Affine prediction ``[n, k]``. |
 | `predict` | method | `_FixedDecoder.predict` | [tests/c1prime/test_b_gates.py:205](../../tests/c1prime/test_b_gates.py#L205) |  |
 | `predict_phase` | function | `predict_phase` | [tools/k4b/k4b_decoder.py:82](../../tools/k4b/k4b_decoder.py#L82) |  |
+| `prediction_certificates` | function | `prediction_certificates` | [tools/theory_exact/theory_exact3.py:73](../../tools/theory_exact/theory_exact3.py#L73) |  |
 | `prediction_table` | function | `prediction_table` | [src/topo_pilot/experiment/report_e2.py:78](../../src/topo_pilot/experiment/report_e2.py#L78) |  |
 | `PredictionStage` | class | `PredictionStage` | [src/topo_pilot/prediction/stage.py:27](../../src/topo_pilot/prediction/stage.py#L27) | Reads/writes artifacts for the prediction module (consumer ``"prediction"``). |
 | `predictive` | function | `predictive` | [tests/d2a/test_b_rules_decide.py:68](../../tests/d2a/test_b_rules_decide.py#L68) |  |
@@ -4257,6 +4262,7 @@
 | `sealed_d2a_predicate` | function | `sealed_d2a_predicate` | [tools/k4b/k4b_data.py:178](../../tools/k4b/k4b_data.py#L178) | True where all 32 symbols lie in {0,...,4} (the sealed D-2a alphabet, §3.4 e). |
 | `seam_labels` | function | `seam_labels` | [tools/x6_stage0/x6_model.py:103](../../tools/x6_stage0/x6_model.py#L103) |  |
 | `seam_letter` | function | `seam_letter` | [tools/x6_stage0/x6_model.py:88](../../tools/x6_stage0/x6_model.py#L88) |  |
+| `searched_null` | function | `searched_null` | [tools/theory_exact/theory_exact3.py:30](../../tools/theory_exact/theory_exact3.py#L30) |  |
 | `secondary` | function | `secondary` | [tools/d2a/d2a_eval.py:365](../../tools/d2a/d2a_eval.py#L365) | API §4 items 5 and 7 under the stage-3 budget: RBF at the primary cells, then the |
 | `secondary_arrays` | function | `secondary_arrays` | [tools/k4b/k4b_scores.py:74](../../tools/k4b/k4b_scores.py#L74) |  |
 | `seed` | method | `SeedTree.seed` | [src/topo_pilot/contracts/ids.py:122](../../src/topo_pilot/contracts/ids.py#L122) | Derived 63-bit seed for ``(master, name, *scope)``; identical on every OS. |
@@ -4550,10 +4556,3 @@
 | `table` | function | `table` | [tools/c2_readout/c2_stage_base.py:81](../../tools/c2_readout/c2_stage_base.py#L81) |  |
 | `table_digests` | function | `table_digests` | [tools/c2_readout/c2_data.py:137](../../tools/c2_readout/c2_data.py#L137) |  |
 | `table_entry` | function | `table_entry` | [tools/x6_stage1/x6s1_stats.py:101](../../tools/x6_stage1/x6s1_stats.py#L101) |  |
-| `table_roles` | function | `table_roles` | [tools/c2_readout/c2_data.py:133](../../tools/c2_readout/c2_data.py#L133) |  |
-| `table_union` | function | `table_union` | [tools/c1prime/c1_data.py:66](../../tools/c1prime/c1_data.py#L66) |  |
-| `tables` | function | `tables` | [src/topo_pilot/experiment/x5g1t_stages.py:103](../../src/topo_pilot/experiment/x5g1t_stages.py#L103) |  |
-| `tables_bytes` | function | `tables_bytes` | [tools/x6_stage1/x6s1_pairs.py:52](../../tools/x6_stage1/x6s1_pairs.py#L52) |  |
-| `tail` | function | `tail` | [tools/x6_stage1/x6s1_stats.py:190](../../tools/x6_stage1/x6s1_stats.py#L190) |  |
-| `tail_identity` | function | `tail_identity` | [tools/c1prime/c1_model.py:94](../../tools/c1prime/c1_model.py#L94) |  |
-| `tail_logits` | function | `tail_logits` | [tools/c1prime/c1_model.py:80](../../tools/c1prime/c1_model.py#L80) |  |

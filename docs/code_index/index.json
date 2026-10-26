@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 286,
-  "code files": 505,
+  "code files": 507,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 862,
-  "functions and methods (incl. tests)": 6917,
+  "files indexed": 868,
+  "functions and methods (incl. tests)": 6923,
   "import cycles (strongly connected components)": 6,
-  "import statements, external": 737,
+  "import statements, external": 741,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2028,
+  "import statements, internal resolved": 2032,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2075,
-  "internal edges (file to file, with kind and line)": 2060,
-  "python files": 504
+  "import statements, standard library": 2080,
+  "internal edges (file to file, with kind and line)": 2064,
+  "python files": 506
  },
  "cycles": [
   [
@@ -11026,6 +11026,12 @@
    18
   ],
   [
+   "tools/theory_exact/kappa_ceiling.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   14
+  ],
+  [
    "tools/theory_exact/null_kappa.py",
    "tools/theory_exact/theory_exact.py",
    "import",
@@ -11072,6 +11078,24 @@
    "tools/theory_exact/theory_exact.py",
    "import",
    13
+  ],
+  [
+   "tools/theory_exact/theory_exact3.py",
+   "src/topo_pilot/process/emission.py",
+   "import",
+   20
+  ],
+  [
+   "tools/theory_exact/theory_exact3.py",
+   "src/topo_pilot/world/__init__.py",
+   "import",
+   21
+  ],
+  [
+   "tools/theory_exact/theory_exact3.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   22
   ],
   [
    "tools/x2a_stage0/x2a_mc.py",
@@ -12747,11 +12771,35 @@
    "purpose": "אפשרויות להוכחה מקיפה יותר",
    "sha256": "323755f7211ec51ac02948cd5b3387ee86c13151211e94b757db2471d57258c9"
   },
+  "docs/proposals/THEORY_OUTPUTS/kappa_ceiling_500_1000_2000.json": {
+   "kind": "json",
+   "lines": 200,
+   "purpose": "",
+   "sha256": "3642b4e88db7124e7e72dc788006518be4064ccd8e4701bbe631d99a6fe4e172"
+  },
   "docs/proposals/THEORY_OUTPUTS/theory_exact2_results.json": {
    "kind": "json",
    "lines": 77,
    "purpose": "",
    "sha256": "a6db9a07facfa8c373bd7425651e3f309afa5fb43716062dabbc9c2312f95d6b"
+  },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact3_results_n1000_s1.json": {
+   "kind": "json",
+   "lines": 148,
+   "purpose": "",
+   "sha256": "05ae85776bdb3f1c86725c7665e321dcf026c4f8004692a51afb53166749e88f"
+  },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact3_results_n1000_s2.json": {
+   "kind": "json",
+   "lines": 148,
+   "purpose": "",
+   "sha256": "12441ba3e59b39b19603eeff03410b42459081d439a8d682a6c3a171f3fc7860"
+  },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact3_results_n1000_s3.json": {
+   "kind": "json",
+   "lines": 148,
+   "purpose": "",
+   "sha256": "7465b6f7a5002316e96021354927fd0346b2624409ecaa8e3160ede42135431b"
   },
   "docs/proposals/THEORY_OUTPUTS/theory_exact_results_n1000.json": {
    "kind": "json",
@@ -12767,9 +12815,9 @@
   },
   "docs/proposals/THEORY_TRACK_HE.md": {
    "kind": "markdown",
-   "lines": 543,
+   "lines": 631,
    "purpose": "מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה",
-   "sha256": "443172acaad49c496a7e2e11a53ab0ca40a4eb03a8d3e9519880257785e12f01"
+   "sha256": "c02b74605aeda65a5aa46a0147b8e11e882dd57784db0f87eeb323777159ca1e"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -17171,9 +17219,15 @@
   },
   "tools/theory_exact/README.md": {
    "kind": "markdown",
-   "lines": 12,
+   "lines": 14,
    "purpose": "theory_exact",
-   "sha256": "f386747ccebd8dcd4d9fd1984a0a5d3f00fddcbf9930be463a4b7a7666ee6105"
+   "sha256": "0f7a464b2fd02970f36c50ad5fa66727a41faf803a43ddcf59dfe51753e83597"
+  },
+  "tools/theory_exact/kappa_ceiling.py": {
+   "kind": "python",
+   "lines": 45,
+   "purpose": "Ceiling on kappa for any circle map (Corollary 2.2 of THEORY_TRACK_HE.md).",
+   "sha256": "c5b73540f1006ccb95933a22e1c6c38625e6d35209b5640b5bbe7a5fca7d873a"
   },
   "tools/theory_exact/null_kappa.py": {
    "kind": "python",
@@ -17198,6 +17252,12 @@
    "lines": 136,
    "purpose": "Exact process-only computations, part 2.",
    "sha256": "4b06276cb927843cf7285c519dcebc81cb1c8307f475cdafe52b2de35728b696"
+  },
+  "tools/theory_exact/theory_exact3.py": {
+   "kind": "python",
+   "lines": 140,
+   "purpose": "Exact process-only computations, part 3.",
+   "sha256": "7ca4451e53469db8562b719d51bf5243897519998db07d743f5ee7e02ce5df4b"
   },
   "tools/x2a_stage0/API.md": {
    "kind": "markdown",
@@ -158258,6 +158318,113 @@
    ],
    "syspath": []
   },
+  "tools/theory_exact/kappa_ceiling.py": {
+   "constants": [
+    "D"
+   ],
+   "doc": "Ceiling on kappa for any circle map (Corollary 2.2 of THEORY_TRACK_HE.md).",
+   "doc1": "Ceiling on kappa for any circle map (Corollary 2.2 of THEORY_TRACK_HE.md).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "ripser",
+     "names": [
+      "ripser"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "ripser"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "amp",
+      "build",
+      "certificate",
+      "filt",
+      "hellinger_matrix",
+      "sample"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 22,
+     "kind": "function",
+     "name": "ceiling",
+     "qual": "ceiling",
+     "sig": "def ceiling(D)",
+     "start": 17
+    }
+   ],
+   "syspath": []
+  },
   "tools/theory_exact/null_kappa.py": {
    "constants": [
     "A",
@@ -158797,6 +158964,203 @@
      "qual": "topo",
      "sig": "def topo(n, rng)",
      "start": 119
+    }
+   ],
+   "syspath": []
+  },
+  "tools/theory_exact/theory_exact3.py": {
+   "constants": [],
+   "doc": "Exact process-only computations, part 3.",
+   "doc1": "Exact process-only computations, part 3.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "ripser",
+     "names": [
+      "ripser"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "ripser"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "topo_pilot.process.emission",
+     "names": [
+      "axis_state_perm",
+      "draw_axis_permutation"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/process/emission.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "topo_pilot.world",
+     "names": [
+      "WorldConfig",
+      "build_world"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/world/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "TWO_PI",
+      "amp",
+      "build",
+      "certificate",
+      "filt",
+      "hellinger_matrix",
+      "sample"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 27,
+     "kind": "function",
+     "name": "kappa",
+     "qual": "kappa",
+     "sig": "def kappa(D, th)",
+     "start": 25
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "function",
+     "name": "searched_null",
+     "qual": "searched_null",
+     "sig": "def searched_null(family, n, rng, n_points=25, n_pairs=10, n_random=30, n_climb=60)",
+     "start": 30
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 70,
+     "kind": "function",
+     "name": "overlap_E",
+     "qual": "overlap_E",
+     "sig": "def overlap_E(family, sigma=1.25)",
+     "start": 68
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 108,
+     "kind": "function",
+     "name": "prediction_certificates",
+     "qual": "prediction_certificates",
+     "sig": "def prediction_certificates(n, rng)",
+     "start": 73
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 125,
+     "kind": "function",
+     "name": "barcodes",
+     "qual": "barcodes",
+     "sig": "def barcodes(n, rng)",
+     "start": 111
     }
    ],
    "syspath": []
@@ -180253,5 +180617,5 @@
    ]
   }
  },
- "sources_digest": "f11450450bd844c810211b9b007751e4176603b2d24eaa098689becd5e81f083"
+ "sources_digest": "2a5c1ddc708a22b5f1fcc48edfca85c3e9b11558c2b3a858a4d069be175b3b75"
 }

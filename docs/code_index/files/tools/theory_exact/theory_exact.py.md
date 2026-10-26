@@ -45,8 +45,10 @@
 
 ## Imported by
 
+- [tools/theory_exact/kappa_ceiling.py](kappa_ceiling.py.md) (line 14, import)
 - [tools/theory_exact/null_kappa.py](null_kappa.py.md) (line 2, import)
 - [tools/theory_exact/theory_exact2.py](theory_exact2.py.md) (line 13, import)
+- [tools/theory_exact/theory_exact3.py](theory_exact3.py.md) (line 22, import)
 
 ## Top-level constants
 

@@ -451,7 +451,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/process/__init__.py, src/topo_pilot/process/stage.py
 ### `src/topo_pilot/process/emission.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/process/_diagnostics.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/centers.py
-- <- src/topo_pilot/process/__init__.py, src/topo_pilot/process/stage.py, tests/process/test_controls.py, tests/x2a_stage0/test_x2a_stage0.py, tests/x6_stage0/test_x6_stage0.py, tools/x2a_stage0/x2a_model.py
+- <- src/topo_pilot/process/__init__.py, src/topo_pilot/process/stage.py, tests/process/test_controls.py, tests/x2a_stage0/test_x2a_stage0.py, tests/x6_stage0/test_x6_stage0.py, tools/theory_exact/theory_exact3.py, tools/x2a_stage0/x2a_model.py
 ### `src/topo_pilot/process/stage.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/conductance.py, src/topo_pilot/process/emission.py, src/topo_pilot/process/transition.py
 - <- src/topo_pilot/process/__init__.py
@@ -481,7 +481,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/topology/__init__.py
 ### `src/topo_pilot/world/__init__.py`
 - -> src/topo_pilot/world/complex.py, src/topo_pilot/world/config.py, src/topo_pilot/world/identification.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, src/topo_pilot/world/stage.py
-- <- src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/x5g1t_fixture.py, tests/d1_seam/test_d1_seam.py, tests/process/test_conductance.py, tests/world/test_world.py, tests/x2a_stage0/test_x2a_stage0.py, tests/x2a_stage0/test_x2a_stage0_ph.py, tests/x6_stage0/test_x6_stage0.py, tools/d1_seam/d1_seam.py, tools/theory_exact/theory_exact.py, tools/theory_exact/theory_exact2.py, tools/x2a_stage0/x2a_model.py, tools/x6_stage0/x6_model.py
+- <- src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/x5g1t_fixture.py, tests/d1_seam/test_d1_seam.py, tests/process/test_conductance.py, tests/world/test_world.py, tests/x2a_stage0/test_x2a_stage0.py, tests/x2a_stage0/test_x2a_stage0_ph.py, tests/x6_stage0/test_x6_stage0.py, tools/d1_seam/d1_seam.py, tools/theory_exact/theory_exact.py, tools/theory_exact/theory_exact2.py, tools/theory_exact/theory_exact3.py, tools/x2a_stage0/x2a_model.py, tools/x6_stage0/x6_model.py
 ### `src/topo_pilot/world/complex.py`
 - -> src/topo_pilot/contracts/__init__.py
 - <- src/topo_pilot/world/__init__.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, tools/d1_seam/d1_seam.py, tools/x2a_stage0/x2a_model.py, tools/x6_stage0/x6_model.py
@@ -1370,6 +1370,9 @@ Edge counts are file-to-file edges between different subpackages.
 ### `tools/k4b/k4b_stats.py`
 - -> tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/k4b/k4b_config.py, tools/x4_circle_history/precision.py
 - <- tests/k4b/test_a_decision.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
+### `tools/theory_exact/kappa_ceiling.py`
+- -> tools/theory_exact/theory_exact.py
+- <- none
 ### `tools/theory_exact/null_kappa.py`
 - -> tools/theory_exact/theory_exact.py
 - <- none
@@ -1378,9 +1381,12 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tools/theory_exact/theory_exact.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/process/__init__.py, src/topo_pilot/world/__init__.py
-- <- tools/theory_exact/null_kappa.py, tools/theory_exact/theory_exact2.py
+- <- tools/theory_exact/kappa_ceiling.py, tools/theory_exact/null_kappa.py, tools/theory_exact/theory_exact2.py, tools/theory_exact/theory_exact3.py
 ### `tools/theory_exact/theory_exact2.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/process/__init__.py, src/topo_pilot/world/__init__.py, tools/theory_exact/theory_exact.py
+- <- none
+### `tools/theory_exact/theory_exact3.py`
+- -> src/topo_pilot/process/emission.py, src/topo_pilot/world/__init__.py, tools/theory_exact/theory_exact.py
 - <- none
 ### `tools/x2a_stage0/x2a_mc.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/oracle/__init__.py, tests/oracle_profile/independent_reference.py, tools/x2a_stage0/x2a_model.py, tools/x4_oracle_profile/oracle_profile.py
@@ -8844,7 +8850,7 @@ tools/k4b/k4b_stats.py (see above)
 ### tools/theory_exact
 
 ```text
-tools/theory_exact/null_kappa.py
+tools/theory_exact/kappa_ceiling.py
     tools/theory_exact/theory_exact.py
         src/topo_pilot/contracts/__init__.py
             src/topo_pilot/contracts/backends.py
@@ -8935,11 +8941,17 @@ tools/theory_exact/null_kappa.py
                 src/topo_pilot/contracts/__init__.py (see above)
                 src/topo_pilot/world/config.py (see above)
                 src/topo_pilot/world/registry.py (see above)
+tools/theory_exact/null_kappa.py
+    tools/theory_exact/theory_exact.py (see above)
 tools/theory_exact/sym_check.py
 tools/theory_exact/theory_exact.py (see above)
 tools/theory_exact/theory_exact2.py
     src/topo_pilot/contracts/__init__.py (see above)
     src/topo_pilot/process/__init__.py (see above)
+    src/topo_pilot/world/__init__.py (see above)
+    tools/theory_exact/theory_exact.py (see above)
+tools/theory_exact/theory_exact3.py
+    src/topo_pilot/process/emission.py (see above)
     src/topo_pilot/world/__init__.py (see above)
     tools/theory_exact/theory_exact.py (see above)
 ```

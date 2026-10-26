@@ -2,6 +2,20 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `tamper_tar` | function | `tamper_tar` | [tests/executors/exec_helpers.py:32](../../tests/executors/exec_helpers.py#L32) | Copy a bundle, bumping the first metric value inside every ``extra.json`` that has rows |
+| `tangent_audit` | function | `tangent_audit` | [src/topo_pilot/analysis/horizon.py:146](../../src/topo_pilot/analysis/horizon.py#L146) | Does ``G2`` vanish on the sum-zero kernel of ``G1``? |
+| `TangentAudit` | class | `TangentAudit` | [src/topo_pilot/analysis/horizon.py:113](../../src/topo_pilot/analysis/horizon.py#L113) | Ambient tangent-kernel audit; ``verdict`` in ALLOWS_STABLE / FACTORIZES / |
+| `target` | method | `SSHExecutor.target` | [src/topo_pilot/executors/ssh.py:61](../../src/topo_pilot/executors/ssh.py#L61) | ``user@host`` or ``host``. |
+| `target` | function | `target` | [tools/c2_readout/c2_stage_base.py:239](../../tools/c2_readout/c2_stage_base.py#L239) |  |
+| `target_threshold` | function | `target_threshold` | [tools/x6_stage1/x6s1_data.py:340](../../tools/x6_stage1/x6s1_data.py#L340) |  |
+| `targets` | method | `SequenceLayout.targets` | [src/topo_pilot/contracts/layout.py:59](../../src/topo_pilot/contracts/layout.py#L59) | ``[w_1..w_33]`` per row: ``[R, 33] -> [R, 33]``, dtype int64 (a copy). |
+| `targets_for` | function | `targets_for` | [tools/d2a/d2a_eval.py:188](../../tools/d2a/d2a_eval.py#L188) | Probe targets and ceiling features at (rows, positions) (§3, §7.3). |
+| `tarjan` | function | `tarjan` | [tools/code_index/model.py:29](../../tools/code_index/model.py#L29) | Iterative Tarjan SCC; returns the list of components (each a sorted list). |
+| `tau` | function | `tau` | [tools/c1prime/c1_oracle.py:39](../../tools/c1prime/c1_oracle.py#L39) |  |
+| `tau_ref` | function | `tau_ref` | [tests/c1prime/test_a_oracle.py:45](../../tests/c1prime/test_a_oracle.py#L45) |  |
+| `tb` | function | `tb` | [tools/c2_readout/c2_stage_post.py:42](../../tools/c2_readout/c2_stage_post.py#L42) |  |
+| `template_enumeration` | function | `template_enumeration` | [tools/d2a/d2a_world.py:140](../../tools/d2a/d2a_world.py#L140) | All equal-gap template pairs at t (§9.2), in the API.md order. |
+| `template_hashes` | function | `template_hashes` | [tools/d2a/d2a_world.py:170](../../tools/d2a/d2a_world.py#L170) |  |
 | `terminate` | method | `FakeTree.terminate` | [tests/x6_stage1/test_b_nb_s0_ops.py:291](../../tests/x6_stage1/test_b_nb_s0_ops.py#L291) |  |
 | `terminate` | method | `TrainingProcess.terminate` | [tools/d2a/process_tree.py:78](../../tools/d2a/process_tree.py#L78) |  |
 | `terminate_and_drain` | function | `terminate_and_drain` | [tools/x4_oracle_profile/winjob.py:167](../../tools/x4_oracle_profile/winjob.py#L167) | Terminate every job process and wait (bounded) until none is active. |
@@ -2385,6 +2399,7 @@
 | `tool_line` | function | `tool_line` | [src/topo_pilot/experiment/stages.py:61](../../src/topo_pilot/experiment/stages.py#L61) | Last output line of a tool run, with pytest's wall time removed (``95 passed in 3.7s`` |
 | `top_dim` | method | `CubicalComplex.top_dim` | [src/topo_pilot/world/complex.py:152](../../src/topo_pilot/world/complex.py#L152) | Highest cell dimension K. |
 | `top_k_persistence` | method | `Summaries.top_k_persistence` | [src/topo_pilot/topology/summaries.py:42](../../src/topo_pilot/topology/summaries.py#L42) | The ``k`` largest finite persistences in ``dim``, decreasing, zero padded to ``[k]``. |
+| `topo` | function | `topo` | [tools/theory_exact/theory_exact2.py:119](../../tools/theory_exact/theory_exact2.py#L119) |  |
 | `torch_threads` | function | `torch_threads` | [src/topo_pilot/experiment/s3.py:56](../../src/topo_pilot/experiment/s3.py#L56) | Thread count from ``device_policy.torch_threads``: ``physical_cores`` or an integer. |
 | `total_mass` | function | `total_mass` | [tools/x6_stage0/x6_dp.py:68](../../tools/x6_stage0/x6_dp.py#L68) |  |
 | `total_spent` | function | `total_spent` | [tools/d2a/d2a_train.py:159](../../tools/d2a/d2a_train.py#L159) |  |
@@ -2408,6 +2423,7 @@
 | `TrainSummary` | class | `TrainSummary` | [src/topo_pilot/learner/trainer.py:26](../../src/topo_pilot/learner/trainer.py#L26) | Outcome of ``Trainer.fit``. |
 | `transfer_check` | function | `transfer_check` | [tools/x6_stage1/x6s1_ingest.py:191](../../tools/x6_stage1/x6s1_ingest.py#L191) | WEIGHTS-HASH (a)-(b) for the whole snapshot: (manifest or None, problems). |
 | `TransformerLM` | class | `TransformerLM` | [src/topo_pilot/learner/model.py:69](../../src/topo_pilot/learner/model.py#L69) | Decoder-only, pre-LN, learned positional embeddings, final LN, untied unembedding. |
+| `transition` | function | `transition` | [tools/theory_exact/sym_check.py:28](../../tools/theory_exact/sym_check.py#L28) |  |
 | `TransitionBuilder` | class | `TransitionBuilder` | [src/topo_pilot/process/transition.py:46](../../src/topo_pilot/process/transition.py#L46) | Builds ``TransitionSpec`` from a world; never sees an emission matrix. |
 | `TransitionConfig` | class | `TransitionConfig` | [src/topo_pilot/process/transition.py:16](../../src/topo_pilot/process/transition.py#L16) | Config of the transition kernel: ``kind`` and the self-loop floor ``p_stay`` in [0, 1). |
 | `TransitionSpec` | class | `TransitionSpec` | [src/topo_pilot/contracts/_schemas_world.py:126](../../src/topo_pilot/contracts/_schemas_world.py#L126) | Transition kernel ``T[i, j] = P(z_{t+1} = j \| z_t = i)`` (``[N, N] float64``) and ``pi [N]``. |

@@ -54,6 +54,8 @@
 - [tests/process/test_transition.py](../../../tests/process/test_transition.py.md) (line 12, import)
 - [tools/check_process_rebuild.py](../../../tools/check_process_rebuild.py.md) (line 26, import)
 - [tools/d1_seam/d1_seam.py](../../../tools/d1_seam/d1_seam.py.md) (line 19, import)
+- [tools/theory_exact/theory_exact.py](../../../tools/theory_exact/theory_exact.py.md) (line 16, import)
+- [tools/theory_exact/theory_exact2.py](../../../tools/theory_exact/theory_exact2.py.md) (line 24, import)
 - [tools/x2a_stage0/x2a_model.py](../../../tools/x2a_stage0/x2a_model.py.md) (line 25, import)
 - [tools/x6_stage0/x6_model.py](../../../tools/x6_stage0/x6_model.py.md) (line 24, import)
 

@@ -296,6 +296,8 @@
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 242, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 265, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 300, import)
+- [tools/theory_exact/theory_exact.py](../../../tools/theory_exact/theory_exact.py.md) (line 15, import)
+- [tools/theory_exact/theory_exact2.py](../../../tools/theory_exact/theory_exact2.py.md) (line 23, import)
 - [tools/x2a_stage0/x2a_mc.py](../../../tools/x2a_stage0/x2a_mc.py.md) (line 20, import)
 - [tools/x2a_stage0/x2a_ph.py](../../../tools/x2a_stage0/x2a_ph.py.md) (line 21, import)
 - [tools/x4_circle_history/adapter.py](../../../tools/x4_circle_history/adapter.py.md) (line 30, import)

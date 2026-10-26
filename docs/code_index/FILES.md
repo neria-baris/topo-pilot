@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 854 tracked files; 501 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 862 tracked files; 505 code files (linked to their pages).
 
 ## (repo root)
 
@@ -97,7 +97,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 854 tracked file
 | `RESEARCH_ROADMAP.md` | markdown | 186 lines | Topo Pilot: priorities and roadmap after E4 |
 | `REVISION_AFTER_E4.md` | markdown | 75 lines | Revision after E4: evidence, changes and decision log |
 | `STRONGER_EVIDENCE_OPTIONS_HE.md` | markdown | 105 lines | אפשרויות להוכחה מקיפה יותר |
-| `THEORY_TRACK_HE.md` | markdown | 328 lines | מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה |
+| `THEORY_TRACK_HE.md` | markdown | 493 lines | מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה |
 | `X4B2_COVERAGE_PROTOCOL.md` | markdown | 113 lines | X4 Phase B2 — frozen coverage-extension protocol (x4b2-v1) |
 | `X4B2_COVERAGE_REPORT.md` | markdown | 118 lines | X4 Phase B2: coverage-extension report |
 | `X4F_COORDINATE_CAUSAL_PROTOCOL_DRAFT.md` | markdown | 175 lines | X4-F: coordinate-associated causal use — protocol draft (x4f-draft-1) |
@@ -151,6 +151,14 @@ The generated index itself (`docs/code_index/`) is not indexed. 854 tracked file
 | `panels.csv` | csv | 121 lines |  |
 | `run.json` | json | 35 lines |  |
 | `summary.json` | json | 86 lines |  |
+
+## docs/proposals/THEORY_OUTPUTS/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `theory_exact2_results.json` | json | 77 lines |  |
+| `theory_exact_results_n1000.json` | json | 347 lines |  |
+| `theory_exact_results_n3000.json` | json | 347 lines |  |
 
 ## docs/proposals/X4B2_OUTPUTS/
 
@@ -1173,6 +1181,16 @@ The generated index itself (`docs/code_index/`) is not indexed. 854 tracked file
 | [k4b_release.py](files/tools/k4b/k4b_release.py.md) | python | 229 lines | K4b releases, pin check, freeze, reservation records and the rerun/lineage rule (API.md §12.1). |
 | [k4b_scores.py](files/tools/k4b/k4b_scores.py.md) | python | 159 lines | K4b oracle moments, X-/X+ assembly, control and descriptive phases (API.md §4). |
 | [k4b_stats.py](files/tools/k4b/k4b_stats.py.md) | python | 218 lines | K4b joint bootstrap, ranks, statuses, the precision ladder and sealing (API.md §8). |
+
+## tools/theory_exact/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `README.md` | markdown | 12 lines | theory_exact |
+| [null_kappa.py](files/tools/theory_exact/null_kappa.py.md) | python | 20 lines |  |
+| [sym_check.py](files/tools/theory_exact/sym_check.py.md) | python | 92 lines | Brute-force: which grid automorphisms g admit a symbol permutation s with E[g z, s w] = E[z, w] |
+| [theory_exact.py](files/tools/theory_exact/theory_exact.py.md) | python | 174 lines | Exact process-only computations for THEORY_TRACK_HE.md (owner go-ahead 2026-10-26). |
+| [theory_exact2.py](files/tools/theory_exact/theory_exact2.py.md) | python | 136 lines | Exact process-only computations, part 2. |
 
 ## tools/x2a_stage0/
 

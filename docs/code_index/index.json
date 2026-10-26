@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 286,
-  "code files": 501,
+  "code files": 505,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 854,
-  "functions and methods (incl. tests)": 6899,
+  "files indexed": 862,
+  "functions and methods (incl. tests)": 6917,
   "import cycles (strongly connected components)": 6,
-  "import statements, external": 733,
+  "import statements, external": 737,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2020,
+  "import statements, internal resolved": 2028,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2069,
-  "internal edges (file to file, with kind and line)": 2052,
-  "python files": 500
+  "import statements, standard library": 2075,
+  "internal edges (file to file, with kind and line)": 2060,
+  "python files": 504
  },
  "cycles": [
   [
@@ -11026,6 +11026,54 @@
    18
   ],
   [
+   "tools/theory_exact/null_kappa.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   2
+  ],
+  [
+   "tools/theory_exact/theory_exact.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   15
+  ],
+  [
+   "tools/theory_exact/theory_exact.py",
+   "src/topo_pilot/process/__init__.py",
+   "import",
+   16
+  ],
+  [
+   "tools/theory_exact/theory_exact.py",
+   "src/topo_pilot/world/__init__.py",
+   "import",
+   17
+  ],
+  [
+   "tools/theory_exact/theory_exact2.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   23
+  ],
+  [
+   "tools/theory_exact/theory_exact2.py",
+   "src/topo_pilot/process/__init__.py",
+   "import",
+   24
+  ],
+  [
+   "tools/theory_exact/theory_exact2.py",
+   "src/topo_pilot/world/__init__.py",
+   "import",
+   25
+  ],
+  [
+   "tools/theory_exact/theory_exact2.py",
+   "tools/theory_exact/theory_exact.py",
+   "import",
+   13
+  ],
+  [
    "tools/x2a_stage0/x2a_mc.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -12699,11 +12747,29 @@
    "purpose": "אפשרויות להוכחה מקיפה יותר",
    "sha256": "323755f7211ec51ac02948cd5b3387ee86c13151211e94b757db2471d57258c9"
   },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact2_results.json": {
+   "kind": "json",
+   "lines": 77,
+   "purpose": "",
+   "sha256": "a6db9a07facfa8c373bd7425651e3f309afa5fb43716062dabbc9c2312f95d6b"
+  },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact_results_n1000.json": {
+   "kind": "json",
+   "lines": 347,
+   "purpose": "",
+   "sha256": "c80d4adb71113fa33470ae560c7723e90fd43d9a8cb72ed3e8bc5882a0c86ba4"
+  },
+  "docs/proposals/THEORY_OUTPUTS/theory_exact_results_n3000.json": {
+   "kind": "json",
+   "lines": 347,
+   "purpose": "",
+   "sha256": "968edfd704e6bc89d2b232afe945fc1391ca08828cf17d0d5509876a621f68c8"
+  },
   "docs/proposals/THEORY_TRACK_HE.md": {
    "kind": "markdown",
-   "lines": 328,
+   "lines": 493,
    "purpose": "מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה",
-   "sha256": "f754a74c9886cc4b20141ed53bceec8c7e8d0ce74a58ea9883f654c27e2ae28b"
+   "sha256": "dbc251517d4a094fde5d55005c3a3dc94c6fbafc5673544de041c9dfa97d7e0e"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -17102,6 +17168,36 @@
    "lines": 218,
    "purpose": "K4b joint bootstrap, ranks, statuses, the precision ladder and sealing (API.md §8).",
    "sha256": "2dc3d1fbdbe500befd0c2c3a49506faeb35e62fb367ed0c831fd89c23e764359"
+  },
+  "tools/theory_exact/README.md": {
+   "kind": "markdown",
+   "lines": 12,
+   "purpose": "theory_exact",
+   "sha256": "f386747ccebd8dcd4d9fd1984a0a5d3f00fddcbf9930be463a4b7a7666ee6105"
+  },
+  "tools/theory_exact/null_kappa.py": {
+   "kind": "python",
+   "lines": 20,
+   "purpose": "",
+   "sha256": "d3a8702a5dbf4a860452563e6e7b60b47264d4ab03b51d50e10db41642ea6c26"
+  },
+  "tools/theory_exact/sym_check.py": {
+   "kind": "python",
+   "lines": 92,
+   "purpose": "Brute-force: which grid automorphisms g admit a symbol permutation s with E[g z, s w] = E[z, w]",
+   "sha256": "94853c3094cc13674125b24fa177b7197a3059c62fe11a8b91267102f446cd67"
+  },
+  "tools/theory_exact/theory_exact.py": {
+   "kind": "python",
+   "lines": 174,
+   "purpose": "Exact process-only computations for THEORY_TRACK_HE.md (owner go-ahead 2026-10-26).",
+   "sha256": "8bdbcecb995192d37f24aa65dde9b846c4d616561b3f7884dde6cd2fe6d8f288"
+  },
+  "tools/theory_exact/theory_exact2.py": {
+   "kind": "python",
+   "lines": 136,
+   "purpose": "Exact process-only computations, part 2.",
+   "sha256": "6fb2b3d865f733dea31f84f5b2a3b9f2c7a7433fd900cb4ae906fab0ce8909ac"
   },
   "tools/x2a_stage0/API.md": {
    "kind": "markdown",
@@ -158162,6 +158258,549 @@
    ],
    "syspath": []
   },
+  "tools/theory_exact/null_kappa.py": {
+   "constants": [
+    "A",
+    "D",
+    "W"
+   ],
+   "doc": "",
+   "doc1": "",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 1,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 2,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "TWO_PI",
+      "build",
+      "filt",
+      "hellinger_matrix",
+      "sample",
+      "certificate",
+      "amp"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    }
+   ],
+   "symbols": [],
+   "syspath": []
+  },
+  "tools/theory_exact/sym_check.py": {
+   "constants": [
+    "E",
+    "N",
+    "T"
+   ],
+   "doc": "Brute-force: which grid automorphisms g admit a symbol permutation s with E[g z, s w] = E[z, w]\nand T[g i, g j] = T[i, j], for the O emission on square/cylinder (built from the formula in\nRESEARCH_PLAN §3.3, not from project code). Also P-type per-axis shuffles.",
+   "doc1": "Brute-force: which grid automorphisms g admit a symbol permutation s with E[g z, s w] = E[z, w]",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "",
+     "names": [
+      "itertools"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "itertools"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 14,
+     "kind": "function",
+     "name": "dist",
+     "qual": "dist",
+     "sig": "def dist(x1, y1, x2, y2, periodic)",
+     "start": 10
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 25,
+     "kind": "function",
+     "name": "emission",
+     "qual": "emission",
+     "sig": "def emission(periodic, sigma)",
+     "start": 17
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "transition",
+     "qual": "transition",
+     "sig": "def transition(periodic)",
+     "start": 28
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 60,
+     "kind": "function",
+     "name": "grid_maps",
+     "qual": "grid_maps",
+     "sig": "def grid_maps(periodic)",
+     "start": 45
+    },
+    {
+     "decorators": [],
+     "doc": "s with E[g z, s(w)] == E[z, w] for all z, w, or None.",
+     "end": 73,
+     "kind": "function",
+     "name": "symbol_perm",
+     "qual": "symbol_perm",
+     "sig": "def symbol_perm(E, g)",
+     "start": 63
+    }
+   ],
+   "syspath": []
+  },
+  "tools/theory_exact/theory_exact.py": {
+   "constants": [
+    "N",
+    "TWO_PI"
+   ],
+   "doc": "Exact process-only computations for THEORY_TRACK_HE.md (owner go-ahead 2026-10-26).",
+   "doc1": "Exact process-only computations for THEORY_TRACK_HE.md (owner go-ahead 2026-10-26).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "itertools"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "itertools"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "topo_pilot.process",
+     "names": [
+      "AxisPermuted",
+      "EmissionConfig",
+      "OverlapGaussian",
+      "TransitionBuilder",
+      "TransitionConfig"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/process/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "topo_pilot.world",
+     "names": [
+      "WorldConfig",
+      "build_world"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/world/__init__.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 31,
+     "kind": "function",
+     "name": "build",
+     "qual": "build",
+     "sig": "def build(family, mode, sigma)",
+     "start": 23
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 44,
+     "kind": "function",
+     "name": "grid_maps",
+     "qual": "grid_maps",
+     "sig": "def grid_maps(periodic)",
+     "start": 34
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 62,
+     "kind": "function",
+     "name": "symmetry_group",
+     "qual": "symmetry_group",
+     "sig": "def symmetry_group(T, E, periodic)",
+     "start": 47
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 72,
+     "kind": "function",
+     "name": "sample",
+     "qual": "sample",
+     "sig": "def sample(T, E, n, L, rng)",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 81,
+     "kind": "function",
+     "name": "filt",
+     "qual": "filt",
+     "sig": "def filt(T, E, W)",
+     "start": 75
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 87,
+     "kind": "function",
+     "name": "hellinger_matrix",
+     "qual": "hellinger_matrix",
+     "sig": "def hellinger_matrix(P)",
+     "start": 84
+    },
+    {
+     "decorators": [],
+     "doc": "Theorem 2.1: r* and the smallest delta < r* that closes a nonzero-winding chain.",
+     "end": 126,
+     "kind": "function",
+     "name": "certificate",
+     "qual": "certificate",
+     "sig": "def certificate(D, theta)",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 131,
+     "kind": "function",
+     "name": "amp",
+     "qual": "amp",
+     "sig": "def amp(P, coord, period)",
+     "start": 129
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 159,
+     "kind": "function",
+     "name": "run",
+     "qual": "run",
+     "sig": "def run(family, mode, sigma, n, rng, ks=(1, 2, 4, 8, 16, 32))",
+     "start": 134
+    }
+   ],
+   "syspath": []
+  },
+  "tools/theory_exact/theory_exact2.py": {
+   "constants": [],
+   "doc": "Exact process-only computations, part 2.",
+   "doc1": "Exact process-only computations, part 2.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "theory_exact",
+     "names": [
+      "N",
+      "TWO_PI",
+      "build",
+      "filt",
+      "hellinger_matrix",
+      "sample"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/theory_exact/theory_exact.py"
+     ],
+     "top": "theory_exact"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": true,
+     "level": 0,
+     "line": 23,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": true,
+     "level": 0,
+     "line": 24,
+     "module": "topo_pilot.process",
+     "names": [
+      "EmissionConfig",
+      "OverlapGaussian"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/process/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": true,
+     "level": 0,
+     "line": 25,
+     "module": "topo_pilot.world",
+     "names": [
+      "WorldConfig",
+      "build_world"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/world/__init__.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "isotypic",
+     "qual": "isotypic",
+     "sig": "def isotypic(n, rng)",
+     "start": 16
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 70,
+     "kind": "function",
+     "name": "lattice",
+     "qual": "lattice",
+     "sig": "def lattice(periodic_x, periodic_y, sigma=1.25)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "Largest rank of winding vectors over cycles of the graph {d < delta}, as delta grows to",
+     "end": 116,
+     "kind": "function",
+     "name": "rank_certificate",
+     "qual": "rank_certificate",
+     "sig": "def rank_certificate(D, thetas)",
+     "start": 73
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 129,
+     "kind": "function",
+     "name": "topo",
+     "qual": "topo",
+     "sig": "def topo(n, rng)",
+     "start": 119
+    }
+   ],
+   "syspath": []
+  },
   "tools/x2a_stage0/x2a_mc.py": {
    "constants": [
     "CURVE_T",
@@ -179614,5 +180253,5 @@
    ]
   }
  },
- "sources_digest": "decc86fd3838fb595be1c891daa80116bcfb1025017f305cf2fd62fd84febc13"
+ "sources_digest": "db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906"
 }

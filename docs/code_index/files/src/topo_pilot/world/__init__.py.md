@@ -56,6 +56,8 @@
 - [tests/x6_stage0/test_x6_stage0.py](../../../tests/x6_stage0/test_x6_stage0.py.md) (line 25, import)
 - [tests/x6_stage0/test_x6_stage0.py](../../../tests/x6_stage0/test_x6_stage0.py.md) (line 377, import)
 - [tools/d1_seam/d1_seam.py](../../../tools/d1_seam/d1_seam.py.md) (line 18, import)
+- [tools/theory_exact/theory_exact.py](../../../tools/theory_exact/theory_exact.py.md) (line 17, import)
+- [tools/theory_exact/theory_exact2.py](../../../tools/theory_exact/theory_exact2.py.md) (line 25, import)
 - [tools/x2a_stage0/x2a_model.py](../../../tools/x2a_stage0/x2a_model.py.md) (line 24, import)
 - [tools/x6_stage0/x6_model.py](../../../tools/x6_stage0/x6_model.py.md) (line 23, import)
 

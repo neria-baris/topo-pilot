@@ -1753,6 +1753,7 @@
 | `allowlist_ok` | function | `allowlist_ok` | [tools/x6_stage1/x6s1_run.py:87](../../tools/x6_stage1/x6s1_run.py#L87) |  |
 | `ambient_match` | function | `ambient_match` | [src/topo_pilot/experiment/x4b2.py:142](../../src/topo_pilot/experiment/x4b2.py#L142) | Compare a recomputed tangent audit with Phase B's ``ambient.json['canonical']``. |
 | `ambiguous` | function | `ambiguous` | [tools/x6_stage0/x6_dp.py:50](../../tools/x6_stage0/x6_dp.py#L50) |  |
+| `amp` | function | `amp` | [tools/theory_exact/theory_exact.py:129](../../tools/theory_exact/theory_exact.py#L129) |  |
 | `analysis_rows` | function | `analysis_rows` | [src/topo_pilot/experiment/report_e2.py:48](../../src/topo_pilot/experiment/report_e2.py#L48) |  |
 | `AnalysisJob` | class | `AnalysisJob` | [src/topo_pilot/experiment/s4_analysis.py:62](../../src/topo_pilot/experiment/s4_analysis.py#L62) | The S4 (condition O) or S5 (condition P) analysis over the stored runs. |
 | `ancestors` | function | `ancestors` | [src/topo_pilot/experiment/x4b.py:79](../../src/topo_pilot/experiment/x4b.py#L79) | Every transitive parent id of ``artifact_id``. |
@@ -1938,6 +1939,7 @@
 | `build` | function | `build` | [tools/c1prime_registry/c1_registry_sources.py:272](../../tools/c1prime_registry/c1_registry_sources.py#L272) |  |
 | `build` | function | `build` | [tools/c2_readout/c2_registry.py:241](../../tools/c2_readout/c2_registry.py#L241) | C2-REG1 (before FIT) or C2-REG2 (R' with the FIT/FEAS/VAL tables in `extra`, keyed by |
 | `build` | function | `build` | [tools/k4b/k4b_registry.py:298](../../tools/k4b/k4b_registry.py#L298) | Builds K-REG1/K-REG2 from scratch; manifest and digest npz written by exclusive create. |
+| `build` | function | `build` | [tools/theory_exact/theory_exact.py:23](../../tools/theory_exact/theory_exact.py#L23) |  |
 | `build` | function | `build` | [tools/x4_circle_history/live_context.py:96](../../tools/x4_circle_history/live_context.py#L96) |  |
 | `build_A` | function | `build_A` | [tests/analysis/test_readout.py:33](../../tests/analysis/test_readout.py#L33) |  |
 | `build_b2_pool` | function | `build_b2_pool` | [src/topo_pilot/experiment/x4b2.py:118](../../src/topo_pilot/experiment/x4b2.py#L118) | Pool (canonical vocabulary) for the x4b-v1 screen; history = first 32 symbols. |
@@ -2019,6 +2021,7 @@
 | `centre` | function | `centre` | [tools/c2_readout/c2_attrib.py:49](../../tools/c2_readout/c2_attrib.py#L49) |  |
 | `centres` | function | `centres` | [tests/circle_history/test_chart_extension.py:283](../../tests/circle_history/test_chart_extension.py#L283) |  |
 | `cert_val` | function | `cert_val` | [tools/k4b/k4b_driver.py:324](../../tools/k4b/k4b_driver.py#L324) |  |
+| `certificate` | function | `certificate` | [tools/theory_exact/theory_exact.py:90](../../tools/theory_exact/theory_exact.py#L90) | Theorem 2.1: r* and the smallest delta < r* that closes a nonzero-winding chain. |
 | `CertificateFlag` | class | `CertificateFlag` | [tools/c1prime/c1_records.py:44](../../tools/c1prime/c1_records.py#L44) | A watched Decimal flag in a certificate computation (P3). |
 | `certified_correction` | function | `certified_correction` | [tests/circle_history/test_cochain_lift.py:98](../../tests/circle_history/test_cochain_lift.py#L98) | Explicit closure, congruence and D1 z = b; returns z = (a - alpha) / p. |
 | `certify` | function | `certify` | [tools/k4b/k4b_cert.py:114](../../tools/k4b/k4b_cert.py#L114) | primary/controls: {name: {"X": array, "max_B": Fraction}}. Primary defects raise |
@@ -2389,6 +2392,7 @@
 | `displacements` | function | `displacements` | [src/topo_pilot/analysis/x4f_erasure.py:134](../../src/topo_pilot/analysis/x4f_erasure.py#L134) | Row-wise L2 norms of ``X_prime - X``. |
 | `display` | function | `display` | [tools/check_file_sizes.py:19](../../tools/check_file_sizes.py#L19) |  |
 | `display` | function | `display` | [tools/check_imports.py:64](../../tools/check_imports.py#L64) |  |
+| `dist` | function | `dist` | [tools/theory_exact/sym_check.py:10](../../tools/theory_exact/sym_check.py#L10) |  |
 | `distance_matrix` | function | `distance_matrix` | [tests/circle_history/test_chart.py:64](../../tests/circle_history/test_chart.py#L64) |  |
 | `DistanceArtifact` | class | `DistanceArtifact` | [src/topo_pilot/contracts/_schemas_results.py:88](../../src/topo_pilot/contracts/_schemas_results.py#L88) | Pairwise distances after deduplication. |
 | `DistanceMetric` | class | `DistanceMetric` | [src/topo_pilot/topology/metrics.py:45](../../src/topo_pilot/topology/metrics.py#L45) | Pairwise distance between the rows of ``X``. |
@@ -2446,6 +2450,7 @@
 | `eligible_fraction` | function | `eligible_fraction` | [tools/c1prime/c1_oracle.py:192](../../tools/c1prime/c1_oracle.py#L192) |  |
 | `emis` | function | `emis` | [tests/x6_stage0/test_x6_stage0.py:92](../../tests/x6_stage0/test_x6_stage0.py#L92) |  |
 | `emission` | method | `SpaceBuilder.emission` | [src/topo_pilot/analysis/spaces.py:67](../../src/topo_pilot/analysis/spaces.py#L67) | The N rows of E as distributions, metric Hellinger. |
+| `emission` | function | `emission` | [tools/theory_exact/sym_check.py:17](../../tools/theory_exact/sym_check.py#L17) |  |
 | `emission` | function | `emission` | [tools/x6_stage0/x6_model.py:158](../../tools/x6_stage0/x6_model.py#L158) |  |
 | `emission_A` | function | `emission_A` | [tools/x2a_stage0/x2a_model.py:79](../../tools/x2a_stage0/x2a_model.py#L79) |  |
 | `emission_diagnostics` | function | `emission_diagnostics` | [src/topo_pilot/process/_diagnostics.py:46](../../src/topo_pilot/process/_diagnostics.py#L46) | Diagnostics under the uniform state distribution ``pi = 1/N`` (natural log). |
@@ -2643,6 +2648,7 @@
 | `file_sha` | function | `file_sha` | [tools/x4_circle_history/env_identity.py:95](../../tools/x4_circle_history/env_identity.py#L95) |  |
 | `files_md` | function | `files_md` | [tools/code_index/render_lists.py:19](../../tools/code_index/render_lists.py#L19) |  |
 | `filt` | function | `filt` | [tests/x6_stage0/test_x6_stage0.py:101](../../tests/x6_stage0/test_x6_stage0.py#L101) | Exact forward filter (emit, then transition; pi = 1/48): ([q_0..q_t], P, [b_1..b_t]). |
+| `filt` | function | `filt` | [tools/theory_exact/theory_exact.py:75](../../tools/theory_exact/theory_exact.py#L75) |  |
 | `filtered_requirements` | function | `filtered_requirements` | [src/topo_pilot/executors/run_bundle_script.py:28](../../src/topo_pilot/executors/run_bundle_script.py#L28) | Pins without local version suffixes; ``torch`` dropped when it is already importable. |
 | `FilterResult` | class | `FilterResult` | [src/topo_pilot/oracle/_filter.py:16](../../src/topo_pilot/oracle/_filter.py#L16) | Output of :meth:`BayesFilter.run`. |
 | `final_null` | function | `final_null` | [src/topo_pilot/experiment/x4f_gates.py:160](../../src/topo_pilot/experiment/x4f_gates.py#L160) | u-space effective-null projection, y' = u' diag(gamma) + beta, float64 algebra. |
@@ -2859,6 +2865,8 @@
 | `GraphGeodesicMetric` | class | `GraphGeodesicMetric` | [src/topo_pilot/world/metrics.py:101](../../src/topo_pilot/world/metrics.py#L101) | Unit-length-edge shortest-path distance on the 1-skeleton. |
 | `grid_3x2` | function | `grid_3x2` | [tests/analysis/test_sensitivity_circular.py:190](../../tests/analysis/test_sensitivity_circular.py#L190) |  |
 | `grid_event` | function | `grid_event` | [src/topo_pilot/analysis/x5_endpoint.py:79](../../src/topo_pilot/analysis/x5_endpoint.py#L79) | First ``t_j`` with PASS at ``j, j+1, j+2`` (``j <= len(grid) - 3``), else censored. |
+| `grid_maps` | function | `grid_maps` | [tools/theory_exact/sym_check.py:45](../../tools/theory_exact/sym_check.py#L45) |  |
+| `grid_maps` | function | `grid_maps` | [tools/theory_exact/theory_exact.py:34](../../tools/theory_exact/theory_exact.py#L34) |  |
 | `grid_phi` | function | `grid_phi` | [tests/k4b/test_b_charts.py:43](../../tests/k4b/test_b_charts.py#L43) |  |
 | `GridCenters` | class | `GridCenters` | [src/topo_pilot/process/centers.py:47](../../src/topo_pilot/process/centers.py#L47) | Core grid: ``c_ab = (0.5 + 2a, 0.5 + 2b)``, ``a, b in 0..sqrt(V)-1``, index ``j = a*k + b``. |
 | `GridEvent` | class | `GridEvent` | [src/topo_pilot/analysis/x5_endpoint.py:21](../../src/topo_pilot/analysis/x5_endpoint.py#L21) | Observed: ``tau = lower = upper = t_j``. Censored: ``tau None``, ``lower = grid[-3]`` |
@@ -2917,6 +2925,7 @@
 | `headroom` | function | `headroom` | [tools/x6_stage1/x6s1_stage_pre.py:344](../../tools/x6_stage1/x6s1_stage_pre.py#L344) | β_8 and mean \|\|d\|\|² over all val(NA) rows (oracle only; se.gamma, R-0081-1: rows where q* |
 | `Hellinger` | class | `Hellinger` | [src/topo_pilot/topology/metrics.py:93](../../src/topo_pilot/topology/metrics.py#L93) | Hellinger distance ``\|\|sqrt p - sqrt q\|\|_2 / sqrt 2``; rows must be distributions. |
 | `hellinger` | function | `hellinger` | [src/topo_pilot/analysis/horizon.py:72](../../src/topo_pilot/analysis/horizon.py#L72) | Row-wise Hellinger distance ``\|\|sqrt(p) - sqrt(q)\|\|_2 / sqrt(2)`` in ``[0, 1]``. |
+| `hellinger_matrix` | function | `hellinger_matrix` | [tools/theory_exact/theory_exact.py:84](../../tools/theory_exact/theory_exact.py#L84) |  |
 | `helmert` | function | `helmert` | [tools/c2_readout/c2_model.py:103](../../tools/c2_readout/c2_model.py#L103) | Orthonormal Helmert basis of 1-perp: column k has 1/sqrt(k(k+1)) in rows 1..k and |
 | `helmert_basis` | function | `helmert_basis` | [src/topo_pilot/analysis/horizon.py:29](../../src/topo_pilot/analysis/horizon.py#L29) | Orthonormal basis ``B [n, n-1]`` of the sum-zero subspace ``{v : sum(v) = 0}``. |
 | `hex_to_digests` | function | `hex_to_digests` | [tools/x6_stage1/x6s1_registry.py:75](../../tools/x6_stage1/x6s1_registry.py#L75) |  |
@@ -3027,6 +3036,7 @@
 | `is_x_periodic` | function | `is_x_periodic` | [src/topo_pilot/process/_geometry.py:18](../../src/topo_pilot/process/_geometry.py#L18) | True if axis 0 is glued with period ``dims[0]``, read from the complex, not the name. |
 | `iso_perm` | function | `iso_perm` | [tools/x2a_stage0/x2a_model.py:89](../../tools/x2a_stage0/x2a_model.py#L89) |  |
 | `isotropic` | method | `NullClouds.isotropic` | [src/topo_pilot/topology/shapes.py:24](../../src/topo_pilot/topology/shapes.py#L24) | ``M`` draws of ``N(0, I_F)``. |
+| `isotypic` | function | `isotypic` | [tools/theory_exact/theory_exact2.py:16](../../tools/theory_exact/theory_exact2.py#L16) |  |
 | `isqrt_bracket` | function | `isqrt_bracket` | [tools/k4b/k4b_cert.py:55](../../tools/k4b/k4b_cert.py#L55) | k with k/D <= sqrt(s) < (k+1)/D, for a non-negative Fraction s = a/b. |
 | `iter_kreg2` | function | `iter_kreg2` | [tools/x6_stage1/x6s1_registry.py:192](../../tools/x6_stage1/x6s1_registry.py#L192) | The stored `digests` (<U64) in stored order, chunks of <= run entries; no full load. |
 | `iter_kreg2_seq_ids` | function | `iter_kreg2_seq_ids` | [tools/x6_stage1/x6s1_registry.py:195](../../tools/x6_stage1/x6s1_registry.py#L195) |  |
@@ -3109,6 +3119,7 @@
 | `latch_clears` | function | `latch_clears` | [src/topo_pilot/experiment/x5g1t_usage.py:101](../../src/topo_pilot/experiment/x5g1t_usage.py#L101) | True only on new OBSERVED evidence clearing every latched limit (see module doc). |
 | `latched` | function | `latched` | [tests/oracle_profile/test_builder_controls.py:177](../../tests/oracle_profile/test_builder_controls.py#L177) |  |
 | `latest_gate_verdicts` | function | `latest_gate_verdicts` | [src/topo_pilot/experiment/stages.py:117](../../src/topo_pilot/experiment/stages.py#L117) | Per gate id of ``stage_id``: the verdicts of its most recent report(s). |
+| `lattice` | function | `lattice` | [tools/theory_exact/theory_exact2.py:46](../../tools/theory_exact/theory_exact2.py#L46) |  |
 | `lattice_angle` | function | `lattice_angle` | [src/topo_pilot/analysis/circular.py:74](../../src/topo_pilot/analysis/circular.py#L74) | Angle of each state along one lattice axis. |
 | `lattice_cells` | function | `lattice_cells` | [src/topo_pilot/world/lattice.py:66](../../src/topo_pilot/world/lattice.py#L66) | All k-cubes of the glued lattice, ``k = 0..len(dims)``, as local-lexicographic tuples. |
 | `lattice_states` | function | `lattice_states` | [tools/x4_circle_history/process_law.py:44](../../tools/x4_circle_history/process_law.py#L44) |  |
@@ -3839,6 +3850,7 @@
 | `random_laws` | function | `random_laws` | [tests/x6_stage1/test_a_eval.py:193](../../tests/x6_stage1/test_a_eval.py#L193) |  |
 | `random_ref` | function | `random_ref` | [tools/c2_readout/c2_attrib.py:77](../../tools/c2_readout/c2_attrib.py#L77) | r = a e_full + b tau_K w'w (Lemma RS2), tau_K = tr(C M Sigma M' C), w'w = dy' Sigma^-1 dy. |
 | `random_table` | function | `random_table` | [tests/k4b/test_a_prop1.py:91](../../tests/k4b/test_a_prop1.py#L91) |  |
+| `rank_certificate` | function | `rank_certificate` | [tools/theory_exact/theory_exact2.py:73](../../tools/theory_exact/theory_exact2.py#L73) | Largest rank of winding vectors over cycles of the graph {d < delta}, as delta grows to |
 | `rank_check` | function | `rank_check` | [tools/c1prime/c1_means.py:66](../../tools/c1prime/c1_means.py#L66) |  |
 | `rank_deficient_X` | function | `rank_deficient_X` | [tests/analysis/test_x4f_erasure.py:41](../../tests/analysis/test_x4f_erasure.py#L41) |  |
 | `rank_deficient_X` | function | `rank_deficient_X` | [tests/analysis/test_x4f_erasure_family.py:39](../../tests/analysis/test_x4f_erasure_family.py#L39) |  |
@@ -4098,6 +4110,7 @@
 | `run` | function | `run` | [tools/c1prime/c1_driver_late.py:255](../../tools/c1prime/c1_driver_late.py#L255) |  |
 | `run` | function | `run` | [tools/chart_diag/chart_diag.py:162](../../tools/chart_diag/chart_diag.py#L162) |  |
 | `run` | function | `run` | [tools/d1_seam/d1_seam_checks.py:277](../../tools/d1_seam/d1_seam_checks.py#L277) | Mandatory preflight, S0, then G0..G6 in order; stop at the first FAIL or INVALID. |
+| `run` | function | `run` | [tools/theory_exact/theory_exact.py:134](../../tools/theory_exact/theory_exact.py#L134) |  |
 | `run` | function | `run` | [tools/x2a_stage0/x2a_ph.py:315](../../tools/x2a_stage0/x2a_ph.py#L315) |  |
 | `run` | function | `run` | [tools/x4_circle_history/precision_stage.py:91](../../tools/x4_circle_history/precision_stage.py#L91) |  |
 | `run` | function | `run` | [tools/x6_stage0/x6_run.py:295](../../tools/x6_stage0/x6_run.py#L295) |  |
@@ -4191,6 +4204,7 @@
 | `same` | function | `same` | [tests/x6_stage1/test_b_train_chain.py:182](../../tests/x6_stage1/test_b_train_chain.py#L182) |  |
 | `sample` | method | `HMMSampler.sample` | [src/topo_pilot/dataset/sampler.py:69](../../src/topo_pilot/dataset/sampler.py#L69) | Draw ``n`` trajectories; returns ``(tokens [n, 33], states [n, 33])``. |
 | `sample` | function | `sample` | [tools/c2_readout/c2_stage_base.py:317](../../tools/c2_readout/c2_stage_base.py#L317) | H2 / H2': sample the splits; the Y-donor preparation (the natural-history oracle for b31(H) |
+| `sample` | function | `sample` | [tools/theory_exact/theory_exact.py:65](../../tools/theory_exact/theory_exact.py#L65) |  |
 | `sample` | function | `sample` | [tools/x2a_stage0/x2a_mc.py:98](../../tools/x2a_stage0/x2a_mc.py#L98) |  |
 | `sample` | function | `sample` | [tools/x6_stage0/x6_run.py:40](../../tools/x6_stage0/x6_run.py#L40) |  |
 | `sample_block` | function | `sample_block` | [tools/c1prime/c1_data.py:32](../../tools/c1prime/c1_data.py#L32) | One HMMSampler.sample(4096, rng) call; w33 and the latent states dropped at once. |
@@ -4516,8 +4530,10 @@
 | `symbol_order_a` | function | `symbol_order_a` | [tools/c2_readout/c2_model.py:207](../../tools/c2_readout/c2_model.py#L207) | (a): the named input tokens are perm[w], by the independent inverse route canonical32. |
 | `symbol_order_b` | function | `symbol_order_b` | [tools/c2_readout/c2_model.py:215](../../tools/c2_readout/c2_model.py#L215) | (b): named_from_canonical(e_c, perm) = e_{perm[c]} for every canonical c (bitwise). |
 | `symbol_order_c` | function | `symbol_order_c` | [tools/c2_readout/c2_model.py:221](../../tools/c2_readout/c2_model.py#L221) | (c): canonical_from_named_cols(named_from_canonical(d, perm), perm) = d (bitwise). |
+| `symbol_perm` | function | `symbol_perm` | [tools/theory_exact/sym_check.py:63](../../tools/theory_exact/sym_check.py#L63) | s with E[g z, s(w)] == E[z, w] for all z, w, or None. |
 | `symbols` | function | `symbols` | [tools/code_index/pyinfo.py:157](../../tools/code_index/pyinfo.py#L157) |  |
 | `symbols_section` | function | `symbols_section` | [tools/code_index/render_pages.py:79](../../tools/code_index/render_pages.py#L79) |  |
+| `symmetry_group` | function | `symmetry_group` | [tools/theory_exact/theory_exact.py:47](../../tools/theory_exact/theory_exact.py#L47) |  |
 | `symmetry_report` | function | `symmetry_report` | [tools/c1prime/c1_oracle.py:61](../../tools/c1prime/c1_oracle.py#L61) |  |
 | `syn` | function | `syn` | [tests/experiment/test_x5g1t_config_synthetic.py:204](../../tests/experiment/test_x5g1t_config_synthetic.py#L204) |  |
 | `sync_ledger_caps` | function | `sync_ledger_caps` | [tools/x4_circle_history/meter_bind.py:146](../../tools/x4_circle_history/meter_bind.py#L146) | Apply the recorded CONTRACT allocation and CPU policy to the ledger metadata (entries |
@@ -4541,17 +4557,3 @@
 | `tail` | function | `tail` | [tools/x6_stage1/x6s1_stats.py:190](../../tools/x6_stage1/x6s1_stats.py#L190) |  |
 | `tail_identity` | function | `tail_identity` | [tools/c1prime/c1_model.py:94](../../tools/c1prime/c1_model.py#L94) |  |
 | `tail_logits` | function | `tail_logits` | [tools/c1prime/c1_model.py:80](../../tools/c1prime/c1_model.py#L80) |  |
-| `tamper_tar` | function | `tamper_tar` | [tests/executors/exec_helpers.py:32](../../tests/executors/exec_helpers.py#L32) | Copy a bundle, bumping the first metric value inside every ``extra.json`` that has rows |
-| `tangent_audit` | function | `tangent_audit` | [src/topo_pilot/analysis/horizon.py:146](../../src/topo_pilot/analysis/horizon.py#L146) | Does ``G2`` vanish on the sum-zero kernel of ``G1``? |
-| `TangentAudit` | class | `TangentAudit` | [src/topo_pilot/analysis/horizon.py:113](../../src/topo_pilot/analysis/horizon.py#L113) | Ambient tangent-kernel audit; ``verdict`` in ALLOWS_STABLE / FACTORIZES / |
-| `target` | method | `SSHExecutor.target` | [src/topo_pilot/executors/ssh.py:61](../../src/topo_pilot/executors/ssh.py#L61) | ``user@host`` or ``host``. |
-| `target` | function | `target` | [tools/c2_readout/c2_stage_base.py:239](../../tools/c2_readout/c2_stage_base.py#L239) |  |
-| `target_threshold` | function | `target_threshold` | [tools/x6_stage1/x6s1_data.py:340](../../tools/x6_stage1/x6s1_data.py#L340) |  |
-| `targets` | method | `SequenceLayout.targets` | [src/topo_pilot/contracts/layout.py:59](../../src/topo_pilot/contracts/layout.py#L59) | ``[w_1..w_33]`` per row: ``[R, 33] -> [R, 33]``, dtype int64 (a copy). |
-| `targets_for` | function | `targets_for` | [tools/d2a/d2a_eval.py:188](../../tools/d2a/d2a_eval.py#L188) | Probe targets and ceiling features at (rows, positions) (§3, §7.3). |
-| `tarjan` | function | `tarjan` | [tools/code_index/model.py:29](../../tools/code_index/model.py#L29) | Iterative Tarjan SCC; returns the list of components (each a sorted list). |
-| `tau` | function | `tau` | [tools/c1prime/c1_oracle.py:39](../../tools/c1prime/c1_oracle.py#L39) |  |
-| `tau_ref` | function | `tau_ref` | [tests/c1prime/test_a_oracle.py:45](../../tests/c1prime/test_a_oracle.py#L45) |  |
-| `tb` | function | `tb` | [tools/c2_readout/c2_stage_post.py:42](../../tools/c2_readout/c2_stage_post.py#L42) |  |
-| `template_enumeration` | function | `template_enumeration` | [tools/d2a/d2a_world.py:140](../../tools/d2a/d2a_world.py#L140) | All equal-gap template pairs at t (§9.2), in the API.md order. |
-| `template_hashes` | function | `template_hashes` | [tools/d2a/d2a_world.py:170](../../tools/d2a/d2a_world.py#L170) |  |

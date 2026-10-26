@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 853,
+  "files indexed": 854,
   "functions and methods (incl. tests)": 6899,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 733,
@@ -12569,9 +12569,9 @@
   },
   "docs/proposals/ARCHITECTURES_AND_GDL_OPTIONS_HE.md": {
    "kind": "markdown",
-   "lines": 223,
+   "lines": 236,
    "purpose": "מעבר לטרנספורמר: סוגי מודלים אחרים, הקשר ל־GDL ומבנה מודולרי",
-   "sha256": "bfa1e567158bca2bf7d97ee4dea6a50881c478c96b65a2be1c39e4c95449bd87"
+   "sha256": "544d1ec8f043d6617c1249878868ab16d487b79abc44f09788f33ca116bb0ad2"
   },
   "docs/proposals/C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md": {
    "kind": "markdown",
@@ -12698,6 +12698,12 @@
    "lines": 105,
    "purpose": "אפשרויות להוכחה מקיפה יותר",
    "sha256": "323755f7211ec51ac02948cd5b3387ee86c13151211e94b757db2471d57258c9"
+  },
+  "docs/proposals/THEORY_TRACK_HE.md": {
+   "kind": "markdown",
+   "lines": 328,
+   "purpose": "מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה",
+   "sha256": "f754a74c9886cc4b20141ed53bceec8c7e8d0ce74a58ea9883f654c27e2ae28b"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -179608,5 +179614,5 @@
    ]
   }
  },
- "sources_digest": "b62e1a3e9b9a5a9b0bc5ace9dba9942d3fa3000757f4c20b7b67ef125da3ffbe"
+ "sources_digest": "decc86fd3838fb595be1c891daa80116bcfb1025017f305cf2fd62fd84febc13"
 }

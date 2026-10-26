@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 853 tracked files; 501 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 854 tracked files; 501 code files (linked to their pages).
 
 ## (repo root)
 
@@ -80,7 +80,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 853 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `ARCHITECTURES_AND_GDL_OPTIONS_HE.md` | markdown | 223 lines | מעבר לטרנספורמר: סוגי מודלים אחרים, הקשר ל־GDL ומבנה מודולרי |
+| `ARCHITECTURES_AND_GDL_OPTIONS_HE.md` | markdown | 236 lines | מעבר לטרנספורמר: סוגי מודלים אחרים, הקשר ל־GDL ומבנה מודולרי |
 | `C2_CONSTRAINED_CIRCULAR_INTERVENTION_HE.md` | markdown | 228 lines | C2 — ניסוי חלופי לשימוש מקומי במידע המעגלי |
 | `C2_INDEPENDENT_PLANNING_REQUEST_HE.md` | markdown | 31 lines | בקשת תכנון וביקורת עצמאית: חלופה ל־C1′ |
 | `CAUSAL_CIRCLE_STATE_FORCING_PROTOCOL_DRAFT.md` | markdown | 97 lines | Causal circle state forcing — protocol draft C1 |
@@ -97,6 +97,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 853 tracked file
 | `RESEARCH_ROADMAP.md` | markdown | 186 lines | Topo Pilot: priorities and roadmap after E4 |
 | `REVISION_AFTER_E4.md` | markdown | 75 lines | Revision after E4: evidence, changes and decision log |
 | `STRONGER_EVIDENCE_OPTIONS_HE.md` | markdown | 105 lines | אפשרויות להוכחה מקיפה יותר |
+| `THEORY_TRACK_HE.md` | markdown | 328 lines | מסלול תיאורטי: משפטים שקובעים מה למדוד ומהי הצלחה |
 | `X4B2_COVERAGE_PROTOCOL.md` | markdown | 113 lines | X4 Phase B2 — frozen coverage-extension protocol (x4b2-v1) |
 | `X4B2_COVERAGE_REPORT.md` | markdown | 118 lines | X4 Phase B2: coverage-extension report |
 | `X4F_COORDINATE_CAUSAL_PROTOCOL_DRAFT.md` | markdown | 175 lines | X4-F: coordinate-associated causal use — protocol draft (x4f-draft-1) |

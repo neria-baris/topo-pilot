@@ -930,9 +930,10 @@ a bound on the total effect; claims need two of the three models.
 \textbf{Status.} After two independent plans, a comparison, a merge and three rounds of
 result-blind review I froze the protocol on 21 October, revised it once before any data existed
 (a translation placebo on the $y$-axis replaced a reflection that failed on this process), and
-authorised execution on 22 October. The first stage has not yet produced data: its first two
-attempts stopped at entry checks (a release-record field name, then a lineage check that refused
-the stage's own entry records); the second was corrected under the two-per-defect rule, and the
+authorised execution on 22 October. The first stage has not yet produced data: its first three
+attempts stopped at entry checks before anything was sampled (a release-record field name; a
+lineage check that refused the stage's own entry records; then the same check refusing the
+compute meter's own lock file). Each defect was corrected under the two-per-defect rule, and the
 stage is being rerun.
 
 % =========================================================================================
@@ -1401,7 +1402,7 @@ X6S1 E1 & 10-20 & INGEST-C1, LEARN, LC-1 & PASS; LEARN = GO & job 0093\\
 X6S1 E2 & 10-20 & INGEST-C2, LC-2 & PASS; 12 models admitted & job 0094\\
 X6S1 E3 & --- & E3.0--E3.9 & all PASS; INCONCLUSIVE (rule 9) & 0095--0099\\
 C2 IMPL & 10-22 & gate 0; freeze & complete (FREEZE 24ff24cc) & jobs 0100--0106\\
-C2 S1 & 10-22 & release check; G0 (vii) & attempt 1 refused; attempt 2 FAIL\_TECHNICAL (corrected) & jobs 0107, 0108\\
+C2 S1 & 10-22, 10-26 & release check; G0 (vii) & attempt 1 refused; attempts 2, 3 FAIL\_TECHNICAL (each corrected) & jobs 0107--0110\\
 \bottomrule
 \end{longtable}
 \normalsize

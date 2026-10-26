@@ -22,6 +22,7 @@ import c2_registry as cg
 import c2_stats as cs
 import nd_attrib as nat
 import nd_data as nda
+import nd_decide as ndc
 import nd_decoy as ndy
 import nd_registry as nrg
 import nd_stage_base as sb
@@ -341,3 +342,59 @@ def cm_pair(ctx, split, j, kind) -> dict:
         f"lnr_{k}_{r}": ca.ln_scale_ratio(rp[k], h, eps) for k in "SC" for r, rp in zip(X2, reps)
     }
     return dict(ca.cm_quantities(d, z, A), A_full=A, **lnr)
+
+
+# ---- REPORT helpers (DTEST point values, licence brackets, opened VAL bundles) -----------
+def _m(x, E) -> float:
+    return float(np.mean(np.asarray(x, np.float64)[E]))
+
+
+def point(fam, q, E) -> dict:
+    """Eligible-row point ratios of one model (DTEST; descriptive)."""
+    if q is None:
+        return {}
+    if fam == "N-M":
+        A = _m(q["A_F"], E)
+        out = {"tau_M": A / _m(q["A_full"], E), "psi_M_comp": _m(q["A_C"], E) / A}
+        return dict(out, eta_M_C=_m(q["e_C"], E) / _m(q["e_F"], E), iota_M=_m(q["I_M"], E) / A)
+    A, e = _m(q["A_full"], E), _m(q["e_full"], E)
+    if fam == "D":
+        out = {"psi_prime": _m(q["A_S"], E) / A, "theta_prime": A / _m(q["G"], E)}
+        return dict(out, eta_prime=_m(q["e_S"], E) / e, lambda_D=_m(q["A_S"], E) / A)
+    out = {"psi_comp": _m(q["A_comp"], E) / A, "psi": _m(q["A_S"], E) / A}
+    out.update(eta_comp=_m(q["e_comp"], E) / e, cross=_m(q["cross"], E) / e)
+    return out
+
+
+def lic_values(fam, outcome, pm) -> dict:
+    """The bracket values of the §7 sentences: claim models, point values, declared bounds."""
+    claim = [j for j in pm if pm[j]["status"] in ndc.CLAIM.get(outcome, ())]
+    key = {"N-R": "psi_comp", "D": "psi_prime", "N-M": "psi_M_comp"}[fam]
+    z = {"N-R": "Zc050", "D": "Z050", "N-M": "ZMc050"}[fam]
+    bz = [(pm[j]["bounds"] or {}).get(z, {}) for j in claim]
+    v = {
+        "k": len(claim),
+        "j": ", ".join(map(str, claim)),
+        key: [pm[j]["point"].get(key) for j in claim],
+    }
+    v["bounds"] = [f"({x.get('L', float('nan')):.4g}, {x.get('U', float('nan')):.4g})" for x in bz]
+    v["upper"], v["iota_M"] = v["bounds"], [pm[j]["point"].get("iota_M") for j in claim]
+    v["theta_prime"] = [pm[j]["point"].get("theta_prime") for j in claim]
+    return v
+
+
+def _unsealed(ctx, sealed, unseal) -> dict:
+    """Point means of every opened VAL bundle (secondary, after every outcome)."""
+    out = {}
+    for name, s in sealed.items():
+        if not name.startswith("ACT_"):
+            a = unseal(ctx, name, s)
+            out[name] = {k: float(np.mean(v)) for k, v in a.items() if np.asarray(v).ndim <= 1}
+    return out
+
+
+def _c2_outcome(ctx):
+    try:
+        return sb.c2js(ctx, "stages/S5/report.json")["families"]["R"]["outcome"]
+    except Exception:  # noqa: BLE001  the dry-run stand-in has no C2 report
+        return None

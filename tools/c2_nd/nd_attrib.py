@@ -18,6 +18,7 @@ import nd_config as nc  # first: the API.md §1 sys.path convention
 import c1_endpoint
 import c1_oracle
 import c2_attrib as ca
+import c2_decide as cdc
 import numpy as np
 from c1_records import C1GateFailure
 
@@ -161,6 +162,43 @@ def kappa_leak(M, P_S, B_hat) -> float:
     CM = _f(M) - _f(M).mean(axis=0)
     B_hat = _f(B_hat)
     return float(np.linalg.norm(CM @ _comp(P_S) @ B_hat, 2) / np.linalg.norm(CM @ B_hat, 2))
+
+
+# ---- guards (§4.4; API.md §8.1, ND-C16; aliased in nd_decide) ------------------------------
+NR_A = ("Zc010", "Zc050", "Wc", "NEGc", "Zc090", "Zc100", "Z090")
+
+
+def nr_guards(arrays, geo) -> dict:
+    """N-R guards: beta_A (coefficient 1, delta_P of the frozen C2 projector) on every
+    A_comp-type array (ND-C16), Y1 on the y pair, beta_E with I - P_S for Vc, delta_P(v) for the
+    variant arrays; V3x none."""
+    M, (d, dy, Ex), (dY, dyY, Ey), dP = geo["M"], geo["x"], geo["y"], geo["delta_P"]
+    out = {}
+    for name, s in arrays.items():
+        v, _, stat = name.rpartition(":")
+        if v:
+            beta = cdc.beta_A(d, M, dy, geo["variants"][v][1], 1, Ex)
+        elif stat == "Y1":
+            beta = cdc.beta_A(dY, M, dyY, dP, 1, Ey)
+        elif stat == "Vc":
+            beta = cdc.beta_E(M, dy, np.eye(len(geo["P_S"])) - np.asarray(geo["P_S"]), dP, 1, Ex)
+        else:
+            beta = cdc.beta_A(d, M, dy, dP, 1, Ex) if stat in NR_A else 0.0
+        out[name] = cdc.guard(s, beta)
+    return out
+
+
+def d_guards(arrays, geo_D, geo_R=None) -> dict:
+    """c2_decide.stream_guards on the DNULL arrays (M', RD refit delta_P) and on the "DNULLR:"
+    arrays (g_D M, the y @ T.T rows, RT refit delta_P); no construction-error term (MD-15)."""
+    main = {k: v for k, v in arrays.items() if not k.startswith("DNULLR:")}
+    out = cdc.stream_guards(main, geo_D)
+    rest = {k: v for k, v in arrays.items() if k.startswith("DNULLR:")}
+    return dict(out, **(cdc.stream_guards(rest, geo_R) if rest else {}))
+
+
+def nm_guards(arrays) -> dict:
+    return {k: cdc.guard(s, 0.0) for k, s in arrays.items()}
 
 
 # ---- LN-scale split (§2.9; API.md §7.3, §20 A-1) ---------------------------------------------

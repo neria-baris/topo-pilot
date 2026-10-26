@@ -11507,9 +11507,9 @@
   },
   "docs/proposals/NEXT_ROUND_SHARPER_ANSWERS_HE.md": {
    "kind": "markdown",
-   "lines": 123,
+   "lines": 125,
    "purpose": "הסבב הבא: איך לקבל תשובות חדות יותר",
-   "sha256": "3301876cae3f07293a658368c17c566f113cee5fcf71d22e3dd7ce85ca53486e"
+   "sha256": "eb4f62eb774a7006c8e853f031ba2e0f856fd64d6de36073fdd8952bde717165"
   },
   "docs/proposals/RESEARCH_HARNESS_ARCHITECTURE.md": {
    "kind": "markdown",
@@ -165001,5 +165001,5 @@
    ]
   }
  },
- "sources_digest": "75a4a1860a23aa9914678a926c37e81b61b190a1c27bf825754a33056603f93d"
+ "sources_digest": "d02188209c2850fd2ffe0a3a166a55bc153f79cc41a44a15336aa8a2ad13817b"
 }

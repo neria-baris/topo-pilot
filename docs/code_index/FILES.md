@@ -90,7 +90,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 819 tracked file
 | `D2_LEARNABILITY_DIAGNOSTIC_V1.md` | markdown | 97 lines | D2 development diagnostic v1 — proposed successor, not a rerun of D-2a |
 | `GAP_CLOSING_EXPERIMENTS_EN.md` | markdown | 203 lines | Experiment plan for closing the gaps in Topo-Pilot |
 | `GAP_CLOSING_EXPERIMENTS_HE.md` | markdown | 201 lines | תוכנית ניסויים לסגירת הפערים ב-Topo-Pilot |
-| `NEXT_ROUND_SHARPER_ANSWERS_HE.md` | markdown | 123 lines | הסבב הבא: איך לקבל תשובות חדות יותר |
+| `NEXT_ROUND_SHARPER_ANSWERS_HE.md` | markdown | 125 lines | הסבב הבא: איך לקבל תשובות חדות יותר |
 | `RESEARCH_HARNESS_ARCHITECTURE.md` | markdown | 168 lines | Minimal reusable mathematical research harness |
 | `RESEARCH_LANDSCAPE.md` | markdown | 170 lines | Topo Pilot: research landscape |
 | `RESEARCH_ROADMAP.md` | markdown | 186 lines | Topo Pilot: priorities and roadmap after E4 |

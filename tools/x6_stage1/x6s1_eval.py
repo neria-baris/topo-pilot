@@ -36,6 +36,7 @@ BOS = 18
 ORACLE_KINDS = ("qstar", "q_empty", "q_parity", "q_counts", "q_H1", "q_Parikh", "q_8", "h_last",
                 "h_first", "h_rev")
 PROFILE_T = (16, 24)
+EVAL_ROWS = 2**16  # rows per block of every per-row computation (API §13 item 41)
 
 
 def set_threads() -> None:
@@ -303,32 +304,63 @@ def designed_stats(pred, D_arrays, qstar_fn, tables) -> dict:
     return out
 
 
+def _blocks(n):  # consecutive row blocks of EVAL_ROWS (a multiple of EVAL_BATCH; API §13 item 41)
+    return [(a, min(a + EVAL_ROWS, n)) for a in range(0, n, EVAL_ROWS)]
+
+
+def _tb(t, a, b):
+    return t if np.ndim(t) == 0 else np.asarray(t)[a:b]
+
+
 def natural_pairs(pred, test_tokens, partner_tokens, rows, t=32) -> dict:
-    h = np.asarray(test_tokens)[np.asarray(rows, np.int64)]
-    ph, ph2 = pred(h, t), pred(partner_tokens, t)
-    qh, qh2 = qstar("NA", h, t)[0], qstar("NA", partner_tokens, t)[0]
-    num, den = pair_terms(ph, ph2, qh, qh2)
-    return {"rows": np.asarray(rows, np.int64), "num": num, "den": den,
-            "cue_mass_h": cue_mass(ph), "cue_mass_h2": cue_mass(ph2), "p_h": ph, "p_h2": ph2,
-            "nonfinite": not (np.isfinite(ph).all() and np.isfinite(ph2).all())}
+    rows, n = np.asarray(rows, np.int64), len(rows)
+    test, part = np.asarray(test_tokens), np.asarray(partner_tokens)
+    ph, ph2 = np.empty((n, 18), np.float64), np.empty((n, 18), np.float64)
+    o, fin = {k: np.empty(n, np.float64) for k in ("num", "den", "cm", "cm2")}, True
+    for a, b in _blocks(n):
+        h, pt, tb = test[rows[a:b]], part[a:b], _tb(t, a, b)
+        ph[a:b], ph2[a:b] = pred(h, tb), pred(pt, tb)
+        qh, qh2 = qstar("NA", h, tb)[0], qstar("NA", pt, tb)[0]
+        o["num"][a:b], o["den"][a:b] = pair_terms(ph[a:b], ph2[a:b], qh, qh2)
+        o["cm"][a:b], o["cm2"][a:b] = cue_mass(ph[a:b]), cue_mass(ph2[a:b])
+        fin &= bool(np.isfinite(ph[a:b]).all() and np.isfinite(ph2[a:b]).all())
+    return {"rows": rows, "num": o["num"], "den": o["den"], "cue_mass_h": o["cm"],
+            "cue_mass_h2": o["cm2"], "p_h": ph, "p_h2": ph2, "nonfinite": not fin}
 
 
-def own_arm(pred, arm, tokens, tables, t=32, p=None) -> dict:
-    p = pred(tokens, t) if p is None else p  # p: the readout of `tokens` if already computed
-    q, codes = qstar(arm, tokens, t)
-    return {"xhat": score(codes, quantise(p), tables), "raw_kl": kl_rows(q, p),
-            "cue_mass": cue_mass(p)}
+def own_arm(pred, arm, tokens, tables, t=32, p=None, keep=None) -> dict:
+    """Blocks of EVAL_ROWS rows. p: the readout of `tokens` if already computed; keep: row indices
+    whose readout rows are also returned as "p_keep" (no full-pool readout is held)."""
+    tokens, n = np.asarray(tokens), len(tokens)
+    o = {k: np.empty(n, np.float64) for k in ("xhat", "raw_kl", "cue_mass")}
+    kp = None if keep is None else np.asarray(keep, np.int64)
+    pk = None if kp is None else np.empty((len(kp), 18), np.float64)
+    for a, b in _blocks(n):
+        tb = _tb(t, a, b)
+        pb = pred(tokens[a:b], tb) if p is None else np.asarray(p)[a:b]
+        q, codes = qstar(arm, tokens[a:b], tb)
+        o["xhat"][a:b], o["raw_kl"][a:b] = score(codes, quantise(pb), tables), kl_rows(q, pb)
+        o["cue_mass"][a:b] = cue_mass(pb)
+        if kp is not None:
+            sel = (kp >= a) & (kp < b)
+            pk[sel] = pb[kp[sel] - a]
+    return o if pk is None else {**o, "p_keep": pk}
 
 
 def own_pairs(pred, tokens, partner_tokens, rows, t=32, p_h=None) -> dict:
     """§2.8 abelian own-process spread (R-0082-2): per own-process R_ord(t) pair, the within-
     Parikh-class spread ||Δp̂_c||² of the cue-normalised readouts (the own oracle's is exactly 0:
-    an abelian q* is a function of the Parikh class)."""
-    h = np.asarray(tokens)[np.asarray(rows, np.int64)]
-    ph, ph2 = pred(h, t) if p_h is None else p_h, pred(partner_tokens, t)
-    dp = cue_normalise(ph) - cue_normalise(ph2)
-    return {"rows": np.asarray(rows, np.int64), "spread": (dp * dp).sum(1),
-            "nonfinite": not (np.isfinite(ph).all() and np.isfinite(ph2).all())}
+    an abelian q* is a function of the Parikh class). Blocks of EVAL_ROWS rows."""
+    rows, tok, part = np.asarray(rows, np.int64), np.asarray(tokens), np.asarray(partner_tokens)
+    spread, fin = np.empty(len(rows), np.float64), True
+    for a, b in _blocks(len(rows)):
+        tb = _tb(t, a, b)
+        ph = pred(tok[rows[a:b]], tb) if p_h is None else np.asarray(p_h)[a:b]
+        ph2 = pred(part[a:b], tb)
+        dp = cue_normalise(ph) - cue_normalise(ph2)
+        spread[a:b] = (dp * dp).sum(1)
+        fin &= bool(np.isfinite(ph).all() and np.isfinite(ph2).all())
+    return {"rows": rows, "spread": spread, "nonfinite": not fin}
 
 
 def float32_diff(pred, tokens, t=32) -> dict:
@@ -409,13 +441,13 @@ def eval_chunk(name, plan, out_dir) -> dict:
     d.mkdir(parents=True, exist_ok=False)
     pred, tab, files = _predictor(name, plan["predictor"]), plan["tables"], {}
     own_tok, orows = plan["own_tokens"], plan.get("own_rows")
-    p_own = pred(own_tok, 32)
-    files["own.npz"] = _npz(d / "own.npz", own_arm(pred, plan["arm"], own_tok, tab, p=p_own))
+    own = own_arm(pred, plan["arm"], own_tok, tab, keep=orows)  # blocks; no full-pool readout
+    p_h = own.pop("p_keep", None)
+    files["own.npz"] = _npz(d / "own.npz", own)
     if orows is not None:  # AB/ZC: the own-process pairs (§2.8; R-0082-2)
-        o = own_pairs(pred, own_tok, plan["own_partner_tokens"], orows,
-                      p_h=p_own[np.asarray(orows, np.int64)])
+        o = own_pairs(pred, own_tok, plan["own_partner_tokens"], orows, p_h=p_h)
         files["own_pairs.npz"] = _npz(d / "own_pairs.npz", {k: o[k] for k in ("rows", "spread")})
-    del p_own
+    del own, p_h
     files["float32.json"] = _json(d / "float32.json", float32_diff(
         pred, np.asarray(plan["test_tokens"])[:sd.N_DET]))  # the E3.1 (DET) rows, t = 32
     pr = natural_pairs(pred, plan["test_tokens"], plan["partner_tokens"], plan["rows"])

@@ -22,6 +22,8 @@
 
 **Test imports.** A test file inserts `REPO / "tools" / "x6zc"` at `sys.path[0]` (REPO = `Path(__file__).resolve().parents[2]`) and imports `import x6zc_core as zc`, `import x6zc_census as zs`, `import x6zc_run as zr`. Reused code by bare name: `x6s1_pairs as sp`, `x6s1_eval as se`, `x6s1_stats as ss`, `x6s1_data as sd`, `x6_model as xm`, `x6_exact as xe`.
 
+**Module split amended (R-0123-1; §20 C-52).** The three files above are split further into nine modules of at most 400 lines each; the names of §3-§11 stay reachable as `zc.<name>` (`x6zc_core`) and `zr.<name>` (`x6zc_run`) through re-exports. The module list and the import order are in §20 C-52, which supersedes the "exactly these three modules" sentence and the import convention above where they differ.
+
 ## 2. Conventions
 
 - **Tokens.** Vocabulary 18 (vertex tokens 0..14 for vertices ≠ 10 via `xm.tok`; cue tokens 15 + y, y ∈ {0, 1, 2}); BOS = 18 (`se.BOS`). Histories are `uint8[n, 33]`, zero-padded after their length; the readout position `t` (`int16` or `int64[n]`) is the history length: the predictor reads `tokens[:, :t]` and predicts token t + 1 (`se.ModelPredictor._run` reads logits at index t of `[BOS] + tokens[:32]`).
@@ -393,3 +395,15 @@ Procedural only: no threshold, rule or scientific choice changes. Each item fixe
 - **E-10 K0 item labels (`test_x6zc_dryrun.py` line 297).** `oracle_geometry` reports `"checks"` with keys `"item1"` … `"item5"` and a counterexample `{"key", "row", "item": int, "detail"}` with the item number 1..5. Items are checked in order per pair, so the first failing item of the smallest (key, row) is reported.
 - **E-11 Records.** `log_exposure` never writes the `E0-PREFIX-READ` line itself (Stage A writes it first when `EXPOSURE.jsonl` is absent); its ids are `"X<k>"` with k one more than the number of existing `X` lines. `log_evaluation` calls `guard` first. `k5_permutation(terms, gen=None)` uses `zc.stream("perm_K5i")` when no generator is given. `validate_report` checks the top-level keys of §11.6, the cell keys of every cell P, S3, S4, every outcome string (the CONTRACT outcomes, with NOT_DISCRIMINABLE(<kinds>) as a pattern) and an empty licence for STOP_REPLAN and INVALID; it does not type-check values.
 - **E-12 Meter binding template.** The store-local `x6zc_meter_bind.py` is not a repository file (§1: exactly three modules). Its text is the template `BIND_TEMPLATE` in `x6zc_run.py` (the x6s1/c2 store-local pattern: it puts `METER_IMPORT_DIR` first on `sys.path`, imports the project meter `meter.py` unchanged, rebinds its store globals (`OUT`, `LEDGER`, `EMERGENCY`, `LOCK`, `ACTIVE`, `LOG_DIR`, `WORKER_SESSION`) to `x6zc-store` and runs `meter.main()`; CPU policy measure-only, `--max-cpu inf`). The coordinator writes it with `x6zc_run.py bind-template --out <store>/x6zc_meter_bind.py --session <id>` (exclusive create) and records its sha256 as `meter_bind_sha256`.
+- **C-52 Module split (ruling R-0123-1; procedural, OPEN-4 pattern; no logic change).** The 400-line rule of protocol §14 stays; `x6zc_core.py` and `x6zc_run.py` are split mechanically (bodies moved verbatim; the only code change is that the chunk children are launched with `RUN = HERE / "x6zc_run.py"` instead of the module's own `__file__`). Modules under `tools/x6zc/`:
+  - `x6zc_const.py`: CONTRACT loading, names and bindings, `T`, `B_DRAWS`, streams (§3). It applies the X6S1 `sys.path` convention (imports `x6s1_data` first).
+  - `x6zc_decide.py`: `cluster_sums`, `paired_cluster_boot`, `interval`, `ratio_interval`, `cell_statistics`, `halfwidth`, `choose_n` (§8) and `decide_x6zc`, `licence`, `not_licensed`, `qualifiers`, `reuse_verdict` (§9). Imports `x6zc_const` only.
+  - `x6zc_core.py`: §4-§7 (variants, K0, `QStarCache`, synthetic predictors, pair terms, K1-K3/F1); re-exports every name of `x6zc_const` and `x6zc_decide`.
+  - `x6zc_census.py`: unchanged (§10).
+  - `x6zc_store.py`: records, guards, inventory, environment, closure and master checks, meter binding and `BIND_TEMPLATE`, ledger and `pause_check`, `_frozen`, `_head` (§11.1-§11.3).
+  - `x6zc_pipeline.py`: `predict_variants`, `stage_c_statistics`, `licence_values`, `decide_report`, `validate_report` (§11.4, §11.6). `stage_c_statistics` reads `zc.B_DRAWS` at call time, so a patched `zc.B_DRAWS` takes effect.
+  - `x6zc_dry.py`: `dry()` and its planted predictors (§15).
+  - `x6zc_stage_a.py`: stage begin/finish, A1, A2, `stage_a`, `_children`, `chunk`.
+  - `x6zc_stage_bc.py`: `stage_b`, the Stage-B gate, `stage_c`.
+  - `x6zc_run.py`: the CLI (§11.5); re-exports every name of store, pipeline, dry, stage_a and stage_bc.
+  Import order (no cycle at import time): `x6zc_const` <- `x6zc_decide` <- `x6zc_core` <- `x6zc_census`, `x6zc_store`, `x6zc_pipeline` <- `x6zc_dry`, `x6zc_stage_a` <- `x6zc_stage_bc` <- `x6zc_run`. Test imports (§1) are unchanged.

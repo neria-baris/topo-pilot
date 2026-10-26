@@ -17963,9 +17963,9 @@
   },
   "tools/x6zc/x6zc_run.py": {
    "kind": "python",
-   "lines": 988,
+   "lines": 989,
    "purpose": "X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store",
-   "sha256": "56dcf8853a22ab65e2eea5ed446a0371de359a39111c7b5ce70d6513ddd1638f"
+   "sha256": "d2a7dd17105aa9ea5ee2454ff27f2abaee7833a597684c1a6201159fd915e65b"
   }
  },
  "problems": [
@@ -185225,7 +185225,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 934,
+     "end": 935,
      "kind": "function",
      "name": "stage_c",
      "qual": "stage_c",
@@ -185235,22 +185235,22 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 944,
+     "end": 945,
      "kind": "function",
      "name": "_frozen",
      "qual": "_frozen",
      "sig": "def _frozen(store) -> dict",
-     "start": 937
+     "start": 938
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 986,
+     "end": 987,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 945
+     "start": 946
     }
    ],
    "syspath": []
@@ -185289,5 +185289,5 @@
    ]
   }
  },
- "sources_digest": "336c3f8a7965cc6f21067a0599be424e78c9c0bf2fcb294cebeb011e93493396"
+ "sources_digest": "d340ffcfa648ec1048a0546832759a326e114ea056295c8dc905d197ab907a8c"
 }

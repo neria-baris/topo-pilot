@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_run.py](../../../../../tools/x6zc/x6zc_run.py)
 - Kind: python
-- Lines: 988
+- Lines: 989
 
 ## Module docstring
 
@@ -155,7 +155,7 @@
 - **function `_arm`** [L757-757]: `def _arm(m) -> str`
 - **function `stage_b`** [L758-849]: `def stage_b(store=zc.STORE) -> int`
 - **function `_ev_base`** [L850-858]: `def _ev_base(store) -> dict`
-- **function `stage_c`** [L859-934]: `def stage_c(store=zc.STORE) -> int`
-- **function `_frozen`** [L937-944]: `def _frozen(store) -> dict`
-- **function `main`** [L945-986]: `def main(argv=None) -> int`
+- **function `stage_c`** [L859-935]: `def stage_c(store=zc.STORE) -> int`
+- **function `_frozen`** [L938-945]: `def _frozen(store) -> dict`
+- **function `main`** [L946-987]: `def main(argv=None) -> int`
 

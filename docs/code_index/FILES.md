@@ -1301,4 +1301,4 @@ The generated index itself (`docs/code_index/`) is not indexed. 874 tracked file
 | `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |
 | [x6zc_census.py](files/tools/x6zc/x6zc_census.py.md) | python | 314 lines | X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5 |
 | [x6zc_core.py](files/tools/x6zc/x6zc_core.py.md) | python | 574 lines | X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0) |
-| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 988 lines | X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store |
+| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 989 lines | X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store |

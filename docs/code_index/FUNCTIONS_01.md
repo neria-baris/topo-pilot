@@ -670,7 +670,7 @@
 | `_frame_of` | function | `_frame_of` | [tools/c1prime/c1_records.py:122](../../tools/c1prime/c1_records.py#L122) |  |
 | `_frames` | function | `_frames` | [tools/c1prime/c1_records.py:111](../../tools/c1prime/c1_records.py#L111) |  |
 | `_from` | function | `_from` | [tests/analysis/test_x5_endpoint.py:46](../../tests/analysis/test_x5_endpoint.py#L46) |  |
-| `_frozen` | function | `_frozen` | [tools/x6zc/x6zc_run.py:937](../../tools/x6zc/x6zc_run.py#L937) |  |
+| `_frozen` | function | `_frozen` | [tools/x6zc/x6zc_run.py:938](../../tools/x6zc/x6zc_run.py#L938) |  |
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_ingest_bundle.py:44](../../tests/x6_stage1/test_b_ingest_bundle.py#L44) |  |
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_nb_s0_ops.py:37](../../tests/x6_stage1/test_b_nb_s0_ops.py#L37) |  |
 | `_fwp` | function | `_fwp` | [tests/c2_readout/test_b_patch.py:87](../../tests/c2_readout/test_b_patch.py#L87) |  |
@@ -3466,7 +3466,7 @@
 | `main` | function | `main` | [tools/x6_stage0/x6_run.py:364](../../tools/x6_stage0/x6_run.py#L364) |  |
 | `main` | function | `main` | [tools/x6_stage1/x6s1_cloud.py:517](../../tools/x6_stage1/x6s1_cloud.py#L517) |  |
 | `main` | function | `main` | [tools/x6_stage1/x6s1_run.py:535](../../tools/x6_stage1/x6s1_run.py#L535) |  |
-| `main` | function | `main` | [tools/x6zc/x6zc_run.py:945](../../tools/x6zc/x6zc_run.py#L945) |  |
+| `main` | function | `main` | [tools/x6zc/x6zc_run.py:946](../../tools/x6zc/x6zc_run.py#L946) |  |
 | `main_in_process` | function | `main_in_process` | [tests/x6_stage1/test_b_train_chain.py:114](../../tests/x6_stage1/test_b_train_chain.py#L114) |  |
 | `main_tree` | function | `main_tree` | [tests/k4b/test_b_registry_rules.py:195](../../tests/k4b/test_b_registry_rules.py#L195) |  |
 | `make_artifact_id` | function | `make_artifact_id` | [src/topo_pilot/contracts/ids.py:73](../../src/topo_pilot/contracts/ids.py#L73) | Content address of an artifact. |

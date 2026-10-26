@@ -18034,9 +18034,9 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 508,
+   "lines": 523,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "3fec1d8e905d7f7452915e1069ec62a51c804faee2749a9a8cf898447cb2543b"
+   "sha256": "178295f7a6a300d8d0af1cdeeea0e486beaa26b2042272ddb12d1d6c4d86fde4"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
@@ -193122,5 +193122,5 @@
    ]
   }
  },
- "sources_digest": "3d7cd2a051b0a0881038540d693582b1a6224d20fa7e9ac88573ee943a1a8845"
+ "sources_digest": "b4db45596eb595d2cc070dc08eda1785e88218253191458fab0eaf1cd3dc56bf"
 }

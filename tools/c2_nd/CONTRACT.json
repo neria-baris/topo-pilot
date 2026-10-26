@@ -1,0 +1,938 @@
+{
+ "schema": "c2nd-contract-v1",
+ "precedence": "The protocol (tools/c2_nd/PROTOCOL_C2ND_v1.md, byte copy of C2ND-DESIGN-v1) wins on any conflict; API.md fixes names and layouts; this file holds the machine-readable values. Fractions and tolerances are exact strings read with fractions.Fraction. Every hash is taken from manifests, FREEZE.json, stage records or writer code, or is the sha256 of a JSON or Markdown record; no array payload was opened or hashed (R-C2ND-5). This file never contains C2's scope string or a parallel round's scope string (protocol 6.6).",
+ "protocol": {
+  "id": "C2ND-FROZEN-v1",
+  "design_id": "C2ND-DESIGN-v1",
+  "file": "tools/c2_nd/PROTOCOL_C2ND_v1.md",
+  "sha256": "4381655dc0b1e0f8ce50b48c91c756e5eb8e7fae3d4c8592599ab84368d8f0fd",
+  "mailbox_file": "agent-handoff/planning/responses/C2ND-DESIGN-v1.md",
+  "base_commit": "b67f3327e9220a0a17f665eec888f39859cc4096",
+  "worktree_head_at_contract": "1d629bc",
+  "auth": {
+   "file": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-29.md",
+   "sha256": "e595e41694eb8fbfc4160c0b56c1fb5db561aacd8e80017b5a8b21fc90f20c37",
+   "scope": "standing AUTH-IMPL and AUTH-RUN for HWS, X6ZC and C2ND while their combined measured CPU stays below 12 CPU-h; protocol section 15 defaults accepted"
+  },
+  "owner_rules": {
+   "addendum_25": "22f130227deb091e36696a880cac6789d8b4040d2ba7aac07a7e829700cf37f4",
+   "addendum_26": "23ab23f951bb4bf728c8087d1fa1340f8fe34dcc73d6b501eeb97db892edf602",
+   "addendum_27": "5bbbd9ee76f537755e3dbf20fe0a459c845021a6013341d85d3e7bcd270cc948",
+   "addendum_28": "650d8b6b2508280a32cadb6c512632d4103b2ac241550e7055bfa45c3377666c",
+   "addendum_29": "e595e41694eb8fbfc4160c0b56c1fb5db561aacd8e80017b5a8b21fc90f20c37"
+  },
+  "c2_protocol": {
+   "file": "tools/c2_readout/PROTOCOL_C2_v2.md",
+   "sha256": "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583",
+   "coordinator_addendum_4_sha256": "b0ea1eb2cfdd3d18abb6e81ebe7e3e8a8230c4881acb9a6d18b3c39445a23e18"
+  },
+  "job": "0116",
+  "freeze_fields": "H, the dry-run report sha256 and this file's sha256 are recorded in c2nd-store/FREEZE.json, never in the protocol text"
+ },
+ "scope": "c2nd-v1",
+ "dry_scope": "c2nd-dry-v1",
+ "registry_version": "c2nd-reg-v1",
+ "registry_names": ["ND-REG1", "ND-REG2"],
+ "paths": {
+  "project_root": "X:/Downloads/projects/topo-pilot",
+  "store": "X:/Downloads/projects/topo-pilot/c2nd-store",
+  "c2_store": "X:/Downloads/projects/topo-pilot/c2-readout-store",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-c2nd",
+  "mailbox": "X:/Downloads/projects/topo-pilot/agent-handoff",
+  "hws_store": "X:/Downloads/projects/topo-pilot/hws-store",
+  "x6zc_store": "X:/Downloads/projects/topo-pilot/x6zc-store",
+  "scratch_root": "X:/Downloads/topo-scratch"
+ },
+ "models": {
+  "1729": {
+   "checkpoint": "c3358e3cb9c352fb",
+   "EmissionSpec": "3633ac27dab50cf4",
+   "state_sha_f32": "062d0a0aa71c41ad5afd9d3f76e58cf38a81419d629defcf2e3ac6316ffaf8f8"
+  },
+  "2718": {
+   "checkpoint": "98b0e703a337d513",
+   "EmissionSpec": "97838b9e13a26f74",
+   "state_sha_f32": "501d9c9ad80d4ffe272d7e03003cdee24b7fe3b25bed40e044f2111afd69aa5c"
+  },
+  "3141": {
+   "checkpoint": "036b670743ffbbaf",
+   "EmissionSpec": "8c29c329c197c79e",
+   "state_sha_f32": "197cccd6cf5491143171fe8ccd6ce79f71cb2f16995aa99af4e9dffe4bec94c8"
+  }
+ },
+ "state_sha_source": "c1prime-store/GATES.jsonl line 8 (gate M0, PASS, 2026-10-16T08:01:43Z), values.models.<j>.sha_f32: production c1_model.state_sha values, not checkpoint-file SHA256",
+ "shared": {"WorldSpec": "21feee1d8ee5422e", "TransitionSpec": "e4dafc7b9785c172"},
+ "process": {
+  "family": "cylinder",
+  "mode": "overlap",
+  "sigma": "1.25",
+  "grid": [12, 12],
+  "n_states": 144,
+  "vocab": 36,
+  "bos": 36,
+  "length": 32,
+  "index": 32
+ },
+ "sites": {
+  "readout": "ln_final_out",
+  "layer2": "resid_post_2",
+  "chart": "resid_post_3",
+  "index": 32,
+  "readout_coords": 127,
+  "layer2_coords": 128
+ },
+ "families": ["N-R", "D", "N-M"],
+ "file_family": {"N-R": "NR", "D": "D", "N-M": "NM"},
+ "decoys": {
+  "keys": ["D0", "DNULL", "DNULL1", "DONLY", "DDOSE", "DNULLR", "DID"],
+  "display": {
+   "D0": "D0",
+   "DNULL": "D-NULL",
+   "DNULL1": "D-NULL1 (unamplified)",
+   "DONLY": "D-ONLY",
+   "DDOSE": "D-DOSE",
+   "DNULLR": "D-NULL-R",
+   "DID": "D-ID"
+  },
+  "head_edits": ["DNULL", "DNULL1", "DONLY", "DDOSE"],
+  "coordinate": ["DNULLR", "DID"],
+  "decision_bearing": "DNULL",
+  "kc_cases": {
+   "D0": ["USED", null],
+   "DONLY": ["USED", "NECESSARY"],
+   "DDOSE": ["PARTIAL", "NOT_NECESSARY"]
+  },
+  "kcr_cases": {
+   "DNULLR": ["NOT_USED", null],
+   "DID": ["USED", null]
+  },
+  "refit": {
+   "RD": ["D0", "DNULL", "DNULL1", "DONLY", "DDOSE"],
+   "RT": ["DNULLR", "DID"]
+  },
+  "g_D": "6",
+  "rho": "23/25",
+  "version": "c2nd-decoy-v1",
+  "formulas": {
+   "Pi_S": "Q0 @ P_S @ Q0.T (128 x 128; P_S = frozen C2 R_P_S of model j)",
+   "DNULL": "unembed.weight = g_D * (WU @ (I128 - Pi_S))",
+   "DNULL1": "unembed.weight = WU @ (I128 - Pi_S)",
+   "DONLY": "unembed.weight = WU @ Pi_S",
+   "DDOSE": "unembed.weight = g_D * (WU @ (I128 - rho * Pi_S))",
+   "DNULLR": "ln_final = Sequential(LayerNorm, u -> beta + ((u - beta) @ Q0) @ T.T @ Q0.T); unembed.weight = g_D * WU",
+   "DID": "the same ln_final map; unembed.weight = WU @ Q0 @ Tinv @ Q0.T"
+  },
+  "U_rule": "V0 = right singular vectors of M (36 x 127, full SVD) whose singular values are <= 1e-12 * sigma_max (an orthonormal basis of ker(M), k0 = 127 - rank >= 91); U = V0 @ pinv(L_B @ V0) (127 x 6; L_B = R_L[5:]); independent of the basis of ker(M)",
+  "T_rule": "T = I127 + (U - B) @ L_B; Tinv = I127 + (B - U) @ L_B (B = R_B); y_prime = y @ T.T",
+  "null_sv_relative": "1e-12",
+  "construction_gates": {"rank_LBV0": 6, "sv_ratio_min": "1e-6", "cond_T_max": "1e8"},
+  "decoy_sha64": "sha256 over the sorted state_dict keys, each as key utf-8, NUL, str(tuple(shape)), NUL, C-contiguous float64 bytes; then json.dumps(record, sort_keys=True, separators=(',', ':')) with record = {version, kind, model, base_state_sha, c2_fit_sha256, g_D, rho}"
+ },
+ "splits": {
+  "names": {"fit": "DFIT", "feas": "DFEAS", "val": "DVAL", "test": "DTEST"},
+  "block_rows": 4096,
+  "fit": {"blocks": 2, "rows": 8192, "panels": 8},
+  "feas": {"blocks": 1, "rows": 4096},
+  "val": {"blocks": 1, "rows": 4096},
+  "test": {
+   "k": [1, 2, 4],
+   "rows_per_block": 4096
+  },
+  "m0_rows": 1024,
+  "lowid_rows": 1024,
+  "h3_rows": 4,
+  "pilot_split": null
+ },
+ "sequence_ids": {
+  "rule": "make_sequence_ids(process_code('cylinder', 'overlap', '1.25', f'c2nd-v1/{split}/b{block}'), 'test', 4096)",
+  "split_code_test": 3,
+  "codes": {
+   "fit/b0": 154628954,
+   "fit/b1": 984718538,
+   "feas/b0": 1060161320,
+   "val/b0": 1752527724,
+   "test/b0": 445333687,
+   "test/b1": 259588243,
+   "test/b2": 1642364128,
+   "test/b3": 1645678858
+  },
+  "first_ids": {
+   "fit/b0": 664126301249994752,
+   "fit/b1": 4229333917280239616,
+   "feas/b0": 4553358198689497088,
+   "val/b0": 7527049260718620672,
+   "test/b0": 1912693622277406720,
+   "test/b1": 1114923014916407296,
+   "test/b2": 7053900218688864256,
+   "test/b3": 7068136875633934336
+  },
+  "dry_codes": {
+   "fit/b0": 706028483,
+   "fit/b1": 747828900,
+   "feas/b0": 834991698,
+   "val/b0": 1893459205,
+   "test/b0": 1607421132,
+   "test/b1": 2080041843,
+   "test/b2": 1149916795,
+   "test/b3": 1395843078
+  }
+ },
+ "streams": {
+  "history": "SeedTree(0).generator('data', 'c2nd-v1', split, block, 'cylinder', 'overlap', '1.25')",
+  "dry_history": "SeedTree(0).generator('data', 'c2nd-dry-v1', split, block, 'cylinder', 'overlap', '1.25')"
+ },
+ "seeds": {
+  "test_NR": 630503,
+  "test_D": 630504,
+  "test_NM": 630505,
+  "val_KC": 630506,
+  "test_KC": 630507,
+  "desc": 630508,
+  "val_V3x": 630511,
+  "val_V3y": 630512,
+  "val_Y1": 630513,
+  "val_V3xD": 630514,
+  "val_Y1D": 630515,
+  "val_p1_sd": 630516,
+  "val_p1_c": 630517,
+  "h5": 630518,
+  "val_V3xD_g1": 630519
+ },
+ "seed_notes": {
+  "val_V3xD": "V3x' and V3y' in one call (API.md ND-C4)",
+  "val_KC": "KC and KC-R, two calls with the same seed (ND-C5)",
+  "h5": "H5 and ORACLE-FEAS (ii), DVAL and DTEST, two calls each (G_x, G_y)"
+ },
+ "levels": {
+  "alpha": {"N-R": "1/300", "D": "1/300", "N-M": "1/360"},
+  "val_alpha": "1/60",
+  "h5_alpha": "1/20",
+  "desc_alpha_two_sided": "1/40",
+  "family_nominal": {"N-R": "1/20", "D": "1/20", "N-M": "1/24"},
+  "family_nominal_placebo_inactive": {"N-R": "1/25", "D": "1/25"},
+  "events_per_model": {"N-R": 5, "D": 5, "N-M": 5},
+  "power": "4/5"
+ },
+ "unions_display": {
+  "package_C2R_NR_D": "0.15",
+  "c2nd_alone": "0.1417",
+  "c2nd_alone_without_NM": "0.10",
+  "c2r_plus_c2nd": "0.1917",
+  "c2r_plus_c2nd_without_NM": "0.15",
+  "all_six": "0.2917 (<= 0.30)",
+  "all_six_without_NM": "0.25"
+ },
+ "bootstrap": {
+  "test_draws": 20000,
+  "val_draws": 5000,
+  "desc_draws": 5000,
+  "h5_draws": 5000,
+  "kc_test_draws": 5000,
+  "ranks": {
+   "test_NR_D": {"L": 67, "U": 19934},
+   "test_NM": {"L": 56, "U": 19945},
+   "val": {"L": 84, "U": 4917},
+   "h5": 250,
+   "desc_and_kc_test": {"L": 125, "U": 4875}
+  },
+  "quantile": "inverted_cdf via c1_means.quantile_with_rank (rank = ceil(draws * p))",
+  "z": {"1-1/300": "2.713052", "1-1/360": "2.772921", "1-1/60": "2.128045", "0.80": "0.841621"}
+ },
+ "thresholds": {
+  "psi_low": "1/10",
+  "psi_high": "1/2",
+  "psi_090": "9/10",
+  "wc_lower_line": "-1/10",
+  "v3": "3/10",
+  "placebo": "1/10",
+  "tau_M": "1/10",
+  "energy_abs": "1/10",
+  "energy_rand_multiple": "127/60",
+  "rs_a": "887/344043",
+  "rs_b": "121/344043",
+  "kappa_m": "1/100",
+  "h4_x": "9/10",
+  "h4_y": "17/20",
+  "h5_nat": "1/100",
+  "oracle_headroom_nat": "1/50",
+  "l1_r2_code_0": "1/2",
+  "l1_rho_inc": "9/10",
+  "r1_agreement": "3/4",
+  "n2_floor": "1/20",
+  "n2_slack": "1/50",
+  "support_min": "99/100",
+  "f_drift": "1/50",
+  "ladder_N": [4096, 8192, 16384],
+  "p1_gated": {
+   "N-R": ["Zc010", "Zc050"],
+   "D": ["Z010", "Z050"],
+   "N-M": ["Ztau"]
+  },
+  "p1_alternative": {
+   "N-R": "1/10 * min_j mean_DVAL(A_full * 1_Ex)_j",
+   "N-M": "1/10 * min_j mean_DVAL(A_full * 1_Ex)_j",
+   "D": "3/100 * min_j mean_DVAL(G_x * 1_Ex)_j"
+  },
+  "p1_mde_reported": ["Wc", "Vc", "NEGc", "Vabs", "Vrand", "NEG", "ZMc010", "ZMc050", "WMc", "VMc"]
+ },
+ "statistics": {
+  "N-R": ["V3x", "Y1", "Zc010", "Zc050", "Wc", "Vc", "NEGc", "Zc090", "Zc100", "Z090", "R_E:Zc010", "R_E:Zc050", "R_K1:Zc010", "R_K1:Zc050", "R_K2:Zc010", "R_K2:Zc050"],
+  "D": ["V3x", "Y1", "Z010", "Z050", "Vabs", "Vrand", "NEG", "DNULLR:Z010", "DNULLR:Z050", "DNULLR:Vabs", "DNULLR:Vrand", "DNULLR:NEG"],
+  "N-M": ["V3x", "Ztau", "ZMc010", "ZMc050", "WMc", "VMc", "NEGMc"],
+  "report_only": ["Z090", "R_E:Zc010", "R_E:Zc050", "R_K1:Zc010", "R_K1:Zc050", "R_K2:Zc010", "R_K2:Zc050", "DNULLR:Z010", "DNULLR:Z050", "DNULLR:Vabs", "DNULLR:Vrand", "DNULLR:NEG"],
+  "arrays_per_model": 35
+ },
+ "guards": {
+  "relative": "1e-9",
+  "N-R": "beta_A with coefficient 1 and delta_P(R) of the frozen C2 projector (FIT_<j>.json delta) for every A_comp-type array and Y1; Vc: beta_E with (I - P_S); variant arrays: beta_A with delta_P(v); V3x: 0",
+  "D": "delta_P of the RD (DNULLR arrays: RT) refit's own GLS-REF, with M' in place of M; no construction-error term (MD-15)",
+  "N-M": "0"
+ },
+ "tolerances": {
+  "tau_x1_relative": "1e-9",
+  "x1_attainability": "1e-10",
+  "oracle_identity": "1e-12",
+  "m0d_readout": "1e-9",
+  "m0d_coordinate_map": "1e-12",
+  "adapter_identities": "1e-10",
+  "dx_A": "1e-9",
+  "dx_E": "1e-18",
+  "guard_relative": "1e-9",
+  "c2_kernels": "every tolerance of a reused C2 kernel is read by that kernel from tools/c2_readout/CONTRACT.json unchanged (cond_max 1e8, sv_ratio_min 1e-6, lw_ratio_min 1e-12, t11 1e-10, GLS-REF 80 digits / rho_ref 1e-20 / projector 1e-8, readout rank 1e-8)"
+ },
+ "c2_store": {
+  "root": "X:/Downloads/projects/topo-pilot/c2-readout-store",
+  "read_only": true,
+  "files": {
+   "CHART_CONSTRUCTIONS.json": "e5be845ebaae6cc6e4005e8c2dc43fcd46d211bfad46aca548f5ee8d33d7a98a",
+   "FREEZE.json": "31df0efa430c7b8b77aed145cb5759ed2f463fe3e1eadee4c9d2a96ce2e11684",
+   "fits/DEC_1729.npz": "531d3d9c4d6f110900a26b35fb368c002c34f562d69644bd919aa6588b1ab6ee",
+   "fits/DEC_2718.npz": "9606a0e1e8de929eabd104e709a00993276d8f75baa065b83f0c5154051fcd36",
+   "fits/DEC_3141.npz": "3392295e6e3bca6d5c4458816a3ebd00a77858c6bc415ebdb85a1fcf9d129b68",
+   "fits/FIT_1729.json": "989a97c810411364ca9e7ccf670a86c2ecee6c0dbd88cf26afa2b481fa289784",
+   "fits/FIT_1729.npz": "0ae758e84c41b6b9cd157b8e699674fe07996c7f60fa310e1aa878a4286c7326",
+   "fits/FIT_2718.json": "8a3b94af7335599ef85a6aa0ccc42a54710bb7a66c5dc38309ee0164e2585d3d",
+   "fits/FIT_2718.npz": "ca44b5ad681fe927d045afedf8efd8facd8e0efc312e04aff060160b172840f2",
+   "fits/FIT_3141.json": "08395b4904d53efaa6ecf27b17d913e132b6a5162f1a7dd5a20f1758ffacd21a",
+   "fits/FIT_3141.npz": "51ac9332982f6123dda7a5e7eb1c7bddc6ba902094b3ad5505bbbe8f66fc408a",
+   "hist/HIST_feas_b0.npz": "7162e158a264c7966b7074f66c05a5b580fe2307918873c3d3f595446ba6c943",
+   "hist/HIST_fit_b0.npz": "c9f6567371d9ff65a668224597edc1c6be687fac9b5cb943b41d6eee8c243873",
+   "hist/HIST_fit_b1.npz": "740513e7ed528d5202531d0de1df80651d27ea2da06d3b998de11936d6e28592",
+   "hist/HIST_test_b0.npz": "3c776f58f267da281672a00c5027253d36803d9a3a5f8db16afd6ab0ea68d0f0",
+   "hist/HIST_val_b0.npz": "0282719ad6bc87a7fc1a5c491a768d4c6923bba59936bce0bb494ef28dc077dd",
+   "manifests/0115.accepted.json": "e0ee1039978eaf921cbd13aebd82799c555163da6eda64073e676ecba3f88410",
+   "manifests/0115.json": "0ca8148bd0c781613694ab0825e929de90469be31b48f61cbbd41e5c58592d43",
+   "oracle/ORACLE_FROZEN.json": "8ce019086884bb9812d2705415b41c8a0fcf15b749c1cf2c9e133d285336045e",
+   "stages/S5/report.json": "2daeb7bb340856955c502163a69666e861cb746ebcf38d3486a31cdf2e139ff2"
+  },
+  "files_source": "array files and JSON records: c2-readout-store/manifests/0115.json (the accepted final C2 manifest; the FIT/DEC/ORACLE_FROZEN values equal manifests/0112.json); manifests/0115.json, manifests/0115.accepted.json and FREEZE.json: sha256 of the JSON records themselves",
+  "accept_review": {
+   "path": "agent-handoff/jobs/0115/review.md",
+   "sha256": "9425b0a7da620680d679ddb80eb422a0c677a5d4aceb22757574fd6397f90327"
+  },
+  "fit_status": {
+   "1729": {"M": "PASS", "R": "PASS", "R_E": "PASS", "R_K1": "PASS", "R_K2": "PASS", "S*": "PASS"},
+   "2718": {"M": "PASS", "R": "PASS", "R_E": "PASS", "R_K1": "PASS", "R_K2": "PASS", "S*": "PASS"},
+   "3141": {"M": "PASS", "R": "PASS", "R_E": "PASS", "R_K1": "PASS", "R_K2": "PASS", "S*": "PASS"}
+  },
+  "fit_n2": {"1729": "PASS", "2718": "PASS", "3141": "PASS"},
+  "fit_delta": {
+   "1729": {
+    "M": "8.289221739674464e-12",
+    "R": "3.3213773274477625e-12",
+    "R_E": "3.453959427105668e-14",
+    "R_K1": "4.675480408167457e-12",
+    "R_K2": "3.619264622956117e-12",
+    "S*": "2.4446647682129545e-12"
+   },
+   "2718": {
+    "M": "6.9914485095299664e-12",
+    "R": "2.7962171278295853e-12",
+    "R_E": "1.4022937551067543e-14",
+    "R_K1": "3.4162190612753858e-12",
+    "R_K2": "2.8791759893835932e-12",
+    "S*": "1.903387112056425e-12"
+   },
+   "3141": {
+    "M": "7.792353794978818e-12",
+    "R": "3.0949284958363407e-12",
+    "R_E": "9.959248470357837e-15",
+    "R_K1": "3.774993912191233e-12",
+    "R_K2": "3.1429342838500343e-12",
+    "S*": "3.089498594246268e-12"
+   }
+  },
+  "oracle_frozen": {
+   "s_max": "7.34032133381897",
+   "kappa_m": "0.00047527014799898944",
+   "kappa_nu": "0.008624330999945536",
+   "y_active": true
+  },
+  "fit_keys": {
+   "basis": ["Q0", "M", "beta", "gamma", "WU", "WUbeta"],
+   "other": ["zt_mu", "zt_sd", "J", "aff_w", "aff_nu", "n2_mu", "n2_W", "n2_q99"],
+   "per_problem": ["{p}_alpha", "{p}_Gamma", "{p}_B", "{p}_L", "{p}_P_S", "{p}_P_G", "{p}_Sigma (p != R_E)", "{p}_mtilde"],
+   "problems": ["R", "R_K1", "R_K2", "R_E", "M", "S*"],
+   "used": ["Q0", "M", "beta", "gamma", "WU", "WUbeta", "zt_mu", "zt_sd", "n2_mu", "n2_W", "n2_q99", "R_alpha", "R_Gamma", "R_B", "R_L", "R_P_S", "R_P_G", "R_Sigma", "R_mtilde", "R_E_P_S", "R_E_L", "R_E_B", "R_K1_P_S", "R_K1_L", "R_K1_B", "R_K2_P_S", "R_K2_L", "R_K2_B", "M_P_S", "M_L", "M_B", "M_mtilde"],
+   "L_B": "R_L[5:] (5 nuisance rows first)",
+   "source": "writer code: c2_stage_pre.f1_model lines 162-204; c2_stage_base BASIS and FP line 36; c2_stage_base.prob lines 216-222"
+  },
+  "dec_keys": {
+   "pattern": "{F}_{k}_{x}",
+   "F": ["R", "M", "Sstar"],
+   "k": ["D0", "Dcode", "Dlin"],
+   "x": ["mu_F", "s_F", "W", "b", "lam", "eq", "tol", "kappa"],
+   "source": "c2_config.FILE_FAMILY line 115; c2_stats.KINDS line 382; c2_stats.FIELDS line 231"
+  }
+ },
+ "c2_contract": {
+  "path": "tools/c2_readout/CONTRACT.json",
+  "sha256": "3d4b9f6257b886a0edc40feb499513fe0d0cae0af5c031f76b0988750fe7445a",
+  "git_blob": "81651f897501ba51ef0c51003b54bbf2e6bcf1a0"
+ },
+ "c2_code": {
+  "H2": "3e234b38077f84ddebfa380120938b8847f40e03",
+  "modules": {
+   "API.md": {
+    "git_blob": "43fc92e6700481775df7c4c323ade7be813a3887",
+    "sha256": "cabd745d12e7ceb75ad1b3ac7ed20aee85c99960af4f928217c2a109c1ba3f58"
+   },
+   "CONTRACT.json": {
+    "git_blob": "81651f897501ba51ef0c51003b54bbf2e6bcf1a0",
+    "sha256": "3d4b9f6257b886a0edc40feb499513fe0d0cae0af5c031f76b0988750fe7445a"
+   },
+   "PROTOCOL_C2_v2.md": {
+    "git_blob": "4990e5650e916f2eb91f6777829ec2b815dbddcf",
+    "sha256": "51f78976a6d035b3e01dc2155ad66bb80cb870a4ae155cad17b6665d37f24583"
+   },
+   "TEST_PLAN.md": {
+    "git_blob": "3cdace9da696a813712e211e5bbe5a1b9ea04ecb",
+    "sha256": "8cf2572c6132fe7fef19a7f840af60971b6cc9b7f1c7f8fa80877ce285ab1afe"
+   },
+   "c2_attrib.py": {
+    "git_blob": "bb7c297b221fcd8e7f2f3a8dab97fa326de5615e",
+    "sha256": "882bf534c4898f16e595552edb7cde6db4a9f7682bed537917df206b64861ca8",
+    "lines": 369
+   },
+   "c2_code.py": {
+    "git_blob": "a488d3858b19824903adb9c0e32f94dfadeaeadd",
+    "sha256": "fa5b42a4e0187bc24990a368319fa22cde9a777339a75dcaa5aef34022ff5f0a",
+    "lines": 307
+   },
+   "c2_config.py": {
+    "git_blob": "4e3cc56fcc0af1f29fa27a3147488540804e41a1",
+    "sha256": "d721d0f36d6bd46cdbf337fbf26f60aab11b4c11524d9e2d3e2b83ff7731a2b4",
+    "lines": 192
+   },
+   "c2_data.py": {
+    "git_blob": "fb94311d89fc14c2041e3c88981d68e22a9f787c",
+    "sha256": "5b97f8b8112cf7587c0be12eecacf259730c9c904f53f810ad111a5c4612c2a0",
+    "lines": 337
+   },
+   "c2_decide.py": {
+    "git_blob": "1b0422fa3c1b78f920852843bc70d304509ec5ec",
+    "sha256": "bb1b3652015d77c553afedafd984dfd00c97da37832a2efe5e659271521d9906",
+    "lines": 397
+   },
+   "c2_driver.py": {
+    "git_blob": "a90ae40575df8ef001fdecfc68cebb9186a8a746",
+    "sha256": "1a092c67181b388e173b2ff8e499cbe3fe2d9415c64bca15119b192c56bb8908",
+    "lines": 400
+   },
+   "c2_model.py": {
+    "git_blob": "9f77f5ea7e066a430cdb71a4a4a44c32d5f6e5f9",
+    "sha256": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
+    "lines": 282
+   },
+   "c2_oracle.py": {
+    "git_blob": "87bebc9634216d547da3a4a28ef0103b0a7bca6e",
+    "sha256": "b22496b4bbbcf5595eebce95604f63532d991556717e13e2a2875a2f8fa631f7",
+    "lines": 343
+   },
+   "c2_registry.py": {
+    "git_blob": "6dea71249acbefdfcadaf41408b7a125f3d650d5",
+    "sha256": "14f221d0484b61c0ebc76d910ade5c6e377cc864ccf3ab1973fbc450e1bafd56",
+    "lines": 394
+   },
+   "c2_stage_base.py": {
+    "git_blob": "cedefb9b75af62766e4e4543647d96f55ef8eea3",
+    "sha256": "0dee985930dc08faf55d4b3842b7e1ac0db49e808e2251742c62dcc8e47f951b",
+    "lines": 357
+   },
+   "c2_stage_post.py": {
+    "git_blob": "3c5358004f6536a62274922d7e7355ee7894a3e9",
+    "sha256": "a7f267b0868e32c23334f86565b587ef9774abf23a9ded98b6473cbdb1d4fd9e",
+    "lines": 368
+   },
+   "c2_stage_pre.py": {
+    "git_blob": "9f9d37e22de95fa40b2c9c1d86613a1ff41432c2",
+    "sha256": "e89e210d6165f0ca3f8f522c808b338562084e72d90749522a8f2909772893ae",
+    "lines": 307
+   },
+   "c2_stage_val.py": {
+    "git_blob": "468e8292457fc6ce18044c30b6d68532287e3122",
+    "sha256": "a5a73dae7998367ae74adf60210e2ceb5ef138a3b0e70a34212a57ac98ecae69",
+    "lines": 387
+   },
+   "c2_stats.py": {
+    "git_blob": "449992ec54fdfff2f66400cee1bab1ff7930bb8a",
+    "sha256": "1090bf1899f34fd2a04c0f6d0c33e92ee20ac49024899a2cf1cde38fc8c1fcf7",
+    "lines": 395
+   }
+  },
+  "source": "c2-readout-store/FREEZE.json (sha256 31df0efa...1684): modules, api/contract/protocol/test_plan sha256; git blobs by git ls-tree at 1d629bc (equal to H'' and b67f332)"
+ },
+ "hashes": {
+  "state_sha_f32": {
+   "1729": "062d0a0aa71c41ad5afd9d3f76e58cf38a81419d629defcf2e3ac6316ffaf8f8",
+   "2718": "501d9c9ad80d4ffe272d7e03003cdee24b7fe3b25bed40e044f2111afd69aa5c",
+   "3141": "197cccd6cf5491143171fe8ccd6ce79f71cb2f16995aa99af4e9dffe4bec94c8"
+  },
+  "charts": {
+   "c1prime-store/CHART_1729_production.npz": "6154af0ee1a5ad01d378b507272365d1f0e797b4a843835d7dc09525d5c9cc71",
+   "c1prime-store/CHART_2718_production.npz": "6a5d8c1cbe4aea9909b85aff258a31d2dfdfb8d12c1f93f33a79b245d69370da",
+   "c1prime-store/CHART_3141_production.npz": "ce0c0192d243ff9e8fa4ddc6b07750db31a637ff059a4e8cc55535b8dd21cf2d"
+  },
+  "c1prime_hist": {
+   "c1prime-store/HIST_cal_b0.npz": "d80ad5f42e333b4dc910667c0465cf03adc66518a22e961dec50a8eca2d5ba5e",
+   "c1prime-store/HIST_cal_b1.npz": "7b33b3726ff26617b5ad86c55e6ed5a52da9c177d433aef5ea771fd47d19284a",
+   "c1prime-store/HIST_val_b0.npz": "97db9467927ba4edd9460a51cf537584d13afb2a5a002c5341f74ff7ed476616"
+  },
+  "c1prime_registry_v1": "ebcebe186103d7a4ed01d8f011c05742419f9f418af03775549a80d0d5c77d9e",
+  "k4_freeze": "e3049feedf0fadfb004c9422effe560af031addb846a7b8d1c1bffd52ce3c94a",
+  "c1prime_contract": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+  "c1_meter_bind": "3c1439fc5e053091c683c863ad7b5f0b3fe56253eb2394c57e62fdb0c4b1458d",
+  "c2_meter_bind": "e2cf23318611b98e48531c988426ba820091abb8a88f94dcf54f9d672dc8f0a1",
+  "reused_blobs": {
+   "src/topo_pilot/learner/model.py": "ee1c124ce83da147ccc2a4b4c0be167de902d61ecd00ead5748b8566f62ae039",
+   "src/topo_pilot/learner/patch.py": "64d742e85ddba3d121a5c72af0abaef910c9b986a03a7b87caa26c4c20dd0ad4",
+   "tools/c1prime/c1_oracle.py": "077ea1489262d15075624fd6116900c74a6e5b0eb2fe02e5d4f6127cbc0323b3",
+   "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+   "tools/c1prime/c1_fit.py": "13962c7a46541b9abbd53b2e9e69d6ce7c2f58de042499ba6f48c062228edf61",
+   "tools/c1prime/c1_gates.py": "017499e0c434321ceae95c78ad584c15e93e82efd0ce768137f452d5668db485",
+   "tools/c1prime/c1_endpoint.py": "bdb283efbed04119cf23a5875835d08e1c21b4935d5f9cff334e3e88525d6e46",
+   "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+   "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+   "tools/c1prime/c1_data.py": "262418b2f0272e8425a038c53bb120c8f40402a4100b8a71e257f71b560106e9",
+   "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+   "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+   "tools/c1prime/CONTRACT.json": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+   "tools/x4_circle_history/chart.py": "938821a0fd6651ce9b3fae9ccb6d40dfe1577ff861b76e4e5ebd136cda399ccb",
+   "tools/x4_circle_history/cochain.py": "e53f6725d6596000770bc8242c33916f5402a10398ee5b43f960bd6438f93075",
+   "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+   "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+   "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+   "tools/c1prime_registry/c1_registry_sources.py": "4f40840d8eb88d515556aeb7058640761d4b44a7a6ee8045fb3bce9987a5a253",
+   "src/topo_pilot/analysis/x4f_scores.py": "03e2d736a734cf8d45d158112d1955b4faba267b235777064814dee3bafc563b"
+  },
+  "reused_extra": {
+   "tools/c1prime/c1_cert.py": "b0cb037a52071e80a80e246d538185e2dfc44c45456b15f543b8c2d274c560d8",
+   "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+   "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+   "tests/oracle_profile/independent_reference.py": "e08d02ad03ca840017feaf882e6a113638609426ce28d287dfcd939b1c59a681",
+   "tools/x4_oracle_profile/inputs.py": "2ce1492e4388499e90b197784fc6b0bc84181d76831ef0980c6a1ee50bb81df0",
+   "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+   "tools/x4_oracle_profile/config.json": "624b3a90def9924e332f374bba68157389cb2d811a3fc788f2e9db5c9208d3be",
+   "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+   "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+   "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+   "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+   "tools/k4b/k4b_registry.py": "14c0f5ef7bf0386b3ae55ab80d730585c46842a21b67a8aa77b0b749b9f03b75",
+   "tools/k4b/k4b_registry_k.py": "cdeba06d3730237783919bb264160b540a8a7fcf0f3c9ff1197dda359f1a0042",
+   "tools/k4b/k4b_data.py": "f7ee8b6de1aa31ec592f5b769c8f65c8e463afea0e2782dd1d1f6f89a5d64066",
+   "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+   "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+   "tools/x6_stage1/x6s1_registry.py": "17db30b087ea32141a126f0cce962d2c92f0a6f8cf92d9e7aee9b329cdf8e29f",
+   "tools/x6_stage1/x6s1_data.py": "16c1e91e218e7ce56df264ab1844762f189e18677ab2d767aafeb2db169684ab",
+   "tools/x6_stage0/x6_exact.py": "a73f83cb671dbf3a7f07762b24041d949bbafe499d2e07fa9dd0976e25b37c1d",
+   "tools/x6_stage0/x6_model.py": "b359257aa120ba8631fb652d8166fd526179797adb0de5280927b89199c607e3",
+   "src/topo_pilot/experiment/x4f_probe.py": "d9e72d233ae3e841714173efbded5340fab99ec6707109dd653b7cca214c9b69",
+   "src/topo_pilot/prediction/ridge.py": "e63de356d0aa258d4035c86526c2487e574a5dc5445b47c4a5aa9a4de33e2b45"
+  },
+  "source": "copied unchanged from tools/c2_readout/CONTRACT.json hashes (sha256 3d4b9f62...445a); c2_meter_bind from c2-readout-store/FREEZE.json meter_bind_sha256; every reused blob verified at 1d629bc by git show"
+ },
+ "registry": {
+  "version": "c2nd-reg-v1",
+  "x6_reg2_manifest_sha256": "d5cc07487a4f7aa9841976cece483c4088095533ead08e9e6a7b44d92bcecf59",
+  "x6_reg1_manifest_sha256": "88c48a4bf6d307fcc6189cce14ef733747d57a9a8873d2af3b7e628c5a57c33b",
+  "x6_reg2_n": 19420831,
+  "x6_reg2_digest_sha256": "8f055460e39ee96533c741bedcbebeb49f3364bdaf962eab3247c8c0c4f178ac",
+  "c2_readers": {
+   "a": "k4b_registry.source_a (c1_registry_sources.observation_set_sources)",
+   "b": "k4b_registry.source_b (c1_registry_sources.store_sources)",
+   "c": "k4b_registry.source_c (validate_handoff_json + c1_registry_sources.handoff_sources)",
+   "d": "k4b_registry.source_d",
+   "e": "k4b_registry.source_e + k4b_data.predicate_check ('sealed_d2a')",
+   "f": "k4b_registry.source_f (added by k4b_registry.classify)",
+   "k": "k4b_registry_k.source_k",
+   "x6": "c2_registry.x6_source (x6s1_registry.open_reg X6-REG2 base + every other history-bearing array, DigestSet.build)"
+  },
+  "sources": [
+   {
+    "row": 1,
+    "tags": ["a", "b", "c", "d", "e", "f", "k", "x6"],
+    "reader": "c2_registry.token_sources + c2_registry.x6_source + k4b_registry.source_f through the ND inventory (unchanged C2 readers)",
+    "covers": "everything C2-REG1/REG2 covered"
+   },
+   {
+    "row": 2,
+    "tags": ["c2"],
+    "reader": "nd_registry.source_c2: digest_H, digest_Hp, digest_Hm, digest_HY of c2-readout-store/hist/HIST_*.npz",
+    "covers": "every C2 block, the TEST block included"
+   },
+   {
+    "row": 3,
+    "tags": ["c2sup"],
+    "reader": "nd_registry.source_c2_superseded: name scan of c2-readout-store/superseded/; any .npz/.npy/.pt -> INCOMPLETE",
+    "covers": "superseded C2 attempts 0107-a1, 0107-a2, 0109-a1"
+   },
+   {
+    "row": 4,
+    "tags": ["c2scratch"],
+    "reader": "nd_registry.source_scratch",
+    "covers": "C2 dry-run histories under topo-scratch/0104/dry and 0105/dry"
+   },
+   {
+    "row": 5,
+    "tags": ["c2scratch"],
+    "reader": "nd_registry.source_scratch",
+    "covers": "C2 live-state copies topo-scratch/0109-pre/livecopy-*"
+   },
+   {
+    "row": 6,
+    "tags": ["c2scratch"],
+    "reader": "nd_registry.source_scratch",
+    "covers": "C2ND's own dry-run store topo-scratch/<job>/dry/"
+   },
+   {
+    "row": 7,
+    "tags": ["hws"],
+    "reader": "nd_registry.source_parallel(hws-store, 'hws')",
+    "covers": "the HWS round's histories if the store exists at REG or REG2"
+   },
+   {
+    "row": 8,
+    "tags": ["x6zc"],
+    "reader": "nd_registry.source_parallel(x6zc-store, 'x6zc')",
+    "covers": "the X6ZC round's histories if the store exists at REG or REG2"
+   },
+   {
+    "row": 9,
+    "tags": ["c2scratch"],
+    "reader": "nd_registry.source_scratch (name scan)",
+    "covers": "every other HIST_*.npz under topo-scratch outside test_* trees; non-C2-format files listed NON_C2_FORMAT"
+   }
+  ],
+  "c2_hist": {
+   "hist/HIST_fit_b0.npz": "c9f6567371d9ff65a668224597edc1c6be687fac9b5cb943b41d6eee8c243873",
+   "hist/HIST_fit_b1.npz": "740513e7ed528d5202531d0de1df80651d27ea2da06d3b998de11936d6e28592",
+   "hist/HIST_feas_b0.npz": "7162e158a264c7966b7074f66c05a5b580fe2307918873c3d3f595446ba6c943",
+   "hist/HIST_val_b0.npz": "0282719ad6bc87a7fc1a5c491a768d4c6923bba59936bce0bb494ef28dc077dd",
+   "hist/HIST_test_b0.npz": "3c776f58f267da281672a00c5027253d36803d9a3a5f8db16afd6ab0ea68d0f0"
+  },
+  "c2_hist_columns": ["digest_H", "digest_Hp", "digest_Hm", "digest_HY"],
+  "c2_superseded_dirs": ["0107-a1", "0107-a2", "0109-a1"],
+  "c2_superseded_forbidden_suffixes": [".npz", ".npy", ".pt"],
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "scratch_name_pattern": "HIST_*.npz",
+  "scratch_exclude_prefix": "test_",
+  "scratch_roots_expected": ["X:/Downloads/topo-scratch/0104/dry/frc1/hist", "X:/Downloads/topo-scratch/0104/dry/frc2/hist", "X:/Downloads/topo-scratch/0104/dry/nat2/hist", "X:/Downloads/topo-scratch/0104/dry/nat3/hist", "X:/Downloads/topo-scratch/0105/dry/full_forced/hist", "X:/Downloads/topo-scratch/0105/dry/full_natural/hist", "X:/Downloads/topo-scratch/0105/dry/smoke1/hist", "X:/Downloads/topo-scratch/0105/dry/smoke2/hist", "X:/Downloads/topo-scratch/0105/dry/smoke3/hist", "X:/Downloads/topo-scratch/0109-pre/livecopy-0112/hist", "X:/Downloads/topo-scratch/0109-pre/livecopy-0113/hist", "X:/Downloads/topo-scratch/0109-pre/livecopy-0114/hist", "X:/Downloads/topo-scratch/0109-pre/livecopy-0115/hist"],
+  "scratch_name_scan_2026-10-26": {
+   "HIST_files": 909,
+   "under_test_components": 831,
+   "outside": 78,
+   "outside_roots": "exactly the 13 scratch_roots_expected (file names only; nothing opened)"
+  },
+  "c2_table_format": "npz header holds digest_H, digest_Hp, digest_Hm (and optionally digest_HY) as <U64 arrays",
+  "parallel": {
+   "hws": {
+    "store": "X:/Downloads/projects/topo-pilot/hws-store",
+    "design": {
+     "file": "agent-handoff/planning/responses/HWS-DESIGN-v1.md",
+     "sha256": "d96906097ab8b6ec464a2dbd4b477353b2950aa58e5b5995b7b6086ce68963a9"
+    },
+    "layout": "hist/<stage>/<key>.npz, uint8 [n, 32] canonical tokens (w1..w32), superseded copies included (HWS-DESIGN-v1 section 11 row 10 and 12.3; RC-8)",
+    "frozen_marker": "FREEZE.json",
+    "present_on_2026-10-26": false,
+    "reader": "every *.npz/*.npy outside registry/, sealed/, payload.npz, state.pt: x6s1_registry._history_bearing, then the c2_registry._x6_member rule; every hist/** file must be read; unreadable -> INCOMPLETE"
+   },
+   "x6zc": {
+    "store": "X:/Downloads/projects/topo-pilot/x6zc-store",
+    "design": {
+     "file": "agent-handoff/planning/responses/X6ZC-DESIGN-v1.md",
+     "sha256": "2a711d16d0c3b5e7cdfc0c96e7342a86c0e500b3f31592868ba5b661ef324193"
+    },
+    "layout": "OPEN: the X6ZC history format is not fixed by its round (its store layout, X6ZC-DESIGN-v1 section 14, lists no history file); bind from X6ZC-FROZEN-v1 or x6zc-store/FREEZE.json if that round fixes one",
+    "frozen_marker": "FREEZE.json",
+    "present_on_2026-10-26": false,
+    "reader": "the generic rule of the hws reader without the hist/** requirement (API.md ND-C13)"
+   }
+  },
+  "never_read": ["payload.npz", "state.pt", "*.pt", "any path with a sealed component"],
+  "never_read_scope": "rows 2-9 (row 1 is C2's readers unchanged; API.md ND-C10, Q-1)",
+  "inventory_date": "2026-10-26",
+  "inventory": {
+   "agent-handoff": {
+    "decision": "READER",
+    "readers": ["c"]
+   },
+   "c1prime-store": {
+    "decision": "READER",
+    "readers": ["d"]
+   },
+   "c2-readout-store": {
+    "decision": "READER",
+    "readers": ["c2"],
+    "reason": "C2's own store in C2; rows 2-3: the five hist digest tables (sha256 bound) and a fail-closed name scan of superseded/"
+   },
+   "c2nd-store": {
+    "decision": "OWN",
+    "reason": "this lineage's store; removed from the run-time inventory; G0 (vi)-(vii) govern it; its fit/feas/val tables enter R'_ND (REG2)"
+   },
+   "chart-diag-store-0023": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "circular-audit-store": {"decision": "EXCLUSION", "reason": "one MetricRecords object (circ-audit-v1); no history arrays"},
+   "coord-scratch": {"decision": "EXCLUSION", "reason": "coordinator scripts, logs and JSONL; no array file"},
+   "d1-seam-oracle-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "d2a-store": {
+    "decision": "READER",
+    "readers": ["e"]
+   },
+   "docs-0024-store": {"decision": "EXCLUSION", "reason": "ledger, meter binding and logs; no histories"},
+   "hws-store": {
+    "decision": "READER_IF_PRESENT",
+    "readers": ["hws"],
+    "reason": "row 7; absent on 2026-10-26; if present at REG or REG2 it must hold FREEZE.json and be readable, else REGISTRY_INCOMPLETE"
+   },
+   "int-0021-store": {"decision": "EXCLUSION", "reason": "ledger, meter binding, suite XML and logs; no histories"},
+   "int-0022-store": {"decision": "EXCLUSION", "reason": "ledger, meter binding and logs; no histories"},
+   "k4b-store": {
+    "decision": "READER",
+    "readers": ["k"]
+   },
+   "tmp-0027": {
+    "decision": "EXCLUSION",
+    "reason": "synthetic test fixtures under pytest-of-pc2 (<= 1,024 rows; K4b R23 rule)"
+   },
+   "tmp-0028": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0029": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0031": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0032": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0033": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0034": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0035c": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0036": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0039": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0039c": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0041": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0042": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0042c": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0044": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0045": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0046": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "tmp-0046r": {"decision": "EXCLUSION", "reason": "job temporaries; empty"},
+   "tmp-0047": {"decision": "EXCLUSION", "reason": "job temporaries; 0 history-bearing files"},
+   "topo-pilot": {
+    "decision": "READER",
+    "readers": ["a"]
+   },
+   "topo-pilot-c1p": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-c2": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree (execution worktree); only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-c2nd": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-causal-planning-codex": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-circle-history-k4": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-d1": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-d2a": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-hws": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-int": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-k4b": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-reorg": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-verify": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x2a": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x4-history-feas": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x4b": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6s1": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6zc": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "x2a-stage0-oracle-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4-circle-history-feas-store-0015": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4-history-feas-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4-oracle-profile-store-0014": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4b-research-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4b2-research-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x4f-gates-research-store": {
+    "decision": "READER",
+    "readers": ["b"]
+   },
+   "x5g1-research-store": {
+    "decision": "READER",
+    "readers": ["f"]
+   },
+   "x5g1-techbench-store": {"decision": "EXCLUSION", "reason": "one tech_ledger.json; no array file"},
+   "x5g1t-fixture-run": {
+    "decision": "READER",
+    "readers": ["f"]
+   },
+   "x5g1t-research-store": {
+    "decision": "READER",
+    "readers": ["f"]
+   },
+   "x6-stage0-oracle-store": {
+    "decision": "EXCLUSION",
+    "reason": "run/model.npz holds float64 process arrays; gate records hold scalars; no stored history (its regenerated MC samples enter through X6-REG1, the base of reader x6)"
+   },
+   "x6-stage1-store": {
+    "decision": "READER",
+    "readers": ["x6"]
+   },
+   "x6zc-store": {
+    "decision": "READER_IF_PRESENT",
+    "readers": ["x6zc"],
+    "reason": "row 8; absent on 2026-10-26; same rule"
+   }
+  },
+  "deep_scan_exclude": ["agent-handoff", "c1prime-store", "d2a-store", "k4b-store", "x6-stage1-store", "c2-readout-store", "c2nd-store", "hws-store", "x6zc-store"],
+  "top_level_files": {
+   "decision": "EXCLUSION",
+   "files": ["CODEX_PROMPT_owner_transfer_2026-10-14.md", "conductor_prompts_2026-10-13.md", "x4f-gates-run.log", "x5g1t-fixture-run.log", "topo_pilot_research_review_20261014.zip", "x4-history-feas-readonly-audit-20261014T140309Z.zip"],
+   "reason": "not directories; text, or zip archives whose name lists hold no .npz/.npy/.pt member"
+  },
+  "reservation": {
+   "file": "RESERVATION_<stage>.json",
+   "stages": ["S1", "S5"],
+   "schema": "c2nd-reservation-v1",
+   "parallel_store_manifest": "FREEZE.json"
+  }
+ },
+ "namespace": {
+  "needle": "c2nd-v1",
+  "c2_needle": "c2_config.SCOPE (never written as a literal in this file)",
+  "parallel_needles_hex": ["6877732d7631"],
+  "x6zc_needle": "OPEN: the X6ZC scope string, if that round names one (X6ZC-FROZEN-v1); add it hex-encoded before the C2ND freeze",
+  "hygiene": "no C2ND file in the C2 scanned set (CONTRACT*.json, FREEZE*.json, STAGES*.jsonl, GATES*.jsonl anywhere; .json/.jsonl/.md/.txt/.py inside *-store*) contains C2's scope or a parallel round's scope; the protocol copy lives in tools/c2_nd only"
+ },
+ "modules": ["nd_config.py", "nd_data.py", "nd_registry.py", "nd_decoy.py", "nd_attrib.py", "nd_decide.py", "nd_driver.py", "nd_stage_pre.py", "nd_stage_val.py", "nd_stage_post.py", "nd_dry.py"],
+ "module_limits": {"lines_per_module": 400, "ceiling": 4400, "planned_total": 3150, "authority": "protocol 11.3"},
+ "tests": {
+  "dir": "tests/c2_nd",
+  "author_A": "test_a_*.py (<= 5 files, <= 400 lines each)",
+  "author_B": "test_b_*.py (<= 5 files, <= 400 lines each)",
+  "authorship": ["AUTHORSHIP_A.md", "AUTHORSHIP_B.md"]
+ },
+ "gate_order": ["IMPL", "AUTH-ADMIT", "G0", "PF", "H1", "REG", "H2", "H3", "H4", "H5", "ORACLE-FEAS", "M0", "M0-D", "C0c", "F1", "SUP", "L1", "R1", "N2", "SURVIVAL", "X1", "DX", "V3x", "V3y", "Y1", "V3x'", "Y1'", "V3x'-g1", "KC", "KC-R", "P1", "ACCEPT", "REG2", "T-PRE", "T-PRE-MODEL", "RESP-SPEC", "NUM", "ENDPOINT", "REPORT"],
+ "release_pass_fail_only": ["V3x'", "Y1'", "V3x'-g1", "KC", "KC-R"],
+ "chart": {
+  "contract": "tools/c1prime/CONTRACT.json",
+  "contract_sha256": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+  "cfg": "c1_config.chart_cfg() unchanged",
+  "c0v": "not rerun (charts frozen and validated by C2 S3; SUP covers new rows)"
+ },
+ "numerics": {
+  "unit_roundoff": "2**-53",
+  "decimal_rounding": "ROUND_HALF_EVEN",
+  "decimal_traps": ["Overflow", "Underflow", "Subnormal", "DivisionByZero", "InvalidOperation"],
+  "threads": 1
+ },
+ "resources": {
+  "cpu_policy": "measure-only, --max-cpu inf --max-wall inf",
+  "forecast_cpu_h": {
+   "A1_dry_run": {
+    "central": "0.40",
+    "range": ["0.25", "0.80"],
+    "valve": "1.20"
+   },
+   "S1": "0.20",
+   "S2": "0.05",
+   "S3": "0.07",
+   "S4": "0.18",
+   "S5_k1": "0.32",
+   "per_extra_block": "0.21",
+   "total_k1": "0.82",
+   "total_k2": "1.03",
+   "total_k4": "1.45"
+  },
+  "pause_3x_cumulative_cpu_h": {"S1": "0.60", "S2": "0.75", "S3": "0.96", "S4": "1.50", "S5": "2.46", "per_extra_block": "0.63"},
+  "owner_addendum_29": "the 3x pause points are coordinator review points while the combined HWS + X6ZC + C2ND measured CPU stays below 12 CPU-h",
+  "combined_cap_cpu_h": 12,
+  "disk_min_free_bytes": {"C:": 2000000000, "X:": 30000000000},
+  "threads": 1,
+  "ledger_schema": "x4-oracle-profile-ledger-v1"
+ }
+}

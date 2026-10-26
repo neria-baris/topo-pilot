@@ -82,19 +82,19 @@ def load_json(p: Path):
 # Snapshot refresh (read-only access to the stores; see module docstring)
 # =========================================================================================
 LEDGERS = [  # (label, store directory, note) -- cumulative_cpu_s of each cpu_ledger.json
-    ("X5 G1 (6 models)", "x5g1-research-store", "training"),
-    ("D-2a (2 models)", "d2a-store", "training"),
-    ("X6 stage 0", "x6-stage0-oracle-store", "oracle"),
-    ("X6 stage 1 (so far)", "x6-stage1-store", "eval"),
-    ("C1′ (S3, S4; incl. tests)", "c1prime-store", "oracle+model"),
-    ("K4b (E1, E2)", "k4b-store", "oracle+model"),
-    ("X2a stage 0", "x2a-stage0-oracle-store", "oracle"),
-    ("D-1", "d1-seam-oracle-store", "oracle"),
-    ("K4 (impl. + run)", "x4-circle-history-feas-store-0015", "oracle+model"),
-    ("X4-F gates", "x4f-gates-research-store", "model"),
-    ("Oracle profile (0014)", "x4-oracle-profile-store-0014", "oracle"),
-    ("K8 cohort", "x4-history-feas-store", "oracle"),
-    ("Chart diagnostic (0023)", "chart-diag-store-0023", "model"),
+    ("learning speed (6 models)", "x5g1-research-store", "training"),
+    ("orientability, trained (2 models)", "d2a-store", "training"),
+    ("crossing order, oracle", "x6-stage0-oracle-store", "oracle"),
+    ("crossing order, trained", "x6-stage1-store", "eval"),
+    ("counterfactual forcing (incl. tests)", "c1prime-store", "oracle+model"),
+    ("beyond 4 symbols", "k4b-store", "oracle+model"),
+    ("component identity, oracle", "x2a-stage0-oracle-store", "oracle"),
+    ("orientability, oracle", "d1-seam-oracle-store", "oracle"),
+    ("beyond 4 symbols, 1st attempt", "x4-circle-history-feas-store-0015", "oracle+model"),
+    ("erasing the coordinate (gates)", "x4f-gates-research-store", "model"),
+    ("oracle suffix profile", "x4-oracle-profile-store-0014", "oracle"),
+    ("beyond 8 symbols (cohort)", "x4-history-feas-store", "oracle"),
+    ("chart diagnostic", "chart-diag-store-0023", "model"),
 ]
 
 
@@ -160,36 +160,37 @@ def refresh() -> None:
 # =========================================================================================
 # (date, lane, label, outcome class, source)
 EVENTS = [
-    ("10-13", 0, "E0: G-A PASS", "pass", "state/DECISIONS.md D-017"),
-    ("10-13", 0, "E2: F1 supported (O)", "pass", "reports/E2/summary.md"),
-    ("10-13", 0, "E3: H3 uninformative;\nH3′ supported", "desc", "reports/E3/summary.md"),
-    ("10-13", 0, "E3: H4 rejected", "fail", "reports/E3/summary.md"),
-    ("10-13", 0, "E4: G-H FAIL\n(1 missing record)", "fail", "state/DECISIONS.md D-049"),
-    ("10-13", 3, "X4 Phase B\nINCONCLUSIVE", "inc", "state/DECISIONS.md D-052"),
-    ("10-14", 3, "X4 Phase B2\nscoped NO-GO", "fail", "state/DECISIONS.md D-054/055"),
+    ("10-13", 0, "pilot: measurement gate PASS", "pass", "state/DECISIONS.md D-017"),
+    ("10-13", 0, "pilot: F1 supported (O)", "pass", "reports/E2/summary.md"),
+    ("10-13", 0, "pilot: H3 uninformative;\nH3′ supported", "desc", "reports/E3/summary.md"),
+    ("10-13", 0, "pilot: H4 (timing) rejected", "fail", "reports/E3/summary.md"),
+    ("10-13", 0, "pilot: clean rerun FAIL\n(1 missing record)", "fail", "state/DECISIONS.md D-049"),
+    ("10-13", 3, "two-step distinctions\nINCONCLUSIVE", "inc", "state/DECISIONS.md D-052"),
+    ("10-14", 3, "two-step distinctions\n(fresh) scoped NO-GO", "fail", "state/DECISIONS.md D-054/055"),
     ("10-14", 1, "circular-baseline\naudit (descr.)", "desc", "state/DECISIONS.md D-057"),
-    ("10-14", 2, "X4-F\nINCONCLUSIVE", "inc", "state/DECISIONS.md D-063"),
-    ("10-14", 1, "K8 headroom\nFAIL", "fail", "x4-history-feas-store/GATE_REPORT.json"),
-    ("10-14", 4, "X5 G1: H5\nREJECTED", "fail", "state/DECISIONS.md D-073"),
-    ("10-14", 1, "oracle profile\n0014 (expl.)", "desc", "state/DECISIONS.md D-074"),
-    ("10-15", 1, "K4\nINCONCLUSIVE", "inc", "agent-handoff/jobs/0018/review.md"),
-    ("10-15", 3, "D-1\nPASS", "pass", "agent-handoff/jobs/0020/review.md"),
-    ("10-15", 1, "chart diag.\nGO", "pass", "agent-handoff/jobs/0023/review.md"),
-    ("10-15", 1, "X2a stage 0\nGO_P1_NONADD.", "pass", "agent-handoff/jobs/0025/review.md"),
-    ("10-15", 3, "D-2a\nNOT_LEARNED", "fail", "agent-handoff/jobs/0033/review.md"),
-    ("10-16", 2, "C1′ INCONCL.\n(M2-cal)", "inc", "agent-handoff/jobs/0044/review.md"),
-    ("10-17", 1, "K4b\nEXCLUSION", "excl", "agent-handoff/jobs/0057/review.md"),
-    ("10-18", 5, "X6 stage 0\nGO_X6_NATURAL", "pass", "agent-handoff/jobs/0066/review.md"),
-    ("10-20", 5, "X6S1 E0, E0b\nall PASS", "pass", "agent-handoff/jobs/0089, 0092 review.md"),
-    ("10-20", 5, "X6S1 E1:\nLEARN GO", "pass", "agent-handoff/jobs/0093/review.md"),
-    ("10-20", 5, "X6S1 E2:\n12 models admitted", "pass", "agent-handoff/jobs/0094/review.md"),
-    ("10-20", 5, "X6S1 E3 outcome\n(sealed)", "open", "X6S1-FROZEN-v1 §4.7, §12"),
+    ("10-14", 2, "erasing the coordinate\nINCONCLUSIVE", "inc", "state/DECISIONS.md D-063"),
+    ("10-14", 1, "beyond 8 symbols:\nheadroom FAIL", "fail", "x4-history-feas-store/GATE_REPORT.json"),
+    ("10-14", 4, "learning speed\nREJECTED", "fail", "state/DECISIONS.md D-073"),
+    ("10-14", 1, "oracle suffix\nprofile (expl.)", "desc", "state/DECISIONS.md D-074"),
+    ("10-15", 1, "beyond 4 symbols, 1st\nattempt INCONCLUSIVE", "inc", "agent-handoff/jobs/0018/review.md"),
+    ("10-15", 3, "orientability (oracle)\nPASS", "pass", "agent-handoff/jobs/0020/review.md"),
+    ("10-15", 1, "chart diagnostic\nGO", "pass", "agent-handoff/jobs/0023/review.md"),
+    ("10-15", 1, "component identity\n(oracle) GO", "pass", "agent-handoff/jobs/0025/review.md"),
+    ("10-15", 3, "orientability (trained)\nNOT_LEARNED", "fail", "agent-handoff/jobs/0033/review.md"),
+    ("10-16", 2, "counterfactual forcing\nINCONCLUSIVE", "inc", "agent-handoff/jobs/0044/review.md"),
+    ("10-17", 1, "beyond 4 symbols\nEXCLUSION", "excl", "agent-handoff/jobs/0057/review.md"),
+    ("10-18", 5, "crossing order (oracle)\nGO", "pass", "agent-handoff/jobs/0066/review.md"),
+    ("10-20", 5, "crossing order (trained):\npreparation PASS", "pass", "agent-handoff/jobs/0089, 0092 review.md"),
+    ("10-20", 5, "crossing order (trained):\nlearnability GO", "pass", "agent-handoff/jobs/0093/review.md"),
+    ("10-20", 5, "crossing order (trained):\n12 models admitted", "pass", "agent-handoff/jobs/0094/review.md"),
+    ("10-21", 5, "crossing order (trained):\nINCONCLUSIVE", "inc", "agent-handoff/jobs/0099/review.md"),
+    ("10-22", 2, "readout attribution:\nrunning (no data yet)", "open", "agent-handoff/jobs/0107/review.md"),
 ]
-LANE_HEAD = [chr(10).join(x) for x in (("Pilot", "E0–E4"), ("P1", "origin"), ("P2", "causal use"),
-             ("P3", "horizons"), ("X5", "learning", "speed"), ("X6", "non-", "abelian"))]
-LANES = ["Pilot E0–E4", "P1: origin of\ncircular structure", "P2: causal use",
-         "P3: necessity &\nhorizons", "Secondary: X5\n(learning speed)",
-         "Secondary: X6\n(non-abelian)"]
+LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
+             ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]
+LANES = ["Pilot", "P1: origin of\ncircular structure", "P2: causal use",
+         "P3: necessity &\nhorizons", "Secondary:\nlearning speed",
+         "Secondary: crossing\norder (non-abelian)"]
 
 
 def fig_timeline() -> None:
@@ -487,7 +488,7 @@ def fig_origin() -> None:
     ax.set_xlim(-0.012, 0.014)
     ax.set_ylim(-0.5, 3.6)
     ax.set_xlabel("$\\Delta_4$ = E[$u\\cdot r_4$], fresh test (bounds at 0.05/3)")
-    ax.set_title("(b) K4b fresh test: EXCLUSION", loc="left")
+    ax.set_title("(b) Beyond four symbols, fresh test: EXCLUSION", loc="left")
     ax.grid(axis="y", visible=False)
     save(fig, "fig08_origin_profile_k4b")
 
@@ -571,8 +572,9 @@ def fig_compute() -> None:
     st = load_json(DATA / "x6s1_status.json")
     fig, axs = plt.subplots(1, 2, figsize=(7.4, 3.2), gridspec_kw={"width_ratios": [1.3, 1]})
     ax = axs[0]
-    rows = [(c["label"], c["cumulative_cpu_s"] / 3600) for c in comp]
-    rows.append(("Pilot E0–E4: 17 trainings\n(wall-clock h, not CPU)",
+    shown = {store: label for label, store, _ in LEDGERS}  # descriptive labels by store
+    rows = [(shown.get(c["store"], c["label"]), c["cumulative_cpu_s"] / 3600) for c in comp]
+    rows.append(("Pilot: 17 trainings\n(wall-clock h, not CPU)",
                  sum(PILOT_WALL_S.values()) / 3600))
     rows.sort(key=lambda r: r[1])
     for i, (lab, h) in enumerate(rows):
@@ -612,7 +614,7 @@ def fig_compute() -> None:
     ax.set_yticklabels(labs)
     ax.invert_yaxis()
     ax.set_xlabel("measured CPU-hours per metered job")
-    ax.set_title(f"(b) X6S1 so far: {st['cumulative_cpu_s'] / 3600:.2f} CPU-h", loc="left")
+    ax.set_title(f"(b) Crossing order (trained): {st['cumulative_cpu_s'] / 3600:.2f} CPU-h", loc="left")
     ax.legend(handles=[Patch(color=GOOD, label="exit 0"), Patch(color=CRIT, label="stopped (INVALID)")],
               frameon=False, loc="lower right", fontsize=6.5)
     ax.grid(axis="y", visible=False)
@@ -755,7 +757,7 @@ def fig_x6s1_pipeline() -> None:
     ax.legend(handles=[Patch(facecolor=GOOD, label="PASS"),
                        Patch(facecolor=CRIT, label="INVALID (first attempt; corrected)"),
                        Patch(facecolor="white", edgecolor=INK2, ls="--", label="not yet run"),
-                       Line2D([], [], ls="", marker="$S$", color=INK, label="value sealed until E3")],
+                       Line2D([], [], ls="", marker="$S$", color=INK, label="value sealed until the decision stage")],
               loc="lower center", bbox_to_anchor=(0.5, -0.06), ncol=4, frameon=False, fontsize=6.5)
     ax.text(12.05, -0.45, f"snapshot {st['generated_utc']}", ha="right", fontsize=5.5, color=MUTED)
     save(fig, "fig13_x6s1_pipeline")
@@ -809,7 +811,7 @@ def fig_x6s1_results() -> None:
                         (("NA", "NA (non-abelian)"), ("AB", "AB control"), ("ZC", "ZC control"),
                          ("in", "init"))], loc="lower center", ncol=4, fontsize=7.5,
                frameon=False, bbox_to_anchor=(0.5, -0.02))
-    fig.suptitle(f"X6 stage 1 outcome: {r['outcome']} (rule {r['rule']})", fontsize=10)
+    fig.suptitle(f"Crossing order in trained models: {r['outcome']}", fontsize=10)
     fig.tight_layout(rect=(0, 0.03, 1, 0.97))
     save(fig, "fig14_x6s1_results")
 

@@ -351,6 +351,8 @@ def p1(ctx) -> dict:
     on = {"y_on": {j: y_on(ctx, j) for j in nc.MODELS}}
     putj(ctx, "stages/S4/gates.json", dict(on, y_on_D={j: y_on(ctx, j, "V3yD") for j in nc.MODELS}))
     ctx.data.setdefault("files", []).append("stages/S4/SEALED.json")
+    if ctx.dry:  # §10.1: a sealed/ read before the TEST outcome is refused
+        putj(ctx, "stages/S4/DRY_SEALED.json", sb.dry(ctx).sealed_check(ctx))
     return sb.lines(recs)
 
 

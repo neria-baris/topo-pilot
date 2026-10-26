@@ -62,9 +62,10 @@
 {\large Do small transformers trained on hidden-walk sequences represent, explain and use the
 topology of the latent world? (project topo-pilot)\par}
 \vspace{0.6cm}
-{\large\color{ink2} The questions, the methods, every experiment and stage to date (E0--E4,
-X4, X5, the oracle profile, K4, K4b, \Cp, D-1, D-2a, X2a, X6 stage 0 and X6 stage 1), the
-results including the negative and inconclusive ones, and what remains open\par}
+{\large\color{ink2} The questions, the methods, every experiment to date (the pilot, the
+studies of where the learned circle comes from and whether the model uses it, the
+prediction-horizon studies, and the crossing-order studies), the results including the negative
+and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
 {\large 21 October 2026\par}
 \vspace{0.3cm}
@@ -73,8 +74,8 @@ results including the negative and inconclusive ones, and what remains open\par}
 {\small\color{ink2}
 Compiled from the repository (\fpath{topo-pilot}, branch \fpath{main}), the coordination
 mailbox (\fpath{agent-handoff}) and the execution stores beside it. Every number is taken from
-a cited file. X6 stage~1 reached its preregistered decision on 21 October 2026; its decision-stage report
-is cited where its numbers are used.
+a cited file. The crossing-order study on trained models reached its preregistered decision on
+21 October 2026; its decision-stage report is cited where its numbers are used.
 This text changes no decision. Where it summarises, the cited reviews, reports and frozen
 protocols are authoritative.\par}
 \end{titlepage}
@@ -99,19 +100,21 @@ contrast, linear probes recover no more belief than the exact next-symbol law do
 clean-rerun gate failed on one missing historical record. More than a dozen follow-up
 studies, almost all preregistered, then went after the origin of the circular structure, its causal use, and the necessity
 of topological distinctions for longer prediction horizons. Most stopped at preregistered
-feasibility gates (INCONCLUSIVE) or returned scoped negatives; positive results are oracle
-facts about designed processes (D-1, X2a, X6 stage~0). In the most direct origin test (K4b),
+feasibility gates (INCONCLUSIVE) or returned scoped negatives; positive results are exact
+(oracle) facts about designed processes: an orientability distinction needed only two steps
+ahead, component identity that requires long history, and a process whose predictions depend on
+the order of loop crossings. In the most direct origin test,
 the covariance of the learned chart phase with the part of the belief that the last four
 observations do not determine was excluded from beyond a $\pm0.01$ margin in all three models;
-the registered margin, however, lies above what the oracle's own phase achieves. The current
-study, X6 stage~1, trains twelve models on a non-abelian ($S_3$) transport process to test
+the registered margin, however, lies above what the oracle's own phase achieves. The most
+recent completed study trains twelve models on a non-abelian ($S_3$) transport process to test
 whether trained transformers use the order of seam crossings beyond every commutative summary;
-all validity gates passed and the preregistered outcome is INCONCLUSIVE (rule~9). In every seed
+all validity gates passed and the preregistered outcome is INCONCLUSIVE. In every seed
 the trained models carry a small but clearly non-zero order-dependent component on natural
 histories (mean $\tilde\beta=0.061$, lower bound $0.0595$; commutative controls and
 initialisations near zero), an order of magnitude below the registered effect size of $0.25$,
-and they do not beat the designed W2 bar; one commutative control's designed placebo response
-prevents the registered ORDER\_NOT\_DETECTED verdict.
+and they do not beat the bar on the designed witness histories; one commutative control's
+response to a designed placebo prevents the registered ``order not detected'' verdict.
 No causal claim about any trained model has been established.
 \end{abstract}
 
@@ -150,9 +153,12 @@ symbol or a short context, and how much requires long history?)
 (Charter priority~2.) A third charter priority asks whether some topological distinctions
 are unnecessary for the next symbol but necessary for a longer future.
 \end{enumerate}
-Two secondary programmes extend the question: X5 (does geometry change learning speed?) and
-X6 (topology richer than $H_1$: non-abelian transport, where the \emph{order} in which loops
-are traversed matters).
+Two secondary programmes extend the question: does the world's geometry change learning speed,
+and can a model use topology richer than $H_1$, namely non-abelian transport, where the
+\emph{order} in which loops are traversed matters? Table~\ref{tab:key} in
+\S\ref{sec:programme} lists every study by a descriptive name; the short internal labels of the
+project records (for example K4b or X6S1) appear only there and in the appendix tables, as keys
+for readers who want to look up a record in the repository.
 
 The project is also an experiment in research process. I froze every decision rule before
 the data it decides existed. Each protocol was planned twice independently and reviewed
@@ -174,15 +180,17 @@ in every panel and replicate; the detected loop is the world's periodic circle (
 histories with the same last symbol, and the learned circle exceeds an optimistic last-symbol
 bound. But the last-symbol embedding already carries much of the contrast, the timing
 hypothesis was rejected, beliefs converge quickly with history length, and the most direct
-test (K4b) found the beyond-four-symbol covariance of the learned phase to be smaller than
+test found the beyond-four-symbol covariance of the learned phase to be smaller than
 0.01---a margin that the oracle's own phase also does not reach (\S\ref{sec:origin}).
-\item \textbf{RQ3, open.} Both intervention designs (X4-F and \Cp) stopped at preregistered
-feasibility gates before any causal endpoint was scored (\S\ref{sec:causal}).
-\item \textbf{Horizons and richer topology.} Exact oracle studies prove the existence of an
-orientability distinction that is invisible at horizon~1 and needed at horizon~2 (D-1), but a
-trained-model study of it failed its learnability gate (D-2a). An $S_3$ transport process was
-certified to carry order information beyond every commutative statistic (X6 stage~0); the
-trained follow-up (X6 stage~1) reached its preregistered decision, INCONCLUSIVE: a weak but
+\item \textbf{RQ3, open.} Both intervention designs, erasing the circular coordinate and
+forcing a counterfactual state, stopped at preregistered feasibility gates before any causal
+endpoint was scored (\S\ref{sec:causal}). A third design, which attributes the model's own
+response to natural counterfactual histories exactly to its circle code, is running.
+\item \textbf{Horizons and richer topology.} Exact oracle computations prove the existence of an
+orientability distinction that is invisible one step ahead and needed two steps ahead, but the
+trained-model study of it failed its learnability gate. An $S_3$ transport process was
+certified to carry order information beyond every commutative statistic; the
+trained follow-up reached its preregistered decision, INCONCLUSIVE: a weak but
 reproducible natural order sensitivity, far below the registered size (\S\ref{sec:horizons},
 \S\ref{sec:x6}, \S\ref{sec:x6s1results}).
 \end{enumerate}
@@ -191,27 +199,27 @@ reproducible natural order sensitivity, far below the registered size (\S\ref{se
 \caption{Headline outcomes. ``Label'' is the outcome vocabulary of the governing frozen
 protocol. Sources: \fpath{README.md}; \fpath{reports/E2--E4}; \fpath{state/DECISIONS.md};
 \fpath{agent-handoff/jobs/<job>/review.md}.}\label{tab:headline}
-\begin{tabular}{@{}L{0.27\linewidth}L{0.25\linewidth}L{0.40\linewidth}@{}}
+\begin{tabular}{@{}L{0.36\linewidth}L{0.19\linewidth}L{0.37\linewidth}@{}}
 \toprule
 Study & Label & One-line reading\\
 \midrule
-F1 (pilot, condition O) & SUPPORTED & $D>0$ in 24/24 panels; median above envelope in 3/3 seeds\\
-H2 (pilot) & sign-consistent & geometry tracks $\bel{32}$ over $\bel{1}$ in 48/48 panels\\
-H3 (F1 rule under P) & REJECTED, uninformative & even the exact belief fails under P\\
-\Hp\ (belief alignment, P) & SUPPORTED & $\rho_s$ 0.06--0.11 $\to$ 0.70, beats mixing baselines\\
-H4 (timing) & REJECTED & $S$ rises at step 50, history use at step 100\\
-G-H (clean rerun) & FAIL & 307/307 shared artifacts bitwise; one historical record missing\\
-X4 Phase B / B2 & INCONCLUSIVE / scoped NO-GO & no horizon-1/horizon-2 witnesses at registered resolution\\
-X4-F (causal) & INCONCLUSIVE & linear eraser leaves nonlinear information; no matched family\\
-X5 G1 & H5 REJECTED & paired delays 250/0/0 steps (kernel confounded with speed)\\
-K8 / K4 & headroom FAIL / INCONCLUSIVE & no room at $K=8$; chart gate failed at $K=4$\\
-D-1 (oracle) & PASS & orientability unnecessary at horizon 1, necessary at horizon 2\\
-X2a stage 0 (oracle) & GO\_P1\_NONADDITIVE & component identity needs long, non-additive history\\
-D-2a (trained) & NOT\_LEARNED & both gate models failed the band-edge criterion\\
-\Cp\ (causal) & INCONCLUSIVE/\allowbreak FAMILY\_UNMATCHED & intervention moved protected readouts\\
-K4b (origin) & EXCLUSION & $|\Delta_4|<0.01$ in 3/3 models; oracle comparator 0.0085\\
-X6 stage 0 (oracle) & GO\_X6\_NATURAL & order effect certified beyond Parikh statistics\\
-X6 stage 1 (trained) & INCONCLUSIVE (rule 9) & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
+Pilot: a hole in the cylinder only (rule F1, smooth emission O) & SUPPORTED & $D>0$ in 24/24 panels; median above envelope in 3/3 seeds\\
+Pilot: geometry follows the full-history belief (H2) & sign-consistent & geometry tracks $\bel{32}$ over $\bel{1}$ in 48/48 panels\\
+Pilot: the F1 rule under the permuted control P (H3) & REJECTED, uninformative & even the exact belief fails under P\\
+Pilot: belief alignment under P (\Hp) & SUPPORTED & $\rho_s$ 0.06--0.11 $\to$ 0.70, beats mixing baselines\\
+Pilot: the hole appears after history use (H4) & REJECTED & $S$ rises at step 50, history use at step 100\\
+Pilot: clean rerun from an empty store & FAIL & 307/307 shared artifacts bitwise; one historical record missing\\
+Two-step-ahead distinctions in the pilot world & INCONCLUSIVE / scoped NO-GO & no witnesses at the registered resolution\\
+Erasing the circular coordinate (causal) & INCONCLUSIVE & linear eraser leaves nonlinear information; no matched controls\\
+Geometry and learning speed & REJECTED & paired delays 250/0/0 steps (kernel confounded with speed)\\
+Origin beyond the last 8, then 4, symbols (first attempts) & headroom FAIL / INCONCLUSIVE & no room at $K=8$; chart gate failed at $K=4$\\
+Orientability needed only two steps ahead (oracle) & PASS & invisible one step ahead, needed two steps ahead\\
+Component identity beyond short windows (oracle) & GO & component identity needs long, non-additive history\\
+Orientability in trained models & NOT\_LEARNED & both gate models failed the learnability criterion\\
+Counterfactual state forcing (causal) & INCONCLUSIVE & intervention moved protected readouts; no matched controls\\
+Origin beyond the last four symbols & EXCLUSION & $|\Delta_4|<0.01$ in 3/3 models; oracle comparator 0.0085\\
+Crossing order in the oracle & GO & order effect certified beyond every commutative statistic\\
+Crossing order in trained models & INCONCLUSIVE & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -221,7 +229,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092 and 0093.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099 and 0107.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -276,8 +284,8 @@ lattice walkers, whose residual stream encodes running averages of steps
 \emph{Relation.} These results make two pitfalls concrete. Per-state averages import the world's
 structure from outside the model, and short-range symbol mixing alone can create global
 lattice structure. The pilot therefore forbids centroids, UMAP/t-SNE and $k$-NN geodesics as
-evidence, and adds two model-free mixing baselines (R2, previous-token mixing of a spectral
-symbol embedding; R3, context average), together with the trained last-symbol embedding (R1)
+evidence, and adds two model-free mixing baselines (previous-token mixing of a spectral
+symbol embedding, and the context average), together with the trained last-symbol embedding
 (\fpath{docs/RESEARCH_SUMMARY.md} \S7.2, \S7.6). The claim of the pilot is accordingly narrow:
 the general phenomenon ``periodic latent dynamics can shape periodic geometry'' has prior art
 \citep{jerpelea2026planting}; the pilot contributes a matched two-topology comparison with these
@@ -301,26 +309,27 @@ circuits \citep{chughtai2023toy}, that language models track permutation state w
 and parity-associative mechanisms \citep{li2025track}, and a recent preprint argues that standard
 transformers learn cosets of normal subgroups \citep{zhang2026cosets}.
 
-\emph{Relation.} X6 rests on this distinction. Its transport group $S_3$ is
+\emph{Relation.} The crossing-order studies rest on this distinction. Their transport group $S_3$ is
 non-abelian but solvable, so the composition task is expressible at fixed depth
 \citep{liu2023shortcuts}, so expressivity is not in doubt; the question is whether next-token training on a
 \emph{topologically generated, implicitly observed} group word yields order-sensitive predictions
-beyond commutative summaries. The commutative competitors of X6 form a ladder (parity, which is
+beyond commutative summaries. The commutative competitors form a ladder (parity, which is
 the quotient $S_3/A_3$; signed crossing counts, i.e.\ the $H_1$ class; unsigned counts; the full
 Parikh vector of directed crossings, the strongest commutative statistic of a word
 \citep{parikh1966context}). The coset account predicts either full order use or parity-level
 behaviour for $S_3$, whose normal subgroups are trivial, $A_3$ and $S_3$ \citep{zhang2026cosets};
-X6 records this as a named competing hypothesis, checked against the preprint's abstract only.
+the trained crossing-order protocol records this as a named competing hypothesis, checked
+against the preprint's abstract only.
 
 \subsection{Order sensitivity versus bag-of-words}
 Transformer language models use much less word-order information than their architecture
 permits: ablating order within long-range context changes little \citep{oconnor2021context}, and
 pretraining on shuffled text retains much downstream performance \citep{sinha2021masked}.
-\emph{Relation.} X6 makes the order question exact: on designed history families with identical
-token and directed-bigram multisets, the oracle's next-symbol law still differs, so any
-bag-of-tokens predictor has a certified excess loss (\S\ref{sec:x6s0}). On the natural
-distribution, however, bag mechanisms are \emph{not} excluded by the stage-1 design, and the
-protocol says so.
+\emph{Relation.} The crossing-order studies make the order question exact: on designed history
+families with identical token and directed-bigram multisets, the oracle's next-symbol law still
+differs, so any bag-of-tokens predictor has a certified excess loss (\S\ref{sec:x6s0}). On the
+natural distribution, however, bag mechanisms are \emph{not} excluded by the trained study's
+design, and the protocol says so.
 
 \subsection{Mechanistic interpretability, probing and interventions}
 Circuit-level analysis of transformers \citep{elhage2021framework}, induction heads
@@ -336,20 +345,21 @@ interventions, causal abstraction or activation patching
 \emph{Relation.} The pilot's probes compare decoding of $\bel{32}$ from activations against
 decoding from the exact next-symbol law and from a one-hot last symbol, which acts as a
 competitor-matched control in the spirit of \citet{hewitt2019control}. Both of the project's
-causal designs met the known failure modes of interventions: X4-F's targeted linear eraser
+causal designs met the known failure modes of interventions: the targeted linear eraser
 removed linear recoverability while a nonlinear (RBF) decoder still recovered the coordinate at
-0.998, and no random eraser matched its damage; \Cp's state-forcing direction shifted protected
-readouts that matched controls left nearly untouched (\S\ref{sec:causal}).
+0.998, and no random eraser matched its damage; the state-forcing direction shifted protected
+readouts that matched controls left nearly untouched (\S\ref{sec:causal}). The third design
+uses interchange of natural histories at a site where the readout is exactly linear.
 
 \subsection{Grokking and learning dynamics}
 Small transformers on algorithmic tasks can generalise long after fitting the training data
 \citep{power2022grokking}; mechanistic progress measures reveal a gradual circuit formation
 behind apparently sudden transitions \citep{nanda2023progress}, and different runs can implement
 different algorithms for the same modular task \citep{zhong2023clock}. \emph{Relation.} H4 asks a
-timing question of this kind (does topology appear only after history use begins?), and X6
-stage~1 trains for 30,000 updates because D-2a's 10,000-update recipe showed a flat dev loss
-from step 1,000 (\fpath{agent-handoff/jobs/0033/review.md}); I chose the longer run; it is
-not a tuned value.
+timing question of this kind (does topology appear only after history use begins?), and the
+trained crossing-order study trains for 30,000 updates because the orientability study's
+10,000-update recipe showed a flat dev loss from step 1,000; I chose the longer run; it is not a
+tuned value.
 
 \subsection{Topological data analysis of representations}
 Persistent homology tracks homology classes across a filtration
@@ -374,13 +384,13 @@ Gaussian floor as context, never as a threshold. Following \citet{hurlbert1984ps
 and \citet{malhotra2026tracking}, panels within a run are not treated as replicates; the decision
 uses sign consistency across three seeds and eight disjoint panels. The ground truth is computed
 from an explicit cubical complex, because the transition graph of the square has 121 independent
-cycles that are filled faces, not holes. X6 uses a local system (a flat $S_3$ connection with one
+cycles that are filled faces, not holes. The crossing-order process uses a local system (a flat $S_3$ connection with one
 non-flat face) in the \emph{generator}; nothing is claimed about the trained model being a sheaf.
 
 \subsection{Concentration bounds and resampling}
 The bootstrap \citep{efron1979bootstrap} is used throughout for descriptive intervals and
 several confirmatory rules, with stated nominal (not distribution-free) coverage. Where a
-finite-sample guarantee is needed, X6 stage~1 uses an empirical-Bernstein bound for a bounded
+finite-sample guarantee is needed, the trained crossing-order study uses an empirical-Bernstein bound for a bounded
 loss: variance-adaptive bounds of this type are due to \citet{audibert2009exploration} and
 \citet{maurer2009empirical}, in contrast to the variance-blind Hoeffding inequality
 \citep{hoeffding1963probability}; see \citet{boucheron2013concentration} for background. The
@@ -404,39 +414,65 @@ histories, sealed validation quantities, and bitwise rerun checks.
 
 The programme grew in three phases.
 
-\textbf{Phase 1: the pilot (E0--E4, 12--13 October 2026).} A staged plan (stages S0--S8, exit
-points E0--E4; \fpath{docs/STAGES.md}) built and validated the measurement pipeline on ground
-truth (E0), established that the exact oracle spaces separate the worlds (E1), decided F1 and
-H2 (E2), ran the permuted-emission control and the timing analysis (E3), and added controls,
-probes, circular coordinates, sensitivity analyses and a clean rerun (E4). Four human
-checkpoints (H1--H4) required owner approval. Seventeen models were trained on CPU.
+\textbf{Phase 1: the pilot (12--13 October 2026).} A staged plan (\fpath{docs/STAGES.md}) first
+validated the measurement pipeline on ground truth, then established that the exact oracle
+spaces separate the two worlds, then trained the models and decided the two main hypotheses,
+then ran the permuted-emission control and the timing analysis, and finally added controls,
+probes, circular coordinates, sensitivity analyses and a clean rerun. The plan names these
+five exit points E0--E4, and \S\ref{sec:pilot} follows them in order. Four checkpoints required
+my approval. Seventeen models were trained on CPU.
 
-\textbf{Phase 2: follow-ups on origin, use and horizons (13--17 October).} After E4 I
+\textbf{Phase 2: follow-ups on origin, use and horizons (13--17 October).} After the pilot I
 fixed the charter priorities quoted in \S\ref{sec:intro}. Each follow-up was a separate,
-frozen protocol: X4 Phase B/B2 (do horizon-2 distinctions exist that horizon 1 hides?), the
-circular-baseline audit, X4-F (causal use by erasure), the oracle profile (how fast does the
-circular posterior converge with suffix length?), the K8 cohort, K4 and K4b (does the learned
-phase covary with information beyond the last $K$ symbols?), C1 and \Cp\ (causal use by
-crossed counterfactual state forcing), D-1 and D-2a (an orientability distinction needed only
-at horizon 2: oracle proof, then trained models), X2a stage~0 (component identity beyond short
-windows), and X5 G1 (learning speed under two kernels).
+frozen protocol, listed in Table~\ref{tab:key}.
 
-\textbf{Phase 3: non-abelian topology (17 October--).} X6 stage~0 certified, by exact
-computation, that an $S_3$ transport process carries order information beyond every
-commutative statistic; X6 stage~1 (frozen 18 October, authorised 20 October) trains twelve
-models on it, on a free cloud GPU, with all evaluation local.
+\textbf{Phase 3: non-abelian topology (17 October--).} An exact computation certified that an
+$S_3$ transport process carries order information beyond every commutative statistic; a
+trained study (frozen 18 October, authorised 20 October) then trained twelve models on it, on
+a free cloud GPU, with all evaluation local. From 21 October a third causal-use design has been
+planned, frozen and implemented; its execution started on 22 October.
+
+\begin{table}[t]\centering\small
+\caption{Guide to the studies. Each study is named in this document by the descriptive name in
+the first column. The internal label is the key used in the project records and in
+Appendix~\ref{app:table}; readers do not need it.}\label{tab:key}
+\begin{tabular}{@{}L{0.36\linewidth}L{0.15\linewidth}L{0.33\linewidth}L{0.08\linewidth}@{}}
+\toprule
+Study & Internal label & Question & Section\\
+\midrule
+The pilot & E0--E4 & Does training on the cylinder, and not the square, produce a learned loop? & \ref{sec:pilot}\\
+Circular-baseline audit & --- & Does the learned circle exceed what the last symbol permits? & \ref{sec:origin}\\
+Oracle suffix profile & --- & How fast does the circular posterior converge with suffix length? & \ref{sec:origin}\\
+Origin beyond the last 8 symbols & K8 & Is there room to test history beyond 8 symbols? & \ref{sec:origin}\\
+Origin beyond the last 4 symbols, first attempt & K4 & Does the learned phase covary with history beyond 4 symbols? & \ref{sec:origin}\\
+Origin beyond the last 4 symbols & K4b & The same question with a repaired chart rule & \ref{sec:origin}\\
+Component identity beyond short windows (oracle) & X2a stage 0 & Is long, non-additive history ever required? & \ref{sec:origin}\\
+Erasing the circular coordinate & X4-F & Does prediction depend on the circular coordinate? & \ref{sec:causal}\\
+Counterfactual state forcing & C1, C1$'$ & Does the readout respond to a forced change of the phase? & \ref{sec:causal}\\
+Readout attribution of the circle code & C2 & How much of the model's response to history runs through its circle code? & \ref{sec:causal}\\
+Two-step-ahead distinctions in the pilot world & X4 Phase B, B2 & Do beliefs exist that agree one step ahead but not two? & \ref{sec:horizons}\\
+Orientability needed only two steps ahead (oracle) & D-1 & Can a topological distinction be invisible one step ahead? & \ref{sec:horizons}\\
+Orientability in trained models & D-2a & Do trained models carry that distinction? & \ref{sec:horizons}\\
+Geometry and learning speed & X5 G1 & Does a curved kernel slow learning? & \ref{sec:x5}\\
+Crossing order in the oracle & X6 stage 0 & Does a designed process carry order information? & \ref{sec:x6s0}\\
+Crossing order in trained models & X6 stage 1 (X6S1) & Do trained models use crossing order? & \ref{sec:x6s1}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \textbf{How the questions connect.} The pilot answered RQ1 positively under O and left RQ2 split
-between ``observation geometry'' and ``history'' (the R1 limitation). The origin studies sharpened
-RQ2 into a quantitative question about suffix lengths, which the oracle profile showed can only
-be asked at small $K$, because the circular posterior converges quickly. The causal studies
-went at RQ3 directly and stopped at feasibility gates; they showed that the circular
-information is encoded nonlinearly and that naive interventions are not specific. The horizon
-studies moved from a scoped negative on the pilot world (B2) to a constructed world where a
-topological distinction is provably needed only at horizon~2 (D-1); the trained version
-(D-2a) did not learn. X2a and X6 stage~0 asked, in the oracle, for processes where long and
-order-dependent history is genuinely required, so that a trained model's behaviour can
-discriminate between explanations. X6 stage~1 is the first trained test on such a process.
+between ``observation geometry'' and ``history'', because the last-symbol embedding alone
+already reproduces much of the contrast. The origin studies sharpened
+RQ2 into a quantitative question about suffix lengths, which the oracle suffix profile showed
+can only be asked for short suffixes, because the circular posterior converges quickly. The
+causal studies went at RQ3 directly and stopped at feasibility gates; they showed that the
+circular information is encoded nonlinearly and that naive interventions are not specific. The
+horizon studies moved from a scoped negative on the pilot world to a constructed world where a
+topological distinction is provably needed only two steps ahead; the trained version did not
+learn it. The component-identity and crossing-order oracle studies looked for processes where
+long and order-dependent history is genuinely required, so that a trained model's behaviour can
+discriminate between explanations. The crossing-order study on trained models is the first
+trained test on such a process.
 
 \fig{fig02_outcomes}{Outcome summary by research question: the number of recorded stage
 outcomes of Figure~\ref{fig:fig01_timeline} in each outcome class. Supported outcomes are
@@ -491,23 +527,24 @@ captures:
 \mathrm{regret}=\overline{\KL(q_C\,\|\,p_{\mathrm{model}})},\qquad
 \mathrm{captured}=1-\mathrm{regret}/\GC\ \ge\ 0.8 .
 \end{equation}
-Later studies reuse the same filter and sampler on other worlds: the $4\times3$ cylinder/M\"obius
-seam band with a hidden world bit (D-1, D-2a), two $12\times12$ tori with a Dehn-twisted emission
-(X2a), and a $4\times4$ torus carrying an $S_3$ local system (X6).
+Later studies reuse the same filter and sampler on other worlds: a $4\times3$ cylinder/M\"obius
+seam band with a hidden world bit (the orientability studies), two $12\times12$ tori with a
+Dehn-twisted emission (the component-identity study), and a $4\times4$ torus carrying an $S_3$
+local system (the crossing-order studies).
 
 \subsection{The transformer learners}
 Every trained model in the project uses the same pilot architecture
 (\fpath{docs/RESEARCH_SUMMARY.md} \S6): a decoder-only pre-LN transformer \citep{vaswani2017attention,xiong2020layer}
 with 4 blocks, $d=128$, 4 heads, MLP width 512, GELU, learned positional embeddings, final
-LayerNorm, untied unembedding, no dropout, about 0.8M parameters (802,304 in X6, with 18 output
-symbols). Training uses AdamW \citep{loshchilov2019adamw} with learning rate $10^{-3}$, 200 warm-up
+LayerNorm, untied unembedding, no dropout, about 0.8M parameters (802,304 in the crossing-order
+study, with 18 output symbols). Training uses AdamW \citep{loshchilov2019adamw} with learning rate $10^{-3}$, 200 warm-up
 steps, cosine decay, weight decay 0.1, clipping 1.0 and batch 128. The pilot trained for 5,000
 updates on 131,072 trajectories per replicate, with checkpoints at 0, 50, 100, 200, 400, 700,
 1,000, 1,500, 2,000, 3,000, 4,000 and 5,000; seeds 1729, 2718 and 3141 change data,
 initialisation, symbol names and batch order together. The primary hook is \fpath{resid_post_3},
-the residual stream after the last block and before the final LayerNorm. D-2a trained 10,000
-updates (with optional direct joint heads for 2- and 3-symbol futures), and X6 stage~1 trains
-30,000 updates on $2^{20}$ histories per model.
+the residual stream after the last block and before the final LayerNorm. The orientability
+study trained 10,000 updates (with optional direct joint heads for 2- and 3-symbol futures), and
+the crossing-order study 30,000 updates on $2^{20}$ histories per model.
 
 \subsection{Measurement: persistent homology and the F1 rule}
 For each replicate, eight disjoint panels of 512 test histories (one per trajectory, at position
@@ -531,75 +568,77 @@ $w_{32}$, decided by sign consistency; distances on beliefs are Hellinger. Pair 
 never significance tests.
 
 \subsection{Preregistration and frozen protocols}
-The pilot's hypotheses, measures and rules were committed in \fpath{PREREGISTRATION.md} at the end
-of stage S2, before any training; secondary analyses were registered blind in
-\fpath{PREREGISTRATION_X4.md}; every operational detail of S7/S8 was fixed before any S7 result
-(D-047, D-048). A change to a closed decision required the owner at checkpoint H3; the one such
-change was the addition of \Hp\ before any P result (D-037). Each follow-up protocol is frozen
-by SHA-256 in \fpath{agent-handoff/planning/responses/*-FROZEN-v1.md}; coordinator addenda may fix
-implementation footprint or bindings but may not change a gate, threshold, seed or decision rule.
+The pilot's hypotheses, measures and rules were committed in \fpath{PREREGISTRATION.md} after
+the oracle analysis and before any training; secondary analyses were registered blind in
+\fpath{PREREGISTRATION_X4.md}; every operational detail of the last pilot stage was fixed before
+any of its results existed. A change to a closed decision required my approval at a checkpoint;
+the one such change was the addition of the belief-alignment hypothesis \Hp\ before any result
+under P existed. Each follow-up protocol is frozen by its SHA-256 hash; coordinator addenda may
+fix implementation footprint or bindings but may not change a gate, threshold, seed or decision
+rule.
 Every frozen protocol contains a threshold register, an outcome taxonomy with a licensed
 sentence for each outcome, and an explicit ``never licensed'' list. Three-valued outcomes
 (PASS / INCONCLUSIVE / FAIL\_TECHNICAL, or the study-specific equivalents) prevent a technical
-failure from being read as a negative finding. Since \Cp, protocols also include a
-\emph{tolerance-attainability} table fixed before data (the ``R13 lesson'', \S\ref{sec:causal}),
-and since K4b an \emph{oracle-scale check} that compares margins with what the oracle itself
-achieves (the ``K4b lesson'', \S\ref{sec:origin}).
+failure from being read as a negative finding. Since the counterfactual-forcing study, protocols
+also include a \emph{tolerance-attainability} table fixed before data (\S\ref{sec:causal}),
+and since the four-symbol origin test an \emph{oracle-scale check} that compares margins with
+what the oracle itself achieves (\S\ref{sec:origin}).
 
 \subsection{Dual-track planning and independent review}
-From 14 October I had every planning task done twice, independently, under
-\fpath{agent-handoff/planning/PLANNING_PROTOCOL.md}: track~X by Codex in a read-only sandbox and
-track~L by a clean-context Claude subagent, with identical request files and base commits and
+From 14 October I had every planning task done twice, independently, under a written planning
+protocol: one track by Codex in a read-only sandbox and the other by a clean-context Claude
+subagent, with identical request files and base commits and
 no access to each other's output. The coordinator wrote a merge document recording agreements,
 conflicts, the decision on each and what each track caught that the other missed. A third,
 result-blind LLM review (Codex, or a clean-context Claude reviewer when Codex was unavailable) had to
 return its required changes, and a confirmation pass had to return CONFIRM\_FOR\_FREEZE before
-any freeze. For example, C1 went through 13, then 7, then 4 required corrections; X6S1 through
-14 required changes, including a verification of the empirical-Bernstein proof. The merge of
-the C1 tracks found that half of one track's ``random controls'' exactly reproduced the primary
-intervention (\fpath{agent-handoff/MORNING_REPORT_20261015_EN.md}).
+any freeze. For example, the counterfactual-forcing protocol went through 13, then 7, then 4
+required corrections; the trained crossing-order protocol through 14 required changes, including
+a verification of the empirical-Bernstein proof. The merge of the two counterfactual-forcing
+tracks found that half of one track's ``random controls'' exactly reproduced the primary
+intervention.
 
 \subsection{Independent test authors}
 For critical modules the tests are written from a written API contract (\fpath{API.md}) by a
 separate LLM author who never reads the implementation, and they are committed before the module enters the
-repository; X6S1 used two independent authors (A and B). Corrections to an author's tests are
+repository; the trained crossing-order study and the readout-attribution study used two
+independent authors. Corrections to an author's tests are
 made by the same author or a clean-context successor that reads only the governing ruling and
 the test, never module code. The implementer never writes the acceptance tests.
 The coordinator independently reruns the full test suite at each code freeze (e.g.\ 4,288 passed,
-0 failed, at the X6S1 freeze H; \fpath{agent-handoff/jobs/0086/review.md}).
+0 failed, at the code freeze of the trained crossing-order study).
 
 \subsection{Metered compute}
 Every scientific process runs under a meter that places the process tree in a Windows Job
 Object and records child CPU including exited descendants, meter CPU and a 0.1\,s tail
 allowance per run into a store-local \fpath{cpu_ledger.json}. CPU is \emph{measure-only} in the
 later studies (no CPU ceiling; a wall limit and memory limits guard against runaway jobs).
-D-2a revealed that its per-model supervisor had watched the virtual-environment launcher, not
-the training interpreter, so per-process CPU read about 0; the job-level meter was unaffected
-(\fpath{agent-handoff/jobs/0033/review.md}). A repair (commit \fpath{0c341aa}) moved accounting to the
-whole process tree, and X6S1's preflight includes a check (RUNTIME-ACCT) that a deliberately
-over-limit child is killed with its training interpreter.
+The orientability training study revealed that its per-model supervisor had watched the
+virtual-environment launcher, not the training interpreter, so per-process CPU read about 0;
+the job-level meter was unaffected. A repair moved accounting to the whole process tree, and
+the crossing-order study's preflight checks that a deliberately over-limit child is killed with
+its training interpreter.
 
 \subsection{Registries against data leakage}
 A fresh test set is fresh only if none of its histories were ever generated, read or used for
-fitting in an earlier stage. From \Cp\ onwards, each study builds an \emph{exposure registry}
-of digests of every history that any earlier lineage could have exposed (C1$'$ registry v1:
-3.36 million digests; K4b K-REG2: 6,024,521; X6S1: about 19.7 million new plus K-REG2), and
-separation gates refuse a fresh pool with any collision. Reservations
-(\fpath{agent-handoff/RES-K-REG1}, \fpath{RES-K-REG2}) forbid any other history-generating job while
-a registry window is open. Pytest scratch directories inside the project root once made a
-registry inventory incomplete; scratch now lives outside the root
-(\fpath{X:/Downloads/topo-scratch/<job>}).
+fitting in an earlier stage. From the counterfactual-forcing study onwards, each study builds an
+\emph{exposure registry} of digests of every history that any earlier study could have exposed
+(3.36 million digests for the counterfactual-forcing study; 6,024,521 for the four-symbol origin
+test; about 19.7 million new ones plus the latter for the crossing-order study), and separation
+gates refuse a fresh pool with any collision. Reservations forbid any other history-generating
+job while a registry is being built. Test scratch directories inside the project root once made
+a registry inventory incomplete; scratch now lives outside the root.
 
 \subsection{Sealing until the decision stage}
 Quantities that could influence later choices are written to \fpath{sealed/} with their hashes
-and released only at the decision stage or at a stop. In K4b the validation means stayed sealed
-until the fresh result was recorded; in X6 stage~1 the learnability-gate statistics, the
-learning curves and the headroom diagnostics are sealed, and the gate record releases only
-PASS/FAIL/UNRESOLVED and the decision (\fpath{X6S1-FROZEN-v1.md} \S4.7, \S9 S9, \S12 item 11). Any
-model prediction on test histories before E3 is defined as leakage. This document follows the
-same rule: no X6S1 model-performance number was reported in earlier versions, and the numbers
-in \S\ref{sec:x6s1results} come only from the decision-stage report written by E3.9 after
-unsealing (\fpath{x6-stage1-store/stages/E3z/report.json}).
+and released only at the decision stage or at a stop. In the four-symbol origin test the
+validation means stayed sealed until the fresh result was recorded; in the trained crossing-order
+study the learnability-gate statistics, the learning curves and the headroom diagnostics were
+sealed, and the gate record released only PASS/FAIL/UNRESOLVED and the decision. Any model
+prediction on test histories before the decision stage is defined as leakage. This document
+follows the same rule: no model-performance number from that study was reported in earlier
+versions, and the numbers in \S\ref{sec:x6s1results} come only from the decision-stage report
+written after unsealing.
 
 \subsection{The technical-correction rules}
 A documented implementation or environment defect may be corrected by a coordinator ruling
@@ -612,19 +651,19 @@ the owner. Environment reruns that reproduce identical values do not count as co
 final outcomes are never rerun.
 
 % =========================================================================================
-\section{The pilot: exits E0--E4}\label{sec:pilot}
+\section{The pilot}\label{sec:pilot}
 
-\subsection{E0: the pipeline recovers known topology}
+\subsection{Validating the measurement on known topology}
 \textbf{Question.} Does the persistent-homology measurement detect a surface hole, as opposed to
-graph cycles? \textbf{Design.} Gate G-A with thresholds fixed before S1 (D-016): correct Betti
+graph cycles? \textbf{Design.} A gate with thresholds fixed before any measurement: correct Betti
 numbers; $S_{\mathrm{cyl}}\ge0.20$ and $S_{\mathrm{sq}}<0.10$ on $d_M$; synthetic circle versus disk
 clouds ($M=512$ in $\mathbb{R}^{128}$) classified correctly in at least 19 of 20 draws.
 \textbf{Result.} $S$ = 0.299 (cylinder) and 0.037 (square) on $d_M$; 0.231 and 0.067 on the graph
 metric, although the transition graphs have 133 and 121 independent cycles; synthetic calibration
-20/20 (mean circle $S$ 0.460, maximum disk $S$ 0.045). G-A passed (\fpath{reports/E0/summary.md}).
+20/20 (mean circle $S$ 0.460, maximum disk $S$ 0.045). The gate passed (\fpath{reports/E0/summary.md}).
 \textbf{Lesson.} Graph cycles are not surface holes; the measurement targets the latter.
 
-\subsection{E1: the topological difference exists in principle}
+\subsection{The topological difference exists in the exact belief}
 \textbf{Question.} Do the model-free spaces separate the worlds? \textbf{Result.} Under O every space
 separates the worlds in 8/8 panels, at 3--8 times the Gaussian floor; the full belief separates
 most strongly (0.671 vs 0.321). Under P the exact belief barely separates (5/8 panels), and the
@@ -635,11 +674,11 @@ But H3 (``the structure survives under P'') became \emph{one-sided} before any P
 a failure under P would be expected even of the ideal predictor. This reading was registered
 before the P runs.
 
-\fig{fig03_e1_oracle_spaces}{E1: median $S$ over eight panels in the exact (unlearned) spaces,
+\fig{fig03_e1_oracle_spaces}{Oracle spaces, before any training: median $S$ over eight panels in the exact (unlearned) spaces,
 replicate 1729, $\sigma=1.25$, Hellinger distances; labels give the number of panels with
 $S_{\mathrm{cyl}}>S_{\mathrm{sq}}$. Source: \fpath{README.md}, section ``Earlier exit (E1, no model)''.}
 
-\subsection{E2: the main experiment under O}
+\subsection{The main experiment under the smooth emission O}
 \textbf{Design.} Six runs (2 worlds $\times$ 3 seeds) plus one N model, 13--16 CPU minutes each.
 \textbf{What ran.} All six passed the learning gate (captured 0.985--0.986 for the cylinder and
 0.992 for the square; regret 0.0018--0.0039 nats against $\GC$ = 0.2649 / 0.2360).
@@ -647,37 +686,40 @@ $S_{\mathrm{cyl}}>S_{\mathrm{sq}}$. Source: \fpath{README.md}, section ``Earlier
 0.176, 0.173 against $u_r$ = 0.097, 0.084, 0.084 (Figure~\ref{fig:fig04_f1_contrast}a). At
 initialisation the worlds are indistinguishable ($S\approx0.06$); after training the cylinder
 reaches $S\approx0.31$ and the square $\approx0.13$. H2 is sign-consistent: $\dgeom>0$ in 48/48
-panels over all pairs (medians 0.087--0.127), and among same-$w_{32}$ pairs, where R1 is constant,
-the activation distances track $\bel{32}$ with $\rho_s$ 0.935--0.979. The N model sits at
-$H(W)=\ln36$ (NLL 3.5835, half-width 0.0002): no leakage. In the secondary X4 analysis the F1 rule
-holds in all six views, including the readout-null component V4 (\fpath{reports/E2/summary.md}).
-\textbf{The R1 limitation.} The trained embedding of the last symbol alone reproduces 0.89, 0.47
-and 0.54 of the model's median $D$; the model-free mixing baselines R2 and R3 stay at
-$\le0.20$ (Figure~\ref{fig:fig04_f1_contrast}b). F1 alone therefore does not show that history
+panels over all pairs (medians 0.087--0.127), and among same-$w_{32}$ pairs, where the
+last-symbol embedding is constant, the activation distances track $\bel{32}$ with $\rho_s$
+0.935--0.979. The N model sits at $H(W)=\ln36$ (NLL 3.5835, half-width 0.0002): no leakage. In a
+secondary analysis over six views of the final state the F1 rule holds in all six, including
+the component the readout cannot see (\fpath{reports/E2/summary.md}).
+\textbf{The last-symbol limitation.} The trained embedding of the last symbol alone reproduces
+0.89, 0.47 and 0.54 of the model's median $D$; the model-free mixing baselines
+(previous-token mixing and the context average) stay at $\le0.20$
+(Figure~\ref{fig:fig04_f1_contrast}b). F1 alone therefore does not show that history
 integration produces the hole.
 
-\fig{fig04_f1_contrast}{(a) F1 contrast $D_{r,i}$ per panel under O (S4) and P (S5), with the
+\fig{fig04_f1_contrast}{(a) F1 contrast $D_{r,i}$ per panel under O and P, with the
 median and the noise envelope $u_r$ per replicate. (b) Fraction of the model's median $D$ that
 each representation baseline reproduces under O. Sources: \fpath{reports/he_summary/data/d.json}
 (per-panel $D$, extracted read-only from the artifact store by
 \fpath{reports/he_summary/extract_data.py}); $u_r$ and ratios from \fpath{reports/E2/summary.md} and
 \fpath{reports/E3/summary.md}.}
 
-\subsection{E3: the permuted control P and training dynamics}
+\subsection{The permuted control P and training dynamics}
 \textbf{P.} All six P runs passed the learning gate (captured 0.874--0.914). The F1 rule was
 \textbf{rejected} (median $D$ 0.021--0.034 below $u_r$ 0.066--0.089; 6/8 and 5/8 positive panels in
-two replicates), which, as preregistered, is uninformative. The R1 contrast collapses under P
-(replicate 1729: 0.140 $\to$ $-0.035$), so R1's O contrast is not static emission geometry; but
+two replicates), which, as preregistered, is uninformative. The last-symbol-embedding contrast
+collapses under P (replicate 1729: 0.140 $\to$ $-0.035$), so its contrast under O is not static
+emission geometry; but
 whether it reflects history integration or learned symbol-level transition statistics remains
 open. \textbf{\Hp\ supported}: under P, $\rho_s(d_A,d_{B32})$ rises from 0.06--0.11 at
-initialisation to 0.70 and exceeds $\max(\mathrm{R2},\mathrm{R3})=0.39$ in 48/48 run-panels.
+initialisation to 0.70 and exceeds the better mixing baseline (0.39) in 48/48 run-panels.
 \emph{Learned representations can align with Bayesian belief geometry even when the registered
 $H_1$ contrast is not supported}; an $H_1$ contrast is expected only when the belief geometry
 itself carries the hole.
 
 \textbf{H4 (timing).} With $t_h$ the first checkpoint where regret $<\GC$ and $t_s$ the first where
 $S_t-S_0>u_r$, all three cylinder runs under O had $t_h=100$ and $t_s=50$: \textbf{H4 rejected}
-(D-034; Figure~\ref{fig:fig05_dynamics}). The early rise of $S$ also occurs in the square, so it
+(Figure~\ref{fig:fig05_dynamics}). The early rise of $S$ also occurs in the square, so it
 is not cylinder-specific. Exploratorily, the cylinder--square contrast on panel~1 grows mainly
 between steps 100 and 200 (+0.02 to +0.07 at step 50, +0.18 to +0.23 at step 200); the rule was
 written on raw $S$, not on the contrast, so this observation does not alter the verdict. A layer
@@ -693,7 +735,7 @@ store, \fpath{reports/he_summary/extract_data.py}); $\GC$ from \fpath{reports/E2
 and its median (bar) for every hook, under O and P. Source: \fpath{reports/E3/summary.md},
 table ``Layer sweep''.}
 
-\subsection{E4: controls, probes, circular coordinates, sensitivity and the clean rerun}
+\subsection{Controls, probes, circular coordinates, sensitivity and a clean rerun}
 \textbf{Controls.} Two further N models sit at $\ln36$ within $2\times10^{-5}$. The U models learn the
 visible-state dynamics (captured$_U$ 0.999) and also form an $x$-aligned circle (agreement 0.601),
 showing that symbol-level transition statistics alone can produce such a circle.
@@ -711,21 +753,22 @@ reach 0.884--0.892 (initialisation 0.06--0.12; non-periodic $y$ 0.10; square 0.2
 belief 0.915; Figure~\ref{fig:fig07_probes_circular}b). This identifies \emph{which} loop F1
 measures; it is privileged-evaluation and descriptive. A later diagnostic noted that the
 construction can silently give off-giant-component points an arbitrary offset; at most one point
-per panel was affected (\fpath{agent-handoff/jobs/0023/report.md}).
+per panel was affected.
 \textbf{Sensitivity.} The verdicts are unchanged under the chord metric, dev-fitted PCA-32 and
 256-history panels, and \Hp\ also under $\sqrt{\mathrm{JSD}}$ (\fpath{reports/E4/summary.md} \S6).
-\textbf{Clean rerun (S8).} A fresh clone with an empty store reran S0--S3 including one full
-training: all 307 artifacts shared with the original store were reproduced bitwise, all six gate
-verdicts matched, store integrity (785/785) and report reproduction (9/9 byte-identical) passed.
-Gate G-H nevertheless \textbf{failed}: one timing record of the original run did not exist,
-because the code that writes it was added after that run. The verdict stands as FAIL (D-049).
+\textbf{Clean rerun.} A fresh clone with an empty store reran the first four pipeline stages,
+including one full training: all 307 artifacts shared with the original store were reproduced
+bitwise, all six gate verdicts matched, store integrity (785/785) and report reproduction (9/9
+byte-identical) passed. The clean-rerun gate nevertheless \textbf{failed}: one timing record of
+the original run did not exist, because the code that writes it was added after that run. The
+verdict stands as FAIL.
 
-\fig{fig07_probes_circular}{E4 (S7): (a) ridge-probe test $R^2$, median over six runs per
+\fig{fig07_probes_circular}{Probes and circular coordinates: (a) ridge-probe test $R^2$, median over six runs per
 condition with the range; (b) agreement of the circular coordinate with the latent $x$ angle,
 with the exact-belief ceiling. Source: \fpath{reports/E4/summary.md} \S4 and \S5.}
 
 \textbf{Lessons of the pilot.} (i) A matched control must be evaluated on the oracle before
-training; without E1, the H3 rejection would have been misread. (ii) Alignment with belief
+training; without the oracle analysis, the rejection under P would have been misread. (ii) Alignment with belief
 geometry and a topological contrast are different properties. (iii) The wording of a rule
 determines what it can find: H4 was written on $S$, the interesting timing was in the contrast.
 (iv) ``Bitwise reproducible'' and ``gate passed'' are not the same statement when a gate is
@@ -736,17 +779,17 @@ defined over a complete store.
 
 \subsection{Circular-baseline audit}
 \textbf{Question.} Does the learned circle exceed what the last symbol permits? \textbf{Design.}
-Descriptive, on the already-unblinded E4 panels (D-056). \textbf{Result.} In 24/24 panels the
-model's agreement (medians 0.884--0.892) exceeds an optimistic last-symbol bound (0.817) and the
-best available baseline (0.805): BEYOND\_SYMBOL\_AND\_MIXING (D-057). \textbf{Interpretation.} This
-closes the missing last-symbol comparison of E4 descriptively; it is not independent confirmation
-and not evidence of long-history origin.
+Descriptive, on the pilot's already-unblinded final test panels. \textbf{Result.} In 24/24
+panels the model's agreement (medians 0.884--0.892) exceeds an optimistic last-symbol bound
+(0.817) and the best available baseline (0.805): outcome BEYOND\_SYMBOL\_AND\_MIXING.
+\textbf{Interpretation.} This closes the pilot's missing last-symbol comparison descriptively;
+it is not independent confirmation and not evidence of long-history origin.
 
-\subsection{K8 history-origin cohort and the oracle profile}
-\textbf{K8.} A preregistered cohort aimed to compare the learned phase with information beyond
-the last 8 symbols. Its oracle headroom gate failed: $B_8=0.00925$ with a one-sided 95\% upper
-endpoint 0.00949, below the 0.01 margin (\fpath{x4-history-feas-store/GATE_REPORT.json}).
-\textbf{Oracle profile (job 0014, exploratory).} For the first-harmonic target
+\subsection{How fast the circular posterior converges, and an eight-symbol cohort}
+\textbf{Eight-symbol cohort.} A preregistered cohort aimed to compare the learned phase with
+information beyond the last 8 symbols. Its oracle headroom gate failed: $B_8=0.00925$ with a
+one-sided 95\% upper endpoint 0.00949, below the 0.01 margin.
+\textbf{Oracle suffix profile (exploratory).} For the first-harmonic target
 $m_K(h)=\E[c(z_{32})\mid w_{33-K:32}]$, $c(z)=(\cos2\pi x/12,\sin2\pi x/12)$,
 \begin{equation}
 B_K=\E\,\|m_{32}-m_K\|,\qquad K\in\{1,2,4,8,16,32\},
@@ -755,30 +798,31 @@ was 0.369, 0.198, 0.067, 0.0092, 0.00018 and 0 on calibration (validation nearly
 Figure~\ref{fig:fig08_origin_profile_k4b}a). All bootstrap intervals were recomputed independently.
 The coordinator's review corrected the worker's report: ``only at $K\le4$'' means only among
 evaluated grid points, and ``this world cannot support memory beyond about 8'' is not an accepted
-conclusion (\fpath{agent-handoff/jobs/0014/review.md}). \textbf{Lesson.} The circular posterior converges
+conclusion. \textbf{Lesson.} The circular posterior converges
 quickly with suffix length, so any history-origin experiment needs a small $K$.
 
 \fig{fig08_origin_profile_k4b}{(a) Oracle profile $B_K$ for the first-harmonic circular
-posterior (calibration and validation); $B_{32}=0$ by definition. (b) K4b fresh-test result: per
+posterior (calibration and validation); $B_{32}=0$ by definition. (b) Four-symbol origin test,
+fresh-test result: per
 model the nominal one-sided bounds $[L,U]$ (rank-84 and rank-4,917 bootstrap order statistics)
 and point estimate of $\Delta_4$, the EXCLUSION margin $\pm0.01$ (dotted), and the phase-only
 oracle comparator $\Delta_4^{orc}$. Sources: \fpath{agent-handoff/jobs/0014/review.md};
 \fpath{agent-handoff/jobs/0057/review.md}.}
 
-\subsection{K4: the frozen chart rule fails}
-\textbf{Design.} K4 moved to $K=4$ with a frozen circular-chart construction (the midpoint scale of
+\subsection{Origin beyond the last four symbols, first attempt: the frozen chart rule fails}
+\textbf{Design.} This study moved to $K=4$ with a frozen circular-chart construction (the midpoint scale of
 the longest $H_1$ bar, landmark graph, integer lift). \textbf{What ran.} Identity and the exact
 process/oracle gates passed (moment errors $\le8\times10^{-16}$). \textbf{Result.} INCONCLUSIVE at
 chart\_calibration: at the frozen scale the landmark graph of model 1729 was disconnected; by rule,
-no retry, no refit and no scoring (\fpath{agent-handoff/jobs/0018/review.md}). Because C1 depended on
-the K4 chart by its own freeze, C1 was blocked at the same moment. A geometry-only diagnostic
-(CHART-DIAG-FROZEN-v1) then found that the disconnection was a single isolated smallest-norm point
+no retry, no refit and no scoring. Because the first counterfactual-forcing protocol depended on
+this chart by its own freeze, it was blocked at the same moment. A frozen geometry-only
+diagnostic then found that the disconnection was a single isolated smallest-norm point
 and that the largest connected component held at least 99.8\% of landmarks in all six cases (GO).
 I approved a new rule (the largest component, gated at $\ge95\%$) for future studies
-only; K4 stayed closed.
+only; the first attempt stayed closed.
 
-\subsection{K4b: does the learned phase covary with information beyond four symbols?}
-\textbf{Question.} In the three E4 cylinder-O models (step 5000, \fpath{resid_post_3}, position 32), does
+\subsection{Origin beyond the last four symbols: does the learned phase covary with that information?}
+\textbf{Question.} In the pilot's three cylinder models under O (step 5000, \fpath{resid_post_3}, position 32), does
 the circular coordinate $u_j(h)=(\cos\varphi_j,\sin\varphi_j)$ built by the new chart rule on fresh
 landmarks covary with $r_4=m_{32}-m_4$, the part of the first-harmonic belief that the last four
 observations do not determine? \textbf{Estimand.} $\Delta_4=\E[u\cdot r_4]$. By the tower property
@@ -787,12 +831,12 @@ $[-\|r_4\|,+\|r_4\|]$, so $[\E X^-,\E X^+]$ is exactly the identified set over a
 \textbf{Decision.} Per model, SUPPORT iff $L(\E X^-)-F>0.01$; EXCLUDE iff $U(\E X^+)+F<0.01$ and
 $L(\E X^-)-F>-0.01$, with one-sided bounds at $0.05/3$ and a numerical margin
 $F=\max(B_{\mathrm{num}},10^{-9})+Z_{\mathrm{bound}}$ that makes the claim concern the documented
-law (\fpath{K4B-FROZEN-v1.md} \S5.5, \S8). \textbf{What ran.} E1 (calibration/validation) needed three
-technical corrections, each within the two-per-defect rule: a dictionary passed to
-\texttt{Fraction} (R25), a byte-order mark and a lazy sequence in the registry handoff (R26), and a
-missing reader for the store's own superseded digests (R28); no outcome-bearing quantity existed
-at any failure point. Validation then passed every gate (support 3072/3072 in every model, B4
-lower bound 0.0636) and fixed $N=3072$ test rows. \textbf{Result.} On the fresh test,
+law. \textbf{What ran.} The calibration and validation stage needed three technical
+corrections, each within the two-per-defect rule: a dictionary passed to \texttt{Fraction}, a
+byte-order mark and a lazy sequence in the registry handoff, and a missing reader for the
+store's own superseded digests; no outcome-bearing quantity existed at any failure point.
+Validation then passed every gate (support 3072/3072 in every model, oracle-headroom lower
+bound 0.0636) and fixed $N=3072$ test rows. \textbf{Result.} On the fresh test,
 \textbf{EXCLUDE in all three models}: $[L,U]$ = [0.00640, 0.00777], [0.00740, 0.00891],
 [0.00667, 0.00823] (Figure~\ref{fig:fig08_origin_profile_k4b}b). Suffix-only nulls were near zero,
 as designed.
@@ -803,89 +847,106 @@ comparator itself achieves only $\Delta_4^{orc}=0.00854$ [0.00791, 0.00933], bel
 the models reach 83--95\% of it; all lower bounds are positive. EXCLUSION therefore means only
 that the covariance is small in absolute terms; it does not show that the learned phase lacks
 beyond-four-symbol information.
-The protocol registered no ``positive but below margin'' status, so no stronger claim is licensed
-(\fpath{agent-handoff/jobs/0057/review.md}). \textbf{Lesson.} Margins must be checked against the
-oracle's own achievable value before freezing; X6S1 adopted this as its oracle-scale check.
+The protocol registered no ``positive but below margin'' status, so no stronger claim is licensed.
+\textbf{Lesson.} Margins must be checked against the oracle's own achievable value before
+freezing; the trained crossing-order and readout-attribution protocols adopted this as an
+oracle-scale check.
 
-\subsection{X2a stage 0: component identity beyond short windows (oracle only)}
+\subsection{Component identity beyond short windows (oracle only)}
 \textbf{Question.} In a process whose components have identical single-symbol statistics, how
 much component information is available from short windows versus the full history, and is the
 full history more than a product of block likelihoods? \textbf{Design.} Two $12\times12$ tori with
 the pilot walk; component B emits A's field pulled back by the Dehn twist
 $\phi(x,y)=(x+y \bmod 12,y)$; exact enumeration for windows up to 4 and $2^{20}$ validated Monte
-Carlo sequences otherwise (\fpath{X2A-FROZEN-v1.md}). \textbf{Result.} GO\_P1\_NONADDITIVE: the last
+Carlo sequences otherwise. \textbf{Result.} GO (full history needed, non-additively): the last
 symbol carries no component information; window information rises from 0.002 nats (2 symbols)
 to 0.067 (8) and 0.325 (full history); full-history Bayes accuracy exceeds the 8-window accuracy by
 0.191 (99\% interval [0.190, 0.192]) and a four-block likelihood product by 0.0567 [0.0562, 0.0571], above the 0.03
-threshold; a local-noise control was nearly additive (0.008) (\fpath{agent-handoff/jobs/0025/review.md}).
+threshold; a local-noise control was nearly additive (0.008).
 \textbf{Interpretation.} GO licenses \emph{designing} a trained stage only, about component identity
 rather than the circular coordinate; short windows are not blind. It motivated the search for a
-construction where short windows are \emph{exactly} blind, which became X6.
+construction where short windows are \emph{exactly} blind, which became the crossing-order
+studies (\S\ref{sec:x6}).
 
 % =========================================================================================
 \section{Causal use (charter priority 2)}\label{sec:causal}
 
-\subsection{X4-F: erasing the circular coordinate}
+\subsection{Erasing the circular coordinate}
 \textbf{Design.} Erase the direction carrying the coordinate $m_{32}$ at the final site and compare
 the damage to prediction with random erasers matched in damage. \textbf{Result.} The targeted eraser
 removed linear recoverability, but a fixed RBF decoder still recovered the coordinate at 0.998
 (LINEAR\_COMPONENT\_ONLY), and 0 of 10,000 random erasers fell inside the frozen damage-matching
-window (FAMILY\_UNMATCHED). The causal endpoint was not run: INCONCLUSIVE (D-063;
-\fpath{docs/proposals/X4F_COORDINATOR_REVIEW_ADDENDUM.md}). \textbf{Lesson.} The circular information is
+window (FAMILY\_UNMATCHED). The causal endpoint was not run: INCONCLUSIVE
+(\fpath{docs/proposals/X4F_COORDINATOR_REVIEW_ADDENDUM.md}). \textbf{Lesson.} The circular information is
 nonlinearly and redundantly encoded; linear erasure cannot test its use.
 
-\subsection{C1 and \Cp: crossed counterfactual state forcing}
-\textbf{Question.} At \fpath{resid_post_3}, position 32, of the E4 cylinder-O models, where only the
-final LayerNorm and unembedding follow, does the readout map a change of the learned chart phase
-into a change of the predictive distribution in the direction an exact counterfactual oracle
-prescribes? Because the unembedding has rank at most 35, the residual-to-output Jacobian has a
-kernel of dimension at least 93, so the test is not trivial (\fpath{C1-FROZEN-v1.md} \S1.1).
+\subsection{Counterfactual state forcing}
+\textbf{Question.} At \fpath{resid_post_3}, position 32, of the pilot's cylinder models under O,
+where only the final LayerNorm and unembedding follow, does the readout map a change of the
+learned chart phase into a change of the predictive distribution in the direction an exact
+counterfactual oracle prescribes? Because the unembedding has rank at most 35, the
+residual-to-output Jacobian has a kernel of dimension at least 93, so the test is not trivial.
 \textbf{Design.} Donors $H_\pm$ shift the oracle state along the circle; a Frisch--Waugh--Lovell
 phase map fitted on calibration rows defines the forced state; 32 Haar-random whitened 2-frames
 form the matched control family; gates bound damage to the decoded last symbol $\hat w$ and the
-decoded $y$-marginal (M2), support (M3), registration of the counterfactual, a positive control,
-and a numerical certificate of every oracle row. C1 was blocked by the K4 chart failure; \Cp\
-replaced the K4 dependency with the largest-component chart rule (\fpath{C1PRIME-DELTA-FROZEN-v1.md},
-33 anchored edits).
-\textbf{What ran.} The oracle stage S3 first failed technically (an integer/string key mismatch,
-ruling R11), then passed every gate on bit-identical histories: the exact belief predicts the
-forced-state effect with a one-sided lower bound of 1.12 nats of mean gain, far above 0.01
-(\fpath{agent-handoff/jobs/0041/review.md}). Calibration S4 first failed at M1, a ridge-equivalence
-self-check; ruling R13 relaxed that tolerance after S3 data existed, and the rerun reached M2.
-\textbf{Result.} INCONCLUSIVE/\allowbreak FAMILY\_UNMATCHED at M2-cal in all three models. The primary
+decoded $y$-marginal, support, registration of the counterfactual, a positive control,
+and a numerical certificate of every oracle row. The first version was blocked by the chart
+failure of \S\ref{sec:origin}; a revised version (\Cp) replaced that dependency with the
+largest-component chart rule (33 anchored edits).
+\textbf{What ran.} The oracle stage first failed technically (an integer/string key mismatch),
+then passed every gate on bit-identical histories: the exact belief predicts the forced-state
+effect with a one-sided lower bound of 1.12 nats of mean gain, far above 0.01. The calibration
+stage first failed at a ridge-equivalence self-check; a coordinator ruling relaxed that
+tolerance after oracle-stage data existed, and the rerun reached the damage gate.
+\textbf{Result.} INCONCLUSIVE (no matched control family) at the calibration damage gate in all
+three models. The primary
 intervention flipped the decoded $w_{32}$ on 29--39\% of rows ($D_w(T)$ = 0.311, 0.389, 0.286
 against a ceiling of 0.02) and shifted the decoded $y$-marginal by 2.5--3.2 times its calibration
 variance (ceiling 0.05), while the matched controls barely moved $\hat w$ ($<0.001$); only 6, 0 and 4
 of 32 frames matched, against 28 required. The coordinator found no implementation defect: the gap
-is a property of the fitted direction, not of displacement size (\fpath{agent-handoff/jobs/0044/review.md}).
-\textbf{Governance flag.} Ruling R13 changed a tolerance after data existed, without my prior approval, in tension with
-the protocol's own \S19.3 and \S19.8. The M2 values do not depend on R13 (charts and earlier gate
-values are bit-identical), and under a strict reading the outcome would have been FAIL\_TECHNICAL
-at M1, which licenses the same ``assay infeasible as specified''. I ratified R13 in
-addendum 10. Since then every protocol carries a tolerance-attainability table fixed before data.
+is a property of the fitted direction, not of displacement size.
+\textbf{Governance flag.} That ruling changed a tolerance after data existed, without my prior
+approval, in tension with the protocol's own rules. The damage-gate values do not depend on it
+(charts and earlier gate values are bit-identical), and under a strict reading the outcome would
+have been FAIL\_TECHNICAL at the self-check, which licenses the same ``assay infeasible as
+specified''. I ratified the ruling afterwards. Since then every protocol carries a
+tolerance-attainability table fixed before data.
 
 \textbf{Interpretation for RQ3.} No causal endpoint has been scored. Both failures tell me about
 the instruments and nothing about use: the information is nonlinear, and the obvious linear
-intervention direction is entangled with the last-symbol readout. A successor design (C2,
-constraining the intervention to preserve the last-symbol and $y$ readouts and the pre-LayerNorm
-mean and variance) was the first of two independent plans. After a comparison, a merge and three
-rounds of result-blind review, I froze the successor as C2-FROZEN-v1
-(\fpath{docs/proposals/planning/responses/C2-FROZEN-v1.md}). It asks whether the position-32 readout
-uses a registered circle code, by exact interchange of natural donor histories at the LayerNorm
-output and at layer~2; its implementation is under way.
+intervention direction is entangled with the last-symbol readout.
+
+\subsection{Readout attribution of the circle code (running)}
+\textbf{Question.} For natural pairs of histories that differ in their $x$-history but share the
+last symbol, what share of the model's own oracle-aligned change in next-symbol prediction is
+carried by an interchange of its registered circle code at the final position?
+\textbf{Design.} After the final LayerNorm the head is exactly linear, so this attribution is
+exact and needs no synthetic state passed through a nonlinearity, which removes the failure mode
+of the forcing study at its root. The code is the 6-dimensional span of the first three
+harmonics of the learned chart phase, made nuisance-excluding by a generalised-least-squares
+projector; a secondary family repeats the interchange at layer~2. The share $\psi$ is declared
+USED if its lower bound exceeds 0.50 and NOT\_USED if its upper bound is below 0.10 together with
+a bound on the total effect; claims need two of the three models.
+\textbf{Status.} After two independent plans, a comparison, a merge and three rounds of
+result-blind review I froze the protocol on 21 October, revised it once before any data existed
+(a translation placebo on the $y$-axis replaced a reflection that failed on this process), and
+authorised execution on 22 October. The first stage has not yet produced data: its first two
+attempts stopped at entry checks (a release-record field name, then a lineage check that refused
+the stage's own entry records); the second was corrected under the two-per-defect rule, and the
+stage is being rerun.
 
 % =========================================================================================
 \section{Necessity and prediction horizons (charter priority 3)}\label{sec:horizons}
 
-\subsection{X4 Phase B and B2: horizon-2 witnesses in the pilot world}
+\subsection{Two-step-ahead distinctions in the pilot world}
 \textbf{Question.} Are there reachable beliefs that agree in $F_1$ but differ in $F_2$, so that an
 ideal predictor must represent more than the next-symbol law? \textbf{Result.} The ambient tangent
 ranks allow it ($Q_1=35$, $Q_2=137$), but the four old pools were undercovered (49--66 eligible
-anchors against 128 required): INCONCLUSIVE (D-052). Four fresh pools (159/141/159/156 anchors)
+anchors against 128 required): INCONCLUSIVE. Four fresh pools (159/141/159/156 anchors)
 gave \textbf{zero} witnesses: a scoped NO-GO for the practical horizon gap at those thresholds and
-that resolution (D-054/055). It is not a universal sufficiency theorem; Phase C was not run.
+that resolution. It is not a universal sufficiency theorem; the planned next phase was not run.
 
-\subsection{D-1: an orientability distinction needed only at horizon 2 (oracle)}
+\subsection{An orientability distinction needed only two steps ahead (oracle)}
 \textbf{Design.} A minimal $4\times3$ seam band, cylinder or M\"obius, with a hidden world bit $Z$
 (prior $\tfrac12$); five tokens $\sigma_0,\sigma_2,\sigma_3,A,B$. Theorems in the frozen protocol:
 at every decision position ($w_t=\sigma_3$) the next-symbol law is identical in both worlds; at
@@ -894,11 +955,11 @@ enumeration of all 37,190 reachable histories up to length 8, a float oracle agr
 $4\times10^{-15}$, and an 80-digit Decimal reference on 650 histories. \textbf{Result.} PASS: every
 pre-stated exact value was reproduced, including the posterior-isolation pair (identical location
 beliefs, world posteriors $\tfrac14$ vs $\tfrac34$, identical next-symbol law, two-step TV
-$\tfrac1{100}$) (\fpath{agent-handoff/jobs/0020/review.md}). \textbf{Licence.} An existence result about an
+$\tfrac1{100}$). \textbf{Licence.} An existence result about an
 orientability distinction (equal Betti numbers) at reachable histories; nothing about the square
 and cylinder, $\beta_1$, or trained models.
 
-\subsection{D-2a: do trained transformers carry the world posterior?}
+\subsection{Orientability in trained models: do transformers carry the world posterior?}
 \textbf{Question.} At decision positions, how much of $\pi(h)=P(Z=M\mid h)$ is recoverable from the
 activation, and how does it depend on the training objective horizon $H\in\{1,2,3\}$ and on the
 in-context decision position $t\in\{16,28\}$? \textbf{Design.} 4 paired seeds $\times$ 3 horizons
@@ -911,35 +972,35 @@ $r_i=[\hat q(A)-\hat q(B)]-[Q_1^{1/2}(A)-Q_1^{1/2}(B)]$ by
 \kappa_1=\frac{\beta_1-\beta_1^{(8)}}{1-\beta_1^{(8)}},
 \end{equation}
 and learned$(m)$ requires $\beta_1\ge0.30$, its lower bound $\ge0.15$, $\kappa_1\ge0.20$ and a
-positive paired lower bound of $\beta_1-\beta_1^{(8)}$ (\fpath{D2A-FROZEN-v1.md} \S6).
-\textbf{Result.} NOT\_LEARNED: both H3 gate models are defined FAILs ($\beta_1$ 0.393 and 0.262,
-$\kappa_1$ $-0.890$ and $-1.301$), below the exact window-8 predictor's $\beta_1^{(8)}=0.679$
-(Figure~\ref{fig:fig09_d2a_gate}); the remaining 12 models were not trained
-(\fpath{agent-handoff/jobs/0033/review.md}). Dev cross-entropy was flat at about 1.12 from step 1,000.
+positive paired lower bound of $\beta_1-\beta_1^{(8)}$.
+\textbf{Result.} NOT\_LEARNED: both gate models (objective horizon $H=3$) are defined FAILs
+($\beta_1$ 0.393 and 0.262, $\kappa_1$ $-0.890$ and $-1.301$), below the exact window-8 predictor's
+$\beta_1^{(8)}=0.679$ (Figure~\ref{fig:fig09_d2a_gate}); the remaining 12 models were not
+trained. Dev cross-entropy was flat at about 1.12 from step 1,000.
 \textbf{Licence.} ``This recipe failed the registered learnability gate''---a scoped feasibility
 result that says nothing negative about representations.
 
-\fig[0.82\linewidth]{fig09_d2a_gate}{D-2a learnability gate on validation: (a) band-edge alignment
+\fig[0.82\linewidth]{fig09_d2a_gate}{Orientability in trained models, learnability gate on validation: (a) band-edge alignment
 $\beta_1$ with its 95\% lower bound against the threshold 0.30 and the exact window-8 value; (b)
 the normalised gain $\kappa_1$ against 0.20. Source: \fpath{agent-handoff/jobs/0033/review.md}.}
 
 % =========================================================================================
-\section{Secondary programme X5: geometry and learning speed}\label{sec:x5}
-\textbf{Question (H5).} Does a metric-coupled ``conductance'' kernel a020 (horizontal edge lengths
+\section{Secondary programme: geometry and learning speed}\label{sec:x5}
+\textbf{Question.} Does a metric-coupled ``conductance'' kernel (horizontal edge lengths
 $1+0.2\cos(2\pi y/11)$, conductances $1/l^2$) delay a grid-defined regret-threshold event by at
-least 250 steps relative to the flat kernel a0, in each of three paired models, on the same
+least 250 steps relative to the flat kernel, in each of three paired models, on the same
 cylinder and emission? \textbf{Design.} 27-point step grid; PASS when mean regret $\le5\%$ of $\GC$
 at three consecutive grid points; paired bootstrap bounds (\fpath{docs/proposals/X5_G1_TRAINING_PROTOCOL_V4.md}).
-\textbf{Result.} Paired delays 250, 0 and 0 steps; one pair's upper bound is 0 $<$ 250, so H5 is
-\textbf{REJECTED} on dev, with no censoring (\fpath{agent-handoff/jobs/0013/review.md}); X5 was closed
-without a fresh test (D-081). \textbf{Interpretation.} The kernel change is confounded with movement
+\textbf{Result.} Paired delays 250, 0 and 0 steps; one pair's upper bound is 0 $<$ 250, so the
+hypothesis is \textbf{REJECTED} on dev, with no censoring; the programme was closed without a
+fresh test. \textbf{Interpretation.} The kernel change is confounded with movement
 speed (the feasibility gate showed a large speed difference), so this is not a curvature null.
 A mean-rate-matched successor is a listed but unscheduled option.
 
 % =========================================================================================
-\section{Secondary programme X6: non-abelian transport}\label{sec:x6}
+\section{Secondary programme: non-abelian transport and crossing order}\label{sec:x6}
 
-\subsection{Stage 0: order-dependence certified in the oracle}\label{sec:x6s0}
+\subsection{Crossing order in the oracle: order-dependence certified}\label{sec:x6s0}
 \textbf{Construction.} A $4\times4$ torus with the pilot's lazy walk (each move and stay with
 probability $1/5$). Each vertex emits its own token except an anchor $a_\star=(2,2)$, which emits a
 cue revealing a hidden fibre value $x\in\{0,1,2\}$. Crossing the $x$-seam applies the transposition
@@ -947,52 +1008,55 @@ $a=(01)$ to the fibre, crossing the $y$-seam applies $b=(12)$; every face is fla
 face with a 3-cycle flux, and the fibre is redrawn at rate $\eta=1/50$ (a 48-state lift). For a
 segment $\gamma$ since the last cue, the holonomy is
 $\rho(\gamma)=g_{e_n}\circ\cdots\circ g_{e_1}$ and the Parikh vector
-$\kappa(\gamma)=(k_{x^+},k_{x^-},k_{y^+},k_{y^-})$ counts directed seam crossings. Abelian controls
-AB ($a$ on both seams) and ZC (3-cycles) have the same counts but no order effect
-(\fpath{X6-FROZEN-v1.md} \S2). \textbf{Outcome criteria.} O1: on designed witness families the
+$\kappa(\gamma)=(k_{x^+},k_{x^-},k_{y^+},k_{y^-})$ counts directed seam crossings. Two abelian
+control processes, AB ($a$ on both seams) and ZC (3-cycles), have the same counts but no order
+effect. \textbf{Outcome criteria.} (i) Designed: on designed witness families the
 cue-normalised TV between members of different holonomy is $\ge0.3$ while every commutative
-competitor is constant; O2: the natural excess log-loss of the best Parikh predictor
+competitor is constant; (ii) natural: the natural excess log-loss of the best Parikh predictor
 $G_{\mathrm{Parikh}}(32)\ge10^{-3}$ nats and the fraction $M_{32}$ of histories with row-KL $\ge0.01$
 is $\ge1/32$, both as certified enclosures.
-\textbf{What ran.} Two technical corrections (a key accumulation in G5, ruling X7; a sign error in
-a G6 estimator, ruling X8), each confirmed by the next run. \textbf{Result.} GO\_X6\_NATURAL
-(\fpath{agent-handoff/jobs/0066/review.md}): witness TVs 0.851, 0.695, 0.524; exact zeros in AB, ZC
+\textbf{What ran.} Two technical corrections (a key accumulation in one gate and a sign error in
+another gate's estimator), each confirmed by the next run. \textbf{Result.} GO, with the natural
+criterion met: witness TVs 0.851, 0.695, 0.524; exact zeros in AB, ZC
 and the controls; $G_{\mathrm{Parikh}}(32)=2.636\times10^{-3}$ nats (enclosure width $\sim10^{-60}$)
 and $M_{32}=0.0468$; no window of at most 7 symbols carries order information (exact). The ladder
 of commutative competitors is in Figure~\ref{fig:fig10_x6_stage0_ladder}.
 \textbf{Licence.} Oracle facts about one designed process; a GO supports designing a trained stage,
 it does not authorise training. A descriptive note: the literal product-of-experts comparator has a
-transport-independent component (TRIV $\approx$ 19 standard errors above zero), so it is not used as
-an order signal in stage~1.
+transport-independent component (about 19 standard errors above zero), so it is not used as
+an order signal in the trained study.
 
-\fig[0.86\linewidth]{fig10_x6_stage0_ladder}{X6 stage~0: exact natural excess log-loss at $t=32$ of
+\fig[0.86\linewidth]{fig10_x6_stage0_ladder}{Crossing order in the oracle: exact natural excess log-loss at $t=32$ of
 the Bayes predictor restricted to each commutative statistic (no transport; last 8 symbols;
 parity; $H_1$ class; unsigned counts; Parikh vector), the 8-block comparator $D_{blk}$, and the
-share $J_8$ of the gap carried by windows of at most 8 symbols; dashed line: the O2 threshold.
+share $J_8$ of the gap carried by windows of at most 8 symbols; dashed line: the natural-criterion threshold.
 Every function of a statistic has at least that statistic's excess. Source: the certified
 stage-0 values quoted in \fpath{agent-handoff/planning/responses/X6S1-FROZEN-v1.md} \S2.1, from
 \fpath{agent-handoff/jobs/0066/review.md} and \fpath{x6-stage0-oracle-store/run/report.json}.}
 
-\subsection{Stage 1: do trained transformers use crossing order?}\label{sec:x6s1}
-\textbf{Question.} Do small causal transformers trained only by next-symbol prediction on natural NA
-histories make predictions that depend on the order of seam crossings, beyond the Parikh
-statistic and its coarsenings? The claim is behavioural; no mechanism is claimed
-(\fpath{X6S1-FROZEN-v1.md} \S1).
+\subsection{Crossing order in trained models: do transformers use it?}\label{sec:x6s1}
+\textbf{Question.} Do small causal transformers trained only by next-symbol prediction on natural
+histories of the non-abelian process (arm NA) make predictions that depend on the order of seam
+crossings, beyond the Parikh statistic and its coarsenings? The claim is behavioural; no
+mechanism is claimed.
 
 \textbf{Design} (Figure~\ref{fig:fig12_x6s1_design}). Arms NA, AB and ZC $\times$ seeds 1--4: 12
 models, each trained for 30,000 updates on $2^{20}$ fresh histories with the pilot architecture and
 recipe; for each seed every arm starts from the same initial state and uses the same batch-index
 sequence. Training runs on the Colab free-tier GPU in resumable 1,000-update chunks (model,
 optimiser, scheduler and RNG state); every outcome-bearing evaluation runs locally on CPU in
-float64 from hashed weights. Waves: C0 (smoke), C1 (NA-s1, NA-s2, ZC-s1), C2 (the other nine,
-released only after the learnability gate says GO). Local stages: E0 (pools, registries, oracle
-and scoring checks, bundles), E0b (smoke ingest), E1 (ingest C1, learnability gate, learning
-curves), E2 (ingest C2, learning curves), E3 (evaluation, decision, unsealing).
+float64 from hashed weights. Training came in three waves: a smoke wave, a first wave (NA-s1,
+NA-s2, ZC-s1) and a second wave (the other nine, released only after the learnability gate said
+GO). The local stages prepared pools, registries, oracle and scoring checks and the training
+bundles; ingested each wave with integrity checks, the learnability gate and learning curves;
+and finally evaluated, decided and unsealed.
 
-\fig{fig12_x6s1_design}{X6 stage~1 design: three arms $\times$ four seeds sharing four initial states,
-two training waves, and the alternation of local and cloud stages that I ran. Source:
-\fpath{agent-handoff/planning/responses/X6S1-FROZEN-v1.md} \S4.1--\S4.4, \S5, \S8;
-wave parameters (C0: 200 steps, $K=100$; C1 and C2: 30,000 steps, $K=1{,}000$) from
+\fig{fig12_x6s1_design}{Crossing order in trained models, design: three arms $\times$ four seeds
+sharing four initial states, two training waves, and the alternation of local and cloud stages
+that I ran. The figure uses the protocol's stage labels (C0--C2 for the smoke, first and second
+training waves; E0--E3 for the local stages). Source: the frozen protocol \S4.1--\S4.4, \S5, \S8;
+wave parameters (smoke wave: 200 steps, $K=100$; first and second waves: 30,000 steps,
+$K=1{,}000$) from
 \fpath{x6-stage1-store/stages/E0/frozen_C*.json} (bundle id, steps and $K$ only), via
 \fpath{docs/research_summary/data/x6s1_status.json}.}
 
@@ -1020,8 +1084,8 @@ proves
 \begin{equation}
 P\Big(\mu\le\bar X+\sigma_{\mathrm{up}}\sqrt{2L/n}+\frac{BL}{3n}\Big)\ge1-\delta
 \end{equation}
-from a one-sided Bernstein moment bound and a paired U-statistic for the variance
-(\fpath{X6S1-FROZEN-v1.md} \S7.3), and computes the bound outward in exact and directed-rounding
+from a one-sided Bernstein moment bound and a paired U-statistic for the variance,
+and computes the bound outward in exact and directed-rounding
 arithmetic. \textbf{SHARP}(s) holds iff the bound at $\delta=0.025/4$ is below the stage-0 lower
 endpoint of $G_{\mathrm{Parikh}}(32)$: then model NA-$s$ is not a function of the Parikh statistic or
 any coarser one. A secondary TARGET requires recovering 25\% of that gap. Designed criteria use
@@ -1033,51 +1097,53 @@ validation rows (bootstrap upper bound at 97.5\%). Passing means ``better than e
 the last 8 symbols''; it does not mean order use. GO iff NA-s1 or NA-s2 passes. Only statuses and
 the decision are released; the statistics are sealed.
 
-\textbf{What has run} (to 20 October 2026, $\sim$13:35Z; Figure~\ref{fig:fig13_x6s1_pipeline}).
+\textbf{What ran} (Figure~\ref{fig:fig13_x6s1_pipeline}).
 \begin{itemize}
-\item \emph{Implementation} (jobs 0069--0086): API contract and two independent test authors, eleven
-modules within line limits set by coordinator addenda 2--5 (footprint only; no scientific
-change), a coordinator full suite of 4,288 passed at code freeze H.
-\item \emph{Authorisation}: my addendum 17 authorised the frozen protocol (SHA-256 2A909ACE\ldots),
-a local budget of about 43 CPU-h (forecast range 23--70), and cloud use of about 1--4 GPU-h.
-\item \emph{E0, attempt 1} (job 0087): AUTH-ADMIT PASS, S0 INVALID; nothing scientific ran. Two
-defects: a constant path one level short of its value (D-0087-1) and S0's lineage check refusing
-the AUTH-ADMIT record written by the same run (D-0087-2). Corrected in job 0088.
-\item \emph{E0, attempt 2} (job 0089): all ten gates PASS (AUTH-ADMIT, S0, PF, G0-ORC, SCORE, G0-POS,
-REG, G0-FEAS, HEADROOM-D, CLOUD-PREP), then AUTH-VERIFY PASS; bundles C0, C1, C2 built.
-\item \emph{C0 and E0b} (jobs 0090--0092): I ran the smoke in Colab. The first ingest was
-INVALID at CLOUD-PROV because a hash pasted with a line break produced a cell that did not compile
-but was still recorded; the provenance check treated every recorded source as executed (D-0090-1).
-The fix skips sources that do not compile, which cannot have executed anything; the second
-ingest on the same snapshot PASSED. An open defect (D-0090-2) records that no bundle re-issue
-mechanism exists for the retrain route; it is not needed unless a retrain occurs.
-\item \emph{C1 and E1} (job 0093): INGEST-C1 PASS (all four integrity gates for the three models),
-\textbf{LEARN PASS with the released decision GO (NA-s1 PASS, NA-s2 PASS)}, LC-1 PASS.
-\item \emph{C2 and E2} (job 0094): I ran C2; S0, INGEST-C2 (all four integrity gates for
-the nine C2 models) and LC-2 PASSED, so all 12 models are admitted. The coordinator accepted E2 and
-scheduled the E3.A waves and then E3z.
-\item \emph{E3} (jobs 0095, 0097--0099): the first evaluation attempt (0095) was INVALID because
-every model chunk exceeded the 3~GiB per-process supervisor limit (S6; defect D-0095-1, a
-full-pool vectorised forward peaking at about 3.0~GiB against a forecast of 1.2~GB). The
-correction evaluates in row blocks of $2^{16}$ with byte-identical outputs (peak 1.11~GiB) and
-was re-frozen; the regenerated initialisation chunk was bit-identical. E3.A then completed all
-16 predictor chunks (0097, 0098), and E3z (0099) passed every step E3.2--E3.9 and unsealed.
+\item \emph{Implementation}: an API contract and two independent test authors, eleven
+modules within line limits set by coordinator addenda (footprint only; no scientific
+change), and a coordinator full suite of 4,288 passed at the code freeze.
+\item \emph{Authorisation}: I authorised the frozen protocol by its SHA-256 hash, a local budget
+of about 43 CPU-h (forecast range 23--70), and cloud use of about 1--4 GPU-h.
+\item \emph{Preparation, attempt 1}: stopped at its first lineage check; nothing scientific ran.
+Two defects: a constant path one level short of its value, and a lineage check that refused the
+authorisation record written by the same run. Both were corrected.
+\item \emph{Preparation, attempt 2}: all ten gates passed, from authorisation through pools,
+registries, oracle and scoring checks to the cloud bundles, and the bundles were built.
+\item \emph{Smoke wave}: I ran it in Colab. The first ingest was INVALID at the provenance check,
+because a hash pasted with a line break produced a notebook cell that did not compile but was
+still recorded, and the check treated every recorded source as executed. The fix skips sources
+that do not compile, which cannot have executed anything; the second ingest on the same
+snapshot passed. One recorded open defect is that no bundle re-issue mechanism exists for a
+retrain; it is not needed unless a retrain occurs.
+\item \emph{First wave}: the three models passed all four integrity checks, and the learnability
+gate \textbf{passed with the released decision GO} (both NA pilot models passed).
+\item \emph{Second wave}: I ran it; the nine models passed all four integrity checks, so all 12
+models were admitted.
+\item \emph{Evaluation and decision}: the first evaluation attempt was INVALID because every model
+chunk exceeded the 3~GiB per-process memory limit (a full-pool vectorised forward peaked at about
+3.0~GiB against a forecast of 1.2~GB). The correction evaluates in row blocks of $2^{16}$ with
+byte-identical outputs (peak 1.11~GiB) and was re-frozen; the regenerated initialisation chunk
+was bit-identical. All 16 predictor chunks then completed, and the decision stage passed every
+step and unsealed.
 \end{itemize}
 Total local compute was 79.55 CPU-h, about 21 CPU-h of it in the failed attempt
 (Figure~\ref{fig:fig11_compute}b); I extended the budget beyond the approved 23--70
-CPU-h (my addendum 18). Cloud training took one Colab session per wave, about 10~s (C0),
-24~min (C1) and 69~min (C2) by the session records.
+CPU-h. Cloud training took one Colab session per wave, about 10~s (smoke), 24~min (first wave)
+and 69~min (second wave) by the session records.
 
-\subsubsection{Results (decision stage E3z)}\label{sec:x6s1results}
-All numbers in this subsection are from \fpath{x6-stage1-store/stages/E3z/report.json}
-(sha256 \texttt{90be2081\ldots}), written by E3.9 after unsealing, and the coordinator's review
-\fpath{agent-handoff/jobs/0099/review.md}. Figure~\ref{fig:fig14_x6s1_results} summarises them.
+\subsubsection{Results at the decision stage}\label{sec:x6s1results}
+All numbers in this subsection are from the decision-stage report written after unsealing
+(\fpath{x6-stage1-store/stages/E3z/report.json}, sha256 \texttt{90be2081\ldots}) and the
+coordinator's review of it. Figure~\ref{fig:fig14_x6s1_results} summarises them.
 
-\textbf{Outcome.} \textbf{INCONCLUSIVE} by rule~9 of \S7.9, with licence ``descriptive only'' and
-qualifiers CONTROL\_LIMITED(designed, s1), CONTROLS\_LEARNED(AB 4/4, ZC 4/4),
-LADDER(NA-s1..s4: parity), DESIGNED\_UNRESOLVED(1) and LENGTH\_PROFILE. Every validity gate passed,
-all 12 models were admitted and learned (LEARN GO; LEARN-TEST PASS for all twelve), the natural
-placebos were clean, the tail diagnostic passed and precision was adequate in every seed.
+\textbf{Outcome.} \textbf{INCONCLUSIVE} under the protocol's ninth decision rule, with the licence
+``descriptive only''. The registered qualifiers record that one control limited the designed
+comparison in seed~1, that both control arms learned in all four seeds, that the finest
+commutative statistic the NA models beat is parity, that one designed criterion is unresolved,
+and that a length profile is reported. Every validity gate passed, all 12 models were admitted
+and learned (the learnability gate said GO, and all twelve passed the test-time learnability
+check), the natural placebos were clean, the tail diagnostic passed and precision was adequate
+in every seed.
 
 \textbf{Natural order use.} On the informative natural partner pairs at $t=32$ (the oracle has
 $\beta_{\mathrm{ord}}=1$, the Parikh-class predictor $0$), the four NA models reach
@@ -1085,21 +1151,23 @@ $\beta_{\mathrm{ord}}=0.047,\ 0.090,\ 0.072,\ 0.049$, the AB controls $0.001$--$
 controls $0.001$--$0.008$ and the initialisations about $0$. The per-seed contrasts are
 $C_s=0.044,\ 0.088,\ 0.064,\ 0.045$, each with a 95\% interval far from zero, and the mean is
 $\tilde\beta=0.061$ with $\mathrm{LB}_{0.975}=0.0595$. The registered C-ORD claim requires a mean of
-at least $0.25$, so C-ORD is \emph{not supported}; lowN ($\tilde\beta(s)<0.10$) holds in all four
-seeds and orderN in none.
+at least $0.25$, so C-ORD is \emph{not supported}; every seed falls in the registered ``low''
+band ($\tilde\beta(s)<0.10$) and none in the ``order'' band.
 
-\textbf{Designed order use.} On the designed W2 witnesses the NA models' regret is
+\textbf{Designed order use.} On the designed witness family W2 the NA models' regret is
 $R_{W2}\approx0.080$--$0.087$, above the bar $(3/4)\Delta_{W2}^{\mathrm{lo}}\approx0.0458$, so
-ordD fails in seeds 2--4. Seed~1 is unresolved because the commutative control ZC-s1 responded
+the designed order criterion fails in seeds 2--4. Seed~1 is unresolved because the commutative
+control ZC-s1 responded
 to the designed W2 contrast (placebo $\beta_{W2}=0.209$; other controls $\le0.006$ in magnitude).
 Descriptively, the ZC controls reach a W2 regret similar to the NA models' ($0.077$--$0.094$)
 while the AB controls stay near $0.20$, so the designed regret does not separate order-sensitive
 from commutative models. SHARP and TARGET were certified for no NA model, and the finest
 commutative ladder rung the NA models beat is parity.
 
-\textbf{Why rule 9.} Rule~8 (ORDER\_NOT\_DETECTED) needs all four designed flags resolved. Every
-other condition of rule~8 holds; the single designed placebo failure of ZC-s1 leaves ordD(s1)
-unresolved, and the rules are applied as registered, without reclassification.
+\textbf{Why INCONCLUSIVE.} The ``order not detected'' rule needs the designed criterion resolved
+in all four seeds. Every other condition of that rule holds; the single designed placebo failure
+of ZC-s1 leaves seed~1 unresolved, and the rules are applied as registered, without
+reclassification.
 
 \textbf{Reading.} Within the licence: next-token training on natural non-abelian transport
 histories produced a weak but reproducible sensitivity to the order of seam crossings,
@@ -1108,7 +1176,7 @@ oracle's order information. It falls far short of the order use the study was de
 detect, and the designed probes do not show it. Whether more training, larger models or a
 different curriculum would close the gap is a new question.
 
-\fig[0.98\linewidth]{fig14_x6s1_results}{X6 stage~1 decision (E3z). (a) Natural
+\fig[0.98\linewidth]{fig14_x6s1_results}{Crossing order in trained models, decision stage. (a) Natural
 $\beta_{\mathrm{ord}}$ per predictor on the informative $t=32$ partner pairs. (b) Per-seed
 C-ORD contrast $C_s$ with 95\% intervals, the mean and $\mathrm{LB}_{0.975}$, against the
 registered effect size $0.25$. (c) Designed W2 regret against the bar
@@ -1116,8 +1184,9 @@ $(3/4)\Delta_{W2}^{\mathrm{lo}}$. (d) Designed placebo $\beta_{W2}$ of the contr
 fails). Source: \fpath{x6-stage1-store/stages/E3z/report.json} via the snapshot
 \fpath{docs/research_summary/data/x6s1_result.json}.}
 
-\fig{fig13_x6s1_pipeline}{X6 stage~1 gate pipeline with statuses. Filled: PASS; outlined dashed:
-not yet run; ``S'': the gate's values are sealed until E3; arrows below a box give the status
+\fig{fig13_x6s1_pipeline}{Crossing order in trained models, gate pipeline with statuses, under
+the protocol's gate names. Filled: PASS; outlined dashed: not yet run; ``S'': the gate's values
+are sealed until the decision stage; arrows below a box give the status
 history over attempts. Statuses and gate names only. Source: \fpath{x6-stage1-store/GATES.jsonl} and
 \fpath{superseded/0087-a1/GATES.jsonl} (fields gate, status, utc only; the values field is never read),
 via the snapshot \fpath{docs/research_summary/data/x6s1_status.json}; stage order from
@@ -1131,38 +1200,43 @@ I organised execution around a separate git repository, \fpath{agent-handoff}, h
 protocol (\fpath{PROTOCOL.md}), one directory per job (\fpath{task.md}, \fpath{status.json},
 \fpath{report.md}, \fpath{review.md}), the request and control files, planning requests and responses,
 owner decisions (immutable files plus numbered addenda) and the coordinator's state
-(\fpath{COORDINATOR_STATE.md}, newest ``CURSOR'' first). Codex acted as coordinator until 14 October, followed by a chain of
-Claude coordinator sessions (c351b245, 0cb12c0f, e4713512, 75dcd488, dcecc9ff). Each
-takeover wrote an assumption record, because release verifiers bind the issuer's identity; one
-takeover race was resolved by having the late session stand down. Workers were headless
-sessions launched per job, with context caps that forced rotation to fresh sessions; a transfer
-record registers each new worker identity. 94 jobs had been created by 20 October. Two
+(newest entry first). Codex acted as coordinator until 14 October, followed by a chain of
+Claude coordinator sessions, each handing over to a fresh one when its context grew too long.
+Each takeover wrote an assumption record, because release verifiers bind the issuer's identity;
+one takeover race was resolved by having the late session stand down. Workers were headless
+sessions or subagents launched per job, with context caps that forced rotation to fresh
+sessions; a transfer record registers each new worker identity. More than 100 jobs had been
+created by 26 October. Two
 operational hazards recurred: a shared subscription hitting usage limits (handled by waiting,
 never by switching accounts), and permission classifiers blocking some actions (never
 bypassed). I approved and installed an automatic-resume scheduler.
 
 \subsection{The cloud training pipeline and its integrity gates}
-X6S1 is the first study trained on a GPU. The coordinator builds deterministic bundles (code
+The trained crossing-order study was the first trained on a GPU. The coordinator builds deterministic bundles (code
 archive, data, initial states, a ticket with seeds, steps and checkpoint interval, expected batch
 and RNG digests for every chunk) and releases a bundle hash to me, and I run a fixed
 notebook in the browser; only one cell (the bundle hash) may be edited. Every chunk records its
 batch digest and PCG64 state digest; the export carries a manifest whose hash I relay.
-Locally, four gates run per model before any evaluation: WEIGHTS-HASH (manifest, inventory and
-canonical weights digests), CLOUD-PROV (every session and execution record matches the permitted
-cell templates, commit, protocol and bundle), DATA-ID (data, initial state, per-chunk batch and
-RNG digests), and TRAIN-COMPLETE (a linked chain of exactly one record per checkpoint). An
+Locally, four checks run per model before any evaluation: a weights check (manifest, inventory
+and canonical weights digests), a provenance check (every session and execution record matches
+the permitted cell templates, commit, protocol and bundle), a data-identity check (data, initial
+state, per-chunk batch and RNG digests), and a completeness check (a linked chain of exactly one
+record per checkpoint). An
 admission lock then fixes the model's only admissible chain. GPU training is not claimed to be
 reproducible; data, batch sequence, initial state and every evaluation are.
 
 \subsection{Defects found and corrected}
 The correction route was exercised many times, always before any outcome-bearing quantity existed
-or with documented independence from it. Examples: K4's 2$\pi$ phase edge (job 0017); D-1's module
-split under the 400-line rule (S6 stop, addendum 2); \Cp's int/str key mismatch (R11) and ridge
-tolerance (R13, discussed above); K4b's \texttt{Fraction(dict)} (R25), BOM and lazy sequence (R26),
-fixture roots inside the project (R27) and missing reader (R28); X6 stage~0's key accumulation (X7)
-and estimator sign (X8); X6S1's constant path and E0 lineage (D-0087-1/2) and the non-compiling
-pasted cell (D-0090-1). Two classes of defect were caught only by real runs: those where tests
-exercised synthetic inputs but not the real output of a reused function (R25), and those that
+or with documented independence from it. Examples: a $2\pi$ phase edge in the first four-symbol
+origin attempt; a module split under the 400-line rule in the orientability oracle study; an
+integer/string key mismatch and the ridge tolerance (discussed above) in counterfactual forcing;
+a \texttt{Fraction(dict)} call, a byte-order mark and a lazy sequence, test fixtures inside the
+project root and a missing reader in the four-symbol origin test; a key accumulation and an
+estimator sign error in the crossing-order oracle study; a constant path, a lineage check and a
+non-compiling pasted notebook cell in the trained crossing-order study; and, in the
+readout-attribution study, a lineage check that refused the stage's own entry records. Two
+classes of defect were caught only by real runs: those where tests exercised synthetic inputs
+but not the real output of a reused function (the \texttt{Fraction(dict)} case), and those that
 depend on the live environment (the pasted cell). Both led to added checks.
 
 % =========================================================================================
@@ -1170,13 +1244,16 @@ depend on the live environment (the pasted cell). Both led to added checks.
 Figure~\ref{fig:fig11_compute} summarises local compute from the store ledgers. Including every
 metered run (preflight test suites among them), the follow-up studies used about 17.6 CPU-hours
 in the ledgers shown; the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
-(13--21 minutes each). The largest items are the two training studies (X5 G1, six models; D-2a, two
-models), X6 stage~0's exact dynamic programme, and X6 stage~1 so far.
+(13--21 minutes each). The largest items are the two training studies (learning speed, six models;
+orientability, two models), the exact dynamic programme of the crossing-order oracle study, and
+the trained crossing-order study.
 
 \fig{fig11_compute}{(a) Cumulative CPU-hours per study from each store's \fpath{cpu_ledger.json}
 (measured plus tail allowance; includes metered test suites); the hatched bar is the summed
-wall-clock time of the 17 pilot trainings, which predate the meter. (b) X6 stage~1 measured CPU per
-metered job and attempt. Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
+wall-clock time of the 17 pilot trainings, which predate the meter. (b) Trained crossing-order study, measured CPU per
+metered job and attempt, under the protocol's stage labels (E0 preparation; E0b smoke ingest;
+E1 and E2 ingest of the two training waves; E3a, E3w and E3z evaluation and decision; a1, a2
+attempts). Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
 \fpath{make_figures.py} (\texttt{LEDGERS}), snapshotted in \fpath{docs/research_summary/data/compute_ledgers.json};
 \fpath{x6-stage1-store/cpu_ledger.json} (accounting fields only) via \fpath{data/x6s1_status.json};
 \fpath{artifacts/MetricRecords/*/extra.json} (\texttt{wall\_time\_s}).}
@@ -1184,20 +1261,24 @@ metered job and attempt. Sources: \fpath{<store>/cpu_ledger.json} for the stores
 % =========================================================================================
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
-\item \textbf{X6 stage~1} is decided: INCONCLUSIVE (rule~9; \S\ref{sec:x6s1results}). No study is
-running. Natural follow-ups for me to plan include the ZC-s1 designed-placebo response,
-the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the registered
-size ($0.25$) under longer training or larger models, and the open retrain mechanism (D-0090-2).
-\item \textbf{Causal use.} The C2 constrained-intervention draft awaits dual-track planning and review.
+\item \textbf{Running: readout attribution of the circle code} (\S\ref{sec:causal}). Frozen,
+authorised and implemented; its first stage is being rerun after a technical correction. No data
+from it exists yet.
+\item \textbf{Crossing order in trained models} is decided: INCONCLUSIVE
+(\S\ref{sec:x6s1results}). Natural follow-ups for me to plan include the ZC-s1 designed-placebo
+response, the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the
+registered size ($0.25$) under longer training or larger models, and the missing retrain
+mechanism.
 \item \textbf{Other options} recorded by the coordinator and by me include an independent
-replication of the E4 O models (R1), a mean-rate-matched X5 successor, a D-2 learnability
-redesign, a follow-up on the K4b margin and comparator scale, and the remaining tasks of a
-seven-task project reorganisation. None is authorised.
+replication of the pilot's O models, a speed-matched successor of the learning-speed study, a
+redesign of the orientability learnability test, a follow-up on the four-symbol margin and
+comparator scale, and the remaining tasks of a seven-task project reorganisation. None is
+authorised.
 \item \textbf{Records out of date.} \fpath{state/PROGRESS.md} and the README's ``Current follow-up status''
-date from 17 October and still describe K4b job 0051 as running; K4b completed with EXCLUSION
-(job 0057), X6 stage~0 completed with GO\_X6\_NATURAL (job 0066), and X6 stage~1 started. The
-mailbox \fpath{STATUS_EN.md} is a historical snapshot from job 0010. This document reflects the
-mailbox reviews, which are the more recent records.
+date from 17 October and still describe the four-symbol origin test as running; it completed
+with EXCLUSION, the crossing-order oracle study completed with GO, and the trained crossing-order
+study has since been decided. This document reflects the coordinator's reviews, which are the
+more recent records.
 \end{itemize}
 
 % =========================================================================================
@@ -1210,18 +1291,22 @@ a few seeds (three in the pilot, at most four per arm). Nothing is claimed about
 or large models, other architectures, or populations of seeds.
 \item \textbf{Statistics.} Pilot decisions use sign consistency and a data-derived envelope, not
 significance tests; panels are partitions within runs. Most later bounds are nominal bootstrap
-bounds; only X6S1's log-loss claims carry a finite-sample guarantee.
+bounds; only the log-loss claims of the trained crossing-order study carry a finite-sample
+guarantee.
 \item \textbf{Measurement choices.} Vietoris--Rips over $\mathbb{F}_2$, $M=512$, the longest bar as
 $S$; four one-factor sensitivity variants. Circular coordinates use one cocycle and can give
 disconnected points arbitrary offsets.
-\item \textbf{Exposure.} The circular audit, \Cp\ and K4b reuse the three E4 models, whose test
-panels had been unblinded; K4b and \Cp\ drew fresh histories protected by registries, but the
-models are not fresh.
-\item \textbf{Margins and controls.} K4b's margin sits above the oracle's own value; the P control is
-one-sided; X5's kernel is confounded with speed.
+\item \textbf{Exposure.} The circular audit, the counterfactual-forcing study, the four-symbol
+origin test and the readout-attribution study reuse the three pilot models, whose test panels
+had been unblinded; they draw fresh histories protected by registries, but the models are not
+fresh.
+\item \textbf{Margins and controls.} The four-symbol margin sits above the oracle's own value; the
+P control is one-sided; the learning-speed kernel is confounded with speed.
 \item \textbf{Reproducibility scope.} One machine and environment; one of 17 pilot trainings was
-retrained; G-H formally failed; GPU training in X6S1 is not reproducible by design.
-\item \textbf{Process.} One post-data tolerance change (R13) occurred without my prior approval and I
+retrained; the clean-rerun gate formally failed; GPU training in the crossing-order study is not
+reproducible by design.
+\item \textbf{Process.} One post-data tolerance change (in the counterfactual-forcing study)
+occurred without my prior approval and I
 ratified it afterwards. Records written by agents were reviewed by other agents; I approved decision
 points but did not audit every computation.
 \end{enumerate}
@@ -1235,10 +1320,12 @@ it, beliefs converge after a few symbols, and the beyond-four-symbol covariance 
 is below a margin that even the oracle's phase does not reach. Whether the model uses it is
 unknown. The follow-up programme mostly produced well-defined stops rather than findings, and the
 stops taught something about one-sided controls, nonlinear encodings, non-specific interventions,
-fragile chart rules and margins set without oracle checks. X6 stage~1 is designed to avoid each of
-these failure modes on a process where order provably matters. It reached its decision with every validity gate passed and
-found weak but reproducible natural order sensitivity in every seed, far below the registered
-effect size, so its preregistered verdict is INCONCLUSIVE and not a claim of order use.
+fragile chart rules and margins set without oracle checks. The trained crossing-order study was
+designed to avoid each of these failure modes on a process where order provably matters. It
+reached its decision with every validity gate passed and found weak but reproducible natural
+order sensitivity in every seed, far below the registered effect size, so its preregistered
+verdict is INCONCLUSIVE and not a claim of order use. The readout-attribution study, now
+running, asks the use question again with an exact, linear attribution at the model's readout.
 
 % =========================================================================================
 \clearpage
@@ -1254,25 +1341,31 @@ $F_1$, $F_2$ & Exact next-symbol law; joint law of the next two symbols\\
 $\GC$, regret, captured & Context gain; mean KL from the oracle to the model; $1-\mathrm{regret}/\GC$\\
 $S$, $D_{r,i}$, $u_r$ & Normalised longest finite $H_1$ bar; double contrast; noise envelope\\
 $\dgeom$ & Spearman alignment with $\bel{32}$ minus alignment with $\bel{1}$\\
-R0--R3 & Baselines: initialisation; last-symbol embedding; previous-token mixing; context average\\
-V0--V5 & X4 views: raw; LN-normalised; final LN; readout-visible; readout-null; softmax\\
+F1, H2, H3, \Hp, H4 & The pilot's preregistered rule and hypotheses: hole in the cylinder only; geometry follows the full belief; F1 under P; belief alignment under P; the hole appears after history use\\
+Baselines & Initialisation; last-symbol embedding; previous-token mixing; context average\\
 $m_K$, $B_K$, $r_4$ & Circular posterior mean from the last $K$ symbols; $\E\|m_{32}-m_K\|$; $m_{32}-m_4$\\
-$\Delta_4$ & K4b estimand $\E[u\cdot r_4]$ for the learned chart phase $u$\\
+$\Delta_4$ & Four-symbol origin estimand $\E[u\cdot r_4]$ for the learned chart phase $u$\\
+$\psi$ & Readout-attribution share: the part of the model's oracle-aligned response carried by the circle-code interchange\\
+NA, AB, ZC & Crossing-order arms: the non-abelian process and its two commutative controls\\
 Chart & Circular coordinate built from an $H_1$ cocycle on landmarks (LCC rule: largest component $\ge95\%$)\\
 Holonomy, local system & Composition of fibre permutations along a path; an assignment of permutations to edges, flat on a face if their product around it is the identity\\
 Parikh vector & Counts of each directed seam crossing, ignoring order\\
 $G_S(32)$ & Excess log-loss at $t=32$ of the best predictor that sees only statistic $S$\\
-$\beta_{\mathrm{ord}}$, C-ORD & Within-Parikh-class order slope; the primary X6S1 order claim\\
-SHARP, TARGET & X6S1 log-loss claims below $G_{\mathrm{Parikh}}(32)$, and below 75\% of it\\
+$\beta_{\mathrm{ord}}$, C-ORD & Within-Parikh-class order slope; the primary order claim of the trained crossing-order study\\
+SHARP, TARGET & Its log-loss claims: below $G_{\mathrm{Parikh}}(32)$, and below 75\% of it\\
 Gate & A check that must pass before a stage's products are interpreted\\
 Registry & Set of digests of every previously exposed history, used to certify fresh pools\\
 Sealed & Written with a hash and released only at the decision stage or a stop\\
 Technical correction & Coordinator-ruled fix of a documented defect; at most two jobs per defect\\
-Release (A/B, R1--R3) & Coordinator-signed permission for a specific stage of a study\\
+Release & Coordinator-signed permission for a specific stage of a study\\
 \bottomrule
 \end{longtable}
 
 \section{All stages, gates and outcomes}\label{app:table}
+This table is the lookup key into the project records. It uses the internal study labels of
+Table~\ref{tab:key}, the protocols' own stage and gate names, and the numbers of the
+decision-log entries (D-\ldots) and coordinator jobs whose reviews record each outcome.
+
 \small
 \begin{longtable}{@{}L{0.15\linewidth}L{0.08\linewidth}L{0.28\linewidth}L{0.21\linewidth}L{0.17\linewidth}@{}}
 \toprule
@@ -1307,6 +1400,8 @@ X6S1 E0b & 10-20 & SMOKE-INGEST & attempt 1 INVALID; attempt 2 PASS & jobs 0090,
 X6S1 E1 & 10-20 & INGEST-C1, LEARN, LC-1 & PASS; LEARN = GO & job 0093\\
 X6S1 E2 & 10-20 & INGEST-C2, LC-2 & PASS; 12 models admitted & job 0094\\
 X6S1 E3 & --- & E3.0--E3.9 & all PASS; INCONCLUSIVE (rule 9) & 0095--0099\\
+C2 IMPL & 10-22 & gate 0; freeze & complete (FREEZE 24ff24cc) & jobs 0100--0106\\
+C2 S1 & 10-22 & release check; G0 (vii) & attempt 1 refused; attempt 2 FAIL\_TECHNICAL (corrected) & jobs 0107, 0108\\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -1326,7 +1421,8 @@ X6S1 E3 & --- & E3.0--E3.9 & all PASS; INCONCLUSIVE (rule 9) & 0095--0099\\
 \fpath{docs/research_summary/data/}.
 \end{itemize}
 Paths starting with \fpath{agent-handoff/} or naming a \fpath{*-store} directory are execution
-records kept next to the repository, not in it.
+records kept next to the repository, not in it. The review of each job is
+\fpath{agent-handoff/jobs/<job>/review.md}, with the job numbers of Appendix~\ref{app:table}.
 
 \clearpage
 \bibliographystyle{plainnat}

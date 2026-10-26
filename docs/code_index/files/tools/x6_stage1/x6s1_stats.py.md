@@ -55,9 +55,13 @@
 - [tests/x6_stage1/test_a_eval.py](../../tests/x6_stage1/test_a_eval.py.md) (line 27, import)
 - [tests/x6_stage1/test_a_numerics.py](../../tests/x6_stage1/test_a_numerics.py.md) (line 25, import)
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 25, import)
+- [tests/x6zc/test_x6zc_core.py](../../tests/x6zc/test_x6zc_core.py.md) (line 24, import)
+- [tests/x6zc/test_x6zc_dryrun.py](../../tests/x6zc/test_x6zc_dryrun.py.md) (line 26, import)
 - [tools/x6_stage1/x6s1_eval.py](x6s1_eval.py.md) (line 30, import)
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 28, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 35, import)
+- [tools/x6zc/x6zc_core.py](../x6zc/x6zc_core.py.md) (line 32, import)
+- [tools/x6zc/x6zc_run.py](../x6zc/x6zc_run.py.md) (line 504, import)
 
 ## Top-level constants
 

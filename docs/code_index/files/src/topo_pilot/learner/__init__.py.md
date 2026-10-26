@@ -84,6 +84,7 @@
 - [tests/x6_stage1/test_a_eval.py](../../../tests/x6_stage1/test_a_eval.py.md) (line 32, import)
 - [tests/x6_stage1/test_b_ingest_bundle.py](../../../tests/x6_stage1/test_b_ingest_bundle.py.md) (line 34, import)
 - [tests/x6_stage1/test_b_train_chain.py](../../../tests/x6_stage1/test_b_train_chain.py.md) (line 32, import)
+- [tests/x6zc/test_x6zc_dryrun.py](../../../tests/x6zc/test_x6zc_dryrun.py.md) (line 312, import)
 - [tools/c1prime/c1_model.py](../../../tools/c1prime/c1_model.py.md) (line 14, import)
 - [tools/c2_readout/c2_model.py](../../../tools/c2_readout/c2_model.py.md) (line 24, import)
 - [tools/d2a/d2a_eval.py](../../../tools/d2a/d2a_eval.py.md) (line 17, import)
@@ -96,6 +97,7 @@
 - [tools/x6_stage1/x6s1_data.py](../../../tools/x6_stage1/x6s1_data.py.md) (line 255, import)
 - [tools/x6_stage1/x6s1_ingest.py](../../../tools/x6_stage1/x6s1_ingest.py.md) (line 28, import)
 - [tools/x6_stage1/x6s1_run.py](../../../tools/x6_stage1/x6s1_run.py.md) (line 446, import)
+- [tools/x6zc/x6zc_run.py](../../../tools/x6zc/x6zc_run.py.md) (line 334, import)
 
 ## Top-level constants
 

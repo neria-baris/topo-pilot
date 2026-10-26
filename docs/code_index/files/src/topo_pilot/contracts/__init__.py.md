@@ -269,6 +269,8 @@
 - [tests/x6_stage1/test_b_nb_s0_ops.py](../../../tests/x6_stage1/test_b_nb_s0_ops.py.md) (line 30, import)
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 29, import)
 - [tests/x6_stage1/test_b_train_chain.py](../../../tests/x6_stage1/test_b_train_chain.py.md) (line 28, import)
+- [tests/x6zc/test_x6zc_core.py](../../../tests/x6zc/test_x6zc_core.py.md) (line 25, import)
+- [tests/x6zc/test_x6zc_dryrun.py](../../../tests/x6zc/test_x6zc_dryrun.py.md) (line 27, import)
 - [tools/c1prime/c1_data.py](../../../tools/c1prime/c1_data.py.md) (line 15, import)
 - [tools/c1prime/c1_driver_cal.py](../../../tools/c1prime/c1_driver_cal.py.md) (line 27, import)
 - [tools/c1prime/c1_fit.py](../../../tools/c1prime/c1_fit.py.md) (line 13, import)
@@ -316,6 +318,8 @@
 - [tools/x6_stage1/x6s1_run.py](../../../tools/x6_stage1/x6s1_run.py.md) (line 443, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](../../../tools/x6_stage1/x6s1_stage_pre.py.md) (line 37, import)
 - [tools/x6_stage1/x6s1_stats.py](../../../tools/x6_stage1/x6s1_stats.py.md) (line 25, import)
+- [tools/x6zc/x6zc_core.py](../../../tools/x6zc/x6zc_core.py.md) (line 34, import)
+- [tools/x6zc/x6zc_run.py](../../../tools/x6zc/x6zc_run.py.md) (line 31, import)
 
 ## Top-level constants
 

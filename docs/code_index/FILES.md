@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 866 tracked files; 505 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 874 tracked files; 511 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1044,6 +1044,16 @@ The generated index itself (`docs/code_index/`) is not indexed. 866 tracked file
 | [test_b_seed_pool_reg.py](files/tests/x6_stage1/test_b_seed_pool_reg.py.md) | python | 398 lines | Author B (operations): T-SEED, T-POOL, T-REG (X6S1-FROZEN-v1 §6.1-§6.6, §14.3; API.md §3, §10). |
 | [test_b_train_chain.py](files/tests/x6_stage1/test_b_train_chain.py.md) | python | 400 lines | Author B (cloud): T-TRAIN-EQUIV, T-CHAIN (X6S1-FROZEN-v1 §4.3, §4.6, §5.4, §5.5; API.md §5). |
 
+## tests/x6zc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 42 lines | Authorship record: X6ZC independent tests, author A (job 0120) |
+| `AUTHORSHIP_B.md` | markdown | 28 lines | AUTHORSHIP_B: independent test author B (dry run and store records), X6ZC job 0120 |
+| [test_x6zc_core.py](files/tests/x6zc/test_x6zc_core.py.md) | python | 400 lines | Author A (job 0120): X6ZC core tests (TEST_PLAN.md §2) from the protocol copy, API.md, CONTRACT, |
+| [test_x6zc_decide.py](files/tests/x6zc/test_x6zc_decide.py.md) | python | 391 lines | Author A (job 0120): X6ZC decision rules (§9.1, every branch and its precedence, G-R0 first), |
+| [test_x6zc_dryrun.py](files/tests/x6zc/test_x6zc_dryrun.py.md) | python | 400 lines | Author B, job 0120: the X6ZC synthetic dry run (PROTOCOL_X6ZC_v1 §12-§14; API.md §11, §15; |
+
 ## tools/
 
 | File | Kind | Size | Purpose |
@@ -1285,7 +1295,10 @@ The generated index itself (`docs/code_index/`) is not indexed. 866 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 378 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
+| `API.md` | markdown | 395 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
 | `CONTRACT.json` | json | 1910 lines |  |
 | `PROTOCOL_X6ZC_v1.md` | markdown | 930 lines | X6ZC-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training) |
 | `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |
+| [x6zc_census.py](files/tools/x6zc/x6zc_census.py.md) | python | 314 lines | X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5 |
+| [x6zc_core.py](files/tools/x6zc/x6zc_core.py.md) | python | 574 lines | X6ZC core: constants and bindings, fresh prefixes and loop-sign variants, exact geometry (K0) |
+| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 988 lines | X6ZC run: store records (exclusive create, EXPOSURE, EVALUATIONS, STAGES), the stage-1 store |

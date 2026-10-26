@@ -12659,9 +12659,9 @@
   },
   "docs/proposals/NEXT_ROUND_SHARPER_ANSWERS_HE.md": {
    "kind": "markdown",
-   "lines": 125,
+   "lines": 127,
    "purpose": "הסבב הבא: איך לקבל תשובות חדות יותר",
-   "sha256": "eb4f62eb774a7006c8e853f031ba2e0f856fd64d6de36073fdd8952bde717165"
+   "sha256": "0c9417e5a872e58279174553fdd991ec9567ea27161a554198905f3db21cc6fe"
   },
   "docs/proposals/RESEARCH_HARNESS_ARCHITECTURE.md": {
    "kind": "markdown",
@@ -12691,7 +12691,7 @@
    "kind": "markdown",
    "lines": 105,
    "purpose": "אפשרויות להוכחה מקיפה יותר",
-   "sha256": "3cf640675b0f52c76a8a5a8a70ac5d0beb7e8a33d4dfdbdf2ec0110f057d62b4"
+   "sha256": "323755f7211ec51ac02948cd5b3387ee86c13151211e94b757db2471d57258c9"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -179581,5 +179581,5 @@
    ]
   }
  },
- "sources_digest": "2cfa3d65870c696ae6df6f11e0e76294a4fe3fdd2867ecdb12b013dcdb0d7dd9"
+ "sources_digest": "82bb62c81ba314ac47974de55049f7e0f6160dc9d5f5b6ebaeafacccfa850556"
 }

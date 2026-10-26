@@ -6,7 +6,7 @@
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 852,
-  "functions and methods (incl. tests)": 6897,
+  "functions and methods (incl. tests)": 6899,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 733,
   "import statements, internal ambiguous": 1,
@@ -11929,7 +11929,7 @@
    "tools/x6_stage1/x6s1_eval.py",
    "tools/d2a/d2a_train.py",
    "import",
-   42
+   43
   ],
   [
    "tools/x6_stage1/x6s1_eval.py",
@@ -17393,9 +17393,9 @@
   },
   "tools/x6_stage1/API.md": {
    "kind": "markdown",
-   "lines": 535,
+   "lines": 536,
    "purpose": "tools/x6_stage1: written contract (job 0069; derived from X6S1-FROZEN-v1)",
-   "sha256": "4302f644edf469124f4d30a8399ab82e09fd4512209616ce14ea5105f020d1cc"
+   "sha256": "969bd00515016c9d2f6824ce31955c83444860b8cff3efb958c1cf4a6d7fe245"
   },
   "tools/x6_stage1/PROTOCOL_X6S1_v1.md": {
    "kind": "markdown",
@@ -17429,9 +17429,9 @@
   },
   "tools/x6_stage1/x6s1_eval.py": {
    "kind": "python",
-   "lines": 447,
+   "lines": 479,
    "purpose": "X6S1 eval: the predictor interface (float64 model wrapper, exact oracle and reference wrappers),",
-   "sha256": "b58d6cf4c923901d5ee97b717f7af065f35fa426c4921a234df0cdc197e06a1f"
+   "sha256": "ac55fa3b3c44b3994be6867bb8e966f63bbdc25fe72624f6e22eaeb452e34f4b"
   },
   "tools/x6_stage1/x6s1_ingest.py": {
    "kind": "python",
@@ -173424,6 +173424,7 @@
   "tools/x6_stage1/x6s1_eval.py": {
    "constants": [
     "BOS",
+    "EVAL_ROWS",
     "ORACLE_KINDS",
     "PROFILE_T",
     "REPO",
@@ -173757,7 +173758,7 @@
      "how": "sys.path edit",
      "lazy": true,
      "level": 0,
-     "line": 42,
+     "line": 43,
      "module": "",
      "names": [
       "d2a_train"
@@ -173773,178 +173774,178 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 46,
+     "end": 47,
      "kind": "function",
      "name": "set_threads",
      "qual": "set_threads",
      "sig": "def set_threads() -> None",
-     "start": 41
+     "start": 42
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 53,
+     "end": 54,
      "kind": "function",
      "name": "pad",
      "qual": "pad",
      "sig": "def pad(histories, n_obs=33) -> np.ndarray",
-     "start": 49
+     "start": 50
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 59,
+     "end": 60,
      "kind": "function",
      "name": "model_inputs",
      "qual": "model_inputs",
      "sig": "def model_inputs(tokens) -> torch.Tensor",
-     "start": 56
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 63,
+     "end": 64,
      "kind": "function",
      "name": "_ts",
      "qual": "_ts",
      "sig": "def _ts(t, n) -> np.ndarray",
-     "start": 62
+     "start": 63
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "The float64 CPU evaluation of a model's verified float32 weights (§2.2).",
-     "end": 113,
+     "end": 114,
      "kind": "class",
      "name": "ModelPredictor",
      "qual": "ModelPredictor",
-     "start": 66
+     "start": 67
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 77,
+     "end": 78,
      "kind": "method",
      "name": "__init__",
      "qual": "ModelPredictor.__init__",
      "sig": "def __init__(self, ckpt_path, file_sha256, weights_sha256)",
-     "start": 69
+     "start": 70
     },
     {
      "decorators": [
       "classmethod"
      ],
      "doc": "",
-     "end": 83,
+     "end": 84,
      "kind": "method",
      "name": "from_state",
      "qual": "ModelPredictor.from_state",
      "sig": "def from_state(cls, sd_, name) -> ModelPredictor",
-     "start": 80
+     "start": 81
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 91,
+     "end": 92,
      "kind": "method",
      "name": "_build",
      "qual": "ModelPredictor._build",
      "sig": "def _build(self, sd_, name, step) -> None",
-     "start": 85
+     "start": 86
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 94,
+     "end": 95,
      "kind": "method",
      "name": "__call__",
      "qual": "ModelPredictor.__call__",
      "sig": "def __call__(self, tokens, t) -> np.ndarray",
-     "start": 93
+     "start": 94
     },
     {
      "decorators": [],
      "doc": "The same readout from a float32 copy (the weights are float32, so the copy is exact):",
-     "end": 101,
+     "end": 102,
      "kind": "method",
      "name": "float32",
      "qual": "ModelPredictor.float32",
      "sig": "def float32(self, tokens, t) -> np.ndarray",
-     "start": 96
+     "start": 97
     },
     {
      "decorators": [
       "staticmethod"
      ],
      "doc": "",
-     "end": 113,
+     "end": 114,
      "kind": "method",
      "name": "_run",
      "qual": "ModelPredictor._run",
      "sig": "def _run(model, tokens, t) -> np.ndarray",
-     "start": 104
+     "start": 105
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 125,
+     "end": 126,
      "kind": "function",
      "name": "_law",
      "qual": "_law",
      "sig": "def _law(arm, kind, h, t)",
-     "start": 116
+     "start": 117
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "",
-     "end": 138,
+     "end": 139,
      "kind": "class",
      "name": "OraclePredictor",
      "qual": "OraclePredictor",
-     "start": 128
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 132,
-     "kind": "method",
-     "name": "__init__",
-     "qual": "OraclePredictor.__init__",
-     "sig": "def __init__(self, arm, kind)",
      "start": 129
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 138,
+     "end": 133,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "OraclePredictor.__init__",
+     "sig": "def __init__(self, arm, kind)",
+     "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 139,
      "kind": "method",
      "name": "__call__",
      "qual": "OraclePredictor.__call__",
      "sig": "def __call__(self, tokens, t) -> np.ndarray",
-     "start": 134
+     "start": 135
     },
     {
      "decorators": [
       "lru_cache(maxsize=None)"
      ],
      "doc": "",
-     "end": 143,
+     "end": 144,
      "kind": "function",
      "name": "_qcode",
      "qual": "_qcode",
      "sig": "def _qcode() -> dict",
-     "start": 142
+     "start": 143
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 153,
+     "end": 154,
      "kind": "function",
      "name": "qstar",
      "qual": "qstar",
      "sig": "def qstar(arm, tokens, t) -> tuple",
-     "start": 146
+     "start": 147
     },
     {
      "bases": [
@@ -173952,281 +173953,301 @@
      ],
      "decorators": [],
      "doc": "",
-     "end": 157,
+     "end": 158,
      "kind": "class",
      "name": "QuantInvalid",
      "qual": "QuantInvalid",
-     "start": 156
+     "start": 157
     },
     {
      "decorators": [],
      "doc": "§2.2 steps 1-3 (T13, T25): Q = 2**20, the R largest fractional parts get +1, ties by the",
-     "end": 175,
+     "end": 176,
      "kind": "function",
      "name": "quantise",
      "qual": "quantise",
      "sig": "def quantise(s) -> np.ndarray",
-     "start": 160
+     "start": 161
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 179,
+     "end": 180,
      "kind": "function",
      "name": "readout_exact",
      "qual": "readout_exact",
      "sig": "def readout_exact(k_row) -> tuple",
-     "start": 178
+     "start": 179
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 183,
+     "end": 184,
      "kind": "function",
      "name": "readout",
      "qual": "readout",
      "sig": "def readout(k) -> np.ndarray",
-     "start": 182
+     "start": 183
     },
     {
      "decorators": [],
      "doc": "x_hat_i = sum_j (q ln q)[code] - fl(q)[code] * ln p^Q[k] (§7.4 item 3).",
-     "end": 190,
+     "end": 191,
      "kind": "function",
      "name": "score",
      "qual": "score",
      "sig": "def score(codes, k, tables) -> np.ndarray",
-     "start": 186
+     "start": 187
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 197,
+     "end": 198,
      "kind": "function",
      "name": "kl_rows",
      "qual": "kl_rows",
      "sig": "def kl_rows(q, p) -> np.ndarray",
-     "start": 193
+     "start": 194
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 201,
+     "end": 202,
      "kind": "function",
      "name": "cue_mass",
      "qual": "cue_mass",
      "sig": "def cue_mass(p) -> np.ndarray",
-     "start": 200
+     "start": 201
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 210,
+     "end": 211,
      "kind": "function",
      "name": "cue_normalise",
      "qual": "cue_normalise",
      "sig": "def cue_normalise(p) -> np.ndarray",
-     "start": 204
+     "start": 205
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 216,
+     "end": 217,
      "kind": "function",
      "name": "pair_terms",
      "qual": "pair_terms",
      "sig": "def pair_terms(ph, ph2, qh, qh2) -> tuple",
-     "start": 213
+     "start": 214
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 221,
+     "end": 222,
      "kind": "function",
      "name": "beta_fsum",
      "qual": "beta_fsum",
      "sig": "def beta_fsum(num, den) -> float",
-     "start": 219
+     "start": 220
     },
     {
      "decorators": [],
      "doc": "x6_exact.beta with pair i as a two-member set of weight den_i, oracle cue difference e_0",
-     "end": 233,
+     "end": 234,
      "kind": "function",
      "name": "beta_exact",
      "qual": "beta_exact",
      "sig": "def beta_exact(num, den, informative=None) -> Fraction",
-     "start": 224
+     "start": 225
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 245,
+     "end": 246,
      "kind": "function",
      "name": "_fam",
      "qual": "_fam",
      "sig": "def _fam(A, fam, pred, qstar_fn, tables) -> dict",
-     "start": 237
+     "start": 238
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 249,
+     "end": 250,
      "kind": "function",
      "name": "_xhat",
      "qual": "_xhat",
      "sig": "def _xhat(r, tables) -> np.ndarray",
-     "start": 248
+     "start": 249
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 253,
+     "end": 254,
      "kind": "function",
      "name": "_mean",
      "qual": "_mean",
      "sig": "def _mean(x) -> float",
-     "start": 252
+     "start": 253
     },
     {
      "decorators": [],
      "doc": "beta over sets (x6_exact.beta semantics in float64): a set is the histories sharing w_{1:s}",
-     "end": 270,
+     "end": 271,
      "kind": "function",
      "name": "_set_beta",
      "qual": "_set_beta",
      "sig": "def _set_beta(tok, t, p, q, balanced=False) -> float",
-     "start": 256
+     "start": 257
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 303,
+     "end": 304,
      "kind": "function",
      "name": "designed_stats",
      "qual": "designed_stats",
      "sig": "def designed_stats(pred, D_arrays, qstar_fn, tables) -> dict",
-     "start": 273
+     "start": 274
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 313,
+     "end": 308,
+     "kind": "function",
+     "name": "_blocks",
+     "qual": "_blocks",
+     "sig": "def _blocks(n)",
+     "start": 307
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 312,
+     "kind": "function",
+     "name": "_tb",
+     "qual": "_tb",
+     "sig": "def _tb(t, a, b)",
+     "start": 311
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 328,
      "kind": "function",
      "name": "natural_pairs",
      "qual": "natural_pairs",
      "sig": "def natural_pairs(pred, test_tokens, partner_tokens, rows, t=32) -> dict",
-     "start": 306
+     "start": 315
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 320,
+     "doc": "Blocks of EVAL_ROWS rows. p: the readout of `tokens` if already computed; keep: row indices",
+     "end": 347,
      "kind": "function",
      "name": "own_arm",
      "qual": "own_arm",
-     "sig": "def own_arm(pred, arm, tokens, tables, t=32, p=None) -> dict",
-     "start": 316
+     "sig": "def own_arm(pred, arm, tokens, tables, t=32, p=None, keep=None) -> dict",
+     "start": 331
     },
     {
      "decorators": [],
      "doc": "§2.8 abelian own-process spread (R-0082-2): per own-process R_ord(t) pair, the within-",
-     "end": 331,
+     "end": 363,
      "kind": "function",
      "name": "own_pairs",
      "qual": "own_pairs",
      "sig": "def own_pairs(pred, tokens, partner_tokens, rows, t=32, p_h=None) -> dict",
-     "start": 323
+     "start": 350
     },
     {
      "decorators": [],
      "doc": "§2.8 raw values (R-0082-2): a float32 forward next to the float64 one on the same rows;",
-     "end": 341,
+     "end": 373,
      "kind": "function",
      "name": "float32_diff",
      "qual": "float32_diff",
      "sig": "def float32_diff(pred, tokens, t=32) -> dict",
-     "start": 334
+     "start": 366
     },
     {
      "decorators": [],
      "doc": "Cue-normalised rows of a reference law where q* has cue mass; undefined there raises.",
-     "end": 349,
+     "end": 381,
      "kind": "function",
      "name": "_cue_rows",
      "qual": "_cue_rows",
      "sig": "def _cue_rows(x, cue, name) -> np.ndarray",
-     "start": 344
-    },
-    {
-     "decorators": [],
-     "doc": "gamma_m (§2.8; descriptive; R-0081-1): beta = sum<p_c - q_Parikh,c, d> / sum ||d||^2 with",
-     "end": 372,
-     "kind": "function",
-     "name": "gamma",
-     "qual": "gamma",
-     "sig": "def gamma(pred, val_tokens, t=32) -> dict",
-     "start": 352
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 379,
-     "kind": "function",
-     "name": "_predictor",
-     "qual": "_predictor",
-     "sig": "def _predictor(name, spec)",
      "start": 376
     },
     {
      "decorators": [],
+     "doc": "gamma_m (§2.8; descriptive; R-0081-1): beta = sum<p_c - q_Parikh,c, d> / sum ||d||^2 with",
+     "end": 404,
+     "kind": "function",
+     "name": "gamma",
+     "qual": "gamma",
+     "sig": "def gamma(pred, val_tokens, t=32) -> dict",
+     "start": 384
+    },
+    {
+     "decorators": [],
      "doc": "",
-     "end": 385,
+     "end": 411,
+     "kind": "function",
+     "name": "_predictor",
+     "qual": "_predictor",
+     "sig": "def _predictor(name, spec)",
+     "start": 408
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 417,
      "kind": "function",
      "name": "_excl",
      "qual": "_excl",
      "sig": "def _excl(path: Path, data: bytes) -> str",
-     "start": 382
+     "start": 414
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 391,
+     "end": 423,
      "kind": "function",
      "name": "_npz",
      "qual": "_npz",
      "sig": "def _npz(path: Path, arrays: dict) -> str",
-     "start": 388
+     "start": 420
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 399,
+     "end": 431,
      "kind": "function",
      "name": "_clean",
      "qual": "_clean",
      "sig": "def _clean(v)",
-     "start": 394
+     "start": 426
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 403,
+     "end": 435,
      "kind": "function",
      "name": "_json",
      "qual": "_json",
      "sig": "def _json(path: Path, obj) -> str",
-     "start": 402
+     "start": 434
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 447,
+     "end": 479,
      "kind": "function",
      "name": "eval_chunk",
      "qual": "eval_chunk",
      "sig": "def eval_chunk(name, plan, out_dir) -> dict",
-     "start": 406
+     "start": 438
     }
    ],
    "syspath": [
@@ -179581,5 +179602,5 @@
    ]
   }
  },
- "sources_digest": "82bb62c81ba314ac47974de55049f7e0f6160dc9d5f5b6ebaeafacccfa850556"
+ "sources_digest": "fc5814b4bdc61a010c22a066eb979c29a8bb1d3cd6a7c1105eb235ffd23035f9"
 }

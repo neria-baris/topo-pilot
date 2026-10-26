@@ -1246,13 +1246,13 @@ The generated index itself (`docs/code_index/`) is not indexed. 852 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 535 lines | tools/x6_stage1: written contract (job 0069; derived from X6S1-FROZEN-v1) |
+| `API.md` | markdown | 536 lines | tools/x6_stage1: written contract (job 0069; derived from X6S1-FROZEN-v1) |
 | `PROTOCOL_X6S1_v1.md` | markdown | 1213 lines | X6S1-MERGED-v2: X6 stage 1 — do small causal transformers trained on natural NA histories use order-dependent (non-commutative) history information? (training on the Colab free-tier GPU, every outcome-bearing evaluation local on CPU in float64) |
 | [X6S1_colab.ipynb](files/tools/x6_stage1/X6S1_colab.ipynb.md) | notebook | 153 lines |  |
 | [x6s1_cloud.py](files/tools/x6_stage1/x6s1_cloud.py.md) | python | 540 lines | X6S1 cloud (leaf; Colab and local): bundle check, environment and session records, the chunked |
 | [x6s1_data.py](files/tools/x6_stage1/x6s1_data.py.md) | python | 353 lines | X6S1 data: bindings, constants, stage-0 constant map, seeds, pools, sampling, digests, |
 | [x6s1_decide.py](files/tools/x6_stage1/x6s1_decide.py.md) | python | 289 lines | X6S1 decide: learnability, C-ORD, SHARP/TARGET, readout and placebo checks, ordD, per-seed |
-| [x6s1_eval.py](files/tools/x6_stage1/x6s1_eval.py.md) | python | 447 lines | X6S1 eval: the predictor interface (float64 model wrapper, exact oracle and reference wrappers), |
+| [x6s1_eval.py](files/tools/x6_stage1/x6s1_eval.py.md) | python | 479 lines | X6S1 eval: the predictor interface (float64 model wrapper, exact oracle and reference wrappers), |
 | [x6s1_ingest.py](files/tools/x6_stage1/x6s1_ingest.py.md) | python | 498 lines | X6S1 ingest (local): CLOUD-PREP (allowed-class guard, code.tar, tickets, bundles), the four |
 | [x6s1_pairs.py](files/tools/x6_stage1/x6s1_pairs.py.md) | python | 322 lines | X6S1 pairs: Parikh class tables, segment parse, the exact backward partner sampler and its |
 | [x6s1_registry.py](files/tools/x6_stage1/x6s1_registry.py.md) | python | 486 lines | X6S1 registry: digests, on-disk sorted digest runs, the bounded-memory K-REG2 identity reader, |

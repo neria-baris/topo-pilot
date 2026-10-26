@@ -77,7 +77,7 @@
 - [tools/d2a/d2a_eval.py](d2a_eval.py.md) (line 34, import)
 - [tools/d2a/d2a_eval.py](d2a_eval.py.md) (line 252, import)
 - [tools/d2a/d2a_world.py](d2a_world.py.md) (line 292, import)
-- [tools/x6_stage1/x6s1_eval.py](../x6_stage1/x6s1_eval.py.md) (line 42, import)
+- [tools/x6_stage1/x6s1_eval.py](../x6_stage1/x6s1_eval.py.md) (line 43, import)
 - [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 26, import)
 - [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 32, import)
 

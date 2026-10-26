@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `terminate` | method | `FakeTree.terminate` | [tests/x6_stage1/test_b_nb_s0_ops.py:291](../../tests/x6_stage1/test_b_nb_s0_ops.py#L291) |  |
+| `terminate` | method | `TrainingProcess.terminate` | [tools/d2a/process_tree.py:78](../../tools/d2a/process_tree.py#L78) |  |
 | `terminate_and_drain` | function | `terminate_and_drain` | [tools/x4_oracle_profile/winjob.py:167](../../tools/x4_oracle_profile/winjob.py#L167) | Terminate every job process and wait (bounded) until none is active. |
 | `test_01_literal_conventions` | test | `test_01_literal_conventions` | [tests/x6_stage0/test_x6_stage0.py:148](../../tests/x6_stage0/test_x6_stage0.py#L148) |  |
 | `test_02_kernel_lift_complexes_covers` | test | `test_02_kernel_lift_complexes_covers` | [tests/x6_stage0/test_x6_stage0.py:199](../../tests/x6_stage0/test_x6_stage0.py#L199) |  |

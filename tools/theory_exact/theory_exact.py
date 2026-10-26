@@ -93,7 +93,7 @@ def certificate(D, theta):
     iu = np.triu_indices(n, 1)
     d = D[iu]
     diff = np.angle(np.exp(1j * (theta[iu[1]] - theta[iu[0]])))  # signed, in (-pi, pi]
-    far = np.abs(diff) >= 2 * np.pi / 3
+    far = np.abs(diff) >= 2 * np.pi / 3 - 1e-9  # conservative jump test (Thm 2.1, rule 3)
     r_star = float(d[far].min()) if far.any() else float("inf")
     keep = d < r_star
     order = np.argsort(d[keep], kind="stable")

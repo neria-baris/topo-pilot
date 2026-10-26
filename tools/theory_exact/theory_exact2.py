@@ -77,7 +77,7 @@ def rank_certificate(D, thetas):
     iu = np.triu_indices(n, 1)
     d = D[iu]
     diffs = [np.angle(np.exp(1j * (th[iu[1]] - th[iu[0]]))) for th in thetas]
-    r_star = min(float(d[np.abs(df) >= 2 * np.pi / 3].min()) if (np.abs(df) >= 2 * np.pi / 3).any()
+    r_star = min(float(d[np.abs(df) >= 2 * np.pi / 3 - 1e-9].min()) if (np.abs(df) >= 2 * np.pi / 3 - 1e-9).any()
                  else np.inf for df in diffs)
     keep = d < r_star
     order = np.argsort(d[keep], kind="stable")

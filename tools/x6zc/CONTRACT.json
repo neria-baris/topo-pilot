@@ -1,0 +1,1910 @@
+{
+ "schema": "x6zc-contract-v1",
+ "precedence": "The protocol (tools/x6zc/PROTOCOL_X6ZC_v1.md, the design freeze candidate; X6ZC-FROZEN-v1 at the execution freeze) wins on any conflict; API.md fixes names, signatures and layouts; this file holds the machine-readable values. Fractions and tolerances are exact strings read with fractions.Fraction(str). A value 'OPEN: <where>' is not yet bound.",
+ "protocol": {
+  "id": "X6ZC-DESIGN-v1",
+  "frozen_id": "X6ZC-FROZEN-v1",
+  "file": "tools/x6zc/PROTOCOL_X6ZC_v1.md",
+  "sha256": "2a711d16d0c3b5e7cdfc0c96e7342a86c0e500b3f31592868ba5b661ef324193",
+  "mailbox_file": "agent-handoff/planning/responses/X6ZC-DESIGN-v1.md",
+  "frozen_mailbox_file": "agent-handoff/planning/responses/X6ZC-FROZEN-v1.md",
+  "auth_impl": "owner addendum 29 (standing AUTH-IMPL and AUTH-RUN for X6ZC while the combined CPU of HWS, X6ZC and C2ND stays below 12 CPU-h)",
+  "owner_question_defaults": {
+   "Q1": "yes to (a) and (b); (b) asked again after the freeze",
+   "Q2": "NA models on the variants: yes, descriptive",
+   "Q3": "N_avail < 512: run on all N_avail, NOT_ENOUGH_DATA, no new sampling",
+   "Q4": "a frozen-X6S1-code defect: owner decides after a written defect report"
+  },
+  "job": "0117"
+ },
+ "x6s1": {
+  "protocol_id": "X6S1-FROZEN-v1",
+  "protocol_sha256": "2a909ace38231fbc6647e8ffdb5e6b5f22669a7c92182ae84240f32cd36efb9e",
+  "H3": "213d1e2c0dbfd1609c7024eeb052310366562547",
+  "merge_commit": "1dc974934540b818ac64a927d0412bd5c387eff2",
+  "citation_commit": "b67f332",
+  "closure_paths": [
+   "src",
+   "tools/x6_stage1",
+   "tools/x6_stage0",
+   "tools/d2a",
+   "tools/x4_oracle_profile",
+   "tools/k4b",
+   "tools/c1prime_registry",
+   "tests/oracle_profile"
+  ],
+  "outcome": {
+   "outcome": "INCONCLUSIVE",
+   "rule": "9",
+   "qualifiers": [
+    "CONTROL_LIMITED(designed, s1)",
+    "CONTROLS_LEARNED(AB 4/4, ZC 4/4)",
+    "LADDER(NA-s1: parity, NA-s2: parity, NA-s3: parity, NA-s4: parity)",
+    "DESIGNED_UNRESOLVED(1)",
+    "LENGTH_PROFILE"
+   ]
+  },
+  "data_master": 2026101861,
+  "model_master": 2026101862,
+  "prefix_len_stream": [
+   "x6s1",
+   "prefix_len"
+  ]
+ },
+ "paths": {
+  "project_root": "X:/Downloads/projects/topo-pilot",
+  "x6s1_store": "X:/Downloads/projects/topo-pilot/x6-stage1-store",
+  "store": "X:/Downloads/projects/topo-pilot/x6zc-store",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-x6zc",
+  "branch": "x6zc-impl",
+  "mailbox": "X:/Downloads/projects/topo-pilot/agent-handoff",
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "dry_store": "X:/Downloads/topo-scratch/x6zc-dry",
+  "meter_import_dir": "X:/Downloads/projects/topo-pilot/topo-pilot-x6zc/tools/x4_oracle_profile",
+  "meter_bind": "X:/Downloads/projects/topo-pilot/x6zc-store/x6zc_meter_bind.py",
+  "meter_bind_sha256": "OPEN: sha256 of the store-local x6zc_meter_bind.py, written by the coordinator before the dry run and recorded in FREEZE.json at the freeze"
+ },
+ "x6s1_store": {
+  "note": "Every hash below was copied from an X6S1 JSON record or manifest named in 'source'; none was computed from a payload by job 0117.",
+  "records": {
+   "FREEZE.json": {
+    "head": "213d1e2c0dbfd1609c7024eeb052310366562547",
+    "protocol_sha256": "2a909ace38231fbc6647e8ffdb5e6b5f22669a7c92182ae84240f32cd36efb9e"
+   },
+   "stages/E3z/report.json": {
+    "sha256": "90be2081487c0285a0f2b62ee3258a5cd6aef9cf2b7aba396a121bf689d9d1f8",
+    "source": "agent-handoff/jobs/0099 (review)"
+   },
+   "stages/E3z/record.json": {
+    "sha256": "1bda20ca5768503885cd36483ec3548237123244735750226c66d699379dcbf2",
+    "source": "STAGES.jsonl"
+   },
+   "stages/E3w5/record.json": {
+    "sha256": "755ee863176785bd84bac11a04f154cff98ce274422f14c62e5a7d4152679077",
+    "source": "STAGES.jsonl"
+   },
+   "stages/E3w2/record.json": {
+    "sha256": "d3333b00173bc25f34393c0f85fe5fddee8a31af5b6d4b88df357811f21a1284",
+    "source": "STAGES.jsonl"
+   },
+   "stages/E0/record.json": {
+    "sha256": "c8f3b8f0b873619c6dfc68b71cc612b417633d12ce940ac415562a49d022a27c",
+    "source": "STAGES.jsonl"
+   },
+   "pools/POOLS.json": {
+    "sha256": "8f3a42777599ff21fb1046570a5436413da433500e2a141eaecd4e05ecddff80",
+    "source": "stages/E0/record.json values.REG['POOLS.json']"
+   },
+   "stages/E1/loss_echo.json": {
+    "sha256": "0d39e217a78e94b08d9d162a2c64999d63a99076f8ab0150fa470b2873ea155c",
+    "source": "stages/E1/record.json values.LC-1.loss_echo"
+   },
+   "stages/E2/loss_echo.json": {
+    "sha256": "f7c859816990ee13b9e3cbb6c2a67dc8f09a207fb648c3d73ff8526034ba99ff",
+    "source": "stages/E2/record.json values.LC-2.loss_echo"
+   }
+  },
+  "designed": {
+   "path": "tables/designed.npz",
+   "file_sha256": "04cde023f8dca80858f5e6485524ddccc7b0c335e321a6ab669cb68dfebc15ae",
+   "designed_sha256": "b4eeff59c4a15657dfe47f32b638525c6ce56c9b84c29885ffc9a9d77edc59db",
+   "source": "stages/E0/record.json values.G0-ORC.designed"
+  },
+  "log_tables": {
+   "path": "tables/log_tables.npz",
+   "file_sha256": "19616eaad42b4a55fceb1c4915d6d4ece6acc92bce60816a0f1a83830cb97045",
+   "tables_sha256": "54a96dd4c00358c314df78879c0b6488df4210004c9da58a935c224e60c277e3",
+   "source": "stages/E0/record.json values.SCORE.tables"
+  },
+  "class_tables": {
+   "path": "tables/class_tables_NA.json",
+   "sha256": "d97092e8b355951111600da50c005e7082bacbbcade77b6659b6a0fa79894611",
+   "use": "not used (q_stat rebuilds class tables in memory)",
+   "source": "stages/E0/record.json values.G0-ORC.c.tables_sha256"
+  },
+  "dw2_lo": "0.061119371341896547955524807971231695289846551087376421303895009064819738013445345",
+  "dw2_lo_source": "stages/E0/record.json values.G0-ORC.lo.Delta_W2 (the ord_d argument used by E3z)",
+  "prefix_pool": {
+   "name": "prefix",
+   "artifact_id": "54371c403e588227",
+   "dir": "pools/ObservationSet/54371c403e588227",
+   "n_rows": 4096,
+   "token_sha256": "2b7a6e60840cfea47f1252c585cc84d987c358fc45e4ad1a24bbdb2e2afe24cb",
+   "data_seed": 5122302515760602400,
+   "stream": [
+    "x6s1",
+    "prefix"
+   ],
+   "source": "pools/POOLS.json prefix"
+  },
+  "train_pools_A4": {
+   "train_NA_s1": {
+    "npy": "pools/npy/train_NA_s1.npy",
+    "file_sha256": "cfa6cb0ed6efd361c2006cb995093846700388cb7d0e2ee5921385152cdff461",
+    "token_sha256": "7ba5020002ad9a384eaacd8d69d8a00f00783bd82977eae7bb1ee48d460bd598",
+    "n_rows": 1048576
+   },
+   "train_NA_s2": {
+    "npy": "pools/npy/train_NA_s2.npy",
+    "file_sha256": "a8718eb5118782f9c2d92e41a48cf797011672ebb43dea1e6e4fa91a02981d9b",
+    "token_sha256": "02d65821ab0ab4db4b552332c6d44e772b3e0f07c0fb8363bb29378a1b93fb5a",
+    "n_rows": 1048576
+   },
+   "train_NA_s3": {
+    "npy": "pools/npy/train_NA_s3.npy",
+    "file_sha256": "b60c5d5be517b570fde9d3abae35b67968061d0c1d48b0e1123ea8dac603b182",
+    "token_sha256": "9cbbec9b7736d7246e2dbd7556ecf801bdaee2db12a11e600373b8b0d9b63bae",
+    "n_rows": 1048576
+   },
+   "train_NA_s4": {
+    "npy": "pools/npy/train_NA_s4.npy",
+    "file_sha256": "8fec6f241a2f97d4b945cb47a7944eceb0bb4069d07089f70fd184d318050473",
+    "token_sha256": "809a8351e72abe02a931cb31d3a0d57ce679c7d221f7d751e9c0909a561bdc6a",
+    "n_rows": 1048576
+   },
+   "train_ZC_s1": {
+    "npy": "pools/npy/train_ZC_s1.npy",
+    "file_sha256": "3859c861f94bfdcf9d577886ab5003eb9d12c0cec78d28b219e9230bd0493135",
+    "token_sha256": "1fb6990fcc600617666624814a3465116b53144d57952eaeb901a02e0841fec2",
+    "n_rows": 1048576
+   },
+   "train_ZC_s3": {
+    "npy": "pools/npy/train_ZC_s3.npy",
+    "file_sha256": "e6db371f13ab1b2efdea39d9dbdde586be811db97ef0beb2ffcdb1de04422161",
+    "token_sha256": "e889eac2fd628f99319ef3db1a39ee0fdc1b50ade2b2b83116110b184cce0554",
+    "n_rows": 1048576
+   },
+   "train_ZC_s4": {
+    "npy": "pools/npy/train_ZC_s4.npy",
+    "file_sha256": "0529a3f555d4783270702e1bf810392c0654da87082190b9c8c4b13ad58b2ef3",
+    "token_sha256": "d44764e43f366513abaf22e52f059c41631995ac76917e6d697e82db9070a5b9",
+    "n_rows": 1048576
+   }
+  },
+  "train_pools_source": "pools/POOLS.json train_<arm>_s<s>",
+  "admitted": {
+   "NA-s1": {
+    "ckpt": "cloud/C1/NA-s1/ckpt/030000.pt",
+    "bundle_id": "C1-97a8b8950072",
+    "manifest_sha256": "dc143aa877fb2bbb3cb251a2198fd26e0f4f7c86da449cfe4320face3a53d5c4",
+    "final_file_sha256": "3d2209a3475054a64e231c7bcdca953121e48dc68a990a1bb521bed0325ff11c",
+    "final_weights_sha256": "434439584a88d35d1b37dcf8a3d90d0bf6c7b2c5f824c06d2564bc56f1ee14a0",
+    "lock": "cloud/ADMITTED/NA-s1.json"
+   },
+   "NA-s2": {
+    "ckpt": "cloud/C1/NA-s2/ckpt/030000.pt",
+    "bundle_id": "C1-97a8b8950072",
+    "manifest_sha256": "dc143aa877fb2bbb3cb251a2198fd26e0f4f7c86da449cfe4320face3a53d5c4",
+    "final_file_sha256": "fe7dd0060ba02ed7ada94f3184166e9ebf84ee4a610db89cc9fdbb80fd941acf",
+    "final_weights_sha256": "81fc497d7d163fa6f06804e2e861d2e424b4b7efd65c509c6c115fe2265f5375",
+    "lock": "cloud/ADMITTED/NA-s2.json"
+   },
+   "NA-s3": {
+    "ckpt": "cloud/C2/NA-s3/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "e9740686ed8f2a44917fe51b03272cba069a5bc7b60f00a526b26adf08f05d20",
+    "final_weights_sha256": "94455a423c88e309fc863a1885a1953465e3d69499665df37740a998ebaa0508",
+    "lock": "cloud/ADMITTED/NA-s3.json"
+   },
+   "NA-s4": {
+    "ckpt": "cloud/C2/NA-s4/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "f4a2b222350104096f4be572b716686d223e0124c7f780967b334498b129108f",
+    "final_weights_sha256": "dfd8c505a3f78e83ee50d2b3fe04d4410aff6059ff3c4f3a65a9572421c4f810",
+    "lock": "cloud/ADMITTED/NA-s4.json"
+   },
+   "AB-s1": {
+    "ckpt": "cloud/C2/AB-s1/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "54720496cc4047695bbb3935237e73aa7cb9d3de974a29d86b0e45a63e23e618",
+    "final_weights_sha256": "0023ccd47bdbaf5e6097a6d119313148fbbde9989ee2934f95a4ef02cb35179c",
+    "lock": "cloud/ADMITTED/AB-s1.json"
+   },
+   "AB-s2": {
+    "ckpt": "cloud/C2/AB-s2/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "378bc82160bd7c79ab6be71fb7dcdf23ab3f2735acf50f64598a06e9f90eff00",
+    "final_weights_sha256": "a563bcbb6e14d80e9fcb66052e4f4dd8f1afb28374f1b57b30894f14acec8c86",
+    "lock": "cloud/ADMITTED/AB-s2.json"
+   },
+   "AB-s3": {
+    "ckpt": "cloud/C2/AB-s3/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "17ce3f195eae7479a41958e1cafd0892312015128b0688b3c8a376b341197971",
+    "final_weights_sha256": "6455696d1f022dec31e4ca0237dca6264418b7e02830770cb4f148003549ab28",
+    "lock": "cloud/ADMITTED/AB-s3.json"
+   },
+   "AB-s4": {
+    "ckpt": "cloud/C2/AB-s4/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "4d507dd900647b8d6125d1c947830a57cca1aab2b3c0f52ffeb640f8fc8fd228",
+    "final_weights_sha256": "3df3946154fc7ad4e5349ecbdb0aeef7eb53a3e299daf3426d0d80e7295bd736",
+    "lock": "cloud/ADMITTED/AB-s4.json"
+   },
+   "ZC-s1": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/030000.pt",
+    "bundle_id": "C1-97a8b8950072",
+    "manifest_sha256": "dc143aa877fb2bbb3cb251a2198fd26e0f4f7c86da449cfe4320face3a53d5c4",
+    "final_file_sha256": "9f498d48ebad1b73c9f5248e9829846f5fa86d8ed3aeba85f739e82503fc509a",
+    "final_weights_sha256": "96307d7c3fb81bc79509b0a494e34dea4a8255fb888bfaea0aee4c87a8525f2b",
+    "lock": "cloud/ADMITTED/ZC-s1.json"
+   },
+   "ZC-s2": {
+    "ckpt": "cloud/C2/ZC-s2/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "d19d15ab3d64be1f360523a504eff231d3f9f90f645001e246cc4de5f0553519",
+    "final_weights_sha256": "725b7bcaacca4a7a2def24cb1ee172d55aab53f10346d5a487470a550f3e9b26",
+    "lock": "cloud/ADMITTED/ZC-s2.json"
+   },
+   "ZC-s3": {
+    "ckpt": "cloud/C2/ZC-s3/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "8e5fbb27447f5d96f074846a4d5c4481a3bb036c80adc5b3fdb86da0ad213109",
+    "final_weights_sha256": "040426c9b22bfc5d1f834b385a40ae614d5cab209b63949025f92fd382f40e2e",
+    "lock": "cloud/ADMITTED/ZC-s3.json"
+   },
+   "ZC-s4": {
+    "ckpt": "cloud/C2/ZC-s4/ckpt/030000.pt",
+    "bundle_id": "C2-7a03d762d0a8",
+    "manifest_sha256": "3555f0bbc0ad54067fb83dfffe33c7ce626bf9f7b7f25c9187e1a5c8a6697b15",
+    "final_file_sha256": "6a1cbb19ae3641cd29517a482184016475e32a584233aa46670b118501e7307f",
+    "final_weights_sha256": "9c578ea8edd83a14debbc4e1ade211fc2641eddca61f23cbd45c913f4d7ea8db",
+    "lock": "cloud/ADMITTED/ZC-s4.json"
+   }
+  },
+  "admitted_source": "cloud/ADMITTED/<model>.json; ckpt path = MANIFEST chain[-1].file, its sha256 equal in cloud/<wave>/<model>/STORE_MANIFEST.json",
+  "inits": {
+   "init-s1": {
+    "path": "stages/E0/init/init_s1.pt",
+    "file_sha256": "93e190ae6fb5666e6154e11873ded56eafefc295c8108fa5e30f655fa03fc296",
+    "weights_sha256": "b1d1d98e8a9d02fc8bbd1158bd6262018cc62aca1f6e15212195d9fb60674a97",
+    "source": "stages/E0/record.json values.CLOUD-PREP.inits.NA-s1"
+   },
+   "init-s2": {
+    "path": "stages/E0/init/init_s2.pt",
+    "file_sha256": "1e9ed1a852b887f12ac5b519d87c0d9556ca9dedd1d9c9296ab17465a9cfb5db",
+    "weights_sha256": "4789e117a696cb2d597052c38aea8de0c0c1a8e374700a443ea5f517957418fc",
+    "source": "stages/E0/record.json values.CLOUD-PREP.inits.NA-s2"
+   },
+   "init-s3": {
+    "path": "stages/E0/init/init_s3.pt",
+    "file_sha256": "c262ff853b3531664afdcb5de5c98806d258ec676c04ee1dcab8f4b2d9bd2515",
+    "weights_sha256": "23100a957976dd1415cd1c8d7db3c4c6d29ec40a5ca22120efd25658d7cc430b",
+    "source": "stages/E0/record.json values.CLOUD-PREP.inits.NA-s3"
+   },
+   "init-s4": {
+    "path": "stages/E0/init/init_s4.pt",
+    "file_sha256": "fb51fd5d04125d820a7c6b59ad4bb11c406f867f68894d3d2fb157bad4591dc6",
+    "weights_sha256": "7cbe0003418d6ee1b518aef58c157b9c42be0e7ebfbecb187d953d885caae733",
+    "source": "stages/E0/record.json values.CLOUD-PREP.inits.NA-s4"
+   }
+  },
+  "zc_s1_chain": {
+   "1000": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/001000.pt",
+    "file_sha256": "f0e40fb02a32bb48507f9ffe5ee42b040589de6e1394c14b62c6df9d451f25cb",
+    "rec": "cloud/C1/ZC-s1/rec/001000.json",
+    "rec_sha256": "108930f10f8d5eeefcbcda0699577a584ef69ba53da51fc4fecaede356703b68",
+    "weights_sha256": "cc5b35d4ad1a103623e3374b1e6496272983509c6d03be5409db18fe5e7d3854"
+   },
+   "3000": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/003000.pt",
+    "file_sha256": "0a4e0740b4b1f3d070718b7556bb0b715614b0a341c18b62e1ef7cf87fd795ba",
+    "rec": "cloud/C1/ZC-s1/rec/003000.json",
+    "rec_sha256": "b716db91e596c88480ceef7d6a3119b4b06e44f8600412663e7605d9d8431db3",
+    "weights_sha256": "ea22916b8444b488bf8811e9e9c11898752cb7d509fb3b9230cbf9539a04392c"
+   },
+   "10000": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/010000.pt",
+    "file_sha256": "d476adf612a0b50ebfaeaf086ae32f07dc8e76cc111a95eb41ce8b034a63977f",
+    "rec": "cloud/C1/ZC-s1/rec/010000.json",
+    "rec_sha256": "d88ad6d6e192a9341e60f4068cdff708374afdaa3552d3835820d7d46f2d35ee",
+    "weights_sha256": "b25d6cd89efa322bbb6a1dd5649b90d69686245eb705251aeeee661958df343f"
+   },
+   "20000": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/020000.pt",
+    "file_sha256": "2f77fe73ea1fdeb7d000f2aaa52f01233f3543b6c39ab39821ac0290a71e27c3",
+    "rec": "cloud/C1/ZC-s1/rec/020000.json",
+    "rec_sha256": "9dc1e74083bf2dfc766b25bd89ae4da09cab5e1a211a07826eae18dcdbbfc6f0",
+    "weights_sha256": "1bbe0d2438e415dafb33126052c8b5eb6301e4908835f3a73c5ed367cd44cd16"
+   },
+   "30000": {
+    "ckpt": "cloud/C1/ZC-s1/ckpt/030000.pt",
+    "file_sha256": "9f498d48ebad1b73c9f5248e9829846f5fa86d8ed3aeba85f739e82503fc509a",
+    "rec": "cloud/C1/ZC-s1/rec/030000.json",
+    "rec_sha256": "2140e1b0762b4b29da40f8556b99103ea03707a5c305fc8dfea80198014f85d9",
+    "weights_sha256": "96307d7c3fb81bc79509b0a494e34dea4a8255fb888bfaea0aee4c87a8525f2b"
+   }
+  },
+  "zc_s1_chain_source": "cloud/C1/ZC-s1/STORE_MANIFEST.json (ckpt and rec sha256) and rec/<step>.json weights_sha256 (rec bytes equal to the manifest sha256)",
+  "zc_s1_chain_record_sha256_last": "2a7513fcdd89a793b87a4825b69bdd6fc70adde55fee85c4ab849ad1b76671c0",
+  "stored_designed": {
+   "init-s1": {
+    "dir": "stages/E3w1/init-s1",
+    "chunk_sha256": "65a5c0eecbcf5a9eb984182090d9286b8e67c114360629ddc828ff31bec2cf25",
+    "designed_json_sha256": "273d4caeaa6dee1eaafafa0875f862753707c8ecd3008e068403a0dd2a795711",
+    "values": {
+     "beta_W2": -2.9477554614017146e-05,
+     "beta_W2_y": [
+      0.001397861858844174,
+      -0.0004309620188937732,
+      -0.001055332503792452
+     ],
+     "R_W2": 1.2373518711211817,
+     "Delta_W3": 1.1886399593891348,
+     "rho_C": 3.7762677150441703e-06,
+     "rho_W2": 9.936269922992086e-06,
+     "cue_mass_median": 0.17548712033347502,
+     "beta_W1": 3.526294321358268e-05,
+     "beta_W3": 9.966842489641792e-06,
+     "beta_W3_bal": 1.4612422076504049e-05,
+     "beta_W3p": 2.1434672691694433e-05,
+     "nonfinite": false
+    }
+   },
+   "init-s2": {
+    "dir": "stages/E3w1/init-s2",
+    "chunk_sha256": "8be48d4075647c8a9ddaa7837107da1988a44abb0aa9d604f5034bf1572fccaf",
+    "designed_json_sha256": "a2e9fc1c3f126dc373a1b369b8253aace7e40c366ce075fef3a0af1f61596713",
+    "values": {
+     "beta_W2": -1.000153931131017e-05,
+     "beta_W2_y": [
+      -0.0005471762467957216,
+      0.0003825378494616686,
+      0.00013463377940012248
+     ],
+     "R_W2": 1.2489777162658176,
+     "Delta_W3": 1.2017399223349907,
+     "rho_C": 2.2678237339673423e-06,
+     "rho_W2": 3.0406501240378737e-06,
+     "cue_mass_median": 0.17310802113352708,
+     "beta_W1": -1.4693880310622354e-05,
+     "beta_W3": -8.212631354825298e-06,
+     "beta_W3_bal": -1.2379176023295037e-05,
+     "beta_W3p": 4.4497156855855166e-05,
+     "nonfinite": false
+    }
+   },
+   "init-s3": {
+    "dir": "stages/E3w1/init-s3",
+    "chunk_sha256": "bd05349399f8725608f509b8f4afdd872091253745cb7138196aaafac94114ca",
+    "designed_json_sha256": "d50d4fec00e5e8022b89754019b1f9a102fb94731bbea6e704146614b10f7491",
+    "values": {
+     "beta_W2": -7.258915091235438e-06,
+     "beta_W2_y": [
+      0.001417516227406682,
+      -0.0012697291003503086,
+      -0.00016956387233007963
+     ],
+     "R_W2": 1.2622539195225755,
+     "Delta_W3": 1.1205272402742343,
+     "rho_C": 7.791985023496092e-06,
+     "rho_W2": 8.099766616162203e-06,
+     "cue_mass_median": 0.1485092319804031,
+     "beta_W1": 1.175360071429716e-05,
+     "beta_W3": 7.768637895102607e-06,
+     "beta_W3_bal": 1.2457712937859852e-05,
+     "beta_W3p": -9.790779944960122e-06,
+     "nonfinite": false
+    }
+   },
+   "init-s4": {
+    "dir": "stages/E3w2/init-s4",
+    "chunk_sha256": "98dbd11b74eba061ba1a526c71868e616c2db69ce0767cdde69874604f19a353",
+    "designed_json_sha256": "6fcc8270eceb820085f5fc23c5c6dcd9ab811ebec0610605dfa0c9b7fc815a89",
+    "values": {
+     "beta_W2": -1.700536375373561e-05,
+     "beta_W2_y": [
+      -0.00037490326296382335,
+      -0.0006907288656838222,
+      0.0010146160373864389
+     ],
+     "R_W2": 1.1925621624107905,
+     "Delta_W3": 1.1408784896107915,
+     "rho_C": 4.08490280228314e-06,
+     "rho_W2": 4.1409733333390025e-06,
+     "cue_mass_median": 0.1713866102808091,
+     "beta_W1": 2.6078133682495683e-05,
+     "beta_W3": -3.4168470861254453e-07,
+     "beta_W3_bal": -6.150925584593968e-07,
+     "beta_W3p": -2.2931715830333937e-06,
+     "nonfinite": false
+    }
+   },
+   "AB-s1": {
+    "dir": "stages/E3w3/AB-s1",
+    "chunk_sha256": "1dcdc44801801e23da0a8de9647123b00678d9971ff83be811ca0ed0244ba043",
+    "designed_json_sha256": "8c0248fd8ccbad89b2db16fceb75a1e0c024757c4b6ffdc406244125912b93b3",
+    "values": {
+     "beta_W2": 0.0027861277138348343,
+     "beta_W2_y": [
+      0.022728950103146173,
+      -0.015928295122465387,
+      0.0015577281608237157
+     ],
+     "R_W2": 0.20420659131977761,
+     "Delta_W3": 0.06120575874806354,
+     "rho_C": 0.0004855561882098449,
+     "rho_W2": 0.0011056750391661518,
+     "cue_mass_median": 0.19641939442987244,
+     "beta_W1": -0.0013277348721689771,
+     "beta_W3": 0.000938669898952776,
+     "beta_W3_bal": 0.0005637517693243274,
+     "beta_W3p": -0.003188648744988479,
+     "nonfinite": false
+    }
+   },
+   "AB-s2": {
+    "dir": "stages/E3w4/AB-s2",
+    "chunk_sha256": "4697d72352285b1a7efb731654c044ee857dc56ee63935db3084e1a58e9b3148",
+    "designed_json_sha256": "29149e2624f82670f64edda04d08473845f4923e9db3e04668a061b271475aa1",
+    "values": {
+     "beta_W2": -0.00010510160776685298,
+     "beta_W2_y": [
+      0.003908097870504846,
+      -0.004235998350673384,
+      1.259565686797882e-05
+     ],
+     "R_W2": 0.1979532282162913,
+     "Delta_W3": 0.06843534092655594,
+     "rho_C": 5.981510324815457e-05,
+     "rho_W2": 3.874644707381601e-05,
+     "cue_mass_median": 0.20302134225071278,
+     "beta_W1": -0.0006599846415251256,
+     "beta_W3": -0.0005410487774626096,
+     "beta_W3_bal": -0.0004908824506388575,
+     "beta_W3p": -0.0004794974400374813,
+     "nonfinite": false
+    }
+   },
+   "AB-s3": {
+    "dir": "stages/E3w4/AB-s3",
+    "chunk_sha256": "e79536d98d89e42dc5a86a89227d4f1c72cd986fc32d3e5221be97f2c262b753",
+    "designed_json_sha256": "904f8c626c36d8dba54f7cd1f5840c73b70d40f35e2ae92fa24ff78b337247b3",
+    "values": {
+     "beta_W2": 0.0008812707467452842,
+     "beta_W2_y": [
+      -0.001500802133483319,
+      0.004732077954534831,
+      -0.0005874635808156593
+     ],
+     "R_W2": 0.1987455454889739,
+     "Delta_W3": 0.06134274606957938,
+     "rho_C": 4.010085260938909e-05,
+     "rho_W2": 6.98102205939153e-05,
+     "cue_mass_median": 0.1970834218691308,
+     "beta_W1": -0.011359242194089757,
+     "beta_W3": 0.0018674290818240682,
+     "beta_W3_bal": 0.0020133396882302933,
+     "beta_W3p": -7.98039961732098e-05,
+     "nonfinite": false
+    }
+   },
+   "AB-s4": {
+    "dir": "stages/E3w4/AB-s4",
+    "chunk_sha256": "16b10ef7a926167738eeab1a7588fab837abe9efb2ae7b0a972807d00dc1b77f",
+    "designed_json_sha256": "60edacf80d67122c153f60bdb42a3fa39630ab09e7b65901db8f9aee74c8744d",
+    "values": {
+     "beta_W2": -0.0023179578580422677,
+     "beta_W2_y": [
+      0.02256267235676414,
+      -0.02946298918982024,
+      -5.355674107070517e-05
+     ],
+     "R_W2": 0.21067277165577905,
+     "Delta_W3": 0.06795579476496233,
+     "rho_C": 0.0016300774029564514,
+     "rho_W2": 0.002026406803882925,
+     "cue_mass_median": 0.20040763051013283,
+     "beta_W1": 0.0003729442116930708,
+     "beta_W3": 0.0009669401095601103,
+     "beta_W3_bal": 0.0011709663126293248,
+     "beta_W3p": -4.710209669103274e-05,
+     "nonfinite": false
+    }
+   },
+   "ZC-s2": {
+    "dir": "stages/E3w5/ZC-s2",
+    "chunk_sha256": "54215a932a6e7dc61af75b920c61f71ba7e54d84e29dc14493079a06cdffa119",
+    "designed_json_sha256": "719030fbb9ebb93b32e30b6428e10d9329d351ce3e0369cbc616677e7385d0d5",
+    "values": {
+     "beta_W2": 0.0010558501221825597,
+     "beta_W2_y": [
+      0.00806389306847059,
+      0.0022127845971493883,
+      -0.007109127299072299
+     ],
+     "R_W2": 0.09386641214738813,
+     "Delta_W3": 0.0506715766151351,
+     "rho_C": 0.0003156932940611048,
+     "rho_W2": 0.00016082307053044885,
+     "cue_mass_median": 0.20329168861208904,
+     "beta_W1": -0.006356759052624555,
+     "beta_W3": 0.0027416444935971294,
+     "beta_W3_bal": 0.003909443038371403,
+     "beta_W3p": -0.00028023187725049526,
+     "nonfinite": false
+    }
+   },
+   "NA-s1": {
+    "dir": "stages/E3w2/NA-s1",
+    "chunk_sha256": "999e539c599cc2ebde468eb50e924781e34c28509e8b32f6bca5b494a8b751aa",
+    "designed_json_sha256": "014501eb7f89ff68f460e0272704997d14aa787f53c283041ec6a1ce48cf0576",
+    "values": {
+     "beta_W2": 0.08830841115751599,
+     "beta_W2_y": [
+      0.2507730327872908,
+      0.013486244609958833,
+      0.0006659560752983068
+     ],
+     "R_W2": 0.07972662944746621,
+     "Delta_W3": 0.05487039440673034,
+     "rho_C": 0.005815605307929568,
+     "rho_W2": 0.021856357879549523,
+     "cue_mass_median": 0.20083043364038985,
+     "beta_W1": 0.10310253077867758,
+     "beta_W3": -0.002155423428745474,
+     "beta_W3_bal": -0.005222058517726872,
+     "beta_W3p": -0.0025609239013500173,
+     "nonfinite": false
+    }
+   },
+   "NA-s2": {
+    "dir": "stages/E3w2/NA-s2",
+    "chunk_sha256": "19dce0a7b0cf5e8fc37a75a31a0f4a7f06a370c8699d7d75c44a57ce809162eb",
+    "designed_json_sha256": "8e379d0dea0a65f573b74023041722e4aada65fa0c9efbbbebe81e8b3864021e",
+    "values": {
+     "beta_W2": 0.01793868879649821,
+     "beta_W2_y": [
+      0.03096340989194761,
+      0.013052766401876316,
+      0.0097998900956707
+     ],
+     "R_W2": 0.08740807447319535,
+     "Delta_W3": 0.05163283661001032,
+     "rho_C": 0.0005473990296607387,
+     "rho_W2": 0.0011336442571959465,
+     "cue_mass_median": 0.20227206159740516,
+     "beta_W1": 0.26967029472667914,
+     "beta_W3": 0.0038336482897107687,
+     "beta_W3_bal": -0.0016647922468063106,
+     "beta_W3p": 0.00026876304611406,
+     "nonfinite": false
+    }
+   },
+   "NA-s3": {
+    "dir": "stages/E3w3/NA-s3",
+    "chunk_sha256": "e9ee510b8b6b3e0f0bcda5849ba59ba3013f63a3d3db0aa77db151ca2fc53bc1",
+    "designed_json_sha256": "57785cddac3f5ed16eec9e6b5dfbfd749b440cb3ebd6cfd8b3631a6cde76d05c",
+    "values": {
+     "beta_W2": 0.0742863049841117,
+     "beta_W2_y": [
+      0.1802117346680331,
+      -0.0708517861579571,
+      0.11349896644225915
+     ],
+     "R_W2": 0.08593788045872282,
+     "Delta_W3": 0.050476641026137366,
+     "rho_C": 0.0030340172298790693,
+     "rho_W2": 0.019929275508151576,
+     "cue_mass_median": 0.2008312307288774,
+     "beta_W1": 0.29632362715043586,
+     "beta_W3": -0.015022420146795987,
+     "beta_W3_bal": -0.020866991637976586,
+     "beta_W3p": -0.01848402204616986,
+     "nonfinite": false
+    }
+   },
+   "NA-s4": {
+    "dir": "stages/E3w3/NA-s4",
+    "chunk_sha256": "7e5c83c9a8a215d94602c57fe07fa501c1565e32639f54f45ab92160af207bdf",
+    "designed_json_sha256": "83e185f2c43b78da0102869f371e0496244a4caec731cf421ea279674763361a",
+    "values": {
+     "beta_W2": 0.019674036137017886,
+     "beta_W2_y": [
+      0.04094677042882983,
+      -0.0034194430538162387,
+      0.021494781036040068
+     ],
+     "R_W2": 0.08533506736541098,
+     "Delta_W3": 0.052320154793337945,
+     "rho_C": 0.0006408249773019615,
+     "rho_W2": 0.0009269234569579529,
+     "cue_mass_median": 0.20087247100273298,
+     "beta_W1": 0.07530256187540696,
+     "beta_W3": -0.00179365460811461,
+     "beta_W3_bal": -0.002219371935310193,
+     "beta_W3p": -0.0018663027788483311,
+     "nonfinite": false
+    }
+   },
+   "ZC-s3": {
+    "dir": "stages/E3w5/ZC-s3",
+    "chunk_sha256": "e42fadfc210bf96cc9b0d7d6f2ac4ce53745cf62d4b9ebd79707bd8f4e8a54ee",
+    "designed_json_sha256": "df782fbafd775bc61d0c760e112f526111e9b6e38ae7cedd70a8ad243bcf9497",
+    "values": {
+     "beta_W2": 0.0010792624426528591,
+     "beta_W2_y": [
+      0.0013442163513768016,
+      0.003383430643324294,
+      -0.0014898596667425178
+     ],
+     "R_W2": 0.09054165246794359,
+     "Delta_W3": 0.04284987016668548,
+     "rho_C": 8.62691180037777e-05,
+     "rho_W2": 2.4056475992315626e-05,
+     "cue_mass_median": 0.19963149211650294,
+     "beta_W1": -0.13252283561285252,
+     "beta_W3": -0.00010648903786210893,
+     "beta_W3_bal": -1.1010058701232848e-05,
+     "beta_W3p": 0.001565678157979846,
+     "nonfinite": false
+    }
+   },
+   "ZC-s4": {
+    "dir": "stages/E3w6/ZC-s4",
+    "chunk_sha256": "8d92e049436fa2d4c43efb8e2f685b7694d8c3b607f29137bf759632697861ee",
+    "designed_json_sha256": "8a8bc906d876eafc6157a3ae1d2d0c001bfa6693d8004b6a5ab6551e97869c2f",
+    "values": {
+     "beta_W2": -0.005423471126893753,
+     "beta_W2_y": [
+      -0.0014553407080415445,
+      -0.005811615615736884,
+      -0.009003457056902834
+     ],
+     "R_W2": 0.09445349500542582,
+     "Delta_W3": 0.051188379148718856,
+     "rho_C": 0.0014786983400461445,
+     "rho_W2": 0.0001724561464364865,
+     "cue_mass_median": 0.20103932376493883,
+     "beta_W1": -0.21837877479808415,
+     "beta_W3": -0.0017169775589735332,
+     "beta_W3_bal": -0.0019852951125841093,
+     "beta_W3p": 2.4839140448016658e-05,
+     "nonfinite": false
+    }
+   },
+   "ZC-s1": {
+    "dir": "stages/E3w5/ZC-s1",
+    "chunk_sha256": "17f9002099f0ce8e2d6b0d9fd8fe0a30a2bf4d3159cd78a8b0bafc308d565d4c",
+    "designed_json_sha256": "b93e40f8ff8adcf6723d2b1395aca031979a7a2a0747a519c18279e62601ada6",
+    "values": {
+     "beta_W2": 0.20930750050575797,
+     "beta_W2_y": [
+      0.2052199561805179,
+      0.2017498869078547,
+      0.22095265842890138
+     ],
+     "R_W2": 0.07664621162727349,
+     "Delta_W3": 0.051653470319419276,
+     "rho_C": 0.007759879454343718,
+     "rho_W2": 0.04593760607639657,
+     "cue_mass_median": 0.19886186616579576,
+     "beta_W1": -0.012625945195439438,
+     "beta_W3": 0.00010861449808742338,
+     "beta_W3_bal": 0.00010803341563100805,
+     "beta_W3p": -0.00663175438035971,
+     "nonfinite": false
+    }
+   }
+  },
+  "stored_designed_source": "GATES.jsonl E3.A values.chunks (wave, chunk_sha256) -> stages/E3w<wave>/<name>/chunk.json files['designed.json'] -> designed.json",
+  "init_s1_copies_not_consumed": [
+   "stages/E3r2/init-s1",
+   "stages/E3r5/init-s1"
+  ],
+  "env_reference": {
+   "path": "stages/E3w5/ZC-s1/chunk.json",
+   "key": "env_local",
+   "commit": "213d1e2c0dbfd1609c7024eeb052310366562547",
+   "torch": "2.14.1+cpu",
+   "numpy": "2.2.6",
+   "threads": {
+    "interop": 1,
+    "intra": 2
+   },
+   "batch": 1024
+  },
+  "loss_echo_max_abs_32": "5e-7",
+  "gates_required_pass": [
+   "WEIGHTS-HASH",
+   "CLOUD-PROV",
+   "DATA-ID",
+   "TRAIN-COMPLETE"
+  ],
+  "a1_prefix_sites": [
+   [
+    "tools/x6_stage1/x6s1_data.py",
+    180
+   ],
+   [
+    "tools/x6_stage1/x6s1_data.py",
+    187
+   ],
+   [
+    "tools/x6_stage1/x6s1_data.py",
+    192
+   ],
+   [
+    "tools/x6_stage1/x6s1_data.py",
+    194
+   ],
+   [
+    "tools/x6_stage1/x6s1_data.py",
+    203
+   ],
+   [
+    "tools/x6_stage1/x6s1_ingest.py",
+    38
+   ],
+   [
+    "tools/x6_stage1/x6s1_pairs.py",
+    218
+   ],
+   [
+    "tools/x6_stage1/x6s1_pairs.py",
+    221
+   ],
+   [
+    "tools/x6_stage1/x6s1_registry.py",
+    36
+   ],
+   [
+    "tools/x6_stage1/x6s1_registry.py",
+    445
+   ],
+   [
+    "tools/x6_stage1/x6s1_stage_pre.py",
+    220
+   ]
+  ],
+  "a1_prefix_consumers": {
+   "tools/x6_stage1/x6s1_stage_pre.py:220": "designed_set -> natural_prefixes (first 1,024 yields)",
+   "tools/x6_stage1/x6s1_registry.py:445": "REG row digests (gsp_train_dev)"
+  },
+  "evaluation_kinds_seen": [
+   "cpu_replay",
+   "designed",
+   "dev_curve",
+   "emergence",
+   "loss_echo",
+   "smoke_forward",
+   "test",
+   "val"
+  ],
+  "never_read": [
+   "sealed/",
+   "registry/",
+   "superseded/"
+  ]
+ },
+ "constants": {
+  "x6zc_master": 2026102670,
+  "streams": {
+   "boot_B": [
+    "x6zc",
+    "boot",
+    "B"
+   ],
+   "boot_C": [
+    "x6zc",
+    "boot",
+    "C"
+   ],
+   "sens_A4": [
+    "x6zc",
+    "boot",
+    "C",
+    "A4"
+   ],
+   "sens_DPREFIX": [
+    "x6zc",
+    "boot",
+    "C",
+    "DPREFIX"
+   ],
+   "perm_K5i": [
+    "x6zc",
+    "perm"
+   ],
+   "dry": [
+    "x6zc",
+    "dry"
+   ]
+  },
+  "families": [
+   "W2",
+   "W1"
+  ],
+  "variant_order": [
+   "PP",
+   "MM",
+   "PM",
+   "MP"
+  ],
+  "variant_sign": {
+   "PP": 1,
+   "MM": -1,
+   "PM": 0,
+   "MP": 0
+  },
+  "variants": {
+   "W2": {
+    "PP": [
+     [
+      "A+",
+      "B+"
+     ],
+     [
+      "B+",
+      "A+"
+     ]
+    ],
+    "MM": [
+     [
+      "A-",
+      "B-"
+     ],
+     [
+      "B-",
+      "A-"
+     ]
+    ],
+    "PM": [
+     [
+      "A+",
+      "B-"
+     ],
+     [
+      "B-",
+      "A+"
+     ]
+    ],
+    "MP": [
+     [
+      "A-",
+      "B+"
+     ],
+     [
+      "B+",
+      "A-"
+     ]
+    ]
+   },
+   "W1": {
+    "PP": [
+     [
+      14,
+      15,
+      3,
+      0,
+      4,
+      5,
+      6
+     ],
+     [
+      14,
+      15,
+      12,
+      0,
+      4,
+      5,
+      6
+     ]
+    ],
+    "MM": [
+     [
+      6,
+      5,
+      4,
+      0,
+      12,
+      15,
+      14
+     ],
+     [
+      6,
+      5,
+      4,
+      0,
+      3,
+      15,
+      14
+     ]
+    ],
+    "PM": [
+     [
+      14,
+      13,
+      12,
+      0,
+      3,
+      7,
+      6
+     ],
+     [
+      14,
+      13,
+      12,
+      15,
+      3,
+      7,
+      6
+     ]
+    ],
+    "MP": [
+     [
+      6,
+      7,
+      3,
+      15,
+      12,
+      13,
+      14
+     ],
+     [
+      6,
+      7,
+      3,
+      0,
+      12,
+      13,
+      14
+     ]
+    ]
+   }
+  },
+  "w2_scaffold": {
+   "head": [
+    9,
+    5
+   ],
+   "tail": [
+    1,
+    2,
+    3,
+    7,
+    11,
+    15,
+    14
+   ]
+  },
+  "w1_tail_tokens": {
+   "PP": 4,
+   "MM": 2,
+   "PM": 3,
+   "MP": 3
+  },
+  "w1_crossing_steps": {
+   "PP": [
+    3,
+    4
+   ],
+   "MM": [
+    5,
+    6
+   ],
+   "PM": [
+    4,
+    5
+   ],
+   "MP": [
+    4,
+    5
+   ]
+  },
+  "w1_bag_diff_vertices": {
+   "PP": [
+    3,
+    12
+   ],
+   "MM": [
+    12,
+    3
+   ],
+   "PM": [
+    0,
+    15
+   ],
+   "MP": [
+    15,
+    0
+   ]
+  },
+  "w1_end_vertex": {
+   "PP": 6,
+   "MM": 14,
+   "PM": 6,
+   "MP": 14
+  },
+  "readout_offset": {
+   "W2": 18,
+   "W1": 8
+  },
+  "lambda_index": {
+   "W2": 18,
+   "W1": 8
+  },
+  "answers": {
+   "note": "S3 element names from x6_model._NAMES applied to the cue y: 'c2' means c^2[y]. 'miss1'/'miss2' = ZC holonomy with the first/second crossing (path order) relabelled e. Same table for W1 and W2.",
+   "PP": {
+    "NA": [
+     "c2",
+     "c"
+    ],
+    "ZC": [
+     "c2",
+     "c2"
+    ],
+    "AB": [
+     "e",
+     "e"
+    ],
+    "ZC_miss1": [
+     "c",
+     "c"
+    ],
+    "ZC_miss2": [
+     "c",
+     "c"
+    ],
+    "ZC_miss_both": [
+     "e",
+     "e"
+    ]
+   },
+   "MM": {
+    "NA": [
+     "c2",
+     "c"
+    ],
+    "ZC": [
+     "c",
+     "c"
+    ],
+    "AB": [
+     "e",
+     "e"
+    ],
+    "ZC_miss1": [
+     "c2",
+     "c2"
+    ],
+    "ZC_miss2": [
+     "c2",
+     "c2"
+    ],
+    "ZC_miss_both": [
+     "e",
+     "e"
+    ]
+   },
+   "PM": {
+    "NA": [
+     "c2",
+     "c"
+    ],
+    "ZC": [
+     "e",
+     "e"
+    ],
+    "AB": [
+     "e",
+     "e"
+    ],
+    "ZC_miss1": [
+     "c2",
+     "c"
+    ],
+    "ZC_miss2": [
+     "c",
+     "c2"
+    ],
+    "ZC_miss_both": [
+     "e",
+     "e"
+    ]
+   },
+   "MP": {
+    "NA": [
+     "c2",
+     "c"
+    ],
+    "ZC": [
+     "e",
+     "e"
+    ],
+    "AB": [
+     "e",
+     "e"
+    ],
+    "ZC_miss1": [
+     "c",
+     "c2"
+    ],
+    "ZC_miss2": [
+     "c2",
+     "c"
+    ],
+    "ZC_miss_both": [
+     "e",
+     "e"
+    ]
+   }
+  },
+  "cells": {
+   "P": {
+    "model": "ZC-s1",
+    "family": "W2",
+    "beta_D": 0.20930750050575797,
+    "sign": 1,
+    "role": "primary",
+    "b_q": [
+     "1/40",
+     "39/40"
+    ],
+    "b_level": "95",
+    "r_q": [
+     "1/120",
+     "119/120"
+    ],
+    "z": "2.394"
+   },
+   "S3": {
+    "model": "ZC-s3",
+    "family": "W1",
+    "beta_D": -0.13252283561285252,
+    "sign": -1,
+    "role": "secondary",
+    "b_q": [
+     "1/80",
+     "79/80"
+    ],
+    "b_level": "97.5",
+    "r_q": [
+     "1/240",
+     "239/240"
+    ],
+    "z": "2.638"
+   },
+   "S4": {
+    "model": "ZC-s4",
+    "family": "W1",
+    "beta_D": -0.21837877479808415,
+    "sign": -1,
+    "role": "secondary",
+    "b_q": [
+     "1/80",
+     "79/80"
+    ],
+    "b_level": "97.5",
+    "r_q": [
+     "1/240",
+     "239/240"
+    ],
+    "z": "2.638"
+   }
+  },
+  "cell_order": [
+   "P",
+   "S3",
+   "S4"
+  ],
+  "feasibility_ratio": {
+   "P": "2.09",
+   "S3": "1.33",
+   "S4": "2.18",
+   "low_feasibility": [
+    "S3"
+   ]
+  },
+  "predictors": {
+   "models": [
+    "NA-s1",
+    "NA-s2",
+    "NA-s3",
+    "NA-s4",
+    "AB-s1",
+    "AB-s2",
+    "AB-s3",
+    "AB-s4",
+    "ZC-s1",
+    "ZC-s2",
+    "ZC-s3",
+    "ZC-s4"
+   ],
+   "inits": [
+    "init-s1",
+    "init-s2",
+    "init-s3",
+    "init-s4"
+   ],
+   "stage_b_order": [
+    "init-s1",
+    "init-s2",
+    "init-s3",
+    "init-s4",
+    "AB-s1",
+    "AB-s2",
+    "AB-s3",
+    "AB-s4",
+    "ZC-s2",
+    "NA-s1",
+    "NA-s2",
+    "NA-s3",
+    "NA-s4",
+    "ZC-s3",
+    "ZC-s4",
+    "ZC-s1"
+   ],
+   "focal": [
+    "ZC-s1",
+    "ZC-s3",
+    "ZC-s4"
+   ],
+   "k5": [
+    "ZC-s1",
+    "ZC-s3",
+    "ZC-s4",
+    "NA-s1",
+    "init-s1"
+   ],
+   "na_models": [
+    "NA-s1",
+    "NA-s2",
+    "NA-s3",
+    "NA-s4"
+   ]
+  },
+  "k6_controls": {
+   "W2": [
+    "init-s1",
+    "init-s2",
+    "init-s3",
+    "init-s4",
+    "AB-s1",
+    "AB-s2",
+    "AB-s3",
+    "AB-s4",
+    "ZC-s2",
+    "ZC-s3",
+    "ZC-s4"
+   ],
+   "W1": [
+    "init-s1",
+    "init-s2",
+    "init-s3",
+    "init-s4",
+    "AB-s1",
+    "AB-s2",
+    "AB-s3",
+    "AB-s4",
+    "ZC-s1",
+    "ZC-s2"
+   ]
+  },
+  "k6_min_pass": {
+   "W2": 10,
+   "W1": 9
+  },
+  "k1_predictors": [
+   "oracle:ZC:qstar",
+   "oracle:AB:qstar",
+   "oracle:NA:q_empty",
+   "oracle:NA:q_parity",
+   "oracle:NA:q_counts",
+   "oracle:NA:q_H1",
+   "oracle:NA:q_Parikh",
+   "set_constant",
+   "matched_key",
+   "oracle:NA:q_8 (W2 family only)",
+   "sym:ZC-s1",
+   "sym:ZC-s3",
+   "sym:ZC-s4"
+  ],
+  "k3": {
+   "mechanisms": [
+    "M0",
+    "M1",
+    "M2a",
+    "M2b",
+    "M4",
+    "M6"
+   ],
+   "sign_symmetric": [
+    "M1",
+    "M2a",
+    "M2b",
+    "M4",
+    "M6"
+   ],
+   "w": [
+    "1/20",
+    "1/5"
+   ],
+   "pairs": [
+    [
+     "1/20",
+     "1/5"
+    ],
+    [
+     "1/5",
+     "1/20"
+    ]
+   ],
+   "m4_seams": [
+    "x",
+    "y"
+   ],
+   "m4_members": [
+    "a",
+    "b"
+   ],
+   "prefix": [],
+   "recorded_only": [
+    "W1_token_identity"
+   ]
+  },
+  "m1_coefficient": {
+   "W2": "1/(2*lambda_18)",
+   "W1": "1/(2*lambda_8)",
+   "W2_float": 0.7192844009001089,
+   "W1_float": 0.5877077243938795,
+   "alt_reading_W2": 1.0789266013501635,
+   "alt_reading_W1": 0.8815615865908194
+  },
+  "den": {
+   "W2": "2*lambda_18^2",
+   "W1": "2*lambda_8^2",
+   "W2_float": 0.9664262564114334,
+   "W1_float": 1.4475954411849916
+  },
+  "set_constant_cue_mass": "1/5",
+  "matched_key_modulus": 1000,
+  "matched_key_mass": "(1 + K mod 7)/10"
+ },
+ "thresholds": {
+  "placebo": "1/10",
+  "placebo_band": "1e-9",
+  "material_change": "1/20",
+  "k1_float": "0",
+  "ref_abs": "1e-12",
+  "k5a_ok": "1e-12",
+  "k5a_drift": "1e-9",
+  "repeat_abs": "1e-12",
+  "padding_abs": "1e-13",
+  "k4_rel": "1e-9",
+  "census_pair_diff": "1e-9",
+  "precision_sensitive": "1e-5",
+  "cue_mass_t": [
+   "3/20",
+   "1/4"
+  ],
+  "cue_mass_tm1_max": "1/100",
+  "r_band": [
+   "1/2",
+   "3/2"
+  ],
+  "b_margin": "1/10",
+  "lo_margin": "1/20",
+  "undefined_max": "1/100",
+  "h_target": "1/4",
+  "se_floor": "1/20",
+  "n_floor": 512,
+  "n_ladder": [
+   1024,
+   2048
+  ],
+  "n_d": 1030,
+  "f1_min_distance": "1",
+  "r_w1_p_q": [
+   "1/40",
+   "39/40"
+  ],
+  "beta_sb_q": [
+   "1/40",
+   "39/40"
+  ],
+  "b5_q": [
+   "1/40",
+   "39/40"
+  ],
+  "b_draws": 5000,
+  "k5_padding_token": 5,
+  "loss_echo_max_abs_32": "5e-7"
+ },
+ "budget": {
+  "anchor_ms_per_history": "6.4",
+  "anchor_source": "jobs/0098/report.md: 64,767 CPU-s for 4 ZC chunks",
+  "histories": {
+   "B": 595584,
+   "C_per_n": 768,
+   "C_n1024": 786432
+  },
+  "central_cpu_s": {
+   "0": 720,
+   "A": 3060,
+   "B": 2880,
+   "C_per_1024": 3240
+  },
+  "upper_cpu_h": {
+   "0": "0.40",
+   "A": "1.5",
+   "B": "1.2",
+   "C_per_1024": "1.4"
+  },
+  "g3_b8_max_stage_b_cpu_s": 2880,
+  "calibration_band": [
+   "1/2",
+   "2"
+  ],
+  "pause": {
+   "0": {
+    "cumulative": 2160,
+    "stage": 2160
+   },
+   "A": {
+    "cumulative": 11340,
+    "stage": 9180
+   },
+   "B": {
+    "cumulative": 19980,
+    "stage": 8640
+   },
+   "C_1024": {
+    "cumulative": 29700,
+    "stage": 9720
+   },
+   "C_2048": {
+    "cumulative": 39420,
+    "stage": 19440
+   },
+   "C_any": {
+    "cumulative": "19980 + 9.4921875*n",
+    "stage": "9.4921875*n"
+   }
+  },
+  "max_children": 3,
+  "threads": {
+   "intra": 2,
+   "interop": 1
+  },
+  "batch": 1024,
+  "process_mem_bytes": 3221225472,
+  "meter": "measure-only (--max-cpu inf); C: free-space floor; ledger x6zc-store/cpu_ledger.json"
+ },
+ "store": {
+  "files": [
+   "FREEZE.json",
+   "AUTH.json",
+   "cpu_ledger.json",
+   "STAGES.jsonl",
+   "EXPOSURE.jsonl",
+   "EVALUATIONS.jsonl",
+   "report.json",
+   "x6zc_meter_bind.py"
+  ],
+  "dirs": [
+   "stages/0",
+   "stages/A",
+   "stages/B",
+   "stages/C",
+   "rulings",
+   "logs"
+  ],
+  "exposure_first": {
+   "id": "E0-PREFIX-READ",
+   "kind": "prior_code_read",
+   "artifact": "x6-stage1-store/pools/ObservationSet/54371c403e588227",
+   "reads": [
+    "E0 G0-ORC: natural_prefixes scanned all 4,096 rows (one L_max draw per row) and kept the first 1,024 yields (x6s1_stage_pre.py:220)",
+    "REG: row digests hashed for the separation check (x6s1_registry.py:437-460, gsp_train_dev)",
+    "pool build: token sha256 recorded (POOLS.json)"
+   ],
+   "models_evaluated": 0,
+   "rows_after_r_star_used_by_a_decision": false
+  },
+  "freeze_fields": [
+   "schema",
+   "protocol_id",
+   "protocol_sha256",
+   "protocol_frozen",
+   "api_sha256",
+   "contract_sha256",
+   "test_plan_sha256",
+   "head",
+   "branch",
+   "worktree",
+   "modules",
+   "tests",
+   "x6zc_master",
+   "thresholds",
+   "dry_run",
+   "meter_bind_sha256",
+   "meter_import_dir",
+   "coordinator",
+   "created_utc"
+  ],
+  "auth_fields": [
+   "schema",
+   "protocol_sha256",
+   "freeze_sha256",
+   "owner_record",
+   "local_budget",
+   "pause_thresholds",
+   "cpu_policy",
+   "coordinator",
+   "written_utc"
+  ]
+ },
+ "outcomes": {
+  "global_rules": [
+   "G-R0",
+   "G-R1",
+   "G-R2",
+   "G-R2'",
+   "G-R3"
+  ],
+  "global": {
+   "G-R0": "STOP_REPLAN",
+   "G-R1": "INVALID",
+   "G-R2": "DEFECT_FOUND",
+   "G-R2'": "UNEXPLAINED/IRREPRODUCIBLE",
+   "G-R3": "ESTIMATOR_ARTIFACT/NON_INVARIANT"
+  },
+  "cell_rules": [
+   "R4a",
+   "R4b",
+   "R5",
+   "R6",
+   "R7",
+   "R7b",
+   "R8",
+   "R8b",
+   "R9",
+   "R9'",
+   "R10"
+  ],
+  "cell": {
+   "R4a": {
+    "P": "UNEXPLAINED/NOT_ENOUGH_DATA",
+    "S": "UNEXPLAINED/NOT_ENOUGH_DATA"
+   },
+   "R4b": {
+    "P": "UNEXPLAINED/UNDERPOWERED",
+    "S": "UNEXPLAINED/UNDERPOWERED"
+   },
+   "R5": {
+    "P": "UNEXPLAINED/FRESH_SET_UNSTABLE",
+    "S": "UNEXPLAINED/FRESH_SET_UNSTABLE"
+   },
+   "R6": {
+    "P": "ZC_NOT_COMMUTATIVE/NOT_REPLICATED",
+    "S": "ZC_NOT_COMMUTATIVE/NOT_REPLICATED"
+   },
+   "R7": {
+    "P": "UNEXPLAINED/WEAK_REPLICATION",
+    "S": "UNEXPLAINED/WEAK_REPLICATION"
+   },
+   "R7b": {
+    "P": "UNEXPLAINED/UNSTABLE_RATIO",
+    "S": "UNEXPLAINED/UNSTABLE_RATIO"
+   },
+   "R8": {
+    "P": "ZC_NOT_COMMUTATIVE/ZC_COORDINATE",
+    "S": "ZC_NOT_COMMUTATIVE/NOT_NA_DIRECTION"
+   },
+   "R8b": {
+    "P": "UNEXPLAINED/NOT_NA_INVARIANT",
+    "S": "UNEXPLAINED/NOT_NA_INVARIANT"
+   },
+   "R9": {
+    "P": "ZC_NOT_COMMUTATIVE/NA_DIRECTION",
+    "S": "ZC_NOT_COMMUTATIVE/NA_DIRECTION"
+   },
+   "R9'": {
+    "P": "UNEXPLAINED/NOT_DISCRIMINABLE({mechanisms})",
+    "S": "UNEXPLAINED/NOT_DISCRIMINABLE({mechanisms})"
+   },
+   "R10": {
+    "P": "UNEXPLAINED/PARTIAL",
+    "S": "UNEXPLAINED/PARTIAL"
+   }
+  },
+  "descriptive_runs": [
+   "UNEXPLAINED/NOT_ENOUGH_DATA",
+   "UNEXPLAINED/UNDERPOWERED"
+  ]
+ },
+ "licences": {
+  "DEFECT_FOUND": "The value {value} was produced by {defect}; a versioned corrected computation gives {corrected} (descriptive).",
+  "ESTIMATOR_ARTIFACT/NON_INVARIANT": "The registered designed β estimator is not invariant for {predictor}; the designed placebo cannot certify specificity in its current form.",
+  "ZC_NOT_COMMUTATIVE/NOT_REPLICATED": "{model}'s predictions differ between the two orderings of the registered {family} census (β = {beta_d3}, reproduced through a verified pipeline): a real response of this model on the registered prefixes. It did not replicate on {n} unused prefixes ({b_label} = {b}, {level} % interval [{lo}, {hi}], below the 0.10 margin and not above 0).",
+  "UNEXPLAINED/WEAK_REPLICATION:positive": "On {n} unused prefixes {model}'s {family} order response is positive but below the 0.10 placebo margin: {b_label} = {b} (interval [{lo}, {hi}]; lo > 0). It is not exact commutativity and not absence of order sensitivity.",
+  "UNEXPLAINED/WEAK_REPLICATION:ambiguous": "replication ambiguous ({b_label} = {b}, interval [{lo}, {hi}]).",
+  "ZC_NOT_COMMUTATIVE/ZC_COORDINATE": "{model}'s next-cue predictions differ between the two orderings of the registered W2 family and of its loop-sign variants on {n} unused prefixes, unlike {k} of the other seven commutative controls on W2 (|β_W2,PP^fresh| ≤ 0.10{exceptions}). When the loop directions are reversed, the response reverses sign (r_MM = {r_mm}, interval below 0) relative to the NA oracle's contrast (r_PM = {r_pm}, r_MP = {r_mp}, intervals {intervals}), which the NA contrast itself does not do. This is the pattern of an order-dependent Z₃ counting error. On W2 such an error is projected onto the NA contrast, because NA's x-first answer equals ZC's answer and NA's y-first answer equals ZC's answer with one crossing missed. The stage-1 placebo failure is therefore read as a control-specific order error made visible by the W2 geometry, not as NA-direction order use by ZC-s1 and not as a pipeline artefact.",
+  "ZC_NOT_COMMUTATIVE/NOT_NA_DIRECTION": "{model}'s W1 response replicated on {n} unused prefixes and reverses sign when both crossings are reversed (r_MM = {r_mm}, interval below 0), so it is not an NA-direction response. W1's members differ in one visited vertex, so this pattern fits an order-dependent Z₃ counting error or an order-free token-identity effect; W1 cannot separate the two. The four NA models' W1 r_v values are printed beside the cell.",
+  "UNEXPLAINED/NOT_NA_INVARIANT": "{model}'s response replicated (β_PP = {beta_pp}) and is not invariant to loop-sign reversal (r_v = {r_values}, intervals {intervals}), but it does not reverse sign when both loops are reversed; it matches neither the NA oracle nor a sign-symmetric Z₃ counting error.",
+  "ZC_NOT_COMMUTATIVE/NA_DIRECTION": "{model} shows an order response on {family} aligned with the NA oracle's composition and invariant to loop-sign reversal on {n} unused prefixes (r_v intervals inside (0.5, 1.5)); it is not explained by sign-symmetric Z₃ counting errors. Its source is unidentified.",
+  "ZC_NOT_COMMUTATIVE/NA_DIRECTION:W1_suffix": " The four NA models' W1 r_v values are printed beside the cell.",
+  "UNEXPLAINED/PARTIAL": "{model}'s response replicated (β_PP = {beta_pp}), but its loop-sign ratios were neither clearly NA-invariant nor clearly Z₃-covariant ({intervals}); a sign-invariant component of up to {upper} cannot be excluded.",
+  "UNEXPLAINED/*": "{outcome}{descriptive}: {numbers}",
+  "STOP_REPLAN": "",
+  "INVALID": ""
+ },
+ "not_licensed": {
+  "DEFECT_FOUND": "Any change to the X6S1 outcome. Whether X6S1's technical-correction path applies (protocol §3 row 3, §12 item 3) is the owner's decision (§10).",
+  "ESTIMATOR_ARTIFACT/NON_INVARIANT": "Any statement about the trained controls' behaviour",
+  "ZC_NOT_COMMUTATIVE/NOT_REPLICATED": "\"Estimator artefact\", \"chance\", or that ZC-s1 is commutative on designed inputs in general",
+  "UNEXPLAINED/WEAK_REPLICATION:positive": "Any mechanism; \"the placebo failure was noise\"",
+  "UNEXPLAINED/WEAK_REPLICATION:ambiguous": "Any explanation",
+  "ZC_NOT_COMMUTATIVE/ZC_COORDINATE": "How ZC-s1 computes (no mechanism, probe or intervention); that the NA models' designed statistics are free of other artefacts; anything about retrained models; any change to rule 9",
+  "ZC_NOT_COMMUTATIVE/NOT_NA_DIRECTION": "\"Order use\" by the control; a Z₃ mechanism specifically",
+  "UNEXPLAINED/NOT_NA_INVARIANT": "Any mechanism; \"NA-direction\"; \"Z₃ error\"",
+  "ZC_NOT_COMMUTATIVE/NA_DIRECTION": "\"Leak\", \"NA knowledge\" or \"learned S₃ composition\"; any statement about the NA models",
+  "UNEXPLAINED/PARTIAL": "Any explanation",
+  "UNEXPLAINED/*": "Any explanation",
+  "STOP_REPLAN": "—",
+  "INVALID": "—"
+ },
+ "follow_up": {
+  "ZC_NOT_COMMUTATIVE/NA_DIRECTION": "This triggers a provenance audit (a token-content check of the model's training batches beyond LOSS-ECHO's first-batch losses), which needs its own go-ahead."
+ },
+ "x6s1_statement": [
+  "The registered outcome stays INCONCLUSIVE (rule 9), with CONTROL_LIMITED(designed, s1) and DESIGNED_UNRESOLVED(1).",
+  "ordD(s1) stays UNRESOLVED, and no seed is relabelled FAIL.",
+  "Nothing here turns rule 9 into rule 8. ZC-s1's control result is not removed or replaced.",
+  "No claim about topology, internal representation or causal necessity."
+ ],
+ "reuse": {
+  "axis1": [
+   "VALID",
+   "NOT_FIT",
+   "UNDETERMINED"
+  ],
+  "axis2": [
+   "FIT_WITH_AMENDMENT",
+   "UNDETERMINED",
+   "NOT_ASSESSED"
+  ],
+  "amendments": {
+   "1": "A Z₃ control is not a clean placebo for an NA contrast with this coupling. Drop it as a designed placebo, or gate it on β_sb = ½(β_PP + β_MM), which is 1 for q*_NA and 0 for sign-symmetric Z₃ errors (validated by K3 and the Stage-C control values). This is supported by K0 and the W1 data whatever Stage C gives.",
+   "2": "Put the β and ρ bars on one scale (|β| ≤ √ρ), or gate on ρ relative to the NA models.",
+   "3": "Give the designed placebo a prefix-cluster interval and a per-control known-case check (working rule 5); use larger or fresh prefix sets.",
+   "4": "The sign-variant discriminator works for Z₃-type controls only: AB is sign-invariant like NA (a = a⁻¹), so AB-type errors could mimic NA_DIRECTION. On bag-unmatched families (W1), it cannot separate counting from token-identity effects."
+  },
+  "amendment_1_inconclusive_mark": "supported by algebra and W1 data; Stage C inconclusive",
+  "by_outcome": {
+   "ZC_NOT_COMMUTATIVE/ZC_COORDINATE": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "ZC_NOT_COMMUTATIVE/NOT_NA_DIRECTION": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "UNEXPLAINED/NOT_NA_INVARIANT": [
+    1,
+    2,
+    3
+   ],
+   "ZC_NOT_COMMUTATIVE/NOT_REPLICATED": [
+    1,
+    2,
+    3
+   ],
+   "UNEXPLAINED/WEAK_REPLICATION": [
+    1,
+    2,
+    3
+   ],
+   "UNEXPLAINED/PARTIAL": [
+    1,
+    2,
+    3
+   ],
+   "UNEXPLAINED/*": [
+    1,
+    2,
+    3
+   ],
+   "ZC_NOT_COMMUTATIVE/NA_DIRECTION": [
+    2,
+    3
+   ]
+  },
+  "statement": "the W2/W1 pipeline may be reused as a behavioural contrast with explicit empirical controls. It must not be described as automatically excluding every predictor trained on a commutative process."
+ },
+ "dry_run": {
+  "store": "X:/Downloads/topo-scratch/x6zc-dry",
+  "pool_rows": 4096,
+  "short_pool": "the synthetic pool truncated after the row of its 1,280th yield (N_avail = 256)",
+  "model_prefixes_D": 64,
+  "model_fresh_n": 128,
+  "jitter": {
+   "fixtures": [
+    "DR01",
+    "DR02",
+    "DR03",
+    "DR04",
+    "DR05",
+    "DR07",
+    "DR08"
+   ],
+   "u_range": [
+    "-1/5",
+    "1/5"
+   ],
+   "stream": [
+    "x6zc",
+    "dry",
+    "jitter",
+    "<id>"
+   ]
+  },
+  "dr09_plant": {
+   "clusters": 128,
+   "pp_num_good": "0.3",
+   "pp_num_bad": "-9.8",
+   "bad_clusters": 1,
+   "others_num": "0.3",
+   "den": "1",
+   "draws": 5000
+  },
+  "fixtures": [
+   {
+    "id": "DR01",
+    "fixture": "r_PM interval above 1.5 with r_MM about 1",
+    "expected": "UNEXPLAINED/NOT_NA_INVARIANT"
+   },
+   {
+    "id": "DR02",
+    "fixture": "M0, w = 0.2, planted on ZC-s1 for both families (cell P; r_W1|P about 1)",
+    "expected": "ZC_NOT_COMMUTATIVE/NA_DIRECTION"
+   },
+   {
+    "id": "DR03",
+    "fixture": "M2a, (pi_a, pi_b) = (0.05, 0.25), on W2",
+    "expected": "ZC_NOT_COMMUTATIVE/ZC_COORDINATE"
+   },
+   {
+    "id": "DR04",
+    "fixture": "M2a with pi_a > pi_b, on W1 (negative cell sign)",
+    "expected": "ZC_NOT_COMMUTATIVE/NOT_NA_DIRECTION"
+   },
+   {
+    "id": "DR05",
+    "fixture": "M1, (kappa_a, kappa_b) = (0.85, 0.55), on W2 (beta_PP = 0.3/(2 lambda_18))",
+    "expected": "ZC_NOT_COMMUTATIVE/ZC_COORDINATE"
+   },
+   {
+    "id": "DR06",
+    "fixture": "order response keyed to D-prefix ids only, absent on fresh",
+    "expected": "ZC_NOT_COMMUTATIVE/NOT_REPLICATED"
+   },
+   {
+    "id": "DR07",
+    "fixture": "response beta_PP = 0.05 with a tight interval",
+    "expected": "UNEXPLAINED/WEAK_REPLICATION",
+    "licence": "positive"
+   },
+   {
+    "id": "DR08",
+    "fixture": "M0 (w = 0.15) + M2a (pi_a = 0, pi_b = 0.05) on W2: exact r_MM = 1/2, r_PM = 7/8, r_MP = 5/8",
+    "expected": "UNEXPLAINED/PARTIAL"
+   },
+   {
+    "id": "DR09",
+    "fixture": "sigma*beta_PP* <= 0 in > 1 % of draws (bimodal: a few prefixes with large opposite-sign numerators)",
+    "expected": "UNEXPLAINED/UNSTABLE_RATIO"
+   },
+   {
+    "id": "DR10",
+    "fixture": "two controls responding on fresh W2",
+    "expected": "UNEXPLAINED/FRESH_SET_UNSTABLE"
+   },
+   {
+    "id": "DR11",
+    "fixture": "N_avail < 512 pool",
+    "expected": "UNEXPLAINED/NOT_ENOUGH_DATA",
+    "descriptive": true
+   },
+   {
+    "id": "DR12",
+    "fixture": "SE large enough that no candidate n qualifies",
+    "expected": "UNEXPLAINED/UNDERPOWERED"
+   },
+   {
+    "id": "DR13",
+    "fixture": "deliberately a/b-swapped pipeline",
+    "expected": "DEFECT_FOUND",
+    "caught_by": [
+     "K2",
+     "K5"
+    ]
+   },
+   {
+    "id": "DR14",
+    "fixture": "float path that breaks exact commutativity",
+    "expected": "ESTIMATOR_ARTIFACT/NON_INVARIANT"
+   },
+   {
+    "id": "DR15",
+    "fixture": "a K0-violating variant path",
+    "expected": "STOP_REPLAN"
+   },
+   {
+    "id": "DR16",
+    "fixture": "mixtures (1 - delta) q_Parikh + delta q*, delta in {0, 1/20, 1/10, 1/5, 1/4, 1}",
+    "expected": "beta = delta exactly"
+   },
+   {
+    "id": "DR17",
+    "fixture": "joint member swap / predictor-only swap / joint permutation and duplication",
+    "expected": "unchanged / sign flip / unchanged"
+   },
+   {
+    "id": "DR18",
+    "fixture": "mismatched joins, wrong readout positions",
+    "expected": "rejected"
+   },
+   {
+    "id": "DR19",
+    "fixture": "zero cue mass, non-finite output, zero denominator",
+    "expected": "INVALID or undefined, never 0"
+   },
+   {
+    "id": "DR20",
+    "fixture": "D2 identity on duplicate-prefix fixtures",
+    "expected": "holds within 1e-12"
+   },
+   {
+    "id": "DR21",
+    "fixture": "boundary fixtures inside and outside the 1e-9 band",
+    "expected": "the expected qualifier side"
+   },
+   {
+    "id": "DR22",
+    "fixture": "a simulated ledger above a 3x threshold",
+    "expected": "a pause record"
+   }
+  ]
+ },
+ "a2_table": "API.md §17 (the written code-audit table; anchors are checked at Stage A)",
+ "open": [
+  "FREEZE.json values (implementation commit, module and test blob sha256, dry-run report sha256, meter binding sha256, CONTRACT sha256): written at the execution freeze, not in this file",
+  "AUTH.json (owner AUTH (b)): written after the freeze"
+ ]
+}

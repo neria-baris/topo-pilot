@@ -184,7 +184,7 @@ EVENTS = [
     ("10-20", 5, "crossing order (trained):\nlearnability GO", "pass", "agent-handoff/jobs/0093/review.md"),
     ("10-20", 5, "crossing order (trained):\n12 models admitted", "pass", "agent-handoff/jobs/0094/review.md"),
     ("10-21", 5, "crossing order (trained):\nINCONCLUSIVE", "inc", "agent-handoff/jobs/0099/review.md"),
-    ("10-22", 2, "readout attribution:\nrunning (no data yet)", "open", "agent-handoff/jobs/0107/review.md"),
+    ("10-26", 2, "readout attribution:\nUSED (3/3 models)", "pass", "agent-handoff/jobs/0115/review.md"),
 ]
 LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
              ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]

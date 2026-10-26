@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 862 tracked files; 505 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 866 tracked files; 505 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1280,3 +1280,12 @@ The generated index itself (`docs/code_index/`) is not indexed. 862 tracked file
 | [x6s1_stage_post.py](files/tools/x6_stage1/x6s1_stage_post.py.md) | python | 461 lines | X6S1 stage content of E1, E2, E3a/E3w and E3z (ruling R-0079-1): INGEST, LEARN, LC, LOSS-ECHO, |
 | [x6s1_stage_pre.py](files/tools/x6_stage1/x6s1_stage_pre.py.md) | python | 431 lines | X6S1 stage content of E0 and E0b (ruling R-0079-1): AUTH-ADMIT, S0, REG1 and the non-test |
 | [x6s1_stats.py](files/tools/x6_stage1/x6s1_stats.py.md) | python | 202 lines | X6S1 stats (overflow module 2): the empirical-Bernstein bound evaluated outward, certified log |
+
+## tools/x6zc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 378 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
+| `CONTRACT.json` | json | 1910 lines |  |
+| `PROTOCOL_X6ZC_v1.md` | markdown | 930 lines | X6ZC-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training) |
+| `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |

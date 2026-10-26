@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 862,
+  "files indexed": 866,
   "functions and methods (incl. tests)": 6917,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 737,
@@ -17582,6 +17582,30 @@
    "lines": 202,
    "purpose": "X6S1 stats (overflow module 2): the empirical-Bernstein bound evaluated outward, certified log",
    "sha256": "7299625b7ed08d07c22506a46bf1fe79aa244bb1e5225206f1105522f805704e"
+  },
+  "tools/x6zc/API.md": {
+   "kind": "markdown",
+   "lines": 378,
+   "purpose": "tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1)",
+   "sha256": "80fd353a265e5ad8ab5e7cab185a74a3e77fa3eaaf90e8ad5268524a18422f5f"
+  },
+  "tools/x6zc/CONTRACT.json": {
+   "kind": "json",
+   "lines": 1910,
+   "purpose": "",
+   "sha256": "54bacea8e1399e084c303df9c5289c000d52713ccadccbdef39d6048fc70c5db"
+  },
+  "tools/x6zc/PROTOCOL_X6ZC_v1.md": {
+   "kind": "markdown",
+   "lines": 930,
+   "purpose": "X6ZC-MERGED-v2 (supersedes v1; see \"Change log v1 → v2\" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training)",
+   "sha256": "2a711d16d0c3b5e7cdfc0c96e7342a86c0e500b3f31592868ba5b661ef324193"
+  },
+  "tools/x6zc/TEST_PLAN.md": {
+   "kind": "markdown",
+   "lines": 118,
+   "purpose": "X6ZC test plan v1 (job 0117)",
+   "sha256": "bae45ebae20c0455ab81eae74f9d2705b930d1310a9c250d1aea5251c7533328"
   }
  },
  "problems": [
@@ -180253,5 +180277,5 @@
    ]
   }
  },
- "sources_digest": "db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906"
+ "sources_digest": "07cffbb8de39330e8b3951fd0719b91a4ea268bf1fb27cfec4f8ecf91d61c3e8"
 }

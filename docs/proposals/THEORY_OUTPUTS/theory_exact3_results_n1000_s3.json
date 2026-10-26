@@ -1,0 +1,148 @@
+{
+ "n": 1000,
+ "seed": 3,
+ "searched_null": [
+  {
+   "family": "square",
+   "n": 1000,
+   "fixed_x_phase_kappa": 0.0,
+   "around_point_best": 1.656638560048786,
+   "pc_pair_best": 1.1874542780961468,
+   "random_map_median": 0.0,
+   "random_map_climbed_best": 1.1218380337494307
+  },
+  {
+   "family": "cylinder",
+   "n": 1000,
+   "fixed_x_phase_kappa": 5.2328427084754034,
+   "around_point_best": 1.316330045216098,
+   "pc_pair_best": 1.5060149590407532,
+   "random_map_median": 0.0,
+   "random_map_climbed_best": 0.0
+  }
+ ],
+ "prediction_mechanism": {
+  "cylinder_world_axis_permuted": {
+   "kappa": 1.3455332016245423,
+   "winding": -1
+  },
+  "square_world_axis_permuted": {
+   "kappa": 0.0,
+   "winding": 0
+  },
+  "square_world_cylinder_chart": {
+   "prediction_kappa": 1.8103754571490311,
+   "prediction_winding": -1,
+   "belief_kappa": 0.0,
+   "belief_winding": 0
+  },
+  "cylinder_world_square_chart": {
+   "prediction_kappa": 1.621034484326598,
+   "prediction_winding": -1,
+   "belief_kappa": 0.0,
+   "belief_winding": 0
+  },
+  "cylinder_world_cylinder_chart": {
+   "prediction_kappa": 7.101941628447777,
+   "prediction_winding": 1,
+   "belief_kappa": 4.146281200064241,
+   "belief_winding": -1
+  },
+  "square_world_square_chart": {
+   "prediction_kappa": 0.0,
+   "prediction_winding": 0,
+   "belief_kappa": 0.0,
+   "belief_winding": 0
+  },
+  "cylinder_world_permuted_square_chart": {
+   "prediction_kappa": 0.0,
+   "prediction_winding": 0
+  },
+  "square_world_permuted_cylinder_chart": {
+   "prediction_kappa": 0.0,
+   "prediction_winding": 0
+  }
+ },
+ "barcodes": {
+  "cylinder_O_belief": {
+   "longest": 0.7049591094255447,
+   "second": 0.3652147352695465,
+   "longest_birth_death": [
+    0.20007209479808807,
+    0.9050312042236328
+   ],
+   "ratio_death_birth": 4.523525407863533,
+   "n_bars": 255
+  },
+  "cylinder_O_prediction": {
+   "longest": 0.4732014164328575,
+   "second": 0.20168741047382355,
+   "longest_birth_death": [
+    0.09101483970880508,
+    0.5642162561416626
+   ],
+   "ratio_death_birth": 6.199167717559342,
+   "n_bars": 242
+  },
+  "square_O_belief": {
+   "longest": 0.24502040445804596,
+   "second": 0.23514124751091003,
+   "longest_birth_death": [
+    0.24164994060993195,
+    0.4866703450679779
+   ],
+   "ratio_death_birth": 2.0139477122965843,
+   "n_bars": 246
+  },
+  "square_O_prediction": {
+   "longest": 0.13138239085674286,
+   "second": 0.12758363038301468,
+   "longest_birth_death": [
+    0.10985714197158813,
+    0.241239532828331
+   ],
+   "ratio_death_birth": 2.1959385479982876,
+   "n_bars": 238
+  },
+  "cylinder_P_belief": {
+   "longest": 0.370960533618927,
+   "second": 0.35352176427841187,
+   "longest_birth_death": [
+    0.4845067262649536,
+    0.8554672598838806
+   ],
+   "ratio_death_birth": 1.7656457867543955,
+   "n_bars": 439
+  },
+  "cylinder_P_prediction": {
+   "longest": 0.22614413499832153,
+   "second": 0.16559630632400513,
+   "longest_birth_death": [
+    0.1738358438014984,
+    0.39997997879981995
+   ],
+   "ratio_death_birth": 2.30090624610511,
+   "n_bars": 303
+  },
+  "square_P_belief": {
+   "longest": 0.37319037318229675,
+   "second": 0.3424782156944275,
+   "longest_birth_death": [
+    0.49989059567451477,
+    0.8730809688568115
+   ],
+   "ratio_death_birth": 1.7465440966712762,
+   "n_bars": 390
+  },
+  "square_P_prediction": {
+   "longest": 0.21760576963424683,
+   "second": 0.1539289504289627,
+   "longest_birth_death": [
+    0.21426436305046082,
+    0.43187013268470764
+   ],
+   "ratio_death_birth": 2.015594784574601,
+   "n_bars": 282
+  }
+ }
+}

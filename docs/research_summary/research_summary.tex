@@ -67,7 +67,7 @@ studies of where the learned circle comes from and whether the model uses it, th
 prediction-horizon studies, and the crossing-order studies), the results including the negative
 and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
-{\large 21 October 2026\par}
+{\large 26 October 2026\par}
 \vspace{0.3cm}
 {\large\itshape Living document; updated as runs complete.\par}
 \vfill
@@ -106,8 +106,8 @@ ahead, component identity that requires long history, and a process whose predic
 the order of loop crossings. In the most direct origin test,
 the covariance of the learned chart phase with the part of the belief that the last four
 observations do not determine was excluded from beyond a $\pm0.01$ margin in all three models;
-the registered margin, however, lies above what the oracle's own phase achieves. The most
-recent completed study trains twelve models on a non-abelian ($S_3$) transport process to test
+the registered margin, however, lies above what the oracle's own phase achieves. A
+crossing-order study trains twelve models on a non-abelian ($S_3$) transport process to test
 whether trained transformers use the order of seam crossings beyond every commutative summary;
 all validity gates passed and the preregistered outcome is INCONCLUSIVE. In every seed
 the trained models carry a small but clearly non-zero order-dependent component on natural
@@ -115,7 +115,16 @@ histories (mean $\tilde\beta=0.061$, lower bound $0.0595$; commutative controls 
 initialisations near zero), an order of magnitude below the registered effect size of $0.25$,
 and they do not beat the bar on the designed witness histories; one commutative control's
 response to a designed placebo prevents the registered ``order not detected'' verdict.
-No causal claim about any trained model has been established.
+The latest study gives the first causal-use result for a trained model. After the final
+LayerNorm the readout is exactly linear, so the model's own response to natural counterfactual
+histories (the $x$-history rotated by two cells, the last symbol kept) can be attributed
+exactly to its circle code. Interchanging the six coordinates of the registered,
+nuisance-excluding circle code carries 85\% of the model's signed oracle-aligned response
+($\hat\psi=0.851$--$0.856$, lower bounds far above the preregistered 0.50) in all three pilot
+models: the readout uses this code (USED). The same holds for the layer-2 code transmitted
+through the remaining computation and for a code built from the oracle's phase. The claim is
+scoped to the registered linear code; it does not exclude other encodings of the same
+information.
 \end{abstract}
 
 \tableofcontents
@@ -182,10 +191,13 @@ bound. But the last-symbol embedding already carries much of the contrast, the t
 hypothesis was rejected, beliefs converge quickly with history length, and the most direct
 test found the beyond-four-symbol covariance of the learned phase to be smaller than
 0.01---a margin that the oracle's own phase also does not reach (\S\ref{sec:origin}).
-\item \textbf{RQ3, open.} Both intervention designs, erasing the circular coordinate and
-forcing a counterfactual state, stopped at preregistered feasibility gates before any causal
-endpoint was scored (\S\ref{sec:causal}). A third design, which attributes the model's own
-response to natural counterfactual histories exactly to its circle code, is running.
+\item \textbf{RQ3, answered for the registered code.} The first two intervention designs,
+erasing the circular coordinate and forcing a counterfactual state, stopped at preregistered
+feasibility gates before any causal endpoint was scored. The third design attributes the
+model's own response to natural counterfactual histories exactly to its circle code at the
+final readout: the code carries 85\% of the oracle-aligned response in all three models, and
+the preregistered outcome is USED (\S\ref{sec:causal}). It does not show that the code is the
+only carrier of circular information.
 \item \textbf{Horizons and richer topology.} Exact oracle computations prove the existence of an
 orientability distinction that is invisible one step ahead and needed two steps ahead, but the
 trained-model study of it failed its learnability gate. An $S_3$ transport process was
@@ -220,6 +232,7 @@ Counterfactual state forcing (causal) & INCONCLUSIVE & intervention moved protec
 Origin beyond the last four symbols & EXCLUSION & $|\Delta_4|<0.01$ in 3/3 models; oracle comparator 0.0085\\
 Crossing order in the oracle & GO & order effect certified beyond every commutative statistic\\
 Crossing order in trained models & INCONCLUSIVE & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
+Readout attribution of the circle code (causal) & USED (3/3 models) & the registered code carries $\hat\psi=0.85$ of the aligned response; layer-2 and oracle-phase codes also USED\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -229,7 +242,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099 and 0107.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099 and 0115.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -429,8 +442,8 @@ frozen protocol, listed in Table~\ref{tab:key}.
 \textbf{Phase 3: non-abelian topology (17 October--).} An exact computation certified that an
 $S_3$ transport process carries order information beyond every commutative statistic; a
 trained study (frozen 18 October, authorised 20 October) then trained twelve models on it, on
-a free cloud GPU, with all evaluation local. From 21 October a third causal-use design has been
-planned, frozen and implemented; its execution started on 22 October.
+a free cloud GPU, with all evaluation local. From 21 October a third causal-use design was
+planned, frozen and implemented; it reached its decision on 26 October.
 
 \begin{table}[t]\centering\small
 \caption{Guide to the studies. Each study is named in this document by the descriptive name in
@@ -912,11 +925,11 @@ have been FAIL\_TECHNICAL at the self-check, which licenses the same ``assay inf
 specified''. I ratified the ruling afterwards. Since then every protocol carries a
 tolerance-attainability table fixed before data.
 
-\textbf{Interpretation for RQ3.} No causal endpoint has been scored. Both failures tell me about
+\textbf{Interpretation for RQ3.} Neither design scored a causal endpoint. Both failures tell me about
 the instruments and nothing about use: the information is nonlinear, and the obvious linear
 intervention direction is entangled with the last-symbol readout.
 
-\subsection{Readout attribution of the circle code (running)}
+\subsection{Readout attribution of the circle code}
 \textbf{Question.} For natural pairs of histories that differ in their $x$-history but share the
 last symbol, what share of the model's own oracle-aligned change in next-symbol prediction is
 carried by an interchange of its registered circle code at the final position?
@@ -927,14 +940,43 @@ harmonics of the learned chart phase, made nuisance-excluding by a generalised-l
 projector; a secondary family repeats the interchange at layer~2. The share $\psi$ is declared
 USED if its lower bound exceeds 0.50 and NOT\_USED if its upper bound is below 0.10 together with
 a bound on the total effect; claims need two of the three models.
-\textbf{Status.} After two independent plans, a comparison, a merge and three rounds of
+\textbf{What ran.} After two independent plans, a comparison, a merge and three rounds of
 result-blind review I froze the protocol on 21 October, revised it once before any data existed
 (a translation placebo on the $y$-axis replaced a reflection that failed on this process), and
-authorised execution on 22 October. The first stage has not yet produced data: its first three
-attempts stopped at entry checks before anything was sampled (a release-record field name; a
-lineage check that refused the stage's own entry records; then the same check refusing the
-compute meter's own lock file). Each defect was corrected under the two-per-defect rule, and the
-stage is being rerun.
+authorised execution on 22 October. The first stage needed four attempts: the first three
+stopped at entry checks before anything was sampled (a release-record field name; a lineage
+check that refused the stage's own entry records; then the same check refusing the compute
+meter's own lock file), and each defect was corrected under the two-per-defect rule. From
+then on all five stages passed every gate on 26 October: identity, registry and separation,
+the exact oracle with Decimal reference rows, eligibility (coverage 0.96 for $x$, 0.88--0.90
+for $y$, reproducing a synthetic dry run count for count), model identity, the
+generalised-least-squares fits with an 80-digit reference, chart, link and registration
+screens on a separate sample, the validation gates (the models respond, the $y$ placebo stays
+below its registered bound), and a precision ladder that fixed 4,096 fresh test rows. The whole study used
+0.87 CPU-hours.
+
+\textbf{Result} (fresh test, 4,096 rows; \fpath{c2-readout-store/stages/S5/report.json}).
+\textbf{USED} in all three models: $\hat\psi=0.851$, 0.854 and 0.856, with one-sided lower
+bounds of $\E[A_S-0.50\,A_{\mathrm{full}}]$ of 0.354--0.363 nats, far above zero; the models
+respond to the counterfactual ($\theta_{\mathrm{full}}$ 0.95--0.96 against 0.30). The six-dimensional
+code carries $\psi\approx0.85$ of the response, while exact random six-dimensional planes of the
+127-dimensional readout space carry about 0.03--0.12; the nuisance directions carry about 0.001,
+and the rest about 0.145. Its effect is almost entirely visible to the readout. The Euclidean
+complement and the one- and two-harmonic codes give the same outcome, so no projector or
+harmonic qualifier applies. The layer-2 code interchange is UPSTREAM\_USED: the full layer-2
+interchange transmits essentially the whole natural contrast ($\hat\tau_M\approx1.006$), and the
+registered layer-2 code carries 0.84 of it, residual skip included. The code built from the
+oracle's own phase is also USED ($\hat\psi=0.87$). The validation values, opened only after the
+test outcome, agree to about 0.005.
+
+\textbf{Licence and reading.} The outcome concerns the frozen, nuisance-excluding linear code
+defined by the fit and projector; it does not exclude predictive use of phase information in
+excluded directions, higher harmonics, interactions or other encodings, and it does not show
+that the code is the only carrier. Within that scope, the next-symbol readout at the final
+position uses the learned circle code for most of its response to the $x$-history. The protocol
+stated USED as the expected outcome, so this result confirms an expectation rather than
+reporting a surprise. The second-to-last symbol changes with the rest of the $x$-history in
+every counterfactual pair, so the result does not separate long history from that symbol.
 
 % =========================================================================================
 \section{Necessity and prediction horizons (charter priority 3)}\label{sec:horizons}
@@ -1262,9 +1304,12 @@ attempts). Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
 % =========================================================================================
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
-\item \textbf{Running: readout attribution of the circle code} (\S\ref{sec:causal}). Frozen,
-authorised and implemented; its first stage is being rerun after a technical correction. No data
-from it exists yet.
+\item \textbf{Readout attribution of the circle code} is decided: USED in all three models, with
+the layer-2 and oracle-phase codes also USED (\S\ref{sec:causal}). No study is running. My
+next-round plan (adopted 26 October; budget still open) starts with steps that need no
+training: a check of the crossing-order control's placebo response on the existing models, and
+an oracle-only sweep of worlds for the history-origin question. Each step still needs its own
+planning, freeze and authorisation.
 \item \textbf{Crossing order in trained models} is decided: INCONCLUSIVE
 (\S\ref{sec:x6s1results}). Natural follow-ups for me to plan include the ZC-s1 designed-placebo
 response, the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the
@@ -1285,8 +1330,10 @@ more recent records.
 % =========================================================================================
 \section{Threats to validity and limitations}\label{sec:threats}
 \begin{enumerate}
-\item \textbf{No causal claim.} All pilot evidence is representational; both intervention designs
-stopped at gates.
+\item \textbf{One scoped causal claim.} The pilot evidence is representational, and the first two
+intervention designs stopped at gates. The one causal-use result concerns a single registered
+linear code, at one position and site, for one kind of counterfactual (an $x$-history rotation
+with the last symbol kept); it excludes neither other encodings nor other carriers.
 \item \textbf{One toy setting.} One small architecture and recipe, synthetic HMMs on tiny lattices,
 a few seeds (three in the pilot, at most four per arm). Nothing is claimed about natural language
 or large models, other architectures, or populations of seeds.
@@ -1318,15 +1365,17 @@ Under controlled conditions, next-token training on a hidden walk produces a lea
 reflects the world's topology, aligns with Bayesian belief geometry, and exceeds what the last
 symbol permits. Where it comes from is only partly known: the last-symbol embedding carries much of
 it, beliefs converge after a few symbols, and the beyond-four-symbol covariance of the learned phase
-is below a margin that even the oracle's phase does not reach. Whether the model uses it is
-unknown. The follow-up programme mostly produced well-defined stops rather than findings, and the
+is below a margin that even the oracle's phase does not reach. The model does use it: at the
+final readout, the registered circle code carries about 85\% of the model's response to a change
+in the $x$-history, in all three models. The follow-up programme mostly produced well-defined stops rather than findings, and the
 stops taught something about one-sided controls, nonlinear encodings, non-specific interventions,
 fragile chart rules and margins set without oracle checks. The trained crossing-order study was
 designed to avoid each of these failure modes on a process where order provably matters. It
 reached its decision with every validity gate passed and found weak but reproducible natural
 order sensitivity in every seed, far below the registered effect size, so its preregistered
-verdict is INCONCLUSIVE and not a claim of order use. The readout-attribution study, now
-running, asks the use question again with an exact, linear attribution at the model's readout.
+verdict is INCONCLUSIVE and not a claim of order use. The readout-attribution study answered
+the use question with an exact, linear attribution at the model's readout, after the two
+earlier intervention designs had failed for reasons of method.
 
 % =========================================================================================
 \clearpage
@@ -1402,7 +1451,9 @@ X6S1 E1 & 10-20 & INGEST-C1, LEARN, LC-1 & PASS; LEARN = GO & job 0093\\
 X6S1 E2 & 10-20 & INGEST-C2, LC-2 & PASS; 12 models admitted & job 0094\\
 X6S1 E3 & --- & E3.0--E3.9 & all PASS; INCONCLUSIVE (rule 9) & 0095--0099\\
 C2 IMPL & 10-22 & gate 0; freeze & complete (FREEZE 24ff24cc) & jobs 0100--0106\\
-C2 S1 & 10-22, 10-26 & release check; G0 (vii) & attempt 1 refused; attempts 2, 3 FAIL\_TECHNICAL (each corrected) & jobs 0107--0110\\
+C2 S1 & 10-22, 10-26 & release check; G0 (vii); H1--H5 & attempt 1 refused; attempts 2, 3 FAIL\_TECHNICAL (each corrected); attempt 4 all PASS & jobs 0107--0111\\
+C2 S2--S4 & 10-26 & M0, C0c, F1; C0v, L1, R1, N2, SURVIVAL; X1, V3, Y1, Y2, P1 & all PASS; N\_test 4096 & jobs 0112--0114\\
+C2 S5 & 10-26 & T-PRE, RESP-SPEC, NUM, ENDPOINT & R USED; M UPSTREAM\_USED; S$^*$ X\_PHASE\_USED (3/3 models) & job 0115\\
 \bottomrule
 \end{longtable}
 \normalsize

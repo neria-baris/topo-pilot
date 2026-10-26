@@ -1,0 +1,347 @@
+[
+ {
+  "family": "cylinder",
+  "mode": "O",
+  "sigma": 1.25,
+  "n": 1000,
+  "group": 24,
+  "belief_k32": {
+   "r_star": 0.7223465872700345,
+   "delta": 0.21232563789389855,
+   "kappa": 3.40206954956141,
+   "winding": -1,
+   "rho_min": 0.33843495914384514,
+   "rho_med": 0.9184261138383492
+  },
+  "prediction": {
+   "r_star": 0.517557536387863,
+   "delta": 0.10124608337409258,
+   "kappa": 5.111877113068638,
+   "winding": 1,
+   "rho_min": 0.258773153215252,
+   "rho_med": 0.7016090346157178
+  },
+  "belief_k16": {
+   "r_star": 0.7218263339153616,
+   "delta": 0.21273297729346158,
+   "kappa": 3.3931097242136286,
+   "winding": -1,
+   "rho_min": 0.3379653477484142,
+   "rho_med": 0.9184247526969458,
+   "phase_agree_with_full": 0.999999953911427
+  },
+  "belief_k8": {
+   "r_star": 0.7414198893046197,
+   "delta": 0.20572508740681122,
+   "kappa": 3.6039352256465365,
+   "winding": -1,
+   "rho_min": 0.32948262269236933,
+   "rho_med": 0.9183647832354584,
+   "phase_agree_with_full": 0.9997774381350698
+  },
+  "belief_k4": {
+   "r_star": 0.7656813381918484,
+   "delta": 0.20293819928974902,
+   "kappa": 3.772977886231422,
+   "winding": 1,
+   "rho_min": 0.2748809027311635,
+   "rho_med": 0.9146876910577861,
+   "phase_agree_with_full": 0.996027819455213
+  },
+  "belief_k2": {
+   "r_star": 0.23659603215731087,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.1449598184635122,
+   "rho_med": 0.8872574230059985,
+   "phase_agree_with_full": 0.9588671489044678
+  },
+  "belief_k1": {
+   "r_star": 0.8466805771737355,
+   "delta": 0.5231465153395464,
+   "kappa": 1.6184387209846949,
+   "winding": 1,
+   "rho_min": 0.8072012827734143,
+   "rho_med": 0.8072012827734146,
+   "phase_agree_with_full": 0.874130730312472
+  },
+  "seconds": 2.7
+ },
+ {
+  "family": "square",
+  "mode": "O",
+  "sigma": 1.25,
+  "n": 1000,
+  "group": 8,
+  "belief_k32": {
+   "r_star": 0.9752095285003343,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.8994910237765616,
+   "rho_med": 0.9178810031821771
+  },
+  "prediction": {
+   "r_star": 0.7332271997699418,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.6992795073676333,
+   "rho_med": 0.7251199994690538
+  },
+  "belief_k16": {
+   "r_star": 0.9751971438298497,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.899495380680981,
+   "rho_med": 0.9178806263292056,
+   "phase_agree_with_full": 0.999999927866391
+  },
+  "belief_k8": {
+   "r_star": 0.975183125137396,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.899880333932118,
+   "rho_med": 0.9177774611128987,
+   "phase_agree_with_full": 0.9998792217411204
+  },
+  "belief_k4": {
+   "r_star": 0.9712379167183751,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.8972557798306178,
+   "rho_med": 0.91407381777257,
+   "phase_agree_with_full": 0.995885136473407
+  },
+  "belief_k2": {
+   "r_star": 0.944507338161473,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.87641338982432,
+   "rho_med": 0.886925309554891,
+   "phase_agree_with_full": 0.9698392849704671
+  },
+  "belief_k1": {
+   "r_star": 0.8521709400980843,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.8030732344341969,
+   "rho_med": 0.8058995669150864,
+   "phase_agree_with_full": 0.8958754923349849
+  },
+  "seconds": 8.8
+ },
+ {
+  "family": "cylinder",
+  "mode": "P",
+  "sigma": 1.25,
+  "n": 1000,
+  "group": 1,
+  "belief_k32": {
+   "r_star": 0.36096577948395436,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.09272516152358376,
+   "rho_med": 0.8913161951444676
+  },
+  "prediction": {
+   "r_star": 0.17496168187231245,
+   "delta": 0.13461378528265222,
+   "kappa": 1.2997307928377517,
+   "winding": 1,
+   "rho_min": 0.012875195638847137,
+   "rho_med": 0.44929664505641065
+  },
+  "belief_k16": {
+   "r_star": 0.34861633373831,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.08294927978146129,
+   "rho_med": 0.8575154472100618,
+   "phase_agree_with_full": 0.945175925045642
+  },
+  "belief_k8": {
+   "r_star": 0.2790687761895003,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.027167171163942426,
+   "rho_med": 0.7318332512478132,
+   "phase_agree_with_full": 0.83183253206331
+  },
+  "belief_k4": {
+   "r_star": 0.2677809805228579,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.02206073548080633,
+   "rho_med": 0.5057908626777969,
+   "phase_agree_with_full": 0.649390042037437
+  },
+  "belief_k2": {
+   "r_star": 0.22881315016900206,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.033788424904782725,
+   "rho_med": 0.3863189455346847,
+   "phase_agree_with_full": 0.46083669868467625
+  },
+  "belief_k1": {
+   "r_star": 0.5231465153395464,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.06465074220264928,
+   "rho_med": 0.30526296638538086,
+   "phase_agree_with_full": 0.2934889033694961
+  },
+  "seconds": 1.9
+ },
+ {
+  "family": "cylinder",
+  "mode": "O",
+  "sigma": 0.75,
+  "n": 1000,
+  "group": 24,
+  "belief_k32": {
+   "r_star": 0.9989343159788782,
+   "delta": 0.3345494511269754,
+   "kappa": 2.985909295662665,
+   "winding": -1,
+   "rho_min": 0.951595177408889,
+   "rho_med": 0.9572822675199906
+  },
+  "prediction": {
+   "r_star": 0.8856902886859209,
+   "delta": 0.15968427146594658,
+   "kappa": 5.546509249502376,
+   "winding": -1,
+   "rho_min": 0.8315142441847474,
+   "rho_med": 0.841397457601275
+  },
+  "belief_k16": {
+   "r_star": 0.9989341490654081,
+   "delta": 0.3345458921544151,
+   "kappa": 2.9859405614950245,
+   "winding": -1,
+   "rho_min": 0.9515951773915118,
+   "rho_med": 0.9572821851697784,
+   "phase_agree_with_full": 0.9999999998566257
+  },
+  "belief_k8": {
+   "r_star": 0.9989153829589528,
+   "delta": 0.33516094395940044,
+   "kappa": 2.980405088845781,
+   "winding": -1,
+   "rho_min": 0.9515951725037715,
+   "rho_med": 0.9573124659862119,
+   "phase_agree_with_full": 0.9999985102017059
+  },
+  "belief_k4": {
+   "r_star": 0.998904747315149,
+   "delta": 0.3415504065641876,
+   "kappa": 2.924618820875052,
+   "winding": 1,
+   "rho_min": 0.9515792166828702,
+   "rho_med": 0.9571117967122407,
+   "phase_agree_with_full": 0.9997365450101843
+  },
+  "belief_k2": {
+   "r_star": 0.9979840837409236,
+   "delta": 0.40050271726294184,
+   "kappa": 2.4918284963487967,
+   "winding": -1,
+   "rho_min": 0.9493146419686126,
+   "rho_med": 0.9529413989243464,
+   "phase_agree_with_full": 0.9939944529681767
+  },
+  "belief_k1": {
+   "r_star": 0.9856134316221228,
+   "delta": 0.7673901936456128,
+   "kappa": 1.28437063671586,
+   "winding": 1,
+   "rho_min": 0.9257284126594679,
+   "rho_med": 0.9257284126594681,
+   "phase_agree_with_full": 0.9654124547496218
+  },
+  "seconds": 2.4
+ },
+ {
+  "family": "cylinder",
+  "mode": "O",
+  "sigma": 2.0,
+  "n": 1000,
+  "group": 24,
+  "belief_k32": {
+   "r_star": 0.5320095006569026,
+   "delta": 0.15986638369818099,
+   "kappa": 3.32783846328386,
+   "winding": -1,
+   "rho_min": 0.21493937210483424,
+   "rho_med": 0.8599832352935175
+  },
+  "prediction": {
+   "r_star": 0.20725249611452054,
+   "delta": 0.05456086203624877,
+   "kappa": 3.798556114762768,
+   "winding": 1,
+   "rho_min": 0.11829988456245302,
+   "rho_med": 0.4733313877168228
+  },
+  "belief_k16": {
+   "r_star": 0.544095569170769,
+   "delta": 0.15035548788102748,
+   "kappa": 3.6187277021860225,
+   "winding": -1,
+   "rho_min": 0.2176998128998004,
+   "rho_med": 0.8599700296916774,
+   "phase_agree_with_full": 0.9998947857455531
+  },
+  "belief_k8": {
+   "r_star": 0.5134784505847991,
+   "delta": 0.16256874159806936,
+   "kappa": 3.1585312498408187,
+   "winding": -1,
+   "rho_min": 0.044874909983044914,
+   "rho_med": 0.8579222521624943,
+   "phase_agree_with_full": 0.9918905986625641
+  },
+  "belief_k4": {
+   "r_star": 0.2733388499894472,
+   "delta": 0.16055423779032368,
+   "kappa": 1.7024704782094566,
+   "winding": 1,
+   "rho_min": 0.037707453478528524,
+   "rho_med": 0.834078791837652,
+   "phase_agree_with_full": 0.9420506408288014
+  },
+  "belief_k2": {
+   "r_star": 0.06840695013017771,
+   "delta": Infinity,
+   "kappa": 0.0,
+   "winding": 0,
+   "rho_min": 0.053431729713280765,
+   "rho_med": 0.7474741339544789,
+   "phase_agree_with_full": 0.8017368407786236
+  },
+  "belief_k1": {
+   "r_star": 0.5700744070961646,
+   "delta": 0.329419561859214,
+   "kappa": 1.7305420597329333,
+   "winding": 1,
+   "rho_min": 0.5815608625287251,
+   "rho_med": 0.5815608625287253,
+   "phase_agree_with_full": 0.6772826092771145
+  },
+  "seconds": 2.5
+ }
+]

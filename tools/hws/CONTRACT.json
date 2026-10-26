@@ -1145,7 +1145,8 @@
     "E||m_K||^2",
     "E H(q_K)"
    ],
-   "tolerance": "4*SE of the S0 MC mean"
+   "tolerance": "max(4*SE of the S0 MC mean, kc9_float_floor) per comparison (D-0130-1, owner addendum 30)",
+   "kc9_float_floor": "1/1000000000000"
   },
   "KC10": {
    "decimal_rows": 16,

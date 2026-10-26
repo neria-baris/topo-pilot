@@ -176,7 +176,13 @@ NAMED = ("CONTRACT*.json", "FREEZE*.json", "STAGES*.jsonl", "GATES*.jsonl")
 STORE_SUFFIXES = (".json", ".jsonl", ".md", ".txt", ".py")
 SKIP_DIRS = (".git", ".venv")
 PAYLOAD_DIRS = ("hist", "oracle", "fits", "stages", "sealed")
-METER_FILES = ("cpu_ledger.json", "RUN.lock", "OPERATION_ACTIVE.json", "OPERATIONS.jsonl")
+METER_FILES = (
+    "cpu_ledger.json",
+    "RUN.lock",
+    "OPERATION_ACTIVE.json",
+    "OPERATIONS.jsonl",
+    "METER_ACTIVE.lock",
+)
 CHUNK = 1 << 20
 
 

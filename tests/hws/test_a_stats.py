@@ -234,3 +234,53 @@ def test_pinsker_violations_counts_only_below_minus_tol():
     assert hs.pinsker_violations(slack) == 2
     assert hs.pinsker_violations(slack, tol=0.6e-12) == 3
     assert hs.pinsker_violations(np.abs(slack)) == 0
+
+
+# D-0130-1 (owner addendum 30, job 0131; API §15 E20): a KC9 comparison passes iff
+# |exact - MC mean| <= max(4*SE, kc9_float_floor), the floor read from CONTRACT s0.KC9.
+# API.md names no public KC9-level function (KC9 runs inside hws_known.known_cases with the
+# full S0 data), so the rule is applied here to the frozen CONTRACT floor.
+KC9_EXACT = 0.6515739109110458  # job 0130: K = 1, E||m||^2, one float64 step from the MC mean
+KC9_ULP_UP = float(np.nextafter(KC9_EXACT, np.inf))
+
+
+def _kc9_floor():
+    return Fraction(CONTRACT["s0"]["KC9"]["kc9_float_floor"])
+
+
+def _kc9_pass(exact, mean, se):
+    return abs(exact - mean) <= max(4.0 * se, float(_kc9_floor()))
+
+
+def test_kc9_float_floor_contract_key():
+    kc9 = CONTRACT["s0"]["KC9"]
+    assert isinstance(kc9["kc9_float_floor"], str)
+    assert _kc9_floor() == Fraction(1, 10**12)
+    assert float(_kc9_floor()) == 1e-12
+    assert "kc9_float_floor" in kc9["tolerance"]
+    # the protocol's own float cross-check level (KC10 bayes_tol, KC11 tol)
+    assert CONTRACT["s0"]["KC10"]["bayes_tol"] == 1e-12 == CONTRACT["s0"]["KC11"]["tol"]
+
+
+KC9_CASES = [("row_constant_1ulp", KC9_EXACT, KC9_ULP_UP, 1.9e-18, True),
+             ("gap_2e-12_se0", 0.5, 0.5 + 2e-12, 0.0, False),
+             ("gap_3se", 0.25, 0.25 + 3e-3, 1e-3, True),
+             ("gap_5se", 0.25, 0.25 + 5e-3, 1e-3, False),
+             ("at_floor_equality", 0.0, 1e-12, 0.0, True)]
+
+
+@pytest.mark.parametrize("name, exact, mean, se, ok", KC9_CASES)
+def test_kc9_float_floor_rule(name, exact, mean, se, ok):
+    assert _kc9_pass(exact, mean, se) == ok, name
+    if name == "row_constant_1ulp":
+        assert 1e-16 < abs(exact - mean) < 1.2e-16
+        assert abs(exact - mean) > 4.0 * se  # the bare 4*SE rule failed this case (job 0130)
+
+
+def test_kc9_row_constant_summary():
+    # A row-constant quantity: every row equals the MC mean, so summary gives SE 0 and only
+    # the floor can absorb the one-step rounding gap to the exact value.
+    s = hs.summary(np.full(4096, KC9_ULP_UP))
+    assert s["mean"] == KC9_ULP_UP and s["se"] == 0.0
+    assert _kc9_pass(KC9_EXACT, s["mean"], s["se"])
+    assert not _kc9_pass(KC9_EXACT, s["mean"] + 2e-12, s["se"])

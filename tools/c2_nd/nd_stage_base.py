@@ -228,10 +228,10 @@ def _applies(g, j, fam) -> bool:
 
 def prior(ctx, j, fam):
     """The first exclusion, CNHS or stop for (j, fam); report-only records never apply
-    (variant and RT problems, the coordinate decoys, the non-excluding gates)."""
+    (variant and RT problems, decoys other than DNULL, the non-excluding gates)."""
     for g in gates(ctx):
         bad = g["full_status"] not in OK and g["gate"] not in ndc.NON_EXCLUDING
-        ro = g.get("problem") in nc.VARIANTS + ("RT",) or g.get("decoy") in nc.KCR_CASES
+        ro = g.get("problem") in nc.VARIANTS + ("RT",) or g.get("decoy") not in (None, "DNULL")
         if bad and not ro and _applies(g, j, fam):
             return g["full_status"]
     return None
@@ -362,7 +362,11 @@ def bundle(ctx, split, j, kind=None, roles=cc.ROLES) -> dict:
                     out[r]["phi"], out[r]["sup"] = phase(ctx, j, a["resid_post_3"])
         return out
 
-    return cache(ctx, f"X:{split}:{j}:{kind}:{','.join(roles)}", make)
+    key, old = f"X:{split}:{j}", ctx.data.get(f"X:{split}:{j}")
+    fresh = old is None or not set(roles) <= set(old)  # one cache per split and model
+    if fresh or (kind and any(old[r]["z"] is None for r in roles)):
+        ctx.data[key] = make()
+    return ctx.data[key]
 
 
 # ---- code problems: the frozen C2 FIT problems and the ND refits RD, RT (§2.8) ----------------

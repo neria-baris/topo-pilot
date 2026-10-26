@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 862 tracked files; 505 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 884 tracked files; 521 code files (linked to their pages).
 
 ## (repo root)
 
@@ -744,6 +744,23 @@ The generated index itself (`docs/code_index/`) is not indexed. 862 tracked file
 |---|---|---|---|
 | [test_registry_builder.py](files/tests/c1prime_registry/test_registry_builder.py.md) | python | 105 lines | Builder tests for tools/c1prime/c1_registry_sources.py (job 0027; synthetic fixtures only). |
 
+## tests/c2_nd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 68 lines | Authorship record: independent test author A (job 0121) |
+| `AUTHORSHIP_B.md` | markdown | 54 lines | Authorship record, independent test author B (job 0121) |
+| [test_a_decoy_maths.py](files/tests/c2_nd/test_a_decoy_maths.py.md) | python | 310 lines | Author A (job 0121): T-MOVE (Lemma DC4), T-GAIN (Lemma DG) and T-ILLUSION (MD-9). |
+| [test_a_family.py](files/tests/c2_nd/test_a_family.py.md) | python | 396 lines | Author A (job 0121): T-FAMILY-ND (the exhaustive grid of §8.4) and T-EDGE (MD-9). |
+| [test_a_identity.py](files/tests/c2_nd/test_a_identity.py.md) | python | 293 lines | Author A (job 0121): T-N1, T-LNSCALE, T-LEAK and T-DOSE. |
+| [test_a_inference.py](files/tests/c2_nd/test_a_inference.py.md) | python | 361 lines | Author A (job 0121): T-RULES-ND, T-BOOT-ND and T-LADDER-ND. |
+| [test_a_known.py](files/tests/c2_nd/test_a_known.py.md) | python | 310 lines | Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY. |
+| [test_b_decoy_model.py](files/tests/c2_nd/test_b_decoy_model.py.md) | python | 345 lines | Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6). |
+| [test_b_layer2.py](files/tests/c2_nd/test_b_layer2.py.md) | python | 260 lines | Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9, |
+| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 374 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
+| [test_b_policy.py](files/tests/c2_nd/test_b_policy.py.md) | python | 314 lines | Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12); |
+| [test_b_registry.py](files/tests/c2_nd/test_b_registry.py.md) | python | 372 lines | Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4). |
+
 ## tests/c2_readout/
 
 | File | Kind | Size | Purpose |
@@ -1092,6 +1109,21 @@ The generated index itself (`docs/code_index/`) is not indexed. 862 tracked file
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | [c1_registry_sources.py](files/tools/c1prime_registry/c1_registry_sources.py.md) | python | 312 lines | C1' exposure registry v1: per-source readers for the frozen c1_data.build_registry (job 0027; |
+
+## tools/c2_nd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 497 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `CONTRACT.json` | json | 940 lines |  |
+| `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
+| `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
+| [nd_attrib.py](files/tools/c2_nd/nd_attrib.py.md) | python | 265 lines | C2ND attribution (closed forms; d = d_named; dy = y1 - y2; arm 1 = H+, arm 2 = H-): the N-R |
+| [nd_config.py](files/tools/c2_nd/nd_config.py.md) | python | 182 lines | C2ND configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels |
+| [nd_data.py](files/tools/c2_nd/nd_data.py.md) | python | 163 lines | C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene |
+| [nd_decide.py](files/tools/c2_nd/nd_decide.py.md) | python | 396 lines | C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M, |
+| [nd_decoy.py](files/tools/c2_nd/nd_decoy.py.md) | python | 373 lines | C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis |
+| [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 399 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
 
 ## tools/c2_readout/
 

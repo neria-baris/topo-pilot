@@ -50,11 +50,17 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_a_decoy_maths.py](../../tests/c2_nd/test_a_decoy_maths.py.md) (line 22, import)
+- [tests/c2_nd/test_a_inference.py](../../tests/c2_nd/test_a_inference.py.md) (line 24, import)
+- [tests/c2_nd/test_a_known.py](../../tests/c2_nd/test_a_known.py.md) (line 23, import)
+- [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 24, import)
+- [tests/c2_nd/test_b_layer2.py](../../tests/c2_nd/test_b_layer2.py.md) (line 24, import)
 - [tests/c2_readout/test_a_inference.py](../../tests/c2_readout/test_a_inference.py.md) (line 33, import)
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 33, import)
 - [tests/c2_readout/test_a_partition.py](../../tests/c2_readout/test_a_partition.py.md) (line 33, import)
 - [tests/c2_readout/test_a_scope.py](../../tests/c2_readout/test_a_scope.py.md) (line 36, import)
 - [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 21, import)
+- [tools/c2_nd/nd_attrib.py](../c2_nd/nd_attrib.py.md) (line 20, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 20, import)
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 14, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 19, import)

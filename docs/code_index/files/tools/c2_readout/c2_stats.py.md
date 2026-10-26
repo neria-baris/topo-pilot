@@ -54,6 +54,7 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_a_inference.py](../../tests/c2_nd/test_a_inference.py.md) (line 25, import)
 - [tests/c2_readout/test_a_gls.py](../../tests/c2_readout/test_a_gls.py.md) (line 31, import)
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 37, import)
 - [tests/c2_readout/test_a_scope.py](../../tests/c2_readout/test_a_scope.py.md) (line 39, import)

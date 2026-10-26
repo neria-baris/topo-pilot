@@ -1,20 +1,20 @@
 {
  "counts": {
-  "classes": 286,
-  "code files": 505,
+  "classes": 289,
+  "code files": 521,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 862,
-  "functions and methods (incl. tests)": 6917,
+  "files indexed": 884,
+  "functions and methods (incl. tests)": 7261,
   "import cycles (strongly connected components)": 6,
-  "import statements, external": 737,
+  "import statements, external": 764,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2028,
+  "import statements, internal resolved": 2108,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2075,
-  "internal edges (file to file, with kind and line)": 2060,
-  "python files": 504
+  "import statements, standard library": 2146,
+  "internal edges (file to file, with kind and line)": 2140,
+  "python files": 520
  },
  "cycles": [
   [
@@ -4400,6 +4400,312 @@
    "tools/x4_circle_history/scores.py",
    "import",
    22
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   19
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   22
+  ],
+  [
+   "tests/c2_nd/test_a_decoy_maths.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   23
+  ],
+  [
+   "tests/c2_nd/test_a_family.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   22
+  ],
+  [
+   "tests/c2_nd/test_a_family.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_a_family.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_a_identity.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_a_identity.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   21
+  ],
+  [
+   "tests/c2_nd/test_a_identity.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_a_identity.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_a_identity.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_a_inference.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   21
+  ],
+  [
+   "tests/c2_nd/test_a_inference.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_a_inference.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_a_inference.py",
+   "tools/c2_readout/c2_stats.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   20
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   23
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_readout/c2_code.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_a_known.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "src/topo_pilot/learner/__init__.py",
+   "import",
+   33
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   21
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_nd/nd_decoy.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_b_decoy_model.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "src/topo_pilot/learner/__init__.py",
+   "import",
+   32
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   21
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_b_layer2.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "src/topo_pilot/dataset/checks.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   17
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "tools/c2_nd/nd_data.py",
+   "import",
+   21
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   20
+  ],
+  [
+   "tests/c2_nd/test_b_policy.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   23
+  ],
+  [
+   "tests/c2_nd/test_b_policy.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   18
+  ],
+  [
+   "tests/c2_nd/test_b_policy.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   15
+  ],
+  [
+   "tests/c2_nd/test_b_policy.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   19
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/c1prime/c1_data.py",
+   "import",
+   23
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   20
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/c2_readout/c2_registry.py",
+   "import",
+   25
+  ],
+  [
+   "tests/c2_nd/test_b_registry.py",
+   "tools/k4b/k4b_registry.py",
+   "import",
+   26
   ],
   [
    "tests/c2_readout/test_a_gls.py",
@@ -9200,6 +9506,180 @@
    "tools/c1prime/c1_data.py",
    "import",
    21
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c1prime/c1_endpoint.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c1prime/c1_oracle.py",
+   "import",
+   19
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   15
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c2_readout/c2_attrib.py",
+   "import",
+   20
+  ],
+  [
+   "tools/c2_nd/nd_attrib.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_config.py",
+   "tools/c1prime/c1_means.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_config.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "src/topo_pilot/contracts/__init__.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "src/topo_pilot/dataset/__init__.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "src/topo_pilot/dataset/checks.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "tools/c1prime/c1_data.py",
+   "import",
+   16
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   13
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   17
+  ],
+  [
+   "tools/c2_nd/nd_data.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_decide.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   15
+  ],
+  [
+   "tools/c2_nd/nd_decide.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   11
+  ],
+  [
+   "tools/c2_nd/nd_decide.py",
+   "tools/c2_readout/c2_decide.py",
+   "import",
+   14
+  ],
+  [
+   "tools/c2_nd/nd_decoy.py",
+   "tools/c1prime/c1_model.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_decoy.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   18
+  ],
+  [
+   "tools/c2_nd/nd_decoy.py",
+   "tools/c2_readout/c2_config.py",
+   "import",
+   22
+  ],
+  [
+   "tools/c2_nd/nd_decoy.py",
+   "tools/c2_readout/c2_model.py",
+   "import",
+   23
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/c1prime/c1_data.py",
+   "import",
+   24
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   21
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   25
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/c2_readout/c2_registry.py",
+   "import",
+   26
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/k4b/k4b_registry.py",
+   "import",
+   27
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   29
+  ],
+  [
+   "tools/c2_nd/nd_registry.py",
+   "tools/x6_stage1/x6s1_registry.py",
+   "import",
+   44
   ],
   [
    "tools/c2_readout/c2_attrib.py",
@@ -15441,6 +15921,78 @@
    "purpose": "Builder tests for tools/c1prime/c1_registry_sources.py (job 0027; synthetic fixtures only).",
    "sha256": "1deac1b56a167c721b252a0417a459ced0b3b5e7786587db79098691bc74311e"
   },
+  "tests/c2_nd/AUTHORSHIP_A.md": {
+   "kind": "markdown",
+   "lines": 68,
+   "purpose": "Authorship record: independent test author A (job 0121)",
+   "sha256": "621a854712ecf712606202274c631c79244aa6b6ca557e9732aaca39bade4044"
+  },
+  "tests/c2_nd/AUTHORSHIP_B.md": {
+   "kind": "markdown",
+   "lines": 54,
+   "purpose": "Authorship record, independent test author B (job 0121)",
+   "sha256": "e7c3820b7c535e735ea4c913c55f5ebf300cb76e905633daa759595adb096153"
+  },
+  "tests/c2_nd/test_a_decoy_maths.py": {
+   "kind": "python",
+   "lines": 310,
+   "purpose": "Author A (job 0121): T-MOVE (Lemma DC4), T-GAIN (Lemma DG) and T-ILLUSION (MD-9).",
+   "sha256": "c8810ba920802070b40e7934a242ac8ba38383abaca6955e6e681994e6446c95"
+  },
+  "tests/c2_nd/test_a_family.py": {
+   "kind": "python",
+   "lines": 396,
+   "purpose": "Author A (job 0121): T-FAMILY-ND (the exhaustive grid of §8.4) and T-EDGE (MD-9).",
+   "sha256": "6716c109fb13222fb392c055ea3ea0cc7c6223c24d7e627bfbc85b4c79e30933"
+  },
+  "tests/c2_nd/test_a_identity.py": {
+   "kind": "python",
+   "lines": 293,
+   "purpose": "Author A (job 0121): T-N1, T-LNSCALE, T-LEAK and T-DOSE.",
+   "sha256": "d6df86a513b47db1baf9162b40959835b74987e9446cfcd16b057802f643ba1a"
+  },
+  "tests/c2_nd/test_a_inference.py": {
+   "kind": "python",
+   "lines": 361,
+   "purpose": "Author A (job 0121): T-RULES-ND, T-BOOT-ND and T-LADDER-ND.",
+   "sha256": "4d757b441fbcd166d6f4d356bfd71c9679adba551744c564c7adeb641d9eda4e"
+  },
+  "tests/c2_nd/test_a_known.py": {
+   "kind": "python",
+   "lines": 310,
+   "purpose": "Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY.",
+   "sha256": "62c2f3b94a9d076a7fccfc70721cb734901e7fd555096d5971e8d4941c4faa70"
+  },
+  "tests/c2_nd/test_b_decoy_model.py": {
+   "kind": "python",
+   "lines": 345,
+   "purpose": "Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6).",
+   "sha256": "bd0890e2cf43926ee475b2d42da132a9ea6e05107c3e5195ecf3b0c39d91ca88"
+  },
+  "tests/c2_nd/test_b_layer2.py": {
+   "kind": "python",
+   "lines": 260,
+   "purpose": "Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9,",
+   "sha256": "2c145a99933b297071995579e69a9d7dc23f7c5942d4195bb3edb7170db7ea94"
+  },
+  "tests/c2_nd/test_b_lineage.py": {
+   "kind": "python",
+   "lines": 374,
+   "purpose": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),",
+   "sha256": "1b95dc5793d4f36c4b8806565b2a2cfe6e4607a6a89b40c73fb17f3c9b35f44f"
+  },
+  "tests/c2_nd/test_b_policy.py": {
+   "kind": "python",
+   "lines": 314,
+   "purpose": "Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12);",
+   "sha256": "5f9c38ec1783983baedc4aa4970fa719a059ffba5fde01a07ddeded633558d2c"
+  },
+  "tests/c2_nd/test_b_registry.py": {
+   "kind": "python",
+   "lines": 372,
+   "purpose": "Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4).",
+   "sha256": "74f87eeb12d628ba8ac3729a547fdcb517107ffb67150f87bcef9402b774910a"
+  },
   "tests/c2_readout/AUTHORSHIP_A.md": {
    "kind": "markdown",
    "lines": 141,
@@ -16790,6 +17342,66 @@
    "lines": 312,
    "purpose": "C1' exposure registry v1: per-source readers for the frozen c1_data.build_registry (job 0027;",
    "sha256": "4eba2acaa389c7cd534c3d4ea1f82d731113c8ea34a5806ea12886c0f2041e94"
+  },
+  "tools/c2_nd/API.md": {
+   "kind": "markdown",
+   "lines": 497,
+   "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
+   "sha256": "4d26bba699e079f861718cd01c0a135a8d4260398678e407099bd4a5c7314d79"
+  },
+  "tools/c2_nd/CONTRACT.json": {
+   "kind": "json",
+   "lines": 940,
+   "purpose": "",
+   "sha256": "e265fea7fb96fc8bc06eba3bf4ab981413fb75633c9b15ee4d94326c83ac5edb"
+  },
+  "tools/c2_nd/PROTOCOL_C2ND_v1.md": {
+   "kind": "markdown",
+   "lines": 918,
+   "purpose": "C2ND-MERGED-v2 (supersedes v1; see \"Change log v1 → v2\" at the end): is the circle code necessary, and can the method say \"not used\"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training",
+   "sha256": "4381655dc0b1e0f8ce50b48c91c756e5eb8e7fae3d4c8592599ab84368d8f0fd"
+  },
+  "tools/c2_nd/TEST_PLAN.md": {
+   "kind": "markdown",
+   "lines": 67,
+   "purpose": "C2ND test plan v1 (job 0116)",
+   "sha256": "160448b18cf6b72657b94ee6b335b1a5c6842e6d1793341590f47181c831f079"
+  },
+  "tools/c2_nd/nd_attrib.py": {
+   "kind": "python",
+   "lines": 265,
+   "purpose": "C2ND attribution (closed forms; d = d_named; dy = y1 - y2; arm 1 = H+, arm 2 = H-): the N-R",
+   "sha256": "a9542b4e39bbddc0ed521186ed2f0e11f4438957852e538885dee91ff1fb031d"
+  },
+  "tools/c2_nd/nd_config.py": {
+   "kind": "python",
+   "lines": 182,
+   "purpose": "C2ND configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels",
+   "sha256": "d83489ce8d4dfb4f48af3c0ceb33ace5283c13876819d6a7dd93873f1b3d593a"
+  },
+  "tools/c2_nd/nd_data.py": {
+   "kind": "python",
+   "lines": 163,
+   "purpose": "C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene",
+   "sha256": "95cc1ec8e789030b07bf3d107ecfefd7e6393a215930da5cf6469546a7b84eae"
+  },
+  "tools/c2_nd/nd_decide.py": {
+   "kind": "python",
+   "lines": 396,
+   "purpose": "C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M,",
+   "sha256": "6690a20a740317614e6e8146426c260b98de451fe8d56461e3eaa2cc5adf7362"
+  },
+  "tools/c2_nd/nd_decoy.py": {
+   "kind": "python",
+   "lines": 373,
+   "purpose": "C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis",
+   "sha256": "bc6b6a7114d4e83551bb9d334ed312b408afc4260567f5d915670be1c145da31"
+  },
+  "tools/c2_nd/nd_registry.py": {
+   "kind": "python",
+   "lines": 399,
+   "purpose": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
+   "sha256": "e88157400cd638f1d71a629c63477813496cd0da2c001afeb64bac6cb8ef814e"
   },
   "tools/c2_readout/API.md": {
    "kind": "markdown",
@@ -70524,6 +71136,4582 @@
      ],
      "expr": "str(_p)",
      "line": 17
+    }
+   ]
+  },
+  "tests/c2_nd/test_a_decoy_maths.py": {
+   "constants": [
+    "D_KEYS",
+    "GAINS",
+    "K0",
+    "REPO"
+   ],
+   "doc": "Author A (job 0121): T-MOVE (Lemma DC4), T-GAIN (Lemma DG) and T-ILLUSION (MD-9).",
+   "doc1": "Author A (job 0121): T-MOVE (Lemma DC4), T-GAIN (Lemma DG) and T-ILLUSION (MD-9).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "nd_driver"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_mx",
+     "qual": "_mx",
+     "sig": "def _mx(x)",
+     "start": 34
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 39,
+     "kind": "function",
+     "name": "_centre",
+     "qual": "_centre",
+     "sig": "def _centre(v)",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 50,
+     "kind": "function",
+     "name": "_base",
+     "qual": "_base",
+     "sig": "def _base(seed)",
+     "start": 42
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 56,
+     "kind": "function",
+     "name": "_dx_policy",
+     "qual": "_dx_policy",
+     "sig": "def _dx_policy()",
+     "start": 53
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "function",
+     "name": "_bounds",
+     "qual": "_bounds",
+     "sig": "def _bounds(arrays, seed, alpha, j=1729, draws=2000)",
+     "start": 59
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "test",
+     "name": "test_move_null_basis_and_move_map",
+     "qual": "test_move_null_basis_and_move_map",
+     "sig": "def test_move_null_basis_and_move_map()",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 104,
+     "kind": "test",
+     "name": "test_move_rank_deficient_is_construction",
+     "qual": "test_move_rank_deficient_is_construction",
+     "sig": "def test_move_rank_deficient_is_construction()",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 130,
+     "kind": "test",
+     "name": "test_move_prediction_identities_and_adapter",
+     "qual": "test_move_prediction_identities_and_adapter",
+     "sig": "def test_move_prediction_identities_and_adapter()",
+     "start": 107
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 150,
+     "kind": "test",
+     "name": "test_move_ols_gls_equivariance",
+     "qual": "test_move_ols_gls_equivariance",
+     "sig": "def test_move_ols_gls_equivariance()",
+     "start": 133
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 163,
+     "kind": "test",
+     "name": "test_move_ledoit_wolf_equivariance",
+     "qual": "test_move_ledoit_wolf_equivariance",
+     "sig": "def test_move_ledoit_wolf_equivariance()",
+     "start": 153
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 192,
+     "kind": "function",
+     "name": "_gain_world",
+     "qual": "_gain_world",
+     "sig": "def _gain_world(seed=811, n=512)",
+     "start": 171
+    },
+    {
+     "decorators": [],
+     "doc": "D arrays, bounds and d_model at every gain; Y1' active iff V3y' passes (C2 y_active).",
+     "end": 208,
+     "kind": "function",
+     "name": "_gain_run",
+     "qual": "_gain_run",
+     "sig": "def _gain_run(w, Gx_mult, Gy_mult)",
+     "start": 195
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 225,
+     "kind": "test",
+     "name": "test_gain_scaling_of_arrays_and_bounds",
+     "qual": "test_gain_scaling_of_arrays_and_bounds",
+     "sig": "def test_gain_scaling_of_arrays_and_bounds()",
+     "start": 211
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 246,
+     "kind": "test",
+     "name": "test_gain_decisions_do_not_depend_on_g",
+     "qual": "test_gain_decisions_do_not_depend_on_g",
+     "sig": "def test_gain_decisions_do_not_depend_on_g()",
+     "start": 228
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 258,
+     "kind": "function",
+     "name": "_illusion",
+     "qual": "_illusion",
+     "sig": "def _illusion(seed=901, n=256)",
+     "start": 250
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 271,
+     "kind": "test",
+     "name": "test_illusion_operator_decomposition_is_report_only_arithmetic",
+     "qual": "test_illusion_operator_decomposition_is_report_only_arithmetic",
+     "sig": "def test_illusion_operator_decomposition_is_report_only_arithmetic()",
+     "start": 261
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 289,
+     "kind": "test",
+     "name": "test_illusion_decoy_built_with_J_fails_m0d_and_dx",
+     "qual": "test_illusion_decoy_built_with_J_fails_m0d_and_dx",
+     "sig": "def test_illusion_decoy_built_with_J_fails_m0d_and_dx()",
+     "start": 274
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 310,
+     "kind": "test",
+     "name": "test_illusion_euclidean_projector_decoy_still_has_null_code_readout",
+     "qual": "test_illusion_euclidean_projector_decoy_still_has_null_code_readout",
+     "sig": "def test_illusion_euclidean_projector_decoy_still_has_null_code_readout()",
+     "start": 292
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 17
+    }
+   ]
+  },
+  "tests/c2_nd/test_a_family.py": {
+   "constants": [
+    "D_BASES",
+    "EDGES",
+    "G",
+    "KAPPAS",
+    "NEC_KEYS",
+    "NM_BASES",
+    "NM_CATS",
+    "NR_BASES",
+    "NR_CATS",
+    "PATS",
+    "REPO",
+    "R_CASE"
+   ],
+   "doc": "Author A (job 0121): T-FAMILY-ND (the exhaustive grid of §8.4) and T-EDGE (MD-9).",
+   "doc1": "Author A (job 0121): T-FAMILY-ND (the exhaustive grid of §8.4) and T-EDGE (MD-9).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "functools"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "functools"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "itertools"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "itertools"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 41,
+     "kind": "function",
+     "name": "_b",
+     "qual": "_b",
+     "sig": "def _b(cfg)",
+     "start": 36
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 45,
+     "kind": "function",
+     "name": "_s",
+     "qual": "_s",
+     "sig": "def _s(v)",
+     "start": 44
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 49,
+     "kind": "function",
+     "name": "_fs",
+     "qual": "_fs",
+     "sig": "def _fs(x)",
+     "start": 48
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 53,
+     "kind": "function",
+     "name": "_signs",
+     "qual": "_signs",
+     "sig": "def _signs(b)",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "§2.3 table (N-R, N-M): returns the one declared category, else INC(/NUMERICAL).",
+     "end": 63,
+     "kind": "function",
+     "name": "_cat",
+     "qual": "_cat",
+     "sig": "def _cat(sg, z1, z5, w, v, names)",
+     "start": 56
+    },
+    {
+     "decorators": [],
+     "doc": "RESP (L(V3x) > g) and SPEC (U(Y1) < -g when Y1 is active) come first (§4.3).",
+     "end": 74,
+     "kind": "function",
+     "name": "_prereq",
+     "qual": "_prereq",
+     "sig": "def _prereq(b, y_active, flags)",
+     "start": 66
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 87,
+     "kind": "function",
+     "name": "nr_expect",
+     "qual": "nr_expect",
+     "sig": "def nr_expect(b, y_active)",
+     "start": 77
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 94,
+     "kind": "function",
+     "name": "_got",
+     "qual": "_got",
+     "sig": "def _got(r, flags)",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 118,
+     "kind": "function",
+     "name": "d_expect",
+     "qual": "d_expect",
+     "sig": "def d_expect(b, y_active)",
+     "start": 101
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 137,
+     "kind": "function",
+     "name": "nm_expect",
+     "qual": "nm_expect",
+     "sig": "def nm_expect(b)",
+     "start": 124
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 145,
+     "kind": "function",
+     "name": "nm_got",
+     "qual": "nm_got",
+     "sig": "def nm_got(r)",
+     "start": 140
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 165,
+     "kind": "function",
+     "name": "nr_events",
+     "qual": "nr_events",
+     "sig": "def nr_events(k, M='')",
+     "start": 149
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 178,
+     "kind": "function",
+     "name": "d_events",
+     "qual": "d_events",
+     "sig": "def d_events(p, s_false)",
+     "start": 168
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 186,
+     "kind": "function",
+     "name": "nm_events",
+     "qual": "nm_events",
+     "sig": "def nm_events(t, k)",
+     "start": 181
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 191,
+     "kind": "function",
+     "name": "_forced",
+     "qual": "_forced",
+     "sig": "def _forced(signs, mu)",
+     "start": 189
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 202,
+     "kind": "function",
+     "name": "_cover",
+     "qual": "_cover",
+     "sig": "def _cover(cache, truth, mu, listed)",
+     "start": 194
+    },
+    {
+     "decorators": [],
+     "doc": "Every sign pattern of `stats`: the rule equals the protocol table (so the categories",
+     "end": 217,
+     "kind": "function",
+     "name": "_grid",
+     "qual": "_grid",
+     "sig": "def _grid(stats, fixed, model, expect, got, cats, flags)",
+     "start": 205
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 236,
+     "kind": "test",
+     "name": "test_family_nr_grid",
+     "qual": "test_family_nr_grid",
+     "sig": "def test_family_nr_grid()",
+     "start": 221
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 253,
+     "kind": "test",
+     "name": "test_family_d_grid",
+     "qual": "test_family_d_grid",
+     "sig": "def test_family_d_grid()",
+     "start": 239
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 270,
+     "kind": "test",
+     "name": "test_family_nm_grid",
+     "qual": "test_family_nm_grid",
+     "sig": "def test_family_nm_grid()",
+     "start": 256
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 288,
+     "kind": "test",
+     "name": "test_family_prerequisites_resp_and_spec",
+     "qual": "test_family_prerequisites_resp_and_spec",
+     "sig": "def test_family_prerequisites_resp_and_spec()",
+     "start": 273
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 302,
+     "kind": "function",
+     "name": "_kc",
+     "qual": "_kc",
+     "sig": "def _kc(case, y_active=False, **kw)",
+     "start": 298
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 326,
+     "kind": "test",
+     "name": "test_family_kc_cases_and_gates",
+     "qual": "test_family_kc_cases_and_gates",
+     "sig": "def test_family_kc_cases_and_gates()",
+     "start": 305
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 339,
+     "kind": "test",
+     "name": "test_family_kc_contradiction_blocks_not_used_and_kcr_does_not",
+     "qual": "test_family_kc_contradiction_blocks_not_used_and_kcr_does_not",
+     "sig": "def test_family_kc_contradiction_blocks_not_used_and_kcr_does_not()",
+     "start": 329
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 373,
+     "kind": "test",
+     "name": "test_edge_every_threshold_array",
+     "qual": "test_edge_every_threshold_array",
+     "sig": "def test_edge_every_threshold_array()",
+     "start": 358
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 396,
+     "kind": "test",
+     "name": "test_edge_named_cases",
+     "qual": "test_edge_named_cases",
+     "sig": "def test_edge_named_cases()",
+     "start": 376
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 20
+    }
+   ]
+  },
+  "tests/c2_nd/test_a_identity.py": {
+   "constants": [
+    "REPO",
+    "VARIANT_NAMES"
+   ],
+   "doc": "Author A (job 0121): T-N1, T-LNSCALE, T-LEAK and T-DOSE.",
+   "doc1": "Author A (job 0121): T-N1, T-LNSCALE, T-LEAK and T-DOSE.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 34,
+     "kind": "function",
+     "name": "_centre",
+     "qual": "_centre",
+     "sig": "def _centre(v)",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "Random readout M (8 x 31), oblique GLS projectors with a random SPD Sigma, two arms.",
+     "end": 50,
+     "kind": "function",
+     "name": "_frame",
+     "qual": "_frame",
+     "sig": "def _frame(seed, n=256)",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "function",
+     "name": "_half_dot",
+     "qual": "_half_dot",
+     "sig": "def _half_dot(d, v)",
+     "start": 53
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 58,
+     "kind": "function",
+     "name": "_row_ok",
+     "qual": "_row_ok",
+     "sig": "def _row_ok(got, want, tol, scale)",
+     "start": 57
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "test",
+     "name": "test_n1_subtraction_direct_arm_and_energies",
+     "qual": "test_n1_subtraction_direct_arm_and_energies",
+     "sig": "def test_n1_subtraction_direct_arm_and_energies()",
+     "start": 62
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 101,
+     "kind": "test",
+     "name": "test_n1_comp_arm_is_reverse_interchange",
+     "qual": "test_n1_comp_arm_is_reverse_interchange",
+     "sig": "def test_n1_comp_arm_is_reverse_interchange()",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 110,
+     "kind": "test",
+     "name": "test_n1_shares_sum_to_one",
+     "qual": "test_n1_shares_sum_to_one",
+     "sig": "def test_n1_shares_sum_to_one()",
+     "start": 104
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 160,
+     "kind": "test",
+     "name": "test_n1_stream_arrays_and_sign_flips",
+     "qual": "test_n1_stream_arrays_and_sign_flips",
+     "sig": "def test_n1_stream_arrays_and_sign_flips()",
+     "start": 113
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 174,
+     "kind": "test",
+     "name": "test_n1_mirrored_bounds_on_a_shared_stream",
+     "qual": "test_n1_mirrored_bounds_on_a_shared_stream",
+     "sig": "def test_n1_mirrored_bounds_on_a_shared_stream()",
+     "start": 163
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 197,
+     "kind": "test",
+     "name": "test_lnscale_split_is_exact",
+     "qual": "test_lnscale_split_is_exact",
+     "sig": "def test_lnscale_split_is_exact()",
+     "start": 178
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 206,
+     "kind": "test",
+     "name": "test_lnscale_sigma_formula",
+     "qual": "test_lnscale_sigma_formula",
+     "sig": "def test_lnscale_sigma_formula()",
+     "start": 200
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 227,
+     "kind": "test",
+     "name": "test_leak_equals_refit_code_share_of_dnull",
+     "qual": "test_leak_equals_refit_code_share_of_dnull",
+     "sig": "def test_leak_equals_refit_code_share_of_dnull()",
+     "start": 210
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 251,
+     "kind": "test",
+     "name": "test_kappa_leak_and_canonical_angles",
+     "qual": "test_kappa_leak_and_canonical_angles",
+     "sig": "def test_kappa_leak_and_canonical_angles()",
+     "start": 230
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 256,
+     "kind": "function",
+     "name": "_psi_dose",
+     "qual": "_psi_dose",
+     "sig": "def _psi_dose(psi, rho)",
+     "start": 255
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 270,
+     "kind": "test",
+     "name": "test_dose_exact_fractions",
+     "qual": "test_dose_exact_fractions",
+     "sig": "def test_dose_exact_fractions()",
+     "start": 259
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 293,
+     "kind": "test",
+     "name": "test_dose_head_edit_on_a_synthetic_readout",
+     "qual": "test_dose_head_edit_on_a_synthetic_readout",
+     "sig": "def test_dose_head_edit_on_a_synthetic_readout()",
+     "start": 273
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 19
+    }
+   ]
+  },
+  "tests/c2_nd/test_a_inference.py": {
+   "constants": [
+    "DD",
+    "DISCLOSE",
+    "KM3",
+    "MODELS",
+    "NM",
+    "NR",
+    "PAT",
+    "QD1",
+    "QD3",
+    "QN",
+    "QN2",
+    "REPO"
+   ],
+   "doc": "Author A (job 0121): T-RULES-ND, T-BOOT-ND and T-LADDER-ND.",
+   "doc1": "Author A (job 0121): T-RULES-ND, T-BOOT-ND and T-LADDER-ND.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "math"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "math"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_stats"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_stats.py"
+     ],
+     "top": "c2_stats"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_stage_val"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "nd_stage_val"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_bd",
+     "qual": "_bd",
+     "sig": "def _bd(**cfg)",
+     "start": 33
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 45,
+     "kind": "function",
+     "name": "_o",
+     "qual": "_o",
+     "sig": "def _o(family, a, b, c, cnhs=(), kc=False)",
+     "start": 44
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "test",
+     "name": "test_rules_nr_overall",
+     "qual": "test_rules_nr_overall",
+     "sig": "def test_rules_nr_overall()",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 75,
+     "kind": "test",
+     "name": "test_rules_d_overall",
+     "qual": "test_rules_d_overall",
+     "sig": "def test_rules_d_overall()",
+     "start": 64
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 86,
+     "kind": "test",
+     "name": "test_rules_nm_overall",
+     "qual": "test_rules_nm_overall",
+     "sig": "def test_rules_nm_overall()",
+     "start": 78
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "function",
+     "name": "_rec",
+     "qual": "_rec",
+     "sig": "def _rec(gate, full, model=None, family=None, problem=None, decoy=None, values=None)",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 105,
+     "kind": "test",
+     "name": "test_rules_endpoint_status",
+     "qual": "test_rules_endpoint_status",
+     "sig": "def test_rules_endpoint_status()",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 131,
+     "kind": "test",
+     "name": "test_rules_qualifier_order",
+     "qual": "test_rules_qualifier_order",
+     "sig": "def test_rules_qualifier_order()",
+     "start": 108
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 178,
+     "kind": "test",
+     "name": "test_licences_carry_the_sentences_and_qcode",
+     "qual": "test_licences_carry_the_sentences_and_qcode",
+     "sig": "def test_licences_carry_the_sentences_and_qcode()",
+     "start": 151
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 190,
+     "kind": "test",
+     "name": "test_statement_licences",
+     "qual": "test_statement_licences",
+     "sig": "def test_statement_licences()",
+     "start": 181
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 219,
+     "kind": "test",
+     "name": "test_package_statement_caveat_and_unions",
+     "qual": "test_package_statement_caveat_and_unions",
+     "sig": "def test_package_statement_caveat_and_unions()",
+     "start": 193
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 241,
+     "kind": "test",
+     "name": "test_boot_shared_index_streams",
+     "qual": "test_boot_shared_index_streams",
+     "sig": "def test_boot_shared_index_streams()",
+     "start": 223
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 255,
+     "kind": "test",
+     "name": "test_boot_fraction_ranks_and_contract",
+     "qual": "test_boot_fraction_ranks_and_contract",
+     "sig": "def test_boot_fraction_ranks_and_contract()",
+     "start": 244
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 266,
+     "kind": "test",
+     "name": "test_boot_indicator_form_sign",
+     "qual": "test_boot_indicator_form_sign",
+     "sig": "def test_boot_indicator_form_sign()",
+     "start": 258
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 289,
+     "kind": "test",
+     "name": "test_boot_ratio_intervals_undefined_and_no_draw_discarded",
+     "qual": "test_boot_ratio_intervals_undefined_and_no_draw_discarded",
+     "sig": "def test_boot_ratio_intervals_undefined_and_no_draw_discarded()",
+     "start": 269
+    },
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "Records the kernel calls; precision_summary passes model j at N iff (name, N, j) in ok.",
+     "end": 320,
+     "kind": "class",
+     "name": "_FakePrecision",
+     "qual": "_FakePrecision",
+     "start": 293
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 297,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "_FakePrecision.__init__",
+     "sig": "def __init__(self, arrays, ok)",
+     "start": 296
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 301,
+     "kind": "method",
+     "name": "_name",
+     "qual": "_FakePrecision._name",
+     "sig": "def _name(self, X)",
+     "start": 299
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 306,
+     "kind": "method",
+     "name": "sd_b4_draws",
+     "qual": "_FakePrecision.sd_b4_draws",
+     "sig": "def sd_b4_draws(self, X, r4n, models, seed, draws, size)",
+     "start": 303
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 310,
+     "kind": "method",
+     "name": "centered_draws",
+     "qual": "_FakePrecision.centered_draws",
+     "sig": "def centered_draws(self, X, models, seed, draws, size)",
+     "start": 308
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 320,
+     "kind": "method",
+     "name": "precision_summary",
+     "qual": "_FakePrecision.precision_summary",
+     "sig": "def precision_summary(self, sd, e, models, cfg)",
+     "start": 312
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 345,
+     "kind": "function",
+     "name": "_ladder",
+     "qual": "_ladder",
+     "sig": "def _ladder(monkeypatch, family, names, ok_fn)",
+     "start": 323
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 351,
+     "kind": "test",
+     "name": "test_ladder_nr_all_pass_at_first_rung",
+     "qual": "test_ladder_nr_all_pass_at_first_rung",
+     "sig": "def test_ladder_nr_all_pass_at_first_rung(monkeypatch)",
+     "start": 348
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 361,
+     "kind": "test",
+     "name": "test_ladder_two_of_three_and_underpowered",
+     "qual": "test_ladder_two_of_three_and_underpowered",
+     "sig": "def test_ladder_two_of_three_and_underpowered(monkeypatch)",
+     "start": 354
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 19
+    }
+   ]
+  },
+  "tests/c2_nd/test_a_known.py": {
+   "constants": [
+    "DD",
+    "EXTRA",
+    "GRD",
+    "NM",
+    "NO_P1",
+    "NR",
+    "PAT",
+    "REPO"
+   ],
+   "doc": "Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY.",
+   "doc1": "Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_code.py"
+     ],
+     "top": "c2_code"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_centre",
+     "qual": "_centre",
+     "sig": "def _centre(v)",
+     "start": 34
+    },
+    {
+     "decorators": [],
+     "doc": "One shared stream (VAL level 1/60, 2,000 draws) and C2 guards with beta = 0.",
+     "end": 41,
+     "kind": "function",
+     "name": "_bounds",
+     "qual": "_bounds",
+     "sig": "def _bounds(arrays, j=1729, seed=630506, draws=2000)",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "A readout with a known code share: outputs 0-3 read only col(B) (scale a), outputs 4-7",
+     "end": 66,
+     "kind": "function",
+     "name": "_known",
+     "qual": "_known",
+     "sig": "def _known(psi, seed, n=2048, cancel=False)",
+     "start": 44
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 75,
+     "kind": "function",
+     "name": "_run_known",
+     "qual": "_run_known",
+     "sig": "def _run_known(f, y_active=False)",
+     "start": 69
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('psi, r_cat, nr_cat', [(1.0, 'USED', 'NECESSARY'), (0.0, 'NOT_USED', 'NOT_NECESSARY'), (0.3, 'PARTIAL', 'NOT_NECESSARY'), (0.7, 'USED', 'CODE_DOMINANT')])"
+     ],
+     "doc": "",
+     "end": 91,
+     "kind": "test",
+     "name": "test_nec_known_categories",
+     "qual": "test_nec_known_categories",
+     "sig": "def test_nec_known_categories(psi, r_cat, nr_cat)",
+     "start": 84
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 100,
+     "kind": "test",
+     "name": "test_nec_known_half_share_is_neither_partial_nor_code_dominant",
+     "qual": "test_nec_known_half_share_is_neither_partial_nor_code_dominant",
+     "sig": "def test_nec_known_half_share_is_neither_partial_nor_code_dominant()",
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 111,
+     "kind": "test",
+     "name": "test_nec_known_cancellation_is_low_aligned_not_necessary",
+     "qual": "test_nec_known_cancellation_is_low_aligned_not_necessary",
+     "sig": "def test_nec_known_cancellation_is_low_aligned_not_necessary()",
+     "start": 103
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 123,
+     "kind": "test",
+     "name": "test_nec_known_negative_complement",
+     "qual": "test_nec_known_negative_complement",
+     "sig": "def test_nec_known_negative_complement()",
+     "start": 114
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 136,
+     "kind": "function",
+     "name": "_bd",
+     "qual": "_bd",
+     "sig": "def _bd(**cfg)",
+     "start": 131
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 146,
+     "kind": "function",
+     "name": "_nr",
+     "qual": "_nr",
+     "sig": "def _nr(y_active=True, **kw)",
+     "start": 145
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 161,
+     "kind": "test",
+     "name": "test_rule6a_complement_positive_below_margin",
+     "qual": "test_rule6a_complement_positive_below_margin",
+     "sig": "def test_rule6a_complement_positive_below_margin()",
+     "start": 150
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 174,
+     "kind": "test",
+     "name": "test_rule6b_decoy_positive_below_margin",
+     "qual": "test_rule6b_decoy_positive_below_margin",
+     "sig": "def test_rule6b_decoy_positive_below_margin()",
+     "start": 164
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 185,
+     "kind": "test",
+     "name": "test_nested_entry_only_inside_not_necessary",
+     "qual": "test_nested_entry_only_inside_not_necessary",
+     "sig": "def test_nested_entry_only_inside_not_necessary()",
+     "start": 177
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 196,
+     "kind": "test",
+     "name": "test_rule6c_layer2_and_routed",
+     "qual": "test_rule6c_layer2_and_routed",
+     "sig": "def test_rule6c_layer2_and_routed()",
+     "start": 188
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 206,
+     "kind": "test",
+     "name": "test_statement_count_needs_two_models",
+     "qual": "test_statement_count_needs_two_models",
+     "sig": "def test_statement_count_needs_two_models()",
+     "start": 199
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 212,
+     "kind": "function",
+     "name": "_quals",
+     "qual": "_quals",
+     "sig": "def _quals(primary, cats)",
+     "start": 210
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 238,
+     "kind": "test",
+     "name": "test_proj_variant_categories_and_qualifiers",
+     "qual": "test_proj_variant_categories_and_qualifiers",
+     "sig": "def test_proj_variant_categories_and_qualifiers()",
+     "start": 215
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 258,
+     "kind": "test",
+     "name": "test_proj_excluded_absent_and_necessary_primary",
+     "qual": "test_proj_excluded_absent_and_necessary_primary",
+     "sig": "def test_proj_excluded_absent_and_necessary_primary()",
+     "start": 241
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 295,
+     "kind": "function",
+     "name": "_copy_case",
+     "qual": "_copy_case",
+     "sig": "def _copy_case(kind, seed=701, n_fit=4096, n_eval=1024)",
+     "start": 262
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('kind', ['copy_in_K', 'move_and_visible_copy', 'null_copy'])"
+     ],
+     "doc": "",
+     "end": 310,
+     "kind": "test",
+     "name": "test_copy_is_absorbed_and_used",
+     "qual": "test_copy_is_absorbed_and_used",
+     "sig": "def test_copy_is_absorbed_and_used(kind)",
+     "start": 299
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 18
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_decoy_model.py": {
+   "constants": [
+    "COORD",
+    "HEAD",
+    "N",
+    "REPO"
+   ],
+   "doc": "Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6).",
+   "doc1": "Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "copy"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "copy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_decoy"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decoy.py"
+     ],
+     "top": "nd_decoy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 33,
+     "module": "topo_pilot.learner",
+     "names": [
+      "ModelConfig",
+      "TransformerLM",
+      "forward_with_patch"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/learner/__init__.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 49,
+     "kind": "function",
+     "name": "tiny_model",
+     "qual": "tiny_model",
+     "sig": "def tiny_model(seed)",
+     "start": 41
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 55,
+     "kind": "function",
+     "name": "tokens",
+     "qual": "tokens",
+     "sig": "def tokens(seed, n=N)",
+     "start": 52
+    },
+    {
+     "decorators": [],
+     "doc": "Oblique GLS projectors: L (11 x r) with rows 0..4 for Gamma, 5..10 for B; P_S = B L_B.",
+     "end": 66,
+     "kind": "function",
+     "name": "projector",
+     "qual": "projector",
+     "sig": "def projector(seed, r=31)",
+     "start": 58
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 72,
+     "kind": "function",
+     "name": "hooks",
+     "qual": "hooks",
+     "sig": "def hooks(model, X)",
+     "start": 69
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 78,
+     "kind": "function",
+     "name": "at_gate",
+     "qual": "at_gate",
+     "sig": "def at_gate(gate)",
+     "start": 75
+    },
+    {
+     "decorators": [],
+     "doc": "Per row max|a - b| <= tol * max(1, max|b|).",
+     "end": 85,
+     "kind": "function",
+     "name": "rel_rows",
+     "qual": "rel_rows",
+     "sig": "def rel_rows(a, b, tol)",
+     "start": 81
+    },
+    {
+     "decorators": [
+      "pytest.fixture(scope='module')"
+     ],
+     "doc": "",
+     "end": 100,
+     "kind": "function",
+     "name": "base",
+     "qual": "base",
+     "sig": "def base()",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 106,
+     "kind": "function",
+     "name": "expected_head",
+     "qual": "expected_head",
+     "sig": "def expected_head(kind, WU, Q0, P_S, g=G_D)",
+     "start": 103
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 111,
+     "kind": "function",
+     "name": "head",
+     "qual": "head",
+     "sig": "def head(b, kind, P=None, g=G_D)",
+     "start": 109
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 119,
+     "kind": "function",
+     "name": "coord_decoys",
+     "qual": "coord_decoys",
+     "sig": "def coord_decoys(b)",
+     "start": 114
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 128,
+     "kind": "test",
+     "name": "test_shapes_and_pi_s",
+     "qual": "test_shapes_and_pi_s",
+     "sig": "def test_shapes_and_pi_s(base)",
+     "start": 122
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('kind', HEAD)"
+     ],
+     "doc": "",
+     "end": 140,
+     "kind": "test",
+     "name": "test_head_edit_formula",
+     "qual": "test_head_edit_formula",
+     "sig": "def test_head_edit_formula(base, kind)",
+     "start": 135
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('kind', ('DNULL', 'DNULL1'))"
+     ],
+     "doc": "",
+     "end": 148,
+     "kind": "test",
+     "name": "test_null_heads_annihilate_code",
+     "qual": "test_null_heads_annihilate_code",
+     "sig": "def test_null_heads_annihilate_code(base, kind)",
+     "start": 144
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 162,
+     "kind": "test",
+     "name": "test_donly_and_ddose_identities",
+     "qual": "test_donly_and_ddose_identities",
+     "sig": "def test_donly_and_ddose_identities(base)",
+     "start": 151
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('kind', HEAD)"
+     ],
+     "doc": "",
+     "end": 182,
+     "kind": "test",
+     "name": "test_head_decoy_is_the_base_with_a_new_head",
+     "qual": "test_head_decoy_is_the_base_with_a_new_head",
+     "sig": "def test_head_decoy_is_the_base_with_a_new_head(base, kind)",
+     "start": 166
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('kind', HEAD)"
+     ],
+     "doc": "",
+     "end": 199,
+     "kind": "test",
+     "name": "test_patch_and_basis_unchanged_on_head_decoy",
+     "qual": "test_patch_and_basis_unchanged_on_head_decoy",
+     "sig": "def test_patch_and_basis_unchanged_on_head_decoy(base, kind)",
+     "start": 186
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 228,
+     "kind": "test",
+     "name": "test_coordinate_wrapper",
+     "qual": "test_coordinate_wrapper",
+     "sig": "def test_coordinate_wrapper(base)",
+     "start": 202
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 239,
+     "kind": "test",
+     "name": "test_coordinate_decoys_predict_like_their_partners",
+     "qual": "test_coordinate_decoys_predict_like_their_partners",
+     "sig": "def test_coordinate_decoys_predict_like_their_partners(base)",
+     "start": 231
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 250,
+     "kind": "function",
+     "name": "m0d_inputs",
+     "qual": "m0d_inputs",
+     "sig": "def m0d_inputs(b, P=None, g=G_D)",
+     "start": 242
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 262,
+     "kind": "test",
+     "name": "test_m0d_passes_on_correct_decoys",
+     "qual": "test_m0d_passes_on_correct_decoys",
+     "sig": "def test_m0d_passes_on_correct_decoys(base)",
+     "start": 257
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('bad', ('g5', 'transposed', 'other_model'))"
+     ],
+     "doc": "",
+     "end": 271,
+     "kind": "test",
+     "name": "test_m0d_fails_on_misbuilt_head_decoys",
+     "qual": "test_m0d_fails_on_misbuilt_head_decoys",
+     "sig": "def test_m0d_fails_on_misbuilt_head_decoys(base, bad)",
+     "start": 266
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 277,
+     "kind": "test",
+     "name": "test_m0d_refused_outside_its_gates",
+     "qual": "test_m0d_refused_outside_its_gates",
+     "sig": "def test_m0d_refused_outside_its_gates(base)",
+     "start": 274
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 287,
+     "kind": "function",
+     "name": "dx_arrays",
+     "qual": "dx_arrays",
+     "sig": "def dx_arrays(b, P_build)",
+     "start": 284
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 293,
+     "kind": "test",
+     "name": "test_dx_passes_on_correct_decoys",
+     "qual": "test_dx_passes_on_correct_decoys",
+     "sig": "def test_dx_passes_on_correct_decoys(base)",
+     "start": 290
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('bad', ('transposed', 'other_model'))"
+     ],
+     "doc": "",
+     "end": 302,
+     "kind": "test",
+     "name": "test_dx_fails_on_misbuilt_decoys",
+     "qual": "test_dx_fails_on_misbuilt_decoys",
+     "sig": "def test_dx_fails_on_misbuilt_decoys(base, bad)",
+     "start": 297
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 313,
+     "kind": "function",
+     "name": "ref_sha64",
+     "qual": "ref_sha64",
+     "sig": "def ref_sha64(module, record)",
+     "start": 305
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 320,
+     "kind": "function",
+     "name": "record_of",
+     "qual": "record_of",
+     "sig": "def record_of(kind, j=1729)",
+     "start": 316
+    },
+    {
+     "bases": [
+      "torch.nn.Module"
+     ],
+     "decorators": [],
+     "doc": "",
+     "end": 326,
+     "kind": "class",
+     "name": "_Buf",
+     "qual": "_Buf",
+     "start": 323
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 326,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "_Buf.__init__",
+     "sig": "def __init__(self, t)",
+     "start": 324
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 345,
+     "kind": "test",
+     "name": "test_decoy_sha64",
+     "qual": "test_decoy_sha64",
+     "sig": "def test_decoy_sha64(base)",
+     "start": 329
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 19
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_layer2.py": {
+   "constants": [
+    "DD",
+    "NEGATIVE_CLAIMS",
+    "NM",
+    "NM_KEYS",
+    "NR",
+    "REPO"
+   ],
+   "doc": "Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9,\n21, 23, §5.1; API.md §7.2, §7.4, §8.2).",
+   "doc1": "Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "topo_pilot.learner",
+     "names": [
+      "ModelConfig",
+      "TransformerLM",
+      "forward_with_patch"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/learner/__init__.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "P2: orthogonal projector onto a 6-d S inside 1-perp; PC: onto 1-perp minus S.",
+     "end": 43,
+     "kind": "function",
+     "name": "spaces",
+     "qual": "spaces",
+     "sig": "def spaces(seed)",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "function",
+     "name": "km_model",
+     "qual": "km_model",
+     "sig": "def km_model(seed, W, mlp=False)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 70,
+     "kind": "function",
+     "name": "reflect",
+     "qual": "reflect",
+     "sig": "def reflect(h, P, rng)",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 81,
+     "kind": "function",
+     "name": "donors",
+     "qual": "donors",
+     "sig": "def donors(seed, P2, PC, norm_only=False)",
+     "start": 73
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 87,
+     "kind": "function",
+     "name": "zpatch",
+     "qual": "zpatch",
+     "sig": "def zpatch(model, X, rep)",
+     "start": 84
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 99,
+     "kind": "function",
+     "name": "run_km",
+     "qual": "run_km",
+     "sig": "def run_km(model, P2, h, Dp, Dm)",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 105,
+     "kind": "function",
+     "name": "shares",
+     "qual": "shares",
+     "sig": "def shares(cm_)",
+     "start": 102
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 110,
+     "kind": "function",
+     "name": "bounds",
+     "qual": "bounds",
+     "sig": "def bounds(arrays, seed=630505, alpha=Fraction(1, 360), draws=2000)",
+     "start": 108
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 117,
+     "kind": "function",
+     "name": "nm_status",
+     "qual": "nm_status",
+     "sig": "def nm_status(cm_, A_full)",
+     "start": 113
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 133,
+     "kind": "test",
+     "name": "test_km1_code_only_head_is_necessary_m",
+     "qual": "test_km1_code_only_head_is_necessary_m",
+     "sig": "def test_km1_code_only_head_is_necessary_m()",
+     "start": 120
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 142,
+     "kind": "test",
+     "name": "test_km2_complement_only_head_is_not_necessary_m",
+     "qual": "test_km2_complement_only_head_is_not_necessary_m",
+     "sig": "def test_km2_complement_only_head_is_not_necessary_m()",
+     "start": 136
+    },
+    {
+     "decorators": [],
+     "doc": "The head reads only S and the code is the same in both donors; the complement changes",
+     "end": 161,
+     "kind": "test",
+     "name": "test_km3_layernorm_scale_loophole",
+     "qual": "test_km3_layernorm_scale_loophole",
+     "sig": "def test_km3_layernorm_scale_loophole()",
+     "start": 145
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 179,
+     "kind": "test",
+     "name": "test_km4_mlp_gate_interaction",
+     "qual": "test_km4_mlp_gate_interaction",
+     "sig": "def test_km4_mlp_gate_interaction()",
+     "start": 164
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 185,
+     "kind": "function",
+     "name": "bd",
+     "qual": "bd",
+     "sig": "def bd(sgn, g=1e-09)",
+     "start": 183
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('y_active', (False, True))"
+     ],
+     "doc": "",
+     "end": 209,
+     "kind": "test",
+     "name": "test_no_full_response_is_model_headroom",
+     "qual": "test_no_full_response_is_model_headroom",
+     "sig": "def test_no_full_response_is_model_headroom(y_active)",
+     "start": 196
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 237,
+     "kind": "test",
+     "name": "test_unamplified_decoy_fails_and_gain_six_passes",
+     "qual": "test_unamplified_decoy_fails_and_gain_six_passes",
+     "sig": "def test_unamplified_decoy_fails_and_gain_six_passes()",
+     "start": 212
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 248,
+     "kind": "function",
+     "name": "oracle_fixture",
+     "qual": "oracle_fixture",
+     "sig": "def oracle_fixture(n=32)",
+     "start": 240
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 260,
+     "kind": "test",
+     "name": "test_oracle_feas_identity",
+     "qual": "test_oracle_feas_identity",
+     "sig": "def test_oracle_feas_identity()",
+     "start": 251
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 19
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_lineage.py": {
+   "constants": [
+    "C2",
+    "HWS",
+    "ND",
+    "PKG",
+    "REPO"
+   ],
+   "doc": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),\nT-G0-ND (§3 row 1), T-METER (§9, §6.8) and T-SIZE (§11.3); API.md §4.2-§4.3, §9.3, §9.5,\n§9.8, §12. Synthetic worktrees, stores and project roots under pytest's tmp_path only.",
+   "doc1": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_data.py"
+     ],
+     "top": "nd_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "topo_pilot.dataset.checks",
+     "names": [
+      "make_sequence_ids",
+      "process_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/dataset/checks.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 37,
+     "kind": "function",
+     "name": "sha",
+     "qual": "sha",
+     "sig": "def sha(path)",
+     "start": 36
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "put",
+     "qual": "put",
+     "sig": "def put(path, data)",
+     "start": 40
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "",
+     "end": 61,
+     "kind": "function",
+     "name": "world",
+     "qual": "world",
+     "sig": "def world(tmp_path, monkeypatch)",
+     "start": 47
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 66,
+     "kind": "function",
+     "name": "classes",
+     "qual": "classes",
+     "sig": "def classes(res)",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 80,
+     "kind": "test",
+     "name": "test_namespace_scan",
+     "qual": "test_namespace_scan",
+     "sig": "def test_namespace_scan(world)",
+     "start": 69
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 89,
+     "kind": "test",
+     "name": "test_namespace_hit_in_a_parallel_store_is_foreign",
+     "qual": "test_namespace_hit_in_a_parallel_store_is_foreign",
+     "sig": "def test_namespace_hit_in_a_parallel_store_is_foreign(world)",
+     "start": 83
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('where, needle, want', [('WORKTREE/tools/c2_nd/CONTRACT.json', C2, LIN), ('STORE/stages/S1/record.json', C2, LIN), ('STORE/GATES.jsonl', C2, LIN), ('STORE/stages/S1/notes.json', HWS, LIN), ('WORKTREE/tools/c2_nd/PROTOCOL_C2ND_v1.md', C2, 'PASS'), ('STORE/stages/S1/record.json', ND, 'PASS')])"
+     ],
+     "doc": "",
+     "end": 108,
+     "kind": "test",
+     "name": "test_hygiene_check",
+     "qual": "test_hygiene_check",
+     "sig": "def test_hygiene_check(world, where, needle, want)",
+     "start": 100
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 117,
+     "kind": "test",
+     "name": "test_needles_and_the_real_contract",
+     "qual": "test_needles_and_the_real_contract",
+     "sig": "def test_needles_and_the_real_contract()",
+     "start": 111
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 129,
+     "kind": "test",
+     "name": "test_store_admission_payload_at_first_sampling",
+     "qual": "test_store_admission_payload_at_first_sampling",
+     "sig": "def test_store_admission_payload_at_first_sampling(world)",
+     "start": 120
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 140,
+     "kind": "function",
+     "name": "fit_keys",
+     "qual": "fit_keys",
+     "sig": "def fit_keys()",
+     "start": 133
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 145,
+     "kind": "function",
+     "name": "dec_keys",
+     "qual": "dec_keys",
+     "sig": "def dec_keys()",
+     "start": 143
+    },
+    {
+     "decorators": [],
+     "doc": "A synthetic C2 store whose files re-hash to the (in-place patched) CONTRACT table.",
+     "end": 165,
+     "kind": "function",
+     "name": "c2_store_files",
+     "qual": "c2_store_files",
+     "sig": "def c2_store_files(world, monkeypatch, drop=None)",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 179,
+     "kind": "function",
+     "name": "g0_world",
+     "qual": "g0_world",
+     "sig": "def g0_world(world, monkeypatch, drop=None, dry=False, freeze_ok=True)",
+     "start": 168
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "",
+     "end": 191,
+     "kind": "function",
+     "name": "loads",
+     "qual": "loads",
+     "sig": "def loads(monkeypatch)",
+     "start": 183
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 203,
+     "kind": "test",
+     "name": "test_g0_items_on_a_synthetic_world",
+     "qual": "test_g0_items_on_a_synthetic_world",
+     "sig": "def test_g0_items_on_a_synthetic_world(world, monkeypatch, loads)",
+     "start": 196
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 214,
+     "kind": "test",
+     "name": "test_g0_protocol_contract_and_c2_store_failures",
+     "qual": "test_g0_protocol_contract_and_c2_store_failures",
+     "sig": "def test_g0_protocol_contract_and_c2_store_failures(world, monkeypatch)",
+     "start": 206
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 219,
+     "kind": "test",
+     "name": "test_g0_fit_key_set",
+     "qual": "test_g0_fit_key_set",
+     "sig": "def test_g0_fit_key_set(world, monkeypatch)",
+     "start": 217
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 227,
+     "kind": "test",
+     "name": "test_g0_store_admission_and_dry_guard",
+     "qual": "test_g0_store_admission_and_dry_guard",
+     "sig": "def test_g0_store_admission_and_dry_guard(world, monkeypatch)",
+     "start": 222
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 239,
+     "kind": "function",
+     "name": "auth_record",
+     "qual": "auth_record",
+     "sig": "def auth_record(schema, **change)",
+     "start": 230
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 252,
+     "kind": "test",
+     "name": "test_auth_ok",
+     "qual": "test_auth_ok",
+     "sig": "def test_auth_ok(tmp_path)",
+     "start": 242
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 274,
+     "kind": "test",
+     "name": "test_contract_values",
+     "qual": "test_contract_values",
+     "sig": "def test_contract_values()",
+     "start": 255
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 301,
+     "kind": "test",
+     "name": "test_sequence_ids_and_streams",
+     "qual": "test_sequence_ids_and_streams",
+     "sig": "def test_sequence_ids_and_streams()",
+     "start": 277
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 315,
+     "kind": "test",
+     "name": "test_meter_bind_check",
+     "qual": "test_meter_bind_check",
+     "sig": "def test_meter_bind_check(world)",
+     "start": 305
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 321,
+     "kind": "test",
+     "name": "test_measure_only_caps",
+     "qual": "test_measure_only_caps",
+     "sig": "def test_measure_only_caps()",
+     "start": 320
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 332,
+     "kind": "function",
+     "name": "lineage_ctx",
+     "qual": "lineage_ctx",
+     "sig": "def lineage_ctx(tmp_path)",
+     "start": 324
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 346,
+     "kind": "test",
+     "name": "test_write_manifest",
+     "qual": "test_write_manifest",
+     "sig": "def test_write_manifest(tmp_path)",
+     "start": 335
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 364,
+     "kind": "test",
+     "name": "test_supersede_and_regen_compare",
+     "qual": "test_supersede_and_regen_compare",
+     "sig": "def test_supersede_and_regen_compare(tmp_path)",
+     "start": 349
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 374,
+     "kind": "test",
+     "name": "test_module_files_and_sizes",
+     "qual": "test_module_files_and_sizes",
+     "sig": "def test_module_files_and_sizes()",
+     "start": 368
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 15
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_policy.py": {
+   "constants": [
+    "ALLOWED",
+    "ORDER",
+    "RELEASE_ONLY",
+    "REPO"
+   ],
+   "doc": "Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12);\nAPI.md §8.3, §9.1, §9.4, §9.6, §14.1. Synthetic stores under pytest's tmp_path only.",
+   "doc1": "Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12);",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 39,
+     "kind": "function",
+     "name": "at_gate",
+     "qual": "at_gate",
+     "sig": "def at_gate(gate)",
+     "start": 36
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "status_of",
+     "qual": "status_of",
+     "sig": "def status_of(exc_info)",
+     "start": 42
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 47,
+     "kind": "function",
+     "name": "sha",
+     "qual": "sha",
+     "sig": "def sha(path)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "function",
+     "name": "ctx_for",
+     "qual": "ctx_for",
+     "sig": "def ctx_for(store, policy=None, job='0130')",
+     "start": 50
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 65,
+     "kind": "function",
+     "name": "gates_file",
+     "qual": "gates_file",
+     "sig": "def gates_file(store, rows)",
+     "start": 57
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 74,
+     "kind": "test",
+     "name": "test_gate_order_is_the_protocol_list",
+     "qual": "test_gate_order_is_the_protocol_list",
+     "sig": "def test_gate_order_is_the_protocol_list()",
+     "start": 69
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 92,
+     "kind": "test",
+     "name": "test_begin_in_order_and_out_of_order",
+     "qual": "test_begin_in_order_and_out_of_order",
+     "sig": "def test_begin_in_order_and_out_of_order()",
+     "start": 77
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 101,
+     "kind": "test",
+     "name": "test_stage_entry_repeats_are_allowed",
+     "qual": "test_stage_entry_repeats_are_allowed",
+     "sig": "def test_stage_entry_repeats_are_allowed()",
+     "start": 95
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('gate', ORDER)"
+     ],
+     "doc": "",
+     "end": 113,
+     "kind": "test",
+     "name": "test_require_matrix",
+     "qual": "test_require_matrix",
+     "sig": "def test_require_matrix(gate)",
+     "start": 105
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 124,
+     "kind": "test",
+     "name": "test_no_feas_logit_and_no_endpoint_before_t_pre",
+     "qual": "test_no_feas_logit_and_no_endpoint_before_t_pre",
+     "sig": "def test_no_feas_logit_and_no_endpoint_before_t_pre()",
+     "start": 116
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('gate', ('X1', 'DX', 'T-PRE'))"
+     ],
+     "doc": "",
+     "end": 132,
+     "kind": "test",
+     "name": "test_no_write_during_identity_gates",
+     "qual": "test_no_write_during_identity_gates",
+     "sig": "def test_no_write_during_identity_gates(gate)",
+     "start": 128
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 141,
+     "kind": "test",
+     "name": "test_require_write_outside_allowed",
+     "qual": "test_require_write_outside_allowed",
+     "sig": "def test_require_write_outside_allowed()",
+     "start": 135
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 167,
+     "kind": "test",
+     "name": "test_dtest_sampling_needs_release_r5",
+     "qual": "test_dtest_sampling_needs_release_r5",
+     "sig": "def test_dtest_sampling_needs_release_r5(tmp_path)",
+     "start": 144
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 175,
+     "kind": "function",
+     "name": "d_inputs",
+     "qual": "d_inputs",
+     "sig": "def d_inputs(n=8)",
+     "start": 170
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('problem', ('construction', 'R'))"
+     ],
+     "doc": "",
+     "end": 185,
+     "kind": "test",
+     "name": "test_d_stream_refuses_the_construction_projector",
+     "qual": "test_d_stream_refuses_the_construction_projector",
+     "sig": "def test_d_stream_refuses_the_construction_projector(problem)",
+     "start": 179
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 194,
+     "kind": "function",
+     "name": "s_sequence",
+     "qual": "s_sequence",
+     "sig": "def s_sequence()",
+     "start": 188
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 205,
+     "kind": "test",
+     "name": "test_check_sequence",
+     "qual": "test_check_sequence",
+     "sig": "def test_check_sequence(tmp_path)",
+     "start": 197
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('gate', RELEASE_ONLY)"
+     ],
+     "doc": "",
+     "end": 221,
+     "kind": "test",
+     "name": "test_releases_carry_pass_fail_only",
+     "qual": "test_releases_carry_pass_fail_only",
+     "sig": "def test_releases_carry_pass_fail_only(gate)",
+     "start": 212
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 236,
+     "kind": "test",
+     "name": "test_kc_gate_full_statuses",
+     "qual": "test_kc_gate_full_statuses",
+     "sig": "def test_kc_gate_full_statuses()",
+     "start": 224
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 254,
+     "kind": "test",
+     "name": "test_kcr_gate_full_statuses",
+     "qual": "test_kcr_gate_full_statuses",
+     "sig": "def test_kcr_gate_full_statuses()",
+     "start": 241
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 274,
+     "kind": "test",
+     "name": "test_seal_exclusive_and_p1_only",
+     "qual": "test_seal_exclusive_and_p1_only",
+     "sig": "def test_seal_exclusive_and_p1_only(tmp_path)",
+     "start": 257
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 283,
+     "kind": "function",
+     "name": "sealed_store",
+     "qual": "sealed_store",
+     "sig": "def sealed_store(tmp_path, name)",
+     "start": 277
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 287,
+     "kind": "function",
+     "name": "endpoint",
+     "qual": "endpoint",
+     "sig": "def endpoint(fam)",
+     "start": 286
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 300,
+     "kind": "test",
+     "name": "test_unseal_needs_every_alive_endpoint",
+     "qual": "test_unseal_needs_every_alive_endpoint",
+     "sig": "def test_unseal_needs_every_alive_endpoint(tmp_path)",
+     "start": 290
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 314,
+     "kind": "test",
+     "name": "test_unseal_after_family_or_study_stop",
+     "qual": "test_unseal_after_family_or_study_stop",
+     "sig": "def test_unseal_after_family_or_study_stop(tmp_path)",
+     "start": 303
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 13
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_registry.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4).",
+   "doc1": "Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_data.py"
+     ],
+     "top": "c1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_registry.py"
+     ],
+     "top": "c2_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "k4b_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_registry.py"
+     ],
+     "top": "k4b_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 36,
+     "kind": "function",
+     "name": "sha",
+     "qual": "sha",
+     "sig": "def sha(path)",
+     "start": 35
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "table",
+     "qual": "table",
+     "sig": "def table(seed, n=8)",
+     "start": 39
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 50,
+     "kind": "function",
+     "name": "save",
+     "qual": "save",
+     "sig": "def save(path, **arrays)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 55,
+     "kind": "function",
+     "name": "garbage",
+     "qual": "garbage",
+     "sig": "def garbage(path)",
+     "start": 53
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 59,
+     "kind": "function",
+     "name": "tokens",
+     "qual": "tokens",
+     "sig": "def tokens(seed, n=4)",
+     "start": 58
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 63,
+     "kind": "function",
+     "name": "row_hex",
+     "qual": "row_hex",
+     "sig": "def row_hex(tok)",
+     "start": 62
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "Every np.load path (a registry reader must never np.load a payload or sealed file).",
+     "end": 76,
+     "kind": "function",
+     "name": "loads",
+     "qual": "loads",
+     "sig": "def loads(monkeypatch)",
+     "start": 67
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "",
+     "end": 83,
+     "kind": "function",
+     "name": "scratch",
+     "qual": "scratch",
+     "sig": "def scratch(tmp_path_factory, monkeypatch)",
+     "start": 80
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "Replace CONTRACT scratch_roots_expected in place (restored afterwards).",
+     "end": 96,
+     "kind": "function",
+     "name": "expected_roots",
+     "qual": "expected_roots",
+     "sig": "def expected_roots()",
+     "start": 87
+    },
+    {
+     "decorators": [
+      "pytest.fixture"
+     ],
+     "doc": "",
+     "end": 106,
+     "kind": "function",
+     "name": "c2_store",
+     "qual": "c2_store",
+     "sig": "def c2_store(tmp_path, monkeypatch)",
+     "start": 100
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 113,
+     "kind": "function",
+     "name": "union",
+     "qual": "union",
+     "sig": "def union(tabs)",
+     "start": 109
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 125,
+     "kind": "test",
+     "name": "test_source_c2",
+     "qual": "test_source_c2",
+     "sig": "def test_source_c2(c2_store)",
+     "start": 117
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 134,
+     "kind": "test",
+     "name": "test_source_c2_missing_and_mismatch",
+     "qual": "test_source_c2_missing_and_mismatch",
+     "sig": "def test_source_c2_missing_and_mismatch(c2_store)",
+     "start": 128
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 150,
+     "kind": "test",
+     "name": "test_planted_collision_with_a_c2_test_table",
+     "qual": "test_planted_collision_with_a_c2_test_table",
+     "sig": "def test_planted_collision_with_a_c2_test_table(c2_store)",
+     "start": 137
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 164,
+     "kind": "test",
+     "name": "test_source_c2_superseded",
+     "qual": "test_source_c2_superseded",
+     "sig": "def test_source_c2_superseded(tmp_path, loads)",
+     "start": 154
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 182,
+     "kind": "test",
+     "name": "test_source_scratch",
+     "qual": "test_source_scratch",
+     "sig": "def test_source_scratch(scratch, expected_roots, loads)",
+     "start": 168
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 198,
+     "kind": "test",
+     "name": "test_source_scratch_skips_test_trees",
+     "qual": "test_source_scratch_skips_test_trees",
+     "sig": "def test_source_scratch_skips_test_trees(scratch, expected_roots, loads)",
+     "start": 188
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 211,
+     "kind": "test",
+     "name": "test_source_scratch_expected_roots",
+     "qual": "test_source_scratch_expected_roots",
+     "sig": "def test_source_scratch_expected_roots(scratch, expected_roots)",
+     "start": 201
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 218,
+     "kind": "function",
+     "name": "frozen",
+     "qual": "frozen",
+     "sig": "def frozen(store)",
+     "start": 215
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 230,
+     "kind": "test",
+     "name": "test_parallel_absent_and_unfrozen",
+     "qual": "test_parallel_absent_and_unfrozen",
+     "sig": "def test_parallel_absent_and_unfrozen(tmp_path, scratch)",
+     "start": 221
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 243,
+     "kind": "test",
+     "name": "test_parallel_hws_reader",
+     "qual": "test_parallel_hws_reader",
+     "sig": "def test_parallel_hws_reader(tmp_path, scratch)",
+     "start": 233
+    },
+    {
+     "decorators": [],
+     "doc": "R-0116-3: reader hws also reads <SCRATCH_ROOT>/hws-dry/hist/** when present.",
+     "end": 257,
+     "kind": "test",
+     "name": "test_parallel_hws_dry_scratch",
+     "qual": "test_parallel_hws_dry_scratch",
+     "sig": "def test_parallel_hws_dry_scratch(tmp_path, scratch)",
+     "start": 248
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('where', ('run/payload.npz', 'sealed/k9.npz'))"
+     ],
+     "doc": "",
+     "end": 266,
+     "kind": "test",
+     "name": "test_parallel_payload_or_sealed_is_never_opened",
+     "qual": "test_parallel_payload_or_sealed_is_never_opened",
+     "sig": "def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, where)",
+     "start": 261
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 280,
+     "kind": "test",
+     "name": "test_parallel_x6zc_layout",
+     "qual": "test_parallel_x6zc_layout",
+     "sig": "def test_parallel_x6zc_layout(tmp_path, scratch, loads)",
+     "start": 271
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 285,
+     "kind": "function",
+     "name": "names",
+     "qual": "names",
+     "sig": "def names(res)",
+     "start": 284
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 299,
+     "kind": "test",
+     "name": "test_inventory_adapter",
+     "qual": "test_inventory_adapter",
+     "sig": "def test_inventory_adapter(tmp_path)",
+     "start": 288
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 338,
+     "kind": "test",
+     "name": "test_build_writes_a_c2_format_manifest",
+     "qual": "test_build_writes_a_c2_format_manifest",
+     "sig": "def test_build_writes_a_c2_format_manifest(tmp_path, monkeypatch)",
+     "start": 306
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 357,
+     "kind": "function",
+     "name": "reservation",
+     "qual": "reservation",
+     "sig": "def reservation(tmp_path, monkeypatch, **change)",
+     "start": 341
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 372,
+     "kind": "test",
+     "name": "test_reservation_check",
+     "qual": "test_reservation_check",
+     "sig": "def test_reservation_check(tmp_path, monkeypatch)",
+     "start": 360
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 18
     }
    ]
   },
@@ -139488,6 +144676,2250 @@
     }
    ]
   },
+  "tools/c2_nd/nd_attrib.py": {
+   "constants": [
+    "C",
+    "LEAKAGE",
+    "NEC_CASES",
+    "NEC_KEYS",
+    "NM_KEYS",
+    "NR_A",
+    "NR_KEYS"
+   ],
+   "doc": "C2ND attribution (closed forms; d = d_named; dy = y1 - y2; arm 1 = H+, arm 2 = H-): the N-R\ncomplement quantities and stream (Lemma N1), the N-M stream on the C2-M quantities, the D stream\nand the known-case arrays under a refit projector, the estimation leak, canonical angles and\nkappa_leak, the LN-scale split, the oracle response identity and the descriptive ratios (API.md\n§7, §20; C2ND-DESIGN-v1 §2.3, §2.4, §2.8, §2.9, §3 row 9, §4.2).",
+   "doc1": "C2ND attribution (closed forms; d = d_named; dy = y1 - y2; arm 1 = H+, arm 2 = H-): the N-R",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c1_endpoint"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_endpoint.py"
+     ],
+     "top": "c1_endpoint"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "c1_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_oracle.py"
+     ],
+     "top": "c1_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "c2_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_attrib.py"
+     ],
+     "top": "c2_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_f",
+     "qual": "_f",
+     "sig": "def _f(x) -> np.ndarray",
+     "start": 34
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 40,
+     "kind": "function",
+     "name": "_comp",
+     "qual": "_comp",
+     "sig": "def _comp(P) -> np.ndarray",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "y_C^{2<-1} = y2 + (I - P_S)(y1 - y2): arm 2 receives arm 1's complement.",
+     "end": 47,
+     "kind": "function",
+     "name": "comp_arm",
+     "qual": "comp_arm",
+     "sig": "def comp_arm(y1, y2, P_S) -> np.ndarray",
+     "start": 44
+    },
+    {
+     "decorators": [],
+     "doc": "A_full, A_S, A_comp = A_full - A_S (by subtraction), e_full, e_S, e_comp and the cross",
+     "end": 60,
+     "kind": "function",
+     "name": "nr_quantities",
+     "qual": "nr_quantities",
+     "sig": "def nr_quantities(d, M, y1, y2, P_S) -> dict",
+     "start": 50
+    },
+    {
+     "decorators": [],
+     "doc": "The patched complement arm against arm 2's natural logits (X1 compares it with A_comp).",
+     "end": 65,
+     "kind": "function",
+     "name": "a_comp_direct",
+     "qual": "a_comp_direct",
+     "sig": "def a_comp_direct(d, z_C, z_2) -> np.ndarray",
+     "start": 63
+    },
+    {
+     "decorators": [],
+     "doc": "The N-R family stream of one model (§4.2): 10 arrays plus 2 per variant (16 with three);",
+     "end": 87,
+     "kind": "function",
+     "name": "nr_stream",
+     "qual": "nr_stream",
+     "sig": "def nr_stream(q, qy, G_x, E_x, E_y, variants=None) -> dict",
+     "start": 68
+    },
+    {
+     "decorators": [],
+     "doc": "The N-M family stream of one model (7 arrays): categories on A_C against A_F only.",
+     "end": 108,
+     "kind": "function",
+     "name": "nm_stream",
+     "qual": "nm_stream",
+     "sig": "def nm_stream(cm, A_full, G_x, E_x) -> dict",
+     "start": 98
+    },
+    {
+     "decorators": [],
+     "doc": "The refit tag of a projector dict; the construction projector or the C2 FIT problem R in",
+     "end": 118,
+     "kind": "function",
+     "name": "check_refit",
+     "qual": "check_refit",
+     "sig": "def check_refit(refit, allowed=nc.REFITS) -> str",
+     "start": 112
+    },
+    {
+     "decorators": [],
+     "doc": "The D family stream of one model: the seven C2 R arrays of D-NULL under the RD refit, and",
+     "end": 130,
+     "kind": "function",
+     "name": "d_stream",
+     "qual": "d_stream",
+     "sig": "def d_stream(qx, qy, G_x, E_x, E_y, qx_r=None, refit=None, refit_r=None) -> dict",
+     "start": 121
+    },
+    {
+     "decorators": [],
+     "doc": "KC / KC-R arrays of one case (keys \"<case>:<stat>\"): the R arrays, the case's own y",
+     "end": 145,
+     "kind": "function",
+     "name": "case_arrays",
+     "qual": "case_arrays",
+     "sig": "def case_arrays(case, qx, qy, G_x, G_y, E_x, E_y, refit=None) -> dict",
+     "start": 133
+    },
+    {
+     "decorators": [],
+     "doc": "1/2 d' M' (P_hat - P_S) dy: the D-NULL refit code share is this leak (T-LEAK).",
+     "end": 150,
+     "kind": "function",
+     "name": "leak",
+     "qual": "leak",
+     "sig": "def leak(d, M_prime, dy, P_hat, P_S) -> np.ndarray",
+     "start": 148
+    },
+    {
+     "decorators": [],
+     "doc": "The principal angles between col(B_hat) and col(B), ascending (radians).",
+     "end": 157,
+     "kind": "function",
+     "name": "canonical_angles",
+     "qual": "canonical_angles",
+     "sig": "def canonical_angles(B_hat, B) -> np.ndarray",
+     "start": 153
+    },
+    {
+     "decorators": [],
+     "doc": "||C M (I - P_S) B_hat||_2 / ||C M B_hat||_2 (blind S2 diagnostic; reported, not gated).",
+     "end": 164,
+     "kind": "function",
+     "name": "kappa_leak",
+     "qual": "kappa_leak",
+     "sig": "def kappa_leak(M, P_S, B_hat) -> float",
+     "start": 160
+    },
+    {
+     "decorators": [],
+     "doc": "N-R guards: beta_A (coefficient 1, delta_P of the frozen C2 projector) on every",
+     "end": 188,
+     "kind": "function",
+     "name": "nr_guards",
+     "qual": "nr_guards",
+     "sig": "def nr_guards(arrays, geo) -> dict",
+     "start": 171
+    },
+    {
+     "decorators": [],
+     "doc": "c2_decide.stream_guards on the DNULL arrays (M', RD refit delta_P) and on the \"DNULLR:\"",
+     "end": 197,
+     "kind": "function",
+     "name": "d_guards",
+     "qual": "d_guards",
+     "sig": "def d_guards(arrays, geo_D, geo_R=None) -> dict",
+     "start": 191
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 201,
+     "kind": "function",
+     "name": "nm_guards",
+     "qual": "nm_guards",
+     "sig": "def nm_guards(arrays) -> dict",
+     "start": 200
+    },
+    {
+     "decorators": [],
+     "doc": "sqrt(Var(a3_i) + eps) per row of the resid_post_3 rows at position 32 ([n, d_model]).",
+     "end": 207,
+     "kind": "function",
+     "name": "sigma",
+     "qual": "sigma",
+     "sig": "def sigma(a3, eps) -> np.ndarray",
+     "start": 205
+    },
+    {
+     "decorators": [],
+     "doc": "(dy_dir, dy_sig): dy_sig = (1 - s1/s2) y1, dy_dir = (s1/s2) y1 - y2 (exact split).",
+     "end": 214,
+     "kind": "function",
+     "name": "ln_split",
+     "qual": "ln_split",
+     "sig": "def ln_split(y1, y2, s1, s2) -> tuple",
+     "start": 210
+    },
+    {
+     "decorators": [],
+     "doc": "The symmetric sigma part over both arm orders.",
+     "end": 219,
+     "kind": "function",
+     "name": "ln_sym",
+     "qual": "ln_sym",
+     "sig": "def ln_sym(y1, y2, s1, s2) -> np.ndarray",
+     "start": 217
+    },
+    {
+     "decorators": [],
+     "doc": "Per-row numerators of the LN-scale shares: 1/2 d' M (I - P_S) dy_sig (complement), with",
+     "end": 231,
+     "kind": "function",
+     "name": "ln_arrays",
+     "qual": "ln_arrays",
+     "sig": "def ln_arrays(d, M, P_S, y1, y2, s1, s2, M_prime=None) -> dict",
+     "start": 222
+    },
+    {
+     "decorators": [],
+     "doc": "A_full with the oracle's own log-predictive equals G per row within 1e-12 max(1, |G|).",
+     "end": 244,
+     "kind": "function",
+     "name": "oracle_identity",
+     "qual": "oracle_identity",
+     "sig": "def oracle_identity(qbar_p, qbar_m, d_named, perm, G) -> dict",
+     "start": 235
+    },
+    {
+     "decorators": [],
+     "doc": "Eligible-row point ratios mean(num)/mean(den); nan on a zero denominator.",
+     "end": 254,
+     "kind": "function",
+     "name": "point_ratios_nd",
+     "qual": "point_ratios_nd",
+     "sig": "def point_ratios_nd(nums, dens, pairs, E) -> dict",
+     "start": 248
+    },
+    {
+     "decorators": [],
+     "doc": "The point ratios and one c2_attrib.ratio_intervals call (seed 630508, 5,000 draws; ranks",
+     "end": 265,
+     "kind": "function",
+     "name": "descriptives_nd",
+     "qual": "descriptives_nd",
+     "sig": "def descriptives_nd(nums, dens, pairs, E, extra=None) -> dict",
+     "start": 257
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_config.py": {
+   "constants": [
+    "ALPHA",
+    "AUTH_PATH",
+    "AUTH_SHA256",
+    "BASE_COMMIT",
+    "BLOCK",
+    "C2_H2",
+    "C2_STORE",
+    "CONTRACT",
+    "CONTRACT_PATH",
+    "COORD_DECOYS",
+    "DECOYS",
+    "DECOY_VERSION",
+    "DESC_ALPHA",
+    "DESIGN_ID",
+    "DRY_SCOPE",
+    "FAMILIES",
+    "FILE_FAMILY",
+    "G_D",
+    "H3_ROWS",
+    "H4",
+    "H5_ALPHA",
+    "HEAD_EDITS",
+    "HERE",
+    "HWS_STORE",
+    "INDEX",
+    "KCR_CASES",
+    "KC_CASES",
+    "LOWID_ROWS",
+    "M0_ROWS",
+    "MAILBOX",
+    "MAILBOX_FILE",
+    "MODELS",
+    "MODULES",
+    "NEG_LOW",
+    "NULL_SV_REL",
+    "N_LADDER",
+    "P1_GATED",
+    "PAIRS",
+    "POWER",
+    "PROCESS",
+    "PROJECT_ROOT",
+    "PROTOCOL_FILE",
+    "PROTOCOL_ID",
+    "PROTOCOL_SHA256",
+    "RANKS",
+    "REFITS",
+    "REG_NAMES",
+    "REG_VERSION",
+    "REPO",
+    "RHO",
+    "ROLES",
+    "SCOPE",
+    "SCRATCH_ROOT",
+    "SITES",
+    "SPLITS",
+    "SPLIT_BLOCKS",
+    "STORE",
+    "TEST_K",
+    "T_COND_MAX",
+    "U_RANK",
+    "U_SV_RATIO",
+    "VAL_ALPHA",
+    "VARIANTS",
+    "WORKTREE",
+    "X6ZC_STORE",
+    "_DC",
+    "_PROTO",
+    "_RK",
+    "_T",
+    "_TL",
+    "_WANT"
+   ],
+   "doc": "C2ND configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels\nand ranks, seeds, and the sys.path convention (API.md §1, §3, §20; C2ND-DESIGN-v1 §2.1, §4.1,\n§6.1, §11.3).",
+   "doc1": "C2ND configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "c1_means"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_means.py"
+     ],
+     "top": "c1_means"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256.",
+     "end": 56,
+     "kind": "function",
+     "name": "load_contract",
+     "qual": "load_contract",
+     "sig": "def load_contract(path=CONTRACT_PATH) -> dict",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "The exact rational a CONTRACT string names (\"1/300\", \"1e-9\", \"6\").",
+     "end": 66,
+     "kind": "function",
+     "name": "frac",
+     "qual": "frac",
+     "sig": "def frac(s) -> Fraction",
+     "start": 64
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 70,
+     "kind": "function",
+     "name": "status_of",
+     "qual": "status_of",
+     "sig": "def status_of(full) -> tuple",
+     "start": 69
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 74,
+     "kind": "function",
+     "name": "seed",
+     "qual": "seed",
+     "sig": "def seed(name) -> int",
+     "start": 73
+    },
+    {
+     "decorators": [],
+     "doc": "The rank ceil(draws * p) of c1_means.rank_for.",
+     "end": 79,
+     "kind": "function",
+     "name": "rank",
+     "qual": "rank",
+     "sig": "def rank(draws, p) -> int",
+     "start": 77
+    },
+    {
+     "decorators": [],
+     "doc": "(rank of the lower bound, rank of the upper bound) of `draws` at level `alpha`.",
+     "end": 137,
+     "kind": "function",
+     "name": "ranks",
+     "qual": "ranks",
+     "sig": "def ranks(draws, alpha) -> tuple",
+     "start": 135
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd",
+      "tools/c2_readout"
+     ],
+     "expr": "str(_p)",
+     "line": 22
+    }
+   ]
+  },
+  "tools/c2_nd/nd_data.py": {
+   "constants": [
+    "C2_NEEDLE",
+    "LINEAGE",
+    "ND_PAYLOAD",
+    "NEEDLE",
+    "PARALLEL_NEEDLES",
+    "PAYLOAD_DIRS",
+    "SPLITS"
+   ],
+   "doc": "C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene\ncheck and store admission (API.md §4, §20.3 ND-C35; C2ND-DESIGN-v1 §6.1, §6.6, §3 row 1 (vii)).",
+   "doc1": "C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "c1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_data.py"
+     ],
+     "top": "c1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "topo_pilot.contracts",
+     "names": [
+      "SeedTree",
+      "SequenceLayout"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/contracts/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "topo_pilot.dataset",
+     "names": [
+      "HMMSampler"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/dataset/__init__.py"
+     ],
+     "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "package root",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "topo_pilot.dataset.checks",
+     "names": [
+      "make_sequence_ids",
+      "process_code"
+     ],
+     "status": "internal",
+     "targets": [
+      "src/topo_pilot/dataset/checks.py"
+     ],
+     "top": "topo_pilot"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 39,
+     "kind": "function",
+     "name": "_scope",
+     "qual": "_scope",
+     "sig": "def _scope(scope) -> str",
+     "start": 35
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 45,
+     "kind": "function",
+     "name": "history_generator",
+     "qual": "history_generator",
+     "sig": "def history_generator(split, block, scope=None) -> np.random.Generator",
+     "start": 42
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 52,
+     "kind": "function",
+     "name": "sequence_ids",
+     "qual": "sequence_ids",
+     "sig": "def sequence_ids(split, block, scope=None) -> np.ndarray",
+     "start": 48
+    },
+    {
+     "decorators": [],
+     "doc": "One HMMSampler.sample(4096, rng) call; w33 and the latent states dropped at once.",
+     "end": 62,
+     "kind": "function",
+     "name": "sample_block",
+     "qual": "sample_block",
+     "sig": "def sample_block(T, E_canon, pi, split, block, scope=None) -> tuple",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "Blocks 0..blocks-1 in block order: canonical uint8 [n, 32], sequence ids, panels.",
+     "end": 73,
+     "kind": "function",
+     "name": "sample_split",
+     "qual": "sample_split",
+     "sig": "def sample_split(T, E_canon, pi, split, blocks, scope=None) -> tuple",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 83,
+     "kind": "function",
+     "name": "_under",
+     "qual": "_under",
+     "sig": "def _under(path, base) -> bool",
+     "start": 82
+    },
+    {
+     "decorators": [],
+     "doc": "G0 (vi): every file of C2's scanned set whose bytes contain \"c2nd-v1\" must be pinned C2ND",
+     "end": 110,
+     "kind": "function",
+     "name": "namespace_scan",
+     "qual": "namespace_scan",
+     "sig": "def namespace_scan(root=None, pinned=None, lineage=None) -> dict",
+     "start": 86
+    },
+    {
+     "decorators": [],
+     "doc": "The files under `base` in C2's scanned set, judged on the path relative to `root` (or to",
+     "end": 123,
+     "kind": "function",
+     "name": "_scanned_files",
+     "qual": "_scanned_files",
+     "sig": "def _scanned_files(base, root, skip=())",
+     "start": 113
+    },
+    {
+     "decorators": [],
+     "doc": "§6.6: no C2ND file of C2's scanned set (tools/c2_nd/ except the protocol copy; the C2ND",
+     "end": 139,
+     "kind": "function",
+     "name": "hygiene_check",
+     "qual": "hygiene_check",
+     "sig": "def hygiene_check(root=None) -> dict",
+     "start": 126
+    },
+    {
+     "decorators": [],
+     "doc": "c2_data.store_admission, and at first sampling also no file under decoys/ or registry/.",
+     "end": 159,
+     "kind": "function",
+     "name": "store_admission",
+     "qual": "store_admission",
+     "sig": "def store_admission(store, lineage, first_sampling) -> dict",
+     "start": 147
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 163,
+     "kind": "function",
+     "name": "own_records",
+     "qual": "own_records",
+     "sig": "def own_records(store, stage, lineage) -> dict",
+     "start": 162
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_decide.py": {
+   "constants": [
+    "CLAIM",
+    "D_CAT",
+    "KNOWN",
+    "KNOWN_R",
+    "NM_CAT",
+    "NON_EXCLUDING",
+    "NR_CAT",
+    "Q",
+    "REASON_ORDER",
+    "RESOLVED",
+    "T",
+    "UNION_DISPLAY",
+    "_ENTRY",
+    "_GEN",
+    "_TEXT"
+   ],
+   "doc": "C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M,\nthe rule-6 statements, variant categories, known cases, the 2-of-3 rule, endpoint statuses,\nqualifiers, licences and the union display (API.md §8, §20; protocol §4.3, §5.2, §7, §8).\n`b` is one model's {stat: {\"mean\", \"L\", \"U\", \"rank_L\", \"rank_U\", \"g\"}}; a bound inside its\nguard is neither > 0 nor < 0 (c2_decide.sign).",
+   "doc1": "C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M,",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "c2_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_decide.py"
+     ],
+     "top": "c2_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_sg",
+     "qual": "_sg",
+     "sig": "def _sg(b, stat, side) -> int",
+     "start": 34
+    },
+    {
+     "decorators": [],
+     "doc": "The §2.3 table: NECESSARY, COMPLEMENT_LOW_ALIGNED, CODE_DOMINANT, NOT_NECESSARY or INC.",
+     "end": 50,
+     "kind": "function",
+     "name": "_nec",
+     "qual": "_nec",
+     "sig": "def _nec(b, z1, z5, w, v, suffix='') -> str",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "RESP, SPEC, category, coarse, rule-6 (a), nested, NEGATIVE_COMPLEMENT (§20 A-6).",
+     "end": 70,
+     "kind": "function",
+     "name": "nr_model",
+     "qual": "nr_model",
+     "sig": "def nr_model(b, y_active) -> dict",
+     "start": 53
+    },
+    {
+     "decorators": [],
+     "doc": "The variant category on v:Zc010, v:Zc050 (c2_decide.variant_category pattern).",
+     "end": 87,
+     "kind": "function",
+     "name": "nr_variant_category",
+     "qual": "nr_variant_category",
+     "sig": "def nr_variant_category(b, v, primary) -> str",
+     "start": 73
+    },
+    {
+     "decorators": [],
+     "doc": "c2_decide.r_model on the DNULL arrays, DECOY_ names, rule-6 (b); y_active = Y1' active.",
+     "end": 95,
+     "kind": "function",
+     "name": "d_model",
+     "qual": "d_model",
+     "sig": "def d_model(b, y_active) -> dict",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "The report-only D-NULL-R category on the DNULLR: arrays (feeds DECOY_LOCATION_DEPENDENT).",
+     "end": 101,
+     "kind": "function",
+     "name": "dnullr_category",
+     "qual": "dnullr_category",
+     "sig": "def dnullr_category(b, primary) -> str",
+     "start": 98
+    },
+    {
+     "decorators": [],
+     "doc": "RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c).",
+     "end": 120,
+     "kind": "function",
+     "name": "nm_model",
+     "qual": "nm_model",
+     "sig": "def nm_model(b) -> dict",
+     "start": 104
+    },
+    {
+     "decorators": [],
+     "doc": "PASS, CONTRADICTED (wins) or UNRESOLVED (ND-C17); the case's own RESP/SPEC (ND-C31).",
+     "end": 143,
+     "kind": "function",
+     "name": "kc_case",
+     "qual": "kc_case",
+     "sig": "def kc_case(case, b_case, y_active) -> str",
+     "start": 132
+    },
+    {
+     "decorators": [],
+     "doc": "KC per model: PASS/FAIL per case only (§6.7 L5); CONTRADICTED wins over UNRESOLVED.",
+     "end": 152,
+     "kind": "function",
+     "name": "kc_gate",
+     "qual": "kc_gate",
+     "sig": "def kc_gate(results) -> dict",
+     "start": 146
+    },
+    {
+     "decorators": [],
+     "doc": "KC-R per model (report-only): MOVE_CASE_CONTRADICTED, NOT_COMPUTED, UNRESOLVED or PASS.",
+     "end": 165,
+     "kind": "function",
+     "name": "kcr_gate",
+     "qual": "kcr_gate",
+     "sig": "def kcr_gate(results) -> dict",
+     "start": 155
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 184,
+     "kind": "function",
+     "name": "_cats",
+     "qual": "_cats",
+     "sig": "def _cats(family, gen) -> str | None",
+     "start": 169
+    },
+    {
+     "decorators": [],
+     "doc": "§4.3 / C2 §6.5 (fatal, D: KNOWN_CASE_CONTRADICTED, CNHS, exclusions, categories).",
+     "end": 208,
+     "kind": "function",
+     "name": "overall",
+     "qual": "overall",
+     "sig": "def overall(family, statuses, cnhs, kc_contradicted=False) -> str",
+     "start": 190
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 213,
+     "kind": "function",
+     "name": "statement_count",
+     "qual": "statement_count",
+     "sig": "def statement_count(per_model, flag) -> dict",
+     "start": 211
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 219,
+     "kind": "function",
+     "name": "_family_of",
+     "qual": "_family_of",
+     "sig": "def _family_of(rec) -> str | None",
+     "start": 216
+    },
+    {
+     "decorators": [],
+     "doc": "C2's rule with the ND names: SCORED, NOT_RUN/<gate>, SEALED_UNSCORED/<gate> (ND-C40).",
+     "end": 238,
+     "kind": "function",
+     "name": "endpoint_status",
+     "qual": "endpoint_status",
+     "sig": "def endpoint_status(model, family, gate_history) -> str",
+     "start": 222
+    },
+    {
+     "decorators": [],
+     "doc": "The qualifiers in the API.md §2 order, models ascending within each kind (ND-C19, C29).",
+     "end": 273,
+     "kind": "function",
+     "name": "qualifiers",
+     "qual": "qualifiers",
+     "sig": "def qualifiers(family, per_model, extra, y_active, p1) -> list",
+     "start": 247
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 365,
+     "kind": "function",
+     "name": "_fill",
+     "qual": "_fill",
+     "sig": "def _fill(text, values) -> str",
+     "start": 361
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 374,
+     "kind": "function",
+     "name": "_sentence",
+     "qual": "_sentence",
+     "sig": "def _sentence(family, outcome, values) -> str",
+     "start": 368
+    },
+    {
+     "decorators": [],
+     "doc": "The §7.2-§7.4 sentence, [name] filled (\"[ ]\" if absent), then the family's Q-CODE.",
+     "end": 379,
+     "kind": "function",
+     "name": "licence",
+     "qual": "licence",
+     "sig": "def licence(family, outcome, values) -> str",
+     "start": 377
+    },
+    {
+     "decorators": [],
+     "doc": "rule6a, rule6b, rule6c (with the C2-M caveats and KM3) or nested (§7.2-§7.4).",
+     "end": 384,
+     "kind": "function",
+     "name": "statement_licence",
+     "qual": "statement_licence",
+     "sig": "def statement_licence(kind, values) -> str",
+     "start": 382
+    },
+    {
+     "decorators": [],
+     "doc": "§7.5, only if C2-R USED, N-R CODE_DOMINANT (or NECESSARY) and D DECOY_NOT_USED.",
+     "end": 390,
+     "kind": "function",
+     "name": "package_statement",
+     "qual": "package_statement",
+     "sig": "def package_statement(c2_outcome, nr, d) -> str | None",
+     "start": 387
+    },
+    {
+     "decorators": [],
+     "doc": "Owner default (§7.3, Q4): every C2 statement carries this until the owner decides.",
+     "end": 396,
+     "kind": "function",
+     "name": "c2_caveat",
+     "qual": "c2_caveat",
+     "sig": "def c2_caveat(d_outcome) -> str | None",
+     "start": 393
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_decoy.py": {
+   "constants": [
+    "BASIS_KEYS",
+    "NUMERICAL"
+   ],
+   "doc": "C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis\nV0, the move U and the map T (Lemma DC4), the coordinate wrapper and its basis adapter,\ndecoy_sha64 and the construction record, M0-D (§3 row 11) and DX (§3 row 20) (API.md §6, §20;\nC2ND-DESIGN-v1 §2.6-§2.7).",
+   "doc1": "C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "copy"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "copy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "fractions",
+     "names": [
+      "Fraction"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fractions"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "c1_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_model.py"
+     ],
+     "top": "c1_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "",
+     "names": [
+      "c2_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_config.py"
+     ],
+     "top": "c2_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "c2_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_model.py"
+     ],
+     "top": "c2_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "torch"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "torch"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 33,
+     "kind": "function",
+     "name": "_f",
+     "qual": "_f",
+     "sig": "def _f(x) -> np.ndarray",
+     "start": 32
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 37,
+     "kind": "function",
+     "name": "_np",
+     "qual": "_np",
+     "sig": "def _np(t) -> np.ndarray",
+     "start": 36
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 42,
+     "kind": "function",
+     "name": "_mx",
+     "qual": "_mx",
+     "sig": "def _mx(x) -> float",
+     "start": 40
+    },
+    {
+     "decorators": [],
+     "doc": "x <= tol (CONTRACT string) in exact rationals; a non-finite x fails.",
+     "end": 47,
+     "kind": "function",
+     "name": "_le",
+     "qual": "_le",
+     "sig": "def _le(x, tol) -> bool",
+     "start": 45
+    },
+    {
+     "decorators": [],
+     "doc": "The readout basis of model64 and the frozen C2 problem R (P_S, B, L_B = R_L[5:], Gamma).",
+     "end": 56,
+     "kind": "function",
+     "name": "base_inputs",
+     "qual": "base_inputs",
+     "sig": "def base_inputs(c2_fit, basis) -> dict",
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 60,
+     "kind": "function",
+     "name": "pi_S",
+     "qual": "pi_S",
+     "sig": "def pi_S(Q0, P_S) -> np.ndarray",
+     "start": 59
+    },
+    {
+     "decorators": [],
+     "doc": "W'_U in exactly the CONTRACT association g * (WU @ (I - Pi_S)) (ND-C15, §20 B-8).",
+     "end": 75,
+     "kind": "function",
+     "name": "head_edit",
+     "qual": "head_edit",
+     "sig": "def head_edit(kind, WU, Q0, P_S, g=nc.G_D, rho=nc.RHO) -> np.ndarray",
+     "start": 63
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 82,
+     "kind": "function",
+     "name": "_with_head",
+     "qual": "_with_head",
+     "sig": "def _with_head(dec, W)",
+     "start": 78
+    },
+    {
+     "decorators": [],
+     "doc": "A deep copy of model64 with only unembed.weight replaced (float64).",
+     "end": 87,
+     "kind": "function",
+     "name": "make_head_decoy",
+     "qual": "make_head_decoy",
+     "sig": "def make_head_decoy(model64, W)",
+     "start": 85
+    },
+    {
+     "decorators": [],
+     "doc": "An orthonormal basis of ker(M): right singular vectors with sv <= 1e-12 sigma_max.",
+     "end": 95,
+     "kind": "function",
+     "name": "null_basis",
+     "qual": "null_basis",
+     "sig": "def null_basis(M) -> np.ndarray",
+     "start": 91
+    },
+    {
+     "decorators": [],
+     "doc": "U = V0 (L_B V0)^+, T = I + (U - B) L_B, Tinv = I + (B - U) L_B and the construction gates.",
+     "end": 119,
+     "kind": "function",
+     "name": "move_map",
+     "qual": "move_map",
+     "sig": "def move_map(B, L_B, M) -> dict",
+     "start": 98
+    },
+    {
+     "bases": [
+      "torch.nn.Module"
+     ],
+     "decorators": [],
+     "doc": "u -> beta + ((u - beta) @ Q0) @ T.T @ Q0.T over the last dimension (float64 buffers).",
+     "end": 131,
+     "kind": "class",
+     "name": "CoordMap",
+     "qual": "CoordMap",
+     "start": 122
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 128,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "CoordMap.__init__",
+     "sig": "def __init__(self, beta, Q0, T)",
+     "start": 125
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 131,
+     "kind": "method",
+     "name": "forward",
+     "qual": "CoordMap.forward",
+     "sig": "def forward(self, u)",
+     "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 139,
+     "kind": "function",
+     "name": "coord_head",
+     "qual": "coord_head",
+     "sig": "def coord_head(kind, WU, Q0, Tinv, g=nc.G_D) -> np.ndarray",
+     "start": 134
+    },
+    {
+     "decorators": [],
+     "doc": "A deep copy whose ln_final is Sequential(the base LayerNorm, CoordMap) and whose head is",
+     "end": 147,
+     "kind": "function",
+     "name": "make_coord_decoy",
+     "qual": "make_coord_decoy",
+     "sig": "def make_coord_decoy(model64, kind, Q0, beta, T, Tinv, WU, g=nc.G_D)",
+     "start": 142
+    },
+    {
+     "decorators": [],
+     "doc": "The readout_basis keys with the base LayerNorm basis and the decoy's head (§11.2).",
+     "end": 155,
+     "kind": "function",
+     "name": "coord_basis",
+     "qual": "coord_basis",
+     "sig": "def coord_basis(decoy, base_basis) -> dict",
+     "start": 150
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 159,
+     "kind": "function",
+     "name": "decoy_basis",
+     "qual": "decoy_basis",
+     "sig": "def decoy_basis(decoy, base_basis) -> dict",
+     "start": 158
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 163,
+     "kind": "function",
+     "name": "_is_coord",
+     "qual": "_is_coord",
+     "sig": "def _is_coord(decoy) -> bool",
+     "start": 162
+    },
+    {
+     "decorators": [],
+     "doc": "sha256 over (key, NUL, shape, NUL, float64 bytes) per sorted state_dict key, then the",
+     "end": 176,
+     "kind": "function",
+     "name": "decoy_sha64",
+     "qual": "decoy_sha64",
+     "sig": "def decoy_sha64(decoy, record) -> str",
+     "start": 167
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 189,
+     "kind": "function",
+     "name": "decoy_record",
+     "qual": "decoy_record",
+     "sig": "def decoy_record(j, kind) -> dict",
+     "start": 179
+    },
+    {
+     "decorators": [],
+     "doc": "The record plus decoy_sha64 and `extra` (coordinate decoys: cond_T, sv_LBV0, k0, U/B).",
+     "end": 195,
+     "kind": "function",
+     "name": "construction_record",
+     "qual": "construction_record",
+     "sig": "def construction_record(j, kind, decoy, extra=None) -> dict",
+     "start": 192
+    },
+    {
+     "decorators": [],
+     "doc": "{\"null_<kind>\": ||C M' B||_max / (||C M'||_max ||B||_max)} (C centres the outputs).",
+     "end": 205,
+     "kind": "function",
+     "name": "nullity",
+     "qual": "nullity",
+     "sig": "def nullity(heads, B) -> dict",
+     "start": 199
+    },
+    {
+     "decorators": [],
+     "doc": "The 1e-10 adapter identities of §3 row 11 (vii), norm-scaled (API.md §6.5, §20 A-2).",
+     "end": 221,
+     "kind": "function",
+     "name": "adapter_identities",
+     "qual": "adapter_identities",
+     "sig": "def adapter_identities(V0, U, T, Tinv, B, Gamma, L_B, M, heads, dz=None) -> dict",
+     "start": 208
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 227,
+     "kind": "function",
+     "name": "_tokens",
+     "qual": "_tokens",
+     "sig": "def _tokens(inputs) -> torch.Tensor",
+     "start": 224
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 232,
+     "kind": "function",
+     "name": "_pairs",
+     "qual": "_pairs",
+     "sig": "def _pairs(z) -> np.ndarray",
+     "start": 230
+    },
+    {
+     "decorators": [],
+     "doc": "Items (i)-(v) and (viii) of one decoy; returns (items, values, logits).",
+     "end": 272,
+     "kind": "function",
+     "name": "_one",
+     "qual": "_one",
+     "sig": "def _one(kind, dec, model64, inp, base_basis, inputs, acts, policy, mm) -> tuple",
+     "start": 235
+    },
+    {
+     "decorators": [],
+     "doc": "M0-D on the given rows (API.md §6.5, §20 B-1): items (i)-(viii) per decoy. A head edit",
+     "end": 332,
+     "kind": "function",
+     "name": "m0d",
+     "qual": "m0d",
+     "sig": "def m0d(j, model64, decoys, base_basis, c2_fit, inputs, acts, z_base, policy) -> dict",
+     "start": 275
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 338,
+     "kind": "function",
+     "name": "_rows_over",
+     "qual": "_rows_over",
+     "sig": "def _rows_over(num, den_scale, tol) -> np.ndarray",
+     "start": 336
+    },
+    {
+     "decorators": [],
+     "doc": "Per row with the construction projector: the exact non-use, dose, code-only and",
+     "end": 373,
+     "kind": "function",
+     "name": "dx",
+     "qual": "dx",
+     "sig": "def dx(arrays, policy) -> dict",
+     "start": 341
+    }
+   ],
+   "syspath": []
+  },
+  "tools/c2_nd/nd_registry.py": {
+   "constants": [
+    "ARRAYS",
+    "AUTHORITY",
+    "C2_COLS",
+    "EXCLUDE",
+    "ND_READERS",
+    "NOT_READ",
+    "OWN",
+    "TAGS"
+   ],
+   "doc": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows\n2-9 of protocol §6.2), the ND inventory adapter, the ND-REG1/ND-REG2 builds composing the\nunchanged c2_registry readers (row 1), loading, separation and the reservation record check\n(API.md §5, §20; C2ND-DESIGN-v1 §6.2-§6.5).",
+   "doc1": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "fnmatch"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "fnmatch"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "time"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "time"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "c1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_data.py"
+     ],
+     "top": "c1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 25,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "c2_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_registry.py"
+     ],
+     "top": "c2_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "k4b_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_registry.py"
+     ],
+     "top": "k4b_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 44,
+     "module": "",
+     "names": [
+      "x6s1_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_registry.py"
+     ],
+     "top": "x6s1_registry"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 46,
+     "kind": "function",
+     "name": "_xr",
+     "qual": "_xr",
+     "sig": "def _xr()",
+     "start": 43
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 52,
+     "kind": "function",
+     "name": "_new",
+     "qual": "_new",
+     "sig": "def _new(present=True) -> dict",
+     "start": 49
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 57,
+     "kind": "function",
+     "name": "_close",
+     "qual": "_close",
+     "sig": "def _close(out, lineage=False) -> dict",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "function",
+     "name": "_hex",
+     "qual": "_hex",
+     "sig": "def _hex(chunk) -> set",
+     "start": 60
+    },
+    {
+     "decorators": [],
+     "doc": "The digest columns of one C2-format history table (\"\" dropped; c2_data.table_digests).",
+     "end": 75,
+     "kind": "function",
+     "name": "_c2_table",
+     "qual": "_c2_table",
+     "sig": "def _c2_table(path, out) -> None",
+     "start": 64
+    },
+    {
+     "decorators": [],
+     "doc": "The five bound C2 hist files (re-hashed against CONTRACT) and any further HIST_*.npz.",
+     "end": 103,
+     "kind": "function",
+     "name": "source_c2",
+     "qual": "source_c2",
+     "sig": "def source_c2(store=None) -> dict",
+     "start": 79
+    },
+    {
+     "decorators": [],
+     "doc": "A name scan of superseded/: PASS iff the bound attempt directories exist and no file has",
+     "end": 118,
+     "kind": "function",
+     "name": "source_c2_superseded",
+     "qual": "source_c2_superseded",
+     "sig": "def source_c2_superseded(store=None) -> dict",
+     "start": 106
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 124,
+     "kind": "function",
+     "name": "_c2_format",
+     "qual": "_c2_format",
+     "sig": "def _c2_format(path) -> bool",
+     "start": 122
+    },
+    {
+     "decorators": [],
+     "doc": "Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):",
+     "end": 155,
+     "kind": "function",
+     "name": "source_scratch",
+     "qual": "source_scratch",
+     "sig": "def source_scratch(root=None) -> dict",
+     "start": 127
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 161,
+     "kind": "function",
+     "name": "_x6zc_names",
+     "qual": "_x6zc_names",
+     "sig": "def _x6zc_names() -> list",
+     "start": 159
+    },
+    {
+     "decorators": [],
+     "doc": "One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped",
+     "end": 188,
+     "kind": "function",
+     "name": "_read_history",
+     "qual": "_read_history",
+     "sig": "def _read_history(f, out, require) -> None",
+     "start": 164
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 192,
+     "kind": "function",
+     "name": "_array_files",
+     "qual": "_array_files",
+     "sig": "def _array_files(top)",
+     "start": 191
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 205,
+     "kind": "function",
+     "name": "_parallel_file",
+     "qual": "_parallel_file",
+     "sig": "def _parallel_file(f, rel, tag, out) -> None",
+     "start": 195
+    },
+    {
+     "decorators": [],
+     "doc": "A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else",
+     "end": 227,
+     "kind": "function",
+     "name": "source_parallel",
+     "qual": "source_parallel",
+     "sig": "def source_parallel(store, tag) -> dict",
+     "start": 208
+    },
+    {
+     "decorators": [],
+     "doc": "k4b_registry.inventory/classify of every top-level directory against the ND frozen table;",
+     "end": 255,
+     "kind": "function",
+     "name": "inventory",
+     "qual": "inventory",
+     "sig": "def inventory(root=None, readers=None) -> dict",
+     "start": 231
+    },
+    {
+     "decorators": [],
+     "doc": "Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5).",
+     "end": 272,
+     "kind": "function",
+     "name": "_nd_sources",
+     "qual": "_nd_sources",
+     "sig": "def _nd_sources(root) -> dict",
+     "start": 259
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 277,
+     "kind": "function",
+     "name": "_summary",
+     "qual": "_summary",
+     "sig": "def _summary(r) -> dict",
+     "start": 275
+    },
+    {
+     "decorators": [],
+     "doc": "ND-REG1 (S1, before DFIT) or ND-REG2 (S5; R' with the DFIT/DFEAS/DVAL tables in `extra`):",
+     "end": 358,
+     "kind": "function",
+     "name": "build",
+     "qual": "build",
+     "sig": "def build(version, store=None, root=None, extra=None) -> dict",
+     "start": 280
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 363,
+     "kind": "function",
+     "name": "load",
+     "qual": "load",
+     "sig": "def load(store=None, version='ND-REG1') -> cg.Registry",
+     "start": 362
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 392,
+     "kind": "function",
+     "name": "_reservation_problem",
+     "qual": "_reservation_problem",
+     "sig": "def _reservation_problem(store, stage, root) -> str | None",
+     "start": 370
+    },
+    {
+     "decorators": [],
+     "doc": "PASS iff RESERVATION_<stage>.json records no live reservation and the parallel stores'",
+     "end": 399,
+     "kind": "function",
+     "name": "reservation_check",
+     "qual": "reservation_check",
+     "sig": "def reservation_check(store, stage, root=None) -> dict",
+     "start": 395
+    }
+   ],
+   "syspath": []
+  },
   "tools/c2_readout/c2_attrib.py": {
    "constants": [
     "C",
@@ -180253,5 +187685,5 @@
    ]
   }
  },
- "sources_digest": "db5ba09a55b7ea1b4f54ded358c893b9a10a8925207e36393feac454e4b67906"
+ "sources_digest": "14837fefa1a687790714c9b9d8d667784e476d4bb9bb48a822485cd14a8c60d5"
 }

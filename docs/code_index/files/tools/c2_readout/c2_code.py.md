@@ -50,6 +50,9 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_a_decoy_maths.py](../../tests/c2_nd/test_a_decoy_maths.py.md) (line 23, import)
+- [tests/c2_nd/test_a_identity.py](../../tests/c2_nd/test_a_identity.py.md) (line 24, import)
+- [tests/c2_nd/test_a_known.py](../../tests/c2_nd/test_a_known.py.md) (line 24, import)
 - [tests/c2_readout/test_a_gls.py](../../tests/c2_readout/test_a_gls.py.md) (line 30, import)
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 34, import)
 - [tests/c2_readout/test_a_partition.py](../../tests/c2_readout/test_a_partition.py.md) (line 34, import)

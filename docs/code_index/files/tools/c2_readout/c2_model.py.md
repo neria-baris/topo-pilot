@@ -52,8 +52,10 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 25, import)
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 30, import)
 - [tests/c2_readout/test_b_patch.py](../../tests/c2_readout/test_b_patch.py.md) (line 26, import)
+- [tools/c2_nd/nd_decoy.py](../c2_nd/nd_decoy.py.md) (line 23, import)
 - [tools/c2_readout/c2_oracle.py](c2_oracle.py.md) (line 64, import)
 - [tools/c2_readout/c2_oracle.py](c2_oracle.py.md) (line 267, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 25, import)

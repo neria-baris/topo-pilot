@@ -61,6 +61,7 @@
 
 - [tests/c2_readout/test_b_registry.py](../../tests/c2_readout/test_b_registry.py.md) (line 27, import)
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 23, import)
+- [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 44, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 102, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 329, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 354, import)

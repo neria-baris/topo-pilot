@@ -58,6 +58,8 @@
 - [src/topo_pilot/experiment/x5g1t_train.py](../experiment/x5g1t_train.py.md) (line 20, import)
 - [tests/activations/conftest.py](../../../tests/activations/conftest.py.md) (line 54, import)
 - [tests/activations/test_activations.py](../../../tests/activations/test_activations.py.md) (line 157, import)
+- [tests/c2_nd/test_b_decoy_model.py](../../../tests/c2_nd/test_b_decoy_model.py.md) (line 33, import)
+- [tests/c2_nd/test_b_layer2.py](../../../tests/c2_nd/test_b_layer2.py.md) (line 32, import)
 - [tests/c2_readout/test_b_patch.py](../../../tests/c2_readout/test_b_patch.py.md) (line 28, import)
 - [tests/d2a/test_a_pad.py](../../../tests/d2a/test_a_pad.py.md) (line 17, import)
 - [tests/d2a/test_b_resource.py](../../../tests/d2a/test_b_resource.py.md) (line 26, import)

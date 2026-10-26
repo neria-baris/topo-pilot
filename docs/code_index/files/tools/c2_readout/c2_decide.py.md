@@ -44,10 +44,15 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_a_family.py](../../tests/c2_nd/test_a_family.py.md) (line 25, import)
+- [tests/c2_nd/test_a_known.py](../../tests/c2_nd/test_a_known.py.md) (line 25, import)
+- [tests/c2_nd/test_b_layer2.py](../../tests/c2_nd/test_b_layer2.py.md) (line 25, import)
 - [tests/c2_readout/test_a_inference.py](../../tests/c2_readout/test_a_inference.py.md) (line 34, import)
 - [tests/c2_readout/test_a_partition.py](../../tests/c2_readout/test_a_partition.py.md) (line 35, import)
 - [tests/c2_readout/test_a_scope.py](../../tests/c2_readout/test_a_scope.py.md) (line 38, import)
 - [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 23, import)
+- [tools/c2_nd/nd_attrib.py](../c2_nd/nd_attrib.py.md) (line 21, import)
+- [tools/c2_nd/nd_decide.py](../c2_nd/nd_decide.py.md) (line 14, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 23, import)
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 16, import)
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 16, import)

@@ -9,6 +9,7 @@ from __future__ import annotations  # noqa: I001  (hws_worlds sets sys.path firs
 import argparse
 import json
 import os
+import re
 import time
 from pathlib import Path
 
@@ -53,6 +54,13 @@ def _skip_dir(parent: Path, name: str) -> bool:
     return name in SKIP_DIRS or low.startswith("00_read_me_first") or docs
 
 
+def _needle_in(needle, line) -> bool:
+    """D-0127-1: an all-digit needle matches only as a whole token; others stay substrings."""
+    if not needle.isdigit():
+        return needle in line
+    return re.search(rf"(?<![0-9A-Za-z_]){re.escape(needle)}(?![0-9A-Za-z_])", line) is not None
+
+
 def seed_search(root, needles) -> list:
     """§6.6 G0 discovery search; excluded folders are pruned before any listing or open."""
     hits = []
@@ -65,7 +73,7 @@ def seed_search(root, needles) -> list:
                 continue
             with open(here / name, encoding="utf-8", errors="replace") as handle:
                 for i, line in enumerate(handle, 1):
-                    found = [nd for nd in needles if nd in line]
+                    found = [nd for nd in needles if _needle_in(nd, line)]
                     hits += [{"path": str(here / name), "needle": nd, "line": i} for nd in found]
     return hits
 

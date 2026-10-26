@@ -13,7 +13,7 @@ Excluded by project rule (public research summary, for external readers only): `
 
 Input: `git ls-files` minus the excluded prefixes and minus `docs/code_index/` itself. No code is imported or executed (Python is parsed with `ast`). Output is sorted, has no timestamps, uses `/` separators, LF newlines and UTF-8.
 
-Sources digest: `f72fd61575f4317b411b20aa3984c4b9b5c7f6c8841da2c908ce5c13ee426124`
+Sources digest: `2cfa3d65870c696ae6df6f11e0e76294a4fe3fdd2867ecdb12b013dcdb0d7dd9`
 
 ## Layout
 
@@ -35,7 +35,7 @@ Sources digest: `f72fd61575f4317b411b20aa3984c4b9b5c7f6c8841da2c908ce5c13ee42612
 
 ## Counts at generation time
 
-- files indexed: 851
+- files indexed: 852
 - code files: 501
 - python files: 500
 - classes: 286

@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 851,
+  "files indexed": 852,
   "functions and methods (incl. tests)": 6897,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 733,
@@ -12686,6 +12686,12 @@
    "lines": 75,
    "purpose": "Revision after E4: evidence, changes and decision log",
    "sha256": "9e3f6b2f80f90ef3e089e468c34dc2c20f90675acadd8e1ef244be31273f3df6"
+  },
+  "docs/proposals/STRONGER_EVIDENCE_OPTIONS_HE.md": {
+   "kind": "markdown",
+   "lines": 105,
+   "purpose": "אפשרויות להוכחה מקיפה יותר",
+   "sha256": "3cf640675b0f52c76a8a5a8a70ac5d0beb7e8a33d4dfdbdf2ec0110f057d62b4"
   },
   "docs/proposals/X4B2_COVERAGE_PROTOCOL.md": {
    "kind": "markdown",
@@ -179575,5 +179581,5 @@
    ]
   }
  },
- "sources_digest": "f72fd61575f4317b411b20aa3984c4b9b5c7f6c8841da2c908ce5c13ee426124"
+ "sources_digest": "2cfa3d65870c696ae6df6f11e0e76294a4fe3fdd2867ecdb12b013dcdb0d7dd9"
 }

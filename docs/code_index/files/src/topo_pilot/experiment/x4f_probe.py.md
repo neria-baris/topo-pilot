@@ -45,9 +45,11 @@
 
 - [src/topo_pilot/experiment/x4f_gates.py](x4f_gates.py.md) (line 29, import)
 - [tests/c1prime/test_b_decoder.py](../../../tests/c1prime/test_b_decoder.py.md) (line 23, import)
+- [tests/c2_readout/test_b_fwl_l1.py](../../../tests/c2_readout/test_b_fwl_l1.py.md) (line 27, import)
 - [tests/experiment/test_x4f_maintenance.py](../../../tests/experiment/test_x4f_maintenance.py.md) (line 10, import)
 - [tests/experiment/test_x4f_probe.py](../../../tests/experiment/test_x4f_probe.py.md) (line 9, import)
 - [tools/c1prime/c1_fit.py](../../../tools/c1prime/c1_fit.py.md) (line 14, import)
+- [tools/c2_readout/c2_stats.py](../../../tools/c2_readout/c2_stats.py.md) (line 29, import)
 - [tools/d2a/d2a_eval.py](../../../tools/d2a/d2a_eval.py.md) (line 16, import)
 - [tools/d2a/d2a_targets.py](../../../tools/d2a/d2a_targets.py.md) (line 19, import)
 - [tools/k4b/k4b_decoder.py](../../../tools/k4b/k4b_decoder.py.md) (line 16, import)

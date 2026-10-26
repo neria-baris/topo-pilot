@@ -49,6 +49,7 @@
 - [src/topo_pilot/learner/patch.py](patch.py.md) (line 16, import)
 - [src/topo_pilot/learner/stage.py](stage.py.md) (line 23, import)
 - [src/topo_pilot/learner/trainer.py](trainer.py.md) (line 18, import)
+- [tests/c2_readout/test_a_readout.py](../../../tests/c2_readout/test_a_readout.py.md) (line 35, import)
 
 ## Top-level constants
 

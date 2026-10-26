@@ -44,8 +44,11 @@
 
 - [tests/c1prime/test_a_eligibility_support.py](../../tests/c1prime/test_a_eligibility_support.py.md) (line 26, import)
 - [tests/c1prime/test_b_gates.py](../../tests/c1prime/test_b_gates.py.md) (line 25, import)
+- [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 26, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 14, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 17, import)
+- [tools/c2_readout/c2_code.py](../c2_readout/c2_code.py.md) (line 18, import)
+- [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 17, import)
 
 ## Top-level constants
 

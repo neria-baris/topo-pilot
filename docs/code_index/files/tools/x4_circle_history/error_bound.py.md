@@ -58,6 +58,7 @@
 - [tools/c1prime/c1_cert.py](../c1prime/c1_cert.py.md) (line 16, import)
 - [tools/c1prime/c1_driver.py](../c1prime/c1_driver.py.md) (line 18, import)
 - [tools/c1prime/c1_oracle.py](../c1prime/c1_oracle.py.md) (line 12, import)
+- [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 22, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 15, import)
 - [tools/x4_circle_history/cost_probe.py](cost_probe.py.md) (line 23, import)
 - [tools/x4_circle_history/precision_stage.py](precision_stage.py.md) (line 58, import)

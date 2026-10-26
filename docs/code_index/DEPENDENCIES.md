@@ -100,7 +100,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/analysis/__init__.py, tests/analysis/test_x4f_family_maintenance.py
 ### `src/topo_pilot/analysis/x4f_scores.py`
 - -> src/topo_pilot/contracts/__init__.py
-- <- src/topo_pilot/analysis/__init__.py, tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_fwl.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/k4b/k4b_decoder.py
+- <- src/topo_pilot/analysis/__init__.py, tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_fwl.py, tests/c2_readout/test_b_fwl_l1.py, tests/c2_readout/test_b_screens.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_stats.py, tools/k4b/k4b_decoder.py
 ### `src/topo_pilot/analysis/x4f_targets.py`
 - -> src/topo_pilot/contracts/__init__.py
 - <- src/topo_pilot/analysis/__init__.py
@@ -115,7 +115,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/analysis/__init__.py
 ### `src/topo_pilot/contracts/__init__.py`
 - -> src/topo_pilot/contracts/backends.py, src/topo_pilot/contracts/base.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/contracts/ids.py, src/topo_pilot/contracts/layout.py, src/topo_pilot/contracts/schemas.py, src/topo_pilot/contracts/store.py
-- <- docs/proposals/X4F_GATES_OUTPUTS/family_diagnostic_script.py, reports/he_summary/extract_data.py, src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/analysis/baselines.py, src/topo_pilot/analysis/circular.py, src/topo_pilot/analysis/circular_bound.py, src/topo_pilot/analysis/discriminability.py, src/topo_pilot/analysis/dynamics.py, src/topo_pilot/analysis/f1.py, src/topo_pilot/analysis/geometry.py, src/topo_pilot/analysis/horizon.py, src/topo_pilot/analysis/horizon_pools.py, src/topo_pilot/analysis/pointset.py, src/topo_pilot/analysis/readout.py, src/topo_pilot/analysis/sensitivity.py, src/topo_pilot/analysis/sigma.py, src/topo_pilot/analysis/spaces.py, src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/analysis/x4f_targets.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/public.py, src/topo_pilot/dataset/sampler.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/executors/_outputs.py, src/topo_pilot/executors/base.py, src/topo_pilot/executors/bundle.py, src/topo_pilot/executors/entry.py, src/topo_pilot/executors/local.py, src/topo_pilot/executors/run_bundle_script.py, src/topo_pilot/executors/ssh.py, src/topo_pilot/experiment/circ_audit.py, src/topo_pilot/experiment/cli.py, src/topo_pilot/experiment/config.py, src/topo_pilot/experiment/prereg.py, src/topo_pilot/experiment/report.py, src/topo_pilot/experiment/report_e2.py, src/topo_pilot/experiment/report_e3.py, src/topo_pilot/experiment/report_e4.py, src/topo_pilot/experiment/report_e4_s7.py, src/topo_pilot/experiment/report_x4.py, src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/s4.py, src/topo_pilot/experiment/s4_analysis.py, src/topo_pilot/experiment/s6.py, src/topo_pilot/experiment/s7.py, src/topo_pilot/experiment/s7_circular.py, src/topo_pilot/experiment/s7_controls.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/s7_jobs.py, src/topo_pilot/experiment/s7_probes.py, src/topo_pilot/experiment/s7_sensitivity.py, src/topo_pilot/experiment/s8.py, src/topo_pilot/experiment/stages.py, src/topo_pilot/experiment/x4.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4b.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x4b2_run.py, src/topo_pilot/experiment/x4b_audit.py, src/topo_pilot/experiment/x4b_run.py, src/topo_pilot/experiment/x4f_data.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_controls.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_oracle.py, src/topo_pilot/experiment/x5g1_run.py, src/topo_pilot/experiment/x5g1_safety.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1_verify.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_config.py, src/topo_pilot/experiment/x5g1t_fixture.py, src/topo_pilot/experiment/x5g1t_lineage.py, src/topo_pilot/experiment/x5g1t_score.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, src/topo_pilot/oracle/_common.py, src/topo_pilot/oracle/_filter.py, src/topo_pilot/oracle/_futures.py, src/topo_pilot/oracle/stage.py, src/topo_pilot/prediction/metrics.py, src/topo_pilot/prediction/ngram.py, src/topo_pilot/prediction/ridge.py, src/topo_pilot/prediction/stage.py, src/topo_pilot/process/_diagnostics.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/centers.py, src/topo_pilot/process/conductance.py, src/topo_pilot/process/emission.py, src/topo_pilot/process/stage.py, src/topo_pilot/process/transition.py, src/topo_pilot/topology/circular.py, src/topo_pilot/topology/distance.py, src/topo_pilot/topology/metrics.py, src/topo_pilot/topology/persistence.py, src/topo_pilot/topology/shapes.py, src/topo_pilot/world/complex.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, src/topo_pilot/world/stage.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/analysis/test_circular_bound.py, tests/analysis/test_f1_rule.py, tests/analysis/test_horizon.py, tests/analysis/test_readout.py, tests/analysis/test_sensitivity_circular.py, tests/analysis/test_spaces.py, tests/analysis/test_x4f_scores.py, tests/analysis/test_x4f_targets.py, tests/analysis/test_x5_endpoint.py, tests/analysis/test_x5_endpoint_bootstrap.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_registry.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/contracts/conftest.py, tests/contracts/test_fixtures.py, tests/contracts/test_ids.py, tests/contracts/test_layout.py, tests/contracts/test_schemas.py, tests/contracts/test_store.py, tests/d2a/test_a_pad.py, tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_a_world.py, tests/d2a/test_b_behaviour.py, tests/d2a/test_b_resource.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/executors/conftest.py, tests/executors/exec_helpers.py, tests/executors/stub_stage.py, tests/executors/test_bundle.py, tests/executors/test_exporter.py, tests/executors/test_local.py, tests/experiment/test_report_e2.py, tests/experiment/test_report_e3.py, tests/experiment/test_report_x4.py, tests/experiment/test_runner.py, tests/experiment/test_s7.py, tests/experiment/test_s8_e4.py, tests/experiment/test_x4.py, tests/experiment/test_x4b.py, tests/experiment/test_x4b2.py, tests/experiment/test_x5g1_controls.py, tests/experiment/test_x5g1_export_integration.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1_safety.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_identity.py, tests/experiment/test_x5g1t_identity_eval.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/integration/_mini_pipeline.py, tests/integration/test_leakage_end_to_end.py, tests/integration/test_s1.py, tests/integration/test_s2_mini.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/oracle/test_oracle.py, tests/prediction/test_metrics.py, tests/prediction/test_ngram.py, tests/prediction/test_ridge.py, tests/prediction/test_stage.py, tests/process/conftest.py, tests/process/test_conductance.py, tests/process/test_controls.py, tests/process/test_geometry.py, tests/process/test_overlap.py, tests/process/test_transition.py, tests/topology/test_metrics.py, tests/topology/test_persistence.py, tests/world/test_world.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/chart_diag/chart_diag.py, tools/check_process_rebuild.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_ph.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py
+- <- docs/proposals/X4F_GATES_OUTPUTS/family_diagnostic_script.py, reports/he_summary/extract_data.py, src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/analysis/baselines.py, src/topo_pilot/analysis/circular.py, src/topo_pilot/analysis/circular_bound.py, src/topo_pilot/analysis/discriminability.py, src/topo_pilot/analysis/dynamics.py, src/topo_pilot/analysis/f1.py, src/topo_pilot/analysis/geometry.py, src/topo_pilot/analysis/horizon.py, src/topo_pilot/analysis/horizon_pools.py, src/topo_pilot/analysis/pointset.py, src/topo_pilot/analysis/readout.py, src/topo_pilot/analysis/sensitivity.py, src/topo_pilot/analysis/sigma.py, src/topo_pilot/analysis/spaces.py, src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/analysis/x4f_targets.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/public.py, src/topo_pilot/dataset/sampler.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/executors/_outputs.py, src/topo_pilot/executors/base.py, src/topo_pilot/executors/bundle.py, src/topo_pilot/executors/entry.py, src/topo_pilot/executors/local.py, src/topo_pilot/executors/run_bundle_script.py, src/topo_pilot/executors/ssh.py, src/topo_pilot/experiment/circ_audit.py, src/topo_pilot/experiment/cli.py, src/topo_pilot/experiment/config.py, src/topo_pilot/experiment/prereg.py, src/topo_pilot/experiment/report.py, src/topo_pilot/experiment/report_e2.py, src/topo_pilot/experiment/report_e3.py, src/topo_pilot/experiment/report_e4.py, src/topo_pilot/experiment/report_e4_s7.py, src/topo_pilot/experiment/report_x4.py, src/topo_pilot/experiment/s1.py, src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/s4.py, src/topo_pilot/experiment/s4_analysis.py, src/topo_pilot/experiment/s6.py, src/topo_pilot/experiment/s7.py, src/topo_pilot/experiment/s7_circular.py, src/topo_pilot/experiment/s7_controls.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/s7_jobs.py, src/topo_pilot/experiment/s7_probes.py, src/topo_pilot/experiment/s7_sensitivity.py, src/topo_pilot/experiment/s8.py, src/topo_pilot/experiment/stages.py, src/topo_pilot/experiment/x4.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4b.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x4b2_run.py, src/topo_pilot/experiment/x4b_audit.py, src/topo_pilot/experiment/x4b_run.py, src/topo_pilot/experiment/x4f_data.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_controls.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_oracle.py, src/topo_pilot/experiment/x5g1_run.py, src/topo_pilot/experiment/x5g1_safety.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1_verify.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_config.py, src/topo_pilot/experiment/x5g1t_fixture.py, src/topo_pilot/experiment/x5g1t_lineage.py, src/topo_pilot/experiment/x5g1t_score.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, src/topo_pilot/oracle/_common.py, src/topo_pilot/oracle/_filter.py, src/topo_pilot/oracle/_futures.py, src/topo_pilot/oracle/stage.py, src/topo_pilot/prediction/metrics.py, src/topo_pilot/prediction/ngram.py, src/topo_pilot/prediction/ridge.py, src/topo_pilot/prediction/stage.py, src/topo_pilot/process/_diagnostics.py, src/topo_pilot/process/_geometry.py, src/topo_pilot/process/centers.py, src/topo_pilot/process/conductance.py, src/topo_pilot/process/emission.py, src/topo_pilot/process/stage.py, src/topo_pilot/process/transition.py, src/topo_pilot/topology/circular.py, src/topo_pilot/topology/distance.py, src/topo_pilot/topology/metrics.py, src/topo_pilot/topology/persistence.py, src/topo_pilot/topology/shapes.py, src/topo_pilot/world/complex.py, src/topo_pilot/world/lattice.py, src/topo_pilot/world/metrics.py, src/topo_pilot/world/registry.py, src/topo_pilot/world/stage.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/analysis/test_circular_bound.py, tests/analysis/test_f1_rule.py, tests/analysis/test_horizon.py, tests/analysis/test_readout.py, tests/analysis/test_sensitivity_circular.py, tests/analysis/test_spaces.py, tests/analysis/test_x4f_scores.py, tests/analysis/test_x4f_targets.py, tests/analysis/test_x5_endpoint.py, tests/analysis/test_x5_endpoint_bootstrap.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_registry.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/contracts/conftest.py, tests/contracts/test_fixtures.py, tests/contracts/test_ids.py, tests/contracts/test_layout.py, tests/contracts/test_schemas.py, tests/contracts/test_store.py, tests/d2a/test_a_pad.py, tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_a_world.py, tests/d2a/test_b_behaviour.py, tests/d2a/test_b_resource.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/executors/conftest.py, tests/executors/exec_helpers.py, tests/executors/stub_stage.py, tests/executors/test_bundle.py, tests/executors/test_exporter.py, tests/executors/test_local.py, tests/experiment/test_report_e2.py, tests/experiment/test_report_e3.py, tests/experiment/test_report_x4.py, tests/experiment/test_runner.py, tests/experiment/test_s7.py, tests/experiment/test_s8_e4.py, tests/experiment/test_x4.py, tests/experiment/test_x4b.py, tests/experiment/test_x4b2.py, tests/experiment/test_x5g1_controls.py, tests/experiment/test_x5g1_export_integration.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1_safety.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_identity.py, tests/experiment/test_x5g1t_identity_eval.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/integration/_mini_pipeline.py, tests/integration/test_leakage_end_to_end.py, tests/integration/test_s1.py, tests/integration/test_s2_mini.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/oracle/test_oracle.py, tests/prediction/test_metrics.py, tests/prediction/test_ngram.py, tests/prediction/test_ridge.py, tests/prediction/test_stage.py, tests/process/conftest.py, tests/process/test_conductance.py, tests/process/test_controls.py, tests/process/test_geometry.py, tests/process/test_overlap.py, tests/process/test_transition.py, tests/topology/test_metrics.py, tests/topology/test_persistence.py, tests/world/test_world.py, tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/chart_diag/chart_diag.py, tools/check_process_rebuild.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_ph.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py
 ### `src/topo_pilot/contracts/_bundle.py`
 - -> src/topo_pilot/contracts/base.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/contracts/ids.py, src/topo_pilot/contracts/schemas.py, src/topo_pilot/contracts/store.py
 - <- src/topo_pilot/contracts/store.py
@@ -133,7 +133,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/contracts/schemas.py
 ### `src/topo_pilot/contracts/backends.py`
 - -> src/topo_pilot/contracts/errors.py
-- <- src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/store.py, src/topo_pilot/contracts/testing.py, tests/k4b/test_b_registry.py, tools/c1prime/c1_driver_cal.py, tools/c1prime_registry/c1_registry_sources.py, tools/chart_diag/chart_diag.py, tools/d2a/d2a_world.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/x4_circle_history/live_context.py, tools/x6_stage1/x6s1_stage_pre.py
+- <- src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/store.py, src/topo_pilot/contracts/testing.py, tests/k4b/test_b_registry.py, tools/c1prime/c1_driver_cal.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/chart_diag/chart_diag.py, tools/d2a/d2a_world.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_registry.py, tools/x4_circle_history/live_context.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `src/topo_pilot/contracts/base.py`
 - -> src/topo_pilot/contracts/errors.py, src/topo_pilot/contracts/ids.py
 - <- src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/_bundle.py, src/topo_pilot/contracts/_schemas_data.py, src/topo_pilot/contracts/_schemas_results.py, src/topo_pilot/contracts/_schemas_world.py, src/topo_pilot/contracts/schemas.py, src/topo_pilot/contracts/store.py, tools/x4_oracle_profile/inputs.py
@@ -157,10 +157,10 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/activations/conftest.py, tests/activations/test_activations.py, tests/analysis/test_sensitivity_circular.py, tests/analysis/test_x5_kernel.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/contracts/conftest.py, tests/contracts/test_bundle_determinism.py, tests/contracts/test_fixtures.py, tests/contracts/test_store.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/experiment/test_s7.py, tests/experiment/test_s8_e4.py, tests/experiment/test_x5g1_controls.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/k4b/test_b_registry_rules.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/oracle/test_oracle.py, tests/prediction/test_stage.py, tests/process/conftest.py, tests/process/test_conductance.py, tests/process/test_controls.py, tests/world/test_world.py
 ### `src/topo_pilot/dataset/__init__.py`
 - -> src/topo_pilot/dataset/config.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/public.py, src/topo_pilot/dataset/sampler.py, src/topo_pilot/dataset/stage.py
-- <- src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/d2a/test_a_targets.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/k4b/test_b_data.py, tests/learner/conftest.py, tests/learner/test_multihorizon.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/x2a_stage0/x2a_mc.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_run.py
+- <- src/topo_pilot/experiment/s2.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/x4b2.py, src/topo_pilot/experiment/x5g1_lineage.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/d2a/test_a_targets.py, tests/d2a/test_b_targets.py, tests/dataset/conftest.py, tests/dataset/test_panels.py, tests/dataset/test_public.py, tests/dataset/test_sampler.py, tests/dataset/test_stage.py, tests/experiment/test_x5g1_lineage.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/k4b/test_b_data.py, tests/learner/conftest.py, tests/learner/test_multihorizon.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/c2_readout/c2_data.py, tools/d2a/d2a_train.py, tools/d2a/d2a_world.py, tools/k4b/k4b_data.py, tools/x2a_stage0/x2a_mc.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_run.py
 ### `src/topo_pilot/dataset/checks.py`
 - -> src/topo_pilot/contracts/__init__.py
-- <- src/topo_pilot/dataset/stage.py, tests/c1prime/test_b_registry.py, tests/dataset/test_stage.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/k4b/k4b_data.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py
+- <- src/topo_pilot/dataset/stage.py, tests/c1prime/test_b_registry.py, tests/c2_readout/test_b_policy.py, tests/dataset/test_stage.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_seed_pool_reg.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_data.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_registry.py, tools/x6_stage1/x6s1_run.py
 ### `src/topo_pilot/dataset/config.py`
 - -> none
 - <- src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/panels.py, src/topo_pilot/dataset/stage.py
@@ -313,7 +313,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/experiment/x4f_damage.py, src/topo_pilot/experiment/x4f_run.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x4f_maintenance.py
 ### `src/topo_pilot/experiment/x4f_probe.py`
 - -> src/topo_pilot/analysis/__init__.py
-- <- src/topo_pilot/experiment/x4f_gates.py, tests/c1prime/test_b_decoder.py, tests/experiment/test_x4f_maintenance.py, tests/experiment/test_x4f_probe.py, tools/c1prime/c1_fit.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_targets.py, tools/k4b/k4b_decoder.py
+- <- src/topo_pilot/experiment/x4f_gates.py, tests/c1prime/test_b_decoder.py, tests/c2_readout/test_b_fwl_l1.py, tests/experiment/test_x4f_maintenance.py, tests/experiment/test_x4f_probe.py, tools/c1prime/c1_fit.py, tools/c2_readout/c2_stats.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_targets.py, tools/k4b/k4b_decoder.py
 ### `src/topo_pilot/experiment/x4f_run.py`
 - -> src/topo_pilot/__init__.py, src/topo_pilot/analysis/__init__.py, src/topo_pilot/contracts/__init__.py, src/topo_pilot/experiment/config.py, src/topo_pilot/experiment/s4_analysis.py, src/topo_pilot/experiment/x4b.py, src/topo_pilot/experiment/x4b_run.py, src/topo_pilot/experiment/x4f_damage.py, src/topo_pilot/experiment/x4f_data.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x5g1_controls.py, src/topo_pilot/learner/__init__.py
 - <- tests/experiment/test_x4f_maintenance.py
@@ -385,13 +385,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/experiment/x5g1t_main.py, src/topo_pilot/experiment/x5g1t_runtime.py, tests/experiment/test_x5g1t_usage.py, tests/experiment/test_x5g1t_usage_files.py
 ### `src/topo_pilot/learner/__init__.py`
 - -> src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py
-- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py
+- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/c2_readout/test_b_patch.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py
 ### `src/topo_pilot/learner/config.py`
 - -> none
-- <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py
+- <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/c2_readout/test_a_readout.py
 ### `src/topo_pilot/learner/model.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/config.py
-- <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py
+- <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/c2_readout/test_a_readout.py
 ### `src/topo_pilot/learner/multihorizon.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/trainer.py
 - <- tests/d2a/test_a_pad.py, tests/learner/test_multihorizon.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py
@@ -430,7 +430,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/prediction/__init__.py, src/topo_pilot/prediction/stage.py
 ### `src/topo_pilot/prediction/ridge.py`
 - -> src/topo_pilot/contracts/__init__.py
-- <- src/topo_pilot/prediction/__init__.py, tests/c1prime/test_b_decoder.py, tools/c1prime/c1_fit.py, tools/k4b/k4b_decoder.py
+- <- src/topo_pilot/prediction/__init__.py, tests/c1prime/test_b_decoder.py, tests/c2_readout/test_b_fwl_l1.py, tools/c1prime/c1_fit.py, tools/c2_readout/c2_stats.py, tools/k4b/k4b_decoder.py
 ### `src/topo_pilot/prediction/stage.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/prediction/ngram.py
 - <- src/topo_pilot/prediction/__init__.py
@@ -640,6 +640,42 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tests/c1prime_registry/test_registry_builder.py`
 - -> tools/c1prime/c1_data.py, tools/c1prime_registry/c1_registry_sources.py, tools/x4_circle_history/reference_cache.py, tools/x4_circle_history/scores.py
+- <- none
+### `tests/c2_readout/test_a_gls.py`
+- -> tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_stats.py
+- <- none
+### `tests/c2_readout/test_a_inference.py`
+- -> tools/c1prime/c1_means.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py
+- <- none
+### `tests/c2_readout/test_a_oracle.py`
+- -> tools/c1prime/c1_oracle.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stats.py, tools/x4_circle_history/precision.py
+- <- none
+### `tests/c2_readout/test_a_partition.py`
+- -> tools/c1prime/c1_endpoint.py, tools/c1prime/c1_means.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py
+- <- none
+### `tests/c2_readout/test_a_readout.py`
+- -> src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, tools/c1prime/c1_oracle.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py
+- <- none
+### `tests/c2_readout/test_a_scope.py`
+- -> tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stats.py
+- <- none
+### `tests/c2_readout/test_b_fwl_l1.py`
+- -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/experiment/x4f_probe.py, src/topo_pilot/prediction/ridge.py, tools/c1prime/c1_fit.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_stats.py
+- <- none
+### `tests/c2_readout/test_b_lineage.py`
+- -> tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_registry.py, tools/x4_circle_history/stage_records.py
+- <- none
+### `tests/c2_readout/test_b_patch.py`
+- -> src/topo_pilot/learner/__init__.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_model.py
+- <- none
+### `tests/c2_readout/test_b_policy.py`
+- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_driver.py, tools/x4_circle_history/stage_records.py
+- <- none
+### `tests/c2_readout/test_b_registry.py`
+- -> tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/x6_stage1/x6s1_registry.py
+- <- none
+### `tests/c2_readout/test_b_screens.py`
+- -> src/topo_pilot/analysis/x4f_scores.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_oracle.py
 - <- none
 ### `tests/chart_diag/test_chart_diag.py`
 - -> tools/chart_diag/chart_diag.py
@@ -1120,16 +1156,16 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/c1prime/test_b_cert_bounds.py, tests/c1prime/test_b_cert_guards.py, tests/k4b/test_a_decision.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_endpoint.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py
 ### `tools/c1prime/c1_cert.py`
 - -> tools/c1prime/c1_config.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/x4_circle_history/error_bound.py
-- <- tests/c1prime/test_b_cert_guards.py, tests/c1prime/test_b_cert_oracle.py, tools/c1prime/c1_bounds.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/k4b/k4b_driver.py
+- <- tests/c1prime/test_b_cert_guards.py, tests/c1prime/test_b_cert_oracle.py, tools/c1prime/c1_bounds.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_oracle.py, tools/k4b/k4b_driver.py
 ### `tools/c1prime/c1_chart.py`
 - -> tools/c1prime/c1_config.py, tools/c1prime/c1_records.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/cochain.py
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/k4b/test_b_charts.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/k4b/k4b_charts.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/k4b/test_b_charts.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_pre.py, tools/k4b/k4b_charts.py
 ### `tools/c1prime/c1_config.py`
 - -> none
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_c_process_keys.py, tests/c1prime/test_c_release_worker.py, tests/k4b/test_b_charts.py, tools/c1prime/c1_bounds.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_endpoint.py, tools/c1prime/c1_env.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/c1prime/c1_means.py, tools/c1prime/c1_model.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c1prime/c1_release.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_config.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_c_process_keys.py, tests/c1prime/test_c_release_worker.py, tests/k4b/test_b_charts.py, tools/c1prime/c1_bounds.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_endpoint.py, tools/c1prime/c1_env.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/c1prime/c1_means.py, tools/c1prime/c1_model.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c1prime/c1_release.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_config.py, tools/k4b/k4b_config.py
 ### `tools/c1prime/c1_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_config.py, tools/c1prime/c1_oracle.py, tools/x4_circle_history/scores.py
-- <- tests/c1prime/test_b_registry.py, tests/c1prime_registry/test_registry_builder.py, tests/k4b/test_b_registry_rules.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_data.py, tools/k4b/k4b_registry.py
+- <- tests/c1prime/test_b_registry.py, tests/c1prime_registry/test_registry_builder.py, tests/k4b/test_b_registry_rules.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_data.py, tools/k4b/k4b_registry.py
 ### `tools/c1prime/c1_driver.py`
 - -> src/topo_pilot/dataset/checks.py, tools/c1prime/c1_bounds.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_config.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_endpoint.py, tools/c1prime/c1_freeze.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c1prime/c1_release.py, tools/x4_circle_history/error_bound.py, tools/x4_circle_history/op_guard.py, tools/x4_circle_history/stage_records.py, tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py
 - <- tests/c1prime/test_c_process_keys.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py
@@ -1144,34 +1180,34 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_fresh.py
 ### `tools/c1prime/c1_endpoint.py`
 - -> tools/c1prime/c1_bounds.py, tools/c1prime/c1_config.py, tools/c1prime/c1_means.py, tools/x4_circle_history/precision.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/c1prime/test_b_cert_bounds.py, tests/c1prime/test_b_identities.py, tests/c1prime/test_b_inference.py, tests/c1prime/test_b_precision.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py
+- <- tests/c1prime/test_b_cert_bounds.py, tests/c1prime/test_b_identities.py, tests/c1prime/test_b_inference.py, tests/c1prime/test_b_precision.py, tests/c2_readout/test_a_partition.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_val.py
 ### `tools/c1prime/c1_env.py`
 - -> tools/c1prime/c1_config.py, tools/x4_circle_history/env_identity.py
 - <- tools/c1prime/c1_freeze.py
 ### `tools/c1prime/c1_fit.py`
 - -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/contracts/__init__.py, src/topo_pilot/experiment/x4f_probe.py, src/topo_pilot/prediction/ridge.py, tools/c1prime/c1_config.py, tools/c1prime/c1_records.py
-- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_fwl.py, tests/c1prime/test_b_gates.py, tests/c1prime/test_c_ridge_tolerance.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py
+- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_frames.py, tests/c1prime/test_b_fwl.py, tests/c1prime/test_b_gates.py, tests/c1prime/test_c_ridge_tolerance.py, tests/c2_readout/test_b_fwl_l1.py, tests/c2_readout/test_b_policy.py, tests/c2_readout/test_b_screens.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stats.py
 ### `tools/c1prime/c1_freeze.py`
 - -> tools/c1prime/c1_env.py, tools/x4_circle_history/env_identity.py, tools/x4_oracle_profile/freeze.py
 - <- tools/c1prime/c1_driver.py
 ### `tools/c1prime/c1_gates.py`
 - -> src/topo_pilot/analysis/x4f_scores.py, tools/c1prime/c1_config.py
-- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_gates.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py
+- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_gates.py, tests/c2_readout/test_b_screens.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_stage_base.py
 ### `tools/c1prime/c1_means.py`
 - -> tools/c1prime/c1_config.py, tools/c1prime/c1_records.py
-- <- tests/c1prime/test_b_inference.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_endpoint.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
+- <- tests/c1prime/test_b_inference.py, tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_partition.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_endpoint.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stage_base.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
 ### `tools/c1prime/c1_meter_bind.py`
 - -> tools/c1prime/c1_release.py, tools/x4_circle_history/op_guard.py, tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- tests/c1prime/test_a_release_meter.py
 ### `tools/c1prime/c1_model.py`
 - -> src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/stage.py, tools/c1prime/c1_config.py, tools/c1prime/c1_records.py
-- <- tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
+- <- tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_stage_base.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
 ### `tools/c1prime/c1_oracle.py`
 - -> src/topo_pilot/oracle/__init__.py, tests/oracle_profile/independent_reference.py, tools/c1prime/c1_config.py, tools/c1prime/c1_records.py, tools/x4_circle_history/error_bound.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_a_oracle.py, tests/c1prime/test_a_oracle_named.py, tests/c1prime/test_b_cert_bounds.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py
+- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_a_oracle.py, tests/c1prime/test_a_oracle_named.py, tests/c1prime/test_b_cert_bounds.py, tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_readout.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_data.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stage_pre.py
 ### `tools/c1prime/c1_records.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_config.py, tools/x4_circle_history/stage_records.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_val.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/c1prime/test_b_cert_oracle.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_fwl.py, tests/c1prime/test_b_inference.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_transport_bound.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/k4b/test_b_h1_meta.py, tests/k4b/test_b_meter.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/k4b/test_b_rerun.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_means.py, tools/c1prime/c1_model.py, tools/c1prime/c1_oracle.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_val.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/c1prime/test_b_cert_oracle.py, tests/c1prime/test_b_decoder.py, tests/c1prime/test_b_fwl.py, tests/c1prime/test_b_inference.py, tests/c2_readout/test_b_policy.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_transport_bound.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/k4b/test_b_h1_meta.py, tests/k4b/test_b_meter.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/k4b/test_b_rerun.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_means.py, tools/c1prime/c1_model.py, tools/c1prime/c1_oracle.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_stage_pre.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
 ### `tools/c1prime/c1_release.py`
 - -> tools/c1prime/c1_config.py
 - <- tests/c1prime/test_a_release_meter.py, tests/c1prime/test_c_release_worker.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py
@@ -1180,7 +1216,49 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tools/c1prime_registry/c1_registry_sources.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_config.py, tools/c1prime/c1_data.py
-- <- tests/c1prime_registry/test_registry_builder.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tools/k4b/k4b_registry.py, tools/x6_stage1/x6s1_registry.py
+- <- tests/c1prime_registry/test_registry_builder.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_registry.py, tools/x6_stage1/x6s1_registry.py
+### `tools/c2_readout/c2_attrib.py`
+- -> tools/c1prime/c1_endpoint.py, tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py
+- <- tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_partition.py, tests/c2_readout/test_a_scope.py, tests/c2_readout/test_b_screens.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_code.py`
+- -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_gates.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_oracle.py
+- <- tests/c2_readout/test_a_gls.py, tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_partition.py, tests/c2_readout/test_a_readout.py, tests/c2_readout/test_a_scope.py, tests/c2_readout/test_b_fwl_l1.py, tests/c2_readout/test_b_policy.py, tests/c2_readout/test_b_screens.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py, tools/c2_readout/c2_stats.py
+### `tools/c2_readout/c2_config.py`
+- -> tools/c1prime/c1_config.py, tools/c1prime/c1_means.py
+- <- tests/c2_readout/test_a_gls.py, tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_partition.py, tests/c2_readout/test_a_readout.py, tests/c2_readout/test_a_scope.py, tests/c2_readout/test_b_fwl_l1.py, tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_patch.py, tests/c2_readout/test_b_policy.py, tests/c2_readout/test_b_registry.py, tests/c2_readout/test_b_screens.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py, tools/c2_readout/c2_stats.py
+### `tools/c2_readout/c2_data.py`
+- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_data.py, tools/c1prime/c1_oracle.py, tools/c2_readout/c2_config.py, tools/x4_circle_history/scores.py
+- <- tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_b_fwl_l1.py, tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_patch.py, tests/c2_readout/test_b_policy.py, tests/c2_readout/test_b_registry.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py
+### `tools/c2_readout/c2_decide.py`
+- -> tools/c1prime/c1_means.py, tools/c2_readout/c2_config.py
+- <- tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_partition.py, tests/c2_readout/test_a_scope.py, tests/c2_readout/test_b_screens.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_driver.py`
+- -> tools/c1prime/c1_records.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/x4_circle_history/stage_records.py
+- <- tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_patch.py, tests/c2_readout/test_b_policy.py, tests/c2_readout/test_b_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_model.py`
+- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/learner/__init__.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_model.py, tools/c1prime/c1_oracle.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_config.py
+- <- tests/c2_readout/test_a_readout.py, tests/c2_readout/test_b_patch.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_oracle.py`
+- -> tools/c1prime/c1_cert.py, tools/c1prime/c1_oracle.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/x4_circle_history/error_bound.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py
+- <- tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_readout.py, tests/c2_readout/test_b_registry.py, tests/c2_readout/test_b_screens.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_registry.py`
+- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_data.py, tools/c1prime_registry/c1_registry_sources.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/k4b/k4b_data.py, tools/k4b/k4b_registry.py, tools/x4_circle_history/stage_records.py, tools/x6_stage1/x6s1_registry.py
+- <- tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py
+### `tools/c2_readout/c2_stage_base.py`
+- -> tools/c1prime/c1_chart.py, tools/c1prime/c1_gates.py, tools/c1prime/c1_means.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stats.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/stage_records.py
+- <- tools/c2_readout/c2_stage_post.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
+### `tools/c2_readout/c2_stage_post.py`
+- -> tools/c1prime/c1_endpoint.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
+- <- none
+### `tools/c2_readout/c2_stage_pre.py`
+- -> tools/c1prime/c1_chart.py, tools/c1prime/c1_fit.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stats.py
+- <- tools/c2_readout/c2_stage_post.py
+### `tools/c2_readout/c2_stage_val.py`
+- -> tools/c1prime/c1_endpoint.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stats.py
+- <- tools/c2_readout/c2_stage_post.py
+### `tools/c2_readout/c2_stats.py`
+- -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/experiment/x4f_probe.py, src/topo_pilot/prediction/ridge.py, tools/c1prime/c1_fit.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/x4_circle_history/precision.py
+- <- tests/c2_readout/test_a_gls.py, tests/c2_readout/test_a_oracle.py, tests/c2_readout/test_a_scope.py, tests/c2_readout/test_b_fwl_l1.py, tools/c2_readout/c2_stage_base.py, tools/c2_readout/c2_stage_pre.py, tools/c2_readout/c2_stage_val.py
 ### `tools/chart_diag/chart_diag.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/cochain.py
 - <- tests/chart_diag/test_chart_diag.py
@@ -1264,7 +1342,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/k4b/test_a_decision.py, tests/k4b/test_a_lemma_n.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/k4b/test_b_h1_meta.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_meter_bind.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
 ### `tools/k4b/k4b_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_data.py, tools/c1prime/c1_model.py, tools/c1prime/c1_records.py, tools/k4b/k4b_config.py, tools/x4_circle_history/scores.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/k4b/test_b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
+- <- tests/k4b/test_b_data.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
 ### `tools/k4b/k4b_decoder.py`
 - -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/contracts/__init__.py, src/topo_pilot/experiment/x4f_probe.py, src/topo_pilot/prediction/ridge.py, tools/k4b/k4b_config.py, tools/k4b/k4b_scores.py
 - <- tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py
@@ -1279,7 +1357,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/k4b/test_b_meter.py
 ### `tools/k4b/k4b_registry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_data.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_config.py, tools/k4b/k4b_registry_k.py, tools/x4_circle_history/stage_records.py
-- <- tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/k4b/test_b_store_reader.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/x6_stage1/x6s1_registry.py
+- <- tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/k4b/test_b_store_reader.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/x6_stage1/x6s1_registry.py
 ### `tools/k4b/k4b_registry_k.py`
 - -> none
 - <- tools/k4b/k4b_registry.py, tools/x6_stage1/x6s1_registry.py
@@ -1306,7 +1384,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/circle_history/test_adapter.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_controls.py, tools/chart_diag/chart_diag.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/runner.py
 ### `tools/x4_circle_history/chart.py`
 - -> tools/x4_circle_history/cochain.py, tools/x4_circle_history/errors.py
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/circle_history/test_builder_v25.py, tests/circle_history/test_chart.py, tests/circle_history/test_chart_arrays.py, tests/circle_history/test_chart_extension.py, tests/circle_history/test_cochain_chart_v24.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_driver_cal.py, tools/chart_diag/chart_diag.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_fresh.py, tools/x4_circle_history/runner.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_chart_val.py, tests/circle_history/test_builder_v25.py, tests/circle_history/test_chart.py, tests/circle_history/test_chart_arrays.py, tests/circle_history/test_chart_extension.py, tests/circle_history/test_cochain_chart_v24.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/c1prime/c1_chart.py, tools/c1prime/c1_driver_cal.py, tools/c2_readout/c2_stage_base.py, tools/chart_diag/chart_diag.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_fresh.py, tools/x4_circle_history/runner.py
 ### `tools/x4_circle_history/cochain.py`
 - -> tools/x4_circle_history/errors.py
 - <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/circle_history/test_cochain.py, tests/circle_history/test_cochain_chart_v24.py, tests/circle_history/test_cochain_lift.py, tools/c1prime/c1_chart.py, tools/chart_diag/chart_diag.py, tools/x4_circle_history/chart.py
@@ -1318,7 +1396,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/circle_history/test_builder_v24_runtime.py, tools/c1prime/c1_env.py, tools/c1prime/c1_freeze.py, tools/x4_circle_history/live_context.py
 ### `tools/x4_circle_history/error_bound.py`
 - -> tests/oracle_profile/independent_reference.py, tools/x4_circle_history/errors.py
-- <- tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_oracle.py, tests/c1prime/test_b_cert_bounds.py, tests/c1prime/test_b_cert_oracle.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_reference_cache.py, tests/k4b/test_a_lemma_n.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_oracle.py, tools/k4b/k4b_cert.py, tools/x4_circle_history/cost_probe.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/process_law.py, tools/x4_circle_history/reference_cache.py, tools/x4_circle_history/runner.py
+- <- tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_oracle.py, tests/c1prime/test_b_cert_bounds.py, tests/c1prime/test_b_cert_oracle.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_reference_cache.py, tests/k4b/test_a_lemma_n.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_oracle.py, tools/c2_readout/c2_oracle.py, tools/k4b/k4b_cert.py, tools/x4_circle_history/cost_probe.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/process_law.py, tools/x4_circle_history/reference_cache.py, tools/x4_circle_history/runner.py
 ### `tools/x4_circle_history/errors.py`
 - -> none
 - <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_chart_lcc512.py, tests/c1prime/test_a_exceptions.py, tests/circle_history/test_adapter.py, tests/circle_history/test_builder_guards.py, tests/circle_history/test_builder_v24_runtime.py, tests/circle_history/test_builder_v24_stages.py, tests/circle_history/test_chart.py, tests/circle_history/test_chart_extension.py, tests/circle_history/test_cochain.py, tests/circle_history/test_cochain_chart_v24.py, tests/circle_history/test_cochain_lift.py, tests/circle_history/test_controls.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_process_law.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_reference_cache.py, tests/circle_history/test_scores_precision.py, tests/circle_history/test_scores_precision_gates.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_flow.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/cochain.py, tools/x4_circle_history/error_bound.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/op_guard.py, tools/x4_circle_history/precision.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/process_law.py, tools/x4_circle_history/reference_cache.py, tools/x4_circle_history/release.py, tools/x4_circle_history/runner.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py
@@ -1336,7 +1414,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/circle_history/test_builder_v24_runtime.py, tests/k4b/test_b_meter.py, tests/k4b/test_b_rerun.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/meter_bind.py
 ### `tools/x4_circle_history/precision.py`
 - -> tools/x4_circle_history/errors.py
-- <- tests/c1prime/test_b_precision.py, tests/circle_history/test_controls.py, tests/circle_history/test_scores_precision_gates.py, tests/k4b/test_a_ranks_ladder.py, tools/c1prime/c1_endpoint.py, tools/k4b/k4b_stats.py, tools/x4_circle_history/precision_stage.py
+- <- tests/c1prime/test_b_precision.py, tests/c2_readout/test_a_oracle.py, tests/circle_history/test_controls.py, tests/circle_history/test_scores_precision_gates.py, tests/k4b/test_a_ranks_ladder.py, tools/c1prime/c1_endpoint.py, tools/c2_readout/c2_stats.py, tools/k4b/k4b_stats.py, tools/x4_circle_history/precision_stage.py
 ### `tools/x4_circle_history/precision_stage.py`
 - -> tools/x4_circle_history/error_bound.py, tools/x4_circle_history/errors.py, tools/x4_circle_history/precision.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py
 - <- tools/x4_circle_history/runner.py
@@ -1357,10 +1435,10 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/circle_history/test_builder_e2e.py, tests/circle_history/test_builder_runtime.py, tests/circle_history/test_builder_v24_stages.py, tools/x4_circle_history/live_context.py
 ### `tools/x4_circle_history/scores.py`
 - -> tools/x4_circle_history/errors.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/c1prime/test_b_registry.py, tests/c1prime_registry/test_registry_builder.py, tests/circle_history/test_controls.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_scores_precision.py, tests/k4b/test_a_theorem_a.py, tests/k4b/test_b_data.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/c1prime/c1_data.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
+- <- tests/c1prime/test_b_registry.py, tests/c1prime_registry/test_registry_builder.py, tests/circle_history/test_controls.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_scores_precision.py, tests/k4b/test_a_theorem_a.py, tests/k4b/test_b_data.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/c1prime/c1_data.py, tools/c2_readout/c2_data.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
 ### `tools/x4_circle_history/stage_records.py`
 - -> tools/x4_circle_history/errors.py
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_builder_v24_stages.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_records.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_builder_v24_stages.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
 ### `tools/x4_oracle_profile/audit.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py, tools/x4_oracle_profile/validation.py
 - <- none
@@ -1372,13 +1450,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/c1prime/c1_freeze.py, tools/x4_circle_history/freeze_bind.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/run_tests.py, tools/x4_oracle_profile/validation.py
 ### `tools/x4_oracle_profile/inputs.py`
 - -> src/topo_pilot/__init__.py, src/topo_pilot/contracts/base.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/k4b/test_a_transport_bound.py, tools/c1prime/c1_driver.py, tools/k4b/k4b_data.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/runtime.py, tools/x4_oracle_profile/validation.py
+- <- tests/k4b/test_a_transport_bound.py, tools/c1prime/c1_driver.py, tools/c2_readout/c2_oracle.py, tools/k4b/k4b_data.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/runtime.py, tools/x4_oracle_profile/validation.py
 ### `tools/x4_oracle_profile/meter.py`
 - -> tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/winjob.py
 - <- tests/c1prime/test_a_release_meter.py, tests/k4b/test_b_meter.py, tools/c1prime/c1_meter_bind.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/meter_bind.py
 ### `tools/x4_oracle_profile/oracle_profile.py`
 - -> none
-- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_inference.py, tests/c1prime/test_b_precision.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_scores_precision.py, tests/k4b/test_a_transport_bound.py, tests/oracle_profile/test_builder_kernels.py, tests/oracle_profile/test_oracle_profile.py, tests/oracle_profile/test_oracle_profile_kernels.py, tests/oracle_profile/test_oracle_profile_traps.py, tests/x2a_stage0/test_x2a_stage0.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_endpoint.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/d2a/d2a_targets.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_scores.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_model.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/scores.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/runtime.py, tools/x4_oracle_profile/validation.py, tools/x6_stage0/x6_model.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_pairs.py
+- <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_b_inference.py, tests/c1prime/test_b_precision.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_scores_precision.py, tests/k4b/test_a_transport_bound.py, tests/oracle_profile/test_builder_kernels.py, tests/oracle_profile/test_oracle_profile.py, tests/oracle_profile/test_oracle_profile_kernels.py, tests/oracle_profile/test_oracle_profile_traps.py, tests/x2a_stage0/test_x2a_stage0.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_endpoint.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_oracle.py, tools/d2a/d2a_targets.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_scores.py, tools/x2a_stage0/x2a_mc.py, tools/x2a_stage0/x2a_model.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/scores.py, tools/x4_oracle_profile/audit.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/runtime.py, tools/x4_oracle_profile/validation.py, tools/x6_stage0/x6_model.py, tools/x6_stage0/x6_run.py, tools/x6_stage1/x6s1_pairs.py
 ### `tools/x4_oracle_profile/plot_profile.py`
 - -> none
 - <- none
@@ -1438,7 +1516,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_pairs.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `tools/x6_stage1/x6s1_registry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/errors.py, src/topo_pilot/dataset/checks.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_registry_k.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py
-- <- tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_pre.py
+- <- tests/c2_readout/test_b_registry.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/c2_readout/c2_registry.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `tools/x6_stage1/x6s1_run.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/__init__.py, tools/d2a/d2a_train.py, tools/d2a/process_tree.py, tools/x4_oracle_profile/winjob.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py
 - <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py
@@ -2508,6 +2586,464 @@ tests/c1prime_registry/test_registry_builder.py
         tools/x4_circle_history/error_bound.py (see above)
         tools/x4_circle_history/errors.py (see above)
     tools/x4_circle_history/scores.py (see above)
+```
+
+### tests/c2_readout
+
+```text
+tests/c2_readout/test_a_gls.py
+    tools/c2_readout/c2_code.py
+        src/topo_pilot/analysis/x4f_scores.py
+            src/topo_pilot/contracts/__init__.py
+                src/topo_pilot/contracts/backends.py
+                    src/topo_pilot/contracts/errors.py
+                src/topo_pilot/contracts/base.py
+                    src/topo_pilot/contracts/errors.py (see above)
+                    src/topo_pilot/contracts/ids.py
+                        src/topo_pilot/contracts/errors.py (see above)
+                src/topo_pilot/contracts/errors.py (see above)
+                src/topo_pilot/contracts/ids.py (see above)
+                src/topo_pilot/contracts/layout.py
+                    src/topo_pilot/contracts/errors.py (see above)
+                src/topo_pilot/contracts/schemas.py
+                    src/topo_pilot/contracts/_schemas_data.py
+                        src/topo_pilot/contracts/_checks.py
+                            src/topo_pilot/contracts/errors.py (see above)
+                        src/topo_pilot/contracts/base.py (see above)
+                        src/topo_pilot/contracts/errors.py (see above)
+                        src/topo_pilot/contracts/ids.py (see above)
+                    src/topo_pilot/contracts/_schemas_results.py
+                        src/topo_pilot/contracts/_checks.py (see above)
+                        src/topo_pilot/contracts/base.py (see above)
+                        src/topo_pilot/contracts/errors.py (see above)
+                    src/topo_pilot/contracts/_schemas_world.py
+                        src/topo_pilot/contracts/_checks.py (see above)
+                        src/topo_pilot/contracts/base.py (see above)
+                        src/topo_pilot/contracts/errors.py (see above)
+                    src/topo_pilot/contracts/base.py (see above)
+                src/topo_pilot/contracts/store.py
+                    src/topo_pilot/contracts/_bundle.py
+                        src/topo_pilot/contracts/base.py (see above)
+                        src/topo_pilot/contracts/errors.py (see above)
+                        src/topo_pilot/contracts/ids.py (see above)
+                        src/topo_pilot/contracts/schemas.py (see above)
+                        src/topo_pilot/contracts/store.py (cycle)
+                    src/topo_pilot/contracts/backends.py (see above)
+                    src/topo_pilot/contracts/base.py (see above)
+                    src/topo_pilot/contracts/errors.py (see above)
+                    src/topo_pilot/contracts/ids.py (see above)
+                    src/topo_pilot/contracts/schemas.py (see above)
+        src/topo_pilot/contracts/__init__.py (see above)
+        tools/c1prime/c1_fit.py
+            src/topo_pilot/analysis/x4f_scores.py (see above)
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/experiment/x4f_probe.py
+                src/topo_pilot/analysis/__init__.py
+                    src/topo_pilot/analysis/baselines.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/circular.py
+                        src/topo_pilot/analysis/spaces.py
+                            src/topo_pilot/analysis/baselines.py (see above)
+                            src/topo_pilot/analysis/pointset.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/topology/__init__.py
+                                    src/topo_pilot/topology/circular.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/distance.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                        src/topo_pilot/topology/metrics.py
+                                            src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/metrics.py (see above)
+                                    src/topo_pilot/topology/persistence.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/shapes.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/summaries.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/topology/__init__.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/topology/__init__.py (see above)
+                    src/topo_pilot/analysis/circular_bound.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/discriminability.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/analysis/spaces.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/dynamics.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/analysis/spaces.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/f1.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/geometry.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/horizon.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/horizon_pools.py
+                        src/topo_pilot/analysis/horizon.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/pointset.py (see above)
+                    src/topo_pilot/analysis/readout.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/sensitivity.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/topology/__init__.py (see above)
+                    src/topo_pilot/analysis/sigma.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/spaces.py (see above)
+                    src/topo_pilot/analysis/x4f_erasure.py
+                    src/topo_pilot/analysis/x4f_scores.py (see above)
+                    src/topo_pilot/analysis/x4f_targets.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/x5_context.py
+                    src/topo_pilot/analysis/x5_endpoint.py
+                    src/topo_pilot/analysis/x5_kernel.py
+            src/topo_pilot/prediction/ridge.py
+                src/topo_pilot/contracts/__init__.py (see above)
+            tools/c1prime/c1_config.py
+            tools/c1prime/c1_records.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                tools/c1prime/c1_config.py (see above)
+                tools/x4_circle_history/stage_records.py
+                    tools/x4_circle_history/errors.py
+                tools/x4_oracle_profile/oracle_profile.py
+        tools/c1prime/c1_gates.py
+            src/topo_pilot/analysis/x4f_scores.py (see above)
+            tools/c1prime/c1_config.py (see above)
+        tools/c2_readout/c2_config.py
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_means.py
+                tools/c1prime/c1_config.py (see above)
+                tools/c1prime/c1_records.py (see above)
+        tools/c2_readout/c2_oracle.py
+            tools/c1prime/c1_cert.py
+                tools/c1prime/c1_config.py (see above)
+                tools/c1prime/c1_oracle.py
+                    src/topo_pilot/oracle/__init__.py
+                        src/topo_pilot/oracle/_filter.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/oracle/_common.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/oracle/_futures.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/oracle/_common.py (see above)
+                        src/topo_pilot/oracle/stage.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/oracle/_common.py (see above)
+                            src/topo_pilot/oracle/_filter.py (see above)
+                            src/topo_pilot/oracle/_futures.py (see above)
+                    tests/oracle_profile/independent_reference.py
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_records.py (see above)
+                    tools/x4_circle_history/error_bound.py
+                        tests/oracle_profile/independent_reference.py (see above)
+                        tools/x4_circle_history/errors.py (see above)
+                    tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/c1prime/c1_records.py (see above)
+                tools/x4_circle_history/error_bound.py (see above)
+            tools/c1prime/c1_oracle.py (see above)
+            tools/c2_readout/c2_config.py (see above)
+            tools/c2_readout/c2_data.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/dataset/__init__.py
+                    src/topo_pilot/dataset/config.py
+                    src/topo_pilot/dataset/panels.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/config.py (see above)
+                    src/topo_pilot/dataset/public.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/sampler.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/stage.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/checks.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/config.py (see above)
+                        src/topo_pilot/dataset/panels.py (see above)
+                        src/topo_pilot/dataset/public.py (see above)
+                        src/topo_pilot/dataset/sampler.py (see above)
+                src/topo_pilot/dataset/checks.py (see above)
+                tools/c1prime/c1_data.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/__init__.py (see above)
+                    src/topo_pilot/dataset/checks.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_oracle.py (see above)
+                    tools/x4_circle_history/scores.py
+                        tools/x4_circle_history/errors.py (see above)
+                        tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/c1prime/c1_oracle.py (see above)
+                tools/c2_readout/c2_config.py (see above)
+                tools/x4_circle_history/scores.py (see above)
+            tools/c2_readout/c2_model.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/contracts/backends.py (see above)
+                src/topo_pilot/learner/__init__.py
+                    src/topo_pilot/learner/config.py
+                    src/topo_pilot/learner/model.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/learner/config.py (see above)
+                    src/topo_pilot/learner/patch.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/learner/model.py (see above)
+                    src/topo_pilot/learner/stage.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/__init__.py (see above)
+                        src/topo_pilot/learner/config.py (see above)
+                        src/topo_pilot/learner/model.py (see above)
+                        src/topo_pilot/learner/trainer.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/dataset/__init__.py (see above)
+                            src/topo_pilot/learner/config.py (see above)
+                            src/topo_pilot/learner/model.py (see above)
+                    src/topo_pilot/learner/trainer.py (see above)
+                tools/c1prime/c1_fit.py (see above)
+                tools/c1prime/c1_model.py
+                    src/topo_pilot/learner/__init__.py (see above)
+                    src/topo_pilot/learner/stage.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_records.py (see above)
+                tools/c1prime/c1_oracle.py (see above)
+                tools/c1prime_registry/c1_registry_sources.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/contracts/backends.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_data.py (see above)
+                tools/c2_readout/c2_config.py (see above)
+            tools/x4_circle_history/error_bound.py (see above)
+            tools/x4_oracle_profile/inputs.py
+                src/topo_pilot/__init__.py
+                src/topo_pilot/contracts/base.py (see above)
+                tools/x4_oracle_profile/oracle_profile.py (see above)
+            tools/x4_oracle_profile/oracle_profile.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_stats.py
+        src/topo_pilot/analysis/x4f_scores.py (see above)
+        src/topo_pilot/experiment/x4f_probe.py (see above)
+        src/topo_pilot/prediction/ridge.py (see above)
+        tools/c1prime/c1_fit.py (see above)
+        tools/c2_readout/c2_code.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/x4_circle_history/precision.py
+            tools/x4_circle_history/errors.py (see above)
+tests/c2_readout/test_a_inference.py
+    tools/c1prime/c1_means.py (see above)
+    tools/c2_readout/c2_attrib.py
+        tools/c1prime/c1_endpoint.py
+            tools/c1prime/c1_bounds.py
+                tools/c1prime/c1_cert.py (see above)
+                tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_means.py (see above)
+            tools/x4_circle_history/precision.py (see above)
+            tools/x4_oracle_profile/oracle_profile.py (see above)
+        tools/c1prime/c1_means.py (see above)
+        tools/c1prime/c1_records.py (see above)
+        tools/c2_readout/c2_code.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_decide.py
+        tools/c1prime/c1_means.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+tests/c2_readout/test_a_oracle.py
+    tools/c1prime/c1_oracle.py (see above)
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
+    tools/c2_readout/c2_stats.py (see above)
+    tools/x4_circle_history/precision.py (see above)
+tests/c2_readout/test_a_partition.py
+    tools/c1prime/c1_endpoint.py (see above)
+    tools/c1prime/c1_means.py (see above)
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_decide.py (see above)
+tests/c2_readout/test_a_readout.py
+    src/topo_pilot/learner/config.py (see above)
+    src/topo_pilot/learner/model.py (see above)
+    tools/c1prime/c1_oracle.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_model.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
+tests/c2_readout/test_a_scope.py
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_decide.py (see above)
+    tools/c2_readout/c2_stats.py (see above)
+tests/c2_readout/test_b_fwl_l1.py
+    src/topo_pilot/analysis/x4f_scores.py (see above)
+    src/topo_pilot/experiment/x4f_probe.py (see above)
+    src/topo_pilot/prediction/ridge.py (see above)
+    tools/c1prime/c1_fit.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_stats.py (see above)
+tests/c2_readout/test_b_lineage.py
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_driver.py
+        tools/c1prime/c1_records.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/c2_readout/c2_data.py (see above)
+        tools/x4_circle_history/stage_records.py (see above)
+    tools/c2_readout/c2_registry.py
+        src/topo_pilot/contracts/__init__.py (see above)
+        src/topo_pilot/contracts/backends.py (see above)
+        src/topo_pilot/dataset/checks.py (see above)
+        tools/c1prime/c1_data.py (see above)
+        tools/c1prime_registry/c1_registry_sources.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/c2_readout/c2_data.py (see above)
+        tools/k4b/k4b_data.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/dataset/__init__.py (see above)
+            src/topo_pilot/dataset/checks.py (see above)
+            tools/c1prime/c1_data.py (see above)
+            tools/c1prime/c1_model.py (see above)
+            tools/c1prime/c1_records.py (see above)
+            tools/k4b/k4b_config.py
+                tools/c1prime/c1_bounds.py (see above)
+                tools/c1prime/c1_config.py (see above)
+                tools/c1prime/c1_means.py (see above)
+                tools/c1prime/c1_records.py (see above)
+            tools/x4_circle_history/scores.py (see above)
+            tools/x4_oracle_profile/inputs.py (see above)
+            tools/x4_oracle_profile/oracle_profile.py (see above)
+        tools/k4b/k4b_registry.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/contracts/backends.py (see above)
+            tools/c1prime/c1_data.py (see above)
+            tools/c1prime/c1_records.py (see above)
+            tools/c1prime_registry/c1_registry_sources.py (see above)
+            tools/k4b/k4b_config.py (see above)
+            tools/k4b/k4b_registry_k.py
+            tools/x4_circle_history/stage_records.py (see above)
+        tools/x4_circle_history/stage_records.py (see above)
+        tools/x6_stage1/x6s1_registry.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/contracts/errors.py (see above)
+            src/topo_pilot/dataset/checks.py (see above)
+            tools/c1prime_registry/c1_registry_sources.py (see above)
+            tools/k4b/k4b_registry.py (see above)
+            tools/k4b/k4b_registry_k.py (see above)
+            tools/x6_stage0/x6_exact.py
+                tools/x6_stage0/x6_dp.py
+                    tools/x6_stage0/x6_model.py
+                        src/topo_pilot/process/__init__.py
+                            src/topo_pilot/process/centers.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_geometry.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/process/conductance.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_geometry.py (see above)
+                                src/topo_pilot/process/transition.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/process/_geometry.py (see above)
+                            src/topo_pilot/process/emission.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_diagnostics.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/process/_geometry.py (see above)
+                                src/topo_pilot/process/_geometry.py (see above)
+                                src/topo_pilot/process/centers.py (see above)
+                            src/topo_pilot/process/stage.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_geometry.py (see above)
+                                src/topo_pilot/process/conductance.py (see above)
+                                src/topo_pilot/process/emission.py (see above)
+                                src/topo_pilot/process/transition.py (see above)
+                            src/topo_pilot/process/transition.py (see above)
+                        src/topo_pilot/world/__init__.py
+                            src/topo_pilot/world/complex.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/world/config.py
+                            src/topo_pilot/world/identification.py
+                            src/topo_pilot/world/lattice.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/world/complex.py (see above)
+                                src/topo_pilot/world/config.py (see above)
+                                src/topo_pilot/world/identification.py (see above)
+                                src/topo_pilot/world/metrics.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/world/complex.py (see above)
+                                    src/topo_pilot/world/identification.py (see above)
+                                src/topo_pilot/world/registry.py
+                                    src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/world/complex.py (see above)
+                                    src/topo_pilot/world/config.py (see above)
+                                    src/topo_pilot/world/metrics.py (see above)
+                            src/topo_pilot/world/metrics.py (see above)
+                            src/topo_pilot/world/registry.py (see above)
+                            src/topo_pilot/world/stage.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/world/config.py (see above)
+                                src/topo_pilot/world/registry.py (see above)
+                        src/topo_pilot/world/complex.py (see above)
+                        src/topo_pilot/world/metrics.py (see above)
+                        tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage1/x6s1_data.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/dataset/__init__.py (see above)
+                src/topo_pilot/dataset/checks.py (see above)
+                src/topo_pilot/learner/__init__.py (see above)
+                tools/x6_stage0/x6_dp.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+                tools/x6_stage0/x6_run.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/__init__.py (see above)
+                    src/topo_pilot/oracle/__init__.py (see above)
+                    tests/oracle_profile/independent_reference.py (see above)
+                    tools/x4_oracle_profile/oracle_profile.py (see above)
+                    tools/x6_stage0/x6_dp.py (see above)
+                    tools/x6_stage0/x6_exact.py (see above)
+                    tools/x6_stage0/x6_model.py (see above)
+                    tools/x6_stage0/x6_store.py
+                        tools/x6_stage0/x6_dp.py (see above)
+                        tools/x6_stage0/x6_exact.py (see above)
+                        tools/x6_stage0/x6_model.py (see above)
+    tools/x4_circle_history/stage_records.py (see above)
+tests/c2_readout/test_b_patch.py
+    src/topo_pilot/learner/__init__.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_driver.py (see above)
+    tools/c2_readout/c2_model.py (see above)
+tests/c2_readout/test_b_policy.py
+    src/topo_pilot/contracts/__init__.py (see above)
+    src/topo_pilot/dataset/checks.py (see above)
+    tools/c1prime/c1_fit.py (see above)
+    tools/c1prime/c1_records.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_driver.py (see above)
+    tools/x4_circle_history/stage_records.py (see above)
+tests/c2_readout/test_b_registry.py
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_driver.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
+    tools/c2_readout/c2_registry.py (see above)
+    tools/x6_stage1/x6s1_registry.py (see above)
+tests/c2_readout/test_b_screens.py
+    src/topo_pilot/analysis/x4f_scores.py (see above)
+    tools/c1prime/c1_fit.py (see above)
+    tools/c1prime/c1_gates.py (see above)
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_decide.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
 ```
 
 ### tests/chart_diag
@@ -7085,6 +7621,450 @@ tools/c1prime_registry/c1_registry_sources.py
         tools/x4_circle_history/scores.py
             tools/x4_circle_history/errors.py (see above)
             tools/x4_oracle_profile/oracle_profile.py (see above)
+```
+
+### tools/c2_readout
+
+```text
+tools/c2_readout/c2_attrib.py
+    tools/c1prime/c1_endpoint.py
+        tools/c1prime/c1_bounds.py
+            tools/c1prime/c1_cert.py
+                tools/c1prime/c1_config.py
+                tools/c1prime/c1_oracle.py
+                    src/topo_pilot/oracle/__init__.py
+                        src/topo_pilot/oracle/_filter.py
+                            src/topo_pilot/contracts/__init__.py
+                                src/topo_pilot/contracts/backends.py
+                                    src/topo_pilot/contracts/errors.py
+                                src/topo_pilot/contracts/base.py
+                                    src/topo_pilot/contracts/errors.py (see above)
+                                    src/topo_pilot/contracts/ids.py
+                                        src/topo_pilot/contracts/errors.py (see above)
+                                src/topo_pilot/contracts/errors.py (see above)
+                                src/topo_pilot/contracts/ids.py (see above)
+                                src/topo_pilot/contracts/layout.py
+                                    src/topo_pilot/contracts/errors.py (see above)
+                                src/topo_pilot/contracts/schemas.py
+                                    src/topo_pilot/contracts/_schemas_data.py
+                                        src/topo_pilot/contracts/_checks.py
+                                            src/topo_pilot/contracts/errors.py (see above)
+                                        src/topo_pilot/contracts/base.py (see above)
+                                        src/topo_pilot/contracts/errors.py (see above)
+                                        src/topo_pilot/contracts/ids.py (see above)
+                                    src/topo_pilot/contracts/_schemas_results.py
+                                        src/topo_pilot/contracts/_checks.py (see above)
+                                        src/topo_pilot/contracts/base.py (see above)
+                                        src/topo_pilot/contracts/errors.py (see above)
+                                    src/topo_pilot/contracts/_schemas_world.py
+                                        src/topo_pilot/contracts/_checks.py (see above)
+                                        src/topo_pilot/contracts/base.py (see above)
+                                        src/topo_pilot/contracts/errors.py (see above)
+                                    src/topo_pilot/contracts/base.py (see above)
+                                src/topo_pilot/contracts/store.py
+                                    src/topo_pilot/contracts/_bundle.py
+                                        src/topo_pilot/contracts/base.py (see above)
+                                        src/topo_pilot/contracts/errors.py (see above)
+                                        src/topo_pilot/contracts/ids.py (see above)
+                                        src/topo_pilot/contracts/schemas.py (see above)
+                                        src/topo_pilot/contracts/store.py (cycle)
+                                    src/topo_pilot/contracts/backends.py (see above)
+                                    src/topo_pilot/contracts/base.py (see above)
+                                    src/topo_pilot/contracts/errors.py (see above)
+                                    src/topo_pilot/contracts/ids.py (see above)
+                                    src/topo_pilot/contracts/schemas.py (see above)
+                            src/topo_pilot/oracle/_common.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/oracle/_futures.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/oracle/_common.py (see above)
+                        src/topo_pilot/oracle/stage.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/oracle/_common.py (see above)
+                            src/topo_pilot/oracle/_filter.py (see above)
+                            src/topo_pilot/oracle/_futures.py (see above)
+                    tests/oracle_profile/independent_reference.py
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_records.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        tools/c1prime/c1_config.py (see above)
+                        tools/x4_circle_history/stage_records.py
+                            tools/x4_circle_history/errors.py
+                        tools/x4_oracle_profile/oracle_profile.py
+                    tools/x4_circle_history/error_bound.py
+                        tests/oracle_profile/independent_reference.py (see above)
+                        tools/x4_circle_history/errors.py (see above)
+                    tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/c1prime/c1_records.py (see above)
+                tools/x4_circle_history/error_bound.py (see above)
+            tools/c1prime/c1_config.py (see above)
+        tools/c1prime/c1_config.py (see above)
+        tools/c1prime/c1_means.py
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_records.py (see above)
+        tools/x4_circle_history/precision.py
+            tools/x4_circle_history/errors.py (see above)
+        tools/x4_oracle_profile/oracle_profile.py (see above)
+    tools/c1prime/c1_means.py (see above)
+    tools/c1prime/c1_records.py (see above)
+    tools/c2_readout/c2_code.py
+        src/topo_pilot/analysis/x4f_scores.py
+            src/topo_pilot/contracts/__init__.py (see above)
+        src/topo_pilot/contracts/__init__.py (see above)
+        tools/c1prime/c1_fit.py
+            src/topo_pilot/analysis/x4f_scores.py (see above)
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/experiment/x4f_probe.py
+                src/topo_pilot/analysis/__init__.py
+                    src/topo_pilot/analysis/baselines.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/circular.py
+                        src/topo_pilot/analysis/spaces.py
+                            src/topo_pilot/analysis/baselines.py (see above)
+                            src/topo_pilot/analysis/pointset.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/topology/__init__.py
+                                    src/topo_pilot/topology/circular.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/distance.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                        src/topo_pilot/topology/metrics.py
+                                            src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/metrics.py (see above)
+                                    src/topo_pilot/topology/persistence.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/shapes.py
+                                        src/topo_pilot/contracts/__init__.py (see above)
+                                    src/topo_pilot/topology/summaries.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/topology/__init__.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/topology/__init__.py (see above)
+                    src/topo_pilot/analysis/circular_bound.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/discriminability.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/analysis/spaces.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/dynamics.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/analysis/spaces.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/f1.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/geometry.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/horizon.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/horizon_pools.py
+                        src/topo_pilot/analysis/horizon.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/pointset.py (see above)
+                    src/topo_pilot/analysis/readout.py
+                        src/topo_pilot/analysis/pointset.py (see above)
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/sensitivity.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/topology/__init__.py (see above)
+                    src/topo_pilot/analysis/sigma.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/spaces.py (see above)
+                    src/topo_pilot/analysis/x4f_erasure.py
+                    src/topo_pilot/analysis/x4f_scores.py (see above)
+                    src/topo_pilot/analysis/x4f_targets.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/analysis/x5_context.py
+                    src/topo_pilot/analysis/x5_endpoint.py
+                    src/topo_pilot/analysis/x5_kernel.py
+            src/topo_pilot/prediction/ridge.py
+                src/topo_pilot/contracts/__init__.py (see above)
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_records.py (see above)
+        tools/c1prime/c1_gates.py
+            src/topo_pilot/analysis/x4f_scores.py (see above)
+            tools/c1prime/c1_config.py (see above)
+        tools/c2_readout/c2_config.py
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_means.py (see above)
+        tools/c2_readout/c2_oracle.py
+            tools/c1prime/c1_cert.py (see above)
+            tools/c1prime/c1_oracle.py (see above)
+            tools/c2_readout/c2_config.py (see above)
+            tools/c2_readout/c2_data.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/dataset/__init__.py
+                    src/topo_pilot/dataset/config.py
+                    src/topo_pilot/dataset/panels.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/config.py (see above)
+                    src/topo_pilot/dataset/public.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/sampler.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/stage.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/checks.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/config.py (see above)
+                        src/topo_pilot/dataset/panels.py (see above)
+                        src/topo_pilot/dataset/public.py (see above)
+                        src/topo_pilot/dataset/sampler.py (see above)
+                src/topo_pilot/dataset/checks.py (see above)
+                tools/c1prime/c1_data.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/dataset/__init__.py (see above)
+                    src/topo_pilot/dataset/checks.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_oracle.py (see above)
+                    tools/x4_circle_history/scores.py
+                        tools/x4_circle_history/errors.py (see above)
+                        tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/c1prime/c1_oracle.py (see above)
+                tools/c2_readout/c2_config.py (see above)
+                tools/x4_circle_history/scores.py (see above)
+            tools/c2_readout/c2_model.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/contracts/backends.py (see above)
+                src/topo_pilot/learner/__init__.py
+                    src/topo_pilot/learner/config.py
+                    src/topo_pilot/learner/model.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/learner/config.py (see above)
+                    src/topo_pilot/learner/patch.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/learner/model.py (see above)
+                    src/topo_pilot/learner/stage.py
+                        src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/dataset/__init__.py (see above)
+                        src/topo_pilot/learner/config.py (see above)
+                        src/topo_pilot/learner/model.py (see above)
+                        src/topo_pilot/learner/trainer.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/dataset/__init__.py (see above)
+                            src/topo_pilot/learner/config.py (see above)
+                            src/topo_pilot/learner/model.py (see above)
+                    src/topo_pilot/learner/trainer.py (see above)
+                tools/c1prime/c1_fit.py (see above)
+                tools/c1prime/c1_model.py
+                    src/topo_pilot/learner/__init__.py (see above)
+                    src/topo_pilot/learner/stage.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_records.py (see above)
+                tools/c1prime/c1_oracle.py (see above)
+                tools/c1prime_registry/c1_registry_sources.py
+                    src/topo_pilot/contracts/__init__.py (see above)
+                    src/topo_pilot/contracts/backends.py (see above)
+                    tools/c1prime/c1_config.py (see above)
+                    tools/c1prime/c1_data.py (see above)
+                tools/c2_readout/c2_config.py (see above)
+            tools/x4_circle_history/error_bound.py (see above)
+            tools/x4_oracle_profile/inputs.py
+                src/topo_pilot/__init__.py
+                src/topo_pilot/contracts/base.py (see above)
+                tools/x4_oracle_profile/oracle_profile.py (see above)
+            tools/x4_oracle_profile/oracle_profile.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+tools/c2_readout/c2_code.py (see above)
+tools/c2_readout/c2_config.py (see above)
+tools/c2_readout/c2_data.py (see above)
+tools/c2_readout/c2_decide.py
+    tools/c1prime/c1_means.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+tools/c2_readout/c2_driver.py
+    tools/c1prime/c1_records.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/x4_circle_history/stage_records.py (see above)
+tools/c2_readout/c2_model.py (see above)
+tools/c2_readout/c2_oracle.py (see above)
+tools/c2_readout/c2_registry.py
+    src/topo_pilot/contracts/__init__.py (see above)
+    src/topo_pilot/contracts/backends.py (see above)
+    src/topo_pilot/dataset/checks.py (see above)
+    tools/c1prime/c1_data.py (see above)
+    tools/c1prime_registry/c1_registry_sources.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/k4b/k4b_data.py
+        src/topo_pilot/contracts/__init__.py (see above)
+        src/topo_pilot/dataset/__init__.py (see above)
+        src/topo_pilot/dataset/checks.py (see above)
+        tools/c1prime/c1_data.py (see above)
+        tools/c1prime/c1_model.py (see above)
+        tools/c1prime/c1_records.py (see above)
+        tools/k4b/k4b_config.py
+            tools/c1prime/c1_bounds.py (see above)
+            tools/c1prime/c1_config.py (see above)
+            tools/c1prime/c1_means.py (see above)
+            tools/c1prime/c1_records.py (see above)
+        tools/x4_circle_history/scores.py (see above)
+        tools/x4_oracle_profile/inputs.py (see above)
+        tools/x4_oracle_profile/oracle_profile.py (see above)
+    tools/k4b/k4b_registry.py
+        src/topo_pilot/contracts/__init__.py (see above)
+        src/topo_pilot/contracts/backends.py (see above)
+        tools/c1prime/c1_data.py (see above)
+        tools/c1prime/c1_records.py (see above)
+        tools/c1prime_registry/c1_registry_sources.py (see above)
+        tools/k4b/k4b_config.py (see above)
+        tools/k4b/k4b_registry_k.py
+        tools/x4_circle_history/stage_records.py (see above)
+    tools/x4_circle_history/stage_records.py (see above)
+    tools/x6_stage1/x6s1_registry.py
+        src/topo_pilot/contracts/__init__.py (see above)
+        src/topo_pilot/contracts/errors.py (see above)
+        src/topo_pilot/dataset/checks.py (see above)
+        tools/c1prime_registry/c1_registry_sources.py (see above)
+        tools/k4b/k4b_registry.py (see above)
+        tools/k4b/k4b_registry_k.py (see above)
+        tools/x6_stage0/x6_exact.py
+            tools/x6_stage0/x6_dp.py
+                tools/x6_stage0/x6_model.py
+                    src/topo_pilot/process/__init__.py
+                        src/topo_pilot/process/centers.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/process/_geometry.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/process/conductance.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/process/_geometry.py (see above)
+                            src/topo_pilot/process/transition.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_geometry.py (see above)
+                        src/topo_pilot/process/emission.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/process/_diagnostics.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/process/_geometry.py (see above)
+                            src/topo_pilot/process/_geometry.py (see above)
+                            src/topo_pilot/process/centers.py (see above)
+                        src/topo_pilot/process/stage.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/process/_geometry.py (see above)
+                            src/topo_pilot/process/conductance.py (see above)
+                            src/topo_pilot/process/emission.py (see above)
+                            src/topo_pilot/process/transition.py (see above)
+                        src/topo_pilot/process/transition.py (see above)
+                    src/topo_pilot/world/__init__.py
+                        src/topo_pilot/world/complex.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                        src/topo_pilot/world/config.py
+                        src/topo_pilot/world/identification.py
+                        src/topo_pilot/world/lattice.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/world/complex.py (see above)
+                            src/topo_pilot/world/config.py (see above)
+                            src/topo_pilot/world/identification.py (see above)
+                            src/topo_pilot/world/metrics.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/world/complex.py (see above)
+                                src/topo_pilot/world/identification.py (see above)
+                            src/topo_pilot/world/registry.py
+                                src/topo_pilot/contracts/__init__.py (see above)
+                                src/topo_pilot/world/complex.py (see above)
+                                src/topo_pilot/world/config.py (see above)
+                                src/topo_pilot/world/metrics.py (see above)
+                        src/topo_pilot/world/metrics.py (see above)
+                        src/topo_pilot/world/registry.py (see above)
+                        src/topo_pilot/world/stage.py
+                            src/topo_pilot/contracts/__init__.py (see above)
+                            src/topo_pilot/world/config.py (see above)
+                            src/topo_pilot/world/registry.py (see above)
+                    src/topo_pilot/world/complex.py (see above)
+                    src/topo_pilot/world/metrics.py (see above)
+                    tools/x4_oracle_profile/oracle_profile.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
+        tools/x6_stage0/x6_model.py (see above)
+        tools/x6_stage1/x6s1_data.py
+            src/topo_pilot/contracts/__init__.py (see above)
+            src/topo_pilot/dataset/__init__.py (see above)
+            src/topo_pilot/dataset/checks.py (see above)
+            src/topo_pilot/learner/__init__.py (see above)
+            tools/x6_stage0/x6_dp.py (see above)
+            tools/x6_stage0/x6_model.py (see above)
+            tools/x6_stage0/x6_run.py
+                src/topo_pilot/contracts/__init__.py (see above)
+                src/topo_pilot/dataset/__init__.py (see above)
+                src/topo_pilot/oracle/__init__.py (see above)
+                tests/oracle_profile/independent_reference.py (see above)
+                tools/x4_oracle_profile/oracle_profile.py (see above)
+                tools/x6_stage0/x6_dp.py (see above)
+                tools/x6_stage0/x6_exact.py (see above)
+                tools/x6_stage0/x6_model.py (see above)
+                tools/x6_stage0/x6_store.py
+                    tools/x6_stage0/x6_dp.py (see above)
+                    tools/x6_stage0/x6_exact.py (see above)
+                    tools/x6_stage0/x6_model.py (see above)
+tools/c2_readout/c2_stage_base.py
+    tools/c1prime/c1_chart.py
+        tools/c1prime/c1_config.py (see above)
+        tools/c1prime/c1_records.py (see above)
+        tools/x4_circle_history/chart.py
+            tools/x4_circle_history/cochain.py
+                tools/x4_circle_history/errors.py (see above)
+            tools/x4_circle_history/errors.py (see above)
+        tools/x4_circle_history/cochain.py (see above)
+    tools/c1prime/c1_gates.py (see above)
+    tools/c1prime/c1_means.py (see above)
+    tools/c1prime/c1_model.py (see above)
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_code.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_decide.py (see above)
+    tools/c2_readout/c2_driver.py (see above)
+    tools/c2_readout/c2_model.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
+    tools/c2_readout/c2_registry.py (see above)
+    tools/c2_readout/c2_stats.py
+        src/topo_pilot/analysis/x4f_scores.py (see above)
+        src/topo_pilot/experiment/x4f_probe.py (see above)
+        src/topo_pilot/prediction/ridge.py (see above)
+        tools/c1prime/c1_fit.py (see above)
+        tools/c2_readout/c2_code.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/x4_circle_history/precision.py (see above)
+    tools/x4_circle_history/chart.py (see above)
+    tools/x4_circle_history/stage_records.py (see above)
+tools/c2_readout/c2_stage_post.py
+    tools/c1prime/c1_endpoint.py (see above)
+    tools/c2_readout/c2_attrib.py (see above)
+    tools/c2_readout/c2_config.py (see above)
+    tools/c2_readout/c2_data.py (see above)
+    tools/c2_readout/c2_decide.py (see above)
+    tools/c2_readout/c2_driver.py (see above)
+    tools/c2_readout/c2_model.py (see above)
+    tools/c2_readout/c2_oracle.py (see above)
+    tools/c2_readout/c2_registry.py (see above)
+    tools/c2_readout/c2_stage_base.py (see above)
+    tools/c2_readout/c2_stage_pre.py
+        tools/c1prime/c1_chart.py (see above)
+        tools/c1prime/c1_fit.py (see above)
+        tools/c1prime/c1_oracle.py (see above)
+        tools/c1prime/c1_records.py (see above)
+        tools/c2_readout/c2_attrib.py (see above)
+        tools/c2_readout/c2_code.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/c2_readout/c2_data.py (see above)
+        tools/c2_readout/c2_model.py (see above)
+        tools/c2_readout/c2_oracle.py (see above)
+        tools/c2_readout/c2_registry.py (see above)
+        tools/c2_readout/c2_stage_base.py (see above)
+        tools/c2_readout/c2_stats.py (see above)
+    tools/c2_readout/c2_stage_val.py
+        tools/c1prime/c1_endpoint.py (see above)
+        tools/c2_readout/c2_attrib.py (see above)
+        tools/c2_readout/c2_code.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/c2_readout/c2_decide.py (see above)
+        tools/c2_readout/c2_driver.py (see above)
+        tools/c2_readout/c2_model.py (see above)
+        tools/c2_readout/c2_oracle.py (see above)
+        tools/c2_readout/c2_stage_base.py (see above)
+        tools/c2_readout/c2_stats.py (see above)
+tools/c2_readout/c2_stage_pre.py (see above)
+tools/c2_readout/c2_stage_val.py (see above)
+tools/c2_readout/c2_stats.py (see above)
 ```
 
 ### tools/chart_diag

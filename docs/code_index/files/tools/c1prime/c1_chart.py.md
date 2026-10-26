@@ -55,6 +55,8 @@
 - [tests/k4b/test_b_charts.py](../../tests/k4b/test_b_charts.py.md) (line 21, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 9, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 11, import)
+- [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 16, import)
+- [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 16, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 13, import)
 
 ## Top-level constants

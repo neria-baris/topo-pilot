@@ -52,10 +52,14 @@
 - [tests/c1prime/test_b_identities.py](../../tests/c1prime/test_b_identities.py.md) (line 31, import)
 - [tests/c1prime/test_b_inference.py](../../tests/c1prime/test_b_inference.py.md) (line 29, import)
 - [tests/c1prime/test_b_precision.py](../../tests/c1prime/test_b_precision.py.md) (line 28, import)
+- [tests/c2_readout/test_a_partition.py](../../tests/c2_readout/test_a_partition.py.md) (line 31, import)
 - [tools/c1prime/c1_driver.py](c1_driver.py.md) (line 278, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 12, import)
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 16, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 15, import)
+- [tools/c2_readout/c2_attrib.py](../c2_readout/c2_attrib.py.md) (line 19, import)
+- [tools/c2_readout/c2_stage_post.py](../c2_readout/c2_stage_post.py.md) (line 13, import)
+- [tools/c2_readout/c2_stage_val.py](../c2_readout/c2_stage_val.py.md) (line 13, import)
 
 ## Top-level constants
 

@@ -57,6 +57,8 @@
 - [tests/k4b/test_b_registry.py](../../tests/k4b/test_b_registry.py.md) (line 29, import)
 - [tests/k4b/test_b_registry_fixes.py](../../tests/k4b/test_b_registry_fixes.py.md) (line 28, import)
 - [tests/k4b/test_b_registry_rules.py](../../tests/k4b/test_b_registry_rules.py.md) (line 32, import)
+- [tools/c2_readout/c2_model.py](../c2_readout/c2_model.py.md) (line 20, import)
+- [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 22, import)
 - [tools/k4b/k4b_registry.py](../k4b/k4b_registry.py.md) (line 17, import)
 - [tools/x6_stage1/x6s1_registry.py](../x6_stage1/x6s1_registry.py.md) (line 21, import)
 

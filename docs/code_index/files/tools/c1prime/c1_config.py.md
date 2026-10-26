@@ -69,6 +69,7 @@
 - [tools/c1prime/c1_records.py](c1_records.py.md) (line 10, import)
 - [tools/c1prime/c1_release.py](c1_release.py.md) (line 12, import)
 - [tools/c1prime_registry/c1_registry_sources.py](../c1prime_registry/c1_registry_sources.py.md) (line 20, import)
+- [tools/c2_readout/c2_config.py](../c2_readout/c2_config.py.md) (line 35, import)
 - [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 27, import)
 
 ## Top-level constants

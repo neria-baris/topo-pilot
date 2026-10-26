@@ -50,6 +50,8 @@
 - [tests/k4b/test_b_registry.py](../../../tests/k4b/test_b_registry.py.md) (line 279, import)
 - [tools/c1prime/c1_driver_cal.py](../../../tools/c1prime/c1_driver_cal.py.md) (line 28, import)
 - [tools/c1prime_registry/c1_registry_sources.py](../../../tools/c1prime_registry/c1_registry_sources.py.md) (line 54, import)
+- [tools/c2_readout/c2_model.py](../../../tools/c2_readout/c2_model.py.md) (line 39, import)
+- [tools/c2_readout/c2_registry.py](../../../tools/c2_readout/c2_registry.py.md) (line 136, import)
 - [tools/chart_diag/chart_diag.py](../../../tools/chart_diag/chart_diag.py.md) (line 130, import)
 - [tools/d2a/d2a_world.py](../../../tools/d2a/d2a_world.py.md) (line 182, import)
 - [tools/k4b/k4b_driver.py](../../../tools/k4b/k4b_driver.py.md) (line 139, import)

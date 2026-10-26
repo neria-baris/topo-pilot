@@ -53,9 +53,16 @@
 - [tests/c1prime/test_b_fwl.py](../../tests/c1prime/test_b_fwl.py.md) (line 27, import)
 - [tests/c1prime/test_b_gates.py](../../tests/c1prime/test_b_gates.py.md) (line 24, import)
 - [tests/c1prime/test_c_ridge_tolerance.py](../../tests/c1prime/test_c_ridge_tolerance.py.md) (line 18, import)
+- [tests/c2_readout/test_b_fwl_l1.py](../../tests/c2_readout/test_b_fwl_l1.py.md) (line 24, import)
+- [tests/c2_readout/test_b_policy.py](../../tests/c2_readout/test_b_policy.py.md) (line 27, import)
+- [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 25, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 13, import)
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 17, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 16, import)
+- [tools/c2_readout/c2_code.py](../c2_readout/c2_code.py.md) (line 17, import)
+- [tools/c2_readout/c2_model.py](../c2_readout/c2_model.py.md) (line 17, import)
+- [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 17, import)
+- [tools/c2_readout/c2_stats.py](../c2_readout/c2_stats.py.md) (line 23, import)
 
 ## Top-level constants
 

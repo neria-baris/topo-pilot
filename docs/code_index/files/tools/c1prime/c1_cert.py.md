@@ -53,6 +53,7 @@
 - [tools/c1prime/c1_driver.py](c1_driver.py.md) (line 13, import)
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 10, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 10, import)
+- [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 19, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 169, import)
 
 ## Top-level constants

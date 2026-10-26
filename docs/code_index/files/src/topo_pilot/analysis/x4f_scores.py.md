@@ -45,9 +45,13 @@
 - [tests/c1prime/test_a_eligibility_support.py](../../../tests/c1prime/test_a_eligibility_support.py.md) (line 29, import)
 - [tests/c1prime/test_b_decoder.py](../../../tests/c1prime/test_b_decoder.py.md) (line 21, import)
 - [tests/c1prime/test_b_fwl.py](../../../tests/c1prime/test_b_fwl.py.md) (line 19, import)
+- [tests/c2_readout/test_b_fwl_l1.py](../../../tests/c2_readout/test_b_fwl_l1.py.md) (line 26, import)
+- [tests/c2_readout/test_b_screens.py](../../../tests/c2_readout/test_b_screens.py.md) (line 28, import)
 - [tests/k4b/test_b_endpoint.py](../../../tests/k4b/test_b_endpoint.py.md) (line 33, import)
 - [tools/c1prime/c1_fit.py](../../../tools/c1prime/c1_fit.py.md) (line 12, import)
 - [tools/c1prime/c1_gates.py](../../../tools/c1prime/c1_gates.py.md) (line 9, import)
+- [tools/c2_readout/c2_code.py](../../../tools/c2_readout/c2_code.py.md) (line 23, import)
+- [tools/c2_readout/c2_stats.py](../../../tools/c2_readout/c2_stats.py.md) (line 28, import)
 - [tools/k4b/k4b_decoder.py](../../../tools/k4b/k4b_decoder.py.md) (line 14, import)
 
 ## Top-level constants

@@ -51,6 +51,7 @@
 
 - [tests/k4b/test_a_transport_bound.py](../../tests/k4b/test_a_transport_bound.py.md) (line 37, import)
 - [tools/c1prime/c1_driver.py](../c1prime/c1_driver.py.md) (line 105, import)
+- [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 33, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 38, import)
 - [tools/x4_circle_history/live_context.py](../x4_circle_history/live_context.py.md) (line 105, import)
 - [tools/x4_oracle_profile/audit.py](audit.py.md) (line 31, import)

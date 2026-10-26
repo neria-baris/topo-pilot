@@ -53,12 +53,18 @@
 - [tests/c1prime/test_a_oracle.py](../../tests/c1prime/test_a_oracle.py.md) (line 30, import)
 - [tests/c1prime/test_a_oracle_named.py](../../tests/c1prime/test_a_oracle_named.py.md) (line 28, import)
 - [tests/c1prime/test_b_cert_bounds.py](../../tests/c1prime/test_b_cert_bounds.py.md) (line 35, import)
+- [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 32, import)
+- [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 28, import)
 - [tools/c1prime/c1_cert.py](c1_cert.py.md) (line 15, import)
 - [tools/c1prime/c1_data.py](c1_data.py.md) (line 11, import)
 - [tools/c1prime/c1_driver.py](c1_driver.py.md) (line 16, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 16, import)
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 18, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 19, import)
+- [tools/c2_readout/c2_data.py](../c2_readout/c2_data.py.md) (line 23, import)
+- [tools/c2_readout/c2_model.py](../c2_readout/c2_model.py.md) (line 19, import)
+- [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 20, import)
+- [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 18, import)
 
 ## Top-level constants
 

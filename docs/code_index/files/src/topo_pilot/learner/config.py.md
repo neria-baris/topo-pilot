@@ -47,6 +47,7 @@
 - [src/topo_pilot/learner/multihorizon.py](multihorizon.py.md) (line 20, import)
 - [src/topo_pilot/learner/stage.py](stage.py.md) (line 22, import)
 - [src/topo_pilot/learner/trainer.py](trainer.py.md) (line 17, import)
+- [tests/c2_readout/test_a_readout.py](../../../tests/c2_readout/test_a_readout.py.md) (line 34, import)
 
 ## Top-level constants
 

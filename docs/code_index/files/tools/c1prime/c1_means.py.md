@@ -46,10 +46,16 @@
 ## Imported by
 
 - [tests/c1prime/test_b_inference.py](../../tests/c1prime/test_b_inference.py.md) (line 30, import)
+- [tests/c2_readout/test_a_inference.py](../../tests/c2_readout/test_a_inference.py.md) (line 32, import)
+- [tests/c2_readout/test_a_partition.py](../../tests/c2_readout/test_a_partition.py.md) (line 32, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 25, import)
 - [tests/k4b/test_a_width_b4.py](../../tests/k4b/test_a_width_b4.py.md) (line 27, import)
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 27, import)
 - [tools/c1prime/c1_endpoint.py](c1_endpoint.py.md) (line 12, import)
+- [tools/c2_readout/c2_attrib.py](../c2_readout/c2_attrib.py.md) (line 20, import)
+- [tools/c2_readout/c2_config.py](../c2_readout/c2_config.py.md) (line 36, import)
+- [tools/c2_readout/c2_decide.py](../c2_readout/c2_decide.py.md) (line 16, import)
+- [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 18, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 14, import)
 - [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 28, import)
 - [tools/k4b/k4b_fresh.py](../k4b/k4b_fresh.py.md) (line 25, import)

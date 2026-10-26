@@ -43,7 +43,9 @@
 
 - [src/topo_pilot/prediction/__init__.py](__init__.py.md) (line 5, import)
 - [tests/c1prime/test_b_decoder.py](../../../tests/c1prime/test_b_decoder.py.md) (line 24, import)
+- [tests/c2_readout/test_b_fwl_l1.py](../../../tests/c2_readout/test_b_fwl_l1.py.md) (line 28, import)
 - [tools/c1prime/c1_fit.py](../../../tools/c1prime/c1_fit.py.md) (line 15, import)
+- [tools/c2_readout/c2_stats.py](../../../tools/c2_readout/c2_stats.py.md) (line 30, import)
 - [tools/k4b/k4b_decoder.py](../../../tools/k4b/k4b_decoder.py.md) (line 17, import)
 
 ## Top-level constants

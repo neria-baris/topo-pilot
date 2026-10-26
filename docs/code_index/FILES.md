@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 819 tracked files; 475 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 851 tracked files; 501 code files (linked to their pages).
 
 ## (repo root)
 
@@ -733,6 +733,25 @@ The generated index itself (`docs/code_index/`) is not indexed. 819 tracked file
 |---|---|---|---|
 | [test_registry_builder.py](files/tests/c1prime_registry/test_registry_builder.py.md) | python | 105 lines | Builder tests for tools/c1prime/c1_registry_sources.py (job 0027; synthetic fixtures only). |
 
+## tests/c2_readout/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 141 lines | AUTHORSHIP_A: independent test author A, job 0101 (C2-FROZEN-v1 §13.3) |
+| `AUTHORSHIP_B.md` | markdown | 111 lines | Authorship record: independent test author B (job 0101) |
+| [test_a_gls.py](files/tests/c2_readout/test_a_gls.py.md) | python | 347 lines | Independent tests, author A (job 0101; v2 update): T-GLS part 2, the G1 scale-invariance |
+| [test_a_inference.py](files/tests/c2_readout/test_a_inference.py.md) | python | 376 lines | Independent tests, author A (job 0101): T-FAMILY (Lemma FW, FW-M), T-RULES (RC-8, RC-13, |
+| [test_a_oracle.py](files/tests/c2_readout/test_a_oracle.py.md) | python | 400 lines | Independent tests, author A (job 0101; v2 update, job 0105): T-ORACLE with the y-translation |
+| [test_a_partition.py](files/tests/c2_readout/test_a_partition.py.md) | python | 347 lines | Independent tests, author A (job 0101): T-PARTITION, T-RANDOM, T-ENERGY, T-HEADKERNEL and the |
+| [test_a_readout.py](files/tests/c2_readout/test_a_readout.py.md) | python | 390 lines | Independent tests, author A (job 0101): T-READOUT, T-ORDER and T-GLS part 1 (Lemmas G1-G3, |
+| [test_a_scope.py](files/tests/c2_readout/test_a_scope.py.md) | python | 321 lines | Independent tests, author A (job 0101): T-SCOPE (RC-2, NEW-4; run with the R and the S* |
+| [test_b_fwl_l1.py](files/tests/c2_readout/test_b_fwl_l1.py.md) | python | 393 lines | Author B (job 0101): T-FWL (RC-12) and T-L1 (RC-3) (C2-FROZEN-v2 §13.3; §2.4, §2.5, §6.6); |
+| [test_b_lineage.py](files/tests/c2_readout/test_b_lineage.py.md) | python | 395 lines | Author B (job 0101): T-G0 (RC-16), T-LINEAGE and T-NAMESPACE (RC-11; three tests) |
+| [test_b_patch.py](files/tests/c2_readout/test_b_patch.py.md) | python | 375 lines | Author B (job 0101): T-PATCH and T-X1 (C2-FROZEN-v2 §13.3; §2.1, §2.7, §7 rows 9 and 17). |
+| [test_b_policy.py](files/tests/c2_readout/test_b_policy.py.md) | python | 397 lines | Author B (job 0101): T-POLICY (RC-13, NEW-2), T-SEED, T-SIZE, T-METER. |
+| [test_b_registry.py](files/tests/c2_readout/test_b_registry.py.md) | python | 387 lines | Author B (job 0101): T-REG with the v2 H^Y donor and the NEW-10 Y-donor preparation fixture |
+| [test_b_screens.py](files/tests/c2_readout/test_b_screens.py.md) | python | 347 lines | Author B (job 0101): T-R1 (RC-14, NEW-3), T-N2 (RC-6), T-CMODE (RC-5, RC-6). |
+
 ## tests/chart_diag/
 
 | File | Kind | Size | Purpose |
@@ -1062,6 +1081,29 @@ The generated index itself (`docs/code_index/`) is not indexed. 819 tracked file
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | [c1_registry_sources.py](files/tools/c1prime_registry/c1_registry_sources.py.md) | python | 312 lines | C1' exposure registry v1: per-source readers for the frozen c1_data.build_registry (job 0027; |
+
+## tools/c2_readout/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 631 lines | tools/c2_readout: written contract (job 0100; derived from C2-FROZEN-v1) |
+| `CONTRACT.json` | json | 374 lines |  |
+| `PROTOCOL_C2_v2.md` | markdown | 1398 lines | C2-FROZEN-v2 (candidate; frozen v1 = C2-MERGED-v3): does the learned circle matter for prediction? Exact readout attribution of natural counterfactual responses to a registered circle-code interchange (C2-R), with an upstream interchange family (C2-M), an oracle-phase secondary (C2-S*) and a report-only rotation arm |
+| `TEST_PLAN.md` | markdown | 61 lines | C2 test plan v1 (job 0100) |
+| [c2_attrib.py](files/tools/c2_readout/c2_attrib.py.md) | python | 369 lines | C2 attribution (closed forms at ln_final_out/32; d = d_named, dy = y1 - y2): the A partition, |
+| [c2_code.py](files/tools/c2_readout/c2_code.py.md) | python | 307 lines | C2 code: the K = 1, 2, 3 FWL fit, Ledoit-Wolf, the whitened-design checks, the QR-route GLS |
+| [c2_config.py](files/tools/c2_readout/c2_config.py.md) | python | 192 lines | C2 configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels |
+| [c2_data.py](files/tools/c2_readout/c2_data.py.md) | python | 337 lines | C2 data: sampling (scope c2-v1), sequence ids, panels, the y-translation donor H^Y (the sign |
+| [c2_decide.py](files/tools/c2_readout/c2_decide.py.md) | python | 397 lines | C2 decisions: the family bound streams, the NUM guard, the Lemma FW per-model rules (R, S*, M), |
+| [c2_driver.py](files/tools/c2_readout/c2_driver.py.md) | python | 400 lines | C2 driver (API.md §12, §19.2-§19.3; C2-FROZEN-v2 §5.7, §7, §11): gate order, LogitPolicy, |
+| [c2_model.py](files/tools/c2_readout/c2_model.py.md) | python | 282 lines | C2 model evaluation: model loading, the three-hook pass, the readout basis Q0/M (Lemma R), |
+| [c2_oracle.py](files/tools/c2_readout/c2_oracle.py.md) | python | 343 lines | C2 oracle: process loading, the H1 static checks, the canonical oracle for the four |
+| [c2_registry.py](files/tools/c2_readout/c2_registry.py.md) | python | 394 lines | C2 exposure registry c2-reg-v1: the R and R' sources (the reused C1'/K4b readers a-f, k and |
+| [c2_stage_base.py](files/tools/c2_readout/c2_stage_base.py.md) | python | 357 lines | C2 stage helpers shared by every PLAN (R-0104-1; API.md §19.2, §19.3; C2-FROZEN-v2 §5, §6.6, §7, |
+| [c2_stage_post.py](files/tools/c2_readout/c2_stage_post.py.md) | python | 368 lines | C2 stage body S5 (R-0104-1; API.md §19.2, §19.3; C2-FROZEN-v2 §3, §5.7, §6.2-§6.5, §7 rows |
+| [c2_stage_pre.py](files/tools/c2_readout/c2_stage_pre.py.md) | python | 307 lines | C2 stage bodies S1-S3 (R-0104-1; API.md §19.2, §19.3; C2-FROZEN-v2 §5, §6.6, §7 rows 0-16, §8): |
+| [c2_stage_val.py](files/tools/c2_readout/c2_stage_val.py.md) | python | 387 lines | C2 stage body S4, VAL (R-0104-1; API.md §19.2, §19.3; C2-FROZEN-v2 §5.7, §6.6, §6.7, §7 rows |
+| [c2_stats.py](files/tools/c2_readout/c2_stats.py.md) | python | 395 lines | C2 statistics (the pre-allowlisted overflow module): GLS-REF, the 80-digit Decimal reference of |
 
 ## tools/chart_diag/
 

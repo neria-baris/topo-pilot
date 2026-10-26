@@ -55,6 +55,7 @@
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 32, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 30, import)
 - [tools/c1prime/c1_data.py](../c1prime/c1_data.py.md) (line 13, import)
+- [tools/c2_readout/c2_data.py](../c2_readout/c2_data.py.md) (line 25, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 14, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 25, import)
 - [tools/k4b/k4b_scores.py](../k4b/k4b_scores.py.md) (line 12, import)

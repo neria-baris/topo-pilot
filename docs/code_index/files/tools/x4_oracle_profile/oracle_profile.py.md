@@ -59,6 +59,7 @@
 - [tools/c1prime/c1_endpoint.py](../c1prime/c1_endpoint.py.md) (line 15, import)
 - [tools/c1prime/c1_oracle.py](../c1prime/c1_oracle.py.md) (line 16, import)
 - [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 14, import)
+- [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 34, import)
 - [tools/d2a/d2a_targets.py](../d2a/d2a_targets.py.md) (line 16, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 39, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 171, import)

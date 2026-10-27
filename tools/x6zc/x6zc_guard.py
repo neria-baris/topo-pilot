@@ -78,6 +78,21 @@ def dispatch_record(path=None) -> dict:
     if not p:
         raise RuntimeError("no dispatch record (--dispatch or X6ZC_DISPATCH)")
     return json.loads(Path(p).read_text("utf-8-sig"))
+def _k32():  # kernel32 with declared types: an untyped pseudo-handle -1 made calls fail (C-57)
+    import ctypes
+    import ctypes.wintypes as wt
+    k = ctypes.WinDLL("kernel32", use_last_error=True)
+    for fn, args, res in ((k.GetCurrentProcess, [], wt.HANDLE),
+                          (k.OpenProcess, [wt.DWORD, wt.BOOL, wt.DWORD], wt.HANDLE),
+                          (k.CloseHandle, [wt.HANDLE], wt.BOOL),
+                          (k.GetExitCodeProcess, [wt.HANDLE, ctypes.POINTER(wt.DWORD)], wt.BOOL),
+                          (k.IsProcessInJob, [wt.HANDLE, wt.HANDLE, ctypes.POINTER(wt.BOOL)],
+                           wt.BOOL),
+                          (k.CreateToolhelp32Snapshot, [wt.DWORD, wt.DWORD], wt.HANDLE),
+                          (k.Process32First, [wt.HANDLE, ctypes.c_void_p], wt.BOOL),
+                          (k.Process32Next, [wt.HANDLE, ctypes.c_void_p], wt.BOOL)):
+        fn.argtypes, fn.restype = args, res
+    return k
 def _pid_alive(pid) -> bool:
     if os.name != "nt":
         try:
@@ -86,7 +101,8 @@ def _pid_alive(pid) -> bool:
         except OSError:
             return False
     import ctypes
-    k32, code = ctypes.windll.kernel32, ctypes.c_ulong()
+    import ctypes.wintypes as wt
+    k32, code = _k32(), wt.DWORD()
     h = k32.OpenProcess(0x1000, False, int(pid))  # PROCESS_QUERY_LIMITED_INFORMATION
     if not h:
         return False
@@ -94,13 +110,20 @@ def _pid_alive(pid) -> bool:
         return bool(k32.GetExitCodeProcess(h, ctypes.byref(code))) and code.value == 259
     finally:
         k32.CloseHandle(h)
-def _in_job() -> bool:
+def in_job(pid=None) -> bool:  # this process (pid None) or `pid` is inside some job object
     if os.name != "nt":
         return False
     import ctypes
-    k32, res = ctypes.windll.kernel32, ctypes.c_int(0)
-    return bool(k32.IsProcessInJob(k32.GetCurrentProcess(), None, ctypes.byref(res))) and bool(
-        res.value)
+    import ctypes.wintypes as wt
+    k32, res = _k32(), wt.BOOL(0)
+    h = k32.GetCurrentProcess() if pid is None else k32.OpenProcess(0x1000, False, int(pid))
+    if not h:
+        return False
+    try:
+        return bool(k32.IsProcessInJob(h, None, ctypes.byref(res))) and bool(res.value)
+    finally:
+        if pid is not None:
+            k32.CloseHandle(h)
 def _parents() -> dict:  # pid -> parent pid of every process (Windows toolhelp snapshot)
     import ctypes
     import ctypes.wintypes as wt
@@ -110,8 +133,7 @@ def _parents() -> dict:  # pid -> parent pid of every process (Windows toolhelp 
                     ("heap", ctypes.c_size_t), ("module", wt.DWORD), ("threads", wt.DWORD),
                     ("ppid", wt.DWORD), ("prio", ctypes.c_long), ("flags", wt.DWORD),
                     ("exe", ctypes.c_char * 260)]
-    k32, e, out = ctypes.windll.kernel32, PE(), {}
-    k32.CreateToolhelp32Snapshot.restype = wt.HANDLE
+    k32, e, out = _k32(), PE(), {}
     snap, e.dwSize = k32.CreateToolhelp32Snapshot(2, 0), ctypes.sizeof(PE)  # TH32CS_SNAPPROCESS
     try:
         ok = k32.Process32First(snap, ctypes.byref(e))
@@ -121,16 +143,26 @@ def _parents() -> dict:  # pid -> parent pid of every process (Windows toolhelp 
     finally:
         k32.CloseHandle(snap)
     return out
-def is_ancestor(pid) -> bool:  # N-4: `pid` lies on this process's parent chain
+def chain_below(pid) -> list | None:  # this process up to the child of `pid`, None if no ancestor
     if os.name != "nt":
-        return False
-    par, cur, seen = _parents(), os.getpid(), set()
+        return None
+    par, cur, seen = _parents(), os.getpid(), []
     while cur in par and cur not in seen and cur:
-        seen.add(cur)
+        seen.append(cur)
+        if par[cur] == int(pid):
+            return seen
         cur = par[cur]
-        if cur == int(pid):
-            return True
-    return False
+    return None
+def is_ancestor(pid) -> bool:  # N-4: `pid` lies on this process's parent chain
+    return chain_below(pid) is not None
+def under_meter_job(pid) -> bool:
+    """C-57: the meter (job-0014, sha-pinned) starts its command suspended, assigns it to its job
+    and resumes it, so every descendant inherits that job (the venv launcher nests its own job
+    inside it, without breakaway). From inside, the meter's job cannot be named: the check is
+    that the meter is an ancestor and every process from this one up to the meter's child is
+    inside a job object."""
+    ch = chain_below(pid)
+    return bool(ch) and all(in_job(None if p == os.getpid() else p) for p in ch)
 def meter_live(store) -> list:  # METER_ACTIVE.lock names a live meter, the ledger's open entry
     a = json.loads((Path(store) / "METER_ACTIVE.lock").read_text("utf-8"))
     led = json.loads((Path(store) / "cpu_ledger.json").read_text("utf-8"))
@@ -140,7 +172,8 @@ def meter_live(store) -> list:  # METER_ACTIVE.lock names a live meter, the ledg
          and _pid_alive(a["pid"])),
         ("cpu_ledger.json: the last entry is not this meter's STARTED entry",
          last.get("status") == "STARTED" and last.get("meter_pid") == a.get("pid")),
-        ("this process is not inside the meter's job object", _in_job()),
+        ("this process is not inside the meter's job object (C-57)", isinstance(
+            a.get("pid"), int) and under_meter_job(a["pid"])),
         ("the meter pid is not an ancestor of this process (N-4)", isinstance(a.get("pid"), int)
          and is_ancestor(a["pid"]))) if not ok]
 def identity_problems(store, fz, disp, job=None) -> list:

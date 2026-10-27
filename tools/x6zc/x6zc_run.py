@@ -32,6 +32,7 @@ from x6zc_dry import (Planted, sd_parse, _jitter, _pool, _ev, dry, se_qstar)  # 
 # isort: off
 from x6zc_guard import (MAILBOX, DISPATCH_KEYS, PREDECESSOR, MARKER, technical,  # noqa: E402, F401
     restartable, _attempts, _dirs, _record, refusal, dispatch_record, meter_live,  # noqa: E402, F401
+    in_job, chain_below, is_ancestor, under_meter_job,  # noqa: E402, F401
     identity_problems, freeze_problems, auth_problems, stage_cpu, _begin, _finish,  # noqa: E402, F401
     run_guarded, stats_marker, budget, write_invalid, write_global)  # noqa: E402, F401
 # isort: on

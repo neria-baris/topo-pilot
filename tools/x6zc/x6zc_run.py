@@ -36,7 +36,7 @@ from x6zc_guard import (MAILBOX, DISPATCH_KEYS, PREDECESSOR, MARKER, technical, 
     run_guarded, stats_marker, budget, write_invalid)  # noqa: E402, F401
 # isort: on
 # isort: off
-from x6zc_stage_a import (RUN, _x6, _payload, _checked, _npz, _x6json, _latest,  # noqa: E402, F401
+from x6zc_stage_a import (RUN, _x6, _payload, _checked, _npz, _x6json, _admitting,  # noqa: E402, F401
     _prov, a1_provenance, a1_check, _A2_ROW, a2_check, stage_a, _stage_a, _cache,  # noqa: E402, F401
     _spec, _predictor, _Memo, _children, chunk)  # noqa: E402, F401
 # isort: on

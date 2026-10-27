@@ -55,8 +55,12 @@ def _npz(data) -> dict:
 def _x6json(rel) -> tuple:  # (object, sha256) of a stage-1 JSON record (never a payload)
     b = _x6(rel).read_bytes()
     return json.loads(b), _sha(b)
-def _latest(lines, gate) -> dict:
-    return next((r for r in reversed(lines) if r.get("gate") == gate), {})
+def _admitting(lines, gate, m) -> tuple:  # (the INGEST entry that admitted m, later ones ok) N-3
+    es = [r.get("values", {}).get("models", {}).get(m) for r in lines if r.get("gate") == gate]
+    es = [e for e in es if isinstance(e, dict)]
+    i = next((i for i, e in enumerate(es) if e.get("admitted") is True and e.get("gates")
+              and not e.get("earlier")), None)
+    return ({}, False) if i is None else (es[i], all(e.get("earlier") is True for e in es[i + 1:]))
 def _prov(m, rep, gl, pools, echo) -> dict:  # A1 item 3 of one focal model (F-3)
     R, ad, s = X["records"], X["admitted"][m], int(m.split("-s")[1])
     wave = ad["bundle_id"].split("-")[0]  # C1 or C2
@@ -64,7 +68,7 @@ def _prov(m, rep, gl, pools, echo) -> dict:  # A1 item 3 of one focal model (F-3
         "stages/E1/loss_echo.json" if wave == "C1" else "stages/E2/loss_echo.json")
     lock, (man, msh) = _x6json(ad["lock"])[0], _x6json(f"{d}/MANIFEST.json")
     smf = _x6json(f"{d}/STORE_MANIFEST.json")[0]
-    ing = _latest(gl, f"INGEST-{wave}").get("values", {}).get("models", {}).get(m, {})
+    ing, later_ok = _admitting(gl, f"INGEST-{wave}", m)
     gst = {g.get("gate"): g.get("status") for g in ing.get("gates", []) if g.get("model") == m}
     e = next((y for y in man.get("models", []) if y.get("model") == m), {})
     (le, lsh), ch = echo[el], e.get("chain") or [{}]
@@ -72,7 +76,7 @@ def _prov(m, rep, gl, pools, echo) -> dict:  # A1 item 3 of one focal model (F-3
     chk = {
         "lock": all(lock.get(k) == ad[k] for k in ("final_file_sha256", "final_weights_sha256",
                                                     "bundle_id")),
-        "gates": ing.get("status") == "DONE" and ing.get("admitted") is True and all(
+        "gates": ing.get("status") == "DONE" and ing.get("admitted") is True and later_ok and all(
             gst.get(g) == "PASS" for g in X["gates_required_pass"]),  # absent gate = FAIL
         "loss_echo": lsh == R[el]["sha256"] and isinstance(x, (int, float))
         and math.isfinite(x) and float(x) <= float(X["loss_echo_max_abs_32"]),  # no vacuous pass

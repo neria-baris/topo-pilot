@@ -271,6 +271,11 @@ def per(ctx, fams, fn) -> dict:
     return lines([rec(*fn(j, f), model=j, family=f) for j, f in js_])
 
 
+def sg(b, side) -> int:
+    """The guarded sign of bound `side` ("L" or "U") of one nd_split.bounds entry (C2 sg)."""
+    return ndc.sign(b[side], b["g"])
+
+
 def frac(mask) -> Fraction:
     return Fraction(int(np.count_nonzero(mask)), len(mask))
 

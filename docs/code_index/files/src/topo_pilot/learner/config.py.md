@@ -48,6 +48,7 @@
 - [src/topo_pilot/learner/stage.py](stage.py.md) (line 22, import)
 - [src/topo_pilot/learner/trainer.py](trainer.py.md) (line 17, import)
 - [tests/c2_readout/test_a_readout.py](../../../tests/c2_readout/test_a_readout.py.md) (line 34, import)
+- [tools/hwsb/hwsb_config.py](../../../tools/hwsb/hwsb_config.py.md) (line 28, import)
 
 ## Top-level constants
 

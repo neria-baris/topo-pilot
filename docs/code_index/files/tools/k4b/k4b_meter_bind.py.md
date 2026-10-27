@@ -51,9 +51,11 @@
 ## Imported by
 
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 35, import)
+- [tests/hwsb/test_b_meter_law.py](../../tests/hwsb/test_b_meter_law.py.md) (line 27, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 27, import)
 - [tools/hws/hws_dry.py](../hws/hws_dry.py.md) (line 171, import)
 - [tools/hws/hws_meter_bind.py](../hws/hws_meter_bind.py.md) (line 15, import)
+- [tools/hwsb/hwsb_meter_bind.py](../hwsb/hwsb_meter_bind.py.md) (line 16, import)
 
 ## Top-level constants
 

@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 898 tracked files; 529 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 933 tracked files; 557 code files (linked to their pages).
 
 ## (repo root)
 
@@ -925,6 +925,26 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 | [test_b_records.py](files/tests/hws/test_b_records.py.md) | python | 353 lines | Author B (job 0119), TEST_PLAN §3 `test_b_records.py` and `test_b_meter.py` (merged: job |
 | [test_b_worlds.py](files/tests/hws/test_b_worlds.py.md) | python | 394 lines | Author B (job 0119), TEST_PLAN §3 `test_b_worlds.py`: grid, keys, X1 worlds, tiers, the |
 
+## tests/hwsb/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 52 lines | Authorship record: HWSB test author A (job 0161) |
+| `AUTHORSHIP_B.md` | markdown | 34 lines | Authorship record: independent test author B, job 0161 |
+| [test_a_capture.py](files/tests/hwsb/test_a_capture.py.md) | python | 288 lines | HWSB author A: B5 pilot capture at 80 % planned power (protocol §4 B5, refinement 1; DRB10). |
+| [test_a_enclosure_proof.py](files/tests/hwsb/test_a_enclosure_proof.py.md) | python | 339 lines | HWSB author A: the B8a enclosure proof steps (protocol §4 B8a with delta as in RC-1; KB4 at |
+| [test_a_endpoints.py](files/tests/hwsb/test_a_endpoints.py.md) | python | 257 lines | HWSB author A: B4-B6 inputs on planted moments and support (protocol §4 B4, B5, B6; DRB8). |
+| [test_a_ladder.py](files/tests/hwsb/test_a_ladder.py.md) | python | 293 lines | HWSB author A: the B6 pilot ladder (protocol §4 B6, refinement 2; DRB9). |
+| [test_a_learning.py](files/tests/hwsb/test_a_learning.py.md) | python | 360 lines | HWSB author A: B1, B2, B3 on planted predictives (protocol §4 B1-B3; DRB5). |
+| [test_a_outcomes.py](files/tests/hwsb/test_a_outcomes.py.md) | python | 360 lines | HWSB author A: outcomes, licences, HANDOFF blindness and B7 (protocol §5.1, §5.2, §6.1, RC-6; |
+| [test_b_e4path.py](files/tests/hwsb/test_b_e4path.py.md) | python | 267 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_e4path.py`: recipe check (DRB3), the |
+| [test_b_hold.py](files/tests/hwsb/test_b_hold.py.md) | python | 192 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_hold.py`: the hold rule (section 8.2, RC-14, |
+| [test_b_meter_law.py](files/tests/hwsb/test_b_meter_law.py.md) | python | 352 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_meter_law.py`: the meter binding and placement |
+| [test_b_process.py](files/tests/hwsb/test_b_process.py.md) | python | 194 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_process.py`: `build_process` on a |
+| [test_b_records.py](files/tests/hwsb/test_b_records.py.md) | python | 359 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_records.py`: pause check (section 8.2), study |
+| [test_b_registry.py](files/tests/hwsb/test_b_registry.py.md) | python | 237 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_registry.py`: B9a(i)/(ii) (history inventory |
+| [test_b_streams.py](files/tests/hwsb/test_b_streams.py.md) | python | 399 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_streams.py`: streams and sequence IDs |
+
 ## tests/integration/
 
 | File | Kind | Size | Purpose |
@@ -1200,6 +1220,31 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 | [hws_select.py](files/tools/hws/hws_select.py.md) | python | 304 lines | HWS selection rule: criteria, classes, ranking, finalists, X1/S2, outcomes, licences, budget |
 | [hws_stats.py](files/tools/hws/hws_stats.py.md) | python | 112 lines | HWS statistics: means, SEs, bounds, z constants, bootstrap, E5, nulls (API.md §2). |
 | [hws_worlds.py](files/tools/hws/hws_worlds.py.md) | python | 335 lines | HWS worlds: constants, grid, keys, tiers, builders, alias map, symmetry, E1-E3 (API.md §1). |
+
+## tools/hwsb/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 376 lines | tools/hwsb: written contract (job 0161; derived from HWSB-DESIGN-v1) |
+| `CONTRACT.json` | json | 989 lines |  |
+| `ENCLOSURE_PROOF.md` | markdown | 50 lines | The rounded softmax enclosure of `hwsb_law` (B8a; RC-1, OPEN-3) |
+| `PROTOCOL_HWSB_v1.md` | markdown | 442 lines | HWSB-v2: the world-sweep stage B, a short training pilot in w\* = W12-q1-s1.75-p0.2 |
+| `TEST_PLAN.md` | markdown | 67 lines | HWSB test plan v1 (job 0161) |
+| [hwsb_config.py](files/tools/hwsb/hwsb_config.py.md) | python | 190 lines | HWSB configuration: CONTRACT.json, constants, plans (API.md §1; protocol §2, §4, §8). |
+| [hwsb_data.py](files/tools/hwsb/hwsb_data.py.md) | python | 352 lines | HWSB data: process build, streams, IDs, sampling, blocks, H2-B, registry reader (API.md §2). |
+| [hwsb_driver.py](files/tools/hwsb/hwsb_driver.py.md) | python | 328 lines | HWSB driver: preflight, the KB/TRAIN/EVAL stages, pauses, the study ledger, inventories, |
+| [hwsb_dry.py](files/tools/hwsb/hwsb_dry.py.md) | python | 385 lines | HWSB synthetic dry run DRB1-DRB16 and DRB13b (API.md §9; TEST_PLAN §4; protocol §7). |
+| [hwsb_dry2.py](files/tools/hwsb/hwsb_dry2.py.md) | python | 334 lines | HWSB dry-run cases DRB8-DRB16 and DRB13b (API.md §9; TEST_PLAN §4); split from hwsb_dry |
+| [hwsb_eval.py](files/tools/hwsb/hwsb_eval.py.md) | python | 173 lines | HWSB evaluation: logits, B1-B3, activations, oracle moments, X+- and support (API.md §4). |
+| [hwsb_gates.py](files/tools/hwsb/hwsb_gates.py.md) | python | 382 lines | HWSB gates: B4 orchestration, the pilot ladder (B6), capture (B5), B7, B9a, the outcome |
+| [hwsb_kb.py](files/tools/hwsb/hwsb_kb.py.md) | python | 158 lines | HWSB known cases KB5-KB7 (API.md §7; protocol §3). Split out of hwsb_known by size; |
+| [hwsb_known.py](files/tools/hwsb/hwsb_known.py.md) | python | 347 lines | HWSB G0 and the known cases KB0-KB7 (API.md §7; protocol §3). |
+| [hwsb_law.py](files/tools/hwsb/hwsb_law.py.md) | python | 169 lines | HWSB law enclosure for non-terminating logits (API.md §5; protocol §4 B8a, RC-1, OPEN-3). |
+| [hwsb_meter_bind.py](files/tools/hwsb/hwsb_meter_bind.py.md) | python | 121 lines | HWSB meter binding (API.md §10; protocol §6.4 rule 1, §9.1, RC-5). |
+| [hwsb_records.py](files/tools/hwsb/hwsb_records.py.md) | python | 160 lines | HWSB records: the study ledger, project-root inventories, and FREEZE.json (API.md §8, |
+| [hwsb_registry.py](files/tools/hwsb/hwsb_registry.py.md) | python | 180 lines | HWSB H2-B separation and the fail-closed registry reader (API.md §2.4, §2.5; protocol §2.3, |
+| [hwsb_stages.py](files/tools/hwsb/hwsb_stages.py.md) | python | 351 lines | HWSB stage cores: one model's training and the EVAL gate sequence (API.md §8; protocol §4, |
+| [hwsb_train.py](files/tools/hwsb/hwsb_train.py.md) | python | 325 lines | HWSB training: Trainer.fit with a LearnerStage-mirroring callback, threads, the hold rule |
 
 ## tools/k4b/
 

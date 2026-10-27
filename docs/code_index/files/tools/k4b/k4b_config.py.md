@@ -46,6 +46,7 @@
 
 ## Imported by
 
+- [tests/hwsb/test_a_ladder.py](../../tests/hwsb/test_a_ladder.py.md) (line 32, import)
 - [tests/k4b/test_a_decision.py](../../tests/k4b/test_a_decision.py.md) (line 32, import)
 - [tests/k4b/test_a_lemma_n.py](../../tests/k4b/test_a_lemma_n.py.md) (line 29, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 27, import)
@@ -56,6 +57,8 @@
 - [tests/k4b/test_b_registry.py](../../tests/k4b/test_b_registry.py.md) (line 30, import)
 - [tests/k4b/test_b_registry_fixes.py](../../tests/k4b/test_b_registry_fixes.py.md) (line 29, import)
 - [tests/k4b/test_b_registry_rules.py](../../tests/k4b/test_b_registry_rules.py.md) (line 33, import)
+- [tools/hwsb/hwsb_gates.py](../hwsb/hwsb_gates.py.md) (line 15, import)
+- [tools/hwsb/hwsb_stages.py](../hwsb/hwsb_stages.py.md) (line 23, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 16, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 19, import)
 - [tools/k4b/k4b_charts.py](k4b_charts.py.md) (line 15, import)

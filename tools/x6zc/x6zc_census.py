@@ -70,21 +70,24 @@ def audit_pairs(D_arrays, family, n_prefixes=zc.N_D) -> dict:
             "counterexample": cex}
 
 # ---- A4 exposure check ----
-def exposure_matches(hist, t, pool_tokens) -> np.ndarray:
-    ts, out = _ts(t, len(hist)), np.zeros(len(hist), bool)
+def exposure_matches(hist, t, pool_tokens, sets=None) -> np.ndarray:
+    """`sets`: an optional dict caching one row-prefix set per (pool, t) across calls (F-17)."""
+    ts, out, sets = _ts(t, len(hist)), np.zeros(len(hist), bool), {} if sets is None else sets
     for L in np.unique(ts):
-        rows = {bytes(r[:L]) for r in np.asarray(pool_tokens, np.uint8)}
-        idx = np.flatnonzero(ts == L)
+        key = (id(pool_tokens), int(L))
+        if key not in sets:
+            sets[key] = {bytes(r[:L]) for r in np.asarray(pool_tokens, np.uint8)}
+        rows, idx = sets[key], np.flatnonzero(ts == L)
         out[idx] = [bytes(np.asarray(hist[i, :L], np.uint8)) in rows for i in idx]
     return out
 def exposure_report(variant_arrays_by_family, pools) -> dict:
-    out = {"matches": {}, "pair_mask": {}, "total": 0}
+    out, sets = {"matches": {}, "pair_mask": {}, "total": 0}, {}  # sets: built once per (pool, t)
     for F, A in variant_arrays_by_family.items():
         out["matches"][F], out["pair_mask"][F] = {}, {}
         for v in zc.VARIANT_ORDER:
             hit = {m: np.zeros(len(A[f"{v}_{m}"]), bool) for m in "ab"}
             for m, pool in ((m, p) for m in "ab" for p in pools.values()):
-                hit[m] |= exposure_matches(A[f"{v}_{m}"], A[f"{v}_t"], pool)
+                hit[m] |= exposure_matches(A[f"{v}_{m}"], A[f"{v}_t"], pool, sets)
             out["matches"][F][v] = {m: int(h.sum()) for m, h in hit.items()}
             out["pair_mask"][F][v] = hit["a"] | hit["b"]
             out["total"] += int(hit["a"].sum() + hit["b"].sum())

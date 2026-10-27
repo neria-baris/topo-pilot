@@ -117,10 +117,11 @@ def _hit(v, master) -> bool:
         return any(_hit(x, master) for x in v)
     return isinstance(v, (int, np.integer)) and not isinstance(v, bool) and int(v) == master
 def master_fresh(project_root=zc.PROJECT_ROOT, master=zc.X6ZC_MASTER) -> dict:
-    hits = []
+    hits, x6 = [], _norm(zc.X6S1_STORE)
     for root in sorted(p for p in Path(project_root).glob("*store*") if p.is_dir()):
+        never = ("registry", "superseded") if _norm(root) == x6 else ()  # F-16: CONTRACT never_read
         for d, dirs, files in os.walk(root):
-            dirs[:] = [x for x in dirs if x not in ("sealed", ".git", ".venv")]
+            dirs[:] = [x for x in dirs if x not in ("sealed", ".git", ".venv") + never]
             try:
                 m = json.loads((Path(d) / "meta.json").read_text("utf-8")) if (
                     "meta.json" in files) else {}

@@ -139,8 +139,8 @@ def stage_a(store=zc.STORE) -> int:
     D = _npz(_payload(store, "A", X["designed"]["path"], X["designed"]["file_sha256"], "A-audit"))
     au = {F: zs.audit_pairs(D, F) for F in sp.PAIR_FAMILIES}
     dsh = sp.designed_sha256(D) == X["designed"]["designed_sha256"]
-    G["A_audit"] = {"status": "PASS" if dsh and au["W2"]["status"] == au["W1"]["status"] == "PASS"
-                    else "DEFECT_CANDIDATE", "families": au, "designed_sha256_equal": dsh}
+    G["A_audit"] = {"status": "PASS" if dsh and all(r["status"] == "PASS" for r in au.values())
+                    else "DEFECT_CANDIDATE", "families": au, "designed_sha256_equal": dsh}  # F-9
     pp = X["prefix_pool"]
     log_exposure(store, "A", pp["dir"], pp["token_sha256"], "A3")
     pool = pre.load_obs(zc.X6S1_STORE, "prefix").tokens
@@ -152,12 +152,13 @@ def stage_a(store=zc.STORE) -> int:
           **{f"fresh_{F}": zc.oracle_geometry(VA[F], F) for F in FAM}}
     G["K0"] = {"status": "PASS" if all(r["status"] == "PASS" for r in k0.values()) else "FAIL",
                "results": k0, "controls": zc.oracle_geometry(D, "W2", ("C1", "C2", "C3", "C4"))}
+    a3 = {"first_1024_equal": fr["first_1024_equal"], "d_equal": fr["d_equal"],
+          "d_rebuilt_equal": sp.designed_sha256(sp.designed_arrays(Ds)) == X["designed"][
+              "designed_sha256"]}
+    G["A3"] = {"status": "PASS" if all(a3.values()) else "DEFECT_CANDIDATE", **a3}  # F-9
     V.update(fresh=fresh, n_avail=fr["n_avail"], r_star=fr["r_star"],
              d_coincident=fr["d_coincident"], n_d_coincident=fr["n_d_coincident"],
-             not_enough_data=fr["not_enough_data"], first_1024_equal=fr["first_1024_equal"],
-             d_equal=fr["d_equal"], coupling=zc.coupling_table(),
-             d_rebuilt_equal=sp.designed_sha256(sp.designed_arrays(Ds)) == X["designed"][
-                 "designed_sha256"])
+             not_enough_data=fr["not_enough_data"], coupling=zc.coupling_table(), **a3)
     if G["K0"]["status"] == "FAIL":
         return _finish(store, ctx, "STOP_REPLAN")  # G-R0 before any model
     cache = zc.QStarCache.build([D, *VA.values()])
@@ -165,7 +166,8 @@ def stage_a(store=zc.STORE) -> int:
     k1p = [zc.oracle("ZC", "qstar"), zc.oracle("AB", "qstar"), zc.SyntheticPredictor(
         "set_constant"), zc.SyntheticPredictor("matched_key"), zc.oracle("NA", "q_8")] + [
         zc.oracle("NA", k) for k in ("q_empty", "q_parity", "q_counts", "q_H1", "q_Parikh")]
-    k1 = {f"{p.name}|{F}|{src}|{key}": zc.k1_check(zc.pair_arrays(p, A, key, cache))["status"]
+    k1 = {f"{getattr(p, 'arm', 'synthetic')}:{p.name}|{F}|{src}|{key}": zc.k1_check(  # F-11
+        zc.pair_arrays(p, A, key, cache))["status"]
           for p in k1p for F in FAM if not (p.name == "q_8" and F == "W1")
           for src, A, keys in (("D", D, (F,)), ("fresh", VA[F], VO)) for key in keys}
     G["K1"] = {"status": "PASS" if set(k1.values()) == {"PASS"} else "FAIL", "results": k1}

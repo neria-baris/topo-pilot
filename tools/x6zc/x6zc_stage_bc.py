@@ -146,7 +146,7 @@ def _ev_base(store) -> dict:
     def st(k): return g.get(k, {}).get("status", "NOT_RUN")
     k1 = st("K1") == "PASS" and all(x["status"] == "PASS" for x in g.get("K1_sym", {}).values())
     return {"k0": st("K0"), "incomplete": False, "rulings": rulings(store),
-            "checks": {k: st(k) for k in ("A1", "A2", "A_audit", "K2", "K4", "K5")},
+            "checks": {k: st(k) for k in ("A1", "A2", "A_audit", "A3", "K2", "K4", "K5")},
             "k1": "PASS" if k1 else "FAIL", "a2_k5_pass": st("A2") == st("K5") == "PASS",
             "n_avail": A["values"]["n_avail"], "b9": B["values"]["b9"], "f1": g["F1"]}
 def stage_c(store=zc.STORE) -> int:

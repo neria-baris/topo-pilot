@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_pipeline.py](../../../../../tools/x6zc/x6zc_pipeline.py)
 - Kind: python
-- Lines: 122
+- Lines: 124
 
 ## Module docstring
 
@@ -45,9 +45,10 @@
 ## Imported by
 
 - [tools/x6zc/x6zc_dry.py](x6zc_dry.py.md) (line 22, import)
+- [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 266, import)
 - [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 25, import)
-- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 25, import)
-- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 19, import)
+- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 27, import)
+- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 20, import)
 
 ## Top-level constants
 
@@ -58,10 +59,10 @@
 ## Classes and functions
 
 - **function `predict_variants`** [L20-23]: `def predict_variants(pred, arrays_by_family) -> dict`
-- **function `stage_c_statistics`** [L24-61]: `def stage_c_statistics(outputs, arrays_by_family, qstar_fn, gen, drop_pairs=None, drop_clusters=None) -> dict`
-- **function `_f4`** [L62-62]: `def _f4(x) -> str`
-- **function `licence_values`** [L63-86]: `def licence_values(cell, stats, dc, ev) -> dict`
-- **function `decide_report`** [L87-96]: `def decide_report(stats, ev_base, census=None) -> dict`
-- **function `_outcome_ok`** [L105-107]: `def _outcome_ok(o) -> bool`
-- **function `validate_report`** [L108-122]: `def validate_report(report) -> list`
+- **function `stage_c_statistics`** [L24-63]: `def stage_c_statistics(outputs, arrays_by_family, qstar_fn, gen, drop_pairs=None, drop_clusters=None) -> dict`
+- **function `_f4`** [L64-64]: `def _f4(x) -> str`
+- **function `licence_values`** [L65-88]: `def licence_values(cell, stats, dc, ev) -> dict`
+- **function `decide_report`** [L89-98]: `def decide_report(stats, ev_base, census=None) -> dict`
+- **function `_outcome_ok`** [L107-109]: `def _outcome_ok(o) -> bool`
+- **function `validate_report`** [L110-124]: `def validate_report(report) -> list`
 

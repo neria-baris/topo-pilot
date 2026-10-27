@@ -40,7 +40,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `src/topo_pilot/__init__.py`
 - -> none
-- <- src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_verify.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/inputs.py
+- <- src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_main.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_verify.py, tools/x4_circle_history/live_context.py, tools/x4_oracle_profile/inputs.py, tools/x6zc/x6zc_guard.py
 ### `src/topo_pilot/activations/__init__.py`
 - -> src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py
 - <- src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/s7_dev.py, src/topo_pilot/experiment/x4f_data.py, tests/activations/test_activations.py
@@ -1333,7 +1333,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_b_targets.py, tools/d2a/d2a_decide.py, tools/d2a/d2a_eval.py
 ### `tools/d2a/d2a_train.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/multihorizon.py, tools/d2a/d2a_world.py, tools/d2a/process_tree.py, tools/x4_oracle_profile/controls.py
-- <- tests/d2a/test_b_resource.py, tests/d2a/test_process_tree_repair.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/d2a/d2a_decide.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_world.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_run.py
+- <- tests/d2a/test_b_resource.py, tests/d2a/test_process_tree_repair.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/d2a/d2a_decide.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_world.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_stage_a.py
 ### `tools/d2a/d2a_world.py`
 - -> src/topo_pilot/analysis/__init__.py, src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/dataset/__init__.py, tools/d1_seam/d1_seam.py, tools/d2a/d2a_train.py
 - <- tests/d2a/test_a_pad.py, tests/d2a/test_a_targets.py, tests/d2a/test_a_templates.py, tests/d2a/test_a_world.py, tools/d2a/d2a_decide.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_targets.py, tools/d2a/d2a_train.py
@@ -1528,7 +1528,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_rules.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6zc/x6zc_stage_a.py
 ### `tools/x6_stage1/x6s1_eval.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/stage.py, tools/d2a/d2a_train.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_stats.py
-- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
+- <- tests/x6_stage1/test_a_designed.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_a_numerics.py, tests/x6_stage1/test_a_pairs.py, tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6_stage1/x6s1_ingest.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/trainer.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py
 - <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py
@@ -1540,7 +1540,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/c2_readout/test_b_registry.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/c2_readout/c2_registry.py, tools/x6_stage1/x6s1_stage_pre.py
 ### `tools/x6_stage1/x6s1_run.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/__init__.py, tools/d2a/d2a_train.py, tools/d2a/process_tree.py, tools/x4_oracle_profile/winjob.py, tools/x6_stage0/x6_store.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py
-- <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
+- <- tests/x6_stage1/test_b_chain_ops.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_nb_s0_ops.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/x6_stage1/x6s1_stage_post.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
 ### `tools/x6_stage1/x6s1_stage_post.py`
 - -> tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6_stage1/x6s1_stats.py
 - <- none
@@ -1558,28 +1558,31 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_decide.py
 ### `tools/x6zc/x6zc_core.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/x6_stage0/x6_exact.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_const.py, tools/x6zc/x6zc_decide.py
-- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
+- <- tests/x6zc/test_x6zc_core.py, tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
 ### `tools/x6zc/x6zc_decide.py`
 - -> tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_const.py
 - <- tools/x6zc/x6zc_core.py
 ### `tools/x6zc/x6zc_dry.py`
 - -> src/topo_pilot/learner/__init__.py, tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_stats.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
 - <- tools/x6zc/x6zc_run.py
+### `tools/x6zc/x6zc_guard.py`
+- -> src/topo_pilot/__init__.py, tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
+- <- tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6zc/x6zc_pipeline.py`
 - -> tools/x6_stage1/x6s1_eval.py, tools/x6zc/x6zc_core.py
-- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
+- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6zc/x6zc_run.py`
-- -> tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
+- -> tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py, tools/x6zc/x6zc_store.py
 - <- tests/x6zc/test_x6zc_decide.py, tests/x6zc/test_x6zc_dryrun.py
 ### `tools/x6zc/x6zc_stage_a.py`
-- -> tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
+- -> tools/d2a/d2a_train.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_decide.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6_stage1/x6s1_run.py, tools/x6_stage1/x6s1_stage_pre.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_store.py
 - <- tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_bc.py
 ### `tools/x6zc/x6zc_stage_bc.py`
-- -> tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
+- -> tools/x6_stage0/x6_model.py, tools/x6_stage1/x6s1_eval.py, tools/x6_stage1/x6s1_pairs.py, tools/x6zc/x6zc_census.py, tools/x6zc/x6zc_core.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_pipeline.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_store.py
 - <- tools/x6zc/x6zc_run.py
 ### `tools/x6zc/x6zc_store.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_core.py
-- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
+- <- tools/x6zc/x6zc_dry.py, tools/x6zc/x6zc_guard.py, tools/x6zc/x6zc_run.py, tools/x6zc/x6zc_stage_a.py, tools/x6zc/x6zc_stage_bc.py
 
 ## (c) Dependency trees per entry-point group
 
@@ -7525,8 +7528,17 @@ tests/x6zc/test_x6zc_decide.py
                         tools/x6_stage1/x6s1_data.py (see above)
                         tools/x6_stage1/x6s1_eval.py (see above)
                 tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_guard.py
+            src/topo_pilot/__init__.py
+            tools/d2a/d2a_train.py (see above)
+            tools/x6_stage1/x6s1_eval.py (see above)
+            tools/x6_stage1/x6s1_run.py (see above)
+            tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_pipeline.py (see above)
+            tools/x6zc/x6zc_store.py (see above)
         tools/x6zc/x6zc_pipeline.py (see above)
         tools/x6zc/x6zc_stage_a.py
+            tools/d2a/d2a_train.py (see above)
             tools/x6_stage1/x6s1_data.py (see above)
             tools/x6_stage1/x6s1_decide.py
                 tools/x6_stage1/x6s1_data.py (see above)
@@ -7604,6 +7616,7 @@ tests/x6zc/test_x6zc_decide.py
                 tools/x6_stage1/x6s1_stats.py (see above)
             tools/x6zc/x6zc_census.py (see above)
             tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_guard.py (see above)
             tools/x6zc/x6zc_pipeline.py (see above)
             tools/x6zc/x6zc_store.py (see above)
         tools/x6zc/x6zc_stage_bc.py
@@ -7612,6 +7625,7 @@ tests/x6zc/test_x6zc_decide.py
             tools/x6_stage1/x6s1_pairs.py (see above)
             tools/x6zc/x6zc_census.py (see above)
             tools/x6zc/x6zc_core.py (see above)
+            tools/x6zc/x6zc_guard.py (see above)
             tools/x6zc/x6zc_pipeline.py (see above)
             tools/x6zc/x6zc_stage_a.py (see above)
             tools/x6zc/x6zc_store.py (see above)
@@ -10642,12 +10656,22 @@ tools/x6zc/x6zc_dry.py
                 tools/x6_stage1/x6s1_data.py (see above)
                 tools/x6_stage1/x6s1_eval.py (see above)
         tools/x6zc/x6zc_core.py (see above)
+tools/x6zc/x6zc_guard.py
+    src/topo_pilot/__init__.py
+    tools/d2a/d2a_train.py (see above)
+    tools/x6_stage1/x6s1_eval.py (see above)
+    tools/x6_stage1/x6s1_run.py (see above)
+    tools/x6zc/x6zc_core.py (see above)
+    tools/x6zc/x6zc_pipeline.py (see above)
+    tools/x6zc/x6zc_store.py (see above)
 tools/x6zc/x6zc_pipeline.py (see above)
 tools/x6zc/x6zc_run.py
     tools/x6zc/x6zc_core.py (see above)
     tools/x6zc/x6zc_dry.py (see above)
+    tools/x6zc/x6zc_guard.py (see above)
     tools/x6zc/x6zc_pipeline.py (see above)
     tools/x6zc/x6zc_stage_a.py
+        tools/d2a/d2a_train.py (see above)
         tools/x6_stage1/x6s1_data.py (see above)
         tools/x6_stage1/x6s1_decide.py
             tools/x6_stage1/x6s1_data.py (see above)
@@ -10725,6 +10749,7 @@ tools/x6zc/x6zc_run.py
             tools/x6_stage1/x6s1_stats.py (see above)
         tools/x6zc/x6zc_census.py (see above)
         tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_guard.py (see above)
         tools/x6zc/x6zc_pipeline.py (see above)
         tools/x6zc/x6zc_store.py (see above)
     tools/x6zc/x6zc_stage_bc.py
@@ -10733,6 +10758,7 @@ tools/x6zc/x6zc_run.py
         tools/x6_stage1/x6s1_pairs.py (see above)
         tools/x6zc/x6zc_census.py (see above)
         tools/x6zc/x6zc_core.py (see above)
+        tools/x6zc/x6zc_guard.py (see above)
         tools/x6zc/x6zc_pipeline.py (see above)
         tools/x6zc/x6zc_stage_a.py (see above)
         tools/x6zc/x6zc_store.py (see above)

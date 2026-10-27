@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_core.py](../../../../../tools/x6zc/x6zc_core.py)
 - Kind: python
-- Lines: 373
+- Lines: 375
 
 ## Module docstring
 
@@ -63,10 +63,11 @@
 - [tests/x6zc/test_x6zc_dryrun.py](../../tests/x6zc/test_x6zc_dryrun.py.md) (line 18, import)
 - [tools/x6zc/x6zc_census.py](x6zc_census.py.md) (line 12, import)
 - [tools/x6zc/x6zc_dry.py](x6zc_dry.py.md) (line 13, import)
+- [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 18, import)
 - [tools/x6zc/x6zc_pipeline.py](x6zc_pipeline.py.md) (line 10, import)
 - [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 14, import)
-- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 16, import)
-- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 10, import)
+- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 18, import)
+- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 11, import)
 - [tools/x6zc/x6zc_store.py](x6zc_store.py.md) (line 18, import)
 
 ## Top-level constants
@@ -91,33 +92,33 @@
 - **function `_cn`** [L115-115]: `def _cn(q) -> tuple`
 - **function `_dna`** [L116-116]: `def _dna(lam, y) -> list`
 - **function `_w1_stats`** [L117-120]: `def _w1_stats(h, p) -> tuple`
-- **function `_k0_pair`** [L121-150]: `def _k0_pair(ha, hb, family, v, lam)`
-- **function `oracle_geometry`** [L151-171]: `def oracle_geometry(arrays, family, keys=VARIANT_ORDER) -> dict`
-- **function `_cos`** [L172-175]: `def _cos(u, d) -> tuple`
-- **function `coupling_table`** [L176-189]: `def coupling_table() -> dict`
-- **class `QStarCache`** [L190-230] - q*_NA rows computed once per distinct (w_{1:t}, t); bitwise equal to se.qstar("NA").
-- **method `QStarCache.__init__`** [L192-192]: `def __init__(self, table)`
-- **method `QStarCache.key`** [L194-196]: `def key(row, t) -> str` decorators: @staticmethod
-- **method `QStarCache.build`** [L198-208]: `def build(cls, array_dicts) -> QStarCache` decorators: @classmethod
-- **method `QStarCache.__call__`** [L209-215]: `def __call__(self, tokens, t) -> tuple`
-- **method `QStarCache.save`** [L216-223]: `def save(self, path) -> str`
-- **method `QStarCache.load`** [L225-230]: `def load(cls, path, sha256) -> QStarCache` decorators: @classmethod
-- **function `member_of`** [L233-238]: `def member_of(history) -> str`
-- **function `_mix`** [L239-239]: `def _mix(*terms) -> tuple`
-- **class `SyntheticPredictor`** [L241-279]
-- **method `SyntheticPredictor.__init__`** [L242-244]: `def __init__(self, kind, **params)`
-- **method `SyntheticPredictor.exact`** [L245-274]: `def exact(self, history) -> tuple`
-- **method `SyntheticPredictor.__call__`** [L275-279]: `def __call__(self, tokens, t) -> np.ndarray`
-- **function `oracle`** [L280-280]: `def oracle(arm, kind) -> se.OraclePredictor`
-- **function `sym_arrays`** [L281-283]: `def sym_arrays(p_a, p_b) -> tuple`
-- **function `pair_arrays`** [L286-296]: `def pair_arrays(pred, arrays, key, qstar_fn) -> dict`
-- **function `pair_stats`** [L297-306]: `def pair_stats(terms) -> dict`
-- **function `k1_check`** [L307-312]: `def k1_check(terms) -> dict`
-- **function `k2_check`** [L315-324]: `def k2_check(terms_by_ref, family) -> dict`
-- **function `beta_exact_pi0`** [L325-332]: `def beta_exact_pi0(law_fn, family, variant, ys=(0, 1, 2)) -> Fraction`
-- **function `k2_exact_variants`** [L333-337]: `def k2_exact_variants(family) -> dict`
-- **function `k3_grid`** [L338-344]: `def k3_grid() -> list`
-- **function `k3_exact`** [L345-353]: `def k3_exact(family) -> dict`
-- **function `k3_float_check`** [L354-363]: `def k3_float_check(family, arrays, qstar_fn) -> dict`
-- **function `f1`** [L364-373]: `def f1(k3) -> dict`
+- **function `_k0_pair`** [L121-151]: `def _k0_pair(ha, hb, family, v, lam, out=None)`
+- **function `oracle_geometry`** [L152-173]: `def oracle_geometry(arrays, family, keys=VARIANT_ORDER) -> dict`
+- **function `_cos`** [L174-177]: `def _cos(u, d) -> tuple`
+- **function `coupling_table`** [L178-191]: `def coupling_table() -> dict`
+- **class `QStarCache`** [L192-232] - q*_NA rows computed once per distinct (w_{1:t}, t); bitwise equal to se.qstar("NA").
+- **method `QStarCache.__init__`** [L194-194]: `def __init__(self, table)`
+- **method `QStarCache.key`** [L196-198]: `def key(row, t) -> str` decorators: @staticmethod
+- **method `QStarCache.build`** [L200-210]: `def build(cls, array_dicts) -> QStarCache` decorators: @classmethod
+- **method `QStarCache.__call__`** [L211-217]: `def __call__(self, tokens, t) -> tuple`
+- **method `QStarCache.save`** [L218-225]: `def save(self, path) -> str`
+- **method `QStarCache.load`** [L227-232]: `def load(cls, path, sha256) -> QStarCache` decorators: @classmethod
+- **function `member_of`** [L235-240]: `def member_of(history) -> str`
+- **function `_mix`** [L241-241]: `def _mix(*terms) -> tuple`
+- **class `SyntheticPredictor`** [L243-281]
+- **method `SyntheticPredictor.__init__`** [L244-246]: `def __init__(self, kind, **params)`
+- **method `SyntheticPredictor.exact`** [L247-276]: `def exact(self, history) -> tuple`
+- **method `SyntheticPredictor.__call__`** [L277-281]: `def __call__(self, tokens, t) -> np.ndarray`
+- **function `oracle`** [L282-282]: `def oracle(arm, kind) -> se.OraclePredictor`
+- **function `sym_arrays`** [L283-285]: `def sym_arrays(p_a, p_b) -> tuple`
+- **function `pair_arrays`** [L288-298]: `def pair_arrays(pred, arrays, key, qstar_fn) -> dict`
+- **function `pair_stats`** [L299-308]: `def pair_stats(terms) -> dict`
+- **function `k1_check`** [L309-314]: `def k1_check(terms) -> dict`
+- **function `k2_check`** [L317-326]: `def k2_check(terms_by_ref, family) -> dict`
+- **function `beta_exact_pi0`** [L327-334]: `def beta_exact_pi0(law_fn, family, variant, ys=(0, 1, 2)) -> Fraction`
+- **function `k2_exact_variants`** [L335-339]: `def k2_exact_variants(family) -> dict`
+- **function `k3_grid`** [L340-346]: `def k3_grid() -> list`
+- **function `k3_exact`** [L347-355]: `def k3_exact(family) -> dict`
+- **function `k3_float_check`** [L356-365]: `def k3_float_check(family, arrays, qstar_fn) -> dict`
+- **function `f1`** [L366-375]: `def f1(k3) -> dict`
 

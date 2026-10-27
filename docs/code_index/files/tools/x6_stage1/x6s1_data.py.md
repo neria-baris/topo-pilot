@@ -79,8 +79,8 @@
 - [tools/x6zc/x6zc_const.py](../x6zc/x6zc_const.py.md) (line 18, import)
 - [tools/x6zc/x6zc_core.py](../x6zc/x6zc_core.py.md) (line 42, import)
 - [tools/x6zc/x6zc_dry.py](../x6zc/x6zc_dry.py.md) (line 81, import)
-- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 206, import)
-- [tools/x6zc/x6zc_store.py](../x6zc/x6zc_store.py.md) (line 131, import)
+- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 232, import)
+- [tools/x6zc/x6zc_store.py](../x6zc/x6zc_store.py.md) (line 134, import)
 
 ## Top-level constants
 

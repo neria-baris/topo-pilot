@@ -1,8 +1,8 @@
 # Function key
 
-7474 classes, functions and methods, alphabetical (case-insensitive).
+7500 classes, functions and methods, alphabetical (case-insensitive).
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
-| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `standardise` | 4612 |
-| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `standardise_nuisance` | `zt` | 2862 |
+| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `stage3_data` | 4615 |
+| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `stage3_main` | `zt` | 2885 |

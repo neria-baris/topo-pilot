@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_census.py](../../../../../tools/x6zc/x6zc_census.py)
 - Kind: python
-- Lines: 314
+- Lines: 317
 
 ## Module docstring
 
@@ -23,7 +23,7 @@
 ### External (third-party)
 
 - `numpy` (lines 15)
-- `torch` (lines 187)
+- `torch` (lines 190)
 
 ### Standard library
 
@@ -54,8 +54,8 @@
 - [tests/x6zc/test_x6zc_decide.py](../../tests/x6zc/test_x6zc_decide.py.md) (line 17, import)
 - [tests/x6zc/test_x6zc_dryrun.py](../../tests/x6zc/test_x6zc_dryrun.py.md) (line 19, import)
 - [tools/x6zc/x6zc_dry.py](x6zc_dry.py.md) (line 19, import)
-- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 22, import)
-- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 16, import)
+- [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 24, import)
+- [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 17, import)
 
 ## Top-level constants
 
@@ -70,34 +70,34 @@
 - **function `_ts`** [L26-26]: `def _ts(t, n) -> np.ndarray`
 - **function `_audit_row`** [L29-54]: `def _audit_row(ra, rb, t, y, family) -> str | None`
 - **function `audit_pairs`** [L55-70]: `def audit_pairs(D_arrays, family, n_prefixes=zc.N_D) -> dict`
-- **function `exposure_matches`** [L73-79]: `def exposure_matches(hist, t, pool_tokens) -> np.ndarray`
-- **function `exposure_report`** [L80-91]: `def exposure_report(variant_arrays_by_family, pools) -> dict`
-- **function `_rel`** [L94-98]: `def _rel(g, s) -> float`
-- **function `k4_compare`** [L99-109]: `def k4_compare(stored, got) -> dict`
-- **function `_fcn`** [L112-114]: `def _fcn(row) -> list`
-- **function `k5_independent`** [L115-140]: `def k5_independent(terms, beta_prod, tok_a=None, tok_b=None) -> dict` - (a) members rebuilt from content (§20 E-3); exact q*, exact cue normalisation and sums.
-- **function `k5_swap`** [L141-145]: `def k5_swap(terms) -> dict`
-- **function `_maxdiff`** [L146-146]: `def _maxdiff(a, b) -> float`
-- **function `k5_padding`** [L147-153]: `def k5_padding(pred, tok, t) -> dict`
-- **function `k5_batch`** [L154-158]: `def k5_batch(pred, tok, t) -> dict`
-- **function `k5_readout_index`** [L159-167]: `def k5_readout_index(pred, arrays, family) -> dict`
-- **function `k5_two_loads`** [L168-170]: `def k5_two_loads(pred1, pred2, tok, t) -> dict`
-- **function `k5_scalar_vector`** [L171-175]: `def k5_scalar_vector(pred, tok, t) -> dict`
-- **function `_rows`** [L176-179]: `def _rows(terms, idx) -> dict`
-- **function `k5_permutation`** [L180-185]: `def k5_permutation(terms, gen=None) -> dict`
-- **function `k5_bos`** [L186-195]: `def k5_bos(model, tok, t) -> dict`
-- **function `structural_subset`** [L196-200]: `def structural_subset(t, y) -> np.ndarray`
-- **function `_q`** [L204-204]: `def _q(x, lv=_LEVELS) -> list`
-- **function `_diffs`** [L205-207]: `def _diffs(terms) -> tuple`
-- **function `decompose`** [L208-226]: `def decompose(terms) -> dict`
-- **function `zc_profile`** [L227-238]: `def zc_profile(terms, tables, arm) -> dict`
-- **function `crosses`** [L239-241]: `def crosses(x, y, bar=0.1, band=1e-09) -> bool`
-- **function `_sens`** [L242-242]: `def _sens(b, alt) -> bool`
-- **function `d2_decompose`** [L243-256]: `def d2_decompose(terms) -> dict`
-- **function `_wbeta`** [L257-257]: `def _wbeta(num, den, w) -> float`
-- **function `weighting_summaries`** [L258-283]: `def weighting_summaries(terms, prefixes, named_mask) -> dict`
-- **function `similarity`** [L286-292]: `def similarity(dp) -> dict`
-- **function `control_families`** [L293-301]: `def control_families(stats_by_family) -> dict` - {"terms": {family: pair_arrays output}, "designed": designed_stats dict} -> B7 values.
-- **function `float32_replay`** [L302-304]: `def float32_replay(beta32, beta64) -> dict`
-- **function `descriptive_tier`** [L307-314]: `def descriptive_tier(model, family, k4_tier, k1_ok, k5_ok, max_pair_diff, flags, betas) -> dict`
+- **function `exposure_matches`** [L73-82]: `def exposure_matches(hist, t, pool_tokens, sets=None) -> np.ndarray` - `sets`: an optional dict caching one row-prefix set per (pool, t) across calls (F-17).
+- **function `exposure_report`** [L83-94]: `def exposure_report(variant_arrays_by_family, pools) -> dict`
+- **function `_rel`** [L97-101]: `def _rel(g, s) -> float`
+- **function `k4_compare`** [L102-112]: `def k4_compare(stored, got) -> dict`
+- **function `_fcn`** [L115-117]: `def _fcn(row) -> list`
+- **function `k5_independent`** [L118-143]: `def k5_independent(terms, beta_prod, tok_a=None, tok_b=None) -> dict` - (a) members rebuilt from content (§20 E-3); exact q*, exact cue normalisation and sums.
+- **function `k5_swap`** [L144-148]: `def k5_swap(terms) -> dict`
+- **function `_maxdiff`** [L149-149]: `def _maxdiff(a, b) -> float`
+- **function `k5_padding`** [L150-156]: `def k5_padding(pred, tok, t) -> dict`
+- **function `k5_batch`** [L157-161]: `def k5_batch(pred, tok, t) -> dict`
+- **function `k5_readout_index`** [L162-170]: `def k5_readout_index(pred, arrays, family) -> dict`
+- **function `k5_two_loads`** [L171-173]: `def k5_two_loads(pred1, pred2, tok, t) -> dict`
+- **function `k5_scalar_vector`** [L174-178]: `def k5_scalar_vector(pred, tok, t) -> dict`
+- **function `_rows`** [L179-182]: `def _rows(terms, idx) -> dict`
+- **function `k5_permutation`** [L183-188]: `def k5_permutation(terms, gen=None) -> dict`
+- **function `k5_bos`** [L189-198]: `def k5_bos(model, tok, t) -> dict`
+- **function `structural_subset`** [L199-203]: `def structural_subset(t, y) -> np.ndarray`
+- **function `_q`** [L207-207]: `def _q(x, lv=_LEVELS) -> list`
+- **function `_diffs`** [L208-210]: `def _diffs(terms) -> tuple`
+- **function `decompose`** [L211-229]: `def decompose(terms) -> dict`
+- **function `zc_profile`** [L230-241]: `def zc_profile(terms, tables, arm) -> dict`
+- **function `crosses`** [L242-244]: `def crosses(x, y, bar=0.1, band=1e-09) -> bool`
+- **function `_sens`** [L245-245]: `def _sens(b, alt) -> bool`
+- **function `d2_decompose`** [L246-259]: `def d2_decompose(terms) -> dict`
+- **function `_wbeta`** [L260-260]: `def _wbeta(num, den, w) -> float`
+- **function `weighting_summaries`** [L261-286]: `def weighting_summaries(terms, prefixes, named_mask) -> dict`
+- **function `similarity`** [L289-295]: `def similarity(dp) -> dict`
+- **function `control_families`** [L296-304]: `def control_families(stats_by_family) -> dict` - {"terms": {family: pair_arrays output}, "designed": designed_stats dict} -> B7 values.
+- **function `float32_replay`** [L305-307]: `def float32_replay(beta32, beta64) -> dict`
+- **function `descriptive_tier`** [L310-317]: `def descriptive_tier(model, family, k4_tier, k1_ok, k5_ok, max_pair_diff, flags, betas) -> dict`
 

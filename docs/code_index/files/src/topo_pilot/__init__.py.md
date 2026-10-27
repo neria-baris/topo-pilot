@@ -46,6 +46,7 @@
 - [src/topo_pilot/experiment/x5g1_verify.py](experiment/x5g1_verify.py.md) (line 219, dynamic)
 - [tools/x4_circle_history/live_context.py](../../tools/x4_circle_history/live_context.py.md) (line 38, import)
 - [tools/x4_oracle_profile/inputs.py](../../tools/x4_oracle_profile/inputs.py.md) (line 250, import)
+- [tools/x6zc/x6zc_guard.py](../../tools/x6zc/x6zc_guard.py.md) (line 146, import)
 
 ## Top-level constants
 

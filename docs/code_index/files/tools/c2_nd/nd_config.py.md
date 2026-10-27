@@ -57,6 +57,7 @@
 - [tests/c2_nd/test_b_lineage.py](../../tests/c2_nd/test_b_lineage.py.md) (line 17, import)
 - [tests/c2_nd/test_b_policy.py](../../tests/c2_nd/test_b_policy.py.md) (line 15, import)
 - [tests/c2_nd/test_b_registry.py](../../tests/c2_nd/test_b_registry.py.md) (line 20, import)
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 24, import)
 - [tools/c2_nd/nd_attrib.py](nd_attrib.py.md) (line 15, import)
 - [tools/c2_nd/nd_data.py](nd_data.py.md) (line 13, import)
 - [tools/c2_nd/nd_decide.py](nd_decide.py.md) (line 11, import)

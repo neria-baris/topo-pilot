@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 291,
-  "code files": 529,
+  "code files": 530,
   "dynamic imports, dynamic expression or unresolved": 8,
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 892,
-  "functions and methods (incl. tests)": 7455,
+  "files indexed": 893,
+  "functions and methods (incl. tests)": 7464,
   "import cycles (strongly connected components)": 7,
-  "import statements, external": 768,
+  "import statements, external": 770,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2222,
+  "import statements, internal resolved": 2235,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2185,
-  "internal edges (file to file, with kind and line)": 2256,
-  "python files": 528
+  "import statements, standard library": 2188,
+  "internal edges (file to file, with kind and line)": 2269,
+  "python files": 529
  },
  "cycles": [
   [
@@ -4747,6 +4747,84 @@
    "tools/k4b/k4b_registry.py",
    "import",
    26
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c1prime/c1_data.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   24
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_data.py",
+   "import",
+   30
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   31
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   32
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_dry.py",
+   "import",
+   33
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_split.py",
+   "import",
+   34
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   35
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_stage_post.py",
+   "import",
+   36
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_stage_pre.py",
+   "import",
+   37
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_nd/nd_stage_val.py",
+   "import",
+   38
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_readout/c2_data.py",
+   "import",
+   28
+  ],
+  [
+   "tests/c2_nd/test_impl_dry_hs.py",
+   "tools/c2_readout/c2_oracle.py",
+   "import",
+   29
   ],
   [
    "tests/c2_readout/test_a_gls.py",
@@ -16694,6 +16772,12 @@
    "purpose": "Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4).",
    "sha256": "0e73eff0f5c510bd62d88bbddbfbecfbbb53ba6e4bef31c13ccd9fa8cf5ebee0"
   },
+  "tests/c2_nd/test_impl_dry_hs.py": {
+   "kind": "python",
+   "lines": 161,
+   "purpose": "Implementer test, D-0158-1 (job 0159; API.md §20.11 ND-C59; protocol §10.1 criterion 2).",
+   "sha256": "55e11bdee53c7057597f9408c516f707b1330c69f62a06767ae6158de2d0089e"
+  },
   "tests/c2_readout/AUTHORSHIP_A.md": {
    "kind": "markdown",
    "lines": 141,
@@ -18046,9 +18130,9 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 542,
+   "lines": 557,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "eed6a3630fdbac80ee1d0e17dfaf309b38acb4be064ffd4fa427afe5987c5cb6"
+   "sha256": "844d006d67d4dae1ec8f4b7be9b133394c6236471439e90306246ae2eb67c6c8"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
@@ -18106,9 +18190,9 @@
   },
   "tools/c2_nd/nd_dry.py": {
    "kind": "python",
-   "lines": 330,
+   "lines": 336,
    "purpose": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised",
-   "sha256": "e3c962cb5a774e67f35ebe4666f77937a35b7b214158e9c4c8c2b11908780b14"
+   "sha256": "87a652352b688ecc4c401d6bf80443cbd98818787f4793a2f83c03699e084c92"
   },
   "tools/c2_nd/nd_registry.py": {
    "kind": "python",
@@ -76510,6 +76594,417 @@
      ],
      "expr": "str(REPO / 'tools' / 'c2_nd')",
      "line": 18
+    }
+   ]
+  },
+  "tests/c2_nd/test_impl_dry_hs.py": {
+   "constants": [
+    "R1_MARGIN",
+    "REPO"
+   ],
+   "doc": "Implementer test, D-0158-1 (job 0159; API.md §20.11 ND-C59; protocol §10.1 criterion 2).",
+   "doc1": "Implementer test, D-0158-1 (job 0159; API.md §20.11 ND-C59; protocol §10.1 criterion 2).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "c1_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_data.py"
+     ],
+     "top": "c1_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "c2_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_data.py"
+     ],
+     "top": "c2_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "c2_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_readout/c2_oracle.py"
+     ],
+     "top": "c2_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "nd_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_data.py"
+     ],
+     "top": "nd_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 33,
+     "module": "",
+     "names": [
+      "nd_dry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_dry.py"
+     ],
+     "top": "nd_dry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 34,
+     "module": "",
+     "names": [
+      "nd_split"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_split.py"
+     ],
+     "top": "nd_split"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 35,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 36,
+     "module": "",
+     "names": [
+      "nd_stage_post"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_post.py"
+     ],
+     "top": "nd_stage_post"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 37,
+     "module": "",
+     "names": [
+      "nd_stage_pre"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_pre.py"
+     ],
+     "top": "nd_stage_pre"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 38,
+     "module": "",
+     "names": [
+      "nd_stage_val"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_val.py"
+     ],
+     "top": "nd_stage_val"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 39,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 40,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096.",
+     "end": 51,
+     "kind": "function",
+     "name": "panels",
+     "qual": "panels",
+     "sig": "def panels(seq_ids, block)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "A policy opened at `gate` with every earlier gate done.",
+     "end": 58,
+     "kind": "function",
+     "name": "at",
+     "qual": "at",
+     "sig": "def at(ctx, gate)",
+     "start": 54
+    },
+    {
+     "decorators": [
+      "pytest.fixture(scope='module')"
+     ],
+     "doc": "",
+     "end": 104,
+     "kind": "function",
+     "name": "world",
+     "qual": "world",
+     "sig": "def world(tmp_path_factory)",
+     "start": 62
+    },
+    {
+     "decorators": [],
+     "doc": "Before rescaling, the head's code part carries a substantial share of the oracle",
+     "end": 112,
+     "kind": "test",
+     "name": "test_planted_code_carries_the_contrast",
+     "qual": "test_planted_code_carries_the_contrast",
+     "sig": "def test_planted_code_carries_the_contrast(world)",
+     "start": 107
+    },
+    {
+     "decorators": [],
+     "doc": "R1 PASS on N-R (R), D (R), N-M (M) and the report-only D refit RT, every model.",
+     "end": 122,
+     "kind": "test",
+     "name": "test_r1_history_sensitive_with_margin",
+     "qual": "test_r1_history_sensitive_with_margin",
+     "sig": "def test_r1_history_sensitive_with_margin(world)",
+     "start": 115
+    },
+    {
+     "decorators": [],
+     "doc": "No INCONCLUSIVE/NUMERICAL D-NULL-R row: (viii) holds for every decoy (D-0158-1).",
+     "end": 133,
+     "kind": "test",
+     "name": "test_m0d_every_decoy_passes",
+     "qual": "test_m0d_every_decoy_passes",
+     "sig": "def test_m0d_every_decoy_passes(world)",
+     "start": 125
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 138,
+     "kind": "test",
+     "name": "test_refits_pass",
+     "qual": "test_refits_pass",
+     "sig": "def test_refits_pass(world)",
+     "start": 136
+    },
+    {
+     "decorators": [],
+     "doc": "KC: D0 USED; D-ONLY USED and NECESSARY; D-DOSE PARTIAL and NOT_NECESSARY. KC-R:",
+     "end": 149,
+     "kind": "test",
+     "name": "test_known_cases_return_their_constructed_answers",
+     "qual": "test_known_cases_return_their_constructed_answers",
+     "sig": "def test_known_cases_return_their_constructed_answers(world)",
+     "start": 141
+    },
+    {
+     "decorators": [],
+     "doc": "The D stream at the TEST level (alpha 1/300; VAL draw count; Y1' as at S4): no model",
+     "end": 161,
+     "kind": "test",
+     "name": "test_dnull_not_used_at_test_level",
+     "qual": "test_dnull_not_used_at_test_level",
+     "sig": "def test_dnull_not_used_at_test_level(world)",
+     "start": 152
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 22
     }
    ]
   },
@@ -147859,7 +148354,8 @@
   },
   "tools/c2_nd/nd_dry.py": {
    "constants": [
-    "CFG"
+    "CFG",
+    "ROLES3"
    ],
    "doc": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised\nTransformerLMs with the trained architecture whose head reads a planted 6-d harmonic code of a\nsynthetic phase with share 0.85), the synthetic C2-prerequisite fixture (the c2/ stand-in of the\nC2 store: FIT projectors, decoders, N2 fit, frozen oracle constants, made by the C2 kernels on\nsynthetic activations of cylinder-O histories from a dry-only stream), the synthetic phase, the\nbroken decoys of pass criterion 3 (the J-built decoy fails; the Euclidean one is reported,\nE-C2ND-2) and the forbidden-access and planted-collision checks. Every function refuses with\nFAIL_TECHNICAL/AUTHORITY outside a dry-run store (G0 (x)); no trained weight, no C2 store file\nand no c2nd-v1 stream is touched.",
    "doc1": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised",
@@ -148290,142 +148786,142 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 48,
+     "end": 49,
      "kind": "function",
      "name": "guard",
      "qual": "guard",
      "sig": "def guard(ctx) -> None",
-     "start": 46
+     "start": 47
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 57,
+     "end": 58,
      "kind": "function",
      "name": "_model",
      "qual": "_model",
      "sig": "def _model(state=None, seed=0) -> TransformerLM",
-     "start": 52
+     "start": 53
     },
     {
      "decorators": [],
      "doc": "{j: (model64, sha256 of its c2/models file)}, the file re-hashed against c2/TABLE.json.",
-     "end": 67,
+     "end": 68,
      "kind": "function",
      "name": "planted_models",
      "qual": "planted_models",
      "sig": "def planted_models(ctx) -> dict",
-     "start": 60
+     "start": 61
     },
     {
      "decorators": [],
-     "doc": "phi = atan2 of resid_post_3 (centred) on the two leading within-symbol principal",
-     "end": 76,
+     "doc": "phi = atan2 of (resid_post_3 - mu) @ U.T, the belief chart of the stand-in fit (_chart);",
+     "end": 77,
      "kind": "function",
      "name": "synthetic_phase",
      "qual": "synthetic_phase",
      "sig": "def synthetic_phase(ctx, j, a3) -> tuple",
-     "start": 70
+     "start": 71
     },
     {
      "decorators": [],
-     "doc": "mu and the two leading principal directions of resid_post_3 minus its symbol means.",
-     "end": 85,
+     "doc": "The belief chart (D-0158-1, ND-C59): mu, the mean of resid_post_3, and U, the 2 x d_model",
+     "end": 91,
      "kind": "function",
      "name": "_chart",
      "qual": "_chart",
-     "sig": "def _chart(a3, w) -> dict",
-     "start": 79
+     "sig": "def _chart(acts, o, Ex) -> dict",
+     "start": 80
     },
     {
      "decorators": [],
      "doc": "One 4,096-row block of the dry-only stream (scope c2nd-dry-v1, split c2prereq).",
-     "end": 97,
+     "end": 103,
      "kind": "function",
      "name": "_sample",
      "qual": "_sample",
      "sig": "def _sample(P, b) -> tuple",
-     "start": 89
+     "start": 95
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 102,
+     "end": 108,
      "kind": "function",
      "name": "_write",
      "qual": "_write",
      "sig": "def _write(ctx, rel, arrays=None, obj=None) -> None",
-     "start": 100
+     "start": 106
     },
     {
      "decorators": [],
      "doc": "The head: least squares of the oracle's named log-predictive on y, split into the code",
-     "end": 120,
+     "end": 126,
      "kind": "function",
      "name": "_plant",
      "qual": "_plant",
      "sig": "def _plant(m64, y, d, dy, Ex, G, logq, P_S) -> dict",
-     "start": 105
+     "start": 111
     },
     {
      "decorators": [],
      "doc": "PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the",
-     "end": 222,
+     "end": 228,
      "kind": "function",
      "name": "prepare",
      "qual": "prepare",
      "sig": "def prepare(ctx) -> dict",
-     "start": 123
+     "start": 129
     },
     {
      "decorators": [],
      "doc": "Wrong g_D, another model's projector, transposed P_S and the J-built decoy must fail M0-D",
-     "end": 256,
+     "end": 262,
      "kind": "function",
      "name": "broken_decoys",
      "qual": "broken_decoys",
      "sig": "def broken_decoys(ctx, j, inputs, acts, z, d, dy) -> dict",
-     "start": 226
+     "start": 232
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 264,
+     "end": 270,
      "kind": "function",
      "name": "_refused",
      "qual": "_refused",
      "sig": "def _refused(fn) -> bool",
-     "start": 259
+     "start": 265
     },
     {
      "decorators": [],
      "doc": "§10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction",
-     "end": 306,
+     "end": 312,
      "kind": "function",
      "name": "checks",
      "qual": "checks",
      "sig": "def checks(ctx, j, inputs, acts, z) -> dict",
-     "start": 267
+     "start": 273
     },
     {
      "decorators": [],
      "doc": "A sealed/ read before the TEST outcome must be refused (§10.1 forbidden access).",
-     "end": 316,
+     "end": 322,
      "kind": "function",
      "name": "sealed_check",
      "qual": "sealed_check",
      "sig": "def sealed_check(ctx) -> dict",
-     "start": 309
+     "start": 315
     },
     {
      "decorators": [],
      "doc": "Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/",
-     "end": 330,
+     "end": 336,
      "kind": "function",
      "name": "registry_c2",
      "qual": "registry_c2",
      "sig": "def registry_c2(ctx) -> dict",
-     "start": 319
+     "start": 325
     }
    ],
    "syspath": []
@@ -193210,5 +193706,5 @@
    ]
   }
  },
- "sources_digest": "14db478529fa42df3a9004fef0afadc7a0f9c30d8e2f8a12c3f444322c01b9ef"
+ "sources_digest": "bfb5c7566c82e845a1285c1edc5b018305334eb6e970d21b6a2c8519fb764901"
 }

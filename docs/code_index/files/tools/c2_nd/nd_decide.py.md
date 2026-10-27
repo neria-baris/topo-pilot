@@ -54,6 +54,7 @@
 - [tests/c2_nd/test_a_known.py](../../tests/c2_nd/test_a_known.py.md) (line 27, import)
 - [tests/c2_nd/test_b_layer2.py](../../tests/c2_nd/test_b_layer2.py.md) (line 27, import)
 - [tests/c2_nd/test_b_policy.py](../../tests/c2_nd/test_b_policy.py.md) (line 19, import)
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 31, import)
 - [tools/c2_nd/nd_split.py](nd_split.py.md) (line 25, import)
 - [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 26, import)
 - [tools/c2_nd/nd_stage_post.py](nd_stage_post.py.md) (line 23, import)

@@ -49,6 +49,7 @@
 ## Imported by
 
 - [tests/c2_nd/test_b_lineage.py](../../tests/c2_nd/test_b_lineage.py.md) (line 21, import)
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 30, import)
 - [tools/c2_nd/nd_driver.py](nd_driver.py.md) (line 23, import)
 - [tools/c2_nd/nd_split.py](nd_split.py.md) (line 24, import)
 

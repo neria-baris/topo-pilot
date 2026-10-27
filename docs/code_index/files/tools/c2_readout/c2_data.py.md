@@ -55,6 +55,7 @@
 ## Imported by
 
 - [tests/c2_nd/test_b_registry.py](../../tests/c2_nd/test_b_registry.py.md) (line 24, import)
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 28, import)
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 35, import)
 - [tests/c2_readout/test_b_fwl_l1.py](../../tests/c2_readout/test_b_fwl_l1.py.md) (line 323, import)
 - [tests/c2_readout/test_b_lineage.py](../../tests/c2_readout/test_b_lineage.py.md) (line 24, import)

@@ -64,6 +64,7 @@
 - [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 28, import)
 - [tests/c2_nd/test_b_lineage.py](../../tests/c2_nd/test_b_lineage.py.md) (line 22, import)
 - [tests/c2_nd/test_b_policy.py](../../tests/c2_nd/test_b_policy.py.md) (line 20, import)
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 32, import)
 - [tools/c2_nd/nd_dry.py](nd_dry.py.md) (line 29, import)
 - [tools/c2_nd/nd_stage_post.py](nd_stage_post.py.md) (line 25, import)
 - [tools/c2_nd/nd_stage_pre.py](nd_stage_pre.py.md) (line 25, import)

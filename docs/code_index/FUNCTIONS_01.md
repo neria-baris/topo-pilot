@@ -306,7 +306,7 @@
 | `_cfix` | function | `_cfix` | [tests/c2_readout/test_a_partition.py:220](../../tests/c2_readout/test_a_partition.py#L220) | Centred-logit fixture: d = (e0 - e1)/2, M columns e0-e1, e2-e3, e4-e5, e6-e7 (p = 4). |
 | `_chain` | function | `_chain` | [tests/contracts/test_store.py:292](../../tests/contracts/test_store.py#L292) |  |
 | `_change_tokens` | function | `_change_tokens` | [tests/circle_history/test_adapter.py:331](../../tests/circle_history/test_adapter.py#L331) |  |
-| `_chart` | function | `_chart` | [tools/c2_nd/nd_dry.py:79](../../tools/c2_nd/nd_dry.py#L79) | mu and the two leading principal directions of resid_post_3 minus its symbol means. |
+| `_chart` | function | `_chart` | [tools/c2_nd/nd_dry.py:80](../../tools/c2_nd/nd_dry.py#L80) | The belief chart (D-0158-1, ND-C59): mu, the mean of resid_post_3, and U, the 2 x d_model |
 | `_chart_model` | function | `_chart_model` | [tools/x4_circle_history/runner.py:184](../../tools/x4_circle_history/runner.py#L184) |  |
 | `_chart_section` | function | `_chart_section` | [tools/k4b/k4b_release.py:69](../../tools/k4b/k4b_release.py#L69) |  |
 | `_check` | method | `SequenceLayout._check` | [src/topo_pilot/contracts/layout.py:43](../../src/topo_pilot/contracts/layout.py#L43) |  |
@@ -996,7 +996,7 @@
 | `_mm` | function | `_mm` | [tests/c2_readout/test_a_gls.py:42](../../tests/c2_readout/test_a_gls.py#L42) |  |
 | `_model` | function | `_model` | [tests/analysis/test_x4f_scores.py:273](../../tests/analysis/test_x4f_scores.py#L273) |  |
 | `_model` | function | `_model` | [tests/c2_readout/test_a_readout.py:50](../../tests/c2_readout/test_a_readout.py#L50) |  |
-| `_model` | function | `_model` | [tools/c2_nd/nd_dry.py:52](../../tools/c2_nd/nd_dry.py#L52) |  |
+| `_model` | function | `_model` | [tools/c2_nd/nd_dry.py:53](../../tools/c2_nd/nd_dry.py#L53) |  |
 | `_model` | function | `_model` | [tools/x6_stage0/x6_model.py:172](../../tools/x6_stage0/x6_model.py#L172) |  |
 | `_model64` | function | `_model64` | [tools/x6_stage1/x6s1_ingest.py:470](../../tools/x6_stage1/x6s1_ingest.py#L470) |  |
 | `_model_and_inputs` | function | `_model_and_inputs` | [tests/experiment/test_x5g1t_lineage_oracle.py:268](../../tests/experiment/test_x5g1t_lineage_oracle.py#L268) |  |
@@ -1177,7 +1177,7 @@
 | `_pipeline` | function | `_pipeline` | [tests/c2_readout/test_a_scope.py:125](../../tests/c2_readout/test_a_scope.py#L125) |  |
 | `_placebo` | function | `_placebo` | [tests/c2_readout/test_a_scope.py:209](../../tests/c2_readout/test_a_scope.py#L209) | The y pair (H, H^Y) of v2 2.2 on its E_y rows: dyY = y(H) - y(H^Y), d^Y, A^Y. |
 | `_plain` | function | `_plain` | [tools/k4b/k4b_fresh.py:160](../../tools/k4b/k4b_fresh.py#L160) | JSON-ready copy: Fraction -> str, numpy scalars -> Python; containers recursively. |
-| `_plant` | function | `_plant` | [tools/c2_nd/nd_dry.py:105](../../tools/c2_nd/nd_dry.py#L105) | The head: least squares of the oracle's named log-predictive on y, split into the code |
+| `_plant` | function | `_plant` | [tools/c2_nd/nd_dry.py:111](../../tools/c2_nd/nd_dry.py#L111) | The head: least squares of the oracle's named log-predictive on y, split into the code |
 | `_planted` | function | `_planted` | [tests/c2_readout/test_a_gls.py:105](../../tests/c2_readout/test_a_gls.py#L105) | An oblique projector in the metric V: every G1 identity except self-adjointness holds. |
 | `_planted` | function | `_planted` | [tests/experiment/test_s7.py:192](../../tests/experiment/test_s7.py#L192) |  |
 | `_planted_2d` | function | `_planted_2d` | [tests/analysis/test_x4f_erasure.py:157](../../tests/analysis/test_x4f_erasure.py#L157) |  |
@@ -1304,7 +1304,7 @@
 | `_reference_ladder` | function | `_reference_ladder` | [tests/c1prime/test_b_precision.py:56](../../tests/c1prime/test_b_precision.py#L56) |  |
 | `_reference_posterior` | function | `_reference_posterior` | [tools/x4_circle_history/error_bound.py:199](../../tools/x4_circle_history/error_bound.py#L199) | The nested reference context (its own localcontext) INHERITS these traps, so any |
 | `_refused` | function | `_refused` | [tests/c2_readout/test_b_policy.py:58](../../tests/c2_readout/test_b_policy.py#L58) |  |
-| `_refused` | function | `_refused` | [tools/c2_nd/nd_dry.py:259](../../tools/c2_nd/nd_dry.py#L259) |  |
+| `_refused` | function | `_refused` | [tools/c2_nd/nd_dry.py:265](../../tools/c2_nd/nd_dry.py#L265) |  |
 | `_Reg` | class | `_Reg` | [tests/c2_readout/test_b_registry.py:97](../../tests/c2_readout/test_b_registry.py#L97) | Registry stand-in for separation (sealed_ranges {pool: (lo, hi)}, API.md 19.1 E-20). |
 | `_regen` | function | `_regen` | [tools/x6_stage1/x6s1_stage_post.py:147](../../tools/x6_stage1/x6s1_stage_post.py#L147) |  |
 | `_regressors` | function | `_regressors` | [tests/c2_readout/test_a_scope.py:89](../../tests/c2_readout/test_a_scope.py#L89) |  |
@@ -1430,7 +1430,7 @@
 | `_same` | function | `_same` | [tools/x6_stage1/x6s1_data.py:314](../../tools/x6_stage1/x6s1_data.py#L314) |  |
 | `_same_array` | function | `_same_array` | [tests/contracts/test_store.py:30](../../tests/contracts/test_store.py#L30) |  |
 | `_sample` | function | `_sample` | [tests/d2a/test_a_targets.py:76](../../tests/d2a/test_a_targets.py#L76) |  |
-| `_sample` | function | `_sample` | [tools/c2_nd/nd_dry.py:89](../../tools/c2_nd/nd_dry.py#L89) | One 4,096-row block of the dry-only stream (scope c2nd-dry-v1, split c2prereq). |
+| `_sample` | function | `_sample` | [tools/c2_nd/nd_dry.py:95](../../tools/c2_nd/nd_dry.py#L95) | One 4,096-row block of the dry-only stream (scope c2nd-dry-v1, split c2prereq). |
 | `_sample_all` | method | `DatasetStage._sample_all` | [src/topo_pilot/dataset/stage.py:82](../../src/topo_pilot/dataset/stage.py#L82) |  |
 | `_sampler` | function | `_sampler` | [tools/x4_circle_history/process_law.py:128](../../tools/x4_circle_history/process_law.py#L128) |  |
 | `_save` | function | `_save` | [src/topo_pilot/experiment/report_e4_s7.py:241](../../src/topo_pilot/experiment/report_e4_s7.py#L241) |  |
@@ -1792,7 +1792,7 @@
 | `_write` | function | `_write` | [tests/experiment/test_x5g1t_config_checks.py:154](../../tests/experiment/test_x5g1t_config_checks.py#L154) |  |
 | `_write` | function | `_write` | [tests/experiment/test_x5g1t_config_production.py:157](../../tests/experiment/test_x5g1t_config_production.py#L157) |  |
 | `_write` | function | `_write` | [tests/experiment/test_x5g1t_config_synthetic.py:157](../../tests/experiment/test_x5g1t_config_synthetic.py#L157) |  |
-| `_write` | function | `_write` | [tools/c2_nd/nd_dry.py:100](../../tools/c2_nd/nd_dry.py#L100) |  |
+| `_write` | function | `_write` | [tools/c2_nd/nd_dry.py:106](../../tools/c2_nd/nd_dry.py#L106) |  |
 | `_write_json` | function | `_write_json` | [tests/experiment/test_x5g1t_integration.py:91](../../tests/experiment/test_x5g1t_integration.py#L91) |  |
 | `_write_manifest` | function | `_write_manifest` | [src/topo_pilot/executors/entry.py:66](../../src/topo_pilot/executors/entry.py#L66) |  |
 | `_write_new` | function | `_write_new` | [tools/x4_oracle_profile/controls.py:167](../../tools/x4_oracle_profile/controls.py#L167) |  |
@@ -1920,6 +1920,7 @@
 | `assert_round_trip` | function | `assert_round_trip` | [tests/circle_history/test_chart_arrays.py:67](../../tests/circle_history/test_chart_arrays.py#L67) |  |
 | `assert_same` | function | `assert_same` | [tests/circle_history/test_chart.py:355](../../tests/circle_history/test_chart.py#L355) |  |
 | `assert_same` | function | `assert_same` | [tests/contracts/test_store.py:37](../../tests/contracts/test_store.py#L37) |  |
+| `at` | function | `at` | [tests/c2_nd/test_impl_dry_hs.py:54](../../tests/c2_nd/test_impl_dry_hs.py#L54) | A policy opened at `gate` with every earlier gate done. |
 | `at` | function | `at` | [tests/k4b/test_b_endpoint.py:66](../../tests/k4b/test_b_endpoint.py#L66) |  |
 | `at_gate` | function | `at_gate` | [tests/c2_nd/test_b_decoy_model.py:75](../../tests/c2_nd/test_b_decoy_model.py#L75) |  |
 | `at_gate` | function | `at_gate` | [tests/c2_nd/test_b_policy.py:36](../../tests/c2_nd/test_b_policy.py#L36) |  |
@@ -2051,7 +2052,7 @@
 | `box` | function | `box` | [reports/he_summary/charts.py:65](../../reports/he_summary/charts.py#L65) |  |
 | `box` | function | `box` | [tests/experiment/test_x5g1t_usage_files.py:80](../../tests/experiment/test_x5g1t_usage_files.py#L80) |  |
 | `box` | function | `box` | [tests/oracle_profile/test_builder_controls.py:24](../../tests/oracle_profile/test_builder_controls.py#L24) |  |
-| `broken_decoys` | function | `broken_decoys` | [tools/c2_nd/nd_dry.py:226](../../tools/c2_nd/nd_dry.py#L226) | Wrong g_D, another model's projector, transposed P_S and the J-built decoy must fail M0-D |
+| `broken_decoys` | function | `broken_decoys` | [tools/c2_nd/nd_dry.py:232](../../tools/c2_nd/nd_dry.py#L232) | Wrong g_D, another model's projector, transposed P_S and the J-built decoy must fail M0-D |
 | `browser` | function | `browser` | [reports/he_summary/build.py:31](../../reports/he_summary/build.py#L31) |  |
 | `brute_layers` | function | `brute_layers` | [tests/x6_stage0/test_x6_stage0_dp.py:42](../../tests/x6_stage0/test_x6_stage0_dp.py#L42) |  |
 | `brute_marginal` | function | `brute_marginal` | [tests/oracle/test_oracle.py:28](../../tests/oracle/test_oracle.py#L28) | (evidence, posterior of last state) for a sequence. |
@@ -2254,7 +2255,7 @@
 | `checkpoint_callback` | function | `checkpoint_callback` | [tools/d2a/d2a_train.py:84](../../tools/d2a/d2a_train.py#L84) | x5g1t_train.checkpoint_callback with run_id and horizon added to the identity (§2.5). |
 | `checkpoint_meta` | function | `checkpoint_meta` | [tools/k4b/k4b_driver.py:145](../../tools/k4b/k4b_driver.py#L145) | API.md §14.1: reads only <root>/Checkpoint/<id>/meta.json. |
 | `checkpoint_order_null` | method | `Dynamics.checkpoint_order_null` | [src/topo_pilot/analysis/dynamics.py:47](../../src/topo_pilot/analysis/dynamics.py#L47) | Return ``{"statistic", "p_value"}``. |
-| `checks` | function | `checks` | [tools/c2_nd/nd_dry.py:267](../../tools/c2_nd/nd_dry.py#L267) | §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction |
+| `checks` | function | `checks` | [tools/c2_nd/nd_dry.py:273](../../tools/c2_nd/nd_dry.py#L273) | §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction |
 | `child_env` | function | `child_env` | [tools/k4b/k4b_meter_bind.py:95](../../tools/k4b/k4b_meter_bind.py#L95) |  |
 | `child_main` | function | `child_main` | [tools/d2a/d2a_train.py:263](../../tools/d2a/d2a_train.py#L263) | One training (CLI ``child RUN``): threads first, then train, saving every checkpoint. |
 | `child_of` | function | `child_of` | [src/topo_pilot/experiment/s2.py:66](../../src/topo_pilot/experiment/s2.py#L66) | The unique ``cls`` artifact with ``parent`` among its parents and matching config. |
@@ -3084,7 +3085,7 @@
 | `groups` | function | `groups` | [tools/code_index/render_deps.py:30](../../tools/code_index/render_deps.py#L30) | Entry-point groups: name -> root files. |
 | `guard` | method | `RunControls.guard` | [src/topo_pilot/experiment/x5g1_controls.py:64](../../src/topo_pilot/experiment/x5g1_controls.py#L64) |  |
 | `guard` | function | `guard` | [tests/k4b/test_b_registry_rules.py:330](../../tests/k4b/test_b_registry_rules.py#L330) | Record every opened path; refuse (raise) on any sealed D-2a pool array. |
-| `guard` | function | `guard` | [tools/c2_nd/nd_dry.py:46](../../tools/c2_nd/nd_dry.py#L46) |  |
+| `guard` | function | `guard` | [tools/c2_nd/nd_dry.py:47](../../tools/c2_nd/nd_dry.py#L47) |  |
 | `guard` | function | `guard` | [tools/c2_readout/c2_decide.py:49](../../tools/c2_readout/c2_decide.py#L49) |  |
 | `guard` | function | `guard` | [tools/x4_oracle_profile/runtime.py:30](../../tools/x4_oracle_profile/runtime.py#L30) | Safe-boundary runtime control check (HOLD waits here; STOP/INVALID raise). |
 | `guard_endpoint` | function | `guard_endpoint` | [tools/c1prime/c1_bounds.py:83](../../tools/c1prime/c1_bounds.py#L83) | (E): per model F = max(B, 1e-9); \|L\| <= F or \|U\| <= F -> INCONCLUSIVE/NUMERICAL. |
@@ -3909,6 +3910,7 @@
 | `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
 | `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |
 | `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
+| `panels` | function | `panels` | [tests/c2_nd/test_impl_dry_hs.py:46](../../tests/c2_nd/test_impl_dry_hs.py#L46) | c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096. |
 | `panels` | function | `panels` | [tools/c1prime/c1_data.py:41](../../tools/c1prime/c1_data.py#L41) |  |
 | `parents` | method | `S6Job.parents` | [src/topo_pilot/experiment/s6.py:100](../../src/topo_pilot/experiment/s6.py#L100) |  |
 | `parikh` | function | `parikh` | [tools/x6_stage0/x6_model.py:227](../../tools/x6_stage0/x6_model.py#L227) |  |
@@ -3994,7 +3996,7 @@
 | `plan` | method | `X4Stage.plan` | [src/topo_pilot/experiment/x4.py:345](../../src/topo_pilot/experiment/x4.py#L345) |  |
 | `planted` | function | `planted` | [tests/analysis/test_geometry.py:21](../../tests/analysis/test_geometry.py#L21) |  |
 | `planted` | function | `planted` | [tests/prediction/test_ridge.py:12](../../tests/prediction/test_ridge.py#L12) |  |
-| `planted_models` | function | `planted_models` | [tools/c2_nd/nd_dry.py:60](../../tools/c2_nd/nd_dry.py#L60) | {j: (model64, sha256 of its c2/models file)}, the file re-hashed against c2/TABLE.json. |
+| `planted_models` | function | `planted_models` | [tools/c2_nd/nd_dry.py:61](../../tools/c2_nd/nd_dry.py#L61) | {j: (model64, sha256 of its c2/models file)}, the file re-hashed against c2/TABLE.json. |
 | `plc` | function | `plc` | [tests/x6_stage1/test_a_rules.py:93](../../tests/x6_stage1/test_a_rules.py#L93) |  |
 | `poe` | function | `poe` | [tools/x6_stage0/x6_run.py:274](../../tools/x6_stage0/x6_run.py#L274) |  |
 | `point` | function | `point` | [tools/c2_nd/nd_split.py:352](../../tools/c2_nd/nd_split.py#L352) | Eligible-row point ratios of one model (DTEST; descriptive). |
@@ -4057,7 +4059,7 @@
 | `predictor` | function | `predictor` | [tests/x6_stage1/test_a_eval.py:58](../../tests/x6_stage1/test_a_eval.py#L58) |  |
 | `prefix_pool` | function | `prefix_pool` | [tests/x6_stage1/test_a_designed.py:52](../../tests/x6_stage1/test_a_designed.py#L52) |  |
 | `prefix_tokens` | function | `prefix_tokens` | [tools/x6_stage0/x6_exact.py:105](../../tools/x6_stage0/x6_exact.py#L105) |  |
-| `prepare` | function | `prepare` | [tools/c2_nd/nd_dry.py:123](../../tools/c2_nd/nd_dry.py#L123) | PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the |
+| `prepare` | function | `prepare` | [tools/c2_nd/nd_dry.py:129](../../tools/c2_nd/nd_dry.py#L129) | PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the |
 | `preserved` | function | `preserved` | [tests/k4b/test_b_meter.py:41](../../tests/k4b/test_b_meter.py#L41) | Record every module global bind() may rebind, so monkeypatch restores it afterwards. |
 | `primary_coords` | function | `primary_coords` | [tools/c1prime/c1_fit.py:89](../../tools/c1prime/c1_fit.py#L89) |  |
 | `primary_section` | function | `primary_section` | [src/topo_pilot/experiment/report_e4.py:85](../../src/topo_pilot/experiment/report_e4.py#L85) |  |
@@ -4303,7 +4305,7 @@
 | `registered` | function | `registered` | [tests/world/test_world.py:95](../../tests/world/test_world.py#L95) | Register in-test builders under unique names; always clean the registry afterwards. |
 | `registered_templates` | function | `registered_templates` | [tools/d2a/d2a_world.py:162](../../tools/d2a/d2a_world.py#L162) |  |
 | `Registry` | class | `Registry` | [tools/c2_readout/c2_registry.py:306](../../tools/c2_readout/c2_registry.py#L306) |  |
-| `registry_c2` | function | `registry_c2` | [tools/c2_nd/nd_dry.py:319](../../tools/c2_nd/nd_dry.py#L319) | Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/ |
+| `registry_c2` | function | `registry_c2` | [tools/c2_nd/nd_dry.py:325](../../tools/c2_nd/nd_dry.py#L325) | Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/ |
 | `registry_digests` | function | `registry_digests` | [tools/c1prime/c1_data.py:62](../../tools/c1prime/c1_data.py#L62) |  |
 | `RegistryError` | class | `RegistryError` | [tools/x6_stage1/x6s1_registry.py:42](../../tools/x6_stage1/x6s1_registry.py#L42) |  |
 | `RegistryLineage` | class | `RegistryLineage` | [tools/c2_readout/c2_registry.py:42](../../tools/c2_readout/c2_registry.py#L42) | A registry binding or re-hash mismatch; `.status` is FAIL_TECHNICAL/LINEAGE. |
@@ -4586,6 +4588,3 @@
 | `save_npz` | function | `save_npz` | [tools/x4_oracle_profile/runtime.py:64](../../tools/x4_oracle_profile/runtime.py#L64) |  |
 | `save_oracle` | function | `save_oracle` | [tools/c2_readout/c2_stage_base.py:346](../../tools/c2_readout/c2_stage_base.py#L346) |  |
 | `save_parents` | function | `save_parents` | [tests/experiment/test_x4.py:90](../../tests/experiment/test_x4.py#L90) |  |
-| `save_pool` | function | `save_pool` | [tools/x6_stage1/x6s1_data.py:240](../../tools/x6_stage1/x6s1_data.py#L240) |  |
-| `save_pools` | function | `save_pools` | [tools/d2a/d2a_world.py:191](../../tools/d2a/d2a_world.py#L191) | Sample and save all 21 pools (POOLS order) once; write pools.json (refuses if present). |
-| `save_tables` | function | `save_tables` | [tools/x6_stage1/x6s1_pairs.py:57](../../tools/x6_stage1/x6s1_pairs.py#L57) |  |

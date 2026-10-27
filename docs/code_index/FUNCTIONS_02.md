@@ -2,6 +2,9 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `save_pool` | function | `save_pool` | [tools/x6_stage1/x6s1_data.py:240](../../tools/x6_stage1/x6s1_data.py#L240) |  |
+| `save_pools` | function | `save_pools` | [tools/d2a/d2a_world.py:191](../../tools/d2a/d2a_world.py#L191) | Sample and save all 21 pools (POOLS order) once; write pools.json (refuses if present). |
+| `save_tables` | function | `save_tables` | [tools/x6_stage1/x6s1_pairs.py:57](../../tools/x6_stage1/x6s1_pairs.py#L57) |  |
 | `save_tool_gate` | function | `save_tool_gate` | [src/topo_pilot/experiment/stages.py:75](../../src/topo_pilot/experiment/stages.py#L75) | Save a GateReport whose checks embed tool output (test counts, file counts). |
 | `saved` | function | `saved` | [tests/experiment/test_x5g1_safety.py:60](../../tests/experiment/test_x5g1_safety.py#L60) | A store with two lawfully saved TransitionSpecs and their full expected hashes. |
 | `scale_of` | function | `scale_of` | [src/topo_pilot/topology/distance.py:40](../../src/topo_pilot/topology/distance.py#L40) | 95th percentile (linear interpolation) of the positive upper-triangle distances. |
@@ -28,7 +31,7 @@
 | `seal` | function | `seal` | [tools/c2_readout/c2_driver.py:149](../../tools/c2_readout/c2_driver.py#L149) |  |
 | `seal` | function | `seal` | [tools/x6_stage1/x6s1_run.py:260](../../tools/x6_stage1/x6s1_run.py#L260) |  |
 | `sealed` | function | `sealed` | [tests/k4b/test_b_registry_rules.py:322](../../tests/k4b/test_b_registry_rules.py#L322) |  |
-| `sealed_check` | function | `sealed_check` | [tools/c2_nd/nd_dry.py:309](../../tools/c2_nd/nd_dry.py#L309) | A sealed/ read before the TEST outcome must be refused (§10.1 forbidden access). |
+| `sealed_check` | function | `sealed_check` | [tools/c2_nd/nd_dry.py:315](../../tools/c2_nd/nd_dry.py#L315) | A sealed/ read before the TEST outcome must be refused (§10.1 forbidden access). |
 | `sealed_d2a_predicate` | function | `sealed_d2a_predicate` | [tools/k4b/k4b_data.py:178](../../tools/k4b/k4b_data.py#L178) | True where all 32 symbols lie in {0,...,4} (the sealed D-2a alphabet, §3.4 e). |
 | `sealed_store` | function | `sealed_store` | [tests/c2_nd/test_b_policy.py:277](../../tests/c2_nd/test_b_policy.py#L277) |  |
 | `seam_labels` | function | `seam_labels` | [tools/x6_stage0/x6_model.py:103](../../tools/x6_stage0/x6_model.py#L103) |  |
@@ -340,7 +343,7 @@
 | `sync_ledger_caps` | function | `sync_ledger_caps` | [tools/x4_circle_history/meter_bind.py:146](../../tools/x4_circle_history/meter_bind.py#L146) | Apply the recorded CONTRACT allocation and CPU policy to the ledger metadata (entries |
 | `synth_state` | function | `synth_state` | [tests/x6_stage1/test_a_eval.py:50](../../tests/x6_stage1/test_a_eval.py#L50) |  |
 | `synthetic_chart` | function | `synthetic_chart` | [tests/c1prime/test_a_chart_val.py:41](../../tests/c1prime/test_a_chart_val.py#L41) |  |
-| `synthetic_phase` | function | `synthetic_phase` | [tools/c2_nd/nd_dry.py:70](../../tools/c2_nd/nd_dry.py#L70) | phi = atan2 of resid_post_3 (centred) on the two leading within-symbol principal |
+| `synthetic_phase` | function | `synthetic_phase` | [tools/c2_nd/nd_dry.py:71](../../tools/c2_nd/nd_dry.py#L71) | phi = atan2 of (resid_post_3 - mu) @ U.T, the belief chart of the stand-in fit (_chart); |
 | `synthetic_process` | function | `synthetic_process` | [tests/k4b/test_b_data.py:38](../../tests/k4b/test_b_data.py#L38) |  |
 | `synthetic_process` | function | `synthetic_process` | [tools/x4_circle_history/cost_probe.py:28](../../tools/x4_circle_history/cost_probe.py#L28) |  |
 | `SyntheticShapes` | class | `SyntheticShapes` | [src/topo_pilot/topology/shapes.py:55](../../src/topo_pilot/topology/shapes.py#L55) | Samples of shapes with known Betti numbers, embedded in ``R^ambient``. |
@@ -943,6 +946,7 @@
 | `test_disk_safe_stop_reason` | test | `test_disk_safe_stop_reason` | [tests/circle_history/test_builder_v24_runtime.py:80](../../tests/circle_history/test_builder_v24_runtime.py#L80) |  |
 | `test_disk_safe_stop_thresholds` | test | `test_disk_safe_stop_thresholds` | [tests/c1prime/test_a_release_meter.py:225](../../tests/c1prime/test_a_release_meter.py#L225) |  |
 | `test_displacements_known_answer` | test | `test_displacements_known_answer` | [tests/analysis/test_x4f_erasure.py:149](../../tests/analysis/test_x4f_erasure.py#L149) |  |
+| `test_dnull_not_used_at_test_level` | test | `test_dnull_not_used_at_test_level` | [tests/c2_nd/test_impl_dry_hs.py:152](../../tests/c2_nd/test_impl_dry_hs.py#L152) | The D stream at the TEST level (alpha 1/300; VAL draw count; Y1' as at S4): no model |
 | `test_documented_transition_degrees_wrap_and_identities` | test | `test_documented_transition_degrees_wrap_and_identities` | [tests/circle_history/test_process_law.py:173](../../tests/circle_history/test_process_law.py#L173) |  |
 | `test_donly_and_ddose_identities` | test | `test_donly_and_ddose_identities` | [tests/c2_nd/test_b_decoy_model.py:151](../../tests/c2_nd/test_b_decoy_model.py#L151) |  |
 | `test_donors_shift_w1_to_w31_and_keep_w32` | test | `test_donors_shift_w1_to_w31_and_keep_w32` | [tests/c1prime/test_a_oracle.py:112](../../tests/c1prime/test_a_oracle.py#L112) |  |
@@ -1427,6 +1431,7 @@
 | `test_km3_layernorm_scale_loophole` | test | `test_km3_layernorm_scale_loophole` | [tests/c2_nd/test_b_layer2.py:145](../../tests/c2_nd/test_b_layer2.py#L145) | The head reads only S and the code is the same in both donors; the complement changes |
 | `test_km4_mlp_gate_interaction` | test | `test_km4_mlp_gate_interaction` | [tests/c2_nd/test_b_layer2.py:164](../../tests/c2_nd/test_b_layer2.py#L164) |  |
 | `test_kneser_ney_hand_value_and_rows_normalised` | test | `test_kneser_ney_hand_value_and_rows_normalised` | [tests/prediction/test_ngram.py:59](../../tests/prediction/test_ngram.py#L59) |  |
+| `test_known_cases_return_their_constructed_answers` | test | `test_known_cases_return_their_constructed_answers` | [tests/c2_nd/test_impl_dry_hs.py:141](../../tests/c2_nd/test_impl_dry_hs.py#L141) | KC: D0 USED; D-ONLY USED and NECESSARY; D-DOSE PARTIAL and NOT_NECESSARY. KC-R: |
 | `test_kreg2_reader_equals_k4b_load` | test | `test_kreg2_reader_equals_k4b_load` | [tests/x6_stage1/test_b_seed_pool_reg.py:353](../../tests/x6_stage1/test_b_seed_pool_reg.py#L353) |  |
 | `test_kreg2_reader_refuses_mismatch` | test | `test_kreg2_reader_refuses_mismatch` | [tests/x6_stage1/test_b_seed_pool_reg.py:377](../../tests/x6_stage1/test_b_seed_pool_reg.py#L377) |  |
 | `test_L01_causality_every_position` | test | `test_L01_causality_every_position` | [tests/learner/test_model.py:30](../../tests/learner/test_model.py#L30) |  |
@@ -1541,6 +1546,7 @@
 | `test_lowest_rows_are_the_512_lowest_ids_ascending` | test | `test_lowest_rows_are_the_512_lowest_ids_ascending` | [tests/k4b/test_b_data.py:179](../../tests/k4b/test_b_data.py#L179) |  |
 | `test_lowest_selects_the_n_lowest_ids_in_ascending_id_order` | test | `test_lowest_selects_the_n_lowest_ids_in_ascending_id_order` | [tests/c1prime/test_b_registry.py:100](../../tests/c1prime/test_b_registry.py#L100) |  |
 | `test_lr_schedule_known_values` | test | `test_lr_schedule_known_values` | [tests/learner/test_training.py:114](../../tests/learner/test_training.py#L114) |  |
+| `test_m0d_every_decoy_passes` | test | `test_m0d_every_decoy_passes` | [tests/c2_nd/test_impl_dry_hs.py:125](../../tests/c2_nd/test_impl_dry_hs.py#L125) | No INCONCLUSIVE/NUMERICAL D-NULL-R row: (viii) holds for every decoy (D-0158-1). |
 | `test_m0d_fails_on_misbuilt_head_decoys` | test | `test_m0d_fails_on_misbuilt_head_decoys` | [tests/c2_nd/test_b_decoy_model.py:266](../../tests/c2_nd/test_b_decoy_model.py#L266) |  |
 | `test_m0d_passes_on_correct_decoys` | test | `test_m0d_passes_on_correct_decoys` | [tests/c2_nd/test_b_decoy_model.py:257](../../tests/c2_nd/test_b_decoy_model.py#L257) |  |
 | `test_m0d_refused_outside_its_gates` | test | `test_m0d_refused_outside_its_gates` | [tests/c2_nd/test_b_decoy_model.py:274](../../tests/c2_nd/test_b_decoy_model.py#L274) |  |
@@ -1935,6 +1941,7 @@
 | `test_pipeline_null_needs_all_four_checks` | test | `test_pipeline_null_needs_all_four_checks` | [tests/d2a/test_b_rules_flags.py:282](../../tests/d2a/test_b_rules_flags.py#L282) |  |
 | `test_pipeline_null_passes_at_boundary` | test | `test_pipeline_null_passes_at_boundary` | [tests/d2a/test_b_rules_flags.py:270](../../tests/d2a/test_b_rules_flags.py#L270) |  |
 | `test_plain_support_exclude_unresolved` | test | `test_plain_support_exclude_unresolved` | [tests/k4b/test_a_decision.py:141](../../tests/k4b/test_a_decision.py#L141) |  |
+| `test_planted_code_carries_the_contrast` | test | `test_planted_code_carries_the_contrast` | [tests/c2_nd/test_impl_dry_hs.py:107](../../tests/c2_nd/test_impl_dry_hs.py#L107) | Before rescaling, the head's code part carries a substantial share of the oracle |
 | `test_planted_collision_with_a_c2_test_table` | test | `test_planted_collision_with_a_c2_test_table` | [tests/c2_nd/test_b_registry.py:137](../../tests/c2_nd/test_b_registry.py#L137) |  |
 | `test_planted_y_direction_inside_col_B_fails_y1` | test | `test_planted_y_direction_inside_col_B_fails_y1` | [tests/c2_readout/test_a_scope.py:225](../../tests/c2_readout/test_a_scope.py#L225) |  |
 | `test_poll_bounds_inclusive_upper` | test | `test_poll_bounds_inclusive_upper` | [tests/experiment/test_x5g1t_runtime.py:348](../../tests/experiment/test_x5g1t_runtime.py#L348) |  |
@@ -2063,6 +2070,7 @@
 | `test_R09_shuffled_labels_give_near_zero_r2` | test | `test_R09_shuffled_labels_give_near_zero_r2` | [tests/prediction/test_ridge.py:29](../../tests/prediction/test_ridge.py#L29) |  |
 | `test_R10_probe_fit_touching_test_raises_leakage` | test | `test_R10_probe_fit_touching_test_raises_leakage` | [tests/prediction/test_ridge.py:45](../../tests/prediction/test_ridge.py#L45) |  |
 | `test_r1_failure_routes_to_cnhs` | test | `test_r1_failure_routes_to_cnhs` | [tests/c2_readout/test_b_screens.py:129](../../tests/c2_readout/test_b_screens.py#L129) |  |
+| `test_r1_history_sensitive_with_margin` | test | `test_r1_history_sensitive_with_margin` | [tests/c2_nd/test_impl_dry_hs.py:115](../../tests/c2_nd/test_impl_dry_hs.py#L115) | R1 PASS on N-R (R), D (R), N-M (M) and the report-only D refit RT, every model. |
 | `test_r1_median_ties_use_inverted_cdf` | test | `test_r1_median_ties_use_inverted_cdf` | [tests/c2_readout/test_b_screens.py:83](../../tests/c2_readout/test_b_screens.py#L83) |  |
 | `test_r1_sign_zero_is_disagreement_and_three_quarters_passes` | test | `test_r1_sign_zero_is_disagreement_and_three_quarters_passes` | [tests/c2_readout/test_b_screens.py:73](../../tests/c2_readout/test_b_screens.py#L73) |  |
 | `test_r1_without_overrides_reproduces_c1_gates_v1_bitwise` | test | `test_r1_without_overrides_reproduces_c1_gates_v1_bitwise` | [tests/c2_readout/test_b_screens.py:48](../../tests/c2_readout/test_b_screens.py#L48) |  |
@@ -2140,6 +2148,7 @@
 | `test_reference_has_informed_band_edges` | test | `test_reference_has_informed_band_edges` | [tests/d2a/test_b_targets.py:138](../../tests/d2a/test_b_targets.py#L138) |  |
 | `test_reference_oracle_is_C0_bitwise_and_obeys_theorem1` | test | `test_reference_oracle_is_C0_bitwise_and_obeys_theorem1` | [tests/c1prime/test_b_cert_oracle.py:146](../../tests/c1prime/test_b_cert_oracle.py#L146) |  |
 | `test_refinalisation_creates_new_snapshot_and_preserves_earlier` | test | `test_refinalisation_creates_new_snapshot_and_preserves_earlier` | [tests/x6_stage1/test_b_ingest_bundle.py:347](../../tests/x6_stage1/test_b_ingest_bundle.py#L347) |  |
+| `test_refits_pass` | test | `test_refits_pass` | [tests/c2_nd/test_impl_dry_hs.py:136](../../tests/c2_nd/test_impl_dry_hs.py#L136) |  |
 | `test_regen_compare_bit_identical` | test | `test_regen_compare_bit_identical` | [tests/c2_readout/test_b_lineage.py:299](../../tests/c2_readout/test_b_lineage.py#L299) |  |
 | `test_regenerated_identical` | test | `test_regenerated_identical` | [tests/k4b/test_b_rerun.py:178](../../tests/k4b/test_b_rerun.py#L178) |  |
 | `test_regenerated_init_states_are_bit_identical` | test | `test_regenerated_init_states_are_bit_identical` | [tests/x6_stage1/test_b_chain_ops.py:238](../../tests/x6_stage1/test_b_chain_ops.py#L238) |  |
@@ -3079,6 +3088,7 @@
 | `world` | method | `SpaceBuilder.world` | [src/topo_pilot/analysis/spaces.py:61](../../src/topo_pilot/analysis/spaces.py#L61) | The N states with the world distance as D, metric ``flat``. |
 | `world` | function | `world` | [tests/c1prime/test_a_release_meter.py:59](../../tests/c1prime/test_a_release_meter.py#L59) |  |
 | `world` | function | `world` | [tests/c2_nd/test_b_lineage.py:48](../../tests/c2_nd/test_b_lineage.py#L48) |  |
+| `world` | function | `world` | [tests/c2_nd/test_impl_dry_hs.py:62](../../tests/c2_nd/test_impl_dry_hs.py#L62) |  |
 | `world` | function | `world` | [tests/process/test_conductance.py:43](../../tests/process/test_conductance.py#L43) | 12 x 12 cylinder from the world package (state id = x * 12 + y). |
 | `world_difference` | method | `S2Stage.world_difference` | [src/topo_pilot/experiment/s2.py:164](../../src/topo_pilot/experiment/s2.py#L164) | Per space × condition: number of panels with S_cyl > S_sq (D-023). |
 | `world_id` | function | `world_id` | [src/topo_pilot/experiment/s2.py:55](../../src/topo_pilot/experiment/s2.py#L55) | The unique WorldSpec of ``family`` with the configured dims and metric. |

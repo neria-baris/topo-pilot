@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 892 tracked files; 529 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 893 tracked files; 530 code files (linked to their pages).
 
 ## (repo root)
 
@@ -760,6 +760,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 399 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
 | [test_b_policy.py](files/tests/c2_nd/test_b_policy.py.md) | python | 314 lines | Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12); |
 | [test_b_registry.py](files/tests/c2_nd/test_b_registry.py.md) | python | 394 lines | Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4). |
+| [test_impl_dry_hs.py](files/tests/c2_nd/test_impl_dry_hs.py.md) | python | 161 lines | Implementer test, D-0158-1 (job 0159; API.md §20.11 ND-C59; protocol §10.1 criterion 2). |
 
 ## tests/c2_readout/
 
@@ -1114,7 +1115,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 542 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `API.md` | markdown | 557 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
 | `CONTRACT.json` | json | 940 lines |  |
 | `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
 | `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
@@ -1124,7 +1125,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [nd_decide.py](files/tools/c2_nd/nd_decide.py.md) | python | 396 lines | C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M, |
 | [nd_decoy.py](files/tools/c2_nd/nd_decoy.py.md) | python | 373 lines | C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis |
 | [nd_driver.py](files/tools/c2_nd/nd_driver.py.md) | python | 398 lines | C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND |
-| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 330 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
+| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 336 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
 | [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 400 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
 | [nd_split.py](files/tools/c2_nd/nd_split.py.md) | python | 400 lines | C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of |
 | [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 389 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |

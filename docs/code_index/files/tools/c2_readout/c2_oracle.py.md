@@ -53,6 +53,7 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 29, import)
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 36, import)
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 31, import)
 - [tests/c2_readout/test_b_registry.py](../../tests/c2_readout/test_b_registry.py.md) (line 26, import)

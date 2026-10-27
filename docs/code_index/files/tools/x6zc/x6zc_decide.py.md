@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_decide.py](../../../../../tools/x6zc/x6zc_decide.py)
 - Kind: python
-- Lines: 191
+- Lines: 192
 
 ## Module docstring
 
@@ -66,10 +66,10 @@
 - **function `_gt`** [L93-93]: `def _gt(x, bar) -> bool`
 - **function `_unstable`** [L94-97]: `def _unstable(s) -> bool`
 - **function `_cell_rule`** [L98-116]: `def _cell_rule(ev, c) -> tuple`
-- **function `decide_x6zc`** [L117-143]: `def decide_x6zc(ev) -> dict`
-- **function `_lkey`** [L144-147]: `def _lkey(outcome, table, case=None) -> str`
-- **function `licence`** [L148-154]: `def licence(outcome, values, case=None) -> str`
-- **function `not_licensed`** [L155-156]: `def not_licensed(outcome, case=None) -> str`
-- **function `qualifiers`** [L157-174]: `def qualifiers(ev, decision, census) -> dict`
-- **function `reuse_verdict`** [L175-191]: `def reuse_verdict(ev, decision) -> dict`
+- **function `decide_x6zc`** [L117-144]: `def decide_x6zc(ev) -> dict`
+- **function `_lkey`** [L145-148]: `def _lkey(outcome, table, case=None) -> str`
+- **function `licence`** [L149-155]: `def licence(outcome, values, case=None) -> str`
+- **function `not_licensed`** [L156-157]: `def not_licensed(outcome, case=None) -> str`
+- **function `qualifiers`** [L158-175]: `def qualifiers(ev, decision, census) -> dict`
+- **function `reuse_verdict`** [L176-192]: `def reuse_verdict(ev, decision) -> dict`
 

@@ -51,7 +51,7 @@
 - [tests/x6_stage1/test_a_numerics.py](../../tests/x6_stage1/test_a_numerics.py.md) (line 26, import)
 - [tests/x6_stage1/test_a_rules.py](../../tests/x6_stage1/test_a_rules.py.md) (line 20, import)
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 22, import)
-- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 100, import)
+- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 104, import)
 
 ## Top-level constants
 

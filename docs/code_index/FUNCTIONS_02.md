@@ -2,14 +2,16 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `stage1_main` | function | `stage1_main` | [tools/d2a/d2a_decide.py:169](../../tools/d2a/d2a_decide.py#L169) | CLI ``stage1``: learnability gate on val for H3-s1, H3-s2 (§6) plus descriptive R_π. |
+| `stage3_data` | function | `stage3_data` | [tools/d2a/d2a_eval.py:259](../../tools/d2a/d2a_eval.py#L259) | Tokens, strata rows, positions and targets for cal and test (stage 3 only). |
 | `stage3_main` | function | `stage3_main` | [tools/d2a/d2a_decide.py:340](../../tools/d2a/d2a_decide.py#L340) | CLI ``stage3`` (API §4): primary passes, decision, then budgeted secondary work. |
-| `stage_a` | function | `stage_a` | [tools/x6zc/x6zc_stage_a.py:151](../../tools/x6zc/x6zc_stage_a.py#L151) |  |
+| `stage_a` | function | `stage_a` | [tools/x6zc/x6zc_stage_a.py:155](../../tools/x6zc/x6zc_stage_a.py#L155) |  |
 | `stage_b` | function | `stage_b` | [tools/x6zc/x6zc_stage_bc.py:55](../../tools/x6zc/x6zc_stage_bc.py#L55) |  |
 | `stage_c` | function | `stage_c` | [tools/x6zc/x6zc_stage_bc.py:159](../../tools/x6zc/x6zc_stage_bc.py#L159) |  |
 | `stage_c_statistics` | function | `stage_c_statistics` | [tools/x6zc/x6zc_pipeline.py:24](../../tools/x6zc/x6zc_pipeline.py#L24) |  |
 | `stage_caps` | function | `stage_caps` | [tools/x4_circle_history/meter_bind.py:82](../../tools/x4_circle_history/meter_bind.py#L82) |  |
 | `stage_charts` | function | `stage_charts` | [tools/x4_circle_history/runner.py:259](../../tools/x4_circle_history/runner.py#L259) |  |
-| `stage_cpu` | function | `stage_cpu` | [tools/x6zc/x6zc_guard.py:176](../../tools/x6zc/x6zc_guard.py#L176) |  |
+| `stage_cpu` | function | `stage_cpu` | [tools/x6zc/x6zc_guard.py:208](../../tools/x6zc/x6zc_guard.py#L208) |  |
 | `stage_export` | function | `stage_export` | [tools/x4_circle_history/runner.py:291](../../tools/x4_circle_history/runner.py#L291) |  |
 | `stage_identity` | function | `stage_identity` | [tools/x4_circle_history/runner.py:64](../../tools/x4_circle_history/runner.py#L64) |  |
 | `stage_oracle` | function | `stage_oracle` | [tools/x4_circle_history/runner.py:114](../../tools/x4_circle_history/runner.py#L114) |  |
@@ -40,7 +42,7 @@
 | `stationary` | function | `stationary` | [tests/k4b/test_a_theorem_a.py:42](../../tests/k4b/test_a_theorem_a.py#L42) |  |
 | `statistic` | function | `statistic` | [tools/x6_stage0/x6_model.py:232](../../tools/x6_stage0/x6_model.py#L232) |  |
 | `stats` | function | `stats` | [tools/x6_stage1/x6s1_stage_post.py:346](../../tools/x6_stage1/x6s1_stage_post.py#L346) |  |
-| `stats_marker` | function | `stats_marker` | [tools/x6zc/x6zc_guard.py:252](../../tools/x6zc/x6zc_guard.py#L252) |  |
+| `stats_marker` | function | `stats_marker` | [tools/x6zc/x6zc_guard.py:287](../../tools/x6zc/x6zc_guard.py#L287) |  |
 | `Status` | class | `Status` | [src/topo_pilot/contracts/errors.py:41](../../src/topo_pilot/contracts/errors.py#L41) | Non-exception outcomes stored in results ("cannot decide" is a status, not an error). |
 | `status` | method | `BundleExecutor.status` | [src/topo_pilot/executors/bundle.py:144](../../src/topo_pilot/executors/bundle.py#L144) | ``awaiting_user`` after submit, ``done`` after a successful fetch. |
 | `status` | method | `Executor.status` | [src/topo_pilot/executors/base.py:64](../../src/topo_pilot/executors/base.py#L64) | Current state; ``awaiting_user`` means the user must move files by hand. |
@@ -89,7 +91,7 @@
 | `strings` | function | `strings` | [tests/oracle_profile/test_oracle_profile.py:71](../../tests/oracle_profile/test_oracle_profile.py#L71) | All V**length observation strings. |
 | `strings` | function | `strings` | [tests/oracle_profile/test_oracle_profile_traps.py:48](../../tests/oracle_profile/test_oracle_profile_traps.py#L48) |  |
 | `strip_volatile` | function | `strip_volatile` | [tools/x6_stage0/x6_store.py:204](../../tools/x6_stage0/x6_store.py#L204) |  |
-| `structural_subset` | function | `structural_subset` | [tools/x6zc/x6zc_census.py:199](../../tools/x6zc/x6zc_census.py#L199) |  |
+| `structural_subset` | function | `structural_subset` | [tools/x6zc/x6zc_census.py:210](../../tools/x6zc/x6zc_census.py#L210) |  |
 | `StubStage` | class | `StubStage` | [tests/executors/stub_stage.py:23](../../tests/executors/stub_stage.py#L23) | Writes one tiny artifact so executors can be tested without science code. |
 | `study_export` | function | `study_export` | [src/topo_pilot/experiment/x5g1t_exports.py:44](../../src/topo_pilot/experiment/x5g1t_exports.py#L44) | Guarded JSON files, npz arrays, manifest and COMPLETE status (in that order). |
 | `study_pool_config` | function | `study_pool_config` | [src/topo_pilot/experiment/x5g1t_lineage.py:81](../../src/topo_pilot/experiment/x5g1t_lineage.py#L81) | Metadata of a NEW study pool (API v4.1 §A): ``lineage_protocol`` names the frozen |
@@ -2788,7 +2790,7 @@
 | `wave_lease` | function | `wave_lease` | [tools/d2a/process_tree.py:17](../../tools/d2a/process_tree.py#L17) | Exclusive wave lease; an abandoned lease is never silently cleared. |
 | `wave_main` | function | `wave_main` | [tools/d2a/d2a_train.py:317](../../tools/d2a/d2a_train.py#L317) |  |
 | `wcounts` | function | `wcounts` | [tests/k4b/test_a_width_b4.py:57](../../tests/k4b/test_a_width_b4.py#L57) |  |
-| `weighting_summaries` | function | `weighting_summaries` | [tools/x6zc/x6zc_census.py:261](../../tools/x6zc/x6zc_census.py#L261) |  |
+| `weighting_summaries` | function | `weighting_summaries` | [tools/x6zc/x6zc_census.py:272](../../tools/x6zc/x6zc_census.py#L272) |  |
 | `weights` | function | `weights` | [tools/x6_stage0/x6_dp.py:47](../../tools/x6_stage0/x6_dp.py#L47) |  |
 | `weights_digest` | function | `weights_digest` | [tools/x6_stage1/x6s1_cloud.py:106](../../tools/x6_stage1/x6s1_cloud.py#L106) |  |
 | `weights_hash` | function | `weights_hash` | [src/topo_pilot/experiment/x4f_gates.py:124](../../src/topo_pilot/experiment/x4f_gates.py#L124) |  |
@@ -2828,7 +2830,8 @@
 | `write_checkpoint` | function | `write_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:220](../../tools/x6_stage1/x6s1_cloud.py#L220) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage0/x6_store.py:214](../../tools/x6_stage0/x6_store.py#L214) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage1/x6s1_run.py:282](../../tools/x6_stage1/x6s1_run.py#L282) |  |
-| `write_invalid` | function | `write_invalid` | [tools/x6zc/x6zc_guard.py:265](../../tools/x6zc/x6zc_guard.py#L265) |  |
+| `write_global` | function | `write_global` | [tools/x6zc/x6zc_guard.py:302](../../tools/x6zc/x6zc_guard.py#L302) | The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics: |
+| `write_invalid` | function | `write_invalid` | [tools/x6zc/x6zc_guard.py:300](../../tools/x6zc/x6zc_guard.py#L300) |  |
 | `write_job_json` | function | `write_job_json` | [src/topo_pilot/executors/local.py:32](../../src/topo_pilot/executors/local.py#L32) | Write the ``job.json`` that ``entry`` reads. |
 | `write_json` | function | `write_json` | [tests/k4b/test_b_registry_fixes.py:48](../../tests/k4b/test_b_registry_fixes.py#L48) |  |
 | `write_json` | function | `write_json` | [tools/d2a/d2a_train.py:208](../../tools/d2a/d2a_train.py#L208) | Exclusive-create JSON write of ``jsonable(rec)`` (stage records are never overwritten). |
@@ -2883,7 +2886,7 @@
 | `yplac` | function | `yplac` | [tools/c2_readout/c2_stage_val.py:252](../../tools/c2_readout/c2_stage_val.py#L252) | Y1 (R) / Y1* (S*): U(A^Y_S - 0.10 A^Y_full) < -g on VAL E_y rows, if active. |
 | `z_bound` | function | `z_bound` | [tests/k4b/test_a_lemma_t.py:88](../../tests/k4b/test_a_lemma_t.py#L88) |  |
 | `Z_hat` | function | `Z_hat` | [tools/c1prime/c1_endpoint.py:42](../../tools/c1prime/c1_endpoint.py#L42) |  |
-| `zc_profile` | function | `zc_profile` | [tools/x6zc/x6zc_census.py:230](../../tools/x6zc/x6zc_census.py#L230) |  |
+| `zc_profile` | function | `zc_profile` | [tools/x6zc/x6zc_census.py:241](../../tools/x6zc/x6zc_census.py#L241) |  |
 | `zero_code_threshold` | function | `zero_code_threshold` | [tools/c2_readout/c2_code.py:182](../../tools/c2_readout/c2_code.py#L182) | 1e-12 x the inverted_cdf median of the FIT modulus (per model and family; NEW-3). |
 | `Zfull_hat` | function | `Zfull_hat` | [tools/c1prime/c1_endpoint.py:46](../../tools/c1prime/c1_endpoint.py#L46) |  |
 | `zt` | function | `zt` | [tools/c2_readout/c2_stage_base.py:230](../../tools/c2_readout/c2_stage_base.py#L230) |  |

@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_stage_a.py](../../../../../tools/x6zc/x6zc_stage_a.py)
 - Kind: python
-- Lines: 278
+- Lines: 283
 
 ## Module docstring
 
@@ -22,16 +22,16 @@
 - `from x6zc_pipeline import predict_variants` -> [tools/x6zc/x6zc_pipeline.py](x6zc_pipeline.py.md) (line 27, via same directory)
 - `from x6zc_store import _utc, _sha, _cj, xwrite, _append, _lines, log_exposure` -> [tools/x6zc/x6zc_store.py](x6zc_store.py.md) (line 30, via same directory)
 - `from x6zc_guard import _dirs, _record, _begin, _finish, run_guarded` -> [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 33, via same directory)
-- `import x6s1_decide` -> [tools/x6_stage1/x6s1_decide.py](../x6_stage1/x6s1_decide.py.md) (line 100, via unique basename) (inside a function)
-- `import x6s1_stage_pre` -> [tools/x6_stage1/x6s1_stage_pre.py](../x6_stage1/x6s1_stage_pre.py.md) (line 154, via unique basename) (inside a function)
-- `import x6s1_data` -> [tools/x6_stage1/x6s1_data.py](../x6_stage1/x6s1_data.py.md) (line 232, via unique basename) (inside a function)
-- `import x6s1_run` -> [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 233, via unique basename) (inside a function)
-- `import d2a_train` -> [tools/d2a/d2a_train.py](../d2a/d2a_train.py.md) (line 253, via unique basename) (inside a function)
+- `import x6s1_decide` -> [tools/x6_stage1/x6s1_decide.py](../x6_stage1/x6s1_decide.py.md) (line 104, via unique basename) (inside a function)
+- `import x6s1_stage_pre` -> [tools/x6_stage1/x6s1_stage_pre.py](../x6_stage1/x6s1_stage_pre.py.md) (line 158, via unique basename) (inside a function)
+- `import x6s1_data` -> [tools/x6_stage1/x6s1_data.py](../x6_stage1/x6s1_data.py.md) (line 237, via unique basename) (inside a function)
+- `import x6s1_run` -> [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 238, via unique basename) (inside a function)
+- `import d2a_train` -> [tools/d2a/d2a_train.py](../d2a/d2a_train.py.md) (line 258, via unique basename) (inside a function)
 
 ### External (third-party)
 
 - `numpy` (lines 21)
-- `torch` (lines 254)
+- `torch` (lines 259)
 
 ### Standard library
 
@@ -40,7 +40,7 @@
 - `io` (lines 9)
 - `json` (lines 10)
 - `math` (lines 11)
-- `os` (lines 251)
+- `os` (lines 256)
 - `pathlib` (lines 16)
 - `re` (lines 12)
 - `sys` (lines 13)
@@ -79,19 +79,19 @@
 - **function `_checked`** [L47-51]: `def _checked(r) -> bytes`
 - **function `_npz`** [L52-54]: `def _npz(data) -> dict`
 - **function `_x6json`** [L55-57]: `def _x6json(rel) -> tuple`
-- **function `_latest`** [L58-59]: `def _latest(lines, gate) -> dict`
-- **function `_prov`** [L60-88]: `def _prov(m, rep, gl, pools, echo) -> dict`
-- **function `a1_provenance`** [L89-98]: `def a1_provenance(rep) -> dict`
-- **function `a1_check`** [L99-139]: `def a1_check(store, closure) -> dict`
-- **function `a2_check`** [L141-150]: `def a2_check() -> dict`
-- **function `stage_a`** [L151-152]: `def stage_a(store=zc.STORE, dispatch=None, job=None) -> int`
-- **function `_stage_a`** [L153-210]: `def _stage_a(store, ctx) -> int`
-- **function `_cache`** [L211-214]: `def _cache(store) -> zc.QStarCache`
-- **function `_spec`** [L215-220]: `def _spec(m) -> tuple`
-- **function `_predictor`** [L221-223]: `def _predictor(m) -> se.ModelPredictor`
-- **class `_Memo`** [L224-226]
-- **method `_Memo.__init__`** [L225-225]: `def __init__(self, rows)`
-- **method `_Memo.__call__`** [L226-226]: `def __call__(self, tokens, t)`
-- **function `_children`** [L227-249]: `def _children(store, stage, names, out_dir, ctx) -> dict` - <= MAX_CHILDREN chunk children per batch under sr.supervise, which classifies the mailbox
-- **function `chunk`** [L250-278]: `def chunk(stage, model, out, store=zc.STORE) -> int`
+- **function `_admitting`** [L58-63]: `def _admitting(lines, gate, m) -> tuple`
+- **function `_prov`** [L64-92]: `def _prov(m, rep, gl, pools, echo) -> dict`
+- **function `a1_provenance`** [L93-102]: `def a1_provenance(rep) -> dict`
+- **function `a1_check`** [L103-143]: `def a1_check(store, closure) -> dict`
+- **function `a2_check`** [L145-154]: `def a2_check() -> dict`
+- **function `stage_a`** [L155-156]: `def stage_a(store=zc.STORE, dispatch=None, job=None) -> int`
+- **function `_stage_a`** [L157-215]: `def _stage_a(store, ctx) -> int`
+- **function `_cache`** [L216-219]: `def _cache(store) -> zc.QStarCache`
+- **function `_spec`** [L220-225]: `def _spec(m) -> tuple`
+- **function `_predictor`** [L226-228]: `def _predictor(m) -> se.ModelPredictor`
+- **class `_Memo`** [L229-231]
+- **method `_Memo.__init__`** [L230-230]: `def __init__(self, rows)`
+- **method `_Memo.__call__`** [L231-231]: `def __call__(self, tokens, t)`
+- **function `_children`** [L232-254]: `def _children(store, stage, names, out_dir, ctx) -> dict` - <= MAX_CHILDREN chunk children per batch under sr.supervise, which classifies the mailbox
+- **function `chunk`** [L255-283]: `def chunk(stage, model, out, store=zc.STORE) -> int`
 

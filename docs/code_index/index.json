@@ -6,13 +6,13 @@
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 882,
-  "functions and methods (incl. tests)": 7207,
+  "functions and methods (incl. tests)": 7211,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 755,
   "import statements, internal ambiguous": 1,
   "import statements, internal resolved": 2123,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2167,
+  "import statements, standard library": 2169,
   "internal edges (file to file, with kind and line)": 2155,
   "python files": 518
  },
@@ -12715,37 +12715,37 @@
    "tools/x6zc/x6zc_guard.py",
    "src/topo_pilot/__init__.py",
    "import",
-   146
+   178
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/d2a/d2a_train.py",
    "import",
-   115
+   147
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/d2a/d2a_train.py",
    "import",
-   246
+   281
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_eval.py",
    "import",
-   185
+   217
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_run.py",
    "import",
-   180
+   212
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_run.py",
    "import",
-   186
+   218
   ],
   [
    "tools/x6zc/x6zc_guard.py",
@@ -12757,7 +12757,7 @@
    "tools/x6zc/x6zc_guard.py",
    "tools/x6zc/x6zc_pipeline.py",
    "import",
-   266
+   305
   ],
   [
    "tools/x6zc/x6zc_guard.py",
@@ -12769,7 +12769,7 @@
    "tools/x6zc/x6zc_guard.py",
    "tools/x6zc/x6zc_store.py",
    "import",
-   187
+   219
   ],
   [
    "tools/x6zc/x6zc_pipeline.py",
@@ -12829,19 +12829,19 @@
    "tools/x6zc/x6zc_stage_a.py",
    "tools/d2a/d2a_train.py",
    "import",
-   253
+   258
   ],
   [
    "tools/x6zc/x6zc_stage_a.py",
    "tools/x6_stage1/x6s1_data.py",
    "import",
-   232
+   237
   ],
   [
    "tools/x6zc/x6zc_stage_a.py",
    "tools/x6_stage1/x6s1_decide.py",
    "import",
-   100
+   104
   ],
   [
    "tools/x6zc/x6zc_stage_a.py",
@@ -12859,13 +12859,13 @@
    "tools/x6zc/x6zc_stage_a.py",
    "tools/x6_stage1/x6s1_run.py",
    "import",
-   233
+   238
   ],
   [
    "tools/x6zc/x6zc_stage_a.py",
    "tools/x6_stage1/x6s1_stage_pre.py",
    "import",
-   154
+   158
   ],
   [
    "tools/x6zc/x6zc_stage_a.py",
@@ -18185,9 +18185,9 @@
   },
   "tools/x6zc/API.md": {
    "kind": "markdown",
-   "lines": 432,
+   "lines": 439,
    "purpose": "tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1)",
-   "sha256": "c7b6f2c6730842fe4ef63cad736914e6afc38504b7600ce41556898bd68deb9e"
+   "sha256": "20d7aaeab6902365be8694550ce71806c7022a402aca0bd3a18fb4f174bc79a6"
   },
   "tools/x6zc/CONTRACT.json": {
    "kind": "json",
@@ -18209,9 +18209,9 @@
   },
   "tools/x6zc/x6zc_census.py": {
    "kind": "python",
-   "lines": 317,
+   "lines": 328,
    "purpose": "X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5",
-   "sha256": "201f10f6ed66ecfb2b918b77728ca9c9faedf0e8d004390cf820c198a5aef642"
+   "sha256": "0691653629a36d1ffc856319c1c77484947e14511b8c9b1c41ea74b3080c4b1e"
   },
   "tools/x6zc/x6zc_const.py": {
    "kind": "python",
@@ -18227,9 +18227,9 @@
   },
   "tools/x6zc/x6zc_decide.py": {
    "kind": "python",
-   "lines": 191,
+   "lines": 192,
    "purpose": "X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision,",
-   "sha256": "f93798c2bd20ad54c58e07bd179e834c56aa6788a744e9a1415c9d75aafca709"
+   "sha256": "d4a644921ec9b6cfeb85a08c6f268570f3422dc935bf2eb60cf0fed28d93a047"
   },
   "tools/x6zc/x6zc_dry.py": {
    "kind": "python",
@@ -18239,9 +18239,9 @@
   },
   "tools/x6zc/x6zc_guard.py": {
    "kind": "python",
-   "lines": 284,
+   "lines": 330,
    "purpose": "X6ZC guard: the stage harness shared by stages A, B and C (job 0137; API.md §20 C-54). The",
-   "sha256": "823b0c41b1efd207f063ecd9dd559984369528e00ee81c9e84c6e9ac55f88872"
+   "sha256": "ee40ba58dec3e8fe2f907b8c0c137f3abb2680ddfdded8fc57ff67fbf8532b95"
   },
   "tools/x6zc/x6zc_pipeline.py": {
    "kind": "python",
@@ -18253,19 +18253,19 @@
    "kind": "python",
    "lines": 95,
    "purpose": "X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run, guard and stage",
-   "sha256": "d2df48c36a4d7c0ee89cd90645ba4866cc645393220f42594c912e634341c03e"
+   "sha256": "9149cf7f671246710a289152e98378d57c3281ca351c7880063e8fe806dfc9c3"
   },
   "tools/x6zc/x6zc_stage_a.py": {
    "kind": "python",
-   "lines": 278,
+   "lines": 283,
    "purpose": "X6ZC stage A and the model chunk children: the A1 records audit, the A2 code audit, stage A",
-   "sha256": "cd68a18284091c78f9062f0413e6c4af6c9ec731b96141b55aa202d2874c654a"
+   "sha256": "60684eef97249024c944e95406611cd9dea0faf076aa78fef3faf270a3361304"
   },
   "tools/x6zc/x6zc_stage_bc.py": {
    "kind": "python",
-   "lines": 234,
+   "lines": 241,
    "purpose": "X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C",
-   "sha256": "654a15c391e666da06b8b60014145fe94f9f7be18a9855a2ee3453ce03d38c38"
+   "sha256": "d6beb2e5ca3fa110d4876e6d180889c3e6063fa395c3e28213928f9b1ffe2c45"
   },
   "tools/x6zc/x6zc_store.py": {
    "kind": "python",
@@ -182915,7 +182915,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 190,
+     "line": 201,
      "module": "",
      "names": [
       "torch"
@@ -182978,18 +182978,28 @@
     },
     {
      "decorators": [],
-     "doc": "`sets`: an optional dict caching one row-prefix set per (pool, t) across calls (F-17).",
-     "end": 82,
+     "doc": "",
+     "end": 79,
      "kind": "function",
      "name": "exposure_matches",
      "qual": "exposure_matches",
-     "sig": "def exposure_matches(hist, t, pool_tokens, sets=None) -> np.ndarray",
+     "sig": "def exposure_matches(hist, t, pool_tokens) -> np.ndarray",
      "start": 73
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 94,
+     "end": 82,
+     "kind": "function",
+     "name": "_prefix_set",
+     "qual": "_prefix_set",
+     "sig": "def _prefix_set(P, L) -> set",
+     "start": 80
+    },
+    {
+     "decorators": [],
+     "doc": "Pool-major, then t: one row-prefix set of one pool is alive at a time; it is built once,",
+     "end": 105,
      "kind": "function",
      "name": "exposure_report",
      "qual": "exposure_report",
@@ -182999,282 +183009,282 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 101,
+     "end": 112,
      "kind": "function",
      "name": "_rel",
      "qual": "_rel",
      "sig": "def _rel(g, s) -> float",
-     "start": 97
+     "start": 108
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 112,
+     "end": 123,
      "kind": "function",
      "name": "k4_compare",
      "qual": "k4_compare",
      "sig": "def k4_compare(stored, got) -> dict",
-     "start": 102
+     "start": 113
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 117,
+     "end": 128,
      "kind": "function",
      "name": "_fcn",
      "qual": "_fcn",
      "sig": "def _fcn(row) -> list",
-     "start": 115
+     "start": 126
     },
     {
      "decorators": [],
      "doc": "(a) members rebuilt from content (§20 E-3); exact q*, exact cue normalisation and sums.",
-     "end": 143,
+     "end": 154,
      "kind": "function",
      "name": "k5_independent",
      "qual": "k5_independent",
      "sig": "def k5_independent(terms, beta_prod, tok_a=None, tok_b=None) -> dict",
-     "start": 118
+     "start": 129
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 148,
+     "end": 159,
      "kind": "function",
      "name": "k5_swap",
      "qual": "k5_swap",
      "sig": "def k5_swap(terms) -> dict",
-     "start": 144
+     "start": 155
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 149,
+     "end": 160,
      "kind": "function",
      "name": "_maxdiff",
      "qual": "_maxdiff",
      "sig": "def _maxdiff(a, b) -> float",
-     "start": 149
+     "start": 160
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 156,
+     "end": 167,
      "kind": "function",
      "name": "k5_padding",
      "qual": "k5_padding",
      "sig": "def k5_padding(pred, tok, t) -> dict",
-     "start": 150
+     "start": 161
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 161,
+     "end": 172,
      "kind": "function",
      "name": "k5_batch",
      "qual": "k5_batch",
      "sig": "def k5_batch(pred, tok, t) -> dict",
-     "start": 157
+     "start": 168
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 170,
+     "end": 181,
      "kind": "function",
      "name": "k5_readout_index",
      "qual": "k5_readout_index",
      "sig": "def k5_readout_index(pred, arrays, family) -> dict",
-     "start": 162
+     "start": 173
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 173,
+     "end": 184,
      "kind": "function",
      "name": "k5_two_loads",
      "qual": "k5_two_loads",
      "sig": "def k5_two_loads(pred1, pred2, tok, t) -> dict",
-     "start": 171
+     "start": 182
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 178,
+     "end": 189,
      "kind": "function",
      "name": "k5_scalar_vector",
      "qual": "k5_scalar_vector",
      "sig": "def k5_scalar_vector(pred, tok, t) -> dict",
-     "start": 174
+     "start": 185
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 182,
+     "end": 193,
      "kind": "function",
      "name": "_rows",
      "qual": "_rows",
      "sig": "def _rows(terms, idx) -> dict",
-     "start": 179
+     "start": 190
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 188,
+     "end": 199,
      "kind": "function",
      "name": "k5_permutation",
      "qual": "k5_permutation",
      "sig": "def k5_permutation(terms, gen=None) -> dict",
-     "start": 183
+     "start": 194
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 198,
+     "end": 209,
      "kind": "function",
      "name": "k5_bos",
      "qual": "k5_bos",
      "sig": "def k5_bos(model, tok, t) -> dict",
-     "start": 189
+     "start": 200
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 203,
+     "end": 214,
      "kind": "function",
      "name": "structural_subset",
      "qual": "structural_subset",
      "sig": "def structural_subset(t, y) -> np.ndarray",
-     "start": 199
+     "start": 210
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 207,
+     "end": 218,
      "kind": "function",
      "name": "_q",
      "qual": "_q",
      "sig": "def _q(x, lv=_LEVELS) -> list",
-     "start": 207
+     "start": 218
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 210,
+     "end": 221,
      "kind": "function",
      "name": "_diffs",
      "qual": "_diffs",
      "sig": "def _diffs(terms) -> tuple",
-     "start": 208
+     "start": 219
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 229,
+     "end": 240,
      "kind": "function",
      "name": "decompose",
      "qual": "decompose",
      "sig": "def decompose(terms) -> dict",
-     "start": 211
+     "start": 222
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 241,
+     "end": 252,
      "kind": "function",
      "name": "zc_profile",
      "qual": "zc_profile",
      "sig": "def zc_profile(terms, tables, arm) -> dict",
-     "start": 230
+     "start": 241
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 244,
+     "end": 255,
      "kind": "function",
      "name": "crosses",
      "qual": "crosses",
      "sig": "def crosses(x, y, bar=0.1, band=1e-09) -> bool",
-     "start": 242
+     "start": 253
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 245,
+     "end": 256,
      "kind": "function",
      "name": "_sens",
      "qual": "_sens",
      "sig": "def _sens(b, alt) -> bool",
-     "start": 245
+     "start": 256
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 259,
+     "end": 270,
      "kind": "function",
      "name": "d2_decompose",
      "qual": "d2_decompose",
      "sig": "def d2_decompose(terms) -> dict",
-     "start": 246
+     "start": 257
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 260,
+     "end": 271,
      "kind": "function",
      "name": "_wbeta",
      "qual": "_wbeta",
      "sig": "def _wbeta(num, den, w) -> float",
-     "start": 260
+     "start": 271
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 286,
+     "end": 297,
      "kind": "function",
      "name": "weighting_summaries",
      "qual": "weighting_summaries",
      "sig": "def weighting_summaries(terms, prefixes, named_mask) -> dict",
-     "start": 261
+     "start": 272
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 295,
+     "end": 306,
      "kind": "function",
      "name": "similarity",
      "qual": "similarity",
      "sig": "def similarity(dp) -> dict",
-     "start": 289
+     "start": 300
     },
     {
      "decorators": [],
      "doc": "{\"terms\": {family: pair_arrays output}, \"designed\": designed_stats dict} -> B7 values.",
-     "end": 304,
+     "end": 315,
      "kind": "function",
      "name": "control_families",
      "qual": "control_families",
      "sig": "def control_families(stats_by_family) -> dict",
-     "start": 296
+     "start": 307
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 307,
+     "end": 318,
      "kind": "function",
      "name": "float32_replay",
      "qual": "float32_replay",
      "sig": "def float32_replay(beta32, beta64) -> dict",
-     "start": 305
+     "start": 316
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 317,
+     "end": 328,
      "kind": "function",
      "name": "descriptive_tier",
      "qual": "descriptive_tier",
      "sig": "def descriptive_tier(model, family, k4_tier, k1_ok, k5_ok, max_pair_diff, flags, betas) -> dict",
-     "start": 310
+     "start": 321
     }
    ],
    "syspath": []
@@ -184602,7 +184612,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 143,
+     "end": 144,
      "kind": "function",
      "name": "decide_x6zc",
      "qual": "decide_x6zc",
@@ -184612,52 +184622,52 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 147,
+     "end": 148,
      "kind": "function",
      "name": "_lkey",
      "qual": "_lkey",
      "sig": "def _lkey(outcome, table, case=None) -> str",
-     "start": 144
+     "start": 145
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 154,
+     "end": 155,
      "kind": "function",
      "name": "licence",
      "qual": "licence",
      "sig": "def licence(outcome, values, case=None) -> str",
-     "start": 148
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 156,
+     "end": 157,
      "kind": "function",
      "name": "not_licensed",
      "qual": "not_licensed",
      "sig": "def not_licensed(outcome, case=None) -> str",
-     "start": 155
+     "start": 156
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 174,
+     "end": 175,
      "kind": "function",
      "name": "qualifiers",
      "qual": "qualifiers",
      "sig": "def qualifiers(ev, decision, census) -> dict",
-     "start": 157
+     "start": 158
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 191,
+     "end": 192,
      "kind": "function",
      "name": "reuse_verdict",
      "qual": "reuse_verdict",
      "sig": "def reuse_verdict(ev, decision) -> dict",
-     "start": 175
+     "start": 176
     }
    ],
    "syspath": []
@@ -185321,10 +185331,40 @@
     {
      "candidates": [],
      "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 105,
+     "module": "",
+     "names": [
+      "ctypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 106,
+     "module": "",
+     "names": [
+      "ctypes.wintypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 115,
+     "line": 147,
      "module": "",
      "names": [
       "d2a_train"
@@ -185341,7 +185381,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 146,
+     "line": 178,
      "module": "",
      "names": [
       "topo_pilot"
@@ -185358,7 +185398,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 180,
+     "line": 212,
      "module": "",
      "names": [
       "x6s1_run"
@@ -185375,7 +185415,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 185,
+     "line": 217,
      "module": "",
      "names": [
       "x6s1_eval"
@@ -185392,7 +185432,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 186,
+     "line": 218,
      "module": "",
      "names": [
       "x6s1_run"
@@ -185409,7 +185449,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 187,
+     "line": 219,
      "module": "x6zc_store",
      "names": [
       "_frozen"
@@ -185426,7 +185466,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 246,
+     "line": 281,
      "module": "",
      "names": [
       "d2a_train"
@@ -185443,10 +185483,11 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 266,
+     "line": 305,
      "module": "x6zc_pipeline",
      "names": [
       "TOP",
+      "licence_values",
       "validate_report"
      ],
      "status": "internal",
@@ -185560,11 +185601,11 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 113,
+     "end": 123,
      "kind": "function",
-     "name": "meter_live",
-     "qual": "meter_live",
-     "sig": "def meter_live(store) -> list",
+     "name": "_parents",
+     "qual": "_parents",
+     "sig": "def _parents() -> dict",
      "start": 104
     },
     {
@@ -185572,130 +185613,160 @@
      "doc": "",
      "end": 133,
      "kind": "function",
-     "name": "identity_problems",
-     "qual": "identity_problems",
-     "sig": "def identity_problems(store, fz, disp, job=None) -> list",
-     "start": 114
+     "name": "is_ancestor",
+     "qual": "is_ancestor",
+     "sig": "def is_ancestor(pid) -> bool",
+     "start": 124
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 145,
      "kind": "function",
-     "name": "_try",
-     "qual": "_try",
-     "sig": "def _try(why, fn) -> list",
+     "name": "meter_live",
+     "qual": "meter_live",
+     "sig": "def meter_live(store) -> list",
      "start": 134
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 144,
+     "end": 165,
+     "kind": "function",
+     "name": "identity_problems",
+     "qual": "identity_problems",
+     "sig": "def identity_problems(store, fz, disp, job=None) -> list",
+     "start": 146
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 171,
+     "kind": "function",
+     "name": "_try",
+     "qual": "_try",
+     "sig": "def _try(why, fn) -> list",
+     "start": 166
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 176,
      "kind": "function",
      "name": "_git",
      "qual": "_git",
      "sig": "def _git(*args) -> str",
-     "start": 142
+     "start": 174
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 164,
+     "end": 196,
      "kind": "function",
      "name": "freeze_problems",
      "qual": "freeze_problems",
      "sig": "def freeze_problems(store, fz) -> list",
-     "start": 145
+     "start": 177
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 173,
+     "end": 205,
      "kind": "function",
      "name": "auth_problems",
      "qual": "auth_problems",
      "sig": "def auth_problems(store) -> list",
-     "start": 165
+     "start": 197
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 177,
+     "end": 209,
      "kind": "function",
      "name": "stage_cpu",
      "qual": "stage_cpu",
      "sig": "def stage_cpu(ctx) -> float",
-     "start": 176
+     "start": 208
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 183,
+     "end": 215,
      "kind": "function",
      "name": "_job_cpu",
      "qual": "_job_cpu",
      "sig": "def _job_cpu()",
-     "start": 178
+     "start": 210
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 212,
+     "end": 244,
      "kind": "function",
      "name": "_begin",
      "qual": "_begin",
      "sig": "def _begin(store, stage, dispatch=None, job=None) -> dict",
-     "start": 184
+     "start": 216
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 272,
      "kind": "function",
      "name": "_finish",
      "qual": "_finish",
      "sig": "def _finish(store, ctx, stop=None, n=None) -> int",
-     "start": 213
+     "start": 245
     },
     {
      "decorators": [],
      "doc": "Every attempt writes its record: a setup error, a stop, or any exception (CRASH).",
-     "end": 251,
+     "end": 286,
      "kind": "function",
      "name": "run_guarded",
      "qual": "run_guarded",
      "sig": "def run_guarded(store, stage, body, dispatch=None, job=None) -> int",
-     "start": 238
+     "start": 273
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 253,
+     "end": 288,
      "kind": "function",
      "name": "stats_marker",
      "qual": "stats_marker",
      "sig": "def stats_marker(store, ctx) -> str",
-     "start": 252
+     "start": 287
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 264,
+     "end": 299,
      "kind": "function",
      "name": "budget",
      "qual": "budget",
      "sig": "def budget(store, ctx=None) -> dict",
-     "start": 256
+     "start": 291
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 284,
+     "end": 301,
      "kind": "function",
      "name": "write_invalid",
      "qual": "write_invalid",
      "sig": "def write_invalid(store, ctx, why) -> str | None",
-     "start": 265
+     "start": 300
+    },
+    {
+     "decorators": [],
+     "doc": "The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics:",
+     "end": 330,
+     "kind": "function",
+     "name": "write_global",
+     "qual": "write_global",
+     "sig": "def write_global(store, ctx, ev, why, extra=None) -> str | None",
+     "start": 302
     }
    ],
    "syspath": []
@@ -186116,7 +186187,8 @@
       "run_guarded",
       "stats_marker",
       "budget",
-      "write_invalid"
+      "write_invalid",
+      "write_global"
      ],
      "status": "internal",
      "targets": [
@@ -186139,7 +186211,7 @@
       "_checked",
       "_npz",
       "_x6json",
-      "_latest",
+      "_admitting",
       "_prov",
       "a1_provenance",
       "a1_check",
@@ -186494,7 +186566,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 100,
+     "line": 104,
      "module": "",
      "names": [
       "x6s1_decide"
@@ -186511,7 +186583,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 154,
+     "line": 158,
      "module": "",
      "names": [
       "x6s1_stage_pre"
@@ -186528,7 +186600,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 232,
+     "line": 237,
      "module": "",
      "names": [
       "x6s1_data"
@@ -186545,7 +186617,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 233,
+     "line": 238,
      "module": "",
      "names": [
       "x6s1_run"
@@ -186562,7 +186634,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 251,
+     "line": 256,
      "module": "",
      "names": [
       "os"
@@ -186577,7 +186649,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 253,
+     "line": 258,
      "module": "",
      "names": [
       "d2a_train"
@@ -186594,7 +186666,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 254,
+     "line": 259,
      "module": "",
      "names": [
       "torch"
@@ -186658,152 +186730,152 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 59,
+     "end": 63,
      "kind": "function",
-     "name": "_latest",
-     "qual": "_latest",
-     "sig": "def _latest(lines, gate) -> dict",
+     "name": "_admitting",
+     "qual": "_admitting",
+     "sig": "def _admitting(lines, gate, m) -> tuple",
      "start": 58
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 88,
+     "end": 92,
      "kind": "function",
      "name": "_prov",
      "qual": "_prov",
      "sig": "def _prov(m, rep, gl, pools, echo) -> dict",
-     "start": 60
+     "start": 64
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 98,
+     "end": 102,
      "kind": "function",
      "name": "a1_provenance",
      "qual": "a1_provenance",
      "sig": "def a1_provenance(rep) -> dict",
-     "start": 89
+     "start": 93
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 143,
      "kind": "function",
      "name": "a1_check",
      "qual": "a1_check",
      "sig": "def a1_check(store, closure) -> dict",
-     "start": 99
+     "start": 103
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 150,
+     "end": 154,
      "kind": "function",
      "name": "a2_check",
      "qual": "a2_check",
      "sig": "def a2_check() -> dict",
-     "start": 141
+     "start": 145
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 152,
+     "end": 156,
      "kind": "function",
      "name": "stage_a",
      "qual": "stage_a",
      "sig": "def stage_a(store=zc.STORE, dispatch=None, job=None) -> int",
-     "start": 151
+     "start": 155
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 210,
+     "end": 215,
      "kind": "function",
      "name": "_stage_a",
      "qual": "_stage_a",
      "sig": "def _stage_a(store, ctx) -> int",
-     "start": 153
+     "start": 157
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 214,
+     "end": 219,
      "kind": "function",
      "name": "_cache",
      "qual": "_cache",
      "sig": "def _cache(store) -> zc.QStarCache",
-     "start": 211
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 220,
-     "kind": "function",
-     "name": "_spec",
-     "qual": "_spec",
-     "sig": "def _spec(m) -> tuple",
-     "start": 215
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 223,
-     "kind": "function",
-     "name": "_predictor",
-     "qual": "_predictor",
-     "sig": "def _predictor(m) -> se.ModelPredictor",
-     "start": 221
-    },
-    {
-     "bases": [],
-     "decorators": [],
-     "doc": "",
-     "end": 226,
-     "kind": "class",
-     "name": "_Memo",
-     "qual": "_Memo",
-     "start": 224
+     "start": 216
     },
     {
      "decorators": [],
      "doc": "",
      "end": 225,
+     "kind": "function",
+     "name": "_spec",
+     "qual": "_spec",
+     "sig": "def _spec(m) -> tuple",
+     "start": 220
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 228,
+     "kind": "function",
+     "name": "_predictor",
+     "qual": "_predictor",
+     "sig": "def _predictor(m) -> se.ModelPredictor",
+     "start": 226
+    },
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "",
+     "end": 231,
+     "kind": "class",
+     "name": "_Memo",
+     "qual": "_Memo",
+     "start": 229
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 230,
      "kind": "method",
      "name": "__init__",
      "qual": "_Memo.__init__",
      "sig": "def __init__(self, rows)",
-     "start": 225
+     "start": 230
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 226,
+     "end": 231,
      "kind": "method",
      "name": "__call__",
      "qual": "_Memo.__call__",
      "sig": "def __call__(self, tokens, t)",
-     "start": 226
+     "start": 231
     },
     {
      "decorators": [],
      "doc": "<= MAX_CHILDREN chunk children per batch under sr.supervise, which classifies the mailbox",
-     "end": 249,
+     "end": 254,
      "kind": "function",
      "name": "_children",
      "qual": "_children",
      "sig": "def _children(store, stage, names, out_dir, ctx) -> dict",
-     "start": 227
+     "start": 232
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 278,
+     "end": 283,
      "kind": "function",
      "name": "chunk",
      "qual": "chunk",
      "sig": "def chunk(stage, model, out, store=zc.STORE) -> int",
-     "start": 250
+     "start": 255
     }
    ],
    "syspath": []
@@ -187122,7 +187194,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 234,
+     "end": 241,
      "kind": "function",
      "name": "_stage_c",
      "qual": "_stage_c",
@@ -187674,5 +187746,5 @@
    ]
   }
  },
- "sources_digest": "55455545ad82b78f019a3f4b83110082b1288aa60526819bed0628feef1a2edd"
+ "sources_digest": "65eda37a1d73c02b7b49e5ec905cfce1b16d681e0014d49f681f6b0982cf359a"
 }

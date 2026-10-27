@@ -2,7 +2,7 @@
 
 - Source: [tools/x6zc/x6zc_stage_bc.py](../../../../../tools/x6zc/x6zc_stage_bc.py)
 - Kind: python
-- Lines: 234
+- Lines: 241
 
 ## Module docstring
 
@@ -67,5 +67,5 @@
 - **function `_stage_b`** [L57-149]: `def _stage_b(store, ctx) -> int`
 - **function `_ev_base`** [L150-158]: `def _ev_base(store) -> dict`
 - **function `stage_c`** [L159-160]: `def stage_c(store=zc.STORE, dispatch=None, job=None) -> int`
-- **function `_stage_c`** [L161-234]: `def _stage_c(store, ctx) -> int`
+- **function `_stage_c`** [L161-241]: `def _stage_c(store, ctx) -> int`
 

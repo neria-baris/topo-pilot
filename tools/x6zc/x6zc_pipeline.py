@@ -57,6 +57,8 @@ def stage_c_statistics(outputs, arrays_by_family, qstar_fn, gen, drop_pairs=None
             for F in FAM}
     k6 = {F: sum(abs(x) <= float(zc.T["placebo"]) for x in vals[F].values()) >= zc.K6_MIN[F]
           for F in FAM}
+    errs.update({f"K6:{m}|{F}": "non-finite control beta_PP (G-R1)" for F in FAM  # F-19
+                 for m, x in vals[F].items() if not math.isfinite(x)})
     return {"point": point, "beta_y": beta_y, "rho": rho, "draws": draws, "cells": cells,
             "k6": {**k6, "values": vals}, "n_clusters": P, "cell_errors": errs}
 def _f4(x) -> str: return "n/a" if x is None or (isinstance(x, float) and x != x) else f"{x:.4f}"

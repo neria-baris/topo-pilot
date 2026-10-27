@@ -204,10 +204,10 @@ def _begin(store, stage, dispatch=None, job=None) -> dict:
         sr._CTX.update(store=str(store), job=str(disp["job"]), task=str(disp["task_sha256"]))
     ctx.update(freeze=fz, dispatch={k: disp.get(k) for k in DISPATCH_KEYS})
     se.set_threads()
-    ctx["env"] = sr.env_local()
-    ctx["ec"], ctx["closure"] = env_check(ctx["env"]), closure_diff()
-    ctx["setup"] += ["environment"] * (ctx["ec"]["status"] != "PASS") + [
-        "closure differs from H3"] * bool(ctx["closure"])
+    ctx["setup"] += _try("environment", lambda: ctx.update(env=sr.env_local()) or (
+        ctx.update(ec=env_check(ctx["env"])) or ctx["ec"]["status"] == "PASS"))
+    ctx["setup"] += _try("closure differs from H3", lambda: ctx.update(closure=closure_diff())
+                         or not ctx["closure"])
     ctx["stop"] = "SETUP_ERROR" if ctx["setup"] else None
     return ctx
 def _finish(store, ctx, stop=None, n=None) -> int:

@@ -64,10 +64,19 @@
 - [tests/x6_stage1/test_a_eval.py](../../tests/x6_stage1/test_a_eval.py.md) (line 26, import)
 - [tests/x6_stage1/test_a_numerics.py](../../tests/x6_stage1/test_a_numerics.py.md) (line 24, import)
 - [tests/x6_stage1/test_a_pairs.py](../../tests/x6_stage1/test_a_pairs.py.md) (line 25, import)
+- [tests/x6zc/test_x6zc_core.py](../../tests/x6zc/test_x6zc_core.py.md) (line 22, import)
+- [tests/x6zc/test_x6zc_dryrun.py](../../tests/x6zc/test_x6zc_dryrun.py.md) (line 24, import)
 - [tools/x6_stage1/x6s1_ingest.py](x6s1_ingest.py.md) (line 25, import)
 - [tools/x6_stage1/x6s1_run.py](x6s1_run.py.md) (line 548, import)
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 23, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 30, import)
+- [tools/x6zc/x6zc_census.py](../x6zc/x6zc_census.py.md) (line 18, import)
+- [tools/x6zc/x6zc_core.py](../x6zc/x6zc_core.py.md) (line 43, import)
+- [tools/x6zc/x6zc_dry.py](../x6zc/x6zc_dry.py.md) (line 17, import)
+- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 250, import)
+- [tools/x6zc/x6zc_pipeline.py](../x6zc/x6zc_pipeline.py.md) (line 14, import)
+- [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 22, import)
+- [tools/x6zc/x6zc_stage_bc.py](../x6zc/x6zc_stage_bc.py.md) (line 15, import)
 
 ## Top-level constants
 

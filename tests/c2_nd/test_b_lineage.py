@@ -20,6 +20,7 @@ import nd_config as nc  # noqa: E402  (first, API.md §1 "Test imports")
 import c2_config as cc  # noqa: E402
 import nd_data as nda  # noqa: E402
 import nd_driver as ndr  # noqa: E402
+import nd_registry as nrg  # noqa: E402
 import numpy as np  # noqa: E402
 import pytest  # noqa: E402
 
@@ -362,6 +363,26 @@ def test_supersede_and_regen_compare(tmp_path):
         ndr.supersede(ctx, "0130", 1, [rel], ruling)  # append-only: no second a1
     assert ndr.regen_compare(ctx, dest / rel, before) is True
     assert ndr.regen_compare(ctx, ctx.store / rel, before) is False
+
+
+# ---- T-REG-ND, D-0151-1 (here: test_b_registry.py is at 394 of its 400 lines) --------------
+def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads):
+    """D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed
+    and never opened (PASS); a non-numeric suffix or another name stays INCOMPLETE."""
+    monkeypatch.setattr(nc, "SCRATCH_ROOT", tmp_path / "scratch")  # no real scratch read
+    store = put(tmp_path / "x6zc-store" / "FREEZE.json", b'{"schema": "frozen"}\n').parent
+    names = ("stages/A-r1/qstar_NA.npz", "stages/B-r2/m1/pairs.npz")
+    for rel in names:
+        put(store / rel, b"x6zc output, never opened")
+    res = nrg.source_parallel(store, "x6zc")
+    assert res["status"] == "PASS" and not res["digests"], res["status"]
+    listed = sorted(str(x["path"]).replace("\\", "/") for x in res["non_history"])
+    assert len(listed) == 2 and all(map(str.endswith, listed, names)), listed
+    assert not [p for p in loads if p.endswith(names)]  # listed, not read
+    for rel in ("stages/A-rx/qstar_NA.npz", "stages/A-r1/other.npz"):
+        put(store / rel, b"x6zc output, never opened")
+        assert nrg.source_parallel(store, "x6zc")["status"] == "INCONCLUSIVE/REGISTRY_INCOMPLETE"
+        (store / rel).unlink()
 
 
 # ---- T-SIZE (run time; the author never lists tools/c2_nd) -------------------------------------

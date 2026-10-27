@@ -52,6 +52,7 @@
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 36, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 28, import)
 - [tools/c1prime/c1_meter_bind.py](../c1prime/c1_meter_bind.py.md) (line 28, import)
+- [tools/c2_nd/store_template/nd_meter_bind.py](../c2_nd/store_template/nd_meter_bind.py.md) (line 66, import)
 - [tools/hws/hws_dry.py](../hws/hws_dry.py.md) (line 172, import)
 - [tools/hws/hws_meter_bind.py](../hws/hws_meter_bind.py.md) (line 16, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 19, import)

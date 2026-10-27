@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 898 tracked files; 529 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 950 tracked files; 569 code files (linked to their pages).
 
 ## (repo root)
 
@@ -750,6 +750,25 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 |---|---|---|---|
 | [test_registry_builder.py](files/tests/c1prime_registry/test_registry_builder.py.md) | python | 105 lines | Builder tests for tools/c1prime/c1_registry_sources.py (job 0027; synthetic fixtures only). |
 
+## tests/c2_nd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 68 lines | Authorship record: independent test author A (job 0121) |
+| `AUTHORSHIP_B.md` | markdown | 54 lines | Authorship record, independent test author B (job 0121) |
+| [test_a_decoy_maths.py](files/tests/c2_nd/test_a_decoy_maths.py.md) | python | 310 lines | Author A (job 0121): T-MOVE (Lemma DC4), T-GAIN (Lemma DG) and T-ILLUSION (MD-9). |
+| [test_a_family.py](files/tests/c2_nd/test_a_family.py.md) | python | 396 lines | Author A (job 0121): T-FAMILY-ND (the exhaustive grid of §8.4) and T-EDGE (MD-9). |
+| [test_a_identity.py](files/tests/c2_nd/test_a_identity.py.md) | python | 293 lines | Author A (job 0121): T-N1, T-LNSCALE, T-LEAK and T-DOSE. |
+| [test_a_inference.py](files/tests/c2_nd/test_a_inference.py.md) | python | 361 lines | Author A (job 0121): T-RULES-ND, T-BOOT-ND and T-LADDER-ND. |
+| [test_a_known.py](files/tests/c2_nd/test_a_known.py.md) | python | 310 lines | Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY. |
+| [test_b_decoy_model.py](files/tests/c2_nd/test_b_decoy_model.py.md) | python | 345 lines | Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6). |
+| [test_b_dry_hs.py](files/tests/c2_nd/test_b_dry_hs.py.md) | python | 180 lines | Author B, regression for D-0158-1 (job 0159): the dry-run planted circle is history-sensitive. |
+| [test_b_layer2.py](files/tests/c2_nd/test_b_layer2.py.md) | python | 260 lines | Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9, |
+| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 399 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
+| [test_b_policy.py](files/tests/c2_nd/test_b_policy.py.md) | python | 314 lines | Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12); |
+| [test_b_registry.py](files/tests/c2_nd/test_b_registry.py.md) | python | 394 lines | Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4). |
+| [test_impl_dry_hs.py](files/tests/c2_nd/test_impl_dry_hs.py.md) | python | 161 lines | Implementer test, D-0158-1 (job 0159; API.md §20.11 ND-C59; protocol §10.1 criterion 2). |
+
 ## tests/c2_readout/
 
 | File | Kind | Size | Purpose |
@@ -1067,6 +1086,16 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 | [test_b_seed_pool_reg.py](files/tests/x6_stage1/test_b_seed_pool_reg.py.md) | python | 398 lines | Author B (operations): T-SEED, T-POOL, T-REG (X6S1-FROZEN-v1 §6.1-§6.6, §14.3; API.md §3, §10). |
 | [test_b_train_chain.py](files/tests/x6_stage1/test_b_train_chain.py.md) | python | 400 lines | Author B (cloud): T-TRAIN-EQUIV, T-CHAIN (X6S1-FROZEN-v1 §4.3, §4.6, §5.4, §5.5; API.md §5). |
 
+## tests/x6zc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 42 lines | Authorship record: X6ZC independent tests, author A (job 0120) |
+| `AUTHORSHIP_B.md` | markdown | 28 lines | AUTHORSHIP_B: independent test author B (dry run and store records), X6ZC job 0120 |
+| [test_x6zc_core.py](files/tests/x6zc/test_x6zc_core.py.md) | python | 400 lines | Author A (job 0120): X6ZC core tests (TEST_PLAN.md §2) from the protocol copy, API.md, CONTRACT, |
+| [test_x6zc_decide.py](files/tests/x6zc/test_x6zc_decide.py.md) | python | 391 lines | Author A (job 0120): X6ZC decision rules (§9.1, every branch and its precedence, G-R0 first), |
+| [test_x6zc_dryrun.py](files/tests/x6zc/test_x6zc_dryrun.py.md) | python | 400 lines | Author B, job 0120: the X6ZC synthetic dry run (PROTOCOL_X6ZC_v1 §12-§14; API.md §11, §15; |
+
 ## tools/
 
 | File | Kind | Size | Purpose |
@@ -1115,6 +1144,34 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | [c1_registry_sources.py](files/tools/c1prime_registry/c1_registry_sources.py.md) | python | 312 lines | C1' exposure registry v1: per-source readers for the frozen c1_data.build_registry (job 0027; |
+
+## tools/c2_nd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 557 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `CONTRACT.json` | json | 940 lines |  |
+| `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
+| `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
+| [nd_attrib.py](files/tools/c2_nd/nd_attrib.py.md) | python | 265 lines | C2ND attribution (closed forms; d = d_named; dy = y1 - y2; arm 1 = H+, arm 2 = H-): the N-R |
+| [nd_config.py](files/tools/c2_nd/nd_config.py.md) | python | 182 lines | C2ND configuration: bindings, paths, CONTRACT.json loading, constants, exact Fraction levels |
+| [nd_data.py](files/tools/c2_nd/nd_data.py.md) | python | 163 lines | C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene |
+| [nd_decide.py](files/tools/c2_nd/nd_decide.py.md) | python | 396 lines | C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M, |
+| [nd_decoy.py](files/tools/c2_nd/nd_decoy.py.md) | python | 373 lines | C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis |
+| [nd_driver.py](files/tools/c2_nd/nd_driver.py.md) | python | 398 lines | C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND |
+| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 336 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
+| [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 400 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
+| [nd_split.py](files/tools/c2_nd/nd_split.py.md) | python | 400 lines | C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of |
+| [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 389 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |
+| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 393 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
+| [nd_stage_pre.py](files/tools/c2_nd/nd_stage_pre.py.md) | python | 303 lines | C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order, |
+| [nd_stage_val.py](files/tools/c2_nd/nd_stage_val.py.md) | python | 362 lines | C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX, |
+
+## tools/c2_nd/store_template/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| [nd_meter_bind.py](files/tools/c2_nd/store_template/nd_meter_bind.py.md) | python | 137 lines | Store-local binding of the unchanged job-0014 meter for the C2ND runs (C2ND API.md 9.8; the |
 
 ## tools/c2_readout/
 
@@ -1326,3 +1383,23 @@ The generated index itself (`docs/code_index/`) is not indexed. 898 tracked file
 | [x6s1_stage_post.py](files/tools/x6_stage1/x6s1_stage_post.py.md) | python | 461 lines | X6S1 stage content of E1, E2, E3a/E3w and E3z (ruling R-0079-1): INGEST, LEARN, LC, LOSS-ECHO, |
 | [x6s1_stage_pre.py](files/tools/x6_stage1/x6s1_stage_pre.py.md) | python | 431 lines | X6S1 stage content of E0 and E0b (ruling R-0079-1): AUTH-ADMIT, S0, REG1 and the non-test |
 | [x6s1_stats.py](files/tools/x6_stage1/x6s1_stats.py.md) | python | 202 lines | X6S1 stats (overflow module 2): the empirical-Bernstein bound evaluated outward, certified log |
+
+## tools/x6zc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 440 lines | tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1) |
+| `CONTRACT.json` | json | 1910 lines |  |
+| `PROTOCOL_X6ZC_v1.md` | markdown | 930 lines | X6ZC-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): why do commutative controls respond to the designed order contrasts of X6 stage 1? (no training) |
+| `TEST_PLAN.md` | markdown | 118 lines | X6ZC test plan v1 (job 0117) |
+| [x6zc_census.py](files/tools/x6zc/x6zc_census.py.md) | python | 328 lines | X6ZC census: the A-audit of the stored pairs, A4 exposure matching, the K4 comparison, the K5 |
+| [x6zc_const.py](files/tools/x6zc/x6zc_const.py.md) | python | 66 lines | X6ZC constants: CONTRACT loading, names and bindings, streams (X6ZC-DESIGN-v1; API.md |
+| [x6zc_core.py](files/tools/x6zc/x6zc_core.py.md) | python | 375 lines | X6ZC core: fresh prefixes and loop-sign variants, exact geometry (K0) and the q*_NA cache, |
+| [x6zc_decide.py](files/tools/x6zc/x6zc_decide.py.md) | python | 192 lines | X6ZC decision: the paired cluster bootstrap, ratio intervals, B9 sizing, the §9 decision, |
+| [x6zc_dry.py](files/tools/x6zc/x6zc_dry.py.md) | python | 278 lines | X6ZC stage 0: the synthetic dry run of every CONTRACT fixture through the pipeline |
+| [x6zc_guard.py](files/tools/x6zc/x6zc_guard.py.md) | python | 363 lines | X6ZC guard: the stage harness shared by stages A, B and C (job 0137; API.md §20 C-54). The |
+| [x6zc_pipeline.py](files/tools/x6zc/x6zc_pipeline.py.md) | python | 124 lines | X6ZC pipeline: the pure Stage-C functions shared by Stage C, the sensitivity lines and the dry |
+| [x6zc_run.py](files/tools/x6zc/x6zc_run.py.md) | python | 96 lines | X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run, guard and stage |
+| [x6zc_stage_a.py](files/tools/x6zc/x6zc_stage_a.py.md) | python | 283 lines | X6ZC stage A and the model chunk children: the A1 records audit, the A2 code audit, stage A |
+| [x6zc_stage_bc.py](files/tools/x6zc/x6zc_stage_bc.py.md) | python | 241 lines | X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C |
+| [x6zc_store.py](files/tools/x6zc/x6zc_store.py.md) | python | 312 lines | X6ZC store: JSON helpers, exclusive-create records (EXPOSURE, EVALUATIONS, STAGES, rulings), |

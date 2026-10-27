@@ -367,7 +367,9 @@ def test_supersede_and_regen_compare(tmp_path):
 # ---- T-SIZE (run time; the author never lists tools/c2_nd) -------------------------------------
 def test_module_files_and_sizes():
     names = sorted(p.name for p in PKG.glob("*.py"))
-    assert names == sorted(nc.CONTRACT["modules"]) and len(names) == 11
+    modules = list(nc.CONTRACT["modules"])  # R-0125-1: CONTRACT's list, whatever its length
+    assert modules and len(set(modules)) == len(modules), modules
+    assert names == sorted(modules), (names, modules)
     assert tuple(nc.MODULES) == tuple(nc.CONTRACT["modules"])
     lines = {n: len((PKG / n).read_text(encoding="utf-8").splitlines()) for n in names}
     assert all(v <= 400 for v in lines.values()), lines

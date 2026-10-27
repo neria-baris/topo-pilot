@@ -53,6 +53,7 @@
 - [tests/c2_nd/test_a_inference.py](../../tests/c2_nd/test_a_inference.py.md) (line 21, import)
 - [tests/c2_nd/test_a_known.py](../../tests/c2_nd/test_a_known.py.md) (line 20, import)
 - [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 21, import)
+- [tests/c2_nd/test_b_dry_hs.py](../../tests/c2_nd/test_b_dry_hs.py.md) (line 23, import)
 - [tests/c2_nd/test_b_layer2.py](../../tests/c2_nd/test_b_layer2.py.md) (line 21, import)
 - [tests/c2_nd/test_b_lineage.py](../../tests/c2_nd/test_b_lineage.py.md) (line 17, import)
 - [tests/c2_nd/test_b_policy.py](../../tests/c2_nd/test_b_policy.py.md) (line 15, import)

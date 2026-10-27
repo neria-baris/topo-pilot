@@ -659,6 +659,9 @@ Edge counts are file-to-file edges between different subpackages.
 ### `tests/c2_nd/test_b_decoy_model.py`
 - -> src/topo_pilot/learner/__init__.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_model.py
 - <- none
+### `tests/c2_nd/test_b_dry_hs.py`
+- -> tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- none
 ### `tests/c2_nd/test_b_layer2.py`
 - -> src/topo_pilot/learner/__init__.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_decide.py
 - <- none
@@ -1252,43 +1255,43 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/c1prime_registry/test_registry_builder.py, tests/k4b/test_b_data.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_registry.py, tools/x6_stage1/x6s1_registry.py
 ### `tools/c2_nd/nd_attrib.py`
 - -> tools/c1prime/c1_endpoint.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_config.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_decide.py
-- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_policy.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_policy.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_config.py`
 - -> tools/c1prime/c1_means.py, tools/c2_readout/c2_config.py
-- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_family.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_inference.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_b_registry.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_data.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_family.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_inference.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_b_registry.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_data.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_data.py, tools/c2_nd/nd_config.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py
 - <- tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_split.py
 ### `tools/c2_nd/nd_decide.py`
 - -> tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_readout/c2_decide.py
-- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_family.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_inference.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_family.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_a_inference.py, tests/c2_nd/test_a_known.py, tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_b_layer2.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_decoy.py`
 - -> tools/c1prime/c1_model.py, tools/c2_nd/nd_config.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_model.py
 - <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_a_identity.py, tests/c2_nd/test_b_decoy_model.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py
 ### `tools/c2_nd/nd_driver.py`
 - -> tools/c1prime/c1_records.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_data.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/x4_circle_history/stage_records.py
-- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_a_decoy_maths.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_policy.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_dry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, tools/c1prime/c1_data.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stats.py
-- <- tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_stage_base.py
+- <- tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_stage_base.py
 ### `tools/c2_nd/nd_registry.py`
 - -> tools/c1prime/c1_data.py, tools/c2_nd/nd_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_registry.py, tools/k4b/k4b_registry.py, tools/x4_circle_history/stage_records.py, tools/x6_stage1/x6s1_registry.py
-- <- tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_registry.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py
+- <- tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_b_lineage.py, tests/c2_nd/test_b_registry.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py
 ### `tools/c2_nd/nd_split.py`
 - -> tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_data.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stats.py
-- <- tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_stage_base.py`
 - -> tools/c1prime/c1_chart.py, tools/c1prime/c1_model.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_dry.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/stage_records.py
-- <- tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_stage_post.py`
 - -> tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py
 - <- tests/c2_nd/test_impl_dry_hs.py
 ### `tools/c2_nd/nd_stage_pre.py`
 - -> tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stats.py
-- <- tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_val.py
+- <- tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_stage_val.py`
 - -> tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stats.py, tools/x4_circle_history/precision.py
-- <- tests/c2_nd/test_a_inference.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py
+- <- tests/c2_nd/test_a_inference.py, tests/c2_nd/test_b_dry_hs.py, tests/c2_nd/test_impl_dry_hs.py, tools/c2_nd/nd_stage_post.py
 ### `tools/c2_nd/store_template/nd_meter_bind.py`
 - -> tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- none
@@ -3203,6 +3206,17 @@ tests/c2_nd/test_b_decoy_model.py
     tools/c2_nd/nd_driver.py (see above)
     tools/c2_readout/c2_attrib.py (see above)
     tools/c2_readout/c2_model.py (see above)
+tests/c2_nd/test_b_dry_hs.py
+    tools/c2_nd/nd_attrib.py (see above)
+    tools/c2_nd/nd_config.py (see above)
+    tools/c2_nd/nd_decide.py (see above)
+    tools/c2_nd/nd_driver.py (see above)
+    tools/c2_nd/nd_dry.py (see above)
+    tools/c2_nd/nd_registry.py (see above)
+    tools/c2_nd/nd_split.py (see above)
+    tools/c2_nd/nd_stage_base.py (see above)
+    tools/c2_nd/nd_stage_pre.py (see above)
+    tools/c2_nd/nd_stage_val.py (see above)
 tests/c2_nd/test_b_layer2.py
     src/topo_pilot/learner/__init__.py (see above)
     tools/c2_nd/nd_attrib.py (see above)

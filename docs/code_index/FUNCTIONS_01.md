@@ -1920,6 +1920,7 @@
 | `assert_round_trip` | function | `assert_round_trip` | [tests/circle_history/test_chart_arrays.py:67](../../tests/circle_history/test_chart_arrays.py#L67) |  |
 | `assert_same` | function | `assert_same` | [tests/circle_history/test_chart.py:355](../../tests/circle_history/test_chart.py#L355) |  |
 | `assert_same` | function | `assert_same` | [tests/contracts/test_store.py:37](../../tests/contracts/test_store.py#L37) |  |
+| `at` | function | `at` | [tests/c2_nd/test_b_dry_hs.py:43](../../tests/c2_nd/test_b_dry_hs.py#L43) | A fresh policy positioned at `gate` (the earlier gates counted as done). |
 | `at` | function | `at` | [tests/c2_nd/test_impl_dry_hs.py:54](../../tests/c2_nd/test_impl_dry_hs.py#L54) | A policy opened at `gate` with every earlier gate done. |
 | `at` | function | `at` | [tests/k4b/test_b_endpoint.py:66](../../tests/k4b/test_b_endpoint.py#L66) |  |
 | `at_gate` | function | `at_gate` | [tests/c2_nd/test_b_decoy_model.py:75](../../tests/c2_nd/test_b_decoy_model.py#L75) |  |
@@ -2449,6 +2450,7 @@
 | `d_inputs` | function | `d_inputs` | [tests/c2_nd/test_b_policy.py:170](../../tests/c2_nd/test_b_policy.py#L170) |  |
 | `d_model` | function | `d_model` | [tools/c2_nd/nd_decide.py:90](../../tools/c2_nd/nd_decide.py#L90) | c2_decide.r_model on the DNULL arrays, DECOY_ names, rule-6 (b); y_active = Y1' active. |
 | `d_named` | function | `d_named` | [tools/c2_readout/c2_oracle.py:148](../../tools/c2_readout/c2_oracle.py#L148) |  |
+| `d_null_family` | function | `d_null_family` | [tests/c2_nd/test_b_dry_hs.py:49](../../tests/c2_nd/test_b_dry_hs.py#L49) | The planted D-NULL on DVAL: d_stream arrays under the refit projector RD, bounds (C2 |
 | `d_stream` | function | `d_stream` | [tools/c2_nd/nd_attrib.py:121](../../tools/c2_nd/nd_attrib.py#L121) | The D family stream of one model: the seven C2 R arrays of D-NULL under the RD refit, and |
 | `D_w` | function | `D_w` | [tools/c1prime/c1_gates.py:15](../../tools/c1prime/c1_gates.py#L15) |  |
 | `D_y` | function | `D_y` | [tools/c1prime/c1_gates.py:21](../../tools/c1prime/c1_gates.py#L21) |  |
@@ -4456,6 +4458,7 @@
 | `run` | function | `run` | [src/topo_pilot/experiment/s7_jobs.py:10](../../src/topo_pilot/experiment/s7_jobs.py#L10) | Run S7 job ``kind``: dev_extract, controls, probes, circular or sensitivity. |
 | `run` | function | `run` | [src/topo_pilot/experiment/x5g1_scorebench.py:108](../../src/topo_pilot/experiment/x5g1_scorebench.py#L108) |  |
 | `run` | function | `run` | [src/topo_pilot/experiment/x5g1_techbench.py:160](../../src/topo_pilot/experiment/x5g1_techbench.py#L160) |  |
+| `run` | function | `run` | [tests/c2_nd/test_b_dry_hs.py:66](../../tests/c2_nd/test_b_dry_hs.py#L66) |  |
 | `run` | function | `run` | [tests/d2a/test_b_rules_decide.py:81](../../tests/d2a/test_b_rules_decide.py#L81) |  |
 | `run` | function | `run` | [tests/d2a/test_b_rules_qualifiers.py:88](../../tests/d2a/test_b_rules_qualifiers.py#L88) |  |
 | `run` | function | `run` | [tests/k4b/test_b_endpoint.py:285](../../tests/k4b/test_b_endpoint.py#L285) |  |
@@ -4584,7 +4587,3 @@
 | `save` | method | `ArtifactStore.save` | [src/topo_pilot/contracts/store.py:90](../../src/topo_pilot/contracts/store.py#L90) | Validate, derive the id, and write; idempotent for identical content. |
 | `save` | function | `save` | [tests/c2_nd/test_b_registry.py:46](../../tests/c2_nd/test_b_registry.py#L46) |  |
 | `save_fit` | function | `save_fit` | [tools/c1prime/c1_driver_cal.py:235](../../tools/c1prime/c1_driver_cal.py#L235) |  |
-| `save_npz` | function | `save_npz` | [tools/x4_circle_history/stage_records.py:40](../../tools/x4_circle_history/stage_records.py#L40) |  |
-| `save_npz` | function | `save_npz` | [tools/x4_oracle_profile/runtime.py:64](../../tools/x4_oracle_profile/runtime.py#L64) |  |
-| `save_oracle` | function | `save_oracle` | [tools/c2_readout/c2_stage_base.py:346](../../tools/c2_readout/c2_stage_base.py#L346) |  |
-| `save_parents` | function | `save_parents` | [tests/experiment/test_x4.py:90](../../tests/experiment/test_x4.py#L90) |  |

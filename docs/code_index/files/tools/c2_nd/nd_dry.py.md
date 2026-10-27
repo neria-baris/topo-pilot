@@ -70,6 +70,7 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_b_dry_hs.py](../../tests/c2_nd/test_b_dry_hs.py.md) (line 29, import)
 - [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 33, import)
 - [tools/c2_nd/nd_driver.py](nd_driver.py.md) (line 356, dynamic)
 - [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 286, dynamic)

@@ -2,6 +2,10 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `save_npz` | function | `save_npz` | [tools/x4_circle_history/stage_records.py:40](../../tools/x4_circle_history/stage_records.py#L40) |  |
+| `save_npz` | function | `save_npz` | [tools/x4_oracle_profile/runtime.py:64](../../tools/x4_oracle_profile/runtime.py#L64) |  |
+| `save_oracle` | function | `save_oracle` | [tools/c2_readout/c2_stage_base.py:346](../../tools/c2_readout/c2_stage_base.py#L346) |  |
+| `save_parents` | function | `save_parents` | [tests/experiment/test_x4.py:90](../../tests/experiment/test_x4.py#L90) |  |
 | `save_pool` | function | `save_pool` | [tools/x6_stage1/x6s1_data.py:240](../../tools/x6_stage1/x6s1_data.py#L240) |  |
 | `save_pools` | function | `save_pools` | [tools/d2a/d2a_world.py:191](../../tools/d2a/d2a_world.py#L191) | Sample and save all 21 pools (POOLS order) once; write pools.json (refuses if present). |
 | `save_tables` | function | `save_tables` | [tools/x6_stage1/x6s1_pairs.py:57](../../tools/x6_stage1/x6s1_pairs.py#L57) |  |
@@ -508,6 +512,7 @@
 | `test_begin_stage_refuses_an_uncompleted_prerequisite` | test | `test_begin_stage_refuses_an_uncompleted_prerequisite` | [tests/c1prime/test_a_gates.py:209](../../tests/c1prime/test_a_gates.py#L209) |  |
 | `test_begin_stage_refuses_changed_evidence` | test | `test_begin_stage_refuses_changed_evidence` | [tests/c1prime/test_a_gates.py:201](../../tests/c1prime/test_a_gates.py#L201) |  |
 | `test_behaviour_cells_exactly_the_true_ones` | test | `test_behaviour_cells_exactly_the_true_ones` | [tests/d2a/test_b_rules_qualifiers.py:198](../../tests/d2a/test_b_rules_qualifiers.py#L198) |  |
+| `test_belief_chart_files` | test | `test_belief_chart_files` | [tests/c2_nd/test_b_dry_hs.py:111](../../tests/c2_nd/test_b_dry_hs.py#L111) | ND-C59: c2/charts/CHART_<j>_dry.npz holds mu (d_model) and U (2 x 128) only. |
 | `test_beliefs_chunked_equal_unchunked` | test | `test_beliefs_chunked_equal_unchunked` | [tests/experiment/test_x4b2.py:61](../../tests/experiment/test_x4b2.py#L61) |  |
 | `test_beta2_oracle_and_pi_blind_on_decision_contrasts` | test | `test_beta2_oracle_and_pi_blind_on_decision_contrasts` | [tests/d2a/test_b_targets.py:192](../../tests/d2a/test_b_targets.py#L192) |  |
 | `test_beta2_pass` | test | `test_beta2_pass` | [tests/d2a/test_b_rules_flags.py:164](../../tests/d2a/test_b_rules_flags.py#L164) |  |
@@ -876,6 +881,8 @@
 | `test_D08_no_train_sidecar_persisted` | test | `test_D08_no_train_sidecar_persisted` | [tests/dataset/test_stage.py:70](../../tests/dataset/test_stage.py#L70) |  |
 | `test_D09_biased_sampler_caught_by_first_token_chi2` | test | `test_D09_biased_sampler_caught_by_first_token_chi2` | [tests/dataset/test_stage.py:80](../../tests/dataset/test_stage.py#L80) |  |
 | `test_d_named_scatters_canonical_into_named_order` | test | `test_d_named_scatters_canonical_into_named_order` | [tests/c2_readout/test_a_readout.py:191](../../tests/c2_readout/test_a_readout.py#L191) |  |
+| `test_d_null_is_not_used` | test | `test_d_null_is_not_used` | [tests/c2_nd/test_b_dry_hs.py:167](../../tests/c2_nd/test_b_dry_hs.py#L167) | The planted D-NULL: (a) KC-R, the coordinate decoys D-NULL-R NOT_USED and D-ID USED, never |
+| `test_d_only_is_necessary` | test | `test_d_only_is_necessary` | [tests/c2_nd/test_b_dry_hs.py:147](../../tests/c2_nd/test_b_dry_hs.py#L147) | KC (8.3): D0 USED, D-ONLY USED and NECESSARY, D-DOSE PARTIAL and NOT_NECESSARY. No model |
 | `test_d_stream_refuses_the_construction_projector` | test | `test_d_stream_refuses_the_construction_projector` | [tests/c2_nd/test_b_policy.py:179](../../tests/c2_nd/test_b_policy.py#L179) |  |
 | `test_D_w_counts_both_arms_over_2n` | test | `test_D_w_counts_both_arms_over_2n` | [tests/c1prime/test_b_gates.py:41](../../tests/c1prime/test_b_gates.py#L41) |  |
 | `test_D_y_and_leakage` | test | `test_D_y_and_leakage` | [tests/c1prime/test_b_gates.py:50](../../tests/c1prime/test_b_gates.py#L50) |  |
@@ -1174,6 +1181,7 @@
 | `test_fixture_hmm_is_exactly_stationary_and_asymmetric` | test | `test_fixture_hmm_is_exactly_stationary_and_asymmetric` | [tests/circle_history/test_scores_precision.py:70](../../tests/circle_history/test_scores_precision.py#L70) |  |
 | `test_fixture_is_exactly_symmetric` | test | `test_fixture_is_exactly_symmetric` | [tests/c1prime/test_a_oracle.py:132](../../tests/c1prime/test_a_oracle.py#L132) |  |
 | `test_fixture_is_seedtree_only_and_positive` | test | `test_fixture_is_seedtree_only_and_positive` | [tests/experiment/test_x5g1_scorebench_smoke.py:26](../../tests/experiment/test_x5g1_scorebench_smoke.py#L26) |  |
+| `test_fixture_reaches_r1` | test | `test_fixture_reaches_r1` | [tests/c2_nd/test_b_dry_hs.py:121](../../tests/c2_nd/test_b_dry_hs.py#L121) | The stages before R1 record PASS on the planted models (the 0158 run stopped only at R1). |
 | `test_fixture_with_more_than_1024_rows_is_incomplete` | test | `test_fixture_with_more_than_1024_rows_is_incomplete` | [tests/k4b/test_b_registry_rules.py:130](../../tests/k4b/test_b_registry_rules.py#L130) |  |
 | `test_fixtures_in_a_basetemp_segment_are_not_scanned` | test | `test_fixtures_in_a_basetemp_segment_are_not_scanned` | [tests/k4b/test_b_registry_rules.py:115](../../tests/k4b/test_b_registry_rules.py#L115) |  |
 | `test_fixtures_raise_what_they_claim` | test | `test_fixtures_raise_what_they_claim` | [tests/c1prime/test_a_exceptions.py:123](../../tests/c1prime/test_a_exceptions.py#L123) |  |
@@ -2072,6 +2080,7 @@
 | `test_r1_failure_routes_to_cnhs` | test | `test_r1_failure_routes_to_cnhs` | [tests/c2_readout/test_b_screens.py:129](../../tests/c2_readout/test_b_screens.py#L129) |  |
 | `test_r1_history_sensitive_with_margin` | test | `test_r1_history_sensitive_with_margin` | [tests/c2_nd/test_impl_dry_hs.py:115](../../tests/c2_nd/test_impl_dry_hs.py#L115) | R1 PASS on N-R (R), D (R), N-M (M) and the report-only D refit RT, every model. |
 | `test_r1_median_ties_use_inverted_cdf` | test | `test_r1_median_ties_use_inverted_cdf` | [tests/c2_readout/test_b_screens.py:83](../../tests/c2_readout/test_b_screens.py#L83) |  |
+| `test_r1_passes_on_every_planted_model` | test | `test_r1_passes_on_every_planted_model` | [tests/c2_nd/test_b_dry_hs.py:130](../../tests/c2_nd/test_b_dry_hs.py#L130) | Pass criterion 2 of 10.1 / D-0158-1: the planted models are R1-history-sensitive, for every |
 | `test_r1_sign_zero_is_disagreement_and_three_quarters_passes` | test | `test_r1_sign_zero_is_disagreement_and_three_quarters_passes` | [tests/c2_readout/test_b_screens.py:73](../../tests/c2_readout/test_b_screens.py#L73) |  |
 | `test_r1_without_overrides_reproduces_c1_gates_v1_bitwise` | test | `test_r1_without_overrides_reproduces_c1_gates_v1_bitwise` | [tests/c2_readout/test_b_screens.py:48](../../tests/c2_readout/test_b_screens.py#L48) |  |
 | `test_r1_wraps_at_plus_minus_pi` | test | `test_r1_wraps_at_plus_minus_pi` | [tests/c2_readout/test_b_screens.py:65](../../tests/c2_readout/test_b_screens.py#L65) |  |

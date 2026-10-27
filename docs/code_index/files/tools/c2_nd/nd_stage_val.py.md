@@ -58,6 +58,7 @@
 ## Imported by
 
 - [tests/c2_nd/test_a_inference.py](../../tests/c2_nd/test_a_inference.py.md) (line 27, import)
+- [tests/c2_nd/test_b_dry_hs.py](../../tests/c2_nd/test_b_dry_hs.py.md) (line 34, import)
 - [tests/c2_nd/test_impl_dry_hs.py](../../tests/c2_nd/test_impl_dry_hs.py.md) (line 38, import)
 - [tools/c2_nd/nd_stage_post.py](nd_stage_post.py.md) (line 30, import)
 

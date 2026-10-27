@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 291,
-  "code files": 530,
+  "code files": 531,
   "dynamic imports, dynamic expression or unresolved": 8,
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 893,
-  "functions and methods (incl. tests)": 7464,
+  "files indexed": 894,
+  "functions and methods (incl. tests)": 7472,
   "import cycles (strongly connected components)": 7,
-  "import statements, external": 770,
+  "import statements, external": 772,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2235,
+  "import statements, internal resolved": 2245,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2188,
-  "internal edges (file to file, with kind and line)": 2269,
-  "python files": 529
+  "import statements, standard library": 2192,
+  "internal edges (file to file, with kind and line)": 2279,
+  "python files": 530
  },
  "cycles": [
   [
@@ -4603,6 +4603,66 @@
    "tools/c2_readout/c2_model.py",
    "import",
    25
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_attrib.py",
+   "import",
+   26
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_config.py",
+   "import",
+   23
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_decide.py",
+   "import",
+   27
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_driver.py",
+   "import",
+   28
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_dry.py",
+   "import",
+   29
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   30
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_split.py",
+   "import",
+   31
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_stage_base.py",
+   "import",
+   32
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_stage_pre.py",
+   "import",
+   33
+  ],
+  [
+   "tests/c2_nd/test_b_dry_hs.py",
+   "tools/c2_nd/nd_stage_val.py",
+   "import",
+   34
   ],
   [
    "tests/c2_nd/test_b_layer2.py",
@@ -16747,6 +16807,12 @@
    "lines": 345,
    "purpose": "Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6).",
    "sha256": "bd0890e2cf43926ee475b2d42da132a9ea6e05107c3e5195ecf3b0c39d91ca88"
+  },
+  "tests/c2_nd/test_b_dry_hs.py": {
+   "kind": "python",
+   "lines": 180,
+   "purpose": "Author B, regression for D-0158-1 (job 0159): the dry-run planted circle is history-sensitive.",
+   "sha256": "16f89526815541529c40a37f58f3d2ff3f9010eeb68b4605057d5c1d619db63a"
   },
   "tests/c2_nd/test_b_layer2.py": {
    "kind": "python",
@@ -74600,6 +74666,373 @@
      ],
      "expr": "str(REPO / 'tools' / 'c2_nd')",
      "line": 19
+    }
+   ]
+  },
+  "tests/c2_nd/test_b_dry_hs.py": {
+   "constants": [
+    "KNOWN_D",
+    "ORDER",
+    "R1_MIN",
+    "REPO"
+   ],
+   "doc": "Author B, regression for D-0158-1 (job 0159): the dry-run planted circle is history-sensitive.",
+   "doc1": "Author B, regression for D-0158-1 (job 0159): the dry-run planted circle is history-sensitive.",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 23,
+     "module": "",
+     "names": [
+      "nd_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_config.py"
+     ],
+     "top": "nd_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
+     "module": "",
+     "names": [
+      "nd_attrib"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_attrib.py"
+     ],
+     "top": "nd_attrib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 27,
+     "module": "",
+     "names": [
+      "nd_decide"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_decide.py"
+     ],
+     "top": "nd_decide"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
+      "nd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_driver.py"
+     ],
+     "top": "nd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 29,
+     "module": "",
+     "names": [
+      "nd_dry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_dry.py"
+     ],
+     "top": "nd_dry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 30,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
+     "module": "",
+     "names": [
+      "nd_split"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_split.py"
+     ],
+     "top": "nd_split"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 32,
+     "module": "",
+     "names": [
+      "nd_stage_base"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_base.py"
+     ],
+     "top": "nd_stage_base"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 33,
+     "module": "",
+     "names": [
+      "nd_stage_pre"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_pre.py"
+     ],
+     "top": "nd_stage_pre"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 34,
+     "module": "",
+     "names": [
+      "nd_stage_val"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_val.py"
+     ],
+     "top": "nd_stage_val"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 35,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 36,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "A fresh policy positioned at `gate` (the earlier gates counted as done).",
+     "end": 46,
+     "kind": "function",
+     "name": "at",
+     "qual": "at",
+     "sig": "def at(ctx, gate)",
+     "start": 43
+    },
+    {
+     "decorators": [],
+     "doc": "The planted D-NULL on DVAL: d_stream arrays under the refit projector RD, bounds (C2",
+     "end": 62,
+     "kind": "function",
+     "name": "d_null_family",
+     "qual": "d_null_family",
+     "sig": "def d_null_family(ctx)",
+     "start": 49
+    },
+    {
+     "decorators": [
+      "pytest.fixture(scope='module')"
+     ],
+     "doc": "",
+     "end": 108,
+     "kind": "function",
+     "name": "run",
+     "qual": "run",
+     "sig": "def run(tmp_path_factory)",
+     "start": 66
+    },
+    {
+     "decorators": [],
+     "doc": "ND-C59: c2/charts/CHART_<j>_dry.npz holds mu (d_model) and U (2 x 128) only.",
+     "end": 118,
+     "kind": "test",
+     "name": "test_belief_chart_files",
+     "qual": "test_belief_chart_files",
+     "sig": "def test_belief_chart_files(run)",
+     "start": 111
+    },
+    {
+     "decorators": [],
+     "doc": "The stages before R1 record PASS on the planted models (the 0158 run stopped only at R1).",
+     "end": 127,
+     "kind": "test",
+     "name": "test_fixture_reaches_r1",
+     "qual": "test_fixture_reaches_r1",
+     "sig": "def test_fixture_reaches_r1(run)",
+     "start": 121
+    },
+    {
+     "decorators": [],
+     "doc": "Pass criterion 2 of 10.1 / D-0158-1: the planted models are R1-history-sensitive, for every",
+     "end": 144,
+     "kind": "test",
+     "name": "test_r1_passes_on_every_planted_model",
+     "qual": "test_r1_passes_on_every_planted_model",
+     "sig": "def test_r1_passes_on_every_planted_model(run)",
+     "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "KC (8.3): D0 USED, D-ONLY USED and NECESSARY, D-DOSE PARTIAL and NOT_NECESSARY. No model",
+     "end": 164,
+     "kind": "test",
+     "name": "test_d_only_is_necessary",
+     "qual": "test_d_only_is_necessary",
+     "sig": "def test_d_only_is_necessary(run)",
+     "start": 147
+    },
+    {
+     "decorators": [],
+     "doc": "The planted D-NULL: (a) KC-R, the coordinate decoys D-NULL-R NOT_USED and D-ID USED, never",
+     "end": 180,
+     "kind": "test",
+     "name": "test_d_null_is_not_used",
+     "qual": "test_d_null_is_not_used",
+     "sig": "def test_d_null_is_not_used(run)",
+     "start": 167
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/c2_nd"
+     ],
+     "expr": "str(REPO / 'tools' / 'c2_nd')",
+     "line": 21
     }
    ]
   },
@@ -193706,5 +194139,5 @@
    ]
   }
  },
- "sources_digest": "bfb5c7566c82e845a1285c1edc5b018305334eb6e970d21b6a2c8519fb764901"
+ "sources_digest": "decd3374619d52ccafb3080bac2bda56e2b56e12c3d953119863035b607d193d"
 }

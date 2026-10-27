@@ -64,7 +64,7 @@
 
 ## Imported by
 
-- [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 39, import)
+- [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 40, import)
 - [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 24, import)
 
 ## Top-level constants

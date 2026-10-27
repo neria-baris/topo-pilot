@@ -80,8 +80,8 @@
 - [tools/x6_stage1/x6s1_eval.py](../x6_stage1/x6s1_eval.py.md) (line 43, import)
 - [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 26, import)
 - [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 32, import)
-- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 147, import)
-- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 281, import)
+- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 180, import)
+- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 314, import)
 - [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 258, import)
 
 ## Top-level constants

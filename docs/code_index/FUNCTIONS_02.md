@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `stage1_decision` | function | `stage1_decision` | [tools/d2a/d2a_decide.py:52](../../tools/d2a/d2a_decide.py#L52) |  |
 | `stage1_main` | function | `stage1_main` | [tools/d2a/d2a_decide.py:169](../../tools/d2a/d2a_decide.py#L169) | CLI ``stage1``: learnability gate on val for H3-s1, H3-s2 (§6) plus descriptive R_π. |
 | `stage3_data` | function | `stage3_data` | [tools/d2a/d2a_eval.py:259](../../tools/d2a/d2a_eval.py#L259) | Tokens, strata rows, positions and targets for cal and test (stage 3 only). |
 | `stage3_main` | function | `stage3_main` | [tools/d2a/d2a_decide.py:340](../../tools/d2a/d2a_decide.py#L340) | CLI ``stage3`` (API §4): primary passes, decision, then budgeted secondary work. |
@@ -11,7 +12,7 @@
 | `stage_c_statistics` | function | `stage_c_statistics` | [tools/x6zc/x6zc_pipeline.py:24](../../tools/x6zc/x6zc_pipeline.py#L24) |  |
 | `stage_caps` | function | `stage_caps` | [tools/x4_circle_history/meter_bind.py:82](../../tools/x4_circle_history/meter_bind.py#L82) |  |
 | `stage_charts` | function | `stage_charts` | [tools/x4_circle_history/runner.py:259](../../tools/x4_circle_history/runner.py#L259) |  |
-| `stage_cpu` | function | `stage_cpu` | [tools/x6zc/x6zc_guard.py:208](../../tools/x6zc/x6zc_guard.py#L208) |  |
+| `stage_cpu` | function | `stage_cpu` | [tools/x6zc/x6zc_guard.py:241](../../tools/x6zc/x6zc_guard.py#L241) |  |
 | `stage_export` | function | `stage_export` | [tools/x4_circle_history/runner.py:291](../../tools/x4_circle_history/runner.py#L291) |  |
 | `stage_identity` | function | `stage_identity` | [tools/x4_circle_history/runner.py:64](../../tools/x4_circle_history/runner.py#L64) |  |
 | `stage_oracle` | function | `stage_oracle` | [tools/x4_circle_history/runner.py:114](../../tools/x4_circle_history/runner.py#L114) |  |
@@ -42,7 +43,7 @@
 | `stationary` | function | `stationary` | [tests/k4b/test_a_theorem_a.py:42](../../tests/k4b/test_a_theorem_a.py#L42) |  |
 | `statistic` | function | `statistic` | [tools/x6_stage0/x6_model.py:232](../../tools/x6_stage0/x6_model.py#L232) |  |
 | `stats` | function | `stats` | [tools/x6_stage1/x6s1_stage_post.py:346](../../tools/x6_stage1/x6s1_stage_post.py#L346) |  |
-| `stats_marker` | function | `stats_marker` | [tools/x6zc/x6zc_guard.py:287](../../tools/x6zc/x6zc_guard.py#L287) |  |
+| `stats_marker` | function | `stats_marker` | [tools/x6zc/x6zc_guard.py:320](../../tools/x6zc/x6zc_guard.py#L320) |  |
 | `Status` | class | `Status` | [src/topo_pilot/contracts/errors.py:41](../../src/topo_pilot/contracts/errors.py#L41) | Non-exception outcomes stored in results ("cannot decide" is a status, not an error). |
 | `status` | method | `BundleExecutor.status` | [src/topo_pilot/executors/bundle.py:144](../../src/topo_pilot/executors/bundle.py#L144) | ``awaiting_user`` after submit, ``done`` after a successful fetch. |
 | `status` | method | `Executor.status` | [src/topo_pilot/executors/base.py:64](../../src/topo_pilot/executors/base.py#L64) | Current state; ``awaiting_user`` means the user must move files by hand. |
@@ -2675,6 +2676,7 @@
 | `typeset` | function | `typeset` | [reports/he_summary/build.py:85](../../reports/he_summary/build.py#L85) |  |
 | `u_context_gain` | function | `u_context_gain` | [src/topo_pilot/experiment/s7.py:58](../../src/topo_pilot/experiment/s7.py#L58) | ``G_U = mean KL(q_C \|\| pi E)`` over the run's final-checkpoint histories (D-047): the |
 | `u_digits` | function | `u_digits` | [tools/x4_circle_history/error_bound.py:43](../../tools/x4_circle_history/error_bound.py#L43) |  |
+| `under_meter_job` | function | `under_meter_job` | [tools/x6zc/x6zc_guard.py:158](../../tools/x6zc/x6zc_guard.py#L158) | C-57: the meter (job-0014, sha-pinned) starts its command suspended, assigns it to its job |
 | `unfrozen_project_modules` | function | `unfrozen_project_modules` | [tools/x4_circle_history/env_identity.py:129](../../tools/x4_circle_history/env_identity.py#L129) | Loaded modules from this worktree's src/, tools/ or tests/ outside the frozen file set. |
 | `Unique` | class | `Unique` | [src/topo_pilot/process/emission.py:203](../../src/topo_pilot/process/emission.py#L203) | U: ``V = N`` and E is a permutation matrix (identity up to symbol names). |
 | `unit` | function | `unit` | [tests/d1_seam/test_d1_seam.py:52](../../tests/d1_seam/test_d1_seam.py#L52) |  |
@@ -2830,8 +2832,8 @@
 | `write_checkpoint` | function | `write_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:220](../../tools/x6_stage1/x6s1_cloud.py#L220) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage0/x6_store.py:214](../../tools/x6_stage0/x6_store.py#L214) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage1/x6s1_run.py:282](../../tools/x6_stage1/x6s1_run.py#L282) |  |
-| `write_global` | function | `write_global` | [tools/x6zc/x6zc_guard.py:302](../../tools/x6zc/x6zc_guard.py#L302) | The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics: |
-| `write_invalid` | function | `write_invalid` | [tools/x6zc/x6zc_guard.py:300](../../tools/x6zc/x6zc_guard.py#L300) |  |
+| `write_global` | function | `write_global` | [tools/x6zc/x6zc_guard.py:335](../../tools/x6zc/x6zc_guard.py#L335) | The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics: |
+| `write_invalid` | function | `write_invalid` | [tools/x6zc/x6zc_guard.py:333](../../tools/x6zc/x6zc_guard.py#L333) |  |
 | `write_job_json` | function | `write_job_json` | [src/topo_pilot/executors/local.py:32](../../src/topo_pilot/executors/local.py#L32) | Write the ``job.json`` that ``entry`` reads. |
 | `write_json` | function | `write_json` | [tests/k4b/test_b_registry_fixes.py:48](../../tests/k4b/test_b_registry_fixes.py#L48) |  |
 | `write_json` | function | `write_json` | [tools/d2a/d2a_train.py:208](../../tools/d2a/d2a_train.py#L208) | Exclusive-create JSON write of ``jsonable(rec)`` (stage records are never overwritten). |

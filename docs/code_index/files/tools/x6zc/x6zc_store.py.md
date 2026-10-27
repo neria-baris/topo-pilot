@@ -56,7 +56,7 @@
 
 - [tools/x6zc/x6zc_dry.py](x6zc_dry.py.md) (line 25, import)
 - [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 22, import)
-- [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 219, import)
+- [tools/x6zc/x6zc_guard.py](x6zc_guard.py.md) (line 252, import)
 - [tools/x6zc/x6zc_run.py](x6zc_run.py.md) (line 18, import)
 - [tools/x6zc/x6zc_stage_a.py](x6zc_stage_a.py.md) (line 30, import)
 - [tools/x6zc/x6zc_stage_bc.py](x6zc_stage_bc.py.md) (line 31, import)

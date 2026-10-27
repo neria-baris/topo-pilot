@@ -6,13 +6,13 @@
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 882,
-  "functions and methods (incl. tests)": 7211,
+  "functions and methods (incl. tests)": 7214,
   "import cycles (strongly connected components)": 6,
   "import statements, external": 755,
   "import statements, internal ambiguous": 1,
   "import statements, internal resolved": 2123,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2169,
+  "import statements, standard library": 2173,
   "internal edges (file to file, with kind and line)": 2155,
   "python files": 518
  },
@@ -12715,37 +12715,37 @@
    "tools/x6zc/x6zc_guard.py",
    "src/topo_pilot/__init__.py",
    "import",
-   178
+   211
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/d2a/d2a_train.py",
    "import",
-   147
+   180
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/d2a/d2a_train.py",
    "import",
-   281
+   314
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_eval.py",
    "import",
-   217
+   250
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_run.py",
    "import",
-   212
+   245
   ],
   [
    "tools/x6zc/x6zc_guard.py",
    "tools/x6_stage1/x6s1_run.py",
    "import",
-   218
+   251
   ],
   [
    "tools/x6zc/x6zc_guard.py",
@@ -12757,7 +12757,7 @@
    "tools/x6zc/x6zc_guard.py",
    "tools/x6zc/x6zc_pipeline.py",
    "import",
-   305
+   338
   ],
   [
    "tools/x6zc/x6zc_guard.py",
@@ -12769,7 +12769,7 @@
    "tools/x6zc/x6zc_guard.py",
    "tools/x6zc/x6zc_store.py",
    "import",
-   219
+   252
   ],
   [
    "tools/x6zc/x6zc_pipeline.py",
@@ -12811,13 +12811,13 @@
    "tools/x6zc/x6zc_run.py",
    "tools/x6zc/x6zc_stage_a.py",
    "import",
-   39
+   40
   ],
   [
    "tools/x6zc/x6zc_run.py",
    "tools/x6zc/x6zc_stage_bc.py",
    "import",
-   44
+   45
   ],
   [
    "tools/x6zc/x6zc_run.py",
@@ -18185,9 +18185,9 @@
   },
   "tools/x6zc/API.md": {
    "kind": "markdown",
-   "lines": 439,
+   "lines": 440,
    "purpose": "tools/x6zc: written contract (job 0117; derived from X6ZC-DESIGN-v1)",
-   "sha256": "20d7aaeab6902365be8694550ce71806c7022a402aca0bd3a18fb4f174bc79a6"
+   "sha256": "420c43bafc3e18133343f9d303937b68fb21caa10b60440e6ddfb326558e2e1f"
   },
   "tools/x6zc/CONTRACT.json": {
    "kind": "json",
@@ -18239,9 +18239,9 @@
   },
   "tools/x6zc/x6zc_guard.py": {
    "kind": "python",
-   "lines": 330,
+   "lines": 363,
    "purpose": "X6ZC guard: the stage harness shared by stages A, B and C (job 0137; API.md §20 C-54). The",
-   "sha256": "ee40ba58dec3e8fe2f907b8c0c137f3abb2680ddfdded8fc57ff67fbf8532b95"
+   "sha256": "41db64bb00366189db396703980730766d1e555e64c3475b9f7a473d1edbe511"
   },
   "tools/x6zc/x6zc_pipeline.py": {
    "kind": "python",
@@ -18251,9 +18251,9 @@
   },
   "tools/x6zc/x6zc_run.py": {
    "kind": "python",
-   "lines": 95,
+   "lines": 96,
    "purpose": "X6ZC run: the CLI (API.md §11.5). It re-exports the store, pipeline, dry-run, guard and stage",
-   "sha256": "9149cf7f671246710a289152e98378d57c3281ca351c7880063e8fe806dfc9c3"
+   "sha256": "28ddf34c74afb899e6d8a9e61cc3eda9a10a17ffd673c0096ec9bee57471a77f"
   },
   "tools/x6zc/x6zc_stage_a.py": {
    "kind": "python",
@@ -185304,7 +185304,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 88,
+     "line": 82,
      "module": "",
      "names": [
       "ctypes"
@@ -185319,7 +185319,22 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 100,
+     "line": 83,
+     "module": "",
+     "names": [
+      "ctypes.wintypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 103,
      "module": "",
      "names": [
       "ctypes"
@@ -185334,7 +185349,22 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 105,
+     "line": 104,
+     "module": "",
+     "names": [
+      "ctypes.wintypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 116,
      "module": "",
      "names": [
       "ctypes"
@@ -185349,7 +185379,37 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 106,
+     "line": 117,
+     "module": "",
+     "names": [
+      "ctypes.wintypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 128,
+     "module": "",
+     "names": [
+      "ctypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 129,
      "module": "",
      "names": [
       "ctypes.wintypes"
@@ -185364,7 +185424,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 147,
+     "line": 180,
      "module": "",
      "names": [
       "d2a_train"
@@ -185381,7 +185441,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 178,
+     "line": 211,
      "module": "",
      "names": [
       "topo_pilot"
@@ -185398,7 +185458,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 212,
+     "line": 245,
      "module": "",
      "names": [
       "x6s1_run"
@@ -185415,7 +185475,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 217,
+     "line": 250,
      "module": "",
      "names": [
       "x6s1_eval"
@@ -185432,7 +185492,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 218,
+     "line": 251,
      "module": "",
      "names": [
       "x6s1_run"
@@ -185449,7 +185509,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 219,
+     "line": 252,
      "module": "x6zc_store",
      "names": [
       "_frozen"
@@ -185466,7 +185526,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 281,
+     "line": 314,
      "module": "",
      "names": [
       "d2a_train"
@@ -185483,7 +185543,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 305,
+     "line": 338,
      "module": "x6zc_pipeline",
      "names": [
       "TOP",
@@ -185581,192 +185641,222 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 96,
+     "end": 95,
      "kind": "function",
-     "name": "_pid_alive",
-     "qual": "_pid_alive",
-     "sig": "def _pid_alive(pid) -> bool",
+     "name": "_k32",
+     "qual": "_k32",
+     "sig": "def _k32()",
      "start": 81
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 103,
+     "end": 112,
      "kind": "function",
-     "name": "_in_job",
-     "qual": "_in_job",
-     "sig": "def _in_job() -> bool",
-     "start": 97
+     "name": "_pid_alive",
+     "qual": "_pid_alive",
+     "sig": "def _pid_alive(pid) -> bool",
+     "start": 96
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 123,
+     "end": 126,
      "kind": "function",
-     "name": "_parents",
-     "qual": "_parents",
-     "sig": "def _parents() -> dict",
-     "start": 104
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 133,
-     "kind": "function",
-     "name": "is_ancestor",
-     "qual": "is_ancestor",
-     "sig": "def is_ancestor(pid) -> bool",
-     "start": 124
+     "name": "in_job",
+     "qual": "in_job",
+     "sig": "def in_job(pid=None) -> bool",
+     "start": 113
     },
     {
      "decorators": [],
      "doc": "",
      "end": 145,
      "kind": "function",
-     "name": "meter_live",
-     "qual": "meter_live",
-     "sig": "def meter_live(store) -> list",
-     "start": 134
+     "name": "_parents",
+     "qual": "_parents",
+     "sig": "def _parents() -> dict",
+     "start": 127
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 165,
+     "end": 155,
      "kind": "function",
-     "name": "identity_problems",
-     "qual": "identity_problems",
-     "sig": "def identity_problems(store, fz, disp, job=None) -> list",
+     "name": "chain_below",
+     "qual": "chain_below",
+     "sig": "def chain_below(pid) -> list | None",
      "start": 146
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 171,
+     "end": 157,
      "kind": "function",
-     "name": "_try",
-     "qual": "_try",
-     "sig": "def _try(why, fn) -> list",
+     "name": "is_ancestor",
+     "qual": "is_ancestor",
+     "sig": "def is_ancestor(pid) -> bool",
+     "start": 156
+    },
+    {
+     "decorators": [],
+     "doc": "C-57: the meter (job-0014, sha-pinned) starts its command suspended, assigns it to its job",
+     "end": 165,
+     "kind": "function",
+     "name": "under_meter_job",
+     "qual": "under_meter_job",
+     "sig": "def under_meter_job(pid) -> bool",
+     "start": 158
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 178,
+     "kind": "function",
+     "name": "meter_live",
+     "qual": "meter_live",
+     "sig": "def meter_live(store) -> list",
      "start": 166
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 176,
+     "end": 198,
      "kind": "function",
-     "name": "_git",
-     "qual": "_git",
-     "sig": "def _git(*args) -> str",
-     "start": 174
+     "name": "identity_problems",
+     "qual": "identity_problems",
+     "sig": "def identity_problems(store, fz, disp, job=None) -> list",
+     "start": 179
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 196,
+     "end": 204,
      "kind": "function",
-     "name": "freeze_problems",
-     "qual": "freeze_problems",
-     "sig": "def freeze_problems(store, fz) -> list",
-     "start": 177
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 205,
-     "kind": "function",
-     "name": "auth_problems",
-     "qual": "auth_problems",
-     "sig": "def auth_problems(store) -> list",
-     "start": 197
+     "name": "_try",
+     "qual": "_try",
+     "sig": "def _try(why, fn) -> list",
+     "start": 199
     },
     {
      "decorators": [],
      "doc": "",
      "end": 209,
      "kind": "function",
-     "name": "stage_cpu",
-     "qual": "stage_cpu",
-     "sig": "def stage_cpu(ctx) -> float",
-     "start": 208
+     "name": "_git",
+     "qual": "_git",
+     "sig": "def _git(*args) -> str",
+     "start": 207
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 215,
+     "end": 229,
      "kind": "function",
-     "name": "_job_cpu",
-     "qual": "_job_cpu",
-     "sig": "def _job_cpu()",
+     "name": "freeze_problems",
+     "qual": "freeze_problems",
+     "sig": "def freeze_problems(store, fz) -> list",
      "start": 210
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 244,
+     "end": 238,
+     "kind": "function",
+     "name": "auth_problems",
+     "qual": "auth_problems",
+     "sig": "def auth_problems(store) -> list",
+     "start": 230
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 242,
+     "kind": "function",
+     "name": "stage_cpu",
+     "qual": "stage_cpu",
+     "sig": "def stage_cpu(ctx) -> float",
+     "start": 241
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 248,
+     "kind": "function",
+     "name": "_job_cpu",
+     "qual": "_job_cpu",
+     "sig": "def _job_cpu()",
+     "start": 243
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 277,
      "kind": "function",
      "name": "_begin",
      "qual": "_begin",
      "sig": "def _begin(store, stage, dispatch=None, job=None) -> dict",
-     "start": 216
+     "start": 249
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 272,
+     "end": 305,
      "kind": "function",
      "name": "_finish",
      "qual": "_finish",
      "sig": "def _finish(store, ctx, stop=None, n=None) -> int",
-     "start": 245
+     "start": 278
     },
     {
      "decorators": [],
      "doc": "Every attempt writes its record: a setup error, a stop, or any exception (CRASH).",
-     "end": 286,
+     "end": 319,
      "kind": "function",
      "name": "run_guarded",
      "qual": "run_guarded",
      "sig": "def run_guarded(store, stage, body, dispatch=None, job=None) -> int",
-     "start": 273
+     "start": 306
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 288,
+     "end": 321,
      "kind": "function",
      "name": "stats_marker",
      "qual": "stats_marker",
      "sig": "def stats_marker(store, ctx) -> str",
-     "start": 287
+     "start": 320
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 299,
+     "end": 332,
      "kind": "function",
      "name": "budget",
      "qual": "budget",
      "sig": "def budget(store, ctx=None) -> dict",
-     "start": 291
+     "start": 324
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 301,
+     "end": 334,
      "kind": "function",
      "name": "write_invalid",
      "qual": "write_invalid",
      "sig": "def write_invalid(store, ctx, why) -> str | None",
-     "start": 300
+     "start": 333
     },
     {
      "decorators": [],
      "doc": "The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics:",
-     "end": 330,
+     "end": 363,
      "kind": "function",
      "name": "write_global",
      "qual": "write_global",
      "sig": "def write_global(store, ctx, ev, why, extra=None) -> str | None",
-     "start": 302
+     "start": 335
     }
    ],
    "syspath": []
@@ -186178,6 +186268,10 @@
       "refusal",
       "dispatch_record",
       "meter_live",
+      "in_job",
+      "chain_below",
+      "is_ancestor",
+      "under_meter_job",
       "identity_problems",
       "freeze_problems",
       "auth_problems",
@@ -186202,7 +186296,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 39,
+     "line": 40,
      "module": "x6zc_stage_a",
      "names": [
       "RUN",
@@ -186238,7 +186332,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 44,
+     "line": 45,
      "module": "x6zc_stage_bc",
      "names": [
       "_terms",
@@ -186261,12 +186355,12 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 93,
+     "end": 94,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 48
+     "start": 49
     }
    ],
    "syspath": []
@@ -187746,5 +187840,5 @@
    ]
   }
  },
- "sources_digest": "65eda37a1d73c02b7b49e5ec905cfce1b16d681e0014d49f681f6b0982cf359a"
+ "sources_digest": "026979c7521b69d752f6754ab0d0c29bd2b4540d27f19582753d13307afa8023"
 }

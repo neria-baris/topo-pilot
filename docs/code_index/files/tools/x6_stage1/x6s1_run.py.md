@@ -80,8 +80,8 @@
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 24, import)
 - [tools/x6_stage1/x6s1_stage_post.py](x6s1_stage_post.py.md) (line 26, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 34, import)
-- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 212, import)
-- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 218, import)
+- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 245, import)
+- [tools/x6zc/x6zc_guard.py](../x6zc/x6zc_guard.py.md) (line 251, import)
 - [tools/x6zc/x6zc_stage_a.py](../x6zc/x6zc_stage_a.py.md) (line 238, import)
 - [tools/x6zc/x6zc_store.py](../x6zc/x6zc_store.py.md) (line 106, import)
 

@@ -1,5 +1,6 @@
 """X6ZC stages B and C: B1-B10 on the opened D, the Stage-B gate, and the registered Stage C
-with its sensitivity lines and report (X6ZC-DESIGN-v1 §7-§9; API.md §11.4, §11.6, §20 C-52)."""
+with its sensitivity lines and report (X6ZC-DESIGN-v1 §7-§9; API.md §11.4, §11.6, §20 C-52,
+C-54)."""
 # fmt: off
 
 from __future__ import annotations
@@ -20,12 +21,15 @@ from x6zc_pipeline import (predict_variants, stage_c_statistics, decide_report, 
     validate_report)  # noqa: E402
 # isort: on
 # isort: off
-from x6zc_stage_a import (_payload, _npz, _record, _begin, _finish,  # noqa: E402
-    _cache, _spec, _predictor, _children)  # noqa: E402
+from x6zc_stage_a import (_payload, _npz, _cache, _spec, _predictor, _children)  # noqa: E402
+# isort: on
+# isort: off
+from x6zc_guard import (_record, _finish, run_guarded, stage_cpu, stats_marker,  # noqa: E402
+    budget)  # noqa: E402
 # isort: on
 # isort: off
 from x6zc_store import (_cj, xwrite, _lines, log_exposure,  # noqa: E402
-    log_evaluation, rulings, ledger_cpu, _head)  # noqa: E402
+    log_evaluation, rulings, _head)  # noqa: E402
 # isort: on
 
 C, X = zc.CONTRACT, zc.CONTRACT["x6s1_store"]
@@ -48,11 +52,10 @@ def _boot(terms_by_key, gen, P) -> dict:  # B5: one paired prefix-cluster bootst
             num[f"{key}|{st}"], den[f"{key}|{st}"] = (zc.cluster_sums(x, cl, P) for x in (nn, dd))
     return zc.paired_cluster_boot(num, den, zc.B_DRAWS, gen)
 def _arm(m) -> str: return "NA" if m.startswith("init") else m[:2]
-def stage_b(store=zc.STORE) -> int:
+def stage_b(store=zc.STORE, dispatch=None, job=None) -> int:
+    return run_guarded(store, "B", _stage_b, dispatch, job)
+def _stage_b(store, ctx) -> int:
     import x6_model as xm
-    ctx = _begin(store, "B")
-    if ctx["stop"]:
-        return _finish(store, ctx)
     G, V, d, (_, A) = ctx["gates"], ctx["values"], Path(store) / "stages" / ctx["dir"], _record(
         store, "A")
     D = _npz(_payload(store, "B", X["designed"]["path"], X["designed"]["file_sha256"], "B1"))
@@ -61,7 +64,7 @@ def stage_b(store=zc.STORE) -> int:
     for m in zc.STAGE_B_ORDER:  # known cases first (§7); logged before any payload is opened
         log_exposure(store, "B", _spec(m)[0], _spec(m)[1], f"B1 {m}")
         log_evaluation(store, m, "designed_D", "B", "D")
-    V["children"] = _children(store, "B", zc.STAGE_B_ORDER, d)
+    V["children"] = _children(store, "B", zc.STAGE_B_ORDER, d, ctx)
     if any(r["status"] != "DONE" for r in V["children"].values()):
         return _finish(store, ctx, "CHUNK_FAILED")
     ds = {m: json.loads((d / m / "designed.json").read_text("utf-8")) for m in zc.STAGE_B_ORDER}
@@ -133,7 +136,8 @@ def stage_b(store=zc.STORE) -> int:
         "numeric_drift": [k for k, r in k5.items() if r["a"]["status"] == "NUMERIC_DRIFT"]})
     se_d = {c: V["B5"][f"{x['model']}|{x['family']}|beta"]["sd"] for c, x in zc.CELLS.items()}
     V["b9"], V["se_d"] = zc.choose_n(A["values"]["n_avail"], se_d), se_d
-    if ledger_cpu(store) - ctx["cpu0"] <= C["budget"]["g3_b8_max_stage_b_cpu_s"]:  # G3: B8
+    V["g3_stage_b_cpu_s"] = stage_cpu(ctx)  # Stage-B CPU to date, in-process (F-2, R-0134-3)
+    if V["g3_stage_b_cpu_s"] <= C["budget"]["g3_b8_max_stage_b_cpu_s"]:  # G3: B8
         V["B8"] = {}
         for step in X["zc_s1_chain"]:
             m = f"ZC-s1@{step}"
@@ -152,10 +156,9 @@ def _ev_base(store) -> dict:
             "checks": {k: st(k) for k in ("A1", "A2", "A_audit", "A3", "K2", "K4", "K5")},
             "k1": "PASS" if k1 else "FAIL", "a2_k5_pass": st("A2") == st("K5") == "PASS",
             "n_avail": A["values"]["n_avail"], "b9": B["values"]["b9"], "f1": g["F1"]}
-def stage_c(store=zc.STORE) -> int:
-    ctx = _begin(store, "C")
-    if ctx["stop"]:
-        return _finish(store, ctx)
+def stage_c(store=zc.STORE, dispatch=None, job=None) -> int:
+    return run_guarded(store, "C", _stage_c, dispatch, job)
+def _stage_c(store, ctx) -> int:
     ev, (_, A), (_, B) = _ev_base(store), _record(store, "A"), _record(store, "B")
     try:  # the Stage-B gate: no global rule, every candidate ruled (C-17)
         g = zc.decide_x6zc({**ev, "k6": dict.fromkeys(FAM, True), "cells": {},
@@ -172,7 +175,7 @@ def stage_c(store=zc.STORE) -> int:
     for m in names:
         log_exposure(store, "C", _spec(m)[0], _spec(m)[1], f"C {m}")
         log_evaluation(store, m, "fresh_variants", "C", "fresh")
-    V["children"] = _children(store, "C", names, d)
+    V["children"] = _children(store, "C", names, d, ctx)
     if any(r["status"] != "DONE" for r in V["children"].values()):
         return _finish(store, ctx, "CHUNK_FAILED", n)  # G2 allowed: no statistic exists yet
     outs = {m: (lambda P: {F: {v: (P[f"{F}|{v}|a"], P[f"{F}|{v}|b"]) for v in VO} for F in FAM})(
@@ -181,6 +184,7 @@ def stage_c(store=zc.STORE) -> int:
         "K3:" + k + ":" + ",".join(f"{a}={b}" for a, b in sorted(p.items())):
             predict_variants(zc.SyntheticPredictor(k, **p), VA)
         for k, p in zc.k3_grid()}}
+    V["statistics_marker_sha256"] = stats_marker(store, ctx)  # no Stage-C rerun after (F-8)
     stats = stage_c_statistics({**outs, **extra}, VA, cache, zc.stream("boot_C"))
     mask = {F: {v: np.isin(np.arange(3 * n), av["a4_pair_mask"][F][v]) for v in VO} for F in FAM}
     sens = {"A4": stage_c_statistics(outs, VA, cache, zc.stream("sens_A4"), drop_pairs=mask),
@@ -222,8 +226,7 @@ def stage_c(store=zc.STORE) -> int:
         "exposure": {"a4_matches": A["gates"]["A4"]["total"], "d_coincident": av["n_d_coincident"]},
         "follow_up": C["follow_up"].get(zc.NA_DIR) if any(
             dec["cells"][c]["outcome"] == zc.NA_DIR for c in CO) else None,
-        "budget": {"cpu_s": {s: _record(store, s)[1]["cpu_s"] for s in ("A", "B")},
-                   "pauses": [x for x in _lines(Path(store) / "STAGES.jsonl") if x.get("stop")]},
+        "budget": budget(store, ctx),  # stages 0, A, B and C, in-process CPU (F-18)
         "n": n, "n_avail": av["n_avail"], "r_star": av["r_star"], "env": ctx["env"],
         "stages": {x["stage"]: x["record_sha256"] for x in _lines(Path(store) / "STAGES.jsonl")}}
     V.update(errors=validate_report(report), report_sha256=xwrite(Path(store) / "report.json",

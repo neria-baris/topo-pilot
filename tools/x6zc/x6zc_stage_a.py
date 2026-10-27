@@ -1,6 +1,7 @@
-"""X6ZC stage A and the model chunk children: shared stage begin/finish, the A1 records audit,
-the A2 code audit, stage A (A-audit, A3, K0, the q* cache, K1-K3/F1, A4) and the Stage-B/C
-chunk child (X6ZC-DESIGN-v1 §6; API.md §11.4, §20 C-52). Runs only after FREEZE and AUTH."""
+"""X6ZC stage A and the model chunk children: the A1 records audit, the A2 code audit, stage A
+(A-audit, A3, K0, the q* cache, K1-K3/F1, A4) and the Stage-B/C chunk child (X6ZC-DESIGN-v1 §6;
+API.md §11.4, §20 C-52, C-54). Stage begin/finish live in x6zc_guard. Runs only after FREEZE
+and AUTH."""
 # fmt: off
 
 from __future__ import annotations
@@ -26,9 +27,10 @@ import x6zc_census as zs  # noqa: E402
 from x6zc_pipeline import (predict_variants)  # noqa: E402
 # isort: on
 # isort: off
-from x6zc_store import (_utc, _sha, _cj, xwrite, _append, _lines, log_exposure,  # noqa: E402
-    write_stage, x6s1_inventory, inventory_equal, env_check, closure_diff,  # noqa: E402
-    meter_bind_check, ledger_cpu, pause_check, _head, _frozen)  # noqa: E402
+from x6zc_store import (_utc, _sha, _cj, xwrite, _append, _lines, log_exposure)  # noqa: E402
+# isort: on
+# isort: off
+from x6zc_guard import (_dirs, _record, _begin, _finish, run_guarded)  # noqa: E402, F401
 # isort: on
 
 C, X = zc.CONTRACT, zc.CONTRACT["x6s1_store"]
@@ -50,41 +52,6 @@ def _checked(r) -> bytes:  # a payload re-read by a chunk child, sha-checked (F-
 def _npz(data) -> dict:
     z = np.load(io.BytesIO(data), allow_pickle=False)
     return {k: z[k] for k in z.files}
-def _dirs(store, stage) -> list:
-    out, k = [], 0
-    while (Path(store) / "stages" / (f"{stage}-r{k}" if k else stage) / "record.json").exists():
-        out, k = out + [f"{stage}-r{k}" if k else stage], k + 1
-    return out
-def _record(store, stage) -> tuple:  # (directory, record) of the latest attempt (G2 reruns)
-    d = _dirs(store, stage)[-1]
-    return d, json.loads((Path(store) / "stages" / d / "record.json").read_text("utf-8"))
-def _begin(store, stage) -> dict:
-    import x6s1_run as sr
-    fz = _frozen(store)
-    meter_bind_check(Path(store) / "x6zc_meter_bind.py", fz["meter_bind_sha256"],
-                     fz["meter_import_dir"])
-    se.set_threads()
-    env, k = sr.env_local(), len(_dirs(store, stage))
-    ctx = {"stage": stage, "dir": f"{stage}-r{k}" if k else stage, "env": env,
-           "ec": env_check(env), "closure": closure_diff(), "inv0": x6s1_inventory(),
-           "cpu0": ledger_cpu(store), "gates": {}, "values": {}, "freeze": fz}
-    ctx["stop"] = "SETUP_ERROR" if ctx["ec"]["status"] != "PASS" or ctx["closure"] else None
-    return ctx
-def _finish(store, ctx, stop=None, n=None) -> int:
-    inv1, cpu, d = x6s1_inventory(), ledger_cpu(store), Path(store) / "stages" / ctx["dir"]
-    sh = [xwrite(d / f"x6s1_inventory_{k}.json", _cj(v)) for k, v in (("before", ctx["inv0"]),
-                                                                       ("after", inv1))]
-    eq = inventory_equal(ctx["inv0"], inv1)
-    pc = pause_check(ctx["stage"], cpu, cpu - ctx["cpu0"], n)
-    stop = stop or ctx["stop"] or (None if eq else "SETUP_ERROR") or (
-        "PAUSE" if pc["pause"] else None)
-    write_stage(store, ctx["dir"], {
-        "stage": ctx["stage"], "head": _head(), "env_local": ctx["env"],
-        "env_diff": ctx["ec"]["changed"], "closure_diff": ctx["closure"], "gates": ctx["gates"],
-        "inventory": {"before_sha256": sh[0], "after_sha256": sh[1], "equal": eq},
-        "values": ctx["values"], "cpu_s": cpu - ctx["cpu0"], "cpu_cumulative_s": cpu, "pause": pc,
-        "stop": stop, "utc": _utc()})
-    return 2 if stop else 0
 def _x6json(rel) -> tuple:  # (object, sha256) of a stage-1 JSON record (never a payload)
     b = _x6(rel).read_bytes()
     return json.loads(b), _sha(b)
@@ -181,11 +148,10 @@ def a2_check() -> dict:
                      "found": any(anchor in x for x in got)}
     ok = len(rows) >= 20 and all(r["found"] for r in rows.values())
     return {"status": "PASS" if ok else "DEFECT_CANDIDATE", "rows": rows}
-def stage_a(store=zc.STORE) -> int:
+def stage_a(store=zc.STORE, dispatch=None, job=None) -> int:
+    return run_guarded(store, "A", _stage_a, dispatch, job)
+def _stage_a(store, ctx) -> int:
     import x6s1_stage_pre as pre
-    ctx = _begin(store, "A")
-    if ctx["stop"]:
-        return _finish(store, ctx)
     G, V, d = ctx["gates"], ctx["values"], Path(store) / "stages" / ctx["dir"]
     if not (Path(store) / "EXPOSURE.jsonl").exists():
         _append(Path(store) / "EXPOSURE.jsonl", {**C["store"]["exposure_first"], "utc": _utc()})
@@ -258,10 +224,15 @@ def _predictor(m) -> se.ModelPredictor:
 class _Memo:  # a predictor answering from precomputed rows of the same arrays (no second forward)
     def __init__(self, rows): self.rows, self.name = rows, "memo"
     def __call__(self, tokens, t): return self.rows[id(tokens)]
-def _children(store, stage, names, out_dir) -> dict:
+def _children(store, stage, names, out_dir, ctx) -> dict:
+    """<= MAX_CHILDREN chunk children per batch under sr.supervise, which classifies the mailbox
+    controls at every poll with the dispatch identities bound by _begin (F-1). Each finished
+    child's CPU (its own process_time in chunk.json, or the supervisor's reading if larger) is
+    added to the stage CPU (R-0134-3)."""
     import x6s1_data as sd
     import x6s1_run as sr
-    sr._CTX["store"] = store
+    if not (sr._CTX.get("job") and sr._CTX.get("task")) or str(sr._CTX["job"]) == "None":
+        raise RuntimeError("no dispatch identities bound for the supervisor (F-1)")
     lim, res, todo = sr.limits(), {}, list(names)
     (Path(store) / "logs").mkdir(parents=True, exist_ok=True)
     while todo:
@@ -270,10 +241,21 @@ def _children(store, stage, names, out_dir) -> dict:
                               "--model", m, "--store", store, "--out", str(out_dir / m)],
                              Path(store) / "logs" / f"{stage}_{m}_{int(time.time())}.log")
                 for m in batch}
-        res.update(sr.supervise(kids, lim, "E3"))
+        for m, r in sr.supervise(kids, lim, "E3").items():
+            cj = out_dir / m / "chunk.json"
+            own = json.loads(cj.read_text("utf-8"))["cpu_s"] if cj.exists() else None
+            res[m] = {**r, "chunk_cpu_s": own}
+            ctx["kids_cpu"] += max(float(r.get("cpu_s") or 0.0), float(own or 0.0))
     return res
 def chunk(stage, model, out, store=zc.STORE) -> int:
-    se.set_threads()
+    import os
+
+    import d2a_train
+    import torch
+    se.set_threads()  # the design's 2 intra-op / 1 inter-op threads, recorded (R-0134-4)
+    thr = {"threads": {"intra": torch.get_num_threads(),
+                       "interop": torch.get_num_interop_threads()},
+           "thread_env": {v: os.environ.get(v) for v in d2a_train.THREAD_VARS}}
     cpu0, o, pred = time.process_time(), Path(out), _predictor(model)
     dA, A = _record(store, "A")
     cache = _cache(store)
@@ -291,6 +273,6 @@ def chunk(stage, model, out, store=zc.STORE) -> int:
     buf = io.BytesIO()
     np.savez(buf, **P)
     files = {**(files if stage == "B" else {}), "p.npz": xwrite(o / "p.npz", buf.getvalue())}
-    xwrite(o / "chunk.json", _cj({"model": model, "stage": stage, "files": files,
+    xwrite(o / "chunk.json", _cj({"model": model, "stage": stage, "files": files, **thr,
                                   "cpu_s": time.process_time() - cpu0, "utc": _utc()}))
     return 0

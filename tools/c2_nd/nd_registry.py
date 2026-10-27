@@ -128,11 +128,8 @@ def _c2_format(path) -> bool:
 def source_scratch(root=None) -> dict:
     """Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
     C2-format tables are read, other files listed as NON_C2_FORMAT (not read)."""
-    root, out, reg = (
-        Path(nc.SCRATCH_ROOT if root is None else root),
-        _new(),
-        nc.CONTRACT["registry"],
-    )
+    root, out = Path(nc.SCRATCH_ROOT if root is None else root), _new()
+    reg = nc.CONTRACT["registry"]
     prefix, pattern = reg["scratch_exclude_prefix"], reg["scratch_name_pattern"]
     read = []
     for dirpath, dirnames, filenames in os.walk(root):
@@ -163,8 +160,8 @@ def _x6zc_names() -> list:
 
 
 def _read_history(f, out, require) -> None:
-    """One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped
-    unless `require` (hws hist/**), when they make the source INCOMPLETE."""
+    """One array file by the c2_registry._x6_member rule, integer [n, w < 32] history members
+    NON_C2_FORMAT (ND-C56); non-history-bearing files skipped unless `require` (INCOMPLETE)."""
     xr = _xr()
     try:
         if not xr._history_bearing(f):
@@ -177,8 +174,11 @@ def _read_history(f, out, require) -> None:
         else:
             with np.load(f, allow_pickle=False) as z:
                 members = {k: np.asarray(z[k]) for k in z.files}
-        digests = set()
+        digests, short = set(), []
         for k, a in members.items():
+            if k in kr.HISTORY_KEYS and a.dtype.kind in "iu" and a.ndim == 2 and a.shape[1] < 32:
+                short.append({"path": str(f), "key": k, "shape": a.shape, "size": a.size})
+                continue  # D-0139-1: fewer than 32 tokens cannot equal a C2ND history
             for chunk in cg._x6_member(xr, k, a, entry):
                 digests |= _hex(chunk)
         entry["keys"] = sorted(members)
@@ -187,6 +187,7 @@ def _read_history(f, out, require) -> None:
         return
     out["digests"] |= digests
     out["files"].append(entry)
+    out["non_c2_format"] += short
 
 
 def _array_files(top):
@@ -211,8 +212,7 @@ def source_parallel(store, tag) -> dict:
     the hws or x6zc rule; hws also reads <SCRATCH_ROOT>/hws-dry/hist/** when present."""
     if tag not in ("hws", "x6zc"):
         raise ValueError(f"unknown parallel reader {tag!r}")
-    store = Path(store)
-    out = _new(present=store.exists())
+    store, out = Path(store), _new(present=Path(store).exists())
     if not out["present"]:
         return out
     if not (store / nc.CONTRACT["registry"]["parallel"][tag]["frozen_marker"]).is_file():

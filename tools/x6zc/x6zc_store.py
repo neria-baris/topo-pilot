@@ -101,13 +101,15 @@ def x6s1_inventory(store=zc.X6S1_STORE) -> dict:
     return out
 def inventory_equal(a, b) -> bool:
     return {k: list(v) for k, v in a.items()} == {k: list(v) for k, v in b.items()}
+ENV_EXEMPT = {"thread_env", "threads"}  # OMP/MKL/OPENBLAS variables and torch thread counts
 def env_check(env) -> dict:
     import x6s1_run as sr
     ref = json.loads((Path(zc.X6S1_STORE) / X["env_reference"]["path"]).read_bytes())["env_local"]
-    ch = sr.env_changed(env, ref)
-    return {"status": "PASS" if set(ch) <= {"commit"} else "SETUP_ERROR", "changed": ch}
-def closure_diff(worktree=zc.WORKTREE) -> list:
-    out = subprocess.run(["git", "-C", str(worktree), "diff", "--name-status", zc.H3, "HEAD", "--",
+    ch = sr.env_changed(env, ref)  # thread counts: recorded, exempt (R-0134-4, F-7)
+    return {"status": "PASS" if set(ch) <= {"commit"} | ENV_EXEMPT else "SETUP_ERROR",
+            "changed": ch, "exempt": sorted(set(ch) & ENV_EXEMPT)}
+def closure_diff(worktree=zc.WORKTREE) -> list:  # H3 against the working tree (F-5)
+    out = subprocess.run(["git", "-C", str(worktree), "diff", "--name-status", zc.H3, "--",
                           *zc.CLOSURE], capture_output=True, text=True, check=True).stdout
     return [ln for ln in out.splitlines() if ln.strip()]
 def _hit(v, master) -> bool:

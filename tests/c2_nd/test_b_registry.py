@@ -257,6 +257,28 @@ def test_parallel_hws_dry_scratch(tmp_path, scratch):
     assert nrg.source_parallel(store, "hws")["status"] == INC
 
 
+# API-AMBIGUITY: D-0139-1 names no result key; the row-9 key "non_c2_format" (API.md §5.1,
+# §5.3 nd_sources) with a "path" per entry is assumed.
+def test_parallel_hws_non_32_wide_is_non_c2_format(tmp_path, scratch):
+    """D-0139-1 regression: a uint8 [n, 8] token array (the HWS null-check fixtures) is listed
+    NON_C2_FORMAT, not digested and no failure; [n, 32] is digested; float or unreadable fails."""
+    store = frozen(tmp_path / "hws-store")
+    save(store / "hist" / "S0" / "k1.npz", tokens=tokens(4))
+    dry, wide = scratch / "hws-dry" / "hist" / "NULLCHK", tokens(13, n=64)
+    narrow = np.random.default_rng(12).integers(0, 36, size=(64, 8)).astype(np.uint8)
+    save(dry / "DRY" / "DR10-a.npz", tokens=narrow)
+    save(dry / "S0" / "DR10-c.npz", tokens=wide)
+    res = nrg.source_parallel(store, "hws")
+    assert res["status"] == PASS and row_hex(wide) <= res["digests"], res["status"]
+    listed = [str(x["path"]).replace("\\", "/") for x in res["non_c2_format"]]
+    assert [p.endswith("NULLCHK/DRY/DR10-a.npz") for p in listed] == [True], listed
+    for i, make in enumerate((lambda p: save(p, tokens=np.zeros((64, 32))), garbage)):
+        bad = dry / "S0" / f"bad{i}.npz"  # i = 0: float [64, 32]; i = 1: not a zip archive
+        make(bad)
+        assert nrg.source_parallel(store, "hws")["status"] == INC, i
+        bad.unlink()
+
+
 @pytest.mark.parametrize("where", ("run/payload.npz", "sealed/k9.npz"))
 def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, where):
     store = frozen(tmp_path / "hws-store")

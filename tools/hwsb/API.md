@@ -8,7 +8,7 @@
 
 ## 0. Conventions
 
-- **Ten modules** under `tools/hwsb/` (§9.1), each at most 400 lines (`tools/check_file_sizes.py`): `hwsb_config`, `hwsb_data`, `hwsb_train`, `hwsb_eval`, `hwsb_law`, `hwsb_gates`, `hwsb_known`, `hwsb_driver`, `hwsb_dry`, `hwsb_meter_bind`, plus the proof note `ENCLOSURE_PROOF.md`. No other `.py` file in `tools/hwsb/`; no existing file is edited; no `src` edit; no private (leading-underscore) name of a reused module is imported (choice 1).
+- **Ten modules** (amended by erratum E1, §15: fifteen) under `tools/hwsb/` (§9.1), each at most 400 lines (`tools/check_file_sizes.py`): `hwsb_config`, `hwsb_data`, `hwsb_train`, `hwsb_eval`, `hwsb_law`, `hwsb_gates`, `hwsb_known`, `hwsb_driver`, `hwsb_dry`, `hwsb_meter_bind`, plus the proof note `ENCLOSURE_PROOF.md`. No other `.py` file in `tools/hwsb/`; no existing file is edited; no `src` edit; no private (leading-underscore) name of a reused module is imported (choice 1).
 - **Import convention.** Every module imports `hwsb_config` first. `hwsb_config` computes `HERE = Path(__file__).resolve().parent`, `REPO = HERE.parents[1]` and prepends to `sys.path`, if absent, in this order: `tools/hwsb`, `tools/hws`, `tools/k4b`, `tools/c1prime`, `tools/c1prime_registry`, `tools/x4_circle_history`, `tools/x4_oracle_profile` (under `REPO`). Reused tool modules are imported by bare name. Dependency order (no cycles): `hwsb_config` ← `hwsb_law` ← `hwsb_data` ← `hwsb_train` ← `hwsb_eval` ← `hwsb_gates` ← `hwsb_known` ← `hwsb_driver` ← `hwsb_dry`; `hwsb_meter_bind` imports only `hwsb_config` and the meter modules. Import reads only CONTRACT.json files (stage B's and, through reused modules, HWS/K4b/C1′) and computes only small constants.
 - **Test import aliases** (TEST_PLAN §1): `import hwsb_config as hc`, `hwsb_data as hd`, `hwsb_train as ht`, `hwsb_eval as he`, `hwsb_law as hl`, `hwsb_gates as hg`, `hwsb_known as hk`, `hwsb_driver as hdr`, `hwsb_dry as hdry`, `hwsb_meter_bind as hm`.
 - **Run** with `X:/Downloads/projects/topo-pilot/topo-pilot/.venv/Scripts/python.exe -s` and `PYTHONPATH=<worktree>/src`.
@@ -88,7 +88,7 @@
 | `model_inputs(canon32, perm) -> torch.int64 [n, 33]` | `c1_model.model_inputs(named32(canon32, perm))` = `[BOS = 36, perm[w1..w32]]` |
 | `make_train_dev(store, proc, master, plan) -> dict` | `tree = SeedTree(master)`; for split in ("train", "dev"): `tok = sample_observations(proc["T"], proc["E_named"][master], proc["pi"], proc["perm"][master], plan.sizes[split], data_generator(split, plan, master, tree), split)`, `ids = sequence_ids(split, n, plan, master)`; `check_disjoint(train=…, dev=…)`; then each saved as `assert_public(ObservationSet(split=split, V=36, sequence_id=ids, tokens=tok))` with `config = {"family": "cylinder", "mode": "overlap", "sigma": plan.process[2], "V": V, "N": N, "split": split, "n": n, "replicate": master, "study": SCOPE, "key": plan.key}`, `parents = [proc["ids"]["transition"], proc["ids"]["emission"][master]]`, `seed_map = dict(tree.issued)`, `consumer = "dataset"`. Returns `{"train": id, "dev": id, "streams": {split: stream_record}, "n": {split: n}}` |
 | `make_block(proc, role, plan) -> dict` | `canon32 = sample_block(proc["T"], proc["E_canon_shared"], proc["pi"], plan.sizes[role], data_generator(role, plan))`; `seq_ids = sequence_ids(role, n, plan)` (ascending; row i has ID `base + i`); returns `{"role", "canon32", "seq_ids", "digest_canon32": scores.history_digests(canon32), "stream"}`. Block content depends only on (plan, role) |
-| `lowest_rows(seq_ids, n=PANEL) -> int64 [n]` | row indices of the n lowest IDs, ascending (landmarks for CAL, the C0-val panel for VAL) |
+| `lowest_rows(seq_ids, n=PANEL) -> int64 [n]` | the row indices of the n lowest IDs, returned in ascending **row-index** order (`np.sort` of the selected positions); for blocks drawn by `make_block` this equals ascending-ID order (erratum E3a) (landmarks for CAL, the C0-val panel for VAL) |
 | `save_block(out, block) -> Path` | creates `out/"hist"`, then `stage_records.save_npz(out/"hist"/f"{role}.npz", canon32=…, seq_ids=…, digest_canon32=np.asarray(digests, dtype="<U64"))` (exclusive create). In a dry store the name is `<role>.npz`, never `HIST_*` |
 | `load_block(path) -> dict` | `np.load(path, allow_pickle=False)`; keys exactly `{"canon32", "seq_ids", "digest_canon32"}`, dtypes uint8 [n, 32], int64 [n], `<U64` [n]; `scores.history_digests(canon32)` must equal the stored column. Any defect → `HwsbStop("FAIL_TECHNICAL/LINEAGE", …)` |
 
@@ -195,7 +195,7 @@ All exact arithmetic is `Fraction`; Decimal work uses `error_bound.trapping_cont
 | Name | Contract |
 |---|---|
 | `b7(cpu_by_model, N_C) -> dict` | `cpu_by_model`: `{j: float}` measured meter CPU of each TRAIN job (study ledger, choice 15). `{"model_count": 3, "training_forecast_s": 3·max_j cpu_j, "evaluation_forecast_s": 1280.5 + 1720.1·N_C/3072, "cpu_by_model"}`; an empty map → forecasts `"unavailable"` (report only) |
-| `b9a(store, N_C, p_d2a, p_d2a_ref, eval_blocks) -> dict` | (i) `inv = hwsb_data.history_inventory(store)`; (ii) `reg = hwsb_data.registry_digests(store, expected=inv)` must be PASS; (iii) `value = Fraction(float(p_d2a)) * (3072 + 3072 + N_C)` must be `<= Fraction(1, 100)` and `abs(p_d2a − p_d2a_ref) <= 1e-12·abs(p_d2a_ref)`; (iv) `predicate_hits[role] = int(k4b_data.sealed_d2a_predicate(canon32).sum())` for LGATE, CAL, VAL (report). Status `PASS` iff (ii) and (iii) hold, else `FAIL_TECHNICAL/REGISTRY`. Returns `{"status", "inventory": inv, "registry": reg without the digest set, "value": str(Fraction), "p_D2a", "p_D2a_ref", "rel_diff", "predicate_hits"}`. `p_d2a = hws_exact.p_d2a(T, E_canon_shared, pi)` (alphabet 0..4, L 32); `p_d2a_ref` = `SELECTION.json["p_D2a"]` |
+| `b9a(store, N_C, p_d2a, p_d2a_ref, eval_blocks) -> dict` | (i) `inv = hwsb_data.history_inventory(store)`; (ii) `reg = hwsb_data.registry_digests(store, expected=inv)` must be PASS; (iii) `value = Fraction(float(p_d2a)) * (3072 + 3072 + N_C)` must be `<= Fraction(1, 100)` (exact rational comparison on `Fraction(float(p))`; equality at exactly 1/100 passes; choice 16, erratum E3d) and `abs(p_d2a − p_d2a_ref) <= 1e-12·abs(p_d2a_ref)`; (iv) `predicate_hits[role] = int(k4b_data.sealed_d2a_predicate(canon32).sum())` for LGATE, CAL, VAL (report). Status `PASS` iff (ii) and (iii) hold, else `FAIL_TECHNICAL/REGISTRY`. Returns `{"status", "inventory": inv, "registry": reg without the digest set, "value": str(Fraction), "p_D2a", "p_D2a_ref", "rel_diff", "predicate_hits"}`. `p_d2a = hws_exact.p_d2a(T, E_canon_shared, pi)` (alphabet 0..4, L 32); `p_d2a_ref` = `SELECTION.json["p_D2a"]` |
 
 ### 6.5 Outcome, licence, HANDOFF (§5, §6.1)
 
@@ -249,7 +249,7 @@ All exact arithmetic is `Fraction`; Decimal work uses `error_bound.trapping_cont
 |---|---|
 | `build_tiny_process(store, masters=DRY_MASTERS) -> dict` | DRB1 world: `WorldStage().run(WorldConfig("cylinder", (6, 2), "flat"), store)`; `run_transition` with `TransitionConfig(p_stay=0.5)`; E_canon = `hws_worlds.build_tiny()["E"]` (W = 6, H = 2, three centres (0.5 + 2i, 0.5), σ = 1); per master `perm = SeedTree(m).generator("symbol_names", "cylinder", m).permutation(3)`, `E_named[:, perm] = E_canon`, saved as `EmissionSpec(E=E_named, symbol_perm=perm, mode="overlap", sigma=1.0, center_strategy="dry_tiny")` with config `{"dry_tiny": True, "replicate": m}`, parent the world, consumer `"process"`. Same dict as `build_process` with V = 3, N = 12, W = 6, Hh = 2, n_axial = 1, `features = hws_worlds.features(coords, 6)` |
 | `drb1(out, ctx)` … `drb16(out, ctx)`, `drb13b(out, ctx)` | one function per case of TEST_PLAN §4, each returning `{"status": "PASS" or "FAIL" or "NOT_RUN", "details"}`; streams only `("data", "hwsb-v1", "DRY", <case>, …)`, masters 629901/629902; planted fixtures labelled `"fixture": true` |
-| `run_dry(out=DRY_STORE, sched=None) -> dict` | requires `sched_ok(sched, "DRY")` (P-SCHED rule 2 for DRB2's in-memory w\* rows), else refused; runs every case; writes `out/stages/DRY/DRY_REPORT.json` `{"cases": {name: result}, "all_pass", "implementation_files", "implementation_sha256", "h_exec", "tree_clean"}`; never writes `HIST_*.npz` |
+| `run_dry(out=DRY_STORE, sched=None, only=None) -> dict` | requires `sched_ok(sched, "DRY")` (P-SCHED rule 2 for DRB2's in-memory w\* rows), else returns `{"status": "REFUSED", "reason": …}` without running any case or writing a report (never an `all_pass` key; erratum E3c); `only` restricts the cases (smoke runs); runs every case; writes `out/stages/DRY/DRY_REPORT.json` `{"cases": {name: result}, "all_pass", "implementation_files", "implementation_sha256", "h_exec", "tree_clean"}`; never writes `HIST_*.npz` |
 
 ## 10. `hwsb_meter_bind.py` (≈80 lines): meter binding (§6.4 rule 1, §9.1, RC-5)
 
@@ -331,3 +331,46 @@ All exact arithmetic is `Fraction`; Decimal work uses `error_bound.trapping_cont
 21. **TRAIN needs a coordinator KB_ACCEPT** bound to the KB record's sha256 (the HWS S0_ACCEPT pattern).
 22. **Dry tiny model** uses warmup 20 and checkpoints (0, 100, 200) for its 200 steps, gate step 200, site `resid_post_0` (a 1-layer model has no `resid_post_3`); dry block sizes LGATE 512, CAL 1,024, VAL 1,024 so that 512 landmarks exist.
 23. **Exit code 5** marks an owner STOP at a hold (INCONCLUSIVE), distinct from a technical STOP (3) and a 3× pause (4).
+
+## 15. Erratum (job 0161 phase 3; written after the module code and both test suites; no scientific change; the protocol still wins)
+
+- **E1 (module split by size; the HWS E16 pattern).** Ten modules did not fit in 400 lines each, so five more modules hold code split out by size. Every API name stays reachable under its §1–§10 module, so the `hd.<name>`, `hk.<name>` and `hdr.<name>` forms keep working. The tree has fifteen `.py` files:
+
+  | Module | Lines | Role | Re-exported by |
+  |---|---|---|---|
+  | `hwsb_registry.py` | 180 | H2-B (`train_dev_canonical`, `hws_store_digests`, `duplicates`, `separation`) and the registry reader (`history_inventory`, `registry_digests`) of §2.4–§2.5 | `hwsb_data` (module `__getattr__`, lazy) |
+  | `hwsb_records.py` | 160 | `ledger_read`, `ledger_append`, `inventory_snapshot`, `inventory_diff`, `implementation_files(repo, h_exec)`, `freeze`, `verify_freeze`, `utc` of §8 | `hwsb_driver` (imported names) |
+  | `hwsb_kb.py` | 158 | `kb5`, `kb6`, `kb7` of §7 | `hwsb_known` (module `__getattr__`, lazy) |
+  | `hwsb_stages.py` | 351 | `train_core(out, store, proc, master, plan=REAL_PLAN, hold=None) -> TRAIN record` and `eval_core(out, plan, proc, store, train_records, hws_digests=None, p_d2a_ref=None, kb4_z=None, ledger_path=None, pause=None, freeze_sha256=None) -> REPORT dict`: the TRAIN body and the whole EVAL gate sequence of §8 `run_eval`, with a Plan, so that DRB1 drives the same code | `hwsb_driver` re-exports `train_core`; `run_train` and `run_eval` stay in `hwsb_driver` and add preflight, authority and pauses |
+  | `hwsb_dry2.py` | 334 | DRB8–DRB16, DRB13b and `e4_eval_check` (E7) | `hwsb_dry.run_dry` (lazy import) |
+
+  The ten modules of §0 now have: `hwsb_config` 190, `hwsb_data` 352, `hwsb_train` 325, `hwsb_eval` 173, `hwsb_law` 169, `hwsb_gates` 382, `hwsb_known` 347, `hwsb_driver` 328, `hwsb_dry` 385, `hwsb_meter_bind` 121 lines. Import order: `hwsb_config` ← `hwsb_law` ← `hwsb_data` (← `hwsb_registry`) ← `hwsb_train` ← `hwsb_eval` ← `hwsb_gates` ← `hwsb_known` (← `hwsb_kb`) ← `hwsb_records` ← `hwsb_stages` ← `hwsb_driver` ← `hwsb_dry` ← `hwsb_dry2`; `hwsb_meter_bind` is unchanged. Every module starts with `from __future__ import annotations  # noqa: I001` and imports `hwsb_config` first.
+- **E2 (names added in implementation).**
+  - `hwsb_data.assemble(world, trans, emissions, ids, features=None, n_axial=6) -> dict` builds the §2.1 process dict from loaded specs; `build_process` and `build_tiny_process` both call it.
+  - `hwsb_driver.Paused` (exit 4) and `utc()`.
+  - `hwsb_driver.pause_or_raise(out, stage, t0, ledger_path=STUDY_LEDGER, cont=None)` checks both 3× triggers at an item boundary through `running_cpu` and `pause_check`. `ledger_path=None` disables it for dry use. A `--continue` JSON `{"stages": [...]}` exempts the named stages.
+  - `CheckpointSaver.id_by_step` is a `{step: id}` dict; `train(...)["checkpoint_ids"]` is this dict.
+  - `hwsb_known.jsonable(x)` is the record converter: Fractions and Decimals become `str`, numpy scalars become Python numbers, `(j, s)` keys become `"j:s"`, and sets become sorted lists.
+  - `run_kb(out, auth, sched, store=None)`.
+- **E3 (clarifications).**
+  - (a) `lowest_rows`: see §2.3.
+  - (b) TEST_PLAN "σ = 3/2 BOUNDED" means a process built with the same world and transition and `EmissionConfig("overlap", 36, 1.5, "grid")`, and the law bound at σ = 3/2, neighbour 1/5.
+  - (c) `run_dry` refusal: see §9.
+  - (d) B9a(iii): see §6.4.
+  - (e) **Dry tiny EmissionSpec.** `build_tiny_process` saves `EmissionSpec(E=E_named, symbol_perm=perm, mode="overlap", sigma=1.0, centers=[(0.5 + 2i, 0.5)], center_strategy="dry_tiny", diagnostics=topo_pilot.process._diagnostics.emission_diagnostics(E_named, E_canon, (6, 2), 0.0))`. The diagnostics come from the src helper, a public name in a private module (the choice 1 pattern). The coverage radius is not defined for the tiny world and is recorded as 0.0. `proc["sigma"] = 1` and `proc["neighbour"] = 1/8`.
+  - (f) The planted support object for `endpoints` and `support` needs `phase`, `supported`, `resultant`, `eighth_distance` and `duplicate`, the fields that `k4b_scores.support_report` reads.
+- **E4 (`model_inputs` BOS).** When `len(perm) == 36`, the only case in the real run, `hwsb_data.model_inputs(canon32, perm)` is `c1_model.model_inputs(named32(canon32, perm))` (BOS 36). For any other V (the dry tiny world, V = 3) it returns `[BOS = V, named w1..w32]` as torch int64, because `c1_model` fixes BOS at 36.
+- **E5 (EVAL details).**
+  - `eval_core` records B1's per-model statuses under `per_model` in the gate line.
+  - A non-PASS H2-B or a technical failure records the remaining gates `NOT_RUN`, and REPORT.json and HANDOFF.json are still written.
+  - For a dry plan, KB7 is `NOT_RUN` (it needs the 12 × 12 lattice), and B8a and B9a may fail by design on the tiny world. DRB1 checks only that every gate returns a value.
+  - REPORT.json carries `own_payloads_hashed_by_B9a: true`, and B9a's record carries `own_payloads_hashed: true`. This is ruling c7: at EVAL, stage B **hashes and reads its own** ObservationSet payloads (`payload.npz`) and hist files in its own store. No other store's payload is opened or hashed.
+- **E6 (KB6 row order).** KB6 (b) evaluates the stage-B path on the canonical test rows in HistoryIndex row order, which is the batch order of `ActivationExtractor.extract`. This makes the float32 logits of both paths bitwise equal. With the rows in ObservationSet order, the different batch composition moved the logits by about 1e-8 (seen in a DRB2 smoke check). That would break the 1e-12 tolerance for reasons unrelated to the B1 code. KB6 (a) is unchanged.
+- **E7 (DRB2 covers the real 36-symbol EVAL path).** DRB2 also runs `hwsb_dry2.e4_eval_check` on its step-20 E4-architecture checkpoint and 256 in-memory DRY w\* rows. It checks that:
+  - `model_inputs` has BOS 36 and shape [n, 33];
+  - `model_predictive` equals the `ActivationExtractor` logits, softmaxed as in s3.py and re-indexed canonically, bitwise (rows in index order, E6);
+  - `activations` at resid_post_3 are float64 [n, 128].
+- **E8 (dry-run fixtures).**
+  - DRB15 classifies its planted hits with paths made relative to the synthetic root, because the dry folder `topo-scratch/hwsb-dry/` itself matches a declaration fragment.
+  - DRB7 uses one shared phase per landmark row with a different random 128-d embedding for each dry master, so a single `m32_land` serves both models, as in the real run.
+- **E9 (CONTRACT).** `authority.owner_questions` records owner addendum 33 (Q1–Q6 defaults accepted, with its sha256). `modules` lists all fifteen files.

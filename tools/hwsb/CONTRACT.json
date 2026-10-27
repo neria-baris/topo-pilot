@@ -2,7 +2,7 @@
  "protocol": "HWSB-DESIGN-v1 (design freeze candidate; becomes HWSB-FROZEN-v1 at the execution freeze)",
  "protocol_file": "tools/hwsb/PROTOCOL_HWSB_v1.md",
  "protocol_sha256": "db0db31a8ebcd783647babd70c8ab698c6dacf0b128373e0c8c7cb490577e705",
- "contract_job": "0161",
+ "contract_job": "0161 (phase 3 erratum E9: owner_questions, modules)",
  "status": "CONTRACT (written before any module code; the protocol wins on conflict)",
  "precedence": [
   "tools/hwsb/PROTOCOL_HWSB_v1.md",
@@ -33,6 +33,18 @@
   "k4b_frozen": {
    "path": "agent-handoff/planning/responses/K4B-FROZEN-v1.md",
    "sha256": "957f0d5e70870bbd2323fbbae7bf5a8b814735b00a6525346562e7f1dd35b485"
+  },
+  "owner_questions": {
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-33.md",
+   "sha256": "6e253f921584f35b1b25bb2e3ecb3afffb9534e0da0fcfe0d58b7214f16fd1c6",
+   "answers": {
+    "Q1": "default: stage C trains its own three models; pilot models never enter stage C; pilot capture read only by the coordinator and the owner (RC-6)",
+    "Q2": "default: two pilot models",
+    "Q3": "default: B5 at 80 % planned power, the HWS 10.2 value reported",
+    "Q4": "default: on a one-model failure or any non-PASS outcome stop with that outcome and ask; no third seed, fallback world or recipe change",
+    "Q5": "default: B2 and B3 report-only",
+    "Q6": "default: stage-C planning assumes 3 models; stage C itself remains unapproved"
+   }
   }
  },
  "world": {
@@ -789,18 +801,24 @@
   "hws_store_reads"
  ],
  "modules": {
-  "hwsb_config.py": 120,
-  "hwsb_data.py": 290,
-  "hwsb_train.py": 220,
-  "hwsb_eval.py": 280,
-  "hwsb_gates.py": 320,
-  "hwsb_law.py": 140,
-  "hwsb_known.py": 330,
-  "hwsb_driver.py": 330,
-  "hwsb_dry.py": 350,
-  "hwsb_meter_bind.py": 80,
+  "hwsb_config.py": 190,
+  "hwsb_data.py": 352,
+  "hwsb_driver.py": 328,
+  "hwsb_dry.py": 385,
+  "hwsb_dry2.py": 334,
+  "hwsb_eval.py": 173,
+  "hwsb_gates.py": 382,
+  "hwsb_kb.py": 158,
+  "hwsb_known.py": 347,
+  "hwsb_law.py": 169,
+  "hwsb_meter_bind.py": 121,
+  "hwsb_records.py": 160,
+  "hwsb_registry.py": 180,
+  "hwsb_stages.py": 351,
+  "hwsb_train.py": 325,
   "max_lines": 400,
-  "proof_note": "tools/hwsb/ENCLOSURE_PROOF.md"
+  "proof_note": "tools/hwsb/ENCLOSURE_PROOF.md",
+  "note": "line counts at the phase-3 docs commit; API.md erratum E1 (split by size)"
  },
  "tests": {
   "dir": "tests/hwsb",

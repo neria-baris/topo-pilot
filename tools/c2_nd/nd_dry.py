@@ -314,3 +314,17 @@ def sealed_check(ctx) -> dict:
     return {
         "sealed_read_refused": name is not None and _refused(lambda: ndr.unseal(ctx, name, s[name]))
     }
+
+
+def registry_c2(ctx) -> dict:
+    """Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/
+    stand-in, bound by the hist/ entries of c2/TABLE.json (none: INCOMPLETE). No C2 store file
+    is read; nd_registry.build records rows 2-real (c2real) and 3 (c2sup) NOT_APPLICABLE (dry)."""
+    guard(ctx)
+    root, table = sb.c2_store(ctx)
+    bound = {rel: s for rel, s in table.items() if rel.startswith("hist/")}
+    if bound:
+        return nrg.source_c2(root, bound)
+    return nrg._close(
+        dict(nrg._new(), other=[{"path": str(root / "TABLE.json"), "reason": "no hist/"}])
+    )

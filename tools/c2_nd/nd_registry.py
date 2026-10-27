@@ -29,7 +29,7 @@ import numpy as np
 import stage_records
 
 LINEAGE, INCOMPLETE = "FAIL_TECHNICAL/LINEAGE", "INCONCLUSIVE/REGISTRY_INCOMPLETE"
-AUTHORITY = "FAIL_TECHNICAL/AUTHORITY"
+AUTHORITY, NA = "FAIL_TECHNICAL/AUTHORITY", "NOT_APPLICABLE (dry)"
 NOT_READ = "not read: payload/sealed"
 OWN = "c2nd-store"
 EXCLUDE = ("agent-handoff", "c1prime-store", "d2a-store", "k4b-store", "x6-stage1-store")
@@ -76,10 +76,11 @@ def _c2_table(path, out) -> None:
 
 
 # ---- row 2: reader c2; row 3: c2sup (API.md §5.1) --------------------------------------------
-def source_c2(store=None) -> dict:
-    """The five bound C2 hist files (re-hashed against CONTRACT) and any further HIST_*.npz."""
+def source_c2(store=None, bound=None) -> dict:
+    """The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further
+    HIST_*.npz."""
     store, out, bad = Path(nc.C2_STORE if store is None else store), _new(), False
-    bound = nc.CONTRACT["registry"]["c2_hist"]
+    bound = nc.CONTRACT["registry"]["c2_hist"] if bound is None else bound
     for rel, want in sorted(bound.items()):
         p = store / rel
         if not p.is_file():
@@ -256,20 +257,22 @@ def inventory(root=None, readers=None) -> dict:
 
 
 # ---- builds (API.md §5.3; ND-C8) -------------------------------------------------------------
-def _nd_sources(root) -> dict:
-    """Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5)."""
+def _nd_sources(root, c2_dry=None) -> dict:
+    """Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5). `c2_dry`
+    (dry run): row 2 as read from the c2/ stand-in; c2real and c2sup NA (ND-C55)."""
 
     def at(name, attr):
         return Path(getattr(nc, attr)) if root is None else Path(root) / name
 
-    c2s = at("c2-readout-store", "C2_STORE")
-    return {
-        "c2": source_c2(c2s),
-        "c2sup": source_c2_superseded(c2s),
+    c2s, na, dry = at("c2-readout-store", "C2_STORE"), dict(_new(None), status=NA), c2_dry
+    out = {
+        "c2": source_c2(c2s) if dry is None else dry,
+        "c2sup": source_c2_superseded(c2s) if dry is None else na,
         "c2scratch": source_scratch(nc.SCRATCH_ROOT),
         "hws": source_parallel(at("hws-store", "HWS_STORE"), "hws"),
         "x6zc": source_parallel(at("x6zc-store", "X6ZC_STORE"), "x6zc"),
     }
+    return out if dry is None else dict(out, c2real=na)
 
 
 def _summary(r) -> dict:
@@ -277,9 +280,9 @@ def _summary(r) -> dict:
     return dict({k: r.get(k) for k in keys}, n=len(r.get("digests", ())))
 
 
-def build(version, store=None, root=None, extra=None) -> dict:
+def build(version, store=None, root=None, extra=None, c2_dry=None) -> dict:
     """ND-REG1 (S1, before DFIT) or ND-REG2 (S5; R' with the DFIT/DFEAS/DVAL tables in `extra`):
-    the C2 recipe (row 1) plus rows 2-9; exclusive create; status PASS, INCOMPLETE or LINEAGE."""
+    the C2 recipe (row 1) plus rows 2-9 (`c2_dry`: ND-C55); status PASS, INCOMPLETE or LINEAGE."""
     if version not in nc.REG_NAMES or (extra and version != "ND-REG2"):
         raise ValueError(f"registry version {version} (extra tables only for ND-REG2)")
     explicit = root is not None
@@ -298,15 +301,13 @@ def build(version, store=None, root=None, extra=None) -> dict:
     x6 = cg.x6_source(root / "x6-stage1-store", run_dir)
     if x6["status"] != "PASS":
         (lineage if x6["status"] == LINEAGE else problems).append(f"x6: {x6['status']}")
-    nd = _nd_sources(root if explicit else None)
+    nd = _nd_sources(root if explicit else None, c2_dry)
     for tag, r in nd.items():
-        if r["status"] != "PASS":
+        if r["status"] not in ("PASS", NA):
             (lineage if r["status"] == LINEAGE else problems).append(f"{tag}: {r['status']}")
     readers = cg._ok_readers(src, x6["status"] == "PASS")
-    ok = {"c2-readout-store": nd["c2"]["status"] == nd["c2sup"]["status"] == "PASS"}
-    ok.update(
-        {"hws-store": nd["hws"]["status"] == "PASS", "x6zc-store": nd["x6zc"]["status"] == "PASS"}
-    )
+    ok = {name: nd[tag]["status"] == "PASS" for name, tag in ND_READERS.items()}
+    ok["c2-readout-store"] &= nd["c2sup"]["status"] in ("PASS", NA)
     for name, tag in ND_READERS.items():
         if ok[name]:
             readers.setdefault(name, []).append(tag)
@@ -350,7 +351,7 @@ def build(version, store=None, root=None, extra=None) -> dict:
     man.update(sealed_ranges=e["sealed_ranges"], d2a_ranges=e["ranges"])
     man["handoff_validation"] = kr.validate_handoff_json(root / "agent-handoff")
     man["k4b_store"], man["protocol_sha256"] = kr.summary(src["k"]), nc.PROTOCOL_SHA256
-    man["nd_sources"] = {tag: _summary(nd[tag]) for tag in TAGS}
+    man["nd_sources"] = {tag: _summary(r) for tag, r in nd.items()}
     man["built_utc"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     stage_records.save_npz(dpath, digests=np.array(sorted_d, dtype="<U64"), seq_ids=seq_arr)
     man["digest_file_sha256"] = cd.file_sha(dpath)

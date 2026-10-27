@@ -61,7 +61,8 @@ def accept(ctx) -> dict:
 def reg2(ctx) -> dict:
     """R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks."""
     extra = {s: sb.table(ctx, s) for s in nc.SPLIT_BLOCKS}
-    man = nrg.build("ND-REG2", ctx.store, extra=extra)
+    c2_dry = sb.dry(ctx).registry_c2(ctx) if ctx.dry else None  # ND-C55
+    man = nrg.build("ND-REG2", ctx.store, extra=extra, c2_dry=c2_dry)
     pre.reg_files(ctx, "ND-REG2")
     if man["status"] != "PASS":
         return {"status": man["status"], "values": {"problems": man.get("problems")}}

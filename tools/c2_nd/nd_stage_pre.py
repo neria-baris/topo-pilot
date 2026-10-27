@@ -99,7 +99,8 @@ def reg_files(ctx, version) -> None:
 
 
 def reg(ctx) -> dict:
-    man = nrg.build("ND-REG1", ctx.store)
+    c2_dry = sb.dry(ctx).registry_c2(ctx) if ctx.dry else None  # ND-C55
+    man = nrg.build("ND-REG1", ctx.store, c2_dry=c2_dry)
     reg_files(ctx, "ND-REG1")
     keep = ("n_digests", "union_sha256", "problems", "inventory", "nd_sources")
     return {"status": man["status"], "values": {k: man.get(k) for k in keep}}

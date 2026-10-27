@@ -304,6 +304,8 @@ def g0(ctx, stage=None) -> dict:
     out["ii"] = _item(lambda: _eq(S(pkg / "CONTRACT.json"), fz.get("contract_sha256")) and st_ok)
     out["iii"] = _item(lambda: _blobs_ok(wt, ctx.head))
     out["iv"] = _item(lambda: _c2_store_ok(ctx))
+    if ctx.dry:  # R-0125-2 (ND-C55): c2/ stand-in only; no C2 store file is touched
+        out["iv"]["c2_store_rehash"] = nrg.NA
     out["v"] = _item(lambda: all(_sha_ok(p, s) for p, s in bound.items()))
     adm = {**lin, **nda.own_records(store, stage, lin)}
     out["vi"] = _item(vi)

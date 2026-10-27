@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import io
 import json
+import math
 import re
 import sys
 import time
@@ -40,6 +41,11 @@ def _payload(store, stage, rel, sha, purpose) -> bytes:
     data = _x6(rel).read_bytes()
     if sha and _sha(data) != str(sha).lower():
         raise ValueError(f"{rel}: sha256 differs from the CONTRACT binding")
+    return data
+def _checked(r) -> bytes:  # a payload re-read by a chunk child, sha-checked (F-15)
+    data = _x6(r["path"]).read_bytes()
+    if _sha(data) != str(r["file_sha256"]).lower():
+        raise ValueError(f"{r['path']}: sha256 differs from the CONTRACT binding")
     return data
 def _npz(data) -> dict:
     z = np.load(io.BytesIO(data), allow_pickle=False)
@@ -79,43 +85,91 @@ def _finish(store, ctx, stop=None, n=None) -> int:
         "values": ctx["values"], "cpu_s": cpu - ctx["cpu0"], "cpu_cumulative_s": cpu, "pause": pc,
         "stop": stop, "utc": _utc()})
     return 2 if stop else 0
-def _find(obj, key) -> list:  # every value stored under `key` anywhere in a JSON object
-    if isinstance(obj, dict):
-        return [obj[key]] * (key in obj) + [x for v in obj.values() for x in _find(v, key)]
-    return [x for v in obj for x in _find(v, key)] if isinstance(obj, list) else []
-def _passes(obj, name) -> bool:
-    f = _find(obj, name)
-    return bool(f) and all((x.get("status") if isinstance(x, dict) else x) == "PASS" for x in f)
-def a1_check(closure) -> dict:
-    import x6s1_decide as sdc
-    SD, it = X["stored_designed"], {}
-    rb = _x6("stages/E3z/report.json").read_bytes()
-    rep, it["1"] = json.loads(rb), _sha(rb) == X["records"]["stages/E3z/report.json"]["sha256"]
+def _x6json(rel) -> tuple:  # (object, sha256) of a stage-1 JSON record (never a payload)
+    b = _x6(rel).read_bytes()
+    return json.loads(b), _sha(b)
+def _latest(lines, gate) -> dict:
+    return next((r for r in reversed(lines) if r.get("gate") == gate), {})
+def _prov(m, rep, gl, pools, echo) -> dict:  # A1 item 3 of one focal model (F-3)
+    R, ad, s = X["records"], X["admitted"][m], int(m.split("-s")[1])
+    wave = ad["bundle_id"].split("-")[0]  # C1 or C2
+    d, tp, el = f"cloud/{wave}/{m}", X["train_pools_A4"][f"train_ZC_s{s}"], (
+        "stages/E1/loss_echo.json" if wave == "C1" else "stages/E2/loss_echo.json")
+    lock, (man, msh) = _x6json(ad["lock"])[0], _x6json(f"{d}/MANIFEST.json")
+    smf = _x6json(f"{d}/STORE_MANIFEST.json")[0]
+    ing = _latest(gl, f"INGEST-{wave}").get("values", {}).get("models", {}).get(m, {})
+    gst = {g.get("gate"): g.get("status") for g in ing.get("gates", []) if g.get("model") == m}
+    e = next((y for y in man.get("models", []) if y.get("model") == m), {})
+    (le, lsh), ch = echo[el], e.get("chain") or [{}]
+    x, pe = (le.get(m) or {}).get("max_abs_32"), pools[0].get(f"train_ZC_s{s}") or {}
+    chk = {
+        "lock": all(lock.get(k) == ad[k] for k in ("final_file_sha256", "final_weights_sha256",
+                                                    "bundle_id")),
+        "gates": ing.get("status") == "DONE" and ing.get("admitted") is True and all(
+            gst.get(g) == "PASS" for g in X["gates_required_pass"]),  # absent gate = FAIL
+        "loss_echo": lsh == R[el]["sha256"] and isinstance(x, (int, float))
+        and math.isfinite(x) and float(x) <= float(X["loss_echo_max_abs_32"]),  # no vacuous pass
+        "learn_test": (rep.get("learn_test") or {}).get(m) == "PASS",  # E3z report learn_test
+        "manifest": msh == smf.get("MANIFEST.json") and e.get("final_file_sha256") == ad[
+            "final_file_sha256"] and [r.get("record_sha256") for r in ch] == lock.get(
+            "chain_record_sha256"),
+        "data": e.get("data_stream") == ["x6s1", "train", "ZC", s] and e.get("data_sha256") == tp[
+            "file_sha256"] and pools[1] == R["pools/POOLS.json"]["sha256"] and all(
+            pe.get(k) == tp[k] for k in ("file_sha256", "token_sha256")),
+        "ckpt_path": f"{d}/{ch[-1].get('file')}" == ad["ckpt"]}  # A1 item 4
+    return {"checks": chk, "max_abs_32": x, "devices": e.get("devices"), "gates": gst,
+            "sessions": sorted({str(r.get("session_id")) for r in ch})}
+def a1_provenance(rep) -> dict:  # an unreadable or malformed record fails the model's checks
+    gl, pools = _lines(_x6("GATES.jsonl")), _x6json("pools/POOLS.json")
+    echo, out = {f"stages/{s}/loss_echo.json": _x6json(f"stages/{s}/loss_echo.json")
+                 for s in ("E1", "E2")}, {}
     for m in zc.FOCAL:
-        db = _x6(SD[m]["dir"] + "/designed.json").read_bytes()
-        dj = json.loads(db)
-        ds = [d for d in _find(rep, m) if isinstance(d, dict) and "beta_W2" in d]
-        it["1"] &= (_sha(db) == SD[m]["designed_json_sha256"] and dj == SD[m]["values"]
-                    and any(all(dj.get(k) == v for k, v in d.items()) for d in ds))
+        try:
+            out[m] = _prov(m, rep, gl, pools, echo)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError, IndexError) as exc:
+            out[m] = {"checks": {"readable": False, "ckpt_path": False}, "error": repr(exc)}
+    return out
+def a1_check(store, closure) -> dict:
+    import x6s1_decide as sdc
+    SD, it, dj, rows = X["stored_designed"], {}, {}, {}
+    rep, rsh = _x6json("stages/E3z/report.json")
+    for m, r in SD.items():  # all 16 stored designed results (F-15)
+        (ch, csh), (dj[m], dsh) = (_x6json(f"{r['dir']}/{f}.json") for f in ("chunk", "designed"))
+        rd = (rep.get("designed") or {}).get(m) or {}
+        pd = ((rep.get("placebo") or {}).get("designed") or {}).get(m)
+        rows[m] = {"chunk": csh == r["chunk_sha256"], "contract": dj[m] == r["values"],
+                   "file": dsh == r["designed_json_sha256"] == (ch.get("files") or {}).get(
+                       "designed.json"),
+                   "report_designed": bool(rd) and all(dj[m].get(k) == v for k, v in rd.items()),
+                   "placebo_designed": pd is None and m not in zc.FOCAL or bool(pd) and all(
+                       dj[m].get(k) == v for k, v in pd.items())}
+    it["1"] = rsh == X["records"]["stages/E3z/report.json"]["sha256"] and all(
+        all(rows[m].values()) for m in zc.FOCAL)
     lo = Fraction(X["dw2_lo"])
-    o = [sdc.ord_d(*(SD[f"{a}-s{s}"]["values"] for a in ("NA", "init", "AB", "ZC")), lo)
+    o = [sdc.ord_d(*(dj[f"{a}-s{s}"] for a in ("NA", "init", "AB", "ZC")), lo)
          for s in (1, 2, 3, 4)]
     it["2"] = (o[0]["status"], o[0]["control_limited"], o[0]["reason"]) == (
         "UNRESOLVED", True, "designed placebo ZC") and all(x["status"] == "FAIL" for x in o[1:])
-    gates = _lines(_x6("GATES.jsonl"))
-    locks = {m: json.loads(_x6(X["admitted"][m]["lock"]).read_bytes()) for m in zc.FOCAL}
-    it["3"] = all(locks[m].get(k) == X["admitted"][m][k] for m in zc.FOCAL
-                  for k in ("final_file_sha256", "final_weights_sha256", "bundle_id"))
-    it["3"] &= all(_passes(gates, g) for g in X["gates_required_pass"] + ["LEARN-TEST"])
-    it["3"] &= all(float(x) <= float(X["loss_echo_max_abs_32"]) for x in _find(gates, "max_abs_32"))
-    it["4"] = all(_x6(X["admitted"][m]["ckpt"]).is_file() for m in zc.FOCAL)  # stat only (C-48)
+    it["2"] &= all(all(r.values()) for r in rows.values())  # the ord_d inputs, re-verified
+    prov = a1_provenance(rep)
+    it["3"] = all(all(v for k, v in p["checks"].items() if k != "ckpt_path") for p in prov.values())
+    it["4"], w = all(p["checks"]["ckpt_path"] for p in prov.values()), {}
+    for m in zc.FOCAL:  # F-10: file and weights sha at A1 (logged payload reads), not in Stage B
+        log_exposure(store, "A", _spec(m)[0], _spec(m)[1], f"A1 item 4 {m}")
+        try:
+            _predictor(m)
+            w[m] = "PASS"
+        except (ValueError, OSError) as exc:
+            w[m] = f"FAIL: {exc}"
+    it["4"] &= all(v == "PASS" for v in w.values())
     kinds = {e.get("kind") for e in _lines(_x6("EVALUATIONS.jsonl"))}
     sites = sorted([f"tools/x6_stage1/{p.name}", i] for p in (zc.REPO / "tools/x6_stage1").glob(
         "*.py") for i, ln in enumerate(p.read_text("utf-8").splitlines(), 1) if '"prefix"' in ln)
     it["5"] = kinds <= set(X["evaluation_kinds_seen"]) and sites == sorted(X["a1_prefix_sites"])
     it["6"] = not closure
-    return {"status": "PASS" if all(it.values()) else "FAIL", "items": it,
-            "ord_d": o, "evaluation_kinds": sorted(map(str, kinds))}
+    return {"status": "PASS" if all(it.values()) else "FAIL", "items": it, "designed": rows,
+            "provenance": prov, "weights": w, "ord_d": o,
+            "evaluation_kinds": sorted(map(str, kinds))}
 _A2_ROW = re.compile(r"\| (\S+) \| `([^`]+?):(\d+)(?:–(\d+))?` \| `(.+?)` \| (.*) \|$")
 def a2_check() -> dict:
     sec, rows = (zc.HERE / "API.md").read_text("utf-8").split("## 17.")[1].split("## 18.")[0], {}
@@ -135,7 +189,7 @@ def stage_a(store=zc.STORE) -> int:
     G, V, d = ctx["gates"], ctx["values"], Path(store) / "stages" / ctx["dir"]
     if not (Path(store) / "EXPOSURE.jsonl").exists():
         _append(Path(store) / "EXPOSURE.jsonl", {**C["store"]["exposure_first"], "utc": _utc()})
-    G["A1"], G["A2"] = a1_check(ctx["closure"]), a2_check()
+    G["A1"], G["A2"] = a1_check(store, ctx["closure"]), a2_check()
     D = _npz(_payload(store, "A", X["designed"]["path"], X["designed"]["file_sha256"], "A-audit"))
     au = {F: zs.audit_pairs(D, F) for F in sp.PAIR_FAMILIES}
     dsh = sp.designed_sha256(D) == X["designed"]["designed_sha256"]
@@ -224,8 +278,7 @@ def chunk(stage, model, out, store=zc.STORE) -> int:
     dA, A = _record(store, "A")
     cache = _cache(store)
     if stage == "B":
-        D = _npz(_x6(X["designed"]["path"]).read_bytes())  # logged by the Stage-B parent
-        tabs = _npz(_x6(X["log_tables"]["path"]).read_bytes())
+        D, tabs = (_npz(_checked(X[k])) for k in ("designed", "log_tables"))  # parent-logged
         P = {k: pred(v, np.asarray(D[f"{k[:-2]}_t"], np.int64)) for k, v in D.items()
              if k[-2:] in ("_a", "_b")}
         ds = se.designed_stats(_Memo({id(D[k]): v for k, v in P.items()}), D, cache, tabs)

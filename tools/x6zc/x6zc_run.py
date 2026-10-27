@@ -30,9 +30,9 @@ from x6zc_pipeline import (predict_variants, stage_c_statistics, _f4,  # noqa: E
 from x6zc_dry import (Planted, sd_parse, _jitter, _pool, _ev, dry, se_qstar)  # noqa: E402, F401
 # isort: on
 # isort: off
-from x6zc_stage_a import (RUN, _x6, _payload, _npz, _dirs, _record, _begin,  # noqa: E402, F401
-    _finish, _find, _passes, a1_check, _A2_ROW, a2_check, stage_a, _cache,  # noqa: E402, F401
-    _spec, _predictor, _Memo, _children, chunk)  # noqa: E402, F401
+from x6zc_stage_a import (RUN, _x6, _payload, _checked, _npz, _dirs, _record,  # noqa: E402, F401
+    _begin, _finish, _x6json, _latest, _prov, a1_provenance, a1_check, _A2_ROW,  # noqa: E402, F401
+    a2_check, stage_a, _cache, _spec, _predictor, _Memo, _children, chunk)  # noqa: E402, F401
 # isort: on
 # isort: off
 from x6zc_stage_bc import (_terms, _boot, _arm, stage_b, _ev_base, stage_c)  # noqa: E402, F401

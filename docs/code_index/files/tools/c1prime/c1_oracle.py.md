@@ -61,6 +61,8 @@
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 16, import)
 - [tools/c1prime/c1_driver_fresh.py](c1_driver_fresh.py.md) (line 18, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 19, import)
+- [tools/c2_nd/nd_attrib.py](../c2_nd/nd_attrib.py.md) (line 19, import)
+- [tools/c2_nd/nd_dry.py](../c2_nd/nd_dry.py.md) (line 19, import)
 - [tools/c2_readout/c2_data.py](../c2_readout/c2_data.py.md) (line 23, import)
 - [tools/c2_readout/c2_model.py](../c2_readout/c2_model.py.md) (line 19, import)
 - [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 20, import)

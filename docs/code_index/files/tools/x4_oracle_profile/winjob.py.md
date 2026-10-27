@@ -46,6 +46,7 @@
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 39, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 30, import)
 - [tools/c1prime/c1_meter_bind.py](../c1prime/c1_meter_bind.py.md) (line 30, import)
+- [tools/c2_nd/store_template/nd_meter_bind.py](../c2_nd/store_template/nd_meter_bind.py.md) (line 67, import)
 - [tools/d2a/d2a_decide.py](../d2a/d2a_decide.py.md) (line 344, import)
 - [tools/d2a/process_tree.py](../d2a/process_tree.py.md) (line 13, import)
 - [tools/hws/hws_dry.py](../hws/hws_dry.py.md) (line 173, import)

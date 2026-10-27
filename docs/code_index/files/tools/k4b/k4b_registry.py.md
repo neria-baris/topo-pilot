@@ -56,12 +56,14 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_b_registry.py](../../tests/c2_nd/test_b_registry.py.md) (line 26, import)
 - [tests/k4b/test_b_registry.py](../../tests/k4b/test_b_registry.py.md) (line 31, import)
 - [tests/k4b/test_b_registry_fixes.py](../../tests/k4b/test_b_registry_fixes.py.md) (line 30, import)
 - [tests/k4b/test_b_registry_rules.py](../../tests/k4b/test_b_registry_rules.py.md) (line 34, import)
 - [tests/k4b/test_b_store_reader.py](../../tests/k4b/test_b_store_reader.py.md) (line 38, import)
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 354, import)
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 387, import)
+- [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 27, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 25, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 19, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 21, import)

@@ -50,6 +50,7 @@
 - [src/topo_pilot/learner/stage.py](stage.py.md) (line 23, import)
 - [src/topo_pilot/learner/trainer.py](trainer.py.md) (line 18, import)
 - [tests/c2_readout/test_a_readout.py](../../../tests/c2_readout/test_a_readout.py.md) (line 35, import)
+- [tools/c2_nd/nd_dry.py](../../../tools/c2_nd/nd_dry.py.md) (line 40, import)
 
 ## Top-level constants
 

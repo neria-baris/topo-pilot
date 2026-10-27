@@ -16678,9 +16678,9 @@
   },
   "tests/c2_nd/test_b_lineage.py": {
    "kind": "python",
-   "lines": 397,
+   "lines": 399,
    "purpose": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),",
-   "sha256": "c79b1c7fd63aa63822620276b44a1d1e02eccb0ff172ed22f5ae8b9d4c0f99e2"
+   "sha256": "7d9c972002b6984bf1001f3c3eb4504fcf99c75ab39493f808e902ab24f98337"
   },
   "tests/c2_nd/test_b_policy.py": {
    "kind": "python",
@@ -18046,15 +18046,15 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 539,
+   "lines": 542,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "7b7308dd65d04b309cf0fd54fcba3d6720c39caa6fa7eb3f1de98ffe04b79e01"
+   "sha256": "eed6a3630fdbac80ee1d0e17dfaf309b38acb4be064ffd4fa427afe5987c5cb6"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
    "lines": 940,
    "purpose": "",
-   "sha256": "4770e4a734618bdf0cc547b04d647c35c7b84bcd5044267987b253ccd666209b"
+   "sha256": "e39e4971fa09d3762f80f0c309296fd59e240707357afd2aec94f5f856ed487b"
   },
   "tools/c2_nd/PROTOCOL_C2ND_v1.md": {
    "kind": "markdown",
@@ -75469,24 +75469,26 @@
      "start": 350
     },
     {
-     "decorators": [],
-     "doc": "D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed",
-     "end": 385,
+     "decorators": [
+      "pytest.mark.parametrize('names, bad', [(('stages/A-r1/qstar_NA.npz', 'stages/B-r2/m1/pairs.npz'), ('stages/A-rx/qstar_NA.npz', 'stages/A-r1/other.npz')), (('stages/B/AB-s1/p.npz', 'stages/C-r1/ZC-s1/p.npz'), ('stages/B/AB-s1/q.npz',))])"
+     ],
+     "doc": "X6ZC NON_HISTORY names in any attempt directory: listed, never opened; others fail.",
+     "end": 387,
      "kind": "test",
-     "name": "test_parallel_x6zc_rerun_directories",
-     "qual": "test_parallel_x6zc_rerun_directories",
-     "sig": "def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads)",
-     "start": 369
+     "name": "test_parallel_x6zc_non_history_names",
+     "qual": "test_parallel_x6zc_non_history_names",
+     "sig": "def test_parallel_x6zc_non_history_names(tmp_path, monkeypatch, loads, names, bad)",
+     "start": 373
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 397,
+     "end": 399,
      "kind": "test",
      "name": "test_module_files_and_sizes",
      "qual": "test_module_files_and_sizes",
      "sig": "def test_module_files_and_sizes()",
-     "start": 389
+     "start": 391
     }
    ],
    "syspath": [
@@ -193208,5 +193210,5 @@
    ]
   }
  },
- "sources_digest": "5fe0db83ba0c839431bd9e5f902dd13c13834dcecf005fec7465b198261eb453"
+ "sources_digest": "14db478529fa42df3a9004fef0afadc7a0f9c30d8e2f8a12c3f444322c01b9ef"
 }

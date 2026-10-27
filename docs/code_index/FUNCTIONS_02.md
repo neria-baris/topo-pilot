@@ -1615,7 +1615,7 @@
 | `test_model_predictor_from_verified_file` | test | `test_model_predictor_from_verified_file` | [tests/x6_stage1/test_a_eval.py:122](../../tests/x6_stage1/test_a_eval.py#L122) |  |
 | `test_model_streams_scope_map_and_arm_sharing` | test | `test_model_streams_scope_map_and_arm_sharing` | [tests/x6_stage1/test_b_seed_pool_reg.py:79](../../tests/x6_stage1/test_b_seed_pool_reg.py#L79) |  |
 | `test_module_file_at_most_400_lines` | test | `test_module_file_at_most_400_lines` | [tests/d1_seam/test_d1_seam.py:242](../../tests/d1_seam/test_d1_seam.py#L242) |  |
-| `test_module_files_and_sizes` | test | `test_module_files_and_sizes` | [tests/c2_nd/test_b_lineage.py:389](../../tests/c2_nd/test_b_lineage.py#L389) |  |
+| `test_module_files_and_sizes` | test | `test_module_files_and_sizes` | [tests/c2_nd/test_b_lineage.py:391](../../tests/c2_nd/test_b_lineage.py#L391) |  |
 | `test_module_files_at_most_400_lines` | test | `test_module_files_at_most_400_lines` | [tests/x2a_stage0/test_x2a_stage0.py:382](../../tests/x2a_stage0/test_x2a_stage0.py#L382) |  |
 | `test_module_set_and_400_line_limit` | test | `test_module_set_and_400_line_limit` | [tests/c2_readout/test_b_policy.py:363](../../tests/c2_readout/test_b_policy.py#L363) |  |
 | `test_module_set_line_limits_and_test_files` | test | `test_module_set_line_limits_and_test_files` | [tests/x6_stage1/test_b_nb_s0_ops.py:268](../../tests/x6_stage1/test_b_nb_s0_ops.py#L268) |  |
@@ -1889,7 +1889,7 @@
 | `test_parallel_hws_reader` | test | `test_parallel_hws_reader` | [tests/c2_nd/test_b_registry.py:233](../../tests/c2_nd/test_b_registry.py#L233) |  |
 | `test_parallel_payload_or_sealed_is_never_opened` | test | `test_parallel_payload_or_sealed_is_never_opened` | [tests/c2_nd/test_b_registry.py:283](../../tests/c2_nd/test_b_registry.py#L283) |  |
 | `test_parallel_x6zc_layout` | test | `test_parallel_x6zc_layout` | [tests/c2_nd/test_b_registry.py:293](../../tests/c2_nd/test_b_registry.py#L293) |  |
-| `test_parallel_x6zc_rerun_directories` | test | `test_parallel_x6zc_rerun_directories` | [tests/c2_nd/test_b_lineage.py:369](../../tests/c2_nd/test_b_lineage.py#L369) | D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed |
+| `test_parallel_x6zc_non_history_names` | test | `test_parallel_x6zc_non_history_names` | [tests/c2_nd/test_b_lineage.py:373](../../tests/c2_nd/test_b_lineage.py#L373) | X6ZC NON_HISTORY names in any attempt directory: listed, never opened; others fail. |
 | `test_parameters_and_buffers_bitwise_unchanged` | test | `test_parameters_and_buffers_bitwise_unchanged` | [tests/learner/test_patch.py:189](../../tests/learner/test_patch.py#L189) |  |
 | `test_parse_model` | test | `test_parse_model` | [tests/x6_stage1/test_b_seed_pool_reg.py:113](../../tests/x6_stage1/test_b_seed_pool_reg.py#L113) |  |
 | `test_parse_model_refuses` | test | `test_parse_model_refuses` | [tests/x6_stage1/test_b_seed_pool_reg.py:118](../../tests/x6_stage1/test_b_seed_pool_reg.py#L118) |  |

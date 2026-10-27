@@ -2,7 +2,7 @@
 
 - Source: [tests/c2_nd/test_b_lineage.py](../../../../../tests/c2_nd/test_b_lineage.py)
 - Kind: python
-- Lines: 397
+- Lines: 399
 
 ## Module docstring
 
@@ -93,6 +93,6 @@
 - **function `lineage_ctx`** [L325-333]: `def lineage_ctx(tmp_path)`
 - **test `test_write_manifest`** [L336-347]: `def test_write_manifest(tmp_path)`
 - **test `test_supersede_and_regen_compare`** [L350-365]: `def test_supersede_and_regen_compare(tmp_path)`
-- **test `test_parallel_x6zc_rerun_directories`** [L369-385]: `def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads)` - D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed
-- **test `test_module_files_and_sizes`** [L389-397]: `def test_module_files_and_sizes()`
+- **test `test_parallel_x6zc_non_history_names`** [L373-387]: `def test_parallel_x6zc_non_history_names(tmp_path, monkeypatch, loads, names, bad)` decorators: @pytest.mark.parametrize('names, bad', [(('stages/A-r1/qstar_NA.npz', 'stages/B-r2/m1/pairs.npz'), ('stages/A-rx/qstar_NA.npz', 'stages/A-r1/other.npz')), (('stages/B/AB-s1/p.npz', 'stages/C-r1/ZC-s1/p.npz'), ('stages/B/AB-s1/q.npz',))]) - X6ZC NON_HISTORY names in any attempt directory: listed, never opened; others fail.
+- **test `test_module_files_and_sizes`** [L391-399]: `def test_module_files_and_sizes()`
 

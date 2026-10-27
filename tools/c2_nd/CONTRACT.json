@@ -664,7 +664,7 @@
      "file": "agent-handoff/planning/responses/X6ZC-DESIGN-v1.md",
      "sha256": "2a711d16d0c3b5e7cdfc0c96e7342a86c0e500b3f31592868ba5b661ef324193"
     },
-    "layout": {"non_history": ["stages/A<rerun>/qstar_NA.npz", "stages/B<rerun>/<model>/pairs.npz", "stages/C<rerun>/<model>/variants.npz"], "model_component": "one path component", "rerun_component": "<rerun> = empty or -r<k>, k a positive integer without leading zeros (X6ZC attempt directories stages/<S>-r<k>; D-0151-1, API.md ND-C57)", "rule": "R-0116-4 (jobs/0116/review.md): X6ZC samples no histories (its prefixes come from the X6 stage-1 pool, covered by reader x6); the listed model-output and pair arrays are NON_HISTORY (path and size recorded, never opened); FREEZE.json is required if the store exists; any other .npz/.npy file -> REGISTRY_INCOMPLETE"},
+    "layout": {"non_history": ["stages/A<rerun>/qstar_NA.npz", "stages/B<rerun>/<model>/pairs.npz", "stages/C<rerun>/<model>/variants.npz", "stages/B<rerun>/<model>/p.npz", "stages/C<rerun>/<model>/p.npz"], "model_component": "one path component", "rerun_component": "<rerun> = empty or -r<k>, k a positive integer without leading zeros (X6ZC attempt directories stages/<S>-r<k>; D-0151-1, API.md ND-C57)", "rule": "R-0116-4 (jobs/0116/review.md): X6ZC samples no histories (its prefixes come from the X6 stage-1 pool, covered by reader x6); the listed model-output and pair arrays are NON_HISTORY (path and size recorded, never opened); FREEZE.json is required if the store exists; any other .npz/.npy file -> REGISTRY_INCOMPLETE"},
     "frozen_marker": "FREEZE.json",
     "present_on_2026-10-26": false,
     "reader": "nd_registry.source_parallel(store, 'x6zc') with the layout rule above (API.md section 20, R-0116-4; replaces ND-C13)"

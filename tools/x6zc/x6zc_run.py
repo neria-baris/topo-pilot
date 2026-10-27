@@ -33,7 +33,7 @@ from x6zc_dry import (Planted, sd_parse, _jitter, _pool, _ev, dry, se_qstar)  # 
 from x6zc_guard import (MAILBOX, DISPATCH_KEYS, PREDECESSOR, MARKER, technical,  # noqa: E402, F401
     restartable, _attempts, _dirs, _record, refusal, dispatch_record, meter_live,  # noqa: E402, F401
     identity_problems, freeze_problems, auth_problems, stage_cpu, _begin, _finish,  # noqa: E402, F401
-    run_guarded, stats_marker, budget, write_invalid)  # noqa: E402, F401
+    run_guarded, stats_marker, budget, write_invalid, write_global)  # noqa: E402, F401
 # isort: on
 # isort: off
 from x6zc_stage_a import (RUN, _x6, _payload, _checked, _npz, _x6json, _admitting,  # noqa: E402, F401

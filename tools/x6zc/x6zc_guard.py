@@ -266,6 +266,9 @@ def _finish(store, ctx, stop=None, n=None) -> int:
     if after or (technical(stop) and sum(
             r is None or technical(r.get("stop")) for _, r in _attempts(store, ctx["stage"])) >= 2):
         write_invalid(store, ctx, f"stage {ctx['stage']} ({ctx['dir']}) stopped with {stop}")
+    elif ctx.get("global_ev") is not None:  # a global outcome decided before Stage C (N-6)
+        write_global(store, ctx, ctx["global_ev"], f"stage {ctx['stage']} ({ctx['dir']}): {stop}",
+                     ctx.get("global_extra"))
     return 2 if stop else 0
 def run_guarded(store, stage, body, dispatch=None, job=None) -> int:
     """Every attempt writes its record: a setup error, a stop, or any exception (CRASH)."""
@@ -294,23 +297,34 @@ def budget(store, ctx=None) -> dict:
             out[s] = _record(store, s)[1].get("cpu_s") if _dirs(store, s) else None
     return {"cpu_s": out, "pauses": [x for x in _lines(Path(store) / "STAGES.jsonl")
                                      if x.get("stop")]}
-def write_invalid(store, ctx, why) -> str | None:
-    from x6zc_pipeline import TOP, validate_report
+def write_invalid(store, ctx, why) -> str | None:  # G-R1 (R-0134-5)
+    return write_global(store, ctx, {"k0": "PASS", "incomplete": True}, why)
+def write_global(store, ctx, ev, why, extra=None) -> str | None:
+    """The report of a global outcome (G-R0, G-R1, G-R2, G-R2′, G-R3) with null cell statistics:
+    decide_x6zc, licence, not_licensed, qualifiers and reuse_verdict as in Stage C (N-6)."""
+    from x6zc_pipeline import TOP, licence_values, validate_report
     if (Path(store) / "report.json").exists():
         return None
-    cell = {"rule": "G-R1", "outcome": "INVALID", "licence": "", "qualifiers": [], "b": None,
-            "not_licensed": zc.not_licensed("INVALID"), "b_interval": [None, None],
-            "beta_pp": None, "r": None, "undefined_frac": None, "beta_sb": None, "n": None,
-            "descriptive": False}
+    ev = {"incomplete": False, "rulings": rulings(store), **ev}
+    d = zc.decide_x6zc(ev)
+    if not d["global_rule"]:
+        raise RuntimeError(f"write_global: no global rule fired ({why})")
+    o, de = d["global_outcome"], [f"DEFECT_ELSEWHERE({i})" for i in d["defect_elsewhere"]]
+    q = zc.qualifiers(ev, d, None) if "b9" in ev else dict.fromkeys(zc.CELL_ORDER, de)
+    cells = {c: {"model": zc.CELLS[c]["model"], "family": zc.CELLS[c]["family"],
+                 "rule": d["global_rule"], "outcome": o, "not_licensed": zc.not_licensed(o),
+                 "licence": zc.licence(o, licence_values(c, {}, d["cells"][c], ev)),
+                 "qualifiers": q[c], "b": None, "b_interval": [None, None], "beta_pp": None,
+                 "r": None, "undefined_frac": None, "beta_sb": None, "n": None,
+                 "descriptive": False} for c in zc.CELL_ORDER}
     rep = {**dict.fromkeys(TOP), "schema": "x6zc-report-v1", "protocol_id": zc.PROTOCOL_ID,
            "protocol_sha256": zc.PROTOCOL_SHA256, "head": _head(), "x6zc_master": zc.X6ZC_MASTER,
-           "outcome": "INVALID", "global_rule": "G-R1", "cells": {c: {
-               "model": zc.CELLS[c]["model"], "family": zc.CELLS[c]["family"], **cell}
-               for c in zc.CELL_ORDER}, "x6s1_statement": C["x6s1_statement"],
-           "reuse_verdict": zc.reuse_verdict({}, {"global_outcome": "INVALID", "cells": {},
-                                                  "headline": "INVALID"}),
-           "budget": budget(store), "env": ctx.get("env"), "invalid": why,
-           "stages": {x["stage"]: x["record_sha256"] for x in _lines(Path(store) / "STAGES.jsonl")}}
+           "outcome": o, "global_rule": d["global_rule"], "cells": cells, "f1": ev.get("f1"),
+           "k0": {"status": ev.get("k0")}, "x6s1_statement": C["x6s1_statement"],
+           "reuse_verdict": zc.reuse_verdict(ev, d), "budget": budget(store),
+           "env": ctx.get("env"), "invalid" if d["global_rule"] == "G-R1" else "global_reason": why,
+           "stages": {x["stage"]: x["record_sha256"] for x in _lines(Path(store) / "STAGES.jsonl")},
+           **(extra or {})}
     if validate_report(rep):
-        raise RuntimeError(f"INVALID report schema: {validate_report(rep)}")
+        raise RuntimeError(f"{o} report schema: {validate_report(rep)}")
     return xwrite(Path(store) / "report.json", _cj(rep))

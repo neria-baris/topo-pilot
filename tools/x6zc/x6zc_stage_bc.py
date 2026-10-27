@@ -160,14 +160,21 @@ def stage_c(store=zc.STORE, dispatch=None, job=None) -> int:
     return run_guarded(store, "C", _stage_c, dispatch, job)
 def _stage_c(store, ctx) -> int:
     ev, (_, A), (_, B) = _ev_base(store), _record(store, "A"), _record(store, "B")
+    gev = {**ev, "k6": dict.fromkeys(FAM, True), "cells": {},
+           "b9": {**ev["b9"], "status": "NOT_ENOUGH_DATA"}}
     try:  # the Stage-B gate: no global rule, every candidate ruled (C-17)
-        g = zc.decide_x6zc({**ev, "k6": dict.fromkeys(FAM, True), "cells": {},
-                            "b9": {**ev["b9"], "status": "NOT_ENOUGH_DATA"}})["global_rule"]
-    except ValueError as e:
-        g = f"UNRULED: {e}"
-    if g:
-        ctx["values"]["gate"] = g
+        g = zc.decide_x6zc(gev)["global_rule"]
+    except ValueError as e:  # an unruled candidate: restartable after the ruling
+        ctx["values"]["gate"] = f"UNRULED: {e}"
         return _finish(store, ctx, "STAGE_B_GATE")
+    if g:  # a global outcome before Stage C: its report.json is written (N-6)
+        ctx["values"]["gate"], ctx["global_ev"] = g, {**gev, "b9": ev["b9"]}
+        ctx["global_extra"] = {"stage_b": {
+            "k4": B["gates"]["K4"]["status"], "k5": B["gates"]["K5"]["status"],
+            "descriptive_tier": B["values"]["tier"], "b9": ev["b9"],
+            "qualifiers": B["values"]["census"]}, "n_avail": A["values"]["n_avail"],
+            "r_star": A["values"]["r_star"]}
+        return _finish(store, ctx, "GLOBAL_RULE")
     V, d, n, av = ctx["values"], Path(store) / "stages" / ctx["dir"], ev["b9"]["n"], A["values"]
     VA = {F: zc.variant_arrays([tuple(p) for p in av["fresh"][:n]], F) for F in FAM}
     cache = _cache(store)

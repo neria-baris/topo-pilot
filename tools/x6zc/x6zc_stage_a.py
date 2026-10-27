@@ -184,6 +184,7 @@ def _stage_a(store, ctx) -> int:
              d_coincident=fr["d_coincident"], n_d_coincident=fr["n_d_coincident"],
              not_enough_data=fr["not_enough_data"], coupling=zc.coupling_table(), **a3)
     if G["K0"]["status"] == "FAIL":
+        ctx["global_ev"] = {"k0": "FAIL"}  # the STOP_REPLAN report.json is written (N-6)
         return _finish(store, ctx, "STOP_REPLAN")  # G-R0 before any model
     cache = zc.QStarCache.build([D, *VA.values()])
     V["qstar_sha256"] = cache.save(d / "qstar_NA.npz")

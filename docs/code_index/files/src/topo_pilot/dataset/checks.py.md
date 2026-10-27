@@ -44,7 +44,7 @@
 
 - [src/topo_pilot/dataset/stage.py](stage.py.md) (line 23, import)
 - [tests/c1prime/test_b_registry.py](../../../tests/c1prime/test_b_registry.py.md) (line 24, import)
-- [tests/c2_nd/test_b_lineage.py](../../../tests/c2_nd/test_b_lineage.py.md) (line 27, import)
+- [tests/c2_nd/test_b_lineage.py](../../../tests/c2_nd/test_b_lineage.py.md) (line 28, import)
 - [tests/c2_readout/test_b_policy.py](../../../tests/c2_readout/test_b_policy.py.md) (line 32, import)
 - [tests/dataset/test_stage.py](../../../tests/dataset/test_stage.py.md) (line 6, import)
 - [tests/k4b/test_b_data.py](../../../tests/k4b/test_b_data.py.md) (line 29, import)

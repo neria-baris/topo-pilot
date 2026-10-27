@@ -263,10 +263,10 @@
 | `_bytes` | function | `_bytes` | [tools/x6_stage1/x6s1_stage_post.py:47](../../tools/x6_stage1/x6s1_stage_post.py#L47) |  |
 | `_C` | function | `_C` | [tests/c2_readout/test_a_partition.py:46](../../tests/c2_readout/test_a_partition.py#L46) |  |
 | `_c0` | function | `_c0` | [tests/c1prime/test_b_cert_oracle.py:68](../../tests/c1prime/test_b_cert_oracle.py#L68) | The C0 expressions of §15.3.2 in Python floats (IEEE binary64, no FMA). |
-| `_c2_format` | function | `_c2_format` | [tools/c2_nd/nd_registry.py:123](../../tools/c2_nd/nd_registry.py#L123) |  |
+| `_c2_format` | function | `_c2_format` | [tools/c2_nd/nd_registry.py:122](../../tools/c2_nd/nd_registry.py#L122) |  |
 | `_c2_outcome` | function | `_c2_outcome` | [tools/c2_nd/nd_split.py:396](../../tools/c2_nd/nd_split.py#L396) |  |
 | `_c2_store_ok` | function | `_c2_store_ok` | [tools/c2_nd/nd_driver.py:250](../../tools/c2_nd/nd_driver.py#L250) | (iv): every C2 store file re-hashes; 0115.accepted names the 0115 manifest; the FIT/DEC |
-| `_c2_table` | function | `_c2_table` | [tools/c2_nd/nd_registry.py:64](../../tools/c2_nd/nd_registry.py#L64) | The digest columns of one C2-format history table ("" dropped; c2_data.table_digests). |
+| `_c2_table` | function | `_c2_table` | [tools/c2_nd/nd_registry.py:63](../../tools/c2_nd/nd_registry.py#L63) | The digest columns of one C2-format history table ("" dropped; c2_data.table_digests). |
 | `_c5_c6` | function | `_c5_c6` | [tests/c1prime/test_b_identities.py:250](../../tests/c1prime/test_b_identities.py#L250) |  |
 | `_cabs` | function | `_cabs` | [tools/x4_circle_history/chart.py:40](../../tools/x4_circle_history/chart.py#L40) |  |
 | `_cache` | function | `_cache` | [tests/circle_history/test_reference_cache.py:61](../../tests/circle_history/test_reference_cache.py#L61) |  |
@@ -361,7 +361,7 @@
 | `_clone` | function | `_clone` | [tests/experiment/test_x5g1t_identity.py:50](../../tests/experiment/test_x5g1t_identity.py#L50) | Copy a fixture root and re-point its config's absolute paths at the copy. |
 | `_clone` | function | `_clone` | [tests/experiment/test_x5g1t_identity_eval.py:43](../../tests/experiment/test_x5g1t_identity_eval.py#L43) |  |
 | `_clone` | function | `_clone` | [tests/experiment/test_x5g1t_integration.py:55](../../tests/experiment/test_x5g1t_integration.py#L55) | Copy a fixture root and re-point its config's absolute paths at the copy. |
-| `_close` | function | `_close` | [tools/c2_nd/nd_registry.py:55](../../tools/c2_nd/nd_registry.py#L55) |  |
+| `_close` | function | `_close` | [tools/c2_nd/nd_registry.py:54](../../tools/c2_nd/nd_registry.py#L54) |  |
 | `_close` | function | `_close` | [tools/x6_stage0/x6_exact.py:297](../../tools/x6_stage0/x6_exact.py#L297) |  |
 | `_closed` | function | `_closed` | [tests/c2_readout/test_b_patch.py:200](../../tests/c2_readout/test_b_patch.py#L200) |  |
 | `_closed_forms` | function | `_closed_forms` | [tools/c2_readout/c2_oracle.py:226](../../tools/c2_readout/c2_oracle.py#L226) | The x pair only (T3): b32(H+-) = (rho_+-1 b31(H) T) * E[:, w32]; H^Y has no closed form. |
@@ -766,7 +766,7 @@
 | `_helmert_ref` | function | `_helmert_ref` | [tests/c2_readout/test_a_readout.py:41](../../tests/c2_readout/test_a_readout.py#L41) |  |
 | `_hex` | function | `_hex` | [tests/c2_readout/test_b_registry.py:82](../../tests/c2_readout/test_b_registry.py#L82) |  |
 | `_hex` | function | `_hex` | [tests/circle_history/test_reference_cache.py:52](../../tests/circle_history/test_reference_cache.py#L52) |  |
-| `_hex` | function | `_hex` | [tools/c2_nd/nd_registry.py:60](../../tools/c2_nd/nd_registry.py#L60) |  |
+| `_hex` | function | `_hex` | [tools/c2_nd/nd_registry.py:59](../../tools/c2_nd/nd_registry.py#L59) |  |
 | `_hist` | function | `_hist` | [tests/c2_readout/test_b_registry.py:58](../../tests/c2_readout/test_b_registry.py#L58) | y-rows 1..4 only, so both one-row shifts stay on the grid (Y_def on every row). |
 | `_hist` | function | `_hist` | [tools/x6_stage1/x6s1_pairs.py:273](../../tools/x6_stage1/x6s1_pairs.py#L273) |  |
 | `_histories` | method | `PredictionStage._histories` | [src/topo_pilot/prediction/stage.py:62](../../src/topo_pilot/prediction/stage.py#L62) |  |
@@ -1810,7 +1810,7 @@
 | `_x6_store` | function | `_x6_store` | [tests/c2_readout/test_b_registry.py:231](../../tests/c2_readout/test_b_registry.py#L231) |  |
 | `_x6_valid` | function | `_x6_valid` | [tools/x6_stage1/x6s1_registry.py:261](../../tools/x6_stage1/x6s1_registry.py#L261) |  |
 | `_X6TorusBuilder` | class | `_X6TorusBuilder` | [tools/x6_stage0/x6_model.py:124](../../tools/x6_stage0/x6_model.py#L124) |  |
-| `_x6zc_names` | function | `_x6zc_names` | [tools/c2_nd/nd_registry.py:157](../../tools/c2_nd/nd_registry.py#L157) |  |
+| `_x6zc_names` | function | `_x6zc_names` | [tools/c2_nd/nd_registry.py:155](../../tools/c2_nd/nd_registry.py#L155) |  |
 | `_xhat` | function | `_xhat` | [tools/x6_stage1/x6s1_eval.py:249](../../tools/x6_stage1/x6s1_eval.py#L249) |  |
 | `_xr` | function | `_xr` | [tools/c2_nd/nd_registry.py:43](../../tools/c2_nd/nd_registry.py#L43) |  |
 | `_xwrite` | function | `_xwrite` | [tools/x6_stage1/x6s1_ingest.py:69](../../tools/x6_stage1/x6s1_ingest.py#L69) |  |
@@ -1933,7 +1933,7 @@
 | `auth_ok` | function | `auth_ok` | [tools/c2_nd/nd_driver.py:176](../../tools/c2_nd/nd_driver.py#L176) |  |
 | `auth_ok` | function | `auth_ok` | [tools/c2_readout/c2_driver.py:175](../../tools/c2_readout/c2_driver.py#L175) |  |
 | `auth_ok` | function | `auth_ok` | [tools/x6_stage1/x6s1_run.py:139](../../tools/x6_stage1/x6s1_run.py#L139) |  |
-| `auth_record` | function | `auth_record` | [tests/c2_nd/test_b_lineage.py:230](../../tests/c2_nd/test_b_lineage.py#L230) |  |
+| `auth_record` | function | `auth_record` | [tests/c2_nd/test_b_lineage.py:231](../../tests/c2_nd/test_b_lineage.py#L231) |  |
 | `authorized_worker` | function | `authorized_worker` | [tools/c1prime/c1_release.py:114](../../tools/c1prime/c1_release.py#L114) | The executing worker session (protocol §18: "the authorized executing worker session"). |
 | `authorized_worker` | function | `authorized_worker` | [tools/k4b/k4b_release.py:38](../../tools/k4b/k4b_release.py#L38) |  |
 | `avoid_counts` | function | `avoid_counts` | [tools/x6_stage0/x6_dp.py:52](../../tools/x6_stage0/x6_dp.py#L52) |  |
@@ -2132,7 +2132,7 @@
 | `c2_rehash` | function | `c2_rehash` | [tools/c2_nd/nd_stage_base.py:92](../../tools/c2_nd/nd_stage_base.py#L92) |  |
 | `c2_store` | function | `c2_store` | [tests/c2_nd/test_b_registry.py:100](../../tests/c2_nd/test_b_registry.py#L100) |  |
 | `c2_store` | function | `c2_store` | [tools/c2_nd/nd_stage_base.py:83](../../tools/c2_nd/nd_stage_base.py#L83) | (root, {rel: sha256}): the C2 store and its CONTRACT table, or in a dry-run store its c2/ |
-| `c2_store_files` | function | `c2_store_files` | [tests/c2_nd/test_b_lineage.py:148](../../tests/c2_nd/test_b_lineage.py#L148) | A synthetic C2 store whose files re-hash to the (in-place patched) CONTRACT table. |
+| `c2_store_files` | function | `c2_store_files` | [tests/c2_nd/test_b_lineage.py:149](../../tests/c2_nd/test_b_lineage.py#L149) | A synthetic C2 store whose files re-hash to the (in-place patched) CONTRACT table. |
 | `c2fit` | function | `c2fit` | [tools/c2_nd/nd_stage_base.py:315](../../tools/c2_nd/nd_stage_base.py#L315) |  |
 | `c2js` | function | `c2js` | [tools/c2_nd/nd_stage_base.py:119](../../tools/c2_nd/nd_stage_base.py#L119) |  |
 | `c2npz` | function | `c2npz` | [tools/c2_nd/nd_stage_base.py:115](../../tools/c2_nd/nd_stage_base.py#L115) |  |
@@ -2285,7 +2285,7 @@
 | `claims` | method | `ConstructionLedger.claims` | [tools/c1prime/c1_chart.py:34](../../tools/c1prime/c1_chart.py#L34) |  |
 | `claims` | method | `InitLedger.claims` | [tools/k4b/k4b_charts.py:39](../../tools/k4b/k4b_charts.py#L39) |  |
 | `class_tables` | function | `class_tables` | [tools/x6_stage1/x6s1_pairs.py:42](../../tools/x6_stage1/x6s1_pairs.py#L42) |  |
-| `classes` | function | `classes` | [tests/c2_nd/test_b_lineage.py:65](../../tests/c2_nd/test_b_lineage.py#L65) |  |
+| `classes` | function | `classes` | [tests/c2_nd/test_b_lineage.py:66](../../tests/c2_nd/test_b_lineage.py#L66) |  |
 | `classes` | function | `classes` | [tools/x6_stage0/x6_dp.py:36](../../tools/x6_stage0/x6_dp.py#L36) |  |
 | `classify` | function | `classify` | [tools/k4b/k4b_registry.py:92](../../tools/k4b/k4b_registry.py#L92) | SCANNED (a reader covers it), NOT_SCANNED (nothing found, or only synthetic test fixtures), |
 | `classify` | function | `classify` | [tools/x4_oracle_profile/controls.py:172](../../tools/x4_oracle_profile/controls.py#L172) | Return ``(state, reason)``; in run mode with ``latch_dir`` apply the persistent latch. |
@@ -2459,7 +2459,7 @@
 | `dctx` | function | `dctx` | [tools/c2_readout/c2_stats.py:42](../../tools/c2_readout/c2_stats.py#L42) |  |
 | `dec` | function | `dec` | [tests/x6_stage0/test_x6_stage0.py:126](../../tests/x6_stage0/test_x6_stage0.py#L126) |  |
 | `dec2` | function | `dec2` | [tests/k4b/test_a_lemma_n.py:36](../../tests/k4b/test_a_lemma_n.py#L36) |  |
-| `dec_keys` | function | `dec_keys` | [tests/c2_nd/test_b_lineage.py:143](../../tests/c2_nd/test_b_lineage.py#L143) |  |
+| `dec_keys` | function | `dec_keys` | [tests/c2_nd/test_b_lineage.py:144](../../tests/c2_nd/test_b_lineage.py#L144) |  |
 | `dec_minus` | function | `dec_minus` | [tests/c1prime/test_a_oracle.py:244](../../tests/c1prime/test_a_oracle.py#L244) |  |
 | `decide` | function | `decide` | [tools/d2a/d2a_decide.py:107](../../tools/d2a/d2a_decide.py#L107) | §10.5 ordered rules (first match) and the outcome-4–10 qualifiers. |
 | `decide` | function | `decide` | [tools/x6_stage0/x6_store.py:56](../../tools/x6_stage0/x6_store.py#L56) |  |
@@ -2879,7 +2879,7 @@
 | `fit_decoders` | function | `fit_decoders` | [tools/c2_readout/c2_stats.py:385](../../tools/c2_readout/c2_stats.py#L385) |  |
 | `fit_fwl` | function | `fit_fwl` | [tools/c1prime/c1_fit.py:38](../../tools/c1prime/c1_fit.py#L38) |  |
 | `fit_gauge` | function | `fit_gauge` | [tools/x4_circle_history/chart.py:175](../../tools/x4_circle_history/chart.py#L175) | Calibration-only reflection/rotation gauge (API.md fit_gauge). |
-| `fit_keys` | function | `fit_keys` | [tests/c2_nd/test_b_lineage.py:133](../../tests/c2_nd/test_b_lineage.py#L133) |  |
+| `fit_keys` | function | `fit_keys` | [tests/c2_nd/test_b_lineage.py:134](../../tests/c2_nd/test_b_lineage.py#L134) |  |
 | `fit_oblique_eraser` | function | `fit_oblique_eraser` | [src/topo_pilot/analysis/x4f_erasure.py:90](../../src/topo_pilot/analysis/x4f_erasure.py#L90) | Continuous-target oblique linear eraser on the retained whitening range. |
 | `fit_pca` | method | `DistancePipeline.fit_pca` | [src/topo_pilot/topology/distance.py:91](../../src/topo_pilot/topology/distance.py#L91) | Fit PCA on ``X_fit`` (the caller passes dev data only). No-op if ``pca_dims`` is None. |
 | `fit_production_gauge` | function | `fit_production_gauge` | [tools/c1prime/c1_chart.py:143](../../tools/c1prime/c1_chart.py#L143) |  |
@@ -2979,7 +2979,7 @@
 | `g0_step` | function | `g0_step` | [tools/c2_nd/nd_stage_pre.py:55](../../tools/c2_nd/nd_stage_pre.py#L55) |  |
 | `g0_step` | function | `g0_step` | [tools/c2_readout/c2_stage_base.py:158](../../tools/c2_readout/c2_stage_base.py#L158) |  |
 | `g0_tpl` | function | `g0_tpl` | [tools/d2a/d2a_targets.py:265](../../tools/d2a/d2a_targets.py#L265) | Exact (Fractions) checks of the canonical pair and every registered template (§5.2). |
-| `g0_world` | function | `g0_world` | [tests/c2_nd/test_b_lineage.py:168](../../tests/c2_nd/test_b_lineage.py#L168) |  |
+| `g0_world` | function | `g0_world` | [tests/c2_nd/test_b_lineage.py:169](../../tests/c2_nd/test_b_lineage.py#L169) |  |
 | `g1` | function | `g1` | [src/topo_pilot/experiment/x4f_gates.py:82](../../src/topo_pilot/experiment/x4f_gates.py#L82) | G1-primary, G1-r2 and the descriptive short-context comparators. |
 | `g2` | function | `g2` | [src/topo_pilot/experiment/x4f_gates.py:179](../../src/topo_pilot/experiment/x4f_gates.py#L179) | Identity, causality (primary eraser), final-null and frozen-weight checks. |
 | `g3` | function | `g3` | [src/topo_pilot/experiment/x4f_damage.py:30](../../src/topo_pilot/experiment/x4f_damage.py#L30) | Primary eraser validity and post-erasure linear / RBF recoverability of m32. |
@@ -3419,7 +3419,7 @@
 | `Limits` | class | `Limits` | [tools/d2a/d2a_train.py:143](../../tools/d2a/d2a_train.py#L143) |  |
 | `limits` | function | `limits` | [tools/x6_stage1/x6s1_run.py:299](../../tools/x6_stage1/x6s1_run.py#L299) |  |
 | `lineage` | method | `RestrictedE4Adapter.lineage` | [tools/x4_circle_history/adapter.py:91](../../tools/x4_circle_history/adapter.py#L91) |  |
-| `lineage_ctx` | function | `lineage_ctx` | [tests/c2_nd/test_b_lineage.py:324](../../tests/c2_nd/test_b_lineage.py#L324) |  |
+| `lineage_ctx` | function | `lineage_ctx` | [tests/c2_nd/test_b_lineage.py:325](../../tests/c2_nd/test_b_lineage.py#L325) |  |
 | `lineage_ok` | function | `lineage_ok` | [tools/k4b/k4b_release.py:194](../../tools/k4b/k4b_release.py#L194) | PASS iff the store is absent or holds only this lineage's recorded files (§11.8 item 7). |
 | `lineage_precheck` | function | `lineage_precheck` | [tools/x6_stage0/x6_store.py:159](../../tools/x6_stage0/x6_store.py#L159) |  |
 | `lines` | function | `lines` | [tools/c2_nd/nd_stage_base.py:263](../../tools/c2_nd/nd_stage_base.py#L263) |  |
@@ -3478,7 +3478,7 @@
 | `load_tables` | function | `load_tables` | [tools/x6_stage1/x6s1_pairs.py:64](../../tools/x6_stage1/x6s1_pairs.py#L64) |  |
 | `load_tokens` | function | `load_tokens` | [tools/d2a/d2a_world.py:229](../../tools/d2a/d2a_world.py#L229) |  |
 | `loaded_distributions` | function | `loaded_distributions` | [tools/x4_circle_history/env_identity.py:116](../../tools/x4_circle_history/env_identity.py#L116) |  |
-| `loads` | function | `loads` | [tests/c2_nd/test_b_lineage.py:183](../../tests/c2_nd/test_b_lineage.py#L183) |  |
+| `loads` | function | `loads` | [tests/c2_nd/test_b_lineage.py:184](../../tests/c2_nd/test_b_lineage.py#L184) |  |
 | `loads` | function | `loads` | [tests/c2_nd/test_b_registry.py:67](../../tests/c2_nd/test_b_registry.py#L67) | Every np.load path (a registry reader must never np.load a payload or sealed file). |
 | `local_digests` | function | `local_digests` | [tools/x6_stage1/x6s1_stage_pre.py:382](../../tools/x6_stage1/x6s1_stage_pre.py#L382) |  |
 | `local_fail` | function | `local_fail` | [tests/executors/test_local.py:33](../../tests/executors/test_local.py#L33) |  |
@@ -4117,7 +4117,7 @@
 | `put` | method | `MirrorBackend.put` | [src/topo_pilot/contracts/backends.py:116](../../src/topo_pilot/contracts/backends.py#L116) |  |
 | `put` | method | `ReadThroughBackend.put` | [src/topo_pilot/experiment/x4b.py:66](../../src/topo_pilot/experiment/x4b.py#L66) |  |
 | `put` | function | `put` | [tests/c1prime/test_a_release_meter.py:49](../../tests/c1prime/test_a_release_meter.py#L49) |  |
-| `put` | function | `put` | [tests/c2_nd/test_b_lineage.py:40](../../tests/c2_nd/test_b_lineage.py#L40) |  |
+| `put` | function | `put` | [tests/c2_nd/test_b_lineage.py:41](../../tests/c2_nd/test_b_lineage.py#L41) |  |
 | `put` | function | `put` | [tests/experiment/test_x5g1t_usage_files.py:74](../../tests/experiment/test_x5g1t_usage_files.py#L74) |  |
 | `put` | function | `put` | [tests/k4b/test_b_registry_fixes.py:42](../../tests/k4b/test_b_registry_fixes.py#L42) |  |
 | `put` | function | `put` | [tests/k4b/test_b_registry_rules.py:62](../../tests/k4b/test_b_registry_rules.py#L62) |  |

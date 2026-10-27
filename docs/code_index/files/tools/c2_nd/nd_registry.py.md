@@ -56,6 +56,7 @@
 
 ## Imported by
 
+- [tests/c2_nd/test_b_lineage.py](../../tests/c2_nd/test_b_lineage.py.md) (line 23, import)
 - [tests/c2_nd/test_b_registry.py](../../tests/c2_nd/test_b_registry.py.md) (line 27, import)
 - [tools/c2_nd/nd_driver.py](nd_driver.py.md) (line 24, import)
 - [tools/c2_nd/nd_dry.py](nd_dry.py.md) (line 30, import)
@@ -76,15 +77,15 @@
 ## Classes and functions
 
 - **function `_xr`** [L43-46]: `def _xr()`
-- **function `_new`** [L49-52]: `def _new(present=True) -> dict`
-- **function `_close`** [L55-57]: `def _close(out, lineage=False) -> dict`
-- **function `_hex`** [L60-61]: `def _hex(chunk) -> set`
-- **function `_c2_table`** [L64-75]: `def _c2_table(path, out) -> None` - The digest columns of one C2-format history table ("" dropped; c2_data.table_digests).
-- **function `source_c2`** [L79-104]: `def source_c2(store=None, bound=None) -> dict` - The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further
-- **function `source_c2_superseded`** [L107-119]: `def source_c2_superseded(store=None) -> dict` - A name scan of superseded/: PASS iff the bound attempt directories exist and no file has
-- **function `_c2_format`** [L123-125]: `def _c2_format(path) -> bool`
-- **function `source_scratch`** [L128-153]: `def source_scratch(root=None) -> dict` - Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
-- **function `_x6zc_names`** [L157-159]: `def _x6zc_names() -> list`
+- **function `_new`** [L49-51]: `def _new(present=True) -> dict`
+- **function `_close`** [L54-56]: `def _close(out, lineage=False) -> dict`
+- **function `_hex`** [L59-60]: `def _hex(chunk) -> set`
+- **function `_c2_table`** [L63-74]: `def _c2_table(path, out) -> None` - The digest columns of one C2-format history table ("" dropped; c2_data.table_digests).
+- **function `source_c2`** [L78-103]: `def source_c2(store=None, bound=None) -> dict` - The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further
+- **function `source_c2_superseded`** [L106-118]: `def source_c2_superseded(store=None) -> dict` - A name scan of superseded/: PASS iff the bound attempt directories exist and no file has
+- **function `_c2_format`** [L122-124]: `def _c2_format(path) -> bool`
+- **function `source_scratch`** [L127-151]: `def source_scratch(root=None) -> dict` - Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
+- **function `_x6zc_names`** [L155-159]: `def _x6zc_names() -> list`
 - **function `_read_history`** [L162-190]: `def _read_history(f, out, require) -> None` - One array file by the c2_registry._x6_member rule, integer [n, w < 32] history members
 - **function `_array_files`** [L193-194]: `def _array_files(top)`
 - **function `_parallel_file`** [L197-207]: `def _parallel_file(f, rel, tag, out) -> None`

@@ -177,7 +177,7 @@
 - [tests/c1prime/test_b_decoder.py](../../../tests/c1prime/test_b_decoder.py.md) (line 22, import)
 - [tests/c1prime/test_b_frames.py](../../../tests/c1prime/test_b_frames.py.md) (line 20, import)
 - [tests/c1prime/test_b_registry.py](../../../tests/c1prime/test_b_registry.py.md) (line 23, import)
-- [tests/c2_nd/test_b_lineage.py](../../../tests/c2_nd/test_b_lineage.py.md) (line 26, import)
+- [tests/c2_nd/test_b_lineage.py](../../../tests/c2_nd/test_b_lineage.py.md) (line 27, import)
 - [tests/c2_readout/test_b_policy.py](../../../tests/c2_readout/test_b_policy.py.md) (line 31, import)
 - [tests/circle_history/test_adapter.py](../../../tests/circle_history/test_adapter.py.md) (line 17, import)
 - [tests/circle_history/test_builder_e2e.py](../../../tests/circle_history/test_builder_e2e.py.md) (line 29, import)

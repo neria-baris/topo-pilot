@@ -6,14 +6,14 @@
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 892,
-  "functions and methods (incl. tests)": 7454,
+  "functions and methods (incl. tests)": 7455,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 768,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2221,
+  "import statements, internal resolved": 2222,
   "import statements, internal unresolved": 0,
   "import statements, standard library": 2185,
-  "internal edges (file to file, with kind and line)": 2255,
+  "internal edges (file to file, with kind and line)": 2256,
   "python files": 528
  },
  "cycles": [
@@ -4644,13 +4644,13 @@
    "tests/c2_nd/test_b_lineage.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   26
+   27
   ],
   [
    "tests/c2_nd/test_b_lineage.py",
    "src/topo_pilot/dataset/checks.py",
    "import",
-   27
+   28
   ],
   [
    "tests/c2_nd/test_b_lineage.py",
@@ -4669,6 +4669,12 @@
    "tools/c2_nd/nd_driver.py",
    "import",
    22
+  ],
+  [
+   "tests/c2_nd/test_b_lineage.py",
+   "tools/c2_nd/nd_registry.py",
+   "import",
+   23
   ],
   [
    "tests/c2_nd/test_b_lineage.py",
@@ -16672,9 +16678,9 @@
   },
   "tests/c2_nd/test_b_lineage.py": {
    "kind": "python",
-   "lines": 376,
+   "lines": 397,
    "purpose": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),",
-   "sha256": "cc66fd78d4cc4c2dff5ff2ec6d668a5a9fe323bcb70a2806c8f6e51a5db308c0"
+   "sha256": "c79b1c7fd63aa63822620276b44a1d1e02eccb0ff172ed22f5ae8b9d4c0f99e2"
   },
   "tests/c2_nd/test_b_policy.py": {
    "kind": "python",
@@ -18040,15 +18046,15 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 536,
+   "lines": 539,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "61e6e107a4af84277b6c8a2bc419d91578a71c6168185db25b543a29f1b1a617"
+   "sha256": "7b7308dd65d04b309cf0fd54fcba3d6720c39caa6fa7eb3f1de98ffe04b79e01"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
    "lines": 940,
    "purpose": "",
-   "sha256": "8efff7d00817f4bc4b7a16d7484507e17238b5407eae3d2ed1925023b4c30d7d"
+   "sha256": "4770e4a734618bdf0cc547b04d647c35c7b84bcd5044267987b253ccd666209b"
   },
   "tools/c2_nd/PROTOCOL_C2ND_v1.md": {
    "kind": "markdown",
@@ -18108,7 +18114,7 @@
    "kind": "python",
    "lines": 400,
    "purpose": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
-   "sha256": "32d01f1a8df1c67b22e5bec74264e446380c83b059eca016e04fe90909993053"
+   "sha256": "19401c2e0aafc9ef82a032b490a8ba4bd9ec0a786d0dd2868a8d81c4d84653da"
   },
   "tools/c2_nd/nd_split.py": {
    "kind": "python",
@@ -75105,10 +75111,27 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "sys.path edit",
      "lazy": false,
      "level": 0,
      "line": 23,
+     "module": "",
+     "names": [
+      "nd_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_registry.py"
+     ],
+     "top": "nd_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 24,
      "module": "",
      "names": [
       "numpy"
@@ -75123,7 +75146,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 24,
+     "line": 25,
      "module": "",
      "names": [
       "pytest"
@@ -75138,7 +75161,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 27,
      "module": "topo_pilot.contracts",
      "names": [
       "SeedTree"
@@ -75155,7 +75178,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 28,
      "module": "topo_pilot.dataset.checks",
      "names": [
       "make_sequence_ids",
@@ -75172,288 +75195,298 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 37,
+     "end": 38,
      "kind": "function",
      "name": "sha",
      "qual": "sha",
      "sig": "def sha(path)",
-     "start": 36
+     "start": 37
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 43,
+     "end": 44,
      "kind": "function",
      "name": "put",
      "qual": "put",
      "sig": "def put(path, data)",
-     "start": 40
+     "start": 41
     },
     {
      "decorators": [
       "pytest.fixture"
      ],
      "doc": "",
-     "end": 61,
+     "end": 62,
      "kind": "function",
      "name": "world",
      "qual": "world",
      "sig": "def world(tmp_path, monkeypatch)",
-     "start": 47
+     "start": 48
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 66,
+     "end": 67,
      "kind": "function",
      "name": "classes",
      "qual": "classes",
      "sig": "def classes(res)",
-     "start": 65
+     "start": 66
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 80,
+     "end": 81,
      "kind": "test",
      "name": "test_namespace_scan",
      "qual": "test_namespace_scan",
      "sig": "def test_namespace_scan(world)",
-     "start": 69
+     "start": 70
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 89,
+     "end": 90,
      "kind": "test",
      "name": "test_namespace_hit_in_a_parallel_store_is_foreign",
      "qual": "test_namespace_hit_in_a_parallel_store_is_foreign",
      "sig": "def test_namespace_hit_in_a_parallel_store_is_foreign(world)",
-     "start": 83
+     "start": 84
     },
     {
      "decorators": [
       "pytest.mark.parametrize('where, needle, want', [('WORKTREE/tools/c2_nd/CONTRACT.json', C2, LIN), ('STORE/stages/S1/record.json', C2, LIN), ('STORE/GATES.jsonl', C2, LIN), ('STORE/stages/S1/notes.json', HWS, LIN), ('WORKTREE/tools/c2_nd/PROTOCOL_C2ND_v1.md', C2, 'PASS'), ('STORE/stages/S1/record.json', ND, 'PASS')])"
      ],
      "doc": "",
-     "end": 108,
+     "end": 109,
      "kind": "test",
      "name": "test_hygiene_check",
      "qual": "test_hygiene_check",
      "sig": "def test_hygiene_check(world, where, needle, want)",
-     "start": 100
+     "start": 101
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 117,
+     "end": 118,
      "kind": "test",
      "name": "test_needles_and_the_real_contract",
      "qual": "test_needles_and_the_real_contract",
      "sig": "def test_needles_and_the_real_contract()",
-     "start": 111
+     "start": 112
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 129,
+     "end": 130,
      "kind": "test",
      "name": "test_store_admission_payload_at_first_sampling",
      "qual": "test_store_admission_payload_at_first_sampling",
      "sig": "def test_store_admission_payload_at_first_sampling(world)",
-     "start": 120
+     "start": 121
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 140,
+     "end": 141,
      "kind": "function",
      "name": "fit_keys",
      "qual": "fit_keys",
      "sig": "def fit_keys()",
-     "start": 133
+     "start": 134
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 145,
+     "end": 146,
      "kind": "function",
      "name": "dec_keys",
      "qual": "dec_keys",
      "sig": "def dec_keys()",
-     "start": 143
+     "start": 144
     },
     {
      "decorators": [],
      "doc": "A synthetic C2 store whose files re-hash to the (in-place patched) CONTRACT table.",
-     "end": 165,
+     "end": 166,
      "kind": "function",
      "name": "c2_store_files",
      "qual": "c2_store_files",
      "sig": "def c2_store_files(world, monkeypatch, drop=None)",
-     "start": 148
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 179,
+     "end": 180,
      "kind": "function",
      "name": "g0_world",
      "qual": "g0_world",
      "sig": "def g0_world(world, monkeypatch, drop=None, dry=False, freeze_ok=True)",
-     "start": 168
+     "start": 169
     },
     {
      "decorators": [
       "pytest.fixture"
      ],
      "doc": "",
-     "end": 191,
+     "end": 192,
      "kind": "function",
      "name": "loads",
      "qual": "loads",
      "sig": "def loads(monkeypatch)",
-     "start": 183
+     "start": 184
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 203,
+     "end": 204,
      "kind": "test",
      "name": "test_g0_items_on_a_synthetic_world",
      "qual": "test_g0_items_on_a_synthetic_world",
      "sig": "def test_g0_items_on_a_synthetic_world(world, monkeypatch, loads)",
-     "start": 196
+     "start": 197
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 214,
+     "end": 215,
      "kind": "test",
      "name": "test_g0_protocol_contract_and_c2_store_failures",
      "qual": "test_g0_protocol_contract_and_c2_store_failures",
      "sig": "def test_g0_protocol_contract_and_c2_store_failures(world, monkeypatch)",
-     "start": 206
+     "start": 207
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 219,
+     "end": 220,
      "kind": "test",
      "name": "test_g0_fit_key_set",
      "qual": "test_g0_fit_key_set",
      "sig": "def test_g0_fit_key_set(world, monkeypatch)",
-     "start": 217
+     "start": 218
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 227,
+     "end": 228,
      "kind": "test",
      "name": "test_g0_store_admission_and_dry_guard",
      "qual": "test_g0_store_admission_and_dry_guard",
      "sig": "def test_g0_store_admission_and_dry_guard(world, monkeypatch)",
-     "start": 222
+     "start": 223
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 239,
+     "end": 240,
      "kind": "function",
      "name": "auth_record",
      "qual": "auth_record",
      "sig": "def auth_record(schema, **change)",
-     "start": 230
+     "start": 231
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 252,
+     "end": 253,
      "kind": "test",
      "name": "test_auth_ok",
      "qual": "test_auth_ok",
      "sig": "def test_auth_ok(tmp_path)",
-     "start": 242
+     "start": 243
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 274,
+     "end": 275,
      "kind": "test",
      "name": "test_contract_values",
      "qual": "test_contract_values",
      "sig": "def test_contract_values()",
-     "start": 255
+     "start": 256
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 301,
+     "end": 302,
      "kind": "test",
      "name": "test_sequence_ids_and_streams",
      "qual": "test_sequence_ids_and_streams",
      "sig": "def test_sequence_ids_and_streams()",
-     "start": 277
+     "start": 278
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 315,
+     "end": 316,
      "kind": "test",
      "name": "test_meter_bind_check",
      "qual": "test_meter_bind_check",
      "sig": "def test_meter_bind_check(world)",
-     "start": 305
+     "start": 306
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 321,
+     "end": 322,
      "kind": "test",
      "name": "test_measure_only_caps",
      "qual": "test_measure_only_caps",
      "sig": "def test_measure_only_caps()",
-     "start": 320
+     "start": 321
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 332,
+     "end": 333,
      "kind": "function",
      "name": "lineage_ctx",
      "qual": "lineage_ctx",
      "sig": "def lineage_ctx(tmp_path)",
-     "start": 324
+     "start": 325
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 346,
+     "end": 347,
      "kind": "test",
      "name": "test_write_manifest",
      "qual": "test_write_manifest",
      "sig": "def test_write_manifest(tmp_path)",
-     "start": 335
+     "start": 336
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 364,
+     "end": 365,
      "kind": "test",
      "name": "test_supersede_and_regen_compare",
      "qual": "test_supersede_and_regen_compare",
      "sig": "def test_supersede_and_regen_compare(tmp_path)",
-     "start": 349
+     "start": 350
+    },
+    {
+     "decorators": [],
+     "doc": "D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed",
+     "end": 385,
+     "kind": "test",
+     "name": "test_parallel_x6zc_rerun_directories",
+     "qual": "test_parallel_x6zc_rerun_directories",
+     "sig": "def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads)",
+     "start": 369
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 376,
+     "end": 397,
      "kind": "test",
      "name": "test_module_files_and_sizes",
      "qual": "test_module_files_and_sizes",
      "sig": "def test_module_files_and_sizes()",
-     "start": 368
+     "start": 389
     }
    ],
    "syspath": [
@@ -148679,7 +148712,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 52,
+     "end": 51,
      "kind": "function",
      "name": "_new",
      "qual": "_new",
@@ -148689,72 +148722,72 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 57,
+     "end": 56,
      "kind": "function",
      "name": "_close",
      "qual": "_close",
      "sig": "def _close(out, lineage=False) -> dict",
-     "start": 55
+     "start": 54
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 61,
+     "end": 60,
      "kind": "function",
      "name": "_hex",
      "qual": "_hex",
      "sig": "def _hex(chunk) -> set",
-     "start": 60
+     "start": 59
     },
     {
      "decorators": [],
      "doc": "The digest columns of one C2-format history table (\"\" dropped; c2_data.table_digests).",
-     "end": 75,
+     "end": 74,
      "kind": "function",
      "name": "_c2_table",
      "qual": "_c2_table",
      "sig": "def _c2_table(path, out) -> None",
-     "start": 64
+     "start": 63
     },
     {
      "decorators": [],
      "doc": "The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further",
-     "end": 104,
+     "end": 103,
      "kind": "function",
      "name": "source_c2",
      "qual": "source_c2",
      "sig": "def source_c2(store=None, bound=None) -> dict",
-     "start": 79
+     "start": 78
     },
     {
      "decorators": [],
      "doc": "A name scan of superseded/: PASS iff the bound attempt directories exist and no file has",
-     "end": 119,
+     "end": 118,
      "kind": "function",
      "name": "source_c2_superseded",
      "qual": "source_c2_superseded",
      "sig": "def source_c2_superseded(store=None) -> dict",
-     "start": 107
+     "start": 106
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 125,
+     "end": 124,
      "kind": "function",
      "name": "_c2_format",
      "qual": "_c2_format",
      "sig": "def _c2_format(path) -> bool",
-     "start": 123
+     "start": 122
     },
     {
      "decorators": [],
      "doc": "Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):",
-     "end": 153,
+     "end": 151,
      "kind": "function",
      "name": "source_scratch",
      "qual": "source_scratch",
      "sig": "def source_scratch(root=None) -> dict",
-     "start": 128
+     "start": 127
     },
     {
      "decorators": [],
@@ -148764,7 +148797,7 @@
      "name": "_x6zc_names",
      "qual": "_x6zc_names",
      "sig": "def _x6zc_names() -> list",
-     "start": 157
+     "start": 155
     },
     {
      "decorators": [],
@@ -193175,5 +193208,5 @@
    ]
   }
  },
- "sources_digest": "b0a53edaeb3ab804518c5f38328809ea0fd0bde31ee9cd0513baebabc5149af5"
+ "sources_digest": "5fe0db83ba0c839431bd9e5f902dd13c13834dcecf005fec7465b198261eb453"
 }

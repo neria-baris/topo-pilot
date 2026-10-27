@@ -757,7 +757,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [test_a_known.py](files/tests/c2_nd/test_a_known.py.md) | python | 310 lines | Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY. |
 | [test_b_decoy_model.py](files/tests/c2_nd/test_b_decoy_model.py.md) | python | 345 lines | Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6). |
 | [test_b_layer2.py](files/tests/c2_nd/test_b_layer2.py.md) | python | 260 lines | Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9, |
-| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 376 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
+| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 397 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
 | [test_b_policy.py](files/tests/c2_nd/test_b_policy.py.md) | python | 314 lines | Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12); |
 | [test_b_registry.py](files/tests/c2_nd/test_b_registry.py.md) | python | 394 lines | Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4). |
 
@@ -1114,7 +1114,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 536 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `API.md` | markdown | 539 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
 | `CONTRACT.json` | json | 940 lines |  |
 | `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
 | `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |

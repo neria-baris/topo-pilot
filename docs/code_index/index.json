@@ -6,7 +6,7 @@
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 892,
-  "functions and methods (incl. tests)": 7452,
+  "functions and methods (incl. tests)": 7453,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 768,
   "import statements, internal ambiguous": 1,
@@ -16678,9 +16678,9 @@
   },
   "tests/c2_nd/test_b_registry.py": {
    "kind": "python",
-   "lines": 372,
+   "lines": 394,
    "purpose": "Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4).",
-   "sha256": "74f87eeb12d628ba8ac3729a547fdcb517107ffb67150f87bcef9402b774910a"
+   "sha256": "0e73eff0f5c510bd62d88bbddbfbecfbbb53ba6e4bef31c13ccd9fa8cf5ebee0"
   },
   "tests/c2_readout/AUTHORSHIP_A.md": {
    "kind": "markdown",
@@ -18034,9 +18034,9 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 527,
+   "lines": 530,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "af6c1b7e549d93607acbb4828e4d27a282a11190f874b8eabeeaf86021a8f4a3"
+   "sha256": "d1f8c8e544ea35ba09e9e52e3dff03815321659370c1b5a97ca2ad99c48e843c"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
@@ -18102,7 +18102,7 @@
    "kind": "python",
    "lines": 400,
    "purpose": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
-   "sha256": "45062d76f92f2b7300c53f2c0f52467e611095ab20f8b600dc7a0cd3729a100c"
+   "sha256": "32d01f1a8df1c67b22e5bec74264e446380c83b059eca016e04fe90909993053"
   },
   "tools/c2_nd/nd_split.py": {
    "kind": "python",
@@ -76380,76 +76380,86 @@
      "start": 248
     },
     {
+     "decorators": [],
+     "doc": "D-0139-1 regression: a uint8 [n, 8] token array (the HWS null-check fixtures) is listed",
+     "end": 279,
+     "kind": "test",
+     "name": "test_parallel_hws_non_32_wide_is_non_c2_format",
+     "qual": "test_parallel_hws_non_32_wide_is_non_c2_format",
+     "sig": "def test_parallel_hws_non_32_wide_is_non_c2_format(tmp_path, scratch)",
+     "start": 262
+    },
+    {
      "decorators": [
       "pytest.mark.parametrize('where', ('run/payload.npz', 'sealed/k9.npz'))"
      ],
      "doc": "",
-     "end": 266,
+     "end": 288,
      "kind": "test",
      "name": "test_parallel_payload_or_sealed_is_never_opened",
      "qual": "test_parallel_payload_or_sealed_is_never_opened",
      "sig": "def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, where)",
-     "start": 261
+     "start": 283
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 280,
+     "end": 302,
      "kind": "test",
      "name": "test_parallel_x6zc_layout",
      "qual": "test_parallel_x6zc_layout",
      "sig": "def test_parallel_x6zc_layout(tmp_path, scratch, loads)",
-     "start": 271
+     "start": 293
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 285,
+     "end": 307,
      "kind": "function",
      "name": "names",
      "qual": "names",
      "sig": "def names(res)",
-     "start": 284
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 299,
-     "kind": "test",
-     "name": "test_inventory_adapter",
-     "qual": "test_inventory_adapter",
-     "sig": "def test_inventory_adapter(tmp_path)",
-     "start": 288
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 338,
-     "kind": "test",
-     "name": "test_build_writes_a_c2_format_manifest",
-     "qual": "test_build_writes_a_c2_format_manifest",
-     "sig": "def test_build_writes_a_c2_format_manifest(tmp_path, monkeypatch)",
      "start": 306
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 357,
-     "kind": "function",
-     "name": "reservation",
-     "qual": "reservation",
-     "sig": "def reservation(tmp_path, monkeypatch, **change)",
-     "start": 341
+     "end": 321,
+     "kind": "test",
+     "name": "test_inventory_adapter",
+     "qual": "test_inventory_adapter",
+     "sig": "def test_inventory_adapter(tmp_path)",
+     "start": 310
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 372,
+     "end": 360,
+     "kind": "test",
+     "name": "test_build_writes_a_c2_format_manifest",
+     "qual": "test_build_writes_a_c2_format_manifest",
+     "sig": "def test_build_writes_a_c2_format_manifest(tmp_path, monkeypatch)",
+     "start": 328
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 379,
+     "kind": "function",
+     "name": "reservation",
+     "qual": "reservation",
+     "sig": "def reservation(tmp_path, monkeypatch, **change)",
+     "start": 363
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 394,
      "kind": "test",
      "name": "test_reservation_check",
      "qual": "test_reservation_check",
      "sig": "def test_reservation_check(tmp_path, monkeypatch)",
-     "start": 360
+     "start": 382
     }
    ],
    "syspath": [
@@ -148733,7 +148743,7 @@
     {
      "decorators": [],
      "doc": "Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):",
-     "end": 156,
+     "end": 153,
      "kind": "function",
      "name": "source_scratch",
      "qual": "source_scratch",
@@ -148743,42 +148753,42 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 162,
+     "end": 159,
      "kind": "function",
      "name": "_x6zc_names",
      "qual": "_x6zc_names",
      "sig": "def _x6zc_names() -> list",
-     "start": 160
+     "start": 157
     },
     {
      "decorators": [],
-     "doc": "One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped",
-     "end": 189,
+     "doc": "One array file by the c2_registry._x6_member rule, integer [n, w < 32] history members",
+     "end": 190,
      "kind": "function",
      "name": "_read_history",
      "qual": "_read_history",
      "sig": "def _read_history(f, out, require) -> None",
-     "start": 165
+     "start": 162
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 193,
+     "end": 194,
      "kind": "function",
      "name": "_array_files",
      "qual": "_array_files",
      "sig": "def _array_files(top)",
-     "start": 192
+     "start": 193
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 206,
+     "end": 207,
      "kind": "function",
      "name": "_parallel_file",
      "qual": "_parallel_file",
      "sig": "def _parallel_file(f, rel, tag, out) -> None",
-     "start": 196
+     "start": 197
     },
     {
      "decorators": [],
@@ -148788,7 +148798,7 @@
      "name": "source_parallel",
      "qual": "source_parallel",
      "sig": "def source_parallel(store, tag) -> dict",
-     "start": 209
+     "start": 210
     },
     {
      "decorators": [],
@@ -193131,5 +193141,5 @@
    ]
   }
  },
- "sources_digest": "7436405c273b3e58a1c37a33aa94071abf837772dc098f6fadb4c60b04146af2"
+ "sources_digest": "841a486e31da38529ffc7d7767f121ea07bb3738d3d1fa435bd01795da1cdcf1"
 }

@@ -152,7 +152,7 @@
 | `source_f` | function | `source_f` | [tools/k4b/k4b_registry.py:239](../../tools/k4b/k4b_registry.py#L239) | ObservationSet stores under other directories, canonicalised by their EmissionSpec perm |
 | `source_identity` | function | `source_identity` | [tools/x4_oracle_profile/validation.py:181](../../tools/x4_oracle_profile/validation.py#L181) |  |
 | `source_k` | function | `source_k` | [tools/k4b/k4b_registry_k.py:81](../../tools/k4b/k4b_registry_k.py#L81) | Classifies every file under k4b-store (§16 item 2 a-d); other non-empty -> INCOMPLETE. |
-| `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:209](../../tools/c2_nd/nd_registry.py#L209) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
+| `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:210](../../tools/c2_nd/nd_registry.py#L210) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
 | `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:128](../../tools/c2_nd/nd_registry.py#L128) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
 | `sources_digest` | function | `sources_digest` | [tools/code_index/scan.py:111](../../tools/code_index/scan.py#L111) |  |
 | `SourceTampered` | class | `SourceTampered` | [src/topo_pilot/experiment/x5g1_safety.py:22](../../src/topo_pilot/experiment/x5g1_safety.py#L22) | A source artifact failed full-hash or payload verification. |
@@ -593,7 +593,7 @@
 | `test_build_unreadable_sources_incomplete_and_R_prime_has_four_roles` | test | `test_build_unreadable_sources_incomplete_and_R_prime_has_four_roles` | [tests/c2_readout/test_b_registry.py:277](../../tests/c2_readout/test_b_registry.py#L277) |  |
 | `test_build_with_only_derived_records_is_not_incomplete` | test | `test_build_with_only_derived_records_is_not_incomplete` | [tests/k4b/test_b_store_reader.py:246](../../tests/k4b/test_b_store_reader.py#L246) |  |
 | `test_build_with_stray_file_makes_k4b_store_incomplete` | test | `test_build_with_stray_file_makes_k4b_store_incomplete` | [tests/k4b/test_b_store_reader.py:259](../../tests/k4b/test_b_store_reader.py#L259) |  |
-| `test_build_writes_a_c2_format_manifest` | test | `test_build_writes_a_c2_format_manifest` | [tests/c2_nd/test_b_registry.py:306](../../tests/c2_nd/test_b_registry.py#L306) |  |
+| `test_build_writes_a_c2_format_manifest` | test | `test_build_writes_a_c2_format_manifest` | [tests/c2_nd/test_b_registry.py:328](../../tests/c2_nd/test_b_registry.py#L328) |  |
 | `test_builders_hit_their_outcomes` | test | `test_builders_hit_their_outcomes` | [tests/d2a/test_b_rules_qualifiers.py:102](../../tests/d2a/test_b_rules_qualifiers.py#L102) |  |
 | `test_builds_are_deterministic` | test | `test_builds_are_deterministic` | [tests/world/test_world.py:321](../../tests/world/test_world.py#L321) |  |
 | `test_C01_id_independent_of_key_order` | test | `test_C01_id_independent_of_key_order` | [tests/contracts/test_ids.py:38](../../tests/contracts/test_ids.py#L38) |  |
@@ -1374,7 +1374,7 @@
 | `test_invalid_scoring_release_denies_panel_3_before_any_load` | test | `test_invalid_scoring_release_denies_panel_3_before_any_load` | [tests/circle_history/test_adapter.py:229](../../tests/circle_history/test_adapter.py#L229) |  |
 | `test_invalid_unknown_control_and_usage` | test | `test_invalid_unknown_control_and_usage` | [tests/oracle_profile/test_builder_controls.py:104](../../tests/oracle_profile/test_builder_controls.py#L104) |  |
 | `test_invalid_unreadable_and_task_bytes` | test | `test_invalid_unreadable_and_task_bytes` | [tests/oracle_profile/test_builder_controls.py:94](../../tests/oracle_profile/test_builder_controls.py#L94) |  |
-| `test_inventory_adapter` | test | `test_inventory_adapter` | [tests/c2_nd/test_b_registry.py:288](../../tests/c2_nd/test_b_registry.py#L288) |  |
+| `test_inventory_adapter` | test | `test_inventory_adapter` | [tests/c2_nd/test_b_registry.py:310](../../tests/c2_nd/test_b_registry.py#L310) |  |
 | `test_inventory_admits_an_unlisted_empty_directory_alone` | test | `test_inventory_admits_an_unlisted_empty_directory_alone` | [tests/c2_readout/test_b_registry.py:222](../../tests/c2_readout/test_b_registry.py#L222) |  |
 | `test_inventory_is_recursive_and_counts_worktrees_and_temp_dirs` | test | `test_inventory_is_recursive_and_counts_worktrees_and_temp_dirs` | [tests/k4b/test_b_registry.py:82](../../tests/k4b/test_b_registry.py#L82) |  |
 | `test_inventory_registered_copy_passes` | test | `test_inventory_registered_copy_passes` | [tests/x6_stage1/test_b_seed_pool_reg.py:293](../../tests/x6_stage1/test_b_seed_pool_reg.py#L293) |  |
@@ -1884,9 +1884,10 @@
 | `test_panels_rows_in_history_id_order_without_w33` | test | `test_panels_rows_in_history_id_order_without_w33` | [tests/circle_history/test_adapter.py:175](../../tests/circle_history/test_adapter.py#L175) |  |
 | `test_parallel_absent_and_unfrozen` | test | `test_parallel_absent_and_unfrozen` | [tests/c2_nd/test_b_registry.py:221](../../tests/c2_nd/test_b_registry.py#L221) |  |
 | `test_parallel_hws_dry_scratch` | test | `test_parallel_hws_dry_scratch` | [tests/c2_nd/test_b_registry.py:248](../../tests/c2_nd/test_b_registry.py#L248) | R-0116-3: reader hws also reads <SCRATCH_ROOT>/hws-dry/hist/** when present. |
+| `test_parallel_hws_non_32_wide_is_non_c2_format` | test | `test_parallel_hws_non_32_wide_is_non_c2_format` | [tests/c2_nd/test_b_registry.py:262](../../tests/c2_nd/test_b_registry.py#L262) | D-0139-1 regression: a uint8 [n, 8] token array (the HWS null-check fixtures) is listed |
 | `test_parallel_hws_reader` | test | `test_parallel_hws_reader` | [tests/c2_nd/test_b_registry.py:233](../../tests/c2_nd/test_b_registry.py#L233) |  |
-| `test_parallel_payload_or_sealed_is_never_opened` | test | `test_parallel_payload_or_sealed_is_never_opened` | [tests/c2_nd/test_b_registry.py:261](../../tests/c2_nd/test_b_registry.py#L261) |  |
-| `test_parallel_x6zc_layout` | test | `test_parallel_x6zc_layout` | [tests/c2_nd/test_b_registry.py:271](../../tests/c2_nd/test_b_registry.py#L271) |  |
+| `test_parallel_payload_or_sealed_is_never_opened` | test | `test_parallel_payload_or_sealed_is_never_opened` | [tests/c2_nd/test_b_registry.py:283](../../tests/c2_nd/test_b_registry.py#L283) |  |
+| `test_parallel_x6zc_layout` | test | `test_parallel_x6zc_layout` | [tests/c2_nd/test_b_registry.py:293](../../tests/c2_nd/test_b_registry.py#L293) |  |
 | `test_parameters_and_buffers_bitwise_unchanged` | test | `test_parameters_and_buffers_bitwise_unchanged` | [tests/learner/test_patch.py:189](../../tests/learner/test_patch.py#L189) |  |
 | `test_parse_model` | test | `test_parse_model` | [tests/x6_stage1/test_b_seed_pool_reg.py:113](../../tests/x6_stage1/test_b_seed_pool_reg.py#L113) |  |
 | `test_parse_model_refuses` | test | `test_parse_model_refuses` | [tests/x6_stage1/test_b_seed_pool_reg.py:118](../../tests/x6_stage1/test_b_seed_pool_reg.py#L118) |  |
@@ -2183,7 +2184,7 @@
 | `test_require_scoring_denies_wrong_scope_or_sha` | test | `test_require_scoring_denies_wrong_scope_or_sha` | [tests/circle_history/test_builder_guards.py:103](../../tests/circle_history/test_builder_guards.py#L103) |  |
 | `test_require_table_over_every_gate` | test | `test_require_table_over_every_gate` | [tests/c2_readout/test_b_policy.py:83](../../tests/c2_readout/test_b_policy.py#L83) |  |
 | `test_require_write_outside_allowed` | test | `test_require_write_outside_allowed` | [tests/c2_nd/test_b_policy.py:135](../../tests/c2_nd/test_b_policy.py#L135) |  |
-| `test_reservation_check` | test | `test_reservation_check` | [tests/c2_nd/test_b_registry.py:360](../../tests/c2_nd/test_b_registry.py#L360) |  |
+| `test_reservation_check` | test | `test_reservation_check` | [tests/c2_nd/test_b_registry.py:382](../../tests/c2_nd/test_b_registry.py#L382) |  |
 | `test_resid_post_0_patch_propagates_to_later_positions` | test | `test_resid_post_0_patch_propagates_to_later_positions` | [tests/learner/test_patch.py:111](../../tests/learner/test_patch.py#L111) | The forward continues through blocks[1]: later positions attend to the patched vector. |
 | `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | test | `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | [tests/c2_readout/test_b_patch.py:171](../../tests/c2_readout/test_b_patch.py#L171) |  |
 | `test_residual_difference_within_two_rho` | test | `test_residual_difference_within_two_rho` | [tests/k4b/test_a_lemma_t.py:122](../../tests/k4b/test_a_lemma_t.py#L122) |  |

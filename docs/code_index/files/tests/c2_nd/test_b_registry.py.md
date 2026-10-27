@@ -2,7 +2,7 @@
 
 - Source: [tests/c2_nd/test_b_registry.py](../../../../../tests/c2_nd/test_b_registry.py)
 - Kind: python
-- Lines: 372
+- Lines: 394
 
 ## Module docstring
 
@@ -80,11 +80,12 @@
 - **test `test_parallel_absent_and_unfrozen`** [L221-230]: `def test_parallel_absent_and_unfrozen(tmp_path, scratch)`
 - **test `test_parallel_hws_reader`** [L233-243]: `def test_parallel_hws_reader(tmp_path, scratch)`
 - **test `test_parallel_hws_dry_scratch`** [L248-257]: `def test_parallel_hws_dry_scratch(tmp_path, scratch)` - R-0116-3: reader hws also reads <SCRATCH_ROOT>/hws-dry/hist/** when present.
-- **test `test_parallel_payload_or_sealed_is_never_opened`** [L261-266]: `def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, where)` decorators: @pytest.mark.parametrize('where', ('run/payload.npz', 'sealed/k9.npz'))
-- **test `test_parallel_x6zc_layout`** [L271-280]: `def test_parallel_x6zc_layout(tmp_path, scratch, loads)`
-- **function `names`** [L284-285]: `def names(res)`
-- **test `test_inventory_adapter`** [L288-299]: `def test_inventory_adapter(tmp_path)`
-- **test `test_build_writes_a_c2_format_manifest`** [L306-338]: `def test_build_writes_a_c2_format_manifest(tmp_path, monkeypatch)`
-- **function `reservation`** [L341-357]: `def reservation(tmp_path, monkeypatch, **change)`
-- **test `test_reservation_check`** [L360-372]: `def test_reservation_check(tmp_path, monkeypatch)`
+- **test `test_parallel_hws_non_32_wide_is_non_c2_format`** [L262-279]: `def test_parallel_hws_non_32_wide_is_non_c2_format(tmp_path, scratch)` - D-0139-1 regression: a uint8 [n, 8] token array (the HWS null-check fixtures) is listed
+- **test `test_parallel_payload_or_sealed_is_never_opened`** [L283-288]: `def test_parallel_payload_or_sealed_is_never_opened(tmp_path, scratch, loads, where)` decorators: @pytest.mark.parametrize('where', ('run/payload.npz', 'sealed/k9.npz'))
+- **test `test_parallel_x6zc_layout`** [L293-302]: `def test_parallel_x6zc_layout(tmp_path, scratch, loads)`
+- **function `names`** [L306-307]: `def names(res)`
+- **test `test_inventory_adapter`** [L310-321]: `def test_inventory_adapter(tmp_path)`
+- **test `test_build_writes_a_c2_format_manifest`** [L328-360]: `def test_build_writes_a_c2_format_manifest(tmp_path, monkeypatch)`
+- **function `reservation`** [L363-379]: `def reservation(tmp_path, monkeypatch, **change)`
+- **test `test_reservation_check`** [L382-394]: `def test_reservation_check(tmp_path, monkeypatch)`
 

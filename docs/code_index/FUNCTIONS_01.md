@@ -171,7 +171,7 @@
 | `_arm` | function | `_arm` | [tests/analysis/test_x5_context.py:26](../../tests/analysis/test_x5_context.py#L26) |  |
 | `_arms` | function | `_arms` | [tests/c2_readout/test_b_patch.py:204](../../tests/c2_readout/test_b_patch.py#L204) |  |
 | `_arms` | function | `_arms` | [tools/c2_nd/nd_split.py:261](../../tools/c2_nd/nd_split.py#L261) | The x interchange arms 21, 12 (arm 2's tokens, C2 C-23) on `rows`. |
-| `_array_files` | function | `_array_files` | [tools/c2_nd/nd_registry.py:192](../../tools/c2_nd/nd_registry.py#L192) |  |
+| `_array_files` | function | `_array_files` | [tools/c2_nd/nd_registry.py:193](../../tools/c2_nd/nd_registry.py#L193) |  |
 | `_arrays` | function | `_arrays` | [tests/c2_readout/test_a_scope.py:105](../../tests/c2_readout/test_a_scope.py#L105) |  |
 | `_arrays` | function | `_arrays` | [tools/x4_circle_history/precision.py:12](../../tools/x4_circle_history/precision.py#L12) |  |
 | `_arrays` | function | `_arrays` | [tools/x4_circle_history/process_law.py:182](../../tools/x4_circle_history/process_law.py#L182) |  |
@@ -1140,7 +1140,7 @@
 | `_panel_tokens` | method | `SpaceBuilder._panel_tokens` | [src/topo_pilot/analysis/spaces.py:207](../../src/topo_pilot/analysis/spaces.py#L207) |  |
 | `_panels` | method | `StoreResolver._panels` | [src/topo_pilot/experiment/x4_inputs.py:140](../../src/topo_pilot/experiment/x4_inputs.py#L140) |  |
 | `_panels` | function | `_panels` | [src/topo_pilot/analysis/f1.py:36](../../src/topo_pilot/analysis/f1.py#L36) |  |
-| `_parallel_file` | function | `_parallel_file` | [tools/c2_nd/nd_registry.py:196](../../tools/c2_nd/nd_registry.py#L196) |  |
+| `_parallel_file` | function | `_parallel_file` | [tools/c2_nd/nd_registry.py:197](../../tools/c2_nd/nd_registry.py#L197) |  |
 | `_parent` | function | `_parent` | [tools/code_index/pathval.py:43](../../tools/code_index/pathval.py#L43) |  |
 | `_parents` | function | `_parents` | [tests/experiment/test_x5g1t_identity.py:127](../../tests/experiment/test_x5g1t_identity.py#L127) |  |
 | `_parents_variant` | function | `_parents_variant` | [tests/experiment/test_x5g1t_identity.py:211](../../tests/experiment/test_x5g1t_identity.py#L211) |  |
@@ -1270,7 +1270,7 @@
 | `_read` | function | `_read` | [tools/d2a/d2a_train.py:195](../../tools/d2a/d2a_train.py#L195) |  |
 | `_read` | function | `_read` | [tools/x6_stage1/x6s1_cloud.py:96](../../tools/x6_stage1/x6s1_cloud.py#L96) |  |
 | `_read_files` | method | `ArtifactStore._read_files` | [src/topo_pilot/contracts/store.py:157](../../src/topo_pilot/contracts/store.py#L157) |  |
-| `_read_history` | function | `_read_history` | [tools/c2_nd/nd_registry.py:165](../../tools/c2_nd/nd_registry.py#L165) | One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped |
+| `_read_history` | function | `_read_history` | [tools/c2_nd/nd_registry.py:162](../../tools/c2_nd/nd_registry.py#L162) | One array file by the c2_registry._x6_member rule, integer [n, w < 32] history members |
 | `_read_json` | function | `_read_json` | [tools/x4_oracle_profile/controls.py:38](../../tools/x4_oracle_profile/controls.py#L38) |  |
 | `_read_members` | function | `_read_members` | [src/topo_pilot/contracts/_bundle.py:80](../../src/topo_pilot/contracts/_bundle.py#L80) |  |
 | `_read_meta` | method | `ArtifactStore._read_meta` | [src/topo_pilot/contracts/store.py:151](../../src/topo_pilot/contracts/store.py#L151) |  |
@@ -1810,7 +1810,7 @@
 | `_x6_store` | function | `_x6_store` | [tests/c2_readout/test_b_registry.py:231](../../tests/c2_readout/test_b_registry.py#L231) |  |
 | `_x6_valid` | function | `_x6_valid` | [tools/x6_stage1/x6s1_registry.py:261](../../tools/x6_stage1/x6s1_registry.py#L261) |  |
 | `_X6TorusBuilder` | class | `_X6TorusBuilder` | [tools/x6_stage0/x6_model.py:124](../../tools/x6_stage0/x6_model.py#L124) |  |
-| `_x6zc_names` | function | `_x6zc_names` | [tools/c2_nd/nd_registry.py:160](../../tools/c2_nd/nd_registry.py#L160) |  |
+| `_x6zc_names` | function | `_x6zc_names` | [tools/c2_nd/nd_registry.py:157](../../tools/c2_nd/nd_registry.py#L157) |  |
 | `_xhat` | function | `_xhat` | [tools/x6_stage1/x6s1_eval.py:249](../../tools/x6_stage1/x6s1_eval.py#L249) |  |
 | `_xr` | function | `_xr` | [tools/c2_nd/nd_registry.py:43](../../tools/c2_nd/nd_registry.py#L43) |  |
 | `_xwrite` | function | `_xwrite` | [tools/x6_stage1/x6s1_ingest.py:69](../../tools/x6_stage1/x6s1_ingest.py#L69) |  |
@@ -3728,7 +3728,7 @@
 | `named_from_canonical` | function | `named_from_canonical` | [tools/c1prime/c1_oracle.py:146](../../tools/c1prime/c1_oracle.py#L146) |  |
 | `named_from_canonical` | function | `named_from_canonical` | [tools/k4b/k4b_data.py:95](../../tools/k4b/k4b_data.py#L95) |  |
 | `names` | method | `Recorder.names` | [tests/c1prime/test_a_chart.py:124](../../tests/c1prime/test_a_chart.py#L124) |  |
-| `names` | function | `names` | [tests/c2_nd/test_b_registry.py:284](../../tests/c2_nd/test_b_registry.py#L284) |  |
+| `names` | function | `names` | [tests/c2_nd/test_b_registry.py:306](../../tests/c2_nd/test_b_registry.py#L306) |  |
 | `names` | function | `names` | [tests/k4b/test_b_registry.py:63](../../tests/k4b/test_b_registry.py#L63) |  |
 | `names` | function | `names` | [tests/k4b/test_b_registry_rules.py:50](../../tests/k4b/test_b_registry_rules.py#L50) |  |
 | `names_file` | function | `names_file` | [tests/k4b/test_b_store_reader.py:102](../../tests/k4b/test_b_store_reader.py#L102) |  |
@@ -4365,7 +4365,7 @@
 | `require_write` | method | `_Policy.require_write` | [tests/c2_readout/test_b_patch.py:44](../../tests/c2_readout/test_b_patch.py#L44) |  |
 | `rerun_table` | function | `rerun_table` | [src/topo_pilot/experiment/report_e4_s7.py:200](../../src/topo_pilot/experiment/report_e4_s7.py#L200) |  |
 | `RerunJob` | class | `RerunJob` | [src/topo_pilot/experiment/s8.py:134](../../src/topo_pilot/experiment/s8.py#L134) | Fresh clone of HEAD + empty store; S0→S3; comparison with the main store. |
-| `reservation` | function | `reservation` | [tests/c2_nd/test_b_registry.py:341](../../tests/c2_nd/test_b_registry.py#L341) |  |
+| `reservation` | function | `reservation` | [tests/c2_nd/test_b_registry.py:363](../../tests/c2_nd/test_b_registry.py#L363) |  |
 | `reservation_check` | function | `reservation_check` | [tools/c2_nd/nd_registry.py:396](../../tools/c2_nd/nd_registry.py#L396) | PASS iff RESERVATION_<stage>.json records no live reservation and the parallel stores' |
 | `residual` | function | `residual` | [tools/c1prime/c1_fit.py:68](../../tools/c1prime/c1_fit.py#L68) |  |
 | `residual_rows` | function | `residual_rows` | [tools/x4_oracle_profile/oracle_profile.py:163](../../tools/x4_oracle_profile/oracle_profile.py#L163) | Per-row ``r_K = m_full - m_K``, ``\|\|r_K\|\|`` and ``\|\|r_K\|\|^2`` for every K in ``means``. |

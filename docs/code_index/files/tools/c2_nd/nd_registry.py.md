@@ -83,12 +83,12 @@
 - **function `source_c2`** [L79-104]: `def source_c2(store=None, bound=None) -> dict` - The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further
 - **function `source_c2_superseded`** [L107-119]: `def source_c2_superseded(store=None) -> dict` - A name scan of superseded/: PASS iff the bound attempt directories exist and no file has
 - **function `_c2_format`** [L123-125]: `def _c2_format(path) -> bool`
-- **function `source_scratch`** [L128-156]: `def source_scratch(root=None) -> dict` - Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
-- **function `_x6zc_names`** [L160-162]: `def _x6zc_names() -> list`
-- **function `_read_history`** [L165-189]: `def _read_history(f, out, require) -> None` - One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped
-- **function `_array_files`** [L192-193]: `def _array_files(top)`
-- **function `_parallel_file`** [L196-206]: `def _parallel_file(f, rel, tag, out) -> None`
-- **function `source_parallel`** [L209-228]: `def source_parallel(store, tag) -> dict` - A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else
+- **function `source_scratch`** [L128-153]: `def source_scratch(root=None) -> dict` - Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
+- **function `_x6zc_names`** [L157-159]: `def _x6zc_names() -> list`
+- **function `_read_history`** [L162-190]: `def _read_history(f, out, require) -> None` - One array file by the c2_registry._x6_member rule, integer [n, w < 32] history members
+- **function `_array_files`** [L193-194]: `def _array_files(top)`
+- **function `_parallel_file`** [L197-207]: `def _parallel_file(f, rel, tag, out) -> None`
+- **function `source_parallel`** [L210-228]: `def source_parallel(store, tag) -> dict` - A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else
 - **function `inventory`** [L232-256]: `def inventory(root=None, readers=None) -> dict` - k4b_registry.inventory/classify of every top-level directory against the ND frozen table;
 - **function `_nd_sources`** [L260-275]: `def _nd_sources(root, c2_dry=None) -> dict` - Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5). `c2_dry`
 - **function `_summary`** [L278-280]: `def _summary(r) -> dict`

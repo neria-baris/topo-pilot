@@ -64,10 +64,11 @@ topology of the latent world? (project topo-pilot)\par}
 \vspace{0.6cm}
 {\large\color{ink2} The questions, the methods, every experiment to date (the pilot, the
 studies of where the learned circle comes from and whether the model uses it, the
-prediction-horizon studies, and the crossing-order studies), the results including the negative
-and inconclusive ones, and what remains open\par}
+prediction-horizon studies, the crossing-order studies, the necessity and decoy test of the
+circle code, and the search for a world with more history to measure), the results including
+the negative and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
-{\large 26 October 2026\par}
+{\large 28 October 2026\par}
 \vspace{0.3cm}
 {\large\itshape Living document; updated as runs complete.\par}
 \vfill
@@ -124,7 +125,15 @@ nuisance-excluding circle code carries 85\% of the model's signed oracle-aligned
 models: the readout uses this code (USED). The same holds for the layer-2 code transmitted
 through the remaining computation and for a code built from the oracle's phase. The claim is
 scoped to the registered linear code; it does not exclude other encodings of the same
-information.
+information. A follow-up on fresh histories shows that the code is the main carrier but not
+the only one (everything outside it carries 14--15\% of the response, in all three models), and
+that the method can say ``not used'': on decoy models whose readout ignores the code exactly,
+while the code stays in the activations, it returned NOT\_USED in all three. A check with no
+training found that one commutative control's response to the designed crossing-order placebo
+replicates on fresh histories but matches neither order use nor a simple miscount, so its cause
+remains unexplained. An oracle-only sweep of 225 worlds found one, the same cylinder with wider
+emissions, in which the oracle's own beyond-four-symbol signal is 4.7 times the registered
+margin; a small training pilot in that world is under way.
 \end{abstract}
 
 \tableofcontents
@@ -196,15 +205,20 @@ erasing the circular coordinate and forcing a counterfactual state, stopped at p
 feasibility gates before any causal endpoint was scored. The third design attributes the
 model's own response to natural counterfactual histories exactly to its circle code at the
 final readout: the code carries 85\% of the oracle-aligned response in all three models, and
-the preregistered outcome is USED (\S\ref{sec:causal}). It does not show that the code is the
-only carrier of circular information.
+the preregistered outcome is USED (\S\ref{sec:causal}). A follow-up on fresh histories confirmed
+that the code is the main carrier but not the only one, and showed on decoy models that the
+method returns ``not used'' when the code is present but unread (\S\ref{sec:c2nd}).
 \item \textbf{Horizons and richer topology.} Exact oracle computations prove the existence of an
 orientability distinction that is invisible one step ahead and needed two steps ahead, but the
 trained-model study of it failed its learnability gate. An $S_3$ transport process was
 certified to carry order information beyond every commutative statistic; the
 trained follow-up reached its preregistered decision, INCONCLUSIVE: a weak but
 reproducible natural order sensitivity, far below the registered size (\S\ref{sec:horizons},
-\S\ref{sec:x6}, \S\ref{sec:x6s1results}).
+\S\ref{sec:x6}, \S\ref{sec:x6s1results}). A follow-up check left the cause of one control's
+response to the designed placebo unexplained (\S\ref{sec:x6zc}).
+\item \textbf{A world with more history to measure.} An oracle-only sweep of 225 worlds selected
+one in which the oracle's beyond-four-symbol signal is 4.7 times the registered margin, so that
+the origin question can be asked again with room to answer it (\S\ref{sec:hws}).
 \end{enumerate}
 
 \begin{table}[t]\centering\small
@@ -233,6 +247,9 @@ Origin beyond the last four symbols & EXCLUSION & $|\Delta_4|<0.01$ in 3/3 model
 Crossing order in the oracle & GO & order effect certified beyond every commutative statistic\\
 Crossing order in trained models & INCONCLUSIVE & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
 Readout attribution of the circle code (causal) & USED (3/3 models) & the registered code carries $\hat\psi=0.85$ of the aligned response; layer-2 and oracle-phase codes also USED\\
+World sweep for history signal (oracle) & SELECTED & a wider-emission cylinder: beyond-four signal 0.047, 4.7$\times$ the margin\\
+Control's response to the designed order placebo & UNEXPLAINED & the response replicates; it matches neither order use nor a symmetric miscount\\
+Necessity of the circle code; decoy test & CODE\_DOMINANT; DECOY\_NOT\_USED (3/3 models) & the complement carries 14--15\%; the method returns NOT\_USED on decoys\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -242,7 +259,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099 and 0115.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155 and 0167.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -443,7 +460,13 @@ frozen protocol, listed in Table~\ref{tab:key}.
 $S_3$ transport process carries order information beyond every commutative statistic; a
 trained study (frozen 18 October, authorised 20 October) then trained twelve models on it, on
 a free cloud GPU, with all evaluation local. From 21 October a third causal-use design was
-planned, frozen and implemented; it reached its decision on 26 October.
+planned, frozen and implemented; it reached its decision on 26 October. On 26 October I adopted
+a next-round plan with sharper working rules (oracle feasibility first, a synthetic dry run before
+every freeze, every control checked on a known case). Under it, three studies without training
+ran in parallel on 26--27 October within a 12 CPU-hour line: an oracle sweep of worlds for the
+history-origin question, a check of the crossing-order control's placebo response, and a
+necessity and decoy test of the circle code. A small training pilot in the world the sweep
+selected started on 27 October.
 
 \begin{table}[t]\centering\small
 \caption{Guide to the studies. Each study is named in this document by the descriptive name in
@@ -463,12 +486,16 @@ Component identity beyond short windows (oracle) & X2a stage 0 & Is long, non-ad
 Erasing the circular coordinate & X4-F & Does prediction depend on the circular coordinate? & \ref{sec:causal}\\
 Counterfactual state forcing & C1, C1$'$ & Does the readout respond to a forced change of the phase? & \ref{sec:causal}\\
 Readout attribution of the circle code & C2 & How much of the model's response to history runs through its circle code? & \ref{sec:causal}\\
+Necessity of the circle code and decoy test & C2ND & Is the code the only carrier, and can the method say ``not used''? & \ref{sec:c2nd}\\
+World sweep for history signal (oracle) & HWS stage A & Is there a world with more beyond-four history signal to measure? & \ref{sec:hws}\\
+Training pilot in the selected world & HWS stage B & Do models trained there learn and form the circle, and would a full test be large enough? & \ref{sec:status}\\
 Two-step-ahead distinctions in the pilot world & X4 Phase B, B2 & Do beliefs exist that agree one step ahead but not two? & \ref{sec:horizons}\\
 Orientability needed only two steps ahead (oracle) & D-1 & Can a topological distinction be invisible one step ahead? & \ref{sec:horizons}\\
 Orientability in trained models & D-2a & Do trained models carry that distinction? & \ref{sec:horizons}\\
 Geometry and learning speed & X5 G1 & Does a curved kernel slow learning? & \ref{sec:x5}\\
 Crossing order in the oracle & X6 stage 0 & Does a designed process carry order information? & \ref{sec:x6s0}\\
 Crossing order in trained models & X6 stage 1 (X6S1) & Do trained models use crossing order? & \ref{sec:x6s1}\\
+Control's response to the designed placebo & X6ZC & Why does a commutative control respond to the designed order contrast? & \ref{sec:x6zc}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -881,6 +908,37 @@ rather than the circular coordinate; short windows are not blind. It motivated t
 construction where short windows are \emph{exactly} blind, which became the crossing-order
 studies (\S\ref{sec:x6}).
 
+\subsection{A sweep of worlds with more history to measure (oracle only)}\label{sec:hws}
+\textbf{Question.} The origin test beyond four symbols registered a margin of 0.01 that the
+oracle's own beyond-four quantity in the pilot world (0.0085) does not reach. Is there a
+cylinder world, close to the pilot's, in which that quantity is at least three times the margin,
+and in which context helps next-symbol prediction enough that a model could plausibly learn it?
+\textbf{Design.} Oracle only: nothing is trained and no model is run. The grid has 225 worlds:
+the walk's stay probability (0.2 to 0.9375), the emission width (1.25 to 3), circular aliasing of
+the symbols (one to three levels) and the circumference (8, 12 or 16), with height 12 and
+histories of 32 symbols. Exact filters removed worlds whose symbol maps are reflection- or
+translation-symmetric (75) and worlds whose circle is not legible (43). The rest were screened on
+4,096 rows each, and 16 finalists were confirmed on 32,768 fresh rows with simultaneous lower
+bounds ($\alpha=0.05/16$). A world qualifies if four lower bounds hold: the beyond-four signal
+(the oracle comparator of the origin test) is at least 0.03; the context gain is at least 0.10
+nats; the beyond-four predictive gain is at least the pilot world's value and at least 0.0078
+nats; and the same holds for the circular part of the symbol. Among qualified worlds the smallest
+departure from the pilot world wins.
+\textbf{What ran.} The known-case stage needed three attempts. A scope check stopped the first
+before anything was sampled. A known case failed the second by one rounding unit on a constant
+input, which I settled by decision. The third passed. The sweep itself then passed every stage
+in 15 minutes. The study used 0.54 CPU-hours in all, including tests.
+\textbf{Result} (\fpath{hws-store/stages/FINAL/REPORT.json}). SELECTED, at the lowest departure
+tier: the same $12\times12$ cylinder and the same walk (stay probability 0.2), with emission
+width 1.75 instead of 1.25, so no new observation code is needed. On the fresh confirmation rows
+the beyond-four signal is 0.0470 (lower bound 0.0458; pilot world 0.0085), 4.7 times the margin.
+The lower bounds of the context gain, the beyond-four predictive gain and its circular part
+are 0.283, 0.031 and 0.018 nats, against floors of 0.10, 0.012 and 0.006.
+\textbf{Licence.} This is an oracle property of one world. It says nothing about whether a model
+trained there learns the world or would carry the signal; that is the question of the training
+pilot (\S\ref{sec:status}).
+
+
 % =========================================================================================
 \section{Causal use (charter priority 2)}\label{sec:causal}
 
@@ -977,6 +1035,44 @@ position uses the learned circle code for most of its response to the $x$-histor
 stated USED as the expected outcome, so this result confirms an expectation rather than
 reporting a surprise. The second-to-last symbol changes with the rest of the $x$-history in
 every counterfactual pair, so the result does not separate long history from that symbol.
+
+\subsection{Is the circle code necessary, and can the method say ``not used''?}\label{sec:c2nd}
+\textbf{Questions.} (i) Necessity: if everything except the registered code is taken from the
+other history (the complement interchange), how much of the response moves? (ii) Specificity:
+on a model whose code is present but provably unread, does the same frozen method return
+NOT\_USED?
+\textbf{Design.} At the final readout the head is exactly linear, so the complement share equals
+one minus the code share. It mirrors the previous result rather than adding independent
+evidence, but here it is measured on fresh histories. ``Necessary'' (a complement share below
+0.10) was therefore not expected; the expected outcome was ``code dominant'' (a complement share
+between 0.10 and 0.50). A second family tests necessity at layer~2, where the remaining
+computation is non-linear. For specificity, decoy models change only the output (unembedding)
+matrix. The code's directions are removed from the readout and the rest is multiplied by a fixed
+gain of~6. The code then stays bitwise in the activations, its readout is exactly zero, and the
+decoy still responds to the counterfactual. The method re-estimates the code on a fresh split,
+and constructed known cases check it on real activations first.
+\textbf{What ran.} The study was frozen and authorised on 27 October after five synthetic dry
+runs, which exposed and corrected several defects in the code and its rehearsal fixtures. In
+the execution, one attempt at the first stage was lost when its background process died before
+drawing any data. A later stage started too early and was set aside. Both were rerun, and all
+five stages passed every gate. The study used about 5.0 CPU-hours, including tests and dry
+runs; the real stages took 1.1.
+\textbf{Result} (\fpath{c2nd-store/stages/S5/report.json}; a fresh test of 4,096 rows).
+Necessity: CODE\_DOMINANT in all three models. The complement carries 0.149, 0.146 and 0.144 of
+the signed oracle-aligned response, so the code is the main carrier of this readout response but
+not the only one. The registered qualifiers record that this outcome depends on the projector and
+on the first harmonic. At layer~2 the code is also dominant (complement 0.145, 0.149 and 0.147;
+interaction share 0.01--0.02, descriptive). Decoys: DECOY\_NOT\_USED in all three. The method
+returned code shares of 0.028, 0.026 and 0.020, while the decoys still responded at 0.83--0.84
+of the oracle contrast through other directions, and every core known case returned its
+constructed answer. Without the gain the decoys fail the response gate, as designed.
+\textbf{Reading.} The earlier USED verdict does not come from a method that always says
+``used'': on models where the code is present but unread, it says ``not used''. Taken together,
+the registered code carries about 85\% of the readout response and everything else 14--15\%, and
+the measure is specific on the constructed decoys. The limits stand: only the frozen linear code
+is covered, an exact identity ties necessity to the earlier share, and only the constructed
+decoys were tested.
+
 
 % =========================================================================================
 \section{Necessity and prediction horizons (charter priority 3)}\label{sec:horizons}
@@ -1235,6 +1331,35 @@ history over attempts. Statuses and gate names only. Source: \fpath{x6-stage1-st
 via the snapshot \fpath{docs/research_summary/data/x6s1_status.json}; stage order from
 \fpath{X6S1-FROZEN-v1.md} \S8.}
 
+\subsection{Why does a commutative control respond to the designed placebo?}\label{sec:x6zc}
+\textbf{Question.} The trained crossing-order study was INCONCLUSIVE only because one commutative
+control (seed~1, trained on the commutative $\mathbb{Z}_3$ version of the process) responded to
+the designed W2 contrast (placebo 0.209). The stored values showed two other controls responding
+to the designed W1 contrast ($-0.133$ and $-0.218$). Why do they respond, and can the
+designed-placebo machinery be reused?
+\textbf{Design.} No training. An exact computation shows that on these designed families the
+non-abelian oracle's answer for one ordering equals the commutative answer, and for the other
+ordering equals the commutative answer with one crossing missed. Any order-dependent miscount by
+a commutatively trained model therefore shows up along the order contrast, although an exactly
+commutative predictor gives zero. The registered test reverses the direction of one or both
+loops on never-used histories. The order contrast stays the same in every variant (ratio~1),
+while every sign-symmetric miscount reverses sign when both loops are reversed (ratio~$-1$).
+The 16 stored designed results were first reproduced bit for bit.
+\textbf{What ran.} Three stages on 26--27 October, all gates passed, 3.9 CPU-hours in all.
+\textbf{Result} (\fpath{x6zc-store/report.json}; 1,024 fresh histories). The seed-1 control's
+W2 response replicated (0.207, interval 0.205--0.209). Relative to it, the response is 0.06 with
+both loops reversed, and 0.18 and 0.83 with one loop reversed. It is not invariant, as order use
+would be, and it does not reverse, as a symmetric miscount would. The registered outcome is
+UNEXPLAINED (not invariant to loop reversal). The two W1 controls' responses also replicated and
+reversed sign when both loops were reversed, so they are not order use in the oracle's
+direction. They fit an order-dependent miscount or an order-free effect of token identity, which
+W1 cannot separate. Fresh controls were stable, and removing matched or coincident pairs changed
+no outcome.
+\textbf{Consequences.} The designed-placebo comparison may be reused as a behavioural contrast
+only with explicit empirical controls; it must not be described as automatically excluding every
+predictor trained on a commutative process. The crossing-order verdict stays INCONCLUSIVE.
+
+
 % =========================================================================================
 \section{Engineering and process}\label{sec:engineering}
 
@@ -1285,8 +1410,9 @@ depend on the live environment (the pasted cell). Both led to added checks.
 % =========================================================================================
 \section{Compute}\label{sec:compute}
 Figure~\ref{fig:fig11_compute} summarises local compute from the store ledgers. Including every
-metered run (preflight test suites among them), the follow-up studies used about 17.6 CPU-hours
-in the ledgers shown; the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
+metered run (preflight test suites among them), the follow-up studies used about 99.8 CPU-hours
+in the ledgers shown, 79.6 of them in the trained crossing-order study's local ingest and
+evaluation (its training ran on a cloud GPU); the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
 (13--21 minutes each). The largest items are the two training studies (learning speed, six models;
 orientability, two models), the exact dynamic programme of the crossing-order oracle study, and
 the trained crossing-order study.
@@ -1304,17 +1430,25 @@ attempts). Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
 % =========================================================================================
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
+\item \textbf{Training pilot in the selected world} (running since 27 October). Two small models
+are trained in the wider-emission world with the pilot's recipe; only the emission width changes.
+Before any training, known cases check the recipe, the oracle and the law bound. The first
+known-case run stopped on a one-line code defect before any data were drawn; the defect was
+corrected under the two-per-defect rule and the tests and the synthetic dry run were repeated.
+The pilot will report whether the models learn, whether the circle forms, and whether a full test
+would be large enough, and if so its size and cost. The pilot models never enter a full test,
+and their numbers shape it only through registered rules. It runs outside the 12 CPU-hour line,
+with a forecast of about 1.9 CPU-hours.
+\item \textbf{The three parallel studies without training} are complete: the world sweep
+selected a world (\S\ref{sec:hws}); the control's placebo response remains unexplained
+(\S\ref{sec:x6zc}); the circle code is dominant and the method passes the decoy test
+(\S\ref{sec:c2nd}). Together they used 9.5 of the 12 CPU-hours set aside for them.
 \item \textbf{Readout attribution of the circle code} is decided: USED in all three models, with
-the layer-2 and oracle-phase codes also USED (\S\ref{sec:causal}). No study is running. My
-next-round plan (adopted 26 October; budget still open) starts with steps that need no
-training: a check of the crossing-order control's placebo response on the existing models, and
-an oracle-only sweep of worlds for the history-origin question. Each step still needs its own
-planning, freeze and authorisation.
+the layer-2 and oracle-phase codes also USED (\S\ref{sec:causal}).
 \item \textbf{Crossing order in trained models} is decided: INCONCLUSIVE
-(\S\ref{sec:x6s1results}). Natural follow-ups for me to plan include the ZC-s1 designed-placebo
-response, the gap between the observed order sensitivity ($\tilde\beta\approx0.06$) and the
-registered size ($0.25$) under longer training or larger models, and the missing retrain
-mechanism.
+(\S\ref{sec:x6s1results}). A natural follow-up is the gap between the observed order sensitivity
+($\tilde\beta\approx0.06$) and the registered size ($0.25$) under longer training or larger
+models.
 \item \textbf{Other options} recorded by the coordinator and by me include an independent
 replication of the pilot's O models, a speed-matched successor of the learning-speed study, a
 redesign of the orientability learnability test, a follow-up on the four-symbol margin and
@@ -1333,7 +1467,8 @@ more recent records.
 \item \textbf{One scoped causal claim.} The pilot evidence is representational, and the first two
 intervention designs stopped at gates. The one causal-use result concerns a single registered
 linear code, at one position and site, for one kind of counterfactual (an $x$-history rotation
-with the last symbol kept); it excludes neither other encodings nor other carriers.
+with the last symbol kept); it excludes neither other encodings nor other carriers. Its necessity
+follow-up is tied to it by an exact identity, and its decoy test covers only constructed decoys.
 \item \textbf{One toy setting.} One small architecture and recipe, synthetic HMMs on tiny lattices,
 a few seeds (three in the pilot, at most four per arm). Nothing is claimed about natural language
 or large models, other architectures, or populations of seeds.
@@ -1345,7 +1480,8 @@ guarantee.
 $S$; four one-factor sensitivity variants. Circular coordinates use one cocycle and can give
 disconnected points arbitrary offsets.
 \item \textbf{Exposure.} The circular audit, the counterfactual-forcing study, the four-symbol
-origin test and the readout-attribution study reuse the three pilot models, whose test panels
+origin test, the readout-attribution study and its necessity and decoy follow-up reuse the
+three pilot models, whose test panels
 had been unblinded; they draw fresh histories protected by registries, but the models are not
 fresh.
 \item \textbf{Margins and controls.} The four-symbol margin sits above the oracle's own value; the
@@ -1367,7 +1503,8 @@ symbol permits. Where it comes from is only partly known: the last-symbol embedd
 it, beliefs converge after a few symbols, and the beyond-four-symbol covariance of the learned phase
 is below a margin that even the oracle's phase does not reach. The model does use it: at the
 final readout, the registered circle code carries about 85\% of the model's response to a change
-in the $x$-history, in all three models. The follow-up programme mostly produced well-defined stops rather than findings, and the
+in the $x$-history, in all three models; it is the main carrier but not the only one, and on
+decoys whose readout ignores the code the same method says ``not used''. The follow-up programme mostly produced well-defined stops rather than findings, and the
 stops taught something about one-sided controls, nonlinear encodings, non-specific interventions,
 fragile chart rules and margins set without oracle checks. The trained crossing-order study was
 designed to avoid each of these failure modes on a process where order provably matters. It
@@ -1375,7 +1512,9 @@ reached its decision with every validity gate passed and found weak but reproduc
 order sensitivity in every seed, far below the registered effect size, so its preregistered
 verdict is INCONCLUSIVE and not a claim of order use. The readout-attribution study answered
 the use question with an exact, linear attribution at the model's readout, after the two
-earlier intervention designs had failed for reasons of method.
+earlier intervention designs had failed for reasons of method. For the origin question, an oracle
+sweep found a nearby world whose beyond-four signal is 4.7 times the registered margin. A
+training pilot there will show whether the question can be asked again with room to answer it.
 
 % =========================================================================================
 \clearpage
@@ -1454,6 +1593,11 @@ C2 IMPL & 10-22 & gate 0; freeze & complete (FREEZE 24ff24cc) & jobs 0100--0106\
 C2 S1 & 10-22, 10-26 & release check; G0 (vii); H1--H5 & attempt 1 refused; attempts 2, 3 FAIL\_TECHNICAL (each corrected); attempt 4 all PASS & jobs 0107--0111\\
 C2 S2--S4 & 10-26 & M0, C0c, F1; C0v, L1, R1, N2, SURVIVAL; X1, V3, Y1, Y2, P1 & all PASS; N\_test 4096 & jobs 0112--0114\\
 C2 S5 & 10-26 & T-PRE, RESP-SPEC, NUM, ENDPOINT & R USED; M UPSTREAM\_USED; S$^*$ X\_PHASE\_USED (3/3 models) & job 0115\\
+HWS S0 & 10-26 & G0; known cases & attempt 1 FAIL\_TECHNICAL (scope); attempt 2 KC9 FAIL (owner decision); attempt 3 PASS & jobs 0127, 0130, 0135\\
+HWS S1--S3 & 10-26 & STAGE\_S1, STAGE\_S2, STAGE\_S3 & HWS\_SELECTED/T0 & job 0136\\
+X6ZC A--C & 10-26, 10-27 & known cases; bit-exact reproduction; loop-sign variants & P: UNEXPLAINED/\allowbreak NOT\_NA\_INVARIANT; W1 cells: ZC\_NOT\_COMMUTATIVE/\allowbreak NOT\_NA\_DIRECTION & jobs 0149, 0153, 0155\\
+C2ND S1--S5 & 10-27 & REG2, T-PRE, RESP-SPEC, NUM & N-R CODE\_DOMINANT; D DECOY\_NOT\_USED; N-M CODE\_DOMINANT\_M (3/3 models) & jobs 0163--0167\\
+HWS stage B KB & 10-27 & FREEZE, AUTH, SCHED, KB0 & attempt 1 FAIL\_TECHNICAL (code defect; corrected) & job 0168\\
 \bottomrule
 \end{longtable}
 \normalsize

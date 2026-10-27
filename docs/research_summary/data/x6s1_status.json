@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-21T10:09:57Z",
+ "generated_utc": "2026-10-27T23:20:25Z",
  "source": "x6-stage1-store: GATES.jsonl (gate,status,utc only), STAGES.jsonl (stage,stop,utc), superseded/*/GATES.jsonl (gate,status,utc), cpu_ledger.json (accounting only), stages/E0/frozen_C*.json (bundle_id, steps, K only)",
  "gates": [
   {

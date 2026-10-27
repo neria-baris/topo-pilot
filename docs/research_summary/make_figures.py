@@ -95,6 +95,9 @@ LEDGERS = [  # (label, store directory, note) -- cumulative_cpu_s of each cpu_le
     ("oracle suffix profile", "x4-oracle-profile-store-0014", "oracle"),
     ("beyond 8 symbols (cohort)", "x4-history-feas-store", "oracle"),
     ("chart diagnostic", "chart-diag-store-0023", "model"),
+    ("world sweep, oracle", "hws-store", "oracle"),
+    ("control placebo check", "x6zc-store", "model"),
+    ("necessity and decoy", "c2nd-store", "model"),
 ]
 
 
@@ -185,6 +188,9 @@ EVENTS = [
     ("10-20", 5, "crossing order (trained):\n12 models admitted", "pass", "agent-handoff/jobs/0094/review.md"),
     ("10-21", 5, "crossing order (trained):\nINCONCLUSIVE", "inc", "agent-handoff/jobs/0099/review.md"),
     ("10-26", 2, "readout attribution:\nUSED (3/3 models)", "pass", "agent-handoff/jobs/0115/review.md"),
+    ("10-26", 1, "world sweep (oracle):\nworld SELECTED", "pass", "agent-handoff/jobs/0136/review.md"),
+    ("10-27", 5, "control placebo check:\nUNEXPLAINED", "desc", "agent-handoff/jobs/0155/review.md"),
+    ("10-27", 2, "necessity: code dominant;\ndecoy NOT_USED", "pass", "agent-handoff/jobs/0167/review.md"),
 ]
 LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
              ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]

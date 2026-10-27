@@ -87,8 +87,11 @@ def stage_b(store=zc.STORE) -> int:
                 "e": zs.k5_readout_index(p1, D, F), "g": zs.k5_two_loads(p1, p2, tok[s], t[s]),
                 "h": zs.k5_scalar_vector(p1, tok[s], t[s]), "i": zs.k5_permutation(Tm),
                 "j": zs.k5_bos(p1, tok[s], t[s])}
-    bad = {x["status"] for r in k5.values() for x in r.values()} - {"PASS", "NUMERIC_DRIFT"}
-    G["K5"] = {"status": "DEFECT_CANDIDATE" if bad else "PASS", "results": k5}
+    ro = {(f"init-s1|{F}", "e") for F in ("W2", "W1")}  # R-0134-1: recorded, report-only (F-4)
+    bad = {x["status"] for k, r in k5.items() for i, x in r.items() if (k, i) not in ro} - {
+        "PASS", "NUMERIC_DRIFT"}
+    G["K5"] = {"status": "DEFECT_CANDIDATE" if bad else "PASS", "results": k5,
+               "report_only": sorted(f"{k}|{i}" for k, i in ro)}
     for m, F in ((m, F) for m in zc.FOCAL for F in ("W2", "W1")):  # K1 of sym(m) (§6, B2 (f))
         sa, sb = zc.sym_arrays(T[m][F]["p_a"], T[m][F]["p_b"])
         sym[f"{m}|{F}"] = zc.k1_check(_terms(sa, sb, D, F, cache))

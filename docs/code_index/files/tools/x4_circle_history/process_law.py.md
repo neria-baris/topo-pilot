@@ -48,7 +48,9 @@
 ## Imported by
 
 - [tests/circle_history/test_process_law.py](../../tests/circle_history/test_process_law.py.md) (line 31, import)
+- [tests/hws/test_b_exact.py](../../tests/hws/test_b_exact.py.md) (line 29, import)
 - [tests/k4b/test_a_transport_bound.py](../../tests/k4b/test_a_transport_bound.py.md) (line 28, import)
+- [tools/hws/hws_exact.py](../hws/hws_exact.py.md) (line 24, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 159, import)
 - [tools/x4_circle_history/runner.py](runner.py.md) (line 115, import)
 

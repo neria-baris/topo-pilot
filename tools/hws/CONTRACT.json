@@ -1,0 +1,1367 @@
+{
+ "protocol": "HWS-DESIGN-v1 (design freeze candidate; becomes HWS-FROZEN-v1 at the execution freeze)",
+ "protocol_file": "tools/hws/PROTOCOL_HWS_v1.md",
+ "protocol_sha256": "d96906097ab8b6ec464a2dbd4b477353b2950aa58e5b5995b7b6086ce68963a9",
+ "contract_job": "0118",
+ "status": "CONTRACT (written before any module code; the protocol wins on conflict)",
+ "precedence": [
+  "tools/hws/PROTOCOL_HWS_v1.md",
+  "tools/hws/CONTRACT.json",
+  "tools/hws/API.md",
+  "tools/hws/TEST_PLAN.md"
+ ],
+ "number_format": "Exact values are strings parsed by fractions.Fraction(str); integers are JSON ints; floats marked report_only are desk values and never gate anything",
+ "authority": {
+  "j1_auth": "owner addendum 29 (standing AUTH for J1 and S0-S3 while combined HWS+X6ZC+C2ND CPU < 12 CPU-h); S0-S3 still need the final execution freeze and the RC-4 sequence (protocol 0.1)",
+  "codex": "frozen (owner addendum 28)",
+  "owner_questions_15": "answered with the registered defaults (Q1-Q6)",
+  "design_base_commit": "0a67c5a77d57a6ea325b25360d1b8b09e2e55904",
+  "worktree_base_commit": "1d629bcb17dc6a408d9ae7fe8bbd105c048af9f2",
+  "branch": "hws-impl",
+  "h_exec": null,
+  "h_exec_rule": "pinned at the final execution freeze (FREEZE.json); reuse_sha256 re-checked there"
+ },
+ "process": {
+  "family": "cylinder",
+  "H": 12,
+  "L": 32,
+  "metric": "flat",
+  "emission_family": "overlap",
+  "transition_kind": "max_degree_lazy_walk",
+  "periodic_axis": 0,
+  "n_axial": 6,
+  "state_id": "x*12 + y",
+  "centre_index": "j = 6*i + b, centre (0.5 + 2i, 0.5 + 2b), i < W/2, b < 6",
+  "canonical_symbol": "v = 6*g + b (g = circular label of the anchored map, b = axial index)",
+  "features": "(cos, sin)(2.0*np.pi*x/W), x = coords[:, 0]",
+  "w12_emission_seed": 1729,
+  "w12_emission_rule": "OverlapGaussian().build(world, EmissionConfig('overlap', 36, sigma, 'grid'), SeedTree(1729)), then oracle_profile.canonical_emission(spec.E, spec.symbol_perm)",
+  "other_W_emission_rule": "softmax_j(-d(z, c_j)^2 / (2 sigma^2)) with process._geometry.point_distances(world, centres, 'flat') and scipy.special.logsumexp, mirroring emission._overlap_core"
+ },
+ "w0": {
+  "W": 12,
+  "q": 1,
+  "sigma": "5/4",
+  "p": "1/5",
+  "key": "W12-q1-s1.25-p0.2",
+  "tier": 0
+ },
+ "known_zero": {
+  "U": {
+   "key": "U-W12",
+   "mode": "unique",
+   "V": 144,
+   "W": 12,
+   "p": "1/5",
+   "seed": 1729,
+   "n_axial": 12
+  },
+  "N": {
+   "key": "N-W12",
+   "mode": "identical",
+   "V": 36,
+   "W": 12,
+   "p": "1/5",
+   "seed": 1729,
+   "n_axial": 6
+  }
+ },
+ "levels": {
+  "p": [
+   "1/5",
+   "1/2",
+   "3/4",
+   "7/8",
+   "15/16"
+  ],
+  "sigma": [
+   "5/4",
+   "3/2",
+   "2",
+   "5/2",
+   "3"
+  ],
+  "q": [
+   1,
+   2,
+   3
+  ],
+  "W": [
+   8,
+   12,
+   16
+  ],
+  "x1": {
+   "p": [
+    "31/32"
+   ],
+   "sigma": [
+    "7/2",
+    "4"
+   ]
+  },
+  "s2_p_edges": [
+   [
+    "1/5",
+    "1/2",
+    "3/8"
+   ],
+   [
+    "1/2",
+    "3/4",
+    "2/3"
+   ],
+   [
+    "3/4",
+    "7/8",
+    "5/6"
+   ],
+   [
+    "7/8",
+    "15/16",
+    "11/12"
+   ],
+   [
+    "15/16",
+    "31/32",
+    "23/24"
+   ]
+  ],
+  "s2_sigma_edges": [
+   [
+    "5/4",
+    "3/2",
+    "11/8"
+   ],
+   [
+    "3/2",
+    "2",
+    "7/4"
+   ],
+   [
+    "2",
+    "5/2",
+    "9/4"
+   ],
+   [
+    "5/2",
+    "3",
+    "11/4"
+   ],
+   [
+    "3",
+    "7/2",
+    "13/4"
+   ],
+   [
+    "7/2",
+    "4",
+    "15/4"
+   ]
+  ],
+  "index": {
+   "p": {
+    "1/5": "0",
+    "3/8": "1/2",
+    "1/2": "1",
+    "2/3": "3/2",
+    "3/4": "2",
+    "5/6": "5/2",
+    "7/8": "3",
+    "11/12": "7/2",
+    "15/16": "4",
+    "23/24": "9/2",
+    "31/32": "5"
+   },
+   "sigma": {
+    "5/4": "0",
+    "11/8": "1/2",
+    "3/2": "1",
+    "7/4": "3/2",
+    "2": "2",
+    "9/4": "5/2",
+    "5/2": "3",
+    "11/4": "7/2",
+    "3": "4",
+    "13/4": "9/2",
+    "7/2": "5",
+    "15/4": "11/2",
+    "4": "6"
+   },
+   "q": {
+    "1": "0",
+    "2": "1",
+    "3": "2"
+   },
+   "W": {
+    "8": "1",
+    "12": "0",
+    "16": "1"
+   }
+  },
+  "key_format": "W{W}-q{q}-s{float(sigma)!r}-p{float(p)!r}",
+  "key_order": "Python str comparison of the key (API.md choice 3)",
+  "config_values": "TransitionConfig(p_stay=float(p)); sigma used as float(sigma)"
+ },
+ "grid": {
+  "n_worlds": 225,
+  "enumeration_order": "W ascending, then q, sigma, p ascending",
+  "expected_symmetric_cells": [
+   [
+    8,
+    2
+   ],
+   [
+    8,
+    3
+   ],
+   [
+    12,
+    3
+   ]
+  ],
+  "expected_symmetric_worlds": 75,
+  "max_sampled_s1": 150,
+  "eligible_cells_expected": [
+   [
+    8,
+    1
+   ],
+   [
+    12,
+    1
+   ],
+   [
+    12,
+    2
+   ],
+   [
+    16,
+    1
+   ],
+   [
+    16,
+    2
+   ],
+   [
+    16,
+    3
+   ]
+  ],
+  "x1_counts_max": {
+   "p_only": 30,
+   "sigma_only": 60,
+   "both": 102
+  },
+  "s2_cap": 40
+ },
+ "alias": {
+  "rule": "m(W,q) = ceil((W/2 - 1)/q); g(0) = 0; g(i) = 1 + ((i - 1) mod m) for i >= 1; n_A = 1 + m; V' = 6*n_A",
+  "merge": "E'[:, 6g + b] = sum over i with g(i) = g of E_centres[:, 6i + b] (summed, never averaged or renormalised)",
+  "maps": {
+   "6": {
+    "1": {
+     "g": [
+      0,
+      1,
+      2
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1
+      ],
+      [
+       2
+      ]
+     ],
+     "n_A": 3,
+     "V_prime": 18,
+     "centres_per_label": [
+      1,
+      1,
+      1
+     ]
+    },
+    "2": {
+     "g": [
+      0,
+      1,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "n_A": 2,
+     "V_prime": 12,
+     "centres_per_label": [
+      1,
+      2
+     ]
+    },
+    "3": {
+     "g": [
+      0,
+      1,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       2
+      ]
+     ],
+     "n_A": 2,
+     "V_prime": 12,
+     "centres_per_label": [
+      1,
+      2
+     ]
+    }
+   },
+   "8": {
+    "1": {
+     "g": [
+      0,
+      1,
+      2,
+      3
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1
+      ],
+      [
+       2
+      ],
+      [
+       3
+      ]
+     ],
+     "n_A": 4,
+     "V_prime": 24,
+     "centres_per_label": [
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    "2": {
+     "g": [
+      0,
+      1,
+      2,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       3
+      ],
+      [
+       2
+      ]
+     ],
+     "n_A": 3,
+     "V_prime": 18,
+     "centres_per_label": [
+      1,
+      2,
+      1
+     ]
+    },
+    "3": {
+     "g": [
+      0,
+      1,
+      1,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       2,
+       3
+      ]
+     ],
+     "n_A": 2,
+     "V_prime": 12,
+     "centres_per_label": [
+      1,
+      3
+     ]
+    }
+   },
+   "12": {
+    "1": {
+     "g": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1
+      ],
+      [
+       2
+      ],
+      [
+       3
+      ],
+      [
+       4
+      ],
+      [
+       5
+      ]
+     ],
+     "n_A": 6,
+     "V_prime": 36,
+     "centres_per_label": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    "2": {
+     "g": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      2
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       4
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3
+      ]
+     ],
+     "n_A": 4,
+     "V_prime": 24,
+     "centres_per_label": [
+      1,
+      2,
+      2,
+      1
+     ]
+    },
+    "3": {
+     "g": [
+      0,
+      1,
+      2,
+      1,
+      2,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       3,
+       5
+      ],
+      [
+       2,
+       4
+      ]
+     ],
+     "n_A": 3,
+     "V_prime": 18,
+     "centres_per_label": [
+      1,
+      3,
+      2
+     ]
+    }
+   },
+   "16": {
+    "1": {
+     "g": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1
+      ],
+      [
+       2
+      ],
+      [
+       3
+      ],
+      [
+       4
+      ],
+      [
+       5
+      ],
+      [
+       6
+      ],
+      [
+       7
+      ]
+     ],
+     "n_A": 8,
+     "V_prime": 48,
+     "centres_per_label": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    "2": {
+     "g": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      1,
+      2,
+      3
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       5
+      ],
+      [
+       2,
+       6
+      ],
+      [
+       3,
+       7
+      ],
+      [
+       4
+      ]
+     ],
+     "n_A": 5,
+     "V_prime": 30,
+     "centres_per_label": [
+      1,
+      2,
+      2,
+      2,
+      1
+     ]
+    },
+    "3": {
+     "g": [
+      0,
+      1,
+      2,
+      3,
+      1,
+      2,
+      3,
+      1
+     ],
+     "groups": [
+      [
+       0
+      ],
+      [
+       1,
+       4,
+       7
+      ],
+      [
+       2,
+       5
+      ],
+      [
+       3,
+       6
+      ]
+     ],
+     "n_A": 4,
+     "V_prime": 24,
+     "centres_per_label": [
+      1,
+      3,
+      2,
+      2
+     ]
+    }
+   }
+  },
+  "unanchored_control": "g(i) = i mod (W/(2q)) where (W/2) mod q == 0; dry-run negative control only (DR3)"
+ },
+ "tiers": {
+  "0": "W = 12 and q = 1",
+  "1": "W = 12 and q = 2",
+  "2": "W in {8, 16}"
+ },
+ "thresholds": {
+  "C1_D4": "3/100",
+  "C2_GC": "1/10",
+  "C3_G4_min": "39/5000",
+  "C3_rule": "g4* = max(G4hat(w0), 0.0078) (float64)",
+  "C4_G4A": "g4A* = G4Ahat(w0), frozen in the S0 record",
+  "margin_M": "1/100",
+  "below_3x_D4": "1/50",
+  "fallback_Uw_D4": "1/50",
+  "comparison": "float64 bound >= float(threshold); equality passes",
+  "E2_factor": "1/2",
+  "E2_rule": "p(v) >= (1/2)*|v|/V, V = 3W centres, |v| = centres merged into v; exact Fraction comparison of Fraction(float(p(v)))",
+  "E3_tol": 1e-09,
+  "E4_tau_D2a": "1/2000000",
+  "E4_alphabet": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "E4_union_bound_report_only": {
+   "rows": 18432,
+   "product": "144/15625"
+  },
+  "E5": {
+   "norm_min": "1/5",
+   "norm_fraction": "19/20",
+   "bins": 12,
+   "bin_min_rows": "n/64 (64*count >= n)",
+   "resultant_max": "3/10"
+  },
+  "E6": {
+   "normalisation_tol": 1e-12,
+   "pinsker_tol": 1e-12,
+   "bayes_cross_tol": 1e-12,
+   "decimal_gap": "1/10000000000"
+  },
+  "known_zero_tol": 1e-12,
+  "p_weak_norm": "1/10",
+  "p_gain_kl": "1/200",
+  "annotations": {
+   "ORACLE_POSITIVE_BELOW_C_MARGIN": "0 < L_w <= U_w < 1/100",
+   "ORACLE_POSITIVE_BELOW_SWEEP_REQUIREMENT": "L_w > 0 and U_w < 3/100"
+  }
+ },
+ "z": {
+  "method": "statistics.NormalDist().inv_cdf(float(1 - alpha)), alpha the exact Fraction below",
+  "Z1": {
+   "alpha": "1/100",
+   "use": "L1/U1 screening",
+   "report_only": 2.3263478740408408
+  },
+  "ZW": {
+   "alpha": "1/24640",
+   "formula": "0.05/(4*N_slots)",
+   "N_slots": 308,
+   "slots": {
+    "S1": 150,
+    "X1": 102,
+    "S2": 40,
+    "S3": 16
+   },
+   "report_only": 3.9409225546412605
+  },
+  "Z3": {
+   "alpha": "1/320",
+   "formula": "0.05/16",
+   "use": "L3 normal part",
+   "report_only": 2.734368786533176
+  },
+  "ZNULL": {
+   "alpha": "1/432600",
+   "formula": "0.01/(2*N_null)",
+   "N_null": 2163,
+   "N_null_formula": "7 * (1 + 292 + 16)",
+   "report_only": 4.581197554789401
+  },
+  "central95": {
+   "alpha_each_side": "1/40",
+   "use": "hand-off normal intervals",
+   "report_only": 1.9599639845400536
+  }
+ },
+ "bootstrap": {
+  "draws": 5000,
+  "seed_S0": 620101,
+  "seed_S3": 620103,
+  "alpha_f": "1/320",
+  "rank_alpha_f": 16,
+  "central_ranks": [
+   125,
+   4875
+  ],
+  "kernel": "c1_means.bootstrap_means(arrays, seed, 5000): one PCG64(seed) per world, one index vector per draw shared by every array",
+  "quantile": "c1_means.quantile_with_rank(values, Fraction)"
+ },
+ "stages": {
+  "S0": {
+   "n": 32768,
+   "n_known_zero": 4096,
+   "Ks": [
+    1,
+    2,
+    3,
+    4,
+    8,
+    16,
+    32
+   ],
+   "worlds": [
+    "W12-q1-s1.25-p0.2",
+    "U-W12",
+    "N-W12"
+   ]
+  },
+  "S1": {
+   "n": 4096,
+   "Ks": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "max_worlds": 150
+  },
+  "X1": {
+   "n": 4096,
+   "Ks": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "max_worlds": 102
+  },
+  "S2": {
+   "n": 4096,
+   "Ks": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+   ],
+   "max_worlds": 40
+  },
+  "S3": {
+   "n": 32768,
+   "Ks": [
+    1,
+    2,
+    4,
+    6,
+    8,
+    12,
+    16,
+    24,
+    32
+   ],
+   "max_finalists": 16
+  },
+  "NULLCHK": {
+   "n": "same n as the world-look that exceeded",
+   "Ks": "same Ks as that look"
+  },
+  "DRY": {
+   "tiny_rows": 20000,
+   "tiny": {
+    "W": 6,
+    "H": 2,
+    "n_axial": 1,
+    "sigma": "1",
+    "p": "1/2",
+    "L": 8,
+    "layout": {
+     "n_obs": 9,
+     "context": 8,
+     "analysis_position": 8
+    },
+    "Ks": [
+     1,
+     2,
+     4
+    ],
+    "n_histories": 6561
+   }
+  },
+  "primary_K": 4,
+  "kept_tokens": "canonical w1..w32 as contiguous uint8 [n, 32] (npz key canon32)"
+ },
+ "seeds": {
+  "history": {
+   "master": 0,
+   "name": "data",
+   "scope": [
+    "hws-v1",
+    "<stage>",
+    "<key>"
+   ]
+  },
+  "nullchk": {
+   "master": 0,
+   "name": "data",
+   "scope": [
+    "hws-v1",
+    "NULLCHK",
+    "<origin_stage>",
+    "<key>"
+   ]
+  },
+  "dry": {
+   "master": 0,
+   "name": "data",
+   "scope": [
+    "hws-v1",
+    "DRY",
+    "<case>"
+   ]
+  },
+  "prefix_perm": {
+   "master": 0,
+   "name": "hws-v1",
+   "scope": [
+    "prefix_perm",
+    "<key>"
+   ]
+  },
+  "bootstrap_S0": 620101,
+  "bootstrap_S3": 620103,
+  "g0_needles": [
+   "hws-v1",
+   "620101",
+   "620103"
+  ],
+  "g0_declaration_fragments": [
+   "/tools/hws/",
+   "/tests/hws/",
+   "/agent-handoff/",
+   "/hws-store/",
+   "/topo-scratch/hws-dry/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/tools/c2_nd/",
+   "/tests/c2_nd/",
+   "/tools/x6zc/",
+   "/tests/x6zc/"
+  ],
+  "g0_declaration_note": "API.md section 15 erratum E10: a G0 hit is hws_declaration iff its path, with backslashes as slashes, contains one of these fragments or starts with one of g0_hws_job_scratch (R-0118-5); every other hit is unclassified and fails closed",
+  "g0_hws_job_scratch": [
+   "X:/Downloads/topo-scratch/0118/",
+   "X:/Downloads/topo-scratch/0119a/",
+   "X:/Downloads/topo-scratch/0119b/",
+   "X:/Downloads/topo-scratch/0122/"
+  ],
+  "sample_calls_per_world_look": 1
+ },
+ "s0": {
+  "tolerance_rule": "|x - r| <= 4*s*sqrt(1/n0 + 1/n_r), s = the sweep's per-row sample SD (ddof=1) at w0, n0 = 32768",
+  "KC1": {
+   "artifact_root": "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts",
+   "manifest": "X:/Downloads/projects/topo-pilot/x4-history-feas-store/INPUT_IDENTITIES.json",
+   "manifest_sha256": "b0edd2e3d9d5049915d9a410d5f31816556876392ef627d172256888008a5d3d",
+   "manifest_sha256_source": "tools/x4_oracle_profile/config.json inputs_sha256['INPUT_IDENTITIES.json']",
+   "config_json": "tools/x4_oracle_profile/config.json",
+   "config_json_sha256": "624b3a90def9924e332f374bba68157389cb2d811a3fc788f2e9db5c9208d3be",
+   "schema_version": "1.0.0",
+   "producer_version_report_only": "84152ab27e91+dirty",
+   "artifacts": {
+    "WorldSpec/21feee1d8ee5422e": {
+     "config": {
+      "dims": [
+       12,
+       12
+      ],
+      "family": "cylinder",
+      "metric": "flat",
+      "params": {}
+     },
+     "parent_ids": [],
+     "seed_map": {},
+     "meta_sha256": "47684d3555934b2a7a71fd5469e38512bd331bb1318cfb63e9228bf3f99f53f5",
+     "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+     "extra_json_sha256_report_only": "d68fc4cef4bb799152271d817efe534ee347645953cc8a6d334051f0ca4199b9"
+    },
+    "TransitionSpec/e4dafc7b9785c172": {
+     "config": {
+      "kind": "max_degree_lazy_walk",
+      "p_stay": 0.2
+     },
+     "parent_ids": [
+      "21feee1d8ee5422e"
+     ],
+     "seed_map": {},
+     "meta_sha256": "c6062276385f9aa2147d2414b0e6d414b11b7a1c122d14124ccb49575f8141cf",
+     "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd",
+     "extra_json_sha256_report_only": "4a33d49ceb4dc76f444dca40a8ba0ece08c8c71c9be0e0637aef8f10a5af5139"
+    },
+    "EmissionSpec/3633ac27dab50cf4": {
+     "seed": 1729,
+     "config": {
+      "V": 36,
+      "center_strategy": "grid",
+      "metric": "flat",
+      "mode": "overlap",
+      "replicate": 1729,
+      "sigma": 1.25,
+      "source_mode": null,
+      "world_scope_master": 0
+     },
+     "parent_ids": [
+      "21feee1d8ee5422e"
+     ],
+     "seed_map": {
+      "symbol_names/cylinder/1729": 2215326671568306386,
+      "world_scope/centers/cylinder": 4772093464253776384
+     },
+     "meta_sha256": "aaf578a3e5049bc14d118723a6a906c0ca563a8a457acfc4ae670833efd2fdcb",
+     "payload_sha256": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb",
+     "extra_json_sha256_report_only": "cfb1aad41bd960fd50b1e1ab2f3454385861feb811900ba5ece2b04c054ffad7"
+    },
+    "EmissionSpec/97838b9e13a26f74": {
+     "seed": 2718,
+     "config": {
+      "V": 36,
+      "center_strategy": "grid",
+      "metric": "flat",
+      "mode": "overlap",
+      "replicate": 2718,
+      "sigma": 1.25,
+      "source_mode": null,
+      "world_scope_master": 0
+     },
+     "parent_ids": [
+      "21feee1d8ee5422e"
+     ],
+     "seed_map": {
+      "symbol_names/cylinder/2718": 8189439934560036119,
+      "world_scope/centers/cylinder": 4772093464253776384
+     },
+     "meta_sha256": "33db4aa16416cdcadfcca63f05904c6efcbe7daf92e580716108d17acc512ec2",
+     "payload_sha256": "88203323334704db45ecc104af54f7e21f5225ad1a28fc2d08fc7ab8d75f5874",
+     "extra_json_sha256_report_only": "6a3094ce8d838869cb4de583a9efd76119063910ffa1e8e305e70a99a58e0ccb"
+    },
+    "EmissionSpec/8c29c329c197c79e": {
+     "seed": 3141,
+     "config": {
+      "V": 36,
+      "center_strategy": "grid",
+      "metric": "flat",
+      "mode": "overlap",
+      "replicate": 3141,
+      "sigma": 1.25,
+      "source_mode": null,
+      "world_scope_master": 0
+     },
+     "parent_ids": [
+      "21feee1d8ee5422e"
+     ],
+     "seed_map": {
+      "symbol_names/cylinder/3141": 7880499412512128204,
+      "world_scope/centers/cylinder": 4772093464253776384
+     },
+     "meta_sha256": "6f89f27bcfefcdc102794c52feb3ef9694334b21e333df21fc73701a62aa776c",
+     "payload_sha256": "ccd97a63ec03bf1287ef0098fe84ad305e4e810054cd4fa7bf1c025e4a74a84f",
+     "extra_json_sha256_report_only": "7a2acf48a9a5e25063799ff3c2c909e4f6d0fe1b0c99cfe55471f019c7829661"
+    }
+   },
+   "source": "meta.json and extra.json of each artifact and INPUT_IDENTITIES.json (JSON reads only; values above copied from those files by job 0118; no payload.npz opened or hashed)",
+   "never_called": [
+    "inputs.load_artifact",
+    "inputs.load_process",
+    "k4b_data.load_process",
+    "inputs.verify_input_hashes"
+   ],
+   "decision": "exact equality of ids, configs (canonical_json), seed maps and checksums"
+  },
+  "KC2": {
+   "quantity": "min_w p(w), p = pi @ E",
+   "reference": "0.0268",
+   "source": "PREREGISTRATION.md:49",
+   "tolerance": "5e-5",
+   "metadata_report_only": {
+    "value": 0.026824516508227564,
+    "source": "EmissionSpec/3633ac27dab50cf4/extra.json diagnostics.p_w (min)"
+   }
+  },
+  "KC3": {
+   "quantity": "sum_w p(w) H(r_w) (exact)",
+   "reference": "3.140",
+   "source": "PREREGISTRATION.md:49",
+   "tolerance": "max(5e-4, 4*s/sqrt(4096)), s = sample SD (ddof=1) of the per-row H(b_1) over the S0 w0 rows",
+   "metadata_report_only": {
+    "value": 3.1411294942205448,
+    "derivation": "ln 144 + H_W_given_Z - H_W from EmissionSpec/3633ac27dab50cf4/extra.json diagnostics (1.754459206392354, 3.5831430117478096)"
+   }
+  },
+  "KC4": {
+   "quantity": "B_K = E||r_K||",
+   "n_r": 4096,
+   "source": "x4-oracle-profile-store-0014/profile/PROFILE_TABLE.json (sha256 9e9ac9d9455b1a2c87ae9b809af11928bc285fbe2aee5ce91774a4fda975f9ac), stat B",
+   "pooling": "(3072*calibration + 1024*validation)/4096",
+   "components": {
+    "1": {
+     "calibration": 0.3690992788605545,
+     "validation": 0.3765884926852466
+    },
+    "2": {
+     "calibration": 0.1984503440006852,
+     "validation": 0.19510590543259038
+    },
+    "4": {
+     "calibration": 0.0670336967823603,
+     "validation": 0.06965956159592347
+    },
+    "8": {
+     "calibration": 0.009247019221213902,
+     "validation": 0.009289932321264321
+    },
+    "16": {
+     "calibration": 0.00017788556093513297,
+     "validation": 0.00018132638260941558
+    }
+   },
+   "reference": {
+    "1": 0.3709715823167275,
+    "2": 0.1976142343586615,
+    "4": 0.06769016298575109,
+    "8": 0.009257747496226506,
+    "16": 0.00017874576635370362
+   },
+   "design_rounded_report_only": {
+    "1": 0.37097,
+    "2": 0.19761,
+    "4": 0.06769,
+    "8": 0.009258,
+    "16": 0.00017875
+   }
+  },
+  "KC5": {
+   "quantity": "B4",
+   "reference": 0.06888491644959525,
+   "n_r": 3072,
+   "source": "k4b-store/stages/S8/RESULT.json fresh_B4.point (sha256 1571b08b316e39062fab775113731865350c818bb42e1abf173d5b90ee61be44); jobs/0057/report.md:41 shows 0.0688849"
+  },
+  "KC6": {
+   "quantity": "D4",
+   "reference": 0.008542125342031944,
+   "n_r": 3072,
+   "source": "k4b-store/stages/S8/RESULT.json controls.delta4_orc.all.point (same file); jobs/0057/report.md:81 shows 0.00854213"
+  },
+  "KC7": {
+   "quantity": "G_C",
+   "reference": "0.2649",
+   "n_r": 4096,
+   "source": "reports/E2/summary.md:7-14 (cylinder-O rows)",
+   "n_r_confirmation": "artifacts/OracleOutputs/{efebc05165d4f7bc,d9c6defcc7a9d803,1731629d61077e96}/meta.json shapes q and q_last = [4096, 36] (one per E4 emission; meta.json only, no array opened); PREREGISTRATION.md:219-221 n_test 4096 = 8 x 512"
+  },
+  "KC8": {
+   "nulls": [
+    "m4_phase",
+    "sha_suffix",
+    "orth_1",
+    "orth_2",
+    "orth_4",
+    "orth_8",
+    "orth_16"
+   ],
+   "rule": "study-wide null rule (z_null) with one NULLCHK re-check; a reproduced exceedance at S0 is FAIL_TECHNICAL/KNOWN_CASE"
+  },
+  "KC9": {
+   "Ks": [
+    1,
+    2,
+    3
+   ],
+   "suffixes": 46656,
+   "quantities": [
+    "E||m_K||^2",
+    "E H(q_K)"
+   ],
+   "tolerance": "max(4*SE of the S0 MC mean, kc9_float_floor) per comparison (D-0130-1, owner addendum 30)",
+   "kc9_float_floor": "1/1000000000000"
+  },
+  "KC10": {
+   "decimal_rows": 16,
+   "decimal_Ks": [
+    1,
+    2,
+    4,
+    32
+   ],
+   "gap": "1/10000000000",
+   "bayes_rows": 1024,
+   "bayes_tol": 1e-12,
+   "rows": "the lowest row indices of the S0 w0 sample"
+  },
+  "KC11": {
+   "worlds": [
+    "U-W12",
+    "N-W12"
+   ],
+   "n": 4096,
+   "tol": 1e-12,
+   "quantities": [
+    "D_K",
+    "B_K",
+    "G_K",
+    "I_Z(4)",
+    "G4A",
+    "the seven nulls"
+   ]
+  },
+  "KC12": {
+   "rule": "w0 must FAIL C1 on S0 data: U_w(D4) < 3/100"
+  },
+  "KC13": "report only: KL-row vs entropy-difference estimates of G4, G4A, I_Z(4) (difference and SE)",
+  "KC14": "report only: p_D2a(w0) and the Pinsker violation count",
+  "frozen_outputs": [
+   "g4_star",
+   "g4A_star",
+   "G4hat_w0",
+   "G4Ahat_w0",
+   "per_row_sd_w0",
+   "s0_store_sha256"
+  ]
+ },
+ "cpu": {
+  "policy": "MEASURE_ONLY; never stops a run (--max-cpu inf --max-wall inf)",
+  "reference": {
+   "job": "0014",
+   "profile_cpu_s": "287/100",
+   "source": "jobs/0014/report.md:254"
+  },
+  "rates_s": {
+   "screening": {
+    "8": 4,
+    "12": 8,
+    "16": 13
+   },
+   "S3": {
+    "8": 70,
+    "12_tier0": 190,
+    "12_tier1": 160,
+    "16": 235
+   }
+  },
+  "S0_forecast_s": 360,
+  "J1_forecast_s": 540,
+  "J1_trigger_s": 1620,
+  "multiplier": 3,
+  "triggers": [
+   "per-stage: stage measured CPU > 3 * stage forecast",
+   "cumulative: cumulative study CPU > 3 * cumulative forecast through the end of the current stage"
+  ],
+  "checked_at": "every world boundary and every stage boundary",
+  "maximal_forecasts_report_only": {
+   "S1": 1475,
+   "X1": 1003,
+   "S2": 360,
+   "S3": 3200,
+   "total_no_x1": 5395,
+   "total_x1": 6398
+  }
+ },
+ "resources": {
+  "memory_cap_bytes": 8589934592,
+  "output_cap_bytes": 4294967296,
+  "threads": 1,
+  "max_cpu_flag": "inf",
+  "max_wall_flag": "inf",
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "temp": "<store>/tmp-<job> (k4b_meter_bind.TEMP_ROOT rebound to the store)",
+  "store": "X:/Downloads/projects/topo-pilot/hws-store",
+  "dry_store": "X:/Downloads/topo-scratch/hws-dry",
+  "pytest_basetemp": "X:/Downloads/topo-scratch/<job>/pytest (outside the project root)"
+ },
+ "store_layout": [
+  "FREEZE.json",
+  "GATES.jsonl",
+  "STAGES.jsonl",
+  "stages/<S>/",
+  "stages/<S>/worlds/<key>.json",
+  "worlds/<key>.json",
+  "hist/<stage>/<key>.npz",
+  "hist/NULLCHK/<origin_stage>/<key>.npz",
+  "SELECTION.json",
+  "superseded/",
+  "logs/",
+  "cpu_ledger.json"
+ ],
+ "modules": {
+  "hws_worlds.py": 240,
+  "hws_oracle.py": 230,
+  "hws_exact.py": 220,
+  "hws_stats.py": 150,
+  "hws_select.py": 250,
+  "hws_driver.py": 340,
+  "hws_meter_bind.py": 90,
+  "max_lines": 400
+ },
+ "tests": {
+  "dir": "tests/hws",
+  "author_A": "test_a_*.py",
+  "author_B": "test_b_*.py",
+  "max_lines": 400,
+  "formatter": "never run over tests/hws"
+ },
+ "outcomes": [
+  "FAIL_TECHNICAL/<reason>",
+  "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+  "HWS_SELECTED/T0",
+  "HWS_SELECTED/T1",
+  "HWS_SELECTED/T2",
+  "HWS_BELOW_3X",
+  "HWS_NO_WORLD_CONFIRMED",
+  "HWS_NO_SUITABLE_WORLD/HEADROOM",
+  "HWS_NO_SUITABLE_WORLD/FILTER"
+ ],
+ "classes": [
+  "INELIGIBLE/E1",
+  "INELIGIBLE/E2",
+  "INELIGIBLE/E3",
+  "INELIGIBLE/E4",
+  "INELIGIBLE/E5",
+  "EXCLUDED/C1",
+  "EXCLUDED/C2",
+  "EXCLUDED/C3",
+  "EXCLUDED/C4",
+  "CANDIDATE/CONFIDENT",
+  "CANDIDATE/POSSIBLE",
+  "CANDIDATE/MARGINAL"
+ ],
+ "licences": {
+  "HWS_SELECTED": "In world w* = ({W}, {q}, {sigma}, {p}) on a 12-high cylinder, under its documented law, on 32,768 fresh oracle-only histories: the phase-only oracle comparator D4 (the ideal belief-phase coordinate's covariance with r4 = m32 - m4, in the units of the K4b measure) has a one-sided lower bound {L3_D4} >= 0.03, 3x the K4b margin; the context gain G_C has lower bound {L3_GC} >= 0.10 nats; the beyond-four predictive gain G4 has lower bound {L3_G4} >= g4* = {g4_star}, and its circular-symbol part G4^A has lower bound {L3_G4A} >= g4A* = {g4A_star}. These are nominal bounds at alpha = 0.05/16. The world is the first qualifier in the frozen order (confidence class, then minimal departure). It does not license: (1) that any model learns it, captures any share of D4 or passes a learning gate; (2) that stage C will reach SUPPORT; (3) that D4 bounds a model's coordinate; (4) anything about the E4 models or any earlier verdict; (5) that w* is optimal, unique or the world where history matters most; (6) anything outside the grid.",
+  "HWS_SELECTED_T1_T2_addendum": "Requires new emission/centre code and the K4b changes of protocol section 11; owner go-ahead needed before stage B.",
+  "HWS_BELOW_3X": "Within the swept range, the beyond-four first-harmonic information confirmed on fresh rows reaches at least 2x the K4b margin (the addendum-25 rule-1 floor) in worlds {worlds}. No ordinary finalist qualified for selection. Any fallback-only world whose L3(D4) also reaches 0.03 is explicitly reported: {fallback_at_3x}; no upper bound below 0.03 is implied. 3x absence among all evaluated worlds: {absence}. Nothing is selected automatically; the owner may choose one of these worlds or ask for an extension. It does not license a claim that 3x is unreachable.",
+  "HWS_NO_WORLD_CONFIRMED": "No evaluated world was confirmed at the frozen criteria; candidates remained that were not finalists or not confirmed ({unresolved}), so the absence of a suitable world in the grid is not shown. It licenses no absence claim.",
+  "HWS_NO_SUITABLE_WORLD": "No world in the swept grid (protocol 4.4, plus the registered X1 and S2 worlds that ran) met the frozen criteria at the stated levels: every evaluated world failed an exact eligibility filter, the E5 point-estimate legibility filter, or at least one of C1-C4 under the widened bound (z_w = {z_w}, family error <= 0.05 for wrongly excluding a qualifying world). Sub-reason {sub_reason}. The maximum observed D4 point estimate is {max_D4} at {max_D4_key}. It does not license: anything about grid points not evaluated, other alias maps, other families, lengths, harmonics, y, or nonlinear readouts; that history is unimportant, or that models do not use history; any change to K4b's verdict. The next step would be to change the question or the family (owner decision).",
+  "INCONCLUSIVE/RESOURCE_OR_AUTHORITY": "No scientific statement is licensed.",
+  "FAIL_TECHNICAL": "No scientific statement is licensed."
+ },
+ "reuse_sha256": {
+  "src/topo_pilot/world/registry.py": "4e5d510512830672a093d2646ce7714c4a67c0704b0bdc9e5122fefbd698b2b1",
+  "src/topo_pilot/world/config.py": "3aa20d683aae62fccd054d91913135b0be7644d189e9f67f5e2483eb7dac26eb",
+  "src/topo_pilot/world/lattice.py": "1d93e2371968d2996a04d94393b4e92d41153ea254158177b67eb5ddd0acf021",
+  "src/topo_pilot/process/transition.py": "a0e450a150303bae9bfe51fade093553da71a83d779c32737045881128fe054d",
+  "src/topo_pilot/process/emission.py": "a4fa54d1be4848796f83d6309499a2c19fbbf2f172803186864711bde1f254b8",
+  "src/topo_pilot/process/centers.py": "95bebe112f0d0da19113970a2f8f59ce327e686de31d5ca8fc43dd66f7de7d99",
+  "src/topo_pilot/process/_geometry.py": "399773ff8ca5d51a890997bc51b7b6d1d8dfc9f84d2b0066fd737a75fa265351",
+  "src/topo_pilot/process/_diagnostics.py": "28542af04609451d735f3f8f86197aa9561a897b2b99a35866dd29127f50da6f",
+  "src/topo_pilot/process/stage.py": "c3b7dd9a25b455dc07365665aeab26fd3260f4c0e0560d8b696f41eb3e230303",
+  "src/topo_pilot/contracts/base.py": "36220ba0eb52d361878db588f200666301d615524e100baff2a1b0b3fe9d598e",
+  "src/topo_pilot/contracts/ids.py": "41bf99ddd438869d92043bab3ce72c3d0de237efde9d0d7d1c258d123d58acd5",
+  "src/topo_pilot/contracts/layout.py": "5fc9e51ac1b7f518fdfc0e6d436a74345431eb037a3e959ea282cc38679dd027",
+  "src/topo_pilot/dataset/sampler.py": "a94ffd3e7310e45d3e6351e8457864f6e64abe6e1b318211daed3d0c2f17b0d2",
+  "src/topo_pilot/oracle/_filter.py": "a84dd4fc3b0b7dc0ef0e77dcdf0c20319d8c2cc47fe1de88afab6ad8d3dd7f86",
+  "src/topo_pilot/oracle/_futures.py": "da80add78c712f68e0fdf073be6829eecdc00d3e95799be7ce04f6f0822455c3",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/config.json": "624b3a90def9924e332f374bba68157389cb2d811a3fc788f2e9db5c9208d3be",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/k4b/k4b_scores.py": "a0127cf9fc101eeadc693bb338e784225be2f4b7ee1ab2fa3174888921a82577",
+  "tools/k4b/k4b_meter_bind.py": "34efd87454988e0394a9761d8aff68bb8199ec3786f8d38ad2ed8330744ccedb",
+  "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+  "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+  "tools/check_file_sizes.py": "b32593dfdf924a5f0da8cda473e208dffdebd75bdce22eee66764e5b6aa0e85c"
+ },
+ "reuse_sha256_note": "working-tree bytes at 1d629bc (no change in these paths since 0a67c5a); re-checked at the execution freeze",
+ "freeze_fields": [
+  "protocol",
+  "protocol_sha256",
+  "contract_sha256",
+  "api_sha256",
+  "test_plan_sha256",
+  "h_exec",
+  "implementation_files",
+  "implementation_sha256",
+  "reuse_sha256",
+  "dry_run_report_sha256",
+  "dry_run_report_path",
+  "environment",
+  "created_utc"
+ ],
+ "open": [
+  "OPEN: the independently reviewed Decimal law enclosure of protocol 8 / 11 row 5 (RC-3), referred to by DR13's last clause; no such enclosure exists in the reused code and none is specified for J1. Where it should come from: a separate reviewed J1/J2 change named by the coordinator. Until then DR13's 'when present' clause is recorded NOT_APPLICABLE (API.md choice 27)."
+ ]
+}

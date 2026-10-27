@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 872 tracked files; 509 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 898 tracked files; 529 code files (linked to their pages).
 
 ## (repo root)
 
@@ -908,6 +908,23 @@ The generated index itself (`docs/code_index/`) is not indexed. 872 tracked file
 | [test_x5g1t_usage.py](files/tests/experiment/test_x5g1t_usage.py.md) | python | 400 lines | Independent contract tests for ``topo_pilot.experiment.x5g1t_usage`` (worker self-hold latch). |
 | [test_x5g1t_usage_files.py](files/tests/experiment/test_x5g1t_usage_files.py.md) | python | 251 lines | Independent contract tests for ``topo_pilot.experiment.x5g1t_usage`` (worker self-hold latch). |
 
+## tests/hws/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 41 lines | Authorship record: HWS independent tests, author A (job 0119) |
+| `AUTHORSHIP_B.md` | markdown | 29 lines | Authorship record: independent test author B, job 0119 |
+| [test_a_budget.py](files/tests/hws/test_a_budget.py.md) | python | 113 lines | Author A (job 0119): frozen CPU rates, stage forecasts and the two 3x pause triggers. |
+| [test_a_classify.py](files/tests/hws/test_a_classify.py.md) | python | 387 lines | Author A (job 0119): floors, criteria, eligibility, classes, ranking, annotations, finalists, |
+| [test_a_identities.py](files/tests/hws/test_a_identities.py.md) | python | 400 lines | Author A (job 0119): identities on a tiny rational HMM by exact enumeration (TEST_PLAN §2). |
+| [test_a_outcomes.py](files/tests/hws/test_a_outcomes.py.md) | python | 318 lines | Author A (job 0119): S3 evaluation, selection, every outcome branch and the licences. |
+| [test_a_stats.py](files/tests/hws/test_a_stats.py.md) | python | 286 lines | Author A (job 0119): z constants, bounds, ranks, nulls, E5 and the Pinsker count. |
+| [test_b_exact.py](files/tests/hws/test_b_exact.py.md) | python | 283 lines | Author B (job 0119), TEST_PLAN §3 `test_b_exact.py`: p_D2a against brute force (tiny world, |
+| [test_b_kc1.py](files/tests/hws/test_b_kc1.py.md) | python | 378 lines | Author B (job 0119), TEST_PLAN §3 `test_b_kc1.py` (KC1, DR7, RC-2) plus the G0 seed-scope |
+| [test_b_oracle.py](files/tests/hws/test_b_oracle.py.md) | python | 304 lines | Author B (job 0119), TEST_PLAN §3 `test_b_oracle.py`: stream scopes (§6.6), one |
+| [test_b_records.py](files/tests/hws/test_b_records.py.md) | python | 353 lines | Author B (job 0119), TEST_PLAN §3 `test_b_records.py` and `test_b_meter.py` (merged: job |
+| [test_b_worlds.py](files/tests/hws/test_b_worlds.py.md) | python | 394 lines | Author B (job 0119), TEST_PLAN §3 `test_b_worlds.py`: grid, keys, X1 worlds, tiers, the |
+
 ## tests/integration/
 
 | File | Kind | Size | Purpose |
@@ -1164,6 +1181,25 @@ The generated index itself (`docs/code_index/`) is not indexed. 872 tracked file
 | [d2a_train.py](files/tools/d2a/d2a_train.py.md) | python | 399 lines | D-2a training: runs, waves, children, resource supervisor, controls and meter binding |
 | [d2a_world.py](files/tools/d2a/d2a_world.py.md) | python | 397 lines | D-2a world, pools, seed map, bins, templates and S0 bindings (D2A-FROZEN-v1 §2, §9.2, §11.3; |
 | [process_tree.py](files/tools/d2a/process_tree.py.md) | python | 88 lines | Windows training process tree: nested Job Object, attached before any child runs. |
+
+## tools/hws/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 367 lines | tools/hws: written contract (job 0118; derived from HWS-DESIGN-v1) |
+| `CONTRACT.json` | json | 1367 lines |  |
+| `PROTOCOL_HWS_v1.md` | markdown | 850 lines | HWS-MERGED-v2: an oracle-only world sweep for the history-source question (stage A, no training) |
+| `TEST_PLAN.md` | markdown | 63 lines | HWS test plan v1 (job 0118) |
+| [hws_driver.py](files/tools/hws/hws_driver.py.md) | python | 369 lines | HWS driver: G0, stages S0, S1, X1, S2, S3, the null re-check, pauses, resume and the CLI |
+| [hws_dry.py](files/tools/hws/hws_dry.py.md) | python | 329 lines | HWS synthetic dry run: the decision, records and meter cases DR9-DR13, the R-0118-1 design |
+| [hws_exact.py](files/tools/hws/hws_exact.py.md) | python | 364 lines | HWS exact pieces: symbol law, A_eff, p_D2a, enumeration, spot checks, tier-0 law report and |
+| [hws_known.py](files/tools/hws/hws_known.py.md) | python | 288 lines | HWS known-answer checks: stage S0 (KC1-KC14, protocol §3) and the exact and numerical dry-run |
+| [hws_meter_bind.py](files/tools/hws/hws_meter_bind.py.md) | python | 71 lines | HWS meter binding (API.md §7; protocol §9.2, §12.1, RC-9). |
+| [hws_oracle.py](files/tools/hws/hws_oracle.py.md) | python | 169 lines | HWS oracle: streams, sampling, per-row arrays, nulls, P4 (API.md §3). |
+| [hws_records.py](files/tools/hws/hws_records.py.md) | python | 370 lines | HWS records: STAGES events, histories, look records, tree hashes, resume archive, |
+| [hws_select.py](files/tools/hws/hws_select.py.md) | python | 304 lines | HWS selection rule: criteria, classes, ranking, finalists, X1/S2, outcomes, licences, budget |
+| [hws_stats.py](files/tools/hws/hws_stats.py.md) | python | 112 lines | HWS statistics: means, SEs, bounds, z constants, bootstrap, E5, nulls (API.md §2). |
+| [hws_worlds.py](files/tools/hws/hws_worlds.py.md) | python | 335 lines | HWS worlds: constants, grid, keys, tiers, builders, alias map, symmetry, E1-E3 (API.md §1). |
 
 ## tools/k4b/
 

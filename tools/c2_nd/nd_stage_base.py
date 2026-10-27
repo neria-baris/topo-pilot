@@ -30,6 +30,7 @@ from c1_records import C1GateFailure
 
 OK, EXC, J1, X3 = ("PASS", "NOT_RUN"), "EXCLUDED/", nc.MODELS[0], ("H", "Hp", "Hm")
 PROB_KEYS = ("alpha", "Gamma", "B", "L", "P_S", "P_G", "mtilde")
+FP = PROB_KEYS[:3]  # the fit keys of one refit problem in REFIT_<j>.npz (API.md §15.1)
 SRC = {"N-R": "R", "D": "RD", "N-M": "M"}  # the code problem whose L1/R1 gates each family
 APPEND, SKIP_DIRS = ("GATES.jsonl", "STAGES.jsonl"), ("manifests", "superseded")
 COORD = ("FREEZE.json", "AUTH.json", "AUTH_IMPL.json", "DRY.json", "nd_meter_bind.py")

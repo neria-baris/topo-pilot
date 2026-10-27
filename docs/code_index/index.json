@@ -6,14 +6,14 @@
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 892,
-  "functions and methods (incl. tests)": 7453,
+  "functions and methods (incl. tests)": 7454,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 768,
   "import statements, internal ambiguous": 1,
-  "import statements, internal resolved": 2220,
+  "import statements, internal resolved": 2221,
   "import statements, internal unresolved": 0,
   "import statements, standard library": 2185,
-  "internal edges (file to file, with kind and line)": 2254,
+  "internal edges (file to file, with kind and line)": 2255,
   "python files": 528
  },
  "cycles": [
@@ -10044,7 +10044,7 @@
    "tools/c2_nd/nd_stage_base.py",
    "tools/c2_nd/nd_dry.py",
    "dynamic",
-   280
+   286
   ],
   [
    "tools/c2_nd/nd_stage_base.py",
@@ -10140,13 +10140,19 @@
    "tools/c2_nd/nd_stage_post.py",
    "tools/c2_nd/nd_stage_base.py",
    "import",
-   32
+   33
   ],
   [
    "tools/c2_nd/nd_stage_post.py",
    "tools/c2_nd/nd_stage_pre.py",
    "import",
    29
+  ],
+  [
+   "tools/c2_nd/nd_stage_post.py",
+   "tools/c2_nd/nd_stage_val.py",
+   "import",
+   30
   ],
   [
    "tools/c2_nd/nd_stage_post.py",
@@ -18034,9 +18040,9 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 530,
+   "lines": 536,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "d1f8c8e544ea35ba09e9e52e3dff03815321659370c1b5a97ca2ad99c48e843c"
+   "sha256": "61e6e107a4af84277b6c8a2bc419d91578a71c6168185db25b543a29f1b1a617"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
@@ -18112,15 +18118,15 @@
   },
   "tools/c2_nd/nd_stage_base.py": {
    "kind": "python",
-   "lines": 383,
+   "lines": 389,
    "purpose": "C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern,",
-   "sha256": "b001b9f377edfffaacdec3e47c4bd3dffe13aba2619682f7a2231aa63d393a97"
+   "sha256": "cbb13d1d81e9e316daa8decfddb26ee2c43f4711926fe3257f348846c4552923"
   },
   "tools/c2_nd/nd_stage_post.py": {
    "kind": "python",
-   "lines": 392,
+   "lines": 393,
    "purpose": "C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT,",
-   "sha256": "ff6ab06c9f9ec6e86131c297aab66739c84be5d965c9351528cf0d4a71238735"
+   "sha256": "9a3c02b73ad8f6f464fc40f8be5b43622497344646cb1f2eef4d66b531d9b9b1"
   },
   "tools/c2_nd/nd_stage_pre.py": {
    "kind": "python",
@@ -149615,6 +149621,7 @@
   "tools/c2_nd/nd_stage_base.py": {
    "constants": [
     "COORD",
+    "FP",
     "PROB_KEYS",
     "SCHEMA",
     "SRC"
@@ -149626,7 +149633,7 @@
      "expr": "'nd_dry'",
      "func": "import_module",
      "label": "nd_dry",
-     "line": 280,
+     "line": 286,
      "literal": "nd_dry",
      "paths": [],
      "status": "internal",
@@ -149949,462 +149956,472 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 45,
+     "end": 46,
      "kind": "function",
      "name": "_jr",
      "qual": "_jr",
      "sig": "def _jr(path)",
-     "start": 41
+     "start": 42
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 49,
+     "end": 50,
      "kind": "function",
      "name": "_eq",
      "qual": "_eq",
      "sig": "def _eq(a, b) -> bool",
-     "start": 48
+     "start": 49
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 53,
+     "end": 54,
      "kind": "function",
      "name": "_sha_ok",
      "qual": "_sha_ok",
      "sig": "def _sha_ok(path, want) -> bool",
-     "start": 52
+     "start": 53
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 68,
+     "end": 69,
      "kind": "function",
      "name": "_js",
      "qual": "_js",
      "sig": "def _js(v)",
-     "start": 56
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 73,
+     "end": 74,
      "kind": "function",
      "name": "_npz",
      "qual": "_npz",
      "sig": "def _npz(path) -> dict",
-     "start": 71
+     "start": 72
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 79,
+     "end": 80,
      "kind": "function",
      "name": "cache",
      "qual": "cache",
      "sig": "def cache(ctx, key, fn)",
-     "start": 76
+     "start": 77
     },
     {
      "decorators": [],
      "doc": "(root, {rel: sha256}): the C2 store and its CONTRACT table, or in a dry-run store its c2/",
-     "end": 88,
+     "end": 89,
      "kind": "function",
      "name": "c2_store",
      "qual": "c2_store",
      "sig": "def c2_store(ctx) -> tuple",
-     "start": 82
+     "start": 83
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 93,
+     "end": 94,
      "kind": "function",
      "name": "c2_rehash",
      "qual": "c2_rehash",
      "sig": "def c2_rehash(ctx) -> list",
-     "start": 91
+     "start": 92
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 103,
+     "end": 104,
      "kind": "function",
      "name": "_load",
      "qual": "_load",
      "sig": "def _load(ctx, rel, kind, c2)",
-     "start": 96
+     "start": 97
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 107,
+     "end": 108,
      "kind": "function",
      "name": "npz",
      "qual": "npz",
      "sig": "def npz(ctx, rel, c2=False) -> dict",
-     "start": 106
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 111,
+     "end": 112,
      "kind": "function",
      "name": "js",
      "qual": "js",
      "sig": "def js(ctx, rel, c2=False) -> dict",
-     "start": 110
+     "start": 111
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 115,
+     "end": 116,
      "kind": "function",
      "name": "c2npz",
      "qual": "c2npz",
      "sig": "def c2npz(ctx, rel) -> dict",
-     "start": 114
+     "start": 115
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 119,
+     "end": 120,
      "kind": "function",
      "name": "c2js",
      "qual": "c2js",
      "sig": "def c2js(ctx, rel) -> dict",
-     "start": 118
+     "start": 119
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 125,
+     "end": 126,
      "kind": "function",
      "name": "_abs",
      "qual": "_abs",
      "sig": "def _abs(ctx, rel) -> Path",
-     "start": 122
+     "start": 123
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 129,
+     "end": 130,
      "kind": "function",
      "name": "put",
      "qual": "put",
      "sig": "def put(ctx, rel, **arrays) -> None",
-     "start": 128
+     "start": 129
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 133,
+     "end": 134,
      "kind": "function",
      "name": "putj",
      "qual": "putj",
      "sig": "def putj(ctx, rel, obj) -> None",
-     "start": 132
+     "start": 133
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 140,
      "kind": "function",
      "name": "_skip",
      "qual": "_skip",
      "sig": "def _skip(rel) -> bool",
-     "start": 137
+     "start": 138
     },
     {
      "decorators": [],
      "doc": "manifests/<job>.json; a dry-run store runs every stage in one job: <job>-<stage>.",
-     "end": 144,
+     "end": 145,
      "kind": "function",
      "name": "manifest_stem",
      "qual": "manifest_stem",
      "sig": "def manifest_stem(ctx, stage) -> str",
-     "start": 142
+     "start": 143
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 158,
+     "end": 159,
      "kind": "function",
      "name": "write_manifest",
      "qual": "write_manifest",
      "sig": "def write_manifest(ctx, stage) -> Path",
-     "start": 147
+     "start": 148
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 168,
+     "end": 169,
      "kind": "function",
      "name": "_coord_ok",
      "qual": "_coord_ok",
      "sig": "def _coord_ok(p) -> bool",
-     "start": 161
+     "start": 162
     },
     {
      "decorators": [],
      "doc": "{rel: sha256}: coordinator records, the bound meter file, every accepted manifest's files",
-     "end": 196,
+     "end": 197,
      "kind": "function",
      "name": "recognised",
      "qual": "recognised",
      "sig": "def recognised(store) -> dict",
-     "start": 171
+     "start": 172
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 212,
+     "end": 213,
      "kind": "function",
      "name": "supersede",
      "qual": "supersede",
      "sig": "def supersede(ctx, job, attempt, paths, ruling) -> Path",
-     "start": 199
+     "start": 200
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 216,
+     "end": 217,
      "kind": "function",
      "name": "regen_compare",
      "qual": "regen_compare",
      "sig": "def regen_compare(ctx, path, archived_sha256) -> bool",
-     "start": 215
+     "start": 216
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 221,
+     "end": 222,
      "kind": "function",
      "name": "gates",
      "qual": "gates",
      "sig": "def gates(ctx) -> list",
-     "start": 220
+     "start": 221
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 226,
+     "end": 227,
      "kind": "function",
      "name": "_applies",
      "qual": "_applies",
      "sig": "def _applies(g, j, fam) -> bool",
-     "start": 224
+     "start": 225
     },
     {
      "decorators": [],
      "doc": "The first exclusion, CNHS or stop for (j, fam); report-only records never apply",
-     "end": 237,
+     "end": 238,
      "kind": "function",
      "name": "prior",
      "qual": "prior",
      "sig": "def prior(ctx, j, fam)",
-     "start": 229
+     "start": 230
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 241,
+     "end": 242,
      "kind": "function",
      "name": "alive",
      "qual": "alive",
      "sig": "def alive(ctx, j, fam) -> bool",
-     "start": 240
+     "start": 241
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 246,
+     "end": 247,
      "kind": "function",
      "name": "fstop",
      "qual": "fstop",
      "sig": "def fstop(ctx, fam)",
-     "start": 244
+     "start": 245
     },
     {
      "decorators": [],
      "doc": "None while >= 2 models remain, else the 2-of-3 rule's outcome (C2 §6.5 rule 2).",
-     "end": 255,
+     "end": 256,
      "kind": "function",
      "name": "family_stop",
      "qual": "family_stop",
      "sig": "def family_stop(ctx, fam)",
-     "start": 249
+     "start": 250
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 259,
+     "end": 260,
      "kind": "function",
      "name": "rec",
      "qual": "rec",
      "sig": "def rec(status, values=None, **who) -> dict",
-     "start": 258
+     "start": 259
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 264,
+     "end": 265,
      "kind": "function",
      "name": "lines",
      "qual": "lines",
      "sig": "def lines(recs) -> dict",
-     "start": 262
+     "start": 263
     },
     {
      "decorators": [],
      "doc": "One line per alive (model, family); fn(j, fam) -> (status, values).",
-     "end": 270,
+     "end": 271,
      "kind": "function",
      "name": "per",
      "qual": "per",
      "sig": "def per(ctx, fams, fn) -> dict",
-     "start": 267
+     "start": 268
+    },
+    {
+     "decorators": [],
+     "doc": "The guarded sign of bound `side` (\"L\" or \"U\") of one nd_split.bounds entry (C2 sg).",
+     "end": 276,
+     "kind": "function",
+     "name": "sg",
+     "qual": "sg",
+     "sig": "def sg(b, side) -> int",
+     "start": 274
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 274,
+     "end": 280,
      "kind": "function",
      "name": "frac",
      "qual": "frac",
      "sig": "def frac(mask) -> Fraction",
-     "start": 273
+     "start": 279
     },
     {
      "decorators": [],
      "doc": "nd_dry, only in a dry-run store (its functions refuse otherwise; G0 (x)).",
-     "end": 280,
+     "end": 286,
      "kind": "function",
      "name": "dry",
      "qual": "dry",
      "sig": "def dry(ctx)",
-     "start": 278
+     "start": 284
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 284,
+     "end": 290,
      "kind": "function",
      "name": "proc",
      "qual": "proc",
      "sig": "def proc(ctx) -> dict",
-     "start": 283
+     "start": 289
     },
     {
      "decorators": [],
      "doc": "{j: (model64, state_sha)}: the C2 checkpoints, or the planted dry-run models.",
-     "end": 289,
+     "end": 295,
      "kind": "function",
      "name": "models",
      "qual": "models",
      "sig": "def models(ctx) -> dict",
-     "start": 287
+     "start": 293
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 293,
+     "end": 299,
      "kind": "function",
      "name": "_models",
      "qual": "_models",
      "sig": "def _models(ctx) -> dict",
-     "start": 292
+     "start": 298
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 302,
+     "end": 308,
      "kind": "function",
      "name": "table",
      "qual": "table",
      "sig": "def table(ctx, split) -> dict",
-     "start": 296
+     "start": 302
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 306,
+     "end": 312,
      "kind": "function",
      "name": "orc",
      "qual": "orc",
      "sig": "def orc(ctx, split) -> dict",
-     "start": 305
+     "start": 311
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 310,
+     "end": 316,
      "kind": "function",
      "name": "c2fit",
      "qual": "c2fit",
      "sig": "def c2fit(ctx, j) -> dict",
-     "start": 309
+     "start": 315
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 314,
+     "end": 320,
      "kind": "function",
      "name": "frozen_oracle",
      "qual": "frozen_oracle",
      "sig": "def frozen_oracle(ctx) -> dict",
-     "start": 313
+     "start": 319
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 318,
+     "end": 324,
      "kind": "function",
      "name": "inputs",
      "qual": "inputs",
      "sig": "def inputs(ctx, j, H) -> np.ndarray",
-     "start": 317
+     "start": 323
     },
     {
      "decorators": [],
      "doc": "(phi, supported) of resid_post_3 rows: the frozen production chart (C2), or the dry-run",
-     "end": 332,
+     "end": 338,
      "kind": "function",
      "name": "phase",
      "qual": "phase",
      "sig": "def phase(ctx, j, a3) -> tuple",
-     "start": 321
+     "start": 327
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 346,
+     "end": 352,
      "kind": "function",
      "name": "_state",
      "qual": "_state",
      "sig": "def _state(ctx, j, H, rows, n, kind) -> tuple",
-     "start": 335
+     "start": 341
     },
     {
      "decorators": [],
      "doc": "Per role: inputs, the three hooks, y (frozen C2 basis), for H, H+, H- the phase and",
-     "end": 369,
+     "end": 375,
      "kind": "function",
      "name": "bundle",
      "qual": "bundle",
      "sig": "def bundle(ctx, split, j, kind=None, roles=cc.ROLES) -> dict",
-     "start": 349
+     "start": 355
     },
     {
      "decorators": [],
      "doc": "The projector problem p of model j: C2's frozen R, R_E, R_K1, R_K2, M, or the refit RD,",
-     "end": 383,
+     "end": 389,
      "kind": "function",
      "name": "problem",
      "qual": "problem",
      "sig": "def problem(ctx, j, p) -> dict",
-     "start": 373
+     "start": 379
     }
    ],
    "syspath": []
@@ -150753,10 +150770,27 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "",
+     "how": "same directory",
      "lazy": false,
      "level": 0,
      "line": 30,
+     "module": "",
+     "names": [
+      "nd_stage_val"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c2_nd/nd_stage_val.py"
+     ],
+     "top": "nd_stage_val"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 31,
      "module": "",
      "names": [
       "numpy"
@@ -150771,7 +150805,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 32,
      "module": "",
      "names": [
       "torch"
@@ -150786,7 +150820,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 32,
+     "line": 33,
      "module": "nd_stage_base",
      "names": [
       "EXC",
@@ -150810,162 +150844,162 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 42,
+     "end": 43,
      "kind": "function",
      "name": "y_on",
      "qual": "y_on",
      "sig": "def y_on(ctx, fam, j) -> bool",
-     "start": 39
+     "start": 40
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 46,
+     "end": 47,
      "kind": "function",
      "name": "tb",
      "qual": "tb",
      "sig": "def tb(arrays, guards, fam) -> dict",
-     "start": 45
+     "start": 46
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 51,
+     "end": 52,
      "kind": "function",
      "name": "keyed",
      "qual": "keyed",
      "sig": "def keyed(per_model) -> tuple",
-     "start": 49
+     "start": 50
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 58,
+     "end": 59,
      "kind": "function",
      "name": "accept",
      "qual": "accept",
      "sig": "def accept(ctx) -> dict",
-     "start": 55
+     "start": 56
     },
     {
      "decorators": [],
      "doc": "R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks.",
-     "end": 69,
+     "end": 70,
      "kind": "function",
      "name": "reg2",
      "qual": "reg2",
      "sig": "def reg2(ctx) -> dict",
-     "start": 61
+     "start": 62
     },
     {
      "decorators": [],
      "doc": "§3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1",
-     "end": 111,
+     "end": 112,
      "kind": "function",
      "name": "t_pre",
      "qual": "t_pre",
      "sig": "def t_pre(ctx) -> dict",
-     "start": 72
+     "start": 73
     },
     {
      "decorators": [],
      "doc": "§3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only),",
-     "end": 132,
+     "end": 133,
      "kind": "function",
      "name": "t_pre_model",
      "qual": "t_pre_model",
      "sig": "def t_pre_model(ctx) -> dict",
-     "start": 114
+     "start": 115
     },
     {
      "decorators": [],
      "doc": "V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream.",
-     "end": 146,
+     "end": 147,
      "kind": "function",
      "name": "first",
      "qual": "first",
      "sig": "def first(ctx, j, fam) -> tuple",
-     "start": 136
+     "start": 137
     },
     {
      "decorators": [],
      "doc": "(arrays, guards, quantities) of the whole family stream of one admitted model.",
-     "end": 175,
+     "end": 176,
      "kind": "function",
      "name": "stream",
      "qual": "stream",
      "sig": "def stream(ctx, j, fam) -> tuple",
-     "start": 149
+     "start": 150
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 189,
+     "end": 190,
      "kind": "function",
      "name": "resp_spec",
      "qual": "resp_spec",
      "sig": "def resp_spec(ctx) -> dict",
-     "start": 178
+     "start": 179
     },
     {
      "decorators": [],
      "doc": "Form the admitted models' endpoint arrays; record every bound inside its guard.",
-     "end": 206,
+     "end": 207,
      "kind": "function",
      "name": "num",
      "qual": "num",
      "sig": "def num(ctx) -> dict",
-     "start": 192
+     "start": 193
     },
     {
      "decorators": [],
      "doc": "KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed",
-     "end": 221,
+     "end": 222,
      "kind": "function",
      "name": "_kc_extra",
      "qual": "_kc_extra",
      "sig": "def _kc_extra(ctx) -> dict",
-     "start": 210
+     "start": 211
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 261,
+     "end": 262,
      "kind": "function",
      "name": "endpoint",
      "qual": "endpoint",
      "sig": "def endpoint(ctx) -> dict",
-     "start": 224
+     "start": 225
     },
     {
      "decorators": [],
      "doc": "lambda_D, eta_comp, iota_M and the LN-scale shares with intervals (seed 630508).",
-     "end": 293,
+     "end": 294,
      "kind": "function",
      "name": "_descriptives",
      "qual": "_descriptives",
      "sig": "def _descriptives(ctx) -> dict",
-     "start": 265
+     "start": 266
     },
     {
      "decorators": [],
      "doc": "C2 §5.7: unlicensed point ratios for the models stopped at T-PRE or RESP-SPEC.",
-     "end": 313,
+     "end": 314,
      "kind": "function",
      "name": "post_desc",
      "qual": "post_desc",
      "sig": "def post_desc(ctx, G, stop)",
-     "start": 296
+     "start": 297
     },
     {
      "decorators": [],
      "doc": "Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak,",
-     "end": 386,
+     "end": 387,
      "kind": "function",
      "name": "report",
      "qual": "report",
      "sig": "def report(ctx) -> dict",
-     "start": 316
+     "start": 317
     }
    ],
    "syspath": []
@@ -193141,5 +193175,5 @@
    ]
   }
  },
- "sources_digest": "841a486e31da38529ffc7d7767f121ea07bb3738d3d1fa435bd01795da1cdcf1"
+ "sources_digest": "b0a53edaeb3ab804518c5f38328809ea0fd0bde31ee9cd0513baebabc5149af5"
 }

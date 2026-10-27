@@ -84,6 +84,7 @@
 | `set_precision` | function | `set_precision` | [tools/x6_stage1/x6s1_cloud.py:143](../../tools/x6_stage1/x6s1_cloud.py#L143) |  |
 | `set_threads` | function | `set_threads` | [tools/x6_stage1/x6s1_eval.py:42](../../tools/x6_stage1/x6s1_eval.py#L42) |  |
 | `setup_split` | function | `setup_split` | [tools/c1prime/c1_driver_late.py:27](../../tools/c1prime/c1_driver_late.py#L27) | Models, frozen fits and split rows (activations only) for validation or fresh. |
+| `sg` | function | `sg` | [tools/c2_nd/nd_stage_base.py:274](../../tools/c2_nd/nd_stage_base.py#L274) | The guarded sign of bound `side` ("L" or "U") of one nd_split.bounds entry (C2 sg). |
 | `sg` | function | `sg` | [tools/c2_readout/c2_stage_val.py:130](../../tools/c2_readout/c2_stage_val.py#L130) |  |
 | `sh_page` | function | `sh_page` | [tools/code_index/render_pages.py:123](../../tools/code_index/render_pages.py#L123) |  |
 | `sha` | function | `sha` | [tests/c1prime/test_a_release_meter.py:45](../../tests/c1prime/test_a_release_meter.py#L45) |  |
@@ -271,7 +272,7 @@
 | `strata_rows` | function | `strata_rows` | [tools/d2a/d2a_eval.py:177](../../tools/d2a/d2a_eval.py#L177) | {stratum: (rows, positions)} for t = 16, t = 28 and the three bins. |
 | `stray` | function | `stray` | [tests/k4b/test_b_store_reader.py:91](../../tests/k4b/test_b_store_reader.py#L91) |  |
 | `stream` | function | `stream` | [src/topo_pilot/experiment/x5g1t_lineage.py:27](../../src/topo_pilot/experiment/x5g1t_lineage.py#L27) |  |
-| `stream` | function | `stream` | [tools/c2_nd/nd_stage_post.py:149](../../tools/c2_nd/nd_stage_post.py#L149) | (arrays, guards, quantities) of the whole family stream of one admitted model. |
+| `stream` | function | `stream` | [tools/c2_nd/nd_stage_post.py:150](../../tools/c2_nd/nd_stage_post.py#L150) | (arrays, guards, quantities) of the whole family stream of one admitted model. |
 | `stream` | function | `stream` | [tools/c2_readout/c2_stage_post.py:166](../../tools/c2_readout/c2_stage_post.py#L166) | The whole family stream of one admitted model (§11.1), its guards (§9.2; M: C-44) and the |
 | `stream` | function | `stream` | [tools/d2a/d2a_world.py:94](../../tools/d2a/d2a_world.py#L94) |  |
 | `stream_bounds` | function | `stream_bounds` | [tools/c2_readout/c2_decide.py:38](../../tools/c2_readout/c2_decide.py#L38) | One shared index stream; per key the tree mean and the ranked bounds at alpha, 1 - alpha. |
@@ -307,7 +308,7 @@
 | `summary` | method | `CircularJob.summary` | [src/topo_pilot/experiment/s7_circular.py:80](../../src/topo_pilot/experiment/s7_circular.py#L80) |  |
 | `summary` | function | `summary` | [tools/k4b/k4b_registry_k.py:113](../../tools/k4b/k4b_registry_k.py#L113) | Manifest `k4b_store` (§16 item 4): counts and sha256s per group; None -> not read. |
 | `sup` | function | `sup` | [tools/c2_nd/nd_stage_pre.py:263](../../tools/c2_nd/nd_stage_pre.py#L263) |  |
-| `supersede` | function | `supersede` | [tools/c2_nd/nd_stage_base.py:199](../../tools/c2_nd/nd_stage_base.py#L199) |  |
+| `supersede` | function | `supersede` | [tools/c2_nd/nd_stage_base.py:200](../../tools/c2_nd/nd_stage_base.py#L200) |  |
 | `supersede` | function | `supersede` | [tools/c2_readout/c2_driver.py:316](../../tools/c2_readout/c2_driver.py#L316) |  |
 | `supervise` | function | `supervise` | [tools/x4_oracle_profile/meter.py:114](../../tools/x4_oracle_profile/meter.py#L114) | Run cmd in the job; return only after the job has NO active process. |
 | `supervise` | function | `supervise` | [tools/x6_stage1/x6s1_run.py:310](../../tools/x6_stage1/x6s1_run.py#L310) | Poll every `poll_s` until every child has exited (§4.6, S6); STOP/HOLD at each poll. |
@@ -345,13 +346,13 @@
 | `SyntheticShapes` | class | `SyntheticShapes` | [src/topo_pilot/topology/shapes.py:55](../../src/topo_pilot/topology/shapes.py#L55) | Samples of shapes with known Betti numbers, embedded in ``R^ambient``. |
 | `T` | function | `T` | [reports/he_summary/charts.py:32](../../reports/he_summary/charts.py#L32) | Text with a *visual* anchor: 'left' = text starts at x and runs right, |
 | `t_base_exact` | function | `t_base_exact` | [tools/x6_stage0/x6_model.py:144](../../tools/x6_stage0/x6_model.py#L144) |  |
-| `t_pre` | function | `t_pre` | [tools/c2_nd/nd_stage_post.py:72](../../tools/c2_nd/nd_stage_post.py#L72) | §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1 |
+| `t_pre` | function | `t_pre` | [tools/c2_nd/nd_stage_post.py:73](../../tools/c2_nd/nd_stage_post.py#L73) | §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1 |
 | `t_pre` | function | `t_pre` | [tools/c2_readout/c2_stage_post.py:63](../../tools/c2_readout/c2_stage_post.py#L63) | §7 row 23 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE. |
 | `t_pre` | function | `t_pre` | [tools/k4b/k4b_fresh.py:114](../../tools/k4b/k4b_fresh.py#L114) | Oracle + references on every test row; determinism; extension; certificate; fresh B4. |
-| `t_pre_model` | function | `t_pre_model` | [tools/c2_nd/nd_stage_post.py:114](../../tools/c2_nd/nd_stage_post.py#L114) | §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only), |
+| `t_pre_model` | function | `t_pre_model` | [tools/c2_nd/nd_stage_post.py:115](../../tools/c2_nd/nd_stage_post.py#L115) | §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only), |
 | `t_pre_model` | function | `t_pre_model` | [tools/c2_readout/c2_stage_post.py:100](../../tools/c2_readout/c2_stage_post.py#L100) | §7 row 24: Sup(TEST), L1 and R1 with the frozen FIT decoders, N2 (M); TEST tallies. |
 | `table` | function | `table` | [tests/c2_nd/test_b_registry.py:39](../../tests/c2_nd/test_b_registry.py#L39) |  |
-| `table` | function | `table` | [tools/c2_nd/nd_stage_base.py:296](../../tools/c2_nd/nd_stage_base.py#L296) |  |
+| `table` | function | `table` | [tools/c2_nd/nd_stage_base.py:302](../../tools/c2_nd/nd_stage_base.py#L302) |  |
 | `table` | function | `table` | [tools/c2_readout/c2_stage_base.py:81](../../tools/c2_readout/c2_stage_base.py#L81) |  |
 | `table_digests` | function | `table_digests` | [tools/c2_readout/c2_data.py:137](../../tools/c2_readout/c2_data.py#L137) |  |
 | `table_entry` | function | `table_entry` | [tools/x6_stage1/x6s1_stats.py:101](../../tools/x6_stage1/x6s1_stats.py#L101) |  |
@@ -373,7 +374,7 @@
 | `tarjan` | function | `tarjan` | [tools/code_index/model.py:29](../../tools/code_index/model.py#L29) | Iterative Tarjan SCC; returns the list of components (each a sorted list). |
 | `tau` | function | `tau` | [tools/c1prime/c1_oracle.py:39](../../tools/c1prime/c1_oracle.py#L39) |  |
 | `tau_ref` | function | `tau_ref` | [tests/c1prime/test_a_oracle.py:45](../../tests/c1prime/test_a_oracle.py#L45) |  |
-| `tb` | function | `tb` | [tools/c2_nd/nd_stage_post.py:45](../../tools/c2_nd/nd_stage_post.py#L45) |  |
+| `tb` | function | `tb` | [tools/c2_nd/nd_stage_post.py:46](../../tools/c2_nd/nd_stage_post.py#L46) |  |
 | `tb` | function | `tb` | [tools/c2_readout/c2_stage_post.py:42](../../tools/c2_readout/c2_stage_post.py#L42) |  |
 | `template_enumeration` | function | `template_enumeration` | [tools/d2a/d2a_world.py:140](../../tools/d2a/d2a_world.py#L140) | All equal-gap template pairs at t (§9.2), in the API.md order. |
 | `template_hashes` | function | `template_hashes` | [tools/d2a/d2a_world.py:170](../../tools/d2a/d2a_world.py#L170) |  |
@@ -3100,7 +3101,7 @@
 | `write_json` | function | `write_json` | [tests/k4b/test_b_registry_fixes.py:48](../../tests/k4b/test_b_registry_fixes.py#L48) |  |
 | `write_json` | function | `write_json` | [tools/d2a/d2a_train.py:208](../../tools/d2a/d2a_train.py#L208) | Exclusive-create JSON write of ``jsonable(rec)`` (stage records are never overwritten). |
 | `write_json_atomic` | function | `write_json_atomic` | [tools/x6_stage1/x6s1_cloud.py:223](../../tools/x6_stage1/x6s1_cloud.py#L223) |  |
-| `write_manifest` | function | `write_manifest` | [tools/c2_nd/nd_stage_base.py:147](../../tools/c2_nd/nd_stage_base.py#L147) |  |
+| `write_manifest` | function | `write_manifest` | [tools/c2_nd/nd_stage_base.py:148](../../tools/c2_nd/nd_stage_base.py#L148) |  |
 | `write_manifest` | function | `write_manifest` | [tools/c2_readout/c2_driver.py:273](../../tools/c2_readout/c2_driver.py#L273) |  |
 | `write_manifest` | function | `write_manifest` | [tools/x6_stage0/x6_store.py:122](../../tools/x6_stage0/x6_store.py#L122) |  |
 | `write_marker` | function | `write_marker` | [tools/x4_circle_history/op_guard.py:27](../../tools/x4_circle_history/op_guard.py#L27) |  |
@@ -3144,7 +3145,7 @@
 | `y_donor` | function | `y_donor` | [tools/c2_readout/c2_data.py:80](../../tools/c2_readout/c2_data.py#L80) | H^Y = (6a + (b + k) on w1..w31, w32) and Y_def; an off-grid row is OFF in full (never |
 | `Y_hat` | function | `Y_hat` | [tools/c1prime/c1_endpoint.py:35](../../tools/c1prime/c1_endpoint.py#L35) |  |
 | `y_marginal` | function | `y_marginal` | [tools/c1prime/c1_oracle.py:166](../../tools/c1prime/c1_oracle.py#L166) |  |
-| `y_on` | function | `y_on` | [tools/c2_nd/nd_stage_post.py:39](../../tools/c2_nd/nd_stage_post.py#L39) |  |
+| `y_on` | function | `y_on` | [tools/c2_nd/nd_stage_post.py:40](../../tools/c2_nd/nd_stage_post.py#L40) |  |
 | `y_on` | function | `y_on` | [tools/c2_nd/nd_stage_val.py:68](../../tools/c2_nd/nd_stage_val.py#L68) |  |
 | `y_on` | function | `y_on` | [tools/c2_readout/c2_stage_val.py:248](../../tools/c2_readout/c2_stage_val.py#L248) |  |
 | `y_rot` | function | `y_rot` | [tools/c2_readout/c2_attrib.py:176](../../tools/c2_readout/c2_attrib.py#L176) | y + B (R_K(theta) - I) f-hat, f-hat = L_B (y - alpha_w): the code rotates, the rest holds. |

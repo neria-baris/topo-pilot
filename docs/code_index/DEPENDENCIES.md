@@ -1278,14 +1278,14 @@ Edge counts are file-to-file edges between different subpackages.
 - -> tools/c1prime/c1_chart.py, tools/c1prime/c1_model.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_dry.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/x4_circle_history/chart.py, tools/x4_circle_history/stage_records.py
 - <- tools/c2_nd/nd_driver.py, tools/c2_nd/nd_dry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_stage_post.py`
-- -> tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py
+- -> tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_nd/nd_stage_val.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py
 - <- none
 ### `tools/c2_nd/nd_stage_pre.py`
 - -> tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decoy.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_data.py, tools/c2_readout/c2_model.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stats.py
 - <- tools/c2_nd/nd_stage_post.py, tools/c2_nd/nd_stage_val.py
 ### `tools/c2_nd/nd_stage_val.py`
 - -> tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_attrib.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_decide.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_split.py, tools/c2_nd/nd_stage_base.py, tools/c2_nd/nd_stage_pre.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stats.py, tools/x4_circle_history/precision.py
-- <- tests/c2_nd/test_a_inference.py
+- <- tests/c2_nd/test_a_inference.py, tools/c2_nd/nd_stage_post.py
 ### `tools/c2_nd/store_template/nd_meter_bind.py`
 - -> tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- none
@@ -8761,26 +8761,27 @@ tools/c2_nd/nd_stage_post.py
         tools/c2_readout/c2_model.py (see above)
         tools/c2_readout/c2_oracle.py (see above)
         tools/c2_readout/c2_stats.py (see above)
+    tools/c2_nd/nd_stage_val.py
+        tools/c1prime/c1_endpoint.py (see above)
+        tools/c2_nd/nd_attrib.py (see above)
+        tools/c2_nd/nd_config.py (see above)
+        tools/c2_nd/nd_decide.py (see above)
+        tools/c2_nd/nd_driver.py (see above)
+        tools/c2_nd/nd_split.py (see above)
+        tools/c2_nd/nd_stage_base.py (see above)
+        tools/c2_nd/nd_stage_pre.py (see above)
+        tools/c2_readout/c2_attrib.py (see above)
+        tools/c2_readout/c2_config.py (see above)
+        tools/c2_readout/c2_decide.py (see above)
+        tools/c2_readout/c2_stats.py (see above)
+        tools/x4_circle_history/precision.py (see above)
     tools/c2_readout/c2_attrib.py (see above)
     tools/c2_readout/c2_config.py (see above)
     tools/c2_readout/c2_decide.py (see above)
     tools/c2_readout/c2_model.py (see above)
     tools/c2_readout/c2_oracle.py (see above)
 tools/c2_nd/nd_stage_pre.py (see above)
-tools/c2_nd/nd_stage_val.py
-    tools/c1prime/c1_endpoint.py (see above)
-    tools/c2_nd/nd_attrib.py (see above)
-    tools/c2_nd/nd_config.py (see above)
-    tools/c2_nd/nd_decide.py (see above)
-    tools/c2_nd/nd_driver.py (see above)
-    tools/c2_nd/nd_split.py (see above)
-    tools/c2_nd/nd_stage_base.py (see above)
-    tools/c2_nd/nd_stage_pre.py (see above)
-    tools/c2_readout/c2_attrib.py (see above)
-    tools/c2_readout/c2_config.py (see above)
-    tools/c2_readout/c2_decide.py (see above)
-    tools/c2_readout/c2_stats.py (see above)
-    tools/x4_circle_history/precision.py (see above)
+tools/c2_nd/nd_stage_val.py (see above)
 ```
 
 ### tools/c2_nd/store_template

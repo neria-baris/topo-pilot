@@ -2,7 +2,7 @@
 
 - Source: [tools/c2_nd/nd_stage_post.py](../../../../../tools/c2_nd/nd_stage_post.py)
 - Kind: python
-- Lines: 392
+- Lines: 393
 
 ## Module docstring
 
@@ -30,12 +30,13 @@
 - `import nd_split` -> [tools/c2_nd/nd_split.py](nd_split.py.md) (line 27, via same directory)
 - `import nd_stage_base` -> [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 28, via same directory)
 - `import nd_stage_pre` -> [tools/c2_nd/nd_stage_pre.py](nd_stage_pre.py.md) (line 29, via same directory)
-- `from nd_stage_base import EXC, OK, alive, js, orc, problem, put, putj, rec` -> [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 32, via same directory)
+- `import nd_stage_val` -> [tools/c2_nd/nd_stage_val.py](nd_stage_val.py.md) (line 30, via same directory)
+- `from nd_stage_base import EXC, OK, alive, js, orc, problem, put, putj, rec` -> [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 33, via same directory)
 
 ### External (third-party)
 
-- `numpy` (lines 30)
-- `torch` (lines 31)
+- `numpy` (lines 31)
+- `torch` (lines 32)
 
 ### Standard library
 
@@ -73,20 +74,20 @@
 
 ## Classes and functions
 
-- **function `y_on`** [L39-42]: `def y_on(ctx, fam, j) -> bool`
-- **function `tb`** [L45-46]: `def tb(arrays, guards, fam) -> dict`
-- **function `keyed`** [L49-51]: `def keyed(per_model) -> tuple`
-- **function `accept`** [L55-58]: `def accept(ctx) -> dict`
-- **function `reg2`** [L61-69]: `def reg2(ctx) -> dict` - R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks.
-- **function `t_pre`** [L72-111]: `def t_pre(ctx) -> dict` - §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1
-- **function `t_pre_model`** [L114-132]: `def t_pre_model(ctx) -> dict` - §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only),
-- **function `first`** [L136-146]: `def first(ctx, j, fam) -> tuple` - V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream.
-- **function `stream`** [L149-175]: `def stream(ctx, j, fam) -> tuple` - (arrays, guards, quantities) of the whole family stream of one admitted model.
-- **function `resp_spec`** [L178-189]: `def resp_spec(ctx) -> dict`
-- **function `num`** [L192-206]: `def num(ctx) -> dict` - Form the admitted models' endpoint arrays; record every bound inside its guard.
-- **function `_kc_extra`** [L210-221]: `def _kc_extra(ctx) -> dict` - KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed
-- **function `endpoint`** [L224-261]: `def endpoint(ctx) -> dict`
-- **function `_descriptives`** [L265-293]: `def _descriptives(ctx) -> dict` - lambda_D, eta_comp, iota_M and the LN-scale shares with intervals (seed 630508).
-- **function `post_desc`** [L296-313]: `def post_desc(ctx, G, stop)` - C2 §5.7: unlicensed point ratios for the models stopped at T-PRE or RESP-SPEC.
-- **function `report`** [L316-386]: `def report(ctx) -> dict` - Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak,
+- **function `y_on`** [L40-43]: `def y_on(ctx, fam, j) -> bool`
+- **function `tb`** [L46-47]: `def tb(arrays, guards, fam) -> dict`
+- **function `keyed`** [L50-52]: `def keyed(per_model) -> tuple`
+- **function `accept`** [L56-59]: `def accept(ctx) -> dict`
+- **function `reg2`** [L62-70]: `def reg2(ctx) -> dict` - R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks.
+- **function `t_pre`** [L73-112]: `def t_pre(ctx) -> dict` - §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1
+- **function `t_pre_model`** [L115-133]: `def t_pre_model(ctx) -> dict` - §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only),
+- **function `first`** [L137-147]: `def first(ctx, j, fam) -> tuple` - V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream.
+- **function `stream`** [L150-176]: `def stream(ctx, j, fam) -> tuple` - (arrays, guards, quantities) of the whole family stream of one admitted model.
+- **function `resp_spec`** [L179-190]: `def resp_spec(ctx) -> dict`
+- **function `num`** [L193-207]: `def num(ctx) -> dict` - Form the admitted models' endpoint arrays; record every bound inside its guard.
+- **function `_kc_extra`** [L211-222]: `def _kc_extra(ctx) -> dict` - KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed
+- **function `endpoint`** [L225-262]: `def endpoint(ctx) -> dict`
+- **function `_descriptives`** [L266-294]: `def _descriptives(ctx) -> dict` - lambda_D, eta_comp, iota_M and the LN-scale shares with intervals (seed 630508).
+- **function `post_desc`** [L297-314]: `def post_desc(ctx, G, stop)` - C2 §5.7: unlicensed point ratios for the models stopped at T-PRE or RESP-SPEC.
+- **function `report`** [L317-387]: `def report(ctx) -> dict` - Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak,
 

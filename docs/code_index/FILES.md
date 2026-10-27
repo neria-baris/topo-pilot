@@ -1114,7 +1114,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 530 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `API.md` | markdown | 536 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
 | `CONTRACT.json` | json | 940 lines |  |
 | `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
 | `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
@@ -1127,8 +1127,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 330 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
 | [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 400 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
 | [nd_split.py](files/tools/c2_nd/nd_split.py.md) | python | 400 lines | C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of |
-| [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 383 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |
-| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 392 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
+| [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 389 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |
+| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 393 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
 | [nd_stage_pre.py](files/tools/c2_nd/nd_stage_pre.py.md) | python | 303 lines | C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order, |
 | [nd_stage_val.py](files/tools/c2_nd/nd_stage_val.py.md) | python | 362 lines | C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX, |
 

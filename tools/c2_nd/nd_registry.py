@@ -48,8 +48,7 @@ def _xr():
 
 def _new(present=True) -> dict:
     out = {"status": "PASS", "digests": set(), "files": [], "other": [], "non_c2_format": []}
-    out.update(non_history=[], present=present)
-    return out
+    return dict(out, non_history=[], present=present)
 
 
 def _close(out, lineage=False) -> dict:
@@ -129,9 +128,8 @@ def source_scratch(root=None) -> dict:
     """Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):
     C2-format tables are read, other files listed as NON_C2_FORMAT (not read)."""
     root, out = Path(nc.SCRATCH_ROOT if root is None else root), _new()
-    reg = nc.CONTRACT["registry"]
+    reg, read = nc.CONTRACT["registry"], []
     prefix, pattern = reg["scratch_exclude_prefix"], reg["scratch_name_pattern"]
-    read = []
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = sorted(d for d in dirnames if not d.startswith(prefix))
         for name in sorted(n for n in filenames if fnmatch.fnmatchcase(n, pattern)):
@@ -155,8 +153,10 @@ def source_scratch(root=None) -> dict:
 
 # ---- rows 7-8: readers hws and x6zc (R-0116-3, R-0116-4; ND-C34, ND-C37) --------------------
 def _x6zc_names() -> list:
+    sub = {"<model>": "[^/]+", "<rerun>": "(-r[1-9][0-9]*)?"}  # ND-C57 (D-0151-1)
     pats = nc.CONTRACT["registry"]["parallel"]["x6zc"]["layout"]["non_history"]
-    return [re.compile("[^/]+".join(re.escape(s) for s in p.split("<model>"))) for p in pats]
+    parts = (re.split("(<model>|<rerun>)", p) for p in pats)
+    return [re.compile("".join(sub.get(t, re.escape(t)) for t in ts)) for ts in parts]
 
 
 def _read_history(f, out, require) -> None:

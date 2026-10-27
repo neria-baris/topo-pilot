@@ -115,13 +115,14 @@ def _cell_rule(ev, c) -> tuple:
             "R9" if ev["f1"][F]["passed"] else "R9′")
     return rule, None
 def decide_x6zc(ev) -> dict:
+    rls = [r for r in ev.get("rulings", []) if r.get("check") != "PAUSE"]  # N-5: no release
     out = {"global_rule": None, "global_outcome": None, "cells": {}, "headline": None,
-           "defect_elsewhere": [r["id"] for r in ev.get("rulings", []) if r["cause_identified"]
+           "defect_elsewhere": [r["id"] for r in rls if r["cause_identified"]
                                 and not r["affects_beta"] and not r.get("setup")]}
     g = "G-R0" if ev["k0"] == "FAIL" else "G-R1" if ev.get("incomplete") else None
     if g is None:
         rul, failed = {}, [k for k, s in ev["checks"].items() if s in ("FAIL", "DEFECT_CANDIDATE")]
-        for r in ev.get("rulings", []):
+        for r in rls:
             rul.setdefault(r["check"], []).append(r)
         if any(k not in rul for k in failed):
             raise ValueError(f"failed checks without a ruling: {sorted(set(failed) - set(rul))}")

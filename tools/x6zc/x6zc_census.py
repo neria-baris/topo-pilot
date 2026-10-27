@@ -70,27 +70,38 @@ def audit_pairs(D_arrays, family, n_prefixes=zc.N_D) -> dict:
             "counterexample": cex}
 
 # ---- A4 exposure check ----
-def exposure_matches(hist, t, pool_tokens, sets=None) -> np.ndarray:
-    """`sets`: an optional dict caching one row-prefix set per (pool, t) across calls (F-17)."""
-    ts, out, sets = _ts(t, len(hist)), np.zeros(len(hist), bool), {} if sets is None else sets
+def exposure_matches(hist, t, pool_tokens) -> np.ndarray:  # one call: one set per distinct t
+    ts, out = _ts(t, len(hist)), np.zeros(len(hist), bool)
     for L in np.unique(ts):
-        key = (id(pool_tokens), int(L))
-        if key not in sets:
-            sets[key] = {bytes(r[:L]) for r in np.asarray(pool_tokens, np.uint8)}
-        rows, idx = sets[key], np.flatnonzero(ts == L)
+        rows = {bytes(r[:L]) for r in np.asarray(pool_tokens, np.uint8)}
+        idx = np.flatnonzero(ts == L)
         out[idx] = [bytes(np.asarray(hist[i, :L], np.uint8)) in rows for i in idx]
     return out
+def _prefix_set(P, L) -> set:  # the byte strings row[:L] of every pool row (equal to bytes(r[:L]))
+    b = np.ascontiguousarray(P[:, :L]).tobytes()
+    return {b[i:i + L] for i in range(0, len(b), L)}
 def exposure_report(variant_arrays_by_family, pools) -> dict:
-    out, sets = {"matches": {}, "pair_mask": {}, "total": 0}, {}  # sets: built once per (pool, t)
-    for F, A in variant_arrays_by_family.items():
-        out["matches"][F], out["pair_mask"][F] = {}, {}
-        for v in zc.VARIANT_ORDER:
-            hit = {m: np.zeros(len(A[f"{v}_{m}"]), bool) for m in "ab"}
-            for m, pool in ((m, p) for m in "ab" for p in pools.values()):
-                hit[m] |= exposure_matches(A[f"{v}_{m}"], A[f"{v}_t"], pool, sets)
-            out["matches"][F][v] = {m: int(h.sum()) for m, h in hit.items()}
-            out["pair_mask"][F][v] = hit["a"] | hit["b"]
-            out["total"] += int(hit["a"].sum() + hit["b"].sum())
+    """Pool-major, then t: one row-prefix set of one pool is alive at a time; it is built once,
+    queried by every (family, variant, member) history with that t, then dropped (F-17, N-1)."""
+    VA, out = variant_arrays_by_family, {"matches": {}, "pair_mask": {}, "total": 0}
+    keys = [(F, v, m) for F in VA for v in zc.VARIANT_ORDER for m in "ab"]
+    ts = {k: _ts(VA[k[0]][f"{k[1]}_t"], len(VA[k[0]][f"{k[1]}_{k[2]}"])) for k in keys}
+    hit = {k: np.zeros(len(ts[k]), bool) for k in keys}
+    for pool in pools.values():
+        P = np.asarray(pool, np.uint8)
+        for L in sorted({int(x) for k in keys for x in np.unique(ts[k])}):
+            rows = _prefix_set(P, L)
+            for (F, v, m), tk in ts.items():
+                idx = np.flatnonzero(tk == L)
+                if len(idx):
+                    hist = np.asarray(VA[F][f"{v}_{m}"], np.uint8)
+                    hit[F, v, m][idx] |= np.array([bytes(hist[i, :L]) in rows for i in idx], bool)
+            del rows
+    for F in VA:
+        out["matches"][F] = {v: {m: int(hit[F, v, m].sum()) for m in "ab"}
+                             for v in zc.VARIANT_ORDER}
+        out["pair_mask"][F] = {v: hit[F, v, "a"] | hit[F, v, "b"] for v in zc.VARIANT_ORDER}
+        out["total"] += sum(int(hit[F, v, m].sum()) for v in zc.VARIANT_ORDER for m in "ab")
     return out
 
 # ---- B1 / K4 comparison ----

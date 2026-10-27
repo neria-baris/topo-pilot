@@ -890,7 +890,7 @@
   "x6zc_needle": null,
   "hygiene": "no C2ND file in the C2 scanned set (CONTRACT*.json, FREEZE*.json, STAGES*.jsonl, GATES*.jsonl anywhere; .json/.jsonl/.md/.txt/.py inside *-store*) contains C2's scope or a parallel round's scope; the protocol copy lives in tools/c2_nd only"
  },
- "modules": ["nd_config.py", "nd_data.py", "nd_registry.py", "nd_decoy.py", "nd_attrib.py", "nd_decide.py", "nd_driver.py", "nd_stage_pre.py", "nd_stage_val.py", "nd_stage_post.py", "nd_dry.py"],
+ "modules": ["nd_config.py", "nd_data.py", "nd_registry.py", "nd_decoy.py", "nd_attrib.py", "nd_decide.py", "nd_driver.py", "nd_stage_pre.py", "nd_stage_val.py", "nd_stage_post.py", "nd_dry.py", "nd_stage_base.py", "nd_split.py"],
  "module_limits": {"lines_per_module": 400, "ceiling": 4400, "planned_total": 3150, "authority": "protocol 11.3"},
  "tests": {
   "dir": "tests/c2_nd",

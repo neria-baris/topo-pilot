@@ -34,3 +34,7 @@ def test_run_kb_default_store_reaches_kb0(tmp_path, monkeypatch):
         (tmp_path / "stages" / "KB" / "KB_RECORD.json").read_text(encoding="utf-8")
     )
     assert on_disk["status"] == rec["status"]
+    # D-0170-1: the API §13 record fields are present
+    assert on_disk["deviation_flags"] == []
+    assert set(on_disk["threads"]) == {"KB2", "KB3"}
+    assert on_disk["freeze_sha256"] is None

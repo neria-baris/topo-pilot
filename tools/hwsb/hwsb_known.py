@@ -211,7 +211,7 @@ def kb2_kb3(proc_w0) -> dict:
     k3_ok = all(abs(one["dev_ce"][s] - v) <= float(k3["dev_ce_abs_tol"]) for s, v in ref_ce.items())
     det = again["checksums"].get(50) == one["checksums"].get(50)
     kb2 = {
-        "status": reading or KNOWN,
+        "status": "PASS" if reading == "BITWISE" else (reading or KNOWN),
         "reading": reading,
         "checksums": six["checksums"],
         "dev_ce": six["dev_ce"],
@@ -332,6 +332,11 @@ def run_kb(out, auth, sched, store=None) -> dict:
         "Z_bound_w_star": jsonable(kb4r.get("Z_bound")),
         "torch": ctx.get("k23", {}).get("torch"),
         "protocol_sha256": hc.CONTRACT["protocol_sha256"],
+        "deviation_flags": rec.get("KB2", {}).get("deviation_flags", []),
+        "threads": {k: rec.get(k, {}).get("threads") for k in ("KB2", "KB3")},
+        "freeze_sha256": stage_records.sha256(out / "FREEZE.json")
+        if (out / "FREEZE.json").exists()
+        else None,
     }
     path = out / "stages" / "KB" / "KB_RECORD.json"
     path.parent.mkdir(parents=True, exist_ok=True)

@@ -1,20 +1,20 @@
 {
  "counts": {
-  "classes": 301,
-  "code files": 558,
+  "classes": 302,
+  "code files": 559,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 934,
-  "functions and methods (incl. tests)": 7871,
+  "files indexed": 935,
+  "functions and methods (incl. tests)": 7876,
   "import cycles (strongly connected components)": 9,
-  "import statements, external": 817,
+  "import statements, external": 818,
   "import statements, internal ambiguous": 5,
-  "import statements, internal resolved": 2421,
+  "import statements, internal resolved": 2423,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2357,
-  "internal edges (file to file, with kind and line)": 2453,
-  "python files": 557
+  "import statements, standard library": 2360,
+  "internal edges (file to file, with kind and line)": 2455,
+  "python files": 558
  },
  "cycles": [
   [
@@ -7683,6 +7683,18 @@
    21
   ],
   [
+   "tests/hwsb/test_r_0170_kb2_status.py",
+   "tools/hwsb/hwsb_known.py",
+   "import",
+   19
+  ],
+  [
+   "tests/hwsb/test_r_0170_kb2_status.py",
+   "tools/hwsb/hwsb_train.py",
+   "import",
+   20
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -12426,7 +12438,7 @@
    "tools/hwsb/hwsb_known.py",
    "tools/hwsb/hwsb_kb.py",
    "import",
-   345
+   350
   ],
   [
    "tools/hwsb/hwsb_known.py",
@@ -18694,9 +18706,15 @@
   },
   "tests/hwsb/test_r_0168_kb_default_store.py": {
    "kind": "python",
-   "lines": 36,
+   "lines": 40,
    "purpose": "Regression D-0168-1 (coordinator 08ad4eaf, job 0168).",
-   "sha256": "880b4f36e93fe22d8a1b1418f4a6e5480fae6b46aa095ebf8fa61fa1d13c13d7"
+   "sha256": "c25325ca2d7a560a11fa9a9d4b42b270c09a40a818a979073efb23c9a4f8a96a"
+  },
+  "tests/hwsb/test_r_0170_kb2_status.py": {
+   "kind": "python",
+   "lines": 72,
+   "purpose": "Regression D-0170-1 (coordinator 08ad4eaf, job 0170).",
+   "sha256": "463eb7c4f80e173963be5c29c3a82f84840dba7b4955b17e66340e217ef6b9f8"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -19804,9 +19822,9 @@
   },
   "tools/hwsb/hwsb_known.py": {
    "kind": "python",
-   "lines": 348,
+   "lines": 353,
    "purpose": "HWSB G0 and the known cases KB0-KB7 (API.md §7; protocol §3).",
-   "sha256": "d0f8a5e6992fa67ca6501a59ab716c33cba6a9e401d04ac6bb4a68d4b7244e47"
+   "sha256": "f24a1a3042b7e734ef3f05a910c932663aaf42759eda365ea25ee4cc2c20858f"
   },
   "tools/hwsb/hwsb_law.py": {
    "kind": "python",
@@ -121353,12 +121371,193 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 36,
+     "end": 40,
      "kind": "test",
      "name": "test_run_kb_default_store_reaches_kb0",
      "qual": "test_run_kb_default_store_reaches_kb0",
      "sig": "def test_run_kb_default_store_reaches_kb0(tmp_path, monkeypatch)",
      "start": 24
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsb"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsb')",
+     "line": 17
+    }
+   ]
+  },
+  "tests/hwsb/test_r_0170_kb2_status.py": {
+   "constants": [
+    "K2",
+    "REF_CE",
+    "REF_CK",
+    "REPO"
+   ],
+   "doc": "Regression D-0170-1 (coordinator 08ad4eaf, job 0170).",
+   "doc1": "Regression D-0170-1 (coordinator 08ad4eaf, job 0170).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "hwsb_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsb/hwsb_known.py"
+     ],
+     "top": "hwsb_known"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "hwsb_train"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsb/hwsb_train.py"
+     ],
+     "top": "hwsb_train"
+    }
+   ],
+   "symbols": [
+    {
+     "bases": [],
+     "decorators": [],
+     "doc": "",
+     "end": 29,
+     "kind": "class",
+     "name": "_Obs",
+     "qual": "_Obs",
+     "start": 27
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 29,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "_Obs.__init__",
+     "sig": "def __init__(self, split)",
+     "start": 28
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 45,
+     "kind": "function",
+     "name": "_stub",
+     "qual": "_stub",
+     "sig": "def _stub(monkeypatch, checksums, dev_ce)",
+     "start": 32
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "test",
+     "name": "test_bitwise_reading_is_gate_pass",
+     "qual": "test_bitwise_reading_is_gate_pass",
+     "sig": "def test_bitwise_reading_is_gate_pass(monkeypatch)",
+     "start": 48
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "test",
+     "name": "test_secondary_reading_keeps_its_status",
+     "qual": "test_secondary_reading_keeps_its_status",
+     "sig": "def test_secondary_reading_keeps_its_status(monkeypatch)",
+     "start": 57
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('delta', [0.01])"
+     ],
+     "doc": "",
+     "end": 72,
+     "kind": "test",
+     "name": "test_no_reading_fails_known_case",
+     "qual": "test_no_reading_fails_known_case",
+     "sig": "def test_no_reading_fails_known_case(monkeypatch, delta)",
+     "start": 68
     }
    ],
    "syspath": [
@@ -176685,7 +176884,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 345,
+     "line": 350,
      "module": "",
      "names": [
       "hwsb_kb"
@@ -176821,7 +177020,7 @@
     {
      "decorators": [],
      "doc": "KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN.",
-     "end": 339,
+     "end": 344,
      "kind": "function",
      "name": "run_kb",
      "qual": "run_kb",
@@ -176831,12 +177030,12 @@
     {
      "decorators": [],
      "doc": "kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily.",
-     "end": 348,
+     "end": 353,
      "kind": "function",
      "name": "__getattr__",
      "qual": "__getattr__",
      "sig": "def __getattr__(name)",
-     "start": 342
+     "start": 347
     }
    ],
    "syspath": []
@@ -206616,5 +206815,5 @@
    ]
   }
  },
- "sources_digest": "e7256bd3f4761ff5610c4d061a945499c7c7333ae7a43db4975c8c7e9c3cc53b"
+ "sources_digest": "f1d887470deb16c886915b596662d50102ffafc0176741990aef86ddfcc03079"
 }

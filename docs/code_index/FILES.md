@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 934 tracked files; 558 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 935 tracked files; 559 code files (linked to their pages).
 
 ## (repo root)
 
@@ -944,7 +944,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 934 tracked file
 | [test_b_records.py](files/tests/hwsb/test_b_records.py.md) | python | 359 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_records.py`: pause check (section 8.2), study |
 | [test_b_registry.py](files/tests/hwsb/test_b_registry.py.md) | python | 237 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_registry.py`: B9a(i)/(ii) (history inventory |
 | [test_b_streams.py](files/tests/hwsb/test_b_streams.py.md) | python | 399 lines | Author B (job 0161), TEST_PLAN section 3 `test_b_streams.py`: streams and sequence IDs |
-| [test_r_0168_kb_default_store.py](files/tests/hwsb/test_r_0168_kb_default_store.py.md) | python | 36 lines | Regression D-0168-1 (coordinator 08ad4eaf, job 0168). |
+| [test_r_0168_kb_default_store.py](files/tests/hwsb/test_r_0168_kb_default_store.py.md) | python | 40 lines | Regression D-0168-1 (coordinator 08ad4eaf, job 0168). |
+| [test_r_0170_kb2_status.py](files/tests/hwsb/test_r_0170_kb2_status.py.md) | python | 72 lines | Regression D-0170-1 (coordinator 08ad4eaf, job 0170). |
 
 ## tests/integration/
 
@@ -1239,7 +1240,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 934 tracked file
 | [hwsb_eval.py](files/tools/hwsb/hwsb_eval.py.md) | python | 173 lines | HWSB evaluation: logits, B1-B3, activations, oracle moments, X+- and support (API.md §4). |
 | [hwsb_gates.py](files/tools/hwsb/hwsb_gates.py.md) | python | 382 lines | HWSB gates: B4 orchestration, the pilot ladder (B6), capture (B5), B7, B9a, the outcome |
 | [hwsb_kb.py](files/tools/hwsb/hwsb_kb.py.md) | python | 158 lines | HWSB known cases KB5-KB7 (API.md §7; protocol §3). Split out of hwsb_known by size; |
-| [hwsb_known.py](files/tools/hwsb/hwsb_known.py.md) | python | 348 lines | HWSB G0 and the known cases KB0-KB7 (API.md §7; protocol §3). |
+| [hwsb_known.py](files/tools/hwsb/hwsb_known.py.md) | python | 353 lines | HWSB G0 and the known cases KB0-KB7 (API.md §7; protocol §3). |
 | [hwsb_law.py](files/tools/hwsb/hwsb_law.py.md) | python | 169 lines | HWSB law enclosure for non-terminating logits (API.md §5; protocol §4 B8a, RC-1, OPEN-3). |
 | [hwsb_meter_bind.py](files/tools/hwsb/hwsb_meter_bind.py.md) | python | 121 lines | HWSB meter binding (API.md §10; protocol §6.4 rule 1, §9.1, RC-5). |
 | [hwsb_records.py](files/tools/hwsb/hwsb_records.py.md) | python | 160 lines | HWSB records: the study ledger, project-root inventories, and FREEZE.json (API.md §8, |

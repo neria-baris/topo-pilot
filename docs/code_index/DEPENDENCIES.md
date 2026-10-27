@@ -1016,6 +1016,9 @@ Edge counts are file-to-file edges between different subpackages.
 ### `tests/hwsb/test_r_0168_kb_default_store.py`
 - -> tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_known.py
 - <- none
+### `tests/hwsb/test_r_0170_kb2_status.py`
+- -> tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_train.py
+- <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
 - <- tests/integration/test_leakage_end_to_end.py, tests/integration/test_rerun_identity.py
@@ -1459,7 +1462,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/hwsb/hwsb_known.py
 ### `tools/hwsb/hwsb_known.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/checks.py, tools/hws/hws_driver.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_law.py, tools/hwsb/hwsb_train.py, tools/x4_circle_history/process_law.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsb/test_b_records.py, tests/hwsb/test_r_0168_kb_default_store.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_stages.py
+- <- tests/hwsb/test_b_records.py, tests/hwsb/test_r_0168_kb_default_store.py, tests/hwsb/test_r_0170_kb2_status.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_stages.py
 ### `tools/hwsb/hwsb_law.py`
 - -> tools/hwsb/hwsb_config.py, tools/x4_circle_history/error_bound.py, tools/x4_circle_history/process_law.py
 - <- tests/hwsb/test_a_enclosure_proof.py, tests/hwsb/test_b_meter_law.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_stages.py
@@ -1477,7 +1480,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py
 ### `tools/hwsb/hwsb_train.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/stage.py, tools/hwsb/hwsb_config.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsb/test_b_e4path.py, tests/hwsb/test_b_hold.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_stages.py
+- <- tests/hwsb/test_b_e4path.py, tests/hwsb/test_b_hold.py, tests/hwsb/test_r_0170_kb2_status.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_stages.py
 ### `tools/k4b/k4b_cert.py`
 - -> tools/c1prime/c1_bounds.py, tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/k4b/k4b_config.py, tools/x4_circle_history/error_bound.py, tools/x4_circle_history/process_law.py
 - <- tests/hwsb/test_a_capture.py, tests/hwsb/test_a_ladder.py, tests/k4b/test_a_decision.py, tests/k4b/test_a_lemma_n.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_transport_bound.py, tests/k4b/test_a_width_b4.py, tools/hwsb/hwsb_stages.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
@@ -6191,6 +6194,9 @@ tests/hwsb/test_r_0168_kb_default_store.py
     tools/hwsb/hwsb_config.py (see above)
     tools/hwsb/hwsb_driver.py (see above)
     tools/hwsb/hwsb_known.py (see above)
+tests/hwsb/test_r_0170_kb2_status.py
+    tools/hwsb/hwsb_known.py (see above)
+    tools/hwsb/hwsb_train.py (see above)
 ```
 
 ### tests/integration

@@ -30,7 +30,7 @@
 | `__exit__` | method | `RunLock.__exit__` | [src/topo_pilot/experiment/x5g1t_runtime.py:155](../../src/topo_pilot/experiment/x5g1t_runtime.py#L155) |  |
 | `__getattr__` | method | `_DuplicatingGenerator.__getattr__` | [tests/analysis/test_x4f_erasure_family.py:195](../../tests/analysis/test_x4f_erasure_family.py#L195) |  |
 | `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_data.py:346](../../tools/hwsb/hwsb_data.py#L346) | API names that live in hwsb_registry (split by size), re-exported lazily. |
-| `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_known.py:342](../../tools/hwsb/hwsb_known.py#L342) | kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily. |
+| `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_known.py:347](../../tools/hwsb/hwsb_known.py#L347) | kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily. |
 | `__getitem__` | method | `PublicTokenDataset.__getitem__` | [src/topo_pilot/dataset/public.py:59](../../src/topo_pilot/dataset/public.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_classify.py:59](../../tests/hws/test_a_classify.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_outcomes.py:55](../../tests/hws/test_a_outcomes.py#L55) |  |
@@ -135,6 +135,7 @@
 | `__init__` | method | `_Cfg.__init__` | [tests/experiment/test_s8_e4.py:190](../../tests/experiment/test_s8_e4.py#L190) |  |
 | `__init__` | method | `_DuplicatingGenerator.__init__` | [tests/analysis/test_x4f_erasure_family.py:187](../../tests/analysis/test_x4f_erasure_family.py#L187) |  |
 | `__init__` | method | `_FixedDecoder.__init__` | [tests/c1prime/test_b_gates.py:202](../../tests/c1prime/test_b_gates.py#L202) |  |
+| `__init__` | method | `_Obs.__init__` | [tests/hwsb/test_r_0170_kb2_status.py:28](../../tests/hwsb/test_r_0170_kb2_status.py#L28) |  |
 | `__init__` | method | `_Policy.__init__` | [tests/c2_readout/test_b_patch.py:37](../../tests/c2_readout/test_b_patch.py#L37) |  |
 | `__init__` | method | `_RecGen.__init__` | [tests/x6_stage1/test_b_train_chain.py:122](../../tests/x6_stage1/test_b_train_chain.py#L122) |  |
 | `__init__` | method | `_RecGen.__init__` | [tools/x6_stage1/x6s1_run.py:413](../../tools/x6_stage1/x6s1_run.py#L413) |  |
@@ -1108,6 +1109,7 @@
 | `_nwc_state` | function | `_nwc_state` | [tests/hws/test_a_outcomes.py:195](../../tests/hws/test_a_outcomes.py#L195) |  |
 | `_o_and_p` | function | `_o_and_p` | [tests/process/test_controls.py:38](../../tests/process/test_controls.py#L38) |  |
 | `_oblique` | function | `_oblique` | [tests/c2_readout/test_b_screens.py:237](../../tests/c2_readout/test_b_screens.py#L237) |  |
+| `_Obs` | class | `_Obs` | [tests/hwsb/test_r_0170_kb2_status.py:27](../../tests/hwsb/test_r_0170_kb2_status.py#L27) |  |
 | `_obs` | function | `_obs` | [tests/analysis/test_x5_endpoint.py:205](../../tests/analysis/test_x5_endpoint.py#L205) |  |
 | `_obs` | function | `_obs` | [tests/experiment/test_s7.py:252](../../tests/experiment/test_s7.py#L252) |  |
 | `_obs` | function | `_obs` | [tests/experiment/test_x5g1_export_integration.py:42](../../tests/experiment/test_x5g1_export_integration.py#L42) |  |
@@ -1666,6 +1668,7 @@
 | `_stream` | function | `_stream` | [tools/x6_stage1/x6s1_registry.py:177](../../tools/x6_stage1/x6s1_registry.py#L177) |  |
 | `_strip` | function | `_strip` | [tools/c1prime/c1_driver_late.py:228](../../tools/c1prime/c1_driver_late.py#L228) |  |
 | `_strip` | function | `_strip` | [tools/x6_stage1/x6s1_run.py:246](../../tools/x6_stage1/x6s1_run.py#L246) |  |
+| `_stub` | function | `_stub` | [tests/hwsb/test_r_0170_kb2_status.py:32](../../tests/hwsb/test_r_0170_kb2_status.py#L32) |  |
 | `_study` | function | `_study` | [src/topo_pilot/experiment/x5g1t_stages.py:79](../../src/topo_pilot/experiment/x5g1t_stages.py#L79) |  |
 | `_study` | function | `_study` | [tests/experiment/test_x5g1t_runtime_boundary.py:241](../../tests/experiment/test_x5g1t_runtime_boundary.py#L241) |  |
 | `_sub` | function | `_sub` | [tests/c2_readout/test_a_gls.py:51](../../tests/c2_readout/test_a_gls.py#L51) |  |
@@ -4663,5 +4666,3 @@
 | `run_verify` | function | `run_verify` | [src/topo_pilot/experiment/x5g1_verify.py:205](../../src/topo_pilot/experiment/x5g1_verify.py#L205) |  |
 | `run_wave` | function | `run_wave` | [tools/x6_stage1/x6s1_cloud.py:468](../../tools/x6_stage1/x6s1_cloud.py#L468) |  |
 | `run_world` | function | `run_world` | [src/topo_pilot/experiment/s4.py:36](../../src/topo_pilot/experiment/s4.py#L36) | The N control is world-independent; its data come from the cylinder world (D-029). |
-| `RunControls` | class | `RunControls` | [src/topo_pilot/experiment/x5g1_controls.py:26](../../src/topo_pilot/experiment/x5g1_controls.py#L26) | Guard before/after operations and always persist a ledger entry on exit. |
-| `RunLock` | class | `RunLock` | [src/topo_pilot/experiment/x5g1t_runtime.py:139](../../src/topo_pilot/experiment/x5g1t_runtime.py#L139) | Exclusive lock file for one live model run; removed on exit, never suppresses errors. |

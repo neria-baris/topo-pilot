@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsb/hwsb_known.py](../../../../../tools/hwsb/hwsb_known.py)
 - Kind: python
-- Lines: 348
+- Lines: 353
 
 ## Module docstring
 
@@ -23,7 +23,7 @@
 - `from topo_pilot.dataset.checks import make_sequence_ids, process_code` -> [src/topo_pilot/dataset/checks.py](../../src/topo_pilot/dataset/checks.py.md) (line 32, via package root)
 - `import hwsb_driver` -> [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 108, via same directory) (inside a function)
 - `import hwsb_driver` -> [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 283, via same directory) (inside a function)
-- `import hwsb_kb` -> [tools/hwsb/hwsb_kb.py](hwsb_kb.py.md) (line 345, via same directory) (inside a function)
+- `import hwsb_kb` -> [tools/hwsb/hwsb_kb.py](hwsb_kb.py.md) (line 350, via same directory) (inside a function)
 
 ### External (third-party)
 
@@ -57,6 +57,7 @@
 
 - [tests/hwsb/test_b_records.py](../../tests/hwsb/test_b_records.py.md) (line 29, import)
 - [tests/hwsb/test_r_0168_kb_default_store.py](../../tests/hwsb/test_r_0168_kb_default_store.py.md) (line 21, import)
+- [tests/hwsb/test_r_0170_kb2_status.py](../../tests/hwsb/test_r_0170_kb2_status.py.md) (line 19, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 19, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 24, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 19, import)
@@ -83,6 +84,6 @@
 - **function `_ck`** [L176-177]: `def _ck(obj) -> str`
 - **function `kb2_kb3`** [L180-236]: `def kb2_kb3(proc_w0) -> dict`
 - **function `kb4`** [L242-278]: `def kb4(proc_w0, proc_star) -> dict`
-- **function `run_kb`** [L281-339]: `def run_kb(out, auth, sched, store=None) -> dict` - KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN.
-- **function `__getattr__`** [L342-348]: `def __getattr__(name)` - kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily.
+- **function `run_kb`** [L281-344]: `def run_kb(out, auth, sched, store=None) -> dict` - KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN.
+- **function `__getattr__`** [L347-353]: `def __getattr__(name)` - kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily.
 

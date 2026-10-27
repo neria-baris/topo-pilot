@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsb/test_r_0168_kb_default_store.py](../../../../../tests/hwsb/test_r_0168_kb_default_store.py)
 - Kind: python
-- Lines: 36
+- Lines: 40
 
 ## Module docstring
 
@@ -53,5 +53,5 @@
 
 ## Classes and functions
 
-- **test `test_run_kb_default_store_reaches_kb0`** [L24-36]: `def test_run_kb_default_store_reaches_kb0(tmp_path, monkeypatch)`
+- **test `test_run_kb_default_store_reaches_kb0`** [L24-40]: `def test_run_kb_default_store_reaches_kb0(tmp_path, monkeypatch)`
 

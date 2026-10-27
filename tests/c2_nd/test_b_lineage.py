@@ -365,13 +365,15 @@ def test_supersede_and_regen_compare(tmp_path):
     assert ndr.regen_compare(ctx, ctx.store / rel, before) is False
 
 
-# ---- T-REG-ND, D-0151-1 (here: test_b_registry.py is at 394 of its 400 lines) --------------
-def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads):
-    """D-0151-1: the NON_HISTORY names in X6ZC attempt directories stages/<S>-r<k> are listed
-    and never opened (PASS); a non-numeric suffix or another name stays INCOMPLETE."""
+# ---- T-REG-ND, D-0151-1 and D-0154-1 (here: test_b_registry.py is at 394 of 400 lines) -----
+@pytest.mark.parametrize("names, bad", [  # D-0151-1 rerun directories; D-0154-1 p.npz names
+    (("stages/A-r1/qstar_NA.npz", "stages/B-r2/m1/pairs.npz"),
+     ("stages/A-rx/qstar_NA.npz", "stages/A-r1/other.npz")),
+    (("stages/B/AB-s1/p.npz", "stages/C-r1/ZC-s1/p.npz"), ("stages/B/AB-s1/q.npz",))])
+def test_parallel_x6zc_non_history_names(tmp_path, monkeypatch, loads, names, bad):
+    """X6ZC NON_HISTORY names in any attempt directory: listed, never opened; others fail."""
     monkeypatch.setattr(nc, "SCRATCH_ROOT", tmp_path / "scratch")  # no real scratch read
     store = put(tmp_path / "x6zc-store" / "FREEZE.json", b'{"schema": "frozen"}\n').parent
-    names = ("stages/A-r1/qstar_NA.npz", "stages/B-r2/m1/pairs.npz")
     for rel in names:
         put(store / rel, b"x6zc output, never opened")
     res = nrg.source_parallel(store, "x6zc")
@@ -379,7 +381,7 @@ def test_parallel_x6zc_rerun_directories(tmp_path, monkeypatch, loads):
     listed = sorted(str(x["path"]).replace("\\", "/") for x in res["non_history"])
     assert len(listed) == 2 and all(map(str.endswith, listed, names)), listed
     assert not [p for p in loads if p.endswith(names)]  # listed, not read
-    for rel in ("stages/A-rx/qstar_NA.npz", "stages/A-r1/other.npz"):
+    for rel in bad:
         put(store / rel, b"x6zc output, never opened")
         assert nrg.source_parallel(store, "x6zc")["status"] == "INCONCLUSIVE/REGISTRY_INCOMPLETE"
         (store / rel).unlink()

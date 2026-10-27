@@ -40,6 +40,7 @@ from topo_pilot.learner.config import ModelConfig
 from topo_pilot.learner.model import TransformerLM
 
 STREAM, SHARE, KP = "c2prereq", 0.85, {"R": 3, "R_K1": 1, "R_K2": 2, "R_E": 3, "M": 3}
+ROLES3 = ("H", "Hp", "Hm")  # the roles whose rows fit the belief chart (ND-C59)
 CFG = {"vocab_in": cc.V + 1, "vocab_out": cc.V, "d_model": cc.D_MODEL, "n_heads": 4, "d_mlp": 512}
 
 
@@ -68,21 +69,26 @@ def planted_models(ctx) -> dict:
 
 
 def synthetic_phase(ctx, j, a3) -> tuple:
-    """phi = atan2 of resid_post_3 (centred) on the two leading within-symbol principal
-    directions of the stand-in fit; every row supported (replaces the chart phase)."""
+    """phi = atan2 of (resid_post_3 - mu) @ U.T, the belief chart of the stand-in fit (_chart);
+    every row supported (replaces the chart phase)."""
     guard(ctx)
     C = sb.c2npz(ctx, f"charts/CHART_{j}_dry.npz")
     c = (np.asarray(a3, np.float64) - C["mu"]) @ C["U"].T
     return np.arctan2(c[:, 1], c[:, 0]), np.ones(len(c), dtype=bool)
 
 
-def _chart(a3, w) -> dict:
-    """mu and the two leading principal directions of resid_post_3 minus its symbol means."""
-    means = np.zeros((cc.V, a3.shape[1]))
-    for s in np.unique(w):
-        means[s] = a3[w == s].mean(axis=0)
-    _, _, Vt = np.linalg.svd(a3 - means[w], full_matrices=False)
-    return {"mu": a3.mean(axis=0), "U": Vt[:2].copy()}
+def _chart(acts, o, Ex) -> dict:
+    """The belief chart (D-0158-1, ND-C59): mu, the mean of resid_post_3, and U, the 2 x d_model
+    least-squares map from centred resid_post_3 to the centred oracle first-harmonic belief m32,
+    fitted on the eligible rows of H, H+ and H- of the stand-in stream together. The phase is
+    then a linear function of the planted model's own activations that turns with the belief
+    between paired histories, which is what R1 checks (a principal-direction chart of a random
+    model carries no belief-aligned history information: R1 at chance in dry run 0158)."""
+    a3 = np.vstack([np.asarray(acts[r]["resid_post_3"], np.float64)[Ex] for r in ROLES3])
+    m = np.vstack([np.asarray(o[r]["m32"], np.float64)[Ex] for r in ROLES3])
+    mu = a3.mean(axis=0)
+    U = np.linalg.lstsq(a3 - mu, m - m.mean(axis=0), rcond=None)[0].T
+    return {"mu": mu, "U": np.ascontiguousarray(U)}
 
 
 # ---- the synthetic C2-prerequisite fixture (PREP) ---------------------------------------------
@@ -150,7 +156,7 @@ def prepare(ctx) -> dict:
         acts = {r: cm.activations3(m64, sb.inputs(ctx, j, roles[r][0])) for r in ("H", "Hp", "Hm")}
         basis = cm.readout_basis(m64)
         y = {r: cm.readout_coords(a["ln_final_out"], basis) for r, a in acts.items()}
-        ch = _chart(acts["H"]["resid_post_3"], w)
+        ch = _chart(acts, o, Ex)
         _write(ctx, f"charts/CHART_{j}_dry.npz", ch)
         phi = np.arctan2(*((acts["H"]["resid_post_3"] - ch["mu"]) @ ch["U"].T)[:, ::-1].T)
         arr, info, dec, prs = {"zt_mu": mu, "zt_sd": sd}, {"status": {}, "delta": {}}, {}, {}

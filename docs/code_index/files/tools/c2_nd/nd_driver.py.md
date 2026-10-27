@@ -2,7 +2,7 @@
 
 - Source: [tools/c2_nd/nd_driver.py](../../../../../tools/c2_nd/nd_driver.py)
 - Kind: python
-- Lines: 396
+- Lines: 398
 
 ## Module docstring
 
@@ -51,8 +51,8 @@
 
 ### Dynamic imports
 
-- `import_module` line 354: `nd_dry` -> [tools/c2_nd/nd_dry.py](nd_dry.py.md)
-- `import_module` line 355: `dynamic: STAGE_MODULE[stage]`
+- `import_module` line 356: `nd_dry` -> [tools/c2_nd/nd_dry.py](nd_dry.py.md)
+- `import_module` line 357: `dynamic: STAGE_MODULE[stage]`
 
 ### sys.path additions
 
@@ -105,10 +105,10 @@
 - **function `_blobs_ok`** [L236-247]: `def _blobs_ok(wt, head) -> bool`
 - **function `_c2_store_ok`** [L250-265]: `def _c2_store_ok(ctx) -> bool` - (iv): every C2 store file re-hashes; 0115.accepted names the 0115 manifest; the FIT/DEC
 - **function `_item`** [L268-272]: `def _item(fn) -> dict`
-- **function `g0`** [L275-316]: `def g0(ctx, stage=None) -> dict` - Items "i"-"x", never raising; FAIL_TECHNICAL/LINEAGE iff only (vi)-(vii) fail.
-- **function `_same`** [L319-320]: `def _same(a, b) -> bool`
-- **function `begin_stage`** [L324-339]: `def begin_stage(ctx, stage) -> None`
-- **function `complete_stage`** [L342-345]: `def complete_stage(ctx, stage, files) -> list` - sr.complete, then the C2 store re-hash of G0 (iv) at the end of every stage (L7).
-- **function `run_stage`** [L348-374]: `def run_stage(stage, ctx) -> dict` - Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT
-- **function `main`** [L377-392]: `def main(argv=None) -> int`
+- **function `g0`** [L275-318]: `def g0(ctx, stage=None) -> dict` - Items "i"-"x", never raising; FAIL_TECHNICAL/LINEAGE iff only (vi)-(vii) fail.
+- **function `_same`** [L321-322]: `def _same(a, b) -> bool`
+- **function `begin_stage`** [L326-341]: `def begin_stage(ctx, stage) -> None`
+- **function `complete_stage`** [L344-347]: `def complete_stage(ctx, stage, files) -> list` - sr.complete, then the C2 store re-hash of G0 (iv) at the end of every stage (L7).
+- **function `run_stage`** [L350-376]: `def run_stage(stage, ctx) -> dict` - Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT
+- **function `main`** [L379-394]: `def main(argv=None) -> int`
 

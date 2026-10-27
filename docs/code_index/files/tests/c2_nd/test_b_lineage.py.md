@@ -2,7 +2,7 @@
 
 - Source: [tests/c2_nd/test_b_lineage.py](../../../../../tests/c2_nd/test_b_lineage.py)
 - Kind: python
-- Lines: 374
+- Lines: 376
 
 ## Module docstring
 
@@ -92,5 +92,5 @@
 - **function `lineage_ctx`** [L324-332]: `def lineage_ctx(tmp_path)`
 - **test `test_write_manifest`** [L335-346]: `def test_write_manifest(tmp_path)`
 - **test `test_supersede_and_regen_compare`** [L349-364]: `def test_supersede_and_regen_compare(tmp_path)`
-- **test `test_module_files_and_sizes`** [L368-374]: `def test_module_files_and_sizes()`
+- **test `test_module_files_and_sizes`** [L368-376]: `def test_module_files_and_sizes()`
 

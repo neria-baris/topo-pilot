@@ -145,15 +145,15 @@
 | `source_a` | function | `source_a` | [tools/k4b/k4b_registry.py:144](../../tools/k4b/k4b_registry.py#L144) |  |
 | `source_b` | function | `source_b` | [tools/k4b/k4b_registry.py:150](../../tools/k4b/k4b_registry.py#L150) |  |
 | `source_c` | function | `source_c` | [tools/k4b/k4b_registry.py:154](../../tools/k4b/k4b_registry.py#L154) |  |
-| `source_c2` | function | `source_c2` | [tools/c2_nd/nd_registry.py:79](../../tools/c2_nd/nd_registry.py#L79) | The five bound C2 hist files (re-hashed against CONTRACT) and any further HIST_*.npz. |
-| `source_c2_superseded` | function | `source_c2_superseded` | [tools/c2_nd/nd_registry.py:106](../../tools/c2_nd/nd_registry.py#L106) | A name scan of superseded/: PASS iff the bound attempt directories exist and no file has |
+| `source_c2` | function | `source_c2` | [tools/c2_nd/nd_registry.py:79](../../tools/c2_nd/nd_registry.py#L79) | The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further |
+| `source_c2_superseded` | function | `source_c2_superseded` | [tools/c2_nd/nd_registry.py:107](../../tools/c2_nd/nd_registry.py#L107) | A name scan of superseded/: PASS iff the bound attempt directories exist and no file has |
 | `source_d` | function | `source_d` | [tools/k4b/k4b_registry.py:161](../../tools/k4b/k4b_registry.py#L161) |  |
 | `source_e` | function | `source_e` | [tools/k4b/k4b_registry.py:205](../../tools/k4b/k4b_registry.py#L205) |  |
 | `source_f` | function | `source_f` | [tools/k4b/k4b_registry.py:239](../../tools/k4b/k4b_registry.py#L239) | ObservationSet stores under other directories, canonicalised by their EmissionSpec perm |
 | `source_identity` | function | `source_identity` | [tools/x4_oracle_profile/validation.py:181](../../tools/x4_oracle_profile/validation.py#L181) |  |
 | `source_k` | function | `source_k` | [tools/k4b/k4b_registry_k.py:81](../../tools/k4b/k4b_registry_k.py#L81) | Classifies every file under k4b-store (§16 item 2 a-d); other non-empty -> INCOMPLETE. |
-| `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:208](../../tools/c2_nd/nd_registry.py#L208) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
-| `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:127](../../tools/c2_nd/nd_registry.py#L127) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
+| `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:209](../../tools/c2_nd/nd_registry.py#L209) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
+| `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:128](../../tools/c2_nd/nd_registry.py#L128) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
 | `sources_digest` | function | `sources_digest` | [tools/code_index/scan.py:111](../../tools/code_index/scan.py#L111) |  |
 | `SourceTampered` | class | `SourceTampered` | [src/topo_pilot/experiment/x5g1_safety.py:22](../../src/topo_pilot/experiment/x5g1_safety.py#L22) | A source artifact failed full-hash or payload verification. |
 | `SpaceBuilder` | class | `SpaceBuilder` | [src/topo_pilot/analysis/spaces.py:35](../../src/topo_pilot/analysis/spaces.py#L35) | Builds :class:`PointSet` objects from stored artifacts. |
@@ -271,7 +271,7 @@
 | `strata_rows` | function | `strata_rows` | [tools/d2a/d2a_eval.py:177](../../tools/d2a/d2a_eval.py#L177) | {stratum: (rows, positions)} for t = 16, t = 28 and the three bins. |
 | `stray` | function | `stray` | [tests/k4b/test_b_store_reader.py:91](../../tests/k4b/test_b_store_reader.py#L91) |  |
 | `stream` | function | `stream` | [src/topo_pilot/experiment/x5g1t_lineage.py:27](../../src/topo_pilot/experiment/x5g1t_lineage.py#L27) |  |
-| `stream` | function | `stream` | [tools/c2_nd/nd_stage_post.py:148](../../tools/c2_nd/nd_stage_post.py#L148) | (arrays, guards, quantities) of the whole family stream of one admitted model. |
+| `stream` | function | `stream` | [tools/c2_nd/nd_stage_post.py:149](../../tools/c2_nd/nd_stage_post.py#L149) | (arrays, guards, quantities) of the whole family stream of one admitted model. |
 | `stream` | function | `stream` | [tools/c2_readout/c2_stage_post.py:166](../../tools/c2_readout/c2_stage_post.py#L166) | The whole family stream of one admitted model (§11.1), its guards (§9.2; M: C-44) and the |
 | `stream` | function | `stream` | [tools/d2a/d2a_world.py:94](../../tools/d2a/d2a_world.py#L94) |  |
 | `stream_bounds` | function | `stream_bounds` | [tools/c2_readout/c2_decide.py:38](../../tools/c2_readout/c2_decide.py#L38) | One shared index stream; per key the tree mean and the ranked bounds at alpha, 1 - alpha. |
@@ -306,7 +306,7 @@
 | `summarize` | function | `summarize` | [src/topo_pilot/experiment/circ_audit.py:171](../../src/topo_pilot/experiment/circ_audit.py#L171) | Per-run counts and the frozen reading (all 3 / 0 / mixed). |
 | `summary` | method | `CircularJob.summary` | [src/topo_pilot/experiment/s7_circular.py:80](../../src/topo_pilot/experiment/s7_circular.py#L80) |  |
 | `summary` | function | `summary` | [tools/k4b/k4b_registry_k.py:113](../../tools/k4b/k4b_registry_k.py#L113) | Manifest `k4b_store` (§16 item 4): counts and sha256s per group; None -> not read. |
-| `sup` | function | `sup` | [tools/c2_nd/nd_stage_pre.py:262](../../tools/c2_nd/nd_stage_pre.py#L262) |  |
+| `sup` | function | `sup` | [tools/c2_nd/nd_stage_pre.py:263](../../tools/c2_nd/nd_stage_pre.py#L263) |  |
 | `supersede` | function | `supersede` | [tools/c2_nd/nd_stage_base.py:199](../../tools/c2_nd/nd_stage_base.py#L199) |  |
 | `supersede` | function | `supersede` | [tools/c2_readout/c2_driver.py:316](../../tools/c2_readout/c2_driver.py#L316) |  |
 | `supervise` | function | `supervise` | [tools/x4_oracle_profile/meter.py:114](../../tools/x4_oracle_profile/meter.py#L114) | Run cmd in the job; return only after the job has NO active process. |
@@ -322,7 +322,7 @@
 | `support_report` | function | `support_report` | [src/topo_pilot/analysis/x4f_scores.py:102](../../src/topo_pilot/analysis/x4f_scores.py#L102) | Mahalanobis support of patched vectors against the calibration Ledoit-Wolf law. |
 | `support_report` | function | `support_report` | [tools/k4b/k4b_scores.py:104](../../tools/k4b/k4b_scores.py#L104) | §10 support report; the sealed form omits the supported contribution (§7.5). |
 | `supports` | function | `supports` | [tools/c1prime/c1_cert.py:55](../../tools/c1prime/c1_cert.py#L55) |  |
-| `survival` | function | `survival` | [tools/c2_nd/nd_stage_pre.py:290](../../tools/c2_nd/nd_stage_pre.py#L290) |  |
+| `survival` | function | `survival` | [tools/c2_nd/nd_stage_pre.py:291](../../tools/c2_nd/nd_stage_pre.py#L291) |  |
 | `survival` | function | `survival` | [tools/c2_readout/c2_stage_pre.py:292](../../tools/c2_readout/c2_stage_pre.py#L292) | Each family needs >= 2 ok models; the FEAS per-model, per-family coverage tally. |
 | `svg` | function | `svg` | [reports/he_summary/charts.py:57](../../reports/he_summary/charts.py#L57) |  |
 | `Sym` | class | `Sym` | [tools/c1prime/c1_bounds.py:109](../../tools/c1prime/c1_bounds.py#L109) | Counting value for L5: nodes, formal monomials (with multiplicity) and degree. |
@@ -345,10 +345,10 @@
 | `SyntheticShapes` | class | `SyntheticShapes` | [src/topo_pilot/topology/shapes.py:55](../../src/topo_pilot/topology/shapes.py#L55) | Samples of shapes with known Betti numbers, embedded in ``R^ambient``. |
 | `T` | function | `T` | [reports/he_summary/charts.py:32](../../reports/he_summary/charts.py#L32) | Text with a *visual* anchor: 'left' = text starts at x and runs right, |
 | `t_base_exact` | function | `t_base_exact` | [tools/x6_stage0/x6_model.py:144](../../tools/x6_stage0/x6_model.py#L144) |  |
-| `t_pre` | function | `t_pre` | [tools/c2_nd/nd_stage_post.py:71](../../tools/c2_nd/nd_stage_post.py#L71) | §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1 |
+| `t_pre` | function | `t_pre` | [tools/c2_nd/nd_stage_post.py:72](../../tools/c2_nd/nd_stage_post.py#L72) | §3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1 |
 | `t_pre` | function | `t_pre` | [tools/c2_readout/c2_stage_post.py:63](../../tools/c2_readout/c2_stage_post.py#L63) | §7 row 23 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE. |
 | `t_pre` | function | `t_pre` | [tools/k4b/k4b_fresh.py:114](../../tools/k4b/k4b_fresh.py#L114) | Oracle + references on every test row; determinism; extension; certificate; fresh B4. |
-| `t_pre_model` | function | `t_pre_model` | [tools/c2_nd/nd_stage_post.py:113](../../tools/c2_nd/nd_stage_post.py#L113) | §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only), |
+| `t_pre_model` | function | `t_pre_model` | [tools/c2_nd/nd_stage_post.py:114](../../tools/c2_nd/nd_stage_post.py#L114) | §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only), |
 | `t_pre_model` | function | `t_pre_model` | [tools/c2_readout/c2_stage_post.py:100](../../tools/c2_readout/c2_stage_post.py#L100) | §7 row 24: Sup(TEST), L1 and R1 with the frozen FIT decoders, N2 (M); TEST tallies. |
 | `table` | function | `table` | [tests/c2_nd/test_b_registry.py:39](../../tests/c2_nd/test_b_registry.py#L39) |  |
 | `table` | function | `table` | [tools/c2_nd/nd_stage_base.py:296](../../tools/c2_nd/nd_stage_base.py#L296) |  |

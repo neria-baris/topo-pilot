@@ -757,7 +757,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [test_a_known.py](files/tests/c2_nd/test_a_known.py.md) | python | 310 lines | Author A (job 0121): T-NEC-KNOWN (with erratum E-C2ND-1), T-RULE6, T-PROJ-ND and T-COPY. |
 | [test_b_decoy_model.py](files/tests/c2_nd/test_b_decoy_model.py.md) | python | 345 lines | Author B, T-DECOY-EXACT (protocol §2.6, §2.7, §3 rows 11 and 20, §5.1; API.md §6). |
 | [test_b_layer2.py](files/tests/c2_nd/test_b_layer2.py.md) | python | 260 lines | Author B, KM1-KM4 (protocol §2.4, §5.1) and T-RESP with ORACLE-FEAS (i) (§2.5, §3 rows 9, |
-| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 374 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
+| [test_b_lineage.py](files/tests/c2_nd/test_b_lineage.py.md) | python | 376 lines | Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py), |
 | [test_b_policy.py](files/tests/c2_nd/test_b_policy.py.md) | python | 314 lines | Author B, T-POLICY-ND (protocol §3, §6.7, §10.1, §12) and T-SEAL-ND (§6.7 L5, §12 S12); |
 | [test_b_registry.py](files/tests/c2_nd/test_b_registry.py.md) | python | 372 lines | Author B, T-REG-ND (protocol §6.2-§6.5; API.md §5; rulings R-0116-3, R-0116-4). |
 
@@ -1114,7 +1114,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 523 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
+| `API.md` | markdown | 527 lines | tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1) |
 | `CONTRACT.json` | json | 940 lines |  |
 | `PROTOCOL_C2ND_v1.md` | markdown | 918 lines | C2ND-MERGED-v2 (supersedes v1; see "Change log v1 → v2" at the end): is the circle code necessary, and can the method say "not used"? Necessity by the complement interchange (N-R at `ln_final_out`/32; N-M at `resid_post_2`/32, secondary) and an exact readout decoy (D) on the three C2 models, no training |
 | `TEST_PLAN.md` | markdown | 67 lines | C2ND test plan v1 (job 0116) |
@@ -1123,13 +1123,13 @@ The generated index itself (`docs/code_index/`) is not indexed. 892 tracked file
 | [nd_data.py](files/tools/c2_nd/nd_data.py.md) | python | 163 lines | C2ND data: the c2nd-v1 samplers and sequence ids, the needle scan, the cross-lineage hygiene |
 | [nd_decide.py](files/tools/c2_nd/nd_decide.py.md) | python | 396 lines | C2ND decisions: guards, the per-model rules of N-R, D (through c2_decide.r_model) and N-M, |
 | [nd_decoy.py](files/tools/c2_nd/nd_decoy.py.md) | python | 373 lines | C2ND decoys: the head edits D-NULL, D-NULL1, D-ONLY, D-DOSE (Lemmas DC1-DC3), the null basis |
-| [nd_driver.py](files/tools/c2_nd/nd_driver.py.md) | python | 396 lines | C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND |
-| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 316 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
-| [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 399 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
+| [nd_driver.py](files/tools/c2_nd/nd_driver.py.md) | python | 398 lines | C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND |
+| [nd_dry.py](files/tools/c2_nd/nd_dry.py.md) | python | 330 lines | C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised |
+| [nd_registry.py](files/tools/c2_nd/nd_registry.py.md) | python | 400 lines | C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows |
 | [nd_split.py](files/tools/c2_nd/nd_split.py.md) | python | 400 lines | C2ND split-level helpers (the second extra module of job 0125, ND-C44; split out of |
 | [nd_stage_base.py](files/tools/c2_nd/nd_stage_base.py.md) | python | 383 lines | C2ND shared stage plumbing (the extra module of job 0125, ND-C43; C2 c2_stage_base pattern, |
-| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 391 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
-| [nd_stage_pre.py](files/tools/c2_nd/nd_stage_pre.py.md) | python | 302 lines | C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order, |
+| [nd_stage_post.py](files/tools/c2_nd/nd_stage_post.py.md) | python | 392 lines | C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT, |
+| [nd_stage_pre.py](files/tools/c2_nd/nd_stage_pre.py.md) | python | 303 lines | C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order, |
 | [nd_stage_val.py](files/tools/c2_nd/nd_stage_val.py.md) | python | 362 lines | C2ND stage body S4, DVAL (API.md §10; C2ND-DESIGN-v1 §3 rows 19-26, §4.5, §6.7 L5): X1, DX, |
 
 ## tools/c2_nd/store_template/

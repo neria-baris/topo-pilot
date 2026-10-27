@@ -6,7 +6,7 @@
   "dynamic imports, internal": 15,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 892,
-  "functions and methods (incl. tests)": 7451,
+  "functions and methods (incl. tests)": 7452,
   "import cycles (strongly connected components)": 7,
   "import statements, external": 768,
   "import statements, internal ambiguous": 1,
@@ -9696,7 +9696,7 @@
    "tools/c2_nd/nd_driver.py",
    "tools/c2_nd/nd_dry.py",
    "dynamic",
-   354
+   356
   ],
   [
    "tools/c2_nd/nd_driver.py",
@@ -16666,9 +16666,9 @@
   },
   "tests/c2_nd/test_b_lineage.py": {
    "kind": "python",
-   "lines": 374,
+   "lines": 376,
    "purpose": "Author B, T-NAMESPACE-ND (protocol §6.6, RC-11; split here from test_b_registry.py),",
-   "sha256": "1b95dc5793d4f36c4b8806565b2a2cfe6e4607a6a89b40c73fb17f3c9b35f44f"
+   "sha256": "cc66fd78d4cc4c2dff5ff2ec6d668a5a9fe323bcb70a2806c8f6e51a5db308c0"
   },
   "tests/c2_nd/test_b_policy.py": {
    "kind": "python",
@@ -18034,15 +18034,15 @@
   },
   "tools/c2_nd/API.md": {
    "kind": "markdown",
-   "lines": 523,
+   "lines": 527,
    "purpose": "tools/c2_nd: written contract (job 0116; derived from C2ND-DESIGN-v1)",
-   "sha256": "178295f7a6a300d8d0af1cdeeea0e486beaa26b2042272ddb12d1d6c4d86fde4"
+   "sha256": "af6c1b7e549d93607acbb4828e4d27a282a11190f874b8eabeeaf86021a8f4a3"
   },
   "tools/c2_nd/CONTRACT.json": {
    "kind": "json",
    "lines": 940,
    "purpose": "",
-   "sha256": "e265fea7fb96fc8bc06eba3bf4ab981413fb75633c9b15ee4d94326c83ac5edb"
+   "sha256": "8efff7d00817f4bc4b7a16d7484507e17238b5407eae3d2ed1925023b4c30d7d"
   },
   "tools/c2_nd/PROTOCOL_C2ND_v1.md": {
    "kind": "markdown",
@@ -18088,21 +18088,21 @@
   },
   "tools/c2_nd/nd_driver.py": {
    "kind": "python",
-   "lines": 396,
+   "lines": 398,
    "purpose": "C2ND driver (API.md §9, §14, §15, §20; C2ND-DESIGN-v1 §3, §6.7, §10, §12): gate order, the ND",
-   "sha256": "1c5194f215e3f1879f704ff3287a0796258efbde28f3dedee212368840aa2384"
+   "sha256": "a49adbea9f682c6fd135c6477cf59306e387e89dc5b5f215e1548a47d473aed4"
   },
   "tools/c2_nd/nd_dry.py": {
    "kind": "python",
-   "lines": 316,
+   "lines": 330,
    "purpose": "C2ND synthetic dry run (API.md §11; C2ND-DESIGN-v1 §10.1): planted models (random-initialised",
-   "sha256": "e0c2c565fefa3fcb0ede26843eb8ae9990ff8726a7c37ae5df2251d5923837bb"
+   "sha256": "e3c962cb5a774e67f35ebe4666f77937a35b7b214158e9c4c8c2b11908780b14"
   },
   "tools/c2_nd/nd_registry.py": {
    "kind": "python",
-   "lines": 399,
+   "lines": 400,
    "purpose": "C2ND exposure registry c2nd-reg-v1: the new readers c2, c2sup, c2scratch, hws and x6zc (rows",
-   "sha256": "e88157400cd638f1d71a629c63477813496cd0da2c001afeb64bac6cb8ef814e"
+   "sha256": "45062d76f92f2b7300c53f2c0f52467e611095ab20f8b600dc7a0cd3729a100c"
   },
   "tools/c2_nd/nd_split.py": {
    "kind": "python",
@@ -18118,15 +18118,15 @@
   },
   "tools/c2_nd/nd_stage_post.py": {
    "kind": "python",
-   "lines": 391,
+   "lines": 392,
    "purpose": "C2ND stage body S5 (API.md §10, §14.2; C2ND-DESIGN-v1 §3 rows 27-34, §4, §7, §8): ACCEPT,",
-   "sha256": "50c360edea41b87e55f47e6c85778306c7ea2618f8d19af227102249f049de29"
+   "sha256": "ff6ab06c9f9ec6e86131c297aab66739c84be5d965c9351528cf0d4a71238735"
   },
   "tools/c2_nd/nd_stage_pre.py": {
    "kind": "python",
-   "lines": 302,
+   "lines": 303,
    "purpose": "C2ND stage bodies S1-S3 (API.md §9.3, §10; C2ND-DESIGN-v1 §3 rows 0-18, §6) in §3 order,",
-   "sha256": "652fa7d40d59816baac33d73b040db33af9c629f4ac53b2542e640cc38f9079d"
+   "sha256": "fd979fbc12e5a2049b853e0fd146033eea2286adcc5fc9bf571b233b7929c6c7"
   },
   "tools/c2_nd/nd_stage_val.py": {
    "kind": "python",
@@ -75442,7 +75442,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 374,
+     "end": 376,
      "kind": "test",
      "name": "test_module_files_and_sizes",
      "qual": "test_module_files_and_sizes",
@@ -147200,7 +147200,7 @@
      "expr": "'nd_dry'",
      "func": "import_module",
      "label": "nd_dry",
-     "line": 354,
+     "line": 356,
      "literal": "nd_dry",
      "paths": [],
      "status": "internal",
@@ -147212,7 +147212,7 @@
      "expr": "STAGE_MODULE[stage]",
      "func": "import_module",
      "label": "dynamic: STAGE_MODULE[stage]",
-     "line": 355,
+     "line": 357,
      "literal": null,
      "paths": [],
      "status": "dynamic",
@@ -147746,7 +147746,7 @@
     {
      "decorators": [],
      "doc": "Items \"i\"-\"x\", never raising; FAIL_TECHNICAL/LINEAGE iff only (vi)-(vii) fail.",
-     "end": 316,
+     "end": 318,
      "kind": "function",
      "name": "g0",
      "qual": "g0",
@@ -147756,52 +147756,52 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 320,
+     "end": 322,
      "kind": "function",
      "name": "_same",
      "qual": "_same",
      "sig": "def _same(a, b) -> bool",
-     "start": 319
+     "start": 321
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 339,
+     "end": 341,
      "kind": "function",
      "name": "begin_stage",
      "qual": "begin_stage",
      "sig": "def begin_stage(ctx, stage) -> None",
-     "start": 324
+     "start": 326
     },
     {
      "decorators": [],
      "doc": "sr.complete, then the C2 store re-hash of G0 (iv) at the end of every stage (L7).",
-     "end": 345,
+     "end": 347,
      "kind": "function",
      "name": "complete_stage",
      "qual": "complete_stage",
      "sig": "def complete_stage(ctx, stage, files) -> list",
-     "start": 342
+     "start": 344
     },
     {
      "decorators": [],
      "doc": "Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT",
-     "end": 374,
+     "end": 376,
      "kind": "function",
      "name": "run_stage",
      "qual": "run_stage",
      "sig": "def run_stage(stage, ctx) -> dict",
-     "start": 348
+     "start": 350
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 392,
+     "end": 394,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 377
+     "start": 379
     }
    ],
    "syspath": []
@@ -148365,6 +148365,16 @@
      "qual": "sealed_check",
      "sig": "def sealed_check(ctx) -> dict",
      "start": 309
+    },
+    {
+     "decorators": [],
+     "doc": "Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/",
+     "end": 330,
+     "kind": "function",
+     "name": "registry_c2",
+     "qual": "registry_c2",
+     "sig": "def registry_c2(ctx) -> dict",
+     "start": 319
     }
    ],
    "syspath": []
@@ -148372,7 +148382,6 @@
   "tools/c2_nd/nd_registry.py": {
    "constants": [
     "ARRAYS",
-    "AUTHORITY",
     "C2_COLS",
     "EXCLUDE",
     "ND_READERS",
@@ -148693,163 +148702,163 @@
     },
     {
      "decorators": [],
-     "doc": "The five bound C2 hist files (re-hashed against CONTRACT) and any further HIST_*.npz.",
-     "end": 103,
+     "doc": "The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further",
+     "end": 104,
      "kind": "function",
      "name": "source_c2",
      "qual": "source_c2",
-     "sig": "def source_c2(store=None) -> dict",
+     "sig": "def source_c2(store=None, bound=None) -> dict",
      "start": 79
     },
     {
      "decorators": [],
      "doc": "A name scan of superseded/: PASS iff the bound attempt directories exist and no file has",
-     "end": 118,
+     "end": 119,
      "kind": "function",
      "name": "source_c2_superseded",
      "qual": "source_c2_superseded",
      "sig": "def source_c2_superseded(store=None) -> dict",
-     "start": 106
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 124,
+     "end": 125,
      "kind": "function",
      "name": "_c2_format",
      "qual": "_c2_format",
      "sig": "def _c2_format(path) -> bool",
-     "start": 122
+     "start": 123
     },
     {
      "decorators": [],
      "doc": "Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root):",
-     "end": 155,
+     "end": 156,
      "kind": "function",
      "name": "source_scratch",
      "qual": "source_scratch",
      "sig": "def source_scratch(root=None) -> dict",
-     "start": 127
+     "start": 128
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 161,
+     "end": 162,
      "kind": "function",
      "name": "_x6zc_names",
      "qual": "_x6zc_names",
      "sig": "def _x6zc_names() -> list",
-     "start": 159
+     "start": 160
     },
     {
      "decorators": [],
      "doc": "One array file by the c2_registry._x6_member rule; non-history-bearing files are skipped",
-     "end": 188,
+     "end": 189,
      "kind": "function",
      "name": "_read_history",
      "qual": "_read_history",
      "sig": "def _read_history(f, out, require) -> None",
-     "start": 164
+     "start": 165
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 192,
+     "end": 193,
      "kind": "function",
      "name": "_array_files",
      "qual": "_array_files",
      "sig": "def _array_files(top)",
-     "start": 191
+     "start": 192
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 205,
+     "end": 206,
      "kind": "function",
      "name": "_parallel_file",
      "qual": "_parallel_file",
      "sig": "def _parallel_file(f, rel, tag, out) -> None",
-     "start": 195
+     "start": 196
     },
     {
      "decorators": [],
      "doc": "A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else",
-     "end": 227,
+     "end": 228,
      "kind": "function",
      "name": "source_parallel",
      "qual": "source_parallel",
      "sig": "def source_parallel(store, tag) -> dict",
-     "start": 208
+     "start": 209
     },
     {
      "decorators": [],
      "doc": "k4b_registry.inventory/classify of every top-level directory against the ND frozen table;",
-     "end": 255,
+     "end": 256,
      "kind": "function",
      "name": "inventory",
      "qual": "inventory",
      "sig": "def inventory(root=None, readers=None) -> dict",
-     "start": 231
+     "start": 232
     },
     {
      "decorators": [],
-     "doc": "Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5).",
-     "end": 272,
+     "doc": "Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5). `c2_dry`",
+     "end": 275,
      "kind": "function",
      "name": "_nd_sources",
      "qual": "_nd_sources",
-     "sig": "def _nd_sources(root) -> dict",
-     "start": 259
+     "sig": "def _nd_sources(root, c2_dry=None) -> dict",
+     "start": 260
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 277,
+     "end": 280,
      "kind": "function",
      "name": "_summary",
      "qual": "_summary",
      "sig": "def _summary(r) -> dict",
-     "start": 275
+     "start": 278
     },
     {
      "decorators": [],
      "doc": "ND-REG1 (S1, before DFIT) or ND-REG2 (S5; R' with the DFIT/DFEAS/DVAL tables in `extra`):",
-     "end": 358,
+     "end": 359,
      "kind": "function",
      "name": "build",
      "qual": "build",
-     "sig": "def build(version, store=None, root=None, extra=None) -> dict",
-     "start": 280
+     "sig": "def build(version, store=None, root=None, extra=None, c2_dry=None) -> dict",
+     "start": 283
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 363,
+     "end": 364,
      "kind": "function",
      "name": "load",
      "qual": "load",
      "sig": "def load(store=None, version='ND-REG1') -> cg.Registry",
-     "start": 362
+     "start": 363
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 392,
+     "end": 393,
      "kind": "function",
      "name": "_reservation_problem",
      "qual": "_reservation_problem",
      "sig": "def _reservation_problem(store, stage, root) -> str | None",
-     "start": 370
+     "start": 371
     },
     {
      "decorators": [],
      "doc": "PASS iff RESERVATION_<stage>.json records no live reservation and the parallel stores'",
-     "end": 399,
+     "end": 400,
      "kind": "function",
      "name": "reservation_check",
      "qual": "reservation_check",
      "sig": "def reservation_check(store, stage, root=None) -> dict",
-     "start": 395
+     "start": 396
     }
    ],
    "syspath": []
@@ -150831,7 +150840,7 @@
     {
      "decorators": [],
      "doc": "R'_ND = R_ND rebuilt now plus U_DFIT, U_DFEAS, U_DVAL (§6.4); then k DTEST blocks.",
-     "end": 68,
+     "end": 69,
      "kind": "function",
      "name": "reg2",
      "qual": "reg2",
@@ -150841,112 +150850,112 @@
     {
      "decorators": [],
      "doc": "§3 row 29 in order; FAIL_TECHNICAL ends it at once, unmet criteria give TEST_GATE; X1",
-     "end": 110,
+     "end": 111,
      "kind": "function",
      "name": "t_pre",
      "qual": "t_pre",
      "sig": "def t_pre(ctx) -> dict",
-     "start": 71
+     "start": 72
     },
     {
      "decorators": [],
      "doc": "§3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only),",
-     "end": 131,
+     "end": 132,
      "kind": "function",
      "name": "t_pre_model",
      "qual": "t_pre_model",
      "sig": "def t_pre_model(ctx) -> dict",
-     "start": 113
+     "start": 114
     },
     {
      "decorators": [],
      "doc": "V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream.",
-     "end": 145,
+     "end": 146,
      "kind": "function",
      "name": "first",
      "qual": "first",
      "sig": "def first(ctx, j, fam) -> tuple",
-     "start": 135
+     "start": 136
     },
     {
      "decorators": [],
      "doc": "(arrays, guards, quantities) of the whole family stream of one admitted model.",
-     "end": 174,
+     "end": 175,
      "kind": "function",
      "name": "stream",
      "qual": "stream",
      "sig": "def stream(ctx, j, fam) -> tuple",
-     "start": 148
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 188,
+     "end": 189,
      "kind": "function",
      "name": "resp_spec",
      "qual": "resp_spec",
      "sig": "def resp_spec(ctx) -> dict",
-     "start": 177
+     "start": 178
     },
     {
      "decorators": [],
      "doc": "Form the admitted models' endpoint arrays; record every bound inside its guard.",
-     "end": 205,
+     "end": 206,
      "kind": "function",
      "name": "num",
      "qual": "num",
      "sig": "def num(ctx) -> dict",
-     "start": 191
+     "start": 192
     },
     {
      "decorators": [],
      "doc": "KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed",
-     "end": 220,
+     "end": 221,
      "kind": "function",
      "name": "_kc_extra",
      "qual": "_kc_extra",
      "sig": "def _kc_extra(ctx) -> dict",
-     "start": 209
+     "start": 210
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 260,
+     "end": 261,
      "kind": "function",
      "name": "endpoint",
      "qual": "endpoint",
      "sig": "def endpoint(ctx) -> dict",
-     "start": 223
+     "start": 224
     },
     {
      "decorators": [],
      "doc": "lambda_D, eta_comp, iota_M and the LN-scale shares with intervals (seed 630508).",
-     "end": 292,
+     "end": 293,
      "kind": "function",
      "name": "_descriptives",
      "qual": "_descriptives",
      "sig": "def _descriptives(ctx) -> dict",
-     "start": 264
+     "start": 265
     },
     {
      "decorators": [],
      "doc": "C2 §5.7: unlicensed point ratios for the models stopped at T-PRE or RESP-SPEC.",
-     "end": 312,
+     "end": 313,
      "kind": "function",
      "name": "post_desc",
      "qual": "post_desc",
      "sig": "def post_desc(ctx, G, stop)",
-     "start": 295
+     "start": 296
     },
     {
      "decorators": [],
      "doc": "Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak,",
-     "end": 385,
+     "end": 386,
      "kind": "function",
      "name": "report",
      "qual": "report",
      "sig": "def report(ctx) -> dict",
-     "start": 315
+     "start": 316
     }
    ],
    "syspath": []
@@ -151408,7 +151417,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 105,
+     "end": 106,
      "kind": "function",
      "name": "reg",
      "qual": "reg",
@@ -151418,162 +151427,162 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 109,
+     "end": 110,
      "kind": "function",
      "name": "h2",
      "qual": "h2",
      "sig": "def h2(ctx) -> dict",
-     "start": 108
+     "start": 109
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 114,
+     "end": 115,
      "kind": "function",
      "name": "h3",
      "qual": "h3",
      "sig": "def h3(ctx) -> dict",
-     "start": 112
+     "start": 113
     },
     {
      "decorators": [],
      "doc": "f_x >= 9/10, f_y >= 17/20 on DFIT, DFEAS, DVAL (frozen s_max); the coverage tally.",
-     "end": 122,
+     "end": 123,
      "kind": "function",
      "name": "h4",
      "qual": "h4",
      "sig": "def h4(ctx) -> dict",
-     "start": 117
+     "start": 118
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 127,
+     "end": 128,
      "kind": "function",
      "name": "h5",
      "qual": "h5",
      "sig": "def h5(ctx) -> dict",
-     "start": 125
+     "start": 126
     },
     {
      "decorators": [],
      "doc": "(i) the oracle's own log-predictive gives G per DVAL row under each model's symbol",
-     "end": 144,
+     "end": 145,
      "kind": "function",
      "name": "oracle_feas",
      "qual": "oracle_feas",
      "sig": "def oracle_feas(ctx) -> dict",
-     "start": 130
+     "start": 131
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 159,
+     "end": 160,
      "kind": "function",
      "name": "m0",
      "qual": "m0",
      "sig": "def m0(ctx) -> dict",
-     "start": 148
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "nd_decoy.m0d on the M0 rows; decoys/DECOY_<j>.json and decoys/HEAD_<j>.npz.",
-     "end": 185,
+     "end": 186,
      "kind": "function",
      "name": "m0d",
      "qual": "m0d",
      "sig": "def m0d(ctx) -> dict",
-     "start": 162
+     "start": 163
     },
     {
      "decorators": [],
      "doc": "Chart sha256 (a dry-run store: the c2/ stand-in table) and Sup(DFIT) >= 0.99; DFIT",
-     "end": 203,
+     "end": 204,
      "kind": "function",
      "name": "c0c",
      "qual": "c0c",
      "sig": "def c0c(ctx) -> dict",
-     "start": 188
+     "start": 189
     },
     {
      "decorators": [],
      "doc": "One refit problem on DFIT natural rows: C2 F1 exactly, decoders, m-tilde (§3 row 13).",
-     "end": 219,
+     "end": 220,
      "kind": "function",
      "name": "refit",
      "qual": "refit",
      "sig": "def refit(ctx, j, p, Y, aux, arr, dec) -> tuple",
-     "start": 206
+     "start": 207
     },
     {
      "decorators": [],
      "doc": "The refits R@D (y) and R@T (y @ T.T) per model (§2.8); fits/REFIT_<j>, DEC_<j>; the",
-     "end": 258,
+     "end": 259,
      "kind": "function",
      "name": "f1",
      "qual": "f1",
      "sig": "def f1(ctx) -> dict",
-     "start": 222
+     "start": 223
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 267,
+     "end": 268,
      "kind": "function",
      "name": "sup",
      "qual": "sup",
      "sig": "def sup(ctx) -> dict",
-     "start": 262
+     "start": 263
     },
     {
      "decorators": [],
      "doc": "The family records plus the report-only R@T records of D (problem RT; never exclude).",
-     "end": 275,
+     "end": 276,
      "kind": "function",
      "name": "_with_rt",
      "qual": "_with_rt",
      "sig": "def _with_rt(ctx, check) -> dict",
-     "start": 270
+     "start": 271
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 279,
+     "end": 280,
      "kind": "function",
      "name": "l1",
      "qual": "l1",
      "sig": "def l1(ctx) -> dict",
-     "start": 278
+     "start": 279
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 283,
+     "end": 284,
      "kind": "function",
      "name": "r1",
      "qual": "r1",
      "sig": "def r1(ctx) -> dict",
-     "start": 282
+     "start": 283
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 287,
+     "end": 288,
      "kind": "function",
      "name": "n2",
      "qual": "n2",
      "sig": "def n2(ctx) -> dict",
-     "start": 286
+     "start": 287
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 292,
+     "end": 293,
      "kind": "function",
      "name": "survival",
      "qual": "survival",
      "sig": "def survival(ctx) -> dict",
-     "start": 290
+     "start": 291
     }
    ],
    "syspath": []
@@ -193122,5 +193131,5 @@
    ]
   }
  },
- "sources_digest": "b4db45596eb595d2cc070dc08eda1785e88218253191458fab0eaf1cd3dc56bf"
+ "sources_digest": "7436405c273b3e58a1c37a33aa94071abf837772dc098f6fadb4c60b04146af2"
 }

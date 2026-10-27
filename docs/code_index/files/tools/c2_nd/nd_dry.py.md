@@ -2,7 +2,7 @@
 
 - Source: [tools/c2_nd/nd_dry.py](../../../../../tools/c2_nd/nd_dry.py)
 - Kind: python
-- Lines: 316
+- Lines: 330
 
 ## Module docstring
 
@@ -70,7 +70,7 @@
 
 ## Imported by
 
-- [tools/c2_nd/nd_driver.py](nd_driver.py.md) (line 354, dynamic)
+- [tools/c2_nd/nd_driver.py](nd_driver.py.md) (line 356, dynamic)
 - [tools/c2_nd/nd_stage_base.py](nd_stage_base.py.md) (line 280, dynamic)
 
 ## Top-level constants
@@ -92,4 +92,5 @@
 - **function `_refused`** [L259-264]: `def _refused(fn) -> bool`
 - **function `checks`** [L267-306]: `def checks(ctx, j, inputs, acts, z) -> dict` - §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction
 - **function `sealed_check`** [L309-316]: `def sealed_check(ctx) -> dict` - A sealed/ read before the TEST outcome must be refused (§10.1 forbidden access).
+- **function `registry_c2`** [L319-330]: `def registry_c2(ctx) -> dict` - Registry row 2 in the dry run (R-0125-2, ND-C55): nd_registry.source_c2 on the c2/
 

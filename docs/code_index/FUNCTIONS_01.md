@@ -30,7 +30,7 @@
 | `__exit__` | method | `RunLock.__exit__` | [src/topo_pilot/experiment/x5g1t_runtime.py:155](../../src/topo_pilot/experiment/x5g1t_runtime.py#L155) |  |
 | `__getattr__` | method | `_DuplicatingGenerator.__getattr__` | [tests/analysis/test_x4f_erasure_family.py:195](../../tests/analysis/test_x4f_erasure_family.py#L195) |  |
 | `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_data.py:346](../../tools/hwsb/hwsb_data.py#L346) | API names that live in hwsb_registry (split by size), re-exported lazily. |
-| `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_known.py:341](../../tools/hwsb/hwsb_known.py#L341) | kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily. |
+| `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_known.py:342](../../tools/hwsb/hwsb_known.py#L342) | kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily. |
 | `__getitem__` | method | `PublicTokenDataset.__getitem__` | [src/topo_pilot/dataset/public.py:59](../../src/topo_pilot/dataset/public.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_classify.py:59](../../tests/hws/test_a_classify.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_outcomes.py:55](../../tests/hws/test_a_outcomes.py#L55) |  |
@@ -353,7 +353,7 @@
 | `_cj` | function | `_cj` | [tools/x6_stage1/x6s1_run.py:75](../../tools/x6_stage1/x6s1_run.py#L75) |  |
 | `_ck` | function | `_ck` | [tests/experiment/test_x5g1t_checkpoint_checks.py:25](../../tests/experiment/test_x5g1t_checkpoint_checks.py#L25) |  |
 | `_ck` | function | `_ck` | [tests/experiment/test_x5g1t_export_checks.py:31](../../tests/experiment/test_x5g1t_export_checks.py#L31) |  |
-| `_ck` | function | `_ck` | [tools/hwsb/hwsb_known.py:175](../../tools/hwsb/hwsb_known.py#L175) |  |
+| `_ck` | function | `_ck` | [tools/hwsb/hwsb_known.py:176](../../tools/hwsb/hwsb_known.py#L176) |  |
 | `_ckpt` | function | `_ckpt` | [tests/experiment/test_runner.py:128](../../tests/experiment/test_runner.py#L128) |  |
 | `_ckpt` | function | `_ckpt` | [tests/learner/test_multihorizon.py:318](../../tests/learner/test_multihorizon.py#L318) |  |
 | `_ckpt` | function | `_ckpt` | [tools/hwsb/hwsb_stages.py:64](../../tools/hwsb/hwsb_stages.py#L64) |  |
@@ -511,7 +511,7 @@
 | `_e0` | function | `_e0` | [tools/x6_stage1/x6s1_stage_post.py:46](../../tools/x6_stage1/x6s1_stage_post.py#L46) |  |
 | `_e0` | function | `_e0` | [tools/x6_stage1/x6s1_stage_pre.py:57](../../tools/x6_stage1/x6s1_stage_pre.py#L57) |  |
 | `_e16` | function | `_e16` | [tests/hws/test_a_identities.py:59](../../tests/hws/test_a_identities.py#L59) | 16 * E' with E'[:, 2g + b] = sum over i with g(i) = g of E_centres[:, 2i + b]. |
-| `_e4_obs` | function | `_e4_obs` | [tools/hwsb/hwsb_known.py:167](../../tools/hwsb/hwsb_known.py#L167) |  |
+| `_e4_obs` | function | `_e4_obs` | [tools/hwsb/hwsb_known.py:168](../../tools/hwsb/hwsb_known.py#L168) |  |
 | `_e_l` | function | `_e_l` | [tests/c1prime/test_b_cert_bounds.py:113](../../tests/c1prime/test_b_cert_bounds.py#L113) |  |
 | `_eb` | function | `_eb` | [tools/x6_stage1/x6s1_stats.py:52](../../tools/x6_stage1/x6s1_stats.py#L52) |  |
 | `_eb_parts` | function | `_eb_parts` | [tools/x6_stage1/x6s1_stats.py:38](../../tools/x6_stage1/x6s1_stats.py#L38) |  |
@@ -1117,7 +1117,7 @@
 | `_occ` | function | `_occ` | [tests/c2_readout/test_a_inference.py:61](../../tests/c2_readout/test_a_inference.py#L61) |  |
 | `_ok` | function | `_ok` | [tools/d2a/d2a_decide.py:32](../../tools/d2a/d2a_decide.py#L32) |  |
 | `_ok` | function | `_ok` | [tools/hws/hws_known.py:43](../../tools/hws/hws_known.py#L43) |  |
-| `_ok` | function | `_ok` | [tools/hwsb/hwsb_known.py:60](../../tools/hwsb/hwsb_known.py#L60) |  |
+| `_ok` | function | `_ok` | [tools/hwsb/hwsb_known.py:61](../../tools/hwsb/hwsb_known.py#L61) |  |
 | `_ok` | function | `_ok` | [tools/x6_stage1/x6s1_stage_pre.py:52](../../tools/x6_stage1/x6s1_stage_pre.py#L52) |  |
 | `_ok_readers` | function | `_ok_readers` | [tools/c2_readout/c2_registry.py:215](../../tools/c2_readout/c2_registry.py#L215) |  |
 | `_old_ids_pool` | function | `_old_ids_pool` | [tests/experiment/test_x5g1t_identity_eval.py:95](../../tests/experiment/test_x5g1t_identity_eval.py#L95) | A tiny old-ID reference ObservationSet in the fixture read root (no ID overlap). |
@@ -1315,7 +1315,7 @@
 | `_read` | function | `_read` | [tools/hws/hws_exact.py:238](../../tools/hws/hws_exact.py#L238) |  |
 | `_read` | function | `_read` | [tools/x6_stage1/x6s1_cloud.py:96](../../tools/x6_stage1/x6s1_cloud.py#L96) |  |
 | `_read_files` | method | `ArtifactStore._read_files` | [src/topo_pilot/contracts/store.py:157](../../src/topo_pilot/contracts/store.py#L157) |  |
-| `_read_json` | function | `_read_json` | [tools/hwsb/hwsb_known.py:64](../../tools/hwsb/hwsb_known.py#L64) |  |
+| `_read_json` | function | `_read_json` | [tools/hwsb/hwsb_known.py:65](../../tools/hwsb/hwsb_known.py#L65) |  |
 | `_read_json` | function | `_read_json` | [tools/x4_oracle_profile/controls.py:38](../../tools/x4_oracle_profile/controls.py#L38) |  |
 | `_read_members` | function | `_read_members` | [src/topo_pilot/contracts/_bundle.py:80](../../src/topo_pilot/contracts/_bundle.py#L80) |  |
 | `_read_meta` | method | `ArtifactStore._read_meta` | [src/topo_pilot/contracts/store.py:151](../../src/topo_pilot/contracts/store.py#L151) |  |
@@ -2386,7 +2386,7 @@
 | `classify` | function | `classify` | [tools/x4_oracle_profile/controls.py:172](../../tools/x4_oracle_profile/controls.py#L172) | Return ``(state, reason)``; in run mode with ``latch_dir`` apply the persistent latch. |
 | `classify_all` | function | `classify_all` | [tools/x4_oracle_profile/controls.py:214](../../tools/x4_oracle_profile/controls.py#L214) | Most restrictive state across mailboxes. The real mailbox latches in ``out``; a synthetic |
 | `classify_exception` | function | `classify_exception` | [tools/c1prime/c1_records.py:85](../../tools/c1prime/c1_records.py#L85) | The §16 exception mapping (review fix 5) -> (status, reason). |
-| `classify_hits` | function | `classify_hits` | [tools/hwsb/hwsb_known.py:71](../../tools/hwsb/hwsb_known.py#L71) | Mirror of hws_driver.classify_seed_hits with the lists as arguments (RC-3). |
+| `classify_hits` | function | `classify_hits` | [tools/hwsb/hwsb_known.py:72](../../tools/hwsb/hwsb_known.py#L72) | Mirror of hws_driver.classify_seed_hits with the lists as arguments (RC-3). |
 | `classify_root` | function | `classify_root` | [tests/k4b/test_b_registry_rules.py:88](../../tests/k4b/test_b_registry_rules.py#L88) |  |
 | `classify_seed_hits` | function | `classify_seed_hits` | [tools/hws/hws_driver.py:81](../../tools/hws/hws_driver.py#L81) |  |
 | `classify_seed_hits` | function | `classify_seed_hits` | [tools/k4b/k4b_driver.py:87](../../tools/k4b/k4b_driver.py#L87) | RC5: PASS iff every hit is this lineage's declaration; anything else fails closed. |
@@ -3103,7 +3103,7 @@
 | `g0` | function | `g0` | [tools/c1prime/c1_driver.py:77](../../tools/c1prime/c1_driver.py#L77) |  |
 | `g0` | function | `g0` | [tools/c2_readout/c2_driver.py:231](../../tools/c2_readout/c2_driver.py#L231) | Items (i)-(viii), never raising (E-25); LINEAGE iff only (vi)-(vii) fail (R-0100-2). |
 | `g0` | function | `g0` | [tools/hws/hws_driver.py:93](../../tools/hws/hws_driver.py#L93) |  |
-| `g0` | function | `g0` | [tools/hwsb/hwsb_known.py:92](../../tools/hwsb/hwsb_known.py#L92) |  |
+| `g0` | function | `g0` | [tools/hwsb/hwsb_known.py:93](../../tools/hwsb/hwsb_known.py#L93) |  |
 | `g0` | function | `g0` | [tools/k4b/k4b_driver.py:100](../../tools/k4b/k4b_driver.py#L100) |  |
 | `g0_feas` | function | `g0_feas` | [tools/d2a/d2a_targets.py:311](../../tools/d2a/d2a_targets.py#L311) |  |
 | `g0_feas` | function | `g0_feas` | [tools/x6_stage1/x6s1_stage_pre.py:319](../../tools/x6_stage1/x6s1_stage_pre.py#L319) | (a)-(d) (FEASIBILITY_NO_GO, S3). The test partners (t = 32) are drawn and persisted: test(NA) |
@@ -3425,7 +3425,7 @@
 | `js_information` | function | `js_information` | [tools/x2a_stage0/x2a_model.py:146](../../tools/x2a_stage0/x2a_model.py#L146) |  |
 | `js_phi` | function | `js_phi` | [tools/x2a_stage0/x2a_model.py:134](../../tools/x2a_stage0/x2a_model.py#L134) |  |
 | `jsonable` | function | `jsonable` | [tools/d2a/d2a_train.py:199](../../tools/d2a/d2a_train.py#L199) |  |
-| `jsonable` | function | `jsonable` | [tools/hwsb/hwsb_known.py:38](../../tools/hwsb/hwsb_known.py#L38) | JSON-safe copy: Fractions as str, numpy scalars as Python, (j, s) keys as 'j:s'. |
+| `jsonable` | function | `jsonable` | [tools/hwsb/hwsb_known.py:39](../../tools/hwsb/hwsb_known.py#L39) | JSON-safe copy: Fractions as str, numpy scalars as Python, (j, s) keys as 'j:s'. |
 | `jsonable` | function | `jsonable` | [tools/x6_stage0/x6_store.py:190](../../tools/x6_stage0/x6_store.py#L190) |  |
 | `JumpClock` | class | `JumpClock` | [tests/circle_history/test_cochain_lift.py:112](../../tests/circle_history/test_cochain_lift.py#L112) | 0.0 for the first `zero_calls` readings, then `late` (far beyond the 30 s cap). |
 | `junk` | function | `junk` | [tests/k4b/test_b_registry_rules.py:72](../../tests/k4b/test_b_registry_rules.py#L72) |  |
@@ -3442,10 +3442,10 @@
 | `kappa_nu` | function | `kappa_nu` | [tools/c1prime/c1_oracle.py:197](../../tools/c1prime/c1_oracle.py#L197) |  |
 | `kappa_nu` | function | `kappa_nu` | [tools/c2_readout/c2_oracle.py:176](../../tools/c2_readout/c2_oracle.py#L176) |  |
 | `kappa_x1` | function | `kappa_x1` | [tools/c2_readout/c2_model.py:180](../../tools/c2_readout/c2_model.py#L180) | max_{i,v} S_iv / max(1, \|z_i\|_inf), S_iv the head-arithmetic sum of §2.7. |
-| `kb0` | function | `kb0` | [tools/hwsb/hwsb_known.py:106](../../tools/hwsb/hwsb_known.py#L106) |  |
-| `kb1` | function | `kb1` | [tools/hwsb/hwsb_known.py:131](../../tools/hwsb/hwsb_known.py#L131) |  |
-| `kb2_kb3` | function | `kb2_kb3` | [tools/hwsb/hwsb_known.py:179](../../tools/hwsb/hwsb_known.py#L179) |  |
-| `kb4` | function | `kb4` | [tools/hwsb/hwsb_known.py:241](../../tools/hwsb/hwsb_known.py#L241) |  |
+| `kb0` | function | `kb0` | [tools/hwsb/hwsb_known.py:107](../../tools/hwsb/hwsb_known.py#L107) |  |
+| `kb1` | function | `kb1` | [tools/hwsb/hwsb_known.py:132](../../tools/hwsb/hwsb_known.py#L132) |  |
+| `kb2_kb3` | function | `kb2_kb3` | [tools/hwsb/hwsb_known.py:180](../../tools/hwsb/hwsb_known.py#L180) |  |
+| `kb4` | function | `kb4` | [tools/hwsb/hwsb_known.py:242](../../tools/hwsb/hwsb_known.py#L242) |  |
 | `kb5` | function | `kb5` | [tools/hwsb/hwsb_kb.py:26](../../tools/hwsb/hwsb_kb.py#L26) |  |
 | `kb6` | function | `kb6` | [tools/hwsb/hwsb_kb.py:84](../../tools/hwsb/hwsb_kb.py#L84) |  |
 | `kb7` | function | `kb7` | [tools/hwsb/hwsb_kb.py:127](../../tools/hwsb/hwsb_kb.py#L127) |  |
@@ -4628,7 +4628,7 @@
 | `run_gates` | function | `run_gates` | [tools/k4b/k4b_driver.py:49](../../tools/k4b/k4b_driver.py#L49) |  |
 | `run_inputs` | function | `run_inputs` | [src/topo_pilot/experiment/s7.py:45](../../src/topo_pilot/experiment/s7.py#L45) | S2 artifacts of an S7 run (U and N have no σ; N uses the cylinder world, D-029). |
 | `run_job` | method | `RerunJob.run_job` | [src/topo_pilot/experiment/s8.py:147](../../src/topo_pilot/experiment/s8.py#L147) |  |
-| `run_kb` | function | `run_kb` | [tools/hwsb/hwsb_known.py:280](../../tools/hwsb/hwsb_known.py#L280) | KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN. |
+| `run_kb` | function | `run_kb` | [tools/hwsb/hwsb_known.py:281](../../tools/hwsb/hwsb_known.py#L281) | KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN. |
 | `run_key` | function | `run_key` | [tools/hwsb/hwsb_config.py:187](../../tools/hwsb/hwsb_config.py#L187) |  |
 | `run_key` | function | `run_key` | [tools/x6_stage1/x6s1_data.py:168](../../tools/x6_stage1/x6s1_data.py#L168) |  |
 | `run_key_of` | function | `run_key_of` | [src/topo_pilot/experiment/s3.py:83](../../src/topo_pilot/experiment/s3.py#L83) |  |

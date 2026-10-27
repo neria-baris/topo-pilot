@@ -63,6 +63,7 @@
 - [tests/hwsb/test_b_records.py](../../tests/hwsb/test_b_records.py.md) (line 26, import)
 - [tests/hwsb/test_b_registry.py](../../tests/hwsb/test_b_registry.py.md) (line 22, import)
 - [tests/hwsb/test_b_streams.py](../../tests/hwsb/test_b_streams.py.md) (line 18, import)
+- [tests/hwsb/test_r_0168_kb_default_store.py](../../tests/hwsb/test_r_0168_kb_default_store.py.md) (line 19, import)
 - [tools/hwsb/hwsb_data.py](hwsb_data.py.md) (line 10, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 9, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 10, import)

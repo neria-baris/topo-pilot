@@ -2527,6 +2527,7 @@
 | `test_run_c1_gate_records_and_stops` | test | `test_run_c1_gate_records_and_stops` | [tests/c1prime/test_a_exceptions.py:145](../../tests/c1prime/test_a_exceptions.py#L145) |  |
 | `test_run_gate_taxonomy` | test | `test_run_gate_taxonomy` | [tests/circle_history/test_builder_v24_stages.py:33](../../tests/circle_history/test_builder_v24_stages.py#L33) |  |
 | `test_run_gates_all_pass_in_order` | test | `test_run_gates_all_pass_in_order` | [tests/k4b/test_b_flow.py:155](../../tests/k4b/test_b_flow.py#L155) |  |
+| `test_run_kb_default_store_reaches_kb0` | test | `test_run_kb_default_store_reaches_kb0` | [tests/hwsb/test_r_0168_kb_default_store.py:24](../../tests/hwsb/test_r_0168_kb_default_store.py#L24) |  |
 | `test_run_lock_identity_follows_the_release_session` | test | `test_run_lock_identity_follows_the_release_session` | [tests/k4b/test_b_meter.py:69](../../tests/k4b/test_b_meter.py#L69) |  |
 | `test_run_metrics_and_probes_deferred` | test | `test_run_metrics_and_probes_deferred` | [tests/prediction/test_stage.py:70](../../tests/prediction/test_stage.py#L70) |  |
 | `test_run_oracle_is_bayesfilter_with_the_section_3_3_indices` | test | `test_run_oracle_is_bayesfilter_with_the_section_3_3_indices` | [tests/c1prime/test_a_oracle_named.py:101](../../tests/c1prime/test_a_oracle_named.py#L101) |  |
@@ -3388,7 +3389,7 @@
 | `w0` | function | `w0` | [tests/hws/test_b_oracle.py:43](../../tests/hws/test_b_oracle.py#L43) |  |
 | `w0` | function | `w0` | [tests/hwsb/test_b_process.py:46](../../tests/hwsb/test_b_process.py#L46) |  |
 | `w0` | function | `w0` | [tests/hwsb/test_b_streams.py:148](../../tests/hwsb/test_b_streams.py#L148) |  |
-| `w0_process` | function | `w0_process` | [tools/hwsb/hwsb_known.py:157](../../tools/hwsb/hwsb_known.py#L157) |  |
+| `w0_process` | function | `w0_process` | [tools/hwsb/hwsb_known.py:158](../../tools/hwsb/hwsb_known.py#L158) |  |
 | `w32` | function | `w32` | [tools/c2_readout/c2_stage_base.py:226](../../tools/c2_readout/c2_stage_base.py#L226) |  |
 | `w_hat` | function | `w_hat` | [tools/c1prime/c1_fit.py:206](../../tools/c1prime/c1_fit.py#L206) |  |
 | `w_path` | function | `w_path` | [tests/x6_stage0/test_x6_stage0.py:115](../../tests/x6_stage0/test_x6_stage0.py#L115) |  |

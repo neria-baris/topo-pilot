@@ -56,7 +56,7 @@
 
 ## Imported by
 
-- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 344, import)
+- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 345, import)
 
 ## Top-level constants
 

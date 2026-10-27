@@ -62,10 +62,11 @@
 ## Imported by
 
 - [tests/hwsb/test_b_records.py](../../tests/hwsb/test_b_records.py.md) (line 27, import)
+- [tests/hwsb/test_r_0168_kb_default_store.py](../../tests/hwsb/test_r_0168_kb_default_store.py.md) (line 20, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 21, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 16, import)
-- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 107, import)
-- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 282, import)
+- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 108, import)
+- [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 283, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 77, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 304, import)
 

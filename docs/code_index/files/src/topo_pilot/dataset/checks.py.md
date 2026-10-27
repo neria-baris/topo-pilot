@@ -57,7 +57,7 @@
 - [tools/c2_readout/c2_data.py](../../../tools/c2_readout/c2_data.py.md) (line 29, import)
 - [tools/c2_readout/c2_registry.py](../../../tools/c2_readout/c2_registry.py.md) (line 29, import)
 - [tools/hwsb/hwsb_data.py](../../../tools/hwsb/hwsb_data.py.md) (line 32, import)
-- [tools/hwsb/hwsb_known.py](../../../tools/hwsb/hwsb_known.py.md) (line 31, import)
+- [tools/hwsb/hwsb_known.py](../../../tools/hwsb/hwsb_known.py.md) (line 32, import)
 - [tools/hwsb/hwsb_registry.py](../../../tools/hwsb/hwsb_registry.py.md) (line 28, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 20, import)
 - [tools/x6_stage1/x6s1_cloud.py](../../../tools/x6_stage1/x6s1_cloud.py.md) (line 28, import)

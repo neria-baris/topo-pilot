@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 301,
-  "code files": 557,
+  "code files": 558,
   "dynamic imports, dynamic expression or unresolved": 7,
   "dynamic imports, internal": 13,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 933,
-  "functions and methods (incl. tests)": 7870,
+  "files indexed": 934,
+  "functions and methods (incl. tests)": 7871,
   "import cycles (strongly connected components)": 9,
   "import statements, external": 817,
   "import statements, internal ambiguous": 5,
-  "import statements, internal resolved": 2418,
+  "import statements, internal resolved": 2421,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2353,
-  "internal edges (file to file, with kind and line)": 2450,
-  "python files": 556
+  "import statements, standard library": 2357,
+  "internal edges (file to file, with kind and line)": 2453,
+  "python files": 557
  },
  "cycles": [
   [
@@ -7665,6 +7665,24 @@
    21
   ],
   [
+   "tests/hwsb/test_r_0168_kb_default_store.py",
+   "tools/hwsb/hwsb_config.py",
+   "import",
+   19
+  ],
+  [
+   "tests/hwsb/test_r_0168_kb_default_store.py",
+   "tools/hwsb/hwsb_driver.py",
+   "import",
+   20
+  ],
+  [
+   "tests/hwsb/test_r_0168_kb_default_store.py",
+   "tools/hwsb/hwsb_known.py",
+   "import",
+   21
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -12372,7 +12390,7 @@
    "tools/hwsb/hwsb_known.py",
    "src/topo_pilot/dataset/checks.py",
    "import",
-   31
+   32
   ],
   [
    "tools/hwsb/hwsb_known.py",
@@ -12396,19 +12414,19 @@
    "tools/hwsb/hwsb_known.py",
    "tools/hwsb/hwsb_driver.py",
    "import",
-   107
+   108
   ],
   [
    "tools/hwsb/hwsb_known.py",
    "tools/hwsb/hwsb_driver.py",
    "import",
-   282
+   283
   ],
   [
    "tools/hwsb/hwsb_known.py",
    "tools/hwsb/hwsb_kb.py",
    "import",
-   344
+   345
   ],
   [
    "tools/hwsb/hwsb_known.py",
@@ -18674,6 +18692,12 @@
    "purpose": "Author B (job 0161), TEST_PLAN section 3 `test_b_streams.py`: streams and sequence IDs",
    "sha256": "bf34bdbdc39b19b0a51a105dc1b89b372c90f2bfd85ec2c793c35bf0576e4dab"
   },
+  "tests/hwsb/test_r_0168_kb_default_store.py": {
+   "kind": "python",
+   "lines": 36,
+   "purpose": "Regression D-0168-1 (coordinator 08ad4eaf, job 0168).",
+   "sha256": "880b4f36e93fe22d8a1b1418f4a6e5480fae6b46aa095ebf8fa61fa1d13c13d7"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -19780,9 +19804,9 @@
   },
   "tools/hwsb/hwsb_known.py": {
    "kind": "python",
-   "lines": 347,
+   "lines": 348,
    "purpose": "HWSB G0 and the known cases KB0-KB7 (API.md §7; protocol §3).",
-   "sha256": "95dbec1ce8705d851e514c319a9dd5e355306347597f91bbdc375162665517b2"
+   "sha256": "d0f8a5e6992fa67ca6501a59ab716c33cba6a9e401d04ac6bb4a68d4b7244e47"
   },
   "tools/hwsb/hwsb_law.py": {
    "kind": "python",
@@ -121204,6 +121228,149 @@
     }
    ]
   },
+  "tests/hwsb/test_r_0168_kb_default_store.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Regression D-0168-1 (coordinator 08ad4eaf, job 0168).",
+   "doc1": "Regression D-0168-1 (coordinator 08ad4eaf, job 0168).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "hwsb_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsb/hwsb_config.py"
+     ],
+     "top": "hwsb_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "hwsb_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsb/hwsb_driver.py"
+     ],
+     "top": "hwsb_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "hwsb_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsb/hwsb_known.py"
+     ],
+     "top": "hwsb_known"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 36,
+     "kind": "test",
+     "name": "test_run_kb_default_store_reaches_kb0",
+     "qual": "test_run_kb_default_store_reaches_kb0",
+     "sig": "def test_run_kb_default_store_reaches_kb0(tmp_path, monkeypatch)",
+     "start": 24
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsb"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsb')",
+     "line": 17
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -176448,6 +176615,7 @@
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore",
+      "LocalFSBackend",
       "MemoryBackend",
       "ObservationSet",
       "SeedTree",
@@ -176465,7 +176633,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 32,
      "module": "topo_pilot.dataset.checks",
      "names": [
       "make_sequence_ids",
@@ -176483,7 +176651,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 107,
+     "line": 108,
      "module": "",
      "names": [
       "hwsb_driver"
@@ -176500,7 +176668,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 282,
+     "line": 283,
      "module": "",
      "names": [
       "hwsb_driver"
@@ -176517,7 +176685,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 344,
+     "line": 345,
      "module": "",
      "names": [
       "hwsb_kb"
@@ -176533,142 +176701,142 @@
     {
      "decorators": [],
      "doc": "JSON-safe copy: Fractions as str, numpy scalars as Python, (j, s) keys as 'j:s'.",
-     "end": 57,
+     "end": 58,
      "kind": "function",
      "name": "jsonable",
      "qual": "jsonable",
      "sig": "def jsonable(x)",
-     "start": 38
+     "start": 39
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 61,
+     "end": 62,
      "kind": "function",
      "name": "_ok",
      "qual": "_ok",
      "sig": "def _ok(flag) -> str",
-     "start": 60
+     "start": 61
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 65,
+     "end": 66,
      "kind": "function",
      "name": "_read_json",
      "qual": "_read_json",
      "sig": "def _read_json(path) -> dict",
-     "start": 64
+     "start": 65
     },
     {
      "decorators": [],
      "doc": "Mirror of hws_driver.classify_seed_hits with the lists as arguments (RC-3).",
-     "end": 89,
+     "end": 90,
      "kind": "function",
      "name": "classify_hits",
      "qual": "classify_hits",
      "sig": "def classify_hits(hits, fragments=None, job_scratch=None, label='hwsb_declaration') -> dict",
-     "start": 71
+     "start": 72
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 100,
+     "end": 101,
      "kind": "function",
      "name": "g0",
      "qual": "g0",
      "sig": "def g0(out, root=hc.ROOT) -> dict",
-     "start": 92
+     "start": 93
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 128,
+     "end": 129,
      "kind": "function",
      "name": "kb0",
      "qual": "kb0",
      "sig": "def kb0(out, auth, sched) -> dict",
-     "start": 106
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 154,
+     "end": 155,
      "kind": "function",
      "name": "kb1",
      "qual": "kb1",
      "sig": "def kb1(store) -> tuple",
-     "start": 131
+     "start": 132
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 161,
+     "end": 162,
      "kind": "function",
      "name": "w0_process",
      "qual": "w0_process",
      "sig": "def w0_process(store=None) -> dict",
-     "start": 157
+     "start": 158
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 172,
+     "end": 173,
      "kind": "function",
      "name": "_e4_obs",
      "qual": "_e4_obs",
      "sig": "def _e4_obs(proc, split, n, rng, rep) -> ObservationSet",
-     "start": 167
+     "start": 168
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 176,
+     "end": 177,
      "kind": "function",
      "name": "_ck",
      "qual": "_ck",
      "sig": "def _ck(obj) -> str",
-     "start": 175
+     "start": 176
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 235,
+     "end": 236,
      "kind": "function",
      "name": "kb2_kb3",
      "qual": "kb2_kb3",
      "sig": "def kb2_kb3(proc_w0) -> dict",
-     "start": 179
+     "start": 180
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 277,
+     "end": 278,
      "kind": "function",
      "name": "kb4",
      "qual": "kb4",
      "sig": "def kb4(proc_w0, proc_star) -> dict",
-     "start": 241
+     "start": 242
     },
     {
      "decorators": [],
      "doc": "KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN.",
-     "end": 338,
+     "end": 339,
      "kind": "function",
      "name": "run_kb",
      "qual": "run_kb",
      "sig": "def run_kb(out, auth, sched, store=None) -> dict",
-     "start": 280
+     "start": 281
     },
     {
      "decorators": [],
      "doc": "kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily.",
-     "end": 347,
+     "end": 348,
      "kind": "function",
      "name": "__getattr__",
      "qual": "__getattr__",
      "sig": "def __getattr__(name)",
-     "start": 341
+     "start": 342
     }
    ],
    "syspath": []
@@ -206448,5 +206616,5 @@
    ]
   }
  },
- "sources_digest": "7ec79cd7028f6866c303d6bc650476453876887c93517c79e83d5e6170d36a4c"
+ "sources_digest": "e7256bd3f4761ff5610c4d061a945499c7c7333ae7a43db4975c8c7e9c3cc53b"
 }

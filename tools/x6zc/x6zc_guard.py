@@ -101,6 +101,36 @@ def _in_job() -> bool:
     k32, res = ctypes.windll.kernel32, ctypes.c_int(0)
     return bool(k32.IsProcessInJob(k32.GetCurrentProcess(), None, ctypes.byref(res))) and bool(
         res.value)
+def _parents() -> dict:  # pid -> parent pid of every process (Windows toolhelp snapshot)
+    import ctypes
+    import ctypes.wintypes as wt
+
+    class PE(ctypes.Structure):
+        _fields_ = [("dwSize", wt.DWORD), ("cntUsage", wt.DWORD), ("pid", wt.DWORD),
+                    ("heap", ctypes.c_size_t), ("module", wt.DWORD), ("threads", wt.DWORD),
+                    ("ppid", wt.DWORD), ("prio", ctypes.c_long), ("flags", wt.DWORD),
+                    ("exe", ctypes.c_char * 260)]
+    k32, e, out = ctypes.windll.kernel32, PE(), {}
+    k32.CreateToolhelp32Snapshot.restype = wt.HANDLE
+    snap, e.dwSize = k32.CreateToolhelp32Snapshot(2, 0), ctypes.sizeof(PE)  # TH32CS_SNAPPROCESS
+    try:
+        ok = k32.Process32First(snap, ctypes.byref(e))
+        while ok:
+            out[int(e.pid)] = int(e.ppid)
+            ok = k32.Process32Next(snap, ctypes.byref(e))
+    finally:
+        k32.CloseHandle(snap)
+    return out
+def is_ancestor(pid) -> bool:  # N-4: `pid` lies on this process's parent chain
+    if os.name != "nt":
+        return False
+    par, cur, seen = _parents(), os.getpid(), set()
+    while cur in par and cur not in seen and cur:
+        seen.add(cur)
+        cur = par[cur]
+        if cur == int(pid):
+            return True
+    return False
 def meter_live(store) -> list:  # METER_ACTIVE.lock names a live meter, the ledger's open entry
     a = json.loads((Path(store) / "METER_ACTIVE.lock").read_text("utf-8"))
     led = json.loads((Path(store) / "cpu_ledger.json").read_text("utf-8"))
@@ -110,7 +140,9 @@ def meter_live(store) -> list:  # METER_ACTIVE.lock names a live meter, the ledg
          and _pid_alive(a["pid"])),
         ("cpu_ledger.json: the last entry is not this meter's STARTED entry",
          last.get("status") == "STARTED" and last.get("meter_pid") == a.get("pid")),
-        ("this process is not inside the meter's job object", _in_job())) if not ok]
+        ("this process is not inside the meter's job object", _in_job()),
+        ("the meter pid is not an ancestor of this process (N-4)", isinstance(a.get("pid"), int)
+         and is_ancestor(a["pid"]))) if not ok]
 def identity_problems(store, fz, disp, job=None) -> list:
     import d2a_train
     out = [f"dispatch record lacks {k}" for k in DISPATCH_KEYS if not str(disp.get(k) or "")]
@@ -178,7 +210,7 @@ def stage_cpu(ctx) -> float:  # this process + the completed chunk children (R-0
 def _job_cpu():
     try:
         import x6s1_run as sr
-        return sr._job_cpu()
+        return sr._job_cpu_s()  # N-2: the X6S1 name
     except Exception:  # noqa: BLE001  (informative only: not inside a job object)
         return None
 def _begin(store, stage, dispatch=None, job=None) -> dict:

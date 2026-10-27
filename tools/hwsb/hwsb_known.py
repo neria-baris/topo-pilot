@@ -23,6 +23,7 @@ import stage_records
 
 from topo_pilot.contracts import (
     ArtifactStore,
+    LocalFSBackend,
     MemoryBackend,
     ObservationSet,
     SeedTree,
@@ -282,7 +283,7 @@ def run_kb(out, auth, sched, store=None) -> dict:
     import hwsb_driver as hdr
 
     out = Path(out)
-    store = store or ArtifactStore(hd.LocalFSBackend(out / "artifacts"))
+    store = store or ArtifactStore(LocalFSBackend(out / "artifacts"))
     t0, items, rec = time.process_time(), ("KB0", "KB1", "KB2", "KB3", "KB4", "KB5", "KB6"), {}
     ctx = {}
 

@@ -118,14 +118,15 @@ def _w1_stats(h, p) -> tuple:
     k = xm.parikh(p["segment"])
     return (len(h), p["n"], p["v"], p["prefix"], p["y"], k,
             *(xm.statistic(S, k) for S in ("H1", "counts", "parity")))
-def _k0_pair(ha, hb, family, v, lam):  # (item, detail) of the first failing item, or None
+def _k0_pair(ha, hb, family, v, lam, out=None):  # (item, detail) of the first failing item
     try:
         pa, pb = xm.parse(ha), xm.parse(hb)
     except ValueError as e:
         return 4, f"illegal history: {e}"
     if any(sp.q_exact(a, ha, len(ha)) != sp.q_exact(a, hb, len(hb)) for a in ("ZC", "AB")):
         return 1, "q*_ZC or q*_AB differs between the members"
-    na, nb = sp.q_exact("NA", ha, len(ha)), sp.q_exact("NA", hb, len(hb))
+    na, nb = sp.q_exact("NA", ha, len(ha)), sp.q_exact("NA", hb, len(hb))  # full histories
+    (out if out is not None else {}).update(a=na, b=nb)  # reused by item 5 (F-12)
     if not (sum(na[15:18]) and sum(nb[15:18]) and pa["y"] is not None) or [
             x - w for x, w in zip(_cn(na), _cn(nb))] != _dna(lam, pa["y"]):
         return 2, "cue-normalised q*_NA difference (or zero cue mass) at the readout"
@@ -160,9 +161,10 @@ def oracle_geometry(arrays, family, keys=VARIANT_ORDER) -> dict:
                 ctrl[key] = ctrl.get(key, 0) + all(sp.q_exact(a, ha, len(ha)) == sp.q_exact(
                     a, hb, len(hb)) for a in ("NA", "ZC", "AB"))
                 continue
-            n, bad = n + 1, _k0_pair(ha, hb, family, v, lam)
-            for m, h in ((("a", ha), ("b", hb)) if bad is None and fresh else ()):
-                if ref.setdefault((v, m, int(ys[r])), qx("NA", h)) != qx("NA", h):
+            qn = {}  # item 5 on the full history: sp.q_exact("NA", h, len(h)) (F-12)
+            n, bad = n + 1, _k0_pair(ha, hb, family, v, lam, qn)
+            for m in ("a", "b") if bad is None and fresh else ():
+                if ref.setdefault((v, m, int(ys[r])), qn[m]) != qn[m]:
                     bad = 5, "q*_NA not prefix-invariant"
             if bad is not None:
                 checks[f"item{bad[0]}"] = False

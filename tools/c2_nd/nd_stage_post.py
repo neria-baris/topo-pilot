@@ -27,6 +27,7 @@ import nd_registry as nrg
 import nd_split as sp
 import nd_stage_base as sb
 import nd_stage_pre as pre
+import nd_stage_val as sv
 import numpy as np
 import torch
 from nd_stage_base import EXC, OK, alive, js, orc, problem, put, putj, rec
@@ -216,7 +217,7 @@ def _kc_extra(ctx) -> dict:
             cases = (g.get("values") or {}).get("cases", {})
             kcr[int(g["model"])] = [c for c, r in cases.items() if r == "FAIL"]
     cases = nc.KC_CASES + nc.KCR_CASES
-    test = sp.kc_eval(ctx, "test", "test_KC", cases, nc.DESC_ALPHA, nc.KC_TEST_DRAWS)
+    test = sv.kc_eval(ctx, "test", "test_KC", cases, nc.DESC_ALPHA, nc.KC_TEST_DRAWS)
     kt = {j: [c for c in nc.KC_CASES if r.get(c) == "CONTRADICTED"] for j, r in test.items()}
     return {"kcr": kcr, "kc_test": {j: c for j, c in kt.items() if c}, "kc_test_all": test}
 

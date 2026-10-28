@@ -65,6 +65,7 @@
 - [tests/x6_stage1/test_b_seed_pool_reg.py](../../tests/x6_stage1/test_b_seed_pool_reg.py.md) (line 387, import)
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 27, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 25, import)
+- [tools/hwsb/hwsb_records.py](../hwsb/hwsb_records.py.md) (line 17, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 19, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 21, import)
 - [tools/x6_stage1/x6s1_registry.py](../x6_stage1/x6s1_registry.py.md) (line 22, import)

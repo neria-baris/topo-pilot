@@ -61,6 +61,7 @@
 - [tests/circle_history/test_reference_cache.py](../../tests/circle_history/test_reference_cache.py.md) (line 30, import)
 - [tests/circle_history/test_scores_precision.py](../../tests/circle_history/test_scores_precision.py.md) (line 26, import)
 - [tests/circle_history/test_scores_precision_gates.py](../../tests/circle_history/test_scores_precision_gates.py.md) (line 29, import)
+- [tests/hwsb/test_a_enclosure_proof.py](../../tests/hwsb/test_a_enclosure_proof.py.md) (line 35, import)
 - [tests/k4b/test_b_charts.py](../../tests/k4b/test_b_charts.py.md) (line 24, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 23, import)
 - [tools/x4_circle_history/adapter.py](adapter.py.md) (line 14, import)

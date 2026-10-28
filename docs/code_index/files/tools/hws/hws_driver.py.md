@@ -65,8 +65,11 @@
 
 - [tests/hws/test_b_kc1.py](../../tests/hws/test_b_kc1.py.md) (line 35, import)
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 31, import)
+- [tests/hwsb/test_b_records.py](../../tests/hwsb/test_b_records.py.md) (line 30, import)
 - [tools/hws/hws_dry.py](hws_dry.py.md) (line 14, import)
 - [tools/hws/hws_known.py](hws_known.py.md) (line 16, import)
+- [tools/hwsb/hwsb_dry2.py](../hwsb/hwsb_dry2.py.md) (line 14, import)
+- [tools/hwsb/hwsb_known.py](../hwsb/hwsb_known.py.md) (line 16, import)
 
 ## Top-level constants
 

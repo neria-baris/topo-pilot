@@ -51,8 +51,10 @@
 
 ## Imported by
 
+- [tests/hwsb/test_b_registry.py](../../tests/hwsb/test_b_registry.py.md) (line 26, import)
 - [tests/k4b/test_b_data.py](../../tests/k4b/test_b_data.py.md) (line 23, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 24, import)
+- [tools/hwsb/hwsb_gates.py](../hwsb/hwsb_gates.py.md) (line 265, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 18, import)
 

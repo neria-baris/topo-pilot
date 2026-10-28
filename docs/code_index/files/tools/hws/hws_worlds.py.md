@@ -64,6 +64,8 @@
 - [tests/hws/test_b_oracle.py](../../tests/hws/test_b_oracle.py.md) (line 24, import)
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 29, import)
 - [tests/hws/test_b_worlds.py](../../tests/hws/test_b_worlds.py.md) (line 26, import)
+- [tests/hwsb/test_b_process.py](../../tests/hwsb/test_b_process.py.md) (line 24, import)
+- [tests/hwsb/test_b_streams.py](../../tests/hwsb/test_b_streams.py.md) (line 20, import)
 - [tools/hws/hws_driver.py](hws_driver.py.md) (line 16, import)
 - [tools/hws/hws_dry.py](hws_dry.py.md) (line 13, import)
 - [tools/hws/hws_exact.py](hws_exact.py.md) (line 19, import)
@@ -73,6 +75,8 @@
 - [tools/hws/hws_records.py](hws_records.py.md) (line 20, import)
 - [tools/hws/hws_select.py](hws_select.py.md) (line 13, import)
 - [tools/hws/hws_stats.py](hws_stats.py.md) (line 13, import)
+- [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 62, import)
+- [tools/hwsb/hwsb_dry.py](../hwsb/hwsb_dry.py.md) (line 19, import)
 
 ## Top-level constants
 

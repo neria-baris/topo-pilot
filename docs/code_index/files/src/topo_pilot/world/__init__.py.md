@@ -64,6 +64,8 @@
 - [tools/hws/hws_records.py](../../../tools/hws/hws_records.py.md) (line 28, import)
 - [tools/hws/hws_worlds.py](../../../tools/hws/hws_worlds.py.md) (line 32, import)
 - [tools/hws/hws_worlds.py](../../../tools/hws/hws_worlds.py.md) (line 33, import)
+- [tools/hwsb/hwsb_config.py](../../../tools/hwsb/hwsb_config.py.md) (line 30, import)
+- [tools/hwsb/hwsb_dry.py](../../../tools/hwsb/hwsb_dry.py.md) (line 48, import)
 - [tools/theory_exact/check_hybrids.py](../../../tools/theory_exact/check_hybrids.py.md) (line 12, import)
 - [tools/theory_exact/theory_exact.py](../../../tools/theory_exact/theory_exact.py.md) (line 17, import)
 - [tools/theory_exact/theory_exact2.py](../../../tools/theory_exact/theory_exact2.py.md) (line 25, import)

@@ -47,6 +47,7 @@
 - [src/topo_pilot/process/emission.py](emission.py.md) (line 26, import)
 - [tests/process/test_controls.py](../../../tests/process/test_controls.py.md) (line 32, import)
 - [tests/process/test_overlap.py](../../../tests/process/test_overlap.py.md) (line 18, import)
+- [tools/hwsb/hwsb_dry.py](../../../tools/hwsb/hwsb_dry.py.md) (line 46, import)
 
 ## Top-level constants
 

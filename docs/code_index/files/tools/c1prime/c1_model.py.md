@@ -47,12 +47,15 @@
 
 ## Imported by
 
+- [tests/hwsb/test_b_e4path.py](../../tests/hwsb/test_b_e4path.py.md) (line 27, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 15, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 18, import)
 - [tools/c2_nd/nd_decoy.py](../c2_nd/nd_decoy.py.md) (line 21, import)
 - [tools/c2_nd/nd_stage_base.py](../c2_nd/nd_stage_base.py.md) (line 20, import)
 - [tools/c2_readout/c2_model.py](../c2_readout/c2_model.py.md) (line 18, import)
 - [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 19, import)
+- [tools/hwsb/hwsb_data.py](../hwsb/hwsb_data.py.md) (line 15, import)
+- [tools/hwsb/hwsb_eval.py](../hwsb/hwsb_eval.py.md) (line 14, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 100, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 170, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 274, import)

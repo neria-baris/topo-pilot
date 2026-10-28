@@ -70,6 +70,7 @@
 - [tools/d2a/d2a_targets.py](../../../tools/d2a/d2a_targets.py.md) (line 20, import)
 - [tools/hws/hws_exact.py](../../../tools/hws/hws_exact.py.md) (line 26, import)
 - [tools/hws/hws_oracle.py](../../../tools/hws/hws_oracle.py.md) (line 17, import)
+- [tools/hwsb/hwsb_kb.py](../../../tools/hwsb/hwsb_kb.py.md) (line 22, import)
 - [tools/x2a_stage0/x2a_mc.py](../../../tools/x2a_stage0/x2a_mc.py.md) (line 22, import)
 - [tools/x6_stage0/x6_run.py](../../../tools/x6_stage0/x6_run.py.md) (line 25, import)
 - [tools/x6_stage1/x6s1_pairs.py](../../../tools/x6_stage1/x6s1_pairs.py.md) (line 302, import)

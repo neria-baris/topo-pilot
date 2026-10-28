@@ -45,6 +45,8 @@
 ## Imported by
 
 - [src/topo_pilot/world/__init__.py](__init__.py.md) (line 9, import)
+- [tools/hwsb/hwsb_data.py](../../../tools/hwsb/hwsb_data.py.md) (line 41, import)
+- [tools/hwsb/hwsb_dry.py](../../../tools/hwsb/hwsb_dry.py.md) (line 49, import)
 
 ## Top-level constants
 

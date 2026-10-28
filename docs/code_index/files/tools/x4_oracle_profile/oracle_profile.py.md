@@ -68,6 +68,8 @@
 - [tools/hws/hws_known.py](../hws/hws_known.py.md) (line 24, import)
 - [tools/hws/hws_oracle.py](../hws/hws_oracle.py.md) (line 13, import)
 - [tools/hws/hws_worlds.py](../hws/hws_worlds.py.md) (line 24, import)
+- [tools/hwsb/hwsb_data.py](../hwsb/hwsb_data.py.md) (line 17, import)
+- [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 63, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 39, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 171, import)
 - [tools/k4b/k4b_scores.py](../k4b/k4b_scores.py.md) (line 21, import)

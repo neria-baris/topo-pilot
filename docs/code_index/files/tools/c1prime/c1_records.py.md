@@ -88,6 +88,7 @@
 - [tools/c2_readout/c2_driver.py](../c2_readout/c2_driver.py.md) (line 25, import)
 - [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 28, import)
 - [tools/hws/hws_driver.py](../hws/hws_driver.py.md) (line 331, import)
+- [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 64, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 18, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 18, import)
 - [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 29, import)

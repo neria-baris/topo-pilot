@@ -1,0 +1,989 @@
+{
+ "protocol": "HWSB-DESIGN-v1 (design freeze candidate; becomes HWSB-FROZEN-v1 at the execution freeze)",
+ "protocol_file": "tools/hwsb/PROTOCOL_HWSB_v1.md",
+ "protocol_sha256": "db0db31a8ebcd783647babd70c8ab698c6dacf0b128373e0c8c7cb490577e705",
+ "contract_job": "0161 (phase 3 erratum E9: owner_questions, modules)",
+ "status": "CONTRACT (written before any module code; the protocol wins on conflict)",
+ "precedence": [
+  "tools/hwsb/PROTOCOL_HWSB_v1.md",
+  "tools/hwsb/CONTRACT.json",
+  "tools/hwsb/API.md",
+  "tools/hwsb/TEST_PLAN.md"
+ ],
+ "number_format": "Exact values are strings parsed by fractions.Fraction(str); integers are JSON ints; values marked report_only are desk values and never gate anything; reference values are read by the run from the cited record at run time and must equal the value written here (a difference is FAIL_TECHNICAL/KNOWN_CASE)",
+ "authority": {
+  "owner_addendum_32": {
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-32.md",
+   "sha256": "f5f6f150549e8739320693fc9f77c28d199500fcb18e8058f542ce8685c65cce"
+  },
+  "budget_rules": "owner addendum 26 (adaptive, 3x pause); outside the addendum-29 12 CPU-h line (addendum 32 item 4)",
+  "codex": "frozen (owner addendum 28)",
+  "round": "coord-hws-stage-b-20261027",
+  "design_base_commit_main": "fab0499dddbbffb466be28e4084c6343f21a1941",
+  "hws_code_commit": "6101eae0a090ff5ef9da75caee84e5047e356e3f",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-hws",
+  "worktree_base_commit": "2573fec",
+  "branch": "hwsb-impl",
+  "h_exec": null,
+  "h_exec_rule": "pinned at the execution freeze (FREEZE.json); reuse_sha256 re-checked there",
+  "hws_frozen": {
+   "path": "agent-handoff/planning/responses/HWS-FROZEN-v1.md",
+   "sha256": "d96906097ab8b6ec464a2dbd4b477353b2950aa58e5b5995b7b6086ce68963a9"
+  },
+  "k4b_frozen": {
+   "path": "agent-handoff/planning/responses/K4B-FROZEN-v1.md",
+   "sha256": "957f0d5e70870bbd2323fbbae7bf5a8b814735b00a6525346562e7f1dd35b485"
+  },
+  "owner_questions": {
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-33.md",
+   "sha256": "6e253f921584f35b1b25bb2e3ecb3afffb9534e0da0fcfe0d58b7214f16fd1c6",
+   "answers": {
+    "Q1": "default: stage C trains its own three models; pilot models never enter stage C; pilot capture read only by the coordinator and the owner (RC-6)",
+    "Q2": "default: two pilot models",
+    "Q3": "default: B5 at 80 % planned power, the HWS 10.2 value reported",
+    "Q4": "default: on a one-model failure or any non-PASS outcome stop with that outcome and ask; no third seed, fallback world or recipe change",
+    "Q5": "default: B2 and B3 report-only",
+    "Q6": "default: stage-C planning assumes 3 models; stage C itself remains unapproved"
+   }
+  }
+ },
+ "world": {
+  "key": "W12-q1-s1.75-p0.2",
+  "W": 12,
+  "H": 12,
+  "q": 1,
+  "tier": 0,
+  "sigma": "7/4",
+  "p_stay": "1/5",
+  "neighbour": "1/5",
+  "neighbour_rule": "(1 - p_stay)/4",
+  "V": 36,
+  "N": 144,
+  "n_axial": 6,
+  "configs": {
+   "WorldConfig": {
+    "family": "cylinder",
+    "dims": [
+     12,
+     12
+    ],
+    "metric": "flat",
+    "params": {}
+   },
+   "TransitionConfig": {
+    "kind": "max_degree_lazy_walk",
+    "p_stay": 0.2
+   },
+   "EmissionConfig": {
+    "mode": "overlap",
+    "V": 36,
+    "sigma": 1.75,
+    "center_strategy": "grid",
+    "source_mode": null,
+    "metric": "flat"
+   }
+  },
+  "process_code_args": [
+   "cylinder",
+   "overlap",
+   "1.75"
+  ],
+  "canonical_symbol": "v = 6*a + b, centre (0.5 + 2a, 0.5 + 2b); circular label a = v // 6",
+  "w0": {
+   "key": "W12-q1-s1.25-p0.2",
+   "sigma": "5/4",
+   "neighbour": "1/5",
+   "EmissionConfig": {
+    "mode": "overlap",
+    "V": 36,
+    "sigma": 1.25,
+    "center_strategy": "grid"
+   },
+   "process_code_args": [
+    "cylinder",
+    "overlap",
+    "1.25"
+   ]
+  }
+ },
+ "recipe": {
+  "model_config": {
+   "vocab_in": 37,
+   "vocab_out": 36,
+   "n_ctx": 33,
+   "n_layers": 4,
+   "d_model": 128,
+   "n_heads": 4,
+   "d_mlp": 512,
+   "activation": "gelu",
+   "dropout": 0.0,
+   "tie_embeddings": false
+  },
+  "train_config": {
+   "steps": 5000,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 200,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    0,
+    50,
+    100,
+    200,
+    400,
+    700,
+    1000,
+    1500,
+    2000,
+    3000,
+    4000,
+    5000
+   ],
+   "device": "auto"
+  },
+  "reference_checkpoint": "c3358e3cb9c352fb (E4 step 5000; meta.json config and extra.json model_config/train_config)",
+  "gate_step": 5000,
+  "init_step": 0,
+  "site": "resid_post_3",
+  "index": 32,
+  "bos": 36,
+  "run_key": [
+   "hwsb-v1",
+   "W12-q1-s1.75-p0.2",
+   "<master>"
+  ],
+  "run_id_rule": "'-'.join(map(str, run_key))",
+  "learner_consumer": "learner",
+  "threads": {
+   "TRAIN": 1,
+   "KB2": 6,
+   "KB3": 1,
+   "env_one_thread": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+   }
+  },
+  "six_thread_fallback": {
+   "rule": "coordinator ruling after KB3 fails while KB2 passes, before training",
+   "train_central_s": 11600,
+   "per_model_hold_s": 17400
+  },
+  "pilot_models_enter_stage_c": false
+ },
+ "masters": [
+  620201,
+  620202
+ ],
+ "dry_masters": [
+  629901,
+  629902
+ ],
+ "seeds": {
+  "sd_upper": 620212,
+  "projection": 620213,
+  "capture_ci": 620214,
+  "g0_needles": [
+   "hwsb-v1",
+   "620201",
+   "620202",
+   "620212",
+   "620213",
+   "620214"
+  ],
+  "g0_declaration_fragments": [
+   "/tools/hwsb/",
+   "/tests/hwsb/",
+   "/agent-handoff/",
+   "/hwsb-store/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/topo-scratch/hwsb-dry/",
+   "/topo-scratch/test_hwsb-"
+  ],
+  "g0_job_scratch": [],
+  "g0_rule": "hws_driver.seed_search unchanged (D-0127-1 whole-token rule for all-digit needles); a hit is hwsb_declaration iff its lower-cased path with '/' separators contains a fragment or starts with a job_scratch prefix; any other hit fails closed (FAIL_TECHNICAL/SEED_SCOPE)",
+  "dry_never_issues": [
+   "620201",
+   "620202",
+   "620212",
+   "620213",
+   "620214",
+   "train",
+   "dev",
+   "LGATE",
+   "CAL",
+   "VAL"
+  ]
+ },
+ "streams": {
+  "train": {
+   "tree": "SeedTree(master)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "train",
+    "W12-q1-s1.75-p0.2",
+    "<master>"
+   ]
+  },
+  "dev": {
+   "tree": "SeedTree(master)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "dev",
+    "W12-q1-s1.75-p0.2",
+    "<master>"
+   ]
+  },
+  "LGATE": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "LGATE",
+    "W12-q1-s1.75-p0.2"
+   ]
+  },
+  "CAL": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "CAL",
+    "W12-q1-s1.75-p0.2"
+   ]
+  },
+  "VAL": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "VAL",
+    "W12-q1-s1.75-p0.2"
+   ]
+  },
+  "DRY_block": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "DRY",
+    "<case>",
+    "<role>"
+   ]
+  },
+  "DRY_train_dev": {
+   "tree": "SeedTree(dry_master)",
+   "name": "data",
+   "scope": [
+    "hwsb-v1",
+    "DRY",
+    "<case>",
+    "<split>",
+    "<dry_master>"
+   ]
+  },
+  "symbol_names": "SeedTree(master).generator('symbol_names', 'cylinder', master) inside OverlapGaussian (unchanged)",
+  "init_and_batch_order": "Trainer: seeds.seed('init', *run_key), seeds.generator('batch_order', *run_key) with seeds = a fresh SeedTree(master)",
+  "bootstrap": "PCG64 seeds 620212 (SD^U), 620213 (centred draws), 620214 (capture CI), through the reused functions",
+  "e4_regeneration": {
+   "train_dev": "SeedTree(1729).generator('data', split, 'cylinder', 'overlap', '1.25', 1729)",
+   "test": "SeedTree(0).generator('data', 'test', 'cylinder', 'overlap', '1.25')",
+   "panels": "SeedTree(0).generator('panels', 'cylinder', 'overlap', '1.25')",
+   "class": "authorised deterministic regeneration (K4b G0 class); in memory only, never persisted"
+  }
+ },
+ "sequence_ids": {
+  "rule": "dataset.checks.make_sequence_ids(process_code(*world.process_code_args, replicate), split, n)",
+  "train": {
+   "replicate": "hwsb-v1/train/<master>",
+   "split": "train"
+  },
+  "dev": {
+   "replicate": "hwsb-v1/dev/<master>",
+   "split": "dev"
+  },
+  "LGATE": {
+   "replicate": "hwsb-v1/LGATE",
+   "split": "test"
+  },
+  "CAL": {
+   "replicate": "hwsb-v1/CAL",
+   "split": "test"
+  },
+  "VAL": {
+   "replicate": "hwsb-v1/VAL",
+   "split": "test"
+  },
+  "DRY": {
+   "replicate": "hwsb-v1/DRY/<case>/<role>[/<dry_master>]",
+   "split": "train|dev|test"
+  }
+ },
+ "sizes": {
+  "train": 131072,
+  "dev": 4096,
+  "LGATE": 4096,
+  "CAL": 3072,
+  "VAL": 3072,
+  "panel": 512,
+  "landmarks": "the 512 lowest sequence IDs of CAL",
+  "val_panel": "the 512 lowest sequence IDs of VAL",
+  "n_obs": 33,
+  "kept_eval_tokens": 32
+ },
+ "thresholds": {
+  "learning_captured": "4/5",
+  "learning_rule": "captured >= 0.8 for both models (equality passes; LearningGate(0.8))",
+  "prob_row_tol": 1e-06,
+  "G_C_floor": 1e-06,
+  "B2_B3_alpha": "1/80",
+  "B2_B3_rule": "L = d_mean - z*SE(d) > 0 (report only)",
+  "margin_M": "1/100",
+  "alpha_stage_c": "1/60",
+  "alpha_stage_c_note": "0.05/3 = c1_means.P_THIRD = Fraction(5, 300)",
+  "power": "4/5",
+  "mde_max": "1/50",
+  "ladder": [
+   3072,
+   6144,
+   12288
+  ],
+  "draws": 5000,
+  "min_successes": 4000,
+  "ranks": {
+   "sd_upper": 4917,
+   "proj_alpha": 84,
+   "proj_one_minus_alpha": 4917,
+   "ci_lo": 125,
+   "ci_hi": 4875
+  },
+  "c_min_fallback_N": 12288,
+  "Z_bound_standin": "1/1000000",
+  "registry_cap": "1/100",
+  "registry_rows": "3072 + 3072 + N_C (N_C = 12288 when B6 has no N)",
+  "p_D2a_rel_tol": 1e-12,
+  "chart": "inherited unchanged from k4b_config.chart_cfg() and the reused k4b_charts/c1_chart kernels (GIANT >= 487 of 512, exact integer lift, primitive class, smoothing residual <= 1e-8, gauge alignment finite and > 0; C0-val support >= 99 % of 512 (100*n_sup >= 99*n), fidelity >= 0.80, every one of 12 bins >= 8, resultant <= 0.30); never re-specified or tuned",
+  "z_report_only": {
+   "z_1-1/60": 2.128045234184984,
+   "z_0.8": 0.8416212335729144,
+   "z_sum": 2.9696664677578983,
+   "z_1-1/80": 2.2414027276049464
+  }
+ },
+ "known_cases": {
+  "tolerance_rule": "every KB failure is FAIL_TECHNICAL/KNOWN_CASE; no tolerance or reference is changed after data",
+  "KB0": {
+   "selection_json": {
+    "path": "X:/Downloads/projects/topo-pilot/hws-store/SELECTION.json",
+    "sha256": "243f732412b80d4fd0fc088f9612999520e82dd1ec124f2a9f013de35064f087"
+   },
+   "final_report_json": {
+    "path": "X:/Downloads/projects/topo-pilot/hws-store/stages/FINAL/REPORT.json",
+    "sha256": "bd460cee5bf286682ae6c4e325d70c07dd59730b6eb81360e2acfca7862ba05a"
+   }
+  },
+  "KB1": {
+   "WorldSpec": {
+    "id": "21feee1d8ee5422e",
+    "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f"
+   },
+   "TransitionSpec": {
+    "id": "e4dafc7b9785c172",
+    "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd"
+   },
+   "selection_sha256_keys": "SELECTION.json['sha256'] with keys E, T, pi, coords",
+   "selection_sha256": {
+    "E": "4d7b8e5682033357dfde7f640a2dd5ad6d9f645afec33a6e580c8bc20b7ec467",
+    "T": "d55d1024e2e3cd36603e26ff9ae5e365d373abca62495287656f20d69033f688",
+    "pi": "5ab26711610321dcd79ea419ba214fed8e7d637d7b4103868de878af553ca4a9",
+    "coords": "81468d18466865c93107717f419c78ad65eff208b3277dc576d8bb4116912340"
+   },
+   "array_hash_rule": "hashlib.sha256(np.ascontiguousarray(x, dtype=np.float64).tobytes()).hexdigest()",
+   "validate_tol": 1e-12
+  },
+  "KB2": {
+   "e4_artifacts": "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts",
+   "ObservationSet_train": {
+    "id": "38358227133898a2",
+    "payload_sha256": "38433d996e809763e8a06ab97f09d6ac07418224d079b141a1bb15a9ff6718fb",
+    "n": 131072
+   },
+   "ObservationSet_dev": {
+    "id": "096f9b6dbe8536cd",
+    "payload_sha256": "cf9d13c03abef2f7cd04fc3fadfced9bef29096a6cb553a955c879cff02fe5a7",
+    "n": 4096
+   },
+   "EmissionSpec_1729": {
+    "id": "3633ac27dab50cf4",
+    "payload_sha256": "f5b6197c22e3613f12a29feb9dec2ccd357749928032f4dc844364d6884bb1fb"
+   },
+   "checkpoints": {
+    "0": {
+     "id": "bd8813115bbd970b",
+     "payload_sha256": "d49284f57b8d3194b0ef8667624b2181252977567683e9c541bc689e75740922"
+    },
+    "50": {
+     "id": "67e173f07b6b2908",
+     "payload_sha256": "ae93135b72c451e1be80d517d1ee517f35c6b6e1a4c1d3a7ee75fb598592855c"
+    },
+    "100": {
+     "id": "eb0f9e9c8e3a6e1f",
+     "payload_sha256": "7625c1c1607f95224cbfb26a1ef8114c4bd5d396d438cdfc5f7032068a43e01d"
+    }
+   },
+   "metric_records": "37657d8490ba9e17 (extra.json rows, metric_id dev_ce, checkpoint 50 and 100)",
+   "dev_ce": {
+    "50": 2.7369381487369537,
+    "100": 2.4262474477291107
+   },
+   "run_key": [
+    "cylinder",
+    "O",
+    1729
+   ],
+   "run_id": "cylinder-O-1729",
+   "observation_id": "38358227133898a2",
+   "stop_after_step": 100,
+   "threads": 6,
+   "secondary_reading": {
+    "name": "PASS_WITH_NUMERIC_DRIFT",
+    "dev_ce_abs_tol": 0.001,
+    "requires": "both ObservationSet checksums equal and the step-0 checksum equal",
+    "flag": "deviation flag recorded"
+   },
+   "torch_lock": {
+    "path": "requirements.lock",
+    "line": 38,
+    "value": "torch==2.14.1+cpu"
+   }
+  },
+  "KB3": {
+   "threads": 1,
+   "dev_ce_abs_tol": 0.001,
+   "determinism_rerun_to_step": 50
+  },
+  "KB4": {
+   "w0": {
+    "sigma": "5/4",
+    "neighbour": "1/5",
+    "master": 1729,
+    "Z_bound": "2116763197780003590583470649/1000000000000000000000000000000000000000",
+    "record": {
+     "path": "X:/Downloads/projects/topo-pilot/k4b-store/stages/S8/RESULT.json",
+     "sha256": "1571b08b316e39062fab775113731865350c818bb42e1abf173d5b90ee61be44",
+     "key": "Z_bound"
+    },
+    "delta": "0"
+   },
+   "w_star": {
+    "sigma": "7/4",
+    "neighbour": "1/5",
+    "require": "status BOUNDED, kappa < 1, Z_bound recorded"
+   }
+  },
+  "KB5": {
+   "record": {
+    "path": "X:/Downloads/projects/topo-pilot/hws-store/stages/S3/worlds/W12-q1-s1.75-p0.2.json",
+    "sha256": "164c6038680dcfa00dba4686c7432b5fa351c8dfec88a75119ea8a7447f5f8b3"
+   },
+   "hist": {
+    "path": "X:/Downloads/projects/topo-pilot/hws-store/hist/S3/W12-q1-s1.75-p0.2.npz",
+    "sha256_key": "hist_sha256",
+    "sha256": "c000a22408caecf752f0ac340d51d5ea6e776fa57037f00fd2b0949748ec2e41",
+    "array_key": "canon32"
+   },
+   "references": {
+    "D4": [
+     "bounds",
+     "D4",
+     "mean"
+    ],
+    "GC": [
+     "bounds",
+     "GC",
+     "mean"
+    ],
+    "G4": [
+     "bounds",
+     "G4",
+     "mean"
+    ],
+    "G4A": [
+     "bounds",
+     "G4A",
+     "mean"
+    ]
+   },
+   "values": {
+    "D4": 0.04701108259591072,
+    "GC": 0.28719484416019236,
+    "G4": 0.031687124910671036,
+    "G4A": 0.018926750991219307
+   },
+   "abs_tol": 1e-12
+  },
+  "KB6": {
+   "ObservationSet_test": {
+    "id": "2a67b2c947e293ba",
+    "payload_sha256": "a0a2d7c4ff6c57e0e5db1a0f77b61461ff2dfb169607e82612c7dd74cd3686cf",
+    "n": 4096
+   },
+   "HistoryIndex": {
+    "id": "afb6e7120c9477b1",
+    "payload_sha256": "69cba32cc4eb4095f2009aed1d82c9675e77f83fbcab4e5b7b6bf8bc8d939120"
+   },
+   "DatasetConfig": {
+    "n_train": 131072,
+    "n_dev": 4096,
+    "n_test": 4096,
+    "n_panels": 8,
+    "panel_size": 512,
+    "analysis_position": 32
+   },
+   "G_C": 0.2648737252067266,
+   "G_C_source": "MetricRecords 37657d8490ba9e17 extra.json row metric_id G_C",
+   "abs_tol": 1e-12
+  },
+  "KB7": {
+   "report_only": true,
+   "rows": "the 4 lowest-ID VAL rows",
+   "Ks": [
+    4,
+    32
+   ]
+  }
+ },
+ "law": {
+  "digits": 60,
+  "u": "1/200000000000000000000000000000000000000000000000000000000000",
+  "u_rule": "error_bound.u_digits(60) = (1/2)*10^(1-60)",
+  "delta_rule": "delta = max_{s,j} |Fraction(qt_{s,j}) - q_{s,j}| exactly; qt = Decimal(q.numerator)/Decimal(q.denominator) in error_bound.trapping_context(60)",
+  "asserts": [
+   "delta <= u*Q_max",
+   "2*delta < 1"
+  ],
+  "widening": "lo_out = lo*(1 - 2*delta); hi_out = hi/(1 - 2*delta)",
+  "binding": {
+   "process_law.LAW['sigma']": "7/4",
+   "process_law.LAW['neighbour']": "1/5",
+   "process_law.softmax_enclosure": "hwsb_law.softmax_enclosure_rounded"
+  },
+  "independent_check_digits": 200,
+  "independent_check_slack": "1/10^190",
+  "max_corrections_per_defect": 2
+ },
+ "cpu": {
+  "policy": "measure-only meter (--max-cpu inf --max-wall inf); single study ledger agent-handoff/HWSB_CPU_LEDGER.json, never summed into the addendum-29 ledger",
+  "central_s": {
+   "P0": 0,
+   "J-B1": 600,
+   "DRY": 300,
+   "KB": 500,
+   "TRAIN": 4850,
+   "EVAL": 400
+  },
+  "range_s": {
+   "J-B1": [
+    350,
+    1200
+   ],
+   "DRY": [
+    100,
+    900
+   ],
+   "KB": [
+    250,
+    1200
+   ],
+   "TRAIN": [
+    4600,
+    5800
+   ],
+   "EVAL": [
+    150,
+    1200
+   ]
+  },
+  "stage_order": [
+   "J-B1",
+   "DRY",
+   "KB",
+   "TRAIN",
+   "EVAL"
+  ],
+  "cumulative_central_s": {
+   "J-B1": 600,
+   "DRY": 900,
+   "KB": 1400,
+   "TRAIN": 6250,
+   "EVAL": 6650
+  },
+  "multiplier": 3,
+  "comparison": "strict >",
+  "per_model_central_s": 2425,
+  "per_model_hold_s": 7275,
+  "hold_from_step": 1000,
+  "hold_rule": "hold iff (step >= 1000 and cpu_s*5000/step > 7275) or cpu_s > 7275; checked in the checkpoint callback after the checkpoint is saved",
+  "stage_c_forecast": {
+   "models": 3,
+   "training": "3 * max_j measured CPU_j",
+   "evaluation_s": "1280.5 + 1720.1 * N_C / 3072"
+  },
+  "total_central_s": 6650
+ },
+ "resources": {
+  "memory_cap_bytes": 8589934592,
+  "output_cap_bytes": 4294967296,
+  "max_cpu_flag": "inf",
+  "max_wall_flag": "inf",
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "test_job_root": "X:/Downloads/topo-scratch/test_hwsb-<job>",
+  "test_job_temp_root": "X:/Downloads/topo-scratch/test_hwsb-<job>",
+  "pytest_basetemp": "X:/Downloads/topo-scratch/test_hwsb-<job>/pytest",
+  "store": "X:/Downloads/projects/topo-pilot/hwsb-store",
+  "store_temp_root": "X:/Downloads/projects/topo-pilot/hwsb-store/tmp",
+  "dry_store": "X:/Downloads/topo-scratch/hwsb-dry",
+  "dry_forbidden_name": "HIST_*.npz",
+  "project_root": "X:/Downloads/projects/topo-pilot",
+  "study_ledger": "X:/Downloads/projects/topo-pilot/agent-handoff/HWSB_CPU_LEDGER.json",
+  "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv/Scripts/python.exe -s with PYTHONPATH=<worktree>/src"
+ },
+ "store_layout": [
+  "FREEZE.json",
+  "AUTH_<stage>_<job>.json",
+  "SCHED_<job>.json",
+  "KB_ACCEPT.json",
+  "GATES.jsonl",
+  "STAGES.jsonl",
+  "cpu_ledger.json",
+  "artifacts/ (LocalFSBackend root: WorldSpec, TransitionSpec, EmissionSpec, ObservationSet, Checkpoint)",
+  "hist/LGATE.npz",
+  "hist/CAL.npz",
+  "hist/VAL.npz",
+  "stages/KB/G0.json",
+  "stages/KB/KB_RECORD.json",
+  "stages/TRAIN/<master>/TRAIN_RECORD.json",
+  "stages/TRAIN/<master>/HOLD_<step>.json",
+  "stages/TRAIN/<master>/DECISION_<step>.json",
+  "stages/EVAL/H2B.json",
+  "stages/DRY/DRY_REPORT.json (dry store only)",
+  "stages/S4a/PRODUCTION_FROZEN.json",
+  "stages/S4a/CHART_<master>.npz",
+  "stages/S4a/INIT_CHART_<master>.npz",
+  "CHART_CONSTRUCTIONS_trained.json",
+  "CHART_CONSTRUCTIONS_init.json",
+  "REPORT.json",
+  "HANDOFF.json",
+  "superseded/",
+  "logs/",
+  "tmp/"
+ ],
+ "hist_file": {
+  "keys": [
+   "canon32",
+   "seq_ids",
+   "digest_canon32"
+  ],
+  "dtypes": {
+   "canon32": "uint8 [n, 32]",
+   "seq_ids": "int64 [n]",
+   "digest_canon32": "<U64 [n] (sha256 hex of each uint8 row)"
+  },
+  "names": [
+   "LGATE",
+   "CAL",
+   "VAL"
+  ],
+  "writer": "stage_records.save_npz (exclusive create)"
+ },
+ "handoff": {
+  "keys": [
+   "outcome",
+   "N_C",
+   "k_C",
+   "model_count",
+   "training_forecast_s",
+   "evaluation_forecast_s",
+   "Z_bound",
+   "F_plan",
+   "p_D2a",
+   "registry_value",
+   "store_inventory",
+   "stage_c_exclusions",
+   "registry_obligation",
+   "protocol_sha256",
+   "freeze_sha256",
+   "report_sha256"
+  ],
+  "forbidden_keys": [
+   "mean_X_minus",
+   "mean_X_plus",
+   "c_hat",
+   "c_min",
+   "c_min_literal",
+   "ci95",
+   "regret",
+   "captured",
+   "fidelity",
+   "D4hat",
+   "supported_contribution",
+   "supported_conditional_mean",
+   "lower_rank125_mean_X_minus",
+   "dev_ce"
+  ],
+  "registry_obligation": "every later registry, stage C first, lists hws-store, hwsb-store and X:/Downloads/topo-scratch/hwsb-dry as READER sources"
+ },
+ "outcomes": [
+  "FAIL_TECHNICAL/<reason>",
+  "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+  "HWSB_NOT_LEARNED",
+  "HWSB_NO_CIRCLE/C0_CAL",
+  "HWSB_NO_CIRCLE/C0_VAL",
+  "HWSB_UNDERPOWERED/LADDER",
+  "HWSB_UNDERPOWERED/CAPTURE",
+  "HWSB_PASS"
+ ],
+ "annotations": {
+  "POSITIVE_BELOW_PLANNING": "the pilot circles covary positively with r4 on pilot histories (bootstrap lower bound > 0), below what stage C could detect at the margin."
+ },
+ "licences": {
+  "HWSB_PASS": "In w* (12 x 12 cylinder, p 0.2, sigma 1.75), two transformers trained by the E4 recipe (masters 620201, 620202, step 5000) each reached captured >= 0.8 on 4,096 fresh pilot histories. In each, the K4b LCC chart rule built a circle that passed C0-cal on 512 fresh landmarks and C0-val on 512 fresh validation rows. On 3,072 fresh validation rows each pilot capture ratio reached the frozen c_min (80 % planned stage-C power at margin 0.01 with N_C rows, alpha = 0.05/3). Stage C may be planned with N_C = {N_C}, 3 models and a training forecast of {training_forecast_s} CPU-s; Z_bound(w*) = {Z_bound}. It does not license: that any circle carries beyond-four information (pilot statistics are uncertified, multiplicity-uncontrolled and on pilot models); that stage C will reach SUPPORT; that new stage-C models will pass their gates; anything about the E4 models, K4b's EXCLUSION or any earlier verdict; that w* is optimal.",
+  "HWSB_NOT_LEARNED": "With the E4 recipe unchanged, {k} of 2 pilot models did not reach captured 0.8 in w*. It does not license: that w* is unlearnable, or that a longer or larger recipe would fail; any statement about the circle.",
+  "HWSB_NO_CIRCLE": "Both pilot models learned the prediction task, but in model(s) {models} the K4b LCC chart rule did not yield a chart passing C0-cal/C0-val (criterion {criterion}) on fresh pilot histories. It does not license: that no circular structure exists (another chart method might find it); anything about E4.",
+  "HWSB_UNDERPOWERED": "The pilot models learned and charted, but the pilot capture or its row variance implies that a stage C at margin 0.01 within the K4b ladder (<= 12,288 rows) would not have 80 % planned power. It does not license: absence of the effect; an effect below the margin as a finding.",
+  "POSITIVE_BELOW_PLANNING": "Annotation POSITIVE_BELOW_PLANNING: the pilot circles covary positively with r4 on pilot histories (bootstrap lower bound > 0), below what stage C could detect at the margin.",
+  "INCONCLUSIVE/RESOURCE_OR_AUTHORITY": "No scientific statement is licensed.",
+  "FAIL_TECHNICAL": "No scientific statement is licensed.",
+  "fallback_rule": "No outcome licenses the next world (W12-q1-s2.0-p0.2, then W12-q1-s1.25-p0.8333), a recipe change, extra seeds or a larger pilot automatically; after any outcome other than HWSB_PASS the coordinator reports in plain language and the owner decides (Q4)."
+ },
+ "p_sched": {
+  "record_fields": [
+   "record",
+   "utc",
+   "coordinator_session",
+   "c2nd_state",
+   "c2nd_s5_accepted",
+   "c2nd_pending_s5_rerun",
+   "c2nd_terminal",
+   "live_history_reservations"
+  ],
+  "rule2": "live_history_reservations == []",
+  "rule3": "(c2nd_s5_accepted and not c2nd_pending_s5_rerun) or c2nd_terminal",
+  "required": {
+   "DRY": [
+    "rule2"
+   ],
+   "KB": [
+    "rule2",
+    "rule3"
+   ],
+   "TRAIN": [
+    "rule2",
+    "rule3"
+   ],
+   "EVAL": [
+    "rule2",
+    "rule3"
+   ]
+  }
+ },
+ "auth_fields": [
+  "job_id",
+  "stages",
+  "owner_auth_sha256",
+  "hws_store_reads"
+ ],
+ "modules": {
+  "hwsb_config.py": 190,
+  "hwsb_data.py": 352,
+  "hwsb_driver.py": 328,
+  "hwsb_dry.py": 385,
+  "hwsb_dry2.py": 334,
+  "hwsb_eval.py": 173,
+  "hwsb_gates.py": 382,
+  "hwsb_kb.py": 158,
+  "hwsb_known.py": 347,
+  "hwsb_law.py": 169,
+  "hwsb_meter_bind.py": 121,
+  "hwsb_records.py": 160,
+  "hwsb_registry.py": 180,
+  "hwsb_stages.py": 351,
+  "hwsb_train.py": 325,
+  "max_lines": 400,
+  "proof_note": "tools/hwsb/ENCLOSURE_PROOF.md",
+  "note": "line counts at the phase-3 docs commit; API.md erratum E1 (split by size)"
+ },
+ "tests": {
+  "dir": "tests/hwsb",
+  "author_A": "test_a_*.py",
+  "author_B": "test_b_*.py",
+  "max_lines": 400,
+  "formatter": "never run over tests/hwsb",
+  "authorship": [
+   "tests/hwsb/AUTHORSHIP_A.md",
+   "tests/hwsb/AUTHORSHIP_B.md"
+  ],
+  "basetemp": "X:/Downloads/topo-scratch/test_hwsb-<job>/pytest"
+ },
+ "dry_run": {
+  "store": "X:/Downloads/topo-scratch/hwsb-dry",
+  "report": "stages/DRY/DRY_REPORT.json",
+  "cases": [
+   "DRB1",
+   "DRB2",
+   "DRB3",
+   "DRB4",
+   "DRB5",
+   "DRB6",
+   "DRB7",
+   "DRB8",
+   "DRB9",
+   "DRB10",
+   "DRB11",
+   "DRB12",
+   "DRB13",
+   "DRB13b",
+   "DRB14",
+   "DRB15",
+   "DRB16"
+  ],
+  "tiny_world": {
+   "W": 6,
+   "H": 2,
+   "centres": "(0.5 + 2i, 0.5), i < 3",
+   "sigma": "1",
+   "p_stay": "1/2",
+   "V": 3,
+   "L": 32
+  },
+  "tiny_model": {
+   "vocab_in": 4,
+   "vocab_out": 3,
+   "n_ctx": 33,
+   "n_layers": 1,
+   "d_model": 16,
+   "n_heads": 2,
+   "d_mlp": 32,
+   "activation": "gelu",
+   "dropout": 0.0,
+   "tie_embeddings": false
+  },
+  "tiny_train": {
+   "steps": 200,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 20,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    0,
+    100,
+    200
+   ],
+   "device": "auto"
+  },
+  "tiny_sizes": {
+   "train": 4096,
+   "dev": 512,
+   "LGATE": 512,
+   "CAL": 1024,
+   "VAL": 1024
+  },
+  "tiny_site": "resid_post_0",
+  "drb2_train": {
+   "steps": 20,
+   "checkpoint_steps": [
+    0,
+    10,
+    20
+   ],
+   "rows": 2048,
+   "dev_rows": 256
+  },
+  "cost_central_s": 300
+ },
+ "reuse_sha256": {
+  "src/topo_pilot/world/stage.py": "c747848b9c3653cb8dbaea1900e4401cd37912c18d0956a2647fe16756b07798",
+  "src/topo_pilot/world/registry.py": "4e5d510512830672a093d2646ce7714c4a67c0704b0bdc9e5122fefbd698b2b1",
+  "src/topo_pilot/world/config.py": "3aa20d683aae62fccd054d91913135b0be7644d189e9f67f5e2483eb7dac26eb",
+  "src/topo_pilot/process/stage.py": "c3b7dd9a25b455dc07365665aeab26fd3260f4c0e0560d8b696f41eb3e230303",
+  "src/topo_pilot/process/emission.py": "a4fa54d1be4848796f83d6309499a2c19fbbf2f172803186864711bde1f254b8",
+  "src/topo_pilot/process/transition.py": "a0e450a150303bae9bfe51fade093553da71a83d779c32737045881128fe054d",
+  "src/topo_pilot/contracts/base.py": "36220ba0eb52d361878db588f200666301d615524e100baff2a1b0b3fe9d598e",
+  "src/topo_pilot/contracts/ids.py": "41bf99ddd438869d92043bab3ce72c3d0de237efde9d0d7d1c258d123d58acd5",
+  "src/topo_pilot/contracts/layout.py": "5fc9e51ac1b7f518fdfc0e6d436a74345431eb037a3e959ea282cc38679dd027",
+  "src/topo_pilot/contracts/store.py": "75276c30a9b48165bf0d0a7e41a0f8d03b70d9736184106e062c0e0f7694b35e",
+  "src/topo_pilot/contracts/backends.py": "81be4b6fd8f52e9029677cd92af61dac156f5d42be109e4c45c0dc6e45a73d64",
+  "src/topo_pilot/contracts/_schemas_data.py": "9deb56ca0e885d66863c250fbbf02f9b59cf93ba8949c0325a27030f90fbbbcf",
+  "src/topo_pilot/contracts/_schemas_results.py": "3946d9078774e528db3b33cd72ada5db573a9d8471457f179919bc8daa64c946",
+  "src/topo_pilot/dataset/sampler.py": "a94ffd3e7310e45d3e6351e8457864f6e64abe6e1b318211daed3d0c2f17b0d2",
+  "src/topo_pilot/dataset/checks.py": "48b3be302f82dc3e883f835b4941de009657b02de297df3300cc7a3f041fc7a9",
+  "src/topo_pilot/dataset/stage.py": "ab8586e1c2365755604c2238882315f9ec7b8b042600fead23b89afec9b4d815",
+  "src/topo_pilot/dataset/panels.py": "c690d6510bd35e7355f122671d45ed4f01ac6f23d15b3dc61c14450bd85f3b60",
+  "src/topo_pilot/dataset/public.py": "7d5d6f9f169b2496cdffbe8b033de5de063bf38723cbbfe6773f31ef88b7c0a8",
+  "src/topo_pilot/learner/config.py": "abadc6ee40115e910fd368dd89f63cb95e081af7791c4826b90fa4b9f1bfbdf6",
+  "src/topo_pilot/learner/trainer.py": "c6bf829c2bc6537e9950aa3af0bff2dbe3bcdf41083fff7ba987d037b102a4a3",
+  "src/topo_pilot/learner/stage.py": "b6170ca6037c8f957edbeeaf628fb111c5e39c50098fed2abd53fe17d7e24413",
+  "src/topo_pilot/learner/model.py": "ee1c124ce83da147ccc2a4b4c0be167de902d61ecd00ead5748b8566f62ae039",
+  "src/topo_pilot/activations/_extractor.py": "6351c4afbe6b7e4944c5b61a4cb5358a50a4962f65a2d068f59845a9b8dfb656",
+  "src/topo_pilot/prediction/metrics.py": "13943f83872c86d0f71f77cc72784102c11685ff04199d1ca7d88be6883c436d",
+  "src/topo_pilot/oracle/_filter.py": "a84dd4fc3b0b7dc0ef0e77dcdf0c20319d8c2cc47fe1de88afab6ad8d3dd7f86",
+  "src/topo_pilot/oracle/_futures.py": "da80add78c712f68e0fdf073be6829eecdc00d3e95799be7ce04f6f0822455c3",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+  "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+  "tools/k4b/k4b_charts.py": "f43b79e06d6b70f3e446c3c60665095f57514f541a5c62d593580a88255fd9d8",
+  "tools/k4b/k4b_scores.py": "a0127cf9fc101eeadc693bb338e784225be2f4b7ee1ab2fa3174888921a82577",
+  "tools/k4b/k4b_stats.py": "2dc3d1fbdbe500befd0c2c3a49506faeb35e62fb367ed0c831fd89c23e764359",
+  "tools/k4b/k4b_cert.py": "8ae47232ac6433e3838f2080851b789a0a988e43de987a6eb54ea2a79e5ffd07",
+  "tools/k4b/k4b_data.py": "f7ee8b6de1aa31ec592f5b769c8f65c8e463afea0e2782dd1d1f6f89a5d64066",
+  "tools/k4b/k4b_registry.py": "14c0f5ef7bf0386b3ae55ab80d730585c46842a21b67a8aa77b0b749b9f03b75",
+  "tools/k4b/k4b_meter_bind.py": "34efd87454988e0394a9761d8aff68bb8199ec3786f8d38ad2ed8330744ccedb",
+  "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+  "tools/hws/hws_worlds.py": "f2b98e40c0d07a64da4d7f96435124874650e2300945ea84a7da06ed7af66560",
+  "tools/hws/hws_oracle.py": "02d80e42ede5d23f51ddb6feaae8a5a3a8e3c0864e72a288c99a5073d80e051d",
+  "tools/hws/hws_exact.py": "098658012aaf3f63de11a8b55c6017e1e1732876ef3e6279363563433cd40b07",
+  "tools/hws/hws_driver.py": "03dcb81ec55c2f784436071c15328aab5a62df1ece344cecb805e6fbc35d21b1",
+  "tools/hws/hws_records.py": "ae50fe2945e34f7c3ff9627fd404470bde3134105ab5d896442d4f790905405a",
+  "tools/hws/CONTRACT.json": "15e2ea5e243c1f48110391910f6545e0ed6f96d714f0cd0d7bf9fdcc42d655dd"
+ },
+ "reuse_sha256_note": "working-tree bytes at 2573fec (branch hwsb-impl base); re-checked at the execution freeze",
+ "freeze_fields": [
+  "protocol",
+  "protocol_sha256",
+  "contract_sha256",
+  "api_sha256",
+  "test_plan_sha256",
+  "proof_note_sha256",
+  "h_exec",
+  "implementation_files",
+  "implementation_sha256",
+  "reuse_sha256",
+  "dry_run_report_sha256",
+  "dry_run_report_path",
+  "environment",
+  "created_utc"
+ ]
+}

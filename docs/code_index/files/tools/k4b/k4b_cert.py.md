@@ -48,11 +48,14 @@
 
 ## Imported by
 
+- [tests/hwsb/test_a_capture.py](../../tests/hwsb/test_a_capture.py.md) (line 31, import)
+- [tests/hwsb/test_a_ladder.py](../../tests/hwsb/test_a_ladder.py.md) (line 31, import)
 - [tests/k4b/test_a_decision.py](../../tests/k4b/test_a_decision.py.md) (line 31, import)
 - [tests/k4b/test_a_lemma_n.py](../../tests/k4b/test_a_lemma_n.py.md) (line 28, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 26, import)
 - [tests/k4b/test_a_transport_bound.py](../../tests/k4b/test_a_transport_bound.py.md) (line 27, import)
 - [tests/k4b/test_a_width_b4.py](../../tests/k4b/test_a_width_b4.py.md) (line 28, import)
+- [tools/hwsb/hwsb_stages.py](../hwsb/hwsb_stages.py.md) (line 21, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 16, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 16, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 29, import)

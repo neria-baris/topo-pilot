@@ -63,6 +63,7 @@
 - [tools/hws/hws_driver.py](hws_driver.py.md) (line 17, import)
 - [tools/hws/hws_dry.py](hws_dry.py.md) (line 15, import)
 - [tools/hws/hws_known.py](hws_known.py.md) (line 17, import)
+- [tools/hwsb/hwsb_stages.py](../hwsb/hwsb_stages.py.md) (line 14, import)
 
 ## Top-level constants
 

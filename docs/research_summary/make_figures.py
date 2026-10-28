@@ -98,6 +98,7 @@ LEDGERS = [  # (label, store directory, note) -- cumulative_cpu_s of each cpu_le
     ("world sweep, oracle", "hws-store", "oracle"),
     ("control placebo check", "x6zc-store", "model"),
     ("necessity and decoy", "c2nd-store", "model"),
+    ("training pilot (2 models)", "hwsb-store", "training"),
 ]
 
 
@@ -191,6 +192,7 @@ EVENTS = [
     ("10-26", 1, "world sweep (oracle):\nworld SELECTED", "pass", "agent-handoff/jobs/0136/review.md"),
     ("10-27", 5, "control placebo check:\nUNEXPLAINED", "desc", "agent-handoff/jobs/0155/review.md"),
     ("10-27", 2, "necessity: code dominant;\ndecoy NOT_USED", "pass", "agent-handoff/jobs/0167/review.md"),
+    ("10-28", 1, "training pilot (new world):\nPASS", "pass", "agent-handoff/jobs/0175/review.md"),
 ]
 LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
              ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]

@@ -133,7 +133,10 @@ training found that one commutative control's response to the designed crossing-
 replicates on fresh histories but matches neither order use nor a simple miscount, so its cause
 remains unexplained. An oracle-only sweep of 225 worlds found one, the same cylinder with wider
 emissions, in which the oracle's own beyond-four-symbol signal is 4.7 times the registered
-margin; a small training pilot in that world is under way.
+margin. A two-model training pilot in that world passed every registered gate: both models
+learned, both formed the circle, and a full test with three new models would be adequately
+powered at the smallest planned size. The pilot's own statistics are uncertified and are not
+reported here; the full test is not yet approved.
 \end{abstract}
 
 \tableofcontents
@@ -218,7 +221,8 @@ reproducible natural order sensitivity, far below the registered size (\S\ref{se
 response to the designed placebo unexplained (\S\ref{sec:x6zc}).
 \item \textbf{A world with more history to measure.} An oracle-only sweep of 225 worlds selected
 one in which the oracle's beyond-four-symbol signal is 4.7 times the registered margin, so that
-the origin question can be asked again with room to answer it (\S\ref{sec:hws}).
+the origin question can be asked again with room to answer it (\S\ref{sec:hws}). A two-model
+training pilot there passed every registered gate, so a full test can be planned (\S\ref{sec:status}).
 \end{enumerate}
 
 \begin{table}[t]\centering\small
@@ -248,6 +252,7 @@ Crossing order in the oracle & GO & order effect certified beyond every commutat
 Crossing order in trained models & INCONCLUSIVE & all validity gates PASS; mean $\tilde\beta=0.061$, below the registered $0.25$\\
 Readout attribution of the circle code (causal) & USED (3/3 models) & the registered code carries $\hat\psi=0.85$ of the aligned response; layer-2 and oracle-phase codes also USED\\
 World sweep for history signal (oracle) & SELECTED & a wider-emission cylinder: beyond-four signal 0.047, 4.7$\times$ the margin\\
+Training pilot in the selected world & PASS (pilot, uncertified) & both models learn and form the circle; a full test of 3 models and 3,072 rows is powered\\
 Control's response to the designed order placebo & UNEXPLAINED & the response replicates; it matches neither order use nor a symmetric miscount\\
 Necessity of the circle code; decoy test & CODE\_DOMINANT; DECOY\_NOT\_USED (3/3 models) & the complement carries 14--15\%; the method returns NOT\_USED on decoys\\
 \bottomrule
@@ -259,7 +264,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155 and 0167.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155, 0167 and 0175.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -935,7 +940,7 @@ the beyond-four signal is 0.0470 (lower bound 0.0458; pilot world 0.0085), 4.7 t
 The lower bounds of the context gain, the beyond-four predictive gain and its circular part
 are 0.283, 0.031 and 0.018 nats, against floors of 0.10, 0.012 and 0.006.
 \textbf{Licence.} This is an oracle property of one world. It says nothing about whether a model
-trained there learns the world or would carry the signal; that is the question of the training
+trained there learns the world or would carry the signal; that was the question of the training
 pilot (\S\ref{sec:status}).
 
 
@@ -1410,7 +1415,7 @@ depend on the live environment (the pasted cell). Both led to added checks.
 % =========================================================================================
 \section{Compute}\label{sec:compute}
 Figure~\ref{fig:fig11_compute} summarises local compute from the store ledgers. Including every
-metered run (preflight test suites among them), the follow-up studies used about 99.8 CPU-hours
+metered run (preflight test suites among them), the follow-up studies used about 101.2 CPU-hours
 in the ledgers shown, 79.6 of them in the trained crossing-order study's local ingest and
 evaluation (its training ran on a cloud GPU); the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
 (13--21 minutes each). The largest items are the two training studies (learning speed, six models;
@@ -1430,15 +1435,20 @@ attempts). Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
 % =========================================================================================
 \section{Current status and next steps}\label{sec:status}
 \begin{itemize}
-\item \textbf{Training pilot in the selected world} (running since 27 October). Two small models
-are trained in the wider-emission world with the pilot's recipe; only the emission width changes.
-Before any training, known cases check the recipe, the oracle and the law bound. The first
-known-case run stopped on a one-line code defect before any data were drawn; the defect was
-corrected under the two-per-defect rule and the tests and the synthetic dry run were repeated.
-The pilot will report whether the models learn, whether the circle forms, and whether a full test
-would be large enough, and if so its size and cost. The pilot models never enter a full test,
-and their numbers shape it only through registered rules. It runs outside the 12 CPU-hour line,
-with a forecast of about 1.9 CPU-hours.
+\item \textbf{Training pilot in the selected world} (27--28 October): \textbf{PASS}. Two small
+models were trained in the wider-emission world with the pilot's recipe; only the emission width
+changed. Before training, known cases reproduced the original training run bit for bit and
+checked the oracle and the law bound; two one-line code defects found there were corrected under
+the two-per-defect rule, with the tests and the synthetic dry run repeated each time. Both models
+learned (the registered learning gate), the frozen chart rule built a circle in each that passed
+calibration and validation on fresh histories, fresh evaluation histories were disjoint from
+training and from every earlier store, and each model's capture of the beyond-four signal reached
+the registered minimum for a full test at 80\% planned power. The pilot therefore licenses
+planning a full test with three new models and 3,072 test rows, forecast at about 6,000 CPU-seconds
+of training. It does not license any claim that a circle carries beyond-four information: the
+pilot's statistics are uncertified, uncontrolled for multiplicity and computed on models that
+never enter the full test, so they are not reported here. The pilot used 1.86 CPU-hours, outside
+the 12-hour line. The full test is not yet approved.
 \item \textbf{The three parallel studies without training} are complete: the world sweep
 selected a world (\S\ref{sec:hws}); the control's placebo response remains unexplained
 (\S\ref{sec:x6zc}); the circle code is dominant and the method passes the decoy test
@@ -1513,8 +1523,9 @@ order sensitivity in every seed, far below the registered effect size, so its pr
 verdict is INCONCLUSIVE and not a claim of order use. The readout-attribution study answered
 the use question with an exact, linear attribution at the model's readout, after the two
 earlier intervention designs had failed for reasons of method. For the origin question, an oracle
-sweep found a nearby world whose beyond-four signal is 4.7 times the registered margin. A
-training pilot there will show whether the question can be asked again with room to answer it.
+sweep found a nearby world whose beyond-four signal is 4.7 times the registered margin, and a
+training pilot there passed every gate, so the question can now be asked again with room to answer
+it.
 
 % =========================================================================================
 \clearpage
@@ -1597,7 +1608,8 @@ HWS S0 & 10-26 & G0; known cases & attempt 1 FAIL\_TECHNICAL (scope); attempt 2 
 HWS S1--S3 & 10-26 & STAGE\_S1, STAGE\_S2, STAGE\_S3 & HWS\_SELECTED/T0 & job 0136\\
 X6ZC A--C & 10-26, 10-27 & known cases; bit-exact reproduction; loop-sign variants & P: UNEXPLAINED/\allowbreak NOT\_NA\_INVARIANT; W1 cells: ZC\_NOT\_COMMUTATIVE/\allowbreak NOT\_NA\_DIRECTION & jobs 0149, 0153, 0155\\
 C2ND S1--S5 & 10-27 & REG2, T-PRE, RESP-SPEC, NUM & N-R CODE\_DOMINANT; D DECOY\_NOT\_USED; N-M CODE\_DOMINANT\_M (3/3 models) & jobs 0163--0167\\
-HWS stage B KB & 10-27 & FREEZE, AUTH, SCHED, KB0 & attempt 1 FAIL\_TECHNICAL (code defect; corrected) & job 0168\\
+HWS stage B KB & 10-27 & G0, KB0--KB6 & attempts 1, 2 stopped by code defects (each corrected); attempt 3 all PASS (KB2 bitwise) & jobs 0168, 0170, 0172\\
+HWS stage B TRAIN, EVAL & 10-28 & B1, B4, B5, B6, B8a, B9a & HWSB\_PASS & jobs 0173--0175\\
 \bottomrule
 \end{longtable}
 \normalsize

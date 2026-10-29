@@ -371,7 +371,7 @@
    "train",
    "dev"
   ],
-  "dry_bootstrap_exception": "DRC6 and KC7(b) use the bootstrap seeds 620311/620315 on synthetic arrays only (no SeedTree stream, no history)"
+  "dry_bootstrap_exception": "R-0176-G5: DRC6 and KC7(b) use the P1 bootstrap seeds 620311/620315 on synthetic arrays only (no SeedTree stream, no history); 'the dry run never issues a real seed' applies to data streams and masters"
  },
  "streams": {
   "train": {
@@ -715,6 +715,26 @@
   "note": "bound as k4b_config.CONTRACT inside bound_stage_c(); the keys read at call time by reused K4b code are protocol_sha256 (k4b_stats.write_sealed, k4b_release.verify_release), chart (k4b_config.chart_cfg, check_chart_equality), registry (k4b_registry.source_d/source_e via R1) and authority.c1prime_disclosure (k4b_fresh.endpoint); chart and registry are deep-equal to tools/k4b/CONTRACT.json"
  },
  "disclosure": "Stage C follows K4b (EXCLUSION in the E4 models in w0, where the oracle comparator was below the margin), stage A (w* selected on oracle criteria only) and stage B (a two-model pilot in w*, HWSB_PASS). Stage C's models, histories, charts and decision are its own; stage-B results entered stage C only through HANDOFF.json (test size floor, model count, budget forecasts, Z_bound and F_plan identity values, the registry inputs and the pilot exclusions). No threshold, margin, chart parameter or recipe setting was changed in response to any earlier result.",
+ "blindness": {
+  "stage_b": [
+   "hwsb-store/REPORT.json",
+   "hwsb-store/stages/EVAL/**",
+   "hwsb-store/GATES.jsonl",
+   "hwsb-store/CHART_CONSTRUCTIONS_*.json",
+   "agent-handoff/jobs/0175/review.md"
+  ],
+  "stage_b_rule": "R-0176-G1: exactly these five paths (relative to the project root); agent-handoff/jobs/0175/task.json, request.before.json and task.md hold dispatch metadata only and may be read (also by registry reader (c) and validate_handoff_json); DRC11 tests exactly this list",
+  "public_summary": [
+   "any path component starting with 00_read_me_first (case-insensitive)",
+   "docs/research_summary/**"
+  ],
+  "status": "FAIL_TECHNICAL/BLINDNESS"
+ },
+ "rulings": {
+  "file": "agent-handoff/jobs/0176/RULINGS_PHASE1.md",
+  "sha256": "2497f1127cbcd06237859228eb3901164bebf6dd90db44d8b12932dd96838f83",
+  "applied": "API.md section 18 (R-0176-G1..G12); choice 17 replaced by R-0176-G4"
+ },
  "binding": {
   "encoding": {
    "list": "a Python tuple",
@@ -2070,7 +2090,8 @@
      "sha256": "c17220859b7939fa150b210ad39a28d37476512795a58316cd1797507a80323c"
     }
    ],
-   "token_rule": "non-artifact .npz/.npy: np.load(allow_pickle=False); members with key in k4b_registry.HISTORY_KEYS or integer dtype with last dim 32 or 33 -> columns 0..31 digested; members named digest* -> hex digests taken as stored; ObservationSet payloads: tokens[:, :32] as stored (named) via ArtifactStore.load(ObservationSet, id, consumer='experiment'); WorldSpec/TransitionSpec/EmissionSpec/Checkpoint payload.npz and state.pt: classed by meta.json artifact_type, never opened; stages/S4a/CHART_*.npz and INIT_CHART_*.npz: non-history by name; planted fixtures: PLANTED_FIXTURE; any other unreadable file -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "token_rule": "non-artifact .npz/.npy: np.load(allow_pickle=False); members with key in k4b_registry.HISTORY_KEYS or integer dtype with last dim 32 or 33 -> columns 0..31 digested; members named digest* -> hex digests taken as stored; ObservationSet payloads (R-0176-G4): canonicalised as hwsb_registry.registry_digests does, by the symbol_perm of the unique EmissionSpec parent (meta.parent_ids) in the same dry artifacts root (EmissionSpec payload read for symbol_perm only), digests scores.history_digests(hwsb_data.canonical32(tokens, perm)); no or several EmissionSpec parents -> INCONCLUSIVE/REGISTRY_INCOMPLETE; WorldSpec/TransitionSpec/Checkpoint payload.npz and every state.pt: classed by meta.json artifact_type, never opened; stages/S4a/CHART_*.npz and INIT_CHART_*.npz: non-history by name; planted fixtures: PLANTED_FIXTURE; any other unreadable file -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "glob": "plus every X:/Downloads/topo-scratch/hwsb-dry* and hwsc-dry* directory (R-0176-G9); test_* components inside these stores are not pruned",
    "absent_rule": "hwsc-dry and hwsc-dry-<job> may be absent (PASS, present False); the four other stores must exist",
    "set_aside": "a superseded hwsc-dry* store has hist/ renamed to test_superseded-hist/ with SET_ASIDE.json (protocol section 9.3)"
   },
@@ -3999,7 +4020,8 @@
    },
    "hwsb-0168": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4011,7 +4033,8 @@
    },
    "hwsb-0170": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4023,7 +4046,8 @@
    },
    "hwsb-0172": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4035,7 +4059,8 @@
    },
    "hwsb-0173": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4047,7 +4072,8 @@
    },
    "hwsb-0174": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4059,7 +4085,8 @@
    },
    "hwsb-0175": {
     "decision": "EXCLUSION",
-    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4074,6 +4101,7 @@
     "readers": [
      "R5"
     ],
+    "full_walk": true,
     "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
     "to_freeze": true,
     "frozen_files": "TO_FREEZE",
@@ -4089,6 +4117,7 @@
     "readers": [
      "R5"
     ],
+    "full_walk": true,
     "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
     "to_freeze": true,
     "frozen_files": "TO_FREEZE",
@@ -4104,6 +4133,7 @@
     "readers": [
      "R5"
     ],
+    "full_walk": true,
     "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
     "to_freeze": true,
     "frozen_files": "TO_FREEZE",
@@ -4195,10 +4225,16 @@
     }
    },
    "test_hwsb-0161": {
-    "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
-    "to_freeze": false,
-    "frozen_files": {},
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "fixture_components": [
+     "pytest"
+    ],
+    "full_walk": true,
+    "reason": "stage-B pytest/meter folder scanned completely (R-0176-G9); proposed: stage-B pytest fixtures, every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
     "counts_2026_10_29": {
      "array_files": 800,
      "outside_test": 0,
@@ -4207,10 +4243,16 @@
     }
    },
    "test_hwsb-0162": {
-    "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
-    "to_freeze": false,
-    "frozen_files": {},
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "fixture_components": [
+     "pytest"
+    ],
+    "full_walk": true,
+    "reason": "stage-B pytest/meter folder scanned completely (R-0176-G9); proposed: stage-B pytest fixtures, every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
     "counts_2026_10_29": {
      "array_files": 1067,
      "outside_test": 0,
@@ -4220,7 +4262,8 @@
    },
    "test_hwsb-0168r": {
     "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "full_walk": true,
+    "reason": "stage-B folder with no array file on 2026-10-29 (R-0176-G9); recorded empty, any later addition -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
     "to_freeze": false,
     "frozen_files": {},
     "counts_2026_10_29": {
@@ -4231,10 +4274,16 @@
     }
    },
    "test_hwsb-0169": {
-    "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
-    "to_freeze": false,
-    "frozen_files": {},
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "fixture_components": [
+     "pytest"
+    ],
+    "full_walk": true,
+    "reason": "stage-B pytest/meter folder scanned completely (R-0176-G9); proposed: stage-B pytest fixtures, every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
     "counts_2026_10_29": {
      "array_files": 1067,
      "outside_test": 0,
@@ -4243,10 +4292,16 @@
     }
    },
    "test_hwsb-0171": {
-    "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
-    "to_freeze": false,
-    "frozen_files": {},
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "fixture_components": [
+     "pytest"
+    ],
+    "full_walk": true,
+    "reason": "stage-B pytest/meter folder scanned completely (R-0176-G9); proposed: stage-B pytest fixtures, every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
     "counts_2026_10_29": {
      "array_files": 1067,
      "outside_test": 0,
@@ -4255,10 +4310,16 @@
     }
    },
    "test_hwsb-main": {
-    "decision": "EXCLUSION",
-    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
-    "to_freeze": false,
-    "frozen_files": {},
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "fixture_components": [
+     "pytest"
+    ],
+    "full_walk": true,
+    "reason": "stage-B pytest/meter folder scanned completely (R-0176-G9); proposed: stage-B pytest fixtures, every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
     "counts_2026_10_29": {
      "array_files": 141,
      "outside_test": 0,
@@ -4330,6 +4391,8 @@
    "frozen_files": "per row {relpath: class} of every history, identity, os_root, unreadable and pt file outside test_* components, written at the freeze from the header scan (TO_FREEZE where array files exist)",
    "fixture_max_rows": "an EXCLUSION row with this field admits only history files with first header dimension <= the value and identity/os_root/pt files under a pt-*, pt2-*, bt* or pytest-of-* component (K4B R23 rule 2)",
    "check": "at REG1, REG2 and REHEARSAL the scan is repeated; a top-level directory without a row, or a history-bearing, identity-bearing or unreadable file that its row does not cover -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "stage_b_folders": "R-0176-G9: every hwsb-*, hwsb-dry* and test_hwsb-* top-level folder is scanned completely (no test_* pruning inside); folders without array files have frozen_files {} and fail closed on any later addition",
+   "fixture_components": "an EXCLUSION row's extra fixture path components (e.g. 'pytest' for test_hwsb-*)",
    "top_level_array_files": "none on 2026-10-29; any array file directly under the scratch root -> INCONCLUSIVE/REGISTRY_INCOMPLETE"
   },
   "requirements": {
@@ -4409,7 +4472,9 @@
   },
   "multiplier": 3,
   "comparison": "strict >",
+  "per_model_central_s": 2002.2094,
   "per_model_hold_s": 6006.6282,
+  "hold_derivation": "R-0176-G12: per-model central = HANDOFF training_forecast_s / 3 = 6006.6282 / 3 = 2002.2094 CPU-s (the larger measured stage-B model); hold = 3 x central = 6006.6282 CPU-s (protocol 6,006.6); value unchanged",
   "hold_from_step": 1000,
   "hold_rule": "hold iff (step >= 1000 and cpu_s*5000/step > 6006.6282) or cpu_s > 6006.6282; checked in the checkpoint callback after the checkpoint is saved; HOLD report: step, CPU, projection, trigger, utc only",
   "ledger_labels": "unique per attempt: '<job>-<stage>[-<master>]-a<k>'",
@@ -4766,6 +4831,30 @@
    "planted_collisions": 1,
    "memory_cap_bytes": 12884901888
   },
+  "readings": {
+   "rule": "R-0176-G3: EXACT = every expected answer holds exactly; VALUE = the function returns a recorded registered status (K4b gates needing the 12 x 12, V = 36 geometry on the tiny world)",
+   "DRC1": "VALUE for ORACLE-VAL, B4-VAL, C0-CAL, C0-VAL, CERT-VAL, P1, REG2, H2-FRESH, T-PRE, ENDPOINT, OUTCOME on the tiny world; EXACT for record completeness (one record per gate) and the absence of HIST_* names",
+   "DRC2": "EXACT for e4_eval_check_c items (a)-(d); VALUE for item (e) (chart construction on 20-step activations)",
+   "DRC3": "EXACT",
+   "DRC4": "EXACT",
+   "DRC5": "EXACT",
+   "DRC6": "EXACT",
+   "DRC7": "EXACT",
+   "DRC8": "EXACT",
+   "DRC9": "EXACT",
+   "DRC10": "EXACT",
+   "DRC11": "EXACT",
+   "DRC12": "EXACT",
+   "DRC13": "EXACT",
+   "DRC14": "EXACT"
+  },
+  "drc2_in_memory_rows": {
+   "rows": 2048,
+   "dev_rows": 256,
+   "eval_rows": 512,
+   "moment_check_rows": 4,
+   "persisted": false
+  },
   "cost_central_s": 600,
   "synthetic_root_only": "every registry case runs on a synthetic root under the dry store; never on the real project or scratch root"
  },
@@ -5098,7 +5187,7 @@
  "reuse_sha256_note": "sha256 of the git blob bytes at af5e7b4 (k4b_release.pin_check rule) of every .py, CONTRACT.json, CERTIFICATE.md and ENCLOSURE_PROOF.md under the protected tool directories and src/topo_pilot, and tools/check_file_sizes.py; re-checked at the execution freeze",
  "to_freeze": [
   "authority.run_approval (path, sha256)",
-  "registry.scratch_inventory[*].frozen_files where 'TO_FREEZE' (header scan)",
+  "registry.scratch_inventory[*].frozen_files where 'TO_FREEZE' (header scan; includes the test_hwsb-* folders with array files, R-0176-G9)",
   "registry.scratch_inventory rows with decision TO_FREEZE or to_freeze true (R6 header scan, read-only, before the execution freeze; reviewed as a contract erratum)",
   "cpu.re_set.R and cpu.re_set.E1 (KC9's measured registry CPU)",
   "authority.h_exec and FREEZE.json (execution freeze)",

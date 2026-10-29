@@ -2189,7 +2189,51 @@
     "X:/Downloads/topo-scratch/test_hwsb-0171/pytest/test_superseded_hist_is_read0/store/artifacts",
     "X:/Downloads/topo-scratch/test_hwsb-0171/pytest/test_unreadable_npz_fails_clos0/store/artifacts"
    ],
-   "os_roots_rule": "R-0176-R6 rule 1: ObservationSet stores in scratch folders whose EmissionSpec parents lie in the same store; R5 reads every ObservationSet under them canonically"
+   "os_roots_rule": "R-0176-R6 rule 1: ObservationSet stores in scratch folders whose EmissionSpec parents lie in the same store; R5 reads every ObservationSet under them canonically",
+   "type_rule": {
+    "defect": "D-0178-1 (coordinator ruling, jobs 0177/0178)",
+    "scope": "every top-level scratch folder whose name starts with hwsc-dry, and only those",
+    "layout": "<store>/<case DRCn>/<utc YYYYMMDDTHHMMSSZ>/<tail>",
+    "classes": {
+     "R5": "artifacts/ObservationSet/<id>/{meta.json,payload.npz} whose single EmissionSpec parent lies in the same artifacts dir (canonical digests); stages/S3|S7/DRYHIST_*.npz with a uint8/int canon32 [n, 32] member; DRC9 syn/ and syn2/ token files with a canon32 [n, 32] member",
+     "c2scratch": "DRC9 syn/**/HIST_*.npz in the C2 table format (digest_H, digest_Hp, digest_Hm as <U)",
+     "CHECKPOINT": "artifacts/Checkpoint/<id>/state.pt (synthetic dry checkpoints, never opened)",
+     "REGISTRY_FIXTURE": "registry/K-REG1_digests.npz or K-REG2_digests.npz whose npz keys are exactly {digests (<U), seq_ids}; DRC9 scale/run_NNNNN.npy and registry/runs/<version>/run_NNNNN.npy with a uint8 [n, 32] header (digest runs, non-history)",
+     "PLANTED_FIXTURE": "a planted byte fixture listed below, matched by case, file name, size and sha256"
+    },
+    "planted": [
+     {
+      "case": "DRC9",
+      "name": "ACT.npz",
+      "bytes": 12,
+      "sha256": "bfe340d8a37a898c033ccd2a30b02ab62cb221a3115f7e750ed91dd6aee731a9",
+      "content": "never opened"
+     },
+     {
+      "case": "DRC9",
+      "name": "stray.npz",
+      "bytes": 1,
+      "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881",
+      "content": "x"
+     },
+     {
+      "case": "DRC9",
+      "name": "BAD.npz",
+      "bytes": 10,
+      "sha256": "c17220859b7939fa150b210ad39a28d37476512795a58316cd1797507a80323c",
+      "content": "not an npz"
+     },
+     {
+      "case": "DRC11",
+      "name": "a.npz",
+      "bytes": 7,
+      "sha256": "3d4bf4b6882f4be6c9d1c41633aa9a19cf8b662e89de93ed9702966e8a061084",
+      "content": "blinded"
+     }
+    ],
+    "fail_closed": "any other file listed by scratch_scan inside a hwsc-dry* store -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+    "code": "hwsc_drystore.dry_class / check_store; hwsc_scratch.scratch_check and hwsc_registry.source_dry route hwsc-dry* stores through it"
+   }
   },
   "scratch_root": "X:/Downloads/topo-scratch",
   "scratch_inventory": {
@@ -44145,8 +44189,9 @@
     "readers": [
      "R5"
     ],
-    "reason": "stage-C dry store (absent on 2026-10-29)",
-    "to_freeze": false
+    "reason": "stage-C dry store; checked by the hwsc-dry type rule (D-0178-1), not file by file",
+    "to_freeze": false,
+    "type_rule": "registry.dry_stores.type_rule"
    },
    "hwsc-dry-<job>": {
     "decision": "READER_IF_PRESENT",
@@ -44154,8 +44199,9 @@
      "R5"
     ],
     "pattern": true,
-    "reason": "stage-C dry re-run stores (absent on 2026-10-29)",
-    "to_freeze": false
+    "reason": "stage-C dry re-run stores; checked by the hwsc-dry type rule (D-0178-1), not file by file",
+    "to_freeze": false,
+    "type_rule": "registry.dry_stores.type_rule"
    },
    "p-review": {
     "decision": "EXCLUSION",

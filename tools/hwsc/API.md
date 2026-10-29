@@ -590,3 +590,46 @@ Rows without these fields behave as before. `source_dry()` called with its defau
 ## 21. Erratum (job 0177, coordinator 08ad4eaf)
 - **D-0177-1.** `hwsc_meter_bind.child_env_c(job) -> dict`: `k4b_meter_bind.child_env(job)` with its `TEMP` folder (`<TEMP_ROOT>/tmp-<job>`) created; `main` uses it. Without the folder, `tempfile.gettempdir()` in the metered child fell back to C:. Regression test `tests/hwsc/test_r_0177_meter_tempdir.py` (coordinator-written).
 - **Binding audit in J-C1.** The CLI has no `audit` subcommand (TEST_PLAN §5 wording). J-C1 runs the audit with the coordinator helper `coord-scratch/08ad4eaf/hwsc_audit.py`: `hwsc_bind.audit()` inside `hwsc_bind.bound_stage_c()`, result written to `<out>/AUDIT.json`, exit 0 iff PASS. Later jobs run the audit through their own `BINDING_AUDIT` gate.
+
+## 22. Erratum: the hwsc-dry type rule (defect D-0178-1)
+
+**Defect.** After the metered dry runs (jobs 0177 and 0178), `scratch_check` reported 80 "not in frozen_files" entries inside `hwsc-dry-0177/` and `hwsc-dry-0178/`. Each dry run writes a new store, so the frozen R6 table cannot list these files one by one.
+
+**Fix: a type rule** for every top-level scratch folder whose name starts with `hwsc-dry`, and only those (CONTRACT `registry.dry_stores.type_rule`). The new module `hwsc_drystore` provides:
+- `is_dry_store(name)`;
+- `dry_class(store, rel, rec) -> class or None`;
+- `check_store(store, listed, ok_tags, out)`.
+
+**Paths.** Each listed file lies at `<store>/<DRCn>/<utc>/<tail>`. The classes are derived from what `hwsc_dry.run_dry` writes:
+- **`R5`:**
+  - `artifacts/ObservationSet/<id>/{meta.json, payload.npz}` whose single EmissionSpec parent lies in the same artifacts dir; digested canonically.
+  - `stages/S3|S7/DRYHIST_*.npz` with a canon32 [n, 32] member.
+  - DRC9 `syn/` and `syn2/` token files with a canon32 [n, 32] member.
+- **`c2scratch`:** DRC9 `syn/**/HIST_*.npz` in the C2 table format, read by the C2ND scratch reader.
+- **`CHECKPOINT`:** `artifacts/Checkpoint/<id>/state.pt`, never opened.
+- **`REGISTRY_FIXTURE`** (non-history):
+  - `registry/K-REG1|K-REG2_digests.npz` whose npz keys are exactly `{digests (<U), seq_ids}`;
+  - DRC9 `scale/run_NNNNN.npy` and `registry/runs/<version>/run_NNNNN.npy` with a uint8 [n, 32] header (digest runs).
+- **`PLANTED_FIXTURE`:** the four planted byte fixtures, matched by case, file name, size and sha256: DRC9 `ACT.npz`, `stray.npz`, `BAD.npz`; DRC11 `a.npz`.
+
+**Behaviour.**
+- **Fail closed:** any other listed file in a `hwsc-dry*` store → INCONCLUSIVE/REGISTRY_INCOMPLETE.
+- **Readers:** an `R5` or `c2scratch` file also needs its reader to have returned PASS in the same build.
+- **`source_dry`:** routes `hwsc-dry*` files through the same rule. It digests the `R5` files, records the other classes as non-history, and puts any other listed file in `other`.
+
+**Other code changes.**
+- `hwsc_scratch` now imports `hwsc_registry` lazily, which fixes an import cycle when `hwsc_scratch` is imported first.
+- The `hwsc-dry` and `hwsc-dry-<job>` rows of `scratch_inventory` name the type rule.
+
+**Regression test (coordinator-commissioned).** `tests/hwsc/test_r_0178_dry_store_rule.py`:
+- a synthetic dry store with every allowed class passes;
+- an unexpected array fails closed;
+- a registry npz with an extra key fails closed;
+- a changed planted fixture fails closed;
+- reader classes need their reader;
+- the rule applies only to `hwsc-dry*` folders.
+
+**Verification on 2026-10-29.**
+- `source_dry()` on the real scratch: PASS, 80,687 digests.
+- `scratch_check(readers_ok={c2scratch, hws, R5})`: PASS with 0 `other`.
+- tests/hwsc: 415 passed.

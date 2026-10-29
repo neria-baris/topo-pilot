@@ -170,7 +170,10 @@ def drc1(out, ctx) -> dict:
           and all(r["status"] == "COMPLETE" for r in recs.values()))
     return {"status": "PASS" if ok else "FAIL",
             "details": {"gates": {g["gate"]: g["status"] for g in gates},
-                        "outcome": close["status"], "reading": "VALUE (K4b gates); EXACT"}}
+                        "readings": {g: "EXACT" if g.startswith("TRAIN_") else "VALUE"
+                                     for g in want},
+                        "records": "EXACT (one registered record per gate; no HIST_* name)",
+                        "outcome": close["status"]}}
 
 
 # --------------------------------------------------------------------------------- DRC2

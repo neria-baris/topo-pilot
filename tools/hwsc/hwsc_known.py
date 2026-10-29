@@ -274,7 +274,8 @@ def run_kc(out, auth, sched, job, store=None) -> dict:
         if name == "KC6":
             return hwsb_kb.kb6(ctx["w0"], ctx["k23"]["ckpt100"])
         if name == "KC7":
-            return kc7()
+            with hwsc_bind.suspended():  # D-0184-1: run_kc runs inside the stage-C binding
+                return kc7()
         if name == "KC8":
             return kc8(job)
         return kc9(out)

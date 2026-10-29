@@ -20,6 +20,7 @@ from c1_records import C1GateFailure
 
 BINDING = "FAIL_TECHNICAL/BINDING"
 ACTIVE = False
+_STACK = []  # originals saved by each active bound_stage_c, innermost last
 
 
 class _ContractMarker:
@@ -121,12 +122,37 @@ def bound_stage_c(table=None):
             saved.append((mod, r["name"], getattr(mod, r["name"])))
             setattr(mod, r["name"], r["new"])
         ACTIVE = True
+        _STACK.append(saved)
         enc = json.dumps([{"module": r["module"], "name": r["name"], "new": _encode(r["new"])}
                           for r in rows], sort_keys=True, default=str)
         yield {"rows": len(rows), "table_sha256": hashlib.sha256(enc.encode()).hexdigest()}
     finally:
+        if _STACK and _STACK[-1] is saved:
+            _STACK.pop()
         for mod, name, obj in reversed(saved):
             setattr(mod, name, obj)
+        ACTIVE = was
+
+
+@contextmanager
+def suspended():
+    """Unbound for the block inside an active bound_stage_c, re-bound after (D-0184-1: KC7
+    compares unbound and bound calls inside the KC job's binding)."""
+    global ACTIVE
+    if not _STACK:
+        yield
+        return
+    saved, was = _STACK.pop(), ACTIVE
+    bound = [(mod, name, getattr(mod, name)) for mod, name, _ in saved]
+    try:
+        for mod, name, obj in reversed(saved):
+            setattr(mod, name, obj)
+        ACTIVE = False
+        yield
+    finally:
+        for mod, name, obj in bound:
+            setattr(mod, name, obj)
+        _STACK.append(saved)
         ACTIVE = was
 
 

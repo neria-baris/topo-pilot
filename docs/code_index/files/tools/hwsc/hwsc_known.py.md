@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_known.py](../../../../../tools/hwsc/hwsc_known.py)
 - Kind: python
-- Lines: 315
+- Lines: 316
 
 ## Module docstring
 
@@ -72,6 +72,7 @@
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 29, import)
 - [tests/hwsc/test_r_0181_g0c_lineage_order.py](../../tests/hwsc/test_r_0181_g0c_lineage_order.py.md) (line 19, import)
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 18, import)
+- [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 19, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 243, import)
@@ -97,5 +98,5 @@
 - **function `kc7`** [L183-212]: `def kc7(table=None) -> dict`
 - **function `kc8`** [L216-235]: `def kc8(job) -> dict`
 - **function `kc9`** [L238-244]: `def kc9(out) -> dict`
-- **function `run_kc`** [L248-315]: `def run_kc(out, auth, sched, job, store=None) -> dict`
+- **function `run_kc`** [L248-316]: `def run_kc(out, auth, sched, job, store=None) -> dict`
 

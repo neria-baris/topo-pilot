@@ -148,11 +148,11 @@
 | `__init__` | method | `_Buf.__init__` | [tests/c2_nd/test_b_decoy_model.py:324](../../tests/c2_nd/test_b_decoy_model.py#L324) |  |
 | `__init__` | method | `_Cfg.__init__` | [tests/experiment/test_report_e3.py:101](../../tests/experiment/test_report_e3.py#L101) |  |
 | `__init__` | method | `_Cfg.__init__` | [tests/experiment/test_s8_e4.py:190](../../tests/experiment/test_s8_e4.py#L190) |  |
-| `__init__` | method | `_ContractMarker.__init__` | [tools/hwsc/hwsc_bind.py:26](../../tools/hwsc/hwsc_bind.py#L26) |  |
+| `__init__` | method | `_ContractMarker.__init__` | [tools/hwsc/hwsc_bind.py:27](../../tools/hwsc/hwsc_bind.py#L27) |  |
 | `__init__` | method | `_DuplicatingGenerator.__init__` | [tests/analysis/test_x4f_erasure_family.py:187](../../tests/analysis/test_x4f_erasure_family.py#L187) |  |
 | `__init__` | method | `_FakePrecision.__init__` | [tests/c2_nd/test_a_inference.py:296](../../tests/c2_nd/test_a_inference.py#L296) |  |
 | `__init__` | method | `_FixedDecoder.__init__` | [tests/c1prime/test_b_gates.py:202](../../tests/c1prime/test_b_gates.py#L202) |  |
-| `__init__` | method | `_Forbidden.__init__` | [tools/hwsc/hwsc_bind.py:143](../../tools/hwsc/hwsc_bind.py#L143) |  |
+| `__init__` | method | `_Forbidden.__init__` | [tools/hwsc/hwsc_bind.py:169](../../tools/hwsc/hwsc_bind.py#L169) |  |
 | `__init__` | method | `_Memo.__init__` | [tools/x6zc/x6zc_stage_a.py:230](../../tools/x6zc/x6zc_stage_a.py#L230) |  |
 | `__init__` | method | `_Obs.__init__` | [tests/hwsb/test_r_0170_kb2_status.py:28](../../tests/hwsb/test_r_0170_kb2_status.py#L28) |  |
 | `__init__` | method | `_Policy.__init__` | [tests/c2_readout/test_b_patch.py:37](../../tests/c2_readout/test_b_patch.py#L37) |  |
@@ -486,7 +486,7 @@
 | `_context` | function | `_context` | [tests/circle_history/test_builder_e2e.py:148](../../tests/circle_history/test_builder_e2e.py#L148) |  |
 | `_context_table` | method | `NGramBaseline._context_table` | [src/topo_pilot/prediction/ngram.py:89](../../src/topo_pilot/prediction/ngram.py#L89) | Return ``[V, V]`` table ``P[c, w]`` for order 2 (one row per possible context). |
 | `_contract` | function | `_contract` | [tests/circle_history/test_builder_e2e.py:138](../../tests/circle_history/test_builder_e2e.py#L138) |  |
-| `_ContractMarker` | class | `_ContractMarker` | [tools/hwsc/hwsc_bind.py:25](../../tools/hwsc/hwsc_bind.py#L25) |  |
+| `_ContractMarker` | class | `_ContractMarker` | [tools/hwsc/hwsc_bind.py:26](../../tools/hwsc/hwsc_bind.py#L26) |  |
 | `_contracts` | function | `_contracts` | [tools/x4_circle_history/adapter.py:29](../../tools/x4_circle_history/adapter.py#L29) |  |
 | `_controls` | function | `_controls` | [src/topo_pilot/experiment/x5g1t_stages.py:74](../../src/topo_pilot/experiment/x5g1t_stages.py#L74) |  |
 | `_controls` | function | `_controls` | [tests/circle_history/test_controls.py:73](../../tests/circle_history/test_controls.py#L73) |  |
@@ -631,7 +631,7 @@
 | `_empty` | function | `_empty` | [tools/c1prime_registry/c1_registry_sources.py:92](../../tools/c1prime_registry/c1_registry_sources.py#L92) |  |
 | `_enc` | function | `_enc` | [tools/x6_stage0/x6_dp.py:165](../../tools/x6_stage0/x6_dp.py#L165) |  |
 | `_enc` | function | `_enc` | [tools/x6_stage1/x6s1_data.py:112](../../tools/x6_stage1/x6s1_data.py#L112) |  |
-| `_encode` | function | `_encode` | [tools/hwsc/hwsc_bind.py:98](../../tools/hwsc/hwsc_bind.py#L98) |  |
+| `_encode` | function | `_encode` | [tools/hwsc/hwsc_bind.py:99](../../tools/hwsc/hwsc_bind.py#L99) |  |
 | `_encode_files` | method | `ArtifactStore._encode_files` | [src/topo_pilot/contracts/store.py:126](../../src/topo_pilot/contracts/store.py#L126) |  |
 | `_encs` | function | `_encs` | [tools/x6_stage0/x6_dp.py:337](../../tools/x6_stage0/x6_dp.py#L337) |  |
 | `_endpoint` | function | `_endpoint` | [tests/c1prime/test_b_cert_guards.py:117](../../tests/c1prime/test_b_cert_guards.py#L117) |  |
@@ -816,7 +816,7 @@
 | `_fmt` | function | `_fmt` | [src/topo_pilot/experiment/report.py:33](../../src/topo_pilot/experiment/report.py#L33) |  |
 | `_fmt` | function | `_fmt` | [tools/c2_readout/c2_decide.py:363](../../tools/c2_readout/c2_decide.py#L363) |  |
 | `_fo` | function | `_fo` | [tools/x6_stage0/x6_run.py:54](../../tools/x6_stage0/x6_run.py#L54) |  |
-| `_Forbidden` | class | `_Forbidden` | [tools/hwsc/hwsc_bind.py:142](../../tools/hwsc/hwsc_bind.py#L142) |  |
+| `_Forbidden` | class | `_Forbidden` | [tools/hwsc/hwsc_bind.py:168](../../tools/hwsc/hwsc_bind.py#L168) |  |
 | `_forbidden_anywhere` | function | `_forbidden_anywhere` | [tools/hwsc/hwsc_config.py:102](../../tools/hwsc/hwsc_config.py#L102) |  |
 | `_forced` | function | `_forced` | [tests/c2_nd/test_a_family.py:189](../../tests/c2_nd/test_a_family.py#L189) |  |
 | `_forward` | function | `_forward` | [tests/circle_history/test_scores_precision.py:150](../../tests/circle_history/test_scores_precision.py#L150) | Exact unnormalised forward vector of a window started at pi (emit first). |
@@ -843,7 +843,7 @@
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_ingest_bundle.py:44](../../tests/x6_stage1/test_b_ingest_bundle.py#L44) |  |
 | `_fsha` | function | `_fsha` | [tests/x6_stage1/test_b_nb_s0_ops.py:37](../../tests/x6_stage1/test_b_nb_s0_ops.py#L37) |  |
 | `_ft` | function | `_ft` | [tools/hwsc/hwsc_outcome.py:59](../../tools/hwsc/hwsc_outcome.py#L59) |  |
-| `_functions` | function | `_functions` | [tools/hwsc/hwsc_bind.py:197](../../tools/hwsc/hwsc_bind.py#L197) |  |
+| `_functions` | function | `_functions` | [tools/hwsc/hwsc_bind.py:223](../../tools/hwsc/hwsc_bind.py#L223) |  |
 | `_fwp` | function | `_fwp` | [tests/c2_readout/test_b_patch.py:87](../../tests/c2_readout/test_b_patch.py#L87) |  |
 | `_fx` | function | `_fx` | [tools/hws/hws_dry.py:32](../../tools/hws/hws_dry.py#L32) | A planted decision fixture (labelled), classified by hws_select under FIX floors. |
 | `_G` | function | `_G` | [tools/x4_circle_history/process_law.py:143](../../tools/x4_circle_history/process_law.py#L143) |  |
@@ -1297,7 +1297,7 @@
 | `_norm` | function | `_norm` | [tools/c2_nd/store_template/nd_meter_bind.py:41](../../tools/c2_nd/store_template/nd_meter_bind.py#L41) |  |
 | `_norm` | function | `_norm` | [tools/c2_readout/c2_data.py:236](../../tools/c2_readout/c2_data.py#L236) |  |
 | `_norm` | function | `_norm` | [tools/d1_seam/d1_seam.py:107](../../tools/d1_seam/d1_seam.py#L107) |  |
-| `_norm` | function | `_norm` | [tools/hwsc/hwsc_bind.py:138](../../tools/hwsc/hwsc_bind.py#L138) |  |
+| `_norm` | function | `_norm` | [tools/hwsc/hwsc_bind.py:164](../../tools/hwsc/hwsc_bind.py#L164) |  |
 | `_norm` | function | `_norm` | [tools/x6_stage0/x6_store.py:100](../../tools/x6_stage0/x6_store.py#L100) |  |
 | `_norm` | function | `_norm` | [tools/x6_stage1/x6s1_run.py:79](../../tools/x6_stage1/x6s1_run.py#L79) |  |
 | `_norm` | function | `_norm` | [tools/x6zc/x6zc_store.py:29](../../tools/x6zc/x6zc_store.py#L29) |  |
@@ -1717,7 +1717,7 @@
 | `_rows` | function | `_rows` | [tests/hwsc/test_b_registry2.py:108](../../tests/hwsc/test_b_registry2.py#L108) | A table whose frozen_files are written from the header scan, as at the freeze. |
 | `_rows` | function | `_rows` | [tests/x6zc/test_x6zc_dryrun.py:68](../../tests/x6zc/test_x6zc_dryrun.py#L68) |  |
 | `_rows` | function | `_rows` | [tools/c2_readout/c2_decide.py:53](../../tools/c2_readout/c2_decide.py#L53) |  |
-| `_rows` | function | `_rows` | [tools/hwsc/hwsc_bind.py:51](../../tools/hwsc/hwsc_bind.py#L51) |  |
+| `_rows` | function | `_rows` | [tools/hwsc/hwsc_bind.py:52](../../tools/hwsc/hwsc_bind.py#L52) |  |
 | `_rows` | function | `_rows` | [tools/x6_stage0/x6_exact.py:20](../../tools/x6_stage0/x6_exact.py#L20) |  |
 | `_rows` | function | `_rows` | [tools/x6zc/x6zc_census.py:190](../../tools/x6zc/x6zc_census.py#L190) |  |
 | `_rows_from_dgms` | function | `_rows_from_dgms` | [src/topo_pilot/topology/persistence.py:88](../../src/topo_pilot/topology/persistence.py#L88) |  |
@@ -1759,7 +1759,7 @@
 | `_same` | function | `_same` | [tools/c2_nd/nd_driver.py:321](../../tools/c2_nd/nd_driver.py#L321) |  |
 | `_same` | function | `_same` | [tools/c2_nd/nd_stage_val.py:264](../../tools/c2_nd/nd_stage_val.py#L264) | Bitwise equality of nested summaries (arrays by dtype, shape and bytes). |
 | `_same` | function | `_same` | [tools/hws/hws_exact.py:293](../../tools/hws/hws_exact.py#L293) |  |
-| `_same` | function | `_same` | [tools/hwsc/hwsc_bind.py:81](../../tools/hwsc/hwsc_bind.py#L81) |  |
+| `_same` | function | `_same` | [tools/hwsc/hwsc_bind.py:82](../../tools/hwsc/hwsc_bind.py#L82) |  |
 | `_same` | function | `_same` | [tools/k4b/k4b_config.py:134](../../tools/k4b/k4b_config.py#L134) |  |
 | `_same` | function | `_same` | [tools/x6_stage1/x6s1_data.py:314](../../tools/x6_stage1/x6s1_data.py#L314) |  |
 | `_same_array` | function | `_same_array` | [tests/contracts/test_store.py:30](../../tests/contracts/test_store.py#L30) |  |
@@ -2140,6 +2140,7 @@
 | `_value` | function | `_value` | [src/topo_pilot/experiment/report.py:27](../../src/topo_pilot/experiment/report.py#L27) |  |
 | `_value` | function | `_value` | [tests/circle_history/test_process_law.py:211](../../tests/circle_history/test_process_law.py#L211) |  |
 | `_value` | function | `_value` | [tools/x6_stage1/x6s1_stats.py:94](../../tools/x6_stage1/x6s1_stats.py#L94) |  |
+| `_values` | function | `_values` | [tests/hwsc/test_r_0184_kc7_inside_binding.py:23](../../tests/hwsc/test_r_0184_kc7_inside_binding.py#L23) |  |
 | `_variant` | function | `_variant` | [tests/hwsc/test_b_records.py:371](../../tests/hwsc/test_b_records.py#L371) |  |
 | `_vec` | function | `_vec` | [tests/c1prime/test_b_identities.py:80](../../tests/c1prime/test_b_identities.py#L80) |  |
 | `_vec` | function | `_vec` | [tests/d1_seam/test_d1_seam.py:46](../../tests/d1_seam/test_d1_seam.py#L46) |  |
@@ -2172,7 +2173,7 @@
 | `_w3_laws` | function | `_w3_laws` | [tools/x6_stage0/x6_exact.py:229](../../tools/x6_stage0/x6_exact.py#L229) |  |
 | `_waive_failures` | function | `_waive_failures` | [tests/integration/_mini_pipeline.py:49](../../tests/integration/_mini_pipeline.py#L49) |  |
 | `_walk` | function | `_walk` | [tools/c2_readout/c2_data.py:218](../../tools/c2_readout/c2_data.py#L218) |  |
-| `_walk` | function | `_walk` | [tools/hwsc/hwsc_bind.py:175](../../tools/hwsc/hwsc_bind.py#L175) |  |
+| `_walk` | function | `_walk` | [tools/hwsc/hwsc_bind.py:201](../../tools/hwsc/hwsc_bind.py#L201) |  |
 | `_walk_arrays` | function | `_walk_arrays` | [tools/hwsc/hwsc_registry.py:47](../../tools/hwsc/hwsc_registry.py#L47) |  |
 | `_watch` | function | `_watch` | [tests/experiment/test_x5g1t_identity_eval.py:117](../../tests/experiment/test_x5g1t_identity_eval.py#L117) | Count backend reads of ``target``; with ``mutate``, change its bytes right after the first |
 | `_wave_main` | function | `_wave_main` | [tools/d2a/d2a_train.py:324](../../tools/d2a/d2a_train.py#L324) | CLI ``wave W``: ≤ 3 children, supervised; the S5 rerun rule; waves/{W}.json. |
@@ -2374,7 +2375,7 @@
 | `atomic_json` | function | `atomic_json` | [tools/x4_oracle_profile/meter.py:73](../../tools/x4_oracle_profile/meter.py#L73) |  |
 | `attempt_store` | function | `attempt_store` | [tests/k4b/test_b_rerun.py:49](../../tests/k4b/test_b_rerun.py#L49) | A store whose S4a attempt failed technically after earlier PASS gates. |
 | `attempts_without_completion` | function | `attempts_without_completion` | [tools/x4_circle_history/stage_records.py:153](../../tools/x4_circle_history/stage_records.py#L153) |  |
-| `audit` | function | `audit` | [tools/hwsc/hwsc_bind.py:221](../../tools/hwsc/hwsc_bind.py#L221) |  |
+| `audit` | function | `audit` | [tools/hwsc/hwsc_bind.py:247](../../tools/hwsc/hwsc_bind.py#L247) |  |
 | `audit_pairs` | function | `audit_pairs` | [tools/x6zc/x6zc_census.py:55](../../tools/x6zc/x6zc_census.py#L55) |  |
 | `audit_run` | function | `audit_run` | [src/topo_pilot/experiment/circ_audit.py:106](../../src/topo_pilot/experiment/circ_audit.py#L106) | All panel rows of one run, plus reproduction failures. |
 | `auth` | function | `auth` | [tests/hwsb/test_b_records.py:105](../../tests/hwsb/test_b_records.py#L105) |  |
@@ -2527,7 +2528,7 @@
 | `bound_constants` | function | `bound_constants` | [tools/c1prime/c1_bounds.py:15](../../tools/c1prime/c1_bounds.py#L15) |  |
 | `bound_controls` | function | `bound_controls` | [tools/d2a/d2a_train.py:112](../../tools/d2a/d2a_train.py#L112) | The job-0014 controls module bound to the current dispatch identities (in this process). |
 | `bound_law` | function | `bound_law` | [tools/hwsb/hwsb_law.py:99](../../tools/hwsb/hwsb_law.py#L99) | Bind LAW sigma/neighbour and the rounded enclosure; restore all three in finally. |
-| `bound_stage_c` | function | `bound_stage_c` | [tools/hwsc/hwsc_bind.py:111](../../tools/hwsc/hwsc_bind.py#L111) |  |
+| `bound_stage_c` | function | `bound_stage_c` | [tools/hwsc/hwsc_bind.py:112](../../tools/hwsc/hwsc_bind.py#L112) |  |
 | `boundary` | method | `FakeControls.boundary` | [tests/experiment/test_x5g1t_training.py:73](../../tests/experiment/test_x5g1t_training.py#L73) |  |
 | `boundary` | method | `FakeSC.boundary` | [tests/experiment/test_x5g1t_export_checks.py:47](../../tests/experiment/test_x5g1t_export_checks.py#L47) |  |
 | `boundary` | method | `StudyControls.boundary` | [src/topo_pilot/experiment/x5g1t_runtime.py:234](../../src/topo_pilot/experiment/x5g1t_runtime.py#L234) |  |
@@ -2755,7 +2756,7 @@
 | `check_internal` | function | `check_internal` | [tools/x6_stage1/x6s1_cloud.py:165](../../tools/x6_stage1/x6s1_cloud.py#L165) |  |
 | `check_loaded_modules` | function | `check_loaded_modules` | [tools/x4_circle_history/live_context.py:66](../../tools/x4_circle_history/live_context.py#L66) | Stage-end re-check: no unfrozen project module and no new site-packages distribution. |
 | `check_module` | function | `check_module` | [tests/d1_seam/test_d1_seam.py:154](../../tests/d1_seam/test_d1_seam.py#L154) |  |
-| `check_old` | function | `check_old` | [tools/hwsc/hwsc_bind.py:89](../../tools/hwsc/hwsc_bind.py#L89) |  |
+| `check_old` | function | `check_old` | [tools/hwsc/hwsc_bind.py:90](../../tools/hwsc/hwsc_bind.py#L90) |  |
 | `check_outcome_unchanged` | function | `check_outcome_unchanged` | [tests/hwsc/test_a_decision.py:286](../../tests/hwsc/test_a_decision.py#L286) |  |
 | `check_pass_set` | function | `check_pass_set` | [tools/c1prime/c1_records.py:61](../../tools/c1prime/c1_records.py#L61) |  |
 | `check_progress` | function | `check_progress` | [tools/check_state_files.py:20](../../tools/check_state_files.py#L20) |  |
@@ -3044,7 +3045,7 @@
 | `decimal_underflow` | function | `decimal_underflow` | [tests/c1prime/test_a_exceptions.py:81](../../tests/c1prime/test_a_exceptions.py#L81) |  |
 | `decision` | function | `decision` | [tools/x2a_stage0/x2a_mc.py:47](../../tools/x2a_stage0/x2a_mc.py#L47) |  |
 | `decision_rows` | function | `decision_rows` | [tools/d2a/d2a_world.py:115](../../tools/d2a/d2a_world.py#L115) |  |
-| `decode` | function | `decode` | [tools/hwsc/hwsc_bind.py:33](../../tools/hwsc/hwsc_bind.py#L33) |  |
+| `decode` | function | `decode` | [tools/hwsc/hwsc_bind.py:34](../../tools/hwsc/hwsc_bind.py#L34) |  |
 | `Decoder` | class | `Decoder` | [tools/c1prime/c1_fit.py:147](../../tools/c1prime/c1_fit.py#L147) |  |
 | `Decoder` | class | `Decoder` | [tools/c2_readout/c2_stats.py:213](../../tools/c2_readout/c2_stats.py#L213) |  |
 | `decoder` | function | `decoder` | [tests/k4b/test_b_endpoint.py:83](../../tests/k4b/test_b_endpoint.py#L83) |  |
@@ -3890,7 +3891,7 @@
 | `history_table` | function | `history_table` | [tools/c2_readout/c2_data.py:115](../../tools/c2_readout/c2_data.py#L115) | Canonical tokens, ids, panels, k_Y, Y_def and the four digest columns ("" where H^Y is |
 | `history_table` | function | `history_table` | [tools/k4b/k4b_data.py:125](../../tools/k4b/k4b_data.py#L125) | Rows in ascending sequence_id; landmarks (cal, val), ref rows and decoder panels (cal). |
 | `HistoryIndex` | class | `HistoryIndex` | [src/topo_pilot/contracts/_schemas_data.py:97](../../src/topo_pilot/contracts/_schemas_data.py#L97) | Analysis histories, one per trajectory, grouped into disjoint panels. |
-| `hit` | method | `_Forbidden.hit` | [tools/hwsc/hwsc_bind.py:149](../../tools/hwsc/hwsc_bind.py#L149) |  |
+| `hit` | method | `_Forbidden.hit` | [tools/hwsc/hwsc_bind.py:175](../../tools/hwsc/hwsc_bind.py#L175) |  |
 | `hit` | function | `hit` | [tests/hwsb/test_b_records.py:215](../../tests/hwsb/test_b_records.py#L215) |  |
 | `hit` | function | `hit` | [tests/k4b/test_b_flow.py:254](../../tests/k4b/test_b_flow.py#L254) |  |
 | `hmm` | function | `hmm` | [tests/oracle/test_oracle.py:42](../../tests/oracle/test_oracle.py#L42) |  |
@@ -4298,7 +4299,7 @@
 | `load_rows` | function | `load_rows` | [tests/experiment/test_x4.py:127](../../tests/experiment/test_x4.py#L127) |  |
 | `load_run` | function | `load_run` | [tools/d2a/d2a_eval.py:33](../../tools/d2a/d2a_eval.py#L33) |  |
 | `load_split` | function | `load_split` | [tools/x4_oracle_profile/inputs.py:196](../../tools/x4_oracle_profile/inputs.py#L196) | Load one split with schema, shape, ID, range and finiteness checks. |
-| `load_table` | function | `load_table` | [tools/hwsc/hwsc_bind.py:55](../../tools/hwsc/hwsc_bind.py#L55) |  |
+| `load_table` | function | `load_table` | [tools/hwsc/hwsc_bind.py:56](../../tools/hwsc/hwsc_bind.py#L56) |  |
 | `load_tables` | function | `load_tables` | [tools/x6_stage1/x6s1_pairs.py:64](../../tools/x6_stage1/x6s1_pairs.py#L64) |  |
 | `load_tokens` | function | `load_tokens` | [tools/d2a/d2a_world.py:229](../../tools/d2a/d2a_world.py#L229) |  |
 | `loaded_distributions` | function | `loaded_distributions` | [tools/x4_circle_history/env_identity.py:116](../../tools/x4_circle_history/env_identity.py#L116) |  |
@@ -4471,7 +4472,7 @@
 | `master_fresh` | function | `master_fresh` | [tools/x6zc/x6zc_store.py:121](../../tools/x6zc/x6zc_store.py#L121) |  |
 | `mat_from_upper` | function | `mat_from_upper` | [tests/analysis/test_geometry.py:11](../../tests/analysis/test_geometry.py#L11) |  |
 | `matched` | function | `matched` | [tools/x6_stage0/x6_exact.py:138](../../tools/x6_stage0/x6_exact.py#L138) |  |
-| `matches` | method | `_ContractMarker.matches` | [tools/hwsc/hwsc_bind.py:29](../../tools/hwsc/hwsc_bind.py#L29) |  |
+| `matches` | method | `_ContractMarker.matches` | [tools/hwsc/hwsc_bind.py:30](../../tools/hwsc/hwsc_bind.py#L30) |  |
 | `materialise` | function | `materialise` | [tools/x6_stage1/x6s1_cloud.py:200](../../tools/x6_stage1/x6s1_cloud.py#L200) |  |
 | `maxmin_landmarks` | method | `PersistenceComputer.maxmin_landmarks` | [src/topo_pilot/topology/persistence.py:209](../../src/topo_pilot/topology/persistence.py#L209) | Greedy farthest-point (maxmin) landmarks: random first point, then argmax of min-dist. |
 | `mb` | function | `mb` | [tests/experiment/test_x5g1t_runtime.py:32](../../tests/experiment/test_x5g1t_runtime.py#L32) | A mailbox that allows running: only a valid request.json. |
@@ -4621,7 +4622,7 @@
 | `needs_owner` | function | `needs_owner` | [tools/k4b/k4b_release.py:226](../../tools/k4b/k4b_release.py#L226) | True iff an outcome-bearing quantity would change, or was computed at/after failure. |
 | `nested_ridge` | function | `nested_ridge` | [src/topo_pilot/experiment/x4f_probe.py:55](../../src/topo_pilot/experiment/x4f_probe.py#L55) | Leave-one-panel-out selection over calibration panels, refit, score once. |
 | `NestedResult` | class | `NestedResult` | [src/topo_pilot/experiment/x4f_probe.py:23](../../src/topo_pilot/experiment/x4f_probe.py#L23) | Selected ``lam``, outer-validation ``r2`` (None + status if undefined), validation |
-| `never_called` | function | `never_called` | [tools/hwsc/hwsc_bind.py:133](../../tools/hwsc/hwsc_bind.py#L133) |  |
+| `never_called` | function | `never_called` | [tools/hwsc/hwsc_bind.py:159](../../tools/hwsc/hwsc_bind.py#L159) |  |
 | `next_symbol_probs` | function | `next_symbol_probs` | [tools/d2a/d2a_eval.py:69](../../tools/d2a/d2a_eval.py#L69) |  |
 | `NGramBaseline` | class | `NGramBaseline` | [src/topo_pilot/prediction/ngram.py:21](../../src/topo_pilot/prediction/ngram.py#L21) | Order-1 (unigram) or order-2 (bigram) next-token model fitted on train tokens only. |
 | `nll` | method | `PredictiveMetrics.nll` | [src/topo_pilot/prediction/metrics.py:45](../../src/topo_pilot/prediction/metrics.py#L45) | Per-row ``-log probs[i, targets[i]]`` -> ``[M]`` (``inf`` if the probability is 0). |
@@ -4809,4 +4810,3 @@
 | `pairwise` | method | `FlatQuotientMetric.pairwise` | [src/topo_pilot/world/metrics.py:89](../../src/topo_pilot/world/metrics.py#L89) |  |
 | `pairwise` | method | `GraphGeodesicMetric.pairwise` | [src/topo_pilot/world/metrics.py:116](../../src/topo_pilot/world/metrics.py#L116) |  |
 | `pairwise` | method | `Hellinger.pairwise` | [src/topo_pilot/topology/metrics.py:98](../../src/topo_pilot/topology/metrics.py#L98) |  |
-| `pairwise` | method | `Metric.pairwise` | [src/topo_pilot/world/metrics.py:31](../../src/topo_pilot/world/metrics.py#L31) | Return the symmetric ``[N, N]`` distance matrix. |

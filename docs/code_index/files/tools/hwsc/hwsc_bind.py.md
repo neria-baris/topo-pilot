@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_bind.py](../../../../../tools/hwsc/hwsc_bind.py)
 - Kind: python
-- Lines: 246
+- Lines: 272
 
 ## Module docstring
 
@@ -45,9 +45,9 @@
 
 ### Dynamic imports
 
-- `import_module` line 63: `dynamic: r['module']`
-- `import_module` line 92: `dynamic: r['module']`
-- `import_module` line 120: `dynamic: r['module']`
+- `import_module` line 64: `dynamic: r['module']`
+- `import_module` line 93: `dynamic: r['module']`
+- `import_module` line 121: `dynamic: r['module']`
 
 ### sys.path additions
 
@@ -64,6 +64,7 @@
 - [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 25, import)
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 23, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 25, import)
+- [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 18, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 14, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 21, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 14, import)
@@ -75,26 +76,28 @@
 
 - `ACTIVE`
 - `BINDING`
+- `_STACK`
 
 ## Classes and functions
 
-- **class `_ContractMarker`** [L25-30]
-- **method `_ContractMarker.__init__`** [L26-27]: `def __init__(self, sha)`
-- **method `_ContractMarker.matches`** [L29-30]: `def matches(self, value) -> bool`
-- **function `decode`** [L33-48]: `def decode(value, repo=cc.REPO)`
-- **function `_rows`** [L51-52]: `def _rows(contract) -> list`
-- **function `load_table`** [L55-78]: `def load_table(contract=None, which='stage_c', case=None, case_dir=None) -> list`
-- **function `_same`** [L81-86]: `def _same(cur, old) -> bool`
-- **function `check_old`** [L89-95]: `def check_old(rows) -> list`
-- **function `_encode`** [L98-107]: `def _encode(v)`
-- **function `bound_stage_c`** [L111-130]: `def bound_stage_c(table=None)` decorators: @contextmanager
-- **function `never_called`** [L133-134]: `def never_called() -> tuple`
-- **function `_norm`** [L138-139]: `def _norm(p) -> str`
-- **class `_Forbidden`** [L142-172]
-- **method `_Forbidden.__init__`** [L143-147]: `def __init__(self, f)`
-- **method `_Forbidden.hit`** [L149-172]: `def hit(self, v)`
-- **function `_walk`** [L175-194]: `def _walk(v, where, forb, out, depth=0, seen=None)`
-- **function `_functions`** [L197-205]: `def _functions(mod)`
-- **function `scope_modules`** [L208-218]: `def scope_modules() -> list`
-- **function `audit`** [L221-246]: `def audit(modules=None, left_unchanged=None, forbidden=None) -> dict`
+- **class `_ContractMarker`** [L26-31]
+- **method `_ContractMarker.__init__`** [L27-28]: `def __init__(self, sha)`
+- **method `_ContractMarker.matches`** [L30-31]: `def matches(self, value) -> bool`
+- **function `decode`** [L34-49]: `def decode(value, repo=cc.REPO)`
+- **function `_rows`** [L52-53]: `def _rows(contract) -> list`
+- **function `load_table`** [L56-79]: `def load_table(contract=None, which='stage_c', case=None, case_dir=None) -> list`
+- **function `_same`** [L82-87]: `def _same(cur, old) -> bool`
+- **function `check_old`** [L90-96]: `def check_old(rows) -> list`
+- **function `_encode`** [L99-108]: `def _encode(v)`
+- **function `bound_stage_c`** [L112-134]: `def bound_stage_c(table=None)` decorators: @contextmanager
+- **function `suspended`** [L138-156]: `def suspended()` decorators: @contextmanager - Unbound for the block inside an active bound_stage_c, re-bound after (D-0184-1: KC7
+- **function `never_called`** [L159-160]: `def never_called() -> tuple`
+- **function `_norm`** [L164-165]: `def _norm(p) -> str`
+- **class `_Forbidden`** [L168-198]
+- **method `_Forbidden.__init__`** [L169-173]: `def __init__(self, f)`
+- **method `_Forbidden.hit`** [L175-198]: `def hit(self, v)`
+- **function `_walk`** [L201-220]: `def _walk(v, where, forb, out, depth=0, seen=None)`
+- **function `_functions`** [L223-231]: `def _functions(mod)`
+- **function `scope_modules`** [L234-244]: `def scope_modules() -> list`
+- **function `audit`** [L247-272]: `def audit(modules=None, left_unchanged=None, forbidden=None) -> dict`
 

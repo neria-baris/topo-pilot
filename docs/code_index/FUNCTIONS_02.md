@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `pairwise` | method | `Metric.pairwise` | [src/topo_pilot/world/metrics.py:31](../../src/topo_pilot/world/metrics.py#L31) | Return the symmetric ``[N, N]`` distance matrix. |
 | `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
 | `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |
 | `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
@@ -825,7 +826,7 @@
 | `sched_ok` | function | `sched_ok` | [tools/hwsc/hwsc_records.py:144](../../tools/hwsc/hwsc_records.py#L144) |  |
 | `schedule` | function | `schedule` | [tools/x6_stage1/x6s1_stage_post.py:144](../../tools/x6_stage1/x6s1_stage_post.py#L144) |  |
 | `scientific_outcome` | function | `scientific_outcome` | [tools/x2a_stage0/x2a_mc.py:86](../../tools/x2a_stage0/x2a_mc.py#L86) |  |
-| `scope_modules` | function | `scope_modules` | [tools/hwsc/hwsc_bind.py:208](../../tools/hwsc/hwsc_bind.py#L208) |  |
+| `scope_modules` | function | `scope_modules` | [tools/hwsc/hwsc_bind.py:234](../../tools/hwsc/hwsc_bind.py#L234) |  |
 | `score` | method | `RidgeProbe.score` | [src/topo_pilot/prediction/ridge.py:78](../../src/topo_pilot/prediction/ridge.py#L78) | Return ``{"mse": ..., "r2": ...}`` (no KL on raw ridge output). |
 | `score` | function | `score` | [tests/d2a/test_b_behaviour.py:44](../../tests/d2a/test_b_behaviour.py#L44) |  |
 | `score` | function | `score` | [tools/x6_stage1/x6s1_eval.py:187](../../tools/x6_stage1/x6s1_eval.py#L187) | x_hat_i = sum_j (q ln q)[code] - fl(q)[code] * ln p^Q[k] (§7.4 item 3). |
@@ -1211,6 +1212,7 @@
 | `supports` | function | `supports` | [tools/c1prime/c1_cert.py:55](../../tools/c1prime/c1_cert.py#L55) |  |
 | `survival` | function | `survival` | [tools/c2_nd/nd_stage_pre.py:291](../../tools/c2_nd/nd_stage_pre.py#L291) |  |
 | `survival` | function | `survival` | [tools/c2_readout/c2_stage_pre.py:292](../../tools/c2_readout/c2_stage_pre.py#L292) | Each family needs >= 2 ok models; the FEAS per-model, per-family coverage tally. |
+| `suspended` | function | `suspended` | [tools/hwsc/hwsc_bind.py:138](../../tools/hwsc/hwsc_bind.py#L138) | Unbound for the block inside an active bound_stage_c, re-bound after (D-0184-1: KC7 |
 | `svg` | function | `svg` | [reports/he_summary/charts.py:57](../../reports/he_summary/charts.py#L57) |  |
 | `Sym` | class | `Sym` | [tools/c1prime/c1_bounds.py:109](../../tools/c1prime/c1_bounds.py#L109) | Counting value for L5: nodes, formal monomials (with multiplicity) and degree. |
 | `sym_arrays` | function | `sym_arrays` | [tools/x6zc/x6zc_core.py:283](../../tools/x6zc/x6zc_core.py#L283) |  |
@@ -2605,6 +2607,8 @@
 | `test_kappa_nu_population_covariance_and_eligible_mean` | test | `test_kappa_nu_population_covariance_and_eligible_mean` | [tests/c1prime/test_a_eligibility_support.py:76](../../tests/c1prime/test_a_eligibility_support.py#L76) |  |
 | `test_kappa_x1_matches_the_written_formula` | test | `test_kappa_x1_matches_the_written_formula` | [tests/c2_readout/test_b_patch.py:294](../../tests/c2_readout/test_b_patch.py#L294) |  |
 | `test_kc7_cal_stream_inside_the_binding` | test | `test_kc7_cal_stream_inside_the_binding` | [tests/hwsc/test_b_binding.py:359](../../tests/hwsc/test_b_binding.py#L359) |  |
+| `test_kc7_inside_the_binding_needs_suspension` | test | `test_kc7_inside_the_binding_needs_suspension` | [tests/hwsc/test_r_0184_kc7_inside_binding.py:27](../../tests/hwsc/test_r_0184_kc7_inside_binding.py#L27) |  |
+| `test_kc7_passes_under_suspended_and_the_binding_is_reapplied` | test | `test_kc7_passes_under_suspended_and_the_binding_is_reapplied` | [tests/hwsc/test_r_0184_kc7_inside_binding.py:33](../../tests/hwsc/test_r_0184_kc7_inside_binding.py#L33) |  |
 | `test_kc9_float_floor_contract_key` | test | `test_kc9_float_floor_contract_key` | [tests/hws/test_a_stats.py:255](../../tests/hws/test_a_stats.py#L255) |  |
 | `test_kc9_float_floor_rule` | test | `test_kc9_float_floor_rule` | [tests/hws/test_a_stats.py:273](../../tests/hws/test_a_stats.py#L273) |  |
 | `test_kc9_row_constant_summary` | test | `test_kc9_row_constant_summary` | [tests/hws/test_a_stats.py:280](../../tests/hws/test_a_stats.py#L280) |  |
@@ -3880,8 +3884,3 @@
 | `test_source_d_refuses_unbound_registry_v1` | test | `test_source_d_refuses_unbound_registry_v1` | [tests/k4b/test_b_registry.py:145](../../tests/k4b/test_b_registry.py#L145) |  |
 | `test_source_e_never_opens_sealed_token_arrays` | test | `test_source_e_never_opens_sealed_token_arrays` | [tests/k4b/test_b_registry.py:170](../../tests/k4b/test_b_registry.py#L170) |  |
 | `test_source_e_unresolved_pool_inventory_is_incomplete` | test | `test_source_e_unresolved_pool_inventory_is_incomplete` | [tests/k4b/test_b_registry.py:206](../../tests/k4b/test_b_registry.py#L206) |  |
-| `test_source_head_mismatch_is_refused` | test | `test_source_head_mismatch_is_refused` | [tests/c1prime/test_a_release_meter.py:158](../../tests/c1prime/test_a_release_meter.py#L158) |  |
-| `test_source_scratch` | test | `test_source_scratch` | [tests/c2_nd/test_b_registry.py:168](../../tests/c2_nd/test_b_registry.py#L168) |  |
-| `test_source_scratch_expected_roots` | test | `test_source_scratch_expected_roots` | [tests/c2_nd/test_b_registry.py:201](../../tests/c2_nd/test_b_registry.py#L201) |  |
-| `test_source_scratch_skips_test_trees` | test | `test_source_scratch_skips_test_trees` | [tests/c2_nd/test_b_registry.py:188](../../tests/c2_nd/test_b_registry.py#L188) |  |
-| `test_spectral_embedding_shape_and_r2_r3_definitions` | test | `test_spectral_embedding_shape_and_r2_r3_definitions` | [tests/analysis/test_baselines_dynamics.py:52](../../tests/analysis/test_baselines_dynamics.py#L52) |  |

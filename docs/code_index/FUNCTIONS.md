@@ -1,9 +1,9 @@
 # Function key
 
-9601 classes, functions and methods, alphabetical (case-insensitive).
+9606 classes, functions and methods, alphabetical (case-insensitive).
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
 | [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `pairwise` | 4808 |
-| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `pairwise` | `test_spectral_embedding_shape_and_r2_r3_definitions` | 3883 |
-| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_spectrum_abs_gap_uses_negative_eigenvalue` | `zt` | 910 |
+| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `pairwise` | `test_source_e_unresolved_pool_inventory_is_incomplete` | 3882 |
+| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_source_head_mismatch_is_refused` | `zt` | 916 |

@@ -2,6 +2,11 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_source_head_mismatch_is_refused` | test | `test_source_head_mismatch_is_refused` | [tests/c1prime/test_a_release_meter.py:158](../../tests/c1prime/test_a_release_meter.py#L158) |  |
+| `test_source_scratch` | test | `test_source_scratch` | [tests/c2_nd/test_b_registry.py:168](../../tests/c2_nd/test_b_registry.py#L168) |  |
+| `test_source_scratch_expected_roots` | test | `test_source_scratch_expected_roots` | [tests/c2_nd/test_b_registry.py:201](../../tests/c2_nd/test_b_registry.py#L201) |  |
+| `test_source_scratch_skips_test_trees` | test | `test_source_scratch_skips_test_trees` | [tests/c2_nd/test_b_registry.py:188](../../tests/c2_nd/test_b_registry.py#L188) |  |
+| `test_spectral_embedding_shape_and_r2_r3_definitions` | test | `test_spectral_embedding_shape_and_r2_r3_definitions` | [tests/analysis/test_baselines_dynamics.py:52](../../tests/analysis/test_baselines_dynamics.py#L52) |  |
 | `test_spectrum_abs_gap_uses_negative_eigenvalue` | test | `test_spectrum_abs_gap_uses_negative_eigenvalue` | [tests/analysis/test_x5_kernel.py:90](../../tests/analysis/test_x5_kernel.py#L90) |  |
 | `test_spectrum_eigenvalues_descending_lazy_cycle` | test | `test_spectrum_eigenvalues_descending_lazy_cycle` | [tests/analysis/test_x5_kernel.py:99](../../tests/analysis/test_x5_kernel.py#L99) |  |
 | `test_spectrum_near_unit_gap_status` | test | `test_spectrum_near_unit_gap_status` | [tests/analysis/test_x5_kernel.py:133](../../tests/analysis/test_x5_kernel.py#L133) |  |
@@ -131,6 +136,7 @@
 | `test_support_report_sealed_form_has_no_reconstructing_keys` | test | `test_support_report_sealed_form_has_no_reconstructing_keys` | [tests/k4b/test_b_flow.py:94](../../tests/k4b/test_b_flow.py#L94) |  |
 | `test_support_report_unsealed_form_is_refused_in_a_validation_report` | test | `test_support_report_unsealed_form_is_refused_in_a_validation_report` | [tests/k4b/test_b_flow.py:107](../../tests/k4b/test_b_flow.py#L107) |  |
 | `test_supported_c_hor_without_carries_is_inconclusive` | test | `test_supported_c_hor_without_carries_is_inconclusive` | [tests/d2a/test_b_rules_decide.py:205](../../tests/d2a/test_b_rules_decide.py#L205) |  |
+| `test_suspended_outside_a_binding_is_a_no_op` | test | `test_suspended_outside_a_binding_is_a_no_op` | [tests/hwsc/test_r_0184_kc7_inside_binding.py:48](../../tests/hwsc/test_r_0184_kc7_inside_binding.py#L48) |  |
 | `test_symbol_constant_arm_difference_contributes_half_k_delta_m` | test | `test_symbol_constant_arm_difference_contributes_half_k_delta_m` | [tests/c1prime/test_b_identities.py:96](../../tests/c1prime/test_b_identities.py#L96) |  |
 | `test_symbol_constant_cancels_exactly_when_masses_are_equal` | test | `test_symbol_constant_cancels_exactly_when_masses_are_equal` | [tests/c1prime/test_b_identities.py:107](../../tests/c1prime/test_b_identities.py#L107) |  |
 | `test_symbol_law_aeff_and_last_entropy_direct` | test | `test_symbol_law_aeff_and_last_entropy_direct` | [tests/hws/test_b_exact.py:128](../../tests/hws/test_b_exact.py#L128) |  |

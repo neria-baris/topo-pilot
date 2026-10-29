@@ -2,6 +2,9 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `pairwise` | method | `FlatQuotientMetric.pairwise` | [src/topo_pilot/world/metrics.py:89](../../src/topo_pilot/world/metrics.py#L89) |  |
+| `pairwise` | method | `GraphGeodesicMetric.pairwise` | [src/topo_pilot/world/metrics.py:116](../../src/topo_pilot/world/metrics.py#L116) |  |
+| `pairwise` | method | `Hellinger.pairwise` | [src/topo_pilot/topology/metrics.py:98](../../src/topo_pilot/topology/metrics.py#L98) |  |
 | `pairwise` | method | `Metric.pairwise` | [src/topo_pilot/world/metrics.py:31](../../src/topo_pilot/world/metrics.py#L31) | Return the symmetric ``[N, N]`` distance matrix. |
 | `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
 | `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |
@@ -39,9 +42,9 @@
 | `pause_check` | function | `pause_check` | [tools/hws/hws_select.py:294](../../tools/hws/hws_select.py#L294) |  |
 | `pause_check` | function | `pause_check` | [tools/hwsb/hwsb_driver.py:133](../../tools/hwsb/hwsb_driver.py#L133) |  |
 | `pause_check` | function | `pause_check` | [tools/x6zc/x6zc_store.py:290](../../tools/x6zc/x6zc_store.py#L290) |  |
-| `pause_check_c` | function | `pause_check_c` | [tools/hwsc/hwsc_records.py:272](../../tools/hwsc/hwsc_records.py#L272) |  |
+| `pause_check_c` | function | `pause_check_c` | [tools/hwsc/hwsc_records.py:280](../../tools/hwsc/hwsc_records.py#L280) |  |
 | `pause_or_raise` | function | `pause_or_raise` | [tools/hwsb/hwsb_driver.py:155](../../tools/hwsb/hwsb_driver.py#L155) | Both 3x triggers at an item boundary; a continued stage is exempt. |
-| `pause_or_raise_c` | function | `pause_or_raise_c` | [tools/hwsc/hwsc_records.py:301](../../tools/hwsc/hwsc_records.py#L301) |  |
+| `pause_or_raise_c` | function | `pause_or_raise_c` | [tools/hwsc/hwsc_records.py:309](../../tools/hwsc/hwsc_records.py#L309) |  |
 | `Paused` | class | `Paused` | [tools/hws/hws_driver.py:36](../../tools/hws/hws_driver.py#L36) | A 3x trigger fired at a world or stage boundary (§9.3); exit 4. |
 | `Paused` | class | `Paused` | [tools/hwsb/hwsb_driver.py:41](../../tools/hwsb/hwsb_driver.py#L41) | A 3x trigger fired at an item boundary; nothing new is started (exit 4). |
 | `payload_checksum` | function | `payload_checksum` | [src/topo_pilot/contracts/base.py:170](../../src/topo_pilot/contracts/base.py#L170) | Canonical content checksum: sha256 over, for each array or blob in name order, its name, |
@@ -191,7 +194,7 @@
 | `prefix_tokens` | function | `prefix_tokens` | [tools/x6_stage0/x6_exact.py:105](../../tools/x6_stage0/x6_exact.py#L105) |  |
 | `prefix_yields` | function | `prefix_yields` | [tools/x6zc/x6zc_core.py:50](../../tools/x6zc/x6zc_core.py#L50) |  |
 | `preflight` | function | `preflight` | [tools/hwsb/hwsb_driver.py:114](../../tools/hwsb/hwsb_driver.py#L114) |  |
-| `preflight` | function | `preflight` | [tools/hwsc/hwsc_records.py:241](../../tools/hwsc/hwsc_records.py#L241) |  |
+| `preflight` | function | `preflight` | [tools/hwsc/hwsc_records.py:249](../../tools/hwsc/hwsc_records.py#L249) |  |
 | `prepare` | function | `prepare` | [tools/c2_nd/nd_dry.py:129](../../tools/c2_nd/nd_dry.py#L129) | PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the |
 | `preserved` | function | `preserved` | [tests/hws/test_b_records.py:265](../../tests/hws/test_b_records.py#L265) |  |
 | `preserved` | function | `preserved` | [tests/hwsb/test_b_meter_law.py:50](../../tests/hwsb/test_b_meter_law.py#L50) |  |
@@ -383,6 +386,7 @@
 | `record` | function | `record` | [tools/c1prime/c1_env.py:23](../../tools/c1prime/c1_env.py#L23) |  |
 | `record` | function | `record` | [tools/x4_circle_history/env_identity.py:162](../../tools/x4_circle_history/env_identity.py#L162) |  |
 | `record_gate` | function | `record_gate` | [tools/x4_circle_history/stage_records.py:64](../../tools/x4_circle_history/stage_records.py#L64) |  |
+| `record_gate_files` | function | `record_gate_files` | [tools/hwsc/hwsc_records.py:129](../../tools/hwsc/hwsc_records.py#L129) | D-0187-2: the E1/E2 gate files enter a STAGE_COMPLETE, so a later lineage_c finds them. |
 | `record_of` | function | `record_of` | [tests/c2_nd/test_b_decoy_model.py:316](../../tests/c2_nd/test_b_decoy_model.py#L316) |  |
 | `record_outcome` | function | `record_outcome` | [src/topo_pilot/experiment/x5g1t_runtime.py:169](../../src/topo_pilot/experiment/x5g1t_runtime.py#L169) |  |
 | `record_sha` | function | `record_sha` | [tools/x6_stage1/x6s1_cloud.py:227](../../tools/x6_stage1/x6s1_cloud.py#L227) |  |
@@ -660,7 +664,7 @@
 | `run_case` | function | `run_case` | [tests/hwsc/test_a_ladder.py:115](../../tests/hwsc/test_a_ladder.py#L115) |  |
 | `run_child` | function | `run_child` | [tests/x6_stage1/test_b_train_chain.py:106](../../tests/x6_stage1/test_b_train_chain.py#L106) |  |
 | `run_close` | function | `run_close` | [tools/hwsb/hwsb_driver.py:249](../../tools/hwsb/hwsb_driver.py#L249) |  |
-| `run_close` | function | `run_close` | [tools/hwsc/hwsc_jobs.py:115](../../tools/hwsc/hwsc_jobs.py#L115) |  |
+| `run_close` | function | `run_close` | [tools/hwsc/hwsc_jobs.py:117](../../tools/hwsc/hwsc_jobs.py#L117) |  |
 | `run_cmd` | method | `SSHExecutor.run_cmd` | [src/topo_pilot/executors/ssh.py:73](../../src/topo_pilot/executors/ssh.py#L73) | ``ssh`` command that unpacks the bundle and starts ``run_bundle.py`` detached; |
 | `run_conductance_transition` | method | `ProcessStage.run_conductance_transition` | [src/topo_pilot/process/stage.py:33](../../src/topo_pilot/process/stage.py#L33) | Build and save the metric-conductance ``TransitionSpec`` of ``world_id`` (X5 G1); the |
 | `run_dev_analysis` | function | `run_dev_analysis` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:100](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L100) | Dense dev regret curves, grid events, paired bootstrap and the cohort verdict. |
@@ -669,7 +673,7 @@
 | `run_dry` | function | `run_dry` | [tools/hwsb/hwsb_dry.py:343](../../tools/hwsb/hwsb_dry.py#L343) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsc/hwsc_dry.py:297](../../tools/hwsc/hwsc_dry.py#L297) |  |
 | `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:204](../../tools/hwsc/hwsc_driver.py#L204) |  |
-| `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:66](../../tools/hwsc/hwsc_jobs.py#L66) |  |
+| `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:67](../../tools/hwsc/hwsc_jobs.py#L67) |  |
 | `run_emission` | method | `ProcessStage.run_emission` | [src/topo_pilot/process/stage.py:43](../../src/topo_pilot/process/stage.py#L43) | Build and save the ``EmissionSpec`` of ``world_id`` for replicate ``seeds.master``. |
 | `run_eval` | function | `run_eval` | [tools/hwsb/hwsb_driver.py:215](../../tools/hwsb/hwsb_driver.py#L215) |  |
 | `run_final_test` | function | `run_final_test` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:178](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L178) | Fresh test (generated here only), step-final checkpoints only; needs authorisation. |
@@ -701,7 +705,7 @@
 | `run_phase_b` | function | `run_phase_b` | [src/topo_pilot/experiment/x4b_run.py:200](../../src/topo_pilot/experiment/x4b_run.py#L200) | Run protocol x4b-v1 once; write tables/exports; return the verdict summary. |
 | `run_pools` | function | `run_pools` | [src/topo_pilot/experiment/x5g1t_stages.py:168](../../src/topo_pilot/experiment/x5g1t_stages.py#L168) | Train and dev pools for every master and arm (never the fresh test). |
 | `run_probes` | method | `PredictionStage.run_probes` | [src/topo_pilot/prediction/stage.py:78](../../src/topo_pilot/prediction/stage.py#L78) | Not implemented here: probe I/O lives in ``experiment`` stage S7 (D-047), because dev |
-| `run_reg2` | function | `run_reg2` | [tools/hwsc/hwsc_driver.py:225](../../tools/hwsc/hwsc_driver.py#L225) |  |
+| `run_reg2` | function | `run_reg2` | [tools/hwsc/hwsc_driver.py:227](../../tools/hwsc/hwsc_driver.py#L227) |  |
 | `run_remote` | function | `run_remote` | [tests/executors/test_bundle.py:19](../../tests/executors/test_bundle.py#L19) | Build the bundle for a stub job, unpack it in a fresh folder, run run_bundle.py there. |
 | `run_rows` | method | `CircularJob.run_rows` | [src/topo_pilot/experiment/s7_circular.py:62](../../src/topo_pilot/experiment/s7_circular.py#L62) |  |
 | `run_rows` | method | `ControlsJob.run_rows` | [src/topo_pilot/experiment/s7_controls.py:83](../../src/topo_pilot/experiment/s7_controls.py#L83) |  |
@@ -737,7 +741,7 @@
 | `runs` | method | `DevData.runs` | [src/topo_pilot/experiment/s7_dev.py:73](../../src/topo_pilot/experiment/s7_dev.py#L73) |  |
 | `runtime_acct` | function | `runtime_acct` | [tools/x6_stage1/x6s1_run.py:392](../../tools/x6_stage1/x6s1_run.py#L392) | §4.6 RUNTIME-ACCT items 1-5 (two normal children, one at 5 CPU-s; metered job). |
 | `S` | method | `Summaries.S` | [src/topo_pilot/topology/summaries.py:27](../../src/topo_pilot/topology/summaries.py#L27) | Max finite persistence in ``dim`` divided by ``scale_s``; 0.0 if none or ``s <= 0``. |
-| `s0` | function | `s0` | [tools/hwsc/hwsc_records.py:222](../../tools/hwsc/hwsc_records.py#L222) |  |
+| `s0` | function | `s0` | [tools/hwsc/hwsc_records.py:230](../../tools/hwsc/hwsc_records.py#L230) |  |
 | `s0` | function | `s0` | [tools/x6_stage1/x6s1_stage_post.py:81](../../tools/x6_stage1/x6s1_stage_post.py#L81) |  |
 | `s0` | function | `s0` | [tools/x6_stage1/x6s1_stage_pre.py:108](../../tools/x6_stage1/x6s1_stage_pre.py#L108) |  |
 | `s0_bindings` | function | `s0_bindings` | [tools/d2a/d2a_world.py:289](../../tools/d2a/d2a_world.py#L289) | Gate 1 (§10.6, API §3): protocol hash, dispatch identities from the store-local binding, |
@@ -823,7 +827,7 @@
 | `scan` | function | `scan` | [tools/check_imports.py:71](../../tools/check_imports.py#L71) |  |
 | `sched` | function | `sched` | [tests/hwsb/test_b_records.py:118](../../tests/hwsb/test_b_records.py#L118) |  |
 | `sched_ok` | function | `sched_ok` | [tools/hwsb/hwsb_driver.py:96](../../tools/hwsb/hwsb_driver.py#L96) |  |
-| `sched_ok` | function | `sched_ok` | [tools/hwsc/hwsc_records.py:144](../../tools/hwsc/hwsc_records.py#L144) |  |
+| `sched_ok` | function | `sched_ok` | [tools/hwsc/hwsc_records.py:152](../../tools/hwsc/hwsc_records.py#L152) |  |
 | `schedule` | function | `schedule` | [tools/x6_stage1/x6s1_stage_post.py:144](../../tools/x6_stage1/x6s1_stage_post.py#L144) |  |
 | `scientific_outcome` | function | `scientific_outcome` | [tools/x2a_stage0/x2a_mc.py:86](../../tools/x2a_stage0/x2a_mc.py#L86) |  |
 | `scope_modules` | function | `scope_modules` | [tools/hwsc/hwsc_bind.py:234](../../tools/hwsc/hwsc_bind.py#L234) |  |
@@ -3702,6 +3706,9 @@
 | `test_rules_nr_overall` | test | `test_rules_nr_overall` | [tests/c2_nd/test_a_inference.py:49](../../tests/c2_nd/test_a_inference.py#L49) |  |
 | `test_rules_qualifier_order` | test | `test_rules_qualifier_order` | [tests/c2_nd/test_a_inference.py:108](../../tests/c2_nd/test_a_inference.py#L108) |  |
 | `test_run_c1_gate_records_and_stops` | test | `test_run_c1_gate_records_and_stops` | [tests/c1prime/test_a_exceptions.py:145](../../tests/c1prime/test_a_exceptions.py#L145) |  |
+| `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | test | `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:55](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L55) |  |
+| `test_run_e1_still_refuses_a_k4b_protocol_release` | test | `test_run_e1_still_refuses_a_k4b_protocol_release` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:65](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L65) |  |
+| `test_run_e2_records_h1c_e2` | test | `test_run_e2_records_h1c_e2` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:79](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L79) |  |
 | `test_run_gate_taxonomy` | test | `test_run_gate_taxonomy` | [tests/circle_history/test_builder_v24_stages.py:33](../../tests/circle_history/test_builder_v24_stages.py#L33) |  |
 | `test_run_gates_all_pass_in_order` | test | `test_run_gates_all_pass_in_order` | [tests/k4b/test_b_flow.py:155](../../tests/k4b/test_b_flow.py#L155) |  |
 | `test_run_gates_dry_continue_calls_later_gates` | test | `test_run_gates_dry_continue_calls_later_gates` | [tests/hwsc/test_b_records.py:116](../../tests/hwsc/test_b_records.py#L116) |  |
@@ -3877,10 +3884,3 @@
 | `test_source_a_non_default_root_without_store_refused` | test | `test_source_a_non_default_root_without_store_refused` | [tests/k4b/test_b_registry.py:265](../../tests/k4b/test_b_registry.py#L265) |  |
 | `test_source_c2` | test | `test_source_c2` | [tests/c2_nd/test_b_registry.py:117](../../tests/c2_nd/test_b_registry.py#L117) |  |
 | `test_source_c2_missing_and_mismatch` | test | `test_source_c2_missing_and_mismatch` | [tests/c2_nd/test_b_registry.py:128](../../tests/c2_nd/test_b_registry.py#L128) |  |
-| `test_source_c2_superseded` | test | `test_source_c2_superseded` | [tests/c2_nd/test_b_registry.py:154](../../tests/c2_nd/test_b_registry.py#L154) |  |
-| `test_source_c_malformed_json_refused_never_empty` | test | `test_source_c_malformed_json_refused_never_empty` | [tests/k4b/test_b_registry.py:234](../../tests/k4b/test_b_registry.py#L234) |  |
-| `test_source_c_valid_mailbox_delegates_unchanged` | test | `test_source_c_valid_mailbox_delegates_unchanged` | [tests/k4b/test_b_registry.py:241](../../tests/k4b/test_b_registry.py#L241) |  |
-| `test_source_d_reads_digest_list_and_columns_incl_superseded` | test | `test_source_d_reads_digest_list_and_columns_incl_superseded` | [tests/k4b/test_b_registry.py:133](../../tests/k4b/test_b_registry.py#L133) |  |
-| `test_source_d_refuses_unbound_registry_v1` | test | `test_source_d_refuses_unbound_registry_v1` | [tests/k4b/test_b_registry.py:145](../../tests/k4b/test_b_registry.py#L145) |  |
-| `test_source_e_never_opens_sealed_token_arrays` | test | `test_source_e_never_opens_sealed_token_arrays` | [tests/k4b/test_b_registry.py:170](../../tests/k4b/test_b_registry.py#L170) |  |
-| `test_source_e_unresolved_pool_inventory_is_incomplete` | test | `test_source_e_unresolved_pool_inventory_is_incomplete` | [tests/k4b/test_b_registry.py:206](../../tests/k4b/test_b_registry.py#L206) |  |

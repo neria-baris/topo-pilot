@@ -2,6 +2,13 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_source_c2_superseded` | test | `test_source_c2_superseded` | [tests/c2_nd/test_b_registry.py:154](../../tests/c2_nd/test_b_registry.py#L154) |  |
+| `test_source_c_malformed_json_refused_never_empty` | test | `test_source_c_malformed_json_refused_never_empty` | [tests/k4b/test_b_registry.py:234](../../tests/k4b/test_b_registry.py#L234) |  |
+| `test_source_c_valid_mailbox_delegates_unchanged` | test | `test_source_c_valid_mailbox_delegates_unchanged` | [tests/k4b/test_b_registry.py:241](../../tests/k4b/test_b_registry.py#L241) |  |
+| `test_source_d_reads_digest_list_and_columns_incl_superseded` | test | `test_source_d_reads_digest_list_and_columns_incl_superseded` | [tests/k4b/test_b_registry.py:133](../../tests/k4b/test_b_registry.py#L133) |  |
+| `test_source_d_refuses_unbound_registry_v1` | test | `test_source_d_refuses_unbound_registry_v1` | [tests/k4b/test_b_registry.py:145](../../tests/k4b/test_b_registry.py#L145) |  |
+| `test_source_e_never_opens_sealed_token_arrays` | test | `test_source_e_never_opens_sealed_token_arrays` | [tests/k4b/test_b_registry.py:170](../../tests/k4b/test_b_registry.py#L170) |  |
+| `test_source_e_unresolved_pool_inventory_is_incomplete` | test | `test_source_e_unresolved_pool_inventory_is_incomplete` | [tests/k4b/test_b_registry.py:206](../../tests/k4b/test_b_registry.py#L206) |  |
 | `test_source_head_mismatch_is_refused` | test | `test_source_head_mismatch_is_refused` | [tests/c1prime/test_a_release_meter.py:158](../../tests/c1prime/test_a_release_meter.py#L158) |  |
 | `test_source_scratch` | test | `test_source_scratch` | [tests/c2_nd/test_b_registry.py:168](../../tests/c2_nd/test_b_registry.py#L168) |  |
 | `test_source_scratch_expected_roots` | test | `test_source_scratch_expected_roots` | [tests/c2_nd/test_b_registry.py:201](../../tests/c2_nd/test_b_registry.py#L201) |  |
@@ -747,7 +754,7 @@
 | `verify_export_complete` | function | `verify_export_complete` | [src/topo_pilot/experiment/x5g1t_exports.py:81](../../src/topo_pilot/experiment/x5g1t_exports.py#L81) | Manifest of a COMPLETE export whose files match exactly; else ``ExportIncomplete``. |
 | `verify_freeze` | function | `verify_freeze` | [tools/hws/hws_records.py:269](../../tools/hws/hws_records.py#L269) | Every stage job checks FREEZE.json against the working tree before any sampling. |
 | `verify_freeze` | function | `verify_freeze` | [tools/hwsb/hwsb_records.py:146](../../tools/hwsb/hwsb_records.py#L146) |  |
-| `verify_freeze_c` | function | `verify_freeze_c` | [tools/hwsc/hwsc_records.py:200](../../tools/hwsc/hwsc_records.py#L200) |  |
+| `verify_freeze_c` | function | `verify_freeze_c` | [tools/hwsc/hwsc_records.py:208](../../tools/hwsc/hwsc_records.py#L208) |  |
 | `verify_full` | function | `verify_full` | [src/topo_pilot/experiment/x5g1t_checks.py:29](../../src/topo_pilot/experiment/x5g1t_checks.py#L29) |  |
 | `verify_identity` | function | `verify_identity` | [tools/d2a/d2a_train.py:214](../../tools/d2a/d2a_train.py#L214) | Dispatch identities (ruling D6): request, task.json, task.md digest, RUN.lock session. |
 | `verify_input_hashes` | function | `verify_input_hashes` | [tools/x4_oracle_profile/inputs.py:42](../../tools/x4_oracle_profile/inputs.py#L42) |  |

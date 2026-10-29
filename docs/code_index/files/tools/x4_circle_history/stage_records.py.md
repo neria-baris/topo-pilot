@@ -55,6 +55,7 @@
 - [tests/hws/test_b_records.py](../../tests/hws/test_b_records.py.md) (line 38, import)
 - [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 38, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 37, import)
+- [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 21, import)
 - [tools/c1prime/c1_driver.py](../c1prime/c1_driver.py.md) (line 21, import)
 - [tools/c1prime/c1_driver_cal.py](../c1prime/c1_driver_cal.py.md) (line 19, import)
 - [tools/c1prime/c1_driver_fresh.py](../c1prime/c1_driver_fresh.py.md) (line 20, import)

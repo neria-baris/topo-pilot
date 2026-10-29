@@ -66,6 +66,7 @@
 - [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 27, import)
 - [tests/hwsc/test_r_0181_g0c_lineage_order.py](../../tests/hwsc/test_r_0181_g0c_lineage_order.py.md) (line 20, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 20, import)
+- [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 22, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 30, import)
 - [tests/k4b/test_a_transport_bound.py](../../tests/k4b/test_a_transport_bound.py.md) (line 29, import)
 - [tests/k4b/test_b_charts.py](../../tests/k4b/test_b_charts.py.md) (line 27, import)

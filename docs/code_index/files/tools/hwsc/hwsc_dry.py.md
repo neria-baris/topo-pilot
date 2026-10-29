@@ -80,7 +80,7 @@
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 23, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 183, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 26, import)
-- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 178, import)
+- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 180, import)
 
 ## Top-level constants
 

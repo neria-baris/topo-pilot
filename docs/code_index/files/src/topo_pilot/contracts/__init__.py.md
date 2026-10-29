@@ -336,7 +336,7 @@
 - [tools/hwsc/hwsc_dry.py](../../../tools/hwsc/hwsc_dry.py.md) (line 33, import)
 - [tools/hwsc/hwsc_dry3.py](../../../tools/hwsc/hwsc_dry3.py.md) (line 29, import)
 - [tools/hwsc/hwsc_gates.py](../../../tools/hwsc/hwsc_gates.py.md) (line 26, import)
-- [tools/hwsc/hwsc_jobs.py](../../../tools/hwsc/hwsc_jobs.py.md) (line 26, import)
+- [tools/hwsc/hwsc_jobs.py](../../../tools/hwsc/hwsc_jobs.py.md) (line 27, import)
 - [tools/hwsc/hwsc_known.py](../../../tools/hwsc/hwsc_known.py.md) (line 29, import)
 - [tools/hwsc/hwsc_records.py](../../../tools/hwsc/hwsc_records.py.md) (line 42, import)
 - [tools/hwsc/hwsc_registry.py](../../../tools/hwsc/hwsc_registry.py.md) (line 21, import)

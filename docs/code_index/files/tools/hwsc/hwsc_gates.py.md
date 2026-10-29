@@ -72,7 +72,7 @@
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 16, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 20, import)
-- [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 319, import)
+- [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 327, import)
 
 ## Top-level constants
 

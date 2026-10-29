@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 634,
+  "code files": 635,
   "dynamic imports, dynamic expression or unresolved": 15,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1028,
-  "functions and methods (incl. tests)": 9287,
+  "files indexed": 1029,
+  "functions and methods (incl. tests)": 9294,
   "import cycles (strongly connected components)": 12,
   "import statements, external": 908,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3073,
+  "import statements, internal resolved": 3079,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2773,
-  "internal edges (file to file, with kind and line)": 3108,
-  "python files": 633
+  "import statements, standard library": 2777,
+  "internal edges (file to file, with kind and line)": 3114,
+  "python files": 634
  },
  "cycles": [
   [
@@ -9009,6 +9009,42 @@
    19
   ],
   [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   22
+  ],
+  [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   18
+  ],
+  [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/hwsc/hwsc_driver.py",
+   "import",
+   19
+  ],
+  [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/hwsc/hwsc_jobs.py",
+   "import",
+   20
+  ],
+  [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/k4b/k4b_config.py",
+   "import",
+   67
+  ],
+  [
+   "tests/hwsc/test_r_0187_e1_release_and_gate_files.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   21
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -15162,7 +15198,7 @@
    "tools/hwsc/hwsc_driver.py",
    "tools/hwsc/hwsc_jobs.py",
    "import",
-   253
+   255
   ],
   [
    "tools/hwsc/hwsc_driver.py",
@@ -15714,13 +15750,13 @@
    "tools/hwsc/hwsc_jobs.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   26
+   27
   ],
   [
    "tools/hwsc/hwsc_jobs.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   27
+   28
   ],
   [
    "tools/hwsc/hwsc_jobs.py",
@@ -15768,19 +15804,19 @@
    "tools/hwsc/hwsc_jobs.py",
    "tools/hwsc/hwsc_driver.py",
    "import",
-   99
+   100
   ],
   [
    "tools/hwsc/hwsc_jobs.py",
    "tools/hwsc/hwsc_driver.py",
    "import",
-   148
+   150
   ],
   [
    "tools/hwsc/hwsc_jobs.py",
    "tools/hwsc/hwsc_dry.py",
    "import",
-   178
+   180
   ],
   [
    "tools/hwsc/hwsc_jobs.py",
@@ -16014,7 +16050,7 @@
    "tools/hwsc/hwsc_records.py",
    "tools/hwsc/hwsc_gates.py",
    "import",
-   319
+   327
   ],
   [
    "tools/hwsc/hwsc_records.py",
@@ -22856,6 +22892,12 @@
    "purpose": "Coordinator-written regression test for defect D-0184-1 (API.md §26): run_kc runs every KC",
    "sha256": "8f086ad9381f2d90327dbacc833ee1a4d57f06b62f6f6dd88a974ad1604015b0"
   },
+  "tests/hwsc/test_r_0187_e1_release_and_gate_files.py": {
+   "kind": "python",
+   "lines": 95,
+   "purpose": "Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27).",
+   "sha256": "c1ccdf9330728aaf0c9f92fe12809fb2a2e4439fcd0e4df05ebf1829494e76ba"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -24142,9 +24184,9 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 655,
+   "lines": 670,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "30ced15fecf07a03550e1ad6af4966fd6e99a23dff8af5d6a393e7625674e766"
+   "sha256": "b67c1c7692a991efb27549c6a731610c6ff98e9a99cc6161d678ce30cb4ce82f"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
@@ -24184,9 +24226,9 @@
   },
   "tools/hwsc/hwsc_driver.py": {
    "kind": "python",
-   "lines": 256,
+   "lines": 258,
    "purpose": "HWSC driver: the jobs KC, TRAIN, E1, REG2, E2, close and the CLI (API.md §7.3, §11; protocol",
-   "sha256": "4e9ea87dab2fcdae700c5ed1b3e14299104863ef5c9905f0f25d21be6276dd75"
+   "sha256": "1304804005d61c6288b266f73853938f303493b3252bedf735761358f1b8009c"
   },
   "tools/hwsc/hwsc_dry.py": {
    "kind": "python",
@@ -24220,9 +24262,9 @@
   },
   "tools/hwsc/hwsc_jobs.py": {
    "kind": "python",
-   "lines": 204,
+   "lines": 206,
    "purpose": "HWSC E2 job (release B), the close record and the CLI (API.md §7.3, §11.4; split from",
-   "sha256": "5e05f190d74def7e2db25f585ebe1f002910fa6f8145c2606a30a2df7d02b9ff"
+   "sha256": "5e2522f8e61556e82ec79ac995fe056180be8ee937884b6aaed3dfe04b0f025c"
   },
   "tools/hwsc/hwsc_known.py": {
    "kind": "python",
@@ -24244,9 +24286,9 @@
   },
   "tools/hwsc/hwsc_records.py": {
    "kind": "python",
-   "lines": 336,
+   "lines": 344,
    "purpose": "HWSC records: exception map, gate runner, lineage, authority, FREEZE, S0, budget, ledger and the",
-   "sha256": "7a689a84a717e288a3b775192c70d40d51fad1d63922353921f2b6fab3620afc"
+   "sha256": "2f756348be7d61a9c9824d4d6da819d088b80e0870dce85592241a532a34616d"
   },
   "tools/hwsc/hwsc_registry.py": {
    "kind": "python",
@@ -140003,6 +140045,250 @@
     }
    ]
   },
+  "tests/hwsc/test_r_0187_e1_release_and_gate_files.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27).",
+   "doc1": "Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "hwsc_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_driver.py"
+     ],
+     "top": "hwsc_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "hwsc_jobs"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_jobs.py"
+     ],
+     "top": "hwsc_jobs"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 21,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 22,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 67,
+     "module": "",
+     "names": [
+      "k4b_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_config.py"
+     ],
+     "top": "k4b_config"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 34,
+     "kind": "function",
+     "name": "_store",
+     "qual": "_store",
+     "sig": "def _store(tmp_path, monkeypatch)",
+     "start": 27
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 43,
+     "kind": "function",
+     "name": "_release",
+     "qual": "_release",
+     "sig": "def _release(out, protocol)",
+     "start": 37
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 52,
+     "kind": "function",
+     "name": "_gate_writing",
+     "qual": "_gate_writing",
+     "sig": "def _gate_writing(out, name)",
+     "start": 46
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 62,
+     "kind": "test",
+     "name": "test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files",
+     "qual": "test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files",
+     "sig": "def test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files(tmp_path, monkeypatch)",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 76,
+     "kind": "test",
+     "name": "test_run_e1_still_refuses_a_k4b_protocol_release",
+     "qual": "test_run_e1_still_refuses_a_k4b_protocol_release",
+     "sig": "def test_run_e1_still_refuses_a_k4b_protocol_release(tmp_path, monkeypatch)",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 95,
+     "kind": "test",
+     "name": "test_run_e2_records_h1c_e2",
+     "qual": "test_run_e2_records_h1c_e2",
+     "sig": "def test_run_e2_records_h1c_e2(tmp_path, monkeypatch)",
+     "start": 79
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsc"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsc')",
+     "line": 16
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -207859,6 +208145,7 @@
       "pause_check_c",
       "pause_or_raise_c",
       "preflight",
+      "record_gate_files",
       "run_gates_c",
       "s0",
       "sched_ok",
@@ -207929,7 +208216,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 253,
+     "line": 255,
      "module": "hwsc_jobs",
      "names": [
       "e2_context",
@@ -208028,7 +208315,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 221,
+     "end": 223,
      "kind": "function",
      "name": "run_e1",
      "qual": "run_e1",
@@ -208038,12 +208325,12 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 250,
+     "end": 252,
      "kind": "function",
      "name": "run_reg2",
      "qual": "run_reg2",
      "sig": "def run_reg2(out, auth, sched, accept) -> dict",
-     "start": 225
+     "start": 227
     }
    ],
    "syspath": []
@@ -210824,6 +211111,7 @@
       "freeze_c",
       "pause_or_raise_c",
       "preflight",
+      "record_gate_files",
       "run_gates_c",
       "s0",
       "status_of"
@@ -210840,7 +211128,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 27,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore"
@@ -210857,7 +211145,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 28,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "LocalFSBackend"
@@ -210874,7 +211162,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 99,
+     "line": 100,
      "module": "",
      "names": [
       "hwsc_driver"
@@ -210891,7 +211179,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 148,
+     "line": 150,
      "module": "",
      "names": [
       "hwsc_driver"
@@ -210908,7 +211196,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 178,
+     "line": 180,
      "module": "",
      "names": [
       "hwsc_dry"
@@ -210924,72 +211212,72 @@
     {
      "decorators": [],
      "doc": "Release-B context exactly as k4b_fresh.main assembles it (identity re-checked first).",
-     "end": 52,
+     "end": 53,
      "kind": "function",
      "name": "e2_context",
      "qual": "e2_context",
      "sig": "def e2_context(out, rel, handoff, dry=False) -> dict",
-     "start": 33
+     "start": 34
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 63,
+     "end": 64,
      "kind": "function",
      "name": "_fill",
      "qual": "_fill",
      "sig": "def _fill(result) -> dict",
-     "start": 55
+     "start": 56
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 112,
+     "end": 114,
      "kind": "function",
      "name": "run_e2",
      "qual": "run_e2",
      "sig": "def run_e2(out, auth, sched, release_path, session, dry=False, dry_continue=False) -> dict",
-     "start": 66
+     "start": 67
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 131,
+     "end": 133,
      "kind": "function",
      "name": "run_close",
      "qual": "run_close",
      "sig": "def run_close(out, recs=None, reason=None) -> dict",
-     "start": 115
+     "start": 117
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 135,
+     "end": 137,
      "kind": "function",
      "name": "_load",
      "qual": "_load",
      "sig": "def _load(p)",
-     "start": 134
+     "start": 136
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 144,
+     "end": 146,
      "kind": "function",
      "name": "_exit",
      "qual": "_exit",
      "sig": "def _exit(res) -> int",
-     "start": 138
+     "start": 140
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 204,
+     "end": 206,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 147
+     "start": 149
     }
    ],
    "syspath": []
@@ -212441,7 +212729,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 162,
+     "line": 170,
      "module": "",
      "names": [
       "numpy"
@@ -212456,7 +212744,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 163,
+     "line": 171,
      "module": "",
      "names": [
       "torch"
@@ -212471,7 +212759,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 319,
+     "line": 327,
      "module": "",
      "names": [
       "hwsc_gates"
@@ -212536,173 +212824,183 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 141,
+     "doc": "D-0187-2: the E1/E2 gate files enter a STAGE_COMPLETE, so a later lineage_c finds them.",
+     "end": 134,
      "kind": "function",
-     "name": "auth_ok",
-     "qual": "auth_ok",
-     "sig": "def auth_ok(auth, stage, freeze=None) -> dict",
+     "name": "record_gate_files",
+     "qual": "record_gate_files",
+     "sig": "def record_gate_files(out, stage, names) -> None",
      "start": 129
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 150,
+     "end": 149,
      "kind": "function",
-     "name": "sched_ok",
-     "qual": "sched_ok",
-     "sig": "def sched_ok(sched, stage) -> dict",
-     "start": 144
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 154,
-     "kind": "function",
-     "name": "_git",
-     "qual": "_git",
-     "sig": "def _git(repo, *args) -> bytes",
-     "start": 153
+     "name": "auth_ok",
+     "qual": "auth_ok",
+     "sig": "def auth_ok(auth, stage, freeze=None) -> dict",
+     "start": 137
     },
     {
      "decorators": [],
      "doc": "",
      "end": 158,
      "kind": "function",
-     "name": "_sha",
-     "qual": "_sha",
-     "sig": "def _sha(data: bytes) -> str",
-     "start": 157
+     "name": "sched_ok",
+     "qual": "sched_ok",
+     "sig": "def sched_ok(sched, stage) -> dict",
+     "start": 152
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 162,
+     "kind": "function",
+     "name": "_git",
+     "qual": "_git",
+     "sig": "def _git(repo, *args) -> bytes",
+     "start": 161
     },
     {
      "decorators": [],
      "doc": "",
      "end": 166,
      "kind": "function",
-     "name": "environment",
-     "qual": "environment",
-     "sig": "def environment() -> dict",
-     "start": 161
+     "name": "_sha",
+     "qual": "_sha",
+     "sig": "def _sha(data: bytes) -> str",
+     "start": 165
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 172,
+     "end": 174,
      "kind": "function",
-     "name": "implementation_files",
-     "qual": "implementation_files",
-     "sig": "def implementation_files(repo, h_exec) -> dict",
+     "name": "environment",
+     "qual": "environment",
+     "sig": "def environment() -> dict",
      "start": 169
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 197,
+     "end": 180,
+     "kind": "function",
+     "name": "implementation_files",
+     "qual": "implementation_files",
+     "sig": "def implementation_files(repo, h_exec) -> dict",
+     "start": 177
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 205,
      "kind": "function",
      "name": "freeze_c",
      "qual": "freeze_c",
      "sig": "def freeze_c(out, repo, h_exec, dry_report, pf_record, run_approval) -> dict",
-     "start": 175
+     "start": 183
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 219,
+     "end": 227,
      "kind": "function",
      "name": "verify_freeze_c",
      "qual": "verify_freeze_c",
      "sig": "def verify_freeze_c(out, repo=cc.REPO) -> dict",
-     "start": 200
+     "start": 208
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 238,
+     "end": 246,
      "kind": "function",
      "name": "s0",
      "qual": "s0",
      "sig": "def s0(repo, r_ref, h_exec) -> dict",
-     "start": 222
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 255,
-     "kind": "function",
-     "name": "preflight",
-     "qual": "preflight",
-     "sig": "def preflight(out, stage, auth, sched, repo=cc.REPO) -> dict",
-     "start": 241
+     "start": 230
     },
     {
      "decorators": [],
      "doc": "",
      "end": 263,
      "kind": "function",
-     "name": "central",
-     "qual": "central",
-     "sig": "def central(stage, k=None, R=None) -> float",
-     "start": 259
+     "name": "preflight",
+     "qual": "preflight",
+     "sig": "def preflight(out, stage, auth, sched, repo=cc.REPO) -> dict",
+     "start": 249
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 269,
+     "end": 271,
+     "kind": "function",
+     "name": "central",
+     "qual": "central",
+     "sig": "def central(stage, k=None, R=None) -> float",
+     "start": 267
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 277,
      "kind": "function",
      "name": "_cumulative",
      "qual": "_cumulative",
      "sig": "def _cumulative(stage, k=None) -> float",
-     "start": 266
+     "start": 274
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 278,
+     "end": 286,
      "kind": "function",
      "name": "pause_check_c",
      "qual": "pause_check_c",
      "sig": "def pause_check_c(stage, stage_cpu, cum_cpu, k=None) -> dict",
-     "start": 272
+     "start": 280
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 285,
+     "end": 293,
      "kind": "function",
      "name": "ledger_read",
      "qual": "ledger_read",
      "sig": "def ledger_read(path) -> dict",
-     "start": 281
+     "start": 289
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 298,
+     "end": 306,
      "kind": "function",
      "name": "ledger_append",
      "qual": "ledger_append",
      "sig": "def ledger_append(path, label, job, stage, cpu_s, source, master=None) -> dict",
-     "start": 288
+     "start": 296
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 314,
+     "end": 322,
      "kind": "function",
      "name": "pause_or_raise_c",
      "qual": "pause_or_raise_c",
      "sig": "def pause_or_raise_c(out, stage, t0, ledger_path=None, cont=None, k=None) -> None",
-     "start": 301
+     "start": 309
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 336,
+     "end": 344,
      "kind": "function",
      "name": "export_c",
      "qual": "export_c",
      "sig": "def export_c(out, result, oc, ann, fill) -> Path",
-     "start": 318
+     "start": 326
     }
    ],
    "syspath": []
@@ -246614,5 +246912,5 @@
    ]
   }
  },
- "sources_digest": "cbc61a6dcd7bd96917c9b0e29a33bb267273571168f67f433f8ce439f842fbe4"
+ "sources_digest": "207ad2cef2bc9416861f6ac7ead8f3c4e715914f211f93374a8d34e677a4f055"
 }

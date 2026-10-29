@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_driver.py](../../../../../tools/hwsc/hwsc_driver.py)
 - Kind: python
-- Lines: 256
+- Lines: 258
 
 ## Module docstring
 
@@ -27,11 +27,11 @@
 - `import k4b_release` -> [tools/k4b/k4b_release.py](../k4b/k4b_release.py.md) (line 21, via unique basename)
 - `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 22, via unique basename)
 - `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 23, via unique basename)
-- `from hwsc_records import auth_ok, central, export_c, freeze_c, implementation_files, ledger_append, ledger_read, lineage_c, pause_check_c, pause_or_raise_c, preflight, run_gates_c, s0, sched_ok, status_of, utc, verify_freeze_c` -> [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 24, via same directory)
+- `from hwsc_records import auth_ok, central, export_c, freeze_c, implementation_files, ledger_append, ledger_read, lineage_c, pause_check_c, pause_or_raise_c, preflight, record_gate_files, run_gates_c, s0, sched_ok, status_of, utc, verify_freeze_c` -> [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 24, via same directory)
 - `from topo_pilot.contracts import ArtifactStore` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 29, via package root)
 - `from topo_pilot.contracts.backends import LocalFSBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 30, via package root)
 - `import c2_registry` -> [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 177, via unique basename) (inside a function)
-- `from hwsc_jobs import e2_context, main, run_close, run_e2` -> [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 253, via same directory)
+- `from hwsc_jobs import e2_context, main, run_close, run_e2` -> [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 255, via same directory)
 
 ### External (third-party)
 
@@ -65,8 +65,9 @@
 - [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 29, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 27, import)
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 17, import)
-- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 99, import)
-- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 148, import)
+- [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 19, import)
+- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 100, import)
+- [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 150, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 84, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 250, import)
 
@@ -85,6 +86,6 @@
 - **function `obs_inventory`** [L139-149]: `def obs_inventory(out) -> dict`
 - **function `_reg`** [L153-161]: `def _reg(out, version, handoff, extra=None) -> dict`
 - **function `e1_steps`** [L164-201]: `def e1_steps(out, ctx, handoff, auth, sched) -> list`
-- **function `run_e1`** [L204-221]: `def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None, dry_continue=False) -> dict`
-- **function `run_reg2`** [L225-250]: `def run_reg2(out, auth, sched, accept) -> dict`
+- **function `run_e1`** [L204-223]: `def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None, dry_continue=False) -> dict`
+- **function `run_reg2`** [L227-252]: `def run_reg2(out, auth, sched, accept) -> dict`
 

@@ -53,6 +53,7 @@
 - [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 216, import)
 - [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 224, import)
 - [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 309, import)
+- [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 67, import)
 - [tests/k4b/test_a_decision.py](../../tests/k4b/test_a_decision.py.md) (line 32, import)
 - [tests/k4b/test_a_lemma_n.py](../../tests/k4b/test_a_lemma_n.py.md) (line 29, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 27, import)

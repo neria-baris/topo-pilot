@@ -511,7 +511,7 @@
 | `_cue_part` | function | `_cue_part` | [tools/x6_stage0/x6_run.py:140](../../tools/x6_stage0/x6_run.py#L140) |  |
 | `_cue_rows` | function | `_cue_rows` | [tools/x6_stage1/x6s1_eval.py:376](../../tools/x6_stage1/x6s1_eval.py#L376) | Cue-normalised rows of a reference law where q* has cue mass; undefined there raises. |
 | `_cue_tv` | function | `_cue_tv` | [tools/x6_stage0/x6_exact.py:110](../../tools/x6_stage0/x6_exact.py#L110) |  |
-| `_cumulative` | function | `_cumulative` | [tools/hwsc/hwsc_records.py:266](../../tools/hwsc/hwsc_records.py#L266) |  |
+| `_cumulative` | function | `_cumulative` | [tools/hwsc/hwsc_records.py:274](../../tools/hwsc/hwsc_records.py#L274) |  |
 | `_cumulative_rows` | function | `_cumulative_rows` | [src/topo_pilot/dataset/sampler.py:12](../../src/topo_pilot/dataset/sampler.py#L12) | Row-wise CDF with every entry from the last positive probability on set to exactly 1. |
 | `_cumulative_rows` | function | `_cumulative_rows` | [tests/circle_history/test_process_law.py:43](../../tests/circle_history/test_process_law.py#L43) | Replica of the frozen dataset/sampler.py `_cumulative_rows` (read, not imported). |
 | `_cumulative_table` | function | `_cumulative_table` | [tests/hws/test_a_budget.py:89](../../tests/hws/test_a_budget.py#L89) |  |
@@ -680,7 +680,7 @@
 | `_exec_bootstrap` | function | `_exec_bootstrap` | [tests/x6_stage1/test_b_nb_s0_ops.py:162](../../tests/x6_stage1/test_b_nb_s0_ops.py#L162) |  |
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity.py:98](../../tests/experiment/test_x5g1t_identity.py#L98) |  |
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity_eval.py:60](../../tests/experiment/test_x5g1t_identity_eval.py#L60) |  |
-| `_exit` | function | `_exit` | [tools/hwsc/hwsc_jobs.py:138](../../tools/hwsc/hwsc_jobs.py#L138) |  |
+| `_exit` | function | `_exit` | [tools/hwsc/hwsc_jobs.py:140](../../tools/hwsc/hwsc_jobs.py#L140) |  |
 | `_expect_m` | function | `_expect_m` | [tests/c2_readout/test_a_inference.py:164](../../tests/c2_readout/test_a_inference.py#L164) |  |
 | `_expect_r` | function | `_expect_r` | [tests/c2_readout/test_a_inference.py:78](../../tests/c2_readout/test_a_inference.py#L78) |  |
 | `_expect_score` | function | `_expect_score` | [tests/circle_history/test_scores_precision.py:187](../../tests/circle_history/test_scores_precision.py#L187) | Exact E[g(suffix_k) . (m_L - m_k)] over every history of length L_ENUM. |
@@ -764,7 +764,7 @@
 | `_Fill` | class | `_Fill` | [tools/hws/hws_select.py:259](../../tools/hws/hws_select.py#L259) |  |
 | `_Fill` | class | `_Fill` | [tools/hwsc/hwsc_outcome.py:116](../../tools/hwsc/hwsc_outcome.py#L116) |  |
 | `_fill` | function | `_fill` | [tools/c2_nd/nd_decide.py:361](../../tools/c2_nd/nd_decide.py#L361) |  |
-| `_fill` | function | `_fill` | [tools/hwsc/hwsc_jobs.py:55](../../tools/hwsc/hwsc_jobs.py#L55) |  |
+| `_fill` | function | `_fill` | [tools/hwsc/hwsc_jobs.py:56](../../tools/hwsc/hwsc_jobs.py#L56) |  |
 | `_fill_store` | function | `_fill_store` | [tests/experiment/test_s7.py:49](../../tests/experiment/test_s7.py#L49) |  |
 | `_filter` | function | `_filter` | [tests/c2_readout/test_a_oracle.py:64](../../tests/c2_readout/test_a_oracle.py#L64) | Exact forward filter: b_t = a_t * E[:, w_t] / norm, a_{t+1} = b_t T; returns b31, b32. |
 | `_filter` | function | `_filter` | [tests/d2a/test_a_targets.py:251](../../tests/d2a/test_a_targets.py#L251) |  |
@@ -872,6 +872,7 @@
 | `_gate` | function | `_gate` | [tools/hwsb/hwsb_driver.py:49](../../tools/hwsb/hwsb_driver.py#L49) |  |
 | `_gate` | function | `_gate` | [tools/hwsb/hwsb_stages.py:30](../../tools/hwsb/hwsb_stages.py#L30) |  |
 | `_gate` | function | `_gate` | [tools/x6_stage1/x6s1_ingest.py:68](../../tools/x6_stage1/x6s1_ingest.py#L68) |  |
+| `_gate_writing` | function | `_gate_writing` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:46](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L46) |  |
 | `_gates` | method | `S2Stage._gates` | [src/topo_pilot/experiment/s2.py:222](../../src/topo_pilot/experiment/s2.py#L222) |  |
 | `_gates` | function | `_gates` | [src/topo_pilot/experiment/prereg.py:53](../../src/topo_pilot/experiment/prereg.py#L53) |  |
 | `_gates` | function | `_gates` | [tests/circle_history/test_builder_e2e.py:160](../../tests/circle_history/test_builder_e2e.py#L160) |  |
@@ -890,7 +891,7 @@
 | `_git` | function | `_git` | [tools/d2a/d2a_world.py:262](../../tools/d2a/d2a_world.py#L262) |  |
 | `_git` | function | `_git` | [tools/hws/hws_records.py:226](../../tools/hws/hws_records.py#L226) |  |
 | `_git` | function | `_git` | [tools/hwsb/hwsb_records.py:83](../../tools/hwsb/hwsb_records.py#L83) |  |
-| `_git` | function | `_git` | [tools/hwsc/hwsc_records.py:153](../../tools/hwsc/hwsc_records.py#L153) |  |
+| `_git` | function | `_git` | [tools/hwsc/hwsc_records.py:161](../../tools/hwsc/hwsc_records.py#L161) |  |
 | `_git` | function | `_git` | [tools/k4b/k4b_release.py:65](../../tools/k4b/k4b_release.py#L65) |  |
 | `_git` | function | `_git` | [tools/x2a_stage0/x2a_model.py:349](../../tools/x2a_stage0/x2a_model.py#L349) |  |
 | `_git` | function | `_git` | [tools/x6_stage0/x6_store.py:94](../../tools/x6_stage0/x6_store.py#L94) |  |
@@ -1122,7 +1123,7 @@
 | `_load` | function | `_load` | [tests/experiment/test_x5g1t_config_production.py:163](../../tests/experiment/test_x5g1t_config_production.py#L163) |  |
 | `_load` | function | `_load` | [tests/experiment/test_x5g1t_config_synthetic.py:163](../../tests/experiment/test_x5g1t_config_synthetic.py#L163) |  |
 | `_load` | function | `_load` | [tools/c2_nd/nd_stage_base.py:97](../../tools/c2_nd/nd_stage_base.py#L97) |  |
-| `_load` | function | `_load` | [tools/hwsc/hwsc_jobs.py:134](../../tools/hwsc/hwsc_jobs.py#L134) |  |
+| `_load` | function | `_load` | [tools/hwsc/hwsc_jobs.py:136](../../tools/hwsc/hwsc_jobs.py#L136) |  |
 | `_load` | function | `_load` | [tools/x6_stage0/x6_store.py:228](../../tools/x6_stage0/x6_store.py#L228) |  |
 | `_load` | function | `_load` | [tools/x6_stage1/x6s1_run.py:76](../../tools/x6_stage1/x6s1_run.py#L76) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/precision_stage.py:22](../../tools/x4_circle_history/precision_stage.py#L22) |  |
@@ -1634,6 +1635,7 @@
 | `_relative_orientation` | function | `_relative_orientation` | [src/topo_pilot/world/complex.py:81](../../src/topo_pilot/world/complex.py#L81) | Sign of the cube symmetry taking the vertex tuple ``face`` to ``stored`` (m-cubes). |
 | `_release` | function | `_release` | [tests/c2_readout/test_b_policy.py:235](../../tests/c2_readout/test_b_policy.py#L235) |  |
 | `_release` | function | `_release` | [tests/circle_history/test_builder_guards.py:120](../../tests/circle_history/test_builder_guards.py#L120) |  |
+| `_release` | function | `_release` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:37](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L37) |  |
 | `_release_why` | function | `_release_why` | [tools/c2_nd/nd_driver.py:199](../../tools/c2_nd/nd_driver.py#L199) |  |
 | `_release_why` | function | `_release_why` | [tools/c2_readout/c2_driver.py:186](../../tools/c2_readout/c2_driver.py#L186) |  |
 | `_released` | function | `_released` | [tests/c2_readout/test_b_policy.py:224](../../tests/c2_readout/test_b_policy.py#L224) |  |
@@ -1850,7 +1852,7 @@
 | `_sha` | function | `_sha` | [tools/c2_nd/store_template/nd_meter_bind.py:45](../../tools/c2_nd/store_template/nd_meter_bind.py#L45) |  |
 | `_sha` | function | `_sha` | [tools/d2a/d2a_world.py:187](../../tools/d2a/d2a_world.py#L187) |  |
 | `_sha` | function | `_sha` | [tools/hws/hws_exact.py:251](../../tools/hws/hws_exact.py#L251) |  |
-| `_sha` | function | `_sha` | [tools/hwsc/hwsc_records.py:157](../../tools/hwsc/hwsc_records.py#L157) |  |
+| `_sha` | function | `_sha` | [tools/hwsc/hwsc_records.py:165](../../tools/hwsc/hwsc_records.py#L165) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_charts.py:124](../../tools/k4b/k4b_charts.py#L124) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_driver.py:41](../../tools/k4b/k4b_driver.py#L41) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_registry_k.py:25](../../tools/k4b/k4b_registry_k.py#L25) |  |
@@ -1980,6 +1982,7 @@
 | `_store` | function | `_store` | [tests/circle_history/test_builder_e2e.py:84](../../tests/circle_history/test_builder_e2e.py#L84) |  |
 | `_store` | function | `_store` | [tests/experiment/test_x5g1t_identity.py:79](../../tests/experiment/test_x5g1t_identity.py#L79) | Writes into the study store; parents resolve through the fixture's read root. |
 | `_store` | function | `_store` | [tests/hws/test_b_kc1.py:118](../../tests/hws/test_b_kc1.py#L118) |  |
+| `_store` | function | `_store` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:27](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L27) |  |
 | `_store` | function | `_store` | [tools/c1prime_registry/c1_registry_sources.py:52](../../tools/c1prime_registry/c1_registry_sources.py#L52) |  |
 | `_store` | function | `_store` | [tools/hwsb/hwsb_driver.py:169](../../tools/hwsb/hwsb_driver.py#L169) |  |
 | `_store` | function | `_store` | [tools/hwsc/hwsc_driver.py:37](../../tools/hwsc/hwsc_driver.py#L37) |  |
@@ -2385,7 +2388,7 @@
 | `auth_ok` | function | `auth_ok` | [tools/c2_nd/nd_driver.py:176](../../tools/c2_nd/nd_driver.py#L176) |  |
 | `auth_ok` | function | `auth_ok` | [tools/c2_readout/c2_driver.py:175](../../tools/c2_readout/c2_driver.py#L175) |  |
 | `auth_ok` | function | `auth_ok` | [tools/hwsb/hwsb_driver.py:88](../../tools/hwsb/hwsb_driver.py#L88) |  |
-| `auth_ok` | function | `auth_ok` | [tools/hwsc/hwsc_records.py:129](../../tools/hwsc/hwsc_records.py#L129) |  |
+| `auth_ok` | function | `auth_ok` | [tools/hwsc/hwsc_records.py:137](../../tools/hwsc/hwsc_records.py#L137) |  |
 | `auth_ok` | function | `auth_ok` | [tools/x6_stage1/x6s1_run.py:139](../../tools/x6_stage1/x6s1_run.py#L139) |  |
 | `auth_problems` | function | `auth_problems` | [tools/x6zc/x6zc_guard.py:230](../../tools/x6zc/x6zc_guard.py#L230) |  |
 | `auth_record` | function | `auth_record` | [tests/c2_nd/test_b_lineage.py:231](../../tests/c2_nd/test_b_lineage.py#L231) |  |
@@ -2691,7 +2694,7 @@
 | `centers` | method | `FPSCenters.centers` | [src/topo_pilot/process/centers.py:85](../../src/topo_pilot/process/centers.py#L85) |  |
 | `centers` | method | `GridCenters.centers` | [src/topo_pilot/process/centers.py:59](../../src/topo_pilot/process/centers.py#L59) |  |
 | `CenterStrategy` | class | `CenterStrategy` | [src/topo_pilot/process/centers.py:33](../../src/topo_pilot/process/centers.py#L33) | Variation point: chooses ``n_centers`` points in the chart. |
-| `central` | function | `central` | [tools/hwsc/hwsc_records.py:259](../../tools/hwsc/hwsc_records.py#L259) |  |
+| `central` | function | `central` | [tools/hwsc/hwsc_records.py:267](../../tools/hwsc/hwsc_records.py#L267) |  |
 | `centre` | function | `centre` | [tools/c2_readout/c2_attrib.py:49](../../tools/c2_readout/c2_attrib.py#L49) |  |
 | `centre_emission` | function | `centre_emission` | [tools/hws/hws_worlds.py:209](../../tools/hws/hws_worlds.py#L209) |  |
 | `centres` | function | `centres` | [tests/circle_history/test_chart_extension.py:283](../../tests/circle_history/test_chart_extension.py#L283) |  |
@@ -3248,7 +3251,7 @@
 | `e0_table` | function | `e0_table` | [src/topo_pilot/experiment/report.py:37](../../src/topo_pilot/experiment/report.py#L37) | Markdown lines: graph cycles vs surface holes, and S per world and metric. |
 | `e1_steps` | function | `e1_steps` | [tools/hwsc/hwsc_driver.py:164](../../tools/hwsc/hwsc_driver.py#L164) |  |
 | `e2_check` | function | `e2_check` | [tools/hws/hws_worlds.py:315](../../tools/hws/hws_worlds.py#L315) |  |
-| `e2_context` | function | `e2_context` | [tools/hwsc/hwsc_jobs.py:33](../../tools/hwsc/hwsc_jobs.py#L33) | Release-B context exactly as k4b_fresh.main assembles it (identity re-checked first). |
+| `e2_context` | function | `e2_context` | [tools/hwsc/hwsc_jobs.py:34](../../tools/hwsc/hwsc_jobs.py#L34) | Release-B context exactly as k4b_fresh.main assembles it (identity re-checked first). |
 | `e3a` | function | `e3a` | [tools/x6_stage1/x6s1_stage_post.py:218](../../tools/x6_stage1/x6s1_stage_post.py#L218) |  |
 | `e4_check` | function | `e4_check` | [tools/hws/hws_exact.py:62](../../tools/hws/hws_exact.py#L62) |  |
 | `e4_eval_check` | function | `e4_eval_check` | [tools/hwsb/hwsb_dry2.py:37](../../tools/hwsb/hwsb_dry2.py#L37) | DRB2 extension: the real 36-symbol EVAL path (model_inputs BOS 36, model_predictive, |
@@ -3342,7 +3345,7 @@
 | `env_local` | function | `env_local` | [tools/x6_stage1/x6s1_run.py:231](../../tools/x6_stage1/x6s1_run.py#L231) |  |
 | `envelopes` | function | `envelopes` | [tools/k4b/k4b_cert.py:33](../../tools/k4b/k4b_cert.py#L33) |  |
 | `environment` | function | `environment` | [tools/c1prime/c1_freeze.py:97](../../tools/c1prime/c1_freeze.py#L97) |  |
-| `environment` | function | `environment` | [tools/hwsc/hwsc_records.py:161](../../tools/hwsc/hwsc_records.py#L161) |  |
+| `environment` | function | `environment` | [tools/hwsc/hwsc_records.py:169](../../tools/hwsc/hwsc_records.py#L169) |  |
 | `environment` | function | `environment` | [tools/k4b/k4b_release.py:91](../../tools/k4b/k4b_release.py#L91) |  |
 | `environment` | function | `environment` | [tools/x4_circle_history/freeze_bind.py:139](../../tools/x4_circle_history/freeze_bind.py#L139) |  |
 | `environment` | function | `environment` | [tools/x4_oracle_profile/inputs.py:222](../../tools/x4_oracle_profile/inputs.py#L222) |  |
@@ -3440,7 +3443,7 @@
 | `export` | function | `export` | [tools/k4b/k4b_fresh.py:288](../../tools/k4b/k4b_fresh.py#L288) |  |
 | `export_bundle` | method | `ArtifactStore.export_bundle` | [src/topo_pilot/contracts/store.py:231](../../src/topo_pilot/contracts/store.py#L231) | Write a deterministic ``.tar.gz`` holding ``ids`` (and, by default, all ancestors). |
 | `export_bundle` | function | `export_bundle` | [src/topo_pilot/contracts/_bundle.py:52](../../src/topo_pilot/contracts/_bundle.py#L52) | Tar every file of the selected artifacts under ``artifacts/<type>/<id>/`` plus an index. |
-| `export_c` | function | `export_c` | [tools/hwsc/hwsc_records.py:318](../../tools/hwsc/hwsc_records.py#L318) |  |
+| `export_c` | function | `export_c` | [tools/hwsc/hwsc_records.py:326](../../tools/hwsc/hwsc_records.py#L326) |  |
 | `export_cache` | function | `export_cache` | [tools/x4_circle_history/reference_cache.py:55](../../tools/x4_circle_history/reference_cache.py#L55) | JSON-able cache: identity, row table and sorted exact entries. |
 | `export_figures` | function | `export_figures` | [reports/he_summary/build.py:66](../../reports/he_summary/build.py#L66) | One cropped PDF per SVG; the page size equals the SVG viewBox (1 user unit = 1 px). |
 | `export_summary` | function | `export_summary` | [tools/x4_circle_history/precision_stage.py:125](../../tools/x4_circle_history/precision_stage.py#L125) |  |
@@ -3623,7 +3626,7 @@
 | `freeze` | function | `freeze` | [tools/k4b/k4b_release.py:107](../../tools/k4b/k4b_release.py#L107) | FREEZE.json (exclusive create): protocol, h_exec, k4b and reuse file sha256, environment. |
 | `freeze` | function | `freeze` | [tools/x4_circle_history/freeze_bind.py:158](../../tools/x4_circle_history/freeze_bind.py#L158) |  |
 | `freeze` | function | `freeze` | [tools/x4_oracle_profile/freeze.py:113](../../tools/x4_oracle_profile/freeze.py#L113) |  |
-| `freeze_c` | function | `freeze_c` | [tools/hwsc/hwsc_records.py:175](../../tools/hwsc/hwsc_records.py#L175) |  |
+| `freeze_c` | function | `freeze_c` | [tools/hwsc/hwsc_records.py:183](../../tools/hwsc/hwsc_records.py#L183) |  |
 | `freeze_problems` | function | `freeze_problems` | [tools/x6zc/x6zc_guard.py:210](../../tools/x6zc/x6zc_guard.py#L210) |  |
 | `freeze_production` | function | `freeze_production` | [tools/k4b/k4b_charts.py:128](../../tools/k4b/k4b_charts.py#L128) | Writes every production chart, step-0 chart and decoder, then PRODUCTION_FROZEN.json. |
 | `fresh` | function | `fresh` | [tests/hwsc/test_b_registry2.py:333](../../tests/hwsc/test_b_registry2.py#L333) |  |
@@ -3936,7 +3939,7 @@
 | `impl` | function | `impl` | [tools/c2_readout/c2_stage_pre.py:35](../../tools/c2_readout/c2_stage_pre.py#L35) |  |
 | `implementation_files` | function | `implementation_files` | [tools/hws/hws_records.py:230](../../tools/hws/hws_records.py#L230) |  |
 | `implementation_files` | function | `implementation_files` | [tools/hwsb/hwsb_records.py:87](../../tools/hwsb/hwsb_records.py#L87) |  |
-| `implementation_files` | function | `implementation_files` | [tools/hwsc/hwsc_records.py:169](../../tools/hwsc/hwsc_records.py#L169) |  |
+| `implementation_files` | function | `implementation_files` | [tools/hwsc/hwsc_records.py:177](../../tools/hwsc/hwsc_records.py#L177) |  |
 | `import_bundle` | method | `ArtifactStore.import_bundle` | [src/topo_pilot/contracts/store.py:235](../../src/topo_pilot/contracts/store.py#L235) | Import a bundle; verifies schema versions, ids, checksums and parents first |
 | `import_bundle` | function | `import_bundle` | [src/topo_pilot/contracts/_bundle.py:95](../../src/topo_pilot/contracts/_bundle.py#L95) | Verify everything first, then write in dependency order. |
 | `import_model` | function | `import_model` | [tools/x6_stage1/x6s1_ingest.py:419](../../tools/x6_stage1/x6s1_ingest.py#L419) |  |
@@ -4196,12 +4199,12 @@
 | `leaves` | method | `Sym.leaves` | [tools/c1prime/c1_bounds.py:140](../../tools/c1prime/c1_bounds.py#L140) |  |
 | `leaves` | function | `leaves` | [tests/k4b/test_a_ranks_ladder.py:38](../../tests/k4b/test_a_ranks_ladder.py#L38) |  |
 | `ledger_append` | function | `ledger_append` | [tools/hwsb/hwsb_records.py:38](../../tools/hwsb/hwsb_records.py#L38) |  |
-| `ledger_append` | function | `ledger_append` | [tools/hwsc/hwsc_records.py:288](../../tools/hwsc/hwsc_records.py#L288) |  |
+| `ledger_append` | function | `ledger_append` | [tools/hwsc/hwsc_records.py:296](../../tools/hwsc/hwsc_records.py#L296) |  |
 | `ledger_claims` | function | `ledger_claims` | [tests/k4b/test_b_charts.py:90](../../tests/k4b/test_b_charts.py#L90) |  |
 | `ledger_cpu` | function | `ledger_cpu` | [tools/x6zc/x6zc_store.py:287](../../tools/x6zc/x6zc_store.py#L287) |  |
 | `ledger_path` | function | `ledger_path` | [tests/c1prime/test_a_chart_val.py:187](../../tests/c1prime/test_a_chart_val.py#L187) |  |
 | `ledger_read` | function | `ledger_read` | [tools/hwsb/hwsb_records.py:31](../../tools/hwsb/hwsb_records.py#L31) |  |
-| `ledger_read` | function | `ledger_read` | [tools/hwsc/hwsc_records.py:281](../../tools/hwsc/hwsc_records.py#L281) |  |
+| `ledger_read` | function | `ledger_read` | [tools/hwsc/hwsc_records.py:289](../../tools/hwsc/hwsc_records.py#L289) |  |
 | `LedgerCorrupt` | class | `LedgerCorrupt` | [src/topo_pilot/experiment/x5g1_controls.py:22](../../src/topo_pilot/experiment/x5g1_controls.py#L22) | The existing ledger cannot be parsed; it is left untouched. |
 | `ledoit_wolf` | function | `ledoit_wolf` | [src/topo_pilot/analysis/x4f_scores.py:78](../../src/topo_pilot/analysis/x4f_scores.py#L78) | Ledoit-Wolf (2004) shrinkage of the population covariance toward ``mu_tr I``. |
 | `ledoit_wolf` | function | `ledoit_wolf` | [tools/c2_readout/c2_code.py:83](../../tools/c2_readout/c2_code.py#L83) |  |
@@ -4390,7 +4393,7 @@
 | `main` | function | `main` | [tools/hws/hws_meter_bind.py:48](../../tools/hws/hws_meter_bind.py#L48) | --job, --task-sha256, --session, --out (all required; choice 30), then the meter argv. |
 | `main` | function | `main` | [tools/hwsb/hwsb_driver.py:261](../../tools/hwsb/hwsb_driver.py#L261) |  |
 | `main` | function | `main` | [tools/hwsb/hwsb_meter_bind.py:91](../../tools/hwsb/hwsb_meter_bind.py#L91) | --job, --task-sha256, --session, --kind (all required), then the meter argv. |
-| `main` | function | `main` | [tools/hwsc/hwsc_jobs.py:147](../../tools/hwsc/hwsc_jobs.py#L147) |  |
+| `main` | function | `main` | [tools/hwsc/hwsc_jobs.py:149](../../tools/hwsc/hwsc_jobs.py#L149) |  |
 | `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:106](../../tools/hwsc/hwsc_meter_bind.py#L106) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
 | `main` | function | `main` | [tools/k4b/k4b_fresh.py:346](../../tools/k4b/k4b_fresh.py#L346) |  |
@@ -4807,6 +4810,3 @@
 | `pairwise` | method | `Chord.pairwise` | [src/topo_pilot/topology/metrics.py:84](../../src/topo_pilot/topology/metrics.py#L84) |  |
 | `pairwise` | method | `DistanceMetric.pairwise` | [src/topo_pilot/topology/metrics.py:65](../../src/topo_pilot/topology/metrics.py#L65) | Return the [M, M] distance matrix of the rows of ``X``. |
 | `pairwise` | method | `Euclidean.pairwise` | [src/topo_pilot/topology/metrics.py:74](../../src/topo_pilot/topology/metrics.py#L74) |  |
-| `pairwise` | method | `FlatQuotientMetric.pairwise` | [src/topo_pilot/world/metrics.py:89](../../src/topo_pilot/world/metrics.py#L89) |  |
-| `pairwise` | method | `GraphGeodesicMetric.pairwise` | [src/topo_pilot/world/metrics.py:116](../../src/topo_pilot/world/metrics.py#L116) |  |
-| `pairwise` | method | `Hellinger.pairwise` | [src/topo_pilot/topology/metrics.py:98](../../src/topo_pilot/topology/metrics.py#L98) |  |

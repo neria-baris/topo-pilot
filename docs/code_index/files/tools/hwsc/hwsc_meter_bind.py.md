@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_meter_bind.py](../../../../../tools/hwsc/hwsc_meter_bind.py)
 - Kind: python
-- Lines: 126
+- Lines: 137
 
 ## Module docstring
 
@@ -48,6 +48,7 @@
 ## Imported by
 
 - [tests/hwsc/test_b_guard_meter.py](../../tests/hwsc/test_b_guard_meter.py.md) (line 28, import)
+- [tests/hwsc/test_r_0177_meter_tempdir.py](../../tests/hwsc/test_r_0177_meter_tempdir.py.md) (line 18, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 15, import)
 
 ## Top-level constants
@@ -65,5 +66,6 @@
 - **function `placement_ok`** [L65-78]: `def placement_ok(paths, root=cc.ROOT) -> dict`
 - **function `effective_settings`** [L81-84]: `def effective_settings() -> dict`
 - **function `_pop`** [L87-92]: `def _pop(argv, flag)`
-- **function `main`** [L95-122]: `def main() -> int` - --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv.
+- **function `child_env_c`** [L95-103]: `def child_env_c(job) -> dict` - k4b_meter_bind.child_env(job) with its TEMP folder created (D-0177-1).
+- **function `main`** [L106-133]: `def main() -> int` - --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv.
 

@@ -2771,6 +2771,7 @@
 | `CheckpointSaver` | class | `CheckpointSaver` | [tools/hwsb/hwsb_train.py:101](../../tools/hwsb/hwsb_train.py#L101) | The on_checkpoint callback: LearnerStage's save, then the hold, then a sentinel. |
 | `checks` | function | `checks` | [tools/c2_nd/nd_dry.py:273](../../tools/c2_nd/nd_dry.py#L273) | §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction |
 | `child_env` | function | `child_env` | [tools/k4b/k4b_meter_bind.py:95](../../tools/k4b/k4b_meter_bind.py#L95) |  |
+| `child_env_c` | function | `child_env_c` | [tools/hwsc/hwsc_meter_bind.py:95](../../tools/hwsc/hwsc_meter_bind.py#L95) | k4b_meter_bind.child_env(job) with its TEMP folder created (D-0177-1). |
 | `child_main` | function | `child_main` | [tools/d2a/d2a_train.py:263](../../tools/d2a/d2a_train.py#L263) | One training (CLI ``child RUN``): threads first, then train, saving every checkpoint. |
 | `child_of` | function | `child_of` | [src/topo_pilot/experiment/s2.py:66](../../src/topo_pilot/experiment/s2.py#L66) | The unique ``cls`` artifact with ``parent`` among its parents and matching config. |
 | `chip` | function | `chip` | [reports/he_summary/charts.py:88](../../reports/he_summary/charts.py#L88) |  |
@@ -4369,7 +4370,7 @@
 | `main` | function | `main` | [tools/hwsb/hwsb_driver.py:261](../../tools/hwsb/hwsb_driver.py#L261) |  |
 | `main` | function | `main` | [tools/hwsb/hwsb_meter_bind.py:91](../../tools/hwsb/hwsb_meter_bind.py#L91) | --job, --task-sha256, --session, --kind (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsc/hwsc_jobs.py:147](../../tools/hwsc/hwsc_jobs.py#L147) |  |
-| `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:95](../../tools/hwsc/hwsc_meter_bind.py#L95) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
+| `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:106](../../tools/hwsc/hwsc_meter_bind.py#L106) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
 | `main` | function | `main` | [tools/k4b/k4b_fresh.py:346](../../tools/k4b/k4b_fresh.py#L346) |  |
 | `main` | function | `main` | [tools/k4b/k4b_meter_bind.py:121](../../tools/k4b/k4b_meter_bind.py#L121) | --release (required), --kind (A\|B), --task-sha256, --session; then the meter argv. |
@@ -4809,4 +4810,3 @@
 | `partner_seed` | function | `partner_seed` | [tools/x6_stage1/x6s1_pairs.py:133](../../tools/x6_stage1/x6s1_pairs.py#L133) |  |
 | `Partners` | class | `Partners` | [src/topo_pilot/analysis/horizon_pools.py:51](../../src/topo_pilot/analysis/horizon_pools.py#L51) | Nearest-Q1 partners of each anchor: ``idx [A, k]`` (-1 = none), ``d1 [A, k]`` (NaN = none), |
 | `partners` | function | `partners` | [tools/x6_stage1/x6s1_pairs.py:146](../../tools/x6_stage1/x6s1_pairs.py#L146) |  |
-| `pass_gates` | function | `pass_gates` | [tests/c1prime/test_a_gates.py:145](../../tests/c1prime/test_a_gates.py#L145) |  |

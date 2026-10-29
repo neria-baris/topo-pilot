@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `pass_gates` | function | `pass_gates` | [tests/c1prime/test_a_gates.py:145](../../tests/c1prime/test_a_gates.py#L145) |  |
 | `pass_sequence` | function | `pass_sequence` | [src/topo_pilot/analysis/x5_endpoint.py:71](../../src/topo_pilot/analysis/x5_endpoint.py#L71) | ``ratios <= threshold`` element-wise; NaN is an error. |
 | `passed` | method | `LogitPolicy.passed` | [tools/c1prime/c1_records.py:230](../../tools/c1prime/c1_records.py#L230) |  |
 | `patch` | method | `ValForward.patch` | [src/topo_pilot/experiment/x4f_gates.py:151](../../src/topo_pilot/experiment/x4f_gates.py#L151) |  |
@@ -1735,6 +1736,7 @@
 | `test_checkpoints_wrong_observation_id_rejected` | test | `test_checkpoints_wrong_observation_id_rejected` | [tests/experiment/test_x5g1t_checkpoint_checks.py:194](../../tests/experiment/test_x5g1t_checkpoint_checks.py#L194) |  |
 | `test_checkpoints_wrong_steps_rejected` | test | `test_checkpoints_wrong_steps_rejected` | [tests/experiment/test_x5g1t_checkpoint_checks.py:158](../../tests/experiment/test_x5g1t_checkpoint_checks.py#L158) |  |
 | `test_chi2_skipped_below_200_and_passes_on_exact_counts` | test | `test_chi2_skipped_below_200_and_passes_on_exact_counts` | [tests/dataset/test_stage.py:91](../../tests/dataset/test_stage.py#L91) |  |
+| `test_child_env_creates_temp_and_child_uses_it` | test | `test_child_env_creates_temp_and_child_uses_it` | [tests/hwsc/test_r_0177_meter_tempdir.py:22](../../tests/hwsc/test_r_0177_meter_tempdir.py#L22) |  |
 | `test_child_env_default_copies_os_environ` | test | `test_child_env_default_copies_os_environ` | [tests/k4b/test_b_meter.py:106](../../tests/k4b/test_b_meter.py#L106) |  |
 | `test_child_env_temp_on_x_and_single_thread` | test | `test_child_env_temp_on_x_and_single_thread` | [tests/k4b/test_b_meter.py:93](../../tests/k4b/test_b_meter.py#L93) |  |
 | `test_choose_N_max` | test | `test_choose_N_max` | [tests/hwsc/test_a_ladder.py:185](../../tests/hwsc/test_a_ladder.py#L185) |  |
@@ -3880,5 +3882,3 @@
 | `test_stage_limiter_includes_supervisor_and_tail` | test | `test_stage_limiter_includes_supervisor_and_tail` | [tests/circle_history/test_builder_guards.py:30](../../tests/circle_history/test_builder_guards.py#L30) |  |
 | `test_stage_reads_observations_only_with_learner_policy` | test | `test_stage_reads_observations_only_with_learner_policy` | [tests/learner/test_checkpoint.py:82](../../tests/learner/test_checkpoint.py#L82) |  |
 | `test_stage_round_trip_and_lineage` | test | `test_stage_round_trip_and_lineage` | [tests/process/test_controls.py:156](../../tests/process/test_controls.py#L156) |  |
-| `test_stage_saves_expected_lineage_and_split_labels` | test | `test_stage_saves_expected_lineage_and_split_labels` | [tests/dataset/test_stage.py:59](../../tests/dataset/test_stage.py#L59) |  |
-| `test_stage_unknown_mode` | test | `test_stage_unknown_mode` | [tests/process/test_controls.py:180](../../tests/process/test_controls.py#L180) |  |

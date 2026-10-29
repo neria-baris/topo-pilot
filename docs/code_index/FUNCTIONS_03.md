@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_stage_saves_expected_lineage_and_split_labels` | test | `test_stage_saves_expected_lineage_and_split_labels` | [tests/dataset/test_stage.py:59](../../tests/dataset/test_stage.py#L59) |  |
+| `test_stage_unknown_mode` | test | `test_stage_unknown_mode` | [tests/process/test_controls.py:180](../../tests/process/test_controls.py#L180) |  |
 | `test_standardise_nuisance_population_sd_and_constant_columns` | test | `test_standardise_nuisance_population_sd_and_constant_columns` | [tests/c1prime/test_b_fwl.py:118](../../tests/c1prime/test_b_fwl.py#L118) |  |
 | `test_standardizer_population_std_and_zero_floor` | test | `test_standardizer_population_std_and_zero_floor` | [tests/analysis/test_x4f_scores.py:53](../../tests/analysis/test_x4f_scores.py#L53) |  |
 | `test_star_arrays_sha256_equal_selection` | test | `test_star_arrays_sha256_equal_selection` | [tests/hwsb/test_b_process.py:80](../../tests/hwsb/test_b_process.py#L80) |  |

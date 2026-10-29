@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 628,
+  "code files": 629,
   "dynamic imports, dynamic expression or unresolved": 14,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1022,
-  "functions and methods (incl. tests)": 9251,
+  "files indexed": 1023,
+  "functions and methods (incl. tests)": 9253,
   "import cycles (strongly connected components)": 12,
   "import statements, external": 904,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3051,
+  "import statements, internal resolved": 3053,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2747,
-  "internal edges (file to file, with kind and line)": 3086,
-  "python files": 627
+  "import statements, standard library": 2751,
+  "internal edges (file to file, with kind and line)": 3088,
+  "python files": 628
  },
  "cycles": [
   [
@@ -8911,6 +8911,18 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    37
+  ],
+  [
+   "tests/hwsc/test_r_0177_meter_tempdir.py",
+   "tools/hwsc/hwsc_meter_bind.py",
+   "import",
+   18
+  ],
+  [
+   "tests/hwsc/test_r_0177_meter_tempdir.py",
+   "tools/k4b/k4b_meter_bind.py",
+   "import",
+   19
   ],
   [
    "tests/integration/_mini_pipeline.py",
@@ -22694,6 +22706,12 @@
    "purpose": "Author B (job 0176): the TRAIN job (with spies: no real sampling or training), the per-model",
    "sha256": "3e3e4dfad3f46ae50a1752cc2a0798dc041389b006c87405dddf68c1219ffa82"
   },
+  "tests/hwsc/test_r_0177_meter_tempdir.py": {
+   "kind": "python",
+   "lines": 35,
+   "purpose": "Regression D-0177-1 (coordinator 08ad4eaf, job 0177).",
+   "sha256": "a9880fa9f007eca7f63a33803fad47ec80c306357c761dc31d534ea7d0e6cdd0"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -24064,9 +24082,9 @@
   },
   "tools/hwsc/hwsc_meter_bind.py": {
    "kind": "python",
-   "lines": 126,
+   "lines": 137,
    "purpose": "HWSC meter binding (API.md §9; protocol §8.3, RC-13; DRC13).",
-   "sha256": "f0878f8714ec445af6c80edd323c528f7a27b726656c4f697dd8dcdf0f0141a8"
+   "sha256": "44a9a6804b981251842a0e371035876b03b23fd6ed7c17b7d641489ffb801686"
   },
   "tools/hwsc/hwsc_outcome.py": {
    "kind": "python",
@@ -138854,6 +138872,132 @@
     }
    ]
   },
+  "tests/hwsc/test_r_0177_meter_tempdir.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Regression D-0177-1 (coordinator 08ad4eaf, job 0177).",
+   "doc1": "Regression D-0177-1 (coordinator 08ad4eaf, job 0177).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "subprocess"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "subprocess"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsc_meter_bind"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_meter_bind.py"
+     ],
+     "top": "hwsc_meter_bind"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "k4b_meter_bind"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_meter_bind.py"
+     ],
+     "top": "k4b_meter_bind"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "test",
+     "name": "test_child_env_creates_temp_and_child_uses_it",
+     "qual": "test_child_env_creates_temp_and_child_uses_it",
+     "sig": "def test_child_env_creates_temp_and_child_uses_it(tmp_path, monkeypatch)",
+     "start": 22
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsc"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsc')",
+     "line": 16
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -210467,13 +210611,23 @@
     },
     {
      "decorators": [],
+     "doc": "k4b_meter_bind.child_env(job) with its TEMP folder created (D-0177-1).",
+     "end": 103,
+     "kind": "function",
+     "name": "child_env_c",
+     "qual": "child_env_c",
+     "sig": "def child_env_c(job) -> dict",
+     "start": 95
+    },
+    {
+     "decorators": [],
      "doc": "--job, --task-sha256, --session, --kind, --stage (all required), then the meter argv.",
-     "end": 122,
+     "end": 133,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main() -> int",
-     "start": 95
+     "start": 106
     }
    ],
    "syspath": []
@@ -245117,5 +245271,5 @@
    ]
   }
  },
- "sources_digest": "acac7c054dafb033125957352722af6af4463f261f59b9c7821e464bfa4a6d65"
+ "sources_digest": "6bc94b29c2c3647cb0fbc649a236318797018321a84d011e5962aff6691fa03d"
 }

@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1022 tracked files; 628 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1023 tracked files; 629 code files (linked to their pages).
 
 ## (repo root)
 
@@ -985,6 +985,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1022 tracked fil
 | [test_b_registry2.py](files/tests/hwsc/test_b_registry2.py.md) | python | 374 lines | Author B (job 0176): R6 scratch scan/check, R8 inventory, registry build, H2-FRESH. |
 | [test_b_streams.py](files/tests/hwsc/test_b_streams.py.md) | python | 320 lines | Author B (job 0176): streams, sequence IDs, the train/dev mirror (DRC4) and evaluation blocks. |
 | [test_b_train_hold.py](files/tests/hwsc/test_b_train_hold.py.md) | python | 361 lines | Author B (job 0176): the TRAIN job (with spies: no real sampling or training), the per-model |
+| [test_r_0177_meter_tempdir.py](files/tests/hwsc/test_r_0177_meter_tempdir.py.md) | python | 35 lines | Regression D-0177-1 (coordinator 08ad4eaf, job 0177). |
 
 ## tests/integration/
 
@@ -1343,7 +1344,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1022 tracked fil
 | [hwsc_gates.py](files/tools/hwsc/hwsc_gates.py.md) | python | 228 lines | HWSC gates: H1-C, L1, P1 (p1c and the N rule), the POSITIVE_BELOW_MARGIN annotation, the |
 | [hwsc_jobs.py](files/tools/hwsc/hwsc_jobs.py.md) | python | 204 lines | HWSC E2 job (release B), the close record and the CLI (API.md §7.3, §11.4; split from |
 | [hwsc_known.py](files/tools/hwsc/hwsc_known.py.md) | python | 315 lines | HWSC G0c and the known cases KC0-KC9 (API.md §5; protocol §4; rulings R-0176-G1, G2). |
-| [hwsc_meter_bind.py](files/tools/hwsc/hwsc_meter_bind.py.md) | python | 126 lines | HWSC meter binding (API.md §9; protocol §8.3, RC-13; DRC13). |
+| [hwsc_meter_bind.py](files/tools/hwsc/hwsc_meter_bind.py.md) | python | 137 lines | HWSC meter binding (API.md §9; protocol §8.3, RC-13; DRC13). |
 | [hwsc_outcome.py](files/tools/hwsc/hwsc_outcome.py.md) | python | 151 lines | HWSC outcome precedence, POSITIVE_BELOW_MARGIN annotation and licences (API.md §6, §12; |
 | [hwsc_records.py](files/tools/hwsc/hwsc_records.py.md) | python | 336 lines | HWSC records: exception map, gate runner, lineage, authority, FREEZE, S0, budget, ledger and the |
 | [hwsc_registry.py](files/tools/hwsc/hwsc_registry.py.md) | python | 305 lines | HWSC exposure registry hwsc-reg-v1: K-REG1, K-REG2, REHEARSAL (API.md §4; protocol §3.3-§3.4, |

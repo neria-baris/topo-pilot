@@ -1094,6 +1094,9 @@ Edge counts are file-to-file edges between different subpackages.
 ### `tests/hwsc/test_b_train_hold.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
 - <- none
+### `tests/hwsc/test_r_0177_meter_tempdir.py`
+- -> tools/hwsc/hwsc_meter_bind.py, tools/k4b/k4b_meter_bind.py
+- <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
 - <- tests/integration/test_leakage_end_to_end.py, tests/integration/test_rerun_identity.py
@@ -1639,7 +1642,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry3.py
 ### `tools/hwsc/hwsc_meter_bind.py`
 - -> tools/hwsc/hwsc_config.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/op_guard.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
-- <- tests/hwsc/test_b_guard_meter.py, tools/hwsc/hwsc_dry3.py
+- <- tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_r_0177_meter_tempdir.py, tools/hwsc/hwsc_dry3.py
 ### `tools/hwsc/hwsc_outcome.py`
 - -> tools/hwsc/hwsc_config.py
 - <- tools/hwsc/hwsc_gates.py
@@ -1678,7 +1681,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsc/test_b_train_hold.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_jobs.py
 ### `tools/k4b/k4b_meter_bind.py`
 - -> tools/k4b/k4b_config.py, tools/k4b/k4b_release.py, tools/x4_circle_history/op_guard.py, tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
-- <- tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsc/test_b_guard_meter.py, tests/k4b/test_b_meter.py, tools/hws/hws_dry.py, tools/hws/hws_meter_bind.py, tools/hwsb/hwsb_meter_bind.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_meter_bind.py
+- <- tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_r_0177_meter_tempdir.py, tests/k4b/test_b_meter.py, tools/hws/hws_dry.py, tools/hws/hws_meter_bind.py, tools/hwsb/hwsb_meter_bind.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_meter_bind.py
 ### `tools/k4b/k4b_registry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_data.py, tools/c1prime/c1_records.py, tools/c1prime_registry/c1_registry_sources.py, tools/k4b/k4b_config.py, tools/k4b/k4b_registry_k.py, tools/x4_circle_history/stage_records.py
 - <- tests/c2_nd/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tests/k4b/test_b_store_reader.py, tests/x6_stage1/test_b_seed_pool_reg.py, tools/c2_nd/nd_registry.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/x6_stage1/x6s1_registry.py
@@ -7971,6 +7974,9 @@ tests/hwsc/test_b_train_hold.py
     tools/k4b/k4b_fresh.py (see above)
     tools/k4b/k4b_release.py (see above)
     tools/x4_circle_history/stage_records.py (see above)
+tests/hwsc/test_r_0177_meter_tempdir.py
+    tools/hwsc/hwsc_meter_bind.py (see above)
+    tools/k4b/k4b_meter_bind.py (see above)
 ```
 
 ### tests/integration

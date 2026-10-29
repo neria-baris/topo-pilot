@@ -1,0 +1,5107 @@
+{
+ "protocol": "HWSC-DESIGN-v1 (design freeze candidate; becomes HWSC-FROZEN-v1 at the execution freeze)",
+ "protocol_file": "tools/hwsc/PROTOCOL_HWSC_v1.md",
+ "protocol_sha256": "f0f2396c147985493b0f6399626ab8cef3ad95edcacf96b450671ae62a7100a9",
+ "contract_job": "0176 phase 1",
+ "status": "CONTRACT (written before any module code; the protocol wins on conflict)",
+ "precedence": "PROTOCOL_HWSC_v1.md > CONTRACT.json > API.md > TEST_PLAN.md; a difference is a contract defect to report, never to resolve in code",
+ "number_format": "Exact values are strings parsed by fractions.Fraction(str); integers are JSON ints; floats are report-only or tolerances. Binding-table values use the encodings of binding.encoding.",
+ "authority": {
+  "owner_addenda": {
+   "25": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-25.md",
+    "sha256": "22f130227deb091e36696a880cac6789d8b4040d2ba7aac07a7e829700cf37f4"
+   },
+   "26": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-26.md",
+    "sha256": "23ab23f951bb4bf728c8087d1fa1340f8fe34dcc73d6b501eeb97db892edf602"
+   },
+   "28": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-28.md",
+    "sha256": "650d8b6b2508280a32cadb6c512632d4103b2ac241550e7055bfa45c3377666c"
+   },
+   "33": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-33.md",
+    "sha256": "6e253f921584f35b1b25bb2e3ecb3afffb9534e0da0fcfe0d58b7214f16fd1c6"
+   },
+   "34": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-34.md",
+    "sha256": "7207564ac8ee1fa05a9349145b889ed7c68867d1768a0fb8c92679e17b733941"
+   }
+  },
+  "kc0_addenda": [
+   "25",
+   "26",
+   "33",
+   "34"
+  ],
+  "run_approval": {
+   "path": "TO_FREEZE",
+   "sha256": "TO_FREEZE",
+   "rule": "the owner's explicit stage-C run approval (not given by addendum 34); its path and sha256 are written into the AUTH records and FREEZE.json by the coordinator; absent -> INCONCLUSIVE/RESOURCE_OR_AUTHORITY"
+  },
+  "request": {
+   "path": "agent-handoff/planning/requests/coord-hws-stage-c-20261029.md",
+   "sha256": "4299ce6afe50bd5c6a1363e9b097a858edc72810781fff51d40a2b25e9b7b639"
+  },
+  "k4b_frozen": {
+   "path": "agent-handoff/planning/responses/K4B-FROZEN-v1.md",
+   "sha256": "957f0d5e70870bbd2323fbbae7bf5a8b814735b00a6525346562e7f1dd35b485"
+  },
+  "hws_frozen": {
+   "path": "agent-handoff/planning/responses/HWS-FROZEN-v1.md",
+   "sha256": "d96906097ab8b6ec464a2dbd4b477353b2950aa58e5b5995b7b6086ce68963a9"
+  },
+  "hwsb_frozen": {
+   "path": "agent-handoff/planning/responses/HWSB-FROZEN-v1.md",
+   "sha256": "db0db31a8ebcd783647babd70c8ab698c6dacf0b128373e0c8c7cb490577e705"
+  },
+  "hwsb_freeze_json": {
+   "path": "X:/Downloads/projects/topo-pilot/hwsb-store/FREEZE.json",
+   "sha256": "4b84b3201755ba55817518bd6e7fa00a8a6bafd4cabab212789a60b47625b3a4"
+  },
+  "selection_json": {
+   "path": "X:/Downloads/projects/topo-pilot/hws-store/SELECTION.json",
+   "sha256": "243f732412b80d4fd0fc088f9612999520e82dd1ec124f2a9f013de35064f087"
+  },
+  "hws_final_report": {
+   "path": "X:/Downloads/projects/topo-pilot/hws-store/stages/FINAL/REPORT.json",
+   "sha256": "bd460cee5bf286682ae6c4e325d70c07dd59730b6eb81360e2acfca7862ba05a"
+  },
+  "budget_rules": "owner addendum 26 (adaptive, 3x pause); outside the addendum-29 12 CPU-h line (addendum 34 item 4)",
+  "codex": "frozen (owner addendum 28)",
+  "round": "coord-hws-stage-c-20261029",
+  "design_base_commit_main": "af5e7b48615de5acebfb47fa3e98aa69130c3c3a",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-hws",
+  "branch": "hwsc-impl",
+  "h_exec": null,
+  "h_exec_rule": "pinned at the execution freeze (FREEZE.json); reuse_sha256 re-checked there",
+  "owner_questions": {
+   "status": "pending; implementation proceeds on the registered defaults (protocol section 12)",
+   "Q1": "default: N = max(N_C, N_P1), raise-only",
+   "Q2": "default: stop with the outcome and ask; nothing automatic",
+   "Q3": "default: learning gate L1, captured >= 0.8 in all three models",
+   "Q4": "default: POSITIVE_BELOW_MARGIN annotation registered (section 6.1 definition)",
+   "Q5": "default: M = 1/100",
+   "Q6": "default: no run until the owner approves"
+  }
+ },
+ "handoff": {
+  "path": "X:/Downloads/projects/topo-pilot/hwsb-store/HANDOFF.json",
+  "sha256": "a4d9a0c960adc285f4aec626ccb2e0405cce504357d746f7e0d270615eca4353",
+  "bytes": 5668,
+  "keys": [
+   "F_plan",
+   "N_C",
+   "Z_bound",
+   "evaluation_forecast_s",
+   "freeze_sha256",
+   "k_C",
+   "model_count",
+   "outcome",
+   "p_D2a",
+   "protocol_sha256",
+   "registry_obligation",
+   "registry_value",
+   "report_sha256",
+   "stage_c_exclusions",
+   "store_inventory",
+   "training_forecast_s"
+  ],
+  "forbidden_keys": [
+   "mean_X_minus",
+   "mean_X_plus",
+   "c_hat",
+   "c_min",
+   "c_min_literal",
+   "ci95",
+   "regret",
+   "captured",
+   "fidelity",
+   "D4hat",
+   "supported_contribution",
+   "supported_conditional_mean",
+   "lower_rank125_mean_X_minus",
+   "dev_ce"
+  ],
+  "values": {
+   "outcome": "HWSB_PASS",
+   "N_C": 3072,
+   "k_C": 1,
+   "model_count": 3,
+   "training_forecast_s": 6006.6282,
+   "evaluation_forecast_s": 3000.5999999999995,
+   "Z_bound": "87876736540276863476307541/78125000000000000000000000000000000000",
+   "F_plan": "27312187451545202754502463604340307573794999991406438372683275866852077836382274453042244654962849887985453490270143229513796234309096358998064554686404281596814582484088052957714131681916092663991109078731654178655646565849057711379474144533588924848956932132857038713212846645073/273121871170758376227025875624621874943464790383264112834005392812644670616858444204902818110720446499296572620384188471711252640633625823111592014641442055244520044735857160009478930482577135773615507178569032815900758005493331491347345713397760000000000000000000000000000000000000000",
+   "p_D2a": 5.4162868151717785e-15,
+   "registry_value": "30896816545173375/618970019642690137449562112",
+   "freeze_sha256": "4b84b3201755ba55817518bd6e7fa00a8a6bafd4cabab212789a60b47625b3a4",
+   "protocol_sha256": "db0db31a8ebcd783647babd70c8ab698c6dacf0b128373e0c8c7cb490577e705",
+   "report_sha256": "974f059f82aec530cd868e5bc6fbed96f22460253f0ee60e9b833e6beaa0cc8f",
+   "registry_obligation": "every later registry, stage C first, lists hws-store, hwsb-store and X:/Downloads/topo-scratch/hwsb-dry as READER sources"
+  },
+  "stage_c_exclusions": [
+   "0151f60acb782640",
+   "031ccfb920ff5e10",
+   "1c4a0b986f90ff31",
+   "2509674bae274390",
+   "3ca3bfb2beaaef27",
+   "3d8d1cdc08ec9ff3",
+   "4ac4db4833c635ad",
+   "527790e44799c77c",
+   "5877c3127e4320bc",
+   "5bd696530e592412",
+   "5e6cfa3d1ef431d0",
+   "769af836fbafec05",
+   "8b772e91b1ed3bde",
+   "8c11541400104116",
+   "9aba8c64f5d3ef94",
+   "a19e57b961af7916",
+   "a41438cb0efc2c2d",
+   "a726e910d86fcc52",
+   "b6e0169a7314a6f3",
+   "bcdc6218d9dae6dd",
+   "bf819fbd3eee3375",
+   "c136dd12ab338d75",
+   "e07d245b2ddf3d32",
+   "ffd8eecd4ea2feef"
+  ],
+  "store_inventory_n": 32,
+  "read_rule": "read only through hwsc_config.load_handoff (sha256, exact key set, no forbidden key at any depth); every gate reads the values at run time and compares exactly; the copies above are for tests and review only"
+ },
+ "world": {
+  "key": "W12-q1-s1.75-p0.2",
+  "process_code_args": [
+   "cylinder",
+   "overlap",
+   "1.75"
+  ],
+  "sigma": "7/4",
+  "p_stay": "1/5",
+  "neighbour": "1/5",
+  "V": 36,
+  "N": 144,
+  "W": 12,
+  "H": 12,
+  "n_axial": 6,
+  "configs": {
+   "WorldConfig": {
+    "family": "cylinder",
+    "dims": [
+     12,
+     12
+    ],
+    "metric": "flat",
+    "params": {}
+   },
+   "TransitionConfig": {
+    "kind": "max_degree_lazy_walk",
+    "p_stay": 0.2
+   },
+   "EmissionConfig": {
+    "mode": "overlap",
+    "V": 36,
+    "sigma": 1.75,
+    "center_strategy": "grid",
+    "source_mode": null,
+    "metric": "flat"
+   }
+  },
+  "WorldSpec": {
+   "id": "21feee1d8ee5422e",
+   "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f"
+  },
+  "TransitionSpec": {
+   "id": "e4dafc7b9785c172",
+   "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd"
+  },
+  "selection_sha256": {
+   "E": "4d7b8e5682033357dfde7f640a2dd5ad6d9f645afec33a6e580c8bc20b7ec467",
+   "T": "d55d1024e2e3cd36603e26ff9ae5e365d373abca62495287656f20d69033f688",
+   "pi": "5ab26711610321dcd79ea419ba214fed8e7d637d7b4103868de878af553ca4a9",
+   "coords": "81468d18466865c93107717f419c78ad65eff208b3277dc576d8bb4116912340"
+  },
+  "array_hash_rule": "hashlib.sha256(np.ascontiguousarray(x, dtype=np.float64).tobytes()).hexdigest()",
+  "validate_tol": 1e-12,
+  "w0": {
+   "key": "W12-q1-s1.25-p0.2",
+   "sigma": "5/4",
+   "neighbour": "1/5",
+   "EmissionConfig": {
+    "mode": "overlap",
+    "V": 36,
+    "sigma": 1.25,
+    "center_strategy": "grid"
+   },
+   "process_code_args": [
+    "cylinder",
+    "overlap",
+    "1.25"
+   ]
+  }
+ },
+ "recipe": {
+  "model_config": {
+   "vocab_in": 37,
+   "vocab_out": 36,
+   "n_ctx": 33,
+   "n_layers": 4,
+   "d_model": 128,
+   "n_heads": 4,
+   "d_mlp": 512,
+   "activation": "gelu",
+   "dropout": 0.0,
+   "tie_embeddings": false
+  },
+  "train_config": {
+   "steps": 5000,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 200,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    0,
+    50,
+    100,
+    200,
+    400,
+    700,
+    1000,
+    1500,
+    2000,
+    3000,
+    4000,
+    5000
+   ],
+   "device": "auto"
+  },
+  "reference_checkpoint": "c3358e3cb9c352fb (E4 step 5000; meta.json config and extra.json model_config/train_config)",
+  "site": "resid_post_3",
+  "index": 32,
+  "bos": 36,
+  "run_id_rule": "'-'.join(map(str, run_key))",
+  "learner_consumer": "learner",
+  "gate_step": 5000,
+  "init_step": 0,
+  "run_key": [
+   "hwsc-v1",
+   "W12-q1-s1.75-p0.2",
+   "<master>"
+  ],
+  "dry_run_key": [
+   "hwsc-v1",
+   "DRY",
+   "<case>",
+   "<dry_master>"
+  ],
+  "threads": {
+   "TRAIN": 1,
+   "KC2": 6,
+   "KC3": 1,
+   "env_one_thread": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+   }
+  },
+  "checkpoints_per_master": 12,
+  "checkpoints_total": 36,
+  "vocab": {
+   "in": 37,
+   "out": 36
+  }
+ },
+ "masters": [
+  620301,
+  620302,
+  620303
+ ],
+ "dry_masters": [
+  629911,
+  629912,
+  629913
+ ],
+ "seeds": {
+  "k4b_seed_names": {
+   "val_sd": 620311,
+   "val_b4": 620312,
+   "endpoint": 620313,
+   "fresh_b4": 620314,
+   "val_projection": 620315
+  },
+  "p1c_seeds": [
+   620311,
+   620315
+  ],
+  "g0_needles": [
+   "hwsc-v1",
+   "620301",
+   "620302",
+   "620303",
+   "620311",
+   "620312",
+   "620313",
+   "620314",
+   "620315",
+   "629911",
+   "629912",
+   "629913"
+  ],
+  "g0_declaration_fragments": [
+   "/tools/hwsc/",
+   "/tests/hwsc/",
+   "/agent-handoff/",
+   "/hwsc-store/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/topo-scratch/hwsc-dry",
+   "/topo-scratch/test_hwsc-"
+  ],
+  "g0_job_scratch": [],
+  "g0_rule": "hwsc_known.seed_search_c (the hws_driver.seed_search walk and the D-0127-1 whole-token rule, with blinded paths pruned before any open); a hit is hwsc_declaration iff its lower-cased path with '/' separators contains a fragment or starts with a job_scratch prefix; any other hit fails closed (FAIL_TECHNICAL/SEED_SCOPE)",
+  "dry_never_issues": [
+   "620301",
+   "620302",
+   "620303",
+   "lgate",
+   "cal",
+   "val",
+   "test",
+   "train",
+   "dev"
+  ],
+  "dry_bootstrap_exception": "DRC6 and KC7(b) use the bootstrap seeds 620311/620315 on synthetic arrays only (no SeedTree stream, no history)"
+ },
+ "streams": {
+  "train": {
+   "tree": "SeedTree(master)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "train",
+    "W12-q1-s1.75-p0.2",
+    "<master>"
+   ]
+  },
+  "dev": {
+   "tree": "SeedTree(master)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "dev",
+    "W12-q1-s1.75-p0.2",
+    "<master>"
+   ]
+  },
+  "lgate": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "lgate",
+    0,
+    "cylinder",
+    "overlap",
+    "1.75"
+   ]
+  },
+  "cal": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "cal",
+    0,
+    "cylinder",
+    "overlap",
+    "1.75"
+   ],
+   "via": "k4b_data.history_generator('cal', 0) under the binding"
+  },
+  "val": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "val",
+    0,
+    "cylinder",
+    "overlap",
+    "1.75"
+   ],
+   "via": "k4b_data.history_generator('val', 0) under the binding"
+  },
+  "test": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "test",
+    "<b>",
+    "cylinder",
+    "overlap",
+    "1.75"
+   ],
+   "via": "k4b_data.history_generator('test', b) under the binding; b in 0..k-1"
+  },
+  "dry_train_dev": {
+   "tree": "SeedTree(dry_master)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "DRY",
+    "<case>",
+    "<split>",
+    "<dry_master>"
+   ]
+  },
+  "dry_block": {
+   "tree": "SeedTree(0)",
+   "name": "data",
+   "scope": [
+    "hwsc-v1",
+    "DRY",
+    "<case>",
+    "<role>"
+   ]
+  },
+  "symbol_names": "SeedTree(master).generator('symbol_names', 'cylinder', master) inside OverlapGaussian (unchanged)",
+  "init_and_batch_order": "Trainer: seeds.seed('init', *run_key), seeds.generator('batch_order', *run_key), seeds = SeedTree(master)",
+  "decoder": "k4b_decoder: SeedTree(0).generator('hwsc-v1', 'suffix_rbf_bw', model) and ('hwsc-v1', 'suffix_rbf', ...) via the rebound k4b_decoder.SCOPE",
+  "bootstrap": "PCG64 seeds 620311 (val SD^U), 620312 (val B4), 620313 (endpoint), 620314 (fresh B4), 620315 (val projection), through the reused functions",
+  "e4_regeneration": {
+   "train_dev": "SeedTree(1729).generator('data', split, 'cylinder', 'overlap', '1.25', 1729)",
+   "test": "SeedTree(0).generator('data', 'test', 'cylinder', 'overlap', '1.25')",
+   "panels": "SeedTree(0).generator('panels', 'cylinder', 'overlap', '1.25')",
+   "class": "authorised deterministic regeneration (K4b G0 class); in memory only, never persisted"
+  }
+ },
+ "sequence_ids": {
+  "rule": "dataset.checks.make_sequence_ids(process_code('cylinder', 'overlap', '1.75', replicate), split, n)",
+  "train": {
+   "replicate": "hwsc-v1/train/<master>",
+   "split": "train",
+   "n": 131072
+  },
+  "dev": {
+   "replicate": "hwsc-v1/dev/<master>",
+   "split": "dev",
+   "n": 4096
+  },
+  "lgate": {
+   "replicate": "hwsc-v1/lgate/b0",
+   "split": "test",
+   "n": 4096
+  },
+  "cal": {
+   "replicate": "hwsc-v1/cal/b0",
+   "split": "test",
+   "n": 3072
+  },
+  "val": {
+   "replicate": "hwsc-v1/val/b0",
+   "split": "test",
+   "n": 3072
+  },
+  "test": {
+   "replicate": "hwsc-v1/test/b<b>",
+   "split": "test",
+   "n": 3072
+  },
+  "dry": {
+   "replicate": "hwsc-v1/DRY/<case>/<role>[/<dry_master>]",
+   "split": "train|dev|test"
+  },
+  "order": "rows of every evaluation block sorted by ascending sequence_id (stable)"
+ },
+ "sizes": {
+  "train": 131072,
+  "dev": 4096,
+  "lgate": 4096,
+  "cal": 3072,
+  "val": 3072,
+  "test_block": 3072,
+  "panel": 512,
+  "ref_rows": 4,
+  "decoder_rows": 2560,
+  "n_obs": 33,
+  "kept_eval_tokens": 32,
+  "landmarks": "the 512 lowest sequence IDs of cal b0",
+  "val_panel": "the 512 lowest sequence IDs of val b0"
+ },
+ "thresholds": {
+  "margin_M": "1/100",
+  "alpha": "1/60",
+  "alpha_note": "0.05/3 = c1_means.P_THIRD",
+  "ladder": [
+   3072,
+   6144,
+   12288
+  ],
+  "N_rule": "N = max(HANDOFF N_C, N_P1); N_P1 = first qualifying ladder value; none -> INCONCLUSIVE/UNDERPOWERED regardless of N_C; N must be a ladder value",
+  "draws": 5000,
+  "min_successes": 4000,
+  "ranks": {
+   "alpha": 84,
+   "one_minus_alpha": 4917,
+   "b4_lower": 250,
+   "central_lo": 125,
+   "central_hi": 4875
+  },
+  "power": "4/5",
+  "mde_max": "1/50",
+  "learning_captured": "4/5",
+  "learning_rule": "captured_j >= 0.8 for all three masters (equality passes; LearningGate(0.8)); computed for all three before the gate decides",
+  "prob_row_tol": 1e-06,
+  "G_C_floor": 1e-06,
+  "cap": "1/10000",
+  "floor": "1/1000000000",
+  "p2_max_abs": 4,
+  "moment_tol": "error_bound.MOMENT_TOL_EXACT (1e-10 class; K4b)",
+  "registry_cap": "1/100",
+  "registry_rows": "4096 + 3072 + 3072 + N",
+  "p_D2a_rel_tol": 1e-12,
+  "chart": "inherited unchanged from k4b_config.chart_cfg() and the reused k4b_charts/c1_chart kernels (GIANT >= 487 of 512, exact integer lift, primitive class, smoothing residual <= 1e-8, gauge alignment finite and > 0; C0-val support >= 99 % of 512 (100*n_sup >= 99*n), fidelity >= 0.80, every one of 12 bins >= 8, resultant <= 0.30); never re-specified or tuned",
+  "z_report_only": {
+   "z_1-1/60": 2.128045234184984,
+   "z_0.8": 0.8416212335729144,
+   "z_sum": 2.9696664677578983,
+   "z_1-1/80": 2.2414027276049464
+  },
+  "decision": {
+   "SUPPORT": "L-_j - F_j- > 1/100",
+   "EXCLUDE": "U+_j + F_j+ < 1/100 and L-_j - F_j- > -1/100",
+   "UNRESOLVED": "otherwise; UNRESOLVED/NUMERICAL if the same L, U with F = 0 give a definite status",
+   "NEGATIVE_ALIGNMENT": "label iff U+_j + F_j+ < -1/100",
+   "arithmetic": "exact Fractions of the float64 bounds (k4b_stats.model_status)",
+   "overall": "k4b_stats.overall under the binding"
+  },
+  "positive_below_margin": {
+   "per_model": "Fraction(L-_j) - F_j- > 0 and status_j in {UNRESOLVED, UNRESOLVED/NUMERICAL, EXCLUDE}",
+   "overall": "Fraction(L-_j) - F_j- > 0 for all three masters and overall != SUPPORT",
+   "boundary": "strict: exactly 0 is not positive; the next float above 0 is"
+  }
+ },
+ "k4b_contract_view": {
+  "protocol_sha256": "f0f2396c147985493b0f6399626ab8cef3ad95edcacf96b450671ae62a7100a9",
+  "chart": {
+   "field": 47,
+   "ripser": {
+    "maxdim": 1,
+    "coeff": 47,
+    "distance_matrix": true,
+    "do_cocycles": true
+   },
+   "bar": "largest strictly positive finite H1 lifetime; ties birth asc, death asc, index asc",
+   "scale": "midpoint (birth + death) / 2; edges with distance <= scale",
+   "lift_bounds": [
+    1,
+    2,
+    4,
+    8,
+    16
+   ],
+   "lift_node_limit": 128,
+   "lift_solver": "scipy.optimize.milp, zero objective, integrality all, threads 1, mip_rel_gap 0, presolve default",
+   "lift_rounding_tol": 1e-07,
+   "local_passes": 2,
+   "local_vertices": 128,
+   "primitive_root": 0,
+   "smoothing_residual_max": 1e-08,
+   "gauge": "fit_gauge(chart, m32[C*]) unchanged: s in (+1,-1) maximizing |mean(exp(i*s*phi) * conj(m32x + i*m32y))| over the C* landmarks; tie s=+1; phi <- (s*phi - arg(c)) mod 2pi; |c| finite and > 0; no other alignment threshold",
+   "extension_k": 8,
+   "sigma": "median(d8) over the charted landmarks C*: d8_i = 8th smallest distance from charted landmark i to the other charted landmarks (self excluded only)",
+   "weights": "exp(-0.5 * (d / sigma)^2)",
+   "duplicate_rule": "query with an exact zero distance: z = mean of exp(i*phi_j) over ALL landmarks at distance exactly 0; Invalid if 1 - |z| > 1e-8",
+   "support_min_resultant": 0.2,
+   "fidelity_min_agreement": 0.8,
+   "phase_bins": 12,
+   "phase_bin_min_rows": 8,
+   "overall_resultant_max": 0.3,
+   "max_chart_constructions": {
+    "trained": 6,
+    "init": 3,
+    "total": 9
+   },
+   "inherited_from": "tools/c1prime/CONTRACT.json chart section at R_ref c460e24 (kernel keys, giant, val_support copied verbatim; equality checked by k4b_config.check_chart_equality); the frozen C1' CONTRACT is not edited",
+   "landmarks": "production: the 512 lowest-sequence_id rows of k4b cal b0 (3,072 rows), every sampled row; direct comparator: the 512 lowest-sequence_id rows of k4b val b0; step-0 control: the same 512 cal b0 landmarks; natural float64 resid_post_3/p32 activations; landmark_ids = 20-digit zero-padded sequence_id strings, ascending",
+   "restriction": "largest connected component C* of ({0..511}, edge_list(D, r)); ties to the component containing the smallest landmark index",
+   "giant": {
+    "n": 512,
+    "min_m": 487,
+    "rule": "100*m >= 95*512 (integers)"
+   },
+   "support_radius": "2 * quantile(d8, 0.99, method=inverted_cdf), d8 over D[np.ix_(C*, C*)]",
+   "scale_domain": "D[np.ix_(C*, C*)] (MERGE ruling 1)",
+   "val_support": {
+    "n": 512,
+    "min_supported": 507,
+    "rule": "100*n_sup >= 99*512 (integers)"
+   },
+   "fidelity_domain": "the direct chart's C*_val rows, in its landmark order, unmasked",
+   "bins_resultant_domain": "all 512 val-panel production-extension queries",
+   "support_rule": "C0-val: >= 507/512 supported (not every row); no fresh-test support gate (protocol 10)",
+   "gate_rules": "C0-cal: GIANT, lift, primitive, smoothing, gauge alignment finite > 0; C0-val: direct GIANT, support >= 507/512, fidelity >= 0.80, every bin >= 8, overall resultant <= 0.30; unmet -> INCONCLUSIVE/CHART_UNAVAILABLE",
+   "lift_cpu_cap_s": null,
+   "native_operation_wall_s": 600,
+   "construction_plan": {
+    "production": "1 per trained model at S4a (C0-CAL), trained ledger",
+    "direct": "1 per trained model at S4b (C0-VAL), trained ledger",
+    "init_production": "1 per step-0 model at S4a, step-0 ledger (role 'production' only)"
+   },
+   "chart_specific_invalid": [
+    "Invalid('not a cocycle mod p') from integer_lift -> INCONCLUSIVE/CHART_UNAVAILABLE, reason 'float32/float64 filtration boundary'",
+    "Invalid from smooth_phase with every f finite and a finite residual > 1e-8 -> INCONCLUSIVE/CHART_UNAVAILABLE (original message); non-finite f or residual, or unavailable diagnostics -> FAIL_TECHNICAL"
+   ]
+  },
+  "registry": {
+   "versions": [
+    "K-REG1",
+    "K-REG2"
+   ],
+   "sources": [
+    "a: c1_registry_sources.observation_set_sources (explicit store for a non-default root)",
+    "b: c1_registry_sources.store_sources",
+    "c: c1_registry_sources.handoff_sources (JSON pre-validated)",
+    "d1: c1prime-store/registry/registry_v1.json digest list",
+    "d2: digest_H, digest_Hp, digest_Hm of every c1prime-store HIST_*.npz incl. superseded/",
+    "e: d2a-store permitted pools (raw tokens[:, :32] uint8); sealed pools by predicate and derived sequence-id ranges",
+    "f: every other directory under the project root (scanned, or NOT_SCANNED with an inventory-backed reason)"
+   ],
+   "c1prime_registry_v1_sha256": "ebcebe186103d7a4ed01d8f011c05742419f9f418af03775549a80d0d5c77d9e",
+   "d2a": {
+    "pools": [
+     "train-s1",
+     "train-s2",
+     "train-s3",
+     "train-s4",
+     "dev-s1",
+     "dev-s2",
+     "dev-s3",
+     "dev-s4",
+     "trainN-s1",
+     "trainN-s2",
+     "devN-s1",
+     "devN-s2",
+     "stage0",
+     "stage0N",
+     "cal",
+     "val",
+     "test",
+     "valN",
+     "testN"
+    ],
+    "seq_code": "1-based POOLS position; sequence_id = SEQ_CODE[pool]*2**32 + arange(n)",
+    "sealed": [
+     "test",
+     "testN"
+    ],
+    "predicate_alphabet": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "predicate_length": 32,
+    "predicate_reason": "potential overlap with sealed D-2a histories"
+   },
+   "root": "X:/Downloads/projects/topo-pilot"
+  },
+  "authority": {
+   "c1prime_disclosure": "Stage C follows K4b (EXCLUSION in the E4 models in w0, where the oracle comparator was below the margin), stage A (w* selected on oracle criteria only) and stage B (a two-model pilot in w*, HWSB_PASS). Stage C's models, histories, charts and decision are its own; stage-B results entered stage C only through HANDOFF.json (test size floor, model count, budget forecasts, Z_bound and F_plan identity values, the registry inputs and the pilot exclusions). No threshold, margin, chart parameter or recipe setting was changed in response to any earlier result."
+  },
+  "note": "bound as k4b_config.CONTRACT inside bound_stage_c(); the keys read at call time by reused K4b code are protocol_sha256 (k4b_stats.write_sealed, k4b_release.verify_release), chart (k4b_config.chart_cfg, check_chart_equality), registry (k4b_registry.source_d/source_e via R1) and authority.c1prime_disclosure (k4b_fresh.endpoint); chart and registry are deep-equal to tools/k4b/CONTRACT.json"
+ },
+ "disclosure": "Stage C follows K4b (EXCLUSION in the E4 models in w0, where the oracle comparator was below the margin), stage A (w* selected on oracle criteria only) and stage B (a two-model pilot in w*, HWSB_PASS). Stage C's models, histories, charts and decision are its own; stage-B results entered stage C only through HANDOFF.json (test size floor, model count, budget forecasts, Z_bound and F_plan identity values, the registry inputs and the pilot exclusions). No threshold, margin, chart parameter or recipe setting was changed in response to any earlier result.",
+ "binding": {
+  "encoding": {
+   "list": "a Python tuple",
+   "{\"__path__\": s}": "pathlib.Path(s)",
+   "{\"__repo__\": rel}": "pathlib.Path(REPO / rel) with REPO the worktree root",
+   "{\"__dict__\": d}": "a dict with the same str keys and values",
+   "{\"__contract__\": sha}": "old-value check: the current object is a dict whose protocol_sha256 equals sha",
+   "{\"__contract_view__\": key}": "a deep copy of CONTRACT[key]",
+   "other": "the JSON value itself (int, str)"
+  },
+  "old_value_rule": "value == decoded old and type(value) is type(decoded old) (Path: any PurePath with equal POSIX string); else FAIL_TECHNICAL/BINDING (code drift)",
+  "table": [
+   {
+    "module": "k4b_config",
+    "name": "MODELS",
+    "old": [
+     1729,
+     2718,
+     3141
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "k4b_config",
+    "name": "SCOPE",
+    "old": "k4b-sf-v1",
+    "new": "hwsc-v1"
+   },
+   {
+    "module": "k4b_config",
+    "name": "PROCESS",
+    "old": [
+     "cylinder",
+     "overlap",
+     "1.25"
+    ],
+    "new": [
+     "cylinder",
+     "overlap",
+     "1.75"
+    ]
+   },
+   {
+    "module": "k4b_config",
+    "name": "SEEDS",
+    "old": {
+     "__dict__": {
+      "val_sd": 610101,
+      "val_b4": 610102,
+      "endpoint": 610103,
+      "fresh_b4": 610104,
+      "val_projection": 610105
+     }
+    },
+    "new": {
+     "__dict__": {
+      "val_sd": 620311,
+      "val_b4": 620312,
+      "endpoint": 620313,
+      "fresh_b4": 620314,
+      "val_projection": 620315
+     }
+    }
+   },
+   {
+    "module": "k4b_config",
+    "name": "STORE",
+    "old": {
+     "__path__": "X:/Downloads/projects/topo-pilot/k4b-store"
+    },
+    "new": {
+     "__path__": "X:/Downloads/projects/topo-pilot/hwsc-store"
+    }
+   },
+   {
+    "module": "k4b_config",
+    "name": "CONTRACT",
+    "old": {
+     "__contract__": "957f0d5e70870bbd2323fbbae7bf5a8b814735b00a6525346562e7f1dd35b485"
+    },
+    "new": {
+     "__contract_view__": "k4b_contract_view"
+    }
+   },
+   {
+    "module": "k4b_config",
+    "name": "CONTRACT_PATH",
+    "old": {
+     "__repo__": "tools/k4b/CONTRACT.json"
+    },
+    "new": {
+     "__repo__": "tools/hwsc/CONTRACT.json"
+    }
+   },
+   {
+    "module": "k4b_config",
+    "name": "PROTOCOL_PATH",
+    "old": {
+     "__repo__": "tools/k4b/PROTOCOL_K4B_v1.md"
+    },
+    "new": {
+     "__repo__": "tools/hwsc/PROTOCOL_HWSC_v1.md"
+    }
+   },
+   {
+    "module": "k4b_data",
+    "name": "MODELS",
+    "old": [
+     1729,
+     2718,
+     3141
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "k4b_data",
+    "name": "PROCESS",
+    "old": [
+     "cylinder",
+     "overlap",
+     "1.25"
+    ],
+    "new": [
+     "cylinder",
+     "overlap",
+     "1.75"
+    ]
+   },
+   {
+    "module": "k4b_data",
+    "name": "SCOPE",
+    "old": "k4b-sf-v1",
+    "new": "hwsc-v1"
+   },
+   {
+    "module": "k4b_stats",
+    "name": "MODELS",
+    "old": [
+     1729,
+     2718,
+     3141
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "k4b_driver",
+    "name": "MODELS",
+    "old": [
+     1729,
+     2718,
+     3141
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "k4b_driver",
+    "name": "SEEDS",
+    "old": {
+     "__dict__": {
+      "val_sd": 610101,
+      "val_b4": 610102,
+      "endpoint": 610103,
+      "fresh_b4": 610104,
+      "val_projection": 610105
+     }
+    },
+    "new": {
+     "__dict__": {
+      "val_sd": 620311,
+      "val_b4": 620312,
+      "endpoint": 620313,
+      "fresh_b4": 620314,
+      "val_projection": 620315
+     }
+    }
+   },
+   {
+    "module": "k4b_driver",
+    "name": "ARTIFACTS",
+    "old": {
+     "__path__": "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts"
+    },
+    "new": {
+     "__path__": "X:/Downloads/projects/topo-pilot/hwsc-store/artifacts"
+    }
+   },
+   {
+    "module": "k4b_fresh",
+    "name": "MODELS",
+    "old": [
+     1729,
+     2718,
+     3141
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "k4b_fresh",
+    "name": "SEEDS",
+    "old": {
+     "__dict__": {
+      "val_sd": 610101,
+      "val_b4": 610102,
+      "endpoint": 610103,
+      "fresh_b4": 610104,
+      "val_projection": 610105
+     }
+    },
+    "new": {
+     "__dict__": {
+      "val_sd": 620311,
+      "val_b4": 620312,
+      "endpoint": 620313,
+      "fresh_b4": 620314,
+      "val_projection": 620315
+     }
+    }
+   },
+   {
+    "module": "k4b_decoder",
+    "name": "SCOPE",
+    "old": "k4b-sf-v1",
+    "new": "hwsc-v1"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "SCOPE",
+    "old": "hwsb-v1",
+    "new": "hwsc-v1"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "MASTERS",
+    "old": [
+     620201,
+     620202
+    ],
+    "new": [
+     620301,
+     620302,
+     620303
+    ]
+   },
+   {
+    "module": "hwsb_config",
+    "name": "DRY_MASTERS",
+    "old": [
+     629901,
+     629902
+    ],
+    "new": [
+     629911,
+     629912,
+     629913
+    ]
+   }
+  ],
+  "left_unchanged": [
+   {
+    "module": "k4b_stats",
+    "name": "SEEDS",
+    "reason": "copied K4b seeds; read only as the definition-time defaults of k4b_stats.sd_upper/centered and by k4b_stats.ladder, none of which is called under stage C (P1 is hwsc_gates.p1c)"
+   },
+   {
+    "module": "k4b_stats",
+    "name": "sd_upper.__defaults__",
+    "reason": "left unchanged: never called under stage C"
+   },
+   {
+    "module": "k4b_stats",
+    "name": "centered.__defaults__",
+    "reason": "left unchanged: never called under stage C"
+   },
+   {
+    "module": "k4b_driver",
+    "name": "check_checkpoints.__defaults__",
+    "reason": "E4 artifact root as a definition-time default; k4b_driver.h1/check_checkpoints are never called under stage C (H1-C replaces h1)"
+   },
+   {
+    "module": "k4b_meter_bind",
+    "name": "TEMP_ROOT",
+    "reason": "meter-parent setting; set by hwsc_meter_bind.bind in the meter process (DRC13 checks the effective value); not read inside a stage process"
+   },
+   {
+    "module": "k4b_registry",
+    "name": "ART",
+    "reason": "registry reader (a): E4 ObservationSets under the main artifacts folder are read by design (R1)"
+   },
+   {
+    "module": "c1_registry_sources",
+    "name": "ART",
+    "reason": "registry reader (a) (R1), as k4b_registry.ART"
+   },
+   {
+    "module": "c1_registry_sources",
+    "name": "observation_set_sources.__defaults__",
+    "reason": "reader (a) default root (R1)"
+   },
+   {
+    "module": "c1_registry_sources",
+    "name": "history_index_ids.__defaults__",
+    "reason": "reader (a) default root (R1)"
+   },
+   {
+    "module": "c1_registry_sources",
+    "name": "history_index_hashes.__defaults__",
+    "reason": "reader (a) default root (R1)"
+   },
+   {
+    "module": "c1_config",
+    "name": "MODELS",
+    "reason": "C1' constant; no stage-C call path reads it"
+   },
+   {
+    "module": "c1_config",
+    "name": "CONTRACT",
+    "reason": "C1' contract record (artifact_root); read by stage C only through c1_config.chart_cfg/check_chart_equality (chart section)"
+   },
+   {
+    "module": "c1_data",
+    "name": "PROCESS",
+    "reason": "C1' constant used only by c1_data history generators, never called under stage C (k4b_data and hwsc_data sample)"
+   },
+   {
+    "module": "c1_driver",
+    "name": "MODELS",
+    "reason": "C1' driver; never called under stage C"
+   },
+   {
+    "module": "c1_driver_cal",
+    "name": "MODELS",
+    "reason": "C1' driver; never called under stage C"
+   },
+   {
+    "module": "c1_driver_fresh",
+    "name": "MODELS",
+    "reason": "C1' driver; never called under stage C"
+   },
+   {
+    "module": "c1_driver_late",
+    "name": "MODELS",
+    "reason": "C1' driver; never called under stage C"
+   },
+   {
+    "module": "c1_endpoint",
+    "name": "ladder.__defaults__",
+    "reason": "C1' ladder; never called under stage C"
+   },
+   {
+    "module": "c1_freeze",
+    "name": "CONTRACT",
+    "reason": "C1' contract record; never read under stage C"
+   },
+   {
+    "module": "c1_meter_bind",
+    "name": "CONTRACT",
+    "reason": "C1' contract record; never read under stage C"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "SEEDS",
+    "reason": "stage-B seeds; read only as definition-time defaults of hwsb_gates.ladder_pilot and b5; ladder_pilot is always called with seeds=(620311, 620315), b5 is never called"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "NEEDLES",
+    "reason": "stage-B G0 needles; hwsb_known.g0 is never called (G0c has its own)"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "STORE",
+    "reason": "every stage-C call passes the store explicitly; hwsb functions that default to it (meter binding, run_* drivers) are never called"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "DRY_STORE",
+    "reason": "as STORE; hwsb_dry.run_dry is never called"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "STUDY_LEDGER",
+    "reason": "as STORE; running_cpu is always called with ledger_path"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "REAL_PLAN",
+    "reason": "stage-B plan; every stage-C call passes plan=HWSC_PLAN (or a dry plan) explicitly"
+   },
+   {
+    "module": "hwsb_config",
+    "name": "CONTRACT",
+    "reason": "stage-B contract record; read under stage C only for its world, recipe, known_cases KB0-KB6, law and dry_run sections by the reused KB functions"
+   },
+   {
+    "module": "hwsb_driver",
+    "name": "C",
+    "reason": "copy of the stage-B contract; hwsb_driver functions read under stage C: status_of, running_cpu (ledger only); pause_check is never called"
+   },
+   {
+    "module": "hwsb_records",
+    "name": "C",
+    "reason": "copy of the stage-B contract; read by hwsb_records.freeze/verify_freeze, never called under stage C"
+   },
+   {
+    "module": "hwsb_known",
+    "name": "KC",
+    "reason": "stage-B known-case references (KB0-KB6), reused unchanged by KC2-KC6"
+   },
+   {
+    "module": "hwsb_kb",
+    "name": "KC",
+    "reason": "stage-B known-case references (KB5, KB6), reused unchanged by KC5-KC6"
+   },
+   {
+    "module": "hwsb_data",
+    "name": "build_process.__defaults__",
+    "reason": "always called with masters=(620301, 620302, 620303) (or a dry plan's masters)"
+   },
+   {
+    "module": "hwsb_driver",
+    "name": "running_cpu.__defaults__",
+    "reason": "always called with ledger_path"
+   },
+   {
+    "module": "hwsb_driver",
+    "name": "pause_or_raise.__defaults__",
+    "reason": "never called (hwsc_driver.pause_or_raise_c)"
+   },
+   {
+    "module": "hwsb_dry",
+    "name": "run_dry.__defaults__",
+    "reason": "never called"
+   },
+   {
+    "module": "hwsb_gates",
+    "name": "ladder_pilot.__defaults__",
+    "reason": "always called with models and seeds explicit"
+   },
+   {
+    "module": "hwsb_gates",
+    "name": "b5.__defaults__",
+    "reason": "never called"
+   },
+   {
+    "module": "hwsb_stages",
+    "name": "train_core.__defaults__",
+    "reason": "never called"
+   },
+   {
+    "module": "hwsb_train",
+    "name": "train.__defaults__",
+    "reason": "always called with plan explicit"
+   },
+   {
+    "module": "hws_exact",
+    "name": "kc1_identity.__defaults__",
+    "reason": "HWS S0 known case; never called"
+   },
+   {
+    "module": "hws_driver",
+    "name": "C",
+    "reason": "HWS contract record (KC1 artifact_root); read under stage C only by seed_search's module (no artifact access)"
+   },
+   {
+    "module": "hws_driver",
+    "name": "S0C",
+    "reason": "HWS contract record; never read under stage C"
+   },
+   {
+    "module": "hws_known",
+    "name": "S0C",
+    "reason": "HWS contract record; never read under stage C"
+   },
+   {
+    "module": "hws_worlds",
+    "name": "CONTRACT",
+    "reason": "HWS contract record; never read for artifact_root under stage C"
+   }
+  ],
+  "audit": {
+   "module_dirs": [
+    "tools/k4b",
+    "tools/hwsb",
+    "tools/hws",
+    "tools/c1prime",
+    "tools/c1prime_registry"
+   ],
+   "scope_rule": "every module in sys.modules whose __file__ resolves under one of the module_dirs of the running worktree",
+   "scanned": "module globals (except modules and dunder names) and the __defaults__ and __kwdefaults__ of every function and method defined in the module (staticmethod/classmethod unwrapped); recursion into tuples, lists, sets, dict keys and values, and fields of dataclass instances (depth <= 6)",
+   "forbidden": {
+    "tuples": [
+     [
+      1729,
+      2718,
+      3141
+     ],
+     [
+      "cylinder",
+      "overlap",
+      "1.25"
+     ]
+    ],
+    "key_sets": [
+     [
+      1729,
+      2718,
+      3141
+     ]
+    ],
+    "strings": [
+     "k4b-sf-v1",
+     "hwsb-v1"
+    ],
+    "ints": [
+     610101,
+     610102,
+     610103,
+     610104,
+     610105,
+     620201,
+     620202,
+     620212,
+     620213,
+     620214
+    ],
+    "seed_dicts": "any dict with val_sd == 610101",
+    "paths": [
+     "X:/Downloads/projects/topo-pilot/k4b-store",
+     "X:/Downloads/projects/topo-pilot/topo-pilot/artifacts",
+     "X:/Downloads/projects/topo-pilot/hwsb-store",
+     "X:/Downloads/topo-scratch/hwsb-dry",
+     "X:/Downloads/projects/topo-pilot/agent-handoff/HWSB_CPU_LEDGER.json"
+    ],
+    "path_rule": "a Path or str whose '/'-normalised form (trailing '/' stripped) equals one of paths",
+    "bool": "never a hit"
+   },
+   "pass_rule": "PASS iff every hit's (module, top-level name) is on left_unchanged (top-level name = the global name, or '<function>.__defaults__' / '<function>.__kwdefaults__' with the method's 'Class.method' name); else FAIL_TECHNICAL/BINDING listing the hits",
+   "static_scan_2026_10_29": "a read-only import scan of the 59 modules of module_dirs at af5e7b4 found exactly the hits covered by table and left_unchanged (job 0176 phase 1)"
+  },
+  "never_called": [
+   "hwsb_data.sequence_ids",
+   "hwsb_data.make_train_dev",
+   "k4b_data.load_process",
+   "k4b_driver.h1",
+   "k4b_driver.g0",
+   "k4b_driver.p1",
+   "k4b_driver.reg1",
+   "k4b_driver.h2",
+   "k4b_driver.check_checkpoints",
+   "k4b_stats.ladder",
+   "k4b_stats.sd_upper",
+   "k4b_stats.centered",
+   "k4b_fresh.kreg2_step",
+   "k4b_fresh.h2_fresh",
+   "k4b_fresh.export",
+   "k4b_fresh.main",
+   "k4b_registry.build",
+   "hwsb_known.g0",
+   "hwsb_known.kb1",
+   "hwsb_known.run_kb",
+   "hwsb_gates.b5",
+   "hwsb_driver.pause_check",
+   "hwsb_driver.pause_or_raise",
+   "hwsb_driver.run_train",
+   "hwsb_driver.run_eval",
+   "hwsb_records.ledger_append",
+   "k4b_cert.transport_bound (outside hwsb_law.bound_law)"
+  ]
+ },
+ "known_cases": {
+  "tolerance_rule": "every KC failure is FAIL_TECHNICAL/KNOWN_CASE (KC0 authority defects keep INCONCLUSIVE/RESOURCE_OR_AUTHORITY, hash/seed defects their own FAIL_TECHNICAL status); no tolerance or reference changes after data",
+  "order": [
+   "KC0",
+   "KC1",
+   "KC2",
+   "KC3",
+   "KC4",
+   "KC5",
+   "KC6",
+   "KC7",
+   "KC8",
+   "KC9"
+  ],
+  "KC0": {
+   "handoff_sha256": "a4d9a0c960adc285f4aec626ccb2e0405cce504357d746f7e0d270615eca4353",
+   "hwsb_freeze_sha256": "4b84b3201755ba55817518bd6e7fa00a8a6bafd4cabab212789a60b47625b3a4",
+   "selection_sha256": "243f732412b80d4fd0fc088f9612999520e82dd1ec124f2a9f013de35064f087",
+   "store_rule": "hwsc-store absent, or hwsc_driver.lineage_c PASS"
+  },
+  "KC1": {
+   "WorldSpec": {
+    "id": "21feee1d8ee5422e",
+    "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f"
+   },
+   "TransitionSpec": {
+    "id": "e4dafc7b9785c172",
+    "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd"
+   },
+   "selection_sha256": {
+    "E": "4d7b8e5682033357dfde7f640a2dd5ad6d9f645afec33a6e580c8bc20b7ec467",
+    "T": "d55d1024e2e3cd36603e26ff9ae5e365d373abca62495287656f20d69033f688",
+    "pi": "5ab26711610321dcd79ea419ba214fed8e7d637d7b4103868de878af553ca4a9",
+    "coords": "81468d18466865c93107717f419c78ad65eff208b3277dc576d8bb4116912340"
+   }
+  },
+  "KC2": {
+   "reuse": "hwsb_known.kb2_kb3 (KB2 part)",
+   "reference": "hwsb CONTRACT known_cases.KB2 (read through hwsb_config.CONTRACT)"
+  },
+  "KC3": {
+   "reuse": "hwsb_known.kb2_kb3 (KB3 part)"
+  },
+  "KC4": {
+   "w0_Z_bound": "2116763197780003590583470649/1000000000000000000000000000000000000000",
+   "w0_record": {
+    "path": "X:/Downloads/projects/topo-pilot/k4b-store/stages/S8/RESULT.json",
+    "sha256": "1571b08b316e39062fab775113731865350c818bb42e1abf173d5b90ee61be44",
+    "key": "Z_bound"
+   },
+   "w_star_Z_bound": "87876736540276863476307541/78125000000000000000000000000000000000",
+   "F_plan": "27312187451545202754502463604340307573794999991406438372683275866852077836382274453042244654962849887985453490270143229513796234309096358998064554686404281596814582484088052957714131681916092663991109078731654178655646565849057711379474144533588924848956932132857038713212846645073/273121871170758376227025875624621874943464790383264112834005392812644670616858444204902818110720446499296572620384188471711252640633625823111592014641442055244520044735857160009478930482577135773615507178569032815900758005493331491347345713397760000000000000000000000000000000000000000",
+   "rule": "hwsb_known.kb4 PASS; Fraction(kb4 w_star Z_bound) == HANDOFF Z_bound; k4b_cert.F_plan(Z) == HANDOFF F_plan (exact Fractions)"
+  },
+  "KC5": {
+   "reuse": "hwsb_kb.kb5",
+   "reference": {
+    "record": {
+     "path": "X:/Downloads/projects/topo-pilot/hws-store/stages/S3/worlds/W12-q1-s1.75-p0.2.json",
+     "sha256": "164c6038680dcfa00dba4686c7432b5fa351c8dfec88a75119ea8a7447f5f8b3"
+    },
+    "hist": {
+     "path": "X:/Downloads/projects/topo-pilot/hws-store/hist/S3/W12-q1-s1.75-p0.2.npz",
+     "sha256_key": "hist_sha256",
+     "sha256": "c000a22408caecf752f0ac340d51d5ea6e776fa57037f00fd2b0949748ec2e41",
+     "array_key": "canon32"
+    },
+    "references": {
+     "D4": [
+      "bounds",
+      "D4",
+      "mean"
+     ],
+     "GC": [
+      "bounds",
+      "GC",
+      "mean"
+     ],
+     "G4": [
+      "bounds",
+      "G4",
+      "mean"
+     ],
+     "G4A": [
+      "bounds",
+      "G4A",
+      "mean"
+     ]
+    },
+    "values": {
+     "D4": 0.04701108259591072,
+     "GC": 0.28719484416019236,
+     "G4": 0.031687124910671036,
+     "G4A": 0.018926750991219307
+    },
+    "abs_tol": 1e-12
+   },
+   "auth_read": "KC5 S3 w* table"
+  },
+  "KC6": {
+   "reuse": "hwsb_kb.kb6",
+   "G_C": 0.2648737252067266,
+   "abs_tol": 1e-12
+  },
+  "KC7": {
+   "first_draws": 64,
+   "fixture": "synthetic; see API.md section 7"
+  },
+  "KC8": {
+   "tests": "tests/hwsc/test_a_k4b_known_bound.py (run at PF and by KC8 through pytest inside the KC job)"
+  },
+  "KC9": {
+   "version": "REHEARSAL",
+   "out_dir": "X:/Downloads/projects/topo-pilot/hwsc-store/registry/rehearsal",
+   "sources": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R8"
+   ],
+   "records": [
+    "status",
+    "cpu_s",
+    "peak_memory_bytes",
+    "n_digests",
+    "problems"
+   ]
+  }
+ },
+ "gates": {
+  "KC": [
+   "FREEZE",
+   "AUTH",
+   "SCHED",
+   "BINDING_AUDIT",
+   "KC0",
+   "KC1",
+   "KC2",
+   "KC3",
+   "KC4",
+   "KC5",
+   "KC6",
+   "KC7",
+   "KC8",
+   "KC9"
+  ],
+  "TRAIN": [
+   "FREEZE",
+   "AUTH",
+   "SCHED",
+   "KC_ACCEPT",
+   "BINDING_AUDIT",
+   "HOLD_<master>_<step>",
+   "TRAIN_<master>"
+  ],
+  "E1": [
+   "FREEZE",
+   "AUTH",
+   "SCHED",
+   "BINDING_AUDIT",
+   "G0C",
+   "H1C",
+   "REG1",
+   "H2",
+   "L1",
+   "ORACLE-VAL",
+   "B4-VAL",
+   "C0-CAL",
+   "C0-VAL",
+   "CERT-VAL",
+   "P1"
+  ],
+  "REG2": [
+   "FREEZE",
+   "AUTH",
+   "SCHED",
+   "BINDING_AUDIT",
+   "ACCEPT",
+   "REG2"
+  ],
+  "E2": [
+   "FREEZE",
+   "AUTH",
+   "SCHED",
+   "BINDING_AUDIT",
+   "RELEASE_B",
+   "H1C_E2",
+   "H2-FRESH",
+   "T-PRE",
+   "ENDPOINT",
+   "OUTCOME"
+  ]
+ },
+ "outcomes": {
+  "precedence": [
+   "FAIL_TECHNICAL/<reason>",
+   "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+   "INCONCLUSIVE/NOT_LEARNED",
+   "INCONCLUSIVE/<K4b reason>",
+   "SUPPORT|EXCLUSION|MIXED|INCONCLUSIVE|INCONCLUSIVE/NUMERICAL"
+  ],
+  "k4b_reasons": [
+   "REGISTRY_INCOMPLETE",
+   "HEADROOM",
+   "CHART_UNAVAILABLE",
+   "NUMERICAL",
+   "UNDERPOWERED"
+  ],
+  "resource_or_authority_sources": [
+   "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+   "INCONCLUSIVE/AUTHORITY",
+   "INCONCLUSIVE/RESOURCE"
+  ],
+  "fail_technical_reasons": [
+   "KNOWN_CASE",
+   "NONFINITE",
+   "IDENTITY",
+   "LAW_BOUND",
+   "LINEAGE",
+   "ORACLE",
+   "DETERMINISM",
+   "NUMERICAL",
+   "BINDING",
+   "SEALING",
+   "BLINDNESS",
+   "SEED_SCOPE",
+   "AUTHORITY",
+   "FREEZE",
+   "REGISTRY",
+   "HOLD",
+   "LEDGER",
+   "RERUN",
+   "SAMPLER",
+   "OUTCOME",
+   "UNEXPECTED"
+  ]
+ },
+ "annotations": {
+  "POSITIVE_BELOW_MARGIN_EXCLUDE": "positive, and certified below the margin",
+  "POSITIVE_BELOW_MARGIN_UNRESOLVED": "positive, not resolved against the margin",
+  "others": [
+   "NEGATIVE_ALIGNMENT_<j>",
+   "UNRESOLVED/NUMERICAL",
+   "step-0 qualifier",
+   "INIT_UNAVAILABLE",
+   "FRESH_B4_LOW"
+  ]
+ },
+ "licences": {
+  "SUPPORT": "In each of three transformers trained by the E4 recipe in world w* (12 x 12 cylinder, stay probability 0.2, emission width 1.75; masters 620301/620302/620303, step 5000, resid_post_3, position 32), the gauged phase of a chart built by the LCC >= 95 % rule on fresh calibration histories covaries with the first-harmonic oracle residual r4 = m32 - m4 on {N} fresh stationary test histories. For every assignment of unit coordinates to the unsupported rows ({a}/{N}, {b}/{N}, {c}/{N}), the one-sided (1 - 0.05/3) lower bound of E[u.r4] under the documented law exceeds 0.01 after the certified margin F (values {values}; B4 = {B4}; oracle comparator Delta4_orc = {delta4_orc} on the same rows). Every function of the last four observations has zero population covariance with r4 under that law, so on its supported rows this coordinate is not a function of the last four observations: it depends on earlier observations, in a direction aligned with the oracle belief residual.",
+  "EXCLUSION": "For this chart rule, site and world, in each of the three models the covariance of the chart phase with r4 lies within (-0.01, 0.01) for every completion of unsupported rows, under the documented law, at the stated nominal levels (bounds {values}; B4 = {B4}; Delta4_orc = {delta4_orc} on the same rows). Covariance of either sign at or beyond 0.01 is excluded.",
+  "EXCLUSION_ORACLE_SENTENCE": "These learned circles did not carry, in the measured direction, beyond-four information that the belief carried on these rows.",
+  "EXCLUSION_TAIL": "In either case EXCLUSION still does not establish suffix-only dependence.",
+  "POSITIVE_BELOW_MARGIN": "In model(s) {models}, the chart phase covaries positively with r4 for every completion (one-sided (1 - 0.05/3) lower bound > 0 after F).",
+  "POSITIVE_BELOW_MARGIN_EXCLUDE": "Its upper bound after F is below the registered margin 0.01: a positive effect, certified smaller than the margin.",
+  "POSITIVE_BELOW_MARGIN_UNRESOLVED": "Its lower bound does not exceed 0.01: a positive finding below the margin, neither SUPPORT nor evidence of a negligible effect.",
+  "MIXED": "Only the recorded per-model results and the identified limitations.",
+  "INCONCLUSIVE": "Only the recorded per-model results and the identified limitations.",
+  "INCONCLUSIVE/NOT_LEARNED": "Under the unchanged E4 recipe, {k} of 3 new models did not reach captured 0.8 on 4,096 fresh histories in w*. The beyond-four question was not tested.",
+  "INCONCLUSIVE/CHART_UNAVAILABLE": "The models learned (L1 PASS), but in model {models} the K4b chart rule did not yield a chart passing C0-cal/C0-val (criterion {criterion}) on fresh histories.",
+  "FAIL_TECHNICAL": "No scientific statement is licensed.",
+  "INCONCLUSIVE/RESOURCE_OR_AUTHORITY": "No scientific statement is licensed.",
+  "INCONCLUSIVE/<K4b reason>": "Only the recorded per-model results and the identified limitations.",
+  "not_licensed": {
+   "INCONCLUSIVE/NOT_LEARNED": [
+    "that w* is unlearnable",
+    "any statement about circles or about the pilot models"
+   ],
+   "INCONCLUSIVE/CHART_UNAVAILABLE": [
+    "that no circular structure exists"
+   ]
+  },
+  "does_not_establish": [
+   "K4B section 8.4 items 1-10, with 'E4 models' read as 'the three stage-C models'",
+   "11 The E4 models and K4b: nothing about the E4 models in w0; K4b's EXCLUSION stands, and a stage-C SUPPORT does not imply that K4b's models lacked the information (their world had too little of it to see).",
+   "12 Training-seed population: three trained seeds are three draws of the training process; the claim is 'in each of these three models'.",
+   "13 Pilot models and other worlds: nothing about the stage-B pilot models, the fallback worlds or any world outside w*.",
+   "14 Oracle qualification: stage A's oracle numbers are motivation, not part of the evidence; stage C's own Delta4_orc on the test rows is the reported comparator."
+  ],
+  "fill_rule": "str.format_map with a dict whose missing keys become 'n/a'"
+ },
+ "registry": {
+  "versions": [
+   "K-REG1",
+   "K-REG2",
+   "REHEARSAL"
+  ],
+  "out_dirs": {
+   "K-REG1": "X:/Downloads/projects/topo-pilot/hwsc-store/registry",
+   "K-REG2": "X:/Downloads/projects/topo-pilot/hwsc-store/registry",
+   "REHEARSAL": "X:/Downloads/projects/topo-pilot/hwsc-store/registry/rehearsal"
+  },
+  "format": "the C2 manifest and digest-file format of nd_registry.build: <out_dir>/<version>.json, <out_dir>/<version>_digests.npz (digests <U64 sorted, seq_ids int64 sorted), x6 runs under <out_dir>/runs/<version>/; loadable by c2_registry.Registry.load(<store>, version) where <store>/registry = out_dir",
+  "digest_rule": "sha256 hex of the uint8 canonical w1..w32 row (scores.history_digests)",
+  "sources": {
+   "R1": "C2ND's frozen readers unchanged: c2_registry.token_sources(root), c2_registry.x6_source(root/'x6-stage1-store', out_dir/'runs'/version), nd_registry.source_c2, source_c2_superseded, source_scratch, source_parallel(hws-store, 'hws'), source_parallel(x6zc-store, 'x6zc'), and k4b_registry.source_f through the stage-C inventory",
+   "R2": "hwsc_registry.source_c2nd(store) (c2nd section below)",
+   "R3": "nd_registry.source_parallel(hws-store, 'hws') (also reads scratch hws-dry/hist/**); counted once with R1's hws row",
+   "R4": "hwsc_registry.source_hwsb(store, expected=HANDOFF store_inventory)",
+   "R5": "hwsc_registry.source_dry(paths) over dry_stores",
+   "R6": "nd_registry.source_scratch (C2ND row 9) plus hwsc_registry.scratch_check against scratch_inventory",
+   "R7": "hwsc_registry.source_own(hwsc-store, expected=TRAIN inventory)",
+   "R8": "hwsc_registry.inventory_c(root, readers) against inventory"
+  },
+  "deep_scan_exclude": [
+   "agent-handoff",
+   "c1prime-store",
+   "d2a-store",
+   "k4b-store",
+   "x6-stage1-store",
+   "c2-readout-store",
+   "c2nd-store",
+   "hws-store",
+   "x6zc-store",
+   "hwsb-store",
+   "hwsc-store"
+  ],
+  "inventory_date": "2026-10-29",
+  "inventory": {
+   "agent-handoff": {
+    "decision": "READER",
+    "readers": [
+     "c"
+    ]
+   },
+   "c1prime-store": {
+    "decision": "READER",
+    "readers": [
+     "d"
+    ]
+   },
+   "c2-readout-store": {
+    "decision": "READER",
+    "readers": [
+     "c2"
+    ],
+    "reason": "C2's own store in C2; rows 2-3: the five hist digest tables (sha256 bound) and a fail-closed name scan of superseded/"
+   },
+   "c2nd-store": {
+    "decision": "READER",
+    "readers": [
+     "c2nd"
+    ],
+    "reason": "R2 (C2ND's store; OWN in C2ND's own inventory)"
+   },
+   "chart-diag-store-0023": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "circular-audit-store": {
+    "decision": "EXCLUSION",
+    "reason": "one MetricRecords object (circ-audit-v1); no history arrays"
+   },
+   "coord-scratch": {
+    "decision": "EXCLUSION",
+    "reason": "coordinator scripts, logs and JSONL; no array file"
+   },
+   "d1-seam-oracle-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "d2a-store": {
+    "decision": "READER",
+    "readers": [
+     "e"
+    ]
+   },
+   "docs-0024-store": {
+    "decision": "EXCLUSION",
+    "reason": "ledger, meter binding and logs; no histories"
+   },
+   "hws-store": {
+    "decision": "READER",
+    "readers": [
+     "hws"
+    ],
+    "reason": "R3 (C2ND reader hws; present with FREEZE.json)"
+   },
+   "hwsb-store": {
+    "decision": "READER",
+    "readers": [
+     "hwsb"
+    ],
+    "reason": "R4 (hwsb_registry.registry_digests against HANDOFF store_inventory) plus the R4 non-history name rules"
+   },
+   "hwsc-store": {
+    "decision": "OWN",
+    "reason": "this lineage's store; removed from the run-time inventory; its ObservationSets are R7, its eval blocks enter K-REG2 as extra tables"
+   },
+   "int-0021-store": {
+    "decision": "EXCLUSION",
+    "reason": "ledger, meter binding, suite XML and logs; no histories"
+   },
+   "int-0022-store": {
+    "decision": "EXCLUSION",
+    "reason": "ledger, meter binding and logs; no histories"
+   },
+   "k4b-store": {
+    "decision": "READER",
+    "readers": [
+     "k"
+    ]
+   },
+   "tmp-0027": {
+    "decision": "EXCLUSION",
+    "reason": "synthetic test fixtures under pytest-of-pc2 (<= 1,024 rows; K4b R23 rule)"
+   },
+   "tmp-0028": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0029": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0031": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0032": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0033": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0034": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0035c": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0036": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0039": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0039c": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0041": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0042": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0042c": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0044": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0045": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0046": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "tmp-0046r": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; empty"
+   },
+   "tmp-0047": {
+    "decision": "EXCLUSION",
+    "reason": "job temporaries; 0 history-bearing files"
+   },
+   "topo-pilot": {
+    "decision": "READER",
+    "readers": [
+     "a"
+    ]
+   },
+   "topo-pilot-c1p": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-c2": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree (execution worktree); only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-c2nd": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-causal-planning-codex": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-circle-history-k4": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-d1": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-d2a": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-hws": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-int": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-k4b": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-reorg": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-verify": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x2a": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x4-history-feas": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x4b": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6s1": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "topo-pilot-x6zc": {
+    "decision": "EXCLUSION",
+    "reason": "git worktree; only array file is the non-history verification_arrays.npz copy"
+   },
+   "x2a-stage0-oracle-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4-circle-history-feas-store-0015": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4-history-feas-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4-oracle-profile-store-0014": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4b-research-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4b2-research-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x4f-gates-research-store": {
+    "decision": "READER",
+    "readers": [
+     "b"
+    ]
+   },
+   "x5g1-research-store": {
+    "decision": "READER",
+    "readers": [
+     "f"
+    ]
+   },
+   "x5g1-techbench-store": {
+    "decision": "EXCLUSION",
+    "reason": "one tech_ledger.json; no array file"
+   },
+   "x5g1t-fixture-run": {
+    "decision": "READER",
+    "readers": [
+     "f"
+    ]
+   },
+   "x5g1t-research-store": {
+    "decision": "READER",
+    "readers": [
+     "f"
+    ]
+   },
+   "x6-stage0-oracle-store": {
+    "decision": "EXCLUSION",
+    "reason": "run/model.npz holds float64 process arrays; gate records hold scalars; no stored history (its regenerated MC samples enter through X6-REG1, the base of reader x6)"
+   },
+   "x6-stage1-store": {
+    "decision": "READER",
+    "readers": [
+     "x6"
+    ]
+   },
+   "x6zc-store": {
+    "decision": "READER_IF_PRESENT",
+    "readers": [
+     "x6zc"
+    ],
+    "reason": "row 8; absent on 2026-10-26; same rule"
+   }
+  },
+  "top_level_files": {
+   "decision": "EXCLUSION",
+   "files": [
+    "CODEX_PROMPT_owner_transfer_2026-10-14.md",
+    "conductor_prompts_2026-10-13.md",
+    "x4f-gates-run.log",
+    "x5g1t-fixture-run.log",
+    "topo_pilot_research_review_20261014.zip",
+    "x4-history-feas-readonly-audit-20261014T140309Z.zip"
+   ],
+   "reason": "not directories; text, or zip archives whose name lists hold no .npz/.npy/.pt member"
+  },
+  "root_listing_2026_10_29": "exactly one top-level directory not in C2ND's table: hwsb-store (hwsc-store absent)",
+  "c2nd": {
+   "store": "X:/Downloads/projects/topo-pilot/c2nd-store",
+   "hist_bound": {
+    "hist/HIST_feas_b0.npz": "cb77226b3e0ecfdd90c4f3fc23049f435fb7cb04c81428d1d6d8d1849aca96da",
+    "hist/HIST_fit_b0.npz": "ed80c8ff0b8a2a8c32ee01f5abe5d381fc5b1b25d28a28bbc8194e65a8fce271",
+    "hist/HIST_fit_b1.npz": "40a00e79464bd850caef39f961e99f09f22f0f63a8a251edd45134a65d5486f3",
+    "hist/HIST_test_b0.npz": "bab42709a093fa9207f8ddac68c53c11d8e6f45bde2f16483d7badeed9db2567",
+    "hist/HIST_val_b0.npz": "f1bea6618403385f71a88cd9e219a985306d12620ab0b7e5aa56c18d3ea44276"
+   },
+   "hist_bound_source": "c2nd-store/STAGES.jsonl STAGE_COMPLETE records (JSON; the arrays were not opened or hashed by the contract writer)",
+   "hist_columns": [
+    "digest_H",
+    "digest_Hp",
+    "digest_Hm",
+    "digest_HY"
+   ],
+   "sequence_id_column": "sequence_id (int64; keys of c2_data.history_table per C2ND API.md section 15.1); added to the frozen sequence-ID union; a table without it is recorded in known_gaps (S3), not a failure",
+   "non_history_patterns": [
+    "decoys/HEAD_*.npz",
+    "fits/DEC_*.npz",
+    "fits/REFIT_*.npz",
+    "oracle/ORACLE_*.npz",
+    "stages/S2/ACT_FIT_*.npz",
+    "stages/S5/ACT_TEST_*.npz",
+    "stages/S5/ENDPOINT_NR_*.npz",
+    "stages/S5/ENDPOINT_D_*.npz",
+    "stages/S5/ENDPOINT_NM_*.npz",
+    "registry/**"
+   ],
+   "non_history_basis": "C2ND API.md section 15.1 (tools/c2_nd/API.md:363-366)",
+   "sealed": "sealed/ listed by name only (never opened), class NON_HISTORY (activation and readout arrays, C2ND API.md:230)",
+   "superseded": "name scan of superseded/ (0163-a1, 0163-a2 on 2026-10-29): any .npz/.npy/.pt -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "counts_2026_10_29": {
+    "hist": 5,
+    "decoys": 3,
+    "fits": 6,
+    "oracle": 4,
+    "registry": 18,
+    "sealed": 15,
+    "stages/S2": 3,
+    "stages/S5": 12,
+    "superseded": 0,
+    "total": 66
+   },
+   "other_array": "INCONCLUSIVE/REGISTRY_INCOMPLETE"
+  },
+  "hwsb": {
+   "listing": "name-only listing of hwsb-store, pruning stages/EVAL/ before listing",
+   "history_subtrees": [
+    "artifacts/ObservationSet/",
+    "hist/",
+    "superseded/"
+   ],
+   "artifact_types_by_meta": [
+    "WorldSpec",
+    "TransitionSpec",
+    "EmissionSpec",
+    "Checkpoint"
+   ],
+   "chart_patterns": [
+    "stages/S4a/CHART_*.npz",
+    "stages/S4a/INIT_CHART_*.npz"
+   ],
+   "never_listed": [
+    "stages/EVAL/"
+   ],
+   "counts_2026_10_29": {
+    "Checkpoint payload.npz": 24,
+    "Checkpoint state.pt": 24,
+    "EmissionSpec payload.npz": 2,
+    "TransitionSpec payload.npz": 1,
+    "WorldSpec payload.npz": 1,
+    "ObservationSet payload.npz": 4,
+    "hist": 3,
+    "stages/S4a/CHART_*.npz": 2
+   },
+   "other_array": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "expected": "HANDOFF store_inventory (32 entries)",
+   "reader": "hwsb_registry.registry_digests(store, expected=...)"
+  },
+  "dry_stores": {
+   "paths": [
+    "X:/Downloads/topo-scratch/hws-dry",
+    "X:/Downloads/topo-scratch/hwsb-dry",
+    "X:/Downloads/topo-scratch/hwsb-dry-0169",
+    "X:/Downloads/topo-scratch/hwsb-dry-0171",
+    "X:/Downloads/topo-scratch/hwsc-dry",
+    "X:/Downloads/topo-scratch/hwsc-dry-<job>"
+   ],
+   "hws_dry_rule": "files under hws-dry/hist/** are R3's; every other array file of hws-dry is R5's (e.g. DR12/<utc>/superseded/DRY-<utc>/hist/DRY/DR12.npz)",
+   "planted_fixtures": [
+    {
+     "path": "X:/Downloads/topo-scratch/hwsb-dry/DRB13/20261027T131402Z-unreadable/hist/VAL.npz",
+     "bytes": 10,
+     "sha256": "c17220859b7939fa150b210ad39a28d37476512795a58316cd1797507a80323c"
+    },
+    {
+     "path": "X:/Downloads/topo-scratch/hwsb-dry-0169/DRB13/20261027T231517Z-unreadable/hist/VAL.npz",
+     "bytes": 10,
+     "sha256": "c17220859b7939fa150b210ad39a28d37476512795a58316cd1797507a80323c"
+    },
+    {
+     "path": "X:/Downloads/topo-scratch/hwsb-dry-0171/DRB13/20261027T233451Z-unreadable/hist/VAL.npz",
+     "bytes": 10,
+     "sha256": "c17220859b7939fa150b210ad39a28d37476512795a58316cd1797507a80323c"
+    }
+   ],
+   "token_rule": "non-artifact .npz/.npy: np.load(allow_pickle=False); members with key in k4b_registry.HISTORY_KEYS or integer dtype with last dim 32 or 33 -> columns 0..31 digested; members named digest* -> hex digests taken as stored; ObservationSet payloads: tokens[:, :32] as stored (named) via ArtifactStore.load(ObservationSet, id, consumer='experiment'); WorldSpec/TransitionSpec/EmissionSpec/Checkpoint payload.npz and state.pt: classed by meta.json artifact_type, never opened; stages/S4a/CHART_*.npz and INIT_CHART_*.npz: non-history by name; planted fixtures: PLANTED_FIXTURE; any other unreadable file -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "absent_rule": "hwsc-dry and hwsc-dry-<job> may be absent (PASS, present False); the four other stores must exist",
+   "set_aside": "a superseded hwsc-dry* store has hist/ renamed to test_superseded-hist/ with SET_ASIDE.json (protocol section 9.3)"
+  },
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "scratch_inventory": {
+   "0048-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0049": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0050": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7010,
+     "outside_test": 365,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "0050-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0051": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0052": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7865,
+     "outside_test": 365,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "0052-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 587,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0053": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0054": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 8534,
+     "outside_test": 365,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "0054-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 810,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0055": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0056": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0057": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0058": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0059": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0059-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0060": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0061": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0062": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0062-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0063": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0063-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0064": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0064-review": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0065": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0066": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0067": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0068": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0069": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0070": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0071": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0072": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0073": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 53,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0074": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 52,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0075": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 153,
+     "outside_test": 46,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 1
+    }
+   },
+   "0077": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 920,
+     "outside_test": 59,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0078": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 406,
+     "outside_test": 36,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0079": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 235,
+     "outside_test": 11,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0081": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 897,
+     "outside_test": 253,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 105
+    }
+   },
+   "0082": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 911,
+     "outside_test": 295,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 70
+    }
+   },
+   "0084": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 688,
+     "outside_test": 296,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 70
+    }
+   },
+   "0086": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 1177,
+     "outside_test": 17,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0087": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0087-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0088": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 233,
+     "outside_test": 9,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0089": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 1179,
+     "outside_test": 45,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0089-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0089-pre": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0090": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 5,
+     "outside_test": 5,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0090-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0091": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 233,
+     "outside_test": 9,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0092": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0092-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0092-pre": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0093": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "reason": "proposed: cloud checkpoint .pt files (classed by name, never opened); other array files by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 98,
+     "outside_test": 98,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0093-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0094": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "reason": "proposed: cloud checkpoint .pt files (classed by name, never opened); other array files by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 437,
+     "outside_test": 437,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0094-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0095": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0095-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0096": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 233,
+     "outside_test": 9,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0096-prof": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0097": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0097-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0097-pre": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0098": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0098-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0099": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0099-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0102": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 49,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0103": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 168,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0104": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2 dry-run or live-copy roots (C2ND rows 4-5): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 131,
+     "outside_test": 98,
+     "HIST_outside_test": 17,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0105": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2 dry-run or live-copy roots (C2ND rows 4-5): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 284,
+     "outside_test": 256,
+     "HIST_outside_test": 45,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0106": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0107": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0107-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0108": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 28,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0109": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0109-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0109-pre": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2 dry-run or live-copy roots (C2ND rows 4-5): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 103,
+     "outside_test": 103,
+     "HIST_outside_test": 16,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0110": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 28,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0111": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 5959,
+     "outside_test": 353,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 338
+    }
+   },
+   "0111-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0112": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0112-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0113": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0113-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0114": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0114-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0115": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0115-launch": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0116": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0117": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0118": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0119a": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0119b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0120a": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0120b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0121a": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0121b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0122": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 58,
+     "outside_test": 13,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0123": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 3,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0124": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 221,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0125": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 394,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0126": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 941,
+     "outside_test": 3,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0127": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0128": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 15,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0128b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0129": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 15,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0130": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0131": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 30,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0131b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0132": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0133": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 15,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0135": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0136": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0137": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 17,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0138": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 94,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0138b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0139": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2ND dry runs (C2ND row 6): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6076,
+     "outside_test": 23,
+     "HIST_outside_test": 2,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0140": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0143": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0145": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 97,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0145b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0146": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0147": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0148": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2ND dry runs (C2ND row 6): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6092,
+     "outside_test": 32,
+     "HIST_outside_test": 2,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0149": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0150": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 97,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0152": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 99,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0152b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0153": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0155": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0156": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 101,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0156b": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0157": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2ND dry runs (C2ND row 6): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6087,
+     "outside_test": 23,
+     "HIST_outside_test": 2,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0158": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2ND dry runs (C2ND row 6): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6105,
+     "outside_test": 41,
+     "HIST_outside_test": 2,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0160": {
+    "decision": "READER",
+    "readers": [
+     "c2scratch"
+    ],
+    "reason": "C2ND dry runs (C2ND row 6): HIST_*.npz by c2scratch; frozen_files from the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6209,
+     "outside_test": 83,
+     "HIST_outside_test": 10,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0163": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 6126,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0164": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0165": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0166": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "0167": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "codex-remediation-20261017": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 5856,
+     "outside_test": 350,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 338
+    }
+   },
+   "coord-C2H": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7162,
+     "outside_test": 374,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "coord-C2Hp": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 15019,
+     "outside_test": 2101,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 2062
+    }
+   },
+   "coord-C2Hpp": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 8082,
+     "outside_test": 1055,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 1031
+    }
+   },
+   "coord-H": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7078,
+     "outside_test": 374,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "coord-H2": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7088,
+     "outside_test": 381,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 357
+    }
+   },
+   "coord-H3": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7097,
+     "outside_test": 381,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 357
+    }
+   },
+   "coord-H4": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 7078,
+     "outside_test": 374,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "coord-main-c2": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 28,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "dry-inv-0087": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hws-dry": {
+    "decision": "READER",
+    "readers": [
+     "hws",
+     "R5"
+    ],
+    "reason": "stage-A dry store: hist/** by C2ND reader hws (R-0116-3), everything else (DR12 superseded copies) by the R5 token reader",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 12,
+     "outside_test": 12,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0168": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0170": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0172": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0173": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0174": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-0175": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "hwsb-dry": {
+    "decision": "READER",
+    "readers": [
+     "R5"
+    ],
+    "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 62,
+     "outside_test": 62,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 44
+    }
+   },
+   "hwsb-dry-0169": {
+    "decision": "READER",
+    "readers": [
+     "R5"
+    ],
+    "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 62,
+     "outside_test": 62,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 44
+    }
+   },
+   "hwsb-dry-0171": {
+    "decision": "READER",
+    "readers": [
+     "R5"
+    ],
+    "reason": "stage-B dry store (and its re-runs) read file by file by the R5 token reader; planted fixtures by the planted_fixtures table",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 62,
+     "outside_test": 62,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 44
+    }
+   },
+   "hwsc-dry": {
+    "decision": "READER_IF_PRESENT",
+    "readers": [
+     "R5"
+    ],
+    "reason": "stage-C dry store (absent on 2026-10-29)",
+    "to_freeze": false
+   },
+   "hwsc-dry-<job>": {
+    "decision": "READER_IF_PRESENT",
+    "readers": [
+     "R5"
+    ],
+    "pattern": true,
+    "reason": "stage-C dry re-run stores (absent on 2026-10-29)",
+    "to_freeze": false
+   },
+   "p-review": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6845,
+     "outside_test": 365,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "paper": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "paper-edit": {
+    "decision": "EXCLUSION",
+    "reason": "no array file outside test_* components (name listing 2026-10-29); any array file found at REG is REGISTRY_INCOMPLETE",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "pytest-x6merge": {
+    "decision": "TO_FREEZE",
+    "proposed": "READER or EXCLUSION by the R6 header scan",
+    "reason": "array files outside test_* components; classification needs the header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 233,
+     "outside_test": 9,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_0159": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 602,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-0161": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 800,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-0162": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1067,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-0168r": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 0,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-0169": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1067,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-0171": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 1067,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsb-main": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 141,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_hwsc-<job>": {
+    "decision": "EXCLUSION",
+    "pattern": true,
+    "reason": "stage-C pytest basetemps and meter folders (test_ prefix rule)",
+    "to_freeze": false
+   },
+   "test_main-hws-merge": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 15,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "test_main-merge-1027": {
+    "decision": "EXCLUSION",
+    "reason": "test_* top-level directory (pytest/meter basetemps); excluded by the C2ND scratch_exclude_prefix rule",
+    "to_freeze": false,
+    "frozen_files": {},
+    "counts_2026_10_29": {
+     "array_files": 170,
+     "outside_test": 0,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   },
+   "verify-1121df8": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "fixture_max_rows": 1024,
+    "reason": "proposed: pytest fixtures under pt-*/pt2-* basetemps (payload.npz/state.pt of synthetic artifact stores), every history-bearing file <= 1,024 rows; to be confirmed by the R6 header scan",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 6844,
+     "outside_test": 365,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 350
+    }
+   },
+   "x6zc-dry": {
+    "decision": "TO_FREEZE",
+    "proposed": "EXCLUSION",
+    "reason": "proposed: two X6ZC dry-run initial checkpoints ckpt/init-dry{1,2}.pt (classed by name, never opened)",
+    "to_freeze": true,
+    "frozen_files": "TO_FREEZE",
+    "counts_2026_10_29": {
+     "array_files": 2,
+     "outside_test": 2,
+     "HIST_outside_test": 0,
+     "payload_or_state_outside_test": 0
+    }
+   }
+  },
+  "scratch_rules": {
+   "rows": "one row per top-level scratch directory (names only, 2026-10-29); decision READER (named readers), EXCLUSION (reason) or TO_FREEZE (to be decided from the R6 header scan before the execution freeze)",
+   "header_scan": "hwsc_registry.scratch_scan (API.md section 4): k4b_registry.inventory semantics with test_* components pruned before descent; npz/npy headers only (x6s1_registry._headers; history-bearing by x6s1_registry._history_bearing, identity references by k4b_registry.IDENTITY_KEYS), ObservationSet roots by meta.json location, unreadable files, .pt by name only; nothing else is read",
+   "frozen_files": "per row {relpath: class} of every history, identity, os_root, unreadable and pt file outside test_* components, written at the freeze from the header scan (TO_FREEZE where array files exist)",
+   "fixture_max_rows": "an EXCLUSION row with this field admits only history files with first header dimension <= the value and identity/os_root/pt files under a pt-*, pt2-*, bt* or pytest-of-* component (K4B R23 rule 2)",
+   "check": "at REG1, REG2 and REHEARSAL the scan is repeated; a top-level directory without a row, or a history-bearing, identity-bearing or unreadable file that its row does not cover -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "top_level_array_files": "none on 2026-10-29; any array file directly under the scratch root -> INCONCLUSIVE/REGISTRY_INCOMPLETE"
+  },
+  "requirements": {
+   "lgate_cal_val": "digests not in K-REG1 (Registry.contains) and pairwise disjoint",
+   "test": "digests not in K-REG2",
+   "seq_ids": "disjoint from every frozen union and from each other; outside the sealed D-2a ranges",
+   "predicate": "sealed_d2a_predicate false on every evaluation row",
+   "collision": "FAIL_TECHNICAL/LINEAGE",
+   "predicate_hit": "INCONCLUSIVE/REGISTRY_INCOMPLETE"
+  },
+  "risk": {
+   "p_D2a_ref": 5.4162868151717785e-15,
+   "rel_tol": 1e-12,
+   "rule": "(4096 + 3072 + 3072 + N) * Fraction(float(p_D2a)) <= 1/100 (exact)"
+  },
+  "obligation_record": "hwsc-store/REGISTRY_OBLIGATION.json"
+ },
+ "cpu": {
+  "policy": "measure-only meter (--max-cpu inf --max-wall inf); study ledger agent-handoff/HWSC_CPU_LEDGER.json, never summed into the addendum-29 ledger",
+  "stage_order": [
+   "J-C1",
+   "DRY",
+   "KC",
+   "TRAIN",
+   "E1",
+   "E2"
+  ],
+  "central_s": {
+   "J-C1": 1200,
+   "DRY": 600,
+   "KC": 1500,
+   "TRAIN": 6006.6,
+   "E1": 2000,
+   "E2": "R + 1720.1*k"
+  },
+  "range_s": {
+   "J-C1": [
+    800,
+    2400
+   ],
+   "DRY": [
+    200,
+    1500
+   ],
+   "KC": [
+    800,
+    3500
+   ],
+   "TRAIN": [
+    5800,
+    7500
+   ],
+   "E1": [
+    1300,
+    4500
+   ],
+   "E2": "x0.6 - x2 of central"
+  },
+  "E2_planning": {
+   "R": 300,
+   "k1": 2020,
+   "k2": 3740,
+   "k4": 7180
+  },
+  "cumulative_central_s": {
+   "J-C1": 1200,
+   "DRY": 1800,
+   "KC": 3300,
+   "TRAIN": 9306.6,
+   "E1": 11306.6,
+   "E2": "11306.6 + central_E2"
+  },
+  "re_set": {
+   "R": "TO_FREEZE: KC9's measured registry CPU-s (cost, not data)",
+   "E1": "TO_FREEZE: re-set from KC9 before the run approval",
+   "E2_at_release_B": "central_E2 = R + 1720.1*k fixed at release B from the released k, before any test row"
+  },
+  "multiplier": 3,
+  "comparison": "strict >",
+  "per_model_hold_s": 6006.6282,
+  "hold_from_step": 1000,
+  "hold_rule": "hold iff (step >= 1000 and cpu_s*5000/step > 6006.6282) or cpu_s > 6006.6282; checked in the checkpoint callback after the checkpoint is saved; HOLD report: step, CPU, projection, trigger, utc only",
+  "ledger_labels": "unique per attempt: '<job>-<stage>[-<master>]-a<k>'",
+  "E2_jobs": "the REG2 job and the E2 job both book stage 'E2'"
+ },
+ "resources": {
+  "memory_cap_bytes": {
+   "J-C1": 8589934592,
+   "DRY": 12884901888,
+   "KC": 12884901888,
+   "TRAIN": 8589934592,
+   "E1": 12884901888,
+   "E2": 12884901888
+  },
+  "output_cap_bytes": 4294967296,
+  "max_cpu_flag": "inf",
+  "max_wall_flag": "inf",
+  "native_operation_wall_s": 600,
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "test_job_root": "X:/Downloads/topo-scratch/test_hwsc-<job>",
+  "pytest_basetemp": "X:/Downloads/topo-scratch/test_hwsc-<job>/pytest",
+  "store": "X:/Downloads/projects/topo-pilot/hwsc-store",
+  "store_temp_root": "X:/Downloads/projects/topo-pilot/hwsc-store/tmp",
+  "dry_store": "X:/Downloads/topo-scratch/hwsc-dry",
+  "dry_forbidden_name": "HIST_*.npz",
+  "project_root": "X:/Downloads/projects/topo-pilot",
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "study_ledger": "X:/Downloads/projects/topo-pilot/agent-handoff/HWSC_CPU_LEDGER.json",
+  "mailbox": "X:/Downloads/projects/topo-pilot/agent-handoff",
+  "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv/Scripts/python.exe -s with PYTHONPATH=<worktree>/src",
+  "footprint": "no .npz/.npy committed under tools/hwsc or tests/hwsc; implementation, tests and the dry run write no array file under the project root"
+ },
+ "store_layout": [
+  "FREEZE.json",
+  "AUTH_<stage>_<job>.json",
+  "SCHED_<job>.json",
+  "KC_ACCEPT.json",
+  "RELEASE_A.json",
+  "RELEASE_B.json",
+  "RESERVATION_W2.json",
+  "GATES.jsonl",
+  "STAGES.jsonl",
+  "cpu_ledger.json",
+  "artifacts/ (LocalFSBackend root: WorldSpec, TransitionSpec, 3 EmissionSpec, 6 ObservationSet, 36 Checkpoint)",
+  "stages/KC/G0C.json",
+  "stages/KC/KC_RECORD.json",
+  "stages/TRAIN/<master>/TRAIN_RECORD.json",
+  "stages/TRAIN/<master>/HOLD_<step>.json",
+  "stages/TRAIN/<master>/DECISION_<step>.json",
+  "stages/TRAIN/OBS_INVENTORY.json",
+  "registry/rehearsal/REHEARSAL.json",
+  "registry/rehearsal/REHEARSAL_digests.npz",
+  "registry/K-REG1.json",
+  "registry/K-REG1_digests.npz",
+  "registry/runs/K-REG1/",
+  "registry/K-REG2.json",
+  "registry/K-REG2_digests.npz",
+  "registry/runs/K-REG2/",
+  "stages/E1/H1C.json",
+  "stages/E1/L1.json",
+  "stages/E1/RISK.json",
+  "stages/S3/HIST_lgate_b0.npz",
+  "stages/S3/HIST_cal_b0.npz",
+  "stages/S3/HIST_val_b0.npz",
+  "stages/S4/ORACLE_cal.npz",
+  "stages/S4/ORACLE_val.npz",
+  "stages/S4a/PRODUCTION_FROZEN.json",
+  "stages/S4a/CHART_<master>.npz",
+  "stages/S4a/INIT_CHART_<master>.npz",
+  "stages/S4a/DECODER_<master>.npz",
+  "stages/S4a/ACTS_cal_b0.npz",
+  "CHART_CONSTRUCTIONS_trained.json",
+  "CHART_CONSTRUCTIONS_init.json",
+  "stages/S5/VALIDATION_REPORT.json",
+  "SEALED_VALIDATION.json",
+  "stages/S7/HIST_test_b<b>.npz",
+  "stages/S8/RESULT.json",
+  "stages/S8/SEALED_OPENED.json",
+  "REGISTRY_OBLIGATION.json",
+  "superseded/<job>-a<k>/",
+  "logs/",
+  "tmp/"
+ ],
+ "hist_file": {
+  "keys": [
+   "canon32",
+   "seq_ids",
+   "digest",
+   "landmark",
+   "ref_row",
+   "decoder_panel"
+  ],
+  "writer": "the arrays of k4b_data.history_table, saved by stage_records.save_npz (exclusive create)",
+  "names_real": "stages/S3/HIST_<split>_b0.npz, stages/S7/HIST_test_b<b>.npz",
+  "names_dry": "stages/S3/DRYHIST_<split>_b0.npz, stages/S7/DRYHIST_test_b<b>.npz"
+ },
+ "records": {
+  "AUTH": [
+   "job_id",
+   "stages",
+   "owner_auth_sha256",
+   "run_approval_sha256",
+   "hws_store_reads"
+  ],
+  "SCHED": [
+   "record",
+   "utc",
+   "coordinator_session",
+   "live_history_reservations",
+   "frozen_registries_awaiting_draw"
+  ],
+  "SCHED_rule": "live_history_reservations == [] and frozen_registries_awaiting_draw == [] (DRY: the first only)",
+  "KC_ACCEPT": [
+   "accept",
+   "kc_record_sha256",
+   "six_thread_ruling"
+  ],
+  "RELEASE_A": [
+   "kind",
+   "job_id",
+   "task_sha256",
+   "worker_session",
+   "protocol_sha256",
+   "freeze_sha256",
+   "reservation",
+   "w3_attestation",
+   "kreg1_reservation",
+   "seed_hits",
+   "kreg1_certificate",
+   "train_records",
+   "obs_inventory_sha256"
+  ],
+  "RELEASE_B": [
+   "kind",
+   "job_id",
+   "task_sha256",
+   "worker_session",
+   "protocol_sha256",
+   "freeze_sha256",
+   "reservation",
+   "N",
+   "k",
+   "kreg2_sha256",
+   "kreg2_sources",
+   "accept",
+   "w3_attestation"
+  ],
+  "RESERVATION": "k4b_release.start_reservation(out/'RESERVATION_W2.json', 'HWSC-W2', utc): id 'RES-HWSC-W2'; releases name it in 'reservation'",
+  "TRAIN_RECORD": [
+   "master",
+   "status",
+   "run_key",
+   "observation_ids",
+   "streams",
+   "sequence_id_replicates",
+   "checkpoint_ids",
+   "checksums",
+   "summary",
+   "threads",
+   "holds",
+   "process_cpu_s",
+   "process_ids",
+   "dev_ce"
+  ],
+  "KC_RECORD": [
+   "status",
+   "kc",
+   "reading",
+   "deviation_flags",
+   "process_ids",
+   "arrays_sha256",
+   "law_w_star",
+   "Z_bound_w_star",
+   "F_plan",
+   "threads",
+   "torch",
+   "binding_audit",
+   "registry_rehearsal",
+   "protocol_sha256",
+   "freeze_sha256"
+  ],
+  "study_ledger": [
+   "study",
+   "entries",
+   "cumulative_cpu_s"
+  ],
+  "ledger_entry": [
+   "label",
+   "job",
+   "stage",
+   "cpu_s",
+   "source",
+   "master",
+   "utc"
+  ]
+ },
+ "freeze_fields": [
+  "protocol",
+  "protocol_sha256",
+  "contract_sha256",
+  "api_sha256",
+  "test_plan_sha256",
+  "h_exec",
+  "implementation_files",
+  "implementation_sha256",
+  "reuse_sha256",
+  "dry_run_report_sha256",
+  "dry_run_report_path",
+  "pf_record_sha256",
+  "run_approval_sha256",
+  "environment",
+  "created_utc"
+ ],
+ "s0": {
+  "protected_paths": [
+   "src",
+   "tools/k4b",
+   "tools/hwsb",
+   "tools/hws",
+   "tools/c1prime",
+   "tools/c1prime_registry",
+   "tools/x4_circle_history",
+   "tools/x4_oracle_profile",
+   "tools/c2_nd",
+   "tools/c2_readout",
+   "tools/x6_stage1",
+   "tests/k4b",
+   "tests/hwsb",
+   "tests/hws",
+   "tests/c1prime",
+   "tests/c1prime_registry",
+   "tests/circle_history",
+   "tests/oracle_profile",
+   "tests/c2_nd",
+   "tests/c2_readout",
+   "tests/x6_stage1",
+   "tools/check_file_sizes.py"
+  ],
+  "allowlist_prefixes": [
+   "tools/hwsc/",
+   "tests/hwsc/"
+  ],
+  "r_ref": "af5e7b48615de5acebfb47fa3e98aa69130c3c3a",
+  "rule": "git diff --no-renames --name-status r_ref h_exec -- protected_paths: every line is 'A' with a path under an allowlist prefix (none expected: the allowlist is outside the protected paths); reuse_sha256 equal at h_exec; c1prime chart section equal; k4b_config.MARGIN == 1/100"
+ },
+ "preflight": {
+  "suites": [
+   "tests/k4b",
+   "tests/hwsb",
+   "tests/hws",
+   "tests/c1prime",
+   "tests/oracle",
+   "tests/oracle_profile",
+   "tests/circle_history",
+   "tests/dataset",
+   "tests/world",
+   "tests/process",
+   "tests/learner",
+   "tests/contracts",
+   "tests/hwsc"
+  ],
+  "unbound": "tests/k4b runs unbound only",
+  "also": [
+   "binding audit",
+   "tools/check_file_sizes.py (every tools/hwsc and tests/hwsc file <= 400 lines)",
+   "tempfile.gettempdir() inside a metered child on X:",
+   "basetemps outside the project root"
+  ]
+ },
+ "dry_run": {
+  "store": "X:/Downloads/topo-scratch/hwsc-dry",
+  "report": "stages/DRY/DRY_REPORT.json",
+  "cases": [
+   "DRC1",
+   "DRC2",
+   "DRC3",
+   "DRC4",
+   "DRC5",
+   "DRC6",
+   "DRC7",
+   "DRC8",
+   "DRC9",
+   "DRC10",
+   "DRC11",
+   "DRC12",
+   "DRC13",
+   "DRC14"
+  ],
+  "masters": [
+   629911,
+   629912,
+   629913
+  ],
+  "tiny_world": {
+   "W": 6,
+   "H": 2,
+   "centres": "(0.5 + 2i, 0.5), i < 3",
+   "sigma": "1",
+   "p_stay": "1/2",
+   "V": 3,
+   "L": 32
+  },
+  "tiny_model": {
+   "vocab_in": 4,
+   "vocab_out": 3,
+   "n_ctx": 33,
+   "n_layers": 1,
+   "d_model": 16,
+   "n_heads": 2,
+   "d_mlp": 32,
+   "activation": "gelu",
+   "dropout": 0.0,
+   "tie_embeddings": false
+  },
+  "tiny_train": {
+   "steps": 200,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 20,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    0,
+    100,
+    200
+   ],
+   "device": "auto"
+  },
+  "tiny_sizes": {
+   "train": 4096,
+   "dev": 512,
+   "lgate": 512,
+   "cal": 1024,
+   "val": 1024,
+   "test_block": 1024
+  },
+  "tiny_site": "resid_post_0",
+  "drc2_train": {
+   "steps": 20,
+   "checkpoint_steps": [
+    0,
+    10,
+    20
+   ],
+   "rows": 2048,
+   "dev_rows": 256
+  },
+  "drc9_scale": {
+   "min_digests": 20000000,
+   "planted_collisions": 1,
+   "memory_cap_bytes": 12884901888
+  },
+  "cost_central_s": 600,
+  "synthetic_root_only": "every registry case runs on a synthetic root under the dry store; never on the real project or scratch root"
+ },
+ "tests": {
+  "dir": "tests/hwsc",
+  "author_A": "test_a_*.py",
+  "author_B": "test_b_*.py",
+  "max_lines": 400,
+  "formatter": "never run over tests/hwsc",
+  "authorship": [
+   "tests/hwsc/AUTHORSHIP_A.md",
+   "tests/hwsc/AUTHORSHIP_B.md"
+  ],
+  "basetemp": "X:/Downloads/topo-scratch/test_hwsc-<job>/pytest",
+  "kc8_file": "tests/hwsc/test_a_k4b_known_bound.py"
+ },
+ "modules": {
+  "hwsc_config.py": 160,
+  "hwsc_bind.py": 180,
+  "hwsc_data.py": 260,
+  "hwsc_registry.py": 380,
+  "hwsc_known.py": 290,
+  "hwsc_gates.py": 290,
+  "hwsc_driver.py": 380,
+  "hwsc_dry.py": 380,
+  "hwsc_meter_bind.py": 100,
+  "max_lines": 400,
+  "note": "planned sizes (protocol section 10.1); a split by size is an API erratum, every API name stays reachable under its module"
+ },
+ "reuse_sha256": {
+  "src/topo_pilot/__init__.py": "db36a4bb98c2af8fb5582d1e2e4d13a09c70e9eb4ab37243957736135cf34a28",
+  "src/topo_pilot/activations/__init__.py": "61a417927043747bfec76b6a328aea1c3c6ba8c2077e14dedbfd84e390c34ef5",
+  "src/topo_pilot/activations/_extractor.py": "6351c4afbe6b7e4944c5b61a4cb5358a50a4962f65a2d068f59845a9b8dfb656",
+  "src/topo_pilot/activations/_stage.py": "e79d90003931f4016304e4cff35108501287f897d165b431a51eef1e86026e42",
+  "src/topo_pilot/analysis/__init__.py": "5ca777158d8504d059ff9b13e39621a5fc98311ae55f75e491c7174f7e46aa19",
+  "src/topo_pilot/analysis/baselines.py": "33849e1e554e7311390502ed2cfa11aa6cfbc43e3a5a962735a3bde3e85713e6",
+  "src/topo_pilot/analysis/circular.py": "7f7d80799cfbdd85e3f496272fe00811062e8555f55080630fcb417b39699484",
+  "src/topo_pilot/analysis/circular_bound.py": "ed140fad12d2da84dc5065e71f8beacd04d8b6922e0fa51e8a046695478d93fe",
+  "src/topo_pilot/analysis/discriminability.py": "c6285ca5136745a2747d9c182776f9c96ccdb420ab87db53cba50993a50aed0b",
+  "src/topo_pilot/analysis/dynamics.py": "a98740da74aa80103070a93ec5da9a283651dbe60f62faf93b37956f604200c1",
+  "src/topo_pilot/analysis/f1.py": "59fc565051c41f4df7f0b7a96a84c3ef2278747cf08d94364025129b32849b5e",
+  "src/topo_pilot/analysis/geometry.py": "edbc5e1c89b05e7f6c0572a4d94bde551ddd0f43e522625a0763c8777df31358",
+  "src/topo_pilot/analysis/horizon.py": "f0bc181dbb6a8015ba5c29d6360eef709e725944ba76cdc62a8c86dd7acfe8ce",
+  "src/topo_pilot/analysis/horizon_pools.py": "166ed10836ad439a5651b6c6acad2564cce52c2c87dfb3cd4efafad214836afb",
+  "src/topo_pilot/analysis/pointset.py": "8ef63cd8834b42bfafa24093251ddaa409949ea1e14aad1f74cf66bd241d8bf0",
+  "src/topo_pilot/analysis/readout.py": "cb14b7ea928a7c2378b91dff040099b0a1497433b693a552d7fda5edf0830e18",
+  "src/topo_pilot/analysis/sensitivity.py": "aafd87c730f50eb134c61ef9470e4a29bf83fdeb776e46678e983b28b9105695",
+  "src/topo_pilot/analysis/sigma.py": "e3264e402201bf178fa3d767f41ec418a07c01dbccb41535e612e489ed3c59bc",
+  "src/topo_pilot/analysis/spaces.py": "3baae89be7eec44aa036d846fb131eea96dba6baa9851aebb1f59a23701dc3bb",
+  "src/topo_pilot/analysis/x4f_erasure.py": "43c1d078ac4513471b60d16448aec5999600d3b00b137871012c7d67257a0673",
+  "src/topo_pilot/analysis/x4f_scores.py": "03e2d736a734cf8d45d158112d1955b4faba267b235777064814dee3bafc563b",
+  "src/topo_pilot/analysis/x4f_targets.py": "b7fe838bb1c7113c6421b40c422d160af46dc7439e5432707ccc449365f0c09a",
+  "src/topo_pilot/analysis/x5_context.py": "7fe14984e40fa1b4d12fb578d59c600ecc3bc1c64a77ea100e769fff94a5c4b0",
+  "src/topo_pilot/analysis/x5_endpoint.py": "ee87da6a25bdea2e983ce19d2d29f2e31ce6cb38140fc6dc99335d2cf90ec42d",
+  "src/topo_pilot/analysis/x5_kernel.py": "8f139b02998f3eaad67f741198f45d8bcc966f31ab845ad1d5299d9536372eb1",
+  "src/topo_pilot/contracts/__init__.py": "c0ca5b44922751483629523894c72d64d5731529ec46388adfbff87c2c8071a5",
+  "src/topo_pilot/contracts/_bundle.py": "4d56e2bda4c6428d0f1c22c5689e1f03f72045b0082ccee55ac66152559677bf",
+  "src/topo_pilot/contracts/_checks.py": "df93dccf5ddbf5efde6ef5016e1e00fd84eec14aac8b075bc00d462c84b1cd52",
+  "src/topo_pilot/contracts/_schemas_data.py": "9deb56ca0e885d66863c250fbbf02f9b59cf93ba8949c0325a27030f90fbbbcf",
+  "src/topo_pilot/contracts/_schemas_results.py": "3946d9078774e528db3b33cd72ada5db573a9d8471457f179919bc8daa64c946",
+  "src/topo_pilot/contracts/_schemas_world.py": "48d4dfda4a9cbd60624a4d34f7981a2b42c559d3a5631344d1e73204e30bd7ff",
+  "src/topo_pilot/contracts/backends.py": "81be4b6fd8f52e9029677cd92af61dac156f5d42be109e4c45c0dc6e45a73d64",
+  "src/topo_pilot/contracts/base.py": "36220ba0eb52d361878db588f200666301d615524e100baff2a1b0b3fe9d598e",
+  "src/topo_pilot/contracts/errors.py": "bd0b6f21680c80b51b665284bce89894f0b987db30938e7772b1f05805ea4d69",
+  "src/topo_pilot/contracts/ids.py": "41bf99ddd438869d92043bab3ce72c3d0de237efde9d0d7d1c258d123d58acd5",
+  "src/topo_pilot/contracts/layout.py": "5fc9e51ac1b7f518fdfc0e6d436a74345431eb037a3e959ea282cc38679dd027",
+  "src/topo_pilot/contracts/schemas.py": "547adf91081c145af530628e7d7eaba1c4d76cc2f36a6eba14123d6176b5cddc",
+  "src/topo_pilot/contracts/store.py": "75276c30a9b48165bf0d0a7e41a0f8d03b70d9736184106e062c0e0f7694b35e",
+  "src/topo_pilot/contracts/testing.py": "6b9a9c8d5702570bbec2dd6a6795ecb33acbb85d0c6a3097692dc3a53bf999cb",
+  "src/topo_pilot/dataset/__init__.py": "e539d6bdb723db061331b238d2e89b443bf8dd6998ede9307096c428abbe36da",
+  "src/topo_pilot/dataset/checks.py": "48b3be302f82dc3e883f835b4941de009657b02de297df3300cc7a3f041fc7a9",
+  "src/topo_pilot/dataset/config.py": "579aeb64ebf887d2d83fc4966e0f8e5e4b8d453e4258bf4d7384dfe07b465a18",
+  "src/topo_pilot/dataset/panels.py": "c690d6510bd35e7355f122671d45ed4f01ac6f23d15b3dc61c14450bd85f3b60",
+  "src/topo_pilot/dataset/public.py": "7d5d6f9f169b2496cdffbe8b033de5de063bf38723cbbfe6773f31ef88b7c0a8",
+  "src/topo_pilot/dataset/sampler.py": "a94ffd3e7310e45d3e6351e8457864f6e64abe6e1b318211daed3d0c2f17b0d2",
+  "src/topo_pilot/dataset/stage.py": "ab8586e1c2365755604c2238882315f9ec7b8b042600fead23b89afec9b4d815",
+  "src/topo_pilot/executors/__init__.py": "7aefd316aae3d531339ea9ea072913584d6d9ecaf1be70ab3849de0fccd6bc04",
+  "src/topo_pilot/executors/_outputs.py": "28246600c597a606b6f59488d437a101cd0b081cd0ec503cddce0902d235f9bf",
+  "src/topo_pilot/executors/base.py": "f1aecb0dc21e231d93e7b51fe7c01e44269af05a3c46287ad9800f670f91cbc4",
+  "src/topo_pilot/executors/bundle.py": "eefac548813f4d8ab832b5c259df36da2e922332bfc8a36334908818564446a7",
+  "src/topo_pilot/executors/entry.py": "bca0fcaf4052be68c6fe4d148dbada4154d5d6fa1fda537d117c0352a293449c",
+  "src/topo_pilot/executors/local.py": "a910873101114ffbdc9b5a29a23e9a2b275b91cc8d183a865f840846bd7d2b81",
+  "src/topo_pilot/executors/notebook.py": "4efc1fbc74ef61666e3cacef2cc707aff1c5983da8f8af798ee74383ebee68af",
+  "src/topo_pilot/executors/run_bundle_script.py": "62080fbc74920feb6d49aea05703a03d9949acc86d992e73277d80e225c9a43a",
+  "src/topo_pilot/executors/ssh.py": "40bc269ff6761b9194e1099b03fbff974df52e87f9527e042e50579c67108a37",
+  "src/topo_pilot/experiment/__init__.py": "a2f7c9fe95096cd0b7a8376cdb6315b5638e944af3d5e3ff8c3874ac2c3bc635",
+  "src/topo_pilot/experiment/circ_audit.py": "9ef62bbdfdfa29ac3c8c5f0199829bcb4970cebbec1a63a6e7febd3174e50955",
+  "src/topo_pilot/experiment/cli.py": "612e6b7c390d872f83cb48264d5db2fb8528c6f2728d1de46e43c8319148f67e",
+  "src/topo_pilot/experiment/config.py": "419bd7231d2dcdc2badda9d51d130bc02d5ababd69e92ae5ed5ecf9bfe06fc42",
+  "src/topo_pilot/experiment/prereg.py": "22257029ae2b2dc35818a287fc6c98855fcbdd6550424e45cd59d4483ca5b8e8",
+  "src/topo_pilot/experiment/report.py": "1ac96dd542b7bd1b7e7e1bc463d3a29ea2c69ef85768117ebb29eede028719e2",
+  "src/topo_pilot/experiment/report_e2.py": "6d2963bd6f79658ae5271b476acc1b13e330ed8d43d5de4324bf0aeec1560927",
+  "src/topo_pilot/experiment/report_e3.py": "93d9d91043fbe3bf4d519fdbbe30b7b8abf243f3839743666524344e3775fd9e",
+  "src/topo_pilot/experiment/report_e4.py": "a248c7b6c2d40769612dd4a2e2917067c71c2cf73353714ba87c07d864e43de5",
+  "src/topo_pilot/experiment/report_e4_s7.py": "d6d23f9fc22fb2f5c6821dccc812da901040773fb53927f70276305385819e2f",
+  "src/topo_pilot/experiment/report_x4.py": "3644218a5660735350689462bc1a41f5a56484c82da39f3a102f3f28d9d0246c",
+  "src/topo_pilot/experiment/s1.py": "55e5bf32ab21fd64d049d7cf08dce3b7026352eab6b1d36c5a392c9284115930",
+  "src/topo_pilot/experiment/s2.py": "1c87498cd58f06961466242bdd5c5b3f6e9c4da24390802484555d8148f8c1a5",
+  "src/topo_pilot/experiment/s3.py": "dfc203b8b3861045e895bbd43ba127f0522b2732ff357c99b839d4d41a4376ae",
+  "src/topo_pilot/experiment/s4.py": "2b51ee631e7f766928b2a808db1238b46873a1cc718fefa0b7e1e68c7c67d037",
+  "src/topo_pilot/experiment/s4_analysis.py": "283092a27768832121f2b75ef326b8c162837d5839ac43a5d92a7245f0c30dc4",
+  "src/topo_pilot/experiment/s6.py": "efe50e6045369333dd2ba88427a2b18ebb23488fc97530ceed3f4be9ca61609c",
+  "src/topo_pilot/experiment/s7.py": "a0b86c85513b3592744ddbcbc8e3c910226bc5316b61050451ddd1d8e6591847",
+  "src/topo_pilot/experiment/s7_circular.py": "e92a160988e3ad22a779e408058d227e09d9da3e037fc9817ce733a596cd96f8",
+  "src/topo_pilot/experiment/s7_controls.py": "693d8b91b3817bc10d310c901080ef10b7bc4e25a0870eb78ed8f4c09bef92af",
+  "src/topo_pilot/experiment/s7_dev.py": "582f50eb3470883529e74188f7ab4bfe2fc1301f365532c69339e1bb014bf0b1",
+  "src/topo_pilot/experiment/s7_jobs.py": "6fa28dc78bf308c3d018ebcdf5d8c0dec7f5bb140898eb61024aa82c4b086518",
+  "src/topo_pilot/experiment/s7_probes.py": "147ca7ad70513212ee88e5b6e572e33c12ab994e205c39967f4474a9f2eec1b6",
+  "src/topo_pilot/experiment/s7_sensitivity.py": "24d774c8e8167440cb6fc330b3d437484c8d3adf705832ac557c0baab0f6055b",
+  "src/topo_pilot/experiment/s8.py": "b4029280a463f6f16a5195352dd4834514a5b76b8268f3defa2c776537f910af",
+  "src/topo_pilot/experiment/stages.py": "3dbaeab44b932527ebb4f5c7b48af1e5c5edeb0e5a7b87f1ca76a7d47e7e4e2a",
+  "src/topo_pilot/experiment/x4.py": "d8c1dea629b54c7abec3a1eac0e20dff6b6467243cb9c23075e9fc50dc8ddc69",
+  "src/topo_pilot/experiment/x4_inputs.py": "274fddbcf53f47438209f69e1536a81dd2fcbae7e9cf19b68800d1be8c97ee1d",
+  "src/topo_pilot/experiment/x4b.py": "656f0595f53fa56c9ff2ec3c2f3e8e6c859cfc18b0418f9e3fedafeceb0b2316",
+  "src/topo_pilot/experiment/x4b2.py": "5df86743da4058e54b4a759b40f42107d45c31380bb5b6c6d1a160e254c30d0c",
+  "src/topo_pilot/experiment/x4b2_run.py": "27c0f693724b0949ccb9be2f2231e9c5900ceb5caba48f6961dc234e37e263af",
+  "src/topo_pilot/experiment/x4b_audit.py": "9b4faade8d14c153c0bc3960fb16a3d6dc09a50bbe548e962ae1b761278e003b",
+  "src/topo_pilot/experiment/x4b_run.py": "9ae2372ba7a7e4e9db2c8b41fc503efac4bd640a4a69c72c4ea4d12dd33c88df",
+  "src/topo_pilot/experiment/x4f_damage.py": "6d65654a9d45819e3919cc07c6e92a84cc2a11fbd6595863234a4529ea100ea5",
+  "src/topo_pilot/experiment/x4f_data.py": "b6a7a276e7e983553a04d0a8d7b25639657bb4fc12aac7943efa08eedefde580",
+  "src/topo_pilot/experiment/x4f_gates.py": "b6536273bf575d0c8e970e6240be81ed2ac35c1f374d44eeb5fa090cb21203ba",
+  "src/topo_pilot/experiment/x4f_probe.py": "d9e72d233ae3e841714173efbded5340fab99ec6707109dd653b7cca214c9b69",
+  "src/topo_pilot/experiment/x4f_run.py": "c05a00b93c2ee8db996ba04b58be0de1ecebe533c3746206ee6fc44187ccb67a",
+  "src/topo_pilot/experiment/x5g1_controls.py": "38d78937bf1402b07d8451f27f2d25b7a5d80d5d2b5ebeaa2a16fe4f1a4ec418",
+  "src/topo_pilot/experiment/x5g1_lineage.py": "c11d623e961e2fe7b8aad5193a14884b36b848ebae6f09dd3ce3cd9b3b03dda2",
+  "src/topo_pilot/experiment/x5g1_main.py": "87359130f4b6d3fd9ffd369e50760a47330b2ab487c382ce1b192b686280097c",
+  "src/topo_pilot/experiment/x5g1_oracle.py": "2e561cf397de1c619f92f4d7a2212a90fc8fb040d8dbc35ca37f5d85a90418c2",
+  "src/topo_pilot/experiment/x5g1_run.py": "32963eb99bcf012401a106f1de24a2c0c7cd884f04af1191e873bbef186cafe8",
+  "src/topo_pilot/experiment/x5g1_safety.py": "9ba5469f8a49c29b25cb5c5f0217b7b0d4a91cb4fafaa246e48b40a1bd48f26c",
+  "src/topo_pilot/experiment/x5g1_scorebench.py": "4608997ba8c80ba2e677cd6fe3c30aca6ee7f8960f497ba9392c15a1bf21c46b",
+  "src/topo_pilot/experiment/x5g1_techbench.py": "04f533765f2e9bf5abcc4c4ebb4df77b9fe4fb1f61c950c5a2f9774ee3d0e0f6",
+  "src/topo_pilot/experiment/x5g1_verify.py": "624e72e00a687bda02e9103479e004343ea2b721d01d2964fb57ec0f42f83f21",
+  "src/topo_pilot/experiment/x5g1t_checks.py": "c8f1f55731bb36ea670e8783e330daa2c2d402a9f3c03eda66aaced8235a4543",
+  "src/topo_pilot/experiment/x5g1t_config.py": "9d23fb2ffdf83471fd49e5dd16756fcd80b7b79689442070fbafbfd91256bbcb",
+  "src/topo_pilot/experiment/x5g1t_exports.py": "d04093b738812aaa7cc2d8b890e4f6973c80c495e32a951635c8180f03243e4d",
+  "src/topo_pilot/experiment/x5g1t_fixture.py": "9f38c223850c0487cb1a23bd4b9287f62735b331f068cb797ed9ca41d0b877f4",
+  "src/topo_pilot/experiment/x5g1t_lineage.py": "cf10ef447629c9427e8a0e2de40c57aaa06144e58d859d7b24d36d943e213fef",
+  "src/topo_pilot/experiment/x5g1t_main.py": "34532852dc3c35bf7004d53963e946398ba42d5651a2915b0b5bab1ea875a7d8",
+  "src/topo_pilot/experiment/x5g1t_oracle.py": "f5f3e7f9dadefeff10bce3fcb4f949f670a02b9b873862ea73d3d4ddacce362d",
+  "src/topo_pilot/experiment/x5g1t_runtime.py": "87aa4211b907c006cbb555370fb88b4867bef19061923e8111de9c76580056e0",
+  "src/topo_pilot/experiment/x5g1t_score.py": "973d06f19892cc59bd2e43576aec93aaebcc0bea4a9f74fef5e5e852089f1fed",
+  "src/topo_pilot/experiment/x5g1t_stages.py": "a94a6b75666522adeddeabc78ef859c06f00e13c5d572d041e825f57dd303e2c",
+  "src/topo_pilot/experiment/x5g1t_stages_eval.py": "41f8a4a3feb9c21807979cb627b7858244d92d4225b47b17ae490de7ce808ef3",
+  "src/topo_pilot/experiment/x5g1t_train.py": "13011930902c11afdc1a148b6f497524f37ee39867f4ac0c660625616511f714",
+  "src/topo_pilot/experiment/x5g1t_usage.py": "57beb728386d776424d728afcfadf01f17630493ae5d0ca63538d522e29a17fd",
+  "src/topo_pilot/learner/__init__.py": "01ebd8e9552a1172e1cb97e3dcfe3e0254417bb01190007d23b8813cbeab5033",
+  "src/topo_pilot/learner/config.py": "abadc6ee40115e910fd368dd89f63cb95e081af7791c4826b90fa4b9f1bfbdf6",
+  "src/topo_pilot/learner/model.py": "ee1c124ce83da147ccc2a4b4c0be167de902d61ecd00ead5748b8566f62ae039",
+  "src/topo_pilot/learner/multihorizon.py": "7c406eb322105c9eb268b7519b5f14fb727885ff98918087307e74f2fc6afade",
+  "src/topo_pilot/learner/patch.py": "64d742e85ddba3d121a5c72af0abaef910c9b986a03a7b87caa26c4c20dd0ad4",
+  "src/topo_pilot/learner/stage.py": "b6170ca6037c8f957edbeeaf628fb111c5e39c50098fed2abd53fe17d7e24413",
+  "src/topo_pilot/learner/trainer.py": "c6bf829c2bc6537e9950aa3af0bff2dbe3bcdf41083fff7ba987d037b102a4a3",
+  "src/topo_pilot/oracle/__init__.py": "cfd11d8c0ad2bc06027f00c26d61bd0ffd8e51e87053ed71f7be61501273f764",
+  "src/topo_pilot/oracle/_common.py": "6a782e0a3a6331b78bd201cdd4e9a2dd57de214e67e876254e9c5de33b03797c",
+  "src/topo_pilot/oracle/_filter.py": "a84dd4fc3b0b7dc0ef0e77dcdf0c20319d8c2cc47fe1de88afab6ad8d3dd7f86",
+  "src/topo_pilot/oracle/_futures.py": "da80add78c712f68e0fdf073be6829eecdc00d3e95799be7ce04f6f0822455c3",
+  "src/topo_pilot/oracle/stage.py": "7dfd8e527a3913f66da0ae8abf9b93b4bdd4cb63cb0b1dcd29225b640ab0b752",
+  "src/topo_pilot/prediction/__init__.py": "783458d4e22c3d9ad34feff300420769468052fb49030b9f9f21c8d60559b615",
+  "src/topo_pilot/prediction/metrics.py": "13943f83872c86d0f71f77cc72784102c11685ff04199d1ca7d88be6883c436d",
+  "src/topo_pilot/prediction/ngram.py": "16af0b507f3fc87cc18442e7c70a409a486e4a2718961c95078c6f0a9648f986",
+  "src/topo_pilot/prediction/ridge.py": "e63de356d0aa258d4035c86526c2487e574a5dc5445b47c4a5aa9a4de33e2b45",
+  "src/topo_pilot/prediction/stage.py": "8ac786bcdf6b29abc426ec2e576b0c8e994855b84b2d81f3be9682ddbb6322db",
+  "src/topo_pilot/process/__init__.py": "320fc7a51603b55bd410347d95aa3a83329edf4f6d8944d41a9f6797530896e4",
+  "src/topo_pilot/process/_diagnostics.py": "28542af04609451d735f3f8f86197aa9561a897b2b99a35866dd29127f50da6f",
+  "src/topo_pilot/process/_geometry.py": "399773ff8ca5d51a890997bc51b7b6d1d8dfc9f84d2b0066fd737a75fa265351",
+  "src/topo_pilot/process/centers.py": "95bebe112f0d0da19113970a2f8f59ce327e686de31d5ca8fc43dd66f7de7d99",
+  "src/topo_pilot/process/conductance.py": "71873b0c988f4da63dfed77b5be3d78a7f365048dae44e827e737978987ffd2d",
+  "src/topo_pilot/process/emission.py": "a4fa54d1be4848796f83d6309499a2c19fbbf2f172803186864711bde1f254b8",
+  "src/topo_pilot/process/stage.py": "c3b7dd9a25b455dc07365665aeab26fd3260f4c0e0560d8b696f41eb3e230303",
+  "src/topo_pilot/process/transition.py": "a0e450a150303bae9bfe51fade093553da71a83d779c32737045881128fe054d",
+  "src/topo_pilot/topology/__init__.py": "8f27aa6a4feada4f9c8277c8dc1defe618209722bda882e76a210cc31a830420",
+  "src/topo_pilot/topology/circular.py": "62f4e49de19f64e68ddd9b9c46869742a5bfba97cd356afc8078008753bfd597",
+  "src/topo_pilot/topology/distance.py": "3590d8aa4ae1afafc046105d08a9476b83f58fe0d9b10ef40b1fe869ccecb688",
+  "src/topo_pilot/topology/metrics.py": "5b411f5f1a1c9454f572292f37d56de97c4deb9135675c1655cce4c22e9d722f",
+  "src/topo_pilot/topology/persistence.py": "e4a3351568ffca8d232d5eeceb0cc8412d04c63a4e924f8abac7071e4ad9480e",
+  "src/topo_pilot/topology/shapes.py": "05bbe3495e698ac8198f5ddba2d0e603c4cc917fded024695a4211bf0381b092",
+  "src/topo_pilot/topology/summaries.py": "d9843e496f2057cb5f9f187430b366fef28c156106672bfc43371736900cc194",
+  "src/topo_pilot/world/__init__.py": "b9c01d748c7ebd2b1ca0ea1ee1a5add3d5252397560d7004c2c4d1f0bf491e2a",
+  "src/topo_pilot/world/complex.py": "a9812d0a719202eac0b78c505c8b3346d7215ea3015531535632a4b64aac5fa4",
+  "src/topo_pilot/world/config.py": "3aa20d683aae62fccd054d91913135b0be7644d189e9f67f5e2483eb7dac26eb",
+  "src/topo_pilot/world/identification.py": "ac5bc0c2c60fa271eb0c6226dbe523bd1d4150c84d083be9232570a9d69229f5",
+  "src/topo_pilot/world/lattice.py": "1d93e2371968d2996a04d94393b4e92d41153ea254158177b67eb5ddd0acf021",
+  "src/topo_pilot/world/metrics.py": "80513b485ce3462acd53949cb750ced0afb021826e4cdf20484b3cbe41a3b6d4",
+  "src/topo_pilot/world/registry.py": "4e5d510512830672a093d2646ce7714c4a67c0704b0bdc9e5122fefbd698b2b1",
+  "src/topo_pilot/world/stage.py": "c747848b9c3653cb8dbaea1900e4401cd37912c18d0956a2647fe16756b07798",
+  "tools/c1prime/CERTIFICATE.md": "3a28471e5808be9f30d22f604a27769e8383420db28b3ed53124ab001efc3544",
+  "tools/c1prime/CONTRACT.json": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+  "tools/c1prime/c1_bounds.py": "e6a2c1fc9594aa37664a8e50effc34bb1563bdde742edf0ff56395197da73435",
+  "tools/c1prime/c1_cert.py": "b0cb037a52071e80a80e246d538185e2dfc44c45456b15f543b8c2d274c560d8",
+  "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_data.py": "262418b2f0272e8425a038c53bb120c8f40402a4100b8a71e257f71b560106e9",
+  "tools/c1prime/c1_driver.py": "796c1bedd6a68d73c3453e3e8bb3436d3f4ab4af273a237053ddff7f0ab73328",
+  "tools/c1prime/c1_driver_cal.py": "c1c0c2217295182ef14a6c426cff8317a914cbf21924b59c8d1311132c6a2d0d",
+  "tools/c1prime/c1_driver_fresh.py": "408f64575897ae6bd521fb5bc6e27c25dc88dcd7da534589d7eb557ec186ef94",
+  "tools/c1prime/c1_driver_late.py": "2dc1360463f9dbee2b17ff7e0b91679901d51b8bde9ff0dcb3b47a977dfefeca",
+  "tools/c1prime/c1_endpoint.py": "bdb283efbed04119cf23a5875835d08e1c21b4935d5f9cff334e3e88525d6e46",
+  "tools/c1prime/c1_env.py": "2b71dec2c6aed24a808c8dd69d4229e7045c6e0dc937c196f0336c562de6b7ea",
+  "tools/c1prime/c1_fit.py": "13962c7a46541b9abbd53b2e9e69d6ce7c2f58de042499ba6f48c062228edf61",
+  "tools/c1prime/c1_freeze.py": "928910c248de0d9490bd1a0f91300e091ff85068e83dac8b65da9feb0bb1d80c",
+  "tools/c1prime/c1_gates.py": "017499e0c434321ceae95c78ad584c15e93e82efd0ce768137f452d5668db485",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_meter_bind.py": "3c1439fc5e053091c683c863ad7b5f0b3fe56253eb2394c57e62fdb0c4b1458d",
+  "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+  "tools/c1prime/c1_oracle.py": "077ea1489262d15075624fd6116900c74a6e5b0eb2fe02e5d4f6127cbc0323b3",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/c1prime/c1_release.py": "2e3568374dc38e908822718449b896eead2bc23e447e23590cfb47c4f8ffbf38",
+  "tools/c1prime/materialise_protocol.py": "35fb0acfb9bb90aa091ceb46e6748160f8edc1a1e0bab0b6cfb793eca102a922",
+  "tools/c1prime_registry/c1_registry_sources.py": "4f40840d8eb88d515556aeb7058640761d4b44a7a6ee8045fb3bce9987a5a253",
+  "tools/c2_nd/CONTRACT.json": "e39e4971fa09d3762f80f0c309296fd59e240707357afd2aec94f5f856ed487b",
+  "tools/c2_nd/nd_attrib.py": "a9542b4e39bbddc0ed521186ed2f0e11f4438957852e538885dee91ff1fb031d",
+  "tools/c2_nd/nd_config.py": "d83489ce8d4dfb4f48af3c0ceb33ace5283c13876819d6a7dd93873f1b3d593a",
+  "tools/c2_nd/nd_data.py": "95cc1ec8e789030b07bf3d107ecfefd7e6393a215930da5cf6469546a7b84eae",
+  "tools/c2_nd/nd_decide.py": "6690a20a740317614e6e8146426c260b98de451fe8d56461e3eaa2cc5adf7362",
+  "tools/c2_nd/nd_decoy.py": "bc6b6a7114d4e83551bb9d334ed312b408afc4260567f5d915670be1c145da31",
+  "tools/c2_nd/nd_driver.py": "a49adbea9f682c6fd135c6477cf59306e387e89dc5b5f215e1548a47d473aed4",
+  "tools/c2_nd/nd_dry.py": "87a652352b688ecc4c401d6bf80443cbd98818787f4793a2f83c03699e084c92",
+  "tools/c2_nd/nd_registry.py": "19401c2e0aafc9ef82a032b490a8ba4bd9ec0a786d0dd2868a8d81c4d84653da",
+  "tools/c2_nd/nd_split.py": "e6c874c289c5978ecdb465c21d851605a74b71d063d67754a3966d2d16f485d8",
+  "tools/c2_nd/nd_stage_base.py": "cbb13d1d81e9e316daa8decfddb26ee2c43f4711926fe3257f348846c4552923",
+  "tools/c2_nd/nd_stage_post.py": "9a3c02b73ad8f6f464fc40f8be5b43622497344646cb1f2eef4d66b531d9b9b1",
+  "tools/c2_nd/nd_stage_pre.py": "fd979fbc12e5a2049b853e0fd146033eea2286adcc5fc9bf571b233b7929c6c7",
+  "tools/c2_nd/nd_stage_val.py": "217d0d2e219186db78c226ace179d38dc3aba4b6bd1a374c5eb8c45924753fa2",
+  "tools/c2_nd/store_template/nd_meter_bind.py": "0e177af0fe3940851c055b7363a844099ca541e4af7992c29f22bdb2d9ac4017",
+  "tools/c2_readout/CONTRACT.json": "3d4b9f6257b886a0edc40feb499513fe0d0cae0af5c031f76b0988750fe7445a",
+  "tools/c2_readout/c2_attrib.py": "882bf534c4898f16e595552edb7cde6db4a9f7682bed537917df206b64861ca8",
+  "tools/c2_readout/c2_code.py": "fa5b42a4e0187bc24990a368319fa22cde9a777339a75dcaa5aef34022ff5f0a",
+  "tools/c2_readout/c2_config.py": "d721d0f36d6bd46cdbf337fbf26f60aab11b4c11524d9e2d3e2b83ff7731a2b4",
+  "tools/c2_readout/c2_data.py": "5b97f8b8112cf7587c0be12eecacf259730c9c904f53f810ad111a5c4612c2a0",
+  "tools/c2_readout/c2_decide.py": "bb1b3652015d77c553afedafd984dfd00c97da37832a2efe5e659271521d9906",
+  "tools/c2_readout/c2_driver.py": "1a092c67181b388e173b2ff8e499cbe3fe2d9415c64bca15119b192c56bb8908",
+  "tools/c2_readout/c2_model.py": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
+  "tools/c2_readout/c2_oracle.py": "b22496b4bbbcf5595eebce95604f63532d991556717e13e2a2875a2f8fa631f7",
+  "tools/c2_readout/c2_registry.py": "14f221d0484b61c0ebc76d910ade5c6e377cc864ccf3ab1973fbc450e1bafd56",
+  "tools/c2_readout/c2_stage_base.py": "0dee985930dc08faf55d4b3842b7e1ac0db49e808e2251742c62dcc8e47f951b",
+  "tools/c2_readout/c2_stage_post.py": "a7f267b0868e32c23334f86565b587ef9774abf23a9ded98b6473cbdb1d4fd9e",
+  "tools/c2_readout/c2_stage_pre.py": "e89e210d6165f0ca3f8f522c808b338562084e72d90749522a8f2909772893ae",
+  "tools/c2_readout/c2_stage_val.py": "a5a73dae7998367ae74adf60210e2ceb5ef138a3b0e70a34212a57ac98ecae69",
+  "tools/c2_readout/c2_stats.py": "1090bf1899f34fd2a04c0f6d0c33e92ee20ac49024899a2cf1cde38fc8c1fcf7",
+  "tools/check_file_sizes.py": "b32593dfdf924a5f0da8cda473e208dffdebd75bdce22eee66764e5b6aa0e85c",
+  "tools/hws/CONTRACT.json": "15e2ea5e243c1f48110391910f6545e0ed6f96d714f0cd0d7bf9fdcc42d655dd",
+  "tools/hws/hws_driver.py": "03dcb81ec55c2f784436071c15328aab5a62df1ece344cecb805e6fbc35d21b1",
+  "tools/hws/hws_dry.py": "6b3eb8e6c56b3e0ca23c3349a51c3a33d495f454014e6ff4312ef2f62f0d3005",
+  "tools/hws/hws_exact.py": "098658012aaf3f63de11a8b55c6017e1e1732876ef3e6279363563433cd40b07",
+  "tools/hws/hws_known.py": "b93ee92c6acee92990129ed3e25f841141cdc8fd36b7dbeff4ab7e1d06dfff9d",
+  "tools/hws/hws_meter_bind.py": "fe7e5789e66f6caba2d05b09a2d67d90282e2651b66adf8779aafd078bea85ed",
+  "tools/hws/hws_oracle.py": "02d80e42ede5d23f51ddb6feaae8a5a3a8e3c0864e72a288c99a5073d80e051d",
+  "tools/hws/hws_records.py": "ae50fe2945e34f7c3ff9627fd404470bde3134105ab5d896442d4f790905405a",
+  "tools/hws/hws_select.py": "6614cf9520ec2a73dcc0e7fd239204c9fc28acbce46f6985ee1831af8519b71b",
+  "tools/hws/hws_stats.py": "51a4c19c9921ed5daaa5c76e1c6cda79de5c54b3b1b1dc21159c7f554340cd37",
+  "tools/hws/hws_worlds.py": "f2b98e40c0d07a64da4d7f96435124874650e2300945ea84a7da06ed7af66560",
+  "tools/hwsb/CONTRACT.json": "67d60fae3141865c08306aa46601ed0e6985b3c60a06b5a95caeda227b4897ba",
+  "tools/hwsb/ENCLOSURE_PROOF.md": "a52a52c669216080fbc3f2139dbd52c1e0b1a9cedbbc54331146ebde77ee889e",
+  "tools/hwsb/hwsb_config.py": "3102aeb62e77cc2fa5bc8318457bdd4e172a0b1c336385942d89f4423d4a574b",
+  "tools/hwsb/hwsb_data.py": "fec9fb2eafd41eed4a88dec013974c258b90a40cd370222b00891669be96f9c3",
+  "tools/hwsb/hwsb_driver.py": "5f1c270ea75c7d48bfd9c6862601991d0effe31a3d71947a606a0c50cb811458",
+  "tools/hwsb/hwsb_dry.py": "d97e7477a9811efa877d2171d4e3cf97fa87ded08eee82d16950224d1b0d0d2c",
+  "tools/hwsb/hwsb_dry2.py": "0ab39f0ad0424849e2263add2216887851f8272b3c3add90a5f9ac35d71944d7",
+  "tools/hwsb/hwsb_eval.py": "c3403826b7b5ee46ef0961a1630e5e91e60623316e14c752bff63a5d553b66b1",
+  "tools/hwsb/hwsb_gates.py": "ed5f542f13c1a41821412f1d771d7af8a06892710cabcf19e7cf4bd11e0d633c",
+  "tools/hwsb/hwsb_kb.py": "f88aeb43cdb51ae5b08f5e13e2e5f6554f70e35e7d0d91d3145f1f4f510d27c5",
+  "tools/hwsb/hwsb_known.py": "f24a1a3042b7e734ef3f05a910c932663aaf42759eda365ea25ee4cc2c20858f",
+  "tools/hwsb/hwsb_law.py": "be5e80d7135322f155ec48bf069cc4cd0f9e9a9e7315adac236b243d2b6fc685",
+  "tools/hwsb/hwsb_meter_bind.py": "7e32be1d1213fcdfec2ff04dab0efa91f5d1b52910daff9633c0caf1f6790110",
+  "tools/hwsb/hwsb_records.py": "2026a936516224b4f23ed7cc5ecbd9e363b55ea1251a4601f4d2c638a6a81ee3",
+  "tools/hwsb/hwsb_registry.py": "8d17c0082bba18679a56a044fc15c8a8c070eb6942ba38b3b8d6697bee3d3dba",
+  "tools/hwsb/hwsb_stages.py": "458a088d57af47586cd1cc70ef65934926f0c03f00e751fcab5cc0e49431e05d",
+  "tools/hwsb/hwsb_train.py": "cd2647f897607793f7dede0e590c88f6834bf8d1ec7483f6c401768f2008aff8",
+  "tools/k4b/CERTIFICATE.md": "f451026ba5aeea3aaa3672d22f0a9b6af57b879e6eb112cfabab6f1b57fe8128",
+  "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+  "tools/k4b/k4b_cert.py": "8ae47232ac6433e3838f2080851b789a0a988e43de987a6eb54ea2a79e5ffd07",
+  "tools/k4b/k4b_charts.py": "f43b79e06d6b70f3e446c3c60665095f57514f541a5c62d593580a88255fd9d8",
+  "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+  "tools/k4b/k4b_data.py": "f7ee8b6de1aa31ec592f5b769c8f65c8e463afea0e2782dd1d1f6f89a5d64066",
+  "tools/k4b/k4b_decoder.py": "0b7607a55b77aec753392c682874591d7443fa40106abf4669b76226cc81b59c",
+  "tools/k4b/k4b_driver.py": "250a095865ab418b1a3cfe47334d2835b82b9b7fc22086080f0c9440e3d7ef6c",
+  "tools/k4b/k4b_fresh.py": "055ac35e74c2986d86efffb3d62e8c2fca978f985766b89eb7df31b155733f7e",
+  "tools/k4b/k4b_meter_bind.py": "34efd87454988e0394a9761d8aff68bb8199ec3786f8d38ad2ed8330744ccedb",
+  "tools/k4b/k4b_registry.py": "14c0f5ef7bf0386b3ae55ab80d730585c46842a21b67a8aa77b0b749b9f03b75",
+  "tools/k4b/k4b_registry_k.py": "cdeba06d3730237783919bb264160b540a8a7fcf0f3c9ff1197dda359f1a0042",
+  "tools/k4b/k4b_release.py": "d9f8ec66b2ecee3058425bf8c91eba0850e77113294176686a8a6e1b27fe1613",
+  "tools/k4b/k4b_scores.py": "a0127cf9fc101eeadc693bb338e784225be2f4b7ee1ab2fa3174888921a82577",
+  "tools/k4b/k4b_stats.py": "2dc3d1fbdbe500befd0c2c3a49506faeb35e62fb367ed0c831fd89c23e764359",
+  "tools/x4_circle_history/CONTRACT.json": "fb250e36135dda9d1c65345e95cca287795da17a8f09cc5a3a5dbe21fda21dc9",
+  "tools/x4_circle_history/adapter.py": "b54a62b9e240cda3466a45d3a04545ec1d97c96d131c56739cc5cc46089212bd",
+  "tools/x4_circle_history/chart.py": "938821a0fd6651ce9b3fae9ccb6d40dfe1577ff861b76e4e5ebd136cda399ccb",
+  "tools/x4_circle_history/cochain.py": "e53f6725d6596000770bc8242c33916f5402a10398ee5b43f960bd6438f93075",
+  "tools/x4_circle_history/cost_probe.py": "bc7c286fc441ee32786d24e8230d7d12b15b473586210ba1dd7134bdcc283798",
+  "tools/x4_circle_history/env_identity.py": "2922f2c885058e32cf862aad2d7e644867dc1a220f8861cd4a534ce0b88583d8",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/x4_circle_history/freeze_bind.py": "6fa90e81589442e7777a69e96c94139f86edb3a29c9b9c43ba63ae81c27003bd",
+  "tools/x4_circle_history/live_context.py": "17dddd34a3523e62fa25d0f0ac03d569bae2d0194d81a14b0ded95fc7c4ed786",
+  "tools/x4_circle_history/meter_bind.py": "8f8a4323443e6ffe676ca1bcf12260433f2a12d429db2aefc009b8995e675f3c",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+  "tools/x4_circle_history/precision_stage.py": "3fb09bfb995e977f04a97ffe8e5c0f212650928d7be67a0d17596105a8cbba3e",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_circle_history/reference_cache.py": "c622ad9006848b68d8ee380144a42703ac1571780450d0936e5a7984b164339e",
+  "tools/x4_circle_history/release.py": "1c90ddb10fe41f640640206d6daf3c6b2023e4f6709213188c22cf74127b6246",
+  "tools/x4_circle_history/run_tests_bind.py": "66156109b4ff4ef96b18dc810f342f016079f3b6aefcad1a93611dcfa7790dbe",
+  "tools/x4_circle_history/runner.py": "6d2445c220c18f1471b7a8f4d22ce94cdcc3b7b6aa320d57fcfe40a7501f3ef1",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_oracle_profile/audit.py": "48876b8a5b89164be4108129060f5c6319737fe944b15a75a6f246977237fd1f",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "tools/x4_oracle_profile/freeze.py": "e89f0cd2622751804318199d7a83eba07de3f76158f5fa5fb97141ad54357c07",
+  "tools/x4_oracle_profile/inputs.py": "2ce1492e4388499e90b197784fc6b0bc84181d76831ef0980c6a1ee50bb81df0",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/plot_profile.py": "5a12916abd810e8b8c41252690c373ae84ceca834001c43325e19ee4a365ce7e",
+  "tools/x4_oracle_profile/run_profile.py": "8c6d37d1a14dce7ee958f74ba5122f0f4ca0b6cc5ba1321cc824dff657271f1d",
+  "tools/x4_oracle_profile/run_tests.py": "f8ecf65df125a0932255442f95e6062bc39bc60ff77c58ba69aff813396d56b7",
+  "tools/x4_oracle_profile/runtime.py": "6e9f91574df12a9d7a192c047d3b75b95085fa2e6ce3fdc112feb973230a80c2",
+  "tools/x4_oracle_profile/synthetic_child.py": "626f0b82a497419e2c4eff54b31e68b77bf7ac74ba068ef7c224e4cf6d7f5b12",
+  "tools/x4_oracle_profile/validation.py": "b37f20e9992ddcc9bf3486c45757b6c4ff006fa50d911d7c359fb059732d5ed0",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x6_stage1/x6s1_cloud.py": "8660dbfd948fb024a92aa9ed2f2d1a048de48bf82fc3c19eb39c6d2ee76bea35",
+  "tools/x6_stage1/x6s1_data.py": "16c1e91e218e7ce56df264ab1844762f189e18677ab2d767aafeb2db169684ab",
+  "tools/x6_stage1/x6s1_decide.py": "3d6c586838e21b06348ef62b851a89bbc1daf45547c85b5560a87543738f8c04",
+  "tools/x6_stage1/x6s1_eval.py": "ac55fa3b3c44b3994be6867bb8e966f63bbdc25fe72624f6e22eaeb452e34f4b",
+  "tools/x6_stage1/x6s1_ingest.py": "1dacc6ceb26c02fb402bbef8cd92f3f12082fa8919c31cc7f690ca2dcc108aac",
+  "tools/x6_stage1/x6s1_pairs.py": "a96b40fadd30926ab356e9828e43ac36e3b35967d0ef388ea8bc7457c0606844",
+  "tools/x6_stage1/x6s1_registry.py": "17db30b087ea32141a126f0cce962d2c92f0a6f8cf92d9e7aee9b329cdf8e29f",
+  "tools/x6_stage1/x6s1_run.py": "145f41b831bb9aeaa36a7194acbe7a7846a54097ea040cf2f099c347be8c4e9e",
+  "tools/x6_stage1/x6s1_stage_post.py": "b84fd53245eb21ab51f964289b5203ceab44659ca4a2b4ca8404807a2343b9c7",
+  "tools/x6_stage1/x6s1_stage_pre.py": "3cbba2591ce7d27c70e908ad8820aa499a88ba6157f752d4cbae7c9b6b5640cc",
+  "tools/x6_stage1/x6s1_stats.py": "7299625b7ed08d07c22506a46bf1fe79aa244bb1e5225206f1105522f805704e"
+ },
+ "reuse_sha256_note": "sha256 of the git blob bytes at af5e7b4 (k4b_release.pin_check rule) of every .py, CONTRACT.json, CERTIFICATE.md and ENCLOSURE_PROOF.md under the protected tool directories and src/topo_pilot, and tools/check_file_sizes.py; re-checked at the execution freeze",
+ "to_freeze": [
+  "authority.run_approval (path, sha256)",
+  "registry.scratch_inventory[*].frozen_files where 'TO_FREEZE' (header scan)",
+  "registry.scratch_inventory rows with decision TO_FREEZE or to_freeze true (R6 header scan, read-only, before the execution freeze; reviewed as a contract erratum)",
+  "cpu.re_set.R and cpu.re_set.E1 (KC9's measured registry CPU)",
+  "authority.h_exec and FREEZE.json (execution freeze)",
+  "binding table additions found by the implementation's audit (contract erratum)"
+ ]
+}

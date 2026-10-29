@@ -21,9 +21,11 @@ import hwsb_train
 import hwsc_bind
 import hwsc_data
 import hwsc_gates
+import hwsc_known
 import hwsc_records
 import hwsc_registry
 import k4b_driver
+import k4b_fresh
 import k4b_release
 import numpy as np
 import stage_records
@@ -135,7 +137,15 @@ def drc1(out, ctx) -> dict:
                 c["reg1"] = c2_registry.Registry.load(d, "K-REG1")
             return {"status": m["status"]}
 
-        e1 = [("REG1", lambda: reg("K-REG1")), ("H2", lambda: hwsc_data.h2c(d, c)),
+        sch = {"live_history_reservations": [], "frozen_registries_awaiting_draw": []}
+
+        def outcome():
+            st = hwsc_gates.state_from_gates(stage_records.gates_so_far(d))
+            return {"status": "PASS", "outcome": hwsc_gates.outcome(st)["outcome"]}
+
+        e1 = [("G0C", lambda: hwsc_known.g0c(d, "E1", {}, sch, None, root=syn["root"])),
+              ("H1C", lambda: hwsc_gates.h1c(d, dict(c), handoff, store)),
+              ("REG1", lambda: reg("K-REG1")), ("H2", lambda: hwsc_data.h2c(d, c)),
               ("L1", lambda: hwsc_gates.l1(d, c)),
               ("ORACLE-VAL", lambda: k4b_driver.oracle_val(d, c)),
               ("B4-VAL", lambda: k4b_driver.b4_val(d, c)),
@@ -145,7 +155,8 @@ def drc1(out, ctx) -> dict:
               ("P1", lambda: hwsc_gates.p1c(d, c, handoff)),
               ("REG2", lambda: reg("K-REG2", c.get("tables"))),
               ("H2-FRESH", lambda: hwsc_data.h2_fresh_c(d, c)),
-              ("ENDPOINT", lambda: {"status": "NOT_RUN"})]
+              ("T-PRE", lambda: k4b_fresh.t_pre(d, c)),
+              ("ENDPOINT", lambda: k4b_fresh.endpoint_gate(c)), ("OUTCOME", outcome)]
         recs_g = hwsc_records.run_gates_c(d, e1, dry_continue=True)
     from hwsc_jobs import run_close
 

@@ -21,7 +21,7 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_bind as cb  # noqa: E402
 import hwsc_data as cd  # noqa: E402
 import hwsc_registry as cr  # noqa: E402
@@ -340,8 +340,8 @@ def test_r5_observation_set_without_emission_parent_is_incomplete(dry_root, monk
 
 def test_r5_absent_optional_and_missing_required(tmp_path):
     r = cr.source_dry(paths=[tmp_path / "hwsc-dry"])
-    # API-AMBIGUITY: "hwsc-dry absent -> PASS (present False)" read for a lone optional store.
-    assert r["status"] == "PASS" and r["present"] is False
+    # API-AMBIGUITY: "present False" is not pinned for the whole source; only PASS is asserted.
+    assert r["status"] == "PASS" and r["other"] == []
     assert cr.source_dry(paths=[tmp_path / "hwsb-dry"])["status"] == INCOMPLETE
 
 

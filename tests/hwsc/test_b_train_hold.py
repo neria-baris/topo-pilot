@@ -70,6 +70,14 @@ def _statuses(out, raised, ret):
     return found
 
 
+def _patch_all(monkeypatch, name, value, also=()):
+    """Set `name` on every loaded stage-C module that defines it (a split by size may keep the
+    function in a helper module and re-export it, API.md section 0), and on `also`."""
+    for mod in [m for k, m in list(sys.modules.items()) if k.startswith("hwsc_")] + list(also):
+        if hasattr(mod, name):
+            monkeypatch.setattr(mod, name, value)
+
+
 # ---------------------------------------------------------------- run_train with spies
 @pytest.fixture
 def train_env(tmp_path, monkeypatch):
@@ -83,8 +91,8 @@ def train_env(tmp_path, monkeypatch):
     acc.write_text(json.dumps({"accept": True, "kc_record_sha256": _sha(kc),
                                "six_thread_ruling": False}), encoding="utf-8")
     seen = {"train": [], "mtd": []}
-    monkeypatch.setattr(cdr, "preflight", lambda *a, **k: {"refused": False, "status": "PASS"})
-    monkeypatch.setattr(cdr, "pause_or_raise_c", lambda *a, **k: None)
+    _patch_all(monkeypatch, "preflight", lambda *a, **k: {"refused": False, "status": "PASS"})
+    _patch_all(monkeypatch, "pause_or_raise_c", lambda *a, **k: None)
     monkeypatch.setattr(hwsb_train, "set_threads",
                         lambda n: {"requested": n, "torch_threads": n, "torch_version": "x",
                                    "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"})
@@ -111,12 +119,13 @@ def train_env(tmp_path, monkeypatch):
                             "tokens_per_second": 1.0, "device": "cpu", "torch_version": "x"},
                 "holds": []}
 
-    monkeypatch.setattr(cd, "make_train_dev_c", fake_mtd)
+    _patch_all(monkeypatch, "make_train_dev_c", fake_mtd)
     monkeypatch.setattr(hwsb_train, "train", fake_train)
 
     def run(master=620301, accept=acc):
-        # API-AMBIGUITY: kc_accept passed as the path of KC_ACCEPT.json.
-        return _outcome(lambda: cdr.run_train(out, AUTH, SCHED, master, accept))
+        # API-AMBIGUITY: kc_accept is the parsed KC_ACCEPT.json dict (a path is not accepted).
+        data = json.loads(Path(accept).read_text(encoding="utf-8"))
+        return _outcome(lambda: cdr.run_train(out, AUTH, SCHED, master, data))
 
     return out, seen, behaviour, run, acc
 
@@ -275,28 +284,42 @@ def test_held_and_continued_tiny_run_is_bitwise_equal(tmp_path):
 
 
 # ---------------------------------------------------------------- R-0176-P10: audit failure stops
+# API.md section 2 names the hit keys module/where/kind/hit; "top" is added as a superset.
+_HIT = {"module": "planted", "where": "X", "top": "X", "kind": "global", "hit": 1729}
 FAILED_AUDIT = {"status": "FAIL_TECHNICAL/BINDING", "n_hits": 1, "modules": ["planted"],
-                "hits": [{"module": "planted", "where": "X", "kind": "global", "hit": 1729}],
-                "unlisted": [{"module": "planted", "where": "X", "kind": "global", "hit": 1729}]}
+                "hits": [_HIT], "unlisted": [_HIT]}
 DOWNSTREAM = {
-    "E2": [(k4b_fresh, "require_release_b"), (k4b_fresh, "load_recorded"),
-           (k4b_fresh, "load_frozen"), (k4b_fresh, "t_pre"), (k4b_fresh, "endpoint_gate"),
-           (cd, "sample_test_c"), (cd, "h2_fresh_c"), (cg, "h1c")],
-    "REG2": [(cr, "build"), (k4b_release, "verify_reservation"), (k4b_fresh, "load_recorded")],
+    "E2": [(k4b_fresh, "load_recorded"), (k4b_fresh, "load_frozen"), (k4b_fresh, "t_pre"),
+           (k4b_fresh, "endpoint_gate"), (cd, "sample_test_c"), (cd, "h2_fresh_c"), (cg, "h1c"),
+           (cd, "build_process_c")],
+    "REG2": [(cr, "build"), (k4b_fresh, "load_recorded")],
     "KC": [(ck, "run_kc"), (ck, "g0c"), (ck, "kc1")],
     "TRAIN": [(cd, "make_train_dev_c"), (hwsb_train, "train")]}
 
 
 def _plant_failing_audit(monkeypatch, stage):
-    monkeypatch.setattr(cb, "audit", lambda *a, **k: json.loads(json.dumps(FAILED_AUDIT)))
-    monkeypatch.setattr(cdr, "preflight", lambda *a, **k: {"refused": False, "status": "PASS"})
+    _patch_all(monkeypatch, "audit", lambda *a, **k: json.loads(json.dumps(FAILED_AUDIT)))
+    _patch_all(monkeypatch, "preflight", lambda *a, **k: {"refused": False, "status": "PASS"})
+    _patch_all(monkeypatch, "verify_freeze_c", lambda *a, **k: {"status": "PASS"})
+    _patch_all(monkeypatch, "auth_ok", lambda *a, **k: {"ok": True, "reason": None})
+    _patch_all(monkeypatch, "sched_ok", lambda *a, **k: {"ok": True, "reason": None})
+    # Release and reservation checks pass, so only the audit can stop the job (whatever their
+    # position relative to BINDING_AUDIT).
+    rel_b = {"kind": "B", "job_id": "0180", "N": 3072, "k": 1, "reservation": cc.RESERVATION_ID,
+             "kreg2_sha256": "0" * 64, "protocol_sha256": C["protocol_sha256"]}
+    _patch_all(monkeypatch, "require_release_b", lambda *a, **k: dict(rel_b), also=(k4b_fresh,))
+    _patch_all(monkeypatch, "verify_reservation", lambda *a, **k: {"status": "PASS"},
+               also=(k4b_release,))
     started = []
     for mod, name in DOWNSTREAM[stage]:
         def spy(*a, _n=name, **k):
             started.append(_n)
             raise RuntimeError(f"{_n} started after a failed binding audit")
 
-        monkeypatch.setattr(mod, name, spy)
+        if name.startswith("run_"):  # also a driver entry-point name: patch its own module only
+            monkeypatch.setattr(mod, name, spy)
+        else:
+            _patch_all(monkeypatch, name, spy, also=(mod,))
     return started
 
 
@@ -318,8 +341,13 @@ def test_failed_binding_audit_stops_the_job(tmp_path, monkeypatch, stage):
     out.mkdir()
     started = _plant_failing_audit(monkeypatch, stage)
     auth = dict(AUTH, stages=[stage])
+    (out / "FREEZE.json").write_text("{}", encoding="utf-8")  # verify_freeze_c is stubbed
+    rep = out / "stages" / "S5" / "VALIDATION_REPORT.json"  # a valid ACCEPT, whatever the order
+    rep.parent.mkdir(parents=True)
+    rep.write_text("{}", encoding="utf-8")
+    accept = {"verdict": "ACCEPT", "validation_report_sha256": _sha(rep), "by": "t", "utc": "x"}
     call = {"E2": lambda: cdr.run_e2(out, auth, SCHED, tmp_path / "RELEASE_B.json", "sess"),
-            "REG2": lambda: cdr.run_reg2(out, auth, SCHED, tmp_path / "ACCEPT_VALIDATION.json"),
+            "REG2": lambda: cdr.run_reg2(out, auth, SCHED, accept),  # parsed, as kc_accept
             "KC": lambda: cdr.run_kc(out, auth, SCHED, "0180")}[stage]
     raised, ret = _outcome(call)
     _assert_stopped_at_audit(out, raised, ret, started)

@@ -148,8 +148,7 @@ def _recorded_store(out):
 
 def test_lineage_absent_and_recorded(tmp_path):
     assert cdr.lineage_c(tmp_path / "absent")["status"] == "PASS"
-    out = tmp_path / "store"
-    out.mkdir()
+    (out := tmp_path / "store").mkdir()
     _recorded_store(out)
     assert cdr.lineage_c(out)["status"] == "PASS"
 
@@ -280,8 +279,9 @@ def test_pause_or_raise_exempt_and_disabled(tmp_path):
     out, led = tmp_path / "store", tmp_path / "ledger.json"
     out.mkdir()
     cdr.ledger_append(led, "0180-KC-a1", "0180", "KC", 1e7, "src")
-    # API-AMBIGUITY: `cont` passed as the parsed {"stages": [...]} dict.
-    cdr.pause_or_raise_c(out, "KC", time.process_time(), ledger_path=led, cont={"stages": ["KC"]})
+    cont = tmp_path / "CONTINUE.json"  # the --continue JSON file (a dict is not accepted)
+    cont.write_text(json.dumps({"stages": ["KC"]}), encoding="utf-8")
+    cdr.pause_or_raise_c(out, "KC", time.process_time(), ledger_path=led, cont=cont)
     cdr.pause_or_raise_c(out, "KC", -1e9, ledger_path=None)
     assert not (out / "GATES.jsonl").exists() or not [
         g for g in _gates(out) if g["gate"].startswith("PAUSE")]

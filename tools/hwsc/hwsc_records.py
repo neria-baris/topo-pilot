@@ -68,13 +68,32 @@ def run_gates_c(out, steps, dry_continue=False) -> list:
             status = status_of(exc)
             details = {"reason": str(getattr(exc, "reason", exc))[:2000]}
             if status == "PAUSE":
-                stage_records.record_gate(Path(out), gate, "NOT_RUN", **details)
+                stage_records.record_gate(Path(out), gate, "PAUSE", **details)
                 raise
         details = json.loads(json.dumps(details, default=str))
         stage_records.record_gate(Path(out), gate, status, **details)
         recs.append(dict(details, gate=gate, status=status))
         stopped = stopped or status != "PASS"
     return recs
+
+
+def superseded_ok(out) -> list:
+    """Mirror of k4b_release._superseded_ok (R-0176-P2): every file of superseded/<job>/ must be
+    listed in its SHA256SUMS with an equal sha256; returns the offending paths."""
+    out, bad = Path(out), []
+    for job in sorted(p for p in (out / "superseded").glob("*") if p.is_dir()):
+        sums, listed = job / "SHA256SUMS", {}
+        if sums.is_file():
+            for line in sums.read_text(encoding="utf-8").splitlines():
+                if line.strip():
+                    h, _, rel = line.partition("  ")
+                    listed[rel] = h
+        for f in job.rglob("*"):
+            if f.is_file() and f != sums:
+                rel = f.relative_to(job).as_posix()
+                if listed.get(rel) != stage_records.sha256(f):
+                    bad.append(str(f))
+    return bad
 
 
 def lineage_c(out) -> dict:
@@ -85,7 +104,7 @@ def lineage_c(out) -> dict:
     for e in stage_records.stages_so_far(out):
         if e.get("event") == "STAGE_COMPLETE":
             recorded |= {(k, v) for k, v in e.get("files", {}).items()}
-    bad = k4b_release._superseded_ok(out) if (out / "superseded").is_dir() else []
+    bad = superseded_ok(out) if (out / "superseded").is_dir() else []
     tops = set(k4b_release.RECORD_FILES) | set(EXTRA_RECORDS)
     for f in out.rglob("*"):
         if not f.is_file() or cc.blinded(f):

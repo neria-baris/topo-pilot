@@ -653,3 +653,18 @@ Rows without these fields behave as before. `source_dry()` called with its defau
 - **Defect (spec contradiction).** §7 `run_kc` runs `hwsc_known.run_kc` inside `bound_stage_c()`. KC7 (`kc7`) needs the unbound state: it compares the unbound call with the identity binding, then enters `bound_stage_c()` itself and checks that the binding is restored. Inside the outer binding, `bound_stage_c`'s drift check found the 21 bound names, and KC7 of job 0184 ended `FAIL_TECHNICAL/KNOWN_CASE` ("code drift: k4b_config.MODELS, …"). KC0–KC6 PASS; KC8 and KC9 NOT_RUN. Unit tests called `kc7` outside any binding, so they did not see this.
 - **Fix.** New `hwsc_bind.suspended()`: inside an active `bound_stage_c`, it restores the saved originals for the block (ACTIVE False) and re-applies the bound values at exit. Outside a binding it does nothing. `bound_stage_c` keeps its saved originals on a stack (`_STACK`). `run_kc` runs KC7 under `suspended()`. The other KC items stay bound. Regression test `tests/hwsc/test_r_0184_kc7_inside_binding.py` (coordinator-written): KC7 inside the binding raises the drift error; under `suspended()` it passes, and the binding is re-applied and then removed at exit.
 - **Correction count.** Correction 1 of at most 2 for D-0184-1 (X-2). KC attempt 2 and FREEZE 3c11d2a6 are superseded (`hwsc-store/superseded/0184-a1/`). J-C1 + DRY and a new freeze follow (ruling R-0184-1).
+
+## 27. Erratum: E1 release check inside the binding; E1/E2 gate files recorded; release B carries train_records (defects D-0187-1…3)
+Found during TRAIN by the coordinator and an independent code review of the E1/REG2/E2 paths, which the synthetic dry run never reached positively (DRC1 cascade; see `jobs/0183/review.md`).
+- **D-0187-1.**
+  - **Defect:** `run_e1` called `k4b_release.verify_release` before entering `bound_stage_c()`. Unbound, `k4b_config.CONTRACT["protocol_sha256"]` is K4b's protocol (957f0d5e…), so a release A carrying the stage-C protocol (f0f2396c…, §13) failed `FAIL_TECHNICAL/AUTHORITY`.
+  - **Fix:** the release check and the context now sit inside the binding (CONTRACT `binding` note: `verify_release` reads `protocol_sha256` under the binding).
+- **D-0187-2.**
+  - **Defect:** `stages/E1/{G0C,H1C,L1}.json` and `stages/E2/H1C_E2.json` were never passed to `complete_stage`, so any later `lineage_c` (an E1 rerun, an audit) would fail.
+  - **Fix:** new `hwsc_records.record_gate_files(out, stage, names)` records the files that exist as stage `E1_GATES` / `E2_GATES`. `run_e1` and `run_e2` call it after their gates, whether the gates passed or not.
+- **D-0187-3 (record format, no code change).** `hwsc_gates.h1c(stage="E2")` reads `train_records` from the release in `ctx`, which in E2 is release B, but §13 and CONTRACT `records.RELEASE_B` do not list it. **Ruling:** release B carries `train_records`, the same map as release A. Extra fields are ignored by `verify_release`. The CONTRACT list is unchanged, because it names the minimum fields.
+- **Operational notes (no code change):**
+  - (a) The outcome is computed from the whole store's `GATES.jsonl` (`state_from_gates`). Before E2 the coordinator checks that the file holds no FAIL_TECHNICAL or INCONCLUSIVE/RESOURCE_OR_AUTHORITY, /AUTHORITY or /RESOURCE line.
+  - (b) A pause check also runs after the last gate of E1, REG2 and E2. The coordinator reads the gate lines, not only the exit code.
+  - (c) Before E1 the coordinator repeats the G0c seed search and classification on the current tree.
+- **Tests.** `tests/hwsc/test_r_0187_e1_release_and_gate_files.py` (coordinator-written; all three cases fail on the old code).

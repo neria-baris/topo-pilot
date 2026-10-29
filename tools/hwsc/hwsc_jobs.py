@@ -96,7 +96,9 @@ def run_e2(out, auth, sched, release_path, session, dry=False, dry_continue=Fals
              ("T-PRE", lambda: k4b_fresh.t_pre(out, ctx)),
              ("ENDPOINT", lambda: k4b_fresh.endpoint_gate(ctx))]
     with hwsc_bind.bound_stage_c():
-        stage_records.record_gate(out, "BINDING_AUDIT", hwsc_bind.audit()["status"])
+        import hwsc_driver
+
+        hwsc_driver._audit_gate(out)
         recs = run_gates_c(out, [(g, paused(f)) for g, f in steps], dry_continue)
     if any(r["status"] != "PASS" for r in recs):
         return run_close(out, recs)

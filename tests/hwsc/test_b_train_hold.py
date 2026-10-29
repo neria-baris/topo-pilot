@@ -21,14 +21,19 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_bind as cb  # noqa: E402
 import hwsc_data as cd  # noqa: E402
 import hwsc_driver as cdr  # noqa: E402
+import hwsc_gates as cg  # noqa: E402
+import hwsc_known as ck  # noqa: E402
+import hwsc_registry as cr  # noqa: E402
 import hwsb_config  # noqa: E402
 import hwsb_dry  # noqa: E402
 import hwsb_known  # noqa: E402
 import hwsb_train  # noqa: E402
+import k4b_fresh  # noqa: E402
+import k4b_release  # noqa: E402
 import stage_records  # noqa: E402
 from topo_pilot.contracts import ArtifactStore, ErrorCode, MemoryBackend, StageFailure  # noqa: E402
 
@@ -267,3 +272,62 @@ def test_held_and_continued_tiny_run_is_bitwise_equal(tmp_path):
     assert held["checksums"] == free["checksums"]
     assert held["checkpoint_ids"] == free["checkpoint_ids"]
     assert list(held["run_key"]) == ["hwsc-v1", "DRY", "H", DRY[0]]
+
+
+# ---------------------------------------------------------------- R-0176-P10: audit failure stops
+FAILED_AUDIT = {"status": "FAIL_TECHNICAL/BINDING", "n_hits": 1, "modules": ["planted"],
+                "hits": [{"module": "planted", "where": "X", "kind": "global", "hit": 1729}],
+                "unlisted": [{"module": "planted", "where": "X", "kind": "global", "hit": 1729}]}
+DOWNSTREAM = {
+    "E2": [(k4b_fresh, "require_release_b"), (k4b_fresh, "load_recorded"),
+           (k4b_fresh, "load_frozen"), (k4b_fresh, "t_pre"), (k4b_fresh, "endpoint_gate"),
+           (cd, "sample_test_c"), (cd, "h2_fresh_c"), (cg, "h1c")],
+    "REG2": [(cr, "build"), (k4b_release, "verify_reservation"), (k4b_fresh, "load_recorded")],
+    "KC": [(ck, "run_kc"), (ck, "g0c"), (ck, "kc1")],
+    "TRAIN": [(cd, "make_train_dev_c"), (hwsb_train, "train")]}
+
+
+def _plant_failing_audit(monkeypatch, stage):
+    monkeypatch.setattr(cb, "audit", lambda *a, **k: json.loads(json.dumps(FAILED_AUDIT)))
+    monkeypatch.setattr(cdr, "preflight", lambda *a, **k: {"refused": False, "status": "PASS"})
+    started = []
+    for mod, name in DOWNSTREAM[stage]:
+        def spy(*a, _n=name, **k):
+            started.append(_n)
+            raise RuntimeError(f"{_n} started after a failed binding audit")
+
+        monkeypatch.setattr(mod, name, spy)
+    return started
+
+
+def _assert_stopped_at_audit(out, raised, ret, started):
+    assert started == [], started
+    gates = stage_records.gates_so_far(out) if (out / "GATES.jsonl").exists() else []
+    names = [g["gate"] for g in gates]
+    assert "BINDING_AUDIT" in names, names
+    i = names.index("BINDING_AUDIT")
+    assert gates[i]["status"] != "PASS"
+    assert all(g["status"] == "NOT_RUN" for g in gates[i + 1:]), gates[i + 1:]
+    assert "FAIL_TECHNICAL/BINDING" in _statuses(out, raised, ret)
+    assert cb.ACTIVE is False
+
+
+@pytest.mark.parametrize("stage", ["E2", "REG2", "KC"])
+def test_failed_binding_audit_stops_the_job(tmp_path, monkeypatch, stage):
+    out = tmp_path / "hwsc-store"
+    out.mkdir()
+    started = _plant_failing_audit(monkeypatch, stage)
+    auth = dict(AUTH, stages=[stage])
+    call = {"E2": lambda: cdr.run_e2(out, auth, SCHED, tmp_path / "RELEASE_B.json", "sess"),
+            "REG2": lambda: cdr.run_reg2(out, auth, SCHED, tmp_path / "ACCEPT_VALIDATION.json"),
+            "KC": lambda: cdr.run_kc(out, auth, SCHED, "0180")}[stage]
+    raised, ret = _outcome(call)
+    _assert_stopped_at_audit(out, raised, ret, started)
+
+
+def test_failed_binding_audit_stops_train(train_env, monkeypatch):
+    out, seen, _, run, _ = train_env
+    started = _plant_failing_audit(monkeypatch, "TRAIN")
+    raised, ret = run()
+    _assert_stopped_at_audit(out, raised, ret, started)
+    assert seen["train"] == []

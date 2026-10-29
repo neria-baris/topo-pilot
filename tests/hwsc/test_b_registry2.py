@@ -1,8 +1,9 @@
-"""Author B (job 0176): R6 scratch scan/check, R8 inventory, the registry build, H2 and H2-FRESH.
+"""Author B (job 0176): R6 scratch scan/check, R8 inventory, registry build, H2-FRESH.
+(H2 separation_c is in test_b_streams.py for the 400-line limit.)
 
-Written from PROTOCOL_HWSC_v1.md sections 3.3-3.4, API.md sections 3.3 and 4 (with section 18,
-R-0176-G9), CONTRACT.json `registry` and TEST_PLAN.md section 3 only. Synthetic roots under tmp_path;
-heavy registry sources are replaced through build(sources=...) and reused K4b helpers by monkeypatch.
+Written from PROTOCOL_HWSC_v1.md sections 3.3-3.4, API.md sections 3.3 and 4 (with section
+18, R-0176-G9), CONTRACT.json `registry` and TEST_PLAN.md section 3 only. Synthetic roots under
+tmp_path; heavy sources replaced via build(sources=...), reused K4b helpers by monkeypatch.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_data as cd  # noqa: E402
 import hwsc_registry as cr  # noqa: E402
 import c1_records  # noqa: E402
@@ -130,18 +131,21 @@ def test_r6_check_baseline_pass(tmp_path):
     assert r["scan_counts"]["x"]["history"] == 1
 
 
-def test_r6_new_top_level_directory_is_incomplete(tmp_path):
+R6_DEFECTS = {
+    "new_top_level_dir": (lambda s: _hist(s / "newdir" / "h.npz"), {}),
+    "to_freeze_row": (lambda s: None, {"x": {"decision": "TO_FREEZE"}}),
+    "file_not_frozen": (lambda s: _hist(s / "x" / "later.npz", seed=3), {}),
+    "top_level_array": (lambda s: _hist(s / "loose.npz"), {})}
+
+
+@pytest.mark.parametrize("name", list(R6_DEFECTS))
+def test_r6_defects_are_incomplete(tmp_path, name):
     s = tmp_path / "s"
     _hist(s / "x" / "a.npz")
-    table = _rows(s, {})
-    _hist(s / "newdir" / "h.npz")
+    mutate, override = R6_DEFECTS[name]
+    table = _rows(s, override)
+    mutate(s)
     assert _check(s, table)["status"] == INCOMPLETE
-
-
-def test_r6_to_freeze_row_is_incomplete(tmp_path):
-    s = tmp_path / "s"
-    _hist(s / "x" / "a.npz")
-    assert _check(s, _rows(s, {"x": {"decision": "TO_FREEZE"}}))["status"] == INCOMPLETE
 
 
 def test_r6_reader_row_needs_its_reader(tmp_path):
@@ -153,28 +157,12 @@ def test_r6_reader_row_needs_its_reader(tmp_path):
     assert _check(s, table, readers_ok=("R5",))["status"] == "PASS"
 
 
-def test_r6_file_not_frozen_is_incomplete(tmp_path):
-    s = tmp_path / "s"
-    _hist(s / "x" / "a.npz")
-    table = _rows(s, {})
-    _hist(s / "x" / "later.npz", seed=3)
-    assert _check(s, table)["status"] == INCOMPLETE
-
-
 @pytest.mark.parametrize("rows,status", [(1000, "PASS"), (2000, INCOMPLETE)])
 def test_r6_fixture_max_rows(tmp_path, rows, status):
     s = tmp_path / "s"
     _hist(s / "y" / "pt-x" / "h.npz", rows=rows)
     table = _rows(s, {"y": {"fixture_max_rows": 1024}})
     assert _check(s, table)["status"] == status
-
-
-def test_r6_top_level_array_file_is_incomplete(tmp_path):
-    s = tmp_path / "s"
-    _hist(s / "x" / "a.npz")
-    table = _rows(s, {})
-    _hist(s / "loose.npz")
-    assert _check(s, table)["status"] == INCOMPLETE
 
 
 def test_r6_stage_b_folders_full_walk_and_empty_rows(tmp_path):
@@ -338,65 +326,6 @@ def test_build_rehearsal_refusals_and_exclusivity(tmp_path, stubs):
         _build(tmp_path / "c", "K-REG1", src)
     with pytest.raises(ValueError):
         _build(tmp_path / "d", "K-REG9", src)
-
-
-# ---------------------------------------------------------------- H2: separation_c
-def _reg(digests=(), seq=(), ranges=None):
-    return c2_registry.Registry(set(digests), None, ranges or {"pool": (9_000_000, 9_000_100)},
-                                ["sealed_d2a"], {}, set(seq))
-
-
-def _retable(t, split, canon):
-    return k4b_data.history_table(canon, t["seq_ids"], split, 0)
-
-
-def test_h2_clean_pass_and_keys():
-    r = cd.separation_c(_reg(), _tables())
-    assert r["status"] == "PASS"
-    assert r["collisions"] == {"lgate_R": 0, "cal_R": 0, "val_R": 0, "lgate_cal": 0,
-                               "lgate_val": 0, "cal_val": 0}
-    assert set(r["predicates"]) == set(r["duplicates"]) == {"lgate", "cal", "val"}
-
-
-def test_h2_planted_registry_digest_is_lineage():
-    t = _tables()
-    r = cd.separation_c(_reg({t["cal"]["digest"][5]}), t)
-    assert r["status"] == LINEAGE and r["collisions"]["cal_R"] == 1
-
-
-def test_h2_cross_split_collision_is_lineage():
-    t = _tables()
-    canon = t["cal"]["canon32"].copy()
-    canon[0] = t["lgate"]["canon32"][0]
-    t["cal"] = _retable(t["cal"], "cal", canon)
-    r = cd.separation_c(_reg(), t)
-    assert r["status"] == LINEAGE and r["collisions"]["lgate_cal"] == 1
-
-
-def test_h2_seq_id_overlaps_are_lineage():
-    t = _tables()
-    val_id = int(t["val"]["seq_ids"][7])
-    assert cd.separation_c(_reg(seq={val_id}), t)["status"] == LINEAGE
-    cal_id = int(t["cal"]["seq_ids"][3])
-    assert cd.separation_c(_reg(ranges={"p": (cal_id, cal_id + 1)}), t)["status"] == LINEAGE
-
-
-def test_h2_d2a_predicate_row_is_incomplete():
-    t = _tables()
-    canon = t["val"]["canon32"].copy()
-    canon[3] = np.array([0, 1, 2, 3, 4] * 6 + [0, 1], dtype=np.uint8)
-    t["val"] = _retable(t["val"], "val", canon)
-    assert cd.separation_c(_reg(), t)["status"] == INCOMPLETE
-
-
-def test_h2_duplicates_counted_and_kept():
-    t = _tables()
-    canon = t["lgate"]["canon32"].copy()
-    canon[2] = canon[1]
-    t["lgate"] = _retable(t["lgate"], "lgate", canon)
-    r = cd.separation_c(_reg(), t)
-    assert r["status"] == "PASS" and r["duplicates"]["lgate"]["n_duplicate_rows"] == 1
-    assert r["duplicates"]["lgate"]["n_rows"] == 600
 
 
 # ---------------------------------------------------------------- H2-FRESH

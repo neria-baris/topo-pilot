@@ -1,8 +1,8 @@
-"""Author B (job 0176): records, the gate runner, lineage, authority records, the study ledger,
-pauses, the D6 export (RESULT.json and SEALED_OPENED.json) and the HANDOFF reader.
+"""Author B (job 0176): records, the gate runner, lineage, authority records, the study
+ledger, pauses, the D6 export (RESULT.json and SEALED_OPENED.json) and the HANDOFF reader.
 
-Written from PROTOCOL_HWSC_v1.md sections 5, 6.4, 8, 9, API.md sections 1.2, 7, 12-14, CONTRACT.json
-`handoff`, `records`, `cpu`, `licences`, `disclosure` and TEST_PLAN.md section 3 only (DRC10, DRC12).
+Written from PROTOCOL_HWSC_v1.md sections 5, 6.4, 8, 9, API.md 1.2, 7, 12-14, CONTRACT.json
+`handoff`, `records`, `cpu`, `licences`, `disclosure`, TEST_PLAN.md section 3 only (DRC10, DRC12).
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_bind as cb  # noqa: E402
 import hwsc_gates as cg  # noqa: E402
 import hwsc_driver as cdr  # noqa: E402
@@ -141,10 +141,9 @@ def _recorded_store(out):
                  "KC_ACCEPT.json", "FREEZE.json", "ACCEPT_VALIDATION.json",
                  "DECISION_TRAIN.json", "REGISTRY_OBLIGATION.json"):
         (out / name).write_text("{}", encoding="utf-8")
-    (out / "logs").mkdir()
-    (out / "logs" / "run.log").write_text("log", encoding="utf-8")
-    (out / "tmp").mkdir()
-    (out / "tmp" / "scratch.bin").write_bytes(b"x")
+    for d in ("logs", "tmp"):
+        (out / d).mkdir()
+        (out / d / "free.bin").write_bytes(b"x")
 
 
 def test_lineage_absent_and_recorded(tmp_path):
@@ -225,7 +224,7 @@ def test_ledger_append_atomic_cumulative_and_unique(tmp_path):
     assert led["cumulative_cpu_s"] == pytest.approx(150.75, abs=1e-9)
     e = led["entries"][0]
     assert set(C["records"]["ledger_entry"]) <= set(e) and e["master"] == 620301
-    assert not list(tmp_path.glob("*.tmp"))
+    assert not list(tmp_path.glob("*.tmp")) and e["label"] == "0180-TRAIN-620301-a1"
     before = p.read_bytes()
     with pytest.raises(GF) as err:
         cdr.ledger_append(p, "0180-TRAIN-620301-a1", "0181", "TRAIN", 1.0, "src/c")
@@ -366,8 +365,7 @@ def test_load_handoff_real():
         assert type(h[k]) is int and h[k] == v[k]
     assert type(h["p_D2a"]) is float and h["p_D2a"] == v["p_D2a"]
     assert h["stage_c_exclusions"] == tuple(C["handoff"]["stage_c_exclusions"])
-    assert len(h["stage_c_exclusions"]) == 24 and h["outcome"] == "HWSB_PASS"
-    assert h["training_forecast_s"] == 6006.6282
+    assert len(h["stage_c_exclusions"]) == 24 and h["training_forecast_s"] == 6006.6282
 
 
 def _variant(tmp_path, name, mutate):

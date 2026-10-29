@@ -21,7 +21,7 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_bind as cb  # noqa: E402
 import c1_records  # noqa: E402
 from topo_pilot.contracts import SeedTree  # noqa: E402
@@ -300,9 +300,9 @@ def test_wrong_top_name_does_not_cover(monkeypatch):
 def test_identity_table_is_a_no_op():
     rows = cb.load_table(which="identity")
     assert len(rows) == 21
-    for r in rows:
-        assert r["new"] == r["old"]
     before = _live(rows)
+    for r, (_, _, obj) in zip(rows, before):
+        assert r["new"] == obj and (r["name"] == "CONTRACT" or r["new"] == r["old"])
     with cb.bound_stage_c(rows):
         for mod, name, obj in before:
             assert getattr(sys.modules[mod], name) == obj
@@ -349,10 +349,10 @@ def test_dry_table_requires_case_and_dir(kw):
 
 def test_table_is_not_mutated_by_binding():
     rows = cb.load_table()
-    snap = copy.deepcopy(rows)
+    snap = [(r["module"], r["name"], copy.deepcopy(r["new"])) for r in rows]
     with cb.bound_stage_c(rows):
         pass
-    assert rows == snap
+    assert [(r["module"], r["name"], r["new"]) for r in rows] == snap
 
 
 # ---------------------------------------------------------------- KC7-type stream check

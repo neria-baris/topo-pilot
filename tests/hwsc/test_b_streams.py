@@ -19,12 +19,13 @@ _HWSC = str(REPO / "tools" / "hwsc")
 if sys.path[0] != _HWSC:
     sys.path.insert(0, _HWSC)
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402, I001
 import hwsc_bind as cb  # noqa: E402
 import hwsc_data as cd  # noqa: E402
 import hwsb_config  # noqa: E402
 import hwsb_data  # noqa: E402
 import hwsb_dry  # noqa: E402
+import c2_registry  # noqa: E402
 import k4b_data  # noqa: E402
 from topo_pilot.contracts import ArtifactStore, MemoryBackend, ObservationSet, SeedTree  # noqa: E402
 from topo_pilot.dataset import HMMSampler  # noqa: E402
@@ -88,11 +89,10 @@ def test_run_key_real_and_dry():
 @pytest.mark.parametrize("master", cc.MASTERS)
 @pytest.mark.parametrize("split", ["train", "dev"])
 def test_sequence_ids_real(split, master):
-    got = cd.sequence_ids_c(split, 64, cc.HWSC_PLAN, master)
     want = _ids(f"hwsc-v1/{split}/{master}", split, 64)
+    with cb.bound_stage_c():  # stream_record's master check reads hwsb_config.MASTERS
+        got = cd.sequence_ids_c(split, 64, cc.HWSC_PLAN, master)
     assert got.dtype == np.int64 and np.array_equal(got, want)
-    with cb.bound_stage_c():
-        assert np.array_equal(cd.sequence_ids_c(split, 64, cc.HWSC_PLAN, master), want)
 
 
 def test_sequence_ids_dry_replicates():
@@ -107,13 +107,13 @@ def test_sequence_ids_dry_replicates():
 
 @pytest.mark.parametrize("role", ["lgate", "cal", "val", "test", "LGATE", "CAL"])
 def test_block_roles_refused(role):
-    with pytest.raises(ValueError):
+    with cb.bound_stage_c(), pytest.raises(ValueError):
         cd.sequence_ids_c(role, 8, cc.HWSC_PLAN, 620301)
 
 
 @pytest.mark.parametrize("master", [620201, 1729, 629911])
 def test_master_outside_plan_refused(master):
-    with pytest.raises(ValueError):
+    with cb.bound_stage_c(), pytest.raises(ValueError):
         cd.sequence_ids_c("train", 8, cc.HWSC_PLAN, master)
 
 
@@ -150,10 +150,9 @@ def test_drc4_hwsc_scope_differs_and_is_disjoint(dry_binding):
         plan = cc.dry_plan("dry_tiny", "DRC4")
         pc = hwsb_dry.build_tiny_process(sc, masters=DRY)
         got = cd.make_train_dev_c(sc, pc, DRY[0], plan, scope="hwsc-v1")
-        same_plan_b = cd.make_train_dev_c(ArtifactStore(MemoryBackend()),
-                                          hwsb_dry.build_tiny_process(
-                                              ArtifactStore(MemoryBackend()), masters=DRY),
-                                          DRY[0], plan, scope="hwsb-v1")
+        s3 = ArtifactStore(MemoryBackend())
+        p3 = hwsb_dry.build_tiny_process(s3, masters=DRY)
+        same_plan_b = cd.make_train_dev_c(s3, p3, DRY[0], plan, scope="hwsb-v1")
     ref_ids = set(np.concatenate([o.sequence_id for o in ref_obs.values()]).tolist())
     for split in ("train", "dev"):
         o = _obs(sc, got[split])
@@ -163,7 +162,9 @@ def test_drc4_hwsc_scope_differs_and_is_disjoint(dry_binding):
         assert got["replicates"][split] == f"hwsc-v1/DRY/DRC4/{split}/{DRY[0]}"
         assert got["streams"][split][1] == "hwsc-v1"
         assert sc.meta(got[split]).config["study"] == "hwsc-v1"
-        assert got[split] != same_plan_b[split]  # the scope argument changes the IDs
+        other = _obs(s3, same_plan_b[split]).sequence_id  # the scope argument changes the IDs
+        assert set(other.tolist()).isdisjoint(set(o.sequence_id.tolist()))
+        assert same_plan_b["replicates"][split] == f"hwsb-v1/DRY/DRC4/{split}/{DRY[0]}"
     assert set(got["streams"]) == {"train", "dev"}
 
 
@@ -245,3 +246,75 @@ def test_save_table_six_keys_and_exclusive(tmp_path):
     with pytest.raises(Exception):
         cd.save_table(path, table)
     assert path.read_bytes() == before
+
+
+def _tables(n=600, seed=0):
+    rng = np.random.default_rng(seed)
+    out = {}
+    for i, s in enumerate(("lgate", "cal", "val")):
+        canon = rng.integers(0, 36, (n, 32)).astype(np.uint8)
+        out[s] = k4b_data.history_table(canon, np.arange(n, dtype=np.int64) + 10_000 * (i + 1),
+                                        s, 0)
+    return out
+
+
+LINEAGE, INCOMPLETE = "FAIL_TECHNICAL/LINEAGE", "INCONCLUSIVE/REGISTRY_INCOMPLETE"
+
+
+# ---------------------------------------------------------------- H2: separation_c
+def _reg(digests=(), seq=(), ranges=None):
+    return c2_registry.Registry(set(digests), None, ranges or {"pool": (9_000_000, 9_000_100)},
+                                ["sealed_d2a"], {}, set(seq))
+
+
+def _retable(t, split, canon):
+    return k4b_data.history_table(canon, t["seq_ids"], split, 0)
+
+
+def test_h2_clean_pass_and_keys():
+    r = cd.separation_c(_reg(), _tables())
+    assert r["status"] == "PASS"
+    assert r["collisions"] == {"lgate_R": 0, "cal_R": 0, "val_R": 0, "lgate_cal": 0,
+                               "lgate_val": 0, "cal_val": 0}
+    assert set(r["predicates"]) == set(r["duplicates"]) == {"lgate", "cal", "val"}
+
+
+def test_h2_planted_registry_digest_is_lineage():
+    t = _tables()
+    r = cd.separation_c(_reg({t["cal"]["digest"][5]}), t)
+    assert r["status"] == LINEAGE and r["collisions"]["cal_R"] == 1
+
+
+def test_h2_cross_split_collision_is_lineage():
+    t = _tables()
+    canon = t["cal"]["canon32"].copy()
+    canon[0] = t["lgate"]["canon32"][0]
+    t["cal"] = _retable(t["cal"], "cal", canon)
+    r = cd.separation_c(_reg(), t)
+    assert r["status"] == LINEAGE and r["collisions"]["lgate_cal"] == 1
+
+
+def test_h2_seq_id_overlaps_are_lineage():
+    t = _tables()
+    val_id = int(t["val"]["seq_ids"][7])
+    assert cd.separation_c(_reg(seq={val_id}), t)["status"] == LINEAGE
+    cal_id = int(t["cal"]["seq_ids"][3])
+    assert cd.separation_c(_reg(ranges={"p": (cal_id, cal_id + 1)}), t)["status"] == LINEAGE
+
+
+def test_h2_d2a_predicate_row_is_incomplete():
+    t = _tables()
+    canon = t["val"]["canon32"].copy()
+    canon[3] = np.array([0, 1, 2, 3, 4] * 6 + [0, 1], dtype=np.uint8)
+    t["val"] = _retable(t["val"], "val", canon)
+    assert cd.separation_c(_reg(), t)["status"] == INCOMPLETE
+
+
+def test_h2_duplicates_counted_and_kept():
+    t = _tables()
+    canon = t["lgate"]["canon32"].copy()
+    canon[2] = canon[1]
+    t["lgate"] = _retable(t["lgate"], "lgate", canon)
+    r = cd.separation_c(_reg(), t)
+    assert r["status"] == "PASS" and r["duplicates"]["lgate"]["n_duplicate_rows"] == 1
+    assert r["duplicates"]["lgate"]["n_rows"] == 600

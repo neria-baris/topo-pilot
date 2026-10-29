@@ -23949,15 +23949,15 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 526,
+   "lines": 555,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "f7dc98dbebc765efad0b11bab502d7077052ed2c637d51bbcf4173818f08b6d8"
+   "sha256": "01fe200666ff75a6341efd1fc0cfeadc6fd76f09a08f1fb6c18dc82caedbaa3a"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
-   "lines": 5196,
+   "lines": 17993,
    "purpose": "",
-   "sha256": "2b6841946b70c8c77d9daeeb79748aa85fddba8e7a8a80fe33c6242d2e1e87a7"
+   "sha256": "27e410b2e30fcbc96d8a4256737af8403109e517cd7e5d302c9ff17b39e5cfcf"
   },
   "tools/hwsc/PROTOCOL_HWSC_v1.md": {
    "kind": "markdown",
@@ -244904,5 +244904,5 @@
    ]
   }
  },
- "sources_digest": "6b5ae628426ee159826737dd7097d250223b58462bb12ab72e24f3564907b0c9"
+ "sources_digest": "9e156b8ca87c1067361062397eb9721f840adcbddbbeccb76a17515c0ecd16e4"
 }

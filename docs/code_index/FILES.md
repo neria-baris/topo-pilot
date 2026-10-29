@@ -1329,8 +1329,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 1021 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 526 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
-| `CONTRACT.json` | json | 5196 lines |  |
+| `API.md` | markdown | 555 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
+| `CONTRACT.json` | json | 17993 lines |  |
 | `PROTOCOL_HWSC_v1.md` | markdown | 538 lines | HWSC-v2: the world-sweep stage C, the full beyond-four test with three new models in w\* = W12-q1-s1.75-p0.2 |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSC test plan v1 (job 0176) |
 | [hwsc_bind.py](files/tools/hwsc/hwsc_bind.py.md) | python | 246 lines | HWSC versioned binding: the binding table, bound_stage_c() and the binding audit (API.md §2; |

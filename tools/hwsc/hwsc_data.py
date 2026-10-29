@@ -11,7 +11,6 @@ from itertools import combinations
 from pathlib import Path
 
 import c2_registry
-import hwsb_config
 import hwsb_data
 import hws_exact
 import k4b_data
@@ -86,7 +85,7 @@ def make_train_dev_c(store, proc, master, plan, scope=cc.SCOPE) -> dict:
             ObservationSet(split=split, V=proc["V"], sequence_id=ids[split], tokens=tok[split]))
         cfg = {"family": "cylinder", "mode": "overlap", "sigma": plan.process[2],
                "V": proc["V"], "N": proc["N"], "split": split, "n": int(plan.sizes[split]),
-               "replicate": m, "study": hwsb_config.SCOPE, "key": plan.key}
+               "replicate": m, "study": scope, "key": plan.key}
         out[split] = store.save(obs, config=cfg,
                                 parents=[proc["ids"]["transition"], proc["ids"]["emission"][m]],
                                 seed_map=dict(tree.issued), consumer="dataset")

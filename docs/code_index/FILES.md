@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1029 tracked files; 635 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked files; 636 code files (linked to their pages).
 
 ## (repo root)
 
@@ -991,6 +991,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1029 tracked fil
 | [test_r_0181_kc_records_rehearsal.py](files/tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) | python | 48 lines | Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the |
 | [test_r_0184_kc7_inside_binding.py](files/tests/hwsc/test_r_0184_kc7_inside_binding.py.md) | python | 50 lines | Coordinator-written regression test for defect D-0184-1 (API.md §26): run_kc runs every KC |
 | [test_r_0187_e1_release_and_gate_files.py](files/tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) | python | 95 lines | Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27). |
+| [test_r_0192_output_cap.py](files/tests/hwsc/test_r_0192_output_cap.py.md) | python | 28 lines | Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap |
 
 ## tests/integration/
 
@@ -1335,7 +1336,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1029 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 670 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
+| `API.md` | markdown | 684 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
 | `CONTRACT.json` | json | 68847 lines |  |
 | `PROTOCOL_HWSC_v1.md` | markdown | 538 lines | HWSC-v2: the world-sweep stage C, the full beyond-four test with three new models in w\* = W12-q1-s1.75-p0.2 |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSC test plan v1 (job 0176) |

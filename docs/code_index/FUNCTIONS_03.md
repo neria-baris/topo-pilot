@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_source_c2_missing_and_mismatch` | test | `test_source_c2_missing_and_mismatch` | [tests/c2_nd/test_b_registry.py:128](../../tests/c2_nd/test_b_registry.py#L128) |  |
 | `test_source_c2_superseded` | test | `test_source_c2_superseded` | [tests/c2_nd/test_b_registry.py:154](../../tests/c2_nd/test_b_registry.py#L154) |  |
 | `test_source_c_malformed_json_refused_never_empty` | test | `test_source_c_malformed_json_refused_never_empty` | [tests/k4b/test_b_registry.py:234](../../tests/k4b/test_b_registry.py#L234) |  |
 | `test_source_c_valid_mailbox_delegates_unchanged` | test | `test_source_c_valid_mailbox_delegates_unchanged` | [tests/k4b/test_b_registry.py:241](../../tests/k4b/test_b_registry.py#L241) |  |

@@ -67,6 +67,7 @@
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 16, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 17, import)
 - [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 18, import)
+- [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 13, import)
 - [tools/hwsc/hwsc_bind.py](hwsc_bind.py.md) (line 7, import)
 - [tools/hwsc/hwsc_data.py](hwsc_data.py.md) (line 7, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 7, import)

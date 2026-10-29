@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 635,
+  "code files": 636,
   "dynamic imports, dynamic expression or unresolved": 15,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1029,
-  "functions and methods (incl. tests)": 9294,
+  "files indexed": 1030,
+  "functions and methods (incl. tests)": 9295,
   "import cycles (strongly connected components)": 12,
   "import statements, external": 908,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3079,
+  "import statements, internal resolved": 3084,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2777,
-  "internal edges (file to file, with kind and line)": 3114,
-  "python files": 634
+  "import statements, standard library": 2780,
+  "internal edges (file to file, with kind and line)": 3119,
+  "python files": 635
  },
  "cycles": [
   [
@@ -9043,6 +9043,36 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    21
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   13
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/hwsc/hwsc_meter_bind.py",
+   "import",
+   14
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/k4b/k4b_meter_bind.py",
+   "import",
+   15
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/x4_oracle_profile/meter.py",
+   "import",
+   16
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/x4_oracle_profile/winjob.py",
+   "import",
+   17
   ],
   [
    "tests/integration/_mini_pipeline.py",
@@ -22830,7 +22860,7 @@
    "kind": "python",
    "lines": 346,
    "purpose": "Author B (job 0176): the blindness guard (exactly the R-0176-G1 five-path list), the G0c seed",
-   "sha256": "c85fdd850bfc910df6e89265ded44fa4a056bfcc1cdcda16e1131356193a71f9"
+   "sha256": "4983a1cada434e30bd51b489d5b94ca0bdf3c2ff285488e4f0cecd1c25a8236b"
   },
   "tests/hwsc/test_b_records.py": {
    "kind": "python",
@@ -22897,6 +22927,12 @@
    "lines": 95,
    "purpose": "Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27).",
    "sha256": "c1ccdf9330728aaf0c9f92fe12809fb2a2e4439fcd0e4df05ebf1829494e76ba"
+  },
+  "tests/hwsc/test_r_0192_output_cap.py": {
+   "kind": "python",
+   "lines": 28,
+   "purpose": "Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap",
+   "sha256": "0310f0c6905b71f1566b71a4c85590da151a106bc9512eb1f267ed1211aebbdc"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -24184,15 +24220,15 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 670,
+   "lines": 684,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "b67c1c7692a991efb27549c6a731610c6ff98e9a99cc6161d678ce30cb4ce82f"
+   "sha256": "1fa50e5abaa49c32c2f0221f1146a83fc17333e34b4204f5ff459558f786d0b3"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
    "lines": 68847,
    "purpose": "",
-   "sha256": "a61516c9e30ef3a46faf9f1dced2e30174944f307b0a7777fac052fcc298d083"
+   "sha256": "af669ac235845b09448c1823ec71dd72d825f9144eb2226077b6f72ce525af88"
   },
   "tools/hwsc/PROTOCOL_HWSC_v1.md": {
    "kind": "markdown",
@@ -24276,7 +24312,7 @@
    "kind": "python",
    "lines": 137,
    "purpose": "HWSC meter binding (API.md §9; protocol §8.3, RC-13; DRC13).",
-   "sha256": "44a9a6804b981251842a0e371035876b03b23fd6ed7c17b7d641489ffb801686"
+   "sha256": "01a991d9ee91ba8de5caa13c895753a6938d08c74e4960d5111e42e50ce61c84"
   },
   "tools/hwsc/hwsc_outcome.py": {
    "kind": "python",
@@ -140289,6 +140325,168 @@
     }
    ]
   },
+  "tests/hwsc/test_r_0192_output_cap.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap\napplies to the whole out directory (for store jobs, all of hwsc-store with its three registries),\nso it is read from CONTRACT resources.output_cap_bytes (16 GiB), not fixed at 4 GiB.",
+   "doc1": "Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "hwsc_meter_bind"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_meter_bind.py"
+     ],
+     "top": "hwsc_meter_bind"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "k4b_meter_bind"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_meter_bind.py"
+     ],
+     "top": "k4b_meter_bind"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "meter"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/meter.py"
+     ],
+     "top": "meter"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "winjob"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/winjob.py"
+     ],
+     "top": "winjob"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 28,
+     "kind": "test",
+     "name": "test_output_cap_comes_from_the_contract",
+     "qual": "test_output_cap_comes_from_the_contract",
+     "sig": "def test_output_cap_comes_from_the_contract(tmp_path, monkeypatch)",
+     "start": 20
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsc"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsc')",
+     "line": 11
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -246912,5 +247110,5 @@
    ]
   }
  },
- "sources_digest": "207ad2cef2bc9416861f6ac7ead8f3c4e715914f211f93374a8d34e677a4f055"
+ "sources_digest": "f336f5b11f53aa724427e481306770441278644d738752ee0071864ce5c10aee"
 }

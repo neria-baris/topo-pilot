@@ -226,6 +226,8 @@ def run_reg2(out, auth, sched, accept) -> dict:
     pf = preflight(out, "REG2", auth, sched)
     if pf["refused"]:
         return pf
+    with hwsc_bind.bound_stage_c():
+        _audit_gate(out)  # CONTRACT gates.REG2: BINDING_AUDIT before ACCEPT
     vr = out / "stages" / "S5" / "VALIDATION_REPORT.json"
     if not (isinstance(accept, dict) and accept.get("verdict") == "ACCEPT" and vr.is_file()
             and accept.get("validation_report_sha256") == stage_records.sha256(vr)):
@@ -239,7 +241,6 @@ def run_reg2(out, auth, sched, accept) -> dict:
         return {"refused": True, "reason": res["reason"]}
     t0 = time.process_time()
     with hwsc_bind.bound_stage_c():
-        _audit_gate(out)
         tabs = {s: k4b_fresh.load_recorded(out, "S3", hwsc_data.hist_name(s, 0))
                 for s in ("lgate", "cal", "val")}
         m = _reg(out, "K-REG2", cc.load_handoff(), extra=tabs)

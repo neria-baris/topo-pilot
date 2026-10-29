@@ -668,3 +668,17 @@ Found during TRAIN by the coordinator and an independent code review of the E1/R
   - (b) A pause check also runs after the last gate of E1, REG2 and E2. The coordinator reads the gate lines, not only the exit code.
   - (c) Before E1 the coordinator repeats the G0c seed search and classification on the current tree.
 - **Tests.** `tests/hwsc/test_r_0187_e1_release_and_gate_files.py` (coordinator-written; all three cases fail on the old code).
+
+## 28. Erratum: the meter output cap covers the whole store (defect D-0192-1; CONTRACT resources.output_cap_bytes)
+- **Defect.** `hwsc_meter_bind.bind` fixed `meter.OUTPUT_CAP = 4 GiB` (CONTRACT `resources.output_cap_bytes` 4,294,967,296). The meter compares the cap with the size of the whole out directory, and for store jobs that is all of `hwsc-store`. After E1 the store holds the KC9 rehearsal registry (1.4 GB), K-REG1 (0.4 GB digests + 1.0 GB runs), 18 ObservationSets and 36 checkpoints, about 3.0 GB. REG2 (job 0192) was killed at 4,296,569,273 bytes while it wrote K-REG2 (`KILLED`, "output cap"). Before that kill, gate ACCEPT was PASS and no REG2 gate was recorded. Nothing was sampled, and the reservation stayed ACTIVE.
+- **Fix (resource limit, not science).**
+  - CONTRACT `resources.output_cap_bytes` = 17,179,869,184 (16 GiB). The X: disk guard (`disk_min_free` X: 30 GB) is unchanged, and 172 GB were free.
+  - `bind` reads the cap from CONTRACT.
+  - Author B's assertion in `tests/hwsc/test_b_guard_meter.py::test_bind_per_stage` changes from 4 to 16 GiB. This is a coordinator edit forced by the erratum, and that one line is the only change.
+  - Regression test `tests/hwsc/test_r_0192_output_cap.py` (coordinator-written; it fails on the old code).
+- **Correction count and order.**
+  - Correction 1 of at most 2 for D-0192-1 (X-2).
+  - The partial REG2 outputs (`registry/K-REG2_digests.npz`, `registry/runs/K-REG2/`) move to `logs/superseded-reg2-0192a1/`, a free directory outside `history_inventory`.
+  - J-C1 + DRY run at the new h_exec, then `FREEZE.json` moves to `logs/superseded-freeze-98cbc4d2/` and the store re-freezes with the same run approval (ruling R-0192-1).
+  - Then REG2 runs again, then release B, then E2.
+  - KC, TRAIN and E1 results are unaffected: the meter binding does not enter any computation.

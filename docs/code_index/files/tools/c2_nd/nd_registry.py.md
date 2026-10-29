@@ -64,6 +64,8 @@
 - [tools/c2_nd/nd_split.py](nd_split.py.md) (line 27, import)
 - [tools/c2_nd/nd_stage_post.py](nd_stage_post.py.md) (line 26, import)
 - [tools/c2_nd/nd_stage_pre.py](nd_stage_pre.py.md) (line 26, import)
+- [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 16, import)
+- [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 16, import)
 
 ## Top-level constants
 

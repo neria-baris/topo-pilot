@@ -65,9 +65,17 @@
 
 ## Imported by
 
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 171, import)
+- [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 35, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 25, import)
 - [tests/k4b/test_b_h1_meta.py](../../tests/k4b/test_b_h1_meta.py.md) (line 30, import)
 - [tests/k4b/test_b_rerun.py](../../tests/k4b/test_b_rerun.py.md) (line 24, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 17, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 19, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 27, import)
+- [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 20, import)
+- [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 19, import)
+- [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 23, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 20, import)
 
 ## Top-level constants

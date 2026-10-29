@@ -56,10 +56,14 @@
 - [tests/hwsb/test_a_ladder.py](../../tests/hwsb/test_a_ladder.py.md) (line 38, import)
 - [tests/hwsb/test_a_outcomes.py](../../tests/hwsb/test_a_outcomes.py.md) (line 29, import)
 - [tests/hwsb/test_b_registry.py](../../tests/hwsb/test_b_registry.py.md) (line 25, import)
+- [tests/hwsc/test_a_ladder.py](../../tests/hwsc/test_a_ladder.py.md) (line 28, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 18, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 23, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 18, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 17, import)
+- [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 101, import)
+- [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 15, import)
+- [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 200, import)
 
 ## Top-level constants
 

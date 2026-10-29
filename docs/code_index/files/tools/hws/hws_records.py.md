@@ -67,6 +67,7 @@
 - [tools/hws/hws_known.py](hws_known.py.md) (line 19, import)
 - [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 16, import)
 - [tools/hwsb/hwsb_records.py](../hwsb/hwsb_records.py.md) (line 16, import)
+- [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 21, import)
 
 ## Top-level constants
 

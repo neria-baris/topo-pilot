@@ -48,6 +48,7 @@
 - [tests/circle_history/test_scores_precision_gates.py](../../tests/circle_history/test_scores_precision_gates.py.md) (line 30, import)
 - [tests/hwsb/test_a_capture.py](../../tests/hwsb/test_a_capture.py.md) (line 32, import)
 - [tests/hwsb/test_a_ladder.py](../../tests/hwsb/test_a_ladder.py.md) (line 34, import)
+- [tests/hwsc/test_a_ladder.py](../../tests/hwsc/test_a_ladder.py.md) (line 31, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 29, import)
 - [tools/c1prime/c1_endpoint.py](../c1prime/c1_endpoint.py.md) (line 14, import)
 - [tools/c2_nd/nd_stage_val.py](../c2_nd/nd_stage_val.py.md) (line 24, import)

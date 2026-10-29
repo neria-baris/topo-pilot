@@ -63,11 +63,19 @@
 - [tests/c2_nd/test_b_registry.py](../../tests/c2_nd/test_b_registry.py.md) (line 25, import)
 - [tests/c2_readout/test_b_lineage.py](../../tests/c2_readout/test_b_lineage.py.md) (line 26, import)
 - [tests/c2_readout/test_b_registry.py](../../tests/c2_readout/test_b_registry.py.md) (line 25, import)
+- [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 28, import)
+- [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 28, import)
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 26, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 21, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 27, import)
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 20, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 24, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 13, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 176, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 135, import)
+- [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 181, import)
+- [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 12, import)
+- [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 13, import)
 
 ## Top-level constants
 

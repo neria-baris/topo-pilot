@@ -52,9 +52,19 @@
 ## Imported by
 
 - [tests/hwsb/test_b_registry.py](../../tests/hwsb/test_b_registry.py.md) (line 26, import)
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 170, import)
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 225, import)
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 336, import)
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 360, import)
+- [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 32, import)
+- [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 29, import)
+- [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 29, import)
 - [tests/k4b/test_b_data.py](../../tests/k4b/test_b_data.py.md) (line 23, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 24, import)
 - [tools/hwsb/hwsb_gates.py](../hwsb/hwsb_gates.py.md) (line 265, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 16, import)
+- [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 18, import)
+- [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 24, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 18, import)
 

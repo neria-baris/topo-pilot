@@ -50,8 +50,16 @@
 
 ## Imported by
 
+- [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 36, import)
+- [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 31, import)
+- [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 36, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 27, import)
 - [tests/k4b/test_b_rerun.py](../../tests/k4b/test_b_rerun.py.md) (line 25, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 19, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 21, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 29, import)
+- [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 19, import)
+- [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 24, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 20, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 22, import)
 - [tools/k4b/k4b_meter_bind.py](k4b_meter_bind.py.md) (line 123, import)

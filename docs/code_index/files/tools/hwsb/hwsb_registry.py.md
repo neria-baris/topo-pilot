@@ -50,7 +50,10 @@
 
 ## Imported by
 
+- [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 31, import)
 - [tools/hwsb/hwsb_data.py](hwsb_data.py.md) (line 349, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 12, import)
+- [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 14, import)
 
 ## Top-level constants
 

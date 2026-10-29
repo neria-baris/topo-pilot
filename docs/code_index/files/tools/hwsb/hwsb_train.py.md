@@ -54,11 +54,15 @@
 - [tests/hwsb/test_b_e4path.py](../../tests/hwsb/test_b_e4path.py.md) (line 26, import)
 - [tests/hwsb/test_b_hold.py](../../tests/hwsb/test_b_hold.py.md) (line 22, import)
 - [tests/hwsb/test_r_0170_kb2_status.py](../../tests/hwsb/test_r_0170_kb2_status.py.md) (line 20, import)
+- [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 34, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 21, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 27, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 22, import)
 - [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 19, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 20, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 13, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 20, import)
+- [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 12, import)
 
 ## Top-level constants
 

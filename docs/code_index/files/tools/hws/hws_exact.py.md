@@ -60,10 +60,12 @@
 - [tests/hws/test_a_identities.py](../../tests/hws/test_a_identities.py.md) (line 30, import)
 - [tests/hws/test_b_exact.py](../../tests/hws/test_b_exact.py.md) (line 26, import)
 - [tests/hws/test_b_kc1.py](../../tests/hws/test_b_kc1.py.md) (line 34, import)
+- [tests/hwsc/test_a_ladder.py](../../tests/hwsc/test_a_ladder.py.md) (line 29, import)
 - [tools/hws/hws_driver.py](hws_driver.py.md) (line 17, import)
 - [tools/hws/hws_dry.py](hws_dry.py.md) (line 15, import)
 - [tools/hws/hws_known.py](hws_known.py.md) (line 17, import)
 - [tools/hwsb/hwsb_stages.py](../hwsb/hwsb_stages.py.md) (line 14, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 15, import)
 
 ## Top-level constants
 

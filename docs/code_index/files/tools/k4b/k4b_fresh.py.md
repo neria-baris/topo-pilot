@@ -64,8 +64,13 @@
 
 ## Imported by
 
+- [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 35, import)
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 29, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 26, import)
+- [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 18, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 20, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 28, import)
+- [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 20, import)
 
 ## Top-level constants
 

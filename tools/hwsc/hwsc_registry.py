@@ -17,7 +17,6 @@ import nd_registry
 import numpy as np
 import scores
 import stage_records
-import x6s1_registry
 
 from topo_pilot.contracts import ArtifactStore, EmissionSpec, ObservationSet
 from topo_pilot.contracts.backends import LocalFSBackend
@@ -177,6 +176,10 @@ def _token_file(f, out) -> None:
         if k.startswith("digest"):
             out["digests"] |= set(np.asarray(a).astype(str).reshape(-1).tolist()) - {""}
             n += int(a.size)
+        elif k in k4b_registry.HISTORY_KEYS and a.ndim == 2 and a.shape[-1] < 32:
+            # D-0139-1: fewer than 32 tokens per row cannot equal a 32-token history
+            out["non_c2_format"].append({"path": str(f), "key": k, "shape": list(a.shape)})
+            n += int(len(a))
         elif k in k4b_registry.HISTORY_KEYS or (a.dtype.kind in "iu" and a.ndim >= 2
                                                 and a.shape[-1] in (32, 33)):
             tok = a.reshape(-1, a.shape[-1])[:, :32]
@@ -189,6 +192,7 @@ def _token_file(f, out) -> None:
 
 
 def source_dry(paths=None) -> dict:
+    paths_given = paths
     paths = _dry_paths() if paths is None else [Path(p) for p in paths]
     must = {"hws-dry", "hwsb-dry", "hwsb-dry-0169", "hwsb-dry-0171"}
     planted = {Path(p["path"]).as_posix().lower(): p for p in
@@ -222,111 +226,30 @@ def source_dry(paths=None) -> dict:
                     _token_file(f, out)
             except Exception as exc:  # noqa: BLE001  unreadable -> INCOMPLETE
                 out["other"].append({"path": str(f), "reason": f"unreadable {exc!r}"})
+    if paths_given is None:
+        _os_roots(out)
     return _close(out)
+
+
+def _os_roots(out, roots=None) -> None:
+    """R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the
+    same store, read canonically (the hwsb_registry.registry_digests rule)."""
+    roots = REG["dry_stores"].get("os_roots", []) if roots is None else roots
+    for root in (Path(r) for r in roots):
+        base = root / "ObservationSet"
+        if not base.is_dir():
+            out["other"].append({"path": str(root), "reason": "ObservationSet root missing"})
+            continue
+        for d in sorted(p for p in base.iterdir() if p.is_dir()):
+            try:
+                _os_canonical(d / "payload.npz", out)
+            except Exception as exc:  # noqa: BLE001  unreadable -> INCOMPLETE
+                out["other"].append({"path": str(d), "reason": f"unreadable {exc!r}"})
 
 
 # ---------------------------------------------------------------------------------- R6 scratch
 def source_scratch_c(scratch=None) -> dict:
     return nd_registry.source_scratch(cc.SCRATCH if scratch is None else scratch)
-
-
-def _classify(f) -> tuple:
-    if f.suffix == ".pt":
-        return "pt", None
-    try:
-        heads = x6s1_registry._headers(f)
-        if x6s1_registry._history_bearing(f):
-            for k, dt, sh in heads:
-                if k in k4b_registry.HISTORY_KEYS or k.startswith("digest") or (
-                        dt.kind in "iu" and len(sh) >= 2 and sh[-1] in (32, 33)):
-                    return "history", list(sh)
-            return "history", None
-        if any(k in k4b_registry.IDENTITY_KEYS for k, _, _ in heads):
-            return "identity", None
-    except Exception:  # noqa: BLE001
-        return "unreadable", None
-    return None, None
-
-
-def scratch_scan(scratch=None) -> dict:
-    scratch = Path(cc.SCRATCH if scratch is None else scratch)
-    res = {"__top_level__": sorted(str(p) for p in scratch.iterdir()
-                                   if p.is_file() and p.suffix in ARRAYS)}
-    for top in sorted(p for p in scratch.iterdir() if p.is_dir()):
-        full = top.name.startswith(STAGE_B)
-        if top.name.startswith("test_") and not top.name.startswith("test_hwsb-"):
-            continue
-        listed = {}
-        for dirpath, dirnames, filenames in os.walk(top):
-            here = Path(dirpath)
-            if not full:
-                dirnames[:] = [d for d in dirnames if not d.startswith("test_")]
-            dirnames.sort()
-            for name in sorted(filenames):
-                f = here / name
-                rel = _rel(top, f)
-                if name == "meta.json" and here.parent.name == "ObservationSet":
-                    listed[rel] = {"class": "os_root", "shape": None}
-                elif f.suffix in (".npz", ".npy", ".pt"):
-                    cls, shape = _classify(f)
-                    if cls:
-                        listed[rel] = {"class": cls, "shape": shape}
-        res[top.name] = listed
-    return res
-
-
-def _row_for(name, table):
-    if name in table:
-        return table[name]
-    for pat, prefix in (("hwsc-dry-<job>", "hwsc-dry-"), ("test_hwsc-<job>", "test_hwsc-")):
-        if name.startswith(prefix) and pat in table:
-            return table[pat]
-    return None
-
-
-def _fixture_ok(rel, rec, row) -> bool:
-    parts = rel.split("/")[:-1]
-    comps = set(row.get("fixture_components", []))
-    seg = any(p.startswith(("pt-", "pt2-", "bt", "pytest-of-")) or p in comps for p in parts)
-    if rec["class"] == "history":
-        return seg and rec["shape"] is not None and rec["shape"][0] <= row["fixture_max_rows"]
-    return seg
-
-
-def scratch_check(scratch=None, table=None, readers_ok=None) -> dict:
-    table = REG["scratch_inventory"] if table is None else table
-    ok_tags = set(readers_ok or ())
-    scan, out = scratch_scan(scratch), _new()
-    out["other"] += [{"path": p, "reason": "array file directly under the scratch root"}
-                     for p in scan.pop("__top_level__")]
-    counts = {}
-    for name, listed in scan.items():
-        counts[name] = {}
-        for rec in listed.values():
-            counts[name][rec["class"]] = counts[name].get(rec["class"], 0) + 1
-        row = _row_for(name, table)
-        if row is None:
-            if listed:
-                out["other"].append({"path": name, "reason": "no inventory row"})
-            continue
-        if row["decision"] == "TO_FREEZE" or row.get("frozen_files") == "TO_FREEZE":
-            if listed or row["decision"] == "TO_FREEZE":
-                out["other"].append({"path": name, "reason": "row not frozen"})
-            continue
-        frozen = row.get("frozen_files") or {}
-        for rel, rec in listed.items():
-            want = frozen.get(rel)
-            if want != rec["class"]:
-                out["other"].append({"path": f"{name}/{rel}", "reason": "not in frozen_files"})
-            elif row["decision"] == "EXCLUSION" and "fixture_max_rows" in row and not \
-                    _fixture_ok(rel, rec, row):
-                out["other"].append({"path": f"{name}/{rel}", "reason": "not a fixture"})
-        if row["decision"] in ("READER", "READER_IF_PRESENT") and listed:
-            missing = [t for t in row.get("readers", []) if t not in ok_tags]
-            if missing:
-                out["other"].append({"path": name, "reason": f"readers not PASS: {missing}"})
-    out["scan_counts"] = counts
-    return _close(out)
 
 
 # ------------------------------------------------------------------------------------ R7 own
@@ -379,3 +302,4 @@ def inventory_c(root=None, readers=None) -> dict:
 
 # ---------------------------------------------------------------------------------- build
 from hwsc_registry_build import build, obligation  # noqa: E402,F401  (split by size, erratum)
+from hwsc_scratch import _classify, scratch_check, scratch_scan  # noqa: E402,F401,I001

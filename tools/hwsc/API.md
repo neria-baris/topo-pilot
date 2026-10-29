@@ -586,3 +586,7 @@ Rows without these fields behave as before. `source_dry()` called with its defau
 - `scratch_check(readers_ok={c2scratch, hws, R5})` on the current scratch root: PASS, with no `other` entry and no "row not frozen".
 - 93 of 319 candidate ObservationSet stores are R5-readable `os_roots`. The ObservationSets of the other stores are HASH_FROZEN.
 - `registry.scratch_rules.unresolved` is empty.
+
+## 21. Erratum (job 0177, coordinator 08ad4eaf)
+- **D-0177-1.** `hwsc_meter_bind.child_env_c(job) -> dict`: `k4b_meter_bind.child_env(job)` with its `TEMP` folder (`<TEMP_ROOT>/tmp-<job>`) created; `main` uses it. Without the folder, `tempfile.gettempdir()` in the metered child fell back to C:. Regression test `tests/hwsc/test_r_0177_meter_tempdir.py` (coordinator-written).
+- **Binding audit in J-C1.** The CLI has no `audit` subcommand (TEST_PLAN §5 wording). J-C1 runs the audit with the coordinator helper `coord-scratch/08ad4eaf/hwsc_audit.py`: `hwsc_bind.audit()` inside `hwsc_bind.bound_stage_c()`, result written to `<out>/AUDIT.json`, exit 0 iff PASS. Later jobs run the audit through their own `BINDING_AUDIT` gate.

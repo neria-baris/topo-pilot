@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_registry.py](../../../../../tools/hwsc/hwsc_registry.py)
 - Kind: python
-- Lines: 305
+- Lines: 331
 
 ## Module docstring
 
@@ -24,8 +24,10 @@
 - `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 19, via unique basename)
 - `from topo_pilot.contracts import ArtifactStore, EmissionSpec, ObservationSet` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 21, via package root)
 - `from topo_pilot.contracts.backends import LocalFSBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 22, via package root)
-- `from hwsc_registry_build import build, obligation` -> [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 304, via same directory)
-- `from hwsc_scratch import _classify, scratch_check, scratch_scan` -> [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 305, via same directory)
+- `import hwsc_drystore` -> [tools/hwsc/hwsc_drystore.py](hwsc_drystore.py.md) (line 238, via same directory) (inside a function)
+- `import hwsc_scratch` -> [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 239, via same directory) (inside a function)
+- `from hwsc_registry_build import build, obligation` -> [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 330, via same directory)
+- `from hwsc_scratch import _classify, scratch_check, scratch_scan` -> [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 331, via same directory)
 
 ### External (third-party)
 
@@ -59,13 +61,14 @@
 - [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 27, import)
 - [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 26, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 30, import)
+- [tests/hwsc/test_r_0178_dry_store_rule.py](../../tests/hwsc/test_r_0178_dry_store_rule.py.md) (line 17, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 18, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 26, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 18, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 21, import)
 - [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 14, import)
-- [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 12, import)
+- [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 18, import)
 
 ## Top-level constants
 
@@ -89,9 +92,10 @@
 - **function `_dry_paths`** [L149-152]: `def _dry_paths() -> list`
 - **function `_os_canonical`** [L155-165]: `def _os_canonical(f, out) -> None`
 - **function `_token_file`** [L168-191]: `def _token_file(f, out) -> None`
-- **function `source_dry`** [L194-231]: `def source_dry(paths=None) -> dict`
-- **function `_os_roots`** [L234-247]: `def _os_roots(out, roots=None) -> None` - R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the
-- **function `source_scratch_c`** [L251-252]: `def source_scratch_c(scratch=None) -> dict`
-- **function `source_own`** [L256-277]: `def source_own(store, expected) -> dict`
-- **function `inventory_c`** [L281-300]: `def inventory_c(root=None, readers=None) -> dict`
+- **function `source_dry`** [L194-234]: `def source_dry(paths=None) -> dict`
+- **function `_dry_file`** [L237-257]: `def _dry_file(top, rel, f, out) -> None`
+- **function `_os_roots`** [L260-273]: `def _os_roots(out, roots=None) -> None` - R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the
+- **function `source_scratch_c`** [L277-278]: `def source_scratch_c(scratch=None) -> dict`
+- **function `source_own`** [L282-303]: `def source_own(store, expected) -> dict`
+- **function `inventory_c`** [L307-326]: `def inventory_c(root=None, readers=None) -> dict`
 

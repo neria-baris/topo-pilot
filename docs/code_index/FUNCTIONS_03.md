@@ -2,6 +2,23 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_split_seeds_are_inconclusive` | test | `test_split_seeds_are_inconclusive` | [tests/d2a/test_b_rules_decide.py:294](../../tests/d2a/test_b_rules_decide.py#L294) |  |
+| `test_sqrt_js_hand_values` | test | `test_sqrt_js_hand_values` | [tests/topology/test_metrics.py:54](../../tests/topology/test_metrics.py#L54) |  |
+| `test_stage0_constants_exact_string_equality` | test | `test_stage0_constants_exact_string_equality` | [tests/x6_stage1/test_b_nb_s0_ops.py:248](../../tests/x6_stage1/test_b_nb_s0_ops.py#L248) |  |
+| `test_stage0_regeneration_count_check` | test | `test_stage0_regeneration_count_check` | [tests/x6_stage1/test_b_seed_pool_reg.py:212](../../tests/x6_stage1/test_b_seed_pool_reg.py#L212) |  |
+| `test_stage0_thresholds_are_exact_rationals` | test | `test_stage0_thresholds_are_exact_rationals` | [tests/x6_stage1/test_a_rules.py:41](../../tests/x6_stage1/test_a_rules.py#L41) |  |
+| `test_stage1_decision_all_branches` | test | `test_stage1_decision_all_branches` | [tests/d2a/test_b_rules_flags.py:94](../../tests/d2a/test_b_rules_flags.py#L94) |  |
+| `test_stage1_named_branches` | test | `test_stage1_named_branches` | [tests/d2a/test_b_rules_flags.py:98](../../tests/d2a/test_b_rules_flags.py#L98) |  |
+| `test_stage_and_total_spent_on_a_synthetic_ledger` | test | `test_stage_and_total_spent_on_a_synthetic_ledger` | [tests/d2a/test_b_resource.py:280](../../tests/d2a/test_b_resource.py#L280) |  |
+| `test_stage_entry_repeats_are_allowed` | test | `test_stage_entry_repeats_are_allowed` | [tests/c2_nd/test_b_policy.py:95](../../tests/c2_nd/test_b_policy.py#L95) |  |
+| `test_stage_gates_and_required_pass_sets` | test | `test_stage_gates_and_required_pass_sets` | [tests/c1prime/test_a_gates.py:66](../../tests/c1prime/test_a_gates.py#L66) |  |
+| `test_stage_history_tables_are_sources_with_sha256` | test | `test_stage_history_tables_are_sources_with_sha256` | [tests/k4b/test_b_store_reader.py:160](../../tests/k4b/test_b_store_reader.py#L160) |  |
+| `test_stage_label_and_ceiling` | test | `test_stage_label_and_ceiling` | [tests/circle_history/test_builder_runtime.py:63](../../tests/circle_history/test_builder_runtime.py#L63) |  |
+| `test_stage_limiter_delegates_to_unchanged_global_limiter` | test | `test_stage_limiter_delegates_to_unchanged_global_limiter` | [tests/circle_history/test_builder_guards.py:51](../../tests/circle_history/test_builder_guards.py#L51) |  |
+| `test_stage_limiter_grows_with_supervisor_cpu` | test | `test_stage_limiter_grows_with_supervisor_cpu` | [tests/circle_history/test_builder_guards.py:41](../../tests/circle_history/test_builder_guards.py#L41) |  |
+| `test_stage_limiter_includes_supervisor_and_tail` | test | `test_stage_limiter_includes_supervisor_and_tail` | [tests/circle_history/test_builder_guards.py:30](../../tests/circle_history/test_builder_guards.py#L30) |  |
+| `test_stage_reads_observations_only_with_learner_policy` | test | `test_stage_reads_observations_only_with_learner_policy` | [tests/learner/test_checkpoint.py:82](../../tests/learner/test_checkpoint.py#L82) |  |
+| `test_stage_round_trip_and_lineage` | test | `test_stage_round_trip_and_lineage` | [tests/process/test_controls.py:156](../../tests/process/test_controls.py#L156) |  |
 | `test_stage_saves_expected_lineage_and_split_labels` | test | `test_stage_saves_expected_lineage_and_split_labels` | [tests/dataset/test_stage.py:59](../../tests/dataset/test_stage.py#L59) |  |
 | `test_stage_unknown_mode` | test | `test_stage_unknown_mode` | [tests/process/test_controls.py:180](../../tests/process/test_controls.py#L180) |  |
 | `test_standardise_nuisance_population_sd_and_constant_columns` | test | `test_standardise_nuisance_population_sd_and_constant_columns` | [tests/c1prime/test_b_fwl.py:118](../../tests/c1prime/test_b_fwl.py#L118) |  |
@@ -249,6 +266,7 @@
 | `test_unavailable_smoothing_diagnostics_are_technical` | test | `test_unavailable_smoothing_diagnostics_are_technical` | [tests/c1prime/test_a_chart_exceptions.py:167](../../tests/c1prime/test_a_chart_exceptions.py#L167) |  |
 | `test_underpowered_capture_and_annotation` | test | `test_underpowered_capture_and_annotation` | [tests/hwsb/test_a_outcomes.py:188](../../tests/hwsb/test_a_outcomes.py#L188) |  |
 | `test_underpowered_ladder_before_capture` | test | `test_underpowered_ladder_before_capture` | [tests/hwsb/test_a_outcomes.py:179](../../tests/hwsb/test_a_outcomes.py#L179) |  |
+| `test_unexpected_array_fails_closed` | test | `test_unexpected_array_fails_closed` | [tests/hwsc/test_r_0178_dry_store_rule.py:76](../../tests/hwsc/test_r_0178_dry_store_rule.py#L76) |  |
 | `test_unfrozen_project_module_detected` | test | `test_unfrozen_project_module_detected` | [tests/circle_history/test_builder_v24_runtime.py:202](../../tests/circle_history/test_builder_v24_runtime.py#L202) |  |
 | `test_uniform_belief_over_full_period_is_zero` | test | `test_uniform_belief_over_full_period_is_zero` | [tests/analysis/test_x4f_targets.py:34](../../tests/analysis/test_x4f_targets.py#L34) |  |
 | `test_unit_vectors_scores_and_r4_norms_known_answers` | test | `test_unit_vectors_scores_and_r4_norms_known_answers` | [tests/circle_history/test_scores_precision.py:252](../../tests/circle_history/test_scores_precision.py#L252) |  |

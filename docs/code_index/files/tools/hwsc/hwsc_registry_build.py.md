@@ -52,7 +52,7 @@
 
 ## Imported by
 
-- [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 304, import)
+- [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 330, import)
 
 ## Top-level constants
 

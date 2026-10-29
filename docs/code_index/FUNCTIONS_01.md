@@ -742,6 +742,7 @@
 | `_failure_dict` | function | `_failure_dict` | [src/topo_pilot/executors/entry.py:45](../../src/topo_pilot/executors/entry.py#L45) |  |
 | `_fake_ckpt` | function | `_fake_ckpt` | [tests/x6_stage1/test_b_chain_ops.py:41](../../tests/x6_stage1/test_b_chain_ops.py#L41) |  |
 | `_fake_out` | function | `_fake_out` | [tests/learner/test_multihorizon.py:260](../../tests/learner/test_multihorizon.py#L260) |  |
+| `_fake_run_kc` | function | `_fake_run_kc` | [tests/hwsc/test_r_0181_kc_records_rehearsal.py:26](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py#L26) |  |
 | `_FakePrecision` | class | `_FakePrecision` | [tests/c2_nd/test_a_inference.py:293](../../tests/c2_nd/test_a_inference.py#L293) | Records the kernel calls; precision_summary passes model j at N iff (name, N, j) in ok. |
 | `_fakes` | function | `_fakes` | [tests/d2a/test_b_resource.py:135](../../tests/d2a/test_b_resource.py#L135) |  |
 | `_fam` | function | `_fam` | [tools/x6_stage1/x6s1_eval.py:238](../../tools/x6_stage1/x6s1_eval.py#L238) |  |
@@ -1614,7 +1615,7 @@
 | `_refused` | function | `_refused` | [tools/c2_nd/nd_dry.py:265](../../tools/c2_nd/nd_dry.py#L265) |  |
 | `_Reg` | class | `_Reg` | [tests/c2_readout/test_b_registry.py:97](../../tests/c2_readout/test_b_registry.py#L97) | Registry stand-in for separation (sealed_ranges {pool: (lo, hi)}, API.md 19.1 E-20). |
 | `_reg` | function | `_reg` | [tests/hwsc/test_b_streams.py:265](../../tests/hwsc/test_b_streams.py#L265) |  |
-| `_reg` | function | `_reg` | [tools/hwsc/hwsc_driver.py:152](../../tools/hwsc/hwsc_driver.py#L152) |  |
+| `_reg` | function | `_reg` | [tools/hwsc/hwsc_driver.py:153](../../tools/hwsc/hwsc_driver.py#L153) |  |
 | `_regen` | function | `_regen` | [tools/x6_stage1/x6s1_stage_post.py:147](../../tools/x6_stage1/x6s1_stage_post.py#L147) |  |
 | `_register` | function | `_register` | [tests/hwsc/test_b_registry.py:280](../../tests/hwsc/test_b_registry.py#L280) |  |
 | `_registered` | function | `_registered` | [tools/hwsc/hwsc_dry.py:40](../../tools/hwsc/hwsc_dry.py#L40) |  |
@@ -2212,6 +2213,7 @@
 | `_write` | function | `_write` | [tests/experiment/test_x5g1t_config_production.py:157](../../tests/experiment/test_x5g1t_config_production.py#L157) |  |
 | `_write` | function | `_write` | [tests/experiment/test_x5g1t_config_synthetic.py:157](../../tests/experiment/test_x5g1t_config_synthetic.py#L157) |  |
 | `_write` | function | `_write` | [tests/hwsc/test_b_guard_meter.py:64](../../tests/hwsc/test_b_guard_meter.py#L64) |  |
+| `_write` | function | `_write` | [tests/hwsc/test_r_0181_kc_records_rehearsal.py:21](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py#L21) |  |
 | `_write` | function | `_write` | [tools/c2_nd/nd_dry.py:106](../../tools/c2_nd/nd_dry.py#L106) |  |
 | `_write` | function | `_write` | [tools/hwsc/hwsc_gates.py:44](../../tools/hwsc/hwsc_gates.py#L44) |  |
 | `_write_json` | function | `_write_json` | [tests/experiment/test_x5g1t_integration.py:91](../../tests/experiment/test_x5g1t_integration.py#L91) |  |
@@ -3243,7 +3245,7 @@
 | `E` | function | `E` | [tools/c2_nd/nd_split.py:219](../../tools/c2_nd/nd_split.py#L219) |  |
 | `e0_figure` | function | `e0_figure` | [src/topo_pilot/experiment/report.py:49](../../src/topo_pilot/experiment/report.py#L49) | Dot plot of S (longest H1 bar / q95 scale) per world, one series per metric, with the |
 | `e0_table` | function | `e0_table` | [src/topo_pilot/experiment/report.py:37](../../src/topo_pilot/experiment/report.py#L37) | Markdown lines: graph cycles vs surface holes, and S per world and metric. |
-| `e1_steps` | function | `e1_steps` | [tools/hwsc/hwsc_driver.py:163](../../tools/hwsc/hwsc_driver.py#L163) |  |
+| `e1_steps` | function | `e1_steps` | [tools/hwsc/hwsc_driver.py:164](../../tools/hwsc/hwsc_driver.py#L164) |  |
 | `e2_check` | function | `e2_check` | [tools/hws/hws_worlds.py:315](../../tools/hws/hws_worlds.py#L315) |  |
 | `e2_context` | function | `e2_context` | [tools/hwsc/hwsc_jobs.py:33](../../tools/hwsc/hwsc_jobs.py#L33) | Release-B context exactly as k4b_fresh.main assembles it (identity re-checked first). |
 | `e3a` | function | `e3a` | [tools/x6_stage1/x6s1_stage_post.py:218](../../tools/x6_stage1/x6s1_stage_post.py#L218) |  |
@@ -4682,7 +4684,7 @@
 | `o2_combine` | function | `o2_combine` | [tools/x6_stage0/x6_exact.py:384](../../tools/x6_stage0/x6_exact.py#L384) |  |
 | `obj` | function | `obj` | [tests/circle_history/test_reference_cache.py:79](../../tests/circle_history/test_reference_cache.py#L79) |  |
 | `obligation` | function | `obligation` | [tools/hwsc/hwsc_registry_build.py:156](../../tools/hwsc/hwsc_registry_build.py#L156) |  |
-| `obs_inventory` | function | `obs_inventory` | [tools/hwsc/hwsc_driver.py:138](../../tools/hwsc/hwsc_driver.py#L138) |  |
+| `obs_inventory` | function | `obs_inventory` | [tools/hwsc/hwsc_driver.py:139](../../tools/hwsc/hwsc_driver.py#L139) |  |
 | `observability_matrices` | method | `FutureOperator.observability_matrices` | [src/topo_pilot/oracle/_futures.py:62](../../src/topo_pilot/oracle/_futures.py#L62) | ``[O_1, ..., O_{k_max}]``; ``O_k`` has rows = strings of length ``<= k``, cols = N. |
 | `observability_singular_values` | method | `FutureOperator.observability_singular_values` | [src/topo_pilot/oracle/_futures.py:75](../../src/topo_pilot/oracle/_futures.py#L75) | Singular values of ``O_k`` (descending, unthresholded) for ``k = 1..k_max``. |
 | `observation_set` | function | `observation_set` | [tools/x6_stage1/x6s1_data.py:227](../../tools/x6_stage1/x6s1_data.py#L227) |  |
@@ -4808,5 +4810,3 @@
 | `pairwise` | method | `GraphGeodesicMetric.pairwise` | [src/topo_pilot/world/metrics.py:116](../../src/topo_pilot/world/metrics.py#L116) |  |
 | `pairwise` | method | `Hellinger.pairwise` | [src/topo_pilot/topology/metrics.py:98](../../src/topo_pilot/topology/metrics.py#L98) |  |
 | `pairwise` | method | `Metric.pairwise` | [src/topo_pilot/world/metrics.py:31](../../src/topo_pilot/world/metrics.py#L31) | Return the symmetric ``[N, N]`` distance matrix. |
-| `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
-| `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |

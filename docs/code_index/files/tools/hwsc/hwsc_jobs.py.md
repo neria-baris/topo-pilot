@@ -62,7 +62,7 @@
 
 ## Imported by
 
-- [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 252, import)
+- [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 253, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 161, import)
 
 ## Top-level constants

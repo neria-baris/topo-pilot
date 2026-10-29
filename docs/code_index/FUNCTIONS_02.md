@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
+| `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |
 | `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
 | `panels` | function | `panels` | [tests/c2_nd/test_impl_dry_hs.py:46](../../tests/c2_nd/test_impl_dry_hs.py#L46) | c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096. |
 | `panels` | function | `panels` | [tools/c1prime/c1_data.py:41](../../tools/c1prime/c1_data.py#L41) |  |
@@ -665,7 +667,7 @@
 | `run_dry` | function | `run_dry` | [tools/hws/hws_dry.py:305](../../tools/hws/hws_dry.py#L305) | §13 synthetic dry run with the real records, selection and report code (J1 AUTH). |
 | `run_dry` | function | `run_dry` | [tools/hwsb/hwsb_dry.py:343](../../tools/hwsb/hwsb_dry.py#L343) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsc/hwsc_dry.py:297](../../tools/hwsc/hwsc_dry.py#L297) |  |
-| `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:203](../../tools/hwsc/hwsc_driver.py#L203) |  |
+| `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:204](../../tools/hwsc/hwsc_driver.py#L204) |  |
 | `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:66](../../tools/hwsc/hwsc_jobs.py#L66) |  |
 | `run_emission` | method | `ProcessStage.run_emission` | [src/topo_pilot/process/stage.py:43](../../src/topo_pilot/process/stage.py#L43) | Build and save the ``EmissionSpec`` of ``world_id`` for replicate ``seeds.master``. |
 | `run_eval` | function | `run_eval` | [tools/hwsb/hwsb_driver.py:215](../../tools/hwsb/hwsb_driver.py#L215) |  |
@@ -698,7 +700,7 @@
 | `run_phase_b` | function | `run_phase_b` | [src/topo_pilot/experiment/x4b_run.py:200](../../src/topo_pilot/experiment/x4b_run.py#L200) | Run protocol x4b-v1 once; write tables/exports; return the verdict summary. |
 | `run_pools` | function | `run_pools` | [src/topo_pilot/experiment/x5g1t_stages.py:168](../../src/topo_pilot/experiment/x5g1t_stages.py#L168) | Train and dev pools for every master and arm (never the fresh test). |
 | `run_probes` | method | `PredictionStage.run_probes` | [src/topo_pilot/prediction/stage.py:78](../../src/topo_pilot/prediction/stage.py#L78) | Not implemented here: probe I/O lives in ``experiment`` stage S7 (D-047), because dev |
-| `run_reg2` | function | `run_reg2` | [tools/hwsc/hwsc_driver.py:224](../../tools/hwsc/hwsc_driver.py#L224) |  |
+| `run_reg2` | function | `run_reg2` | [tools/hwsc/hwsc_driver.py:225](../../tools/hwsc/hwsc_driver.py#L225) |  |
 | `run_remote` | function | `run_remote` | [tests/executors/test_bundle.py:19](../../tests/executors/test_bundle.py#L19) | Build the bundle for a stub job, unpack it in a fresh folder, run run_bundle.py there. |
 | `run_rows` | method | `CircularJob.run_rows` | [src/topo_pilot/experiment/s7_circular.py:62](../../src/topo_pilot/experiment/s7_circular.py#L62) |  |
 | `run_rows` | method | `ControlsJob.run_rows` | [src/topo_pilot/experiment/s7_controls.py:83](../../src/topo_pilot/experiment/s7_controls.py#L83) |  |
@@ -716,7 +718,7 @@
 | `run_tool` | function | `run_tool` | [src/topo_pilot/experiment/stages.py:68](../../src/topo_pilot/experiment/stages.py#L68) | Run ``cmd`` in the repository; returns (exit code 0, :func:`tool_line`). |
 | `run_train` | function | `run_train` | [src/topo_pilot/experiment/x5g1t_stages.py:217](../../src/topo_pilot/experiment/x5g1t_stages.py#L217) | One model; the outcome is recorded by ``train_one`` on every exit. |
 | `run_train` | function | `run_train` | [tools/hwsb/hwsb_driver.py:173](../../tools/hwsb/hwsb_driver.py#L173) |  |
-| `run_train` | function | `run_train` | [tools/hwsc/hwsc_driver.py:73](../../tools/hwsc/hwsc_driver.py#L73) |  |
+| `run_train` | function | `run_train` | [tools/hwsc/hwsc_driver.py:74](../../tools/hwsc/hwsc_driver.py#L74) |  |
 | `run_transition` | method | `ProcessStage.run_transition` | [src/topo_pilot/process/stage.py:24](../../src/topo_pilot/process/stage.py#L24) | Build and save the ``TransitionSpec`` of ``world_id``; returns its artifact id. |
 | `run_val_gate` | function | `run_val_gate` | [tests/k4b/test_b_charts.py:295](../../tests/k4b/test_b_charts.py#L295) |  |
 | `run_validation` | function | `run_validation` | [tools/c1prime/c1_driver_late.py:190](../../tools/c1prime/c1_driver_late.py#L190) |  |
@@ -2607,6 +2609,7 @@
 | `test_kc9_float_floor_rule` | test | `test_kc9_float_floor_rule` | [tests/hws/test_a_stats.py:273](../../tests/hws/test_a_stats.py#L273) |  |
 | `test_kc9_row_constant_summary` | test | `test_kc9_row_constant_summary` | [tests/hws/test_a_stats.py:280](../../tests/hws/test_a_stats.py#L280) |  |
 | `test_kc_gate_full_statuses` | test | `test_kc_gate_full_statuses` | [tests/c2_nd/test_b_policy.py:224](../../tests/c2_nd/test_b_policy.py#L224) |  |
+| `test_kc_stage_records_the_rehearsal_registry` | test | `test_kc_stage_records_the_rehearsal_registry` | [tests/hwsc/test_r_0181_kc_records_rehearsal.py:39](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py#L39) |  |
 | `test_kcr_gate_full_statuses` | test | `test_kcr_gate_full_statuses` | [tests/c2_nd/test_b_policy.py:241](../../tests/c2_nd/test_b_policy.py#L241) |  |
 | `test_kernel_matches_fraction_formula` | test | `test_kernel_matches_fraction_formula` | [tests/x2a_stage0/test_x2a_stage0.py:167](../../tests/x2a_stage0/test_x2a_stage0.py#L167) |  |
 | `test_kernel_rejects_abs_a_ge_1` | test | `test_kernel_rejects_abs_a_ge_1` | [tests/process/test_conductance.py:235](../../tests/process/test_conductance.py#L235) |  |
@@ -3882,6 +3885,3 @@
 | `test_source_scratch_expected_roots` | test | `test_source_scratch_expected_roots` | [tests/c2_nd/test_b_registry.py:201](../../tests/c2_nd/test_b_registry.py#L201) |  |
 | `test_source_scratch_skips_test_trees` | test | `test_source_scratch_skips_test_trees` | [tests/c2_nd/test_b_registry.py:188](../../tests/c2_nd/test_b_registry.py#L188) |  |
 | `test_spectral_embedding_shape_and_r2_r3_definitions` | test | `test_spectral_embedding_shape_and_r2_r3_definitions` | [tests/analysis/test_baselines_dynamics.py:52](../../tests/analysis/test_baselines_dynamics.py#L52) |  |
-| `test_spectrum_abs_gap_uses_negative_eigenvalue` | test | `test_spectrum_abs_gap_uses_negative_eigenvalue` | [tests/analysis/test_x5_kernel.py:90](../../tests/analysis/test_x5_kernel.py#L90) |  |
-| `test_spectrum_eigenvalues_descending_lazy_cycle` | test | `test_spectrum_eigenvalues_descending_lazy_cycle` | [tests/analysis/test_x5_kernel.py:99](../../tests/analysis/test_x5_kernel.py#L99) |  |
-| `test_spectrum_near_unit_gap_status` | test | `test_spectrum_near_unit_gap_status` | [tests/analysis/test_x5_kernel.py:133](../../tests/analysis/test_x5_kernel.py#L133) |  |

@@ -1103,6 +1103,9 @@ Edge counts are file-to-file edges between different subpackages.
 ### `tests/hwsc/test_r_0181_g0c_lineage_order.py`
 - -> tools/c1prime/c1_records.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_known.py
 - <- none
+### `tests/hwsc/test_r_0181_kc_records_rehearsal.py`
+- -> tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_known.py
+- <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
 - <- tests/integration/test_leakage_end_to_end.py, tests/integration/test_rerun_identity.py
@@ -1621,13 +1624,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsc/test_a_decision.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_outcomes.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
 ### `tools/hwsc/hwsc_config.py`
 - -> tools/c1prime/c1_records.py, tools/hwsb/hwsb_config.py, tools/k4b/k4b_config.py
-- <- tests/hwsc/test_a_decision.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_a_learning.py, tests/hwsc/test_a_outcomes.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0178_dry_store_rule.py, tests/hwsc/test_r_0181_g0c_lineage_order.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_drystore.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_meter_bind.py, tools/hwsc/hwsc_outcome.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py
+- <- tests/hwsc/test_a_decision.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_a_learning.py, tests/hwsc/test_a_outcomes.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0178_dry_store_rule.py, tests/hwsc/test_r_0181_g0c_lineage_order.py, tests/hwsc/test_r_0181_kc_records_rehearsal.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_drystore.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_meter_bind.py, tools/hwsc/hwsc_outcome.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py
 ### `tools/hwsc/hwsc_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/public.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_registry.py, tools/hws/hws_exact.py, tools/hwsb/hwsb_data.py, tools/hwsc/hwsc_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
 ### `tools/hwsc/hwsc_driver.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_registry.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsc/test_b_records.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
+- <- tests/hwsc/test_b_records.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0181_kc_records_rehearsal.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
 ### `tools/hwsc/hwsc_dry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/learner/stage.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_config.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/stage_records.py
 - <- tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_jobs.py
@@ -1648,7 +1651,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py
 ### `tools/hwsc/hwsc_known.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_records.py, tools/hwsb/hwsb_gates.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_known.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_stats.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0181_g0c_lineage_order.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry3.py
+- <- tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0181_g0c_lineage_order.py, tests/hwsc/test_r_0181_kc_records_rehearsal.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry3.py
 ### `tools/hwsc/hwsc_meter_bind.py`
 - -> tools/hwsc/hwsc_config.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/op_guard.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_r_0177_meter_tempdir.py, tools/hwsc/hwsc_dry3.py
@@ -7999,6 +8002,10 @@ tests/hwsc/test_r_0178_dry_store_rule.py
 tests/hwsc/test_r_0181_g0c_lineage_order.py
     tools/c1prime/c1_records.py (see above)
     tools/hwsc/hwsc_config.py (see above)
+    tools/hwsc/hwsc_known.py (see above)
+tests/hwsc/test_r_0181_kc_records_rehearsal.py
+    tools/hwsc/hwsc_config.py (see above)
+    tools/hwsc/hwsc_driver.py (see above)
     tools/hwsc/hwsc_known.py (see above)
 ```
 

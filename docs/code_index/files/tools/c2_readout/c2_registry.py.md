@@ -71,7 +71,7 @@
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 20, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 24, import)
 - [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 13, import)
-- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 176, import)
+- [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 177, import)
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 135, import)
 - [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 181, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 12, import)

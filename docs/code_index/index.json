@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 632,
+  "code files": 633,
   "dynamic imports, dynamic expression or unresolved": 14,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1026,
-  "functions and methods (incl. tests)": 9279,
+  "files indexed": 1027,
+  "functions and methods (incl. tests)": 9282,
   "import cycles (strongly connected components)": 12,
   "import statements, external": 907,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3066,
+  "import statements, internal resolved": 3069,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2764,
-  "internal edges (file to file, with kind and line)": 3101,
-  "python files": 631
+  "import statements, standard library": 2769,
+  "internal edges (file to file, with kind and line)": 3104,
+  "python files": 632
  },
  "cycles": [
   [
@@ -8967,6 +8967,24 @@
    19
   ],
   [
+   "tests/hwsc/test_r_0181_kc_records_rehearsal.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   16
+  ],
+  [
+   "tests/hwsc/test_r_0181_kc_records_rehearsal.py",
+   "tools/hwsc/hwsc_driver.py",
+   "import",
+   17
+  ],
+  [
+   "tests/hwsc/test_r_0181_kc_records_rehearsal.py",
+   "tools/hwsc/hwsc_known.py",
+   "import",
+   18
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -15078,7 +15096,7 @@
    "tools/hwsc/hwsc_driver.py",
    "tools/c2_readout/c2_registry.py",
    "import",
-   176
+   177
   ],
   [
    "tools/hwsc/hwsc_driver.py",
@@ -15120,7 +15138,7 @@
    "tools/hwsc/hwsc_driver.py",
    "tools/hwsc/hwsc_jobs.py",
    "import",
-   252
+   253
   ],
   [
    "tools/hwsc/hwsc_driver.py",
@@ -22802,6 +22820,12 @@
    "purpose": "Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's",
    "sha256": "af6d1f3c7fd59c29f8e57e229f2a213ed64a8b159b4f3f1a2ea6d0cff1467064"
   },
+  "tests/hwsc/test_r_0181_kc_records_rehearsal.py": {
+   "kind": "python",
+   "lines": 48,
+   "purpose": "Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the",
+   "sha256": "d422f3993c2b394bc5405745544c79c3118658aa559e6d525d5b7fc0111127de"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -24088,9 +24112,9 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 645,
+   "lines": 650,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "fd846af078e3cbaa1a2c85e61adc4bf41cde1d28d58fbc3594a63f650397ce4c"
+   "sha256": "1994300887aba0ecd6524c27d99325fb7ef18e4a2db27b127130cad16c258601"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
@@ -24130,9 +24154,9 @@
   },
   "tools/hwsc/hwsc_driver.py": {
    "kind": "python",
-   "lines": 255,
+   "lines": 256,
    "purpose": "HWSC driver: the jobs KC, TRAIN, E1, REG2, E2, close and the CLI (API.md §7.3, §11; protocol",
-   "sha256": "978bdc5c6ac83c8910bf6e3f35890d46bb0c1bf2f2efbe185ee4dcc8534e54d4"
+   "sha256": "4e9ea87dab2fcdae700c5ed1b3e14299104863ef5c9905f0f25d21be6276dd75"
   },
   "tools/hwsc/hwsc_dry.py": {
    "kind": "python",
@@ -139555,6 +139579,184 @@
     }
    ]
   },
+  "tests/hwsc/test_r_0181_kc_records_rehearsal.py": {
+   "constants": [
+    "REPO"
+   ],
+   "doc": "Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the\nKC9 rehearsal registry files (hwsc-store/registry/rehearsal/) in its STAGE_COMPLETE, so lineage_c\nat E1 gate 0 finds them recorded. Preflight, the binding and run_kc's checks are stubbed; the stub\nwrites what KC1 and KC9 write (an artifact and the three rehearsal file kinds).",
+   "doc1": "Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "contextlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "contextlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "hwsc_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_driver.py"
+     ],
+     "top": "hwsc_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsc_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_known.py"
+     ],
+     "top": "hwsc_known"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 23,
+     "kind": "function",
+     "name": "_write",
+     "qual": "_write",
+     "sig": "def _write(p: Path, data: bytes) -> None",
+     "start": 21
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 36,
+     "kind": "function",
+     "name": "_fake_run_kc",
+     "qual": "_fake_run_kc",
+     "sig": "def _fake_run_kc(out, auth, sched, job, store=None)",
+     "start": 26
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "test",
+     "name": "test_kc_stage_records_the_rehearsal_registry",
+     "qual": "test_kc_stage_records_the_rehearsal_registry",
+     "sig": "def test_kc_stage_records_the_rehearsal_registry(tmp_path, monkeypatch)",
+     "start": 39
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsc"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsc')",
+     "line": 14
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -207451,7 +207653,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 176,
+     "line": 177,
      "module": "",
      "names": [
       "c2_registry"
@@ -207468,7 +207670,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 252,
+     "line": 253,
      "module": "hwsc_jobs",
      "names": [
       "e2_context",
@@ -207517,7 +207719,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 69,
+     "end": 70,
      "kind": "function",
      "name": "run_kc",
      "qual": "run_kc",
@@ -207527,62 +207729,62 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 135,
+     "end": 136,
      "kind": "function",
      "name": "run_train",
      "qual": "run_train",
      "sig": "def run_train(out, auth, sched, master, kc_accept, cont=None, plan=None) -> dict",
-     "start": 73
+     "start": 74
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 148,
+     "end": 149,
      "kind": "function",
      "name": "obs_inventory",
      "qual": "obs_inventory",
      "sig": "def obs_inventory(out) -> dict",
-     "start": 138
+     "start": 139
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 160,
+     "end": 161,
      "kind": "function",
      "name": "_reg",
      "qual": "_reg",
      "sig": "def _reg(out, version, handoff, extra=None) -> dict",
-     "start": 152
+     "start": 153
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 200,
+     "end": 201,
      "kind": "function",
      "name": "e1_steps",
      "qual": "e1_steps",
      "sig": "def e1_steps(out, ctx, handoff, auth, sched) -> list",
-     "start": 163
+     "start": 164
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 220,
+     "end": 221,
      "kind": "function",
      "name": "run_e1",
      "qual": "run_e1",
      "sig": "def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None, dry_continue=False) -> dict",
-     "start": 203
+     "start": 204
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 249,
+     "end": 250,
      "kind": "function",
      "name": "run_reg2",
      "qual": "run_reg2",
      "sig": "def run_reg2(out, auth, sched, accept) -> dict",
-     "start": 224
+     "start": 225
     }
    ],
    "syspath": []
@@ -246153,5 +246355,5 @@
    ]
   }
  },
- "sources_digest": "f1702563b9c2c8298bf1e1063d181402b1357316bf0417f37da287dda6980f7d"
+ "sources_digest": "97387ee168ac1955c1f00b9906610e473bf8105b268bab1c994c34b35d934d40"
 }

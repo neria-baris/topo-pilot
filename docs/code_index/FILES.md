@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1026 tracked files; 632 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1027 tracked files; 633 code files (linked to their pages).
 
 ## (repo root)
 
@@ -988,6 +988,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1026 tracked fil
 | [test_r_0177_meter_tempdir.py](files/tests/hwsc/test_r_0177_meter_tempdir.py.md) | python | 35 lines | Regression D-0177-1 (coordinator 08ad4eaf, job 0177). |
 | [test_r_0178_dry_store_rule.py](files/tests/hwsc/test_r_0178_dry_store_rule.py.md) | python | 110 lines | Coordinator-commissioned regression test for defect D-0178-1 (API.md §22): the hwsc-dry type |
 | [test_r_0181_g0c_lineage_order.py](files/tests/hwsc/test_r_0181_g0c_lineage_order.py.md) | python | 64 lines | Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's |
+| [test_r_0181_kc_records_rehearsal.py](files/tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) | python | 48 lines | Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the |
 
 ## tests/integration/
 
@@ -1332,14 +1333,14 @@ The generated index itself (`docs/code_index/`) is not indexed. 1026 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 645 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
+| `API.md` | markdown | 650 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
 | `CONTRACT.json` | json | 68847 lines |  |
 | `PROTOCOL_HWSC_v1.md` | markdown | 538 lines | HWSC-v2: the world-sweep stage C, the full beyond-four test with three new models in w\* = W12-q1-s1.75-p0.2 |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSC test plan v1 (job 0176) |
 | [hwsc_bind.py](files/tools/hwsc/hwsc_bind.py.md) | python | 246 lines | HWSC versioned binding: the binding table, bound_stage_c() and the binding audit (API.md §2; |
 | [hwsc_config.py](files/tools/hwsc/hwsc_config.py.md) | python | 204 lines | HWSC configuration: CONTRACT.json, constants, plans, HANDOFF loader, blindness guard (API.md §1). |
 | [hwsc_data.py](files/tools/hwsc/hwsc_data.py.md) | python | 245 lines | HWSC data: process, train/dev mirror, evaluation blocks, H2, H2-FRESH, registry risk |
-| [hwsc_driver.py](files/tools/hwsc/hwsc_driver.py.md) | python | 255 lines | HWSC driver: the jobs KC, TRAIN, E1, REG2, E2, close and the CLI (API.md §7.3, §11; protocol |
+| [hwsc_driver.py](files/tools/hwsc/hwsc_driver.py.md) | python | 256 lines | HWSC driver: the jobs KC, TRAIN, E1, REG2, E2, close and the CLI (API.md §7.3, §11; protocol |
 | [hwsc_dry.py](files/tools/hwsc/hwsc_dry.py.md) | python | 326 lines | HWSC synthetic dry run: run_dry and DRC1-DRC4 (API.md §8; protocol §7; ruling R-0176-G3). |
 | [hwsc_dry2.py](files/tools/hwsc/hwsc_dry2.py.md) | python | 247 lines | HWSC dry-run cases DRC5-DRC14 (API.md §8; protocol §7; TEST_PLAN §4; rulings R-0176-G1..G5, |
 | [hwsc_dry3.py](files/tools/hwsc/hwsc_dry3.py.md) | python | 198 lines | HWSC dry-run cases DRC10-DRC14 (sealing and D6, blindness, records/budget/hold, meter, |

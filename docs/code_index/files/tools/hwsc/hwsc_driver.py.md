@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_driver.py](../../../../../tools/hwsc/hwsc_driver.py)
 - Kind: python
-- Lines: 255
+- Lines: 256
 
 ## Module docstring
 
@@ -30,8 +30,8 @@
 - `from hwsc_records import auth_ok, central, export_c, freeze_c, implementation_files, ledger_append, ledger_read, lineage_c, pause_check_c, pause_or_raise_c, preflight, run_gates_c, s0, sched_ok, status_of, utc, verify_freeze_c` -> [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 24, via same directory)
 - `from topo_pilot.contracts import ArtifactStore` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 29, via package root)
 - `from topo_pilot.contracts.backends import LocalFSBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 30, via package root)
-- `import c2_registry` -> [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 176, via unique basename) (inside a function)
-- `from hwsc_jobs import e2_context, main, run_close, run_e2` -> [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 252, via same directory)
+- `import c2_registry` -> [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 177, via unique basename) (inside a function)
+- `from hwsc_jobs import e2_context, main, run_close, run_e2` -> [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 253, via same directory)
 
 ### External (third-party)
 
@@ -64,6 +64,7 @@
 
 - [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 29, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 27, import)
+- [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 17, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 99, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 148, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 84, import)
@@ -79,11 +80,11 @@
 - **function `_store`** [L37-38]: `def _store(out) -> ArtifactStore`
 - **function `_files_under`** [L41-43]: `def _files_under(d) -> set`
 - **function `_audit_gate`** [L46-52]: `def _audit_gate(out) -> None`
-- **function `run_kc`** [L56-69]: `def run_kc(out, auth, sched, job) -> dict`
-- **function `run_train`** [L73-135]: `def run_train(out, auth, sched, master, kc_accept, cont=None, plan=None) -> dict`
-- **function `obs_inventory`** [L138-148]: `def obs_inventory(out) -> dict`
-- **function `_reg`** [L152-160]: `def _reg(out, version, handoff, extra=None) -> dict`
-- **function `e1_steps`** [L163-200]: `def e1_steps(out, ctx, handoff, auth, sched) -> list`
-- **function `run_e1`** [L203-220]: `def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None, dry_continue=False) -> dict`
-- **function `run_reg2`** [L224-249]: `def run_reg2(out, auth, sched, accept) -> dict`
+- **function `run_kc`** [L56-70]: `def run_kc(out, auth, sched, job) -> dict`
+- **function `run_train`** [L74-136]: `def run_train(out, auth, sched, master, kc_accept, cont=None, plan=None) -> dict`
+- **function `obs_inventory`** [L139-149]: `def obs_inventory(out) -> dict`
+- **function `_reg`** [L153-161]: `def _reg(out, version, handoff, extra=None) -> dict`
+- **function `e1_steps`** [L164-201]: `def e1_steps(out, ctx, handoff, auth, sched) -> list`
+- **function `run_e1`** [L204-221]: `def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None, dry_continue=False) -> dict`
+- **function `run_reg2`** [L225-250]: `def run_reg2(out, auth, sched, accept) -> dict`
 

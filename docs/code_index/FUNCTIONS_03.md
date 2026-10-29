@@ -2,6 +2,9 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_spectrum_abs_gap_uses_negative_eigenvalue` | test | `test_spectrum_abs_gap_uses_negative_eigenvalue` | [tests/analysis/test_x5_kernel.py:90](../../tests/analysis/test_x5_kernel.py#L90) |  |
+| `test_spectrum_eigenvalues_descending_lazy_cycle` | test | `test_spectrum_eigenvalues_descending_lazy_cycle` | [tests/analysis/test_x5_kernel.py:99](../../tests/analysis/test_x5_kernel.py#L99) |  |
+| `test_spectrum_near_unit_gap_status` | test | `test_spectrum_near_unit_gap_status` | [tests/analysis/test_x5_kernel.py:133](../../tests/analysis/test_x5_kernel.py#L133) |  |
 | `test_spectrum_reducible_status` | test | `test_spectrum_reducible_status` | [tests/analysis/test_x5_kernel.py:127](../../tests/analysis/test_x5_kernel.py#L127) |  |
 | `test_spectrum_two_state_hand_values` | test | `test_spectrum_two_state_hand_values` | [tests/analysis/test_x5_kernel.py:79](../../tests/analysis/test_x5_kernel.py#L79) |  |
 | `test_split_check` | test | `test_split_check` | [tests/x2a_stage0/test_x2a_stage0_ph.py:263](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L263) |  |

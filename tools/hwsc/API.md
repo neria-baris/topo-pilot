@@ -478,3 +478,49 @@ Source: coordinator rulings `agent-handoff/jobs/0176/RULINGS_PHASE1.md`, sha256 
   - the KC9 cost;
   - the run approval;
   - the execution freeze.
+
+## 19. Implementation erratum (phase 3)
+
+Source: coordinator rulings `agent-handoff/jobs/0176/RULINGS_PHASE2.md` (R-0176-P1…P10) and the phase-3 fixes. This erratum amends §0–§18. It makes no scientific change, and the protocol still wins.
+
+**Accepted interpretations (R-0176-P1…P9).**
+
+- **P1 (modules split by size).** The tree has fifteen `.py` files. The six added modules hold code split out of the nine of §0. Every API name stays reachable under its documented module:
+
+  | Module | Holds | Re-exported by |
+  |---|---|---|
+  | `hwsc_registry_build` | `build`, `obligation` | `hwsc_registry` |
+  | `hwsc_outcome` | `positive_below_margin`, `annotations`, `outcome`, `state_from_gates`, `licence` | `hwsc_gates` |
+  | `hwsc_records` | `status_of`, `run_gates_c`, `superseded_ok`, `lineage_c`, `auth_ok`, `sched_ok`, `preflight`, `freeze_c`, `verify_freeze_c`, `s0`, `central`, `pause_check_c`, `ledger_read`, `ledger_append`, `pause_or_raise_c`, `export_c`, `implementation_files`, `utc` | `hwsc_driver` |
+  | `hwsc_jobs` | `run_e2`, `e2_context`, `run_close`, `main` | `hwsc_driver` |
+  | `hwsc_dry2` | DRC5–DRC9 | `hwsc_dry.run_dry` (lazy lookup) |
+  | `hwsc_dry3` | DRC10–DRC14 | `hwsc_dry.run_dry` (lazy lookup) |
+
+  `hwsc_dry` keeps DRC1–DRC4, `e4_eval_check_c`, `synthetic_root`, `stub_sources`, `build_tiny_process_c` and `run_dry`.
+- **P2 (private names).** `k4b_release._superseded_ok` is no longer imported. `hwsc_records.superseded_ok(out) -> list` mirrors it line for line: every file of `superseded/<job>/` must be listed in that folder's `SHA256SUMS` with an equal sha256, and the function returns the offending paths. `hwsc_registry._new` is the own module's helper and is allowed.
+- **P3 (`coverage` source key).** `hwsc_registry.build(sources=…)` accepts one more key, `coverage`, a callable `(src, seqs) -> {"ok", "missing"}`. It is a test and dry-run seam only. Its default is the frozen `k4b_registry.revalidate_coverage(src["art"], root, store=src["store_a"], seqs_a=…)`, and the real CLI never passes `sources`.
+- **P4 (signatures).**
+  - `auth_ok(auth, stage, freeze=None)`: for every stage except DRY, `auth["run_approval_sha256"]` must equal `freeze["run_approval_sha256"]`.
+  - `run_train(out, auth, sched, master, kc_accept, cont=None, plan=None)`: `plan` defaults to `HWSC_PLAN`.
+  - `run_reg2(out, auth, sched, accept)`.
+- **P5.** `hwsc_config.public_summary(path)` ignores `root`; its rules match path components only.
+- **P6 (DRC1).** DRC1 drives the gates directly on a dry context (no FREEZE, AUTH or release records exist in a dry store), under R-0176-G3. Its details give the reading per gate: `readings` `{gate: "EXACT" for TRAIN_<m>, "VALUE" otherwise}`, plus `records` "EXACT" (one registered record per gate and no `HIST_*` name).
+- **P7.** `DRY_REPORT.json` is written by exclusive create. Each dry rerun uses a fresh `hwsc-dry-<job>` store and the R-0157-1 set-aside rule.
+- **P8.** The TRAIN job of the last master in `MASTERS` order writes `stages/TRAIN/OBS_INVENTORY.json` once all three TRAIN records are COMPLETE. The coordinator runs the `obs-inventory` subcommand only if a TRAIN job is rerun, and records that in the job review.
+- **P9.** The E2 job repeats the H1-C checks as gate `H1C_E2`, writing `stages/E2/H1C_E2.json`, before sampling S7.
+
+**Fixes (phase 3).**
+
+- **R-0176-P10 (defect).** `run_e2` now stops on a non-PASS `BINDING_AUDIT` exactly as KC, TRAIN, E1 and REG2 do. All five jobs call `hwsc_driver._audit_gate`: a non-PASS audit is recorded and then raises `C1GateFailure(status)`, before any further gate.
+- **REG2 gate order.** It now follows CONTRACT `gates.REG2`: FREEZE, AUTH, SCHED, `BINDING_AUDIT` (inside `bound_stage_c()`), `ACCEPT`, the reservation check, then `REG2`.
+- **`run_gates_c` and `Paused`.** A gate that raises `hwsb_driver.Paused` is recorded with status `PAUSE`, and the exception is re-raised: the job stops, and the CLI exits with code 4.
+- **Train/dev ObservationSet config.** The config's `study` field is now the `scope` argument of `make_train_dev_c`, so the artifact ids reflect the scope. The sequence-ID replicate also uses `scope`. The data streams keep following `hwsb_config.SCOPE` at call time (the binding). With `scope="hwsb-v1"` and the code unbound, everything equals `hwsb_data.make_train_dev` (DRC4).
+
+**Clarifications for the test authors.**
+
+- **Audit hits.** Each hit of `hwsc_bind.audit` is `{"module", "where", "kind", "hit", "top"}`; `top` is the top name used against `left_unchanged`.
+- **Parsed records, not paths.** `run_train`'s `kc_accept` and `run_reg2`'s `accept` take parsed dicts; the CLI takes paths and loads them. `run_kc`, `run_train`, `run_e1`, `run_reg2` and `run_e2` take parsed `auth` and `sched` dicts.
+- **`pause_or_raise_c`'s `cont`** takes a path to a JSON `{"stages": [...]}`, or None.
+- **`registry_risk`'s 1/100 boundary** is evaluated on `Fraction(float(p_d2a))`, so equality at exactly 1/100 holds only at float resolution: `p` must be a float whose exact rational value times the row count equals 1/100.
+- **`source_dry` with an absent `hwsc-dry`** reports `present: True`, because the flag describes the source as a whole, and an empty `other`. Only the four required stores make an absence a failure.
+- **`auth_ok`'s positive case** needs the run-approval sha256 recorded in FREEZE.json (`run_approval_sha256`, TO_FREEZE). Before the freeze, tests use a synthetic FREEZE dict.

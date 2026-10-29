@@ -108,12 +108,12 @@ def g0c(out, stage, auth=None, sched=None, release=None, root=cc.ROOT, mailbox=c
         if not _sha_ok(a[name]["path"], a[name]["sha256"]):
             raise C1GateFailure("FAIL_TECHNICAL/AUTHORITY", f"{name} sha256")
     res = classify_hits_c(seed_search_c(root, cc.NEEDLES))
+    checks["lineage"] = hdr.lineage_c(out)  # D-0181-1: before G0C.json, which is recorded at stage end
     path = out / "stages" / stage / "G0C.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     stage_records.write_new(path, res)
     if res["status"] != "PASS":
         raise C1GateFailure(res["status"], "G0c: seed-scope hits outside the declarations")
-    checks["lineage"] = hdr.lineage_c(out)
     sc = hdr.sched_ok(sched, stage)
     if not sc["ok"]:
         raise C1GateFailure(AUTH_REFUSE, f"SCHED: {sc['reason']}")

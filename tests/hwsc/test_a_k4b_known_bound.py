@@ -300,7 +300,8 @@ def test_decision_boundaries(bound):
     L = 0.01 + 1e-9
     r = k4b_stats.model_status(L, 0.05, Fr(L) - M, Fs)
     assert r["status"] == "UNRESOLVED/NUMERICAL"
-    assert k4b_stats.model_status(math.nextafter(L, 1.0), 0.05, Fr(L) - M, Fs)["status"] == "SUPPORT"
+    r = k4b_stats.model_status(math.nextafter(L, 1.0), 0.05, Fr(L) - M, Fs)
+    assert r["status"] == "SUPPORT"
     U = 0.01 - 1e-9
     assert k4b_stats.model_status(0.0, U, Fs, M - Fr(U))["status"] == "UNRESOLVED/NUMERICAL"
     assert k4b_stats.model_status(0.0, math.nextafter(U, 0.0), Fs, M - Fr(U))["status"] == "EXCLUDE"

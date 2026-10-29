@@ -10,8 +10,8 @@ from __future__ import annotations
 
 import json
 import math
-from fractions import Fraction
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 import numpy as np

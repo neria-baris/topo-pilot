@@ -207,6 +207,9 @@ def source_dry(paths=None) -> dict:
             rel = _rel(top, f)
             if top.name == "hws-dry" and rel.startswith("hist/"):
                 continue
+            if top.name.startswith("hwsc-dry"):  # D-0178-1 type rule
+                _dry_file(top, rel, f, out)
+                continue
             fx = planted.get(f.as_posix().lower())
             if fx and f.stat().st_size == fx["bytes"] and stage_records.sha256(f) == fx["sha256"]:
                 out["non_history"].append({"path": str(f), "class": "PLANTED_FIXTURE"})
@@ -229,6 +232,29 @@ def source_dry(paths=None) -> dict:
     if paths_given is None:
         _os_roots(out)
     return _close(out)
+
+
+def _dry_file(top, rel, f, out) -> None:
+    import hwsc_drystore
+    import hwsc_scratch
+
+    cls, shape = hwsc_scratch._classify(f)
+    kind = hwsc_drystore.dry_class(top, rel, {"class": cls, "shape": shape}) if cls else None
+    try:
+        if kind == "R5" and f.parent.parent.name == "ObservationSet":
+            _os_canonical(f, out)
+        elif kind == "R5":
+            _token_file(f, out)
+        elif kind is not None:
+            out["non_history"].append({"path": str(f), "class": kind})
+        elif cls is not None:
+            out["other"].append({"path": str(f), "reason": "not allowed by the hwsc-dry rule"})
+        elif _meta_type(f) is not None:
+            out["non_history"].append({"path": str(f), "class": _meta_type(f)})
+        else:
+            _token_file(f, out)
+    except Exception as exc:  # noqa: BLE001  unreadable -> INCOMPLETE
+        out["other"].append({"path": str(f), "reason": f"unreadable {exc!r}"})
 
 
 def _os_roots(out, roots=None) -> None:

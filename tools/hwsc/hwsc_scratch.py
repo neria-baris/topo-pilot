@@ -9,10 +9,16 @@ import hwsc_config as cc
 import os
 from pathlib import Path
 
-import hwsc_registry as cr
 import k4b_registry
 import stage_records
 import x6s1_registry
+
+def _cr():
+    """hwsc_registry, imported lazily (it re-exports this module; no import-time cycle)."""
+    import hwsc_registry
+
+    return hwsc_registry
+
 
 HASH_CLASSES = ("PYTEST_FIXTURE_LARGE", "FIXTURE_STORE", "OTHER_PROCESS_TRAINING", "CHECKPOINT")
 
@@ -38,9 +44,9 @@ def _classify(f) -> tuple:
 def scratch_scan(scratch=None) -> dict:
     scratch = Path(cc.SCRATCH if scratch is None else scratch)
     res = {"__top_level__": sorted(str(p) for p in scratch.iterdir()
-                                   if p.is_file() and p.suffix in cr.ARRAYS)}
+                                   if p.is_file() and p.suffix in _cr().ARRAYS)}
     for top in sorted(p for p in scratch.iterdir() if p.is_dir()):
-        full = top.name.startswith(cr.STAGE_B)
+        full = top.name.startswith(_cr().STAGE_B)
         if top.name.startswith("test_") and not top.name.startswith("test_hwsb-"):
             continue
         listed = {}
@@ -51,7 +57,7 @@ def scratch_scan(scratch=None) -> dict:
             dirnames.sort()
             for name in sorted(filenames):
                 f = here / name
-                rel = cr._rel(top, f)
+                rel = _cr()._rel(top, f)
                 if name == "meta.json" and here.parent.name == "ObservationSet":
                     listed[rel] = {"class": "os_root", "shape": None}
                 elif f.suffix in (".npz", ".npy", ".pt"):
@@ -110,9 +116,9 @@ def _check_row(name, listed, row, ok_tags, scratch, out) -> None:
 
 def scratch_check(scratch=None, table=None, readers_ok=None) -> dict:
     scratch = Path(cc.SCRATCH if scratch is None else scratch)
-    table = cr.REG["scratch_inventory"] if table is None else table
+    table = _cr().REG["scratch_inventory"] if table is None else table
     ok_tags = set(readers_ok or ())
-    scan, out = cr.scratch_scan(scratch), cr._new()
+    scan, out = _cr().scratch_scan(scratch), _cr()._new()
     out["other"] += [{"path": p, "reason": "array file directly under the scratch root"}
                      for p in scan.pop("__top_level__")]
     counts = {}
@@ -129,6 +135,11 @@ def scratch_check(scratch=None, table=None, readers_ok=None) -> dict:
             if listed or row["decision"] == "TO_FREEZE":
                 out["other"].append({"path": name, "reason": "row not frozen"})
             continue
+        if name.startswith("hwsc-dry"):  # D-0178-1: the type rule, for these stores only
+            import hwsc_drystore
+
+            hwsc_drystore.check_store(scratch / name, listed, ok_tags, out)
+            continue
         _check_row(name, listed, row, ok_tags, scratch, out)
     out["scan_counts"] = counts
-    return cr._close(out)
+    return _cr()._close(out)

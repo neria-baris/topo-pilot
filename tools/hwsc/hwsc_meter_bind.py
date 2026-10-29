@@ -45,7 +45,7 @@ def bind(job_id, task_sha256, out, worker_session, stage, temp_root=None) -> Non
     winjob.MEMORY_CAP = cap
     k4b_meter_bind.TEMP_ROOT = str(temp_root if temp_root is not None else out)
     meter.CAP_S = meter.STOP_NEW_S = INF
-    meter.OUTPUT_CAP = 4 * 1024**3
+    meter.OUTPUT_CAP = int(cc.CONTRACT["resources"]["output_cap_bytes"])  # D-0192-1: whole store
 
 
 def _outside(p, root) -> bool:

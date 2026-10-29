@@ -68142,7 +68142,7 @@
    "E1": 12884901888,
    "E2": 12884901888
   },
-  "output_cap_bytes": 4294967296,
+  "output_cap_bytes": 17179869184,
   "max_cpu_flag": "inf",
   "max_wall_flag": "inf",
   "native_operation_wall_s": 600,

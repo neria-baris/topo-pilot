@@ -254,7 +254,7 @@ def test_bind_per_stage(tmp_path, meter_state, stage):
     assert Path(meter.OUT) == out and Path(meter.LEDGER) == out / "cpu_ledger.json"
     assert Path(meter.LOCK) == out / "RUN.lock" and Path(meter.LOG_DIR) == out / "logs"
     assert meter.CAP_S == math.inf and meter.STOP_NEW_S == math.inf
-    assert meter.OUTPUT_CAP == 4 * GiB
+    assert meter.OUTPUT_CAP == 16 * GiB  # API §28 erratum (D-0192-1, coordinator edit)
     env = kmb.child_env("0176b")
     for k in ("TEMP", "TMP", "TMPDIR"):
         assert Path(env[k]) == temp / "tmp-0176b"

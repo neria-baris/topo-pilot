@@ -58,11 +58,12 @@ def run_kc(out, auth, sched, job) -> dict:
     pf = preflight(out, "KC", auth, sched)
     if pf["refused"]:
         return pf
-    before = _files_under(out / "artifacts")
+    dirs = (out / "artifacts", out / "registry" / "rehearsal")  # D-0181-2: KC9's files too
+    before = set().union(*map(_files_under, dirs))
     with hwsc_bind.bound_stage_c():
         _audit_gate(out)
         rec = hwsc_known.run_kc(out, auth, sched, job)
-    new = sorted(_files_under(out / "artifacts") - before)
+    new = sorted(set().union(*map(_files_under, dirs)) - before)
     files = [out / "stages" / "KC" / "KC_RECORD.json"] + new
     g0 = out / "stages" / "KC" / "G0C.json"
     k4b_driver.complete_stage(out, "KC", files + ([g0] if g0.is_file() else []))

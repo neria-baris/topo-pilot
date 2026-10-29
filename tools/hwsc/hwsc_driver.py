@@ -23,8 +23,8 @@ import stage_records
 from c1_records import C1GateFailure
 from hwsc_records import (  # noqa: F401  (API names)
     auth_ok, central, export_c, freeze_c, implementation_files, ledger_append, ledger_read,
-    lineage_c, pause_check_c, pause_or_raise_c, preflight, run_gates_c, s0, sched_ok, status_of,
-    utc, verify_freeze_c)
+    lineage_c, pause_check_c, pause_or_raise_c, preflight, record_gate_files, run_gates_c, s0,
+    sched_ok, status_of, utc, verify_freeze_c)
 
 from topo_pilot.contracts import ArtifactStore
 from topo_pilot.contracts.backends import LocalFSBackend
@@ -207,15 +207,17 @@ def run_e1(out, auth, sched, release_path, session, task_sha256, cont=None,
     pf = preflight(out, "E1", auth, sched)
     if pf["refused"]:
         return pf
-    rel = k4b_release.verify_release(release_path, "A", task_sha256, session, out / "FREEZE.json")
-    if rel["reservation"] != cc.RESERVATION_ID:
-        raise C1GateFailure("FAIL_TECHNICAL/AUTHORITY", "release reservation id")
     handoff = cc.load_handoff()
-    ctx = {"release": rel, "reservation_path": out / cc.RESERVATION_FILE, "handoff": handoff,
-           "ledger": cc.STUDY_LEDGER, "cont": cont}
-    with hwsc_bind.bound_stage_c():
+    with hwsc_bind.bound_stage_c():  # D-0187-1: verify_release reads the bound protocol sha256
+        rel = k4b_release.verify_release(release_path, "A", task_sha256, session,
+                                         out / "FREEZE.json")
+        if rel["reservation"] != cc.RESERVATION_ID:
+            raise C1GateFailure("FAIL_TECHNICAL/AUTHORITY", "release reservation id")
+        ctx = {"release": rel, "reservation_path": out / cc.RESERVATION_FILE, "handoff": handoff,
+               "ledger": cc.STUDY_LEDGER, "cont": cont}
         _audit_gate(out)
         recs = run_gates_c(out, e1_steps(out, ctx, handoff, auth, sched), dry_continue)
+    record_gate_files(out, "E1", ("G0C.json", "H1C.json", "L1.json"))
     if any(r["status"] != "PASS" for r in recs):
         return run_close(out, recs)
     return {"status": "PASS", "gates": recs}

@@ -21,7 +21,8 @@ import k4b_fresh
 import stage_records
 from c1_records import C1GateFailure
 from hwsc_records import (
-    export_c, freeze_c, pause_or_raise_c, preflight, run_gates_c, s0, status_of)
+    export_c, freeze_c, pause_or_raise_c, preflight, record_gate_files, run_gates_c, s0,
+    status_of)
 
 from topo_pilot.contracts import ArtifactStore
 from topo_pilot.contracts.backends import LocalFSBackend
@@ -100,6 +101,7 @@ def run_e2(out, auth, sched, release_path, session, dry=False, dry_continue=Fals
 
         hwsc_driver._audit_gate(out)
         recs = run_gates_c(out, [(g, paused(f)) for g, f in steps], dry_continue)
+    record_gate_files(out, "E2", ("H1C_E2.json",))
     if any(r["status"] != "PASS" for r in recs):
         return run_close(out, recs)
     result = ctx["result"]

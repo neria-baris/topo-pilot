@@ -126,6 +126,14 @@ def lineage_c(out) -> dict:
     return {"status": "PASS", "n_recorded": len(recorded)}
 
 
+def record_gate_files(out, stage, names) -> None:
+    """D-0187-2: the E1/E2 gate files enter a STAGE_COMPLETE, so a later lineage_c finds them."""
+    d = Path(out) / "stages" / stage
+    files = [d / n for n in names if (d / n).is_file()]
+    if files:
+        k4b_driver.complete_stage(out, f"{stage}_GATES", files)
+
+
 def auth_ok(auth, stage, freeze=None) -> dict:
     if not isinstance(auth, dict):
         return {"ok": False, "reason": "no AUTH record"}

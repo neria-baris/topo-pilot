@@ -92,6 +92,17 @@ def _pop(argv, flag):
     return argv, None
 
 
+def child_env_c(job) -> dict:
+    """k4b_meter_bind.child_env(job) with its TEMP folder created (D-0177-1).
+
+    Without the folder, tempfile.gettempdir() in the metered child skips TEMP/TMP/TMPDIR
+    and falls back to the user temp folder on C:.
+    """
+    env = k4b_meter_bind.child_env(job)
+    Path(env["TEMP"]).mkdir(parents=True, exist_ok=True)
+    return env
+
+
 def main() -> int:
     """--job, --task-sha256, --session, --kind, --stage (all required), then the meter argv."""
     argv, opts = sys.argv[1:], {}
@@ -117,7 +128,7 @@ def main() -> int:
     if not meter.ACTIVE.exists():
         op_guard.archive_stale(meter.OUT)
     meter.limit_reason = k4b_meter_bind.make_limiter(op_marker=meter.OUT / op_guard.MARKER)
-    os.environ.update(k4b_meter_bind.child_env(job))
+    os.environ.update(child_env_c(job))
     sys.argv = [sys.argv[0]] + k4b_meter_bind.rewrite_argv(argv)
     return meter.main()
 

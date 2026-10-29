@@ -991,7 +991,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked fil
 | [test_r_0181_kc_records_rehearsal.py](files/tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) | python | 48 lines | Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the |
 | [test_r_0184_kc7_inside_binding.py](files/tests/hwsc/test_r_0184_kc7_inside_binding.py.md) | python | 50 lines | Coordinator-written regression test for defect D-0184-1 (API.md §26): run_kc runs every KC |
 | [test_r_0187_e1_release_and_gate_files.py](files/tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) | python | 95 lines | Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27). |
-| [test_r_0192_output_cap.py](files/tests/hwsc/test_r_0192_output_cap.py.md) | python | 28 lines | Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap |
+| [test_r_0192_output_cap.py](files/tests/hwsc/test_r_0192_output_cap.py.md) | python | 29 lines | Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap |
 
 ## tests/integration/
 

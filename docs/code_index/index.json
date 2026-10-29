@@ -10,10 +10,10 @@
   "import cycles (strongly connected components)": 12,
   "import statements, external": 908,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3084,
+  "import statements, internal resolved": 3085,
   "import statements, internal unresolved": 0,
   "import statements, standard library": 2780,
-  "internal edges (file to file, with kind and line)": 3119,
+  "internal edges (file to file, with kind and line)": 3120,
   "python files": 635
  },
  "cycles": [
@@ -9054,25 +9054,31 @@
    "tests/hwsc/test_r_0192_output_cap.py",
    "tools/hwsc/hwsc_meter_bind.py",
    "import",
-   14
+   15
   ],
   [
    "tests/hwsc/test_r_0192_output_cap.py",
    "tools/k4b/k4b_meter_bind.py",
    "import",
-   15
+   16
+  ],
+  [
+   "tests/hwsc/test_r_0192_output_cap.py",
+   "tools/x4_oracle_profile/controls.py",
+   "import",
+   14
   ],
   [
    "tests/hwsc/test_r_0192_output_cap.py",
    "tools/x4_oracle_profile/meter.py",
    "import",
-   16
+   17
   ],
   [
    "tests/hwsc/test_r_0192_output_cap.py",
    "tools/x4_oracle_profile/winjob.py",
    "import",
-   17
+   18
   ],
   [
    "tests/integration/_mini_pipeline.py",
@@ -22930,9 +22936,9 @@
   },
   "tests/hwsc/test_r_0192_output_cap.py": {
    "kind": "python",
-   "lines": 28,
+   "lines": 29,
    "purpose": "Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap",
-   "sha256": "0310f0c6905b71f1566b71a4c85590da151a106bc9512eb1f267ed1211aebbdc"
+   "sha256": "1dd0148acaf267fae9e0d0322b3a0de38061a1092c5fc562e8c7d0b31077f3dc"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -140399,10 +140405,27 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "sys.path edit",
+     "how": "unique basename",
      "lazy": false,
      "level": 0,
      "line": 14,
+     "module": "",
+     "names": [
+      "controls"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_oracle_profile/controls.py"
+     ],
+     "top": "controls"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
      "module": "",
      "names": [
       "hwsc_meter_bind"
@@ -140419,7 +140442,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 15,
+     "line": 16,
      "module": "",
      "names": [
       "k4b_meter_bind"
@@ -140436,7 +140459,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 16,
+     "line": 17,
      "module": "",
      "names": [
       "meter"
@@ -140453,7 +140476,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 17,
+     "line": 18,
      "module": "",
      "names": [
       "winjob"
@@ -140469,12 +140492,12 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 28,
+     "end": 29,
      "kind": "test",
      "name": "test_output_cap_comes_from_the_contract",
      "qual": "test_output_cap_comes_from_the_contract",
      "sig": "def test_output_cap_comes_from_the_contract(tmp_path, monkeypatch)",
-     "start": 20
+     "start": 21
     }
    ],
    "syspath": [
@@ -247110,5 +247133,5 @@
    ]
   }
  },
- "sources_digest": "f336f5b11f53aa724427e481306770441278644d738752ee0071864ce5c10aee"
+ "sources_digest": "64f38641cd568637846d1ee3c21ebe6d6b29f3a418c46d4fc5be4005d75fe1b0"
 }

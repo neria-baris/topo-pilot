@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsc/test_r_0192_output_cap.py](../../../../../tests/hwsc/test_r_0192_output_cap.py)
 - Kind: python
-- Lines: 28
+- Lines: 29
 
 ## Module docstring
 
@@ -15,10 +15,11 @@
 ### Internal (repo files)
 
 - `import hwsc_config` -> [tools/hwsc/hwsc_config.py](../../tools/hwsc/hwsc_config.py.md) (line 13, via sys.path edit)
-- `import hwsc_meter_bind` -> [tools/hwsc/hwsc_meter_bind.py](../../tools/hwsc/hwsc_meter_bind.py.md) (line 14, via sys.path edit)
-- `import k4b_meter_bind` -> [tools/k4b/k4b_meter_bind.py](../../tools/k4b/k4b_meter_bind.py.md) (line 15, via unique basename)
-- `import meter` -> [tools/x4_oracle_profile/meter.py](../../tools/x4_oracle_profile/meter.py.md) (line 16, via unique basename)
-- `import winjob` -> [tools/x4_oracle_profile/winjob.py](../../tools/x4_oracle_profile/winjob.py.md) (line 17, via unique basename)
+- `import controls` -> [tools/x4_oracle_profile/controls.py](../../tools/x4_oracle_profile/controls.py.md) (line 14, via unique basename)
+- `import hwsc_meter_bind` -> [tools/hwsc/hwsc_meter_bind.py](../../tools/hwsc/hwsc_meter_bind.py.md) (line 15, via sys.path edit)
+- `import k4b_meter_bind` -> [tools/k4b/k4b_meter_bind.py](../../tools/k4b/k4b_meter_bind.py.md) (line 16, via unique basename)
+- `import meter` -> [tools/x4_oracle_profile/meter.py](../../tools/x4_oracle_profile/meter.py.md) (line 17, via unique basename)
+- `import winjob` -> [tools/x4_oracle_profile/winjob.py](../../tools/x4_oracle_profile/winjob.py.md) (line 18, via unique basename)
 
 ### External (third-party)
 
@@ -56,5 +57,5 @@
 
 ## Classes and functions
 
-- **test `test_output_cap_comes_from_the_contract`** [L20-28]: `def test_output_cap_comes_from_the_contract(tmp_path, monkeypatch)`
+- **test `test_output_cap_comes_from_the_contract`** [L21-29]: `def test_output_cap_comes_from_the_contract(tmp_path, monkeypatch)`
 

@@ -49,7 +49,7 @@
 
 - [tests/hwsc/test_b_guard_meter.py](../../tests/hwsc/test_b_guard_meter.py.md) (line 28, import)
 - [tests/hwsc/test_r_0177_meter_tempdir.py](../../tests/hwsc/test_r_0177_meter_tempdir.py.md) (line 18, import)
-- [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 14, import)
+- [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 15, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 15, import)
 
 ## Top-level constants

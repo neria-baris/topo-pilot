@@ -3124,7 +3124,7 @@
 | `test_out_of_order_stage_refused_without_gate` | test | `test_out_of_order_stage_refused_without_gate` | [tests/circle_history/test_builder_v24_stages.py:43](../../tests/circle_history/test_builder_v24_stages.py#L43) |  |
 | `test_outcome_fallthrough_is_fail_technical_outcome` | test | `test_outcome_fallthrough_is_fail_technical_outcome` | [tests/hws/test_a_outcomes.py:248](../../tests/hws/test_a_outcomes.py#L248) |  |
 | `test_outcome_path_and_roundtrip` | test | `test_outcome_path_and_roundtrip` | [tests/experiment/test_x5g1t_runtime_boundary.py:79](../../tests/experiment/test_x5g1t_runtime_boundary.py#L79) |  |
-| `test_output_cap_comes_from_the_contract` | test | `test_output_cap_comes_from_the_contract` | [tests/hwsc/test_r_0192_output_cap.py:20](../../tests/hwsc/test_r_0192_output_cap.py#L20) |  |
+| `test_output_cap_comes_from_the_contract` | test | `test_output_cap_comes_from_the_contract` | [tests/hwsc/test_r_0192_output_cap.py:21](../../tests/hwsc/test_r_0192_output_cap.py#L21) |  |
 | `test_output_cap_reason_is_a_resource_stop` | test | `test_output_cap_reason_is_a_resource_stop` | [tests/k4b/test_b_meter.py:301](../../tests/k4b/test_b_meter.py#L301) |  |
 | `test_output_dir_new_path_is_created` | test | `test_output_dir_new_path_is_created` | [tests/experiment/test_x5g1_safety.py:226](../../tests/experiment/test_x5g1_safety.py#L226) |  |
 | `test_output_dir_non_empty_raises_and_is_untouched` | test | `test_output_dir_non_empty_raises_and_is_untouched` | [tests/experiment/test_x5g1_safety.py:237](../../tests/experiment/test_x5g1_safety.py#L237) |  |

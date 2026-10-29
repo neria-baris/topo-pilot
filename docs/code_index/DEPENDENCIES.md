@@ -1113,7 +1113,7 @@ Edge counts are file-to-file edges between different subpackages.
 - -> tools/c1prime/c1_records.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_jobs.py, tools/k4b/k4b_config.py, tools/x4_circle_history/stage_records.py
 - <- none
 ### `tests/hwsc/test_r_0192_output_cap.py`
-- -> tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_meter_bind.py, tools/k4b/k4b_meter_bind.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
+- -> tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_meter_bind.py, tools/k4b/k4b_meter_bind.py, tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
@@ -1816,7 +1816,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tools/x4_oracle_profile/controls.py`
 - -> none
-- <- tests/c1prime/test_a_release_meter.py, tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsc/test_b_guard_meter.py, tests/k4b/test_b_meter.py, tests/oracle_profile/test_builder_controls.py, tests/x6_stage1/test_b_nb_s0_ops.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py, tools/c2_nd/store_template/nd_meter_bind.py, tools/d2a/d2a_train.py, tools/hws/hws_dry.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/meter_bind.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/runtime.py
+- <- tests/c1prime/test_a_release_meter.py, tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_r_0192_output_cap.py, tests/k4b/test_b_meter.py, tests/oracle_profile/test_builder_controls.py, tests/x6_stage1/test_b_nb_s0_ops.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py, tools/c2_nd/store_template/nd_meter_bind.py, tools/d2a/d2a_train.py, tools/hws/hws_dry.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/meter_bind.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/runtime.py
 ### `tools/x4_oracle_profile/freeze.py`
 - -> none
 - <- tools/c1prime/c1_freeze.py, tools/x4_circle_history/freeze_bind.py, tools/x4_oracle_profile/run_profile.py, tools/x4_oracle_profile/run_tests.py, tools/x4_oracle_profile/validation.py
@@ -8032,6 +8032,7 @@ tests/hwsc/test_r_0192_output_cap.py
     tools/hwsc/hwsc_config.py (see above)
     tools/hwsc/hwsc_meter_bind.py (see above)
     tools/k4b/k4b_meter_bind.py (see above)
+    tools/x4_oracle_profile/controls.py (see above)
     tools/x4_oracle_profile/meter.py (see above)
     tools/x4_oracle_profile/winjob.py (see above)
 ```

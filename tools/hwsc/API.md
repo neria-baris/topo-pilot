@@ -553,3 +553,36 @@ From that scan, CONTRACT `registry.scratch_inventory` now holds `frozen_files` (
   - `0089`, `0093` and `0094` hold cloud training arrays (`train_*.npy`, 1,048,576 rows) and `0081` arrays of up to 2,097,152 rows, which no stage-C reader reads.
 
 Folders without such files keep `frozen_files: {}` and fail closed on any later addition. With the frozen table, `scratch_check` on the current scratch root reports exactly the 32 unresolved folders ("row not frozen") and nothing else, so K-REG1, K-REG2 and REHEARSAL stay INCONCLUSIVE/REGISTRY_INCOMPLETE until the coordinator rules on those folders. These items remain TO_FREEZE: the run approval, KC9's cost and the execution freeze.
+
+### 20.1 Ruling R-0176-R6 applied (the 32 unclassified folders)
+
+Source: `agent-handoff/jobs/0176/RULINGS_R6.md`, sha256 6e0b2cbf4166ef6eefdf0f6eb538a7b3083f453d058a8df42e21ed4e111b5563. The two judgement calls of §20 (c2scratch coverage; the `0075`/`0078` fixture components) are accepted.
+
+**How each of the 32 folders was resolved, file by file (first matching rule wins).**
+1. **Covered by a reader:**
+   - A C2-format `HIST_*.npz` outside any `test_*` component goes to `c2scratch`.
+   - An ObservationSet store whose EmissionSpec parents lie in the same store goes to `R5`. These stores are listed in CONTRACT `registry.dry_stores.os_roots` and read canonically by `hwsc_registry.source_dry`, through `_os_roots`, with the `hwsb_registry.registry_digests` rule.
+
+   Both kinds are recorded in the row's `covered` (`{relpath: tag}`).
+2. **HASH_FROZEN:** every other listed file is recorded in the row's `hash_frozen` (`{relpath: {sha256, bytes, reason_class}}`). The reason class is one of:
+   - `CHECKPOINT`: `.pt` files, hashed as scratch copies.
+   - `FIXTURE_STORE`: `pt/`, `pytest-affected/` and `dry/` stores; the X6S1 implementation-job fixtures `0077`, `0081`, `0082`, `0084` (synthetic fixtures only, per their `task.md`); `0089/pf/`.
+   - `PYTEST_FIXTURE_LARGE`: files under a pytest segment.
+   - `OTHER_PROCESS_TRAINING`: the X6S1 owner cloud snapshots `cloud_bundle/`, `cloud_in/` and `partial-extract/` in `0089`, `0090`, `0093`, `0094` (jobs 0089–0094: E0, E0b, E1, E2).
+3. **Not identified:** any other file stays in `registry.scratch_rules.unresolved` and blocks the freeze.
+
+**Code (`feat(hwsc)`).** The R6 functions `_classify`, `scratch_scan`, `scratch_check` moved to the new module `hwsc_scratch` (split by size) and are re-exported by `hwsc_registry`. `scratch_check` calls `hwsc_registry.scratch_scan` at call time. Per row, `scratch_check` now applies two checks:
+- every `hash_frozen` file is re-hashed (size and sha256, with a known reason class); any difference → `other` ("HASH_FROZEN sha256 differs");
+- every `covered` file's tag must be PASS in the same build.
+
+Rows without these fields behave as before. `source_dry()` called with its default paths also reads `os_roots`.
+
+**Residual risk.** CONTRACT `registry.scratch_rules.residual_risk`, quoted from the ruling: HASH_FROZEN files are not digested; the stage-C test rows are fresh draws from w\* under new `hwsc-v1` scopes and no stage-C model reads scratch, so the residual risk is an accidental identity between a fresh w\* history and an undigested scratch row of another process. Any addition or change in these folders fails closed (`scratch_check`).
+
+**R5 short histories (code).** A member with a key in `HISTORY_KEYS` and fewer than 32 tokens per row is recorded in `non_c2_format` and not digested, under the D-0139-1 rule (such a row cannot equal a 32-token history). This applies, for example, to the `hws-dry` DR12 superseded copies of shape [64, 8]. Before this change those files made `source_dry` INCONCLUSIVE.
+
+**Verification on 2026-10-29.**
+- `source_dry()` on the real scratch: PASS, 56,607 digests, with the 3 planted fixtures recognised and the 3 short-history files recorded.
+- `scratch_check(readers_ok={c2scratch, hws, R5})` on the current scratch root: PASS, with no `other` entry and no "row not frozen".
+- 93 of 319 candidate ObservationSet stores are R5-readable `os_roots`. The ObservationSets of the other stores are HASH_FROZEN.
+- `registry.scratch_rules.unresolved` is empty.

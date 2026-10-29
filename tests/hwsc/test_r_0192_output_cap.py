@@ -10,7 +10,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools" / "hwsc"))
 
-import hwsc_config as cc  # noqa: E402
+import hwsc_config as cc  # noqa: E402,I001  (first: puts the tool paths on sys.path)
+import controls  # noqa: E402
 import hwsc_meter_bind as cm  # noqa: E402
 import k4b_meter_bind  # noqa: E402
 import meter  # noqa: E402
@@ -18,7 +19,7 @@ import winjob  # noqa: E402
 
 
 def test_output_cap_comes_from_the_contract(tmp_path, monkeypatch):
-    for mod in (meter, winjob, k4b_meter_bind):  # restore every bound global after the test
+    for mod in (meter, winjob, k4b_meter_bind, controls):  # restore every bound global
         for name in [n for n in vars(mod) if n.isupper()]:
             monkeypatch.setattr(mod, name, getattr(mod, name))
     cap = cc.CONTRACT["resources"]["output_cap_bytes"]

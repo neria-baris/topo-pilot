@@ -524,3 +524,32 @@ Source: coordinator rulings `agent-handoff/jobs/0176/RULINGS_PHASE2.md` (R-0176-
 - **`registry_risk`'s 1/100 boundary** is evaluated on `Fraction(float(p_d2a))`, so equality at exactly 1/100 holds only at float resolution: `p` must be a float whose exact rational value times the row count equals 1/100.
 - **`source_dry` with an absent `hwsc-dry`** reports `present: True`, because the flag describes the source as a whole, and an empty `other`. Only the four required stores make an absence a failure.
 - **`auth_ok`'s positive case** needs the run-approval sha256 recorded in FREEZE.json (`run_approval_sha256`, TO_FREEZE). Before the freeze, tests use a synthetic FREEZE dict.
+
+## 20. R6 scratch inventory frozen (erratum, job 0176)
+
+On 2026-10-29, `hwsc_registry.scratch_scan` was run over `X:/Downloads/topo-scratch` at hwsc-impl 602eeb8. It reads npz/npy headers and file names only; it loads no array and opens nothing on the blindness list. `test_*` components were pruned as §4 and R-0176-G9 specify (stage-B folders walked completely).
+
+From that scan, CONTRACT `registry.scratch_inventory` now holds `frozen_files` (`{relpath: class}`) and a one-line `reason` for every top-level folder that holds history, identity, ObservationSet-root, unreadable or `.pt` files: 50 folders, classed as follows.
+
+- **READER, 12 folders.**
+  - `hws-dry`: readers `hws` and `R5`.
+  - `hwsb-dry`, `hwsb-dry-0169`, `hwsb-dry-0171`: reader `R5`. This includes the planted 10-byte fixture, classed `unreadable` in `frozen_files`.
+  - The C2 and C2ND dry runs `0104`, `0105`, `0109-pre`, `0139`, `0148`, `0157`, `0158`, `0160`: reader `c2scratch`. Every history file there is either a C2-format `HIST_*.npz` table or a `registry/**` digest set derived from those tables, and every identity file is an `ORACLE_*` table.
+- **EXCLUSION, synthetic fixtures with `fixture_max_rows` 1,024, 2 folders.**
+  - `0126`: under `bt*` segments.
+  - `test_hwsb-main`: with `fixture_components` `["pytest"]`.
+- **EXCLUSION with row-specific fixture components, 2 folders (a judgement for coordinator review).**
+  - `0075`: `chk1`, `chk2`, `tmp`; registry digest runs and check fixtures, all ≤ 384 rows.
+  - `0078`: `sim`; C0 smoke snapshots of 256 rows and their `.pt` files.
+- **EXCLUSION, short histories, 1 folder.** `0122` holds HWS TINY-world smoke copies with 8 tokens per row. These cannot equal a 32-token history (D-0139-1).
+- **EXCLUSION, `.pt` only, 1 folder.** `x6zc-dry`: two initial checkpoints, classed by name.
+- **Not classified, 32 folders (decision still `TO_FREEZE`).** These need a coordinator ruling and are listed in CONTRACT `registry.scratch_rules.unresolved`:
+
+  `0050`, `0052`, `0054`, `0077`, `0079`, `0081`, `0082`, `0084`, `0086`, `0088`, `0089`, `0090`, `0091`, `0093`, `0094`, `0096`, `0111`, `codex-remediation-20261017`, `coord-C2H`, `coord-C2Hp`, `coord-C2Hpp`, `coord-H`, `coord-H2`, `coord-H3`, `coord-H4`, `p-review`, `pytest-x6merge`, `test_hwsb-0161`, `test_hwsb-0162`, `test_hwsb-0169`, `test_hwsb-0171`, `verify-1121df8`.
+
+  Each holds files outside the fixture rule:
+  - most hold history files of more than 1,024 rows inside pytest basetemps: 1,100-row fixture ObservationSets, 4,096-row C0 `smoke.npy`, and the `big.npz` planted fixtures of the K4b fixture-rule tests;
+  - `0111`, `codex-remediation-20261017`, `coord-C2H`, `coord-H` and `verify-1121df8` also hold fixture stores, checkpoints and ObservationSet roots under `pt/` or `pytest-affected/` components, which the segment rule does not cover;
+  - `0089`, `0093` and `0094` hold cloud training arrays (`train_*.npy`, 1,048,576 rows) and `0081` arrays of up to 2,097,152 rows, which no stage-C reader reads.
+
+Folders without such files keep `frozen_files: {}` and fail closed on any later addition. With the frozen table, `scratch_check` on the current scratch root reports exactly the 32 unresolved folders ("row not frozen") and nothing else, so K-REG1, K-REG2 and REHEARSAL stay INCONCLUSIVE/REGISTRY_INCOMPLETE until the coordinator rules on those folders. These items remain TO_FREEZE: the run approval, KC9's cost and the execution freeze.

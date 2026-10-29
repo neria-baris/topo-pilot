@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 627,
+  "code files": 628,
   "dynamic imports, dynamic expression or unresolved": 14,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1021,
-  "functions and methods (incl. tests)": 9248,
+  "files indexed": 1022,
+  "functions and methods (incl. tests)": 9251,
   "import cycles (strongly connected components)": 12,
   "import statements, external": 904,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3046,
+  "import statements, internal resolved": 3051,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2744,
-  "internal edges (file to file, with kind and line)": 3081,
-  "python files": 626
+  "import statements, standard library": 2747,
+  "internal edges (file to file, with kind and line)": 3086,
+  "python files": 627
  },
  "cycles": [
   [
@@ -67,7 +67,8 @@
   ],
   [
    "tools/hwsc/hwsc_registry.py",
-   "tools/hwsc/hwsc_registry_build.py"
+   "tools/hwsc/hwsc_registry_build.py",
+   "tools/hwsc/hwsc_scratch.py"
   ],
   [
    "tools/k4b/k4b_decoder.py",
@@ -15929,13 +15930,13 @@
    "tools/hwsc/hwsc_registry.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   22
+   21
   ],
   [
    "tools/hwsc/hwsc_registry.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   23
+   22
   ],
   [
    "tools/hwsc/hwsc_registry.py",
@@ -15971,7 +15972,13 @@
    "tools/hwsc/hwsc_registry.py",
    "tools/hwsc/hwsc_registry_build.py",
    "import",
-   381
+   304
+  ],
+  [
+   "tools/hwsc/hwsc_registry.py",
+   "tools/hwsc/hwsc_scratch.py",
+   "import",
+   305
   ],
   [
    "tools/hwsc/hwsc_registry.py",
@@ -15990,12 +15997,6 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    19
-  ],
-  [
-   "tools/hwsc/hwsc_registry.py",
-   "tools/x6_stage1/x6s1_registry.py",
-   "import",
-   20
   ],
   [
    "tools/hwsc/hwsc_registry_build.py",
@@ -16038,6 +16039,36 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    18
+  ],
+  [
+   "tools/hwsc/hwsc_scratch.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   8
+  ],
+  [
+   "tools/hwsc/hwsc_scratch.py",
+   "tools/hwsc/hwsc_registry.py",
+   "import",
+   12
+  ],
+  [
+   "tools/hwsc/hwsc_scratch.py",
+   "tools/k4b/k4b_registry.py",
+   "import",
+   13
+  ],
+  [
+   "tools/hwsc/hwsc_scratch.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   14
+  ],
+  [
+   "tools/hwsc/hwsc_scratch.py",
+   "tools/x6_stage1/x6s1_registry.py",
+   "import",
+   15
   ],
   [
    "tools/k4b/k4b_cert.py",
@@ -23949,15 +23980,15 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 555,
+   "lines": 588,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "01fe200666ff75a6341efd1fc0cfeadc6fd76f09a08f1fb6c18dc82caedbaa3a"
+   "sha256": "afec88170b6c3ddcae9d047fa7d54b9ce003f31f0378af3ae4f8e5a5731990e4"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
-   "lines": 17993,
+   "lines": 68801,
    "purpose": "",
-   "sha256": "27e410b2e30fcbc96d8a4256737af8403109e517cd7e5d302c9ff17b39e5cfcf"
+   "sha256": "e96b38af519a2e1985ce2c0ee69d5bef20abc371b3be1b541e3abd020c786764"
   },
   "tools/hwsc/PROTOCOL_HWSC_v1.md": {
    "kind": "markdown",
@@ -24051,15 +24082,21 @@
   },
   "tools/hwsc/hwsc_registry.py": {
    "kind": "python",
-   "lines": 381,
+   "lines": 305,
    "purpose": "HWSC exposure registry hwsc-reg-v1: K-REG1, K-REG2, REHEARSAL (API.md §4; protocol §3.3-§3.4,",
-   "sha256": "6cb2e636b702b3b0350589a2325fc6c4c167eb009d8ae001a1abed3d45a0ad86"
+   "sha256": "08370b3764635a72af1ec85e9e787a3d7c53ea9bd97356ce5936c7496cbdcf6c"
   },
   "tools/hwsc/hwsc_registry_build.py": {
    "kind": "python",
    "lines": 171,
    "purpose": "HWSC registry build and obligation record (API.md §4 `build`, `obligation`; split from",
    "sha256": "c9d8381d2fc92ecfcfbc6e8dd205c7ecc20f686edceb324682aeda798a30e883"
+  },
+  "tools/hwsc/hwsc_scratch.py": {
+   "kind": "python",
+   "lines": 134,
+   "purpose": "HWSC R6 scratch inventory: header scan and the fail-closed check against the frozen table",
+   "sha256": "67c10f1edffa598b35ac2c9c6e61fa83d6f82a0aabd9fe5ba3175d60201e53ab"
   },
   "tools/k4b/API.md": {
    "kind": "markdown",
@@ -211471,28 +211508,11 @@
     },
     {
      "candidates": [],
-     "form": "import",
-     "how": "unique basename",
-     "lazy": false,
-     "level": 0,
-     "line": 20,
-     "module": "",
-     "names": [
-      "x6s1_registry"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/x6_stage1/x6s1_registry.py"
-     ],
-     "top": "x6s1_registry"
-    },
-    {
-     "candidates": [],
      "form": "from",
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 22,
+     "line": 21,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore",
@@ -211511,7 +211531,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 22,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "LocalFSBackend"
@@ -211528,7 +211548,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 381,
+     "line": 304,
      "module": "hwsc_registry_build",
      "names": [
       "build",
@@ -211539,208 +211559,187 @@
       "tools/hwsc/hwsc_registry_build.py"
      ],
      "top": "hwsc_registry_build"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 305,
+     "module": "hwsc_scratch",
+     "names": [
+      "_classify",
+      "scratch_check",
+      "scratch_scan"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_scratch.py"
+     ],
+     "top": "hwsc_scratch"
     }
    ],
    "symbols": [
     {
      "decorators": [],
      "doc": "",
-     "end": 36,
+     "end": 35,
      "kind": "function",
      "name": "_new",
      "qual": "_new",
      "sig": "def _new(present=True) -> dict",
-     "start": 34
+     "start": 33
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 41,
+     "end": 40,
      "kind": "function",
      "name": "_close",
      "qual": "_close",
      "sig": "def _close(out, lineage=False) -> dict",
-     "start": 39
+     "start": 38
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 45,
+     "end": 44,
      "kind": "function",
      "name": "_rel",
      "qual": "_rel",
      "sig": "def _rel(base, f) -> str",
-     "start": 44
+     "start": 43
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 54,
+     "end": 53,
      "kind": "function",
      "name": "_walk_arrays",
      "qual": "_walk_arrays",
      "sig": "def _walk_arrays(top, prune=None)",
-     "start": 48
+     "start": 47
     },
     {
      "decorators": [],
      "doc": "artifact_type of <root>/<T>/<id>/payload.npz|state.pt from its meta.json, else None.",
-     "end": 66,
+     "end": 65,
      "kind": "function",
      "name": "_meta_type",
      "qual": "_meta_type",
      "sig": "def _meta_type(f)",
-     "start": 57
+     "start": 56
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 82,
+     "end": 81,
      "kind": "function",
      "name": "_c2_table",
      "qual": "_c2_table",
      "sig": "def _c2_table(path, out) -> None",
-     "start": 70
+     "start": 69
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 122,
+     "end": 121,
      "kind": "function",
      "name": "source_c2nd",
      "qual": "source_c2nd",
      "sig": "def source_c2nd(store=None, bound=None) -> dict",
-     "start": 85
+     "start": 84
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 146,
+     "end": 145,
      "kind": "function",
      "name": "source_hwsb",
      "qual": "source_hwsb",
      "sig": "def source_hwsb(store=None, expected=None) -> dict",
-     "start": 126
+     "start": 125
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 153,
+     "end": 152,
      "kind": "function",
      "name": "_dry_paths",
      "qual": "_dry_paths",
      "sig": "def _dry_paths() -> list",
-     "start": 150
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 166,
+     "end": 165,
      "kind": "function",
      "name": "_os_canonical",
      "qual": "_os_canonical",
      "sig": "def _os_canonical(f, out) -> None",
-     "start": 156
+     "start": 155
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 188,
+     "end": 191,
      "kind": "function",
      "name": "_token_file",
      "qual": "_token_file",
      "sig": "def _token_file(f, out) -> None",
-     "start": 169
+     "start": 168
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 225,
+     "end": 231,
      "kind": "function",
      "name": "source_dry",
      "qual": "source_dry",
      "sig": "def source_dry(paths=None) -> dict",
-     "start": 191
+     "start": 194
+    },
+    {
+     "decorators": [],
+     "doc": "R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the",
+     "end": 247,
+     "kind": "function",
+     "name": "_os_roots",
+     "qual": "_os_roots",
+     "sig": "def _os_roots(out, roots=None) -> None",
+     "start": 234
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 230,
+     "end": 252,
      "kind": "function",
      "name": "source_scratch_c",
      "qual": "source_scratch_c",
      "sig": "def source_scratch_c(scratch=None) -> dict",
-     "start": 229
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 248,
-     "kind": "function",
-     "name": "_classify",
-     "qual": "_classify",
-     "sig": "def _classify(f) -> tuple",
-     "start": 233
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 275,
-     "kind": "function",
-     "name": "scratch_scan",
-     "qual": "scratch_scan",
-     "sig": "def scratch_scan(scratch=None) -> dict",
      "start": 251
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 284,
-     "kind": "function",
-     "name": "_row_for",
-     "qual": "_row_for",
-     "sig": "def _row_for(name, table)",
-     "start": 278
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 293,
-     "kind": "function",
-     "name": "_fixture_ok",
-     "qual": "_fixture_ok",
-     "sig": "def _fixture_ok(rel, rec, row) -> bool",
-     "start": 287
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 329,
-     "kind": "function",
-     "name": "scratch_check",
-     "qual": "scratch_check",
-     "sig": "def scratch_check(scratch=None, table=None, readers_ok=None) -> dict",
-     "start": 296
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 354,
+     "end": 277,
      "kind": "function",
      "name": "source_own",
      "qual": "source_own",
      "sig": "def source_own(store, expected) -> dict",
-     "start": 333
+     "start": 256
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 377,
+     "end": 300,
      "kind": "function",
      "name": "inventory_c",
      "qual": "inventory_c",
      "sig": "def inventory_c(root=None, readers=None) -> dict",
-     "start": 358
+     "start": 281
     }
    ],
    "syspath": []
@@ -212014,6 +212013,220 @@
      "qual": "obligation",
      "sig": "def obligation(store, extra_paths=()) -> dict",
      "start": 156
+    }
+   ],
+   "syspath": []
+  },
+  "tools/hwsc/hwsc_scratch.py": {
+   "constants": [
+    "HASH_CLASSES"
+   ],
+   "doc": "HWSC R6 scratch inventory: header scan and the fail-closed check against the frozen table\n(API.md §4, §20; rulings R-0176-G9, R-0176-R6). Split from hwsc_registry by size; re-exported\nthere. A row may hold reader-covered files (`covered`: {relpath: reader tag}) and HASH_FROZEN\nfiles (`hash_frozen`: {relpath: {sha256, bytes, reason_class}}), re-hashed at every check.",
+   "doc1": "HWSC R6 scratch inventory: header scan and the fail-closed check against the frozen table",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "hwsc_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_registry.py"
+     ],
+     "top": "hwsc_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "k4b_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_registry.py"
+     ],
+     "top": "k4b_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "x6s1_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x6_stage1/x6s1_registry.py"
+     ],
+     "top": "x6s1_registry"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "function",
+     "name": "_classify",
+     "qual": "_classify",
+     "sig": "def _classify(f) -> tuple",
+     "start": 20
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 62,
+     "kind": "function",
+     "name": "scratch_scan",
+     "qual": "scratch_scan",
+     "sig": "def scratch_scan(scratch=None) -> dict",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 71,
+     "kind": "function",
+     "name": "_row_for",
+     "qual": "_row_for",
+     "sig": "def _row_for(name, table)",
+     "start": 65
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 80,
+     "kind": "function",
+     "name": "_fixture_ok",
+     "qual": "_fixture_ok",
+     "sig": "def _fixture_ok(rel, rec, row) -> bool",
+     "start": 74
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 86,
+     "kind": "function",
+     "name": "_hash_ok",
+     "qual": "_hash_ok",
+     "sig": "def _hash_ok(path, want) -> bool",
+     "start": 83
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 108,
+     "kind": "function",
+     "name": "_check_row",
+     "qual": "_check_row",
+     "sig": "def _check_row(name, listed, row, ok_tags, scratch, out) -> None",
+     "start": 89
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 134,
+     "kind": "function",
+     "name": "scratch_check",
+     "qual": "scratch_check",
+     "sig": "def scratch_check(scratch=None, table=None, readers_ok=None) -> dict",
+     "start": 111
     }
    ],
    "syspath": []
@@ -244904,5 +245117,5 @@
    ]
   }
  },
- "sources_digest": "9e156b8ca87c1067361062397eb9721f840adcbddbbeccb76a17515c0ecd16e4"
+ "sources_digest": "acac7c054dafb033125957352722af6af4463f261f59b9c7821e464bfa4a6d65"
 }

@@ -91,6 +91,7 @@
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 25, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 19, import)
 - [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 18, import)
+- [tools/hwsc/hwsc_scratch.py](../hwsc/hwsc_scratch.py.md) (line 14, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 17, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 26, import)
 - [tools/k4b/k4b_fresh.py](../k4b/k4b_fresh.py.md) (line 27, import)

@@ -339,7 +339,7 @@
 - [tools/hwsc/hwsc_jobs.py](../../../tools/hwsc/hwsc_jobs.py.md) (line 26, import)
 - [tools/hwsc/hwsc_known.py](../../../tools/hwsc/hwsc_known.py.md) (line 29, import)
 - [tools/hwsc/hwsc_records.py](../../../tools/hwsc/hwsc_records.py.md) (line 42, import)
-- [tools/hwsc/hwsc_registry.py](../../../tools/hwsc/hwsc_registry.py.md) (line 22, import)
+- [tools/hwsc/hwsc_registry.py](../../../tools/hwsc/hwsc_registry.py.md) (line 21, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 18, import)
 - [tools/k4b/k4b_decoder.py](../../../tools/k4b/k4b_decoder.py.md) (line 15, import)
 - [tools/k4b/k4b_driver.py](../../../tools/k4b/k4b_driver.py.md) (line 138, import)

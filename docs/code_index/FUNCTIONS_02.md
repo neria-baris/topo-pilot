@@ -2,6 +2,9 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `pass_sequence` | function | `pass_sequence` | [src/topo_pilot/analysis/x5_endpoint.py:71](../../src/topo_pilot/analysis/x5_endpoint.py#L71) | ``ratios <= threshold`` element-wise; NaN is an error. |
+| `passed` | method | `LogitPolicy.passed` | [tools/c1prime/c1_records.py:230](../../tools/c1prime/c1_records.py#L230) |  |
+| `patch` | method | `ValForward.patch` | [src/topo_pilot/experiment/x4f_gates.py:151](../../src/topo_pilot/experiment/x4f_gates.py#L151) |  |
 | `patch` | function | `patch` | [tests/k4b/test_b_charts.py:77](../../tests/k4b/test_b_charts.py#L77) |  |
 | `patched` | function | `patched` | [tools/c2_readout/c2_stage_val.py:27](../../tools/c2_readout/c2_stage_val.py#L27) |  |
 | `patched_logits` | function | `patched_logits` | [tools/c1prime/c1_model.py:62](../../tools/c1prime/c1_model.py#L62) |  |
@@ -811,9 +814,9 @@
 | `ScoringAuthority` | class | `ScoringAuthority` | [tools/x4_circle_history/errors.py:29](../../tools/x4_circle_history/errors.py#L29) | Positively verified owner scoring release (issued only by release.scoring_authority). |
 | `scratch` | function | `scratch` | [tests/c2_nd/test_b_registry.py:80](../../tests/c2_nd/test_b_registry.py#L80) |  |
 | `scratch` | function | `scratch` | [tests/hwsc/test_b_registry2.py:65](../../tests/hwsc/test_b_registry2.py#L65) |  |
-| `scratch_check` | function | `scratch_check` | [tools/hwsc/hwsc_registry.py:296](../../tools/hwsc/hwsc_registry.py#L296) |  |
+| `scratch_check` | function | `scratch_check` | [tools/hwsc/hwsc_scratch.py:111](../../tools/hwsc/hwsc_scratch.py#L111) |  |
 | `scratch_ok` | function | `scratch_ok` | [tools/x6_stage0/x6_store.py:229](../../tools/x6_stage0/x6_store.py#L229) |  |
-| `scratch_scan` | function | `scratch_scan` | [tools/hwsc/hwsc_registry.py:251](../../tools/hwsc/hwsc_registry.py#L251) |  |
+| `scratch_scan` | function | `scratch_scan` | [tools/hwsc/hwsc_scratch.py:38](../../tools/hwsc/hwsc_scratch.py#L38) |  |
 | `screen` | function | `screen` | [src/topo_pilot/experiment/x4b_audit.py:34](../../src/topo_pilot/experiment/x4b_audit.py#L34) | Partners (same last symbol unless ``last`` is None) and the frozen screen. |
 | `screen_bounds` | function | `screen_bounds` | [tools/hws/hws_stats.py:52](../../tools/hws/hws_stats.py#L52) |  |
 | `screen_pool` | function | `screen_pool` | [src/topo_pilot/analysis/horizon_pools.py:135](../../src/topo_pilot/analysis/horizon_pools.py#L135) | Apply the frozen screen: admissible ``d1 <= q1_max``; eligible = any admissible partner; |
@@ -971,18 +974,18 @@
 | `source_c` | function | `source_c` | [tools/k4b/k4b_registry.py:154](../../tools/k4b/k4b_registry.py#L154) |  |
 | `source_c2` | function | `source_c2` | [tools/c2_nd/nd_registry.py:78](../../tools/c2_nd/nd_registry.py#L78) | The bound C2 hist files (CONTRACT, or `bound` for the dry stand-in) and any further |
 | `source_c2_superseded` | function | `source_c2_superseded` | [tools/c2_nd/nd_registry.py:106](../../tools/c2_nd/nd_registry.py#L106) | A name scan of superseded/: PASS iff the bound attempt directories exist and no file has |
-| `source_c2nd` | function | `source_c2nd` | [tools/hwsc/hwsc_registry.py:85](../../tools/hwsc/hwsc_registry.py#L85) |  |
+| `source_c2nd` | function | `source_c2nd` | [tools/hwsc/hwsc_registry.py:84](../../tools/hwsc/hwsc_registry.py#L84) |  |
 | `source_d` | function | `source_d` | [tools/k4b/k4b_registry.py:161](../../tools/k4b/k4b_registry.py#L161) |  |
-| `source_dry` | function | `source_dry` | [tools/hwsc/hwsc_registry.py:191](../../tools/hwsc/hwsc_registry.py#L191) |  |
+| `source_dry` | function | `source_dry` | [tools/hwsc/hwsc_registry.py:194](../../tools/hwsc/hwsc_registry.py#L194) |  |
 | `source_e` | function | `source_e` | [tools/k4b/k4b_registry.py:205](../../tools/k4b/k4b_registry.py#L205) |  |
 | `source_f` | function | `source_f` | [tools/k4b/k4b_registry.py:239](../../tools/k4b/k4b_registry.py#L239) | ObservationSet stores under other directories, canonicalised by their EmissionSpec perm |
-| `source_hwsb` | function | `source_hwsb` | [tools/hwsc/hwsc_registry.py:126](../../tools/hwsc/hwsc_registry.py#L126) |  |
+| `source_hwsb` | function | `source_hwsb` | [tools/hwsc/hwsc_registry.py:125](../../tools/hwsc/hwsc_registry.py#L125) |  |
 | `source_identity` | function | `source_identity` | [tools/x4_oracle_profile/validation.py:181](../../tools/x4_oracle_profile/validation.py#L181) |  |
 | `source_k` | function | `source_k` | [tools/k4b/k4b_registry_k.py:81](../../tools/k4b/k4b_registry_k.py#L81) | Classifies every file under k4b-store (§16 item 2 a-d); other non-empty -> INCOMPLETE. |
-| `source_own` | function | `source_own` | [tools/hwsc/hwsc_registry.py:333](../../tools/hwsc/hwsc_registry.py#L333) |  |
+| `source_own` | function | `source_own` | [tools/hwsc/hwsc_registry.py:256](../../tools/hwsc/hwsc_registry.py#L256) |  |
 | `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:210](../../tools/c2_nd/nd_registry.py#L210) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
 | `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:127](../../tools/c2_nd/nd_registry.py#L127) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
-| `source_scratch_c` | function | `source_scratch_c` | [tools/hwsc/hwsc_registry.py:229](../../tools/hwsc/hwsc_registry.py#L229) |  |
+| `source_scratch_c` | function | `source_scratch_c` | [tools/hwsc/hwsc_registry.py:251](../../tools/hwsc/hwsc_registry.py#L251) |  |
 | `sources_digest` | function | `sources_digest` | [tools/code_index/scan.py:111](../../tools/code_index/scan.py#L111) |  |
 | `SourceTampered` | class | `SourceTampered` | [src/topo_pilot/experiment/x5g1_safety.py:22](../../src/topo_pilot/experiment/x5g1_safety.py#L22) | A source artifact failed full-hash or payload verification. |
 | `SpaceBuilder` | class | `SpaceBuilder` | [src/topo_pilot/analysis/spaces.py:35](../../src/topo_pilot/analysis/spaces.py#L35) | Builds :class:`PointSet` objects from stored artifacts. |
@@ -3879,5 +3882,3 @@
 | `test_stage_round_trip_and_lineage` | test | `test_stage_round_trip_and_lineage` | [tests/process/test_controls.py:156](../../tests/process/test_controls.py#L156) |  |
 | `test_stage_saves_expected_lineage_and_split_labels` | test | `test_stage_saves_expected_lineage_and_split_labels` | [tests/dataset/test_stage.py:59](../../tests/dataset/test_stage.py#L59) |  |
 | `test_stage_unknown_mode` | test | `test_stage_unknown_mode` | [tests/process/test_controls.py:180](../../tests/process/test_controls.py#L180) |  |
-| `test_standardise_nuisance_population_sd_and_constant_columns` | test | `test_standardise_nuisance_population_sd_and_constant_columns` | [tests/c1prime/test_b_fwl.py:118](../../tests/c1prime/test_b_fwl.py#L118) |  |
-| `test_standardizer_population_std_and_zero_floor` | test | `test_standardizer_population_std_and_zero_floor` | [tests/analysis/test_x4f_scores.py:53](../../tests/analysis/test_x4f_scores.py#L53) |  |

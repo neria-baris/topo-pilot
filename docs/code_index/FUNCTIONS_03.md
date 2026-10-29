@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_standardise_nuisance_population_sd_and_constant_columns` | test | `test_standardise_nuisance_population_sd_and_constant_columns` | [tests/c1prime/test_b_fwl.py:118](../../tests/c1prime/test_b_fwl.py#L118) |  |
+| `test_standardizer_population_std_and_zero_floor` | test | `test_standardizer_population_std_and_zero_floor` | [tests/analysis/test_x4f_scores.py:53](../../tests/analysis/test_x4f_scores.py#L53) |  |
 | `test_star_arrays_sha256_equal_selection` | test | `test_star_arrays_sha256_equal_selection` | [tests/hwsb/test_b_process.py:80](../../tests/hwsb/test_b_process.py#L80) |  |
 | `test_star_canonical_symbol_is_axial_cell_centre` | test | `test_star_canonical_symbol_is_axial_cell_centre` | [tests/hwsb/test_b_process.py:104](../../tests/hwsb/test_b_process.py#L104) |  |
 | `test_star_e_canon_is_shared_and_named_inverts` | test | `test_star_e_canon_is_shared_and_named_inverts` | [tests/hwsb/test_b_process.py:90](../../tests/hwsb/test_b_process.py#L90) |  |

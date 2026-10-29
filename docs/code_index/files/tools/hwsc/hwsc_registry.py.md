@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsc/hwsc_registry.py](../../../../../tools/hwsc/hwsc_registry.py)
 - Kind: python
-- Lines: 381
+- Lines: 305
 
 ## Module docstring
 
@@ -22,10 +22,10 @@
 - `import nd_registry` -> [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 16, via unique basename)
 - `import scores` -> [tools/x4_circle_history/scores.py](../x4_circle_history/scores.py.md) (line 18, via unique basename)
 - `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 19, via unique basename)
-- `import x6s1_registry` -> [tools/x6_stage1/x6s1_registry.py](../x6_stage1/x6s1_registry.py.md) (line 20, via unique basename)
-- `from topo_pilot.contracts import ArtifactStore, EmissionSpec, ObservationSet` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 22, via package root)
-- `from topo_pilot.contracts.backends import LocalFSBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 23, via package root)
-- `from hwsc_registry_build import build, obligation` -> [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 381, via same directory)
+- `from topo_pilot.contracts import ArtifactStore, EmissionSpec, ObservationSet` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 21, via package root)
+- `from topo_pilot.contracts.backends import LocalFSBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 22, via package root)
+- `from hwsc_registry_build import build, obligation` -> [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 304, via same directory)
+- `from hwsc_scratch import _classify, scratch_check, scratch_scan` -> [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 305, via same directory)
 
 ### External (third-party)
 
@@ -65,6 +65,7 @@
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 21, import)
 - [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 14, import)
+- [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 12, import)
 
 ## Top-level constants
 
@@ -77,24 +78,20 @@
 
 ## Classes and functions
 
-- **function `_new`** [L34-36]: `def _new(present=True) -> dict`
-- **function `_close`** [L39-41]: `def _close(out, lineage=False) -> dict`
-- **function `_rel`** [L44-45]: `def _rel(base, f) -> str`
-- **function `_walk_arrays`** [L48-54]: `def _walk_arrays(top, prune=None)`
-- **function `_meta_type`** [L57-66]: `def _meta_type(f)` - artifact_type of <root>/<T>/<id>/payload.npz|state.pt from its meta.json, else None.
-- **function `_c2_table`** [L70-82]: `def _c2_table(path, out) -> None`
-- **function `source_c2nd`** [L85-122]: `def source_c2nd(store=None, bound=None) -> dict`
-- **function `source_hwsb`** [L126-146]: `def source_hwsb(store=None, expected=None) -> dict`
-- **function `_dry_paths`** [L150-153]: `def _dry_paths() -> list`
-- **function `_os_canonical`** [L156-166]: `def _os_canonical(f, out) -> None`
-- **function `_token_file`** [L169-188]: `def _token_file(f, out) -> None`
-- **function `source_dry`** [L191-225]: `def source_dry(paths=None) -> dict`
-- **function `source_scratch_c`** [L229-230]: `def source_scratch_c(scratch=None) -> dict`
-- **function `_classify`** [L233-248]: `def _classify(f) -> tuple`
-- **function `scratch_scan`** [L251-275]: `def scratch_scan(scratch=None) -> dict`
-- **function `_row_for`** [L278-284]: `def _row_for(name, table)`
-- **function `_fixture_ok`** [L287-293]: `def _fixture_ok(rel, rec, row) -> bool`
-- **function `scratch_check`** [L296-329]: `def scratch_check(scratch=None, table=None, readers_ok=None) -> dict`
-- **function `source_own`** [L333-354]: `def source_own(store, expected) -> dict`
-- **function `inventory_c`** [L358-377]: `def inventory_c(root=None, readers=None) -> dict`
+- **function `_new`** [L33-35]: `def _new(present=True) -> dict`
+- **function `_close`** [L38-40]: `def _close(out, lineage=False) -> dict`
+- **function `_rel`** [L43-44]: `def _rel(base, f) -> str`
+- **function `_walk_arrays`** [L47-53]: `def _walk_arrays(top, prune=None)`
+- **function `_meta_type`** [L56-65]: `def _meta_type(f)` - artifact_type of <root>/<T>/<id>/payload.npz|state.pt from its meta.json, else None.
+- **function `_c2_table`** [L69-81]: `def _c2_table(path, out) -> None`
+- **function `source_c2nd`** [L84-121]: `def source_c2nd(store=None, bound=None) -> dict`
+- **function `source_hwsb`** [L125-145]: `def source_hwsb(store=None, expected=None) -> dict`
+- **function `_dry_paths`** [L149-152]: `def _dry_paths() -> list`
+- **function `_os_canonical`** [L155-165]: `def _os_canonical(f, out) -> None`
+- **function `_token_file`** [L168-191]: `def _token_file(f, out) -> None`
+- **function `source_dry`** [L194-231]: `def source_dry(paths=None) -> dict`
+- **function `_os_roots`** [L234-247]: `def _os_roots(out, roots=None) -> None` - R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the
+- **function `source_scratch_c`** [L251-252]: `def source_scratch_c(scratch=None) -> dict`
+- **function `source_own`** [L256-277]: `def source_own(store, expected) -> dict`
+- **function `inventory_c`** [L281-300]: `def inventory_c(root=None, readers=None) -> dict`
 

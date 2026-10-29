@@ -36,8 +36,8 @@
    "34"
   ],
   "run_approval": {
-   "path": "TO_FREEZE",
-   "sha256": "TO_FREEZE",
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-36.md",
+   "sha256": "c24bdf94156970859eda1c3cafd7da94e0b7a0dce731b4d066d3e8db7a6bff5e",
    "rule": "the owner's explicit stage-C run approval (not given by addendum 34); its path and sha256 are written into the AUTH records and FREEZE.json by the coordinator; absent -> INCONCLUSIVE/RESOURCE_OR_AUTHORITY"
   },
   "request": {

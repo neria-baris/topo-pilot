@@ -633,3 +633,8 @@ Rows without these fields behave as before. `source_dry()` called with its defau
 - `source_dry()` on the real scratch: PASS, 80,687 digests.
 - `scratch_check(readers_ok={c2scratch, hws, R5})`: PASS with 0 `other`.
 - tests/hwsc: 415 passed.
+
+## 23. Erratum: the owner's run approval (ruling R-0179-1, coordinator 08ad4eaf)
+- **CONTRACT `authority.run_approval`** is now fixed: path `agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-36.md` (relative to the project root), sha256 `c24bdf94156970859eda1c3cafd7da94e0b7a0dce731b4d066d3e8db7a6bff5e`. Addendum 36 records the owner's explicit stage-C run approval (2026-10-29) asked for by addendum 35 Q6.
+- **Order (R-0179-1).** This erratum changes CONTRACT.json and so the implementation hash; J-C1 and the dry run are repeated once at the new h_exec, then the PF record and `freeze --run-approval <that file>`. KC0 (`g0c`) then finds path, CONTRACT sha256, AUTH `run_approval_sha256` and FREEZE.json `run_approval_sha256` equal.
+- **Not changed:** `cpu.re_set` stays TO_FREEZE. The E1 and E2 centrals stay at the planning values (R = 300 s); KC9's measured registry cost is reported only, and a lower 3× threshold means an earlier pause that asks the owner. No CONTRACT change after the execution freeze.

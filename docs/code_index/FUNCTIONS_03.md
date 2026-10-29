@@ -2,6 +2,11 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_spectrum_reducible_status` | test | `test_spectrum_reducible_status` | [tests/analysis/test_x5_kernel.py:127](../../tests/analysis/test_x5_kernel.py#L127) |  |
+| `test_spectrum_two_state_hand_values` | test | `test_spectrum_two_state_hand_values` | [tests/analysis/test_x5_kernel.py:79](../../tests/analysis/test_x5_kernel.py#L79) |  |
+| `test_split_check` | test | `test_split_check` | [tests/x2a_stage0/test_x2a_stage0_ph.py:263](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L263) |  |
+| `test_split_overlap_and_range_errors` | test | `test_split_overlap_and_range_errors` | [tests/dataset/test_stage.py:105](../../tests/dataset/test_stage.py#L105) |  |
+| `test_split_overlap_maps_to_lineage` | test | `test_split_overlap_maps_to_lineage` | [tests/k4b/test_b_flow.py:186](../../tests/k4b/test_b_flow.py#L186) |  |
 | `test_split_seeds_are_inconclusive` | test | `test_split_seeds_are_inconclusive` | [tests/d2a/test_b_rules_decide.py:294](../../tests/d2a/test_b_rules_decide.py#L294) |  |
 | `test_sqrt_js_hand_values` | test | `test_sqrt_js_hand_values` | [tests/topology/test_metrics.py:54](../../tests/topology/test_metrics.py#L54) |  |
 | `test_stage0_constants_exact_string_equality` | test | `test_stage0_constants_exact_string_equality` | [tests/x6_stage1/test_b_nb_s0_ops.py:248](../../tests/x6_stage1/test_b_nb_s0_ops.py#L248) |  |

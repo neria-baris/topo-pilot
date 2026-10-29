@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 318,
-  "code files": 631,
+  "code files": 632,
   "dynamic imports, dynamic expression or unresolved": 14,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1025,
-  "functions and methods (incl. tests)": 9275,
+  "files indexed": 1026,
+  "functions and methods (incl. tests)": 9279,
   "import cycles (strongly connected components)": 12,
-  "import statements, external": 906,
+  "import statements, external": 907,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3063,
+  "import statements, internal resolved": 3066,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2759,
-  "internal edges (file to file, with kind and line)": 3098,
-  "python files": 630
+  "import statements, standard library": 2764,
+  "internal edges (file to file, with kind and line)": 3101,
+  "python files": 631
  },
  "cycles": [
   [
@@ -8947,6 +8947,24 @@
    "tools/hwsc/hwsc_scratch.py",
    "import",
    18
+  ],
+  [
+   "tests/hwsc/test_r_0181_g0c_lineage_order.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   20
+  ],
+  [
+   "tests/hwsc/test_r_0181_g0c_lineage_order.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   18
+  ],
+  [
+   "tests/hwsc/test_r_0181_g0c_lineage_order.py",
+   "tools/hwsc/hwsc_known.py",
+   "import",
+   19
   ],
   [
    "tests/integration/_mini_pipeline.py",
@@ -22778,6 +22796,12 @@
    "purpose": "Coordinator-commissioned regression test for defect D-0178-1 (API.md §22): the hwsc-dry type",
    "sha256": "48c34a36498b4d7e69ab7fdfa9acd323a0b2f236ae8b8141d938374fd94c1adc"
   },
+  "tests/hwsc/test_r_0181_g0c_lineage_order.py": {
+   "kind": "python",
+   "lines": 64,
+   "purpose": "Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's",
+   "sha256": "af6d1f3c7fd59c29f8e57e229f2a213ed64a8b159b4f3f1a2ea6d0cff1467064"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -24064,9 +24088,9 @@
   },
   "tools/hwsc/API.md": {
    "kind": "markdown",
-   "lines": 640,
+   "lines": 645,
    "purpose": "tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1)",
-   "sha256": "03d0dceb2a2bd0478051abc27726211bd96260a7477379b78887ba0c71f664cf"
+   "sha256": "fd846af078e3cbaa1a2c85e61adc4bf41cde1d28d58fbc3594a63f650397ce4c"
   },
   "tools/hwsc/CONTRACT.json": {
    "kind": "json",
@@ -24150,7 +24174,7 @@
    "kind": "python",
    "lines": 315,
    "purpose": "HWSC G0c and the known cases KC0-KC9 (API.md §5; protocol §4; rulings R-0176-G1, G2).",
-   "sha256": "fcedb4d5901c332ca20f42d9e2bf5d81a4404b1c15eff84ef16c3462fd7062ac"
+   "sha256": "ec880c177059817c7d6e51682a488532fe4d3bb16a48d7746b8967c8d01ca270"
   },
   "tools/hwsc/hwsc_meter_bind.py": {
    "kind": "python",
@@ -139327,6 +139351,210 @@
     }
    ]
   },
+  "tests/hwsc/test_r_0181_g0c_lineage_order.py": {
+   "constants": [
+    "REPO",
+    "SCHED"
+   ],
+   "doc": "Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's\nlineage before it writes stages/<stage>/G0C.json, which is recorded only when the stage completes.\nAuthority files, the stage-B handoff and the seed search are synthetic (monkeypatched); the store\nis a tmp_path store holding only its FREEZE.json.",
+   "doc1": "Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "hashlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "hashlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "hwsc_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_known.py"
+     ],
+     "top": "hwsc_known"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "c1_records",
+     "names": [
+      "C1GateFailure"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_records.py"
+     ],
+     "top": "c1_records"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 29,
+     "kind": "function",
+     "name": "_file",
+     "qual": "_file",
+     "sig": "def _file(p: Path, text: str) -> str",
+     "start": 26
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "function",
+     "name": "_setup",
+     "qual": "_setup",
+     "sig": "def _setup(tmp_path, monkeypatch)",
+     "start": 32
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 55,
+     "kind": "test",
+     "name": "test_g0c_passes_on_a_store_holding_only_its_freeze",
+     "qual": "test_g0c_passes_on_a_store_holding_only_its_freeze",
+     "sig": "def test_g0c_passes_on_a_store_holding_only_its_freeze(tmp_path, monkeypatch)",
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "test",
+     "name": "test_g0c_still_fails_closed_on_an_unrecorded_file",
+     "qual": "test_g0c_still_fails_closed_on_an_unrecorded_file",
+     "sig": "def test_g0c_still_fails_closed_on_an_unrecorded_file(tmp_path, monkeypatch)",
+     "start": 58
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsc"
+     ],
+     "expr": "str(REPO / 'tools' / 'hwsc')",
+     "line": 16
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -245925,5 +246153,5 @@
    ]
   }
  },
- "sources_digest": "5f50fbfc5f94644e43c7ed67188dfec6fb3a85a6c473a918687111357172b396"
+ "sources_digest": "f1702563b9c2c8298bf1e1063d181402b1357316bf0417f37da287dda6980f7d"
 }

@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1025 tracked files; 631 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1026 tracked files; 632 code files (linked to their pages).
 
 ## (repo root)
 
@@ -987,6 +987,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1025 tracked fil
 | [test_b_train_hold.py](files/tests/hwsc/test_b_train_hold.py.md) | python | 361 lines | Author B (job 0176): the TRAIN job (with spies: no real sampling or training), the per-model |
 | [test_r_0177_meter_tempdir.py](files/tests/hwsc/test_r_0177_meter_tempdir.py.md) | python | 35 lines | Regression D-0177-1 (coordinator 08ad4eaf, job 0177). |
 | [test_r_0178_dry_store_rule.py](files/tests/hwsc/test_r_0178_dry_store_rule.py.md) | python | 110 lines | Coordinator-commissioned regression test for defect D-0178-1 (API.md §22): the hwsc-dry type |
+| [test_r_0181_g0c_lineage_order.py](files/tests/hwsc/test_r_0181_g0c_lineage_order.py.md) | python | 64 lines | Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's |
 
 ## tests/integration/
 
@@ -1331,7 +1332,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1025 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 640 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
+| `API.md` | markdown | 645 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
 | `CONTRACT.json` | json | 68847 lines |  |
 | `PROTOCOL_HWSC_v1.md` | markdown | 538 lines | HWSC-v2: the world-sweep stage C, the full beyond-four test with three new models in w\* = W12-q1-s1.75-p0.2 |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSC test plan v1 (job 0176) |

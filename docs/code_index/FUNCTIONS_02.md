@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
+| `panels` | function | `panels` | [tests/c2_nd/test_impl_dry_hs.py:46](../../tests/c2_nd/test_impl_dry_hs.py#L46) | c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096. |
 | `panels` | function | `panels` | [tools/c1prime/c1_data.py:41](../../tools/c1prime/c1_data.py#L41) |  |
 | `parents` | method | `S6Job.parents` | [src/topo_pilot/experiment/s6.py:100](../../src/topo_pilot/experiment/s6.py#L100) |  |
 | `parikh` | function | `parikh` | [tools/x6_stage0/x6_model.py:227](../../tools/x6_stage0/x6_model.py#L227) |  |
@@ -2336,6 +2338,8 @@
 | `test_g0_refuses_a_protocol_copy_mismatch` | test | `test_g0_refuses_a_protocol_copy_mismatch` | [tests/c2_readout/test_b_lineage.py:172](../../tests/c2_readout/test_b_lineage.py#L172) |  |
 | `test_g0_store_admission_and_dry_guard` | test | `test_g0_store_admission_and_dry_guard` | [tests/c2_nd/test_b_lineage.py:223](../../tests/c2_nd/test_b_lineage.py#L223) |  |
 | `test_g0_tpl_gate_passes` | test | `test_g0_tpl_gate_passes` | [tests/d2a/test_a_templates.py:152](../../tests/d2a/test_a_templates.py#L152) |  |
+| `test_g0c_passes_on_a_store_holding_only_its_freeze` | test | `test_g0c_passes_on_a_store_holding_only_its_freeze` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:51](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L51) |  |
+| `test_g0c_still_fails_closed_on_an_unrecorded_file` | test | `test_g0c_still_fails_closed_on_an_unrecorded_file` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:58](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L58) |  |
 | `test_g1_check_is_scale_invariant_and_rejects_a_non_self_adjoint_projector` | test | `test_g1_check_is_scale_invariant_and_rejects_a_non_self_adjoint_projector` | [tests/c2_readout/test_a_gls.py:114](../../tests/c2_readout/test_a_gls.py#L114) |  |
 | `test_g1_identities_and_closed_form` | test | `test_g1_identities_and_closed_form` | [tests/c2_readout/test_a_readout.py:293](../../tests/c2_readout/test_a_readout.py#L293) |  |
 | `test_g1_ignores_validation_targets_for_selection` | test | `test_g1_ignores_validation_targets_for_selection` | [tests/experiment/test_x4f_gates_smoke.py:70](../../tests/experiment/test_x4f_gates_smoke.py#L70) |  |
@@ -3881,8 +3885,3 @@
 | `test_spectrum_abs_gap_uses_negative_eigenvalue` | test | `test_spectrum_abs_gap_uses_negative_eigenvalue` | [tests/analysis/test_x5_kernel.py:90](../../tests/analysis/test_x5_kernel.py#L90) |  |
 | `test_spectrum_eigenvalues_descending_lazy_cycle` | test | `test_spectrum_eigenvalues_descending_lazy_cycle` | [tests/analysis/test_x5_kernel.py:99](../../tests/analysis/test_x5_kernel.py#L99) |  |
 | `test_spectrum_near_unit_gap_status` | test | `test_spectrum_near_unit_gap_status` | [tests/analysis/test_x5_kernel.py:133](../../tests/analysis/test_x5_kernel.py#L133) |  |
-| `test_spectrum_reducible_status` | test | `test_spectrum_reducible_status` | [tests/analysis/test_x5_kernel.py:127](../../tests/analysis/test_x5_kernel.py#L127) |  |
-| `test_spectrum_two_state_hand_values` | test | `test_spectrum_two_state_hand_values` | [tests/analysis/test_x5_kernel.py:79](../../tests/analysis/test_x5_kernel.py#L79) |  |
-| `test_split_check` | test | `test_split_check` | [tests/x2a_stage0/test_x2a_stage0_ph.py:263](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L263) |  |
-| `test_split_overlap_and_range_errors` | test | `test_split_overlap_and_range_errors` | [tests/dataset/test_stage.py:105](../../tests/dataset/test_stage.py#L105) |  |
-| `test_split_overlap_maps_to_lineage` | test | `test_split_overlap_maps_to_lineage` | [tests/k4b/test_b_flow.py:186](../../tests/k4b/test_b_flow.py#L186) |  |

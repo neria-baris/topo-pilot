@@ -753,6 +753,7 @@
 | `_features` | method | `ProbesJob._features` | [src/topo_pilot/experiment/s7_probes.py:52](../../src/topo_pilot/experiment/s7_probes.py#L52) |  |
 | `_feed` | function | `_feed` | [tools/x6_stage1/x6s1_registry.py:374](../../tools/x6_stage1/x6s1_registry.py#L374) |  |
 | `_fields` | function | `_fields` | [tests/k4b/test_a_lemma_t.py:131](../../tests/k4b/test_a_lemma_t.py#L131) | Scores f(h, r): 1-Lipschitz in r (Euclidean) and \|f(h, r)\| <= \|r\|. |
+| `_file` | function | `_file` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:26](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L26) |  |
 | `_file_sha` | function | `_file_sha` | [tools/c1prime/c1_data.py:87](../../tools/c1prime/c1_data.py#L87) |  |
 | `_file_sha` | function | `_file_sha` | [tools/x6_stage1/x6s1_data.py:236](../../tools/x6_stage1/x6s1_data.py#L236) |  |
 | `_file_sha` | function | `_file_sha` | [tools/x6_stage1/x6s1_registry.py:49](../../tools/x6_stage1/x6s1_registry.py#L49) |  |
@@ -1822,6 +1823,7 @@
 | `_set` | function | `_set` | [tests/hws/test_b_kc1.py:156](../../tests/hws/test_b_kc1.py#L156) |  |
 | `_set_beta` | function | `_set_beta` | [tools/x6_stage1/x6s1_eval.py:257](../../tools/x6_stage1/x6s1_eval.py#L257) | beta over sets (x6_exact.beta semantics in float64): a set is the histories sharing w_{1:s} |
 | `_set_threads` | function | `_set_threads` | [tools/d2a/d2a_train.py:252](../../tools/d2a/d2a_train.py#L252) |  |
+| `_setup` | function | `_setup` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:32](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L32) |  |
 | `_setup_split` | function | `_setup_split` | [tests/analysis/test_readout.py:194](../../tests/analysis/test_readout.py#L194) |  |
 | `_sf` | function | `_sf` | [tests/hwsc/test_b_records.py:59](../../tests/hwsc/test_b_records.py#L59) |  |
 | `_sg` | function | `_sg` | [tests/c2_readout/test_a_inference.py:52](../../tests/c2_readout/test_a_inference.py#L52) |  |
@@ -4808,5 +4810,3 @@
 | `pairwise` | method | `Metric.pairwise` | [src/topo_pilot/world/metrics.py:31](../../src/topo_pilot/world/metrics.py#L31) | Return the symmetric ``[N, N]`` distance matrix. |
 | `pairwise` | method | `SqrtJS.pairwise` | [src/topo_pilot/topology/metrics.py:121](../../src/topo_pilot/topology/metrics.py#L121) |  |
 | `PanelBuilder` | class | `PanelBuilder` | [src/topo_pilot/dataset/panels.py:19](../../src/topo_pilot/dataset/panels.py#L19) | Draws ``n_panels`` disjoint panels of ``panel_size`` distinct test trajectories. |
-| `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
-| `panels` | function | `panels` | [tests/c2_nd/test_impl_dry_hs.py:46](../../tests/c2_nd/test_impl_dry_hs.py#L46) | c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096. |

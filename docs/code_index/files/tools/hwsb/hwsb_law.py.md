@@ -47,9 +47,12 @@
 
 - [tests/hwsb/test_a_enclosure_proof.py](../../tests/hwsb/test_a_enclosure_proof.py.md) (line 40, import)
 - [tests/hwsb/test_b_meter_law.py](../../tests/hwsb/test_b_meter_law.py.md) (line 24, import)
+- [tests/hwsc/test_a_law.py](../../tests/hwsc/test_a_law.py.md) (line 28, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 20, import)
 - [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 18, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 19, import)
+- [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 13, import)
+- [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 16, import)
 
 ## Top-level constants
 

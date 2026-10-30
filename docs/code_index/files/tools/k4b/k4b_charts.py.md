@@ -50,6 +50,7 @@
 - [tests/k4b/test_b_charts.py](../../tests/k4b/test_b_charts.py.md) (line 25, import)
 - [tools/hwsb/hwsb_gates.py](../hwsb/hwsb_gates.py.md) (line 14, import)
 - [tools/hwsb/hwsb_stages.py](../hwsb/hwsb_stages.py.md) (line 22, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 182, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 17, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 17, import)
 

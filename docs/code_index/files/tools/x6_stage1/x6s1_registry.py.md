@@ -65,6 +65,9 @@
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 102, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 329, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 354, import)
+- [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 182, import)
+- [tools/hwsc/hwsc_drystore.py](../hwsc/hwsc_drystore.py.md) (line 19, import)
+- [tools/hwsc/hwsc_scratch.py](../hwsc/hwsc_scratch.py.md) (line 14, import)
 - [tools/x6_stage1/x6s1_stage_pre.py](x6s1_stage_pre.py.md) (line 33, import)
 
 ## Top-level constants

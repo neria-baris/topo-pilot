@@ -62,6 +62,7 @@
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 24, import)
 - [tools/c2_readout/c2_data.py](../c2_readout/c2_data.py.md) (line 22, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 21, import)
+- [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 12, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 11, import)
 - [tools/k4b/k4b_registry.py](../k4b/k4b_registry.py.md) (line 16, import)
 

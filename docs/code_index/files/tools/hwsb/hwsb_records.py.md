@@ -56,6 +56,7 @@
 
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 23, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 25, import)
+- [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 14, import)
 
 ## Top-level constants
 

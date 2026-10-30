@@ -64,6 +64,11 @@
 - [tests/hwsb/test_b_registry.py](../../tests/hwsb/test_b_registry.py.md) (line 22, import)
 - [tests/hwsb/test_b_streams.py](../../tests/hwsb/test_b_streams.py.md) (line 18, import)
 - [tests/hwsb/test_r_0168_kb_default_store.py](../../tests/hwsb/test_r_0168_kb_default_store.py.md) (line 19, import)
+- [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 168, import)
+- [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 32, import)
+- [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 28, import)
+- [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 25, import)
+- [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 31, import)
 - [tools/hwsb/hwsb_data.py](hwsb_data.py.md) (line 10, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 9, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 10, import)
@@ -79,6 +84,9 @@
 - [tools/hwsb/hwsb_registry.py](hwsb_registry.py.md) (line 11, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 10, import)
 - [tools/hwsb/hwsb_train.py](hwsb_train.py.md) (line 10, import)
+- [tools/hwsc/hwsc_config.py](../hwsc/hwsc_config.py.md) (line 27, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 16, import)
+- [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 19, import)
 
 ## Top-level constants
 

@@ -52,6 +52,7 @@
 - [tools/c1prime/c1_model.py](../../../tools/c1prime/c1_model.py.md) (line 15, import)
 - [tools/hwsb/hwsb_eval.py](../../../tools/hwsb/hwsb_eval.py.md) (line 22, import)
 - [tools/hwsb/hwsb_train.py](../../../tools/hwsb/hwsb_train.py.md) (line 31, import)
+- [tools/hwsc/hwsc_dry.py](../../../tools/hwsc/hwsc_dry.py.md) (line 35, import)
 - [tools/x6_stage1/x6s1_eval.py](../../../tools/x6_stage1/x6s1_eval.py.md) (line 33, import)
 
 ## Top-level constants

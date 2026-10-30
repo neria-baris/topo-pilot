@@ -44,6 +44,7 @@
 - [src/topo_pilot/dataset/__init__.py](__init__.py.md) (line 5, import)
 - [src/topo_pilot/dataset/stage.py](stage.py.md) (line 32, import)
 - [tools/hwsb/hwsb_data.py](../../../tools/hwsb/hwsb_data.py.md) (line 39, import)
+- [tools/hwsc/hwsc_data.py](../../../tools/hwsc/hwsc_data.py.md) (line 27, import)
 
 ## Top-level constants
 

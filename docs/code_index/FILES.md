@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 987 tracked files; 599 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked files; 636 code files (linked to their pages).
 
 ## (repo root)
 
@@ -966,6 +966,33 @@ The generated index itself (`docs/code_index/`) is not indexed. 987 tracked file
 | [test_r_0168_kb_default_store.py](files/tests/hwsb/test_r_0168_kb_default_store.py.md) | python | 40 lines | Regression D-0168-1 (coordinator 08ad4eaf, job 0168). |
 | [test_r_0170_kb2_status.py](files/tests/hwsb/test_r_0170_kb2_status.py.md) | python | 72 lines | Regression D-0170-1 (coordinator 08ad4eaf, job 0170). |
 
+## tests/hwsc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 45 lines | tests/hwsc, author A (job 0176) |
+| `AUTHORSHIP_B.md` | markdown | 35 lines | Author B (job 0176): authorship record |
+| [test_a_decision.py](files/tests/hwsc/test_a_decision.py.md) | python | 370 lines | Author A (job 0176): decision maths and the POSITIVE_BELOW_MARGIN annotation. |
+| [test_a_k4b_known_bound.py](files/tests/hwsc/test_a_k4b_known_bound.py.md) | python | 398 lines | Author A (job 0176): KC8, K4b's own known cases at the bound constants. |
+| [test_a_ladder.py](files/tests/hwsc/test_a_ladder.py.md) | python | 277 lines | Author A (job 0176): the P1 ladder, the N rule and the registry-risk check. |
+| [test_a_law.py](files/tests/hwsc/test_a_law.py.md) | python | 169 lines | Author A (job 0176): the documented-law identity and the pilot exclusions. |
+| [test_a_learning.py](files/tests/hwsc/test_a_learning.py.md) | python | 209 lines | Author A (job 0176): the learning gate L1 on planted predictives. |
+| [test_a_outcomes.py](files/tests/hwsc/test_a_outcomes.py.md) | python | 332 lines | Author A (job 0176): outcome precedence, gate-record mapping and licences. |
+| [test_b_binding.py](files/tests/hwsc/test_b_binding.py.md) | python | 368 lines | Author B (job 0176): the versioned binding, its audit and the KC7-type stream check. |
+| [test_b_guard_meter.py](files/tests/hwsc/test_b_guard_meter.py.md) | python | 346 lines | Author B (job 0176): the blindness guard (exactly the R-0176-G1 five-path list), the G0c seed |
+| [test_b_records.py](files/tests/hwsc/test_b_records.py.md) | python | 400 lines | Author B (job 0176): records, the gate runner, lineage, authority records, the study |
+| [test_b_registry.py](files/tests/hwsc/test_b_registry.py.md) | python | 399 lines | Author B (job 0176): registry readers R2 (c2nd), R4 (hwsb), R5 (dry stores), R7 (own store). |
+| [test_b_registry2.py](files/tests/hwsc/test_b_registry2.py.md) | python | 374 lines | Author B (job 0176): R6 scratch scan/check, R8 inventory, registry build, H2-FRESH. |
+| [test_b_streams.py](files/tests/hwsc/test_b_streams.py.md) | python | 320 lines | Author B (job 0176): streams, sequence IDs, the train/dev mirror (DRC4) and evaluation blocks. |
+| [test_b_train_hold.py](files/tests/hwsc/test_b_train_hold.py.md) | python | 361 lines | Author B (job 0176): the TRAIN job (with spies: no real sampling or training), the per-model |
+| [test_r_0177_meter_tempdir.py](files/tests/hwsc/test_r_0177_meter_tempdir.py.md) | python | 35 lines | Regression D-0177-1 (coordinator 08ad4eaf, job 0177). |
+| [test_r_0178_dry_store_rule.py](files/tests/hwsc/test_r_0178_dry_store_rule.py.md) | python | 110 lines | Coordinator-commissioned regression test for defect D-0178-1 (API.md §22): the hwsc-dry type |
+| [test_r_0181_g0c_lineage_order.py](files/tests/hwsc/test_r_0181_g0c_lineage_order.py.md) | python | 64 lines | Coordinator-written regression test for defect D-0181-1 (API.md §24): g0c checks the store's |
+| [test_r_0181_kc_records_rehearsal.py](files/tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) | python | 48 lines | Coordinator-written regression test for defect D-0181-2 (API.md §25): the KC stage records the |
+| [test_r_0184_kc7_inside_binding.py](files/tests/hwsc/test_r_0184_kc7_inside_binding.py.md) | python | 50 lines | Coordinator-written regression test for defect D-0184-1 (API.md §26): run_kc runs every KC |
+| [test_r_0187_e1_release_and_gate_files.py](files/tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) | python | 95 lines | Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27). |
+| [test_r_0192_output_cap.py](files/tests/hwsc/test_r_0192_output_cap.py.md) | python | 29 lines | Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap |
+
 ## tests/integration/
 
 | File | Kind | Size | Purpose |
@@ -1304,6 +1331,32 @@ The generated index itself (`docs/code_index/`) is not indexed. 987 tracked file
 | [hwsb_registry.py](files/tools/hwsb/hwsb_registry.py.md) | python | 180 lines | HWSB H2-B separation and the fail-closed registry reader (API.md §2.4, §2.5; protocol §2.3, |
 | [hwsb_stages.py](files/tools/hwsb/hwsb_stages.py.md) | python | 351 lines | HWSB stage cores: one model's training and the EVAL gate sequence (API.md §8; protocol §4, |
 | [hwsb_train.py](files/tools/hwsb/hwsb_train.py.md) | python | 325 lines | HWSB training: Trainer.fit with a LearnerStage-mirroring callback, threads, the hold rule |
+
+## tools/hwsc/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 684 lines | tools/hwsc: written contract (job 0176 phase 1; derived from HWSC-DESIGN-v1) |
+| `CONTRACT.json` | json | 68847 lines |  |
+| `PROTOCOL_HWSC_v1.md` | markdown | 538 lines | HWSC-v2: the world-sweep stage C, the full beyond-four test with three new models in w\* = W12-q1-s1.75-p0.2 |
+| `TEST_PLAN.md` | markdown | 69 lines | HWSC test plan v1 (job 0176) |
+| [hwsc_bind.py](files/tools/hwsc/hwsc_bind.py.md) | python | 272 lines | HWSC versioned binding: the binding table, bound_stage_c() and the binding audit (API.md §2; |
+| [hwsc_config.py](files/tools/hwsc/hwsc_config.py.md) | python | 204 lines | HWSC configuration: CONTRACT.json, constants, plans, HANDOFF loader, blindness guard (API.md §1). |
+| [hwsc_data.py](files/tools/hwsc/hwsc_data.py.md) | python | 245 lines | HWSC data: process, train/dev mirror, evaluation blocks, H2, H2-FRESH, registry risk |
+| [hwsc_driver.py](files/tools/hwsc/hwsc_driver.py.md) | python | 258 lines | HWSC driver: the jobs KC, TRAIN, E1, REG2, E2, close and the CLI (API.md §7.3, §11; protocol |
+| [hwsc_dry.py](files/tools/hwsc/hwsc_dry.py.md) | python | 326 lines | HWSC synthetic dry run: run_dry and DRC1-DRC4 (API.md §8; protocol §7; ruling R-0176-G3). |
+| [hwsc_dry2.py](files/tools/hwsc/hwsc_dry2.py.md) | python | 247 lines | HWSC dry-run cases DRC5-DRC14 (API.md §8; protocol §7; TEST_PLAN §4; rulings R-0176-G1..G5, |
+| [hwsc_dry3.py](files/tools/hwsc/hwsc_dry3.py.md) | python | 198 lines | HWSC dry-run cases DRC10-DRC14 (sealing and D6, blindness, records/budget/hold, meter, |
+| [hwsc_drystore.py](files/tools/hwsc/hwsc_drystore.py.md) | python | 129 lines | HWSC type rule for the stage-C dry stores `hwsc-dry*` (defect D-0178-1; API.md §22). |
+| [hwsc_gates.py](files/tools/hwsc/hwsc_gates.py.md) | python | 228 lines | HWSC gates: H1-C, L1, P1 (p1c and the N rule), the POSITIVE_BELOW_MARGIN annotation, the |
+| [hwsc_jobs.py](files/tools/hwsc/hwsc_jobs.py.md) | python | 206 lines | HWSC E2 job (release B), the close record and the CLI (API.md §7.3, §11.4; split from |
+| [hwsc_known.py](files/tools/hwsc/hwsc_known.py.md) | python | 316 lines | HWSC G0c and the known cases KC0-KC9 (API.md §5; protocol §4; rulings R-0176-G1, G2). |
+| [hwsc_meter_bind.py](files/tools/hwsc/hwsc_meter_bind.py.md) | python | 137 lines | HWSC meter binding (API.md §9; protocol §8.3, RC-13; DRC13). |
+| [hwsc_outcome.py](files/tools/hwsc/hwsc_outcome.py.md) | python | 151 lines | HWSC outcome precedence, POSITIVE_BELOW_MARGIN annotation and licences (API.md §6, §12; |
+| [hwsc_records.py](files/tools/hwsc/hwsc_records.py.md) | python | 344 lines | HWSC records: exception map, gate runner, lineage, authority, FREEZE, S0, budget, ledger and the |
+| [hwsc_registry.py](files/tools/hwsc/hwsc_registry.py.md) | python | 331 lines | HWSC exposure registry hwsc-reg-v1: K-REG1, K-REG2, REHEARSAL (API.md §4; protocol §3.3-§3.4, |
+| [hwsc_registry_build.py](files/tools/hwsc/hwsc_registry_build.py.md) | python | 171 lines | HWSC registry build and obligation record (API.md §4 `build`, `obligation`; split from |
+| [hwsc_scratch.py](files/tools/hwsc/hwsc_scratch.py.md) | python | 145 lines | HWSC R6 scratch inventory: header scan and the fail-closed check against the frozen table |
 
 ## tools/k4b/
 

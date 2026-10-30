@@ -67,6 +67,7 @@
 
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 155, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 344, import)
+- [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 19, import)
 
 ## Top-level constants
 

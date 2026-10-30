@@ -53,6 +53,7 @@
 - [tests/hwsb/test_a_endpoints.py](../../tests/hwsb/test_a_endpoints.py.md) (line 29, import)
 - [tests/hwsb/test_a_ladder.py](../../tests/hwsb/test_a_ladder.py.md) (line 30, import)
 - [tests/hwsb/test_a_learning.py](../../tests/hwsb/test_a_learning.py.md) (line 29, import)
+- [tests/hwsc/test_a_k4b_known_bound.py](../../tests/hwsc/test_a_k4b_known_bound.py.md) (line 32, import)
 - [tests/k4b/test_a_ranks_ladder.py](../../tests/k4b/test_a_ranks_ladder.py.md) (line 25, import)
 - [tests/k4b/test_a_width_b4.py](../../tests/k4b/test_a_width_b4.py.md) (line 27, import)
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 27, import)

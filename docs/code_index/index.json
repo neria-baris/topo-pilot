@@ -26643,9 +26643,9 @@
   },
   "tools/hwsd/API.md": {
    "kind": "markdown",
-   "lines": 625,
+   "lines": 629,
    "purpose": "tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1)",
-   "sha256": "14a6d36e6f10418ec7bb50fbdfc74ace553bfafba6f857f9ff1f7730467c7f7c"
+   "sha256": "fb1f80d307cbdc46e1f700ee959ff56012b4a5b095a60bbd6ef4967e1820852c"
   },
   "tools/hwsd/CONTRACT.json": {
    "kind": "json",
@@ -26693,7 +26693,7 @@
    "kind": "python",
    "lines": 398,
    "purpose": "hwsd synthetic dry run: helpers, DRD1, DRD4/KD4 (seq_cases, plant_acts), run_dry (API.md §12).",
-   "sha256": "267c943846d38a737f645b051cc9b3d38be364342bd96c5c9a9038a230e997ee"
+   "sha256": "5badae517b874ce50108ef8dc1ba08fd75c9ef3d00b2a95eb9eb97353c25a039"
   },
   "tools/hwsd/hwsd_dry2.py": {
    "kind": "python",
@@ -267017,5 +267017,5 @@
    ]
   }
  },
- "sources_digest": "a46b8b3ecfdebd45983111bdc62ef2d7802849472ad7305cc0e948ee6f0dc12e"
+ "sources_digest": "7cedcf5bdd8836f2a371f47ff6700a36922c654cf165fb5db80d3dd45c34aa0e"
 }

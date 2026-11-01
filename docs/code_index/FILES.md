@@ -1387,7 +1387,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 625 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `API.md` | markdown | 629 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
 | `CONTRACT.json` | json | 3254 lines |  |
 | `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
 | `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |

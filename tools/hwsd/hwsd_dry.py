@@ -231,7 +231,7 @@ def seq_cases(out, params=None, cases=None, sequences=None, rows=3072) -> dict:
 
 
 def drd4(out, ctx) -> dict:
-    d = fresh_fixture(_job(ctx), "DRD4")  # D-0201-1: KD4 outputs under the fixture root (decision 6)
+    d = fresh_fixture(_job(ctx), "DRD4")  # D-0201-1 (decision 6)
     r = seq_cases(d, params=(ctx or {}).get("kd4_params"))
     return _res(r["status"] == "PASS", cases=r["cases"], sequences=r["sequences"],
                 kd4_parameters=r["parameters"], fallback_before=r["fallback_before"])

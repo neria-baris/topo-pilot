@@ -54,19 +54,31 @@ def fr(x):
 
 # ---- OF-2: headroom, L(mean G) > 0.02 nat, exact comparison ---------------------------------
 def _of2_with_bound(tmp_path, monkeypatch, L, rank=250):
+    """Plants stream_bounds and, consistently (API E-4), the stored bootstrap-mean draws: half
+    the draws at L and half at U, so inverted_cdf ranks 250 / 4,750 of 5,000 recompute L, U."""
     G = np.full(64, 0.03)
-    seen = {}
+    U = max(0.04, float(np.nextafter(L, 1.0)))
+    draws_ = np.array([L] * 2500 + [U] * 2500)
+    seen, boot = {}, []
 
     def fake(arrays, seed, alpha, draws=20000):
         seen.update(keys=list(arrays), seed=seed, alpha=alpha, draws=draws, G=arrays["G"])
-        return {"G": {"mean": 0.03, "L": L, "U": 0.04, "rank_L": rank, "rank_U": 4751}}
+        return {"G": {"mean": 0.03, "L": L, "U": U, "rank_L": rank, "rank_U": 4750}}
 
+    def fake_boot(arrays, seed, draws=5000):
+        boot.append((list(arrays), seed, draws))
+        return {k: draws_.copy() for k in arrays}
+
+    assert c1_means.quantile_with_rank(draws_, Fraction(1, 20)) == (L, 250)
+    assert c1_means.quantile_with_rank(draws_, Fraction(19, 20)) == (U, 4750)
     monkeypatch.setattr(c2_decide, "stream_bounds", fake)
+    monkeypatch.setattr(c1_means, "bootstrap_means", fake_boot)
     st = status(uof.of_2, make_ctx(tmp_path, pc={"G": G, "d": np.zeros((64, 36))}))[0]
     assert seen, "OF-2 must call c2_decide.stream_bounds at call time (API §0, §4 OF-2)"
     assert seen["keys"] == ["G"] and np.array_equal(seen["G"], G)
     got = (seen["seed"], fr(seen["alpha"]), seen["draws"])
     assert got == (SEEDS["headroom"], Fraction(1, 20), 5000)
+    assert all(b == (["G"], SEEDS["headroom"], 5000) for b in boot)  # same seed (E-4)
     return st
 
 
@@ -82,8 +94,8 @@ def test_of_2_boundary_is_exact(tmp_path, monkeypatch):
 
 
 def test_of_2_rank_is_checked(tmp_path, monkeypatch):
-    # API-AMBIGUITY: the status of a wrong rank is not named; it must not be PASS.
-    assert _of2_with_bound(tmp_path, monkeypatch, 0.5, rank=251) != "PASS"
+    # API erratum E-3: a rank_L other than 250 raises FAIL_TECHNICAL/NUMERICAL.
+    assert _of2_with_bound(tmp_path, monkeypatch, 0.5, rank=251) == "FAIL_TECHNICAL/NUMERICAL"
 
 
 def test_of_2_real_bounds(tmp_path):
@@ -249,11 +261,16 @@ def test_of_4_family_rules(tmp_path, monkeypatch, passes, prior, want, nr, ns):
     st, ctx, log, _ = _of4(tmp_path, monkeypatch, passes, {"OF-3": prior})
     assert st == want
     assert ctx.get("N_resp") == nr
-    # after an OF-3 SHARE_DROPPED every array is still computed (API OF-4, D-21).
-    # SPEC-QUESTION: protocol §4.1 S3 / DRO8 say "no share array is formed downstream"; whether
-    # that covers OF-4's share proxy arrays is not asserted here either way.
-    assert len(log["sd"]) == 4
-    if prior == "PASS" and want != FEAS:  # API-AMBIGUITY: ctx after a raised failure is open
+    if prior == "SHARE_DROPPED":
+        # protocol §4.1 S3 / DRO8 and API erratum E-2 (RULINGS_PHASE2 SQ-3): after an OF-3
+        # drop OF-4 forms the two response arrays only; no share array is formed.
+        assert [x[0] for x in log["sd"]] == ["ZR010", "ZR030"]
+        assert {x[0] for x in log["e"]} <= {"ZR010", "ZR030"}
+        assert {x[0] for x in log["cfg"]} <= {"ZR010", "ZR030"}
+        assert ctx.get("N_share") is None
+    else:
+        assert len(log["sd"]) == 4
+    if prior == "PASS" and want != FEAS:  # E-3: nothing of OF-4 is set in ctx when it raises
         assert ctx.get("N_share") == ns
 
 

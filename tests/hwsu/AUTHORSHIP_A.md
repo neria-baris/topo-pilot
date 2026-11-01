@@ -100,3 +100,14 @@ Test counts (collected): sampler 28, lemmas 10, oracle 14, gates 15, ladder 4; t
 - API-AMBIGUITY: where OF-3 puts ψ_orc and the variant values (details or `ctx["psi"]`); the
   status of a wrong `rank_L` in OF-2; the `ctx["proxy"]` layout; `N_share` after a raised OF-4.
   Each test accepts every reading consistent with API.md.
+
+## Revision per RULINGS_PHASE2 (phase 3)
+
+Read additionally: `agent-handoff/jobs/0198/RULINGS_PHASE2.md`, API.md phase-2 errata E-0 to
+E-4, TEST_PLAN.md erratum E-1. Changed in `test_a_of_gates.py` only:
+- OF-2 planting also plants `c1_means.bootstrap_means` with draws whose recomputed inverted_cdf
+  bounds equal the planted L and U (E-4); the exact-boundary assertions stay (E-1); a wrong
+  `rank_L` must now give `FAIL_TECHNICAL/NUMERICAL` (E-3).
+- OF-4 after an OF-3 `SHARE_DROPPED`: only ZR010 and ZR030 are formed, no share array, and
+  `N_share` is None (SPEC-QUESTION 3 ruled for the protocol; E-2).
+All 71 author-A tests pass against the code at d0cea95.

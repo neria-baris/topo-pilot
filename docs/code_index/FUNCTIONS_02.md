@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `nm_model` | function | `nm_model` | [tools/c2_nd/nd_decide.py:104](../../tools/c2_nd/nd_decide.py#L104) | RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c). |
 | `nm_status` | function | `nm_status` | [tests/c2_nd/test_b_layer2.py:113](../../tests/c2_nd/test_b_layer2.py#L113) |  |
 | `nm_stream` | function | `nm_stream` | [tools/c2_nd/nd_attrib.py:98](../../tools/c2_nd/nd_attrib.py#L98) | The N-M family stream of one model (7 arrays): categories on A_C against A_F only. |
 | `no_chart_gates` | function | `no_chart_gates` | [tests/c1prime/test_a_chart_val.py:80](../../tests/c1prime/test_a_chart_val.py#L80) | chart.chart_gates must never be called (its support criterion is every-row). |
@@ -605,7 +606,7 @@
 | `RecordingTimed` | class | `RecordingTimed` | [tests/circle_history/test_cochain_chart_v24.py:195](../../tests/circle_history/test_cochain_chart_v24.py#L195) |  |
 | `Records` | class | `Records` | [tests/hws/test_a_classify.py:39](../../tests/hws/test_a_classify.py#L39) | API-AMBIGUITY: `records` may be read as a list of records or as {key: record}; this |
 | `Records` | class | `Records` | [tests/hws/test_a_outcomes.py:35](../../tests/hws/test_a_outcomes.py#L35) | API-AMBIGUITY: `records` may be read as a list of records or as {key: record}; this |
-| `recs` | function | `recs` | [tests/hwsu/test_a_of_gates.py:333](../../tests/hwsu/test_a_of_gates.py#L333) |  |
+| `recs` | function | `recs` | [tests/hwsu/test_a_of_gates.py:350](../../tests/hwsu/test_a_of_gates.py#L350) |  |
 | `ref` | function | `ref` | [tests/c1prime/test_a_chart_lcc512.py:96](../../tests/c1prime/test_a_chart_lcc512.py#L96) | Section 14 steps 1-8 with the frozen kernels, independently of c1_chart. |
 | `ref` | function | `ref` | [tests/c1prime/test_a_release_meter.py:55](../../tests/c1prime/test_a_release_meter.py#L55) |  |
 | `ref` | function | `ref` | [tests/d2a/test_b_targets.py:107](../../tests/d2a/test_b_targets.py#L107) | q, q_half [R, 33, 5]: index p = law of w_{p+1} after w_{1:p} (mixture, pi-blind). |
@@ -3454,16 +3455,16 @@
 | `test_of_0_failure_refused` | test | `test_of_0_failure_refused` | [tests/hwsu/test_b_of_driver.py:189](../../tests/hwsu/test_b_of_driver.py#L189) |  |
 | `test_of_1_passes_and_fills_ctx` | test | `test_of_1_passes_and_fills_ctx` | [tests/hwsu/test_a_of_oracle.py:296](../../tests/hwsu/test_a_of_oracle.py#L296) |  |
 | `test_of_1_suffix_defect_is_a_sampler_failure` | test | `test_of_1_suffix_defect_is_a_sampler_failure` | [tests/hwsu/test_a_of_oracle.py:306](../../tests/hwsu/test_a_of_oracle.py#L306) |  |
-| `test_of_2_boundary_is_exact` | test | `test_of_2_boundary_is_exact` | [tests/hwsu/test_a_of_gates.py:73](../../tests/hwsu/test_a_of_gates.py#L73) |  |
-| `test_of_2_rank_is_checked` | test | `test_of_2_rank_is_checked` | [tests/hwsu/test_a_of_gates.py:84](../../tests/hwsu/test_a_of_gates.py#L84) |  |
-| `test_of_2_real_bounds` | test | `test_of_2_real_bounds` | [tests/hwsu/test_a_of_gates.py:89](../../tests/hwsu/test_a_of_gates.py#L89) |  |
-| `test_of_3_degenerate_primary_fit` | test | `test_of_3_degenerate_primary_fit` | [tests/hwsu/test_a_of_gates.py:172](../../tests/hwsu/test_a_of_gates.py#L172) |  |
-| `test_of_3_share_ceiling` | test | `test_of_3_share_ceiling` | [tests/hwsu/test_a_of_gates.py:149](../../tests/hwsu/test_a_of_gates.py#L149) |  |
-| `test_of_4_calls_and_alternatives` | test | `test_of_4_calls_and_alternatives` | [tests/hwsu/test_a_of_gates.py:224](../../tests/hwsu/test_a_of_gates.py#L224) |  |
-| `test_of_4_family_rules` | test | `test_of_4_family_rules` | [tests/hwsu/test_a_of_gates.py:248](../../tests/hwsu/test_a_of_gates.py#L248) |  |
+| `test_of_2_boundary_is_exact` | test | `test_of_2_boundary_is_exact` | [tests/hwsu/test_a_of_gates.py:85](../../tests/hwsu/test_a_of_gates.py#L85) |  |
+| `test_of_2_rank_is_checked` | test | `test_of_2_rank_is_checked` | [tests/hwsu/test_a_of_gates.py:96](../../tests/hwsu/test_a_of_gates.py#L96) |  |
+| `test_of_2_real_bounds` | test | `test_of_2_real_bounds` | [tests/hwsu/test_a_of_gates.py:101](../../tests/hwsu/test_a_of_gates.py#L101) |  |
+| `test_of_3_degenerate_primary_fit` | test | `test_of_3_degenerate_primary_fit` | [tests/hwsu/test_a_of_gates.py:184](../../tests/hwsu/test_a_of_gates.py#L184) |  |
+| `test_of_3_share_ceiling` | test | `test_of_3_share_ceiling` | [tests/hwsu/test_a_of_gates.py:161](../../tests/hwsu/test_a_of_gates.py#L161) |  |
+| `test_of_4_calls_and_alternatives` | test | `test_of_4_calls_and_alternatives` | [tests/hwsu/test_a_of_gates.py:236](../../tests/hwsu/test_a_of_gates.py#L236) |  |
+| `test_of_4_family_rules` | test | `test_of_4_family_rules` | [tests/hwsu/test_a_of_gates.py:260](../../tests/hwsu/test_a_of_gates.py#L260) |  |
 | `test_of_4_ladder_equals_independent_recomputation` | test | `test_of_4_ladder_equals_independent_recomputation` | [tests/hwsu/test_a_of_ladder.py:94](../../tests/hwsu/test_a_of_ladder.py#L94) |  |
-| `test_of_5_planted_pi_sampler_fails` | test | `test_of_5_planted_pi_sampler_fails` | [tests/hwsu/test_a_of_gates.py:319](../../tests/hwsu/test_a_of_gates.py#L319) |  |
-| `test_of_5_real_sampler_passes` | test | `test_of_5_real_sampler_passes` | [tests/hwsu/test_a_of_gates.py:310](../../tests/hwsu/test_a_of_gates.py#L310) |  |
+| `test_of_5_planted_pi_sampler_fails` | test | `test_of_5_planted_pi_sampler_fails` | [tests/hwsu/test_a_of_gates.py:336](../../tests/hwsu/test_a_of_gates.py#L336) |  |
+| `test_of_5_real_sampler_passes` | test | `test_of_5_real_sampler_passes` | [tests/hwsu/test_a_of_gates.py:327](../../tests/hwsu/test_a_of_gates.py#L327) |  |
 | `test_of_b_failure_writes_only_the_gate_line` | test | `test_of_b_failure_writes_only_the_gate_line` | [tests/hwsu/test_b_of_driver.py:151](../../tests/hwsu/test_b_of_driver.py#L151) |  |
 | `test_of_b_pass_with_code_index_changes` | test | `test_of_b_pass_with_code_index_changes` | [tests/hwsu/test_b_of_freeze.py:286](../../tests/hwsu/test_b_of_freeze.py#L286) | OF-B PASS: phase-1 and test files added, docs/code_index/** added and modified. |
 | `test_of_b_refuses_changed_phase1_file_after_freeze` | test | `test_of_b_refuses_changed_phase1_file_after_freeze` | [tests/hwsu/test_b_of_freeze.py:251](../../tests/hwsu/test_b_of_freeze.py#L251) |  |
@@ -3475,7 +3476,7 @@
 | `test_of_h_registry_risk_over_cap` | test | `test_of_h_registry_risk_over_cap` | [tests/hwsu/test_b_of_obligation.py:356](../../tests/hwsu/test_b_of_obligation.py#L356) |  |
 | `test_of_h_sealed_row_first_and_no_oracle` | test | `test_of_h_sealed_row_first_and_no_oracle` | [tests/hwsu/test_b_of_obligation.py:324](../../tests/hwsu/test_b_of_obligation.py#L324) |  |
 | `test_of_h_sealed_row_in_any_split` | test | `test_of_h_sealed_row_in_any_split` | [tests/hwsu/test_b_of_obligation.py:339](../../tests/hwsu/test_b_of_obligation.py#L339) |  |
-| `test_of_outcome` | test | `test_of_outcome` | [tests/hwsu/test_a_of_gates.py:337](../../tests/hwsu/test_a_of_gates.py#L337) |  |
+| `test_of_outcome` | test | `test_of_outcome` | [tests/hwsu/test_a_of_gates.py:354](../../tests/hwsu/test_a_of_gates.py#L354) |  |
 | `test_of_p_identity_failures` | test | `test_of_p_identity_failures` | [tests/hwsu/test_b_of_driver.py:295](../../tests/hwsu/test_b_of_driver.py#L295) |  |
 | `test_of_p_pass_and_explicit_masters` | test | `test_of_p_pass_and_explicit_masters` | [tests/hwsu/test_b_of_driver.py:272](../../tests/hwsu/test_b_of_driver.py#L272) |  |
 | `test_off_grid_rows_form_no_donor` | test | `test_off_grid_rows_form_no_donor` | [tests/c2_readout/test_b_registry.py:163](../../tests/c2_readout/test_b_registry.py#L163) |  |
@@ -3956,4 +3957,3 @@
 | `test_real_tables_have_pairwise_disjoint_ids` | test | `test_real_tables_have_pairwise_disjoint_ids` | [tests/hwsb/test_b_streams.py:127](../../tests/hwsb/test_b_streams.py#L127) |  |
 | `test_real_train_dev_streams_match_contract` | test | `test_real_train_dev_streams_match_contract` | [tests/hwsb/test_b_streams.py:40](../../tests/hwsb/test_b_streams.py#L40) |  |
 | `test_real_z_bound_is_exact_fraction_of_exact_upper` | test | `test_real_z_bound_is_exact_fraction_of_exact_upper` | [tests/k4b/test_a_transport_bound.py:68](../../tests/k4b/test_a_transport_bound.py#L68) |  |
-| `test_real_z_bound_sanity_band` | test | `test_real_z_bound_sanity_band` | [tests/k4b/test_a_transport_bound.py:77](../../tests/k4b/test_a_transport_bound.py#L77) |  |

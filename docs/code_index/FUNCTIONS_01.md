@@ -841,7 +841,7 @@
 | `_flags_check` | function | `_flags_check` | [tools/c1prime/c1_oracle.py:209](../../tools/c1prime/c1_oracle.py#L209) |  |
 | `_FlakyBackend` | class | `_FlakyBackend` | [tests/experiment/test_x5g1_safety.py:50](../../tests/experiment/test_x5g1_safety.py#L50) |  |
 | `_flat` | function | `_flat` | [tests/d2a/test_a_targets.py:46](../../tests/d2a/test_a_targets.py#L46) |  |
-| `_flat` | function | `_flat` | [tests/hwsu/test_a_of_gates.py:137](../../tests/hwsu/test_a_of_gates.py#L137) |  |
+| `_flat` | function | `_flat` | [tests/hwsu/test_a_of_gates.py:149](../../tests/hwsu/test_a_of_gates.py#L149) |  |
 | `_flat` | function | `_flat` | [tools/hwsu/hwsu_pairs.py:19](../../tools/hwsu/hwsu_pairs.py#L19) |  |
 | `_flat_numbers` | function | `_flat_numbers` | [tests/c2_readout/test_b_fwl_l1.py:252](../../tests/c2_readout/test_b_fwl_l1.py#L252) |  |
 | `_flip` | function | `_flip` | [tests/experiment/test_x5g1t_checkpoint_checks.py:35](../../tests/experiment/test_x5g1t_checkpoint_checks.py#L35) |  |
@@ -1164,7 +1164,7 @@
 | `_ledger` | function | `_ledger` | [tests/experiment/test_x5g1_safety.py:100](../../tests/experiment/test_x5g1_safety.py#L100) |  |
 | `_ledger_cpu` | function | `_ledger_cpu` | [tools/hws/hws_driver.py:127](../../tools/hws/hws_driver.py#L127) |  |
 | `_ledger_last` | function | `_ledger_last` | [tests/experiment/test_x5g1t_integration.py:40](../../tests/experiment/test_x5g1t_integration.py#L40) |  |
-| `_lemma_ctx` | function | `_lemma_ctx` | [tests/hwsu/test_a_of_gates.py:282](../../tests/hwsu/test_a_of_gates.py#L282) |  |
+| `_lemma_ctx` | function | `_lemma_ctx` | [tests/hwsu/test_a_of_gates.py:299](../../tests/hwsu/test_a_of_gates.py#L299) |  |
 | `_lemma_ctx` | function | `_lemma_ctx` | [tools/hwsu/hwsu_dry_b.py:29](../../tools/hwsu/hwsu_dry_b.py#L29) |  |
 | `_levels` | function | `_levels` | [tools/hws/hws_select.py:128](../../tools/hws/hws_select.py#L128) |  |
 | `_lh` | function | `_lh` | [tests/process/test_conductance.py:53](../../tests/process/test_conductance.py#L53) |  |
@@ -1334,7 +1334,7 @@
 | `_my_bA` | function | `_my_bA` | [tests/c1prime/test_b_cert_bounds.py:221](../../tests/c1prime/test_b_cert_bounds.py#L221) |  |
 | `_my_categories` | function | `_my_categories` | [tests/hwsu/test_a_of_oracle.py:158](../../tests/hwsu/test_a_of_oracle.py#L158) | Protocol §2.9 table and rule 6 with the reused bounds/guard, written out test-side. |
 | `_my_enumeration` | function | `_my_enumeration` | [tests/d2a/test_a_templates.py:48](../../tests/d2a/test_a_templates.py#L48) |  |
-| `_my_lemma` | function | `_my_lemma` | [tests/hwsu/test_a_of_gates.py:289](../../tests/hwsu/test_a_of_gates.py#L289) |  |
+| `_my_lemma` | function | `_my_lemma` | [tests/hwsu/test_a_of_gates.py:306](../../tests/hwsu/test_a_of_gates.py#L306) |  |
 | `_my_problem` | function | `_my_problem` | [tests/hwsu/test_a_of_oracle.py:219](../../tests/hwsu/test_a_of_oracle.py#L219) |  |
 | `_my_route_f_r` | function | `_my_route_f_r` | [tests/c1prime/test_b_cert_oracle.py:226](../../tests/c1prime/test_b_cert_oracle.py#L226) |  |
 | `_n` | function | `_n` | [tools/d2a/d2a_decide.py:36](../../tools/d2a/d2a_decide.py#L36) |  |
@@ -1417,9 +1417,9 @@
 | `_obs_variant` | function | `_obs_variant` | [tests/experiment/test_x5g1t_identity.py:217](../../tests/experiment/test_x5g1t_identity.py#L217) |  |
 | `_oc` | function | `_oc` | [tools/hws/hws_dry.py:48](../../tools/hws/hws_dry.py#L48) |  |
 | `_occ` | function | `_occ` | [tests/c2_readout/test_a_inference.py:61](../../tests/c2_readout/test_a_inference.py#L61) |  |
-| `_of2_with_bound` | function | `_of2_with_bound` | [tests/hwsu/test_a_of_gates.py:56](../../tests/hwsu/test_a_of_gates.py#L56) |  |
-| `_of3_ctx` | function | `_of3_ctx` | [tests/hwsu/test_a_of_gates.py:99](../../tests/hwsu/test_a_of_gates.py#L99) |  |
-| `_of4` | function | `_of4` | [tests/hwsu/test_a_of_gates.py:182](../../tests/hwsu/test_a_of_gates.py#L182) |  |
+| `_of2_with_bound` | function | `_of2_with_bound` | [tests/hwsu/test_a_of_gates.py:56](../../tests/hwsu/test_a_of_gates.py#L56) | Plants stream_bounds and, consistently (API E-4), the stored bootstrap-mean draws: half |
+| `_of3_ctx` | function | `_of3_ctx` | [tests/hwsu/test_a_of_gates.py:111](../../tests/hwsu/test_a_of_gates.py#L111) |  |
+| `_of4` | function | `_of4` | [tests/hwsu/test_a_of_gates.py:194](../../tests/hwsu/test_a_of_gates.py#L194) |  |
 | `_of_p_status` | function | `_of_p_status` | [tests/hwsu/test_b_of_driver.py:264](../../tests/hwsu/test_b_of_driver.py#L264) |  |
 | `_ok` | function | `_ok` | [tools/d2a/d2a_decide.py:32](../../tools/d2a/d2a_decide.py#L32) |  |
 | `_ok` | function | `_ok` | [tools/hws/hws_known.py:43](../../tools/hws/hws_known.py#L43) |  |
@@ -1537,7 +1537,7 @@
 | `_perturbed` | function | `_perturbed` | [tests/hws/test_b_exact.py:60](../../tests/hws/test_b_exact.py#L60) |  |
 | `_ph` | function | `_ph` | [tools/x2a_stage0/x2a_ph.py:159](../../tools/x2a_stage0/x2a_ph.py#L159) |  |
 | `_pi_dev` | function | `_pi_dev` | [tools/x2a_stage0/x2a_mc.py:287](../../tools/x2a_stage0/x2a_mc.py#L287) |  |
-| `_pi_sampler` | function | `_pi_sampler` | [tests/hwsu/test_a_of_gates.py:268](../../tests/hwsu/test_a_of_gates.py#L268) | Planted defect: z_28 ~ π instead of the bridge (β dropped); otherwise API §2.2. |
+| `_pi_sampler` | function | `_pi_sampler` | [tests/hwsu/test_a_of_gates.py:285](../../tests/hwsu/test_a_of_gates.py#L285) | Planted defect: z_28 ~ π instead of the bridge (β dropped); otherwise API §2.2. |
 | `_pick` | function | `_pick` | [src/topo_pilot/experiment/report_e2.py:53](../../src/topo_pilot/experiment/report_e2.py#L53) |  |
 | `_pid_alive` | function | `_pid_alive` | [tools/x6zc/x6zc_guard.py:96](../../tools/x6zc/x6zc_guard.py#L96) |  |
 | `_pin_modules` | function | `_pin_modules` | [tools/x4_circle_history/live_context.py:34](../../tools/x4_circle_history/live_context.py#L34) |  |
@@ -1549,7 +1549,7 @@
 | `_plain` | function | `_plain` | [tools/hwsb/hwsb_train.py:36](../../tools/hwsb/hwsb_train.py#L36) |  |
 | `_plain` | function | `_plain` | [tools/k4b/k4b_fresh.py:160](../../tools/k4b/k4b_fresh.py#L160) | JSON-ready copy: Fraction -> str, numpy scalars -> Python; containers recursively. |
 | `_plain_root` | function | `_plain_root` | [tests/hwsu/test_b_of_seed.py:78](../../tests/hwsu/test_b_of_seed.py#L78) |  |
-| `_plant` | function | `_plant` | [tests/hwsu/test_a_of_gates.py:112](../../tests/hwsu/test_a_of_gates.py#L112) | Seams: c2_stats.f1_problem (the fit status per (K, euclidean)) and c2_attrib.partition |
+| `_plant` | function | `_plant` | [tests/hwsu/test_a_of_gates.py:124](../../tests/hwsu/test_a_of_gates.py#L124) | Seams: c2_stats.f1_problem (the fit status per (K, euclidean)) and c2_attrib.partition |
 | `_plant` | function | `_plant` | [tests/hwsu/test_b_of_bind.py:27](../../tests/hwsu/test_b_of_bind.py#L27) |  |
 | `_plant` | function | `_plant` | [tools/c2_nd/nd_dry.py:111](../../tools/c2_nd/nd_dry.py#L111) | The head: least squares of the oracle's named log-predictive on y, split into the code |
 | `_plant_failing_audit` | function | `_plant_failing_audit` | [tests/hwsc/test_b_train_hold.py:300](../../tests/hwsc/test_b_train_hold.py#L300) |  |
@@ -4853,4 +4853,3 @@
 | `nm_expect` | function | `nm_expect` | [tests/c2_nd/test_a_family.py:124](../../tests/c2_nd/test_a_family.py#L124) |  |
 | `nm_got` | function | `nm_got` | [tests/c2_nd/test_a_family.py:140](../../tests/c2_nd/test_a_family.py#L140) |  |
 | `nm_guards` | function | `nm_guards` | [tools/c2_nd/nd_attrib.py:200](../../tools/c2_nd/nd_attrib.py#L200) |  |
-| `nm_model` | function | `nm_model` | [tools/c2_nd/nd_decide.py:104](../../tools/c2_nd/nd_decide.py#L104) | RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c). |

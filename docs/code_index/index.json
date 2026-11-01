@@ -24117,9 +24117,9 @@
   },
   "tests/hwsu/AUTHORSHIP_A.md": {
    "kind": "markdown",
-   "lines": 102,
+   "lines": 113,
    "purpose": "Authorship record: test author A (job 0198, phase 2; oracle and estimand side)",
-   "sha256": "133eb66dbdeb161404ff99f21ea1b147bc723770d63cf294c3f2bdc4f13a4ed0"
+   "sha256": "09c107ac365967a9a3a8749ecad0217fba27ecd8fb94fbf86c797bac181f5226"
   },
   "tests/hwsu/AUTHORSHIP_B.md": {
    "kind": "markdown",
@@ -24129,9 +24129,9 @@
   },
   "tests/hwsu/test_a_of_gates.py": {
    "kind": "python",
-   "lines": 365,
+   "lines": 382,
    "purpose": "Author A (job 0198): the OF gates OF-2 ... OF-5, the outcome rule and the tails report",
-   "sha256": "0eb8a662bd68423c053c2c9aae92818b677dcb122ed4b3cec2f24a2cff90c97a"
+   "sha256": "2ebf5eba55b7c5ec445224a591654aebcf45dda96294cff7dfd64093c35b1815"
   },
   "tests/hwsu/test_a_of_ladder.py": {
    "kind": "python",
@@ -142268,8 +142268,8 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 70,
+     "doc": "Plants stream_bounds and, consistently (API E-4), the stored bootstrap-mean draws: half",
+     "end": 82,
      "kind": "function",
      "name": "_of2_with_bound",
      "qual": "_of2_with_bound",
@@ -142279,208 +142279,208 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 81,
+     "end": 93,
      "kind": "test",
      "name": "test_of_2_boundary_is_exact",
      "qual": "test_of_2_boundary_is_exact",
      "sig": "def test_of_2_boundary_is_exact(tmp_path, monkeypatch)",
-     "start": 73
+     "start": 85
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 86,
+     "end": 98,
      "kind": "test",
      "name": "test_of_2_rank_is_checked",
      "qual": "test_of_2_rank_is_checked",
      "sig": "def test_of_2_rank_is_checked(tmp_path, monkeypatch)",
-     "start": 84
+     "start": 96
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 95,
+     "end": 107,
      "kind": "test",
      "name": "test_of_2_real_bounds",
      "qual": "test_of_2_real_bounds",
      "sig": "def test_of_2_real_bounds(tmp_path)",
-     "start": 89
+     "start": 101
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 109,
+     "end": 121,
      "kind": "function",
      "name": "_of3_ctx",
      "qual": "_of3_ctx",
      "sig": "def _of3_ctx(tmp_path, c, rng)",
-     "start": 99
+     "start": 111
     },
     {
      "decorators": [],
      "doc": "Seams: c2_stats.f1_problem (the fit status per (K, euclidean)) and c2_attrib.partition",
-     "end": 134,
+     "end": 146,
      "kind": "function",
      "name": "_plant",
      "qual": "_plant",
      "sig": "def _plant(monkeypatch, A_S, A_full, bad=())",
-     "start": 112
+     "start": 124
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 145,
+     "end": 157,
      "kind": "function",
      "name": "_flat",
      "qual": "_flat",
      "sig": "def _flat(x)",
-     "start": 137
+     "start": 149
     },
     {
      "decorators": [
       "pytest.mark.parametrize('c,want', [(0.5, 'PASS'), (0.1, 'SHARE_DROPPED')])"
      ],
      "doc": "",
-     "end": 169,
+     "end": 181,
      "kind": "test",
      "name": "test_of_3_share_ceiling",
      "qual": "test_of_3_share_ceiling",
      "sig": "def test_of_3_share_ceiling(tmp_path, monkeypatch, c, want)",
-     "start": 149
+     "start": 161
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 175,
+     "end": 187,
      "kind": "test",
      "name": "test_of_3_degenerate_primary_fit",
      "qual": "test_of_3_degenerate_primary_fit",
      "sig": "def test_of_3_degenerate_primary_fit(tmp_path, monkeypatch)",
-     "start": 172
+     "start": 184
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 221,
+     "end": 233,
      "kind": "function",
      "name": "_of4",
      "qual": "_of4",
      "sig": "def _of4(tmp_path, monkeypatch, passes, results, n=300, shift=0.0)",
-     "start": 182
+     "start": 194
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 249,
      "kind": "test",
      "name": "test_of_4_calls_and_alternatives",
      "qual": "test_of_4_calls_and_alternatives",
      "sig": "def test_of_4_calls_and_alternatives(tmp_path, monkeypatch)",
-     "start": 224
+     "start": 236
     },
     {
      "decorators": [
       "pytest.mark.parametrize('passes,prior,want,nr,ns', [({'ZR010': 4096, 'ZR030': 4096, 'Z010': None, 'Z050': 4096}, 'PASS', 'SHARE_DROPPED', 4096, None), ({'ZR010': None, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'PASS', FEAS, None, 4096), ({'ZR010': 32768, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', 'SHARE_DROPPED', 32768, 4096), ({'ZR010': 8192, 'ZR030': None, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', FEAS, None, 4096)])"
      ],
      "doc": "",
-     "end": 257,
+     "end": 274,
      "kind": "test",
      "name": "test_of_4_family_rules",
      "qual": "test_of_4_family_rules",
      "sig": "def test_of_4_family_rules(tmp_path, monkeypatch, passes, prior, want, nr, ns)",
-     "start": 248
+     "start": 260
     },
     {
      "decorators": [
       "pytest.fixture(scope='module')"
      ],
      "doc": "",
-     "end": 265,
+     "end": 282,
      "kind": "function",
      "name": "tiny",
      "qual": "tiny",
      "sig": "def tiny()",
-     "start": 262
+     "start": 279
     },
     {
      "decorators": [],
      "doc": "Planted defect: z_28 ~ π instead of the bridge (β dropped); otherwise API §2.2.",
-     "end": 279,
+     "end": 296,
      "kind": "function",
      "name": "_pi_sampler",
      "qual": "_pi_sampler",
      "sig": "def _pi_sampler(T, E, pi, a1, rng)",
-     "start": 268
+     "start": 285
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 286,
+     "end": 303,
      "kind": "function",
      "name": "_lemma_ctx",
      "qual": "_lemma_ctx",
      "sig": "def _lemma_ctx(tmp_path, w, a1, a2)",
-     "start": 282
+     "start": 299
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 307,
+     "end": 324,
      "kind": "function",
      "name": "_my_lemma",
      "qual": "_my_lemma",
      "sig": "def _my_lemma(ctx)",
-     "start": 289
+     "start": 306
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 316,
+     "end": 333,
      "kind": "test",
      "name": "test_of_5_real_sampler_passes",
      "qual": "test_of_5_real_sampler_passes",
      "sig": "def test_of_5_real_sampler_passes(tmp_path, tiny)",
-     "start": 310
+     "start": 327
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 325,
+     "end": 342,
      "kind": "test",
      "name": "test_of_5_planted_pi_sampler_fails",
      "qual": "test_of_5_planted_pi_sampler_fails",
      "sig": "def test_of_5_planted_pi_sampler_fails(tmp_path, tiny)",
-     "start": 319
+     "start": 336
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 334,
+     "end": 351,
      "kind": "function",
      "name": "recs",
      "qual": "recs",
      "sig": "def recs(**over)",
-     "start": 333
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 348,
-     "kind": "test",
-     "name": "test_of_outcome",
-     "qual": "test_of_outcome",
-     "sig": "def test_of_outcome()",
-     "start": 337
+     "start": 350
     },
     {
      "decorators": [],
      "doc": "",
      "end": 365,
      "kind": "test",
+     "name": "test_of_outcome",
+     "qual": "test_of_outcome",
+     "sig": "def test_of_outcome()",
+     "start": 354
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 382,
+     "kind": "test",
      "name": "test_tails",
      "qual": "test_tails",
      "sig": "def test_tails()",
-     "start": 351
+     "start": 368
     }
    ],
    "syspath": [
@@ -261076,5 +261076,5 @@
    ]
   }
  },
- "sources_digest": "fed2118d226df485efc04370e7fbcfef97013ed0178b1ddb6252e3044cfe039a"
+ "sources_digest": "9e31037743860a737f3cae924d045393a5266bda5b088d4420b043aa60300e6e"
 }

@@ -997,9 +997,9 @@ The generated index itself (`docs/code_index/`) is not indexed. 1065 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `AUTHORSHIP_A.md` | markdown | 102 lines | Authorship record: test author A (job 0198, phase 2; oracle and estimand side) |
+| `AUTHORSHIP_A.md` | markdown | 113 lines | Authorship record: test author A (job 0198, phase 2; oracle and estimand side) |
 | `AUTHORSHIP_B.md` | markdown | 48 lines | Test author B, job 0198 (HWSU phase 1, the oracle-only stage OF): records, binding and registry side |
-| [test_a_of_gates.py](files/tests/hwsu/test_a_of_gates.py.md) | python | 365 lines | Author A (job 0198): the OF gates OF-2 ... OF-5, the outcome rule and the tails report |
+| [test_a_of_gates.py](files/tests/hwsu/test_a_of_gates.py.md) | python | 382 lines | Author A (job 0198): the OF gates OF-2 ... OF-5, the outcome rule and the tails report |
 | [test_a_of_ladder.py](files/tests/hwsu/test_a_of_ladder.py.md) | python | 146 lines | Author A (job 0198): the OF-4 proxy ladder (protocol §2.9 P1 rule, §4.2 OF-4; DRO4) with the |
 | [test_a_of_lemmas.py](files/tests/hwsu/test_a_of_lemmas.py.md) | python | 233 lines | Author A (job 0198): Lemmas P1, P2, P3 and J (protocol §2.2; §5.1 KS-P), by exact enumeration |
 | [test_a_of_oracle.py](files/tests/hwsu/test_a_of_oracle.py.md) | python | 310 lines | Author A (job 0198): oracle quantities on the tiny world (protocol §2.3, §2.6 problem O, |

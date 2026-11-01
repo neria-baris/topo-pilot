@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsu/test_a_of_gates.py](../../../../../tests/hwsu/test_a_of_gates.py)
 - Kind: python
-- Lines: 365
+- Lines: 382
 
 ## Module docstring
 
@@ -73,25 +73,25 @@
 - **function `make_ctx`** [L34-39]: `def make_ctx(tmp_path, **kw)`
 - **function `status`** [L42-48]: `def status(fn, ctx)` - A gate returns details with "status" or raises C1GateFailure (API §4); both count.
 - **function `fr`** [L51-52]: `def fr(x)`
-- **function `_of2_with_bound`** [L56-70]: `def _of2_with_bound(tmp_path, monkeypatch, L, rank=250)`
-- **test `test_of_2_boundary_is_exact`** [L73-81]: `def test_of_2_boundary_is_exact(tmp_path, monkeypatch)`
-- **test `test_of_2_rank_is_checked`** [L84-86]: `def test_of_2_rank_is_checked(tmp_path, monkeypatch)`
-- **test `test_of_2_real_bounds`** [L89-95]: `def test_of_2_real_bounds(tmp_path)`
-- **function `_of3_ctx`** [L99-109]: `def _of3_ctx(tmp_path, c, rng)`
-- **function `_plant`** [L112-134]: `def _plant(monkeypatch, A_S, A_full, bad=())` - Seams: c2_stats.f1_problem (the fit status per (K, euclidean)) and c2_attrib.partition
-- **function `_flat`** [L137-145]: `def _flat(x)`
-- **test `test_of_3_share_ceiling`** [L149-169]: `def test_of_3_share_ceiling(tmp_path, monkeypatch, c, want)` decorators: @pytest.mark.parametrize('c,want', [(0.5, 'PASS'), (0.1, 'SHARE_DROPPED')])
-- **test `test_of_3_degenerate_primary_fit`** [L172-175]: `def test_of_3_degenerate_primary_fit(tmp_path, monkeypatch)`
-- **function `_of4`** [L182-221]: `def _of4(tmp_path, monkeypatch, passes, results, n=300, shift=0.0)`
-- **test `test_of_4_calls_and_alternatives`** [L224-237]: `def test_of_4_calls_and_alternatives(tmp_path, monkeypatch)`
-- **test `test_of_4_family_rules`** [L248-257]: `def test_of_4_family_rules(tmp_path, monkeypatch, passes, prior, want, nr, ns)` decorators: @pytest.mark.parametrize('passes,prior,want,nr,ns', [({'ZR010': 4096, 'ZR030': 4096, 'Z010': None, 'Z050': 4096}, 'PASS', 'SHARE_DROPPED', 4096, None), ({'ZR010': None, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'PASS', FEAS, None, 4096), ({'ZR010': 32768, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', 'SHARE_DROPPED', 32768, 4096), ({'ZR010': 8192, 'ZR030': None, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', FEAS, None, 4096)])
-- **function `tiny`** [L262-265]: `def tiny()` decorators: @pytest.fixture(scope='module')
-- **function `_pi_sampler`** [L268-279]: `def _pi_sampler(T, E, pi, a1, rng)` - Planted defect: z_28 ~ π instead of the bridge (β dropped); otherwise API §2.2.
-- **function `_lemma_ctx`** [L282-286]: `def _lemma_ctx(tmp_path, w, a1, a2)`
-- **function `_my_lemma`** [L289-307]: `def _my_lemma(ctx)`
-- **test `test_of_5_real_sampler_passes`** [L310-316]: `def test_of_5_real_sampler_passes(tmp_path, tiny)`
-- **test `test_of_5_planted_pi_sampler_fails`** [L319-325]: `def test_of_5_planted_pi_sampler_fails(tmp_path, tiny)`
-- **function `recs`** [L333-334]: `def recs(**over)`
-- **test `test_of_outcome`** [L337-348]: `def test_of_outcome()`
-- **test `test_tails`** [L351-365]: `def test_tails()`
+- **function `_of2_with_bound`** [L56-82]: `def _of2_with_bound(tmp_path, monkeypatch, L, rank=250)` - Plants stream_bounds and, consistently (API E-4), the stored bootstrap-mean draws: half
+- **test `test_of_2_boundary_is_exact`** [L85-93]: `def test_of_2_boundary_is_exact(tmp_path, monkeypatch)`
+- **test `test_of_2_rank_is_checked`** [L96-98]: `def test_of_2_rank_is_checked(tmp_path, monkeypatch)`
+- **test `test_of_2_real_bounds`** [L101-107]: `def test_of_2_real_bounds(tmp_path)`
+- **function `_of3_ctx`** [L111-121]: `def _of3_ctx(tmp_path, c, rng)`
+- **function `_plant`** [L124-146]: `def _plant(monkeypatch, A_S, A_full, bad=())` - Seams: c2_stats.f1_problem (the fit status per (K, euclidean)) and c2_attrib.partition
+- **function `_flat`** [L149-157]: `def _flat(x)`
+- **test `test_of_3_share_ceiling`** [L161-181]: `def test_of_3_share_ceiling(tmp_path, monkeypatch, c, want)` decorators: @pytest.mark.parametrize('c,want', [(0.5, 'PASS'), (0.1, 'SHARE_DROPPED')])
+- **test `test_of_3_degenerate_primary_fit`** [L184-187]: `def test_of_3_degenerate_primary_fit(tmp_path, monkeypatch)`
+- **function `_of4`** [L194-233]: `def _of4(tmp_path, monkeypatch, passes, results, n=300, shift=0.0)`
+- **test `test_of_4_calls_and_alternatives`** [L236-249]: `def test_of_4_calls_and_alternatives(tmp_path, monkeypatch)`
+- **test `test_of_4_family_rules`** [L260-274]: `def test_of_4_family_rules(tmp_path, monkeypatch, passes, prior, want, nr, ns)` decorators: @pytest.mark.parametrize('passes,prior,want,nr,ns', [({'ZR010': 4096, 'ZR030': 4096, 'Z010': None, 'Z050': 4096}, 'PASS', 'SHARE_DROPPED', 4096, None), ({'ZR010': None, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'PASS', FEAS, None, 4096), ({'ZR010': 32768, 'ZR030': 4096, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', 'SHARE_DROPPED', 32768, 4096), ({'ZR010': 8192, 'ZR030': None, 'Z010': 4096, 'Z050': 4096}, 'SHARE_DROPPED', FEAS, None, 4096)])
+- **function `tiny`** [L279-282]: `def tiny()` decorators: @pytest.fixture(scope='module')
+- **function `_pi_sampler`** [L285-296]: `def _pi_sampler(T, E, pi, a1, rng)` - Planted defect: z_28 ~ π instead of the bridge (β dropped); otherwise API §2.2.
+- **function `_lemma_ctx`** [L299-303]: `def _lemma_ctx(tmp_path, w, a1, a2)`
+- **function `_my_lemma`** [L306-324]: `def _my_lemma(ctx)`
+- **test `test_of_5_real_sampler_passes`** [L327-333]: `def test_of_5_real_sampler_passes(tmp_path, tiny)`
+- **test `test_of_5_planted_pi_sampler_fails`** [L336-342]: `def test_of_5_planted_pi_sampler_fails(tmp_path, tiny)`
+- **function `recs`** [L350-351]: `def recs(**over)`
+- **test `test_of_outcome`** [L354-365]: `def test_of_outcome()`
+- **test `test_tails`** [L368-382]: `def test_tails()`
 

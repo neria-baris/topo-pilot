@@ -611,3 +611,15 @@ The obligation record is now exactly the J11 form, shared field for field with t
   - `CHECKPOINT_RECORD.json` has the closed key set of CONTRACT `records.CHECKPOINT_RECORD`; the control bounds needed by `control_summary_d` are written to a separate `CONTROLS_B.json` (JSON) in the checkpoint folder. `native_wall` is `{"role", "text"}` or null.
   - `f_sides` takes the planted flag from `record["planted"]` (or the certificate's).
   - `stop_obligation` returns `{"obligation": the obligation record dict, "end": the END record}`.
+
+## 24. TO_FREEZE review (coordinator a944ef89, 2026-11-01; job 0197)
+
+Review of the section 21 items at hwsd-impl e9dc68d; the record is CONTRACT `to_freeze_review`.
+- **Scratch rows (10 `hwsc-job-*`): EXCLUSION**, `frozen_files` `{}`. A name-only suffix listing found one file and no array file in each.
+- **Root rows: EXCLUSION** for `topo-pilot-hwsc-fix`, `topo-pilot-hwsd` and `topo-pilot-hwsu`. The owner removed `topo-pilot-hwsc-fix` (approved 2026-11-01); an absent EXCLUSION row raises no violation in `inventory_d`. The two live worktrees hold only the non-history `verification_arrays.npz` outside `.git`.
+- **R9 `logs/superseded-reg2-0192a1` rule: CONFIRMED** by a name-only listing of `hwsc-store/logs/` (9 array files, all matched; decision 28).
+- **Obligation alignment: CONFIRMED.** Field lists equal track U's; a track-U dry store passes `obligation_check(kind="dry")`, and a track-D-written store passes track U's `read_obligation`.
+- **KD4 parameters: FROZEN** in CONTRACT `known_cases.KD4.parameters`: g 0.01, noise i 1e-7 and ii-v 0.01, seeds 629971-629975 (also CONTRACT `seeds.kd4_seeds`), measured statuses i CHART_UNAVAILABLE, ii SCORED, iii SCORED, iv SCORED_UNVALIDATED, v SCORED, and every sequence as expected. The record is `agent-handoff/jobs/0197/KD4_PARAMS.json` (equal to `hwsd_dry.KD4_DEFAULT`); author A's slow end-to-end test now runs without `HWSD_KD4_PARAMS`.
+- **Binding:** `hwsd_bind.audit()` inside `bound_hwsd()` PASS (217 hits, 0 unlisted); no `left_unchanged` row added.
+- **Open until the freeze:** `authority.run_approval` and the h_exec / FREEZE / dry-run / PF hashes.
+- **Test erratum:** author B's `test_effective_tables` asserts `hwsc-job-0181` decision `EXCLUSION` (was `TO_FREEZE`).

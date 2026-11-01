@@ -490,6 +490,7 @@
   },
   "dry_strong_bound": 629965,
   "dry_strong_rule": "inside the dry binding the strong-bound bootstrap uses 629965 (the dry val_projection name, never used by hwsd code)",
+  "kd4_seeds": {"i": 629971, "ii": 629972, "iii": 629973, "iv": 629974, "v": 629975, "rule": "KD4/DRD4 planted-case seeds (known_cases.KD4.parameters); inside D's block 629950-629999, outside the reserved DRY block 629951-629965"},
   "g0_needles": [
    "hwsd-v1",
    "hwsd-dry-v1",
@@ -1724,10 +1725,15 @@
     "STEP0_CONTROL": "CHART_AT_INIT"
    },
    "parameters": {
-    "g": "TO_FREEZE (DRD4)",
-    "noise_scale": "TO_FREEZE (DRD4; <= 1e-6 for case i)",
-    "seeds": "TO_FREEZE (DRD4; dry block 629950-629999)",
-    "measured_statuses": "TO_FREEZE (DRD4)"
+    "g": 0.01,
+    "g_name": "g_mass (hwsd_dry.KD4_DEFAULT)",
+    "noise_scale": {"i": 1e-07, "ii": 0.01, "iii": 0.01, "iv": 0.01, "v": 0.01},
+    "seeds": {"i": 629971, "ii": 629972, "iii": 629973, "iv": 629974, "v": 629975},
+    "measured_statuses": {"i": "CHART_UNAVAILABLE", "ii": "SCORED", "iii": "SCORED", "iv": "SCORED_UNVALIDATED", "v": "SCORED"},
+    "measured_labels": {"i": "CHART_UNAVAILABLE/INCONCLUSIVE: no finite strictly positive H1 bar", "ii": "SCORED", "iii": "SCORED", "iv": "SCORED_UNVALIDATED/CRITERIA: bins,resultant", "v": "SCORED"},
+    "sequences_measured": "AFTER, WITH, BEFORE, NEVER, NO_CHART, STEP0_CONTROL (CHART_AT_INIT): every ORDER and D2/D3/D6 reading as expected; fallback_before false",
+    "record": {"path": "agent-handoff/jobs/0197/KD4_PARAMS.json", "sha256": "ba285db32b9c7455529eb62686d24b9976b371f1f1a035136a1420dad064c4e8", "equals": "hwsd_dry.KD4_DEFAULT"},
+    "measured_by": "coordinator a944ef89, 2026-11-01: hwsd_dry.seq_cases with the record, dry binding, PASS, 169.8 CPU-s"
    }
   },
   "KD5": {
@@ -1893,7 +1899,8 @@
      "reason": "track U's store (J3), read by the R10 obligation reader when present"
     },
     "topo-pilot-hwsc-fix": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
+     "reviewed": "coordinator a944ef89, 2026-11-01: EXCLUSION confirmed; the folder was removed by the owner (approved 2026-11-01); an absent EXCLUSION row raises no violation",
      "proposed": "EXCLUSION",
      "reason": "git worktree; only array file is the non-history verification_arrays.npz copy",
      "scan": {
@@ -1909,7 +1916,8 @@
      "built_by": "read-only header scan (k4b_registry.inventory semantics: .npz headers, ObservationSet meta.json locations; .git not entered) on 2026-11-01"
     },
     "topo-pilot-hwsd": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
+     "reviewed": "coordinator a944ef89, 2026-11-01: EXCLUSION confirmed; name-only listing: the only array file outside .git is docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz; no ObservationSet directory",
      "proposed": "EXCLUSION",
      "reason": "git worktree; only array file is the non-history verification_arrays.npz copy",
      "scan": {
@@ -1925,7 +1933,8 @@
      "built_by": "read-only header scan (k4b_registry.inventory semantics: .npz headers, ObservationSet meta.json locations; .git not entered) on 2026-11-01"
     },
     "topo-pilot-hwsu": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
+     "reviewed": "coordinator a944ef89, 2026-11-01: EXCLUSION confirmed; name-only listing: the only array file outside .git is docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz; no ObservationSet directory",
      "proposed": "EXCLUSION",
      "reason": "git worktree; only array file is the non-history verification_arrays.npz copy (tools/hwsu and tests/hwsu not entered by the implementer: track-U blindness)",
      "scan": {
@@ -1956,82 +1965,92 @@
    },
    "rows": {
     "hwsc-job-0181": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0184": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0186": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0187": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0188": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0189": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0191": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0192": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0195": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     },
     "hwsc-job-0196": {
-     "decision": "TO_FREEZE",
+     "decision": "EXCLUSION",
      "proposed": "EXCLUSION",
      "name_only": true,
-     "frozen_files": "TO_FREEZE",
+     "frozen_files": {},
+     "reviewed": "coordinator a944ef89, 2026-11-01: name-only suffix listing, 1 file, 0 array files (.npz/.npy/.pt)",
      "reason": "stage-C job folder (blinded: scratch/hwsc-job-*/**); not listed by the implementer; the coordinator measures its array files by a name-only suffix listing (.npz/.npy/.pt; no file opened) and freezes them as frozen_files {relpath: 'blinded_array'} (expected: none)",
      "built_by": "top-level name listing of X:/Downloads/topo-scratch on 2026-11-01 (directory not entered)"
     }
@@ -2122,7 +2141,7 @@
     {
      "regex": "logs/superseded-reg2-0192a1/.+\\.(npz|npy)",
      "basis": "registry (D-0192-1 archive of the partial K-REG2 outputs; name only)",
-     "status": "TO_FREEZE: the coordinator confirms the archive's array names by a name-only listing of hwsc-store/logs/ (blinded for agents)"
+     "status": "CONFIRMED: coordinator a944ef89, 2026-11-01, name-only listing of hwsc-store/logs/: 9 array files, all under superseded-reg2-0192a1 (K-REG2_digests.npz and runs/K-REG2/run_00000..00007.npy), every one matched by this regex; no other array file under logs/"
     }
    ],
    "train_rule": "stages/TRAIN/** listed by name only; any .npz/.npy/.pt there -> INCOMPLETE; TRAIN_RECORD.json only through read_train_record, OBS_INVENTORY.json only through read_obs_inventory",
@@ -3216,5 +3235,20 @@
   "obligation.alignment (settled by J11; coordinator confirms at the freeze)",
   "known_cases.KD4.parameters (g, noise scales, seeds, measured statuses; fixed in DRD4 before the freeze)",
   "binding.left_unchanged rows for tools/hwsd modules found by the implementation's audit (contract erratum)"
- ]
+ ],
+ "to_freeze_review": {
+  "reviewer": "coordinator a944ef89",
+  "date": "2026-11-01",
+  "head": "e9dc68d",
+  "registry.scratch_inventory.rows": "REVIEWED: 10 hwsc-job-* rows EXCLUSION, frozen_files {} (name-only suffix listing, 0 array files)",
+  "registry.inventory.rows": "REVIEWED: topo-pilot-hwsc-fix, topo-pilot-hwsd, topo-pilot-hwsu EXCLUSION (hwsc-fix removed by the owner)",
+  "registry.r9.non_history_rules": "CONFIRMED: logs/superseded-reg2-0192a1 holds 9 arrays, all matched",
+  "obligation.alignment": "CONFIRMED: field lists equal to track U's CONTRACT_OF obligation; cross-read PASS both ways (hwsd obligation_check on a track-U dry store; hwsu read_obligation on a track-D-written store)",
+  "known_cases.KD4.parameters": "FROZEN: g 0.01, noise, seeds and measured statuses (DRD4 record, coordinator rerun PASS)",
+  "binding.left_unchanged": "REVIEWED: hwsd_bind.audit() inside bound_hwsd() PASS, 217 hits, 0 unlisted; no row to add",
+  "open_until_freeze": [
+   "authority.run_approval",
+   "authority.h_exec, FREEZE.json, dry-run report sha256, PF record sha256"
+  ]
+ }
 }

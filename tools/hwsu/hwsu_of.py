@@ -39,14 +39,17 @@ def _draws(ctx) -> int:
 
 
 def _bounds(arrays, seed, alpha, draws) -> tuple:
-    """c2_decide.stream_bounds (same arithmetic) that also returns the bootstrap-mean draws."""
+    """Gate bounds from c2_decide.stream_bounds (through its module at call time) and, from a
+    second deterministic call (same seed and index rule), the draws stored in BOOT_OF.npz. The
+    bounds recomputed from the stored draws must equal stream_bounds' exactly (E-4)."""
+    b = c2_decide.stream_bounds(arrays, seed, alpha, draws)
     means = c1_means.bootstrap_means(arrays, seed, draws)
-    out = {}
-    for k, x in arrays.items():
-        L, rL = c1_means.quantile_with_rank(means[k], alpha)
-        U, rU = c1_means.quantile_with_rank(means[k], 1 - alpha)
-        out[k] = {"mean": float(c1_means.tree_mean(x)), "L": L, "U": U, "rank_L": rL, "rank_U": rU}
-    return out, means
+    for k in arrays:
+        lo = c1_means.quantile_with_rank(means[k], alpha)[0]
+        hi = c1_means.quantile_with_rank(means[k], 1 - alpha)[0]
+        if lo != b[k]["L"] or hi != b[k]["U"]:
+            raise C1GateFailure("FAIL_TECHNICAL/NUMERICAL", f"stored draws differ for {k}")
+    return b, means
 
 
 def _tm(x) -> float:
@@ -55,6 +58,8 @@ def _tm(x) -> float:
 
 # ------------------------------------------------------------------------------- OF-P, RESERVATION
 def of_p(ctx) -> dict:
+    if ctx.get("dry") and not uc.dry_store_ok(ctx.get("out", "")):
+        raise C1GateFailure("FAIL_TECHNICAL/BINDING", "dry context outside the dry/test scratch")
     if ctx.get("dry") and ctx.get("proc") is not None:  # DRO fixture world: no real identity
         p = ctx["proc"]
         up.check_process(p["T"], p["E_canon_shared"], p["pi"])
@@ -239,8 +244,10 @@ def of_3(ctx) -> dict:
 def of_4(ctx) -> dict:
     G, sa, seeds, draws = ctx["pc"]["G"], ctx["sa"], ctx["seeds"], _draws(ctx)
     eg = _tm(G)
-    arrs = [("ZR010", sa["A_full"] - 0.1 * G, "resp"), ("ZR030", sa["A_full"] - 0.3 * G, "resp"),
-            ("Z010", sa["A_S"] - 0.1 * G, "share"), ("Z050", sa["A_S"] - 0.5 * G, "share")]
+    dropped = ctx.get("results", {}).get("OF-3") == "SHARE_DROPPED"
+    arrs = [("ZR010", sa["A_full"] - 0.1 * G, "resp"), ("ZR030", sa["A_full"] - 0.3 * G, "resp")]
+    if not dropped:
+        arrs += [("Z010", sa["A_S"] - 0.1 * G, "share"), ("Z050", sa["A_S"] - 0.5 * G, "share")]
     prec, proxy, passed = {}, {}, {}
     for name, X, fam in arrs:
         alt = float((uc.ALT_RESP if fam == "resp" else uc.ALT_SHARE) * Fraction(eg))
@@ -264,11 +271,14 @@ def of_4(ctx) -> dict:
         return next((N for N in uc.LADDER if all(passed[(n, N)] for n in names)), None)
 
     ctx["prec"], ctx["proxy"] = prec, proxy
-    ctx["N_resp"], ctx["N_share"] = first(("ZR010", "ZR030")), first(("Z010", "Z050"))
+    ctx["N_resp"] = first(("ZR010", "ZR030"))
+    ctx["N_share"] = None if dropped else first(("Z010", "Z050"))
     out = {"N_resp": ctx["N_resp"], "N_share": ctx["N_share"], "proxy": proxy}
+    if dropped:
+        out["share"] = "NOT_RUN/SHARE_DROPPED"
     if ctx["N_resp"] is None:
         out["status"] = FEAS
-    elif ctx["N_share"] is None or ctx.get("results", {}).get("OF-3") == "SHARE_DROPPED":
+    elif dropped or ctx["N_share"] is None:
         out["status"] = "SHARE_DROPPED"
     return out
 

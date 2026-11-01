@@ -3,7 +3,7 @@
 > ## 📄 READ ME FIRST: [Summary of the Research So Far (PDF)](00_READ_ME_FIRST_Research_Summary_So_Far/READ_ME_FIRST_Research_Summary_So_Far.pdf)
 > A detailed, paper-style account of every experiment, the methodology, the results so far and the related literature, written for readers and agents new to this repository. It is a living document, updated as runs complete. LaTeX sources: [`docs/research_summary/`](docs/research_summary/).
 
-> **Status: exit level E4 reached** (2026-10-13), **with a documented failed gate (G-H, see below)**. 17 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, 3 N controls and 2 U controls. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md); every S7/S8 operational detail was fixed before any S7 result (D-047, D-048). No primary verdict changed at E4.
+> **Status: exit level E4 reached** (2026-10-13), **with a documented failed gate (G-H, see below)**. 17 models trained on CPU: 3 replicates × cylinder/square under the smooth emission O and under the axis-permuted control P, 3 N controls and 2 U controls. F1, H3 and H4 were decided by rules fixed in [`PREREGISTRATION.md`](PREREGISTRATION.md) and D-034 before the relevant runs; H3′ and the secondary analyses X4 were pre-registered blind in [`PREREGISTRATION_X4.md`](PREREGISTRATION_X4.md); every S7/S8 operational detail was fixed before any S7 result (D-047, D-048). No primary verdict changed at E4. Later follow-up studies are summarised in [Current follow-up status](#current-follow-up-status-1-november-2026) and in [After E4](#after-e4).
 
 ## Current finding (E4)
 
@@ -83,7 +83,7 @@ The rows for b¹ and the emission field are identical under O and P. P permutes 
 
 The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic metric gives one long H₁ bar for the cylinder (S = 0.299) and none for the square (S = 0.037), even though their transition graphs have 133 and 121 independent cycles. Graph cycles are not surface holes. Gate G-A passed with thresholds fixed in advance (D-016). Details: [`reports/E0/summary.md`](reports/E0/summary.md).
 
-**At the E4 exit, not yet run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Later follow-ups are recorded below. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
+**At the E4 exit, not yet run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Later follow-ups are recorded below. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs. Since then X6 (stages 0 and 1, plus its placebo check) has been run and X5 G1 is closed with H5 rejected; see [Current follow-up status](#current-follow-up-status-1-november-2026).
 
 ## Current follow-up status (1 November 2026)
 
@@ -104,7 +104,7 @@ Every study below is closed with its registered outcome; nothing is running. Out
 
 These are the follow-up studies run after E4, reported as they stand, negatives included. Each is labelled **pre-registered** (its protocol or rules were frozen before its result) or **exploratory**. Nothing here changes an E0–E4 verdict.
 
-Decision ids refer to [`state/DECISIONS.md`](state/DECISIONS.md). Paths starting with `agent-handoff/` or naming a `*-store` directory are execution records kept outside this repository.
+Decision ids refer to [`state/DECISIONS.md`](state/DECISIONS.md). Paths starting with `agent-handoff/` or naming a `*-store` directory are execution records kept outside this repository. The rows from D-2a onward are explained in plain language in [Current follow-up status](#current-follow-up-status-1-november-2026); their full records are the job reviews linked there (execution records outside this repository).
 
 | Study | Label | Outcome |
 |---|---|---|
@@ -117,6 +117,17 @@ Decision ids refer to [`state/DECISIONS.md`](state/DECISIONS.md). Paths starting
 | X5 G1: kernel-pair learning time (D-072–073, D-081) | pre-registered | **H5 REJECTED** on dev; closed with no fresh test |
 | K4 circular-history feasibility, jobs 0016–0018 (D-075–078) | pre-registered | **INCONCLUSIVE** at chart_calibration |
 | D-1: cylinder vs Möbius seam, oracle-only, jobs 0019–0020 (D-079–080) | pre-registered | **PASS** |
+| D-2a: learnability of the H3 recipe, job 0033 | pre-registered | **NOT_LEARNED**; both validation models failed the learnability gate, no stage 3 |
+| C1': causal use of the circle coordinate, M2-cal (owner addendum 10) | pre-registered | **INCONCLUSIVE / FAMILY_UNMATCHED**; charts passed, intervention changed protected readouts, no causal endpoint |
+| K4b: covariance of the circle phase with the beyond-four signal, jobs 0045-0057 | pre-registered | **EXCLUSION** in all three E4 models (covariance within (-0.01, 0.01)); the oracle phase-only comparator (0.0085) is below the 0.01 margin, so this does not show the learned circle lacks beyond-four information |
+| X6 stage 0: does order matter, oracle-only, job 0066 | pre-registered | **GO_X6_NATURAL**; permits design of a trained stage, not training |
+| X6 stage 1: order use in trained models, job 0099 | pre-registered | **INCONCLUSIVE** (rule 9); weak natural order sensitivity (mean 0.061 vs registered 0.25), designed contrast unresolved in seed 1 |
+| X6ZC: designed-placebo check, job 0155 | pre-registered | **UNEXPLAINED / NOT_NA_INVARIANT** (ZC-s1); X6 stage 1 verdict unchanged |
+| C2: readout attribution of the circle code, job 0115 | pre-registered | **USED** (UPSTREAM_USED, X_PHASE_USED) in 3/3 models; the frozen linear code only |
+| C2ND: necessity and decoy test, job 0167 | pre-registered | **CODE_DOMINANT** (complement about 15 %) and **DECOY_NOT_USED** in 3/3 models |
+| World sweep, stage A: oracle-only, job 0136 | pre-registered | **HWS_SELECTED/T0**; world w* selected; no claim that any model learns it |
+| World sweep, stage B: training pilot, job 0175 | pre-registered | **HWSB_PASS** (two pilot models; they do not enter stage C) |
+| World sweep, stage C: full test in w*, job 0196 | pre-registered | **SUPPORT** in 3/3 new models; does not establish that the prediction uses the information; K4b's EXCLUSION stands |
 
 - **X4 Phase B.**
   - Ambient result ALLOWS_STABLE: tangent ranks Q1 = 35 and Q2 = 137.
@@ -220,6 +231,8 @@ The answer is interpretable **whether it is positive or negative**.
 | `configs/` | `base.yaml` (closed decisions), `stages.yaml`, `extensions/` |
 | `state/` | `PROGRESS.md` (overwritten), `DECISIONS.md` (append-only) |
 | `tools/SPEC.md` | repository checks: affected tests, import and leakage rules, file sizes, state hygiene |
+| `tools/<study>/` | study code and drivers: `d1_seam`, `d2a`, `c1prime`, `c1prime_registry`, `k4b`, `x6_stage0`, `x6_stage1`, `x6zc`, `c2_readout`, `c2_nd`, `hws`, `hwsb`, `hwsc` and others (chart diagnostics, theory checks) |
+| `docs/code_index/` | generated index of every tracked code file: imports, callers, signatures (`tools/build_code_index.py`) |
 
 ## Modules and dependencies
 

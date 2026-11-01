@@ -35,6 +35,29 @@ def _blob(repo, ref, path) -> bytes:
     return _git(repo, "cat-file", "blob", f"{ref}:{path}")
 
 
+def _blobs(repo, ref, paths) -> dict:
+    """{path: bytes} of the blobs at ref in one git cat-file --batch call."""
+    paths = list(paths)
+    if not paths:
+        return {}
+    try:
+        r = subprocess.run(["git", "cat-file", "--batch"], cwd=repo, capture_output=True,
+                           check=True, input="".join(f"{ref}:{p}" + chr(10) for p in paths).encode()
+                           )
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise C1GateFailure(FREEZE, f"git cat-file --batch: {exc!r}"[:300]) from exc
+    data, pos, out = r.stdout, 0, {}
+    for p in paths:
+        nl = data.index(bytes([10]), pos)
+        head = data[pos:nl].split()
+        if len(head) != 3 or head[1] != b"blob":
+            raise C1GateFailure(FREEZE, f"git blob {ref}:{p} missing")
+        size = int(head[2])
+        out[p] = data[nl + 1:nl + 1 + size]
+        pos = nl + 1 + size + 1
+    return out
+
+
 def _test_files(names) -> list:
     pats = ("tests/hwsu/test_a_of_*.py", "tests/hwsu/test_b_of_*.py", "tests/hwsu/AUTHORSHIP_A.md",
             "tests/hwsu/AUTHORSHIP_B.md")
@@ -44,14 +67,15 @@ def _test_files(names) -> list:
 def implementation_files(repo, h_exec, contract=None) -> dict:
     c = uc.CONTRACT if contract is None else contract
     names = _git(repo, "ls-tree", "-r", "--name-only", h_exec).decode().splitlines()
-    return {p: _sha(_blob(repo, h_exec, p)) for p in list(c["phase1_files"]) + _test_files(names)}
+    blobs = _blobs(repo, h_exec, list(c["phase1_files"]) + _test_files(names))
+    return {p: _sha(b) for p, b in blobs.items()}
 
 
 def freeze_of(store, repo, h_exec, dro_report, j_of_records, written_by) -> dict:
     C = uc.CONTRACT
     files = implementation_files(repo, h_exec)
     impl = _canon_sha(files)
-    reuse = {p: _sha(_blob(repo, h_exec, p)) for p in C["reuse_sha256"]}
+    reuse = {p: _sha(b) for p, b in _blobs(repo, h_exec, C["reuse_sha256"]).items()}
     bad = [p for p, h in reuse.items() if C["reuse_sha256"][p] != h]
     if bad:
         raise C1GateFailure(FREEZE, f"reuse files differ at h_exec: {bad[:10]}")
@@ -127,13 +151,17 @@ def of_b(store, repo, r_ref=None) -> dict:
             bad.append(ln)
     if bad:
         raise C1GateFailure("INVALID", f"diff outside the allowlist: {bad[:10]}")
+    try:
+        at_h, at_r = (_blobs(repo, ref, C["reuse_sha256"]) for ref in (h, r_ref))
+    except C1GateFailure as exc:
+        raise C1GateFailure("INVALID", exc.reason) from exc
     for p, want in C["reuse_sha256"].items():
-        if _sha(_blob(repo, h, p)) != want or _sha(_blob(repo, r_ref, p)) != want:
+        if _sha(at_h[p]) != want or _sha(at_r[p]) != want:
             raise C1GateFailure("INVALID", f"reuse hash differs: {p}")
     audit = hwsu_bind.audit()
     if audit["status"] != "PASS":
         raise C1GateFailure("INVALID", "binding audit failed")
     return {"status": "PASS", "h_exec": h, "diff": diff,
-            "audit": {"status": audit["status"], "n_refs": audit["calls"].get("n_refs")}}
+            "audit": {"status": audit["status"], "n_refs": audit.get("calls", {}).get("n_refs")}}
 
 

@@ -46,9 +46,14 @@ def read_k4b_table(path, expected_sha256=None) -> dict:
     path = dc.guard(path)
     if expected_sha256 is not None and stage_records.sha256(path) != expected_sha256:
         raise ValueError("sha256")
-    with np.load(path, allow_pickle=False) as z:
-        canon, ids, dig = np.asarray(z["canon32"]), np.asarray(z["seq_ids"]), \
-            np.asarray(z["digest"])
+    try:
+        with np.load(path, allow_pickle=False) as z:
+            canon, ids, dig = np.asarray(z["canon32"]), np.asarray(z["seq_ids"]), \
+                np.asarray(z["digest"])
+    except ValueError:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        raise ValueError(f"unreadable table: {exc!r}") from exc
     if canon.ndim != 2 or canon.shape[1] != 32 or canon.dtype.kind not in "iu":
         raise ValueError("canon32 is not an integer [n, 32] array")
     if ids.ndim != 1 or ids.dtype.kind not in "iu" or len(ids) != len(canon):

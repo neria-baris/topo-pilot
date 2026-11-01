@@ -25203,9 +25203,9 @@
   },
   "tests/hwsd/test_b_registry_build.py": {
    "kind": "python",
-   "lines": 330,
+   "lines": 334,
    "purpose": "Author B: K-REG-D composition, scratch scan/check mirrors, root inventory, tables (§4.1; DRD8).",
-   "sha256": "d33cab10779782f73f2a9e0bcb9a1ac6cf89a13c986b4e91984df62c3697d5ed"
+   "sha256": "dfca34b89cb850ab95374950ff45df9b69eecd0a66e873fab3da19c76ecbf330"
   },
   "tests/hwsd/test_b_registry_r10.py": {
    "kind": "python",
@@ -26643,15 +26643,15 @@
   },
   "tools/hwsd/API.md": {
    "kind": "markdown",
-   "lines": 613,
+   "lines": 625,
    "purpose": "tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1)",
-   "sha256": "47ac18df80fa3c3653e6972e5561fc47c334094125cebf2cbd0096899ef92b1e"
+   "sha256": "14a6d36e6f10418ec7bb50fbdfc74ace553bfafba6f857f9ff1f7730467c7f7c"
   },
   "tools/hwsd/CONTRACT.json": {
    "kind": "json",
-   "lines": 3220,
+   "lines": 3254,
    "purpose": "",
-   "sha256": "2812f538e000e163e8f37103f9ee30c2c72d69ccb29c649c9c64d9575ced4cc4"
+   "sha256": "6b5c091920872968c30625e5f545e138136728139473f200feb2cb76ee063aca"
   },
   "tools/hwsd/PROTOCOL_HWSD_v1.md": {
    "kind": "markdown",
@@ -149161,7 +149161,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 174,
+     "end": 178,
      "kind": "test",
      "name": "test_scratch_check_d_to_freeze_row_without_files",
      "qual": "test_scratch_check_d_to_freeze_row_without_files",
@@ -149171,106 +149171,106 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 181,
+     "end": 185,
      "kind": "test",
      "name": "test_scratch_check_d_hwsu_needs_r10",
      "qual": "test_scratch_check_d_hwsu_needs_r10",
      "sig": "def test_scratch_check_d_hwsu_needs_r10(tmp_path)",
-     "start": 177
+     "start": 181
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 192,
+     "end": 196,
      "kind": "test",
      "name": "test_scratch_check_d_blinded_rows",
      "qual": "test_scratch_check_d_blinded_rows",
      "sig": "def test_scratch_check_d_blinded_rows(tmp_path)",
-     "start": 184
+     "start": 188
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 199,
+     "end": 203,
      "kind": "function",
      "name": "_root_tree",
      "qual": "_root_tree",
      "sig": "def _root_tree(tmp_path) -> Path",
-     "start": 195
+     "start": 199
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 214,
+     "end": 218,
      "kind": "test",
      "name": "test_inventory_d",
      "qual": "test_inventory_d",
      "sig": "def test_inventory_d(tmp_path)",
-     "start": 202
+     "start": 206
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 225,
+     "end": 229,
      "kind": "function",
      "name": "_src",
      "qual": "_src",
      "sig": "def _src(digests=(), lineage=False, other=False)",
-     "start": 220
+     "start": 224
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 241,
      "kind": "function",
      "name": "_sources",
      "qual": "_sources",
      "sig": "def _sources(own=None, sup=PASS)",
-     "start": 228
+     "start": 232
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 243,
+     "end": 247,
      "kind": "function",
      "name": "_syn",
      "qual": "_syn",
      "sig": "def _syn(tmp_path)",
-     "start": 240
+     "start": 244
     },
     {
      "decorators": [
       "pytest.mark.parametrize('own,sup,want', [(None, PASS, PASS), ('lineage', PASS, LIN), ('other', PASS, INC), (None, INC, INC), ('lineage', INC, LIN)])"
      ],
      "doc": "",
-     "end": 272,
+     "end": 276,
      "kind": "test",
      "name": "test_build_d_wrapper_and_precedence",
      "qual": "test_build_d_wrapper_and_precedence",
      "sig": "def test_build_d_wrapper_and_precedence(tmp_path, own, sup, want)",
-     "start": 249
+     "start": 253
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 288,
+     "end": 292,
      "kind": "test",
      "name": "test_build_d_refusals_and_load_d_lineage",
      "qual": "test_build_d_refusals_and_load_d_lineage",
      "sig": "def test_build_d_refusals_and_load_d_lineage(tmp_path)",
-     "start": 275
+     "start": 279
     },
     {
      "decorators": [
       "pytest.mark.parametrize('r9,r10,want', [(PASS, PASS, PASS), (PASS, INC, INC), (LIN, PASS, LIN), (INC, PASS, INC)])"
      ],
      "doc": "",
-     "end": 330,
+     "end": 334,
      "kind": "test",
      "name": "test_build_d_composite_own_and_reader_tags",
      "qual": "test_build_d_composite_own_and_reader_tags",
      "sig": "def test_build_d_composite_own_and_reader_tags(tmp_path, monkeypatch, r9, r10, want)",
-     "start": 293
+     "start": 297
     }
    ],
    "syspath": [
@@ -267017,5 +267017,5 @@
    ]
   }
  },
- "sources_digest": "28b49dcb3c3a9bd7724c91c291439c15aba150156df79155615e895921c11683"
+ "sources_digest": "a46b8b3ecfdebd45983111bdc62ef2d7802849472ad7305cc0e948ee6f0dc12e"
 }

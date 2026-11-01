@@ -323,9 +323,9 @@
 | `test_scoring_authority_unlocks_scoring` | test | `test_scoring_authority_unlocks_scoring` | [tests/circle_history/test_error_bound.py:390](../../tests/circle_history/test_error_bound.py#L390) |  |
 | `test_scoring_guard_is_a_real_boundary` | test | `test_scoring_guard_is_a_real_boundary` | [tests/experiment/test_x5g1t_integration.py:324](../../tests/experiment/test_x5g1t_integration.py#L324) | A STOP that appears at 'score batch 1' stops dev-analysis with no result export. |
 | `test_scoring_lock_precedes_any_computation` | test | `test_scoring_lock_precedes_any_computation` | [tests/circle_history/test_error_bound.py:374](../../tests/circle_history/test_error_bound.py#L374) |  |
-| `test_scratch_check_d_blinded_rows` | test | `test_scratch_check_d_blinded_rows` | [tests/hwsd/test_b_registry_build.py:184](../../tests/hwsd/test_b_registry_build.py#L184) |  |
+| `test_scratch_check_d_blinded_rows` | test | `test_scratch_check_d_blinded_rows` | [tests/hwsd/test_b_registry_build.py:188](../../tests/hwsd/test_b_registry_build.py#L188) |  |
 | `test_scratch_check_d_clean_and_fail_closed` | test | `test_scratch_check_d_clean_and_fail_closed` | [tests/hwsd/test_b_registry_build.py:151](../../tests/hwsd/test_b_registry_build.py#L151) |  |
-| `test_scratch_check_d_hwsu_needs_r10` | test | `test_scratch_check_d_hwsu_needs_r10` | [tests/hwsd/test_b_registry_build.py:177](../../tests/hwsd/test_b_registry_build.py#L177) |  |
+| `test_scratch_check_d_hwsu_needs_r10` | test | `test_scratch_check_d_hwsu_needs_r10` | [tests/hwsd/test_b_registry_build.py:181](../../tests/hwsd/test_b_registry_build.py#L181) |  |
 | `test_scratch_check_d_incomplete` | test | `test_scratch_check_d_incomplete` | [tests/hwsd/test_b_registry_build.py:164](../../tests/hwsd/test_b_registry_build.py#L164) |  |
 | `test_scratch_check_d_to_freeze_row_without_files` | test | `test_scratch_check_d_to_freeze_row_without_files` | [tests/hwsd/test_b_registry_build.py:171](../../tests/hwsd/test_b_registry_build.py#L171) |  |
 | `test_scratch_scan_d` | test | `test_scratch_scan_d` | [tests/hwsd/test_b_registry_build.py:86](../../tests/hwsd/test_b_registry_build.py#L86) |  |

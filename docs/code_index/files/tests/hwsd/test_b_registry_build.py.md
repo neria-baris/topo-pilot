@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsd/test_b_registry_build.py](../../../../../tests/hwsd/test_b_registry_build.py)
 - Kind: python
-- Lines: 330
+- Lines: 334
 
 ## Module docstring
 
@@ -69,15 +69,15 @@
 - **function `_check`** [L147-148]: `def _check(sc, **kw)`
 - **test `test_scratch_check_d_clean_and_fail_closed`** [L151-159]: `def test_scratch_check_d_clean_and_fail_closed(tmp_path)`
 - **test `test_scratch_check_d_incomplete`** [L164-168]: `def test_scratch_check_d_incomplete(tmp_path, plant)` decorators: @pytest.mark.parametrize('plant', ['newdir/h.npz', 'hwsd-kd-0300/x.npz', 'top.npz', 'hwsc-job-0181/a.npz', 'hwsd-dry-0202/stray/x.npz'])
-- **test `test_scratch_check_d_to_freeze_row_without_files`** [L171-174]: `def test_scratch_check_d_to_freeze_row_without_files(tmp_path)`
-- **test `test_scratch_check_d_hwsu_needs_r10`** [L177-181]: `def test_scratch_check_d_hwsu_needs_r10(tmp_path)`
-- **test `test_scratch_check_d_blinded_rows`** [L184-192]: `def test_scratch_check_d_blinded_rows(tmp_path)`
-- **function `_root_tree`** [L195-199]: `def _root_tree(tmp_path) -> Path`
-- **test `test_inventory_d`** [L202-214]: `def test_inventory_d(tmp_path)`
-- **function `_src`** [L220-225]: `def _src(digests=(), lineage=False, other=False)`
-- **function `_sources`** [L228-237]: `def _sources(own=None, sup=PASS)`
-- **function `_syn`** [L240-243]: `def _syn(tmp_path)`
-- **test `test_build_d_wrapper_and_precedence`** [L249-272]: `def test_build_d_wrapper_and_precedence(tmp_path, own, sup, want)` decorators: @pytest.mark.parametrize('own,sup,want', [(None, PASS, PASS), ('lineage', PASS, LIN), ('other', PASS, INC), (None, INC, INC), ('lineage', INC, LIN)])
-- **test `test_build_d_refusals_and_load_d_lineage`** [L275-288]: `def test_build_d_refusals_and_load_d_lineage(tmp_path)`
-- **test `test_build_d_composite_own_and_reader_tags`** [L293-330]: `def test_build_d_composite_own_and_reader_tags(tmp_path, monkeypatch, r9, r10, want)` decorators: @pytest.mark.parametrize('r9,r10,want', [(PASS, PASS, PASS), (PASS, INC, INC), (LIN, PASS, LIN), (INC, PASS, INC)])
+- **test `test_scratch_check_d_to_freeze_row_without_files`** [L171-178]: `def test_scratch_check_d_to_freeze_row_without_files(tmp_path)`
+- **test `test_scratch_check_d_hwsu_needs_r10`** [L181-185]: `def test_scratch_check_d_hwsu_needs_r10(tmp_path)`
+- **test `test_scratch_check_d_blinded_rows`** [L188-196]: `def test_scratch_check_d_blinded_rows(tmp_path)`
+- **function `_root_tree`** [L199-203]: `def _root_tree(tmp_path) -> Path`
+- **test `test_inventory_d`** [L206-218]: `def test_inventory_d(tmp_path)`
+- **function `_src`** [L224-229]: `def _src(digests=(), lineage=False, other=False)`
+- **function `_sources`** [L232-241]: `def _sources(own=None, sup=PASS)`
+- **function `_syn`** [L244-247]: `def _syn(tmp_path)`
+- **test `test_build_d_wrapper_and_precedence`** [L253-276]: `def test_build_d_wrapper_and_precedence(tmp_path, own, sup, want)` decorators: @pytest.mark.parametrize('own,sup,want', [(None, PASS, PASS), ('lineage', PASS, LIN), ('other', PASS, INC), (None, INC, INC), ('lineage', INC, LIN)])
+- **test `test_build_d_refusals_and_load_d_lineage`** [L279-292]: `def test_build_d_refusals_and_load_d_lineage(tmp_path)`
+- **test `test_build_d_composite_own_and_reader_tags`** [L297-334]: `def test_build_d_composite_own_and_reader_tags(tmp_path, monkeypatch, r9, r10, want)` decorators: @pytest.mark.parametrize('r9,r10,want', [(PASS, PASS, PASS), (PASS, INC, INC), (LIN, PASS, LIN), (INC, PASS, INC)])
 

@@ -1012,7 +1012,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 | [test_b_data.py](files/tests/hwsd/test_b_data.py.md) | python | 262 lines | Author B: blocks, streams and sequence IDs, tables, H2-D, risk, references, controls (§2.5, §4.2). |
 | [test_b_guard_search.py](files/tests/hwsd/test_b_guard_search.py.md) | python | 242 lines | Author B: blindness guard, J9 search pruning, G0d needles and declarations (§9.2, J5, J9). |
 | [test_b_records_meter.py](files/tests/hwsd/test_b_records_meter.py.md) | python | 371 lines | Author B: lineage, AUTH, H-1 records, ledger, pauses, archive, meter binding (§2.7, §7, §11). |
-| [test_b_registry_build.py](files/tests/hwsd/test_b_registry_build.py.md) | python | 330 lines | Author B: K-REG-D composition, scratch scan/check mirrors, root inventory, tables (§4.1; DRD8). |
+| [test_b_registry_build.py](files/tests/hwsd/test_b_registry_build.py.md) | python | 334 lines | Author B: K-REG-D composition, scratch scan/check mirrors, root inventory, tables (§4.1; DRD8). |
 | [test_b_registry_r10.py](files/tests/hwsd/test_b_registry_r10.py.md) | python | 354 lines | Author B: obligations (J3, J4, J10, J11) and the R10 reader (API.md §3.4, §4; DRD8). |
 | [test_b_registry_r9.py](files/tests/hwsd/test_b_registry_r9.py.md) | python | 297 lines | Author B: R9, the stage-C layout reader, on a synthetic stage-C-like store (J1; DRD8, DRD9). |
 | [test_b_reservation.py](files/tests/hwsd/test_b_reservation.py.md) | python | 265 lines | Author B: reservations, the J8 end record, W2 attestation, stopped sampling (J8, J10 item 3). |
@@ -1387,8 +1387,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 613 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
-| `CONTRACT.json` | json | 3220 lines |  |
+| `API.md` | markdown | 625 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `CONTRACT.json` | json | 3254 lines |  |
 | `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
 | `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |
 | [hwsd_bind.py](files/tools/hwsd/hwsd_bind.py.md) | python | 101 lines | HWSD versioned binding: the hwsd binding table on hwsc_bind.bound_stage_c, the dry and identity |

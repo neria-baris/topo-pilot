@@ -1798,7 +1798,7 @@
 | `_rng_untouched` | function | `_rng_untouched` | [tests/learner/test_multihorizon.py:214](../../tests/learner/test_multihorizon.py#L214) |  |
 | `_root` | function | `_root` | [tests/hwsd/test_b_guard_search.py:114](../../tests/hwsd/test_b_guard_search.py#L114) |  |
 | `_root` | function | `_root` | [tools/c2_readout/c2_registry.py:50](../../tools/c2_readout/c2_registry.py#L50) |  |
-| `_root_tree` | function | `_root_tree` | [tests/hwsd/test_b_registry_build.py:195](../../tests/hwsd/test_b_registry_build.py#L195) |  |
+| `_root_tree` | function | `_root_tree` | [tests/hwsd/test_b_registry_build.py:199](../../tests/hwsd/test_b_registry_build.py#L199) |  |
 | `_roots` | function | `_roots` | [tools/c2_readout/c2_code.py:264](../../tools/c2_readout/c2_code.py#L264) |  |
 | `_rot_world` | function | `_rot_world` | [tests/c2_readout/test_a_oracle.py:262](../../tests/c2_readout/test_a_oracle.py#L262) |  |
 | `_round_up` | function | `_round_up` | [tools/x4_circle_history/precision_stage.py:51](../../tools/x4_circle_history/precision_stage.py#L51) |  |
@@ -2026,7 +2026,7 @@
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_checks.py:73](../../tests/experiment/test_x5g1t_config_checks.py#L73) |  |
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_production.py:76](../../tests/experiment/test_x5g1t_config_production.py#L76) |  |
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_synthetic.py:76](../../tests/experiment/test_x5g1t_config_synthetic.py#L76) |  |
-| `_sources` | function | `_sources` | [tests/hwsd/test_b_registry_build.py:228](../../tests/hwsd/test_b_registry_build.py#L228) |  |
+| `_sources` | function | `_sources` | [tests/hwsd/test_b_registry_build.py:232](../../tests/hwsd/test_b_registry_build.py#L232) |  |
 | `_spec` | function | `_spec` | [tests/experiment/test_x5g1_export_integration.py:38](../../tests/experiment/test_x5g1_export_integration.py#L38) |  |
 | `_spec` | function | `_spec` | [tests/experiment/test_x5g1_safety.py:46](../../tests/experiment/test_x5g1_safety.py#L46) |  |
 | `_spec` | function | `_spec` | [tools/x6_stage1/x6s1_ingest.py:46](../../tools/x6_stage1/x6s1_ingest.py#L46) |  |
@@ -2044,7 +2044,7 @@
 | `_sqrt3_half` | function | `_sqrt3_half` | [tests/circle_history/test_error_bound.py:88](../../tests/circle_history/test_error_bound.py#L88) |  |
 | `_square_boundary` | function | `_square_boundary` | [tests/d1_seam/test_d1_seam.py:186](../../tests/d1_seam/test_d1_seam.py#L186) |  |
 | `_src` | function | `_src` | [tests/hwsc/test_b_registry2.py:207](../../tests/hwsc/test_b_registry2.py#L207) |  |
-| `_src` | function | `_src` | [tests/hwsd/test_b_registry_build.py:220](../../tests/hwsd/test_b_registry_build.py#L220) |  |
+| `_src` | function | `_src` | [tests/hwsd/test_b_registry_build.py:224](../../tests/hwsd/test_b_registry_build.py#L224) |  |
 | `_src_path` | function | `_src_path` | [tools/hwsb/hwsb_kb.py:70](../../tools/hwsb/hwsb_kb.py#L70) |  |
 | `_sse` | function | `_sse` | [tests/c2_readout/test_b_fwl_l1.py:190](../../tests/c2_readout/test_b_fwl_l1.py#L190) |  |
 | `_sse` | function | `_sse` | [tools/c2_readout/c2_stats.py:271](../../tools/c2_readout/c2_stats.py#L271) |  |
@@ -2153,7 +2153,7 @@
 | `_sym_bG` | function | `_sym_bG` | [tests/c1prime/test_b_cert_bounds.py:277](../../tests/c1prime/test_b_cert_bounds.py#L277) |  |
 | `_symbol_perm` | function | `_symbol_perm` | [src/topo_pilot/process/emission.py:83](../../src/topo_pilot/process/emission.py#L83) |  |
 | `_symbols` | function | `_symbols` | [tests/oracle_profile/independent_reference.py:59](../../tests/oracle_profile/independent_reference.py#L59) | Read the suffix as a non-empty list of Python ints in 0 .. V-1. |
-| `_syn` | function | `_syn` | [tests/hwsd/test_b_registry_build.py:240](../../tests/hwsd/test_b_registry_build.py#L240) |  |
+| `_syn` | function | `_syn` | [tests/hwsd/test_b_registry_build.py:244](../../tests/hwsd/test_b_registry_build.py#L244) |  |
 | `_synthetic` | function | `_synthetic` | [src/topo_pilot/experiment/x5g1t_config.py:352](../../src/topo_pilot/experiment/x5g1t_config.py#L352) |  |
 | `_synthetic_mailbox` | function | `_synthetic_mailbox` | [tests/circle_history/test_builder_v24_runtime.py:157](../../tests/circle_history/test_builder_v24_runtime.py#L157) | Hermetic control inputs for the unchanged job-0014 controls (job 0021 revision). |
 | `_t6` | function | `_t6` | [tools/x6_stage1/x6s1_stage_pre.py:179](../../tools/x6_stage1/x6s1_stage_pre.py#L179) |  |

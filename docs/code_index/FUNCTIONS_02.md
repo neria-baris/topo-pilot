@@ -1937,9 +1937,9 @@
 | `test_build_checkpoint_is_the_learner_stage_save_body` | test | `test_build_checkpoint_is_the_learner_stage_save_body` | [tests/hwsb/test_b_e4path.py:159](../../tests/hwsb/test_b_e4path.py#L159) |  |
 | `test_build_coverage_complete_with_no_seq_in_a_problem` | test | `test_build_coverage_complete_with_no_seq_in_a_problem` | [tests/k4b/test_b_registry_fixes.py:228](../../tests/k4b/test_b_registry_fixes.py#L228) |  |
 | `test_build_coverage_reports_the_missing_id` | test | `test_build_coverage_reports_the_missing_id` | [tests/k4b/test_b_registry_fixes.py:241](../../tests/k4b/test_b_registry_fixes.py#L241) |  |
-| `test_build_d_composite_own_and_reader_tags` | test | `test_build_d_composite_own_and_reader_tags` | [tests/hwsd/test_b_registry_build.py:293](../../tests/hwsd/test_b_registry_build.py#L293) |  |
-| `test_build_d_refusals_and_load_d_lineage` | test | `test_build_d_refusals_and_load_d_lineage` | [tests/hwsd/test_b_registry_build.py:275](../../tests/hwsd/test_b_registry_build.py#L275) |  |
-| `test_build_d_wrapper_and_precedence` | test | `test_build_d_wrapper_and_precedence` | [tests/hwsd/test_b_registry_build.py:249](../../tests/hwsd/test_b_registry_build.py#L249) |  |
+| `test_build_d_composite_own_and_reader_tags` | test | `test_build_d_composite_own_and_reader_tags` | [tests/hwsd/test_b_registry_build.py:297](../../tests/hwsd/test_b_registry_build.py#L297) |  |
+| `test_build_d_refusals_and_load_d_lineage` | test | `test_build_d_refusals_and_load_d_lineage` | [tests/hwsd/test_b_registry_build.py:279](../../tests/hwsd/test_b_registry_build.py#L279) |  |
+| `test_build_d_wrapper_and_precedence` | test | `test_build_d_wrapper_and_precedence` | [tests/hwsd/test_b_registry_build.py:253](../../tests/hwsd/test_b_registry_build.py#L253) |  |
 | `test_build_e2_from_records_only` | test | `test_build_e2_from_records_only` | [tests/experiment/test_report_e2.py:56](../../tests/experiment/test_report_e2.py#L56) |  |
 | `test_build_e2_without_analysis_says_not_run` | test | `test_build_e2_without_analysis_says_not_run` | [tests/experiment/test_report_e2.py:72](../../tests/experiment/test_report_e2.py#L72) |  |
 | `test_build_extra_only_for_k_reg2` | test | `test_build_extra_only_for_k_reg2` | [tests/hwsc/test_b_registry2.py:305](../../tests/hwsc/test_b_registry2.py#L305) |  |
@@ -2989,7 +2989,7 @@
 | `test_inventory_adapter` | test | `test_inventory_adapter` | [tests/c2_nd/test_b_registry.py:310](../../tests/c2_nd/test_b_registry.py#L310) |  |
 | `test_inventory_admits_an_unlisted_empty_directory_alone` | test | `test_inventory_admits_an_unlisted_empty_directory_alone` | [tests/c2_readout/test_b_registry.py:222](../../tests/c2_readout/test_b_registry.py#L222) |  |
 | `test_inventory_and_guards` | test | `test_inventory_and_guards` | [tests/x6zc/test_x6zc_decide.py:367](../../tests/x6zc/test_x6zc_decide.py#L367) |  |
-| `test_inventory_d` | test | `test_inventory_d` | [tests/hwsd/test_b_registry_build.py:202](../../tests/hwsd/test_b_registry_build.py#L202) |  |
+| `test_inventory_d` | test | `test_inventory_d` | [tests/hwsd/test_b_registry_build.py:206](../../tests/hwsd/test_b_registry_build.py#L206) |  |
 | `test_inventory_diff_detects_new_history_identity_and_obs_root` | test | `test_inventory_diff_detects_new_history_identity_and_obs_root` | [tests/hwsb/test_b_records.py:184](../../tests/hwsb/test_b_records.py#L184) |  |
 | `test_inventory_diff_new_top_level_directory_is_new` | test | `test_inventory_diff_new_top_level_directory_is_new` | [tests/hwsb/test_b_records.py:198](../../tests/hwsb/test_b_records.py#L198) |  |
 | `test_inventory_diff_unchanged_root_is_ok` | test | `test_inventory_diff_unchanged_root_is_ok` | [tests/hwsb/test_b_records.py:177](../../tests/hwsb/test_b_records.py#L177) |  |

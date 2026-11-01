@@ -51,12 +51,34 @@ def _default_files() -> list:
     return sorted(p for p in listed | set(uc.HERE.glob("hwsu_*.py")) if p.is_file())
 
 
+EXPLICIT = {("hwsb_known", "classify_hits"): ((1, "fragments"), (2, "job_scratch")),
+            ("hwsb_data", "build_process"): ((1, "masters"),),
+            ("hwsb_dry", "build_tiny_process"): ((1, "masters"),)}
+
+
+def argument_less(path) -> list:
+    """Calls of the accepted conditional-read functions without their explicit arguments."""
+    tree = ast.parse(Path(path).read_text(encoding="utf-8"))
+    mods = {k: v for k, v in module_imports(tree).items() if isinstance(v, str)}
+    bad = []
+    for n in ast.walk(tree):
+        f = n.func if isinstance(n, ast.Call) else None
+        if isinstance(f, ast.Attribute) and isinstance(f.value, ast.Name) and f.value.id in mods:
+            key = (mods[f.value.id], f.attr)
+            if key in EXPLICIT:
+                have = {k.arg for k in n.keywords}
+                if any(len(n.args) <= pos and name not in have for pos, name in EXPLICIT[key]):
+                    bad.append({"module": key[0], "name": key[1], "line": n.lineno})
+    return bad
+
+
 def audit_calls(files=None, contract=None) -> dict:
     b = (uc.CONTRACT if contract is None else contract)["binding"]
     ext, allow, froms = set(b["external_ok"]), b["allowlist"], b["from_imports"]
     meters = b.get("meter_modules", {})
     unlisted, never, n = [], [], 0
     for f in _default_files() if files is None else [Path(x) for x in files]:
+        unlisted += [dict(r, file=Path(f).name, why="argument-less call") for r in argument_less(f)]
         for r in references(f):
             n += 1
             mod, name = r["module"], r["name"]
@@ -66,7 +88,7 @@ def audit_calls(files=None, contract=None) -> dict:
             ok = (mod.startswith("hwsu_") or mod in ext or name in allow.get(mod, {})
                   or name in meters.get(mod, []))
             if r.get("from"):
-                ok = mod.startswith("hwsu_") or mod in ext or name in froms.get(mod, [])
+                ok = mod in ext or name in froms.get(mod, [])
             if not ok:
                 unlisted.append(row)
     return {"status": "PASS" if not (unlisted or never) else "FAIL_TECHNICAL/BINDING",
@@ -74,17 +96,22 @@ def audit_calls(files=None, contract=None) -> dict:
 
 
 # ------------------------------------------------------------------------ constant reads (D-25)
+def _tools_path(f) -> bool:
+    parts = Path(f).resolve().parts
+    return "tools" in parts and "src" not in parts
+
+
 def _under_tools(obj) -> bool:
     try:
         f = inspect.getsourcefile(obj)
     except (TypeError, OSError):
         return False
-    return bool(f) and (uc.REPO / "tools").resolve() in Path(f).resolve().parents
+    return bool(f) and _tools_path(f)
 
 
 def _tool_module(mod) -> bool:
     f = getattr(mod, "__file__", None)
-    return bool(f) and (uc.REPO / "tools").resolve() in Path(f).resolve().parents
+    return bool(f) and _tools_path(f)
 
 
 def _locals(tree) -> set:

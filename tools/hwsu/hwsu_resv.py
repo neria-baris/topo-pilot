@@ -215,7 +215,8 @@ def read_obligation(store, contract=None) -> dict:
                 "problems": probs + (["no obligation"] if arrays else [])}
     rec = max(recs, key=lambda r: str(r.get("written_utc")) if isinstance(r, dict) else "")
     if not isinstance(rec, dict) or set(rec) != set(c["top_level"]) or not isinstance(
-            rec["files"], list) or rec["schema"] != c["schema"] or rec["rule"] != c["rule"]:
+            rec["files"], list) or rec["schema"] != c["schema"] or rec["rule"] != c["rule"] or (
+            rec["track"] not in ("U", "D")):
         return {"status": incomplete, "problems": probs + ["top-level keys or values"]}
     try:
         rules = [re.compile(r["regex"]) for r in rec["name_rules"]
@@ -237,6 +238,13 @@ def read_obligation(store, contract=None) -> dict:
             probs.append(f"basis: {e['relpath']}")
         elif e["basis"] == "name_rule" and not any(r.fullmatch(e["relpath"]) for r in rules):
             probs.append(f"no name rule matches: {e['relpath']}")
+        ck = e["relpath"].startswith("artifacts/Checkpoint/")
+        sha = e["sha256"]
+        if (sha is None and not ck) or (sha is not None and not (
+                isinstance(sha, str) and len(sha) == 64 and sha == sha.lower()
+                and all(c in "0123456789abcdef" for c in sha))) or not isinstance(
+                e["bytes"], int) or isinstance(e["bytes"], bool):
+            probs.append(f"sha256/bytes: {e['relpath']}")
         f = store / e["relpath"]
         if e["sha256"] is not None and (not f.is_file() or uc.sha256_file(f) != e["sha256"]):
             probs.append(f"sha256: {e['relpath']}")

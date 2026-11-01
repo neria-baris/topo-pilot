@@ -174,3 +174,13 @@ def load_handoff_u(path=HANDOFF_PATH, expected_sha256=None) -> dict:
                 "stage_c_exclusions": tuple(str(x) for x in d["stage_c_exclusions"])}
     except (KeyError, TypeError) as exc:
         raise C1GateFailure("FAIL_TECHNICAL/IDENTITY", f"HANDOFF.json key: {exc!r}") from exc
+
+
+def dry_store_ok(path) -> bool:
+    """True iff path lies under SCRATCH/hwsu-dry* or SCRATCH/test_hwsu-* (dry guard, E-4)."""
+    try:
+        rel = Path(path).resolve().relative_to(SCRATCH.resolve())
+    except (ValueError, OSError):
+        return False
+    first = rel.parts[0].lower() if rel.parts else ""
+    return first.startswith(("hwsu-dry", "test_hwsu-"))

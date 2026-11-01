@@ -306,7 +306,11 @@ def test_build_d_composite_own_and_reader_tags(tmp_path, monkeypatch, r9, r10, w
 
     monkeypatch.setattr(dr, "scratch_check_d", scr)
     monkeypatch.setattr(dr, "inventory_d", inv)
-    monkeypatch.setattr(hwsc_registry, "source_dry", lambda *a, **k: _src())
+    dry_calls = []
+    for n in ("hwsd-dry-0201", "hwsd-dry", "hwsc-dry-0177"):
+        (scratch / n).mkdir()
+    monkeypatch.setattr(hwsc_registry, "source_dry",
+                        lambda *a, **k: dry_calls.append(k.get("paths", a[0] if a else None)) or _src())
     monkeypatch.setattr(drd, "superset_check", lambda *a, **k: {"status": PASS, "n_kreg2": 0,
                                                                 "missing": 0, "n_test": 0,
                                                                 "missing_test": 0})
@@ -320,3 +324,7 @@ def test_build_d_composite_own_and_reader_tags(tmp_path, monkeypatch, r9, r10, w
     assert ("R10" in seen["readers_ok"]) == (r10 == PASS)
     assert (seen["readers"].get("hwsc-store") == ["R9"]) == (r9 == PASS)
     assert (seen["readers"].get("hwsu-store") == ["R10"]) == (r10 == PASS)
+    # R5': source_dry() (stage-C default paths) and source_dry(paths=<every hwsd-dry* folder>)
+    assert None in dry_calls
+    want = [bu.norm(scratch / "hwsd-dry"), bu.norm(scratch / "hwsd-dry-0201")]
+    assert [[bu.norm(p) for p in c] for c in dry_calls if c is not None] == [want]

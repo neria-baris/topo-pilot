@@ -623,3 +623,7 @@ Review of the section 21 items at hwsd-impl e9dc68d; the record is CONTRACT `to_
 - **Binding:** `hwsd_bind.audit()` inside `bound_hwsd()` PASS (217 hits, 0 unlisted); no `left_unchanged` row added.
 - **Open until the freeze:** `authority.run_approval` and the h_exec / FREEZE / dry-run / PF hashes.
 - **Test erratum:** author B's `test_effective_tables` asserts `hwsc-job-0181` decision `EXCLUSION` (was `TO_FREEZE`).
+
+## 25. D-0201-1 erratum (job 0202; ruling R-0201-1)
+
+D-0201-1: DRD4's KD4 case outputs are written under the fixture root, per decision 6 (`fresh_fixture(job, "DRD4")`, `adhoc` when no job); no KD4 array file is left in the hwsd-dry store.

@@ -1385,8 +1385,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 1065 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 362 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
-| `CONTRACT_OF.json` | json | 2859 lines |  |
+| `API.md` | markdown | 372 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
+| `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |
 | [hwsu_bind.py](files/tools/hwsu/hwsu_bind.py.md) | python | 234 lines | HWSU call allowlist and constant-read audit (API.md §7; protocol §11.2; run by OF-B, RC-10). |

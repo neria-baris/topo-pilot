@@ -24203,7 +24203,7 @@
    "kind": "python",
    "lines": 333,
    "purpose": "Author B (job 0198): the J11 obligation reader on fixtures written in the other track's form,",
-   "sha256": "c2d92081b30077f2af624b8e1ed037a61a7441c34be37ff0cc5ff078612d34f8"
+   "sha256": "ab6b797c174ed4e153caa9aab2d3c6a03c66569e0b40724b80410cea1a0d213b"
   },
   "tests/hwsu/test_b_of_reservations.py": {
    "kind": "python",
@@ -25635,15 +25635,15 @@
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
-   "lines": 362,
+   "lines": 372,
    "purpose": "tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1)",
-   "sha256": "7d0faf998ddb86c44b3fc122866549b55e10509a0cfda68ced74a8290ba29b77"
+   "sha256": "63b801bfe0ca11dc0b344d6bec09c0c398e8b00ecc9387bdf162b496e6b32b53"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
-   "lines": 2859,
+   "lines": 2863,
    "purpose": "",
-   "sha256": "847f8cf81d26036e21a705d2843221e9b778e1c0d711bbe1c502cb03188df94e"
+   "sha256": "c60b5839b76b3df049ae9beebfe9d78bdd5c0acfa2b8e96c530d919da1b360db"
   },
   "tools/hwsu/PROTOCOL_HWSU_v1.md": {
    "kind": "markdown",
@@ -261076,5 +261076,5 @@
    ]
   }
  },
- "sources_digest": "9e31037743860a737f3cae924d045393a5266bda5b088d4420b043aa60300e6e"
+ "sources_digest": "9c0cf11d4cd284c0e106b2d569397939760836ac1e4076cf3083f6564181ab87"
 }

@@ -10,6 +10,7 @@ from __future__ import annotations  # noqa: I001
 import hwsd_config as dc
 import hashlib
 import json
+import os
 import shutil
 import time
 import traceback
@@ -176,7 +177,10 @@ def _case_ok(cid, row, delta4) -> bool:
 
 
 def seq_cases(out, params=None, cases=None, sequences=None, rows=3072) -> dict:
-    out, params = Path(out), dict(params or KD4_DEFAULT)
+    out = Path(out)
+    if params is None and os.environ.get("HWSD_KD4_PARAMS"):
+        params = json.loads(Path(os.environ["HWSD_KD4_PARAMS"]).read_text(encoding="utf-8"))
+    params = dict(params or KD4_DEFAULT)
     seqs = dict(sequences or dc.CONTRACT["known_cases"]["KD4"]["sequences"])
     ids = list(cases or dc.CONTRACT["known_cases"]["KD4"]["cases"])
     out.mkdir(parents=True, exist_ok=True)
@@ -193,7 +197,7 @@ def seq_cases(out, params=None, cases=None, sequences=None, rows=3072) -> dict:
                "timed": None, "planted": True}
         learn = {"learn_pass": False, "B2_L_zS": -1.0, "captured": 0.0, "regret": 0.0}
         j, rowd = dc.DRY_MASTERS[0], {}
-        for cid in {c for s in seqs.values() for c in s} & set(ids):
+        for cid in ids:
             cd = out / "cases" / cid
             rec = ds.score_checkpoint(dict(ctx, out=cd), j, dc.STEPS[0],
                                       acts=lambda sp, c=cid: plant_acts(c, tabs[sp], mom[sp],
@@ -217,6 +221,7 @@ def seq_cases(out, params=None, cases=None, sequences=None, rows=3072) -> dict:
                 ok = ok and g["reading"] == rd and (why is None or why in g["reasons"])
             res["sequences"][name] = {"order": ev["order"][j]["chart"]["category"],
                                       "readings": [g["reading"] for g in got], "ok": ok}
+    stage_records.write_new(out / "KD4_PARAMS.json", params)
     fb = not res["cases"].get("iv", {"ok": True})["ok"]
     res["fallback_before"] = fb
     res["status"] = "PASS" if (all(c["ok"] for k, c in res["cases"].items() if not (fb and k == "iv"))

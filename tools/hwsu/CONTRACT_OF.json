@@ -606,45 +606,94 @@
  },
  "obligation": {
   "schema": "hws-registry-obligation-v1",
-  "readers": {
-   "K4b history table": "k4b_history_table (canon32, seq_ids, digest re-derived from canon32; the hwsc_registry.source_own pattern)",
-   "ObservationSet": "hwsb_registry.registry_digests"
-  },
+  "j11": "joint ruling J11 (addendum 4), field for field for both tracks",
+  "top_level": [
+   "schema",
+   "store",
+   "track",
+   "job",
+   "attempt",
+   "written_utc",
+   "written_by",
+   "reservation_id",
+   "name_rules",
+   "dry_stores",
+   "files",
+   "rule"
+  ],
+  "track": "U",
+  "rule": "fail closed",
+  "file_keys": [
+   "relpath",
+   "sha256",
+   "bytes",
+   "class",
+   "reader",
+   "basis"
+  ],
   "classes": [
    "ObservationSet",
    "K4b history table",
    "NON_HISTORY"
   ],
-  "bases": {
-   "i": "WorldSpec/TransitionSpec/EmissionSpec/Checkpoint payload classed by its sibling meta.json; never opened or hashed (sha256 null)",
-   "ii": "a file under registry/**",
-   "iii": "a named array matched by the frozen name rule"
+  "readers": {
+   "ObservationSet": "hwsb_registry.registry_digests",
+   "K4b history table": "k4b_history_table",
+   "NON_HISTORY": null
   },
+  "bases": [
+   "artifact",
+   "registry",
+   "name_rule"
+  ],
+  "basis_meaning": {
+   "artifact": "WorldSpec/TransitionSpec/EmissionSpec/Checkpoint payload classed by sibling meta.json (J10 1 i)",
+   "registry": "relpath with a component named registry before the file name (J10 1 ii)",
+   "name_rule": "a name_rules regex fullmatches the relpath (J10 1 iii)"
+  },
+  "sha256_null_only": "Checkpoint payload (state.pt / payload.npz under artifacts/Checkpoint/), never opened or hashed",
+  "name_rule_kinds": [
+   "chart",
+   "decoder",
+   "activation",
+   "oracle-moment",
+   "score",
+   "bootstrap",
+   "certificate"
+  ],
+  "name_rules": [
+   {
+    "kind": "oracle-moment",
+    "regex": "stages/(?:.+/)?ORACLE_[^/]*\\.npz"
+   },
+   {
+    "kind": "oracle-moment",
+    "regex": "stages/(?:.+/)?MOMENTS_[^/]*\\.npz"
+   },
+   {
+    "kind": "decoder",
+    "regex": "stages/(?:.+/)?FIT_[^/]*\\.npz"
+   },
+   {
+    "kind": "bootstrap",
+    "regex": "stages/(?:.+/)?BOOT_[^/]*\\.npz"
+   },
+   {
+    "kind": "score",
+    "regex": "stages/(?:.+/)?PREC_[^/]*\\.npz"
+   },
+   {
+    "kind": "score",
+    "regex": "stages/(?:.+/)?PAIR_[^/]*\\.npz"
+   }
+  ],
+  "reader_rule": "newest by written_utc governs; missing/extra key, unknown value, unlisted array file, sha256 mismatch (non-null), or a name_rule basis no regex matches -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
   "names": {
    "OF": "REGISTRY_OBLIGATION_OF.json",
    "stopped_attempt": "REGISTRY_OBLIGATION_<job>-a<k>.json",
    "study_end": "REGISTRY_OBLIGATION.json",
    "dry_store": "REGISTRY_OBLIGATION.json"
-  },
-  "fields": [
-   "schema",
-   "store",
-   "job",
-   "written_utc",
-   "written_by",
-   "readers",
-   "name_rule",
-   "files",
-   "n_files",
-   "n_history_files"
-  ],
-  "file_entry": [
-   "relpath",
-   "sha256",
-   "class",
-   "reader | basis",
-   "rule (basis iii)"
-  ]
+  }
  },
  "reservation_end": {
   "schema": "hws-reservation-end-v1",

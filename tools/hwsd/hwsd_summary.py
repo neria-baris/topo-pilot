@@ -106,8 +106,8 @@ def strong_bounds(draws_minus, draws_plus) -> dict:
 
 
 def f_sides(record, Z, n=dc.N) -> tuple:
-    cert = record["certificate"]
-    if cert.get("planted"):
+    cert = record.get("certificate") or {}
+    if record.get("planted") or cert.get("planted"):
         return dc.F_PLANTED, dc.F_PLANTED
     return tuple(k4b_cert.margin(k4b_cert.b_num(Fraction(cert["max_B"][s]), cert["max_abs"][s], n),
                                  Z) for s in ("X_minus", "X_plus"))

@@ -2256,7 +2256,7 @@
    ]
   },
   "root_baseline": {
-   "status": "TO_FREEZE",
+   "status": "REVIEWED",
    "built_utc": "2026-11-01",
    "built_by": "job 0198 phase 1 (read-only name listing)",
    "rows": {
@@ -2612,14 +2612,6 @@
      "n_protected_names": 0,
      "n_sealed_dirs_pruned": 0
     },
-    "topo-pilot-hwsc-fix": {
-     "array_relpaths_sha256": "04ca6dfe5845ab39d25fed94866271cd040985780bf79a99408c4efc297a65e5",
-     "listed": true,
-     "n_array_files": 1,
-     "n_observationset_roots": 0,
-     "n_protected_names": 0,
-     "n_sealed_dirs_pruned": 0
-    },
     "topo-pilot-hwsd": {
      "listed": false,
      "reason": "pruned unlisted (blinded/track-D)"
@@ -2824,10 +2816,11 @@
      "n_protected_names": 0,
      "n_sealed_dirs_pruned": 0
     }
-   }
+   },
+   "review": "coordinator a944ef89, 2026-11-01: name-only re-scan at hwsu-impl 18030bf; 69 listed rows + 1 pruned (topo-pilot-hwsd), identical to the phase-1 rows except topo-pilot-hwsc-fix, which the owner removed (deletion approved 2026-11-01); the dry run and every job compare before/after listings"
   },
   "reservations_baseline": {
-   "status": "TO_FREEZE",
+   "status": "REVIEWED",
    "built_utc": "2026-11-01",
    "rows": {
     "c2nd-store/RESERVATION_S1.json": {
@@ -2845,7 +2838,8 @@
      "sha256": "28c74163e992972b89238dccb30660b500027a78ac4a563fa0958df736e9dbe5",
      "state": "ACTIVE"
     }
-   }
+   },
+   "review": "coordinator a944ef89, 2026-11-01: all three sha256 re-read and equal; W2 still ACTIVE (ended by records/HWSC_W2_END.json)"
   },
   "rule": "after each implementation or dry job, hwsu_records.root_inventory(root) shows no new array file, protected name or ObservationSet root (§8.4)"
  },
@@ -2855,5 +2849,15 @@
   "binding.allowlist call_time_reads and reuse_sha256 (re-run the audit at h_exec)",
   "cpu.central_s (cost only)",
   "of_b.r_ref and phase1_files (if a module is split by size)"
- ]
+ ],
+ "to_freeze_review": {
+  "reviewer": "coordinator a944ef89",
+  "date": "2026-11-01",
+  "head": "18030bf7008f7a04c133d9ebfeac715288c985d4",
+  "hygiene.root_baseline": "REVIEWED: re-scanned (see hygiene.root_baseline.review)",
+  "hygiene.reservations_baseline": "REVIEWED: unchanged",
+  "binding": "REVIEWED: hwsu_bind.audit() PASS at the head (calls and call-time reads); all 199 reuse_sha256 equal at e3710d2, at the head and in the working tree",
+  "cpu.central_s": "REVIEWED: planning centrals kept (J-OF 900, DRO 200, OF 700; pause line 3x); measured J-OF/DRO cost re-sets the owner forecast, not the contract",
+  "of_b": "REVIEWED: r_ref e3710d2 kept; phase1_files = 4 documents + 13 modules (E-0), matching tools/hwsu"
+ }
 }

@@ -360,3 +360,13 @@ This section supersedes the obligation parts of §5.6, §10 (`obligation_reader_
   - `ctx["proxy"]` = `{array: {N (int): {"mde_upper", "power", "criterion_met"}}}` for the arrays formed (ZR010, ZR030, and Z010, Z050 unless the share was dropped).
   - If OF-4 raises, `ctx["prec"]`, `ctx["proxy"]`, `ctx["N_resp"]` and `ctx["N_share"]` are not set (they are assigned after all arrays are computed); keys set by earlier gates remain.
 - **E-4 (bounds and stored draws; amends D-13).** OF-2 and OF-3 take their bounds and ranks from `c2_decide.stream_bounds`, called through its module at call time. The draws stored in `BOOT_OF.npz` come from a second deterministic call of `c1_means.bootstrap_means` with the same seed and index rule; the bounds recomputed from them (`quantile_with_rank` at alpha and 1 - alpha) must equal `stream_bounds`' L and U exactly, else `FAIL_TECHNICAL/NUMERICAL`. Dry guard: `run_of` and `of_p` refuse `ctx["dry"] = True` unless the store path lies under `X:/Downloads/topo-scratch/hwsu-dry*` or `X:/Downloads/topo-scratch/test_hwsu-*` (`hwsu_config.dry_store_ok`), with `FAIL_TECHNICAL/BINDING`.
+
+## TO_FREEZE review (coordinator a944ef89, 2026-11-01; appended, existing bytes unchanged, D-0)
+
+Review of the §15 items at hwsu-impl 18030bf; the record is CONTRACT `to_freeze_review`.
+- **1 root baseline: REVIEWED.** Name-only re-scan: 69 listed rows + 1 pruned (`topo-pilot-hwsd`), identical to the phase-1 rows except `topo-pilot-hwsc-fix`, removed by the owner (approved 2026-11-01). The rows are replaced by the re-scan; status `REVIEWED`.
+- **2 reservations baseline: REVIEWED.** All three sha256 equal; W2 still `ACTIVE`, ended by `records/HWSC_W2_END.json`. Status `REVIEWED`.
+- **3 allowlist reads and reuse_sha256: REVIEWED.** `hwsu_bind.audit()` PASS; all 199 `reuse_sha256` equal at e3710d2, at the head and in the working tree. J-C1 re-runs the audit at h_exec.
+- **4 CPU centrals: kept** (J-OF 900 s, DRO 200 s, OF 700 s; pause line 3×). Measured J-OF/DRO cost re-sets the forecast given to the owner, not the contract, so no cost-only change re-opens the freeze.
+- **5 of_b: REVIEWED.** `r_ref` e3710d2 kept; `phase1_files` = 4 documents + 13 modules (E-0).
+- **Test erratum:** author B's `test_contract_reservation_baseline_and_root_baseline` asserts status `REVIEWED` and 70 root rows (was `TO_FREEZE`, 71).

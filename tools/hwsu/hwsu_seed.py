@@ -11,7 +11,6 @@ import re
 from pathlib import Path
 
 import hwsb_known
-import hwsc_known
 import stage_records
 from c1_records import C1GateFailure
 
@@ -27,15 +26,23 @@ def _skip_dir(parent, name, groot) -> bool:
             or uc.blinded(parent / name, groot))
 
 
-def _prefilter(needles):
-    # R-0200-1: one pass per line; a line holding any needle as a substring matches, so the exact
-    # per-needle check below runs on every line that can hit and the hits are unchanged.
-    return re.compile("|".join(re.escape(nd) for nd in sorted(set(needles), key=len, reverse=True)))
+def _line_matcher(needles):
+    # R-0200-1: per line, one whole-token regex pass finds every digit needle (the
+    # hwsc_known.needle_in rule: no [0-9A-Za-z_] on either side) and a plain substring test serves
+    # every other needle, so the hits equal [nd for nd in needles if needle_in(nd, line)].
+    digits = sorted({nd for nd in needles if nd.isdigit()}, key=len, reverse=True)
+    rx = re.compile(r"(?<![0-9A-Za-z_])(?:" + "|".join(map(re.escape, digits))
+                    + r")(?![0-9A-Za-z_])") if digits else None
+
+    def found(line) -> list:
+        dig = set(rx.findall(line)) if rx else set()
+        return [nd for nd in needles if (nd in dig if nd.isdigit() else nd in line)]
+    return found
 
 
 def seed_search_u(root, needles, root_for_guard=None) -> list:
     groot, hits = Path(root_for_guard or root), []
-    pre = _prefilter(needles)
+    match = _line_matcher(needles)
     for folder, dirs, files in os.walk(root, topdown=True):
         here = Path(folder)
         dirs[:] = sorted(d for d in dirs if not _skip_dir(here, d, groot))
@@ -47,9 +54,7 @@ def seed_search_u(root, needles, root_for_guard=None) -> list:
                 continue
             with open(here / name, encoding="utf-8", errors="replace") as handle:
                 for i, line in enumerate(handle, 1):
-                    if not pre.search(line):
-                        continue
-                    found = [nd for nd in needles if hwsc_known.needle_in(nd, line)]
+                    found = match(line)
                     hits += [{"path": str(here / name), "needle": nd, "line": i} for nd in found]
     return hits
 

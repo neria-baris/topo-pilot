@@ -18862,9 +18862,9 @@
   },
   "README.md": {
    "kind": "markdown",
-   "lines": 241,
+   "lines": 239,
    "purpose": "topo-pilot: topology of a latent world in transformer representations",
-   "sha256": "b600ee335e3ac409233bfc1a70007ae4ad475617a52717cf0aba416c935b71d7"
+   "sha256": "0ba717d27a444d19cfeac4d8e71cd6d5eff79e8ca0194b60d2e20eee8b47a594"
   },
   "README_HE.md": {
    "kind": "markdown",
@@ -21568,9 +21568,9 @@
   },
   "state/PROGRESS.md": {
    "kind": "markdown",
-   "lines": 42,
-   "purpose": "Current progress ? 17 October 2026 (maintenance reconciliation)",
-   "sha256": "e6bb17ba79333d8a345eba489805f12a6ea0a87ac544342cacb5c228020075e2"
+   "lines": 67,
+   "purpose": "Current progress - 1 November 2026",
+   "sha256": "0dc574438850e68a27afcb66936241598e5156c86794f78c797f16a026604038"
   },
   "tasks.ps1": {
    "kind": "powershell",
@@ -247133,5 +247133,5 @@
    ]
   }
  },
- "sources_digest": "64f38641cd568637846d1ee3c21ebe6d6b29f3a418c46d4fc5be4005d75fe1b0"
+ "sources_digest": "0f2e3920b45577b00fa6f82e353003a7cc6f7983f8b66f6794e5ca7e9ed09b66"
 }

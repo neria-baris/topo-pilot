@@ -305,11 +305,11 @@ def state_from_gates(out) -> dict:
             st["fail"] = s
         elif s in ("INCONCLUSIVE/RESOURCE_OR_AUTHORITY", "INCONCLUSIVE/AUTHORITY",
                    "INCONCLUSIVE/RESOURCE", "PAUSE"):
-            st["resource"] = True
+            st["resource"] = s
         elif s == "INCONCLUSIVE/REGISTRY_INCOMPLETE":
-            st["registry"] = True
+            st["registry"] = s
         elif g.get("gate") == "B4-TEST" and s.startswith("INCONCLUSIVE"):
-            st["headroom"] = True
+            st["headroom"] = s
     st["partial"] = [j for j in dc.MASTERS if (
         Path(out) / "stages" / "SCORE" / str(j) / "ACCEPTANCE.json").is_file()]
     return st
@@ -324,7 +324,7 @@ def run_close(out, status, reason, job, attempt) -> dict:
         if str(status).startswith("FAIL_TECHNICAL"):
             st["fail"] = status
         else:
-            st["resource"] = True
+            st["resource"] = str(status)
     oc = hwsd_summary.outcome_d(st)
     f = out / "stages" / "CLOSE" / "CLOSE.json"
     f.parent.mkdir(parents=True, exist_ok=True)

@@ -78,7 +78,7 @@
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 243, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 14, import)
-- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 13, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 14, import)
 
 ## Top-level constants
 

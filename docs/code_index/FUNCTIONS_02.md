@@ -1103,7 +1103,7 @@
 | `seed_key` | function | `seed_key` | [tests/k4b/test_b_h1_meta.py:58](../../tests/k4b/test_b_h1_meta.py#L58) |  |
 | `seed_search` | function | `seed_search` | [tools/hws/hws_driver.py:64](../../tools/hws/hws_driver.py#L64) | §6.6 G0 discovery search; excluded folders are pruned before any listing or open. |
 | `seed_search_c` | function | `seed_search_c` | [tools/hwsc/hwsc_known.py:51](../../tools/hwsc/hwsc_known.py#L51) |  |
-| `seed_search_u` | function | `seed_search_u` | [tools/hwsu/hwsu_seed.py:29](../../tools/hwsu/hwsu_seed.py#L29) |  |
+| `seed_search_u` | function | `seed_search_u` | [tools/hwsu/hwsu_seed.py:36](../../tools/hwsu/hwsu_seed.py#L36) |  |
 | `seeded` | function | `seeded` | [tests/oracle_profile/test_oracle_profile_kernels.py:44](../../tests/oracle_profile/test_oracle_profile_kernels.py#L44) |  |
 | `seeds` | function | `seeds` | [tests/learner/conftest.py:35](../../tests/learner/conftest.py#L35) |  |
 | `SeedTree` | class | `SeedTree` | [src/topo_pilot/contracts/ids.py:99](../../src/topo_pilot/contracts/ids.py#L99) | Deterministic, platform-independent seed derivation (the only source of randomness). |

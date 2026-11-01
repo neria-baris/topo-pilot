@@ -69,7 +69,7 @@
 - [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 12, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 249, import)
-- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 12, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 13, import)
 
 ## Top-level constants
 

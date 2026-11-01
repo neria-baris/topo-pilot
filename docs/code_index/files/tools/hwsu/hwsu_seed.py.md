@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/hwsu_seed.py](../../../../../tools/hwsu/hwsu_seed.py)
 - Kind: python
-- Lines: 148
+- Lines: 158
 
 ## Module docstring
 
@@ -15,10 +15,10 @@
 
 - `import hwsu_config` -> [tools/hwsu/hwsu_config.py](hwsu_config.py.md) (line 6, via same directory)
 - `import hwsu_records` -> [tools/hwsu/hwsu_records.py](hwsu_records.py.md) (line 7, via same directory)
-- `import hwsb_known` -> [tools/hwsb/hwsb_known.py](../hwsb/hwsb_known.py.md) (line 12, via unique basename)
-- `import hwsc_known` -> [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 13, via unique basename)
-- `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 14, via unique basename)
-- `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 15, via unique basename)
+- `import hwsb_known` -> [tools/hwsb/hwsb_known.py](../hwsb/hwsb_known.py.md) (line 13, via unique basename)
+- `import hwsc_known` -> [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 14, via unique basename)
+- `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 15, via unique basename)
+- `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 16, via unique basename)
 
 ### External (third-party)
 
@@ -29,7 +29,8 @@
 - `__future__` (lines 4)
 - `json` (lines 8)
 - `os` (lines 9)
-- `pathlib` (lines 10)
+- `pathlib` (lines 11)
+- `re` (lines 10)
 
 ### Unresolved internal-looking imports
 
@@ -61,14 +62,15 @@
 
 ## Classes and functions
 
-- **function `_skip_dir`** [L22-26]: `def _skip_dir(parent, name, groot) -> bool`
-- **function `seed_search_u`** [L29-44]: `def seed_search_u(root, needles, root_for_guard=None) -> list`
-- **function `classify_hits_u`** [L47-51]: `def classify_hits_u(hits, fragments=None, job_scratch=None) -> dict`
-- **function `needles`** [L54-56]: `def needles(contract=None) -> tuple`
-- **function `_tokens`** [L59-64]: `def _tokens(track) -> tuple`
-- **function `namespace_overlap`** [L67-72]: `def namespace_overlap(u, d) -> list`
-- **function `_sha_ok`** [L75-79]: `def _sha_ok(path, want, root) -> bool`
-- **function `_authority`** [L82-104]: `def _authority(out, ctx, checks) -> None`
-- **function `_records`** [L107-120]: `def _records(ctx, checks) -> None`
-- **function `g0_of`** [L123-148]: `def g0_of(out, ctx) -> dict`
+- **function `_skip_dir`** [L23-27]: `def _skip_dir(parent, name, groot) -> bool`
+- **function `_prefilter`** [L30-33]: `def _prefilter(needles)`
+- **function `seed_search_u`** [L36-54]: `def seed_search_u(root, needles, root_for_guard=None) -> list`
+- **function `classify_hits_u`** [L57-61]: `def classify_hits_u(hits, fragments=None, job_scratch=None) -> dict`
+- **function `needles`** [L64-66]: `def needles(contract=None) -> tuple`
+- **function `_tokens`** [L69-74]: `def _tokens(track) -> tuple`
+- **function `namespace_overlap`** [L77-82]: `def namespace_overlap(u, d) -> list`
+- **function `_sha_ok`** [L85-89]: `def _sha_ok(path, want, root) -> bool`
+- **function `_authority`** [L92-114]: `def _authority(out, ctx, checks) -> None`
+- **function `_records`** [L117-130]: `def _records(ctx, checks) -> None`
+- **function `g0_of`** [L133-158]: `def g0_of(out, ctx) -> dict`
 

@@ -101,7 +101,7 @@
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 28, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 21, import)
 - [tools/hwsu/hwsu_resv.py](../hwsu/hwsu_resv.py.md) (line 15, import)
-- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 14, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 15, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 17, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 26, import)
 - [tools/k4b/k4b_fresh.py](../k4b/k4b_fresh.py.md) (line 27, import)

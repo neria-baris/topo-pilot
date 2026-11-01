@@ -1385,7 +1385,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1065 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 372 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
+| `API.md` | markdown | 378 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
 | `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |
@@ -1401,7 +1401,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1065 tracked fil
 | [hwsu_pairs.py](files/tools/hwsu/hwsu_pairs.py.md) | python | 143 lines | HWSU exact conditional prefix sampler, blocks, ids and history tables (API.md §2; protocol §2.1, |
 | [hwsu_records.py](files/tools/hwsu/hwsu_records.py.md) | python | 215 lines | HWSU records: gate runner, stages, lineage, ledger, pauses, registry risk (API.md §5.1-§5.2). |
 | [hwsu_resv.py](files/tools/hwsu/hwsu_resv.py.md) | python | 294 lines | HWSU name rule, reservations, W2 attestation, obligations, root inventory (API.md §5.1, |
-| [hwsu_seed.py](files/tools/hwsu/hwsu_seed.py.md) | python | 148 lines | HWSU needle search, hit classification, namespace overlap and G0-OF (API.md §6; protocol §4.2 |
+| [hwsu_seed.py](files/tools/hwsu/hwsu_seed.py.md) | python | 158 lines | HWSU needle search, hit classification, namespace overlap and G0-OF (API.md §6; protocol §4.2 |
 
 ## tools/k4b/
 

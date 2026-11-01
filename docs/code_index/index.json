@@ -6,13 +6,13 @@
   "dynamic imports, internal": 17,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1065,
-  "functions and methods (incl. tests)": 9826,
+  "functions and methods (incl. tests)": 9827,
   "import cycles (strongly connected components)": 13,
   "import statements, external": 941,
   "import statements, internal ambiguous": 6,
   "import statements, internal resolved": 3280,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2952,
+  "import statements, standard library": 2953,
   "internal edges (file to file, with kind and line)": 3315,
   "python files": 664
  },
@@ -17417,19 +17417,19 @@
    "tools/hwsu/hwsu_seed.py",
    "tools/c1prime/c1_records.py",
    "import",
-   15
+   16
   ],
   [
    "tools/hwsu/hwsu_seed.py",
    "tools/hwsb/hwsb_known.py",
    "import",
-   12
+   13
   ],
   [
    "tools/hwsu/hwsu_seed.py",
    "tools/hwsc/hwsc_known.py",
    "import",
-   13
+   14
   ],
   [
    "tools/hwsu/hwsu_seed.py",
@@ -17447,7 +17447,7 @@
    "tools/hwsu/hwsu_seed.py",
    "tools/x4_circle_history/stage_records.py",
    "import",
-   14
+   15
   ],
   [
    "tools/k4b/k4b_cert.py",
@@ -25635,9 +25635,9 @@
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
-   "lines": 372,
+   "lines": 378,
    "purpose": "tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1)",
-   "sha256": "63b801bfe0ca11dc0b344d6bec09c0c398e8b00ecc9387bdf162b496e6b32b53"
+   "sha256": "6a4c930a1e27fc6d00248f4ccea77ef5c0eb704a6a22cbe0fc5ed82064c6e400"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -25731,9 +25731,9 @@
   },
   "tools/hwsu/hwsu_seed.py": {
    "kind": "python",
-   "lines": 148,
+   "lines": 158,
    "purpose": "HWSU needle search, hit classification, namespace overlap and G0-OF (API.md §6; protocol §4.2",
-   "sha256": "dd172a14cae23f73b44448766a25fe3c8fcdb6ff8c0e75ebfbb081037f11a14c"
+   "sha256": "c93e71dc4fc0ca934ee71a67757edc6314ee3b54ad397fe2c2eeb7f3f9496744"
   },
   "tools/k4b/API.md": {
    "kind": "markdown",
@@ -228004,11 +228004,26 @@
     },
     {
      "candidates": [],
-     "form": "from",
+     "form": "import",
      "how": "",
      "lazy": false,
      "level": 0,
      "line": 10,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
      "module": "pathlib",
      "names": [
       "Path"
@@ -228023,7 +228038,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 12,
+     "line": 13,
      "module": "",
      "names": [
       "hwsb_known"
@@ -228040,7 +228055,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 13,
+     "line": 14,
      "module": "",
      "names": [
       "hwsc_known"
@@ -228057,7 +228072,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 14,
+     "line": 15,
      "module": "",
      "names": [
       "stage_records"
@@ -228074,7 +228089,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 15,
+     "line": 16,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -228090,102 +228105,112 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 26,
+     "end": 27,
      "kind": "function",
      "name": "_skip_dir",
      "qual": "_skip_dir",
      "sig": "def _skip_dir(parent, name, groot) -> bool",
-     "start": 22
+     "start": 23
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 44,
+     "end": 33,
+     "kind": "function",
+     "name": "_prefilter",
+     "qual": "_prefilter",
+     "sig": "def _prefilter(needles)",
+     "start": 30
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
      "kind": "function",
      "name": "seed_search_u",
      "qual": "seed_search_u",
      "sig": "def seed_search_u(root, needles, root_for_guard=None) -> list",
-     "start": 29
+     "start": 36
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 51,
+     "end": 61,
      "kind": "function",
      "name": "classify_hits_u",
      "qual": "classify_hits_u",
      "sig": "def classify_hits_u(hits, fragments=None, job_scratch=None) -> dict",
-     "start": 47
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 56,
+     "end": 66,
      "kind": "function",
      "name": "needles",
      "qual": "needles",
      "sig": "def needles(contract=None) -> tuple",
-     "start": 54
+     "start": 64
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 64,
+     "end": 74,
      "kind": "function",
      "name": "_tokens",
      "qual": "_tokens",
      "sig": "def _tokens(track) -> tuple",
-     "start": 59
+     "start": 69
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 72,
+     "end": 82,
      "kind": "function",
      "name": "namespace_overlap",
      "qual": "namespace_overlap",
      "sig": "def namespace_overlap(u, d) -> list",
-     "start": 67
+     "start": 77
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 79,
+     "end": 89,
      "kind": "function",
      "name": "_sha_ok",
      "qual": "_sha_ok",
      "sig": "def _sha_ok(path, want, root) -> bool",
-     "start": 75
+     "start": 85
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 104,
+     "end": 114,
      "kind": "function",
      "name": "_authority",
      "qual": "_authority",
      "sig": "def _authority(out, ctx, checks) -> None",
-     "start": 82
+     "start": 92
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 120,
+     "end": 130,
      "kind": "function",
      "name": "_records",
      "qual": "_records",
      "sig": "def _records(ctx, checks) -> None",
-     "start": 107
+     "start": 117
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 148,
+     "end": 158,
      "kind": "function",
      "name": "g0_of",
      "qual": "g0_of",
      "sig": "def g0_of(out, ctx) -> dict",
-     "start": 123
+     "start": 133
     }
    ],
    "syspath": []
@@ -261076,5 +261101,5 @@
    ]
   }
  },
- "sources_digest": "9c0cf11d4cd284c0e106b2d569397939760836ac1e4076cf3083f6564181ab87"
+ "sources_digest": "6da8206947fbf37bb05d415ebe1a33aaafe410810dd9cecd3ef6452ed5e6589e"
 }

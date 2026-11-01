@@ -2166,15 +2166,23 @@
    "sha256",
    "bytes",
    "class",
+   "reader",
    "basis"
   ],
+  "readers": {
+   "ObservationSet": "hwsb_registry.registry_digests",
+   "K4b history table": "k4b_history_table",
+   "NON_HISTORY": null
+  },
+  "sha256_null": "only for a Checkpoint payload (state.pt or payload.npz under artifacts/Checkpoint/), classed by its sibling meta.json, never opened or hashed",
+  "tracks": ["U", "D"],
   "classes": [
    "ObservationSet",
    "K4b history table",
    "NON_HISTORY"
   ],
   "bases": {
-   "artifact": "WorldSpec, TransitionSpec, EmissionSpec or Checkpoint by sibling meta.json (J10 1 i); a Checkpoint payload is never opened or hashed by the reader",
+   "artifact": "WorldSpec, TransitionSpec, EmissionSpec or Checkpoint, by sibling meta.json (J10 1 i); the type is read from the relpath and the sibling meta.json; a Checkpoint payload is never opened or hashed by the reader",
    "registry": "a relpath with a component named registry before the file name (J10 1 ii)",
    "name_rule": "a regex of name_rules matched by re.fullmatch on the relpath (J10 1 iii)"
   },
@@ -2227,7 +2235,8 @@
    "dry": "<dry store>/REGISTRY_OBLIGATION.json at the end of each dry run (J4); a later dry job in the same store writes REGISTRY_OBLIGATION_<job>-a<k>.json"
   },
   "reader_rule": "the newest REGISTRY_OBLIGATION*.json of a store by written_utc (ties: lexicographically last name) must list every array file (.npz/.npy/.pt) then in the store with one class and basis; ObservationSet and K4b history tables are read; NON_HISTORY are sha256-checked (Checkpoint payloads excepted); present without an obligation, sha mismatch, unlisted array file, unknown class or basis -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
-  "alignment": "TO_FREEZE: the coordinator confirms that track U writes this schema (joint alignment item); R10 reads exactly this schema"
+  "alignment": "J11 (joint rulings addendum 4): one schema for both tracks, field for field; the key set, per-file keys, classes, readers, bases and the reader rule are exactly the J11 form. Reader rule: the newest obligation by written_utc governs; a missing or extra key, an unknown value, an array file present but not listed, a sha256 mismatch on any file whose sha256 is non-null, or a name_rule basis that no listed regex matches makes the store REGISTRY_INCOMPLETE.",
+  "types": {"attempt": "integer >= 1, or null for a dry store", "written_utc": "ISO 8601 Z", "store": "absolute path, forward slashes", "track": "U or D", "bytes": "integer file size", "files": "sorted by relpath", "rule": "fail closed"}
  },
  "reservation": {
   "id_pattern": "RES-HWSD-W2-a<k>",
@@ -3204,7 +3213,7 @@
   "registry.scratch_inventory.rows: 10 hwsc-job-* rows (name-only listing by the coordinator)",
   "registry.inventory.rows: topo-pilot-hwsc-fix, topo-pilot-hwsd, topo-pilot-hwsu (proposed EXCLUSION, git worktree)",
   "registry.r9.non_history_rules logs/superseded-reg2-0192a1 rule (coordinator name-only listing of hwsc-store/logs)",
-  "obligation.alignment (track U writes hws-registry-obligation-v1)",
+  "obligation.alignment (settled by J11; coordinator confirms at the freeze)",
   "known_cases.KD4.parameters (g, noise scales, seeds, measured statuses; fixed in DRD4 before the freeze)",
   "binding.left_unchanged rows for tools/hwsd modules found by the implementation's audit (contract erratum)"
  ]

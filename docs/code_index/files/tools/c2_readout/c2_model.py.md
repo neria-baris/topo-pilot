@@ -55,6 +55,7 @@
 - [tests/c2_nd/test_b_decoy_model.py](../../tests/c2_nd/test_b_decoy_model.py.md) (line 25, import)
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 30, import)
 - [tests/c2_readout/test_b_patch.py](../../tests/c2_readout/test_b_patch.py.md) (line 26, import)
+- [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 119, import)
 - [tools/c2_nd/nd_decoy.py](../c2_nd/nd_decoy.py.md) (line 23, import)
 - [tools/c2_nd/nd_dry.py](../c2_nd/nd_dry.py.md) (line 24, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 19, import)

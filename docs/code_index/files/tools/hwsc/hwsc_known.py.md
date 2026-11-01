@@ -73,10 +73,12 @@
 - [tests/hwsc/test_r_0181_g0c_lineage_order.py](../../tests/hwsc/test_r_0181_g0c_lineage_order.py.md) (line 19, import)
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 18, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 19, import)
+- [tests/hwsu/test_b_of_seed.py](../../tests/hwsu/test_b_of_seed.py.md) (line 30, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 243, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 14, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 13, import)
 
 ## Top-level constants
 

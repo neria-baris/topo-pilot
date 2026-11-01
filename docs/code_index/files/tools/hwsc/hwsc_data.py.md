@@ -72,6 +72,8 @@
 - [tools/hwsc/hwsc_gates.py](hwsc_gates.py.md) (line 17, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 16, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 19, import)
+- [tools/hwsu/hwsu_dry.py](../hwsu/hwsu_dry.py.md) (line 22, import)
+- [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 22, import)
 
 ## Top-level constants
 

@@ -63,6 +63,7 @@
 - [tests/hwsb/test_b_streams.py](../../tests/hwsb/test_b_streams.py.md) (line 19, import)
 - [tests/hwsc/test_b_registry.py](../../tests/hwsc/test_b_registry.py.md) (line 29, import)
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 26, import)
+- [tests/hwsu/test_b_of_driver.py](../../tests/hwsu/test_b_of_driver.py.md) (line 24, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 17, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 20, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 15, import)
@@ -76,6 +77,7 @@
 - [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 14, import)
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 17, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 13, import)
+- [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 21, import)
 
 ## Top-level constants
 

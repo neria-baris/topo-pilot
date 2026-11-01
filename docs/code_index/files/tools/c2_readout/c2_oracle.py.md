@@ -58,6 +58,7 @@
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 31, import)
 - [tests/c2_readout/test_b_registry.py](../../tests/c2_readout/test_b_registry.py.md) (line 26, import)
 - [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 24, import)
+- [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 22, import)
 - [tools/c2_nd/nd_dry.py](../c2_nd/nd_dry.py.md) (line 25, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 20, import)
 - [tools/c2_nd/nd_stage_base.py](../c2_nd/nd_stage_base.py.md) (line 24, import)
@@ -68,6 +69,7 @@
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 19, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 23, import)
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 19, import)
+- [tools/hwsu/hwsu_oracle.py](../hwsu/hwsu_oracle.py.md) (line 13, import)
 
 ## Top-level constants
 

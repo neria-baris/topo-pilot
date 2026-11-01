@@ -60,6 +60,8 @@
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 29, import)
 - [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 19, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 24, import)
+- [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 24, import)
+- [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 19, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 20, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 22, import)
 - [tools/k4b/k4b_meter_bind.py](k4b_meter_bind.py.md) (line 123, import)

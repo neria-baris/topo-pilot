@@ -49,6 +49,7 @@
 - [tests/dataset/test_stage.py](../../../tests/dataset/test_stage.py.md) (line 6, import)
 - [tests/hwsb/test_b_streams.py](../../../tests/hwsb/test_b_streams.py.md) (line 25, import)
 - [tests/hwsc/test_b_streams.py](../../../tests/hwsc/test_b_streams.py.md) (line 32, import)
+- [tests/hwsd/test_b_data.py](../../../tests/hwsd/test_b_data.py.md) (line 30, import)
 - [tests/k4b/test_b_data.py](../../../tests/k4b/test_b_data.py.md) (line 29, import)
 - [tests/k4b/test_b_flow.py](../../../tests/k4b/test_b_flow.py.md) (line 187, import)
 - [tests/x6_stage1/test_b_ingest_bundle.py](../../../tests/x6_stage1/test_b_ingest_bundle.py.md) (line 33, import)

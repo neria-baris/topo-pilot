@@ -52,12 +52,17 @@
 - [tests/c1prime/test_a_chart.py](../../tests/c1prime/test_a_chart.py.md) (line 32, import)
 - [tests/c1prime/test_a_chart_lcc512.py](../../tests/c1prime/test_a_chart_lcc512.py.md) (line 31, import)
 - [tests/c1prime/test_a_chart_val.py](../../tests/c1prime/test_a_chart_val.py.md) (line 29, import)
+- [tests/hwsd/test_a_scorer.py](../../tests/hwsd/test_a_scorer.py.md) (line 29, import)
+- [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 22, import)
 - [tests/k4b/test_b_charts.py](../../tests/k4b/test_b_charts.py.md) (line 21, import)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 9, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 11, import)
 - [tools/c2_nd/nd_stage_base.py](../c2_nd/nd_stage_base.py.md) (line 19, import)
 - [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 16, import)
 - [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 16, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 72, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 199, import)
+- [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 12, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 13, import)
 
 ## Top-level constants

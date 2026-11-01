@@ -53,6 +53,7 @@
 - [tests/hwsb/test_b_meter_law.py](../../tests/hwsb/test_b_meter_law.py.md) (line 28, import)
 - [tests/hwsc/test_b_guard_meter.py](../../tests/hwsc/test_b_guard_meter.py.md) (line 34, import)
 - [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 17, import)
+- [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 27, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 28, import)
 - [tools/c1prime/c1_meter_bind.py](../c1prime/c1_meter_bind.py.md) (line 28, import)
 - [tools/c2_nd/store_template/nd_meter_bind.py](../c2_nd/store_template/nd_meter_bind.py.md) (line 66, import)
@@ -61,6 +62,8 @@
 - [tools/hwsb/hwsb_meter_bind.py](../hwsb/hwsb_meter_bind.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 21, import)
 - [tools/hwsc/hwsc_meter_bind.py](../hwsc/hwsc_meter_bind.py.md) (line 18, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 30, import)
+- [tools/hwsd/hwsd_meter_bind.py](../hwsd/hwsd_meter_bind.py.md) (line 17, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 19, import)
 - [tools/x4_circle_history/meter_bind.py](../x4_circle_history/meter_bind.py.md) (line 48, import)
 

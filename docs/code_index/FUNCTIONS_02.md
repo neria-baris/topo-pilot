@@ -2,6 +2,261 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `my_U` | function | `my_U` | [tests/x6_stage1/test_a_numerics.py:145](../../tests/x6_stage1/test_a_numerics.py#L145) | Theorem EB (§7.3), delta1 = delta2 = delta/2, plain high-precision evaluation. |
+| `n0` | function | `n0` | [tools/c1prime/c1_driver.py:262](../../tools/c1prime/c1_driver.py#L262) |  |
+| `n2` | function | `n2` | [tools/c2_nd/nd_stage_pre.py:287](../../tools/c2_nd/nd_stage_pre.py#L287) |  |
+| `n2` | function | `n2` | [tools/c2_readout/c2_stage_pre.py:288](../../tools/c2_readout/c2_stage_pre.py#L288) |  |
+| `n2_check` | function | `n2_check` | [tools/c2_nd/nd_split.py:121](../../tools/c2_nd/nd_split.py#L121) |  |
+| `n2_check` | function | `n2_check` | [tools/c2_readout/c2_stage_base.py:282](../../tools/c2_readout/c2_stage_base.py#L282) |  |
+| `n2_fit` | function | `n2_fit` | [tools/c2_readout/c2_code.py:218](../../tools/c2_readout/c2_code.py#L218) | FIT class means, Sigma_2w = Ledoit-Wolf of the class-centred states, W = Sigma^-1/2, |
+| `n2_gate` | function | `n2_gate` | [tools/c2_readout/c2_code.py:243](../../tools/c2_readout/c2_code.py#L243) | F = fraction of (row, arm) states beyond q99; PASS iff F_S and F_C <= max(1/20, F_D + |
+| `n_labels` | function | `n_labels` | [tools/hws/hws_worlds.py:158](../../tools/hws/hws_worlds.py#L158) |  |
+| `n_pre` | function | `n_pre` | [tests/hwsd/test_a_hwsd_ref.py:139](../../tests/hwsd/test_a_hwsd_ref.py#L139) |  |
+| `n_pre` | function | `n_pre` | [tools/hwsd/hwsd_statements.py:75](../../tools/hwsd/hwsd_statements.py#L75) |  |
+| `n_sequences` | method | `ObservationSet.n_sequences` | [src/topo_pilot/contracts/_schemas_data.py:45](../../src/topo_pilot/contracts/_schemas_data.py#L45) | Number of trajectories R. |
+| `n_states` | method | `WorldSpec.n_states` | [src/topo_pilot/contracts/_schemas_world.py:62](../../src/topo_pilot/contracts/_schemas_world.py#L62) | Number of states N. |
+| `n_test` | function | `n_test` | [tools/c2_readout/c2_stats.py:364](../../tools/c2_readout/c2_stats.py#L364) |  |
+| `NA` | class | `NA` | [tests/hwsb/test_a_outcomes.py:73](../../tests/hwsb/test_a_outcomes.py#L73) |  |
+| `naive_scores` | function | `naive_scores` | [tools/k4b/k4b_scores.py:78](../../tools/k4b/k4b_scores.py#L78) |  |
+| `named` | function | `named` | [tests/oracle_profile/test_oracle_profile_traps.py:65](../../tests/oracle_profile/test_oracle_profile_traps.py#L65) |  |
+| `named32` | function | `named32` | [tools/hwsb/hwsb_data.py:220](../../tools/hwsb/hwsb_data.py#L220) |  |
+| `named_from_canonical` | function | `named_from_canonical` | [tools/c1prime/c1_oracle.py:146](../../tools/c1prime/c1_oracle.py#L146) |  |
+| `named_from_canonical` | function | `named_from_canonical` | [tools/k4b/k4b_data.py:95](../../tools/k4b/k4b_data.py#L95) |  |
+| `named_tiny` | function | `named_tiny` | [tests/hwsb/test_b_streams.py:173](../../tests/hwsb/test_b_streams.py#L173) |  |
+| `names` | method | `Recorder.names` | [tests/c1prime/test_a_chart.py:124](../../tests/c1prime/test_a_chart.py#L124) |  |
+| `names` | function | `names` | [tests/c2_nd/test_b_registry.py:306](../../tests/c2_nd/test_b_registry.py#L306) |  |
+| `names` | function | `names` | [tests/k4b/test_b_registry.py:63](../../tests/k4b/test_b_registry.py#L63) |  |
+| `names` | function | `names` | [tests/k4b/test_b_registry_rules.py:50](../../tests/k4b/test_b_registry_rules.py#L50) |  |
+| `names_file` | function | `names_file` | [tests/k4b/test_b_store_reader.py:102](../../tests/k4b/test_b_store_reader.py#L102) |  |
+| `namespace_scan` | function | `namespace_scan` | [tools/c2_nd/nd_data.py:86](../../tools/c2_nd/nd_data.py#L86) | G0 (vi): every file of C2's scanned set whose bytes contain "c2nd-v1" must be pinned C2ND |
+| `namespace_scan` | function | `namespace_scan` | [tools/c2_readout/c2_data.py:245](../../tools/c2_readout/c2_data.py#L245) | G0 (vi): every file of the §4.4 file set whose bytes contain "c2-v1" must be pinned |
+| `natural` | function | `natural` | [tools/x6_stage0/x6_dp.py:184](../../tools/x6_stage0/x6_dp.py#L184) |  |
+| `natural_logits` | function | `natural_logits` | [tools/c1prime/c1_model.py:72](../../tools/c1prime/c1_model.py#L72) |  |
+| `natural_pairs` | function | `natural_pairs` | [tools/x6_stage1/x6s1_eval.py:315](../../tools/x6_stage1/x6s1_eval.py#L315) |  |
+| `natural_pass` | function | `natural_pass` | [tools/c2_readout/c2_model.py:85](../../tools/c2_readout/c2_model.py#L85) |  |
+| `natural_prefixes` | function | `natural_prefixes` | [tools/x6_stage1/x6s1_pairs.py:186](../../tools/x6_stage1/x6s1_pairs.py#L186) |  |
+| `nb_static` | function | `nb_static` | [tools/x6_stage1/x6s1_run.py:207](../../tools/x6_stage1/x6s1_run.py#L207) |  |
+| `nbrs` | function | `nbrs` | [tests/x6_stage0/test_x6_stage0.py:49](../../tests/x6_stage0/test_x6_stage0.py#L49) |  |
+| `nearest` | function | `nearest` | [tests/x6_stage1/test_a_numerics.py:64](../../tests/x6_stage1/test_a_numerics.py#L64) | f is the float64 nearest to the Decimal ref (both neighbours are no closer). |
+| `nearest_partners` | function | `nearest_partners` | [src/topo_pilot/analysis/horizon_pools.py:62](../../src/topo_pilot/analysis/horizon_pools.py#L62) | ``k`` nearest Hellinger-Q1 neighbours of each anchor inside one pool. |
+| `need` | function | `need` | [tests/hwsb/test_a_capture.py:52](../../tests/hwsb/test_a_capture.py#L52) |  |
+| `need` | function | `need` | [tests/hwsb/test_a_enclosure_proof.py:53](../../tests/hwsb/test_a_enclosure_proof.py#L53) |  |
+| `need` | function | `need` | [tests/hwsb/test_a_endpoints.py:45](../../tests/hwsb/test_a_endpoints.py#L45) |  |
+| `need` | function | `need` | [tests/hwsb/test_a_ladder.py:55](../../tests/hwsb/test_a_ladder.py#L55) |  |
+| `need` | function | `need` | [tests/hwsb/test_a_learning.py:47](../../tests/hwsb/test_a_learning.py#L47) |  |
+| `need` | function | `need` | [tests/hwsb/test_a_outcomes.py:59](../../tests/hwsb/test_a_outcomes.py#L59) |  |
+| `needle_in` | function | `needle_in` | [tools/hwsc/hwsc_known.py:38](../../tools/hwsc/hwsc_known.py#L38) |  |
+| `needles_d` | function | `needles_d` | [tools/hwsd/hwsd_known.py:70](../../tools/hwsd/hwsd_known.py#L70) |  |
+| `needs_owner` | function | `needs_owner` | [tools/k4b/k4b_release.py:226](../../tools/k4b/k4b_release.py#L226) | True iff an outcome-bearing quantity would change, or was computed at/after failure. |
+| `nested_ridge` | function | `nested_ridge` | [src/topo_pilot/experiment/x4f_probe.py:55](../../src/topo_pilot/experiment/x4f_probe.py#L55) | Leave-one-panel-out selection over calibration panels, refit, score once. |
+| `NestedResult` | class | `NestedResult` | [src/topo_pilot/experiment/x4f_probe.py:23](../../src/topo_pilot/experiment/x4f_probe.py#L23) | Selected ``lam``, outer-validation ``r2`` (None + status if undefined), validation |
+| `never_called` | function | `never_called` | [tools/hwsc/hwsc_bind.py:159](../../tools/hwsc/hwsc_bind.py#L159) |  |
+| `never_called` | function | `never_called` | [tools/hwsd/hwsd_bind.py:92](../../tools/hwsd/hwsd_bind.py#L92) |  |
+| `never_called_names` | function | `never_called_names` | [tests/hwsd/test_b_util.py:98](../../tests/hwsd/test_b_util.py#L98) |  |
+| `next_symbol_probs` | function | `next_symbol_probs` | [tools/d2a/d2a_eval.py:69](../../tools/d2a/d2a_eval.py#L69) |  |
+| `NGramBaseline` | class | `NGramBaseline` | [src/topo_pilot/prediction/ngram.py:21](../../src/topo_pilot/prediction/ngram.py#L21) | Order-1 (unigram) or order-2 (bigram) next-token model fitted on train tokens only. |
+| `nll` | method | `PredictiveMetrics.nll` | [src/topo_pilot/prediction/metrics.py:45](../../src/topo_pilot/prediction/metrics.py#L45) | Per-row ``-log probs[i, targets[i]]`` -> ``[M]`` (``inf`` if the probability is 0). |
+| `nm_events` | function | `nm_events` | [tests/c2_nd/test_a_family.py:181](../../tests/c2_nd/test_a_family.py#L181) |  |
+| `nm_expect` | function | `nm_expect` | [tests/c2_nd/test_a_family.py:124](../../tests/c2_nd/test_a_family.py#L124) |  |
+| `nm_got` | function | `nm_got` | [tests/c2_nd/test_a_family.py:140](../../tests/c2_nd/test_a_family.py#L140) |  |
+| `nm_guards` | function | `nm_guards` | [tools/c2_nd/nd_attrib.py:200](../../tools/c2_nd/nd_attrib.py#L200) |  |
+| `nm_model` | function | `nm_model` | [tools/c2_nd/nd_decide.py:104](../../tools/c2_nd/nd_decide.py#L104) | RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c). |
+| `nm_status` | function | `nm_status` | [tests/c2_nd/test_b_layer2.py:113](../../tests/c2_nd/test_b_layer2.py#L113) |  |
+| `nm_stream` | function | `nm_stream` | [tools/c2_nd/nd_attrib.py:98](../../tools/c2_nd/nd_attrib.py#L98) | The N-M family stream of one model (7 arrays): categories on A_C against A_F only. |
+| `no_chart_gates` | function | `no_chart_gates` | [tests/c1prime/test_a_chart_val.py:80](../../tests/c1prime/test_a_chart_val.py#L80) | chart.chart_gates must never be called (its support criterion is every-row). |
+| `no_value_check` | function | `no_value_check` | [tools/hwsd/hwsd_records.py:260](../../tools/hwsd/hwsd_records.py#L260) |  |
+| `NOC` | function | `NOC` | [tests/hwsd/test_a_hwsd_ref.py:57](../../tests/hwsd/test_a_hwsd_ref.py#L57) |  |
+| `noise_envelope` | method | `F1Decision.noise_envelope` | [src/topo_pilot/analysis/f1.py:85](../../src/topo_pilot/analysis/f1.py#L85) | Return u, the largest cell-wise quantile of pairwise panel differences. |
+| `noisy_circle` | function | `noisy_circle` | [tests/analysis/test_sensitivity_circular.py:225](../../tests/analysis/test_sensitivity_circular.py#L225) |  |
+| `noisy_circle` | function | `noisy_circle` | [tests/topology/test_persistence.py:31](../../tests/topology/test_persistence.py#L31) |  |
+| `norm` | function | `norm` | [tests/hwsc/test_a_k4b_known_bound.py:143](../../tests/hwsc/test_a_k4b_known_bound.py#L143) |  |
+| `norm` | function | `norm` | [tests/hwsd/test_b_util.py:48](../../tests/hwsd/test_b_util.py#L48) |  |
+| `norm` | function | `norm` | [tools/code_index/pathval.py:17](../../tools/code_index/pathval.py#L17) |  |
+| `norm_bound` | function | `norm_bound` | [tools/k4b/k4b_cert.py:63](../../tools/k4b/k4b_cert.py#L63) | Lemma N: B_N = max(\|n - k/D\|, \|n - (k+1)/D\|) + (3/2)(eps_K + eps32). |
+| `normal95` | function | `normal95` | [tools/hws/hws_stats.py:68](../../tools/hws/hws_stats.py#L68) |  |
+| `normalise` | function | `normalise` | [tests/k4b/test_a_lemma_t.py:50](../../tests/k4b/test_a_lemma_t.py#L50) |  |
+| `normalise_rows` | function | `normalise_rows` | [src/topo_pilot/oracle/_common.py:70](../../src/topo_pilot/oracle/_common.py#L70) | Divide rows by their sums; return ``(rows, sums)``. |
+| `normalise_source` | function | `normalise_source` | [tools/x6_stage1/x6s1_cloud.py:390](../../tools/x6_stage1/x6s1_cloud.py#L390) |  |
+| `not_a_cocycle` | function | `not_a_cocycle` | [tests/c1prime/test_a_chart_exceptions.py:63](../../tests/c1prime/test_a_chart_exceptions.py#L63) | Triangle (0,1,2) with a = (1, 0, 0) on edges (01, 02, 12): D1 a = 1, not 0 mod 47. |
+| `not_licensed` | function | `not_licensed` | [tools/x6zc/x6zc_decide.py:156](../../tools/x6zc/x6zc_decide.py#L156) |  |
+| `not_recovered` | function | `not_recovered` | [tests/d2a/test_b_rules_decide.py:74](../../tests/d2a/test_b_rules_decide.py#L74) |  |
+| `not_recovered` | function | `not_recovered` | [tests/d2a/test_b_rules_qualifiers.py:76](../../tests/d2a/test_b_rules_qualifiers.py#L76) |  |
+| `note` | function | `note` | [tests/k4b/test_b_registry_rules.py:83](../../tests/k4b/test_b_registry_rules.py#L83) |  |
+| `notebook_sha_ok` | function | `notebook_sha_ok` | [tools/x6_stage1/x6s1_run.py:112](../../tools/x6_stage1/x6s1_run.py#L112) |  |
+| `notebook_source` | function | `notebook_source` | [tools/code_index/pyinfo.py:13](../../tools/code_index/pyinfo.py#L13) | Concatenate code cells (magics blanked) of a notebook; best effort. |
+| `NotebookExporter` | class | `NotebookExporter` | [src/topo_pilot/executors/notebook.py:38](../../src/topo_pilot/executors/notebook.py#L38) | Writes a minimal nbformat-4 notebook: unpack, install the lock, run and pack. |
+| `npz` | function | `npz` | [tools/c2_nd/nd_stage_base.py:107](../../tools/c2_nd/nd_stage_base.py#L107) |  |
+| `npz` | function | `npz` | [tools/c2_readout/c2_stage_base.py:61](../../tools/c2_readout/c2_stage_base.py#L61) |  |
+| `nr_events` | function | `nr_events` | [tests/c2_nd/test_a_family.py:149](../../tests/c2_nd/test_a_family.py#L149) |  |
+| `nr_expect` | function | `nr_expect` | [tests/c2_nd/test_a_family.py:77](../../tests/c2_nd/test_a_family.py#L77) |  |
+| `nr_guards` | function | `nr_guards` | [tools/c2_nd/nd_attrib.py:171](../../tools/c2_nd/nd_attrib.py#L171) | N-R guards: beta_A (coefficient 1, delta_P of the frozen C2 projector) on every |
+| `nr_model` | function | `nr_model` | [tools/c2_nd/nd_decide.py:53](../../tools/c2_nd/nd_decide.py#L53) | RESP, SPEC, category, coarse, rule-6 (a), nested, NEGATIVE_COMPLEMENT (§20 A-6). |
+| `nr_quantities` | function | `nr_quantities` | [tools/c2_nd/nd_attrib.py:50](../../tools/c2_nd/nd_attrib.py#L50) | A_full, A_S, A_comp = A_full - A_S (by subtraction), e_full, e_S, e_comp and the cross |
+| `nr_stream` | function | `nr_stream` | [tools/c2_nd/nd_attrib.py:68](../../tools/c2_nd/nd_attrib.py#L68) | The N-R family stream of one model (§4.2): 10 arrays plus 2 per variant (16 with three); |
+| `nr_variant_category` | function | `nr_variant_category` | [tools/c2_nd/nd_decide.py:73](../../tools/c2_nd/nd_decide.py#L73) | The variant category on v:Zc010, v:Zc050 (c2_decide.variant_category pattern). |
+| `nu_S` | function | `nu_S` | [tools/c2_readout/c2_attrib.py:115](../../tools/c2_readout/c2_attrib.py#L115) |  |
+| `nuisance` | function | `nuisance` | [tools/c1prime/c1_oracle.py:176](../../tools/c1prime/c1_oracle.py#L176) |  |
+| `nuisance5` | function | `nuisance5` | [tools/c2_readout/c2_oracle.py:137](../../tools/c2_readout/c2_oracle.py#L137) | (y-bar, Var y, \|m32\|) of c1_oracle.nuisance, the entropy (nats, 0 log 0 = 0) and the |
+| `null` | method | `SpaceBuilder.null` | [src/topo_pilot/analysis/spaces.py:124](../../src/topo_pilot/analysis/spaces.py#L124) | Gaussian null cloud with the same M and feature dimension as ``like`` (Euclidean). |
+| `null_basis` | function | `null_basis` | [tools/c2_nd/nd_decoy.py:91](../../tools/c2_nd/nd_decoy.py#L91) | An orthonormal basis of ker(M): right singular vectors with sv <= 1e-12 sigma_max. |
+| `null_projector` | function | `null_projector` | [tools/c2_readout/c2_attrib.py:96](../../tools/c2_readout/c2_attrib.py#L96) | J = I - V_r V_r', V_r the right singular vectors of C M at its matrix_rank (C-28). |
+| `null_recheck` | function | `null_recheck` | [tools/hws/hws_driver.py:159](../../tools/hws/hws_driver.py#L159) | §5.3 item 5: one fresh NULLCHK look; halt only if the same null exceeds again. |
+| `null_z` | function | `null_z` | [tools/hws/hws_stats.py:76](../../tools/hws/hws_stats.py#L76) |  |
+| `NullClouds` | class | `NullClouds` | [src/topo_pilot/topology/shapes.py:20](../../src/topo_pilot/topology/shapes.py#L20) | Gaussian null clouds for the noise floor (RESEARCH_SUMMARY 7.3). Shapes: ``[M, F]``. |
+| `nullity` | function | `nullity` | [tools/c2_nd/nd_decoy.py:199](../../tools/c2_nd/nd_decoy.py#L199) | {"null_<kind>": \|\|C M' B\|\|_max / (\|\|C M'\|\|_max \|\|B\|\|_max)} (C centres the outputs). |
+| `num` | function | `num` | [tools/c1prime/c1_driver_fresh.py:126](../../tools/c1prime/c1_driver_fresh.py#L126) |  |
+| `num` | function | `num` | [tools/c2_nd/nd_stage_post.py:193](../../tools/c2_nd/nd_stage_post.py#L193) | Form the admitted models' endpoint arrays; record every bound inside its guard. |
+| `num` | function | `num` | [tools/c2_readout/c2_stage_post.py:189](../../tools/c2_readout/c2_stage_post.py#L189) | Form the admitted models' endpoint arrays (policy: test_endpoint) and record every |
+| `num` | function | `num` | [tools/hws/hws_records.py:104](../../tools/hws/hws_records.py#L104) | JSON-safe copy: numpy scalars to Python, Fractions to strings, keys to str. |
+| `numbers` | function | `numbers` | [tests/k4b/test_a_ranks_ladder.py:51](../../tests/k4b/test_a_ranks_ladder.py#L51) |  |
+| `numerical_identity` | function | `numerical_identity` | [tools/c1prime/c1_freeze.py:105](../../tools/c1prime/c1_freeze.py#L105) |  |
+| `numerical_identity` | function | `numerical_identity` | [tools/x4_circle_history/freeze_bind.py:94](../../tools/x4_circle_history/freeze_bind.py#L94) | env_identity.record() from a fresh venv probe process (metered with this run). |
+| `numerical_rank` | function | `numerical_rank` | [tests/analysis/test_x4f_erasure.py:46](../../tests/analysis/test_x4f_erasure.py#L46) |  |
+| `numerical_rank` | function | `numerical_rank` | [tests/analysis/test_x4f_erasure_family.py:44](../../tests/analysis/test_x4f_erasure_family.py#L44) |  |
+| `o1` | function | `o1` | [tools/x6_stage0/x6_exact.py:373](../../tools/x6_stage0/x6_exact.py#L373) |  |
+| `o2` | function | `o2` | [tools/x6_stage0/x6_exact.py:386](../../tools/x6_stage0/x6_exact.py#L386) |  |
+| `o2_combine` | function | `o2_combine` | [tools/x6_stage0/x6_exact.py:384](../../tools/x6_stage0/x6_exact.py#L384) |  |
+| `obj` | function | `obj` | [tests/circle_history/test_reference_cache.py:79](../../tests/circle_history/test_reference_cache.py#L79) |  |
+| `obligation` | function | `obligation` | [tools/hwsc/hwsc_registry_build.py:156](../../tools/hwsc/hwsc_registry_build.py#L156) |  |
+| `obligation_check` | function | `obligation_check` | [tools/hwsd/hwsd_readers.py:226](../../tools/hwsd/hwsd_readers.py#L226) |  |
+| `obligation_files` | function | `obligation_files` | [tools/hwsd/hwsd_data.py:247](../../tools/hwsd/hwsd_data.py#L247) |  |
+| `obs_inventory` | function | `obs_inventory` | [tools/hwsc/hwsc_driver.py:139](../../tools/hwsc/hwsc_driver.py#L139) |  |
+| `observability_matrices` | method | `FutureOperator.observability_matrices` | [src/topo_pilot/oracle/_futures.py:62](../../src/topo_pilot/oracle/_futures.py#L62) | ``[O_1, ..., O_{k_max}]``; ``O_k`` has rows = strings of length ``<= k``, cols = N. |
+| `observability_singular_values` | method | `FutureOperator.observability_singular_values` | [src/topo_pilot/oracle/_futures.py:75](../../src/topo_pilot/oracle/_futures.py#L75) | Singular values of ``O_k`` (descending, unthresholded) for ``k = 1..k_max``. |
+| `observation_set` | function | `observation_set` | [tools/x6_stage1/x6s1_data.py:227](../../tools/x6_stage1/x6s1_data.py#L227) |  |
+| `observation_set_sources` | function | `observation_set_sources` | [tools/c1prime_registry/c1_registry_sources.py:59](../../tools/c1prime_registry/c1_registry_sources.py#L59) | Source (a): every ObservationSet, canonicalised with its own EmissionSpec perm. |
+| `ObservationSet` | class | `ObservationSet` | [src/topo_pilot/contracts/_schemas_data.py:25](../../src/topo_pilot/contracts/_schemas_data.py#L25) | Public token data for one split. |
+| `oc_of` | function | `oc_of` | [tests/hwsc/test_a_outcomes.py:212](../../tests/hwsc/test_a_outcomes.py#L212) |  |
+| `ok` | method | `Decoder.ok` | [tools/c2_readout/c2_stats.py:227](../../tools/c2_readout/c2_stats.py#L227) |  |
+| `ok` | function | `ok` | [tests/hwsd/test_a_hwsd_ref.py:91](../../tests/hwsd/test_a_hwsd_ref.py#L91) |  |
+| `ok` | function | `ok` | [tools/hwsd/hwsd_statements.py:20](../../tools/hwsd/hwsd_statements.py#L20) |  |
+| `on_test_split` | function | `on_test_split` | [src/topo_pilot/experiment/s3.py:87](../../src/topo_pilot/experiment/s3.py#L87) | True if the ActivationSet was extracted from test histories (S7 also extracts dev |
+| `one` | function | `one` | [tests/k4b/test_b_endpoint.py:117](../../tests/k4b/test_b_endpoint.py#L117) |  |
+| `one_hot_suffix` | function | `one_hot_suffix` | [tools/k4b/k4b_decoder.py:25](../../tools/k4b/k4b_decoder.py#L25) |  |
+| `one_skeleton` | method | `CubicalComplex.one_skeleton` | [src/topo_pilot/world/complex.py:200](../../src/topo_pilot/world/complex.py#L200) | ``int32[E, 2]`` edges, canonical ``(lo, hi)``, unique, lexicographically sorted. |
+| `only_mismatch` | function | `only_mismatch` | [tests/k4b/test_b_h1_meta.py:77](../../tests/k4b/test_b_h1_meta.py#L77) |  |
+| `onset_order_line` | function | `onset_order_line` | [tools/hwsd/hwsd_statements.py:231](../../tools/hwsd/hwsd_statements.py#L231) |  |
+| `onsets` | function | `onsets` | [tests/hwsd/test_a_hwsd_ref.py:119](../../tests/hwsd/test_a_hwsd_ref.py#L119) |  |
+| `onsets` | function | `onsets` | [tools/hwsd/hwsd_statements.py:53](../../tools/hwsd/hwsd_statements.py#L53) |  |
+| `open_ledgers` | function | `open_ledgers` | [tools/k4b/k4b_charts.py:43](../../tools/k4b/k4b_charts.py#L43) |  |
+| `open_reg` | function | `open_reg` | [tools/x6_stage1/x6s1_registry.py:394](../../tools/x6_stage1/x6s1_registry.py#L394) | Reopens X6-REG1/X6-REG2 from its manifest; every run file is re-hashed. |
+| `open_store` | function | `open_store` | [src/topo_pilot/experiment/cli.py:34](../../src/topo_pilot/experiment/cli.py#L34) | The local artifact store at ``cfg.artifact_root`` (created on first write). |
+| `open_store` | function | `open_store` | [tools/d2a/d2a_world.py:180](../../tools/d2a/d2a_world.py#L180) |  |
+| `opened_under` | method | `OpenSpy.opened_under` | [tests/hwsd/test_b_util.py:94](../../tests/hwsd/test_b_util.py#L94) |  |
+| `OpenSpy` | class | `OpenSpy` | [tests/hwsd/test_b_util.py:71](../../tests/hwsd/test_b_util.py#L71) | Records every path opened through open/io.open/os.open/pathlib (Python 3.10). |
+| `optional_array_field` | function | `optional_array_field` | [src/topo_pilot/contracts/base.py:165](../../src/topo_pilot/contracts/base.py#L165) | An optional array field defaulting to ``None``. |
+| `oracle` | method | `Spy.oracle` | [tests/hwsc/test_a_learning.py:90](../../tests/hwsc/test_a_learning.py#L90) |  |
+| `oracle` | function | `oracle` | [tools/x6zc/x6zc_core.py:282](../../tools/x6zc/x6zc_core.py#L282) |  |
+| `oracle_at` | function | `oracle_at` | [tools/d2a/d2a_targets.py:101](../../tools/d2a/d2a_targets.py#L101) |  |
+| `oracle_d` | function | `oracle_d` | [tools/hwsd/hwsd_data.py:108](../../tools/hwsd/hwsd_data.py#L108) |  |
+| `oracle_done` | function | `oracle_done` | [tests/c1prime/test_a_gates.py:150](../../tests/c1prime/test_a_gates.py#L150) |  |
+| `oracle_feas` | function | `oracle_feas` | [tools/c2_nd/nd_stage_pre.py:131](../../tools/c2_nd/nd_stage_pre.py#L131) | (i) the oracle's own log-predictive gives G per DVAL row under each model's symbol |
+| `oracle_fits` | function | `oracle_fits` | [tools/d2a/d2a_eval.py:337](../../tools/d2a/d2a_eval.py#L337) | window8 (one-hot w_{t-7..t}) and the oracle ceilings on test; positive control on val. |
+| `oracle_fixture` | function | `oracle_fixture` | [tests/c2_nd/test_b_layer2.py:240](../../tests/c2_nd/test_b_layer2.py#L240) |  |
+| `oracle_geometry` | function | `oracle_geometry` | [tools/x6zc/x6zc_core.py:152](../../tools/x6zc/x6zc_core.py#L152) |  |
+| `oracle_identity` | function | `oracle_identity` | [tools/c2_nd/nd_attrib.py:235](../../tools/c2_nd/nd_attrib.py#L235) | A_full with the oracle's own log-predictive equals G per row within 1e-12 max(1, \|G\|). |
+| `oracle_moments` | function | `oracle_moments` | [tools/k4b/k4b_scores.py:20](../../tools/k4b/k4b_scores.py#L20) |  |
+| `oracle_moments` | function | `oracle_moments` | [tools/x4_circle_history/scores.py:56](../../tools/x4_circle_history/scores.py#L56) | {1, 4, 32: [n, 2]} first-harmonic suffix means via the unchanged job-0014 kernel. |
+| `oracle_phase` | function | `oracle_phase` | [tools/k4b/k4b_scores.py:45](../../tools/k4b/k4b_scores.py#L45) |  |
+| `oracle_predictives` | function | `oracle_predictives` | [tools/hwsb/hwsb_eval.py:75](../../tools/hwsb/hwsb_eval.py#L75) |  |
+| `oracle_q32` | function | `oracle_q32` | [src/topo_pilot/experiment/x5g1t_oracle.py:16](../../src/topo_pilot/experiment/x5g1t_oracle.py#L16) | ``BayesFilter(T, E, pi).run(tokens[:, :32]).q[:, 32]`` in batches; ``[R, V]`` float64. |
+| `oracle_role` | function | `oracle_role` | [tools/c2_readout/c2_oracle.py:87](../../tools/c2_readout/c2_oracle.py#L87) | c1_oracle.run_oracle plus q-bar; "m32" only when coords is given (API.md §19.1 E-5). |
+| `oracle_rows` | function | `oracle_rows` | [tools/d2a/d2a_targets.py:85](../../tools/d2a/d2a_targets.py#L85) | Oracle quantities at one position per row (``positions [R]``, 0 = no row), in row order. |
+| `oracle_split` | function | `oracle_split` | [tools/c1prime/c1_driver.py:167](../../tools/c1prime/c1_driver.py#L167) |  |
+| `oracle_split` | function | `oracle_split` | [tools/c2_readout/c2_oracle.py:113](../../tools/c2_readout/c2_oracle.py#L113) | The four roles (H from the H2 cache o_H when given; H^Y by the exact oracle forward on |
+| `oracle_splits` | function | `oracle_splits` | [tools/c2_readout/c2_stage_pre.py:81](../../tools/c2_readout/c2_stage_pre.py#L81) | The four-role oracle of each split from the H2 / H2' cache (H^Y on Y_def rows only), |
+| `oracle_val` | function | `oracle_val` | [tools/k4b/k4b_driver.py:243](../../tools/k4b/k4b_driver.py#L243) |  |
+| `OracleOutputs` | class | `OracleOutputs` | [src/topo_pilot/contracts/_schemas_data.py:143](../../src/topo_pilot/contracts/_schemas_data.py#L143) | Exact-filter quantities per history (rows aligned with ``history_id``, float64 unless noted). |
+| `OraclePredictor` | class | `OraclePredictor` | [tools/x6_stage1/x6s1_eval.py:129](../../tools/x6_stage1/x6s1_eval.py#L129) |  |
+| `OracleStage` | class | `OracleStage` | [src/topo_pilot/oracle/stage.py:56](../../src/topo_pilot/oracle/stage.py#L56) | Compute exact-oracle panels and process diagnostics from public artifacts only. |
+| `orc` | function | `orc` | [tools/c2_nd/nd_stage_base.py:311](../../tools/c2_nd/nd_stage_base.py#L311) |  |
+| `orc` | function | `orc` | [tools/c2_readout/c2_stage_base.py:92](../../tools/c2_readout/c2_stage_base.py#L92) |  |
+| `ord_d` | function | `ord_d` | [tools/x6_stage1/x6s1_decide.py:107](../../tools/x6_stage1/x6s1_decide.py#L107) |  |
+| `ord_rows` | function | `ord_rows` | [tests/x6_stage1/test_a_pairs.py:140](../../tests/x6_stage1/test_a_pairs.py#L140) |  |
+| `ordd` | function | `ordd` | [tests/x6_stage1/test_a_rules.py:97](../../tests/x6_stage1/test_a_rules.py#L97) |  |
+| `order` | function | `order` | [tests/hwsd/test_a_hwsd_ref.py:149](../../tests/hwsd/test_a_hwsd_ref.py#L149) |  |
+| `order` | function | `order` | [tools/hwsd/hwsd_statements.py:88](../../tools/hwsd/hwsd_statements.py#L88) |  |
+| `ordered_half_dot` | function | `ordered_half_dot` | [tests/c1prime/test_a_oracle_named.py:76](../../tests/c1prime/test_a_oracle_named.py#L76) | 0.5 * osum_v fl(d_v * x_v), left to right in column order (protocol C3/C4). |
+| `os_digests` | function | `os_digests` | [tools/hwsd/hwsd_readers.py:69](../../tools/hwsd/hwsd_readers.py#L69) |  |
+| `os_payloads` | function | `os_payloads` | [tests/hwsd/test_b_util.py:137](../../tests/hwsd/test_b_util.py#L137) |  |
+| `os_store` | function | `os_store` | [tests/k4b/test_b_registry_rules.py:235](../../tests/k4b/test_b_registry_rules.py#L235) |  |
+| `ostore` | function | `ostore` | [tools/x6_stage1/x6s1_stage_pre.py:64](../../tools/x6_stage1/x6s1_stage_pre.py#L64) |  |
+| `osum` | function | `osum` | [tools/c1prime/c1_cert.py:48](../../tools/c1prime/c1_cert.py#L48) |  |
+| `OUT` | function | `OUT` | [tools/c1prime/c1_cert.py:44](../../tools/c1prime/c1_cert.py#L44) |  |
+| `outcome` | function | `outcome` | [tests/k4b/test_b_charts.py:35](../../tests/k4b/test_b_charts.py#L35) |  |
+| `outcome` | function | `outcome` | [tests/k4b/test_b_registry.py:47](../../tests/k4b/test_b_registry.py#L47) | (status, result): a refusal raised as C1GateFailure or a returned status dict. |
+| `outcome` | function | `outcome` | [tests/k4b/test_b_rerun.py:37](../../tests/k4b/test_b_rerun.py#L37) |  |
+| `outcome` | function | `outcome` | [tools/hws/hws_select.py:192](../../tools/hws/hws_select.py#L192) | §7.1 precedence (RC-1, RC-7, R-HWS-1; choice 35; erratum E6). |
+| `outcome` | function | `outcome` | [tools/hwsb/hwsb_gates.py:292](../../tools/hwsb/hwsb_gates.py#L292) |  |
+| `outcome` | function | `outcome` | [tools/hwsc/hwsc_outcome.py:63](../../tools/hwsc/hwsc_outcome.py#L63) |  |
+| `outcome_d` | function | `outcome_d` | [tools/hwsd/hwsd_summary.py:156](../../tools/hwsd/hwsd_summary.py#L156) |  |
+| `outcome_path` | function | `outcome_path` | [src/topo_pilot/experiment/x5g1t_runtime.py:160](../../src/topo_pilot/experiment/x5g1t_runtime.py#L160) |  |
+| `output_bytes` | function | `output_bytes` | [tools/x4_oracle_profile/meter.py:69](../../tools/x4_oracle_profile/meter.py#L69) |  |
+| `OutputExists` | class | `OutputExists` | [src/topo_pilot/experiment/x5g1_safety.py:18](../../src/topo_pilot/experiment/x5g1_safety.py#L18) | A completed output version already exists; it is never overwritten. |
+| `outs` | function | `outs` | [tests/x6zc/test_x6zc_decide.py:68](../../tests/x6zc/test_x6zc_decide.py#L68) |  |
+| `outward_inputs` | function | `outward_inputs` | [tools/x6_stage1/x6s1_stats.py:68](../../tools/x6_stage1/x6s1_stats.py#L68) |  |
+| `overall` | function | `overall` | [tests/circle_history/test_chart_extension.py:313](../../tests/circle_history/test_chart_extension.py#L313) |  |
+| `overall` | function | `overall` | [tools/c1prime/c1_endpoint.py:72](../../tools/c1prime/c1_endpoint.py#L72) |  |
+| `overall` | function | `overall` | [tools/c2_nd/nd_decide.py:190](../../tools/c2_nd/nd_decide.py#L190) | §4.3 / C2 §6.5 (fatal, D: KNOWN_CASE_CONTRADICTED, CNHS, exclusions, categories). |
+| `overall` | function | `overall` | [tools/c2_readout/c2_decide.py:182](../../tools/c2_readout/c2_decide.py#L182) | §6.5: study failure; >= 2 CNHS; fewer than 2 valid models -> INCONCLUSIVE/<the reason of |
+| `overall` | function | `overall` | [tools/k4b/k4b_stats.py:79](../../tools/k4b/k4b_stats.py#L79) |  |
+| `overall_resultant` | function | `overall_resultant` | [tools/x4_circle_history/chart.py:243](../../tools/x4_circle_history/chart.py#L243) |  |
+| `overall_verdict` | function | `overall_verdict` | [src/topo_pilot/analysis/horizon_pools.py:180](../../src/topo_pilot/analysis/horizon_pools.py#L180) | ``(GO \| NO-GO \| INCONCLUSIVE, reason)`` per protocol x4b-v1 section 7. |
+| `overdue` | function | `overdue` | [tools/x4_circle_history/op_guard.py:74](../../tools/x4_circle_history/op_guard.py#L74) | Kill reason if the marker shows an active operation past its deadline, else None. |
+| `overdue_marker` | function | `overdue_marker` | [tests/k4b/test_b_meter.py:178](../../tests/k4b/test_b_meter.py#L178) |  |
+| `overlap_check` | function | `overlap_check` | [tools/hwsd/hwsd_known.py:80](../../tools/hwsd/hwsd_known.py#L80) |  |
+| `overlap_E` | function | `overlap_E` | [tools/theory_exact/theory_exact3.py:68](../../tools/theory_exact/theory_exact3.py#L68) |  |
+| `OverlapGaussian` | class | `OverlapGaussian` | [src/topo_pilot/process/emission.py:130](../../src/topo_pilot/process/emission.py#L130) | O: ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)``, no truncation, symbols renamed. |
+| `own` | function | `own` | [tests/hwsc/test_b_registry.py:363](../../tests/hwsc/test_b_registry.py#L363) |  |
+| `own_arm` | function | `own_arm` | [tools/x6_stage1/x6s1_eval.py:331](../../tools/x6_stage1/x6s1_eval.py#L331) | Blocks of EVAL_ROWS rows. p: the readout of `tokens` if already computed; keep: row indices |
+| `own_cpu_s` | function | `own_cpu_s` | [tools/x4_oracle_profile/winjob.py:114](../../tools/x4_oracle_profile/winjob.py#L114) |  |
+| `own_draws` | function | `own_draws` | [tests/hwsd/test_a_bounds.py:35](../../tests/hwsd/test_a_bounds.py#L35) | Independent stream: one PCG64(seed); per draw one integers(0, n, size=n) for all arrays. |
+| `own_pairs` | function | `own_pairs` | [tools/x6_stage1/x6s1_eval.py:350](../../tools/x6_stage1/x6s1_eval.py#L350) | §2.8 abelian own-process spread (R-0082-2): per own-process R_ord(t) pair, the within- |
+| `own_records` | function | `own_records` | [tools/c2_nd/nd_data.py:162](../../tools/c2_nd/nd_data.py#L162) |  |
+| `own_records` | function | `own_records` | [tools/c2_readout/c2_data.py:311](../../tools/c2_readout/c2_data.py#L311) | G0 (vii), R-0107-2 (D-0107-1): {name: sha256} for GATES.jsonl and STAGES.jsonl, each an |
+| `p0` | function | `p0` | [tools/c1prime/c1_cert.py:92](../../tools/c1prime/c1_cert.py#L92) | P0 in exact rationals (§15.3.3); not ok -> FAIL_TECHNICAL/IDENTITY. |
+| `p1` | function | `p1` | [tools/c1prime/c1_cert.py:118](../../tools/c1prime/c1_cert.py#L118) |  |
+| `p1` | function | `p1` | [tools/c2_nd/nd_stage_val.py:305](../../tools/c2_nd/nd_stage_val.py#L305) |  |
+| `p1` | function | `p1` | [tools/c2_readout/c2_stage_val.py:332](../../tools/c2_readout/c2_stage_val.py#L332) | §6.7 per family; the VAL endpoint bundle is sealed here (§5.7, C-22); P1.json. |
+| `p1` | function | `p1` | [tools/c2_readout/c2_stats.py:326](../../tools/c2_readout/c2_stats.py#L326) | N_F = the smallest N at which every model passes every gated array; else the smallest N |
+| `p1` | function | `p1` | [tools/k4b/k4b_driver.py:346](../../tools/k4b/k4b_driver.py#L346) |  |
+| `p1_equivalence` | function | `p1_equivalence` | [tools/c2_nd/nd_stage_val.py:274](../../tools/c2_nd/nd_stage_val.py#L274) | R-0116-2: the direct kernel path with C2's seeds reproduces c2_stats._summaries. |
+| `p1_nd` | function | `p1_nd` | [tools/c2_nd/nd_stage_val.py:239](../../tools/c2_nd/nd_stage_val.py#L239) | §4.5: N_F = the smallest N at which every model passes every gated array, else the |
+| `p1c` | function | `p1c` | [tools/hwsc/hwsc_gates.py:189](../../tools/hwsc/hwsc_gates.py#L189) |  |
+| `p1c_ladder` | function | `p1c_ladder` | [tools/hwsc/hwsc_gates.py:174](../../tools/hwsc/hwsc_gates.py#L174) |  |
+| `p2_leaves` | function | `p2_leaves` | [tools/c1prime/c1_cert.py:186](../../tools/c1prime/c1_cert.py#L186) |  |
+| `p2_ok` | function | `p2_ok` | [tools/k4b/k4b_cert.py:109](../../tools/k4b/k4b_cert.py#L109) |  |
+| `p32_log_probs` | function | `p32_log_probs` | [src/topo_pilot/experiment/x5g1t_score.py:22](../../src/topo_pilot/experiment/x5g1t_score.py#L22) | ``log softmax(logits[:, 32, :])`` in float64, ``[R, V]``, computed ``batch`` rows at a time. |
+| `p3_label` | function | `p3_label` | [tools/x2a_stage0/x2a_mc.py:74](../../tools/x2a_stage0/x2a_mc.py#L74) |  |
+| `p4_label` | function | `p4_label` | [tools/x2a_stage0/x2a_mc.py:78](../../tools/x2a_stage0/x2a_mc.py#L78) |  |
+| `p4_rows` | function | `p4_rows` | [tools/hws/hws_oracle.py:154](../../tools/hws/hws_oracle.py#L154) |  |
+| `p_d2a` | function | `p_d2a` | [tools/hws/hws_exact.py:52](../../tools/hws/hws_exact.py#L52) |  |
+| `p_d2a_check` | function | `p_d2a_check` | [tools/hwsc/hwsc_data.py:236](../../tools/hwsc/hwsc_data.py#L236) |  |
+| `p_f` | method | `World.p_f` | [tools/hws/hws_worlds.py:92](../../tools/hws/hws_worlds.py#L92) |  |
+| `package_graph` | function | `package_graph` | [tools/code_index/render_deps.py:17](../../tools/code_index/render_deps.py#L17) |  |
+| `package_of` | function | `package_of` | [tools/code_index/render_deps.py:10](../../tools/code_index/render_deps.py#L10) |  |
+| `package_statement` | function | `package_statement` | [tools/c2_nd/nd_decide.py:387](../../tools/c2_nd/nd_decide.py#L387) | §7.5, only if C2-R USED, N-R CODE_DOMINANT (or NECESSARY) and D DECOY_NOT_USED. |
+| `pad` | function | `pad` | [tools/d2a/d2a_world.py:134](../../tools/d2a/d2a_world.py#L134) |  |
+| `pad` | function | `pad` | [tools/x6_stage1/x6s1_eval.py:50](../../tools/x6_stage1/x6s1_eval.py#L50) |  |
+| `page_path` | function | `page_path` | [tools/code_index/render_pages.py:17](../../tools/code_index/render_pages.py#L17) |  |
+| `pair` | function | `pair` | [tools/c2_readout/c2_attrib.py:87](../../tools/c2_readout/c2_attrib.py#L87) | The partition, energies and r of one arm pair under one projector problem. |
+| `pair_arrays` | function | `pair_arrays` | [tools/x6zc/x6zc_core.py:288](../../tools/x6zc/x6zc_core.py#L288) |  |
+| `pair_d2` | function | `pair_d2` | [src/topo_pilot/analysis/horizon_pools.py:124](../../src/topo_pilot/analysis/horizon_pools.py#L124) | ``H(Q2_a, Q2_partner)`` for every anchor/partner slot (NaN where there is no partner). |
+| `pair_dirs` | method | `Resolver.pair_dirs` | [tools/code_index/resolve.py:52](../../tools/code_index/resolve.py#L52) |  |
+| `pair_evidence` | function | `pair_evidence` | [src/topo_pilot/analysis/x5_endpoint.py:153](../../src/topo_pilot/analysis/x5_endpoint.py#L153) | Point events from the full-sample curves; quantiles from the paired bootstrap. |
+| `pair_flags` | function | `pair_flags` | [src/topo_pilot/analysis/x5_endpoint.py:164](../../src/topo_pilot/analysis/x5_endpoint.py#L164) | ``(supported, rejected)`` for one pair (protocol §6). |
+| `pair_law` | function | `pair_law` | [tools/x2a_stage0/x2a_model.py:171](../../tools/x2a_stage0/x2a_model.py#L171) |  |
+| `pair_scores` | function | `pair_scores` | [tools/d2a/d2a_eval.py:137](../../tools/d2a/d2a_eval.py#L137) |  |
+| `pair_stats` | function | `pair_stats` | [tools/x6zc/x6zc_core.py:299](../../tools/x6zc/x6zc_core.py#L299) |  |
+| `pair_terms` | function | `pair_terms` | [tools/x6_stage1/x6s1_eval.py:214](../../tools/x6_stage1/x6s1_eval.py#L214) |  |
+| `paired_bootstrap_endpoint` | function | `paired_bootstrap_endpoint` | [src/topo_pilot/analysis/x5_endpoint.py:125](../../src/topo_pilot/analysis/x5_endpoint.py#L125) | One shared ``rng.integers(0, R, size=R)`` per draw, applied to whole rows of both arms. |
+| `paired_cluster_boot` | function | `paired_cluster_boot` | [tools/x6zc/x6zc_decide.py:27](../../tools/x6zc/x6zc_decide.py#L27) |  |
+| `paired_generators` | function | `paired_generators` | [src/topo_pilot/experiment/x5g1_lineage.py:29](../../src/topo_pilot/experiment/x5g1_lineage.py#L29) | Two separately created generators with the identical frozen seed (common randomness). |
+| `paired_generators` | function | `paired_generators` | [src/topo_pilot/experiment/x5g1t_lineage.py:44](../../src/topo_pilot/experiment/x5g1t_lineage.py#L44) | Two separately created generators with the same frozen seed (common randomness). |
+| `PairEvidence` | class | `PairEvidence` | [src/topo_pilot/analysis/x5_endpoint.py:57](../../src/topo_pilot/analysis/x5_endpoint.py#L57) |  |
+| `pairwise` | method | `Chord.pairwise` | [src/topo_pilot/topology/metrics.py:84](../../src/topo_pilot/topology/metrics.py#L84) |  |
+| `pairwise` | method | `DistanceMetric.pairwise` | [src/topo_pilot/topology/metrics.py:65](../../src/topo_pilot/topology/metrics.py#L65) | Return the [M, M] distance matrix of the rows of ``X``. |
+| `pairwise` | method | `Euclidean.pairwise` | [src/topo_pilot/topology/metrics.py:74](../../src/topo_pilot/topology/metrics.py#L74) |  |
 | `pairwise` | method | `FlatQuotientMetric.pairwise` | [src/topo_pilot/world/metrics.py:89](../../src/topo_pilot/world/metrics.py#L89) |  |
 | `pairwise` | method | `GraphGeodesicMetric.pairwise` | [src/topo_pilot/world/metrics.py:116](../../src/topo_pilot/world/metrics.py#L116) |  |
 | `pairwise` | method | `Hellinger.pairwise` | [src/topo_pilot/topology/metrics.py:98](../../src/topo_pilot/topology/metrics.py#L98) |  |
@@ -11,6 +266,7 @@
 | `panels` | method | `RestrictedE4Adapter.panels` | [tools/x4_circle_history/adapter.py:95](../../tools/x4_circle_history/adapter.py#L95) |  |
 | `panels` | function | `panels` | [tests/c2_nd/test_impl_dry_hs.py:46](../../tests/c2_nd/test_impl_dry_hs.py#L46) | c1_data.panels with 1,024 replaced by BLOCK / 4: four panels per block, as at 4,096. |
 | `panels` | function | `panels` | [tools/c1prime/c1_data.py:41](../../tools/c1prime/c1_data.py#L41) |  |
+| `params` | function | `params` | [tests/hwsd/test_a_kd4.py:63](../../tests/hwsd/test_a_kd4.py#L63) |  |
 | `parents` | method | `S6Job.parents` | [src/topo_pilot/experiment/s6.py:100](../../src/topo_pilot/experiment/s6.py#L100) |  |
 | `parikh` | function | `parikh` | [tools/x6_stage0/x6_model.py:227](../../tools/x6_stage0/x6_model.py#L227) |  |
 | `parity_profile` | function | `parity_profile` | [tools/d1_seam/d1_seam.py:121](../../tools/d1_seam/d1_seam.py#L121) |  |
@@ -43,10 +299,13 @@
 | `pause_check` | function | `pause_check` | [tools/hwsb/hwsb_driver.py:133](../../tools/hwsb/hwsb_driver.py#L133) |  |
 | `pause_check` | function | `pause_check` | [tools/x6zc/x6zc_store.py:290](../../tools/x6zc/x6zc_store.py#L290) |  |
 | `pause_check_c` | function | `pause_check_c` | [tools/hwsc/hwsc_records.py:280](../../tools/hwsc/hwsc_records.py#L280) |  |
+| `pause_check_d` | function | `pause_check_d` | [tools/hwsd/hwsd_records.py:216](../../tools/hwsd/hwsd_records.py#L216) |  |
 | `pause_or_raise` | function | `pause_or_raise` | [tools/hwsb/hwsb_driver.py:155](../../tools/hwsb/hwsb_driver.py#L155) | Both 3x triggers at an item boundary; a continued stage is exempt. |
 | `pause_or_raise_c` | function | `pause_or_raise_c` | [tools/hwsc/hwsc_records.py:309](../../tools/hwsc/hwsc_records.py#L309) |  |
+| `pause_or_raise_d` | function | `pause_or_raise_d` | [tools/hwsd/hwsd_records.py:227](../../tools/hwsd/hwsd_records.py#L227) |  |
 | `Paused` | class | `Paused` | [tools/hws/hws_driver.py:36](../../tools/hws/hws_driver.py#L36) | A 3x trigger fired at a world or stage boundary (§9.3); exit 4. |
 | `Paused` | class | `Paused` | [tools/hwsb/hwsb_driver.py:41](../../tools/hwsb/hwsb_driver.py#L41) | A 3x trigger fired at an item boundary; nothing new is started (exit 4). |
+| `paused` | function | `paused` | [tools/hwsd/hwsd_driver.py:71](../../tools/hwsd/hwsd_driver.py#L71) |  |
 | `payload_checksum` | function | `payload_checksum` | [src/topo_pilot/contracts/base.py:170](../../src/topo_pilot/contracts/base.py#L170) | Canonical content checksum: sha256 over, for each array or blob in name order, its name, |
 | `pbm_kind` | function | `pbm_kind` | [tests/hwsc/test_a_decision.py:204](../../tests/hwsc/test_a_decision.py#L204) |  |
 | `pbm_pos` | function | `pbm_pos` | [tests/hwsc/test_a_decision.py:209](../../tests/hwsc/test_a_decision.py#L209) |  |
@@ -98,6 +357,7 @@
 | `placed` | function | `placed` | [tools/c2_readout/c2_model.py:148](../../tools/c2_readout/c2_model.py#L148) |  |
 | `placement_ok` | function | `placement_ok` | [tools/hwsb/hwsb_meter_bind.py:53](../../tools/hwsb/hwsb_meter_bind.py#L53) |  |
 | `placement_ok` | function | `placement_ok` | [tools/hwsc/hwsc_meter_bind.py:65](../../tools/hwsc/hwsc_meter_bind.py#L65) |  |
+| `placement_ok` | function | `placement_ok` | [tools/hwsd/hwsd_meter_bind.py:63](../../tools/hwsd/hwsd_meter_bind.py#L63) |  |
 | `plain_chart` | function | `plain_chart` | [tests/circle_history/test_cochain_chart_v24.py:208](../../tests/circle_history/test_cochain_chart_v24.py#L208) |  |
 | `Plan` | class | `Plan` | [tools/hwsb/hwsb_config.py:122](../../tools/hwsb/hwsb_config.py#L122) | One code path for the real run and the dry run (API.md §1.2, choice 2). |
 | `plan` | method | `S0Stage.plan` | [src/topo_pilot/experiment/stages.py:100](../../src/topo_pilot/experiment/stages.py#L100) |  |
@@ -113,6 +373,7 @@
 | `plan` | method | `X4Stage.plan` | [src/topo_pilot/experiment/x4.py:345](../../src/topo_pilot/experiment/x4.py#L345) |  |
 | `plan` | function | `plan` | [tests/hwsb/test_b_registry.py:34](../../tests/hwsb/test_b_registry.py#L34) |  |
 | `plan20` | function | `plan20` | [tests/hwsb/test_b_hold.py:149](../../tests/hwsb/test_b_hold.py#L149) |  |
+| `plant_acts` | function | `plant_acts` | [tools/hwsd/hwsd_dry.py:117](../../tools/hwsd/hwsd_dry.py#L117) | Planted float64 activations [n, 128]: coordinates 0 and 1 carry the signal. |
 | `Planted` | class | `Planted` | [tests/x6zc/test_x6zc_dryrun.py:79](../../tests/x6zc/test_x6zc_dryrun.py#L79) | p = Z + sum_k f_k(prefix)(P_k - Z), Z = q*_ZC, P_k a SyntheticPredictor; equal cue masses |
 | `Planted` | class | `Planted` | [tools/x6zc/x6zc_dry.py:33](../../tools/x6zc/x6zc_dry.py#L33) | p = Z + sum_k f_k(prefix) (P_k - Z), Z = q*_ZC, P_k a SyntheticPredictor selected by |
 | `planted` | function | `planted` | [tests/analysis/test_geometry.py:21](../../tests/analysis/test_geometry.py#L21) |  |
@@ -123,6 +384,7 @@
 | `planted` | function | `planted` | [tests/hwsc/test_a_ladder.py:42](../../tests/hwsc/test_a_ladder.py#L42) | Three strongly correlated models (shared base), small width on 10% of rows. |
 | `planted` | function | `planted` | [tests/prediction/test_ridge.py:12](../../tests/prediction/test_ridge.py#L12) |  |
 | `planted_models` | function | `planted_models` | [tools/c2_nd/nd_dry.py:61](../../tools/c2_nd/nd_dry.py#L61) | {j: (model64, sha256 of its c2/models file)}, the file re-hashed against c2/TABLE.json. |
+| `planted_q` | function | `planted_q` | [tests/hwsd/test_a_learning.py:33](../../tests/hwsd/test_a_learning.py#L33) |  |
 | `PlantedStore` | class | `PlantedStore` | [tests/hwsb/test_b_process.py:130](../../tests/hwsb/test_b_process.py#L130) | Returns a modified EmissionSpec for one planted artifact id (planted defect fixture). |
 | `plc` | function | `plc` | [tests/x6_stage1/test_a_rules.py:93](../../tests/x6_stage1/test_a_rules.py#L93) |  |
 | `poe` | function | `poe` | [tools/x6_stage0/x6_run.py:274](../../tools/x6_stage0/x6_run.py#L274) |  |
@@ -164,6 +426,8 @@
 | `posterior_envelope` | function | `posterior_envelope` | [tools/x4_circle_history/error_bound.py:180](../../tools/x4_circle_history/error_bound.py#L180) | beta of ERROR_BOUND §3(a): N = 1 + (L-1)(2S+2) positive-path operations at 60 digits. |
 | `posterior_means` | function | `posterior_means` | [tools/x4_oracle_profile/oracle_profile.py:155](../../tools/x4_oracle_profile/oracle_profile.py#L155) | ``{K: suffix_posterior(...) @ features}``, each ``[n, 2]``. |
 | `practical_verdict` | function | `practical_verdict` | [src/topo_pilot/analysis/horizon_pools.py:154](../../src/topo_pilot/analysis/horizon_pools.py#L154) | ``(GAP \| NO_GAP \| INCONCLUSIVE, reason)`` from pool statuses (test + dev pools). |
+| `pre_chart_max` | function | `pre_chart_max` | [tests/hwsd/test_a_hwsd_ref.py:143](../../tests/hwsd/test_a_hwsd_ref.py#L143) |  |
+| `pre_chart_max` | function | `pre_chart_max` | [tools/hwsd/hwsd_statements.py:81](../../tools/hwsd/hwsd_statements.py#L81) |  |
 | `prec` | function | `prec` | [tools/x6_stage1/x6s1_stage_post.py:372](../../tools/x6_stage1/x6s1_stage_post.py#L372) |  |
 | `prec_delta` | function | `prec_delta` | [tools/x6_stage1/x6s1_data.py:348](../../tools/x6_stage1/x6s1_data.py#L348) |  |
 | `precheck` | function | `precheck` | [tools/x6_stage1/x6s1_cloud.py:438](../../tools/x6_stage1/x6s1_cloud.py#L438) |  |
@@ -195,6 +459,7 @@
 | `prefix_yields` | function | `prefix_yields` | [tools/x6zc/x6zc_core.py:50](../../tools/x6zc/x6zc_core.py#L50) |  |
 | `preflight` | function | `preflight` | [tools/hwsb/hwsb_driver.py:114](../../tools/hwsb/hwsb_driver.py#L114) |  |
 | `preflight` | function | `preflight` | [tools/hwsc/hwsc_records.py:249](../../tools/hwsc/hwsc_records.py#L249) |  |
+| `preflight_d` | function | `preflight_d` | [tools/hwsd/hwsd_records.py:186](../../tools/hwsd/hwsd_records.py#L186) |  |
 | `prepare` | function | `prepare` | [tools/c2_nd/nd_dry.py:129](../../tools/c2_nd/nd_dry.py#L129) | PREP: the c2/ stand-in subtree, c2/TABLE.json and the PREP manifest (accepted by the |
 | `preserved` | function | `preserved` | [tests/hws/test_b_records.py:265](../../tests/hws/test_b_records.py#L265) |  |
 | `preserved` | function | `preserved` | [tests/hwsb/test_b_meter_law.py:50](../../tests/hwsb/test_b_meter_law.py#L50) |  |
@@ -219,6 +484,7 @@
 | `proc` | function | `proc` | [tools/c2_nd/nd_stage_base.py:289](../../tools/c2_nd/nd_stage_base.py#L289) |  |
 | `proc` | function | `proc` | [tools/c2_readout/c2_stage_base.py:73](../../tools/c2_readout/c2_stage_base.py#L73) |  |
 | `proc_star` | function | `proc_star` | [tests/hwsc/test_a_law.py:50](../../tests/hwsc/test_a_law.py#L50) |  |
+| `proc_star` | function | `proc_star` | [tools/hwsd/hwsd_dry.py:93](../../tools/hwsd/hwsd_dry.py#L93) |  |
 | `proc_stub` | function | `proc_stub` | [tests/hwsc/test_a_ladder.py:251](../../tests/hwsc/test_a_ladder.py#L251) |  |
 | `process` | function | `process` | [tests/dataset/conftest.py:24](../../tests/dataset/conftest.py#L24) | ``(store, transition_id, emission_id, E_canon)`` with an identity symbol permutation. |
 | `process` | function | `process` | [tools/d2a/d2a_world.py:74](../../tools/d2a/d2a_world.py#L74) | ``{"T", "E", "mu"}`` of the CM mixture or the C⊕C null (blockdiag(T_C, T_C)). |
@@ -253,6 +519,7 @@
 | `psi_max` | function | `psi_max` | [tools/c2_readout/c2_attrib.py:120](../../tools/c2_readout/c2_attrib.py#L120) | 1/2 (sum of the 6 largest eigenvalues of sym E[ind(dy (M'd)')]) / E[ind(A_full)]. |
 | `psi_of` | function | `psi_of` | [tests/k4b/test_b_endpoint.py:104](../../tests/k4b/test_b_endpoint.py#L104) |  |
 | `public_summary` | function | `public_summary` | [tools/hwsc/hwsc_config.py:186](../../tools/hwsc/hwsc_config.py#L186) |  |
+| `public_summary` | function | `public_summary` | [tools/hwsd/hwsd_config.py:209](../../tools/hwsd/hwsd_config.py#L209) |  |
 | `PublicTokenDataset` | class | `PublicTokenDataset` | [src/topo_pilot/dataset/public.py:37](../../src/topo_pilot/dataset/public.py#L37) | Map-style dataset ``i -> (inputs [33], targets [33])`` of int64 tensors. |
 | `punctured_complex` | function | `punctured_complex` | [tools/x6_stage0/x6_model.py:141](../../tools/x6_stage0/x6_model.py#L141) |  |
 | `put` | method | `ArtifactBackend.put` | [src/topo_pilot/contracts/backends.py:26](../../src/topo_pilot/contracts/backends.py#L26) | Store ``data`` under ``key``, replacing any value (atomically where the medium |
@@ -270,6 +537,7 @@
 | `put` | function | `put` | [tools/c2_nd/nd_stage_base.py:129](../../tools/c2_nd/nd_stage_base.py#L129) |  |
 | `put` | function | `put` | [tools/c2_readout/c2_stage_base.py:47](../../tools/c2_readout/c2_stage_base.py#L47) |  |
 | `put_npz` | function | `put_npz` | [tests/hwsb/test_b_records.py:148](../../tests/hwsb/test_b_records.py#L148) |  |
+| `put_obligation` | function | `put_obligation` | [tests/hwsd/test_b_util.py:250](../../tests/hwsd/test_b_util.py#L250) |  |
 | `putj` | function | `putj` | [tools/c2_nd/nd_stage_base.py:133](../../tools/c2_nd/nd_stage_base.py#L133) |  |
 | `putj` | function | `putj` | [tools/c2_readout/c2_stage_base.py:51](../../tools/c2_readout/c2_stage_base.py#L51) |  |
 | `py_page` | function | `py_page` | [tools/code_index/render_pages.py:102](../../tools/code_index/render_pages.py#L102) |  |
@@ -324,6 +592,8 @@
 | `random_family` | function | `random_family` | [src/topo_pilot/analysis/x4f_erasure.py:152](../../src/topo_pilot/analysis/x4f_erasure.py#L152) | Random rank-``rank`` erasers in the retained range, matched in mean displacement. |
 | `random_laws` | function | `random_laws` | [tests/x6_stage1/test_a_eval.py:193](../../tests/x6_stage1/test_a_eval.py#L193) |  |
 | `random_ref` | function | `random_ref` | [tools/c2_readout/c2_attrib.py:77](../../tools/c2_readout/c2_attrib.py#L77) | r = a e_full + b tau_K w'w (Lemma RS2), tau_K = tr(C M Sigma M' C), w'w = dy' Sigma^-1 dy. |
+| `random_row` | function | `random_row` | [tests/hwsd/test_a_hwsd_ref.py:291](../../tests/hwsd/test_a_hwsd_ref.py#L291) |  |
+| `random_table` | function | `random_table` | [tests/hwsd/test_a_hwsd_ref.py:301](../../tests/hwsd/test_a_hwsd_ref.py#L301) |  |
 | `random_table` | function | `random_table` | [tests/k4b/test_a_prop1.py:91](../../tests/k4b/test_a_prop1.py#L91) |  |
 | `rank` | function | `rank` | [tools/c2_nd/nd_config.py:77](../../tools/c2_nd/nd_config.py#L77) | The rank ceil(draws * p) of c1_means.rank_for. |
 | `rank_certificate` | function | `rank_certificate` | [tools/theory_exact/theory_exact2.py:73](../../tools/theory_exact/theory_exact2.py#L73) | Largest rank of winding vectors over cycles of the graph {d < delta}, as delta grows to |
@@ -348,16 +618,21 @@
 | `rbf_map` | function | `rbf_map` | [src/topo_pilot/analysis/x4f_scores.py:66](../../src/topo_pilot/analysis/x4f_scores.py#L66) | ``Omega = N(0,1)^{d x F} / ell`` (drawn first), then ``b ~ U[0, 2 pi)^F``. |
 | `rbf_probe` | function | `rbf_probe` | [src/topo_pilot/experiment/x4f_gates.py:67](../../src/topo_pilot/experiment/x4f_gates.py#L67) | RBF random-feature ridge (calibration standardisation and median bandwidth). |
 | `read_bytes` | function | `read_bytes` | [tools/hwsc/hwsc_config.py:199](../../tools/hwsc/hwsc_config.py#L199) |  |
+| `read_bytes` | function | `read_bytes` | [tools/hwsd/hwsd_config.py:219](../../tools/hwsd/hwsd_config.py#L219) |  |
 | `read_chain` | function | `read_chain` | [src/topo_pilot/experiment/x5g1t_config.py:241](../../src/topo_pilot/experiment/x5g1t_config.py#L241) | Read-through backend chain over ``roots`` (the first is the innermost); writes nothing. |
 | `read_controls` | function | `read_controls` | [src/topo_pilot/experiment/x5g1t_runtime.py:52](../../src/topo_pilot/experiment/x5g1t_runtime.py#L52) | Precedence STOP > HOLD > CONTINUE (API v4 §2): STOP file, request, worker_control, |
 | `read_file` | function | `read_file` | [tools/code_index/scan.py:85](../../tools/code_index/scan.py#L85) | Return a record dict (with transient `data` bytes) for one tracked file. |
 | `read_json` | function | `read_json` | [tools/hws/hws_exact.py:247](../../tools/hws/hws_exact.py#L247) |  |
 | `read_json` | function | `read_json` | [tools/hwsc/hwsc_config.py:203](../../tools/hwsc/hwsc_config.py#L203) |  |
+| `read_json` | function | `read_json` | [tools/hwsd/hwsd_config.py:223](../../tools/hwsd/hwsd_config.py#L223) |  |
+| `read_k4b_table` | function | `read_k4b_table` | [tools/hwsd/hwsd_readers.py:45](../../tools/hwsd/hwsd_readers.py#L45) |  |
 | `read_kreg2` | function | `read_kreg2` | [tools/x6_stage1/x6s1_registry.py:199](../../tools/x6_stage1/x6s1_registry.py#L199) | Streams and validates K-REG2 against its manifest (dtype, shape, strict order, count, |
 | `read_manifest` | function | `read_manifest` | [tools/x6_stage0/x6_store.py:128](../../tools/x6_stage0/x6_store.py#L128) |  |
 | `read_marker` | function | `read_marker` | [tools/x6_stage1/x6s1_cloud.py:283](../../tools/x6_stage1/x6s1_cloud.py#L283) |  |
+| `read_obs_inventory` | function | `read_obs_inventory` | [tools/hwsd/hwsd_config.py:244](../../tools/hwsd/hwsd_config.py#L244) |  |
 | `read_outcome` | function | `read_outcome` | [src/topo_pilot/experiment/x5g1t_runtime.py:164](../../src/topo_pilot/experiment/x5g1t_runtime.py#L164) |  |
 | `read_store` | function | `read_store` | [src/topo_pilot/experiment/x5g1t_config.py:250](../../src/topo_pilot/experiment/x5g1t_config.py#L250) |  |
+| `read_train_record` | function | `read_train_record` | [tools/hwsd/hwsd_config.py:228](../../tools/hwsd/hwsd_config.py#L228) |  |
 | `readme_md` | function | `readme_md` | [tools/code_index/render_lists.py:96](../../tools/code_index/render_lists.py#L96) |  |
 | `readout` | function | `readout` | [tests/c2_readout/test_b_patch.py:191](../../tests/c2_readout/test_b_patch.py#L191) |  |
 | `readout` | function | `readout` | [tools/c2_nd/nd_split.py:234](../../tools/c2_nd/nd_split.py#L234) |  |
@@ -387,6 +662,7 @@
 | `record` | function | `record` | [tools/x4_circle_history/env_identity.py:162](../../tools/x4_circle_history/env_identity.py#L162) |  |
 | `record_gate` | function | `record_gate` | [tools/x4_circle_history/stage_records.py:64](../../tools/x4_circle_history/stage_records.py#L64) |  |
 | `record_gate_files` | function | `record_gate_files` | [tools/hwsc/hwsc_records.py:129](../../tools/hwsc/hwsc_records.py#L129) | D-0187-2: the E1/E2 gate files enter a STAGE_COMPLETE, so a later lineage_c finds them. |
+| `record_gate_files` | function | `record_gate_files` | [tools/hwsd/hwsd_records.py:48](../../tools/hwsd/hwsd_records.py#L48) |  |
 | `record_of` | function | `record_of` | [tests/c2_nd/test_b_decoy_model.py:316](../../tests/c2_nd/test_b_decoy_model.py#L316) |  |
 | `record_outcome` | function | `record_outcome` | [src/topo_pilot/experiment/x5g1t_runtime.py:169](../../src/topo_pilot/experiment/x5g1t_runtime.py#L169) |  |
 | `record_sha` | function | `record_sha` | [tools/x6_stage1/x6s1_cloud.py:227](../../tools/x6_stage1/x6s1_cloud.py#L227) |  |
@@ -423,6 +699,7 @@
 | `ref_marginals` | function | `ref_marginals` | [tests/d1_seam/test_d1_seam.py:143](../../tests/d1_seam/test_d1_seam.py#L143) |  |
 | `ref_mixture` | function | `ref_mixture` | [tests/d1_seam/test_d1_seam.py:95](../../tests/d1_seam/test_d1_seam.py#L95) |  |
 | `ref_model` | function | `ref_model` | [tests/d1_seam/test_d1_seam.py:82](../../tests/d1_seam/test_d1_seam.py#L82) |  |
+| `ref_model_status` | function | `ref_model_status` | [tests/hwsd/test_a_hwsd_ref.py:26](../../tests/hwsd/test_a_hwsd_ref.py#L26) | K4B §8.1 as stated in tools/k4b/API.md (model_status), in exact rationals. |
 | `ref_neighbours` | function | `ref_neighbours` | [tests/x2a_stage0/test_x2a_stage0.py:71](../../tests/x2a_stage0/test_x2a_stage0.py#L71) |  |
 | `ref_norm_bound` | function | `ref_norm_bound` | [tests/k4b/test_a_lemma_n.py:44](../../tests/k4b/test_a_lemma_n.py#L44) |  |
 | `ref_pair` | function | `ref_pair` | [tests/x2a_stage0/test_x2a_stage0.py:76](../../tests/x2a_stage0/test_x2a_stage0.py#L76) |  |
@@ -456,8 +733,11 @@
 | `refit` | function | `refit` | [tools/c2_nd/nd_stage_pre.py:207](../../tools/c2_nd/nd_stage_pre.py#L207) | One refit problem on DFIT natural rows: C2 F1 exactly, decoders, m-tilde (§3 row 13). |
 | `reflect` | function | `reflect` | [tests/c2_nd/test_b_layer2.py:67](../../tests/c2_nd/test_b_layer2.py#L67) |  |
 | `reflect_states` | function | `reflect_states` | [tools/hws/hws_worlds.py:300](../../tools/hws/hws_worlds.py#L300) |  |
+| `refs_from_json` | function | `refs_from_json` | [tools/hwsd/hwsd_data.py:148](../../tools/hwsd/hwsd_data.py#L148) |  |
+| `refs_to_json` | function | `refs_to_json` | [tools/hwsd/hwsd_data.py:140](../../tools/hwsd/hwsd_data.py#L140) |  |
 | `refusal` | function | `refusal` | [tools/x6zc/x6zc_guard.py:52](../../tools/x6zc/x6zc_guard.py#L52) |  |
 | `refuse` | function | `refuse` | [tools/x4_circle_history/stage_records.py:82](../../tools/x4_circle_history/stage_records.py#L82) |  |
+| `refuse_exit` | function | `refuse_exit` | [tools/hwsd/hwsd_driver.py:87](../../tools/hwsd/hwsd_driver.py#L87) | J10 item 2: a refused job that wrote anything into the store still writes its obligation. |
 | `reg` | function | `reg` | [tools/c2_nd/nd_stage_pre.py:101](../../tools/c2_nd/nd_stage_pre.py#L101) |  |
 | `reg` | function | `reg` | [tools/c2_readout/c2_stage_pre.py:70](../../tools/c2_readout/c2_stage_pre.py#L70) |  |
 | `reg1` | function | `reg1` | [tools/k4b/k4b_driver.py:201](../../tools/k4b/k4b_driver.py#L201) |  |
@@ -481,6 +761,7 @@
 | `registry_digests` | function | `registry_digests` | [tools/c1prime/c1_data.py:62](../../tools/c1prime/c1_data.py#L62) |  |
 | `registry_digests` | function | `registry_digests` | [tools/hwsb/hwsb_registry.py:126](../../tools/hwsb/hwsb_registry.py#L126) | Fail-closed digest reader of every stage-B history (B9a ii). |
 | `registry_risk` | function | `registry_risk` | [tools/hwsc/hwsc_data.py:242](../../tools/hwsc/hwsc_data.py#L242) |  |
+| `registry_risk_d` | function | `registry_risk_d` | [tools/hwsd/hwsd_data.py:101](../../tools/hwsd/hwsd_data.py#L101) |  |
 | `RegistryError` | class | `RegistryError` | [tools/x6_stage1/x6s1_registry.py:42](../../tools/x6_stage1/x6s1_registry.py#L42) |  |
 | `RegistryLineage` | class | `RegistryLineage` | [tools/c2_readout/c2_registry.py:42](../../tools/c2_readout/c2_registry.py#L42) | A registry binding or re-hash mismatch; `.status` is FAIL_TECHNICAL/LINEAGE. |
 | `regret` | method | `PredictiveMetrics.regret` | [src/topo_pilot/prediction/metrics.py:67](../../src/topo_pilot/prediction/metrics.py#L67) | Mean ``KL(q_C \|\| p_model)`` over rows (exact, not a difference of sampled NLLs). |
@@ -511,12 +792,14 @@
 | `repo_rel` | function | `repo_rel` | [tools/affected_tests.py:30](../../tools/affected_tests.py#L30) | Return the repo-relative posix path for a path given as \ or /, absolute or relative. |
 | `report` | function | `report` | [tools/c2_nd/nd_stage_post.py:317](../../tools/c2_nd/nd_stage_post.py#L317) | Always runs. Statuses, licences, rule-6 statements, unsealed VAL values, decoys, leak, |
 | `report` | function | `report` | [tools/c2_readout/c2_stage_post.py:309](../../tools/c2_readout/c2_stage_post.py#L309) | Always runs (S4: values kept). Statuses, licences, unsealed VAL values, coverage, |
+| `report` | function | `report` | [tools/hwsd/hwsd_summary.py:272](../../tools/hwsd/hwsd_summary.py#L272) |  |
 | `report` | function | `report` | [tools/x6_stage1/x6s1_decide.py:284](../../tools/x6_stage1/x6s1_decide.py#L284) |  |
 | `report_record` | function | `report_record` | [tools/hws/hws_records.py:287](../../tools/hws/hws_records.py#L287) | §6.4 REPORT.json from the outcome state and run extras (x1, s2, cpu, nulls, hashes). |
 | `reported` | function | `reported` | [tools/d2a/d2a_targets.py:333](../../tools/d2a/d2a_targets.py#L333) | §5.2 'reported, not gated' quantities (descriptive). |
 | `reports` | function | `reports` | [tests/k4b/test_b_registry_fixes.py:203](../../tests/k4b/test_b_registry_fixes.py#L203) |  |
 | `reports_equal` | function | `reports_equal` | [tools/x6_stage0/x6_store.py:208](../../tools/x6_stage0/x6_store.py#L208) |  |
 | `reports_equal` | function | `reports_equal` | [tools/x6_stage1/x6s1_run.py:250](../../tools/x6_stage1/x6s1_run.py#L250) |  |
+| `repro_c` | function | `repro_c` | [tools/hwsd/hwsd_known2.py:181](../../tools/hwsd/hwsd_known2.py#L181) |  |
 | `reproduce_reports` | function | `reproduce_reports` | [src/topo_pilot/experiment/s8.py:204](../../src/topo_pilot/experiment/s8.py#L204) | Regenerate E0/E2/E3 into a temporary directory; compare with the committed files. |
 | `require` | method | `LogitPolicy.require` | [tools/c1prime/c1_records.py:236](../../tools/c1prime/c1_records.py#L236) |  |
 | `require` | method | `LogitPolicy.require` | [tools/c2_nd/nd_driver.py:79](../../tools/c2_nd/nd_driver.py#L79) |  |
@@ -544,6 +827,8 @@
 | `RerunJob` | class | `RerunJob` | [src/topo_pilot/experiment/s8.py:134](../../src/topo_pilot/experiment/s8.py#L134) | Fresh clone of HEAD + empty store; S0→S3; comparison with the main store. |
 | `reservation` | function | `reservation` | [tests/c2_nd/test_b_registry.py:363](../../tests/c2_nd/test_b_registry.py#L363) |  |
 | `reservation_check` | function | `reservation_check` | [tools/c2_nd/nd_registry.py:396](../../tools/c2_nd/nd_registry.py#L396) | PASS iff RESERVATION_<stage>.json records no live reservation and the parallel stores' |
+| `reservation_ended` | function | `reservation_ended` | [tools/hwsd/hwsd_data.py:341](../../tools/hwsd/hwsd_data.py#L341) |  |
+| `reservation_path` | function | `reservation_path` | [tools/hwsd/hwsd_data.py:286](../../tools/hwsd/hwsd_data.py#L286) |  |
 | `residual` | function | `residual` | [tools/c1prime/c1_fit.py:68](../../tools/c1prime/c1_fit.py#L68) |  |
 | `residual_rows` | function | `residual_rows` | [tools/x4_oracle_profile/oracle_profile.py:163](../../tools/x4_oracle_profile/oracle_profile.py#L163) | Per-row ``r_K = m_full - m_K``, ``\|\|r_K\|\|`` and ``\|\|r_K\|\|^2`` for every K in ``means``. |
 | `resolve` | method | `Resolver.resolve` | [tools/code_index/resolve.py:106](../../tools/code_index/resolve.py#L106) | Return dict(status, targets, candidates, how, top) for one import record. |
@@ -594,6 +879,8 @@
 | `role_arrays` | function | `role_arrays` | [tools/c2_readout/c2_data.py:98](../../tools/c2_readout/c2_data.py#L98) | {role: (tokens, rows)}: every row for H, H+, H-; the Y_def rows only for H^Y. |
 | `root` | method | `StudyConfig.root` | [src/topo_pilot/experiment/x5g1t_config.py:96](../../src/topo_pilot/experiment/x5g1t_config.py#L96) |  |
 | `root` | function | `root` | [tests/experiment/test_x5g1t_training.py:80](../../tests/experiment/test_x5g1t_training.py#L80) |  |
+| `root_table` | function | `root_table` | [tools/hwsd/hwsd_config.py:139](../../tools/hwsd/hwsd_config.py#L139) |  |
+| `roots` | function | `roots` | [tests/hwsd/test_b_guard_search.py:44](../../tests/hwsd/test_b_guard_search.py#L44) |  |
 | `rot_val` | function | `rot_val` | [tools/c2_readout/c2_stage_val.py:318](../../tools/c2_readout/c2_stage_val.py#L318) | The VAL rotation arm (report only; sealed until the fresh outcome, §5.7). |
 | `rotation` | function | `rotation` | [tools/c2_readout/c2_stage_val.py:139](../../tools/c2_readout/c2_stage_val.py#L139) | Report only: A_rot, G_rot on every TEST E_x row, theta_rot with its 95 % interval (seed |
 | `rotation_arm` | function | `rotation_arm` | [tools/c2_readout/c2_attrib.py:183](../../tools/c2_readout/c2_attrib.py#L183) |  |
@@ -603,11 +890,13 @@
 | `rounded_logits` | function | `rounded_logits` | [tools/hwsb/hwsb_law.py:50](../../tools/hwsb/hwsb_law.py#L50) |  |
 | `rounding_delta` | function | `rounding_delta` | [tools/hwsb/hwsb_law.py:67](../../tools/hwsb/hwsb_law.py#L67) |  |
 | `route_f` | function | `route_f` | [tools/c1prime/c1_cert.py:138](../../tools/c1prime/c1_cert.py#L138) | §15.3.7 steps 1-4 per history; x > 1/2 -> ok False (FAIL_TECHNICAL/ORACLE, P4). |
+| `row` | function | `row` | [tests/hwsd/test_a_hwsd_ref.py:44](../../tests/hwsd/test_a_hwsd_ref.py#L44) |  |
 | `row_arrays` | function | `row_arrays` | [tools/hws/hws_oracle.py:95](../../tools/hws/hws_oracle.py#L95) | The per-row arrays of §4.7 step 3 (API.md §3 keys; int K, erratum E3). |
 | `row_bound` | function | `row_bound` | [tools/x4_circle_history/error_bound.py:267](../../tools/x4_circle_history/error_bound.py#L267) | Exact-rational R, Delta, E_ref and B for one row (ERROR_BOUND §2-3). |
 | `row_certificate` | function | `row_certificate` | [tools/c1prime/c1_bounds.py:147](../../tools/c1prime/c1_bounds.py#L147) | N0 / H3 row certificate for oracle rows idx of r (§15.3.6-15.3.8): C0 reference and P1 |
 | `row_digests` | function | `row_digests` | [tools/x6_stage1/x6s1_registry.py:58](../../tools/x6_stage1/x6s1_registry.py#L58) | uint8 [n, 32]: sha256 of each row's w_1..w_32 bytes (uint8). |
 | `row_entropies` | function | `row_entropies` | [src/topo_pilot/process/_diagnostics.py:21](../../src/topo_pilot/process/_diagnostics.py#L21) | Natural-log entropy of every row of ``E [N, V]`` -> ``[N]``. |
+| `row_for_d` | function | `row_for_d` | [tools/hwsd/hwsd_registry.py:68](../../tools/hwsd/hwsd_registry.py#L68) |  |
 | `row_hex` | function | `row_hex` | [tests/c2_nd/test_b_registry.py:62](../../tests/c2_nd/test_b_registry.py#L62) |  |
 | `row_record` | function | `row_record` | [tools/x4_circle_history/reference_cache.py:97](../../tools/x4_circle_history/reference_cache.py#L97) | The row-table record export_cache stores for one model and split. |
 | `row_stats` | function | `row_stats` | [tools/x2a_stage0/x2a_mc.py:138](../../tools/x2a_stage0/x2a_mc.py#L138) |  |
@@ -646,6 +935,7 @@
 | `run` | function | `run` | [tests/c2_nd/test_b_dry_hs.py:66](../../tests/c2_nd/test_b_dry_hs.py#L66) |  |
 | `run` | function | `run` | [tests/d2a/test_b_rules_decide.py:81](../../tests/d2a/test_b_rules_decide.py#L81) |  |
 | `run` | function | `run` | [tests/d2a/test_b_rules_qualifiers.py:88](../../tests/d2a/test_b_rules_qualifiers.py#L88) |  |
+| `run` | function | `run` | [tests/hwsd/test_a_learning.py:38](../../tests/hwsd/test_a_learning.py#L38) |  |
 | `run` | function | `run` | [tests/k4b/test_b_endpoint.py:285](../../tests/k4b/test_b_endpoint.py#L285) |  |
 | `run` | function | `run` | [tools/c1prime/c1_driver_late.py:255](../../tools/c1prime/c1_driver_late.py#L255) |  |
 | `run` | function | `run` | [tools/chart_diag/chart_diag.py:162](../../tools/chart_diag/chart_diag.py#L162) |  |
@@ -662,9 +952,12 @@
 | `run_c1_gate` | function | `run_c1_gate` | [tools/c1prime/c1_records.py:174](../../tools/c1prime/c1_records.py#L174) | Run fn(); classify and record any failure, then raise C1Stop; record a returned status. |
 | `run_calibration` | function | `run_calibration` | [tools/c1prime/c1_driver_cal.py:107](../../tools/c1prime/c1_driver_cal.py#L107) |  |
 | `run_case` | function | `run_case` | [tests/hwsc/test_a_ladder.py:115](../../tests/hwsc/test_a_ladder.py#L115) |  |
+| `run_chart` | function | `run_chart` | [tests/hwsd/test_a_scorer.py:96](../../tests/hwsd/test_a_scorer.py#L96) |  |
+| `run_checkpoints` | function | `run_checkpoints` | [tools/hwsd/hwsd_score.py:354](../../tools/hwsd/hwsd_score.py#L354) |  |
 | `run_child` | function | `run_child` | [tests/x6_stage1/test_b_train_chain.py:106](../../tests/x6_stage1/test_b_train_chain.py#L106) |  |
 | `run_close` | function | `run_close` | [tools/hwsb/hwsb_driver.py:249](../../tools/hwsb/hwsb_driver.py#L249) |  |
 | `run_close` | function | `run_close` | [tools/hwsc/hwsc_jobs.py:117](../../tools/hwsc/hwsc_jobs.py#L117) |  |
+| `run_close` | function | `run_close` | [tools/hwsd/hwsd_driver.py:326](../../tools/hwsd/hwsd_driver.py#L326) |  |
 | `run_cmd` | method | `SSHExecutor.run_cmd` | [src/topo_pilot/executors/ssh.py:73](../../src/topo_pilot/executors/ssh.py#L73) | ``ssh`` command that unpacks the bundle and starts ``run_bundle.py`` detached; |
 | `run_conductance_transition` | method | `ProcessStage.run_conductance_transition` | [src/topo_pilot/process/stage.py:33](../../src/topo_pilot/process/stage.py#L33) | Build and save the metric-conductance ``TransitionSpec`` of ``world_id`` (X5 G1); the |
 | `run_dev_analysis` | function | `run_dev_analysis` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:100](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L100) | Dense dev regret curves, grid events, paired bootstrap and the cohort verdict. |
@@ -672,6 +965,7 @@
 | `run_dry` | function | `run_dry` | [tools/hws/hws_dry.py:305](../../tools/hws/hws_dry.py#L305) | §13 synthetic dry run with the real records, selection and report code (J1 AUTH). |
 | `run_dry` | function | `run_dry` | [tools/hwsb/hwsb_dry.py:343](../../tools/hwsb/hwsb_dry.py#L343) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsc/hwsc_dry.py:297](../../tools/hwsc/hwsc_dry.py#L297) |  |
+| `run_dry` | function | `run_dry` | [tools/hwsd/hwsd_dry.py:359](../../tools/hwsd/hwsd_dry.py#L359) |  |
 | `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:204](../../tools/hwsc/hwsc_driver.py#L204) |  |
 | `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:67](../../tools/hwsc/hwsc_jobs.py#L67) |  |
 | `run_emission` | method | `ProcessStage.run_emission` | [src/topo_pilot/process/stage.py:43](../../src/topo_pilot/process/stage.py#L43) | Build and save the ``EmissionSpec`` of ``world_id`` for replicate ``seeds.master``. |
@@ -685,12 +979,16 @@
 | `run_gates` | function | `run_gates` | [src/topo_pilot/experiment/x4f_run.py:51](../../src/topo_pilot/experiment/x4f_run.py#L51) | Prospective maintenance runner; never overwrite an earlier cohort's exports. |
 | `run_gates` | function | `run_gates` | [tools/k4b/k4b_driver.py:49](../../tools/k4b/k4b_driver.py#L49) |  |
 | `run_gates_c` | function | `run_gates_c` | [tools/hwsc/hwsc_records.py:57](../../tools/hwsc/hwsc_records.py#L57) |  |
+| `run_gates_c` | function | `run_gates_c` | [tools/hwsd/hwsd_records.py:36](../../tools/hwsd/hwsd_records.py#L36) |  |
+| `run_gates_d` | function | `run_gates_d` | [tools/hwsd/hwsd_driver.py:46](../../tools/hwsd/hwsd_driver.py#L46) | hwsc_records.run_gates_c, except that a gate named in `soft` records its status and does |
 | `run_guarded` | function | `run_guarded` | [tools/x6zc/x6zc_guard.py:306](../../tools/x6zc/x6zc_guard.py#L306) | Every attempt writes its record: a setup error, a stop, or any exception (CRASH). |
 | `run_inputs` | function | `run_inputs` | [src/topo_pilot/experiment/s7.py:45](../../src/topo_pilot/experiment/s7.py#L45) | S2 artifacts of an S7 run (U and N have no σ; N uses the cylinder world, D-029). |
 | `run_job` | method | `RerunJob.run_job` | [src/topo_pilot/experiment/s8.py:147](../../src/topo_pilot/experiment/s8.py#L147) |  |
 | `run_kb` | function | `run_kb` | [tools/hwsb/hwsb_known.py:281](../../tools/hwsb/hwsb_known.py#L281) | KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN. |
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_driver.py:56](../../tools/hwsc/hwsc_driver.py#L56) |  |
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_known.py:248](../../tools/hwsc/hwsc_known.py#L248) |  |
+| `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_driver.py:101](../../tools/hwsd/hwsd_driver.py#L101) |  |
+| `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_known.py:230](../../tools/hwsd/hwsd_known.py#L230) |  |
 | `run_key` | function | `run_key` | [tools/hwsb/hwsb_config.py:187](../../tools/hwsb/hwsb_config.py#L187) |  |
 | `run_key` | function | `run_key` | [tools/hwsc/hwsc_config.py:154](../../tools/hwsc/hwsc_config.py#L154) |  |
 | `run_key` | function | `run_key` | [tools/x6_stage1/x6s1_data.py:168](../../tools/x6_stage1/x6s1_data.py#L168) |  |
@@ -714,10 +1012,13 @@
 | `run_rule_verdict` | function | `run_rule_verdict` | [src/topo_pilot/experiment/x4.py:62](../../src/topo_pilot/experiment/x4.py#L62) | D-039 rule over runs ``(world, seed)``: INCONCLUSIVE if a learning gate is not True or |
 | `run_s0` | function | `run_s0` | [tools/hws/hws_driver.py:195](../../tools/hws/hws_driver.py#L195) | §3 stage S0 (KC1-KC14); implemented in hws_known (erratum E16). |
 | `run_s0` | function | `run_s0` | [tools/hws/hws_known.py:95](../../tools/hws/hws_known.py#L95) | §3: w0 at 32,768 rows, U and N at 4,096; KC1-KC14 gate; freezes g4* and g4A*. |
+| `run_sample` | function | `run_sample` | [tools/hwsd/hwsd_driver.py:254](../../tools/hwsd/hwsd_driver.py#L254) |  |
+| `run_score` | function | `run_score` | [tools/hwsd/hwsd_jobs.py:96](../../tools/hwsd/hwsd_jobs.py#L96) |  |
 | `run_stage` | function | `run_stage` | [src/topo_pilot/experiment/stages.py:148](../../src/topo_pilot/experiment/stages.py#L148) | Run every planned job of ``stage_id`` inline; raises ``INVALID_CONFIG`` for an unknown |
 | `run_stage` | function | `run_stage` | [tools/c2_nd/nd_driver.py:350](../../tools/c2_nd/nd_driver.py#L350) | Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT |
 | `run_stage` | function | `run_stage` | [tools/c2_readout/c2_driver.py:357](../../tools/c2_readout/c2_driver.py#L357) | Lazy dispatch (API.md §19.2-§19.3): PLAN steps in order; NOT_RUN after a study stop. |
 | `run_stage` | function | `run_stage` | [tools/x6_stage1/x6s1_run.py:497](../../tools/x6_stage1/x6s1_run.py#L497) | PLAN[stage] (step, fn(ctx), validity) in §8 order after the disk floor and boundary; the |
+| `run_summary` | function | `run_summary` | [tools/hwsd/hwsd_jobs.py:159](../../tools/hwsd/hwsd_jobs.py#L159) |  |
 | `run_sweep` | function | `run_sweep` | [tools/hws/hws_driver.py:275](../../tools/hws/hws_driver.py#L275) | S1 -> (X1) -> (S2) -> S3 under the frozen rules (§6), then the outcome and report. |
 | `run_table` | function | `run_table` | [src/topo_pilot/experiment/report_x4.py:81](../../src/topo_pilot/experiment/report_x4.py#L81) |  |
 | `run_tool` | function | `run_tool` | [src/topo_pilot/experiment/stages.py:68](../../src/topo_pilot/experiment/stages.py#L68) | Run ``cmd`` in the repository; returns (exit code 0, :func:`tool_line`). |
@@ -749,6 +1050,7 @@
 | `s0_check` | function | `s0_check` | [tools/x2a_stage0/x2a_ph.py:288](../../tools/x2a_stage0/x2a_ph.py#L288) |  |
 | `s0_check` | function | `s0_check` | [tools/x6_stage0/x6_store.py:101](../../tools/x6_stage0/x6_store.py#L101) |  |
 | `s0_check` | function | `s0_check` | [tools/x6_stage1/x6s1_run.py:163](../../tools/x6_stage1/x6s1_run.py#L163) |  |
+| `s0_d` | function | `s0_d` | [tools/hwsd/hwsd_records.py:167](../../tools/hwsd/hwsd_records.py#L167) |  |
 | `s0_lineage` | function | `s0_lineage` | [tools/x6_stage0/x6_store.py:160](../../tools/x6_stage0/x6_store.py#L160) |  |
 | `S0Stage` | class | `S0Stage` | [src/topo_pilot/experiment/stages.py:93](../../src/topo_pilot/experiment/stages.py#L93) | S0: the store is initialised, the environment lock exists, the contracts suite passes, |
 | `S1Stage` | class | `S1Stage` | [src/topo_pilot/experiment/s1.py:76](../../src/topo_pilot/experiment/s1.py#L76) | S1: build both core worlds, their kernels, and O/P/N emissions for every σ candidate and |
@@ -789,6 +1091,7 @@
 | `sample_block` | function | `sample_block` | [tools/hwsb/hwsb_data.py:204](../../tools/hwsb/hwsb_data.py#L204) |  |
 | `sample_block` | function | `sample_block` | [tools/k4b/k4b_data.py:83](../../tools/k4b/k4b_data.py#L83) | One HMMSampler.sample(3072, rng) call; w33 and the states dropped; rows sorted by id. |
 | `sample_block_c` | function | `sample_block_c` | [tools/hwsc/hwsc_data.py:109](../../tools/hwsc/hwsc_data.py#L109) |  |
+| `sample_block_d` | function | `sample_block_d` | [tools/hwsd/hwsd_data.py:56](../../tools/hwsd/hwsd_data.py#L56) |  |
 | `sample_eval` | function | `sample_eval` | [tools/hwsc/hwsc_data.py:123](../../tools/hwsc/hwsc_data.py#L123) |  |
 | `sample_histories` | function | `sample_histories` | [tests/analysis/test_baselines_dynamics.py:34](../../tests/analysis/test_baselines_dynamics.py#L34) |  |
 | `sample_lgate` | function | `sample_lgate` | [tools/hwsc/hwsc_data.py:119](../../tools/hwsc/hwsc_data.py#L119) |  |
@@ -802,6 +1105,7 @@
 | `sample_segment` | function | `sample_segment` | [tools/x6_stage1/x6s1_pairs.py:120](../../tools/x6_stage1/x6s1_pairs.py#L120) |  |
 | `sample_split` | function | `sample_split` | [tools/c2_nd/nd_data.py:65](../../tools/c2_nd/nd_data.py#L65) | Blocks 0..blocks-1 in block order: canonical uint8 [n, 32], sequence ids, panels. |
 | `sample_split` | function | `sample_split` | [tools/c2_readout/c2_data.py:58](../../tools/c2_readout/c2_data.py#L58) | Blocks 0..blocks-1 in block order: canonical uint8 [n, 32], sequence ids, panels. |
+| `sample_tables` | function | `sample_tables` | [tools/hwsd/hwsd_data.py:70](../../tools/hwsd/hwsd_data.py#L70) |  |
 | `sample_test` | function | `sample_test` | [tools/k4b/k4b_fresh.py:70](../../tools/k4b/k4b_fresh.py#L70) |  |
 | `sample_test_c` | function | `sample_test_c` | [tools/hwsc/hwsc_data.py:142](../../tools/hwsc/hwsc_data.py#L142) | Real run: k4b_fresh.sample_test unchanged; dry run: its mirror with DRYHIST_ names. |
 | `sampler_cdf` | function | `sampler_cdf` | [tools/x4_circle_history/process_law.py:138](../../tools/x4_circle_history/process_law.py#L138) | The ACTUAL sampler thresholds (_cumulative_rows of the frozen dataset/sampler.py). |
@@ -812,13 +1116,18 @@
 | `save_block` | function | `save_block` | [tools/hwsb/hwsb_data.py:302](../../tools/hwsb/hwsb_data.py#L302) |  |
 | `save_fit` | function | `save_fit` | [tools/c1prime/c1_driver_cal.py:235](../../tools/c1prime/c1_driver_cal.py#L235) |  |
 | `save_hist` | function | `save_hist` | [tools/hws/hws_records.py:56](../../tools/hws/hws_records.py#L56) |  |
+| `save_lgate_q` | function | `save_lgate_q` | [tools/hwsd/hwsd_data.py:188](../../tools/hwsd/hwsd_data.py#L188) |  |
 | `save_npz` | function | `save_npz` | [tools/x4_circle_history/stage_records.py:40](../../tools/x4_circle_history/stage_records.py#L40) |  |
 | `save_npz` | function | `save_npz` | [tools/x4_oracle_profile/runtime.py:64](../../tools/x4_oracle_profile/runtime.py#L64) |  |
 | `save_oracle` | function | `save_oracle` | [tools/c2_readout/c2_stage_base.py:346](../../tools/c2_readout/c2_stage_base.py#L346) |  |
+| `save_oracle` | function | `save_oracle` | [tools/hwsd/hwsd_data.py:134](../../tools/hwsd/hwsd_data.py#L134) |  |
 | `save_parents` | function | `save_parents` | [tests/experiment/test_x4.py:90](../../tests/experiment/test_x4.py#L90) |  |
 | `save_pool` | function | `save_pool` | [tools/x6_stage1/x6s1_data.py:240](../../tools/x6_stage1/x6s1_data.py#L240) |  |
 | `save_pools` | function | `save_pools` | [tools/d2a/d2a_world.py:191](../../tools/d2a/d2a_world.py#L191) | Sample and save all 21 pools (POOLS order) once; write pools.json (refuses if present). |
+| `save_shared` | function | `save_shared` | [tools/hwsd/hwsd_data.py:204](../../tools/hwsd/hwsd_data.py#L204) |  |
+| `save_table` | function | `save_table` | [tests/hwsd/test_b_util.py:164](../../tests/hwsd/test_b_util.py#L164) |  |
 | `save_table` | function | `save_table` | [tools/hwsc/hwsc_data.py:135](../../tools/hwsc/hwsc_data.py#L135) |  |
+| `save_tables` | function | `save_tables` | [tools/hwsd/hwsd_data.py:80](../../tools/hwsd/hwsd_data.py#L80) |  |
 | `save_tables` | function | `save_tables` | [tools/x6_stage1/x6s1_pairs.py:57](../../tools/x6_stage1/x6s1_pairs.py#L57) |  |
 | `save_tool_gate` | function | `save_tool_gate` | [src/topo_pilot/experiment/stages.py:75](../../src/topo_pilot/experiment/stages.py#L75) | Save a GateReport whose checks embed tool output (test counts, file counts). |
 | `saved` | function | `saved` | [tests/experiment/test_x5g1_safety.py:60](../../tests/experiment/test_x5g1_safety.py#L60) | A store with two lawfully saved TransitionSpecs and their full expected hashes. |
@@ -828,21 +1137,27 @@
 | `sched` | function | `sched` | [tests/hwsb/test_b_records.py:118](../../tests/hwsb/test_b_records.py#L118) |  |
 | `sched_ok` | function | `sched_ok` | [tools/hwsb/hwsb_driver.py:96](../../tools/hwsb/hwsb_driver.py#L96) |  |
 | `sched_ok` | function | `sched_ok` | [tools/hwsc/hwsc_records.py:152](../../tools/hwsc/hwsc_records.py#L152) |  |
+| `sched_ok` | function | `sched_ok` | [tools/hwsd/hwsd_records.py:44](../../tools/hwsd/hwsd_records.py#L44) |  |
 | `schedule` | function | `schedule` | [tools/x6_stage1/x6s1_stage_post.py:144](../../tools/x6_stage1/x6s1_stage_post.py#L144) |  |
 | `scientific_outcome` | function | `scientific_outcome` | [tools/x2a_stage0/x2a_mc.py:86](../../tools/x2a_stage0/x2a_mc.py#L86) |  |
 | `scope_modules` | function | `scope_modules` | [tools/hwsc/hwsc_bind.py:234](../../tools/hwsc/hwsc_bind.py#L234) |  |
+| `scope_modules` | function | `scope_modules` | [tools/hwsd/hwsd_bind.py:76](../../tools/hwsd/hwsd_bind.py#L76) |  |
 | `score` | method | `RidgeProbe.score` | [src/topo_pilot/prediction/ridge.py:78](../../src/topo_pilot/prediction/ridge.py#L78) | Return ``{"mse": ..., "r2": ...}`` (no KL on raw ridge output). |
 | `score` | function | `score` | [tests/d2a/test_b_behaviour.py:44](../../tests/d2a/test_b_behaviour.py#L44) |  |
 | `score` | function | `score` | [tools/x6_stage1/x6s1_eval.py:187](../../tools/x6_stage1/x6s1_eval.py#L187) | x_hat_i = sum_j (q ln q)[code] - fl(q)[code] * ln p^Q[k] (§7.4 item 3). |
 | `score` | function | `score` | [tools/x6_stage1/x6s1_stage_pre.py:256](../../tools/x6_stage1/x6s1_stage_pre.py#L256) | Quantiser on synthetic and gate laws, the certified tables (tables/log_tables.npz), the |
+| `score_checkpoint` | function | `score_checkpoint` | [tools/hwsd/hwsd_score.py:258](../../tools/hwsd/hwsd_score.py#L258) |  |
 | `scores` | function | `scores` | [tools/x4_circle_history/scores.py:84](../../tools/x4_circle_history/scores.py#L84) |  |
 | `scoring_authority` | function | `scoring_authority` | [tools/x4_circle_history/release.py:193](../../tools/x4_circle_history/release.py#L193) | The ONLY issuer of ScoringAuthority: a verified release with an owner scoring record. |
 | `ScoringAuthority` | class | `ScoringAuthority` | [tools/x4_circle_history/errors.py:29](../../tools/x4_circle_history/errors.py#L29) | Positively verified owner scoring release (issued only by release.scoring_authority). |
 | `scratch` | function | `scratch` | [tests/c2_nd/test_b_registry.py:80](../../tests/c2_nd/test_b_registry.py#L80) |  |
 | `scratch` | function | `scratch` | [tests/hwsc/test_b_registry2.py:65](../../tests/hwsc/test_b_registry2.py#L65) |  |
 | `scratch_check` | function | `scratch_check` | [tools/hwsc/hwsc_scratch.py:117](../../tools/hwsc/hwsc_scratch.py#L117) |  |
+| `scratch_check_d` | function | `scratch_check_d` | [tools/hwsd/hwsd_registry.py:166](../../tools/hwsd/hwsd_registry.py#L166) |  |
 | `scratch_ok` | function | `scratch_ok` | [tools/x6_stage0/x6_store.py:229](../../tools/x6_stage0/x6_store.py#L229) |  |
 | `scratch_scan` | function | `scratch_scan` | [tools/hwsc/hwsc_scratch.py:44](../../tools/hwsc/hwsc_scratch.py#L44) |  |
+| `scratch_scan_d` | function | `scratch_scan_d` | [tools/hwsd/hwsd_registry.py:37](../../tools/hwsd/hwsd_registry.py#L37) |  |
+| `scratch_table` | function | `scratch_table` | [tools/hwsd/hwsd_config.py:130](../../tools/hwsd/hwsd_config.py#L130) |  |
 | `screen` | function | `screen` | [src/topo_pilot/experiment/x4b_audit.py:34](../../src/topo_pilot/experiment/x4b_audit.py#L34) | Partners (same last symbol unless ``last`` is None) and the frozen screen. |
 | `screen_bounds` | function | `screen_bounds` | [tools/hws/hws_stats.py:52](../../tools/hws/hws_stats.py#L52) |  |
 | `screen_pool` | function | `screen_pool` | [src/topo_pilot/analysis/horizon_pools.py:135](../../src/topo_pilot/analysis/horizon_pools.py#L135) | Apply the frozen screen: admissible ``d1 <= q1_max``; eligible = any admissible partner; |
@@ -862,6 +1177,7 @@
 | `sealed_store` | function | `sealed_store` | [tests/c2_nd/test_b_policy.py:277](../../tests/c2_nd/test_b_policy.py#L277) |  |
 | `seam_labels` | function | `seam_labels` | [tools/x6_stage0/x6_model.py:103](../../tools/x6_stage0/x6_model.py#L103) |  |
 | `seam_letter` | function | `seam_letter` | [tools/x6_stage0/x6_model.py:88](../../tools/x6_stage0/x6_model.py#L88) |  |
+| `search_pruned` | function | `search_pruned` | [tools/hwsd/hwsd_config.py:191](../../tools/hwsd/hwsd_config.py#L191) |  |
 | `searched_null` | function | `searched_null` | [tools/theory_exact/theory_exact3.py:30](../../tools/theory_exact/theory_exact3.py#L30) |  |
 | `secondary` | function | `secondary` | [tools/d2a/d2a_eval.py:365](../../tools/d2a/d2a_eval.py#L365) | API §4 items 5 and 7 under the stage-3 budget: RBF at the primary cells, then the |
 | `secondary_arrays` | function | `secondary_arrays` | [tools/k4b/k4b_scores.py:74](../../tools/k4b/k4b_scores.py#L74) |  |
@@ -876,6 +1192,7 @@
 | `seed_key` | function | `seed_key` | [tests/k4b/test_b_h1_meta.py:58](../../tests/k4b/test_b_h1_meta.py#L58) |  |
 | `seed_search` | function | `seed_search` | [tools/hws/hws_driver.py:64](../../tools/hws/hws_driver.py#L64) | §6.6 G0 discovery search; excluded folders are pruned before any listing or open. |
 | `seed_search_c` | function | `seed_search_c` | [tools/hwsc/hwsc_known.py:51](../../tools/hwsc/hwsc_known.py#L51) |  |
+| `seed_search_d` | function | `seed_search_d` | [tools/hwsd/hwsd_known.py:48](../../tools/hwsd/hwsd_known.py#L48) |  |
 | `seeded` | function | `seeded` | [tests/oracle_profile/test_oracle_profile_kernels.py:44](../../tests/oracle_profile/test_oracle_profile_kernels.py#L44) |  |
 | `seeds` | function | `seeds` | [tests/learner/conftest.py:35](../../tests/learner/conftest.py#L35) |  |
 | `SeedTree` | class | `SeedTree` | [src/topo_pilot/contracts/ids.py:99](../../src/topo_pilot/contracts/ids.py#L99) | Deterministic, platform-independent seed derivation (the only source of randomness). |
@@ -900,7 +1217,10 @@
 | `separation` | function | `separation` | [tools/x6_stage1/x6s1_registry.py:437](../../tools/x6_stage1/x6s1_registry.py#L437) | §6.5 on every row: test ∩ REG2 = ∅ per arm; tests pairwise disjoint; val ∩ (REG1 ∪ train ∪ |
 | `separation_c` | function | `separation_c` | [tools/hwsc/hwsc_data.py:166](../../tools/hwsc/hwsc_data.py#L166) |  |
 | `separation_cal_val` | function | `separation_cal_val` | [tools/k4b/k4b_data.py:150](../../tools/k4b/k4b_data.py#L150) |  |
+| `separation_d` | function | `separation_d` | [tools/hwsd/hwsd_data.py:95](../../tools/hwsd/hwsd_data.py#L95) |  |
 | `separation_fresh` | function | `separation_fresh` | [tools/k4b/k4b_data.py:154](../../tools/k4b/k4b_data.py#L154) |  |
+| `seq` | function | `seq` | [tests/hwsd/test_a_hwsd_ref.py:77](../../tests/hwsd/test_a_hwsd_ref.py#L77) |  |
+| `seq_cases` | function | `seq_cases` | [tools/hwsd/hwsd_dry.py:179](../../tools/hwsd/hwsd_dry.py#L179) |  |
 | `seq_disjoint` | function | `seq_disjoint` | [tools/k4b/k4b_data.py:160](../../tools/k4b/k4b_data.py#L160) |  |
 | `SeqClock` | class | `SeqClock` | [tests/circle_history/test_cochain_chart_v24.py:89](../../tests/circle_history/test_cochain_chart_v24.py#L89) | Returns `values` in order, then `tail` forever; counts readings. |
 | `sequence_ids` | function | `sequence_ids` | [src/topo_pilot/experiment/x4b2.py:56](../../src/topo_pilot/experiment/x4b2.py#L56) | ``(process_code << 32) \| (5 << 28) \| index`` in namespace ``x4b2-v1:<role>``. |
@@ -933,6 +1253,7 @@
 | `sha` | function | `sha` | [tests/c2_nd/test_b_policy.py:46](../../tests/c2_nd/test_b_policy.py#L46) |  |
 | `sha` | function | `sha` | [tests/c2_nd/test_b_registry.py:35](../../tests/c2_nd/test_b_registry.py#L35) |  |
 | `sha` | function | `sha` | [tests/hwsb/test_b_records.py:294](../../tests/hwsb/test_b_records.py#L294) |  |
+| `sha` | function | `sha` | [tests/hwsd/test_b_util.py:44](../../tests/hwsd/test_b_util.py#L44) |  |
 | `sha` | function | `sha` | [tests/k4b/test_b_registry.py:39](../../tests/k4b/test_b_registry.py#L39) |  |
 | `sha` | function | `sha` | [tests/k4b/test_b_rerun.py:33](../../tests/k4b/test_b_rerun.py#L33) |  |
 | `sha` | function | `sha` | [tests/k4b/test_b_store_reader.py:52](../../tests/k4b/test_b_store_reader.py#L52) |  |
@@ -951,6 +1272,7 @@
 | `sha256_phase` | function | `sha256_phase` | [tools/x4_circle_history/scores.py:95](../../tools/x4_circle_history/scores.py#L95) |  |
 | `sha_bytes` | function | `sha_bytes` | [tools/hws/hws_records.py:39](../../tools/hws/hws_records.py#L39) |  |
 | `sha_phase` | function | `sha_phase` | [tools/k4b/k4b_scores.py:49](../../tools/k4b/k4b_scores.py#L49) |  |
+| `shared_controls` | function | `shared_controls` | [tools/hwsd/hwsd_data.py:193](../../tools/hwsd/hwsd_data.py#L193) |  |
 | `shares` | function | `shares` | [tests/c2_nd/test_b_layer2.py:102](../../tests/c2_nd/test_b_layer2.py#L102) |  |
 | `shares` | function | `shares` | [tools/c2_readout/c2_attrib.py:324](../../tools/c2_readout/c2_attrib.py#L324) | psi_S, psi_Gamma, psi_rest and eta_S of one pair() result on its eligible rows. |
 | `sharp_target` | function | `sharp_target` | [tools/x6_stage1/x6s1_decide.py:84](../../tools/x6_stage1/x6s1_decide.py#L84) |  |
@@ -959,7 +1281,9 @@
 | `shuffle_perm` | function | `shuffle_perm` | [tools/d2a/d2a_eval.py:107](../../tools/d2a/d2a_eval.py#L107) |  |
 | `shuffled` | function | `shuffled` | [src/topo_pilot/experiment/x4f_gates.py:52](../../src/topo_pilot/experiment/x4f_gates.py#L52) | 20 shuffled-calibration-target refits through the identical pipeline; q95. |
 | `shuffled_table_inputs` | function | `shuffled_table_inputs` | [tests/k4b/test_b_data.py:187](../../tests/k4b/test_b_data.py#L187) |  |
+| `sigma` | function | `sigma` | [tests/hwsd/test_a_hwsd_ref.py:95](../../tests/hwsd/test_a_hwsd_ref.py#L95) |  |
 | `sigma` | function | `sigma` | [tools/c2_nd/nd_attrib.py:205](../../tools/c2_nd/nd_attrib.py#L205) | sqrt(Var(a3_i) + eps) per row of the resid_post_3 rows at position 32 ([n, d_model]). |
+| `sigma` | function | `sigma` | [tools/hwsd/hwsd_statements.py:28](../../tools/hwsd/hwsd_statements.py#L28) |  |
 | `sigma_f` | method | `World.sigma_f` | [tools/hws/hws_worlds.py:88](../../tools/hws/hws_worlds.py#L88) |  |
 | `sigma_table` | function | `sigma_table` | [src/topo_pilot/experiment/prereg.py:61](../../src/topo_pilot/experiment/prereg.py#L61) |  |
 | `sigma_tok` | function | `sigma_tok` | [tools/x6_stage0/x6_model.py:156](../../tools/x6_stage0/x6_model.py#L156) |  |
@@ -1006,6 +1330,8 @@
 | `source_e` | function | `source_e` | [tools/k4b/k4b_registry.py:205](../../tools/k4b/k4b_registry.py#L205) |  |
 | `source_f` | function | `source_f` | [tools/k4b/k4b_registry.py:239](../../tools/k4b/k4b_registry.py#L239) | ObservationSet stores under other directories, canonicalised by their EmissionSpec perm |
 | `source_hwsb` | function | `source_hwsb` | [tools/hwsc/hwsc_registry.py:125](../../tools/hwsc/hwsc_registry.py#L125) |  |
+| `source_hwsc` | function | `source_hwsc` | [tools/hwsd/hwsd_readers.py:100](../../tools/hwsd/hwsd_readers.py#L100) |  |
+| `source_hwsu` | function | `source_hwsu` | [tools/hwsd/hwsd_readers.py:289](../../tools/hwsd/hwsd_readers.py#L289) |  |
 | `source_identity` | function | `source_identity` | [tools/x4_oracle_profile/validation.py:181](../../tools/x4_oracle_profile/validation.py#L181) |  |
 | `source_k` | function | `source_k` | [tools/k4b/k4b_registry_k.py:81](../../tools/k4b/k4b_registry_k.py#L81) | Classifies every file under k4b-store (§16 item 2 a-d); other non-empty -> INCOMPLETE. |
 | `source_own` | function | `source_own` | [tools/hwsc/hwsc_registry.py:282](../../tools/hwsc/hwsc_registry.py#L282) |  |
@@ -1063,6 +1389,8 @@
 | `stage_c_statistics` | function | `stage_c_statistics` | [tools/x6zc/x6zc_pipeline.py:24](../../tools/x6zc/x6zc_pipeline.py#L24) |  |
 | `stage_caps` | function | `stage_caps` | [tools/x4_circle_history/meter_bind.py:82](../../tools/x4_circle_history/meter_bind.py#L82) |  |
 | `stage_charts` | function | `stage_charts` | [tools/x4_circle_history/runner.py:259](../../tools/x4_circle_history/runner.py#L259) |  |
+| `stage_complete` | function | `stage_complete` | [tests/hwsd/test_b_util.py:171](../../tests/hwsd/test_b_util.py#L171) | Append one STAGE_COMPLETE event (the k4b_driver.complete_stage line format). |
+| `stage_complete_sha` | function | `stage_complete_sha` | [tools/hwsd/hwsd_readers.py:81](../../tools/hwsd/hwsd_readers.py#L81) |  |
 | `stage_cpu` | function | `stage_cpu` | [tools/x6zc/x6zc_guard.py:241](../../tools/x6zc/x6zc_guard.py#L241) |  |
 | `stage_events` | function | `stage_events` | [tools/hws/hws_records.py:50](../../tools/hws/hws_records.py#L50) |  |
 | `stage_export` | function | `stage_export` | [tools/x4_circle_history/runner.py:291](../../tools/x4_circle_history/runner.py#L291) |  |
@@ -1084,6 +1412,7 @@
 | `star` | function | `star` | [tests/hwsb/test_b_meter_law.py:260](../../tests/hwsb/test_b_meter_law.py#L260) |  |
 | `star` | function | `star` | [tests/hwsb/test_b_process.py:40](../../tests/hwsb/test_b_process.py#L40) |  |
 | `start_reservation` | function | `start_reservation` | [tools/k4b/k4b_release.py:124](../../tools/k4b/k4b_release.py#L124) |  |
+| `start_reservation_d` | function | `start_reservation_d` | [tools/hwsd/hwsd_data.py:290](../../tools/hwsd/hwsd_data.py#L290) |  |
 | `stat` | function | `stat` | [tests/x6_stage0/test_x6_stage0_dp.py:38](../../tests/x6_stage0/test_x6_stage0_dp.py#L38) |  |
 | `stat_ref` | function | `stat_ref` | [tests/analysis/test_baselines_dynamics.py:76](../../tests/analysis/test_baselines_dynamics.py#L76) |  |
 | `state` | function | `state` | [tests/c1prime/test_a_oracle.py:41](../../tests/c1prime/test_a_oracle.py#L41) |  |
@@ -1095,6 +1424,7 @@
 | `state` | function | `state` | [tools/x2a_stage0/x2a_model.py:48](../../tools/x2a_stage0/x2a_model.py#L48) |  |
 | `state` | function | `state` | [tools/x6_stage0/x6_model.py:68](../../tools/x6_stage0/x6_model.py#L68) |  |
 | `state_from_gates` | function | `state_from_gates` | [tools/hwsc/hwsc_outcome.py:96](../../tools/hwsc/hwsc_outcome.py#L96) |  |
+| `state_from_gates` | function | `state_from_gates` | [tools/hwsd/hwsd_driver.py:307](../../tools/hwsd/hwsd_driver.py#L307) | The outcome_d state keys (decision 10) read from GATES.jsonl and the SCORE folders. |
 | `state_sha` | function | `state_sha` | [tools/c1prime/c1_model.py:20](../../tools/c1prime/c1_model.py#L20) |  |
 | `statement_count` | function | `statement_count` | [tools/c2_nd/nd_decide.py:211](../../tools/c2_nd/nd_decide.py#L211) |  |
 | `statement_licence` | function | `statement_licence` | [tools/c2_nd/nd_decide.py:382](../../tools/c2_nd/nd_decide.py#L382) | rule6a, rule6b, rule6c (with the C2-M caveats and KM3) or nested (§7.2-§7.4). |
@@ -1114,6 +1444,7 @@
 | `status_cmd` | method | `SSHExecutor.status_cmd` | [src/topo_pilot/executors/ssh.py:83](../../src/topo_pilot/executors/ssh.py#L83) | ``ssh`` command printing the exit code, or ``running``. |
 | `status_lines` | function | `status_lines` | [src/topo_pilot/experiment/cli.py:40](../../src/topo_pilot/experiment/cli.py#L40) | At most 40 lines: artifact counts per type, the latest verdict per gate, config hash. |
 | `status_of` | function | `status_of` | [tests/c2_nd/test_b_policy.py:42](../../tests/c2_nd/test_b_policy.py#L42) |  |
+| `status_of` | function | `status_of` | [tests/hwsd/test_b_util.py:119](../../tests/hwsd/test_b_util.py#L119) |  |
 | `status_of` | function | `status_of` | [tools/c1prime/c1_config.py:53](../../tools/c1prime/c1_config.py#L53) | 'INCONCLUSIVE/SUPPORT' -> ('INCONCLUSIVE', 'SUPPORT'); 'PASS' -> ('PASS', None). |
 | `status_of` | function | `status_of` | [tools/c2_nd/nd_config.py:69](../../tools/c2_nd/nd_config.py#L69) |  |
 | `status_of` | function | `status_of` | [tools/c2_readout/c2_config.py:88](../../tools/c2_readout/c2_config.py#L88) |  |
@@ -1121,9 +1452,11 @@
 | `status_of` | function | `status_of` | [tools/hwsb/hwsb_driver.py:59](../../tools/hwsb/hwsb_driver.py#L59) | Choice 20 exception map. |
 | `status_of` | function | `status_of` | [tools/hwsc/hwsc_records.py:39](../../tools/hwsc/hwsc_records.py#L39) |  |
 | `status_of` | function | `status_of` | [tools/k4b/k4b_config.py:100](../../tools/k4b/k4b_config.py#L100) |  |
+| `status_of_checkpoint` | function | `status_of_checkpoint` | [tools/hwsd/hwsd_score.py:206](../../tools/hwsd/hwsd_score.py#L206) |  |
 | `stencil_filter` | function | `stencil_filter` | [tools/x2a_stage0/x2a_model.py:189](../../tools/x2a_stage0/x2a_model.py#L189) |  |
 | `SteppingClock` | class | `SteppingClock` | [tests/circle_history/test_cochain_lift.py:123](../../tests/circle_history/test_cochain_lift.py#L123) | Reading k (k = 0, 1, ...) returns k * step. |
 | `steps_in` | function | `steps_in` | [tests/hwsb/test_b_hold.py:166](../../tests/hwsb/test_b_hold.py#L166) |  |
+| `stop_obligation` | function | `stop_obligation` | [tools/hwsd/hwsd_data.py:279](../../tools/hwsd/hwsd_data.py#L279) |  |
 | `stop_status` | function | `stop_status` | [tests/hwsb/test_a_learning.py:52](../../tests/hwsb/test_a_learning.py#L52) |  |
 | `stop_status` | function | `stop_status` | [tests/hwsb/test_b_streams.py:34](../../tests/hwsb/test_b_streams.py#L34) |  |
 | `Stopped` | class | `Stopped` | [tools/x4_oracle_profile/runtime.py:26](../../tools/x4_oracle_profile/runtime.py#L26) |  |
@@ -1135,6 +1468,7 @@
 | `store` | function | `store` | [tests/experiment/test_report_x4.py:23](../../tests/experiment/test_report_x4.py#L23) |  |
 | `store` | function | `store` | [tests/experiment/test_runner.py:32](../../tests/experiment/test_runner.py#L32) |  |
 | `store` | function | `store` | [tests/experiment/test_x4.py:26](../../tests/experiment/test_x4.py#L26) |  |
+| `store` | function | `store` | [tests/hwsd/test_b_registry_r9.py:79](../../tests/hwsd/test_b_registry_r9.py#L79) |  |
 | `store_admission` | function | `store_admission` | [tools/c2_nd/nd_data.py:147](../../tools/c2_nd/nd_data.py#L147) | c2_data.store_admission, and at first sampling also no file under decoys/ or registry/. |
 | `store_admission` | function | `store_admission` | [tools/c2_readout/c2_data.py:281](../../tools/c2_readout/c2_data.py#L281) | G0 (vii): every store file is meter bookkeeping or recognised with its exact sha256; at |
 | `store_and_id` | function | `store_and_id` | [tests/experiment/test_x5g1_controls.py:155](../../tests/experiment/test_x5g1_controls.py#L155) |  |
@@ -1162,9 +1496,13 @@
 | `stream_guards` | function | `stream_guards` | [tools/c2_readout/c2_decide.py:79](../../tools/c2_readout/c2_decide.py#L79) | Guards of one R/S* stream; geo: M, x/y = (d, dy, E), proj = {prefix: (P_S, delta_P)}. |
 | `stream_record` | function | `stream_record` | [tools/hwsb/hwsb_data.py:161](../../tools/hwsb/hwsb_data.py#L161) |  |
 | `strict_verdict` | function | `strict_verdict` | [src/topo_pilot/analysis/horizon_pools.py:174](../../src/topo_pilot/analysis/horizon_pools.py#L174) | SUFFICIENT_AMBIENT iff the ambient map factorizes; otherwise UNRESOLVED (numerical |
+| `strings` | function | `strings` | [tests/hwsd/test_a_evaluate.py:38](../../tests/hwsd/test_a_evaluate.py#L38) |  |
 | `strings` | function | `strings` | [tests/oracle_profile/test_oracle_profile.py:71](../../tests/oracle_profile/test_oracle_profile.py#L71) | All V**length observation strings. |
 | `strings` | function | `strings` | [tests/oracle_profile/test_oracle_profile_traps.py:48](../../tests/oracle_profile/test_oracle_profile_traps.py#L48) |  |
 | `strip_volatile` | function | `strip_volatile` | [tools/x6_stage0/x6_store.py:204](../../tools/x6_stage0/x6_store.py#L204) |  |
+| `strong_bootstrap` | function | `strong_bootstrap` | [tools/hwsd/hwsd_summary.py:84](../../tools/hwsd/hwsd_summary.py#L84) |  |
+| `strong_bounds` | function | `strong_bounds` | [tools/hwsd/hwsd_summary.py:94](../../tools/hwsd/hwsd_summary.py#L94) |  |
+| `strong_seed` | function | `strong_seed` | [tools/hwsd/hwsd_bind.py:96](../../tools/hwsd/hwsd_bind.py#L96) |  |
 | `structural_subset` | function | `structural_subset` | [tools/x6zc/x6zc_census.py:210](../../tools/x6zc/x6zc_census.py#L210) |  |
 | `stub_sources` | function | `stub_sources` | [tools/hwsc/hwsc_dry.py:73](../../tools/hwsc/hwsc_dry.py#L73) | Synthetic replacements for the sources that need the real stores (DRC1, DRC9). |
 | `stubs` | function | `stubs` | [tests/hwsc/test_b_registry2.py:218](../../tests/hwsc/test_b_registry2.py#L218) |  |
@@ -1196,10 +1534,13 @@
 | `summary` | method | `CircularJob.summary` | [src/topo_pilot/experiment/s7_circular.py:80](../../src/topo_pilot/experiment/s7_circular.py#L80) |  |
 | `summary` | function | `summary` | [tools/hws/hws_stats.py:45](../../tools/hws/hws_stats.py#L45) |  |
 | `summary` | function | `summary` | [tools/k4b/k4b_registry_k.py:113](../../tools/k4b/k4b_registry_k.py#L113) | Manifest `k4b_store` (§16 item 4): counts and sha256s per group; None -> not read. |
+| `SUP` | function | `SUP` | [tests/hwsd/test_a_hwsd_ref.py:65](../../tests/hwsd/test_a_hwsd_ref.py#L65) |  |
 | `sup` | function | `sup` | [tools/c2_nd/nd_stage_pre.py:263](../../tools/c2_nd/nd_stage_pre.py#L263) |  |
 | `supersede` | function | `supersede` | [tools/c2_nd/nd_stage_base.py:200](../../tools/c2_nd/nd_stage_base.py#L200) |  |
 | `supersede` | function | `supersede` | [tools/c2_readout/c2_driver.py:316](../../tools/c2_readout/c2_driver.py#L316) |  |
 | `superseded_ok` | function | `superseded_ok` | [tools/hwsc/hwsc_records.py:80](../../tools/hwsc/hwsc_records.py#L80) | Mirror of k4b_release._superseded_ok (R-0176-P2): every file of superseded/<job>/ must be |
+| `superseded_ok` | function | `superseded_ok` | [tools/hwsd/hwsd_records.py:40](../../tools/hwsd/hwsd_records.py#L40) |  |
+| `superset_check` | function | `superset_check` | [tools/hwsd/hwsd_readers.py:158](../../tools/hwsd/hwsd_readers.py#L158) |  |
 | `supervise` | function | `supervise` | [tools/x4_oracle_profile/meter.py:114](../../tools/x4_oracle_profile/meter.py#L114) | Run cmd in the job; return only after the job has NO active process. |
 | `supervise` | function | `supervise` | [tools/x6_stage1/x6s1_run.py:310](../../tools/x6_stage1/x6s1_run.py#L310) | Poll every `poll_s` until every child has exited (§4.6, S6); STOP/HOLD at each poll. |
 | `Supervisor` | class | `Supervisor` | [tools/d2a/d2a_train.py:168](../../tools/d2a/d2a_train.py#L168) | Polling per-model CPU, per-process memory and stage/total budget enforcement (S6). |
@@ -1253,6 +1594,7 @@
 | `t_pre_model` | function | `t_pre_model` | [tools/c2_nd/nd_stage_post.py:115](../../tools/c2_nd/nd_stage_post.py#L115) | §3 row 30: Sup(DTEST), L1 and R1 with the frozen decoders (C2 R, RD, M; RT report-only), |
 | `t_pre_model` | function | `t_pre_model` | [tools/c2_readout/c2_stage_post.py:100](../../tools/c2_readout/c2_stage_post.py#L100) | §7 row 24: Sup(TEST), L1 and R1 with the frozen FIT decoders, N2 (M); TEST tallies. |
 | `table` | function | `table` | [tests/c2_nd/test_b_registry.py:39](../../tests/c2_nd/test_b_registry.py#L39) |  |
+| `table` | function | `table` | [tests/hwsd/test_a_evaluate.py:30](../../tests/hwsd/test_a_evaluate.py#L30) |  |
 | `table` | function | `table` | [tools/c2_nd/nd_stage_base.py:302](../../tools/c2_nd/nd_stage_base.py#L302) |  |
 | `table` | function | `table` | [tools/c2_readout/c2_stage_base.py:81](../../tools/c2_readout/c2_stage_base.py#L81) |  |
 | `table_digests` | function | `table_digests` | [tools/c2_readout/c2_data.py:137](../../tools/c2_readout/c2_data.py#L137) |  |
@@ -1262,6 +1604,7 @@
 | `tables` | function | `tables` | [src/topo_pilot/experiment/x5g1t_stages.py:103](../../src/topo_pilot/experiment/x5g1t_stages.py#L103) |  |
 | `tables` | function | `tables` | [tests/hwsb/test_b_streams.py:335](../../tests/hwsb/test_b_streams.py#L335) |  |
 | `tables_bytes` | function | `tables_bytes` | [tools/x6_stage1/x6s1_pairs.py:52](../../tools/x6_stage1/x6s1_pairs.py#L52) |  |
+| `tabs` | function | `tabs` | [tests/hwsd/test_a_scorer.py:46](../../tests/hwsd/test_a_scorer.py#L46) |  |
 | `tail` | function | `tail` | [tools/x6_stage1/x6s1_stats.py:190](../../tools/x6_stage1/x6s1_stats.py#L190) |  |
 | `tail_identity` | function | `tail_identity` | [tools/c1prime/c1_model.py:94](../../tools/c1prime/c1_model.py#L94) |  |
 | `tail_logits` | function | `tail_logits` | [tools/c1prime/c1_model.py:80](../../tools/c1prime/c1_model.py#L80) |  |
@@ -1301,6 +1644,7 @@
 | `test_15_indicator_se_and_rs_keys` | test | `test_15_indicator_se_and_rs_keys` | [tests/x6_stage0/test_x6_stage0_dp.py:282](../../tests/x6_stage0/test_x6_stage0_dp.py#L282) |  |
 | `test_16_rerun_and_lineage_rule` | test | `test_16_rerun_and_lineage_rule` | [tests/x6_stage0/test_x6_stage0_dp.py:311](../../tests/x6_stage0/test_x6_stage0_dp.py#L311) |  |
 | `test_17_eta1_markers_manifests` | test | `test_17_eta1_markers_manifests` | [tests/x6_stage0/test_x6_stage0_dp.py:366](../../tests/x6_stage0/test_x6_stage0_dp.py#L366) |  |
+| `test_36_checkpoints_at_most_72_claims` | test | `test_36_checkpoints_at_most_72_claims` | [tests/hwsd/test_a_scorer.py:240](../../tests/hwsd/test_a_scorer.py#L240) |  |
 | `test_A01_row_order_equals_index_order_for_any_batch_size` | test | `test_A01_row_order_equals_index_order_for_any_batch_size` | [tests/activations/test_activations.py:35](../../tests/activations/test_activations.py#L35) |  |
 | `test_a020_c_max_closed_form_and_entries` | test | `test_a020_c_max_closed_form_and_entries` | [tests/process/test_conductance.py:171](../../tests/process/test_conductance.py#L171) |  |
 | `test_a020_connected` | test | `test_a020_connected` | [tests/process/test_conductance.py:164](../../tests/process/test_conductance.py#L164) |  |
@@ -1327,9 +1671,13 @@
 | `test_a17_fit_chart_labels_in_order_and_same_chart` | test | `test_a17_fit_chart_labels_in_order_and_same_chart` | [tests/circle_history/test_cochain_chart_v24.py:212](../../tests/circle_history/test_cochain_chart_v24.py#L212) |  |
 | `test_a17_timed_exception_propagates_and_stops` | test | `test_a17_timed_exception_propagates_and_stops` | [tests/circle_history/test_cochain_chart_v24.py:227](../../tests/circle_history/test_cochain_chart_v24.py#L227) |  |
 | `test_a1_selftest_holds_on_this_platform` | test | `test_a1_selftest_holds_on_this_platform` | [tests/c1prime/test_b_cert_oracle.py:377](../../tests/c1prime/test_b_cert_oracle.py#L377) |  |
+| `test_above_below_strict_equality` | test | `test_above_below_strict_equality` | [tests/hwsd/test_a_onsets_order.py:64](../../tests/hwsd/test_a_onsets_order.py#L64) |  |
+| `test_above_s_unvalidated_vs_ok_and_below_needs_ok` | test | `test_above_s_unvalidated_vs_ok_and_below_needs_ok` | [tests/hwsd/test_a_onsets_order.py:78](../../tests/hwsd/test_a_onsets_order.py#L78) |  |
+| `test_above_s_uses_F_minus_and_below_uses_F_plus` | test | `test_above_s_uses_F_minus_and_below_uses_F_plus` | [tests/hwsd/test_a_onsets_order.py:86](../../tests/hwsd/test_a_onsets_order.py#L86) |  |
 | `test_absence_shown_ignores_ineligible_worlds` | test | `test_absence_shown_ignores_ineligible_worlds` | [tests/hws/test_a_outcomes.py:188](../../tests/hws/test_a_outcomes.py#L188) |  |
 | `test_absolute_resolution_is_separate_and_strict` | test | `test_absolute_resolution_is_separate_and_strict` | [tests/d2a/test_b_behaviour.py:96](../../tests/d2a/test_b_behaviour.py#L96) |  |
 | `test_absolute_resolution_needs_both_members` | test | `test_absolute_resolution_needs_both_members` | [tests/d2a/test_b_behaviour.py:107](../../tests/d2a/test_b_behaviour.py#L107) |  |
+| `test_acceptance_check` | test | `test_acceptance_check` | [tests/hwsd/test_b_records_meter.py:156](../../tests/hwsd/test_b_records_meter.py#L156) |  |
 | `test_accepted_reference_bounds_the_exact_projector_distance` | test | `test_accepted_reference_bounds_the_exact_projector_distance` | [tests/c2_readout/test_a_gls.py:315](../../tests/c2_readout/test_a_gls.py#L315) |  |
 | `test_activation_ids_missing_run_is_empty_not_an_error` | test | `test_activation_ids_missing_run_is_empty_not_an_error` | [tests/experiment/test_runner.py:104](../../tests/experiment/test_runner.py#L104) |  |
 | `test_activations3_are_the_three_hooks_at_position_32` | test | `test_activations3_are_the_three_hooks_at_position_32` | [tests/c2_readout/test_b_patch.py:104](../../tests/c2_readout/test_b_patch.py#L104) |  |
@@ -1339,6 +1687,7 @@
 | `test_admission_lock_before_import_blocks_retrain_and_restoration_rules` | test | `test_admission_lock_before_import_blocks_retrain_and_restoration_rules` | [tests/x6_stage1/test_b_ingest_bundle.py:317](../../tests/x6_stage1/test_b_ingest_bundle.py#L317) |  |
 | `test_admit` | test | `test_admit` | [tests/d2a/test_b_resource.py:275](../../tests/d2a/test_b_resource.py#L275) |  |
 | `test_aeff_on_known_zero_worlds` | test | `test_aeff_on_known_zero_worlds` | [tests/hws/test_b_exact.py:140](../../tests/hws/test_b_exact.py#L140) |  |
+| `test_aggregate_rule_generic` | test | `test_aggregate_rule_generic` | [tests/hwsd/test_a_statements.py:195](../../tests/hwsd/test_a_statements.py#L195) |  |
 | `test_agreement_failures_flag_precision_and_permutation` | test | `test_agreement_failures_flag_precision_and_permutation` | [tests/experiment/test_x4b.py:76](../../tests/experiment/test_x4b.py#L76) |  |
 | `test_agreement_known_answers` | test | `test_agreement_known_answers` | [tests/circle_history/test_chart_extension.py:270](../../tests/circle_history/test_chart_extension.py#L270) |  |
 | `test_alignment_errors` | test | `test_alignment_errors` | [tests/oracle/test_oracle.py:250](../../tests/oracle/test_oracle.py#L250) |  |
@@ -1373,24 +1722,35 @@
 | `test_apply_usage_existing_malformed_usage_file_raises` | test | `test_apply_usage_existing_malformed_usage_file_raises` | [tests/experiment/test_x5g1t_usage_files.py:124](../../tests/experiment/test_x5g1t_usage_files.py#L124) |  |
 | `test_apply_usage_hold_persists_without_usage_file` | test | `test_apply_usage_hold_persists_without_usage_file` | [tests/experiment/test_x5g1t_usage_files.py:106](../../tests/experiment/test_x5g1t_usage_files.py#L106) |  |
 | `test_apply_usage_missing_files_no_hold` | test | `test_apply_usage_missing_files_no_hold` | [tests/experiment/test_x5g1t_usage_files.py:91](../../tests/experiment/test_x5g1t_usage_files.py#L91) |  |
+| `test_archive_attempt_and_superseded_sums` | test | `test_archive_attempt_and_superseded_sums` | [tests/hwsd/test_b_records_meter.py:77](../../tests/hwsd/test_b_records_meter.py#L77) |  |
 | `test_archive_attempt_moves_files_with_sha256sums` | test | `test_archive_attempt_moves_files_with_sha256sums` | [tests/k4b/test_b_rerun.py:73](../../tests/k4b/test_b_rerun.py#L73) |  |
 | `test_archive_partial_moves_only_unlisted_files` | test | `test_archive_partial_moves_only_unlisted_files` | [tests/hws/test_b_records.py:161](../../tests/hws/test_b_records.py#L161) |  |
 | `test_archive_stale_marker` | test | `test_archive_stale_marker` | [tests/circle_history/test_builder_v24_runtime.py:98](../../tests/circle_history/test_builder_v24_runtime.py#L98) |  |
 | `test_archived_suffixes_are_kept` | test | `test_archived_suffixes_are_kept` | [tests/k4b/test_b_rerun.py:96](../../tests/k4b/test_b_rerun.py#L96) |  |
+| `test_archived_wall_label_protocol_reading` | test | `test_archived_wall_label_protocol_reading` | [tests/hwsd/test_a_scorer.py:217](../../tests/hwsd/test_a_scorer.py#L217) |  |
+| `test_archived_wall_record_and_newest_attempt` | test | `test_archived_wall_record_and_newest_attempt` | [tests/hwsd/test_b_records_meter.py:99](../../tests/hwsd/test_b_records_meter.py#L99) |  |
 | `test_arm_common_additive_perturbation_cancels_exactly` | test | `test_arm_common_additive_perturbation_cancels_exactly` | [tests/c1prime/test_b_identities.py:115](../../tests/c1prime/test_b_identities.py#L115) |  |
 | `test_arm_op_failed_gives_failed` | test | `test_arm_op_failed_gives_failed` | [tests/analysis/test_x5_context.py:106](../../tests/analysis/test_x5_context.py#L106) |  |
 | `test_arm_value_exhaustive` | test | `test_arm_value_exhaustive` | [tests/d2a/test_b_rules_flags.py:117](../../tests/d2a/test_b_rules_flags.py#L117) |  |
 | `test_arm_value_named_cases` | test | `test_arm_value_named_cases` | [tests/d2a/test_b_rules_flags.py:131](../../tests/d2a/test_b_rules_flags.py#L131) |  |
 | `test_arms_share_step0_weights_and_seeds_but_not_ids` | test | `test_arms_share_step0_weights_and_seeds_but_not_ids` | [tests/experiment/test_x5g1t_training.py:229](../../tests/experiment/test_x5g1t_training.py#L229) |  |
+| `test_array_in_train_is_incomplete_and_unopened` | test | `test_array_in_train_is_incomplete_and_unopened` | [tests/hwsd/test_b_registry_r9.py:136](../../tests/hwsd/test_b_registry_r9.py#L136) |  |
+| `test_arrays_one_planted` | test | `test_arrays_one_planted` | [tests/hwsd/test_a_scorer.py:274](../../tests/hwsd/test_a_scorer.py#L274) |  |
+| `test_artifact_meta_mismatch_is_incomplete` | test | `test_artifact_meta_mismatch_is_incomplete` | [tests/hwsd/test_b_registry_r9.py:172](../../tests/hwsd/test_b_registry_r9.py#L172) |  |
 | `test_assert_can_start` | test | `test_assert_can_start` | [tests/experiment/test_x5g1t_runtime_boundary.py:101](../../tests/experiment/test_x5g1t_runtime_boundary.py#L101) |  |
 | `test_asymmetric_cells` | test | `test_asymmetric_cells` | [tests/hws/test_b_worlds.py:326](../../tests/hws/test_b_worlds.py#L326) |  |
+| `test_attestation_live_without_end_and_after_changes` | test | `test_attestation_live_without_end_and_after_changes` | [tests/hwsd/test_b_reservation.py:120](../../tests/hwsd/test_b_reservation.py#L120) |  |
+| `test_audit_catches_planted_leftovers` | test | `test_audit_catches_planted_leftovers` | [tests/hwsd/test_b_binding.py:173](../../tests/hwsd/test_b_binding.py#L173) |  |
+| `test_audit_clean_module_and_bool` | test | `test_audit_clean_module_and_bool` | [tests/hwsd/test_b_binding.py:182](../../tests/hwsd/test_b_binding.py#L182) |  |
 | `test_audit_mode` | test | `test_audit_mode` | [tests/oracle_profile/test_builder_controls.py:134](../../tests/oracle_profile/test_builder_controls.py#L134) |  |
 | `test_audit_outside_the_binding_fails` | test | `test_audit_outside_the_binding_fails` | [tests/hwsc/test_b_binding.py:236](../../tests/hwsc/test_b_binding.py#L236) |  |
+| `test_audit_outside_the_binding_fails_by_design` | test | `test_audit_outside_the_binding_fails_by_design` | [tests/hwsd/test_b_binding.py:192](../../tests/hwsd/test_b_binding.py#L192) |  |
 | `test_audit_pairs` | test | `test_audit_pairs` | [tests/x6zc/test_x6zc_core.py:388](../../tests/x6zc/test_x6zc_core.py#L388) |  |
 | `test_audit_record_is_audit_only` | test | `test_audit_record_is_audit_only` | [tests/experiment/test_x5g1t_runtime.py:308](../../tests/experiment/test_x5g1t_runtime.py#L308) |  |
 | `test_auth_ok` | test | `test_auth_ok` | [tests/c2_nd/test_b_lineage.py:243](../../tests/c2_nd/test_b_lineage.py#L243) |  |
 | `test_auth_ok` | test | `test_auth_ok` | [tests/c2_readout/test_b_lineage.py:227](../../tests/c2_readout/test_b_lineage.py#L227) |  |
 | `test_auth_ok` | test | `test_auth_ok` | [tests/x6_stage1/test_b_ingest_bundle.py:393](../../tests/x6_stage1/test_b_ingest_bundle.py#L393) |  |
+| `test_auth_ok_d` | test | `test_auth_ok_d` | [tests/hwsd/test_b_records_meter.py:119](../../tests/hwsd/test_b_records_meter.py#L119) |  |
 | `test_auth_ok_for_every_stage` | test | `test_auth_ok_for_every_stage` | [tests/hwsb/test_b_records.py:112](../../tests/hwsb/test_b_records.py#L112) |  |
 | `test_auth_ok_missing_or_unparsable_never_raises` | test | `test_auth_ok_missing_or_unparsable_never_raises` | [tests/c2_readout/test_b_lineage.py:239](../../tests/c2_readout/test_b_lineage.py#L239) |  |
 | `test_auth_ok_refusals` | test | `test_auth_ok_refusals` | [tests/hwsc/test_b_records.py:188](../../tests/hwsc/test_b_records.py#L188) |  |
@@ -1451,6 +1811,7 @@
 | `test_band_select_plateau_intersection` | test | `test_band_select_plateau_intersection` | [tests/x2a_stage0/test_x2a_stage0_ph.py:198](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L198) |  |
 | `test_batched_scoring_equals_single_pass` | test | `test_batched_scoring_equals_single_pass` | [tests/experiment/test_x5g1_scorebench_smoke.py:34](../../tests/experiment/test_x5g1_scorebench_smoke.py#L34) |  |
 | `test_bayes_cross_check_passes_and_detects_a_perturbed_e` | test | `test_bayes_cross_check_passes_and_detects_a_perturbed_e` | [tests/hws/test_b_exact.py:187](../../tests/hws/test_b_exact.py#L187) |  |
+| `test_before_sequence_unvalidated_case_is_not_an_onset` | test | `test_before_sequence_unvalidated_case_is_not_an_onset` | [tests/hwsd/test_a_kd4.py:153](../../tests/hwsd/test_a_kd4.py#L153) |  |
 | `test_begin_and_complete_stage_records` | test | `test_begin_and_complete_stage_records` | [tests/k4b/test_b_rerun.py:142](../../tests/k4b/test_b_rerun.py#L142) |  |
 | `test_begin_in_order_and_out_of_order` | test | `test_begin_in_order_and_out_of_order` | [tests/c2_nd/test_b_policy.py:77](../../tests/c2_nd/test_b_policy.py#L77) |  |
 | `test_begin_stage_accepts_a_complete_prerequisite` | test | `test_begin_stage_accepts_a_complete_prerequisite` | [tests/c1prime/test_a_gates.py:161](../../tests/c1prime/test_a_gates.py#L161) |  |
@@ -1482,11 +1843,13 @@
 | `test_bind_defaults_temp_root_to_out` | test | `test_bind_defaults_temp_root_to_out` | [tests/hwsb/test_b_meter_law.py:86](../../tests/hwsb/test_b_meter_law.py#L86) |  |
 | `test_bind_meter_sets_exactly_the_section_11_3_names` | test | `test_bind_meter_sets_exactly_the_section_11_3_names` | [tests/d2a/test_b_resource.py:148](../../tests/d2a/test_b_resource.py#L148) |  |
 | `test_bind_per_stage` | test | `test_bind_per_stage` | [tests/hwsc/test_b_guard_meter.py:248](../../tests/hwsc/test_b_guard_meter.py#L248) |  |
+| `test_bind_per_stage` | test | `test_bind_per_stage` | [tests/hwsd/test_b_records_meter.py:308](../../tests/hwsd/test_b_records_meter.py#L308) |  |
 | `test_bind_rebinds_every_module_level_name` | test | `test_bind_rebinds_every_module_level_name` | [tests/c1prime/test_a_release_meter.py:193](../../tests/c1prime/test_a_release_meter.py#L193) |  |
 | `test_bind_sets_every_registered_value` | test | `test_bind_sets_every_registered_value` | [tests/k4b/test_b_meter.py:53](../../tests/k4b/test_b_meter.py#L53) |  |
 | `test_bind_sets_memory_cap_temp_root_and_meter_paths` | test | `test_bind_sets_memory_cap_temp_root_and_meter_paths` | [tests/hwsb/test_b_meter_law.py:69](../../tests/hwsb/test_b_meter_law.py#L69) |  |
 | `test_bind_sets_the_hws_values` | test | `test_bind_sets_the_hws_values` | [tests/hws/test_b_records.py:284](../../tests/hws/test_b_records.py#L284) |  |
 | `test_bind_to_the_dry_store_puts_child_temp_on_x` | test | `test_bind_to_the_dry_store_puts_child_temp_on_x` | [tests/hws/test_b_records.py:304](../../tests/hws/test_b_records.py#L304) |  |
+| `test_bind_unknown_stage_and_temp_root` | test | `test_bind_unknown_stage_and_temp_root` | [tests/hwsd/test_b_records_meter.py:321](../../tests/hwsd/test_b_records_meter.py#L321) |  |
 | `test_binding_points_unchanged_modules_at_this_job` | test | `test_binding_points_unchanged_modules_at_this_job` | [tests/circle_history/test_builder_runtime.py:54](../../tests/circle_history/test_builder_runtime.py#L54) |  |
 | `test_binding_restored_after_exit` | test | `test_binding_restored_after_exit` | [tests/hwsc/test_a_k4b_known_bound.py:390](../../tests/hwsc/test_a_k4b_known_bound.py#L390) |  |
 | `test_bins_and_resultant_use_all_512_queries_including_unsupported` | test | `test_bins_and_resultant_use_all_512_queries_including_unsupported` | [tests/c1prime/test_a_chart_val.py:134](../../tests/c1prime/test_a_chart_val.py#L134) | Bins and resultant count every production-extension query, supported or not. |
@@ -1494,9 +1857,13 @@
 | `test_bitwise_reading_is_gate_pass` | test | `test_bitwise_reading_is_gate_pass` | [tests/hwsb/test_r_0170_kb2_status.py:48](../../tests/hwsb/test_r_0170_kb2_status.py#L48) |  |
 | `test_blinded_default_root_is_pure` | test | `test_blinded_default_root_is_pure` | [tests/hwsc/test_b_guard_meter.py:104](../../tests/hwsc/test_b_guard_meter.py#L104) |  |
 | `test_blinded_false` | test | `test_blinded_false` | [tests/hwsc/test_b_guard_meter.py:100](../../tests/hwsc/test_b_guard_meter.py#L100) |  |
+| `test_blinded_false` | test | `test_blinded_false` | [tests/hwsd/test_b_guard_search.py:57](../../tests/hwsd/test_b_guard_search.py#L57) |  |
+| `test_blinded_scratch_job_folders` | test | `test_blinded_scratch_job_folders` | [tests/hwsd/test_b_guard_search.py:62](../../tests/hwsd/test_b_guard_search.py#L62) |  |
 | `test_blinded_true` | test | `test_blinded_true` | [tests/hwsc/test_b_guard_meter.py:92](../../tests/hwsc/test_b_guard_meter.py#L92) |  |
+| `test_blinded_true` | test | `test_blinded_true` | [tests/hwsd/test_b_guard_search.py:49](../../tests/hwsd/test_b_guard_search.py#L49) |  |
 | `test_blindness_list_is_exactly_the_five_rules` | test | `test_blindness_list_is_exactly_the_five_rules` | [tests/hwsc/test_b_guard_meter.py:85](../../tests/hwsc/test_b_guard_meter.py#L85) |  |
 | `test_block_content_invariant_to_k` | test | `test_block_content_invariant_to_k` | [tests/k4b/test_b_data.py:146](../../tests/k4b/test_b_data.py#L146) |  |
+| `test_block_generator_and_ids_under_the_binding` | test | `test_block_generator_and_ids_under_the_binding` | [tests/hwsd/test_b_data.py:52](../../tests/hwsd/test_b_data.py#L52) |  |
 | `test_block_generator_formula_explicit_and_default` | test | `test_block_generator_formula_explicit_and_default` | [tests/hwsc/test_b_streams.py:172](../../tests/hwsc/test_b_streams.py#L172) |  |
 | `test_block_ids_formula` | test | `test_block_ids_formula` | [tests/hwsc/test_b_streams.py:183](../../tests/hwsc/test_b_streams.py#L183) |  |
 | `test_block_roles_refused` | test | `test_block_roles_refused` | [tests/hwsc/test_b_streams.py:109](../../tests/hwsc/test_b_streams.py#L109) |  |
@@ -1516,6 +1883,7 @@
 | `test_bootstrap_guard_brackets_the_draws` | test | `test_bootstrap_guard_brackets_the_draws` | [tests/analysis/test_x5_endpoint_bootstrap.py:132](../../tests/analysis/test_x5_endpoint_bootstrap.py#L132) |  |
 | `test_bootstrap_guard_exception_propagates` | test | `test_bootstrap_guard_exception_propagates` | [tests/experiment/test_x5g1_lineage.py:270](../../tests/experiment/test_x5g1_lineage.py#L270) |  |
 | `test_bootstrap_guard_strings_per_batch` | test | `test_bootstrap_guard_strings_per_batch` | [tests/analysis/test_x5_endpoint_bootstrap.py:125](../../tests/analysis/test_x5_endpoint_bootstrap.py#L125) |  |
+| `test_bootstrap_inputs_d_order_and_values` | test | `test_bootstrap_inputs_d_order_and_values` | [tests/hwsd/test_a_bounds.py:216](../../tests/hwsd/test_a_bounds.py#L216) |  |
 | `test_bootstrap_inputs_fixed_order_one_dict` | test | `test_bootstrap_inputs_fixed_order_one_dict` | [tests/k4b/test_b_endpoint.py:219](../../tests/k4b/test_b_endpoint.py#L219) |  |
 | `test_bootstrap_keeps_censored_draws_and_fractions` | test | `test_bootstrap_keeps_censored_draws_and_fractions` | [tests/analysis/test_x5_endpoint_bootstrap.py:96](../../tests/analysis/test_x5_endpoint_bootstrap.py#L96) |  |
 | `test_bootstrap_matches_definition_and_is_deterministic` | test | `test_bootstrap_matches_definition_and_is_deterministic` | [tests/experiment/test_x5g1_lineage.py:238](../../tests/experiment/test_x5g1_lineage.py#L238) |  |
@@ -1559,6 +1927,7 @@
 | `test_bounds_d_low_equality_250` | test | `test_bounds_d_low_equality_250` | [tests/analysis/test_x5_endpoint.py:225](../../tests/analysis/test_x5_endpoint.py#L225) |  |
 | `test_bounds_flat_censored_curved_observed` | test | `test_bounds_flat_censored_curved_observed` | [tests/analysis/test_x5_endpoint.py:238](../../tests/analysis/test_x5_endpoint.py#L238) |  |
 | `test_bounds_rank_check_failure_is_numerical` | test | `test_bounds_rank_check_failure_is_numerical` | [tests/k4b/test_a_ranks_ladder.py:97](../../tests/k4b/test_a_ranks_ladder.py#L97) |  |
+| `test_bounds_ranks_84_4917` | test | `test_bounds_ranks_84_4917` | [tests/hwsd/test_a_known_bound.py:203](../../tests/hwsd/test_a_known_bound.py#L203) |  |
 | `test_bounds_ranks_on_bound_endpoint_seed` | test | `test_bounds_ranks_on_bound_endpoint_seed` | [tests/hwsc/test_a_k4b_known_bound.py:337](../../tests/hwsc/test_a_k4b_known_bound.py#L337) |  |
 | `test_bounds_ranks_on_distinct_draws` | test | `test_bounds_ranks_on_distinct_draws` | [tests/k4b/test_a_ranks_ladder.py:80](../../tests/k4b/test_a_ranks_ladder.py#L80) |  |
 | `test_bounds_with_ties` | test | `test_bounds_with_ties` | [tests/k4b/test_a_ranks_ladder.py:91](../../tests/k4b/test_a_ranks_ladder.py#L91) |  |
@@ -1568,6 +1937,9 @@
 | `test_build_checkpoint_is_the_learner_stage_save_body` | test | `test_build_checkpoint_is_the_learner_stage_save_body` | [tests/hwsb/test_b_e4path.py:159](../../tests/hwsb/test_b_e4path.py#L159) |  |
 | `test_build_coverage_complete_with_no_seq_in_a_problem` | test | `test_build_coverage_complete_with_no_seq_in_a_problem` | [tests/k4b/test_b_registry_fixes.py:228](../../tests/k4b/test_b_registry_fixes.py#L228) |  |
 | `test_build_coverage_reports_the_missing_id` | test | `test_build_coverage_reports_the_missing_id` | [tests/k4b/test_b_registry_fixes.py:241](../../tests/k4b/test_b_registry_fixes.py#L241) |  |
+| `test_build_d_composite_own_and_reader_tags` | test | `test_build_d_composite_own_and_reader_tags` | [tests/hwsd/test_b_registry_build.py:293](../../tests/hwsd/test_b_registry_build.py#L293) |  |
+| `test_build_d_refusals_and_load_d_lineage` | test | `test_build_d_refusals_and_load_d_lineage` | [tests/hwsd/test_b_registry_build.py:275](../../tests/hwsd/test_b_registry_build.py#L275) |  |
+| `test_build_d_wrapper_and_precedence` | test | `test_build_d_wrapper_and_precedence` | [tests/hwsd/test_b_registry_build.py:249](../../tests/hwsd/test_b_registry_build.py#L249) |  |
 | `test_build_e2_from_records_only` | test | `test_build_e2_from_records_only` | [tests/experiment/test_report_e2.py:56](../../tests/experiment/test_report_e2.py#L56) |  |
 | `test_build_e2_without_analysis_says_not_run` | test | `test_build_e2_without_analysis_says_not_run` | [tests/experiment/test_report_e2.py:72](../../tests/experiment/test_report_e2.py#L72) |  |
 | `test_build_extra_only_for_k_reg2` | test | `test_build_extra_only_for_k_reg2` | [tests/hwsc/test_b_registry2.py:305](../../tests/hwsc/test_b_registry2.py#L305) |  |
@@ -1615,6 +1987,9 @@
 | `test_C09_seed_known_answers` | test | `test_C09_seed_known_answers` | [tests/contracts/test_ids.py:112](../../tests/contracts/test_ids.py#L112) |  |
 | `test_C09_seed_sensitivity` | test | `test_C09_seed_sensitivity` | [tests/contracts/test_ids.py:121](../../tests/contracts/test_ids.py#L121) |  |
 | `test_c0_bundle_sums_ticket_and_chain_parameters` | test | `test_c0_bundle_sums_ticket_and_chain_parameters` | [tests/x6_stage1/test_b_nb_s0_ops.py:72](../../tests/x6_stage1/test_b_nb_s0_ops.py#L72) |  |
+| `test_c0_cal_fail_technical_stops` | test | `test_c0_cal_fail_technical_stops` | [tests/hwsd/test_a_scorer.py:168](../../tests/hwsd/test_a_scorer.py#L168) |  |
+| `test_c0_cal_failure_no_direct_no_decoder_no_freeze` | test | `test_c0_cal_failure_no_direct_no_decoder_no_freeze` | [tests/hwsd/test_a_scorer.py:154](../../tests/hwsd/test_a_scorer.py#L154) |  |
+| `test_c0_val_criteria_label` | test | `test_c0_val_criteria_label` | [tests/hwsd/test_a_scorer.py:202](../../tests/hwsd/test_a_scorer.py#L202) |  |
 | `test_c0_val_direct_giant_failure_is_chart_unavailable` | test | `test_c0_val_direct_giant_failure_is_chart_unavailable` | [tests/k4b/test_b_charts.py:341](../../tests/k4b/test_b_charts.py#L341) |  |
 | `test_c0_val_gate_refused_before_freeze_spends_no_construction` | test | `test_c0_val_gate_refused_before_freeze_spends_no_construction` | [tests/k4b/test_b_charts.py:268](../../tests/k4b/test_b_charts.py#L268) |  |
 | `test_c0_val_support_506_is_chart_unavailable` | test | `test_c0_val_support_506_is_chart_unavailable` | [tests/k4b/test_b_charts.py:337](../../tests/k4b/test_b_charts.py#L337) |  |
@@ -1682,7 +2057,10 @@
 | `test_cap_is_exact_not_float` | test | `test_cap_is_exact_not_float` | [tests/k4b/test_a_lemma_n.py:254](../../tests/k4b/test_a_lemma_n.py#L254) |  |
 | `test_cap_not_reached_succeeds` | test | `test_cap_not_reached_succeeds` | [tests/circle_history/test_cochain_lift.py:256](../../tests/circle_history/test_cochain_lift.py#L256) |  |
 | `test_capture_pass_equality_and_one_ulp_below` | test | `test_capture_pass_equality_and_one_ulp_below` | [tests/hwsb/test_a_capture.py:180](../../tests/hwsb/test_a_capture.py#L180) |  |
+| `test_captured_exactly_four_fifths_passes` | test | `test_captured_exactly_four_fifths_passes` | [tests/hwsd/test_a_learning.py:103](../../tests/hwsd/test_a_learning.py#L103) |  |
 | `test_carries` | test | `test_carries` | [tests/d2a/test_b_rules_flags.py:148](../../tests/d2a/test_b_rules_flags.py#L148) |  |
+| `test_case_ids_and_sequences_are_the_protocol_ones` | test | `test_case_ids_and_sequences_are_the_protocol_ones` | [tests/hwsd/test_a_kd4.py:70](../../tests/hwsd/test_a_kd4.py#L70) |  |
+| `test_categories_are_the_contract_list` | test | `test_categories_are_the_contract_list` | [tests/hwsd/test_a_onsets_order.py:269](../../tests/hwsd/test_a_onsets_order.py#L269) |  |
 | `test_cauchy_schwarz_bound_holds_and_matches_its_formula` | test | `test_cauchy_schwarz_bound_holds_and_matches_its_formula` | [tests/c2_readout/test_a_partition.py:246](../../tests/c2_readout/test_a_partition.py#L246) |  |
 | `test_causality_non_identity_patch` | test | `test_causality_non_identity_patch` | [tests/learner/test_patch.py:93](../../tests/learner/test_patch.py#L93) |  |
 | `test_caveat_reread` | test | `test_caveat_reread` | [tests/d2a/test_b_rules_qualifiers.py:185](../../tests/d2a/test_b_rules_qualifiers.py#L185) |  |
@@ -1691,6 +2069,7 @@
 | `test_cell_templates_verbatim_from_api` | test | `test_cell_templates_verbatim_from_api` | [tests/x6_stage1/test_b_nb_s0_ops.py:122](../../tests/x6_stage1/test_b_nb_s0_ops.py#L122) |  |
 | `test_centered_draws_reproduce_manual_loop_with_shared_idx` | test | `test_centered_draws_reproduce_manual_loop_with_shared_idx` | [tests/circle_history/test_scores_precision_gates.py:116](../../tests/circle_history/test_scores_precision_gates.py#L116) |  |
 | `test_centered_is_precision_centered_draws` | test | `test_centered_is_precision_centered_draws` | [tests/k4b/test_a_ranks_ladder.py:189](../../tests/k4b/test_a_ranks_ladder.py#L189) |  |
+| `test_centrals` | test | `test_centrals` | [tests/hwsd/test_b_records_meter.py:228](../../tests/hwsd/test_b_records_meter.py#L228) |  |
 | `test_centres_in_softmax_enclosure_order` | test | `test_centres_in_softmax_enclosure_order` | [tests/hwsb/test_a_enclosure_proof.py:167](../../tests/hwsb/test_a_enclosure_proof.py#L167) |  |
 | `test_centres_rectangular_and_gridcenters_bitwise` | test | `test_centres_rectangular_and_gridcenters_bitwise` | [tests/hws/test_b_worlds.py:143](../../tests/hws/test_b_worlds.py#L143) |  |
 | `test_certified_kernel_calls_no_blas_matmul_or_numpy_reduction` | test | `test_certified_kernel_calls_no_blas_matmul_or_numpy_reduction` | [tests/c1prime/test_b_cert_guards.py:210](../../tests/c1prime/test_b_cert_guards.py#L210) |  |
@@ -1705,6 +2084,7 @@
 | `test_chart_arrays_round_trip_exact` | test | `test_chart_arrays_round_trip_exact` | [tests/circle_history/test_chart_arrays.py:84](../../tests/circle_history/test_chart_arrays.py#L84) |  |
 | `test_chart_arrays_survive_npz_without_pickle` | test | `test_chart_arrays_survive_npz_without_pickle` | [tests/circle_history/test_chart_arrays.py:97](../../tests/circle_history/test_chart_arrays.py#L97) |  |
 | `test_chart_cfg_equals_c1prime_cfg` | test | `test_chart_cfg_equals_c1prime_cfg` | [tests/k4b/test_b_charts.py:96](../../tests/k4b/test_b_charts.py#L96) |  |
+| `test_chart_equality_and_protocol_inside_binding` | test | `test_chart_equality_and_protocol_inside_binding` | [tests/hwsd/test_a_known_bound.py:210](../../tests/hwsd/test_a_known_bound.py#L210) |  |
 | `test_chart_equality_inside_binding` | test | `test_chart_equality_inside_binding` | [tests/hwsc/test_a_k4b_known_bound.py:384](../../tests/hwsc/test_a_k4b_known_bound.py#L384) |  |
 | `test_chart_gates_all_pass_with_exactly_eight_per_bin` | test | `test_chart_gates_all_pass_with_exactly_eight_per_bin` | [tests/circle_history/test_chart_extension.py:333](../../tests/circle_history/test_chart_extension.py#L333) |  |
 | `test_chart_gates_defects_invalid` | test | `test_chart_gates_defects_invalid` | [tests/circle_history/test_chart_extension.py:385](../../tests/circle_history/test_chart_extension.py#L385) |  |
@@ -1712,6 +2092,8 @@
 | `test_chart_gates_resultant_boundary` | test | `test_chart_gates_resultant_boundary` | [tests/circle_history/test_chart_extension.py:364](../../tests/circle_history/test_chart_extension.py#L364) |  |
 | `test_chart_gates_seven_in_a_bin_is_inconclusive` | test | `test_chart_gates_seven_in_a_bin_is_inconclusive` | [tests/circle_history/test_chart_extension.py:343](../../tests/circle_history/test_chart_extension.py#L343) |  |
 | `test_chart_gates_support_and_overall_order` | test | `test_chart_gates_support_and_overall_order` | [tests/circle_history/test_chart_extension.py:372](../../tests/circle_history/test_chart_extension.py#L372) |  |
+| `test_chart_lost_after_k_C_keeps_k_C` | test | `test_chart_lost_after_k_C_keeps_k_C` | [tests/hwsd/test_a_onsets_order.py:115](../../tests/hwsd/test_a_onsets_order.py#L115) |  |
+| `test_chart_one_pass_order_and_freeze` | test | `test_chart_one_pass_order_and_freeze` | [tests/hwsd/test_a_scorer.py:126](../../tests/hwsd/test_a_scorer.py#L126) |  |
 | `test_charts_refuse_tampered_reference_identity` | test | `test_charts_refuse_tampered_reference_identity` | [tests/circle_history/test_builder_v24_stages.py:127](../../tests/circle_history/test_builder_v24_stages.py#L127) |  |
 | `test_charts_reuse_reference_without_recomputation` | test | `test_charts_reuse_reference_without_recomputation` | [tests/circle_history/test_builder_v24_stages.py:101](../../tests/circle_history/test_builder_v24_stages.py#L101) |  |
 | `test_check_boundary_equal_passes_above_raises` | test | `test_check_boundary_equal_passes_above_raises` | [tests/experiment/test_x5g1t_runtime_boundary.py:125](../../tests/experiment/test_x5g1t_runtime_boundary.py#L125) |  |
@@ -1740,6 +2122,7 @@
 | `test_checked_computation_before_failure_skips_fn` | test | `test_checked_computation_before_failure_skips_fn` | [tests/experiment/test_x5g1_safety.py:186](../../tests/experiment/test_x5g1_safety.py#L186) |  |
 | `test_checked_computation_returns_result_when_clean` | test | `test_checked_computation_returns_result_when_clean` | [tests/experiment/test_x5g1_safety.py:174](../../tests/experiment/test_x5g1_safety.py#L174) |  |
 | `test_checked_computation_tamper_inside_fn_raises_after` | test | `test_checked_computation_tamper_inside_fn_raises_after` | [tests/experiment/test_x5g1_safety.py:205](../../tests/experiment/test_x5g1_safety.py#L205) |  |
+| `test_checkpoint_dir_and_one_ledger_per_checkpoint` | test | `test_checkpoint_dir_and_one_ledger_per_checkpoint` | [tests/hwsd/test_a_scorer.py:114](../../tests/hwsd/test_a_scorer.py#L114) |  |
 | `test_checkpoint_meta_reads_meta_json_only` | test | `test_checkpoint_meta_reads_meta_json_only` | [tests/k4b/test_b_h1_meta.py:302](../../tests/k4b/test_b_h1_meta.py#L302) |  |
 | `test_checkpoint_meta_reads_the_named_id_only` | test | `test_checkpoint_meta_reads_the_named_id_only` | [tests/k4b/test_b_h1_meta.py:342](../../tests/k4b/test_b_h1_meta.py#L342) |  |
 | `test_checkpoint_meta_unreadable_or_malformed_is_identity` | test | `test_checkpoint_meta_unreadable_or_malformed_is_identity` | [tests/k4b/test_b_h1_meta.py:320](../../tests/k4b/test_b_h1_meta.py#L320) |  |
@@ -1782,6 +2165,7 @@
 | `test_classify_all_most_restrictive` | test | `test_classify_all_most_restrictive` | [tests/oracle_profile/test_builder_controls.py:152](../../tests/oracle_profile/test_builder_controls.py#L152) |  |
 | `test_classify_every_class` | test | `test_classify_every_class` | [tests/hws/test_a_classify.py:163](../../tests/hws/test_a_classify.py#L163) |  |
 | `test_classify_exception` | test | `test_classify_exception` | [tests/c1prime/test_a_exceptions.py:130](../../tests/c1prime/test_a_exceptions.py#L130) |  |
+| `test_classify_file_rules` | test | `test_classify_file_rules` | [tests/hwsd/test_b_registry_r10.py:120](../../tests/hwsd/test_b_registry_r10.py#L120) |  |
 | `test_classify_hits_c` | test | `test_classify_hits_c` | [tests/hwsc/test_b_guard_meter.py:208](../../tests/hwsc/test_b_guard_meter.py#L208) |  |
 | `test_classify_hits_defaults_use_contract_fragments` | test | `test_classify_hits_defaults_use_contract_fragments` | [tests/hwsb/test_b_records.py:232](../../tests/hwsb/test_b_records.py#L232) |  |
 | `test_classify_hits_with_hws_lists_equals_hws_driver` | test | `test_classify_hits_with_hws_lists_equals_hws_driver` | [tests/hwsb/test_b_records.py:225](../../tests/hwsb/test_b_records.py#L225) |  |
@@ -1845,9 +2229,11 @@
 | `test_constants` | test | `test_constants` | [tests/d2a/test_a_world.py:58](../../tests/d2a/test_a_world.py#L58) |  |
 | `test_constants` | test | `test_constants` | [tests/experiment/test_x5g1t_usage.py:68](../../tests/experiment/test_x5g1t_usage.py#L68) |  |
 | `test_constants` | test | `test_constants` | [tests/hwsb/test_a_capture.py:140](../../tests/hwsb/test_a_capture.py#L140) |  |
+| `test_constants` | test | `test_constants` | [tests/hwsd/test_b_binding.py:288](../../tests/hwsd/test_b_binding.py#L288) |  |
 | `test_constants_and_index_helpers` | test | `test_constants_and_index_helpers` | [tests/x2a_stage0/test_x2a_stage0.py:113](../../tests/x2a_stage0/test_x2a_stage0.py#L113) |  |
 | `test_constants_frozen` | test | `test_constants_frozen` | [tests/experiment/test_x5g1t_lineage_oracle.py:49](../../tests/experiment/test_x5g1t_lineage_oracle.py#L49) |  |
 | `test_constants_match_contract` | test | `test_constants_match_contract` | [tests/k4b/test_b_data.py:69](../../tests/k4b/test_b_data.py#L69) |  |
+| `test_constants_restored_after_the_block` | test | `test_constants_restored_after_the_block` | [tests/hwsd/test_a_known_bound.py:220](../../tests/hwsd/test_a_known_bound.py#L220) |  |
 | `test_constructed_factorization_is_detected` | test | `test_constructed_factorization_is_detected` | [tests/analysis/test_horizon.py:71](../../tests/analysis/test_horizon.py#L71) |  |
 | `test_context_none_is_inconclusive` | test | `test_context_none_is_inconclusive` | [tests/analysis/test_x5_context.py:135](../../tests/analysis/test_x5_context.py#L135) |  |
 | `test_continue` | test | `test_continue` | [tests/oracle_profile/test_builder_controls.py:52](../../tests/oracle_profile/test_builder_controls.py#L52) |  |
@@ -1857,6 +2243,9 @@
 | `test_contract_hold_numbers` | test | `test_contract_hold_numbers` | [tests/hwsb/test_b_hold.py:32](../../tests/hwsb/test_b_hold.py#L32) |  |
 | `test_contract_inventory_lists_every_section_18_directory` | test | `test_contract_inventory_lists_every_section_18_directory` | [tests/c2_readout/test_b_registry.py:328](../../tests/c2_readout/test_b_registry.py#L328) |  |
 | `test_contract_meta_passes_and_check_is_pure` | test | `test_contract_meta_passes_and_check_is_pure` | [tests/k4b/test_b_h1_meta.py:137](../../tests/k4b/test_b_h1_meta.py#L137) |  |
+| `test_contract_obligation_is_exactly_j11` | test | `test_contract_obligation_is_exactly_j11` | [tests/hwsd/test_b_registry_r10.py:29](../../tests/hwsd/test_b_registry_r10.py#L29) |  |
+| `test_contract_reservation_and_window` | test | `test_contract_reservation_and_window` | [tests/hwsd/test_b_reservation.py:43](../../tests/hwsd/test_b_reservation.py#L43) |  |
+| `test_contract_stream_formulas` | test | `test_contract_stream_formulas` | [tests/hwsd/test_b_data.py:42](../../tests/hwsd/test_b_data.py#L42) |  |
 | `test_contract_values` | test | `test_contract_values` | [tests/c2_nd/test_b_lineage.py:256](../../tests/c2_nd/test_b_lineage.py#L256) |  |
 | `test_contraction_identity_and_the_wrong_conversion_differs` | test | `test_contraction_identity_and_the_wrong_conversion_differs` | [tests/c2_readout/test_a_readout.py:197](../../tests/c2_readout/test_a_readout.py#L197) |  |
 | `test_contrast_error_exactly_one_half_is_reproduced` | test | `test_contrast_error_exactly_one_half_is_reproduced` | [tests/d2a/test_b_behaviour.py:56](../../tests/d2a/test_b_behaviour.py#L56) |  |
@@ -1875,6 +2264,7 @@
 | `test_control_vectors_tiny_and_subnormal_vectors` | test | `test_control_vectors_tiny_and_subnormal_vectors` | [tests/circle_history/test_scores_precision.py:312](../../tests/circle_history/test_scores_precision.py#L312) |  |
 | `test_control_vectors_zero_maps_to_unit_x_and_others_unit_norm` | test | `test_control_vectors_zero_maps_to_unit_x_and_others_unit_norm` | [tests/circle_history/test_scores_precision.py:276](../../tests/circle_history/test_scores_precision.py#L276) |  |
 | `test_controls_N1_N2_null` | test | `test_controls_N1_N2_null` | [tests/d1_seam/test_d1_seam.py:367](../../tests/d1_seam/test_d1_seam.py#L367) |  |
+| `test_controls_one_against_control_arrays` | test | `test_controls_one_against_control_arrays` | [tests/hwsd/test_a_scorer.py:301](../../tests/hwsd/test_a_scorer.py#L301) |  |
 | `test_controlstate_is_namedtuple` | test | `test_controlstate_is_namedtuple` | [tests/experiment/test_x5g1t_runtime.py:50](../../tests/experiment/test_x5g1t_runtime.py#L50) |  |
 | `test_coordinate_decoys_predict_like_their_partners` | test | `test_coordinate_decoys_predict_like_their_partners` | [tests/c2_nd/test_b_decoy_model.py:231](../../tests/c2_nd/test_b_decoy_model.py#L231) |  |
 | `test_coordinate_wrapper` | test | `test_coordinate_wrapper` | [tests/c2_nd/test_b_decoy_model.py:202](../../tests/c2_nd/test_b_decoy_model.py#L202) |  |
@@ -1906,8 +2296,23 @@
 | `test_D07_inputs_and_targets_via_layout` | test | `test_D07_inputs_and_targets_via_layout` | [tests/dataset/test_public.py:43](../../tests/dataset/test_public.py#L43) |  |
 | `test_D08_no_train_sidecar_persisted` | test | `test_D08_no_train_sidecar_persisted` | [tests/dataset/test_stage.py:70](../../tests/dataset/test_stage.py#L70) |  |
 | `test_D09_biased_sampler_caught_by_first_token_chi2` | test | `test_D09_biased_sampler_caught_by_first_token_chi2` | [tests/dataset/test_stage.py:80](../../tests/dataset/test_stage.py#L80) |  |
+| `test_d1_every_reading` | test | `test_d1_every_reading` | [tests/hwsd/test_a_statements.py:49](../../tests/hwsd/test_a_statements.py#L49) |  |
+| `test_d2_aggregate` | test | `test_d2_aggregate` | [tests/hwsd/test_a_statements.py:113](../../tests/hwsd/test_a_statements.py#L113) |  |
+| `test_d2_aggregate_mixed_not_evaluable_names_the_models` | test | `test_d2_aggregate_mixed_not_evaluable_names_the_models` | [tests/hwsd/test_a_statements.py:120](../../tests/hwsd/test_a_statements.py#L120) |  |
+| `test_d2_by_construction_and_unavailable_not_counted` | test | `test_d2_by_construction_and_unavailable_not_counted` | [tests/hwsd/test_a_statements.py:88](../../tests/hwsd/test_a_statements.py#L88) |  |
+| `test_d2_chart_at_init_evaluated_first` | test | `test_d2_chart_at_init_evaluated_first` | [tests/hwsd/test_a_statements.py:60](../../tests/hwsd/test_a_statements.py#L60) |  |
 | `test_d2_identity` | test | `test_d2_identity` | [tests/x6zc/test_x6zc_core.py:376](../../tests/x6zc/test_x6zc_core.py#L376) |  |
+| `test_d2_no_chart_false_and_final_not_support` | test | `test_d2_no_chart_false_and_final_not_support` | [tests/hwsd/test_a_statements.py:66](../../tests/hwsd/test_a_statements.py#L66) |  |
+| `test_d2_qualifier_boundary_exact` | test | `test_d2_qualifier_boundary_exact` | [tests/hwsd/test_a_statements.py:79](../../tests/hwsd/test_a_statements.py#L79) |  |
+| `test_d2_true_qualifier_uses_unvalidated_rows` | test | `test_d2_true_qualifier_uses_unvalidated_rows` | [tests/hwsd/test_a_statements.py:74](../../tests/hwsd/test_a_statements.py#L74) |  |
+| `test_d3_chart_at_init_rc4` | test | `test_d3_chart_at_init_rc4` | [tests/hwsd/test_a_statements.py:139](../../tests/hwsd/test_a_statements.py#L139) |  |
+| `test_d3_per_model_readings` | test | `test_d3_per_model_readings` | [tests/hwsd/test_a_statements.py:127](../../tests/hwsd/test_a_statements.py#L127) |  |
+| `test_d4_per_model_readings` | test | `test_d4_per_model_readings` | [tests/hwsd/test_a_statements.py:147](../../tests/hwsd/test_a_statements.py#L147) |  |
 | `test_d4_rows_equal_k4b_delta4_orc` | test | `test_d4_rows_equal_k4b_delta4_orc` | [tests/hwsb/test_a_endpoints.py:180](../../tests/hwsb/test_a_endpoints.py#L180) |  |
+| `test_d5_per_model_readings` | test | `test_d5_per_model_readings` | [tests/hwsd/test_a_statements.py:161](../../tests/hwsd/test_a_statements.py#L161) |  |
+| `test_d6_est_only_crossing_is_diagnostic_not_false` | test | `test_d6_est_only_crossing_is_diagnostic_not_false` | [tests/hwsd/test_a_statements.py:181](../../tests/hwsd/test_a_statements.py#L181) |  |
+| `test_d6_loss_on_ok_rows_only` | test | `test_d6_loss_on_ok_rows_only` | [tests/hwsd/test_a_statements.py:175](../../tests/hwsd/test_a_statements.py#L175) |  |
+| `test_d6_vacuous_and_true_needs_k1_below_K` | test | `test_d6_vacuous_and_true_needs_k1_below_K` | [tests/hwsd/test_a_statements.py:188](../../tests/hwsd/test_a_statements.py#L188) |  |
 | `test_d_named_scatters_canonical_into_named_order` | test | `test_d_named_scatters_canonical_into_named_order` | [tests/c2_readout/test_a_readout.py:191](../../tests/c2_readout/test_a_readout.py#L191) |  |
 | `test_d_null_is_not_used` | test | `test_d_null_is_not_used` | [tests/c2_nd/test_b_dry_hs.py:167](../../tests/c2_nd/test_b_dry_hs.py#L167) | The planted D-NULL: (a) KC-R, the coordinate decoys D-NULL-R NOT_USED and D-ID USED, never |
 | `test_d_only_is_necessary` | test | `test_d_only_is_necessary` | [tests/c2_nd/test_b_dry_hs.py:147](../../tests/c2_nd/test_b_dry_hs.py#L147) | KC (8.3): D0 USED, D-ONLY USED and NECESSARY, D-DOSE PARTIAL and NOT_NECESSARY. No model |
@@ -1940,6 +2345,7 @@
 | `test_decision_rows` | test | `test_decision_rows` | [tests/d2a/test_a_world.py:155](../../tests/d2a/test_a_world.py#L155) |  |
 | `test_decision_tie_rule` | test | `test_decision_tie_rule` | [tests/x2a_stage0/test_x2a_stage0_ph.py:51](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L51) |  |
 | `test_decision_with_malformed_usage_raises` | test | `test_decision_with_malformed_usage_raises` | [tests/experiment/test_x5g1t_usage.py:368](../../tests/experiment/test_x5g1t_usage.py#L368) |  |
+| `test_decode` | test | `test_decode` | [tests/hwsd/test_b_binding.py:78](../../tests/hwsd/test_b_binding.py#L78) |  |
 | `test_decode_each_encoding` | test | `test_decode_each_encoding` | [tests/hwsc/test_b_binding.py:88](../../tests/hwsc/test_b_binding.py#L88) |  |
 | `test_decoder_agreement_and_unavailable_form` | test | `test_decoder_agreement_and_unavailable_form` | [tests/k4b/test_b_endpoint.py:243](../../tests/k4b/test_b_endpoint.py#L243) |  |
 | `test_decoder_features_layout` | test | `test_decoder_features_layout` | [tests/c2_readout/test_b_fwl_l1.py:194](../../tests/c2_readout/test_b_fwl_l1.py#L194) |  |
@@ -1969,6 +2375,9 @@
 | `test_dev_analysis_mismatched_pool_never_scores` | test | `test_dev_analysis_mismatched_pool_never_scores` | [tests/experiment/test_x5g1t_identity_eval.py:217](../../tests/experiment/test_x5g1t_identity_eval.py#L217) |  |
 | `test_dev_auc_on_study_grid` | test | `test_dev_auc_on_study_grid` | [tests/analysis/test_x5_endpoint.py:357](../../tests/analysis/test_x5_endpoint.py#L357) |  |
 | `test_dev_auc_uneven_grid` | test | `test_dev_auc_uneven_grid` | [tests/analysis/test_x5_endpoint.py:351](../../tests/analysis/test_x5_endpoint.py#L351) |  |
+| `test_diagnostics_chart_at_init_rc4` | test | `test_diagnostics_chart_at_init_rc4` | [tests/hwsd/test_a_evaluate.py:111](../../tests/hwsd/test_a_evaluate.py#L111) |  |
+| `test_diagnostics_est_loss_only_unvalidated_k1` | test | `test_diagnostics_est_loss_only_unvalidated_k1` | [tests/hwsd/test_a_evaluate.py:123](../../tests/hwsd/test_a_evaluate.py#L123) |  |
+| `test_diagnostics_mc_positive` | test | `test_diagnostics_mc_positive` | [tests/hwsd/test_a_evaluate.py:99](../../tests/hwsd/test_a_evaluate.py#L99) |  |
 | `test_diagnostics_values` | test | `test_diagnostics_values` | [tests/process/test_overlap.py:79](../../tests/process/test_overlap.py#L79) |  |
 | `test_differing_e_canon_is_identity_failure` | test | `test_differing_e_canon_is_identity_failure` | [tests/hwsb/test_b_process.py:157](../../tests/hwsb/test_b_process.py#L157) |  |
 | `test_digest_set_runs_full_confirmation_and_hash` | test | `test_digest_set_runs_full_confirmation_and_hash` | [tests/x6_stage1/test_b_seed_pool_reg.py:229](../../tests/x6_stage1/test_b_seed_pool_reg.py#L229) |  |
@@ -1976,6 +2385,8 @@
 | `test_digits_other_than_60_is_refused` | test | `test_digits_other_than_60_is_refused` | [tests/hwsb/test_b_meter_law.py:348](../../tests/hwsb/test_b_meter_law.py#L348) |  |
 | `test_digits_other_than_60_raise_invalid` | test | `test_digits_other_than_60_raise_invalid` | [tests/hwsb/test_a_enclosure_proof.py:280](../../tests/hwsb/test_a_enclosure_proof.py#L280) |  |
 | `test_dir_size` | test | `test_dir_size` | [tests/experiment/test_x5g1t_runtime_boundary.py:201](../../tests/experiment/test_x5g1t_runtime_boundary.py#L201) |  |
+| `test_direct_chart_not_pass_labels` | test | `test_direct_chart_not_pass_labels` | [tests/hwsd/test_a_scorer.py:188](../../tests/hwsd/test_a_scorer.py#L188) |  |
+| `test_direct_fail_technical_stops` | test | `test_direct_fail_technical_stops` | [tests/hwsd/test_a_scorer.py:196](../../tests/hwsd/test_a_scorer.py#L196) |  |
 | `test_dirty_source_refused_before_io` | test | `test_dirty_source_refused_before_io` | [tests/circle_history/test_builder_guards.py:156](../../tests/circle_history/test_builder_guards.py#L156) |  |
 | `test_disclosure_equals_protocol_6_4` | test | `test_disclosure_equals_protocol_6_4` | [tests/hwsc/test_a_outcomes.py:323](../../tests/hwsc/test_a_outcomes.py#L323) |  |
 | `test_discover_broken_interior_link` | test | `test_discover_broken_interior_link` | [tests/x6_stage1/test_b_chain_ops.py:118](../../tests/x6_stage1/test_b_chain_ops.py#L118) |  |
@@ -2013,9 +2424,12 @@
 | `test_draw_pair_test_split_is_master_independent` | test | `test_draw_pair_test_split_is_master_independent` | [tests/experiment/test_x5g1t_lineage_oracle.py:144](../../tests/experiment/test_x5g1t_lineage_oracle.py#L144) |  |
 | `test_drc4_hwsc_scope_differs_and_is_disjoint` | test | `test_drc4_hwsc_scope_differs_and_is_disjoint` | [tests/hwsc/test_b_streams.py:142](../../tests/hwsc/test_b_streams.py#L142) |  |
 | `test_drc4_mirror_equals_stage_b_unbound` | test | `test_drc4_mirror_equals_stage_b_unbound` | [tests/hwsc/test_b_streams.py:125](../../tests/hwsc/test_b_streams.py#L125) |  |
+| `test_dry_and_identity_tables` | test | `test_dry_and_identity_tables` | [tests/hwsd/test_b_binding.py:243](../../tests/hwsd/test_b_binding.py#L243) |  |
+| `test_dry_class_d` | test | `test_dry_class_d` | [tests/hwsd/test_b_registry_build.py:121](../../tests/hwsd/test_b_registry_build.py#L121) |  |
 | `test_dry_plan` | test | `test_dry_plan` | [tests/hwsc/test_b_streams.py:67](../../tests/hwsc/test_b_streams.py#L67) |  |
 | `test_dry_plan_refuses_other_kinds` | test | `test_dry_plan_refuses_other_kinds` | [tests/hwsc/test_b_streams.py:74](../../tests/hwsc/test_b_streams.py#L74) |  |
 | `test_dry_plan_rejects_unknown_kind` | test | `test_dry_plan_rejects_unknown_kind` | [tests/hwsb/test_b_streams.py:68](../../tests/hwsb/test_b_streams.py#L68) |  |
+| `test_dry_plans` | test | `test_dry_plans` | [tests/hwsd/test_b_binding.py:304](../../tests/hwsd/test_b_binding.py#L304) |  |
 | `test_dry_run_refuses_without_rule2_sched` | test | `test_dry_run_refuses_without_rule2_sched` | [tests/hwsb/test_b_records.py:345](../../tests/hwsb/test_b_records.py#L345) |  |
 | `test_dry_sequence_ids_follow_contract_replicates` | test | `test_dry_sequence_ids_follow_contract_replicates` | [tests/hwsb/test_b_streams.py:118](../../tests/hwsb/test_b_streams.py#L118) |  |
 | `test_dry_streams_match_contract` | test | `test_dry_streams_match_contract` | [tests/hwsb/test_b_streams.py:56](../../tests/hwsb/test_b_streams.py#L56) |  |
@@ -2072,6 +2486,7 @@
 | `test_edge_list_hand_graph_inclusive_and_lexicographic` | test | `test_edge_list_hand_graph_inclusive_and_lexicographic` | [tests/circle_history/test_cochain.py:84](../../tests/circle_history/test_cochain.py#L84) |  |
 | `test_edge_named_cases` | test | `test_edge_named_cases` | [tests/c2_nd/test_a_family.py:376](../../tests/c2_nd/test_a_family.py#L376) |  |
 | `test_effective_settings` | test | `test_effective_settings` | [tests/hwsb/test_b_meter_law.py:92](../../tests/hwsb/test_b_meter_law.py#L92) |  |
+| `test_effective_tables` | test | `test_effective_tables` | [tests/hwsd/test_b_registry_build.py:30](../../tests/hwsd/test_b_registry_build.py#L30) |  |
 | `test_eigen_order_is_descending` | test | `test_eigen_order_is_descending` | [tests/analysis/test_x4f_targets.py:110](../../tests/analysis/test_x4f_targets.py#L110) |  |
 | `test_elapsed_time_and_reset_times_never_clear` | test | `test_elapsed_time_and_reset_times_never_clear` | [tests/experiment/test_x5g1t_usage.py:359](../../tests/experiment/test_x5g1t_usage.py#L359) |  |
 | `test_eligibility_order_and_e6` | test | `test_eligibility_order_and_e6` | [tests/hws/test_a_classify.py:138](../../tests/hws/test_a_classify.py#L138) |  |
@@ -2081,6 +2496,9 @@
 | `test_empty_state_returns_fail_technical_outcome` | test | `test_empty_state_returns_fail_technical_outcome` | [tests/hwsc/test_a_outcomes.py:138](../../tests/hwsc/test_a_outcomes.py#L138) |  |
 | `test_enclosure_branch_corrupted_float_closed_form_fails` | test | `test_enclosure_branch_corrupted_float_closed_form_fails` | [tests/c1prime/test_a_oracle.py:296](../../tests/c1prime/test_a_oracle.py#L296) | Section 3.2 S1 fixture: corrupted float64 closed-form values on the enclosure branch, |
 | `test_enclosure_contains_exact_entries_on_sampled_rows` | test | `test_enclosure_contains_exact_entries_on_sampled_rows` | [tests/hwsb/test_a_enclosure_proof.py:266](../../tests/hwsb/test_a_enclosure_proof.py#L266) | Steps (1)-(3) combined: E*_j in [E_dec (1 - 2 delta)/hi0, E_dec/(lo0 (1 - 2 delta))]. |
+| `test_end_record_of_wrong_schema_is_live` | test | `test_end_record_of_wrong_schema_is_live` | [tests/hwsd/test_b_reservation.py:169](../../tests/hwsd/test_b_reservation.py#L169) |  |
+| `test_end_reservation_refusals_write_nothing` | test | `test_end_reservation_refusals_write_nothing` | [tests/hwsd/test_b_reservation.py:96](../../tests/hwsd/test_b_reservation.py#L96) |  |
+| `test_end_reservation_writes_the_j8_record` | test | `test_end_reservation_writes_the_j8_record` | [tests/hwsd/test_b_reservation.py:69](../../tests/hwsd/test_b_reservation.py#L69) |  |
 | `test_endpoint_arrays_match_exact` | test | `test_endpoint_arrays_match_exact` | [tests/hwsc/test_a_k4b_known_bound.py:201](../../tests/hwsc/test_a_k4b_known_bound.py#L201) |  |
 | `test_endpoint_arrays_row_construction` | test | `test_endpoint_arrays_row_construction` | [tests/k4b/test_a_theorem_a.py:237](../../tests/k4b/test_a_theorem_a.py#L237) |  |
 | `test_endpoint_bounds_use_shared_draws_and_ranks_84_and_4917` | test | `test_endpoint_bounds_use_shared_draws_and_ranks_84_and_4917` | [tests/c1prime/test_b_inference.py:232](../../tests/c1prime/test_b_inference.py#L232) |  |
@@ -2118,8 +2536,12 @@
 | `test_error_state_order_and_unknown_strategy` | test | `test_error_state_order_and_unknown_strategy` | [tests/process/test_overlap.py:146](../../tests/process/test_overlap.py#L146) |  |
 | `test_error_state_order_mismatch` | test | `test_error_state_order_mismatch` | [tests/process/test_transition.py:95](../../tests/process/test_transition.py#L95) |  |
 | `test_est_constants_and_defaults` | test | `test_est_constants_and_defaults` | [tests/experiment/test_x5g1t_runtime_boundary.py:119](../../tests/experiment/test_x5g1t_runtime_boundary.py#L119) |  |
+| `test_est_ok_and_sigma_by_status` | test | `test_est_ok_and_sigma_by_status` | [tests/hwsd/test_a_onsets_order.py:41](../../tests/hwsd/test_a_onsets_order.py#L41) |  |
 | `test_euclidean_hand_values` | test | `test_euclidean_hand_values` | [tests/topology/test_metrics.py:24](../../tests/topology/test_metrics.py#L24) |  |
 | `test_euclidean_variant_still_excludes_gamma` | test | `test_euclidean_variant_still_excludes_gamma` | [tests/c2_readout/test_a_readout.py:315](../../tests/c2_readout/test_a_readout.py#L315) |  |
+| `test_evaluate_any_sequence_length` | test | `test_evaluate_any_sequence_length` | [tests/hwsd/test_a_evaluate.py:92](../../tests/hwsd/test_a_evaluate.py#L92) |  |
+| `test_evaluate_headroom_and_resource` | test | `test_evaluate_headroom_and_resource` | [tests/hwsd/test_a_evaluate.py:74](../../tests/hwsd/test_a_evaluate.py#L74) |  |
+| `test_evaluate_structure_and_values` | test | `test_evaluate_structure_and_values` | [tests/hwsd/test_a_evaluate.py:52](../../tests/hwsd/test_a_evaluate.py#L52) |  |
 | `test_evaluating_stage_record_holds_env_local` | test | `test_evaluating_stage_record_holds_env_local` | [tests/x6_stage1/test_b_chain_ops.py:292](../../tests/x6_stage1/test_b_chain_ops.py#L292) |  |
 | `test_evaluation_reserve` | test | `test_evaluation_reserve` | [tests/experiment/test_x5g1t_runtime_boundary.py:158](../../tests/experiment/test_x5g1t_runtime_boundary.py#L158) |  |
 | `test_every_allowed_class_passes` | test | `test_every_allowed_class_passes` | [tests/hwsc/test_r_0178_dry_store_rule.py:65](../../tests/hwsc/test_r_0178_dry_store_rule.py#L65) |  |
@@ -2162,6 +2584,7 @@
 | `test_expected_meta_from_contract` | test | `test_expected_meta_from_contract` | [tests/k4b/test_b_h1_meta.py:105](../../tests/k4b/test_b_h1_meta.py#L105) |  |
 | `test_expected_meta_unknown_model_or_label_raises` | test | `test_expected_meta_unknown_model_or_label_raises` | [tests/k4b/test_b_h1_meta.py:129](../../tests/k4b/test_b_h1_meta.py#L129) |  |
 | `test_expected_payload_sha_is_bound_never_none` | test | `test_expected_payload_sha_is_bound_never_none` | [tests/k4b/test_b_h1_meta.py:120](../../tests/k4b/test_b_h1_meta.py#L120) |  |
+| `test_explicit_z_arguments` | test | `test_explicit_z_arguments` | [tests/hwsd/test_a_learning.py:95](../../tests/hwsd/test_a_learning.py#L95) |  |
 | `test_export_budget_exceeded` | test | `test_export_budget_exceeded` | [tests/experiment/test_x5g1_safety.py:333](../../tests/experiment/test_x5g1_safety.py#L333) |  |
 | `test_export_cap_is_80_without_release` | test | `test_export_cap_is_80_without_release` | [tests/circle_history/test_builder_runtime.py:89](../../tests/circle_history/test_builder_runtime.py#L89) |  |
 | `test_export_entries_sorted_and_exact` | test | `test_export_entries_sorted_and_exact` | [tests/circle_history/test_reference_cache.py:99](../../tests/circle_history/test_reference_cache.py#L99) |  |
@@ -2206,6 +2629,7 @@
 | `test_F_plan_exact` | test | `test_F_plan_exact` | [tests/k4b/test_a_decision.py:255](../../tests/k4b/test_a_decision.py#L255) |  |
 | `test_f_plan_formula_and_dominance` | test | `test_f_plan_formula_and_dominance` | [tests/hwsc/test_a_k4b_known_bound.py:282](../../tests/hwsc/test_a_k4b_known_bound.py#L282) |  |
 | `test_f_plan_identity` | test | `test_f_plan_identity` | [tests/hwsc/test_a_law.py:88](../../tests/hwsc/test_a_law.py#L88) |  |
+| `test_f_sides_planted_and_certified` | test | `test_f_sides_planted_and_certified` | [tests/hwsd/test_a_bounds.py:192](../../tests/hwsd/test_a_bounds.py#L192) |  |
 | `test_F_test_never_exceeds_F_plan_under_cap_and_p2` | test | `test_F_test_never_exceeds_F_plan_under_cap_and_p2` | [tests/k4b/test_a_decision.py:269](../../tests/k4b/test_a_decision.py#L269) |  |
 | `test_factor_is_applied_to_estimate_only` | test | `test_factor_is_applied_to_estimate_only` | [tests/experiment/test_x5g1t_runtime_boundary.py:137](../../tests/experiment/test_x5g1t_runtime_boundary.py#L137) |  |
 | `test_fail_beats_everything` | test | `test_fail_beats_everything` | [tests/hwsc/test_a_outcomes.py:64](../../tests/hwsc/test_a_outcomes.py#L64) |  |
@@ -2243,6 +2667,9 @@
 | `test_fidelity_below_080_fails` | test | `test_fidelity_below_080_fails` | [tests/c1prime/test_a_chart_val.py:168](../../tests/c1prime/test_a_chart_val.py#L168) |  |
 | `test_fidelity_uses_the_complete_direct_component_unmasked_by_support` | test | `test_fidelity_uses_the_complete_direct_component_unmasked_by_support` | [tests/c1prime/test_a_chart_val.py:155](../../tests/c1prime/test_a_chart_val.py#L155) |  |
 | `test_field_mixing_suffix_and_residual_sign_is_nonzero` | test | `test_field_mixing_suffix_and_residual_sign_is_nonzero` | [tests/k4b/test_a_prop1.py:170](../../tests/k4b/test_a_prop1.py#L170) | A suffix table multiplied by a residual-sign indicator is no longer suffix-only. |
+| `test_fill_templates_d4_second_sentence_and_d3_chart_at_init` | test | `test_fill_templates_d4_second_sentence_and_d3_chart_at_init` | [tests/hwsd/test_a_evaluate.py:141](../../tests/hwsd/test_a_evaluate.py#L141) |  |
+| `test_fill_templates_missing_field_reads_n_a` | test | `test_fill_templates_missing_field_reads_n_a` | [tests/hwsd/test_a_evaluate.py:152](../../tests/hwsd/test_a_evaluate.py#L152) |  |
+| `test_fill_templates_texts` | test | `test_fill_templates_texts` | [tests/hwsd/test_a_evaluate.py:130](../../tests/hwsd/test_a_evaluate.py#L130) |  |
 | `test_filter_inputs_untouched_and_rows_independent` | test | `test_filter_inputs_untouched_and_rows_independent` | [tests/oracle/test_oracle.py:99](../../tests/oracle/test_oracle.py#L99) |  |
 | `test_filtration_boundary_cocycle_error_is_chart_unavailable` | test | `test_filtration_boundary_cocycle_error_is_chart_unavailable` | [tests/c1prime/test_a_chart_exceptions.py:83](../../tests/c1prime/test_a_chart_exceptions.py#L83) |  |
 | `test_final_test_collision_input_mutated_after_load_refused` | test | `test_final_test_collision_input_mutated_after_load_refused` | [tests/experiment/test_x5g1t_identity_eval.py:276](../../tests/experiment/test_x5g1t_identity_eval.py#L276) | The collision check runs before the fresh draw (§D), so the bytes are changed when the |
@@ -2312,6 +2739,7 @@
 | `test_four_gates_pass_on_consistent_snapshot` | test | `test_four_gates_pass_on_consistent_snapshot` | [tests/x6_stage1/test_b_ingest_bundle.py:182](../../tests/x6_stage1/test_b_ingest_bundle.py#L182) |  |
 | `test_four_state_path_known_answer` | test | `test_four_state_path_known_answer` | [tests/analysis/test_horizon.py:61](../../tests/analysis/test_horizon.py#L61) |  |
 | `test_fps_overlap_builds_on_tiny_world` | test | `test_fps_overlap_builds_on_tiny_world` | [tests/process/test_controls.py:148](../../tests/process/test_controls.py#L148) |  |
+| `test_fr_rule` | test | `test_fr_rule` | [tests/hwsd/test_a_onsets_order.py:59](../../tests/hwsd/test_a_onsets_order.py#L59) |  |
 | `test_frac_beyond_is_strict` | test | `test_frac_beyond_is_strict` | [tests/c1prime/test_a_eligibility_support.py:126](../../tests/c1prime/test_a_eligibility_support.py#L126) |  |
 | `test_fraction_ranks` | test | `test_fraction_ranks` | [tests/c2_readout/test_a_inference.py:368](../../tests/c2_readout/test_a_inference.py#L368) |  |
 | `test_frame_mean_is_an_ordered_left_to_right_sum` | test | `test_frame_mean_is_an_ordered_left_to_right_sum` | [tests/c1prime/test_b_identities.py:270](../../tests/c1prime/test_b_identities.py#L270) |  |
@@ -2409,6 +2837,7 @@
 | `test_guard_exception_propagates` | test | `test_guard_exception_propagates` | [tests/circle_history/test_cochain_lift.py:270](../../tests/circle_history/test_cochain_lift.py#L270) |  |
 | `test_guard_reads_dispatch_metadata` | test | `test_guard_reads_dispatch_metadata` | [tests/hwsc/test_b_guard_meter.py:139](../../tests/hwsc/test_b_guard_meter.py#L139) |  |
 | `test_guard_refuses_before_any_open` | test | `test_guard_refuses_before_any_open` | [tests/hwsc/test_b_guard_meter.py:126](../../tests/hwsc/test_b_guard_meter.py#L126) |  |
+| `test_guard_refuses_before_any_open` | test | `test_guard_refuses_before_any_open` | [tests/hwsd/test_b_guard_search.py:99](../../tests/hwsd/test_b_guard_search.py#L99) |  |
 | `test_h0_star` | test | `test_h0_star` | [tests/x2a_stage0/test_x2a_stage0_ph.py:274](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L274) |  |
 | `test_h2_clean_pass_and_keys` | test | `test_h2_clean_pass_and_keys` | [tests/hwsc/test_b_streams.py:274](../../tests/hwsc/test_b_streams.py#L274) |  |
 | `test_h2_cross_split_collision_is_lineage` | test | `test_h2_cross_split_collision_is_lineage` | [tests/hwsc/test_b_streams.py:288](../../tests/hwsc/test_b_streams.py#L288) |  |
@@ -2459,6 +2888,7 @@
 | `test_helmert_basis_orthonormal_sum_zero` | test | `test_helmert_basis_orthonormal_sum_zero` | [tests/analysis/test_horizon.py:41](../../tests/analysis/test_horizon.py#L41) |  |
 | `test_helmert_formula_orthonormal_and_orthogonal_to_ones` | test | `test_helmert_formula_orthonormal_and_orthogonal_to_ones` | [tests/c2_readout/test_a_readout.py:71](../../tests/c2_readout/test_a_readout.py#L71) |  |
 | `test_hist_names` | test | `test_hist_names` | [tests/hwsc/test_b_streams.py:223](../../tests/hwsc/test_b_streams.py#L223) |  |
+| `test_hist_sha_differing_from_stage_complete_is_lineage` | test | `test_hist_sha_differing_from_stage_complete_is_lineage` | [tests/hwsd/test_b_registry_r9.py:145](../../tests/hwsd/test_b_registry_r9.py#L145) |  |
 | `test_history_digests_known_values_and_shape` | test | `test_history_digests_known_values_and_shape` | [tests/circle_history/test_scores_precision.py:108](../../tests/circle_history/test_scores_precision.py#L108) |  |
 | `test_history_file_inside_the_os_root_counts_as_covered` | test | `test_history_file_inside_the_os_root_counts_as_covered` | [tests/k4b/test_b_registry_rules.py:274](../../tests/k4b/test_b_registry_rules.py#L274) |  |
 | `test_history_generator_is_the_registered_seedtree_stream` | test | `test_history_generator_is_the_registered_seedtree_stream` | [tests/k4b/test_b_data.py:99](../../tests/k4b/test_b_data.py#L99) |  |
@@ -2488,6 +2918,7 @@
 | `test_horizon_outside_2_3_is_invalid_config` | test | `test_horizon_outside_2_3_is_invalid_config` | [tests/learner/test_multihorizon.py:172](../../tests/learner/test_multihorizon.py#L172) |  |
 | `test_hws_collisions_are_reported_not_gating` | test | `test_hws_collisions_are_reported_not_gating` | [tests/hwsb/test_b_streams.py:393](../../tests/hwsb/test_b_streams.py#L393) |  |
 | `test_hwsc_plan_fields` | test | `test_hwsc_plan_fields` | [tests/hwsc/test_b_streams.py:55](../../tests/hwsc/test_b_streams.py#L55) |  |
+| `test_hwsc_w2_end_fixture_rule_a` | test | `test_hwsc_w2_end_fixture_rule_a` | [tests/hwsd/test_b_reservation.py:210](../../tests/hwsd/test_b_reservation.py#L210) |  |
 | `test_hygiene_check` | test | `test_hygiene_check` | [tests/c2_nd/test_b_lineage.py:101](../../tests/c2_nd/test_b_lineage.py#L101) |  |
 | `test_I01_s1_core_config` | test | `test_I01_s1_core_config` | [tests/integration/test_s1.py:23](../../tests/integration/test_s1.py#L23) |  |
 | `test_I02_s2_mini_end_to_end` | test | `test_I02_s2_mini_end_to_end` | [tests/integration/test_s2_mini.py:39](../../tests/integration/test_s2_mini.py#L39) |  |
@@ -2538,6 +2969,7 @@
 | `test_inputs_and_replacement_not_mutated` | test | `test_inputs_and_replacement_not_mutated` | [tests/learner/test_patch.py:202](../../tests/learner/test_patch.py#L202) |  |
 | `test_inputs_are_not_mutated` | test | `test_inputs_are_not_mutated` | [tests/oracle_profile/test_oracle_profile_traps.py:264](../../tests/oracle_profile/test_oracle_profile_traps.py#L264) |  |
 | `test_inputs_not_mutated` | test | `test_inputs_not_mutated` | [tests/experiment/test_x4f_probe.py:115](../../tests/experiment/test_x4f_probe.py#L115) |  |
+| `test_inside_the_binding_and_restoration` | test | `test_inside_the_binding_and_restoration` | [tests/hwsd/test_b_binding.py:88](../../tests/hwsd/test_b_binding.py#L88) |  |
 | `test_integer_certificate_defect_is_technical` | test | `test_integer_certificate_defect_is_technical` | [tests/c1prime/test_a_chart_exceptions.py:185](../../tests/c1prime/test_a_chart_exceptions.py#L185) |  |
 | `test_integer_dtypes_and_numpy_integer_K_are_accepted` | test | `test_integer_dtypes_and_numpy_integer_K_are_accepted` | [tests/oracle_profile/test_oracle_profile_traps.py:253](../../tests/oracle_profile/test_oracle_profile_traps.py#L253) |  |
 | `test_interaction_fixture_is_orthogonal_to_the_additive_regressors` | test | `test_interaction_fixture_is_orthogonal_to_the_additive_regressors` | [tests/c2_readout/test_a_scope.py:197](../../tests/c2_readout/test_a_scope.py#L197) |  |
@@ -2557,6 +2989,7 @@
 | `test_inventory_adapter` | test | `test_inventory_adapter` | [tests/c2_nd/test_b_registry.py:310](../../tests/c2_nd/test_b_registry.py#L310) |  |
 | `test_inventory_admits_an_unlisted_empty_directory_alone` | test | `test_inventory_admits_an_unlisted_empty_directory_alone` | [tests/c2_readout/test_b_registry.py:222](../../tests/c2_readout/test_b_registry.py#L222) |  |
 | `test_inventory_and_guards` | test | `test_inventory_and_guards` | [tests/x6zc/test_x6zc_decide.py:367](../../tests/x6zc/test_x6zc_decide.py#L367) |  |
+| `test_inventory_d` | test | `test_inventory_d` | [tests/hwsd/test_b_registry_build.py:202](../../tests/hwsd/test_b_registry_build.py#L202) |  |
 | `test_inventory_diff_detects_new_history_identity_and_obs_root` | test | `test_inventory_diff_detects_new_history_identity_and_obs_root` | [tests/hwsb/test_b_records.py:184](../../tests/hwsb/test_b_records.py#L184) |  |
 | `test_inventory_diff_new_top_level_directory_is_new` | test | `test_inventory_diff_new_top_level_directory_is_new` | [tests/hwsb/test_b_records.py:198](../../tests/hwsb/test_b_records.py#L198) |  |
 | `test_inventory_diff_unchanged_root_is_ok` | test | `test_inventory_diff_unchanged_root_is_ok` | [tests/hwsb/test_b_records.py:177](../../tests/hwsb/test_b_records.py#L177) |  |
@@ -2578,8 +3011,11 @@
 | `test_isqrt_sqrt2_digits_and_bracket` | test | `test_isqrt_sqrt2_digits_and_bracket` | [tests/k4b/test_a_lemma_n.py:76](../../tests/k4b/test_a_lemma_n.py#L76) |  |
 | `test_isqrt_tiny_values` | test | `test_isqrt_tiny_values` | [tests/k4b/test_a_lemma_n.py:84](../../tests/k4b/test_a_lemma_n.py#L84) |  |
 | `test_isqrt_zero` | test | `test_isqrt_zero` | [tests/k4b/test_a_lemma_n.py:64](../../tests/k4b/test_a_lemma_n.py#L64) |  |
+| `test_j9_fragments_classify_declarations` | test | `test_j9_fragments_classify_declarations` | [tests/hwsd/test_b_guard_search.py:229](../../tests/hwsd/test_b_guard_search.py#L229) |  |
+| `test_j9_tokens_elsewhere_are_unclassified` | test | `test_j9_tokens_elsewhere_are_unclassified` | [tests/hwsd/test_b_guard_search.py:239](../../tests/hwsd/test_b_guard_search.py#L239) |  |
 | `test_jensen_bias_at_most_root_variance` | test | `test_jensen_bias_at_most_root_variance` | [tests/oracle_profile/test_oracle_profile_kernels.py:170](../../tests/oracle_profile/test_oracle_profile_kernels.py#L170) |  |
 | `test_job_paths_and_placement` | test | `test_job_paths_and_placement` | [tests/hwsc/test_b_guard_meter.py:277](../../tests/hwsc/test_b_guard_meter.py#L277) |  |
+| `test_job_paths_and_placement` | test | `test_job_paths_and_placement` | [tests/hwsd/test_b_records_meter.py:334](../../tests/hwsd/test_b_records_meter.py#L334) |  |
 | `test_job_paths_test_and_store_kinds` | test | `test_job_paths_test_and_store_kinds` | [tests/hwsb/test_b_meter_law.py:106](../../tests/hwsb/test_b_meter_law.py#L106) |  |
 | `test_join_failure_is_join_error_never_unresolved` | test | `test_join_failure_is_join_error_never_unresolved` | [tests/circle_history/test_controls.py:155](../../tests/circle_history/test_controls.py#L155) |  |
 | `test_join_mismatch_fails_technical` | test | `test_join_mismatch_fails_technical` | [tests/circle_history/test_builder_e2e.py:210](../../tests/circle_history/test_builder_e2e.py#L210) | Spec v2.4 item 1: a technical identity mismatch is FAIL_TECHNICAL (overall FAIL). |
@@ -2604,6 +3040,8 @@
 | `test_k4b_reasons_pass_through` | test | `test_k4b_reasons_pass_through` | [tests/hwsc/test_a_outcomes.py:89](../../tests/hwsc/test_a_outcomes.py#L89) |  |
 | `test_k_blocks` | test | `test_k_blocks` | [tests/c1prime/test_b_precision.py:128](../../tests/c1prime/test_b_precision.py#L128) |  |
 | `test_k_blocks_never_exceeds_five_for_admissible_fractions` | test | `test_k_blocks_never_exceeds_five_for_admissible_fractions` | [tests/c1prime/test_b_precision.py:134](../../tests/c1prime/test_b_precision.py#L134) |  |
+| `test_k_C_star_none_when_final_not_valid_and_k_C_plus_from_init` | test | `test_k_C_star_none_when_final_not_valid_and_k_C_plus_from_init` | [tests/hwsd/test_a_onsets_order.py:123](../../tests/hwsd/test_a_onsets_order.py#L123) |  |
+| `test_k_L_and_k_P_strict` | test | `test_k_L_and_k_P_strict` | [tests/hwsd/test_a_onsets_order.py:130](../../tests/hwsd/test_a_onsets_order.py#L130) |  |
 | `test_k_y_sign_rule` | test | `test_k_y_sign_rule` | [tests/c2_readout/test_b_policy.py:268](../../tests/c2_readout/test_b_policy.py#L268) |  |
 | `test_k_y_sign_rule_with_the_tie_going_to_minus_one` | test | `test_k_y_sign_rule_with_the_tie_going_to_minus_one` | [tests/c2_readout/test_a_oracle.py:102](../../tests/c2_readout/test_a_oracle.py#L102) |  |
 | `test_kappa_is_known_exactly` | test | `test_kappa_is_known_exactly` | [tests/k4b/test_a_lemma_t.py:92](../../tests/k4b/test_a_lemma_t.py#L92) |  |
@@ -2619,6 +3057,11 @@
 | `test_kc_gate_full_statuses` | test | `test_kc_gate_full_statuses` | [tests/c2_nd/test_b_policy.py:224](../../tests/c2_nd/test_b_policy.py#L224) |  |
 | `test_kc_stage_records_the_rehearsal_registry` | test | `test_kc_stage_records_the_rehearsal_registry` | [tests/hwsc/test_r_0181_kc_records_rehearsal.py:39](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py#L39) |  |
 | `test_kcr_gate_full_statuses` | test | `test_kcr_gate_full_statuses` | [tests/c2_nd/test_b_policy.py:241](../../tests/c2_nd/test_b_policy.py#L241) |  |
+| `test_kd2b_stream_check` | test | `test_kd2b_stream_check` | [tests/hwsd/test_b_binding.py:277](../../tests/hwsd/test_b_binding.py#L277) |  |
+| `test_kd4_sequence_readings_on_planted_rows` | test | `test_kd4_sequence_readings_on_planted_rows` | [tests/hwsd/test_a_kd4.py:130](../../tests/hwsd/test_a_kd4.py#L130) |  |
+| `test_kd5_passes_on_w0` | test | `test_kd5_passes_on_w0` | [tests/hwsd/test_a_learning.py:154](../../tests/hwsd/test_a_learning.py#L154) |  |
+| `test_kd_only_store_in_track_u_form_passes` | test | `test_kd_only_store_in_track_u_form_passes` | [tests/hwsd/test_b_registry_r10.py:287](../../tests/hwsd/test_b_registry_r10.py#L287) |  |
+| `test_kd_only_store_with_its_obligation_passes` | test | `test_kd_only_store_with_its_obligation_passes` | [tests/hwsd/test_b_registry_r10.py:154](../../tests/hwsd/test_b_registry_r10.py#L154) |  |
 | `test_kernel_matches_fraction_formula` | test | `test_kernel_matches_fraction_formula` | [tests/x2a_stage0/test_x2a_stage0.py:167](../../tests/x2a_stage0/test_x2a_stage0.py#L167) |  |
 | `test_kernel_rejects_abs_a_ge_1` | test | `test_kernel_rejects_abs_a_ge_1` | [tests/process/test_conductance.py:235](../../tests/process/test_conductance.py#L235) |  |
 | `test_kernel_rejects_bad_state_order` | test | `test_kernel_rejects_bad_state_order` | [tests/process/test_conductance.py:216](../../tests/process/test_conductance.py#L216) |  |
@@ -2697,15 +3140,18 @@
 | `test_leading_components_match_eigh_of_population_covariance` | test | `test_leading_components_match_eigh_of_population_covariance` | [tests/analysis/test_x4f_targets.py:95](../../tests/analysis/test_x4f_targets.py#L95) |  |
 | `test_leak_equals_refit_code_share_of_dnull` | test | `test_leak_equals_refit_code_share_of_dnull` | [tests/c2_nd/test_a_identity.py:210](../../tests/c2_nd/test_a_identity.py#L210) |  |
 | `test_leakage_trigger_at_001` | test | `test_leakage_trigger_at_001` | [tests/c1prime/test_a_eligibility_support.py:92](../../tests/c1prime/test_a_eligibility_support.py#L92) |  |
+| `test_learn_pass_reads_status_only` | test | `test_learn_pass_reads_status_only` | [tests/hwsd/test_a_learning.py:121](../../tests/hwsd/test_a_learning.py#L121) |  |
 | `test_learned_defined_fail_on_any_single_condition` | test | `test_learned_defined_fail_on_any_single_condition` | [tests/d2a/test_b_rules_flags.py:47](../../tests/d2a/test_b_rules_flags.py#L47) |  |
 | `test_learned_four_none_is_unresolved_unless_model_status_says_missing_or_invalid` | test | `test_learned_four_none_is_unresolved_unless_model_status_says_missing_or_invalid` | [tests/d2a/test_b_rules_flags.py:74](../../tests/d2a/test_b_rules_flags.py#L74) |  |
 | `test_learned_pass_at_exact_boundaries` | test | `test_learned_pass_at_exact_boundaries` | [tests/d2a/test_b_rules_flags.py:34](../../tests/d2a/test_b_rules_flags.py#L34) |  |
 | `test_learned_single_none_statistic_of_present_model_is_unresolved` | test | `test_learned_single_none_statistic_of_present_model_is_unresolved` | [tests/d2a/test_b_rules_flags.py:67](../../tests/d2a/test_b_rules_flags.py#L67) |  |
 | `test_learned_undefined_statistic_is_unresolved_not_fail` | test | `test_learned_undefined_statistic_is_unresolved_not_fail` | [tests/d2a/test_b_rules_flags.py:54](../../tests/d2a/test_b_rules_flags.py#L54) |  |
 | `test_learned_undefined_with_another_failing_condition_is_still_unresolved` | test | `test_learned_undefined_with_another_failing_condition_is_still_unresolved` | [tests/d2a/test_b_rules_flags.py:60](../../tests/d2a/test_b_rules_flags.py#L60) |  |
+| `test_learning_anchor_at_step0_is_not_chart_at_init` | test | `test_learning_anchor_at_step0_is_not_chart_at_init` | [tests/hwsd/test_a_onsets_order.py:210](../../tests/hwsd/test_a_onsets_order.py#L210) |  |
 | `test_learning_constant` | test | `test_learning_constant` | [tests/hwsc/test_a_learning.py:208](../../tests/hwsc/test_a_learning.py#L208) |  |
 | `test_learning_gate_failure_beats_a_rejecting_replicate` | test | `test_learning_gate_failure_beats_a_rejecting_replicate` | [tests/analysis/test_f1_rule.py:105](../../tests/analysis/test_f1_rule.py#L105) |  |
 | `test_learning_gate_reason_present_even_with_few_replicates` | test | `test_learning_gate_reason_present_even_with_few_replicates` | [tests/analysis/test_f1_rule.py:127](../../tests/analysis/test_f1_rule.py#L127) |  |
+| `test_ledger` | test | `test_ledger` | [tests/hwsd/test_b_records_meter.py:204](../../tests/hwsd/test_b_records_meter.py#L204) |  |
 | `test_ledger_allocation_sync_preserves_entries` | test | `test_ledger_allocation_sync_preserves_entries` | [tests/circle_history/test_builder_v24_runtime.py:117](../../tests/circle_history/test_builder_v24_runtime.py#L117) |  |
 | `test_ledger_append_atomic_cumulative_and_unique` | test | `test_ledger_append_atomic_cumulative_and_unique` | [tests/hwsc/test_b_records.py:217](../../tests/hwsc/test_b_records.py#L217) |  |
 | `test_ledger_append_entries_sum_and_atomic_replace` | test | `test_ledger_append_entries_sum_and_atomic_replace` | [tests/hwsb/test_b_records.py:71](../../tests/hwsb/test_b_records.py#L71) |  |
@@ -2719,12 +3165,15 @@
 | `test_ledger_written_on_stage_failure` | test | `test_ledger_written_on_stage_failure` | [tests/experiment/test_x5g1_controls.py:73](../../tests/experiment/test_x5g1_controls.py#L73) |  |
 | `test_ledoit_wolf_shrinks_population_covariance_toward_scaled_identity` | test | `test_ledoit_wolf_shrinks_population_covariance_toward_scaled_identity` | [tests/analysis/test_x4f_scores.py:182](../../tests/analysis/test_x4f_scores.py#L182) |  |
 | `test_ledoit_wolf_zero_shrinkage_known_answer` | test | `test_ledoit_wolf_zero_shrinkage_known_answer` | [tests/analysis/test_x4f_scores.py:200](../../tests/analysis/test_x4f_scores.py#L200) |  |
+| `test_left_unchanged_and_forbidden_rows` | test | `test_left_unchanged_and_forbidden_rows` | [tests/hwsd/test_b_binding.py:197](../../tests/hwsd/test_b_binding.py#L197) |  |
 | `test_lemma_C_credits` | test | `test_lemma_C_credits` | [tests/x2a_stage0/test_x2a_stage0_ph.py:58](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L58) |  |
 | `test_lemma_d1_interventional_identity_and_source_independence` | test | `test_lemma_d1_interventional_identity_and_source_independence` | [tests/c2_readout/test_a_partition.py:93](../../tests/c2_readout/test_a_partition.py#L93) |  |
 | `test_lemma_d2_logit_and_log_softmax_forms_agree_when_sum_d_is_zero` | test | `test_lemma_d2_logit_and_log_softmax_forms_agree_when_sum_d_is_zero` | [tests/c2_readout/test_a_partition.py:111](../../tests/c2_readout/test_a_partition.py#L111) |  |
 | `test_lemma_fw_m_exhaustive_grid` | test | `test_lemma_fw_m_exhaustive_grid` | [tests/c2_readout/test_a_inference.py:184](../../tests/c2_readout/test_a_inference.py#L184) |  |
 | `test_lemma_fw_r_exhaustive_grid` | test | `test_lemma_fw_r_exhaustive_grid` | [tests/c2_readout/test_a_inference.py:102](../../tests/c2_readout/test_a_inference.py#L102) |  |
+| `test_lemma_n_isqrt_bracket` | test | `test_lemma_n_isqrt_bracket` | [tests/hwsd/test_a_known_bound.py:125](../../tests/hwsd/test_a_known_bound.py#L125) |  |
 | `test_lemma_n_norm_bound` | test | `test_lemma_n_norm_bound` | [tests/hwsc/test_a_k4b_known_bound.py:254](../../tests/hwsc/test_a_k4b_known_bound.py#L254) |  |
+| `test_lemma_n_norm_bound_planted` | test | `test_lemma_n_norm_bound_planted` | [tests/hwsd/test_a_known_bound.py:134](../../tests/hwsd/test_a_known_bound.py#L134) |  |
 | `test_lemma_n_zero_and_square_brackets` | test | `test_lemma_n_zero_and_square_brackets` | [tests/hwsc/test_a_k4b_known_bound.py:264](../../tests/hwsc/test_a_k4b_known_bound.py#L264) |  |
 | `test_lemma_p1_exact_zero_and_oracle_normalisation` | test | `test_lemma_p1_exact_zero_and_oracle_normalisation` | [tests/x6_stage1/test_a_pairs.py:324](../../tests/x6_stage1/test_a_pairs.py#L324) |  |
 | `test_lemma_p2_scope_prefix_cue_counterexample` | test | `test_lemma_p2_scope_prefix_cue_counterexample` | [tests/x6_stage1/test_a_pairs.py:379](../../tests/x6_stage1/test_a_pairs.py#L379) | L-E5: a predictor that combines the segment with a prefix cue is not covered by P2. |
@@ -2735,6 +3184,7 @@
 | `test_length_qualifier_on_outcomes_4_to_10` | test | `test_length_qualifier_on_outcomes_4_to_10` | [tests/d2a/test_b_rules_qualifiers.py:116](../../tests/d2a/test_b_rules_qualifiers.py#L116) |  |
 | `test_length_qualifier_on_rule4_learning_unresolved` | test | `test_length_qualifier_on_rule4_learning_unresolved` | [tests/d2a/test_b_rules_qualifiers.py:124](../../tests/d2a/test_b_rules_qualifiers.py#L124) |  |
 | `test_level_constants_match_contract` | test | `test_level_constants_match_contract` | [tests/hws/test_b_worlds.py:99](../../tests/hws/test_b_worlds.py#L99) |  |
+| `test_lgate_oracle_row_sums` | test | `test_lgate_oracle_row_sums` | [tests/hwsd/test_b_data.py:225](../../tests/hwsd/test_b_data.py#L225) |  |
 | `test_licence_from_outcome_end_to_end` | test | `test_licence_from_outcome_end_to_end` | [tests/hwsb/test_a_outcomes.py:283](../../tests/hwsb/test_a_outcomes.py#L283) |  |
 | `test_licence_missing_field_is_na` | test | `test_licence_missing_field_is_na` | [tests/hwsb/test_a_outcomes.py:226](../../tests/hwsb/test_a_outcomes.py#L226) |  |
 | `test_licence_no_circle_uses_head_template` | test | `test_licence_no_circle_uses_head_template` | [tests/hwsb/test_a_outcomes.py:245](../../tests/hwsb/test_a_outcomes.py#L245) |  |
@@ -2755,6 +3205,8 @@
 | `test_limits_and_resource_constants` | test | `test_limits_and_resource_constants` | [tests/x6_stage1/test_b_nb_s0_ops.py:319](../../tests/x6_stage1/test_b_nb_s0_ops.py#L319) |  |
 | `test_limits_defaults_are_the_s6_values` | test | `test_limits_defaults_are_the_s6_values` | [tests/d2a/test_b_resource.py:69](../../tests/d2a/test_b_resource.py#L69) |  |
 | `test_lineage_absent_and_recorded` | test | `test_lineage_absent_and_recorded` | [tests/hwsc/test_b_records.py:149](../../tests/hwsc/test_b_records.py#L149) |  |
+| `test_lineage_d` | test | `test_lineage_d` | [tests/hwsd/test_b_records_meter.py:45](../../tests/hwsd/test_b_records_meter.py#L45) |  |
+| `test_lineage_d_foreign_reservation_name` | test | `test_lineage_d_foreign_reservation_name` | [tests/hwsd/test_b_records_meter.py:69](../../tests/hwsd/test_b_records_meter.py#L69) |  |
 | `test_lineage_join_error_is_technical` | test | `test_lineage_join_error_is_technical` | [tests/c1prime/test_a_chart_exceptions.py:216](../../tests/c1prime/test_a_chart_exceptions.py#L216) |  |
 | `test_lineage_mismatch_raises_join_error` | test | `test_lineage_mismatch_raises_join_error` | [tests/circle_history/test_adapter.py:168](../../tests/circle_history/test_adapter.py#L168) |  |
 | `test_lineage_ok_absent_store_passes` | test | `test_lineage_ok_absent_store_passes` | [tests/k4b/test_b_rerun.py:107](../../tests/k4b/test_b_rerun.py#L107) |  |
@@ -2783,6 +3235,7 @@
 | `test_load_handoff_refuses_structure` | test | `test_load_handoff_refuses_structure` | [tests/hwsc/test_b_records.py:384](../../tests/hwsc/test_b_records.py#L384) |  |
 | `test_load_handoff_sha_checked` | test | `test_load_handoff_sha_checked` | [tests/hwsc/test_b_records.py:391](../../tests/hwsc/test_b_records.py#L391) |  |
 | `test_load_table_has_the_21_contract_rows` | test | `test_load_table_has_the_21_contract_rows` | [tests/hwsc/test_b_binding.py:102](../../tests/hwsc/test_b_binding.py#L102) |  |
+| `test_load_table_rows_and_values` | test | `test_load_table_rows_and_values` | [tests/hwsd/test_b_binding.py:60](../../tests/hwsd/test_b_binding.py#L60) |  |
 | `test_local_passes_follow_cfg` | test | `test_local_passes_follow_cfg` | [tests/circle_history/test_cochain_lift.py:232](../../tests/circle_history/test_cochain_lift.py#L232) |  |
 | `test_local_passes_hand_case` | test | `test_local_passes_hand_case` | [tests/circle_history/test_cochain_lift.py:216](../../tests/circle_history/test_cochain_lift.py#L216) |  |
 | `test_local_passes_stop_at_vertex_128` | test | `test_local_passes_stop_at_vertex_128` | [tests/circle_history/test_cochain_lift.py:238](../../tests/circle_history/test_cochain_lift.py#L238) |  |
@@ -2823,6 +3276,8 @@
 | `test_mahalanobis_with_source_or_donor_nuisance` | test | `test_mahalanobis_with_source_or_donor_nuisance` | [tests/c1prime/test_a_eligibility_support.py:142](../../tests/c1prime/test_a_eligibility_support.py#L142) |  |
 | `test_main_binds_and_hands_over_to_the_meter` | test | `test_main_binds_and_hands_over_to_the_meter` | [tests/hws/test_b_records.py:316](../../tests/hws/test_b_records.py#L316) |  |
 | `test_main_binds_and_hands_over_to_the_meter` | test | `test_main_binds_and_hands_over_to_the_meter` | [tests/hwsb/test_b_meter_law.py:152](../../tests/hwsb/test_b_meter_law.py#L152) |  |
+| `test_main_bootstrap_default_seed_inside_binding_and_stream_shared` | test | `test_main_bootstrap_default_seed_inside_binding_and_stream_shared` | [tests/hwsd/test_a_bounds.py:107](../../tests/hwsd/test_a_bounds.py#L107) |  |
+| `test_main_bootstrap_equals_c1_means_and_own_stream` | test | `test_main_bootstrap_equals_c1_means_and_own_stream` | [tests/hwsd/test_a_bounds.py:95](../../tests/hwsd/test_a_bounds.py#L95) |  |
 | `test_main_file_failing_rule_2a_prime_makes_main_incomplete` | test | `test_main_file_failing_rule_2a_prime_makes_main_incomplete` | [tests/k4b/test_b_registry_rules.py:227](../../tests/k4b/test_b_registry_rules.py#L227) |  |
 | `test_main_inventory_is_deep_including_tests_and_venv` | test | `test_main_inventory_is_deep_including_tests_and_venv` | [tests/k4b/test_b_registry_rules.py:206](../../tests/k4b/test_b_registry_rules.py#L206) |  |
 | `test_main_missing_argument_is_2` | test | `test_main_missing_argument_is_2` | [tests/hwsc/test_b_guard_meter.py:320](../../tests/hwsc/test_b_guard_meter.py#L320) |  |
@@ -2840,6 +3295,7 @@
 | `test_malformed_latch` | test | `test_malformed_latch` | [tests/experiment/test_x5g1t_usage.py:290](../../tests/experiment/test_x5g1t_usage.py#L290) |  |
 | `test_malformed_percent_fails_closed` | test | `test_malformed_percent_fails_closed` | [tests/oracle_profile/test_builder_controls.py:165](../../tests/oracle_profile/test_builder_controls.py#L165) |  |
 | `test_malformed_release_session_is_refused` | test | `test_malformed_release_session_is_refused` | [tests/c1prime/test_c_release_worker.py:43](../../tests/c1prime/test_c_release_worker.py#L43) |  |
+| `test_map_build_rules` | test | `test_map_build_rules` | [tests/hwsd/test_a_scorer.py:253](../../tests/hwsd/test_a_scorer.py#L253) |  |
 | `test_map_failures_flag_a_corrupted_joint` | test | `test_map_failures_flag_a_corrupted_joint` | [tests/experiment/test_x4b.py:45](../../tests/experiment/test_x4b.py#L45) |  |
 | `test_margin_floor_and_transport` | test | `test_margin_floor_and_transport` | [tests/k4b/test_a_decision.py:105](../../tests/k4b/test_a_decision.py#L105) |  |
 | `test_marginal_index_conventions` | test | `test_marginal_index_conventions` | [tests/hws/test_b_oracle.py:293](../../tests/hws/test_b_oracle.py#L293) |  |
@@ -2871,6 +3327,7 @@
 | `test_meter_bind_check` | test | `test_meter_bind_check` | [tests/c2_nd/test_b_lineage.py:306](../../tests/c2_nd/test_b_lineage.py#L306) |  |
 | `test_meter_bind_check_refusals` | test | `test_meter_bind_check_refusals` | [tests/x6_stage1/test_b_chain_ops.py:311](../../tests/x6_stage1/test_b_chain_ops.py#L311) |  |
 | `test_meter_binding_sha_and_import_directory` | test | `test_meter_binding_sha_and_import_directory` | [tests/c2_readout/test_b_policy.py:385](../../tests/c2_readout/test_b_policy.py#L385) |  |
+| `test_meter_main_refuses_bad_arguments` | test | `test_meter_main_refuses_bad_arguments` | [tests/hwsd/test_b_records_meter.py:369](../../tests/hwsd/test_b_records_meter.py#L369) |  |
 | `test_meter_values` | test | `test_meter_values` | [tests/x6_stage1/test_b_chain_ops.py:304](../../tests/x6_stage1/test_b_chain_ops.py#L304) |  |
 | `test_metric_axioms_random` | test | `test_metric_axioms_random` | [tests/topology/test_metrics.py:65](../../tests/topology/test_metrics.py#L65) |  |
 | `test_mismatch_report_hand_values_and_exclusion` | test | `test_mismatch_report_hand_values_and_exclusion` | [tests/analysis/test_x4f_erasure_family.py:217](../../tests/analysis/test_x4f_erasure_family.py#L217) |  |
@@ -2896,6 +3353,8 @@
 | `test_model_inputs_have_bos_36_and_width_33` | test | `test_model_inputs_have_bos_36_and_width_33` | [tests/hwsb/test_b_streams.py:250](../../tests/hwsb/test_b_streams.py#L250) |  |
 | `test_model_predictive_is_canonical_softmax` | test | `test_model_predictive_is_canonical_softmax` | [tests/hwsb/test_b_e4path.py:231](../../tests/hwsb/test_b_e4path.py#L231) |  |
 | `test_model_predictor_from_verified_file` | test | `test_model_predictor_from_verified_file` | [tests/x6_stage1/test_a_eval.py:122](../../tests/x6_stage1/test_a_eval.py#L122) |  |
+| `test_model_status_boundaries` | test | `test_model_status_boundaries` | [tests/hwsd/test_a_known_bound.py:148](../../tests/hwsd/test_a_known_bound.py#L148) |  |
+| `test_model_status_random_grid` | test | `test_model_status_random_grid` | [tests/hwsd/test_a_known_bound.py:172](../../tests/hwsd/test_a_known_bound.py#L172) |  |
 | `test_model_streams_scope_map_and_arm_sharing` | test | `test_model_streams_scope_map_and_arm_sharing` | [tests/x6_stage1/test_b_seed_pool_reg.py:79](../../tests/x6_stage1/test_b_seed_pool_reg.py#L79) |  |
 | `test_module_file_at_most_400_lines` | test | `test_module_file_at_most_400_lines` | [tests/d1_seam/test_d1_seam.py:242](../../tests/d1_seam/test_d1_seam.py#L242) |  |
 | `test_module_files_and_sizes` | test | `test_module_files_and_sizes` | [tests/c2_nd/test_b_lineage.py:391](../../tests/c2_nd/test_b_lineage.py#L391) |  |
@@ -2968,6 +3427,9 @@
 | `test_n2_fit_class_mean_mahalanobis_and_q99` | test | `test_n2_fit_class_mean_mahalanobis_and_q99` | [tests/c2_readout/test_b_screens.py:171](../../tests/c2_readout/test_b_screens.py#L171) |  |
 | `test_n2_fraction_rule_and_cap_exact` | test | `test_n2_fraction_rule_and_cap_exact` | [tests/c2_readout/test_b_screens.py:199](../../tests/c2_readout/test_b_screens.py#L199) |  |
 | `test_n2_paired_gaussian_counterexample_passes_the_radial_screen` | test | `test_n2_paired_gaussian_counterexample_passes_the_radial_screen` | [tests/c2_readout/test_b_screens.py:213](../../tests/c2_readout/test_b_screens.py#L213) |  |
+| `test_n_pre_counts_est_before_k_C_only` | test | `test_n_pre_counts_est_before_k_C_only` | [tests/hwsd/test_a_onsets_order.py:138](../../tests/hwsd/test_a_onsets_order.py#L138) |  |
+| `test_n_pre_without_chart_counts_every_est` | test | `test_n_pre_without_chart_counts_every_est` | [tests/hwsd/test_a_onsets_order.py:149](../../tests/hwsd/test_a_onsets_order.py#L149) |  |
+| `test_n_pre_zero_and_pre_chart_max_none` | test | `test_n_pre_zero_and_pre_chart_max_none` | [tests/hwsd/test_a_onsets_order.py:144](../../tests/hwsd/test_a_onsets_order.py#L144) |  |
 | `test_n_run_learning_gate_is_not_applicable` | test | `test_n_run_learning_gate_is_not_applicable` | [tests/experiment/test_report_e2.py:77](../../tests/experiment/test_report_e2.py#L77) |  |
 | `test_n_test_is_the_max_over_alive_families` | test | `test_n_test_is_the_max_over_alive_families` | [tests/c2_readout/test_a_oracle.py:397](../../tests/c2_readout/test_a_oracle.py#L397) |  |
 | `test_n_test_smaller_than_panels_is_alignment_error` | test | `test_n_test_smaller_than_panels_is_alignment_error` | [tests/dataset/test_stage.py:98](../../tests/dataset/test_stage.py#L98) |  |
@@ -2981,7 +3443,9 @@
 | `test_namespace_legitimate_continuation` | test | `test_namespace_legitimate_continuation` | [tests/c2_readout/test_b_lineage.py:339](../../tests/c2_readout/test_b_lineage.py#L339) |  |
 | `test_namespace_scan` | test | `test_namespace_scan` | [tests/c2_nd/test_b_lineage.py:70](../../tests/c2_nd/test_b_lineage.py#L70) |  |
 | `test_namespace_unrelated_collision_is_lineage` | test | `test_namespace_unrelated_collision_is_lineage` | [tests/c2_readout/test_b_lineage.py:376](../../tests/c2_readout/test_b_lineage.py#L376) |  |
+| `test_nan_predictive_is_numerical` | test | `test_nan_predictive_is_numerical` | [tests/hwsd/test_a_learning.py:142](../../tests/hwsd/test_a_learning.py#L142) |  |
 | `test_nan_row_is_numerical` | test | `test_nan_row_is_numerical` | [tests/hwsc/test_a_learning.py:196](../../tests/hwsc/test_a_learning.py#L196) |  |
+| `test_native_wall_at_c0_cal` | test | `test_native_wall_at_c0_cal` | [tests/hwsd/test_a_scorer.py:211](../../tests/hwsd/test_a_scorer.py#L211) |  |
 | `test_natural_prefix_rule_independent` | test | `test_natural_prefix_rule_independent` | [tests/x6_stage1/test_a_designed.py:199](../../tests/x6_stage1/test_a_designed.py#L199) |  |
 | `test_nb_static_refuses` | test | `test_nb_static_refuses` | [tests/x6_stage1/test_b_nb_s0_ops.py:153](../../tests/x6_stage1/test_b_nb_s0_ops.py#L153) |  |
 | `test_near_threshold_plus_fail_is_inconclusive` | test | `test_near_threshold_plus_fail_is_inconclusive` | [tests/analysis/test_x5_context.py:126](../../tests/analysis/test_x5_context.py#L126) |  |
@@ -2993,13 +3457,18 @@
 | `test_nec_known_negative_complement` | test | `test_nec_known_negative_complement` | [tests/c2_nd/test_a_known.py:114](../../tests/c2_nd/test_a_known.py#L114) |  |
 | `test_needle_in` | test | `test_needle_in` | [tests/hwsc/test_b_guard_meter.py:154](../../tests/hwsc/test_b_guard_meter.py#L154) |  |
 | `test_needles_and_the_real_contract` | test | `test_needles_and_the_real_contract` | [tests/c2_nd/test_b_lineage.py:112](../../tests/c2_nd/test_b_lineage.py#L112) |  |
+| `test_needles_d_from_the_namespace_record` | test | `test_needles_d_from_the_namespace_record` | [tests/hwsd/test_b_guard_search.py:185](../../tests/hwsd/test_b_guard_search.py#L185) |  |
 | `test_needs_owner` | test | `test_needs_owner` | [tests/k4b/test_b_rerun.py:210](../../tests/k4b/test_b_rerun.py#L210) |  |
 | `test_negative_alignment_label` | test | `test_negative_alignment_label` | [tests/hwsc/test_a_decision.py:138](../../tests/hwsc/test_a_decision.py#L138) |  |
 | `test_negative_alignment_label` | test | `test_negative_alignment_label` | [tests/k4b/test_a_decision.py:150](../../tests/k4b/test_a_decision.py#L150) |  |
 | `test_nested_entry_only_inside_not_necessary` | test | `test_nested_entry_only_inside_not_necessary` | [tests/c2_nd/test_a_known.py:177](../../tests/c2_nd/test_a_known.py#L177) |  |
+| `test_nesting_fails_closed` | test | `test_nesting_fails_closed` | [tests/hwsd/test_b_binding.py:126](../../tests/hwsd/test_b_binding.py#L126) |  |
+| `test_never_called_list` | test | `test_never_called_list` | [tests/hwsd/test_b_binding.py:211](../../tests/hwsd/test_b_binding.py#L211) |  |
 | `test_never_pass_censored` | test | `test_never_pass_censored` | [tests/analysis/test_x5_endpoint.py:134](../../tests/analysis/test_x5_endpoint.py#L134) |  |
 | `test_new_pools_record_lineage_and_execution_protocol` | test | `test_new_pools_record_lineage_and_execution_protocol` | [tests/experiment/test_x5g1t_identity.py:316](../../tests/experiment/test_x5g1t_identity.py#L316) |  |
+| `test_newest_obligation_governs` | test | `test_newest_obligation_governs` | [tests/hwsd/test_b_registry_r10.py:254](../../tests/hwsd/test_b_registry_r10.py#L254) |  |
 | `test_no_circle_with_criterion_and_models` | test | `test_no_circle_with_criterion_and_models` | [tests/hwsb/test_a_outcomes.py:170](../../tests/hwsb/test_a_outcomes.py#L170) |  |
+| `test_no_context_gain_is_numerical` | test | `test_no_context_gain_is_numerical` | [tests/hwsd/test_a_learning.py:134](../../tests/hwsd/test_a_learning.py#L134) |  |
 | `test_no_feas_logit_and_no_endpoint_before_t_pre` | test | `test_no_feas_logit_and_no_endpoint_before_t_pre` | [tests/c2_nd/test_b_policy.py:116](../../tests/c2_nd/test_b_policy.py#L116) |  |
 | `test_no_fit_logit_outside_m0_and_no_feas_logit` | test | `test_no_fit_logit_outside_m0_and_no_feas_logit` | [tests/c2_readout/test_b_policy.py:92](../../tests/c2_readout/test_b_policy.py#L92) |  |
 | `test_no_fresh_access_without_release_b` | test | `test_no_fresh_access_without_release_b` | [tests/k4b/test_b_flow.py:236](../../tests/k4b/test_b_flow.py#L236) |  |
@@ -3022,11 +3491,14 @@
 | `test_no_statement_heads` | test | `test_no_statement_heads` | [tests/hwsc/test_a_outcomes.py:260](../../tests/hwsc/test_a_outcomes.py#L260) |  |
 | `test_no_suitable_world_filter` | test | `test_no_suitable_world_filter` | [tests/hws/test_a_outcomes.py:230](../../tests/hws/test_a_outcomes.py#L230) |  |
 | `test_no_suitable_world_headroom` | test | `test_no_suitable_world_headroom` | [tests/hws/test_a_outcomes.py:220](../../tests/hws/test_a_outcomes.py#L220) |  |
+| `test_no_value_check_passes_clean` | test | `test_no_value_check_passes_clean` | [tests/hwsd/test_b_records_meter.py:141](../../tests/hwsd/test_b_records_meter.py#L141) |  |
+| `test_no_value_check_refuses` | test | `test_no_value_check_refuses` | [tests/hwsd/test_b_records_meter.py:135](../../tests/hwsd/test_b_records_meter.py#L135) |  |
 | `test_no_world_confirmed_needs_an_unresolved_world` | test | `test_no_world_confirmed_needs_an_unresolved_world` | [tests/hws/test_a_outcomes.py:201](../../tests/hws/test_a_outcomes.py#L201) |  |
 | `test_no_write_during_identity_gates` | test | `test_no_write_during_identity_gates` | [tests/c2_nd/test_b_policy.py:128](../../tests/c2_nd/test_b_policy.py#L128) |  |
 | `test_noise_envelope_known_answer` | test | `test_noise_envelope_known_answer` | [tests/analysis/test_f1_rule.py:50](../../tests/analysis/test_f1_rule.py#L50) |  |
 | `test_noise_envelope_matches_bruteforce_and_picks_max_cell` | test | `test_noise_envelope_matches_bruteforce_and_picks_max_cell` | [tests/analysis/test_f1_rule.py:58](../../tests/analysis/test_f1_rule.py#L58) |  |
 | `test_noise_free_scalar_target_has_rho_one` | test | `test_noise_free_scalar_target_has_rho_one` | [tests/analysis/test_x4f_erasure.py:223](../../tests/analysis/test_x4f_erasure.py#L223) |  |
+| `test_non_active_and_schema_failures` | test | `test_non_active_and_schema_failures` | [tests/hwsd/test_b_reservation.py:181](../../tests/hwsd/test_b_reservation.py#L181) |  |
 | `test_non_finite_f_is_technical` | test | `test_non_finite_f_is_technical` | [tests/c1prime/test_a_chart_exceptions.py:128](../../tests/c1prime/test_a_chart_exceptions.py#L128) |  |
 | `test_non_finite_is_invalid` | test | `test_non_finite_is_invalid` | [tests/analysis/test_x5_context.py:81](../../tests/analysis/test_x5_context.py#L81) |  |
 | `test_non_finite_replacement` | test | `test_non_finite_replacement` | [tests/learner/test_patch.py:261](../../tests/learner/test_patch.py#L261) |  |
@@ -3077,6 +3549,8 @@
 | `test_O11_policy_refuses_sidecar_for_oracle` | test | `test_O11_policy_refuses_sidecar_for_oracle` | [tests/oracle/test_oracle.py:304](../../tests/oracle/test_oracle.py#L304) |  |
 | `test_oblique_eraser_keeps_orthogonal_signal` | test | `test_oblique_eraser_keeps_orthogonal_signal` | [tests/analysis/test_x4f_erasure.py:187](../../tests/analysis/test_x4f_erasure.py#L187) |  |
 | `test_oblique_eraser_planted_2d_target` | test | `test_oblique_eraser_planted_2d_target` | [tests/analysis/test_x4f_erasure.py:166](../../tests/analysis/test_x4f_erasure.py#L166) |  |
+| `test_obs_inventory_extra_file_fails_closed` | test | `test_obs_inventory_extra_file_fails_closed` | [tests/hwsd/test_b_registry_r9.py:178](../../tests/hwsd/test_b_registry_r9.py#L178) |  |
+| `test_obs_inventory_not_equal_to_release_a_is_lineage` | test | `test_obs_inventory_not_equal_to_release_a_is_lineage` | [tests/hwsd/test_b_registry_r9.py:166](../../tests/hwsd/test_b_registry_r9.py#L166) |  |
 | `test_obs_variant_helper_is_a_faithful_copy` | test | `test_obs_variant_helper_is_a_faithful_copy` | [tests/experiment/test_x5g1t_identity.py:276](../../tests/experiment/test_x5g1t_identity.py#L276) | Control for the content variants: a re-save with nothing changed still trains. |
 | `test_observation_set_store_is_scanned_via_source_f` | test | `test_observation_set_store_is_scanned_via_source_f` | [tests/k4b/test_b_registry_rules.py:249](../../tests/k4b/test_b_registry_rules.py#L249) |  |
 | `test_observation_set_without_emission_parent_fails_closed` | test | `test_observation_set_without_emission_parent_fails_closed` | [tests/hwsb/test_b_registry.py:173](../../tests/hwsb/test_b_registry.py#L173) |  |
@@ -3089,7 +3563,10 @@
 | `test_one_failing_replicate_among_three_is_enough_to_reject` | test | `test_one_failing_replicate_among_three_is_enough_to_reject` | [tests/analysis/test_f1_rule.py:149](../../tests/analysis/test_f1_rule.py#L149) |  |
 | `test_one_file_outside_the_segment_spoils_the_directory` | test | `test_one_file_outside_the_segment_spoils_the_directory` | [tests/k4b/test_b_registry_rules.py:165](../../tests/k4b/test_b_registry_rules.py#L165) |  |
 | `test_one_large_array_in_a_small_file_is_incomplete` | test | `test_one_large_array_in_a_small_file_is_incomplete` | [tests/k4b/test_b_registry_rules.py:138](../../tests/k4b/test_b_registry_rules.py#L138) |  |
+| `test_one_mutated_key_or_value_is_incomplete` | test | `test_one_mutated_key_or_value_is_incomplete` | [tests/hwsd/test_b_registry_r10.py:228](../../tests/hwsd/test_b_registry_r10.py#L228) |  |
 | `test_one_of_two_latched_kinds_missing` | test | `test_one_of_two_latched_kinds_missing` | [tests/experiment/test_x5g1t_usage.py:251](../../tests/experiment/test_x5g1t_usage.py#L251) |  |
+| `test_onset_order_line` | test | `test_onset_order_line` | [tests/hwsd/test_a_onsets_order.py:234](../../tests/hwsd/test_a_onsets_order.py#L234) |  |
+| `test_onsets_basic_and_undefined` | test | `test_onsets_basic_and_undefined` | [tests/hwsd/test_a_onsets_order.py:94](../../tests/hwsd/test_a_onsets_order.py#L94) |  |
 | `test_op_guard_deadline_is_per_operation` | test | `test_op_guard_deadline_is_per_operation` | [tests/k4b/test_b_meter.py:131](../../tests/k4b/test_b_meter.py#L131) |  |
 | `test_open_ledgers_two_files` | test | `test_open_ledgers_two_files` | [tests/k4b/test_b_charts.py:157](../../tests/k4b/test_b_charts.py#L157) |  |
 | `test_operation_is_the_originating_function` | test | `test_operation_is_the_originating_function` | [tests/c1prime/test_a_exceptions.py:173](../../tests/c1prime/test_a_exceptions.py#L173) |  |
@@ -3111,8 +3588,16 @@
 | `test_ord_d_missing_model_fails_the_seed` | test | `test_ord_d_missing_model_fails_the_seed` | [tests/x6_stage1/test_a_rules.py:143](../../tests/x6_stage1/test_a_rules.py#L143) |  |
 | `test_ord_d_pass_fail_and_regret_bar_exact` | test | `test_ord_d_pass_fail_and_regret_bar_exact` | [tests/x6_stage1/test_a_rules.py:102](../../tests/x6_stage1/test_a_rules.py#L102) |  |
 | `test_ord_d_unresolved_routing` | test | `test_ord_d_unresolved_routing` | [tests/x6_stage1/test_a_rules.py:134](../../tests/x6_stage1/test_a_rules.py#L134) |  |
+| `test_order_categories_reachable_in_evaluate` | test | `test_order_categories_reachable_in_evaluate` | [tests/hwsd/test_a_evaluate.py:177](../../tests/hwsd/test_a_evaluate.py#L177) |  |
+| `test_order_chart_categories` | test | `test_order_chart_categories` | [tests/hwsd/test_a_onsets_order.py:176](../../tests/hwsd/test_a_onsets_order.py#L176) |  |
+| `test_order_explicit_A_for_k_C_plus` | test | `test_order_explicit_A_for_k_C_plus` | [tests/hwsd/test_a_onsets_order.py:225](../../tests/hwsd/test_a_onsets_order.py#L225) |  |
+| `test_order_learning_categories` | test | `test_order_learning_categories` | [tests/hwsd/test_a_onsets_order.py:205](../../tests/hwsd/test_a_onsets_order.py#L205) |  |
+| `test_order_returns_anchor_and_A` | test | `test_order_returns_anchor_and_A` | [tests/hwsd/test_a_onsets_order.py:216](../../tests/hwsd/test_a_onsets_order.py#L216) |  |
+| `test_order_unresolved_numerical_read_as_unresolved` | test | `test_order_unresolved_numerical_read_as_unresolved` | [tests/hwsd/test_a_onsets_order.py:181](../../tests/hwsd/test_a_onsets_order.py#L181) |  |
 | `test_ordinary_overdue_beats_disk_and_returns_control_state` | test | `test_ordinary_overdue_beats_disk_and_returns_control_state` | [tests/k4b/test_b_meter.py:228](../../tests/k4b/test_b_meter.py#L228) |  |
 | `test_orthogonal_movement_fixture_gives_zero_share_low_aligned` | test | `test_orthogonal_movement_fixture_gives_zero_share_low_aligned` | [tests/c2_readout/test_a_partition.py:239](../../tests/c2_readout/test_a_partition.py#L239) |  |
+| `test_os_digests_independent` | test | `test_os_digests_independent` | [tests/hwsd/test_b_registry_r9.py:291](../../tests/hwsd/test_b_registry_r9.py#L291) |  |
+| `test_os_payload_sha_mismatch_is_incomplete` | test | `test_os_payload_sha_mismatch_is_incomplete` | [tests/hwsd/test_b_registry_r10.py:239](../../tests/hwsd/test_b_registry_r10.py#L239) |  |
 | `test_osum_is_left_to_right` | test | `test_osum_is_left_to_right` | [tests/c1prime/test_b_cert_guards.py:96](../../tests/c1prime/test_b_cert_guards.py#L96) |  |
 | `test_other_circumferences_build` | test | `test_other_circumferences_build` | [tests/hws/test_b_worlds.py:169](../../tests/hws/test_b_worlds.py#L169) |  |
 | `test_other_models_meta_fails_on_every_model_bound_field` | test | `test_other_models_meta_fails_on_every_model_bound_field` | [tests/k4b/test_b_h1_meta.py:236](../../tests/k4b/test_b_h1_meta.py#L236) | 2718's complete meta checked against 1729's expectation: id, run_key, seed, payload. |
@@ -3124,6 +3609,7 @@
 | `test_out_of_order_stage_refused_without_gate` | test | `test_out_of_order_stage_refused_without_gate` | [tests/circle_history/test_builder_v24_stages.py:43](../../tests/circle_history/test_builder_v24_stages.py#L43) |  |
 | `test_outcome_fallthrough_is_fail_technical_outcome` | test | `test_outcome_fallthrough_is_fail_technical_outcome` | [tests/hws/test_a_outcomes.py:248](../../tests/hws/test_a_outcomes.py#L248) |  |
 | `test_outcome_path_and_roundtrip` | test | `test_outcome_path_and_roundtrip` | [tests/experiment/test_x5g1t_runtime_boundary.py:79](../../tests/experiment/test_x5g1t_runtime_boundary.py#L79) |  |
+| `test_outcome_precedence` | test | `test_outcome_precedence` | [tests/hwsd/test_a_evaluate.py:161](../../tests/hwsd/test_a_evaluate.py#L161) |  |
 | `test_output_cap_comes_from_the_contract` | test | `test_output_cap_comes_from_the_contract` | [tests/hwsc/test_r_0192_output_cap.py:21](../../tests/hwsc/test_r_0192_output_cap.py#L21) |  |
 | `test_output_cap_reason_is_a_resource_stop` | test | `test_output_cap_reason_is_a_resource_stop` | [tests/k4b/test_b_meter.py:301](../../tests/k4b/test_b_meter.py#L301) |  |
 | `test_output_dir_new_path_is_created` | test | `test_output_dir_new_path_is_created` | [tests/experiment/test_x5g1_safety.py:226](../../tests/experiment/test_x5g1_safety.py#L226) |  |
@@ -3135,6 +3621,7 @@
 | `test_overall_stage_c_keys` | test | `test_overall_stage_c_keys` | [tests/hwsc/test_a_decision.py:182](../../tests/hwsc/test_a_decision.py#L182) |  |
 | `test_overall_table` | test | `test_overall_table` | [tests/k4b/test_a_decision.py:179](../../tests/k4b/test_a_decision.py#L179) |  |
 | `test_overall_two_of_three_rules` | test | `test_overall_two_of_three_rules` | [tests/c2_readout/test_a_inference.py:254](../../tests/c2_readout/test_a_inference.py#L254) |  |
+| `test_overlap_check` | test | `test_overlap_check` | [tests/hwsd/test_b_guard_search.py:194](../../tests/hwsd/test_b_guard_search.py#L194) |  |
 | `test_own_declarations_are_not_prior_use` | test | `test_own_declarations_are_not_prior_use` | [tests/k4b/test_b_flow.py:258](../../tests/k4b/test_b_flow.py#L258) |  |
 | `test_own_pre_g0_records_admitted_at_s1` | test | `test_own_pre_g0_records_admitted_at_s1` | [tests/c2_readout/test_b_fwl_l1.py:358](../../tests/c2_readout/test_b_fwl_l1.py#L358) |  |
 | `test_own_readers_excludes_k4b_store_from_the_deep_scan` | test | `test_own_readers_excludes_k4b_store_from_the_deep_scan` | [tests/k4b/test_b_store_reader.py:217](../../tests/k4b/test_b_store_reader.py#L217) |  |
@@ -3178,6 +3665,9 @@
 | `test_p_d2a_equals_brute_force_on_the_tiny_world` | test | `test_p_d2a_equals_brute_force_on_the_tiny_world` | [tests/hws/test_b_exact.py:79](../../tests/hws/test_b_exact.py#L79) |  |
 | `test_p_d2a_equals_exact_fractions_on_a_rational_hmm` | test | `test_p_d2a_equals_exact_fractions_on_a_rational_hmm` | [tests/hws/test_b_exact.py:96](../../tests/hws/test_b_exact.py#L96) |  |
 | `test_p_d2a_full_alphabet_and_symbols_beyond_v` | test | `test_p_d2a_full_alphabet_and_symbols_beyond_v` | [tests/hws/test_b_exact.py:86](../../tests/hws/test_b_exact.py#L86) |  |
+| `test_p_equals_q1_captured_zero` | test | `test_p_equals_q1_captured_zero` | [tests/hwsd/test_a_learning.py:67](../../tests/hwsd/test_a_learning.py#L67) |  |
+| `test_p_equals_q32_captured_one` | test | `test_p_equals_q32_captured_one` | [tests/hwsd/test_a_learning.py:59](../../tests/hwsd/test_a_learning.py#L59) |  |
+| `test_p_equals_q4_no_beyond_four_gain` | test | `test_p_equals_q4_no_beyond_four_gain` | [tests/hwsd/test_a_learning.py:73](../../tests/hwsd/test_a_learning.py#L73) |  |
 | `test_p_stay_changes_values_only_by_formula` | test | `test_p_stay_changes_values_only_by_formula` | [tests/process/test_transition.py:71](../../tests/process/test_transition.py#L71) |  |
 | `test_p_value_has_plus_one_form` | test | `test_p_value_has_plus_one_form` | [tests/analysis/test_baselines_dynamics.py:96](../../tests/analysis/test_baselines_dynamics.py#L96) |  |
 | `test_p_value_matches_independent_monte_carlo` | test | `test_p_value_matches_independent_monte_carlo` | [tests/analysis/test_baselines_dynamics.py:109](../../tests/analysis/test_baselines_dynamics.py#L109) |  |
@@ -3225,16 +3715,19 @@
 | `test_pass_sequence_custom_threshold` | test | `test_pass_sequence_custom_threshold` | [tests/analysis/test_x5_endpoint.py:83](../../tests/analysis/test_x5_endpoint.py#L83) |  |
 | `test_pass_sequence_rejects_nan` | test | `test_pass_sequence_rejects_nan` | [tests/analysis/test_x5_endpoint.py:87](../../tests/analysis/test_x5_endpoint.py#L87) |  |
 | `test_pass_sequence_threshold_equality_passes` | test | `test_pass_sequence_threshold_equality_passes` | [tests/analysis/test_x5_endpoint.py:77](../../tests/analysis/test_x5_endpoint.py#L77) |  |
+| `test_pass_through_of_b1_and_forcing` | test | `test_pass_through_of_b1_and_forcing` | [tests/hwsd/test_a_learning.py:80](../../tests/hwsd/test_a_learning.py#L80) |  |
 | `test_patch_and_basis_unchanged_on_head_decoy` | test | `test_patch_and_basis_unchanged_on_head_decoy` | [tests/c2_nd/test_b_decoy_model.py:186](../../tests/c2_nd/test_b_decoy_model.py#L186) |  |
 | `test_patch_matches_spec_reference_computation` | test | `test_patch_matches_spec_reference_computation` | [tests/learner/test_patch.py:103](../../tests/learner/test_patch.py#L103) |  |
 | `test_patch_module_imports_no_forbidden_modules` | test | `test_patch_module_imports_no_forbidden_modules` | [tests/learner/test_patch.py:291](../../tests/learner/test_patch.py#L291) |  |
 | `test_path_law_l1_within_rho` | test | `test_path_law_l1_within_rho` | [tests/k4b/test_a_lemma_t.py:104](../../tests/k4b/test_a_lemma_t.py#L104) |  |
 | `test_pause_check` | test | `test_pause_check` | [tests/x6zc/test_x6zc_decide.py:353](../../tests/x6zc/test_x6zc_decide.py#L353) |  |
+| `test_pause_check_d` | test | `test_pause_check_d` | [tests/hwsd/test_b_records_meter.py:237](../../tests/hwsd/test_b_records_meter.py#L237) |  |
 | `test_pause_check_e2_from_k` | test | `test_pause_check_e2_from_k` | [tests/hwsc/test_b_records.py:255](../../tests/hwsc/test_b_records.py#L255) |  |
 | `test_pause_check_is_strictly_greater_than_three_times` | test | `test_pause_check_is_strictly_greater_than_three_times` | [tests/hwsb/test_b_records.py:42](../../tests/hwsb/test_b_records.py#L42) |  |
 | `test_pause_check_numbers_from_the_protocol` | test | `test_pause_check_numbers_from_the_protocol` | [tests/hwsb/test_b_records.py:56](../../tests/hwsb/test_b_records.py#L56) |  |
 | `test_pause_check_strict_triggers` | test | `test_pause_check_strict_triggers` | [tests/hws/test_a_budget.py:78](../../tests/hws/test_a_budget.py#L78) |  |
 | `test_pause_check_thresholds_and_strictness` | test | `test_pause_check_thresholds_and_strictness` | [tests/hwsc/test_b_records.py:239](../../tests/hwsc/test_b_records.py#L239) |  |
+| `test_pause_or_raise_d` | test | `test_pause_or_raise_d` | [tests/hwsd/test_b_records_meter.py:251](../../tests/hwsd/test_b_records_meter.py#L251) |  |
 | `test_pause_or_raise_exempt_and_disabled` | test | `test_pause_or_raise_exempt_and_disabled` | [tests/hwsc/test_b_records.py:278](../../tests/hwsc/test_b_records.py#L278) |  |
 | `test_pause_or_raise_writes_cpu_only_gate` | test | `test_pause_or_raise_writes_cpu_only_gate` | [tests/hwsc/test_b_records.py:263](../../tests/hwsc/test_b_records.py#L263) |  |
 | `test_paused_search_never_gets_the_no_world_licence` | test | `test_paused_search_never_gets_the_no_world_licence` | [tests/hws/test_a_outcomes.py:240](../../tests/hws/test_a_outcomes.py#L240) |  |
@@ -3270,9 +3763,13 @@
 | `test_pipeline_null_passes_at_boundary` | test | `test_pipeline_null_passes_at_boundary` | [tests/d2a/test_b_rules_flags.py:270](../../tests/d2a/test_b_rules_flags.py#L270) |  |
 | `test_placement_ok_for_test_paths_and_planted_inside_root` | test | `test_placement_ok_for_test_paths_and_planted_inside_root` | [tests/hwsb/test_b_meter_law.py:118](../../tests/hwsb/test_b_meter_law.py#L118) |  |
 | `test_plain_support_exclude_unresolved` | test | `test_plain_support_exclude_unresolved` | [tests/k4b/test_a_decision.py:141](../../tests/k4b/test_a_decision.py#L141) |  |
+| `test_plant_acts_case_iv_mass_in_first_arc` | test | `test_plant_acts_case_iv_mass_in_first_arc` | [tests/hwsd/test_a_kd4.py:98](../../tests/hwsd/test_a_kd4.py#L98) |  |
+| `test_plant_acts_noise_free_matches_construction` | test | `test_plant_acts_noise_free_matches_construction` | [tests/hwsd/test_a_kd4.py:80](../../tests/hwsd/test_a_kd4.py#L80) |  |
+| `test_plant_acts_noise_scale_and_seeds` | test | `test_plant_acts_noise_scale_and_seeds` | [tests/hwsd/test_a_kd4.py:111](../../tests/hwsd/test_a_kd4.py#L111) |  |
 | `test_planted_code_carries_the_contrast` | test | `test_planted_code_carries_the_contrast` | [tests/c2_nd/test_impl_dry_hs.py:107](../../tests/c2_nd/test_impl_dry_hs.py#L107) | Before rescaling, the head's code part carries a substantial share of the oracle |
 | `test_planted_collision_with_a_c2_test_table` | test | `test_planted_collision_with_a_c2_test_table` | [tests/c2_nd/test_b_registry.py:137](../../tests/c2_nd/test_b_registry.py#L137) |  |
 | `test_planted_defect_is_a_hit` | test | `test_planted_defect_is_a_hit` | [tests/hwsc/test_b_binding.py:270](../../tests/hwsc/test_b_binding.py#L270) |  |
+| `test_planted_drift_raises_and_sets_nothing` | test | `test_planted_drift_raises_and_sets_nothing` | [tests/hwsd/test_b_binding.py:137](../../tests/hwsd/test_b_binding.py#L137) |  |
 | `test_planted_drift_refuses_and_sets_nothing` | test | `test_planted_drift_refuses_and_sets_nothing` | [tests/hwsc/test_b_binding.py:223](../../tests/hwsc/test_b_binding.py#L223) |  |
 | `test_planted_fixture_details` | test | `test_planted_fixture_details` | [tests/x6zc/test_x6zc_dryrun.py:181](../../tests/x6zc/test_x6zc_dryrun.py#L181) |  |
 | `test_planted_fixture_outcomes` | test | `test_planted_fixture_outcomes` | [tests/x6zc/test_x6zc_dryrun.py:171](../../tests/x6zc/test_x6zc_dryrun.py#L171) |  |
@@ -3369,11 +3866,13 @@
 | `test_projector_dependent_when_euclidean_complement_changes_the_category` | test | `test_projector_dependent_when_euclidean_complement_changes_the_category` | [tests/c2_readout/test_a_scope.py:273](../../tests/c2_readout/test_a_scope.py#L273) |  |
 | `test_proof_note_exists_and_names_delta_and_rounding` | test | `test_proof_note_exists_and_names_delta_and_rounding` | [tests/hwsb/test_a_enclosure_proof.py:333](../../tests/hwsb/test_a_enclosure_proof.py#L333) | OPEN-3: the reviewed proof note is in tools/hwsb (content reviewed elsewhere). |
 | `test_proposition1_suffix_only_zero` | test | `test_proposition1_suffix_only_zero` | [tests/hwsc/test_a_k4b_known_bound.py:108](../../tests/hwsc/test_a_k4b_known_bound.py#L108) |  |
+| `test_proposition_1_exact` | test | `test_proposition_1_exact` | [tests/hwsd/test_a_known_bound.py:76](../../tests/hwsd/test_a_known_bound.py#L76) |  |
 | `test_proposition_f_for_three_suffix_predictors` | test | `test_proposition_f_for_three_suffix_predictors` | [tests/hws/test_a_identities.py:303](../../tests/hws/test_a_identities.py#L303) |  |
 | `test_protocol_and_authority_bindings` | test | `test_protocol_and_authority_bindings` | [tests/c2_readout/test_b_lineage.py:102](../../tests/c2_readout/test_b_lineage.py#L102) |  |
 | `test_protocol_and_stage0_hash_bindings` | test | `test_protocol_and_stage0_hash_bindings` | [tests/x6_stage1/test_b_nb_s0_ops.py:228](../../tests/x6_stage1/test_b_nb_s0_ops.py#L228) |  |
 | `test_public_api_exports` | test | `test_public_api_exports` | [tests/oracle/test_oracle.py:316](../../tests/oracle/test_oracle.py#L316) |  |
 | `test_public_summary` | test | `test_public_summary` | [tests/hwsc/test_b_guard_meter.py:116](../../tests/hwsc/test_b_guard_meter.py#L116) |  |
+| `test_public_summary` | test | `test_public_summary` | [tests/hwsd/test_b_guard_search.py:93](../../tests/hwsd/test_b_guard_search.py#L93) |  |
 | `test_pytest_basetemp_is_outside_the_project_root` | test | `test_pytest_basetemp_is_outside_the_project_root` | [tests/c2_readout/test_b_registry.py:350](../../tests/c2_readout/test_b_registry.py#L350) |  |
 | `test_pytest_basetemp_is_outside_the_project_root` | test | `test_pytest_basetemp_is_outside_the_project_root` | [tests/hws/test_b_records.py:80](../../tests/hws/test_b_records.py#L80) |  |
 | `test_q1_and_q2_outcomes` | test | `test_q1_and_q2_outcomes` | [tests/x2a_stage0/test_x2a_stage0_ph.py:181](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L181) |  |
@@ -3471,10 +3970,13 @@
 | `test_raising_source_k_makes_k4b_store_incomplete` | test | `test_raising_source_k_makes_k4b_store_incomplete` | [tests/k4b/test_b_store_reader.py:272](../../tests/k4b/test_b_store_reader.py#L272) |  |
 | `test_random_grid_matches_reference_and_exclusive` | test | `test_random_grid_matches_reference_and_exclusive` | [tests/hwsc/test_a_decision.py:151](../../tests/hwsc/test_a_decision.py#L151) |  |
 | `test_random_sequences_are_not_systematically_small_p` | test | `test_random_sequences_are_not_systematically_small_p` | [tests/analysis/test_baselines_dynamics.py:117](../../tests/analysis/test_baselines_dynamics.py#L117) |  |
+| `test_random_sequences_match_reference` | test | `test_random_sequences_match_reference` | [tests/hwsd/test_a_onsets_order.py:247](../../tests/hwsd/test_a_onsets_order.py#L247) |  |
 | `test_random_subspace_constants_exact` | test | `test_random_subspace_constants_exact` | [tests/c2_readout/test_a_partition.py:167](../../tests/c2_readout/test_a_partition.py#L167) |  |
 | `test_random_suffix_table_has_zero_expectation` | test | `test_random_suffix_table_has_zero_expectation` | [tests/k4b/test_a_prop1.py:119](../../tests/k4b/test_a_prop1.py#L119) |  |
+| `test_random_tables_match_reference` | test | `test_random_tables_match_reference` | [tests/hwsd/test_a_statements.py:218](../../tests/hwsd/test_a_statements.py#L218) |  |
 | `test_randomised_completion_lies_in_bounds` | test | `test_randomised_completion_lies_in_bounds` | [tests/k4b/test_a_theorem_a.py:152](../../tests/k4b/test_a_theorem_a.py#L152) | Auxiliary randomness w': u~ = v1 w.p. 1/3 and v2 w.p. 2/3 (Fubini). |
 | `test_rank_check_accepts_order_statistics_and_rejects_others` | test | `test_rank_check_accepts_order_statistics_and_rejects_others` | [tests/c1prime/test_b_inference.py:203](../../tests/c1prime/test_b_inference.py#L203) |  |
+| `test_rank_constants` | test | `test_rank_constants` | [tests/hwsd/test_a_bounds.py:48](../../tests/hwsd/test_a_bounds.py#L48) |  |
 | `test_rank_constants` | test | `test_rank_constants` | [tests/k4b/test_a_ranks_ladder.py:67](../../tests/k4b/test_a_ranks_ladder.py#L67) |  |
 | `test_rank_deficient_nuisance_plus_code_block_is_degenerate` | test | `test_rank_deficient_nuisance_plus_code_block_is_degenerate` | [tests/c2_readout/test_a_readout.py:362](../../tests/c2_readout/test_a_readout.py#L362) |  |
 | `test_rank_deficient_X_erasure_stays_in_retained_range` | test | `test_rank_deficient_X_erasure_stays_in_retained_range` | [tests/analysis/test_x4f_erasure.py:295](../../tests/analysis/test_x4f_erasure.py#L295) |  |
@@ -3486,401 +3988,6 @@
 | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | test | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | [tests/c2_readout/test_a_readout.py:125](../../tests/c2_readout/test_a_readout.py#L125) |  |
 | `test_rank_tolerance_is_relative_and_used` | test | `test_rank_tolerance_is_relative_and_used` | [tests/analysis/test_x4f_erasure.py:238](../../tests/analysis/test_x4f_erasure.py#L238) |  |
 | `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |
+| `test_ranks` | test | `test_ranks` | [tests/hwsd/test_a_known_bound.py:185](../../tests/hwsd/test_a_known_bound.py#L185) |  |
 | `test_rate_matched_diag_below_floor_invalid` | test | `test_rate_matched_diag_below_floor_invalid` | [tests/analysis/test_x5_kernel.py:227](../../tests/analysis/test_x5_kernel.py#L227) |  |
 | `test_rate_matched_diag_boundary` | test | `test_rate_matched_diag_boundary` | [tests/analysis/test_x5_kernel.py:207](../../tests/analysis/test_x5_kernel.py#L207) |  |
-| `test_rate_matched_negative_entry_invalid` | test | `test_rate_matched_negative_entry_invalid` | [tests/analysis/test_x5_kernel.py:221](../../tests/analysis/test_x5_kernel.py#L221) |  |
-| `test_rate_matched_nonpositive_alpha_invalid` | test | `test_rate_matched_nonpositive_alpha_invalid` | [tests/analysis/test_x5_kernel.py:215](../../tests/analysis/test_x5_kernel.py#L215) |  |
-| `test_rate_matched_valid_equals_formula` | test | `test_rate_matched_valid_equals_formula` | [tests/analysis/test_x5_kernel.py:199](../../tests/analysis/test_x5_kernel.py#L199) |  |
-| `test_ratio_curve_bad_gc` | test | `test_ratio_curve_bad_gc` | [tests/analysis/test_x5_endpoint.py:271](../../tests/analysis/test_x5_endpoint.py#L271) |  |
-| `test_ratio_curve_empty_rows` | test | `test_ratio_curve_empty_rows` | [tests/analysis/test_x5_endpoint.py:276](../../tests/analysis/test_x5_endpoint.py#L276) |  |
-| `test_ratio_curve_values` | test | `test_ratio_curve_values` | [tests/analysis/test_x5_endpoint.py:263](../../tests/analysis/test_x5_endpoint.py#L263) |  |
-| `test_ratio_to_mean_reduction` | test | `test_ratio_to_mean_reduction` | [tests/c1prime/test_b_inference.py:87](../../tests/c1prime/test_b_inference.py#L87) |  |
-| `test_ratios_values_and_undefined_denominators` | test | `test_ratios_values_and_undefined_denominators` | [tests/k4b/test_b_endpoint.py:254](../../tests/k4b/test_b_endpoint.py#L254) |  |
-| `test_rbf_bandwidth_degenerate_for_identical_rows` | test | `test_rbf_bandwidth_degenerate_for_identical_rows` | [tests/analysis/test_x4f_scores.py:154](../../tests/analysis/test_x4f_scores.py#L154) |  |
-| `test_rbf_bandwidth_median_rule_hand_value` | test | `test_rbf_bandwidth_median_rule_hand_value` | [tests/analysis/test_x4f_scores.py:139](../../tests/analysis/test_x4f_scores.py#L139) |  |
-| `test_rbf_bandwidth_subsample_follows_rng_choice` | test | `test_rbf_bandwidth_subsample_follows_rng_choice` | [tests/analysis/test_x4f_scores.py:145](../../tests/analysis/test_x4f_scores.py#L145) |  |
-| `test_rbf_features_formula` | test | `test_rbf_features_formula` | [tests/analysis/test_x4f_scores.py:169](../../tests/analysis/test_x4f_scores.py#L169) |  |
-| `test_rbf_map_draw_order_and_shapes` | test | `test_rbf_map_draw_order_and_shapes` | [tests/analysis/test_x4f_scores.py:159](../../tests/analysis/test_x4f_scores.py#L159) |  |
-| `test_rc1_binomial_tails_add` | test | `test_rc1_binomial_tails_add` | [tests/k4b/test_a_decision.py:220](../../tests/k4b/test_a_decision.py#L220) |  |
-| `test_rc1_family_arithmetic` | test | `test_rc1_family_arithmetic` | [tests/k4b/test_a_decision.py:247](../../tests/k4b/test_a_decision.py#L247) |  |
-| `test_rc1_three_point_law_attains_two_alpha` | test | `test_rc1_three_point_law_attains_two_alpha` | [tests/k4b/test_a_decision.py:236](../../tests/k4b/test_a_decision.py#L236) |  |
-| `test_reachable_counts_by_recursion` | test | `test_reachable_counts_by_recursion` | [tests/d1_seam/test_d1_seam.py:296](../../tests/d1_seam/test_d1_seam.py#L296) |  |
-| `test_read_controls_coordinator_wait_holds_despite_clearance` | test | `test_read_controls_coordinator_wait_holds_despite_clearance` | [tests/experiment/test_x5g1t_usage_files.py:213](../../tests/experiment/test_x5g1t_usage_files.py#L213) |  |
-| `test_read_controls_existing_malformed_file_is_stop` | test | `test_read_controls_existing_malformed_file_is_stop` | [tests/experiment/test_x5g1t_usage_files.py:140](../../tests/experiment/test_x5g1t_usage_files.py#L140) |  |
-| `test_read_controls_fresh_clearance_plus_continue_releases_and_archives` | test | `test_read_controls_fresh_clearance_plus_continue_releases_and_archives` | [tests/experiment/test_x5g1t_usage_files.py:203](../../tests/experiment/test_x5g1t_usage_files.py#L203) |  |
-| `test_read_controls_missing_usage_files_continue` | test | `test_read_controls_missing_usage_files_continue` | [tests/experiment/test_x5g1t_usage_files.py:147](../../tests/experiment/test_x5g1t_usage_files.py#L147) |  |
-| `test_read_controls_mode_edited_to_working_does_not_release` | test | `test_read_controls_mode_edited_to_working_does_not_release` | [tests/experiment/test_x5g1t_usage_files.py:195](../../tests/experiment/test_x5g1t_usage_files.py#L195) |  |
-| `test_read_controls_multi_limit_hold_and_latch` | test | `test_read_controls_multi_limit_hold_and_latch` | [tests/experiment/test_x5g1t_usage_files.py:154](../../tests/experiment/test_x5g1t_usage_files.py#L154) |  |
-| `test_read_controls_naive_or_nonstring_time_not_release` | test | `test_read_controls_naive_or_nonstring_time_not_release` | [tests/experiment/test_x5g1t_usage_files.py:188](../../tests/experiment/test_x5g1t_usage_files.py#L188) |  |
-| `test_read_controls_stale_evidence_holds` | test | `test_read_controls_stale_evidence_holds` | [tests/experiment/test_x5g1t_usage_files.py:180](../../tests/experiment/test_x5g1t_usage_files.py#L180) |  |
-| `test_read_controls_unavailable_alone_continues` | test | `test_read_controls_unavailable_alone_continues` | [tests/experiment/test_x5g1t_usage_files.py:167](../../tests/experiment/test_x5g1t_usage_files.py#L167) |  |
-| `test_read_controls_unknown_values_stop` | test | `test_read_controls_unknown_values_stop` | [tests/experiment/test_x5g1t_usage_files.py:173](../../tests/experiment/test_x5g1t_usage_files.py#L173) |  |
-| `test_read_controls_warning_hold` | test | `test_read_controls_warning_hold` | [tests/experiment/test_x5g1t_usage_files.py:161](../../tests/experiment/test_x5g1t_usage_files.py#L161) |  |
-| `test_read_json_refuses_other_files` | test | `test_read_json_refuses_other_files` | [tests/hws/test_b_kc1.py:257](../../tests/hws/test_b_kc1.py#L257) |  |
-| `test_read_through_backend_never_writes_to_the_main_store` | test | `test_read_through_backend_never_writes_to_the_main_store` | [tests/experiment/test_x4b.py:59](../../tests/experiment/test_x4b.py#L59) |  |
-| `test_reader_classes_need_their_reader` | test | `test_reader_classes_need_their_reader` | [tests/hwsc/test_r_0178_dry_store_rule.py:98](../../tests/hwsc/test_r_0178_dry_store_rule.py#L98) |  |
-| `test_readout_and_placebo_checks` | test | `test_readout_and_placebo_checks` | [tests/x6_stage1/test_a_rules.py:150](../../tests/x6_stage1/test_a_rules.py#L150) |  |
-| `test_readout_basis_is_positive_diagonal_qr_of_diag_gamma_helmert` | test | `test_readout_basis_is_positive_diagonal_qr_of_diag_gamma_helmert` | [tests/c2_readout/test_a_readout.py:80](../../tests/c2_readout/test_a_readout.py#L80) |  |
-| `test_readout_exact_positivity_and_float` | test | `test_readout_exact_positivity_and_float` | [tests/x6_stage1/test_a_eval.py:254](../../tests/x6_stage1/test_a_eval.py#L254) |  |
-| `test_readout_floor_on_exact_laws_t17` | test | `test_readout_floor_on_exact_laws_t17` | [tests/x6_stage1/test_a_eval.py:273](../../tests/x6_stage1/test_a_eval.py#L273) |  |
-| `test_readout_identity_rule` | test | `test_readout_identity_rule` | [tests/c2_readout/test_b_patch.py:284](../../tests/c2_readout/test_b_patch.py#L284) |  |
-| `test_readout_position_index` | test | `test_readout_position_index` | [tests/x6_stage1/test_a_eval.py:87](../../tests/x6_stage1/test_a_eval.py#L87) |  |
-| `test_real_block_streams_match_contract` | test | `test_real_block_streams_match_contract` | [tests/hwsb/test_b_streams.py:50](../../tests/hwsb/test_b_streams.py#L50) |  |
-| `test_real_downstream_margin_and_f_plan` | test | `test_real_downstream_margin_and_f_plan` | [tests/k4b/test_a_transport_bound.py:82](../../tests/k4b/test_a_transport_bound.py#L82) |  |
-| `test_real_kernel_unavailable_raises_identity` | test | `test_real_kernel_unavailable_raises_identity` | [tests/k4b/test_a_transport_bound.py:143](../../tests/k4b/test_a_transport_bound.py#L143) | Unpatched: coords that are not the documented 12x12 lattice make the reused kernel |
-| `test_real_meter_kills_overdue_marked_operation` | test | `test_real_meter_kills_overdue_marked_operation` | [tests/circle_history/test_builder_v24_runtime.py:170](../../tests/circle_history/test_builder_v24_runtime.py#L170) |  |
-| `test_real_status_bounded_and_reused_keys_kept` | test | `test_real_status_bounded_and_reused_keys_kept` | [tests/k4b/test_a_transport_bound.py:59](../../tests/k4b/test_a_transport_bound.py#L59) |  |
-| `test_real_tables_have_pairwise_disjoint_ids` | test | `test_real_tables_have_pairwise_disjoint_ids` | [tests/hwsb/test_b_streams.py:127](../../tests/hwsb/test_b_streams.py#L127) |  |
-| `test_real_train_dev_streams_match_contract` | test | `test_real_train_dev_streams_match_contract` | [tests/hwsb/test_b_streams.py:40](../../tests/hwsb/test_b_streams.py#L40) |  |
-| `test_real_z_bound_is_exact_fraction_of_exact_upper` | test | `test_real_z_bound_is_exact_fraction_of_exact_upper` | [tests/k4b/test_a_transport_bound.py:68](../../tests/k4b/test_a_transport_bound.py#L68) |  |
-| `test_real_z_bound_sanity_band` | test | `test_real_z_bound_sanity_band` | [tests/k4b/test_a_transport_bound.py:77](../../tests/k4b/test_a_transport_bound.py#L77) |  |
-| `test_realistic_boundary_with_prior_ledger` | test | `test_realistic_boundary_with_prior_ledger` | [tests/experiment/test_x5g1t_runtime_boundary.py:170](../../tests/experiment/test_x5g1t_runtime_boundary.py#L170) |  |
-| `test_realistic_multi_limit_only_relevant_high_one_blocks` | test | `test_realistic_multi_limit_only_relevant_high_one_blocks` | [tests/experiment/test_x5g1t_usage.py:110](../../tests/experiment/test_x5g1t_usage.py#L110) |  |
-| `test_recipe_equals_contract_and_passes` | test | `test_recipe_equals_contract_and_passes` | [tests/hwsb/test_b_e4path.py:46](../../tests/hwsb/test_b_e4path.py#L46) |  |
-| `test_recipe_equals_the_e4_checkpoint_extra_json` | test | `test_recipe_equals_the_e4_checkpoint_extra_json` | [tests/hwsb/test_b_e4path.py:52](../../tests/hwsb/test_b_e4path.py#L52) |  |
-| `test_recipe_model_field_change_is_refused` | test | `test_recipe_model_field_change_is_refused` | [tests/hwsb/test_b_e4path.py:75](../../tests/hwsb/test_b_e4path.py#L75) |  |
-| `test_recipe_train_field_change_is_refused` | test | `test_recipe_train_field_change_is_refused` | [tests/hwsb/test_b_e4path.py:82](../../tests/hwsb/test_b_e4path.py#L82) |  |
-| `test_record_outcome_refuses_overwrite` | test | `test_record_outcome_refuses_overwrite` | [tests/experiment/test_x5g1t_runtime_boundary.py:90](../../tests/experiment/test_x5g1t_runtime_boundary.py#L90) |  |
-| `test_record_published_only_after_checkpoint_verifies` | test | `test_record_published_only_after_checkpoint_verifies` | [tests/x6_stage1/test_b_train_chain.py:386](../../tests/x6_stage1/test_b_train_chain.py#L386) |  |
-| `test_recorded_technical_failure_beats_everything` | test | `test_recorded_technical_failure_beats_everything` | [tests/hwsb/test_a_outcomes.py:112](../../tests/hwsb/test_a_outcomes.py#L112) |  |
-| `test_reference_boundary_construction` | test | `test_reference_boundary_construction` | [tests/hwsb/test_a_learning.py:146](../../tests/hwsb/test_a_learning.py#L146) |  |
-| `test_reference_boundary_sd_exists` | test | `test_reference_boundary_sd_exists` | [tests/hwsb/test_a_ladder.py:248](../../tests/hwsb/test_a_ladder.py#L248) |  |
-| `test_reference_cache_reader_keeps_only_32_symbol_entries` | test | `test_reference_cache_reader_keeps_only_32_symbol_entries` | [tests/c1prime_registry/test_registry_builder.py:38](../../tests/c1prime_registry/test_registry_builder.py#L38) |  |
-| `test_reference_cases_land_as_planted` | test | `test_reference_cases_land_as_planted` | [tests/hwsb/test_a_ladder.py:139](../../tests/hwsb/test_a_ladder.py#L139) |  |
-| `test_reference_check_rows_pass_and_fail` | test | `test_reference_check_rows_pass_and_fail` | [tests/circle_history/test_error_bound.py:345](../../tests/circle_history/test_error_bound.py#L345) |  |
-| `test_reference_code_agrees_with_the_old_enclosure_at_5_4` | test | `test_reference_code_agrees_with_the_old_enclosure_at_5_4` | [tests/hwsb/test_b_meter_law.py:231](../../tests/hwsb/test_b_meter_law.py#L231) |  |
-| `test_reference_contract_licences_carry_protocol_clauses` | test | `test_reference_contract_licences_carry_protocol_clauses` | [tests/hwsb/test_a_outcomes.py:87](../../tests/hwsb/test_a_outcomes.py#L87) |  |
-| `test_reference_endpoints_match_reused` | test | `test_reference_endpoints_match_reused` | [tests/hwsb/test_a_endpoints.py:91](../../tests/hwsb/test_a_endpoints.py#L91) |  |
-| `test_reference_has_informed_band_edges` | test | `test_reference_has_informed_band_edges` | [tests/d2a/test_b_targets.py:138](../../tests/d2a/test_b_targets.py#L138) |  |
-| `test_reference_kl_matches_reused` | test | `test_reference_kl_matches_reused` | [tests/hwsb/test_a_learning.py:141](../../tests/hwsb/test_a_learning.py#L141) |  |
-| `test_reference_marginal_matches_reused` | test | `test_reference_marginal_matches_reused` | [tests/hwsb/test_a_learning.py:132](../../tests/hwsb/test_a_learning.py#L132) |  |
-| `test_reference_oracle_is_C0_bitwise_and_obeys_theorem1` | test | `test_reference_oracle_is_C0_bitwise_and_obeys_theorem1` | [tests/c1prime/test_b_cert_oracle.py:146](../../tests/c1prime/test_b_cert_oracle.py#L146) |  |
-| `test_reference_points` | test | `test_reference_points` | [tests/hwsc/test_a_learning.py:123](../../tests/hwsc/test_a_learning.py#L123) |  |
-| `test_reference_round60_agrees_with_decimal_division` | test | `test_reference_round60_agrees_with_decimal_division` | [tests/hwsb/test_a_enclosure_proof.py:133](../../tests/hwsb/test_a_enclosure_proof.py#L133) |  |
-| `test_reference_rule_equals_k4b_ladder` | test | `test_reference_rule_equals_k4b_ladder` | [tests/hwsb/test_a_ladder.py:145](../../tests/hwsb/test_a_ladder.py#L145) |  |
-| `test_reference_sigma_5_4_logits_terminate` | test | `test_reference_sigma_5_4_logits_terminate` | [tests/hwsb/test_a_enclosure_proof.py:141](../../tests/hwsb/test_a_enclosure_proof.py#L141) |  |
-| `test_reference_states_are_the_documented_lattice` | test | `test_reference_states_are_the_documented_lattice` | [tests/hwsb/test_a_enclosure_proof.py:127](../../tests/hwsb/test_a_enclosure_proof.py#L127) |  |
-| `test_reference_step3_inequalities_for_u_qmax` | test | `test_reference_step3_inequalities_for_u_qmax` | [tests/hwsb/test_a_enclosure_proof.py:146](../../tests/hwsb/test_a_enclosure_proof.py#L146) |  |
-| `test_reference_tree_mean_matches_reused` | test | `test_reference_tree_mean_matches_reused` | [tests/hwsb/test_a_endpoints.py:84](../../tests/hwsb/test_a_endpoints.py#L84) |  |
-| `test_reference_ulp_construction_is_exact` | test | `test_reference_ulp_construction_is_exact` | [tests/hwsb/test_a_capture.py:129](../../tests/hwsb/test_a_capture.py#L129) |  |
-| `test_reference_z_b23_value` | test | `test_reference_z_b23_value` | [tests/hwsb/test_a_learning.py:126](../../tests/hwsb/test_a_learning.py#L126) |  |
-| `test_reference_z_values_match_contract_report_values` | test | `test_reference_z_values_match_contract_report_values` | [tests/hwsb/test_a_capture.py:122](../../tests/hwsb/test_a_capture.py#L122) |  |
-| `test_refinalisation_creates_new_snapshot_and_preserves_earlier` | test | `test_refinalisation_creates_new_snapshot_and_preserves_earlier` | [tests/x6_stage1/test_b_ingest_bundle.py:347](../../tests/x6_stage1/test_b_ingest_bundle.py#L347) |  |
-| `test_refits_pass` | test | `test_refits_pass` | [tests/c2_nd/test_impl_dry_hs.py:136](../../tests/c2_nd/test_impl_dry_hs.py#L136) |  |
-| `test_reflection_symmetric_cells` | test | `test_reflection_symmetric_cells` | [tests/hws/test_b_worlds.py:315](../../tests/hws/test_b_worlds.py#L315) |  |
-| `test_regen_compare_bit_identical` | test | `test_regen_compare_bit_identical` | [tests/c2_readout/test_b_lineage.py:299](../../tests/c2_readout/test_b_lineage.py#L299) |  |
-| `test_regenerated_identical` | test | `test_regenerated_identical` | [tests/k4b/test_b_rerun.py:178](../../tests/k4b/test_b_rerun.py#L178) |  |
-| `test_regenerated_init_states_are_bit_identical` | test | `test_regenerated_init_states_are_bit_identical` | [tests/x6_stage1/test_b_chain_ops.py:238](../../tests/x6_stage1/test_b_chain_ops.py#L238) |  |
-| `test_registered_constants_and_flat_face` | test | `test_registered_constants_and_flat_face` | [tests/x6_stage1/test_a_designed.py:99](../../tests/x6_stage1/test_a_designed.py#L99) |  |
-| `test_registered_templates_exact_g0_tpl_sample` | test | `test_registered_templates_exact_g0_tpl_sample` | [tests/d2a/test_a_templates.py:140](../../tests/d2a/test_a_templates.py#L140) | Every 32nd registered t = 28 pair and every 8th t = 16 pair, exactly (G0-TPL values). |
-| `test_registry_digests_are_the_history_digest_set` | test | `test_registry_digests_are_the_history_digest_set` | [tests/c1prime/test_b_registry.py:127](../../tests/c1prime/test_b_registry.py#L127) |  |
-| `test_registry_digests_pass_and_match_history_digests` | test | `test_registry_digests_pass_and_match_history_digests` | [tests/hwsb/test_b_registry.py:98](../../tests/hwsb/test_b_registry.py#L98) |  |
-| `test_registry_digests_without_expected_also_pass` | test | `test_registry_digests_without_expected_also_pass` | [tests/hwsb/test_b_registry.py:110](../../tests/hwsb/test_b_registry.py#L110) |  |
-| `test_registry_load_rehash_mismatch_is_lineage` | test | `test_registry_load_rehash_mismatch_is_lineage` | [tests/c2_readout/test_b_registry.py:298](../../tests/c2_readout/test_b_registry.py#L298) |  |
-| `test_registry_names` | test | `test_registry_names` | [tests/topology/test_metrics.py:17](../../tests/topology/test_metrics.py#L17) |  |
-| `test_registry_npz_with_extra_key_fails_closed` | test | `test_registry_npz_with_extra_key_fails_closed` | [tests/hwsc/test_r_0178_dry_store_rule.py:84](../../tests/hwsc/test_r_0178_dry_store_rule.py#L84) |  |
-| `test_registry_risk_boundary` | test | `test_registry_risk_boundary` | [tests/hwsc/test_a_ladder.py:232](../../tests/hwsc/test_a_ladder.py#L232) |  |
-| `test_registry_risk_desk_value` | test | `test_registry_risk_desk_value` | [tests/hwsc/test_a_ladder.py:225](../../tests/hwsc/test_a_ladder.py#L225) |  |
-| `test_registry_risk_value_exact` | test | `test_registry_risk_value_exact` | [tests/hwsc/test_a_ladder.py:215](../../tests/hwsc/test_a_ladder.py#L215) |  |
-| `test_registry_untouched_by_import_and_build` | test | `test_registry_untouched_by_import_and_build` | [tests/d1_seam/test_d1_seam.py:220](../../tests/d1_seam/test_d1_seam.py#L220) |  |
-| `test_registry_untouched_by_import_and_build` | test | `test_registry_untouched_by_import_and_build` | [tests/x2a_stage0/test_x2a_stage0.py:346](../../tests/x2a_stage0/test_x2a_stage0.py#L346) |  |
-| `test_regret_batch_invariant_and_training_flag_restored` | test | `test_regret_batch_invariant_and_training_flag_restored` | [tests/experiment/test_x5g1t_lineage_oracle.py:288](../../tests/experiment/test_x5g1t_lineage_oracle.py#L288) |  |
-| `test_regret_zero_on_own_softmax_and_nonnegative` | test | `test_regret_zero_on_own_softmax_and_nonnegative` | [tests/experiment/test_x5g1t_lineage_oracle.py:277](../../tests/experiment/test_x5g1t_lineage_oracle.py#L277) |  |
-| `test_rejection_before_sampler_leaves_no_study_root` | test | `test_rejection_before_sampler_leaves_no_study_root` | [tests/experiment/test_x5g1t_config_checks.py:294](../../tests/experiment/test_x5g1t_config_checks.py#L294) | Rejection happens before any sampler/model: spies record nothing, study root absent. |
-| `test_rel_agree_at_the_relative_boundary` | test | `test_rel_agree_at_the_relative_boundary` | [tests/c1prime/test_a_oracle.py:225](../../tests/c1prime/test_a_oracle.py#L225) | 9007 * 2^-52 < 2e-12 < 9008 * 2^-52 (exact rationals). |
-| `test_relaxed_thresholds_reach_precision_and_export` | test | `test_relaxed_thresholds_reach_precision_and_export` | [tests/circle_history/test_builder_e2e.py:182](../../tests/circle_history/test_builder_e2e.py#L182) |  |
-| `test_release_accepts_exact_binding` | test | `test_release_accepts_exact_binding` | [tests/circle_history/test_builder_runtime.py:129](../../tests/circle_history/test_builder_runtime.py#L129) |  |
-| `test_release_binding_refusals` | test | `test_release_binding_refusals` | [tests/c2_readout/test_b_policy.py:248](../../tests/c2_readout/test_b_policy.py#L248) |  |
-| `test_release_constants` | test | `test_release_constants` | [tests/c1prime/test_a_release_meter.py:112](../../tests/c1prime/test_a_release_meter.py#L112) |  |
-| `test_release_in_other_order` | test | `test_release_in_other_order` | [tests/experiment/test_x5g1t_runtime.py:248](../../tests/experiment/test_x5g1t_runtime.py#L248) |  |
-| `test_release_outside_the_dispatched_job_directory_is_refused` | test | `test_release_outside_the_dispatched_job_directory_is_refused` | [tests/c1prime/test_a_release_meter.py:163](../../tests/c1prime/test_a_release_meter.py#L163) |  |
-| `test_release_r5_must_carry_n_test_and_k` | test | `test_release_r5_must_carry_n_test_and_k` | [tests/c2_readout/test_b_policy.py:258](../../tests/c2_readout/test_b_policy.py#L258) |  |
-| `test_release_refuses_any_mismatch` | test | `test_release_refuses_any_mismatch` | [tests/circle_history/test_builder_runtime.py:148](../../tests/circle_history/test_builder_runtime.py#L148) |  |
-| `test_release_refuses_wrong_location_and_unreadable` | test | `test_release_refuses_wrong_location_and_unreadable` | [tests/circle_history/test_builder_runtime.py:155](../../tests/circle_history/test_builder_runtime.py#L155) |  |
-| `test_release_session_named_in_task` | test | `test_release_session_named_in_task` | [tests/c1prime/test_c_release_worker.py:31](../../tests/c1prime/test_c_release_worker.py#L31) |  |
-| `test_release_session_not_in_task_is_refused` | test | `test_release_session_not_in_task_is_refused` | [tests/c1prime/test_c_release_worker.py:36](../../tests/c1prime/test_c_release_worker.py#L36) |  |
-| `test_release_strict_boolean_in_verify` | test | `test_release_strict_boolean_in_verify` | [tests/circle_history/test_builder_guards.py:174](../../tests/circle_history/test_builder_guards.py#L174) |  |
-| `test_released_and_withheld_labels` | test | `test_released_and_withheld_labels` | [tests/x2a_stage0/test_x2a_stage0_ph.py:171](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L171) |  |
-| `test_releases_carry_pass_fail_only` | test | `test_releases_carry_pass_fail_only` | [tests/c2_nd/test_b_policy.py:212](../../tests/c2_nd/test_b_policy.py#L212) |  |
-| `test_relevant_warning_blocks_with_null_percent` | test | `test_relevant_warning_blocks_with_null_percent` | [tests/experiment/test_x5g1t_usage.py:129](../../tests/experiment/test_x5g1t_usage.py#L129) |  |
-| `test_removing_worker_control_releases_coordinator_hold` | test | `test_removing_worker_control_releases_coordinator_hold` | [tests/experiment/test_x5g1t_runtime.py:257](../../tests/experiment/test_x5g1t_runtime.py#L257) |  |
-| `test_renamed_hist_file_fails_closed` | test | `test_renamed_hist_file_fails_closed` | [tests/hwsb/test_b_registry.py:144](../../tests/hwsb/test_b_registry.py#L144) |  |
-| `test_repair_ancestry_and_d2a_unchanged` | test | `test_repair_ancestry_and_d2a_unchanged` | [tests/x6_stage1/test_b_nb_s0_ops.py:221](../../tests/x6_stage1/test_b_nb_s0_ops.py#L221) |  |
-| `test_repair_blob_hashes_at_head` | test | `test_repair_blob_hashes_at_head` | [tests/x6_stage1/test_b_nb_s0_ops.py:214](../../tests/x6_stage1/test_b_nb_s0_ops.py#L214) |  |
-| `test_repeated_builds_are_identical` | test | `test_repeated_builds_are_identical` | [tests/hws/test_b_worlds.py:207](../../tests/hws/test_b_worlds.py#L207) |  |
-| `test_replacement_wrong_shape` | test | `test_replacement_wrong_shape` | [tests/learner/test_patch.py:253](../../tests/learner/test_patch.py#L253) |  |
-| `test_report_schema` | test | `test_report_schema` | [tests/x6zc/test_x6zc_decide.py:321](../../tests/x6zc/test_x6zc_decide.py#L321) |  |
-| `test_report_schema_from_pipeline` | test | `test_report_schema_from_pipeline` | [tests/x6zc/test_x6zc_dryrun.py:380](../../tests/x6zc/test_x6zc_dryrun.py#L380) |  |
-| `test_report_with_width_and_supported_contribution_refused` | test | `test_report_with_width_and_supported_contribution_refused` | [tests/k4b/test_b_flow.py:73](../../tests/k4b/test_b_flow.py#L73) | C = mean(A u r4) beside D = width/2 would unseal X-bar(+/-) = C +/- D (RC3). |
-| `test_request_and_control_stop` | test | `test_request_and_control_stop` | [tests/oracle_profile/test_builder_controls.py:63](../../tests/oracle_profile/test_builder_controls.py#L63) |  |
-| `test_request_missing_or_bad_fails_closed` | test | `test_request_missing_or_bad_fails_closed` | [tests/experiment/test_x5g1t_runtime.py:80](../../tests/experiment/test_x5g1t_runtime.py#L80) |  |
-| `test_request_stop_command` | test | `test_request_stop_command` | [tests/experiment/test_x5g1t_runtime.py:72](../../tests/experiment/test_x5g1t_runtime.py#L72) |  |
-| `test_require_frozen_refuses_without_record` | test | `test_require_frozen_refuses_without_record` | [tests/k4b/test_b_charts.py:262](../../tests/k4b/test_b_charts.py#L262) |  |
-| `test_require_int_keys_rejects_str_missing_or_extra` | test | `test_require_int_keys_rejects_str_missing_or_extra` | [tests/k4b/test_b_data.py:91](../../tests/k4b/test_b_data.py#L91) |  |
-| `test_require_int_keys_returns_the_same_dict` | test | `test_require_int_keys_returns_the_same_dict` | [tests/k4b/test_b_data.py:80](../../tests/k4b/test_b_data.py#L80) |  |
-| `test_require_matrix` | test | `test_require_matrix` | [tests/c2_nd/test_b_policy.py:105](../../tests/c2_nd/test_b_policy.py#L105) |  |
-| `test_require_scoring_accepts_verified_shape` | test | `test_require_scoring_accepts_verified_shape` | [tests/circle_history/test_builder_guards.py:109](../../tests/circle_history/test_builder_guards.py#L109) |  |
-| `test_require_scoring_denies_non_authority` | test | `test_require_scoring_denies_non_authority` | [tests/circle_history/test_builder_guards.py:97](../../tests/circle_history/test_builder_guards.py#L97) |  |
-| `test_require_scoring_denies_wrong_scope_or_sha` | test | `test_require_scoring_denies_wrong_scope_or_sha` | [tests/circle_history/test_builder_guards.py:103](../../tests/circle_history/test_builder_guards.py#L103) |  |
-| `test_require_table_over_every_gate` | test | `test_require_table_over_every_gate` | [tests/c2_readout/test_b_policy.py:83](../../tests/c2_readout/test_b_policy.py#L83) |  |
-| `test_require_write_outside_allowed` | test | `test_require_write_outside_allowed` | [tests/c2_nd/test_b_policy.py:135](../../tests/c2_nd/test_b_policy.py#L135) |  |
-| `test_reservation_check` | test | `test_reservation_check` | [tests/c2_nd/test_b_registry.py:382](../../tests/c2_nd/test_b_registry.py#L382) |  |
-| `test_resid_post_0_patch_propagates_to_later_positions` | test | `test_resid_post_0_patch_propagates_to_later_positions` | [tests/learner/test_patch.py:111](../../tests/learner/test_patch.py#L111) | The forward continues through blocks[1]: later positions attend to the patched vector. |
-| `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | test | `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | [tests/c2_readout/test_b_patch.py:171](../../tests/c2_readout/test_b_patch.py#L171) |  |
-| `test_residual_difference_within_two_rho` | test | `test_residual_difference_within_two_rho` | [tests/k4b/test_a_lemma_t.py:122](../../tests/k4b/test_a_lemma_t.py#L122) |  |
-| `test_residual_is_not_identically_zero` | test | `test_residual_is_not_identically_zero` | [tests/k4b/test_a_prop1.py:113](../../tests/k4b/test_a_prop1.py#L113) |  |
-| `test_residual_keeps_the_phase_term` | test | `test_residual_keeps_the_phase_term` | [tests/c1prime/test_b_fwl.py:196](../../tests/c1prime/test_b_fwl.py#L196) |  |
-| `test_residual_rows_and_profile_point_known_answer` | test | `test_residual_rows_and_profile_point_known_answer` | [tests/oracle_profile/test_oracle_profile_kernels.py:136](../../tests/oracle_profile/test_oracle_profile_kernels.py#L136) | r_1 = ((3, 4), (0, 1)) -> norm (5, 1), sq (25, 1); r_4 = ((0, 2), (0, 0)) -> (2, 0), (4, 0). |
-| `test_residual_rows_custom_full_and_errors` | test | `test_residual_rows_custom_full_and_errors` | [tests/oracle_profile/test_oracle_profile_kernels.py:156](../../tests/oracle_profile/test_oracle_profile_kernels.py#L156) |  |
-| `test_residual_rows_rejects_nonfinite_and_shape` | test | `test_residual_rows_rejects_nonfinite_and_shape` | [tests/oracle_profile/test_builder_kernels.py:64](../../tests/oracle_profile/test_builder_kernels.py#L64) |  |
-| `test_resource_beats_not_learned_and_k4b` | test | `test_resource_beats_not_learned_and_k4b` | [tests/hwsc/test_a_outcomes.py:72](../../tests/hwsc/test_a_outcomes.py#L72) |  |
-| `test_restart_uses_stationary_pi` | test | `test_restart_uses_stationary_pi` | [tests/oracle_profile/test_oracle_profile_traps.py:177](../../tests/oracle_profile/test_oracle_profile_traps.py#L177) | Item 2: post_1 of (..., 0) is pi * E[:, 0] normalised, whatever came before. |
-| `test_restore_records_is_byte_exact` | test | `test_restore_records_is_byte_exact` | [tests/k4b/test_b_rerun.py:88](../../tests/k4b/test_b_rerun.py#L88) |  |
-| `test_restrict_reindexes_ascending_and_keeps_matching_cocycle_entries` | test | `test_restrict_reindexes_ascending_and_keeps_matching_cocycle_entries` | [tests/c1prime/test_a_chart.py:224](../../tests/c1prime/test_a_chart.py#L224) |  |
-| `test_resultant_fails_while_bins_pass` | test | `test_resultant_fails_while_bins_pass` | [tests/c1prime/test_a_chart_val.py:143](../../tests/c1prime/test_a_chart_val.py#L143) |  |
-| `test_resume_only_after_both_holds_released` | test | `test_resume_only_after_both_holds_released` | [tests/experiment/test_x5g1t_runtime.py:235](../../tests/experiment/test_x5g1t_runtime.py#L235) |  |
-| `test_resume_regenerates_the_interrupted_world_bit_identically` | test | `test_resume_regenerates_the_interrupted_world_bit_identically` | [tests/hws/test_b_records.py:179](../../tests/hws/test_b_records.py#L179) |  |
-| `test_resume_restores_state_and_checks_internal_consistency` | test | `test_resume_restores_state_and_checks_internal_consistency` | [tests/x6_stage1/test_b_train_chain.py:321](../../tests/x6_stage1/test_b_train_chain.py#L321) |  |
-| `test_retrain_route_refused_after_admission_or_any_local_evaluation` | test | `test_retrain_route_refused_after_admission_or_any_local_evaluation` | [tests/x6_stage1/test_b_chain_ops.py:244](../../tests/x6_stage1/test_b_chain_ops.py#L244) |  |
-| `test_returned_non_pass_dict_stops_the_cohort` | test | `test_returned_non_pass_dict_stops_the_cohort` | [tests/c1prime/test_a_exceptions.py:193](../../tests/c1prime/test_a_exceptions.py#L193) |  |
-| `test_returned_pass_dict_is_recorded_and_returned` | test | `test_returned_pass_dict_is_recorded_and_returned` | [tests/c1prime/test_a_exceptions.py:185](../../tests/c1prime/test_a_exceptions.py#L185) |  |
-| `test_reuse_verdict` | test | `test_reuse_verdict` | [tests/x6zc/test_x6zc_decide.py:273](../../tests/x6zc/test_x6zc_decide.py#L273) |  |
-| `test_reused_blob_hashes_equal_section_13_1_and_the_files` | test | `test_reused_blob_hashes_equal_section_13_1_and_the_files` | [tests/c2_readout/test_b_lineage.py:128](../../tests/c2_readout/test_b_lineage.py#L128) |  |
-| `test_reused_k4_files_match_freeze` | test | `test_reused_k4_files_match_freeze` | [tests/chart_diag/test_chart_diag.py:81](../../tests/chart_diag/test_chart_diag.py#L81) |  |
-| `test_reused_writers_refuse_existing_paths` | test | `test_reused_writers_refuse_existing_paths` | [tests/hws/test_b_records.py:120](../../tests/hws/test_b_records.py#L120) |  |
-| `test_revalidate_coverage_complete_when_source_a_ids_cover_refs` | test | `test_revalidate_coverage_complete_when_source_a_ids_cover_refs` | [tests/k4b/test_b_registry_fixes.py:211](../../tests/k4b/test_b_registry_fixes.py#L211) |  |
-| `test_revalidate_coverage_reports_the_removed_id` | test | `test_revalidate_coverage_reports_the_removed_id` | [tests/k4b/test_b_registry_fixes.py:217](../../tests/k4b/test_b_registry_fixes.py#L217) |  |
-| `test_reversed_contrast_is_not_reproduced` | test | `test_reversed_contrast_is_not_reproduced` | [tests/d2a/test_b_behaviour.py:89](../../tests/d2a/test_b_behaviour.py#L89) |  |
-| `test_rewrite_argv_appends_inf_caps` | test | `test_rewrite_argv_appends_inf_caps` | [tests/hwsb/test_b_meter_law.py:101](../../tests/hwsb/test_b_meter_law.py#L101) |  |
-| `test_rewrite_argv_forces_infinite_cpu_and_wall` | test | `test_rewrite_argv_forces_infinite_cpu_and_wall` | [tests/k4b/test_b_meter.py:83](../../tests/k4b/test_b_meter.py#L83) |  |
-| `test_rho_bar_ref_constants` | test | `test_rho_bar_ref_constants` | [tests/c1prime/test_b_cert_oracle.py:174](../../tests/c1prime/test_b_cert_oracle.py#L174) |  |
-| `test_rho_index_from_coordinates` | test | `test_rho_index_from_coordinates` | [tests/c1prime/test_a_oracle.py:125](../../tests/c1prime/test_a_oracle.py#L125) |  |
-| `test_rho_m_index_maps_on_the_full_grid` | test | `test_rho_m_index_maps_on_the_full_grid` | [tests/c2_readout/test_a_oracle.py:208](../../tests/c2_readout/test_a_oracle.py#L208) |  |
-| `test_ridge_intercept_unpenalised_and_lambda_chosen_on_val` | test | `test_ridge_intercept_unpenalised_and_lambda_chosen_on_val` | [tests/prediction/test_ridge.py:36](../../tests/prediction/test_ridge.py#L36) |  |
-| `test_ridge_stop_inside_solver_grid` | test | `test_ridge_stop_inside_solver_grid` | [tests/experiment/test_x4f_maintenance.py:61](../../tests/experiment/test_x4f_maintenance.py#L61) |  |
-| `test_root_wrong_arm_cli_exits_3` | test | `test_root_wrong_arm_cli_exits_3` | [tests/experiment/test_x5g1t_identity.py:185](../../tests/experiment/test_x5g1t_identity.py#L185) |  |
-| `test_root_wrong_arm_train_pool_refused_before_train_one` | test | `test_root_wrong_arm_train_pool_refused_before_train_one` | [tests/experiment/test_x5g1t_identity.py:175](../../tests/experiment/test_x5g1t_identity.py#L175) |  |
-| `test_rotated_and_reflected_suffix_fields_stay_zero` | test | `test_rotated_and_reflected_suffix_fields_stay_zero` | [tests/k4b/test_a_prop1.py:142](../../tests/k4b/test_a_prop1.py#L142) | Gauge invariance: a rotation or reflection of a suffix-only field is suffix-only. |
-| `test_rotation_oracle_rolls_b31_and_reapplies_w32` | test | `test_rotation_oracle_rolls_b31_and_reapplies_w32` | [tests/c2_readout/test_a_oracle.py:221](../../tests/c2_readout/test_a_oracle.py#L221) |  |
-| `test_round_trip_is_exact_without_float` | test | `test_round_trip_is_exact_without_float` | [tests/circle_history/test_reference_cache.py:109](../../tests/circle_history/test_reference_cache.py#L109) |  |
-| `test_round_trip_preserves_extension` | test | `test_round_trip_preserves_extension` | [tests/circle_history/test_chart_arrays.py:110](../../tests/circle_history/test_chart_arrays.py#L110) |  |
-| `test_rounded_enclosure_contains_every_exact_w_star_entry_at_7_4` | test | `test_rounded_enclosure_contains_every_exact_w_star_entry_at_7_4` | [tests/hwsb/test_b_meter_law.py:240](../../tests/hwsb/test_b_meter_law.py#L240) |  |
-| `test_route_f_is_taken_when_p1_fails_and_bounds_the_exact_error` | test | `test_route_f_is_taken_when_p1_fails_and_bounds_the_exact_error` | [tests/c1prime/test_b_cert_oracle.py:240](../../tests/c1prime/test_b_cert_oracle.py#L240) |  |
-| `test_route_f_rejects_x_above_one_half` | test | `test_route_f_rejects_x_above_one_half` | [tests/c1prime/test_b_cert_oracle.py:259](../../tests/c1prime/test_b_cert_oracle.py#L259) |  |
-| `test_row_arrays_keys_shapes_dtypes_and_formulas` | test | `test_row_arrays_keys_shapes_dtypes_and_formulas` | [tests/hws/test_b_oracle.py:134](../../tests/hws/test_b_oracle.py#L134) |  |
-| `test_row_arrays_on_every_history` | test | `test_row_arrays_on_every_history` | [tests/hws/test_a_identities.py:346](../../tests/hws/test_a_identities.py#L346) |  |
-| `test_row_bound_equals_independently_assembled_fractions` | test | `test_row_bound_equals_independently_assembled_fractions` | [tests/circle_history/test_error_bound.py:227](../../tests/circle_history/test_error_bound.py#L227) |  |
-| `test_row_digests_keys_and_hex` | test | `test_row_digests_keys_and_hex` | [tests/x6_stage1/test_b_seed_pool_reg.py:216](../../tests/x6_stage1/test_b_seed_pool_reg.py#L216) |  |
-| `test_row_tv_grid_and_documented` | test | `test_row_tv_grid_and_documented` | [tests/circle_history/test_process_law.py:123](../../tests/circle_history/test_process_law.py#L123) |  |
-| `test_rows` | function | `test_rows` | [src/topo_pilot/experiment/s8.py:229](../../src/topo_pilot/experiment/s8.py#L229) |  |
-| `test_rows_are_normalised_and_nonnegative` | test | `test_rows_are_normalised_and_nonnegative` | [tests/oracle_profile/test_oracle_profile.py:144](../../tests/oracle_profile/test_oracle_profile.py#L144) | Item 5. |
-| `test_rowwise_pinsker` | test | `test_rowwise_pinsker` | [tests/hws/test_a_identities.py:311](../../tests/hws/test_a_identities.py#L311) |  |
-| `test_rs1_rs2_monte_carlo_against_random_ref` | test | `test_rs1_rs2_monte_carlo_against_random_ref` | [tests/c2_readout/test_a_partition.py:178](../../tests/c2_readout/test_a_partition.py#L178) |  |
-| `test_rule1_stop_failures` | test | `test_rule1_stop_failures` | [tests/d2a/test_b_rules_decide.py:97](../../tests/d2a/test_b_rules_decide.py#L97) |  |
-| `test_rule2_stage1_stops_precede_validity_and_have_no_qualifiers` | test | `test_rule2_stage1_stops_precede_validity_and_have_no_qualifiers` | [tests/d2a/test_b_rules_decide.py:104](../../tests/d2a/test_b_rules_decide.py#L104) |  |
-| `test_rule3_pipeline_invalid_precedes_rule4_and_has_no_qualifiers` | test | `test_rule3_pipeline_invalid_precedes_rule4_and_has_no_qualifiers` | [tests/d2a/test_b_rules_decide.py:110](../../tests/d2a/test_b_rules_decide.py#L110) |  |
-| `test_rule4_branches` | test | `test_rule4_branches` | [tests/d2a/test_b_rules_decide.py:130](../../tests/d2a/test_b_rules_decide.py#L130) |  |
-| `test_rule4_l1_true_continues` | test | `test_rule4_l1_true_continues` | [tests/d2a/test_b_rules_decide.py:142](../../tests/d2a/test_b_rules_decide.py#L142) |  |
-| `test_rule4_precedes_rule5` | test | `test_rule4_precedes_rule5` | [tests/d2a/test_b_rules_decide.py:151](../../tests/d2a/test_b_rules_decide.py#L151) |  |
-| `test_rule5_horizon_dependent` | test | `test_rule5_horizon_dependent` | [tests/d2a/test_b_rules_decide.py:159](../../tests/d2a/test_b_rules_decide.py#L159) |  |
-| `test_rule5_missing_h2_model_counts_as_failing` | test | `test_rule5_missing_h2_model_counts_as_failing` | [tests/d2a/test_b_rules_decide.py:189](../../tests/d2a/test_b_rules_decide.py#L189) |  |
-| `test_rule5_needs_the_same_three_seeds_for_all_conditions` | test | `test_rule5_needs_the_same_three_seeds_for_all_conditions` | [tests/d2a/test_b_rules_decide.py:163](../../tests/d2a/test_b_rules_decide.py#L163) |  |
-| `test_rule5_nonpositive_or_missing_delta_fails_that_seed` | test | `test_rule5_nonpositive_or_missing_delta_fails_that_seed` | [tests/d2a/test_b_rules_decide.py:180](../../tests/d2a/test_b_rules_decide.py#L180) |  |
-| `test_rule5_two_joint_seeds_is_not_enough` | test | `test_rule5_two_joint_seeds_is_not_enough` | [tests/d2a/test_b_rules_decide.py:171](../../tests/d2a/test_b_rules_decide.py#L171) |  |
-| `test_rule6_horizon_enhanced` | test | `test_rule6_horizon_enhanced` | [tests/d2a/test_b_rules_decide.py:198](../../tests/d2a/test_b_rules_decide.py#L198) |  |
-| `test_rule6a_complement_positive_below_margin` | test | `test_rule6a_complement_positive_below_margin` | [tests/c2_nd/test_a_known.py:150](../../tests/c2_nd/test_a_known.py#L150) |  |
-| `test_rule6b_decoy_positive_below_margin` | test | `test_rule6b_decoy_positive_below_margin` | [tests/c2_nd/test_a_known.py:164](../../tests/c2_nd/test_a_known.py#L164) |  |
-| `test_rule6c_layer2_and_routed` | test | `test_rule6c_layer2_and_routed` | [tests/c2_nd/test_a_known.py:188](../../tests/c2_nd/test_a_known.py#L188) |  |
-| `test_rule7_carried_without_horizon_effect` | test | `test_rule7_carried_without_horizon_effect` | [tests/d2a/test_b_rules_decide.py:214](../../tests/d2a/test_b_rules_decide.py#L214) |  |
-| `test_rule7_needs_both_arms` | test | `test_rule7_needs_both_arms` | [tests/d2a/test_b_rules_decide.py:219](../../tests/d2a/test_b_rules_decide.py#L219) |  |
-| `test_rule8_needs_three_seeds_of_each` | test | `test_rule8_needs_three_seeds_of_each` | [tests/d2a/test_b_rules_decide.py:255](../../tests/d2a/test_b_rules_decide.py#L255) |  |
-| `test_rule8_precedes_rule9` | test | `test_rule8_precedes_rule9` | [tests/d2a/test_b_rules_decide.py:246](../../tests/d2a/test_b_rules_decide.py#L246) |  |
-| `test_rule8_predictive_without_linear_posterior` | test | `test_rule8_predictive_without_linear_posterior` | [tests/d2a/test_b_rules_decide.py:242](../../tests/d2a/test_b_rules_decide.py#L242) |  |
-| `test_rule9_needs_low_increment_in_both_arms` | test | `test_rule9_needs_low_increment_in_both_arms` | [tests/d2a/test_b_rules_decide.py:288](../../tests/d2a/test_b_rules_decide.py#L288) |  |
-| `test_rule9_needs_valid_controls` | test | `test_rule9_needs_valid_controls` | [tests/d2a/test_b_rules_decide.py:279](../../tests/d2a/test_b_rules_decide.py#L279) |  |
-| `test_rule9_not_recovered` | test | `test_rule9_not_recovered` | [tests/d2a/test_b_rules_decide.py:264](../../tests/d2a/test_b_rules_decide.py#L264) |  |
-| `test_rule9_precision_failure_gives_inconclusive_precision_limited` | test | `test_rule9_precision_failure_gives_inconclusive_precision_limited` | [tests/d2a/test_b_rules_decide.py:271](../../tests/d2a/test_b_rules_decide.py#L271) |  |
-| `test_rule_applies_only_to_hwsc_dry_folders` | test | `test_rule_applies_only_to_hwsc_dry_folders` | [tests/hwsc/test_r_0178_dry_store_rule.py:105](../../tests/hwsc/test_r_0178_dry_store_rule.py#L105) |  |
-| `test_rules_d_overall` | test | `test_rules_d_overall` | [tests/c2_nd/test_a_inference.py:64](../../tests/c2_nd/test_a_inference.py#L64) |  |
-| `test_rules_endpoint_status` | test | `test_rules_endpoint_status` | [tests/c2_nd/test_a_inference.py:94](../../tests/c2_nd/test_a_inference.py#L94) |  |
-| `test_rules_nm_overall` | test | `test_rules_nm_overall` | [tests/c2_nd/test_a_inference.py:78](../../tests/c2_nd/test_a_inference.py#L78) |  |
-| `test_rules_nr_overall` | test | `test_rules_nr_overall` | [tests/c2_nd/test_a_inference.py:49](../../tests/c2_nd/test_a_inference.py#L49) |  |
-| `test_rules_qualifier_order` | test | `test_rules_qualifier_order` | [tests/c2_nd/test_a_inference.py:108](../../tests/c2_nd/test_a_inference.py#L108) |  |
-| `test_run_c1_gate_records_and_stops` | test | `test_run_c1_gate_records_and_stops` | [tests/c1prime/test_a_exceptions.py:145](../../tests/c1prime/test_a_exceptions.py#L145) |  |
-| `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | test | `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:55](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L55) |  |
-| `test_run_e1_still_refuses_a_k4b_protocol_release` | test | `test_run_e1_still_refuses_a_k4b_protocol_release` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:65](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L65) |  |
-| `test_run_e2_records_h1c_e2` | test | `test_run_e2_records_h1c_e2` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:79](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L79) |  |
-| `test_run_gate_taxonomy` | test | `test_run_gate_taxonomy` | [tests/circle_history/test_builder_v24_stages.py:33](../../tests/circle_history/test_builder_v24_stages.py#L33) |  |
-| `test_run_gates_all_pass_in_order` | test | `test_run_gates_all_pass_in_order` | [tests/k4b/test_b_flow.py:155](../../tests/k4b/test_b_flow.py#L155) |  |
-| `test_run_gates_dry_continue_calls_later_gates` | test | `test_run_gates_dry_continue_calls_later_gates` | [tests/hwsc/test_b_records.py:116](../../tests/hwsc/test_b_records.py#L116) |  |
-| `test_run_gates_pause_is_recorded_and_stops` | test | `test_run_gates_pause_is_recorded_and_stops` | [tests/hwsc/test_b_records.py:123](../../tests/hwsc/test_b_records.py#L123) |  |
-| `test_run_gates_stops_at_first_non_pass` | test | `test_run_gates_stops_at_first_non_pass` | [tests/hwsc/test_b_records.py:107](../../tests/hwsc/test_b_records.py#L107) |  |
-| `test_run_kb_default_store_reaches_kb0` | test | `test_run_kb_default_store_reaches_kb0` | [tests/hwsb/test_r_0168_kb_default_store.py:24](../../tests/hwsb/test_r_0168_kb_default_store.py#L24) |  |
-| `test_run_key_real_and_dry` | test | `test_run_key_real_and_dry` | [tests/hwsc/test_b_streams.py:79](../../tests/hwsc/test_b_streams.py#L79) |  |
-| `test_run_lock_identity_follows_the_release_session` | test | `test_run_lock_identity_follows_the_release_session` | [tests/k4b/test_b_meter.py:69](../../tests/k4b/test_b_meter.py#L69) |  |
-| `test_run_metrics_and_probes_deferred` | test | `test_run_metrics_and_probes_deferred` | [tests/prediction/test_stage.py:70](../../tests/prediction/test_stage.py#L70) |  |
-| `test_run_oracle_is_bayesfilter_with_the_section_3_3_indices` | test | `test_run_oracle_is_bayesfilter_with_the_section_3_3_indices` | [tests/c1prime/test_a_oracle_named.py:101](../../tests/c1prime/test_a_oracle_named.py#L101) |  |
-| `test_run_train_existing_record_is_rerun` | test | `test_run_train_existing_record_is_rerun` | [tests/hwsc/test_b_train_hold.py:154](../../tests/hwsc/test_b_train_hold.py#L154) |  |
-| `test_run_train_nonfinite_loss` | test | `test_run_train_nonfinite_loss` | [tests/hwsc/test_b_train_hold.py:184](../../tests/hwsc/test_b_train_hold.py#L184) |  |
-| `test_run_train_owner_stop_at_hold_writes_record` | test | `test_run_train_owner_stop_at_hold_writes_record` | [tests/hwsc/test_b_train_hold.py:174](../../tests/hwsc/test_b_train_hold.py#L174) |  |
-| `test_run_train_passes_stage_c_plan_and_hold` | test | `test_run_train_passes_stage_c_plan_and_hold` | [tests/hwsc/test_b_train_hold.py:133](../../tests/hwsc/test_b_train_hold.py#L133) |  |
-| `test_run_train_wrong_kc_accept_is_refused` | test | `test_run_train_wrong_kc_accept_is_refused` | [tests/hwsc/test_b_train_hold.py:162](../../tests/hwsc/test_b_train_hold.py#L162) |  |
-| `test_run_with_failed_preflight_is_invalid` | test | `test_run_with_failed_preflight_is_invalid` | [tests/x2a_stage0/test_x2a_stage0_ph.py:288](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L288) |  |
-| `test_run_without_passing_preflight_is_invalid` | test | `test_run_without_passing_preflight_is_invalid` | [tests/d1_seam/test_d1_seam.py:393](../../tests/d1_seam/test_d1_seam.py#L393) |  |
-| `test_runlock_is_exclusive_and_removed` | test | `test_runlock_is_exclusive_and_removed` | [tests/experiment/test_x5g1t_runtime_boundary.py:40](../../tests/experiment/test_x5g1t_runtime_boundary.py#L40) |  |
-| `test_runlock_refuses_stale_lock_of_unknown_state` | test | `test_runlock_refuses_stale_lock_of_unknown_state` | [tests/experiment/test_x5g1t_runtime_boundary.py:57](../../tests/experiment/test_x5g1t_runtime_boundary.py#L57) |  |
-| `test_runlock_removed_on_error_and_never_suppresses` | test | `test_runlock_removed_on_error_and_never_suppresses` | [tests/experiment/test_x5g1t_runtime_boundary.py:66](../../tests/experiment/test_x5g1t_runtime_boundary.py#L66) |  |
-| `test_runner_persists_prior_cpu_and_failure` | test | `test_runner_persists_prior_cpu_and_failure` | [tests/experiment/test_x4f_maintenance.py:22](../../tests/experiment/test_x4f_maintenance.py#L22) |  |
-| `test_runner_refuses_without_release` | test | `test_runner_refuses_without_release` | [tests/circle_history/test_builder_runtime.py:165](../../tests/circle_history/test_builder_runtime.py#L165) |  |
-| `test_runs_are_the_fourteen_registered_models` | test | `test_runs_are_the_fourteen_registered_models` | [tests/d2a/test_b_resource.py:44](../../tests/d2a/test_b_resource.py#L44) |  |
-| `test_runtime_state_malformed_is_stop` | test | `test_runtime_state_malformed_is_stop` | [tests/experiment/test_x5g1t_runtime.py:128](../../tests/experiment/test_x5g1t_runtime.py#L128) |  |
-| `test_runtime_state_other_modes_are_noop` | test | `test_runtime_state_other_modes_are_noop` | [tests/experiment/test_x5g1t_runtime.py:115](../../tests/experiment/test_x5g1t_runtime.py#L115) |  |
-| `test_runtime_state_unknown_mode_is_stop` | test | `test_runtime_state_unknown_mode_is_stop` | [tests/experiment/test_x5g1t_runtime.py:122](../../tests/experiment/test_x5g1t_runtime.py#L122) |  |
-| `test_runtime_state_wait_is_hold` | test | `test_runtime_state_wait_is_hold` | [tests/experiment/test_x5g1t_runtime.py:108](../../tests/experiment/test_x5g1t_runtime.py#L108) |  |
-| `test_s2_and_s3_forecasts_are_sums_over_the_actual_worklist` | test | `test_s2_and_s3_forecasts_are_sums_over_the_actual_worklist` | [tests/hws/test_a_budget.py:65](../../tests/hws/test_a_budget.py#L65) |  |
-| `test_s2_worklist_cap_40_by_changed_distance_key` | test | `test_s2_worklist_cap_40_by_changed_distance_key` | [tests/hws/test_a_classify.py:363](../../tests/hws/test_a_classify.py#L363) |  |
-| `test_s2_worklist_edges_lowest_tier` | test | `test_s2_worklist_edges_lowest_tier` | [tests/hws/test_a_classify.py:341](../../tests/hws/test_a_classify.py#L341) |  |
-| `test_s2_worklist_uses_x1_levels_that_ran` | test | `test_s2_worklist_uses_x1_levels_that_ran` | [tests/hws/test_a_classify.py:355](../../tests/hws/test_a_classify.py#L355) |  |
-| `test_s3_bounds_l3_is_the_smaller_side` | test | `test_s3_bounds_l3_is_the_smaller_side` | [tests/hws/test_a_stats.py:111](../../tests/hws/test_a_stats.py#L111) |  |
-| `test_s3_evaluate` | test | `test_s3_evaluate` | [tests/hws/test_a_outcomes.py:281](../../tests/hws/test_a_outcomes.py#L281) |  |
-| `test_s3_rates_and_s0_refused` | test | `test_s3_rates_and_s0_refused` | [tests/hws/test_a_budget.py:43](../../tests/hws/test_a_budget.py#L43) |  |
-| `test_s_max_inverted_cdf_rank` | test | `test_s_max_inverted_cdf_rank` | [tests/c1prime/test_a_eligibility_support.py:37](../../tests/c1prime/test_a_eligibility_support.py#L37) | Ranks: 1000 * 0.999 = 999 exactly in float -> 999th smallest (value 998); |
-| `test_s_max_with_ties_at_the_boundary_returns_an_input_value` | test | `test_s_max_with_ties_at_the_boundary_returns_an_input_value` | [tests/c1prime/test_a_eligibility_support.py:46](../../tests/c1prime/test_a_eligibility_support.py#L46) | n = 1000: the 999th smallest value (sorted index 998) is returned, never interpolated. |
-| `test_s_star_fit_uses_masked_regressors_and_is_deterministic` | test | `test_s_star_fit_uses_masked_regressors_and_is_deterministic` | [tests/c2_readout/test_b_screens.py:153](../../tests/c2_readout/test_b_screens.py#L153) |  |
-| `test_same_gate_again_and_stage_entry_keep_the_position` | test | `test_same_gate_again_and_stage_entry_keep_the_position` | [tests/c2_readout/test_b_policy.py:132](../../tests/c2_readout/test_b_policy.py#L132) |  |
-| `test_same_last_symbol_finite_when_b1_is_a_function_of_w32` | test | `test_same_last_symbol_finite_when_b1_is_a_function_of_w32` | [tests/analysis/test_geometry.py:93](../../tests/analysis/test_geometry.py#L93) |  |
-| `test_same_last_symbol_none_when_activation_distances_constant` | test | `test_same_last_symbol_none_when_activation_distances_constant` | [tests/analysis/test_geometry.py:110](../../tests/analysis/test_geometry.py#L110) |  |
-| `test_same_last_symbol_value_matches_restricted_spearman` | test | `test_same_last_symbol_value_matches_restricted_spearman` | [tests/analysis/test_geometry.py:79](../../tests/analysis/test_geometry.py#L79) |  |
-| `test_same_message_not_raised_by_integer_lift_is_technical` | test | `test_same_message_not_raised_by_integer_lift_is_technical` | [tests/c1prime/test_a_chart_exceptions.py:103](../../tests/c1prime/test_a_chart_exceptions.py#L103) |  |
-| `test_same_pair_count_hand_array_and_inconclusive` | test | `test_same_pair_count_hand_array_and_inconclusive` | [tests/analysis/test_geometry.py:55](../../tests/analysis/test_geometry.py#L55) |  |
-| `test_same_pairs_199_inconclusive_and_200_ok` | test | `test_same_pairs_199_inconclusive_and_200_ok` | [tests/analysis/test_geometry.py:69](../../tests/analysis/test_geometry.py#L69) |  |
-| `test_same_pairs_below_200_inconclusive` | test | `test_same_pairs_below_200_inconclusive` | [tests/analysis/test_geometry.py:62](../../tests/analysis/test_geometry.py#L62) |  |
-| `test_sample_block_c_equals_k4b_sample_block_under_dry_binding` | test | `test_sample_block_c_equals_k4b_sample_block_under_dry_binding` | [tests/hwsc/test_b_streams.py:192](../../tests/hwsc/test_b_streams.py#L192) |  |
-| `test_sample_block_c_one_sampler_call_and_shape` | test | `test_sample_block_c_one_sampler_call_and_shape` | [tests/hwsc/test_b_streams.py:202](../../tests/hwsc/test_b_streams.py#L202) |  |
-| `test_sample_block_is_one_fixed_4096_row_stream_with_w33_dropped` | test | `test_sample_block_is_one_fixed_4096_row_stream_with_w33_dropped` | [tests/c1prime/test_b_registry.py:80](../../tests/c1prime/test_b_registry.py#L80) |  |
-| `test_sample_block_is_one_sampler_call_sorted_by_id` | test | `test_sample_block_is_one_sampler_call_sorted_by_id` | [tests/k4b/test_b_data.py:135](../../tests/k4b/test_b_data.py#L135) |  |
-| `test_sample_block_one_call_contiguous_uint8_without_w33` | test | `test_sample_block_one_call_contiguous_uint8_without_w33` | [tests/hwsb/test_b_streams.py:191](../../tests/hwsb/test_b_streams.py#L191) |  |
-| `test_sample_calls_the_sampler_once_and_drops_the_last_symbol` | test | `test_sample_calls_the_sampler_once_and_drops_the_last_symbol` | [tests/hws/test_b_oracle.py:102](../../tests/hws/test_b_oracle.py#L102) |  |
-| `test_sample_named_is_perm_of_canonical` | test | `test_sample_named_is_perm_of_canonical` | [tests/experiment/test_x5g1_lineage.py:95](../../tests/experiment/test_x5g1_lineage.py#L95) |  |
-| `test_sample_named_one_call_deterministic` | test | `test_sample_named_one_call_deterministic` | [tests/experiment/test_x5g1_lineage.py:114](../../tests/experiment/test_x5g1_lineage.py#L114) |  |
-| `test_sample_named_shape_dtype_and_no_states` | test | `test_sample_named_shape_dtype_and_no_states` | [tests/experiment/test_x5g1_lineage.py:107](../../tests/experiment/test_x5g1_lineage.py#L107) |  |
-| `test_sample_observations_equals_dataset_stage_bitwise` | test | `test_sample_observations_equals_dataset_stage_bitwise` | [tests/hwsb/test_b_streams.py:154](../../tests/hwsb/test_b_streams.py#L154) |  |
-| `test_sample_observations_one_call_named_tokens` | test | `test_sample_observations_one_call_named_tokens` | [tests/hwsb/test_b_streams.py:199](../../tests/hwsb/test_b_streams.py#L199) |  |
-| `test_sample_pool_is_deterministic_and_returns_no_states` | test | `test_sample_pool_is_deterministic_and_returns_no_states` | [tests/experiment/test_x4b2.py:42](../../tests/experiment/test_x4b2.py#L42) |  |
-| `test_sample_pool_returns_tokens_only_and_matches_sampler` | test | `test_sample_pool_returns_tokens_only_and_matches_sampler` | [tests/x6_stage1/test_b_seed_pool_reg.py:174](../../tests/x6_stage1/test_b_seed_pool_reg.py#L174) |  |
-| `test_sample_segment_equals_independent_backward_sampler` | test | `test_sample_segment_equals_independent_backward_sampler` | [tests/x6_stage1/test_a_pairs.py:194](../../tests/x6_stage1/test_a_pairs.py#L194) |  |
-| `test_sampler_cdf_matches_frozen_cumulative_rows` | test | `test_sampler_cdf_matches_frozen_cumulative_rows` | [tests/circle_history/test_process_law.py:79](../../tests/circle_history/test_process_law.py#L79) |  |
-| `test_sampler_defects_fail_technical` | test | `test_sampler_defects_fail_technical` | [tests/hwsb/test_b_streams.py:228](../../tests/hwsb/test_b_streams.py#L228) |  |
-| `test_sampler_law_exhaustively_uniform_n_le_6` | test | `test_sampler_law_exhaustively_uniform_n_le_6` | [tests/x6_stage1/test_a_pairs.py:172](../../tests/x6_stage1/test_a_pairs.py#L172) |  |
-| `test_sampler_never_draws_zero_probability_symbols` | test | `test_sampler_never_draws_zero_probability_symbols` | [tests/dataset/test_sampler.py:54](../../tests/dataset/test_sampler.py#L54) |  |
-| `test_save_and_load_pool` | test | `test_save_and_load_pool` | [tests/x6_stage1/test_b_seed_pool_reg.py:191](../../tests/x6_stage1/test_b_seed_pool_reg.py#L191) |  |
-| `test_save_hist_paths_key_and_exclusive_create` | test | `test_save_hist_paths_key_and_exclusive_create` | [tests/hws/test_b_records.py:104](../../tests/hws/test_b_records.py#L104) |  |
-| `test_save_table_six_keys_and_exclusive` | test | `test_save_table_six_keys_and_exclusive` | [tests/hwsc/test_b_streams.py:231](../../tests/hwsc/test_b_streams.py#L231) |  |
-| `test_saved_ids_must_match_reloaded_rows` | test | `test_saved_ids_must_match_reloaded_rows` | [tests/circle_history/test_builder_v24_stages.py:136](../../tests/circle_history/test_builder_v24_stages.py#L136) |  |
-| `test_scale_s_is_q95_of_positive_distances` | test | `test_scale_s_is_q95_of_positive_distances` | [tests/topology/test_persistence.py:93](../../tests/topology/test_persistence.py#L93) |  |
-| `test_scale_statistics_use_the_cstar_submatrix_only` | test | `test_scale_statistics_use_the_cstar_submatrix_only` | [tests/c1prime/test_a_chart_lcc512.py:168](../../tests/c1prime/test_a_chart_lcc512.py#L168) | Item 6: d8, sigma and support_radius from _neighbor_scale(D[np.ix_(C*, C*)]). |
-| `test_sched_ok_rules` | test | `test_sched_ok_rules` | [tests/hwsc/test_b_records.py:202](../../tests/hwsc/test_b_records.py#L202) |  |
-| `test_sched_rule2_and_rule3` | test | `test_sched_rule2_and_rule3` | [tests/hwsb/test_b_records.py:127](../../tests/hwsb/test_b_records.py#L127) |  |
-| `test_scientific_outcome` | test | `test_scientific_outcome` | [tests/x2a_stage0/test_x2a_stage0_ph.py:149](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L149) |  |
-| `test_scope_and_history_streams` | test | `test_scope_and_history_streams` | [tests/c2_readout/test_b_policy.py:287](../../tests/c2_readout/test_b_policy.py#L287) |  |
-| `test_score_e_row_check_against_80_digit_decimal` | test | `test_score_e_row_check_against_80_digit_decimal` | [tests/x6_stage1/test_a_numerics.py:112](../../tests/x6_stage1/test_a_numerics.py#L112) | §7.4 item 3 / T15: \|x_hat - X\| <= 1e-13 with X recomputed in 80-digit Decimal. |
-| `test_scoring_authority_constructed_only_in_release_and_errors` | test | `test_scoring_authority_constructed_only_in_release_and_errors` | [tests/circle_history/test_builder_guards.py:149](../../tests/circle_history/test_builder_guards.py#L149) |  |
-| `test_scoring_authority_requires_strict_true_and_owner_record` | test | `test_scoring_authority_requires_strict_true_and_owner_record` | [tests/circle_history/test_builder_guards.py:127](../../tests/circle_history/test_builder_guards.py#L127) |  |
-| `test_scoring_authority_unlocks_panel_3` | test | `test_scoring_authority_unlocks_panel_3` | [tests/circle_history/test_adapter.py:243](../../tests/circle_history/test_adapter.py#L243) |  |
-| `test_scoring_authority_unlocks_scoring` | test | `test_scoring_authority_unlocks_scoring` | [tests/circle_history/test_error_bound.py:390](../../tests/circle_history/test_error_bound.py#L390) |  |
-| `test_scoring_guard_is_a_real_boundary` | test | `test_scoring_guard_is_a_real_boundary` | [tests/experiment/test_x5g1t_integration.py:324](../../tests/experiment/test_x5g1t_integration.py#L324) | A STOP that appears at 'score batch 1' stops dev-analysis with no result export. |
-| `test_scoring_lock_precedes_any_computation` | test | `test_scoring_lock_precedes_any_computation` | [tests/circle_history/test_error_bound.py:374](../../tests/circle_history/test_error_bound.py#L374) |  |
-| `test_screen_bounds_formulas` | test | `test_screen_bounds_formulas` | [tests/hws/test_a_stats.py:98](../../tests/hws/test_a_stats.py#L98) |  |
-| `test_screen_pool_and_pair_d2` | test | `test_screen_pool_and_pair_d2` | [tests/analysis/test_horizon.py:151](../../tests/analysis/test_horizon.py#L151) |  |
-| `test_screening_rates` | test | `test_screening_rates` | [tests/hws/test_a_budget.py:38](../../tests/hws/test_a_budget.py#L38) |  |
-| `test_sd_b4_draws_reproduce_manual_loop_with_shared_idx` | test | `test_sd_b4_draws_reproduce_manual_loop_with_shared_idx` | [tests/circle_history/test_scores_precision_gates.py:103](../../tests/circle_history/test_scores_precision_gates.py#L103) |  |
-| `test_seal_exclusive_and_p1_only` | test | `test_seal_exclusive_and_p1_only` | [tests/c2_nd/test_b_policy.py:257](../../tests/c2_nd/test_b_policy.py#L257) |  |
-| `test_sealed_d2a_predicate` | test | `test_sealed_d2a_predicate` | [tests/k4b/test_b_data.py:335](../../tests/k4b/test_b_data.py#L335) |  |
-| `test_sealed_d2a_predicate_hit_is_incomplete` | test | `test_sealed_d2a_predicate_hit_is_incomplete` | [tests/c2_readout/test_b_registry.py:192](../../tests/c2_readout/test_b_registry.py#L192) |  |
-| `test_sealed_keys_are_the_registered_tuple` | test | `test_sealed_keys_are_the_registered_tuple` | [tests/k4b/test_b_flow.py:41](../../tests/k4b/test_b_flow.py#L41) |  |
-| `test_sealed_keys_refused_anywhere` | test | `test_sealed_keys_refused_anywhere` | [tests/hwsc/test_b_records.py:348](../../tests/hwsc/test_b_records.py#L348) |  |
-| `test_second_attempt_refused_even_without_completion` | test | `test_second_attempt_refused_even_without_completion` | [tests/circle_history/test_builder_v24_stages.py:51](../../tests/circle_history/test_builder_v24_stages.py#L51) |  |
-| `test_second_candidate_chosen_even_if_third_better` | test | `test_second_candidate_chosen_even_if_third_better` | [tests/analysis/test_sigma_calibrator.py:64](../../tests/analysis/test_sigma_calibrator.py#L64) |  |
-| `test_second_start_refused_after_complete` | test | `test_second_start_refused_after_complete` | [tests/experiment/test_x5g1t_training.py:269](../../tests/experiment/test_x5g1t_training.py#L269) |  |
-| `test_second_start_refused_after_incomplete` | test | `test_second_start_refused_after_incomplete` | [tests/experiment/test_x5g1t_training.py:280](../../tests/experiment/test_x5g1t_training.py#L280) |  |
-| `test_secondary_reading_keeps_its_status` | test | `test_secondary_reading_keeps_its_status` | [tests/hwsb/test_r_0170_kb2_status.py:57](../../tests/hwsb/test_r_0170_kb2_status.py#L57) |  |
-| `test_seed_flags_and_designed_counts` | test | `test_seed_flags_and_designed_counts` | [tests/x6_stage1/test_a_rules.py:161](../../tests/x6_stage1/test_a_rules.py#L161) |  |
-| `test_seed_fresh_compares_values_recursively` | test | `test_seed_fresh_compares_values_recursively` | [tests/x6_stage1/test_b_seed_pool_reg.py:64](../../tests/x6_stage1/test_b_seed_pool_reg.py#L64) |  |
-| `test_seed_map_620501_to_620518` | test | `test_seed_map_620501_to_620518` | [tests/c2_readout/test_b_policy.py:330](../../tests/c2_readout/test_b_policy.py#L330) |  |
-| `test_seed_search_c_equals_hws_mirror_without_blinded_paths` | test | `test_seed_search_c_equals_hws_mirror_without_blinded_paths` | [tests/hwsc/test_b_guard_meter.py:200](../../tests/hwsc/test_b_guard_meter.py#L200) |  |
-| `test_seed_search_c_prunes_and_never_opens_blinded` | test | `test_seed_search_c_prunes_and_never_opens_blinded` | [tests/hwsc/test_b_guard_meter.py:184](../../tests/hwsc/test_b_guard_meter.py#L184) |  |
-| `test_seed_search_skips_and_never_opens_excluded_paths` | test | `test_seed_search_skips_and_never_opens_excluded_paths` | [tests/hws/test_b_kc1.py:294](../../tests/hws/test_b_kc1.py#L294) |  |
-| `test_seed_search_whole_token_rule_and_excluded_folders` | test | `test_seed_search_whole_token_rule_and_excluded_folders` | [tests/hwsb/test_b_records.py:258](../../tests/hwsb/test_b_records.py#L258) |  |
-| `test_seed_sensitive_fixture` | test | `test_seed_sensitive_fixture` | [tests/hwsc/test_a_ladder.py:152](../../tests/hwsc/test_a_ladder.py#L152) |  |
-| `test_segment_parse_and_r_ord` | test | `test_segment_parse_and_r_ord` | [tests/x6_stage1/test_a_pairs.py:208](../../tests/x6_stage1/test_a_pairs.py#L208) |  |
-| `test_select_anchors_is_deterministic_and_order_free` | test | `test_select_anchors_is_deterministic_and_order_free` | [tests/analysis/test_horizon.py:128](../../tests/analysis/test_horizon.py#L128) |  |
-| `test_select_h1_bar` | test | `test_select_h1_bar` | [tests/circle_history/test_chart.py:136](../../tests/circle_history/test_chart.py#L136) |  |
-| `test_select_h1_bar_none` | test | `test_select_h1_bar_none` | [tests/circle_history/test_chart.py:143](../../tests/circle_history/test_chart.py#L143) |  |
-| `test_selected_first_ordinary_qualifier_in_finalist_order` | test | `test_selected_first_ordinary_qualifier_in_finalist_order` | [tests/hws/test_a_outcomes.py:122](../../tests/hws/test_a_outcomes.py#L122) |  |
-| `test_selection_and_fold_mse_match_reference` | test | `test_selection_and_fold_mse_match_reference` | [tests/experiment/test_x4f_probe.py:66](../../tests/experiment/test_x4f_probe.py#L66) |  |
-| `test_sentinel_stop_keeps_in_memory_checkpoints` | test | `test_sentinel_stop_keeps_in_memory_checkpoints` | [tests/hwsb/test_b_e4path.py:138](../../tests/hwsb/test_b_e4path.py#L138) |  |
-| `test_separation_cal_val_every_collision_is_lineage` | test | `test_separation_cal_val_every_collision_is_lineage` | [tests/k4b/test_b_data.py:258](../../tests/k4b/test_b_data.py#L258) |  |
-| `test_separation_clean_tables_pass` | test | `test_separation_clean_tables_pass` | [tests/hwsb/test_b_streams.py:347](../../tests/hwsb/test_b_streams.py#L347) |  |
-| `test_separation_collision_is_lineage` | test | `test_separation_collision_is_lineage` | [tests/x6_stage1/test_b_seed_pool_reg.py:247](../../tests/x6_stage1/test_b_seed_pool_reg.py#L247) |  |
-| `test_separation_collision_is_lineage_failure` | test | `test_separation_collision_is_lineage_failure` | [tests/c1prime/test_b_registry.py:146](../../tests/c1prime/test_b_registry.py#L146) |  |
-| `test_separation_eval_eval_collision_fails_lineage` | test | `test_separation_eval_eval_collision_fails_lineage` | [tests/hwsb/test_b_streams.py:364](../../tests/hwsb/test_b_streams.py#L364) |  |
-| `test_separation_eval_train_collision_fails_lineage` | test | `test_separation_eval_train_collision_fails_lineage` | [tests/hwsb/test_b_streams.py:355](../../tests/hwsb/test_b_streams.py#L355) |  |
-| `test_separation_fresh_collision_is_lineage` | test | `test_separation_fresh_collision_is_lineage` | [tests/k4b/test_b_data.py:275](../../tests/k4b/test_b_data.py#L275) |  |
-| `test_separation_id_overlap_fails_lineage` | test | `test_separation_id_overlap_fails_lineage` | [tests/hwsb/test_b_streams.py:372](../../tests/hwsb/test_b_streams.py#L372) |  |
-| `test_separation_pass_with_duplicates_kept` | test | `test_separation_pass_with_duplicates_kept` | [tests/c2_readout/test_b_registry.py:144](../../tests/c2_readout/test_b_registry.py#L144) |  |
-| `test_separation_passes_when_all_three_intersections_are_empty` | test | `test_separation_passes_when_all_three_intersections_are_empty` | [tests/c1prime/test_b_registry.py:139](../../tests/c1prime/test_b_registry.py#L139) |  |
-| `test_seq_disjoint_frozen_union_hit_is_lineage` | test | `test_seq_disjoint_frozen_union_hit_is_lineage` | [tests/k4b/test_b_data.py:300](../../tests/k4b/test_b_data.py#L300) |  |
-| `test_seq_disjoint_overlap_between_blocks_is_lineage` | test | `test_seq_disjoint_overlap_between_blocks_is_lineage` | [tests/k4b/test_b_data.py:292](../../tests/k4b/test_b_data.py#L292) |  |
-| `test_seq_disjoint_pass` | test | `test_seq_disjoint_pass` | [tests/k4b/test_b_data.py:287](../../tests/k4b/test_b_data.py#L287) |  |
-| `test_seq_disjoint_ranges_are_half_open` | test | `test_seq_disjoint_ranges_are_half_open` | [tests/k4b/test_b_data.py:308](../../tests/k4b/test_b_data.py#L308) |  |
-| `test_sequence_id_codes` | test | `test_sequence_id_codes` | [tests/c2_readout/test_b_policy.py:314](../../tests/c2_readout/test_b_policy.py#L314) |  |
-| `test_sequence_id_rule_known_answer` | test | `test_sequence_id_rule_known_answer` | [tests/dataset/test_stage.py:117](../../tests/dataset/test_stage.py#L117) |  |
-| `test_sequence_ids_and_streams` | test | `test_sequence_ids_and_streams` | [tests/c2_nd/test_b_lineage.py:278](../../tests/c2_nd/test_b_lineage.py#L278) |  |
-| `test_sequence_ids_disjoint_across_k4b_blocks` | test | `test_sequence_ids_disjoint_across_k4b_blocks` | [tests/k4b/test_b_data.py:124](../../tests/k4b/test_b_data.py#L124) |  |
-| `test_sequence_ids_dry_replicates` | test | `test_sequence_ids_dry_replicates` | [tests/hwsc/test_b_streams.py:98](../../tests/hwsc/test_b_streams.py#L98) |  |
-| `test_sequence_ids_exact_and_disjoint_across_all_pools` | test | `test_sequence_ids_exact_and_disjoint_across_all_pools` | [tests/x6_stage1/test_b_seed_pool_reg.py:163](../../tests/x6_stage1/test_b_seed_pool_reg.py#L163) |  |
-| `test_sequence_ids_follow_contract_replicates` | test | `test_sequence_ids_follow_contract_replicates` | [tests/hwsb/test_b_streams.py:104](../../tests/hwsb/test_b_streams.py#L104) |  |
-| `test_sequence_ids_follow_the_registered_rule` | test | `test_sequence_ids_follow_the_registered_rule` | [tests/k4b/test_b_data.py:117](../../tests/k4b/test_b_data.py#L117) |  |
-| `test_sequence_ids_formula_and_bits` | test | `test_sequence_ids_formula_and_bits` | [tests/experiment/test_x5g1t_lineage_oracle.py:75](../../tests/experiment/test_x5g1t_lineage_oracle.py#L75) |  |
-| `test_sequence_ids_frozen_namespace_and_disjoint` | test | `test_sequence_ids_frozen_namespace_and_disjoint` | [tests/experiment/test_x4b2.py:30](../../tests/experiment/test_x4b2.py#L30) |  |
-| `test_sequence_ids_invalid` | test | `test_sequence_ids_invalid` | [tests/experiment/test_x5g1t_lineage_oracle.py:89](../../tests/experiment/test_x5g1t_lineage_oracle.py#L89) |  |
-| `test_sequence_ids_namespace_and_disjoint` | test | `test_sequence_ids_namespace_and_disjoint` | [tests/experiment/test_x5g1_lineage.py:121](../../tests/experiment/test_x5g1_lineage.py#L121) |  |
-| `test_sequence_ids_real` | test | `test_sequence_ids_real` | [tests/hwsc/test_b_streams.py:91](../../tests/hwsc/test_b_streams.py#L91) |  |
-| `test_sequence_ids_refusals` | test | `test_sequence_ids_refusals` | [tests/hwsb/test_b_streams.py:99](../../tests/hwsb/test_b_streams.py#L99) |  |
-| `test_sequence_ids_unknown_arm` | test | `test_sequence_ids_unknown_arm` | [tests/experiment/test_x5g1_lineage.py:132](../../tests/experiment/test_x5g1_lineage.py#L132) |  |
-| `test_serialise_roles_and_identity_carrier` | test | `test_serialise_roles_and_identity_carrier` | [tests/c1prime/test_a_chart_lcc512.py:226](../../tests/c1prime/test_a_chart_lcc512.py#L226) |  |
-| `test_session_and_weekly_both_latched_then_partial_clear_holds` | test | `test_session_and_weekly_both_latched_then_partial_clear_holds` | [tests/experiment/test_x5g1t_usage.py:390](../../tests/experiment/test_x5g1t_usage.py#L390) |  |
-| `test_set_threads_records_values` | test | `test_set_threads_records_values` | [tests/hwsb/test_b_e4path.py:248](../../tests/hwsb/test_b_e4path.py#L248) |  |
-| `test_several_mismatches_are_all_reported_in_checked_order` | test | `test_several_mismatches_are_all_reported_in_checked_order` | [tests/k4b/test_b_h1_meta.py:248](../../tests/k4b/test_b_h1_meta.py#L248) |  |
-| `test_sha256_phase_hand_derived_from_hashlib` | test | `test_sha256_phase_hand_derived_from_hashlib` | [tests/circle_history/test_scores_precision.py:269](../../tests/circle_history/test_scores_precision.py#L269) |  |
-| `test_shape_generators_contract` | test | `test_shape_generators_contract` | [tests/topology/test_shapes_calibration.py:25](../../tests/topology/test_shapes_calibration.py#L25) |  |
-| `test_shapes_and_pi_s` | test | `test_shapes_and_pi_s` | [tests/c2_nd/test_b_decoy_model.py:122](../../tests/c2_nd/test_b_decoy_model.py#L122) |  |
-| `test_shared_index_stream_resp_spec_first_then_endpoint` | test | `test_shared_index_stream_resp_spec_first_then_endpoint` | [tests/c2_readout/test_a_inference.py:348](../../tests/c2_readout/test_a_inference.py#L348) |  |
-| `test_sharp_target_statuses_at_exact_edges` | test | `test_sharp_target_statuses_at_exact_edges` | [tests/x6_stage1/test_a_rules.py:52](../../tests/x6_stage1/test_a_rules.py#L52) |  |
-| `test_sharpness_extremal_completions` | test | `test_sharpness_extremal_completions` | [tests/k4b/test_a_theorem_a.py:168](../../tests/k4b/test_a_theorem_a.py#L168) |  |
-| `test_shuffle_perm_depends_on_scope` | test | `test_shuffle_perm_depends_on_scope` | [tests/d2a/test_b_behaviour.py:144](../../tests/d2a/test_b_behaviour.py#L144) |  |
-| `test_shuffle_perm_is_deterministic_and_a_permutation` | test | `test_shuffle_perm_is_deterministic_and_a_permutation` | [tests/d2a/test_b_behaviour.py:136](../../tests/d2a/test_b_behaviour.py#L136) |  |
-| `test_shuffle_perm_is_the_registered_stream` | test | `test_shuffle_perm_is_the_registered_stream` | [tests/d2a/test_b_behaviour.py:131](../../tests/d2a/test_b_behaviour.py#L131) |  |
-| `test_shuffle_stop_inside_refits` | test | `test_shuffle_stop_inside_refits` | [tests/experiment/test_x4f_maintenance.py:77](../../tests/experiment/test_x4f_maintenance.py#L77) |  |
-| `test_sigma_5_4_delta_zero_and_identical_to_old_enclosure` | test | `test_sigma_5_4_delta_zero_and_identical_to_old_enclosure` | [tests/hwsb/test_a_enclosure_proof.py:174](../../tests/hwsb/test_a_enclosure_proof.py#L174) |  |
-| `test_sigma_7_4_e_dec_computed_from_q_tilde` | test | `test_sigma_7_4_e_dec_computed_from_q_tilde` | [tests/hwsb/test_a_enclosure_proof.py:226](../../tests/hwsb/test_a_enclosure_proof.py#L226) | Step (1): the existing analysis applies to the exact inputs q~ (process_law.py:117-124). |
-| `test_sigma_7_4_rounded_logits_are_q_tilde` | test | `test_sigma_7_4_rounded_logits_are_q_tilde` | [tests/hwsb/test_a_enclosure_proof.py:208](../../tests/hwsb/test_a_enclosure_proof.py#L208) |  |
-| `test_sigma_7_4_rounding_delta` | test | `test_sigma_7_4_rounding_delta` | [tests/hwsb/test_a_enclosure_proof.py:194](../../tests/hwsb/test_a_enclosure_proof.py#L194) |  |
-| `test_sigma_7_4_widened_lo_hi` | test | `test_sigma_7_4_widened_lo_hi` | [tests/hwsb/test_a_enclosure_proof.py:216](../../tests/hwsb/test_a_enclosure_proof.py#L216) |  |
-| `test_sign_convention_largest_abs_entry_positive_and_stable_under_negation` | test | `test_sign_convention_largest_abs_entry_positive_and_stable_under_negation` | [tests/analysis/test_x4f_targets.py:117](../../tests/analysis/test_x4f_targets.py#L117) |  |
-| `test_single_field_value_mismatch_is_identity` | test | `test_single_field_value_mismatch_is_identity` | [tests/k4b/test_b_h1_meta.py:179](../../tests/k4b/test_b_h1_meta.py#L179) |  |
-| `test_single_out_of_vocab_token` | test | `test_single_out_of_vocab_token` | [tests/learner/test_patch.py:282](../../tests/learner/test_patch.py#L282) |  |
-| `test_single_triangle_centred_modular_cocycle_is_lifted` | test | `test_single_triangle_centred_modular_cocycle_is_lifted` | [tests/circle_history/test_cochain_lift.py:180](../../tests/circle_history/test_cochain_lift.py#L180) |  |
-| `test_six_constructions_then_refusal` | test | `test_six_constructions_then_refusal` | [tests/c1prime/test_a_chart_val.py:191](../../tests/c1prime/test_a_chart_val.py#L191) |  |
-| `test_skipping_zero_transition_entries_is_bitwise_neutral` | test | `test_skipping_zero_transition_entries_is_bitwise_neutral` | [tests/c1prime/test_b_cert_oracle.py:165](../../tests/c1prime/test_b_cert_oracle.py#L165) |  |
-| `test_smallest_valid_forward_product_does_not_trap` | test | `test_smallest_valid_forward_product_does_not_trap` | [tests/circle_history/test_error_bound.py:140](../../tests/circle_history/test_error_bound.py#L140) | Exponent reasoning of section 2: 64 factors of 2^-1074 stay far above 10^Emin. |
-| `test_smooth_phase_cycle_five_winding_two` | test | `test_smooth_phase_cycle_five_winding_two` | [tests/circle_history/test_cochain.py:250](../../tests/circle_history/test_cochain.py#L250) |  |
-| `test_smooth_phase_cycle_four` | test | `test_smooth_phase_cycle_four` | [tests/circle_history/test_cochain.py:240](../../tests/circle_history/test_cochain.py#L240) |  |
-| `test_smooth_phase_path_is_exact` | test | `test_smooth_phase_path_is_exact` | [tests/circle_history/test_cochain.py:257](../../tests/circle_history/test_cochain.py#L257) |  |
-| `test_smoothing_style_invalid_without_a_smooth_phase_frame_is_technical` | test | `test_smoothing_style_invalid_without_a_smooth_phase_frame_is_technical` | [tests/c1prime/test_a_chart_exceptions.py:176](../../tests/c1prime/test_a_chart_exceptions.py#L176) |  |
-| `test_snr_fixture_registered_comparator_passes_where_raw_gls_fails` | test | `test_snr_fixture_registered_comparator_passes_where_raw_gls_fails` | [tests/c2_readout/test_b_fwl_l1.py:231](../../tests/c2_readout/test_b_fwl_l1.py#L231) |  |
-| `test_softmax64_bitwise_s3_formula` | test | `test_softmax64_bitwise_s3_formula` | [tests/hwsb/test_a_learning.py:155](../../tests/hwsb/test_a_learning.py#L155) |  |
-| `test_softmax_enclosure_contains_80_digit_values` | test | `test_softmax_enclosure_contains_80_digit_values` | [tests/circle_history/test_process_law.py:189](../../tests/circle_history/test_process_law.py#L189) |  |
-| `test_source_a_explicit_store_reads_that_root` | test | `test_source_a_explicit_store_reads_that_root` | [tests/k4b/test_b_registry.py:277](../../tests/k4b/test_b_registry.py#L277) |  |
-| `test_source_a_non_default_root_without_store_refused` | test | `test_source_a_non_default_root_without_store_refused` | [tests/k4b/test_b_registry.py:265](../../tests/k4b/test_b_registry.py#L265) |  |
-| `test_source_c2` | test | `test_source_c2` | [tests/c2_nd/test_b_registry.py:117](../../tests/c2_nd/test_b_registry.py#L117) |  |

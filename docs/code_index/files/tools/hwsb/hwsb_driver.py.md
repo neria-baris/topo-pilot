@@ -64,6 +64,7 @@
 - [tests/hwsb/test_b_records.py](../../tests/hwsb/test_b_records.py.md) (line 27, import)
 - [tests/hwsb/test_r_0168_kb_default_store.py](../../tests/hwsb/test_r_0168_kb_default_store.py.md) (line 20, import)
 - [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 33, import)
+- [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 24, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 21, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 16, import)
 - [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 108, import)
@@ -72,6 +73,8 @@
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 304, import)
 - [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 13, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 20, import)
+- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 14, import)
+- [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 15, import)
 
 ## Top-level constants
 

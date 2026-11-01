@@ -65,6 +65,8 @@
 - [tests/c2_readout/test_b_registry.py](../../tests/c2_readout/test_b_registry.py.md) (line 25, import)
 - [tests/hwsc/test_b_registry2.py](../../tests/hwsc/test_b_registry2.py.md) (line 28, import)
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 28, import)
+- [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 20, import)
+- [tests/hwsd/test_b_registry_r9.py](../../tests/hwsd/test_b_registry_r9.py.md) (line 18, import)
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 26, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 21, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 27, import)
@@ -76,6 +78,9 @@
 - [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 181, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 12, import)
 - [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 13, import)
+- [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 252, import)
+- [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 17, import)
+- [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 13, import)
 
 ## Top-level constants
 

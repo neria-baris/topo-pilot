@@ -46,6 +46,7 @@
 
 - [tests/c1prime_registry/test_registry_builder.py](../../tests/c1prime_registry/test_registry_builder.py.md) (line 39, import)
 - [tests/circle_history/test_reference_cache.py](../../tests/circle_history/test_reference_cache.py.md) (line 31, import)
+- [tools/hwsd/hwsd_data.py](../hwsd/hwsd_data.py.md) (line 26, import)
 - [tools/x4_circle_history/runner.py](runner.py.md) (line 87, import)
 - [tools/x4_circle_history/runner.py](runner.py.md) (line 116, import)
 - [tools/x4_circle_history/runner.py](runner.py.md) (line 151, import)

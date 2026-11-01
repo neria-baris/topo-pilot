@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked files; 636 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked files; 671 code files (linked to their pages).
 
 ## (repo root)
 
@@ -993,6 +993,31 @@ The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked fil
 | [test_r_0187_e1_release_and_gate_files.py](files/tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) | python | 95 lines | Coordinator-written regression tests for defects D-0187-1 and D-0187-2 (API.md §27). |
 | [test_r_0192_output_cap.py](files/tests/hwsc/test_r_0192_output_cap.py.md) | python | 29 lines | Coordinator-written regression test for defect D-0192-1 (API.md §28): the meter's output cap |
 
+## tests/hwsd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 78 lines | Author A (job 0197): what was read, what was written, coverage |
+| `AUTHORSHIP_B.md` | markdown | 39 lines | Author B (job 0197): what was read, what was not, and what is covered |
+| [test_a_bounds.py](files/tests/hwsd/test_a_bounds.py.md) | python | 238 lines | Author A (job 0197): per-checkpoint bounds and F (§5.1, §5.6, §7 row 13; DRD5, S2). |
+| [test_a_evaluate.py](files/tests/hwsd/test_a_evaluate.py.md) | python | 188 lines | Author A (job 0197): evaluate, diagnostics, reading texts and the outcome precedence. |
+| [test_a_hwsd_ref.py](files/tests/hwsd/test_a_hwsd_ref.py.md) | python | 353 lines | Author A (job 0197): an independent reference reading of HWSD-DESIGN-v1 §5 (no hwsd code). |
+| [test_a_kd4.py](files/tests/hwsd/test_a_kd4.py.md) | python | 195 lines | Author A (job 0197): KD4 known-case fixtures (§6 KD4; API.md §12 plant_acts/seq_cases, §17.3). |
+| [test_a_known_bound.py](files/tests/hwsd/test_a_known_bound.py.md) | python | 225 lines | Author A (job 0197): KD6, the K4b known cases at the hwsd constants (§6 KD6; TEST_PLAN A). |
+| [test_a_learning.py](files/tests/hwsd/test_a_learning.py.md) | python | 156 lines | Author A (job 0197): the learning measures and onsets' inputs (§2.4 a, §5.2 k_L/k_P; KD5; DRD7). |
+| [test_a_onsets_order.py](files/tests/hwsd/test_a_onsets_order.py.md) | python | 273 lines | Author A (job 0197): §5.1 notation, §5.2 onsets, §5.3 ORDER (TEST_PLAN A test_a_onsets_order). |
+| [test_a_scorer.py](files/tests/hwsd/test_a_scorer.py.md) | python | 323 lines | Author A (job 0197): the per-checkpoint scorer and its registered statuses (§2.4, §2.6, §7 rows |
+| [test_a_statements.py](files/tests/hwsd/test_a_statements.py.md) | python | 235 lines | Author A (job 0197): statements D1-D6 per model and the aggregate rule (§5.4, §5.5; DRD5). |
+| [test_b_binding.py](files/tests/hwsd/test_b_binding.py.md) | python | 317 lines | Author B: the versioned binding, the audit, the never-called list, constants (§3.3; KD2, DRD3). |
+| [test_b_data.py](files/tests/hwsd/test_b_data.py.md) | python | 262 lines | Author B: blocks, streams and sequence IDs, tables, H2-D, risk, references, controls (§2.5, §4.2). |
+| [test_b_guard_search.py](files/tests/hwsd/test_b_guard_search.py.md) | python | 242 lines | Author B: blindness guard, J9 search pruning, G0d needles and declarations (§9.2, J5, J9). |
+| [test_b_records_meter.py](files/tests/hwsd/test_b_records_meter.py.md) | python | 371 lines | Author B: lineage, AUTH, H-1 records, ledger, pauses, archive, meter binding (§2.7, §7, §11). |
+| [test_b_registry_build.py](files/tests/hwsd/test_b_registry_build.py.md) | python | 330 lines | Author B: K-REG-D composition, scratch scan/check mirrors, root inventory, tables (§4.1; DRD8). |
+| [test_b_registry_r10.py](files/tests/hwsd/test_b_registry_r10.py.md) | python | 354 lines | Author B: obligations (J3, J4, J10, J11) and the R10 reader (API.md §3.4, §4; DRD8). |
+| [test_b_registry_r9.py](files/tests/hwsd/test_b_registry_r9.py.md) | python | 297 lines | Author B: R9, the stage-C layout reader, on a synthetic stage-C-like store (J1; DRD8, DRD9). |
+| [test_b_reservation.py](files/tests/hwsd/test_b_reservation.py.md) | python | 265 lines | Author B: reservations, the J8 end record, W2 attestation, stopped sampling (J8, J10 item 3). |
+| [test_b_util.py](files/tests/hwsd/test_b_util.py.md) | python | 251 lines | Author B shared helpers for tests/hwsd (job 0197). Holds no tests. |
+
 ## tests/integration/
 
 | File | Kind | Size | Purpose |
@@ -1357,6 +1382,32 @@ The generated index itself (`docs/code_index/`) is not indexed. 1030 tracked fil
 | [hwsc_registry.py](files/tools/hwsc/hwsc_registry.py.md) | python | 331 lines | HWSC exposure registry hwsc-reg-v1: K-REG1, K-REG2, REHEARSAL (API.md §4; protocol §3.3-§3.4, |
 | [hwsc_registry_build.py](files/tools/hwsc/hwsc_registry_build.py.md) | python | 171 lines | HWSC registry build and obligation record (API.md §4 `build`, `obligation`; split from |
 | [hwsc_scratch.py](files/tools/hwsc/hwsc_scratch.py.md) | python | 145 lines | HWSC R6 scratch inventory: header scan and the fail-closed check against the frozen table |
+
+## tools/hwsd/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 613 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `CONTRACT.json` | json | 3220 lines |  |
+| `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
+| `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |
+| [hwsd_bind.py](files/tools/hwsd/hwsd_bind.py.md) | python | 101 lines | HWSD versioned binding: the hwsd binding table on hwsc_bind.bound_stage_c, the dry and identity |
+| [hwsd_config.py](files/tools/hwsd/hwsd_config.py.md) | python | 256 lines | HWSD configuration: CONTRACT.json, constants, registry tables, plans, blindness guard (API.md §1). |
+| [hwsd_data.py](files/tools/hwsd/hwsd_data.py.md) | python | 397 lines | HWSD data: blocks and tables, H2-D separation, registry risk, ORACLE-D, reference persistence, |
+| [hwsd_driver.py](files/tools/hwsd/hwsd_driver.py.md) | python | 361 lines | HWSD driver: common job helpers and the jobs KD, SAMPLE, CLOSE, inventory (API.md §11, §15.1, |
+| [hwsd_dry.py](files/tools/hwsd/hwsd_dry.py.md) | python | 398 lines | hwsd synthetic dry run: helpers, DRD1, DRD4/KD4 (seq_cases, plant_acts), run_dry (API.md §12). |
+| [hwsd_dry2.py](files/tools/hwsd/hwsd_dry2.py.md) | python | 398 lines | hwsd dry-run cases DRD5, DRD7, DRD8-DRD11 (API.md §12; TEST_PLAN §4). Split from hwsd_dry by |
+| [hwsd_dry3.py](files/tools/hwsd/hwsd_dry3.py.md) | python | 399 lines | hwsd dry-run cases DRD2, DRD3, DRD6, DRD7, DRD12, DRD13, DRD14 (API.md §12; TEST_PLAN §4). |
+| [hwsd_jobs.py](files/tools/hwsd/hwsd_jobs.py.md) | python | 287 lines | HWSD jobs SCORE and SUMMARY and the CLI (API.md §11, §15.3, §15.4; split from hwsd_driver by |
+| [hwsd_known.py](files/tools/hwsd/hwsd_known.py.md) | python | 289 lines | HWSD G0d and the known cases KD0-KD6 (API.md §9; protocol §6, §9). hwsd_driver and hwsd_dry are |
+| [hwsd_known2.py](files/tools/hwsd/hwsd_known2.py.md) | python | 252 lines | HWSD known cases KD2 (binding mirrors) and KD3 (stage-C reproduction) with their helpers |
+| [hwsd_meter_bind.py](files/tools/hwsd/hwsd_meter_bind.py.md) | python | 130 lines | HWSD meter binding (API.md §13; protocol §11.3; DRD12). |
+| [hwsd_readers.py](files/tools/hwsd/hwsd_readers.py.md) | python | 305 lines | HWSD registry readers: R9 (hwsc-store layout), R10 (obligation, J11), the K4b table reader and |
+| [hwsd_records.py](files/tools/hwsd/hwsd_records.py.md) | python | 296 lines | HWSD records: lineage, AUTH/SCHED, FREEZE, S0, preflight, budget and pauses, ledger, H-1 |
+| [hwsd_registry.py](files/tools/hwsd/hwsd_registry.py.md) | python | 327 lines | HWSD K-REG-D: the scratch scan and check mirrors, the hwsd-dry type rule, inventory_d, build_d |
+| [hwsd_score.py](files/tools/hwsd/hwsd_score.py.md) | python | 393 lines | HWSD per-checkpoint scorer (API.md section 6 and section 16): learning, chart_one, arrays_one, |
+| [hwsd_statements.py](files/tools/hwsd/hwsd_statements.py.md) | python | 289 lines | hwsd_statements: notation, onsets, ORDER and statements D1-D6 (API.md section 7). |
+| [hwsd_summary.py](files/tools/hwsd/hwsd_summary.py.md) | python | 312 lines | HWSD SUMMARY: bootstraps, bounds, F, the 36-row table, outcome, report (API.md section 8). |
 
 ## tools/k4b/
 

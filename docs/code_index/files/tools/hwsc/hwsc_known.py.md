@@ -73,10 +73,14 @@
 - [tests/hwsc/test_r_0181_g0c_lineage_order.py](../../tests/hwsc/test_r_0181_g0c_lineage_order.py.md) (line 19, import)
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 18, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 19, import)
+- [tests/hwsd/test_b_guard_search.py](../../tests/hwsd/test_b_guard_search.py.md) (line 17, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 243, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 14, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 21, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 21, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 16, import)
 
 ## Top-level constants
 

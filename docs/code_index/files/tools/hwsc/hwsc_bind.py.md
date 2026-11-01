@@ -65,12 +65,16 @@
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 23, import)
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 25, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 18, import)
+- [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 21, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 14, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 21, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 14, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 13, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 15, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 18, import)
+- [tools/hwsd/hwsd_bind.py](../hwsd/hwsd_bind.py.md) (line 13, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 18, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 14, import)
 
 ## Top-level constants
 

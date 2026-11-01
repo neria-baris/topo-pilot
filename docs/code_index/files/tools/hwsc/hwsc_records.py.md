@@ -64,11 +64,15 @@
 
 ## Imported by
 
+- [tests/hwsd/test_a_learning.py](../../tests/hwsd/test_a_learning.py.md) (line 29, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 25, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry3.py](hwsc_dry3.py.md) (line 16, import)
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 23, import)
+- [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 23, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 22, import)
+- [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 17, import)
 
 ## Top-level constants
 

@@ -53,6 +53,7 @@
 - [tests/hwsc/test_r_0178_dry_store_rule.py](../../tests/hwsc/test_r_0178_dry_store_rule.py.md) (line 18, import)
 - [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 239, import)
 - [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 331, import)
+- [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 18, import)
 
 ## Top-level constants
 

@@ -46,6 +46,11 @@
 
 ## Imported by
 
+- [tests/hwsd/test_a_scorer.py](../../tests/hwsd/test_a_scorer.py.md) (line 31, import)
+- [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 94, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 27, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 22, import)
+- [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 20, import)
 - [tools/k4b/k4b_charts.py](k4b_charts.py.md) (line 130, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 283, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 19, import)

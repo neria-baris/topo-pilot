@@ -63,6 +63,8 @@
 - [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 13, import)
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 20, import)
 - [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 12, import)
+- [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 25, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 17, import)
 
 ## Top-level constants
 

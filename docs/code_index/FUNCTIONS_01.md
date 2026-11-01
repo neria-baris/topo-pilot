@@ -32,11 +32,16 @@
 | `__contains__` | method | `Records.__contains__` | [tests/hws/test_a_outcomes.py:60](../../tests/hws/test_a_outcomes.py#L60) |  |
 | `__enter__` | method | `RunControls.__enter__` | [src/topo_pilot/experiment/x5g1_controls.py:72](../../src/topo_pilot/experiment/x5g1_controls.py#L72) |  |
 | `__enter__` | method | `RunLock.__enter__` | [src/topo_pilot/experiment/x5g1t_runtime.py:145](../../src/topo_pilot/experiment/x5g1t_runtime.py#L145) |  |
+| `__enter__` | method | `_Hook.__enter__` | [tools/hwsd/hwsd_dry2.py:195](../../tools/hwsd/hwsd_dry2.py#L195) |  |
+| `__enter__` | method | `_OpenHook.__enter__` | [tools/hwsd/hwsd_dry3.py:236](../../tools/hwsd/hwsd_dry3.py#L236) |  |
 | `__exit__` | method | `RunControls.__exit__` | [src/topo_pilot/experiment/x5g1_controls.py:76](../../src/topo_pilot/experiment/x5g1_controls.py#L76) |  |
 | `__exit__` | method | `RunLock.__exit__` | [src/topo_pilot/experiment/x5g1t_runtime.py:155](../../src/topo_pilot/experiment/x5g1t_runtime.py#L155) |  |
+| `__exit__` | method | `_Hook.__exit__` | [tools/hwsd/hwsd_dry2.py:208](../../tools/hwsd/hwsd_dry2.py#L208) |  |
+| `__exit__` | method | `_OpenHook.__exit__` | [tools/hwsd/hwsd_dry3.py:252](../../tools/hwsd/hwsd_dry3.py#L252) |  |
 | `__getattr__` | method | `_DuplicatingGenerator.__getattr__` | [tests/analysis/test_x4f_erasure_family.py:195](../../tests/analysis/test_x4f_erasure_family.py#L195) |  |
 | `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_data.py:346](../../tools/hwsb/hwsb_data.py#L346) | API names that live in hwsb_registry (split by size), re-exported lazily. |
 | `__getattr__` | function | `__getattr__` | [tools/hwsb/hwsb_known.py:347](../../tools/hwsb/hwsb_known.py#L347) | kb5, kb6 and kb7 live in hwsb_kb (split by size), re-exported lazily. |
+| `__getattr__` | function | `__getattr__` | [tools/hwsd/hwsd_dry.py:55](../../tools/hwsd/hwsd_dry.py#L55) |  |
 | `__getitem__` | method | `PublicTokenDataset.__getitem__` | [src/topo_pilot/dataset/public.py:59](../../src/topo_pilot/dataset/public.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_classify.py:59](../../tests/hws/test_a_classify.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_outcomes.py:55](../../tests/hws/test_a_outcomes.py#L55) |  |
@@ -97,6 +102,7 @@
 | `__init__` | method | `ModelPredictor.__init__` | [tools/x6_stage1/x6s1_eval.py:70](../../tools/x6_stage1/x6s1_eval.py#L70) |  |
 | `__init__` | method | `MultiHorizonLM.__init__` | [src/topo_pilot/learner/multihorizon.py:47](../../src/topo_pilot/learner/multihorizon.py#L47) |  |
 | `__init__` | method | `NGramBaseline.__init__` | [src/topo_pilot/prediction/ngram.py:52](../../src/topo_pilot/prediction/ngram.py#L52) |  |
+| `__init__` | method | `OpenSpy.__init__` | [tests/hwsd/test_b_util.py:74](../../tests/hwsd/test_b_util.py#L74) |  |
 | `__init__` | method | `OraclePredictor.__init__` | [tools/x6_stage1/x6s1_eval.py:130](../../tools/x6_stage1/x6s1_eval.py#L130) |  |
 | `__init__` | method | `PersistenceComputer.__init__` | [src/topo_pilot/topology/persistence.py:160](../../src/topo_pilot/topology/persistence.py#L160) |  |
 | `__init__` | method | `Planted.__init__` | [tests/x6zc/test_x6zc_dryrun.py:82](../../tests/x6zc/test_x6zc_dryrun.py#L82) |  |
@@ -153,8 +159,10 @@
 | `__init__` | method | `_FakePrecision.__init__` | [tests/c2_nd/test_a_inference.py:296](../../tests/c2_nd/test_a_inference.py#L296) |  |
 | `__init__` | method | `_FixedDecoder.__init__` | [tests/c1prime/test_b_gates.py:202](../../tests/c1prime/test_b_gates.py#L202) |  |
 | `__init__` | method | `_Forbidden.__init__` | [tools/hwsc/hwsc_bind.py:169](../../tools/hwsc/hwsc_bind.py#L169) |  |
+| `__init__` | method | `_Hook.__init__` | [tools/hwsd/hwsd_dry2.py:192](../../tools/hwsd/hwsd_dry2.py#L192) |  |
 | `__init__` | method | `_Memo.__init__` | [tools/x6zc/x6zc_stage_a.py:230](../../tools/x6zc/x6zc_stage_a.py#L230) |  |
 | `__init__` | method | `_Obs.__init__` | [tests/hwsb/test_r_0170_kb2_status.py:28](../../tests/hwsb/test_r_0170_kb2_status.py#L28) |  |
+| `__init__` | method | `_OpenHook.__init__` | [tools/hwsd/hwsd_dry3.py:233](../../tools/hwsd/hwsd_dry3.py#L233) |  |
 | `__init__` | method | `_Policy.__init__` | [tests/c2_readout/test_b_patch.py:37](../../tests/c2_readout/test_b_patch.py#L37) |  |
 | `__init__` | method | `_RecGen.__init__` | [tests/x6_stage1/test_b_train_chain.py:122](../../tests/x6_stage1/test_b_train_chain.py#L122) |  |
 | `__init__` | method | `_RecGen.__init__` | [tools/x6_stage1/x6s1_run.py:413](../../tools/x6_stage1/x6s1_run.py#L413) |  |
@@ -166,6 +174,7 @@
 | `__init__` | method | `_Subst.__init__` | [tools/code_index/pathval.py:50](../../tools/code_index/pathval.py#L50) |  |
 | `__len__` | method | `PublicTokenDataset.__len__` | [src/topo_pilot/dataset/public.py:56](../../src/topo_pilot/dataset/public.py#L56) |  |
 | `__missing__` | method | `NA.__missing__` | [tests/hwsb/test_a_outcomes.py:74](../../tests/hwsb/test_a_outcomes.py#L74) |  |
+| `__missing__` | method | `_Default.__missing__` | [tools/hwsd/hwsd_summary.py:172](../../tools/hwsd/hwsd_summary.py#L172) |  |
 | `__missing__` | method | `_Fill.__missing__` | [tools/hws/hws_select.py:260](../../tools/hws/hws_select.py#L260) |  |
 | `__missing__` | method | `_Fill.__missing__` | [tools/hwsc/hwsc_outcome.py:117](../../tools/hwsc/hwsc_outcome.py#L117) |  |
 | `__missing__` | method | `_NA.__missing__` | [tests/hwsc/test_a_outcomes.py:203](../../tests/hwsc/test_a_outcomes.py#L203) |  |
@@ -179,10 +188,14 @@
 | `_ab` | function | `_ab` | [tools/d2a/d2a_targets.py:115](../../tools/d2a/d2a_targets.py#L115) |  |
 | `_abs` | function | `_abs` | [tools/c2_nd/nd_stage_base.py:123](../../tools/c2_nd/nd_stage_base.py#L123) |  |
 | `_abs` | function | `_abs` | [tools/c2_readout/c2_stage_base.py:41](../../tools/c2_readout/c2_stage_base.py#L41) |  |
+| `_acc` | function | `_acc` | [tests/hwsd/test_b_records_meter.py:146](../../tests/hwsd/test_b_records_meter.py#L146) |  |
 | `_accept` | function | `_accept` | [tools/hws/hws_driver.py:261](../../tools/hws/hws_driver.py#L261) |  |
+| `_accept_sample_ok` | function | `_accept_sample_ok` | [tools/hwsd/hwsd_jobs.py:41](../../tools/hwsd/hwsd_jobs.py#L41) |  |
+| `_accept_scores_ok` | function | `_accept_scores_ok` | [tools/hwsd/hwsd_jobs.py:148](../../tools/hwsd/hwsd_jobs.py#L148) |  |
 | `_act_space` | function | `_act_space` | [src/topo_pilot/experiment/report_e2.py:68](../../src/topo_pilot/experiment/report_e2.py#L68) | The activation space name (``act:<primary hook>``) used by the analysis job. |
 | `_action` | function | `_action` | [tests/experiment/test_x5g1t_runtime.py:40](../../tests/experiment/test_x5g1t_runtime.py#L40) |  |
 | `_activations` | function | `_activations` | [tests/circle_history/test_builder_e2e.py:69](../../tests/circle_history/test_builder_e2e.py#L69) |  |
+| `_active` | function | `_active` | [tests/hwsd/test_b_reservation.py:26](../../tests/hwsd/test_b_reservation.py#L26) |  |
 | `_acts` | function | `_acts` | [tests/experiment/test_s7.py:259](../../tests/experiment/test_s7.py#L259) |  |
 | `_acts` | function | `_acts` | [tools/hwsb/hwsb_stages.py:71](../../tools/hwsb/hwsb_stages.py#L71) |  |
 | `_acts` | function | `_acts` | [tools/k4b/k4b_driver.py:273](../../tools/k4b/k4b_driver.py#L273) |  |
@@ -208,6 +221,7 @@
 | `_append` | function | `_append` | [tools/x6zc/x6zc_store.py:51](../../tools/x6zc/x6zc_store.py#L51) |  |
 | `_applies` | function | `_applies` | [tools/c2_nd/nd_stage_base.py:225](../../tools/c2_nd/nd_stage_base.py#L225) |  |
 | `_applies` | function | `_applies` | [tools/c2_readout/c2_decide.py:205](../../tools/c2_readout/c2_decide.py#L205) |  |
+| `_archive_interrupted` | function | `_archive_interrupted` | [tools/hwsd/hwsd_jobs.py:49](../../tools/hwsd/hwsd_jobs.py#L49) |  |
 | `_arg` | function | `_arg` | [tools/x6_stage1/x6s1_stats.py:106](../../tools/x6_stage1/x6s1_stats.py#L106) |  |
 | `_args` | function | `_args` | [tests/experiment/test_x4.py:157](../../tests/experiment/test_x4.py#L157) |  |
 | `_args` | function | `_args` | [tools/code_index/pathval.py:75](../../tools/code_index/pathval.py#L75) | Argument sequences (each a list of alternative-lists); starred literals are expanded. |
@@ -220,9 +234,11 @@
 | `_arr_sha` | function | `_arr_sha` | [tools/hws/hws_records.py:318](../../tools/hws/hws_records.py#L318) |  |
 | `_array_files` | function | `_array_files` | [tools/c2_nd/nd_registry.py:193](../../tools/c2_nd/nd_registry.py#L193) |  |
 | `_arrays` | function | `_arrays` | [tests/c2_readout/test_a_scope.py:105](../../tests/c2_readout/test_a_scope.py#L105) |  |
+| `_arrays` | function | `_arrays` | [tests/hwsd/test_a_bounds.py:89](../../tests/hwsd/test_a_bounds.py#L89) |  |
 | `_arrays` | function | `_arrays` | [tools/x4_circle_history/precision.py:12](../../tools/x4_circle_history/precision.py#L12) |  |
 | `_arrays` | function | `_arrays` | [tools/x4_circle_history/process_law.py:182](../../tools/x4_circle_history/process_law.py#L182) |  |
 | `_art_roots` | function | `_art_roots` | [tools/hwsb/hwsb_registry.py:107](../../tools/hwsb/hwsb_registry.py#L107) |  |
+| `_art_type_ok` | function | `_art_type_ok` | [tools/hwsd/hwsd_readers.py:92](../../tools/hwsd/hwsd_readers.py#L92) |  |
 | `_artifacts` | function | `_artifacts` | [tools/hws/hws_known.py:236](../../tools/hws/hws_known.py#L236) |  |
 | `_as` | method | `Sym._as` | [tools/c1prime/c1_bounds.py:122](../../tools/c1prime/c1_bounds.py#L122) |  |
 | `_as2d` | function | `_as2d` | [src/topo_pilot/prediction/ridge.py:15](../../src/topo_pilot/prediction/ridge.py#L15) |  |
@@ -254,6 +270,7 @@
 | `_audit` | function | `_audit` | [tests/hwsc/test_b_guard_meter.py:43](../../tests/hwsc/test_b_guard_meter.py#L43) |  |
 | `_audit` | function | `_audit` | [tests/hwsc/test_b_registry.py:43](../../tests/hwsc/test_b_registry.py#L43) |  |
 | `_audit` | function | `_audit` | [tests/hwsc/test_b_registry2.py:37](../../tests/hwsc/test_b_registry2.py#L37) |  |
+| `_audit` | function | `_audit` | [tools/hwsd/hwsd_known.py:287](../../tools/hwsd/hwsd_known.py#L287) |  |
 | `_audit_gate` | function | `_audit_gate` | [tools/hwsc/hwsc_driver.py:46](../../tools/hwsc/hwsc_driver.py#L46) |  |
 | `_audit_identity` | function | `_audit_identity` | [tools/x4_oracle_profile/controls.py:82](../../tools/x4_oracle_profile/controls.py#L82) | Audit mode: job 0014 must be terminal; coordinator hold still holds; no usage latch. |
 | `_audit_row` | function | `_audit_row` | [tools/x6zc/x6zc_census.py:29](../../tools/x6zc/x6zc_census.py#L29) |  |
@@ -267,6 +284,7 @@
 | `_b` | function | `_b` | [tools/hws/hws_dry.py:27](../../tools/hws/hws_dry.py#L27) |  |
 | `_b32` | function | `_b32` | [tools/c1prime/c1_driver_late.py:49](../../tools/c1prime/c1_driver_late.py#L49) |  |
 | `_b4` | function | `_b4` | [tests/circle_history/test_scores_precision_gates.py:239](../../tests/circle_history/test_scores_precision_gates.py#L239) |  |
+| `_b4` | function | `_b4` | [tools/hwsd/hwsd_driver.py:234](../../tools/hwsd/hwsd_driver.py#L234) |  |
 | `_b4_column` | function | `_b4_column` | [tests/circle_history/test_scores_precision_gates.py:233](../../tests/circle_history/test_scores_precision_gates.py#L233) | 30 draws whose 2nd order statistic (the inverted_cdf 0.05 quantile) is ``second``. |
 | `_bad` | function | `_bad` | [src/topo_pilot/experiment/x5g1t_lineage.py:23](../../src/topo_pilot/experiment/x5g1t_lineage.py#L23) |  |
 | `_bad_checkpoints` | function | `_bad_checkpoints` | [tests/learner/test_multihorizon.py:346](../../tests/learner/test_multihorizon.py#L346) |  |
@@ -292,6 +310,7 @@
 | `_beta` | function | `_beta` | [tests/circle_history/test_error_bound.py:48](../../tests/circle_history/test_error_bound.py#L48) |  |
 | `_bf` | function | `_bf` | [tools/x6_stage0/x6_run.py:53](../../tools/x6_stage0/x6_run.py#L53) |  |
 | `_bin_tokens` | function | `_bin_tokens` | [tests/d2a/test_a_world.py:174](../../tests/d2a/test_a_world.py#L174) |  |
+| `_bind_obs` | function | `_bind_obs` | [tests/hwsd/test_b_registry_r9.py:87](../../tests/hwsd/test_b_registry_r9.py#L87) | dc.read_obs_inventory bound to the fixture's sha (TEST_PLAN B r9). |
 | `_bins` | function | `_bins` | [tests/hws/test_a_stats.py:183](../../tests/hws/test_a_stats.py#L183) |  |
 | `_blob` | function | `_blob` | [tests/learner/test_multihorizon.py:324](../../tests/learner/test_multihorizon.py#L324) |  |
 | `_blob` | function | `_blob` | [tools/c2_readout/c2_driver.py:219](../../tools/c2_readout/c2_driver.py#L219) |  |
@@ -314,6 +333,7 @@
 | `_Buf` | class | `_Buf` | [tests/c2_nd/test_b_decoy_model.py:323](../../tests/c2_nd/test_b_decoy_model.py#L323) |  |
 | `_build` | method | `ModelPredictor._build` | [tools/x6_stage1/x6s1_eval.py:86](../../tools/x6_stage1/x6s1_eval.py#L86) |  |
 | `_build` | function | `_build` | [tests/hwsc/test_b_registry2.py:253](../../tests/hwsc/test_b_registry2.py#L253) |  |
+| `_build` | function | `_build` | [tests/hwsd/test_b_registry_r9.py:30](../../tests/hwsd/test_b_registry_r9.py#L30) |  |
 | `_build` | function | `_build` | [tests/process/test_overlap.py:23](../../tests/process/test_overlap.py#L23) |  |
 | `_build` | function | `_build` | [tests/process/test_transition.py:18](../../tests/process/test_transition.py#L18) |  |
 | `_build_all` | method | `S2Stage._build_all` | [src/topo_pilot/experiment/s2.py:205](../../src/topo_pilot/experiment/s2.py#L205) |  |
@@ -325,6 +345,7 @@
 | `_burn` | function | `_burn` | [tests/experiment/test_x5g1_controls.py:31](../../tests/experiment/test_x5g1_controls.py#L31) | Spend at least ``seconds`` of process CPU time. |
 | `_burn` | function | `_burn` | [tests/experiment/test_x5g1_safety.py:39](../../tests/experiment/test_x5g1_safety.py#L39) |  |
 | `_by_name` | function | `_by_name` | [tests/hwsc/test_b_binding.py:49](../../tests/hwsc/test_b_binding.py#L49) |  |
+| `_by_order` | function | `_by_order` | [tools/hwsd/hwsd_statements.py:153](../../tools/hwsd/hwsd_statements.py#L153) |  |
 | `_bytes` | function | `_bytes` | [tools/x6_stage1/x6s1_stage_post.py:47](../../tools/x6_stage1/x6s1_stage_post.py#L47) |  |
 | `_C` | function | `_C` | [tests/c2_readout/test_a_partition.py:46](../../tests/c2_readout/test_a_partition.py#L46) |  |
 | `_c0` | function | `_c0` | [tests/c1prime/test_b_cert_oracle.py:68](../../tests/c1prime/test_b_cert_oracle.py#L68) | The C0 expressions of §15.3.2 in Python floats (IEEE binary64, no FMA). |
@@ -345,10 +366,12 @@
 | `_callback_run` | function | `_callback_run` | [tests/experiment/test_x5g1t_training.py:117](../../tests/experiment/test_x5g1t_training.py#L117) |  |
 | `_cancellation` | function | `_cancellation` | [tests/c2_readout/test_b_screens.py:253](../../tests/c2_readout/test_b_screens.py#L253) |  |
 | `_canon` | function | `_canon` | [tests/c2_readout/test_a_oracle.py:76](../../tests/c2_readout/test_a_oracle.py#L76) | Canonical histories whose prefix symbols lie in symbol rows rows[0]..rows[1]. |
+| `_canon` | function | `_canon` | [tools/hwsd/hwsd_known2.py:37](../../tools/hwsd/hwsd_known2.py#L37) |  |
 | `_canon_file` | function | `_canon_file` | [tests/hwsc/test_b_registry.py:88](../../tests/hwsc/test_b_registry.py#L88) |  |
 | `_canonical` | function | `_canonical` | [tests/circle_history/test_adapter.py:46](../../tests/circle_history/test_adapter.py#L46) |  |
 | `_canonical_tokens` | function | `_canonical_tokens` | [tests/circle_history/test_builder_e2e.py:64](../../tests/circle_history/test_builder_e2e.py#L64) |  |
 | `_cap` | function | `_cap` | [tools/code_index/pathval.py:35](../../tools/code_index/pathval.py#L35) |  |
+| `_case_ok` | function | `_case_ok` | [tools/hwsd/hwsd_dry.py:166](../../tools/hwsd/hwsd_dry.py#L166) |  |
 | `_cases` | function | `_cases` | [tools/x6_stage0/x6_exact.py:290](../../tools/x6_stage0/x6_exact.py#L290) |  |
 | `_cat` | function | `_cat` | [tests/c2_nd/test_a_family.py:56](../../tests/c2_nd/test_a_family.py#L56) | §2.3 table (N-R, N-M): returns the one declared category, else INC(/NUMERICAL). |
 | `_cat_events` | function | `_cat_events` | [tests/c2_readout/test_a_inference.py:66](../../tests/c2_readout/test_a_inference.py#L66) |  |
@@ -386,6 +409,7 @@
 | `_check` | function | `_check` | [tests/circle_history/test_reference_binding.py:68](../../tests/circle_history/test_reference_binding.py#L68) |  |
 | `_check` | function | `_check` | [tests/hwsc/test_b_registry2.py:122](../../tests/hwsc/test_b_registry2.py#L122) |  |
 | `_check` | function | `_check` | [tests/hwsc/test_r_0178_dry_store_rule.py:61](../../tests/hwsc/test_r_0178_dry_store_rule.py#L61) |  |
+| `_check` | function | `_check` | [tests/hwsd/test_b_registry_build.py:147](../../tests/hwsd/test_b_registry_build.py#L147) |  |
 | `_check` | function | `_check` | [tools/c1prime/c1_driver_fresh.py:40](../../tools/c1prime/c1_driver_fresh.py#L40) |  |
 | `_check` | function | `_check` | [tools/x4_oracle_profile/winjob.py:103](../../tools/x4_oracle_profile/winjob.py#L103) |  |
 | `_check_alignment` | function | `_check_alignment` | [tools/x4_circle_history/runner.py:169](../../tools/x4_circle_history/runner.py#L169) | Saved oracle IDs must equal the reloaded rows EXACTLY (Invalid -> FAIL_TECHNICAL). |
@@ -395,7 +419,9 @@
 | `_check_config` | function | `_check_config` | [src/topo_pilot/process/emission.py:77](../../src/topo_pilot/process/emission.py#L77) |  |
 | `_check_dist` | function | `_check_dist` | [src/topo_pilot/prediction/metrics.py:21](../../src/topo_pilot/prediction/metrics.py#L21) |  |
 | `_check_distributions` | function | `_check_distributions` | [src/topo_pilot/topology/metrics.py:31](../../src/topo_pilot/topology/metrics.py#L31) |  |
+| `_check_entry` | function | `_check_entry` | [tools/hwsd/hwsd_readers.py:197](../../tools/hwsd/hwsd_readers.py#L197) |  |
 | `_check_grid` | function | `_check_grid` | [src/topo_pilot/analysis/x5_endpoint.py:64](../../src/topo_pilot/analysis/x5_endpoint.py#L64) |  |
+| `_check_header` | function | `_check_header` | [tools/hwsd/hwsd_readers.py:178](../../tools/hwsd/hwsd_readers.py#L178) |  |
 | `_check_identifications` | function | `_check_identifications` | [src/topo_pilot/world/lattice.py:26](../../src/topo_pilot/world/lattice.py#L26) |  |
 | `_check_key` | function | `_check_key` | [src/topo_pilot/contracts/backends.py:13](../../src/topo_pilot/contracts/backends.py#L13) |  |
 | `_check_landmarks` | function | `_check_landmarks` | [tools/x4_circle_history/chart.py:112](../../tools/x4_circle_history/chart.py#L112) |  |
@@ -407,9 +433,11 @@
 | `_check_requirements` | function | `_check_requirements` | [src/topo_pilot/experiment/stages.py:135](../../src/topo_pilot/experiment/stages.py#L135) | Raise ``GATE_FAILED`` unless every gate of every required stage passed (or was waived). |
 | `_check_role` | function | `_check_role` | [tools/hwsb/hwsb_data.py:146](../../tools/hwsb/hwsb_data.py#L146) |  |
 | `_check_row` | function | `_check_row` | [tools/hwsc/hwsc_scratch.py:95](../../tools/hwsc/hwsc_scratch.py#L95) |  |
+| `_check_row_d` | function | `_check_row_d` | [tools/hwsd/hwsd_registry.py:144](../../tools/hwsd/hwsd_registry.py#L144) |  |
 | `_check_shapes` | function | `_check_shapes` | [src/topo_pilot/experiment/x5g1t_config.py:114](../../src/topo_pilot/experiment/x5g1t_config.py#L114) |  |
 | `_check_shapes` | function | `_check_shapes` | [tests/oracle_profile/independent_reference.py:49](../../tests/oracle_profile/independent_reference.py#L49) | Return (S, V) after checking T [S, S], E [S, V], pi [S]. |
 | `_check_version` | method | `ArtifactStore._check_version` | [src/topo_pilot/contracts/store.py:180](../../src/topo_pilot/contracts/store.py#L180) |  |
+| `_checked` | function | `_checked` | [tools/hwsd/hwsd_summary.py:33](../../tools/hwsd/hwsd_summary.py#L33) |  |
 | `_checked` | function | `_checked` | [tools/x6zc/x6zc_stage_a.py:47](../../tools/x6zc/x6zc_stage_a.py#L47) |  |
 | `_checked_histories` | function | `_checked_histories` | [tools/x4_circle_history/error_bound.py:225](../../tools/x4_circle_history/error_bound.py#L225) |  |
 | `_checked_k` | function | `_checked_k` | [tools/x4_oracle_profile/oracle_profile.py:120](../../tools/x4_oracle_profile/oracle_profile.py#L120) |  |
@@ -435,6 +463,7 @@
 | `_ckstore` | function | `_ckstore` | [tests/experiment/test_x5g1t_checkpoint_checks.py:50](../../tests/experiment/test_x5g1t_checkpoint_checks.py#L50) |  |
 | `_clamp` | function | `_clamp` | [tests/circle_history/test_process_law.py:66](../../tests/circle_history/test_process_law.py#L66) |  |
 | `_classify` | function | `_classify` | [tests/d2a/test_b_resource.py:332](../../tests/d2a/test_b_resource.py#L332) |  |
+| `_classify` | function | `_classify` | [tests/hwsd/test_b_guard_search.py:224](../../tests/hwsd/test_b_guard_search.py#L224) |  |
 | `_classify` | function | `_classify` | [tools/hwsc/hwsc_scratch.py:26](../../tools/hwsc/hwsc_scratch.py#L26) |  |
 | `_clean` | function | `_clean` | [tools/x6_stage0/x6_run.py:56](../../tools/x6_stage0/x6_run.py#L56) |  |
 | `_clean` | function | `_clean` | [tools/x6_stage1/x6s1_eval.py:426](../../tools/x6_stage1/x6s1_eval.py#L426) |  |
@@ -449,6 +478,7 @@
 | `_close` | function | `_close` | [tools/c2_nd/nd_registry.py:54](../../tools/c2_nd/nd_registry.py#L54) |  |
 | `_close` | function | `_close` | [tools/hwsc/hwsc_registry.py:38](../../tools/hwsc/hwsc_registry.py#L38) |  |
 | `_close` | function | `_close` | [tools/x6_stage0/x6_exact.py:297](../../tools/x6_stage0/x6_exact.py#L297) |  |
+| `_close_res` | function | `_close_res` | [tools/hwsd/hwsd_driver.py:173](../../tools/hwsd/hwsd_driver.py#L173) | J8: the obligation right after the four tables, then the reservation end (new code). |
 | `_closed` | function | `_closed` | [tests/c2_readout/test_b_patch.py:200](../../tests/c2_readout/test_b_patch.py#L200) |  |
 | `_closed_forms` | function | `_closed_forms` | [tools/c2_readout/c2_oracle.py:226](../../tools/c2_readout/c2_oracle.py#L226) | The x pair only (T3): b32(H+-) = (rho_+-1 b31(H) T) * E[:, w32]; H^Y has no closed form. |
 | `_closure` | function | `_closure` | [src/topo_pilot/contracts/_bundle.py:32](../../src/topo_pilot/contracts/_bundle.py#L32) | Ids in dependency order (parents first). |
@@ -492,6 +522,7 @@
 | `_controls` | function | `_controls` | [tests/circle_history/test_controls.py:73](../../tests/circle_history/test_controls.py#L73) |  |
 | `_controls` | function | `_controls` | [tools/x4_circle_history/precision_stage.py:71](../../tools/x4_circle_history/precision_stage.py#L71) |  |
 | `_controls_float` | function | `_controls_float` | [tools/x6_stage0/x6_run.py:214](../../tools/x6_stage0/x6_run.py#L214) | NOCUE (NA vs TRIV under E_nc, uniform fibre, base walk) and TOKPERM maximum errors. |
+| `_controls_for` | function | `_controls_for` | [tools/hwsd/hwsd_summary.py:245](../../tools/hwsd/hwsd_summary.py#L245) |  |
 | `_coord_ok` | function | `_coord_ok` | [tools/c2_nd/nd_stage_base.py:162](../../tools/c2_nd/nd_stage_base.py#L162) |  |
 | `_copy_case` | function | `_copy_case` | [tests/c2_nd/test_a_known.py:262](../../tests/c2_nd/test_a_known.py#L262) |  |
 | `_copy_store` | function | `_copy_store` | [tests/circle_history/test_builder_v24_stages.py:84](../../tests/circle_history/test_builder_v24_stages.py#L84) |  |
@@ -520,7 +551,9 @@
 | `_D1MobiusBuilder` | class | `_D1MobiusBuilder` | [tools/d1_seam/d1_seam.py:73](../../tools/d1_seam/d1_seam.py#L73) |  |
 | `_d2` | function | `_d2` | [tests/circle_history/test_process_law.py:156](../../tests/circle_history/test_process_law.py#L156) |  |
 | `_d2a_reader` | function | `_d2a_reader` | [tools/k4b/k4b_registry.py:187](../../tools/k4b/k4b_registry.py#L187) | A permitted pool's raw tokens[:, :32] (uint8, no canonicalisation). |
+| `_d34` | function | `_d34` | [tests/hwsd/test_a_hwsd_ref.py:203](../../tests/hwsd/test_a_hwsd_ref.py#L203) |  |
 | `_d_alive` | function | `_d_alive` | [tools/c2_nd/nd_stage_val.py:92](../../tools/c2_nd/nd_stage_val.py#L92) |  |
+| `_d_store` | function | `_d_store` | [tests/hwsd/test_b_registry_r10.py:45](../../tests/hwsd/test_b_registry_r10.py#L45) |  |
 | `_data` | function | `_data` | [tests/experiment/test_x4f_probe.py:45](../../tests/experiment/test_x4f_probe.py#L45) |  |
 | `_data_files` | function | `_data_files` | [tests/experiment/test_x5g1t_export_checks.py:64](../../tests/experiment/test_x5g1t_export_checks.py#L64) |  |
 | `_dataset` | function | `_dataset` | [src/topo_pilot/experiment/x5g1_techbench.py:54](../../src/topo_pilot/experiment/x5g1_techbench.py#L54) |  |
@@ -538,6 +571,7 @@
 | `_deck_elements` | function | `_deck_elements` | [src/topo_pilot/world/metrics.py:56](../../src/topo_pilot/world/metrics.py#L56) | All products ``g_1^{m_1} ... g_r^{m_r}``, ``m_i in {-1, 0, 1}`` (3^r copies). |
 | `_deco` | function | `_deco` | [tools/code_index/render_pages.py:98](../../tools/code_index/render_pages.py#L98) |  |
 | `_dedup_given_D` | function | `_dedup_given_D` | [src/topo_pilot/analysis/pointset.py:63](../../src/topo_pilot/analysis/pointset.py#L63) | Merge points at distance <= 1e-12 in a given D (first occurrence kept). |
+| `_Default` | class | `_Default` | [tools/hwsd/hwsd_summary.py:171](../../tools/hwsd/hwsd_summary.py#L171) |  |
 | `_default_sources` | function | `_default_sources` | [tools/hwsc/hwsc_registry_build.py:34](../../tools/hwsc/hwsc_registry_build.py#L34) |  |
 | `_defect` | function | `_defect` | [tests/c2_readout/test_b_patch.py:234](../../tests/c2_readout/test_b_patch.py#L234) |  |
 | `_defined` | function | `_defined` | [tools/x6_stage1/x6s1_decide.py:102](../../tools/x6_stage1/x6s1_decide.py#L102) |  |
@@ -587,6 +621,7 @@
 | `_draw_matrix` | function | `_draw_matrix` | [tools/x4_circle_history/precision.py:62](../../tools/x4_circle_history/precision.py#L62) |  |
 | `_draw_spy` | function | `_draw_spy` | [tests/experiment/test_x5g1t_integration.py:227](../../tests/experiment/test_x5g1t_integration.py#L227) |  |
 | `_draws` | function | `_draws` | [tests/hwsc/test_b_streams.py:42](../../tests/hwsc/test_b_streams.py#L42) |  |
+| `_draws` | function | `_draws` | [tests/hwsd/test_b_data.py:38](../../tests/hwsd/test_b_data.py#L38) |  |
 | `_draws` | function | `_draws` | [tools/x6_stage1/x6s1_stage_post.py:303](../../tools/x6_stage1/x6s1_stage_post.py#L303) |  |
 | `_drop` | function | `_drop` | [tests/c1prime/test_a_release_meter.py:124](../../tests/c1prime/test_a_release_meter.py#L124) |  |
 | `_drop` | function | `_drop` | [tests/experiment/test_x5g1t_usage.py:154](../../tests/experiment/test_x5g1t_usage.py#L154) |  |
@@ -596,6 +631,7 @@
 | `_dry_file` | function | `_dry_file` | [tools/hwsc/hwsc_registry.py:237](../../tools/hwsc/hwsc_registry.py#L237) |  |
 | `_dry_paths` | function | `_dry_paths` | [tools/hwsc/hwsc_registry.py:149](../../tools/hwsc/hwsc_registry.py#L149) |  |
 | `_dry_store` | function | `_dry_store` | [tests/hwsc/test_r_0178_dry_store_rule.py:31](../../tests/hwsc/test_r_0178_dry_store_rule.py#L31) |  |
+| `_dry_store` | function | `_dry_store` | [tests/hwsd/test_b_registry_build.py:104](../../tests/hwsd/test_b_registry_build.py#L104) |  |
 | `_ds` | function | `_ds` | [tests/learner/test_multihorizon.py:67](../../tests/learner/test_multihorizon.py#L67) |  |
 | `_ds` | function | `_ds` | [tests/x6_stage1/test_b_train_chain.py:59](../../tests/x6_stage1/test_b_train_chain.py#L59) |  |
 | `_dsqrt` | function | `_dsqrt` | [tests/c2_readout/test_a_gls.py:73](../../tests/c2_readout/test_a_gls.py#L73) |  |
@@ -634,6 +670,7 @@
 | `_encode` | function | `_encode` | [tools/hwsc/hwsc_bind.py:99](../../tools/hwsc/hwsc_bind.py#L99) |  |
 | `_encode_files` | method | `ArtifactStore._encode_files` | [src/topo_pilot/contracts/store.py:126](../../src/topo_pilot/contracts/store.py#L126) |  |
 | `_encs` | function | `_encs` | [tools/x6_stage0/x6_dp.py:337](../../tools/x6_stage0/x6_dp.py#L337) |  |
+| `_end_record` | function | `_end_record` | [tests/hwsd/test_b_reservation.py:33](../../tests/hwsd/test_b_reservation.py#L33) |  |
 | `_endpoint` | function | `_endpoint` | [tests/c1prime/test_b_cert_guards.py:117](../../tests/c1prime/test_b_cert_guards.py#L117) |  |
 | `_endpoint` | function | `_endpoint` | [tests/hwsc/test_b_records.py:291](../../tests/hwsc/test_b_records.py#L291) |  |
 | `_ent` | function | `_ent` | [tools/x6_stage0/x6_exact.py:295](../../tools/x6_stage0/x6_exact.py#L295) |  |
@@ -644,6 +681,7 @@
 | `_entropy_rows` | function | `_entropy_rows` | [src/topo_pilot/topology/metrics.py:105](../../src/topo_pilot/topology/metrics.py#L105) |  |
 | `_entry` | function | `_entry` | [tools/c2_readout/c2_registry.py:237](../../tools/c2_readout/c2_registry.py#L237) |  |
 | `_entry` | function | `_entry` | [tools/x6_stage1/x6s1_ingest.py:81](../../tools/x6_stage1/x6s1_ingest.py#L81) |  |
+| `_enumerate` | function | `_enumerate` | [tests/hwsd/test_a_known_bound.py:61](../../tests/hwsd/test_a_known_bound.py#L61) |  |
 | `_environment` | function | `_environment` | [tests/learner/test_trainer_golden.py:81](../../tests/learner/test_trainer_golden.py#L81) |  |
 | `_envs` | function | `_envs` | [tools/x6_stage1/x6s1_stage_post.py:90](../../tools/x6_stage1/x6s1_stage_post.py#L90) |  |
 | `_eps_d` | function | `_eps_d` | [tools/c1prime/c1_bounds.py:35](../../tools/c1prime/c1_bounds.py#L35) |  |
@@ -654,6 +692,7 @@
 | `_eq` | function | `_eq` | [tools/c2_readout/c2_driver.py:144](../../tools/c2_readout/c2_driver.py#L144) |  |
 | `_equidistant_chart` | function | `_equidistant_chart` | [tests/circle_history/test_builder_v25.py:243](../../tests/circle_history/test_builder_v25.py#L243) |  |
 | `_ev` | function | `_ev` | [tests/x6zc/test_x6zc_dryrun.py:145](../../tests/x6zc/test_x6zc_dryrun.py#L145) |  |
+| `_ev` | function | `_ev` | [tools/hwsd/hwsd_dry2.py:62](../../tools/hwsd/hwsd_dry2.py#L62) |  |
 | `_ev` | function | `_ev` | [tools/x6zc/x6zc_dry.py:70](../../tools/x6zc/x6zc_dry.py#L70) |  |
 | `_ev_base` | function | `_ev_base` | [tools/x6zc/x6zc_stage_bc.py:150](../../tools/x6zc/x6zc_stage_bc.py#L150) |  |
 | `_evaluation_rows` | function | `_evaluation_rows` | [tools/x4_circle_history/precision_stage.py:27](../../tools/x4_circle_history/precision_stage.py#L27) |  |
@@ -675,15 +714,18 @@
 | `_exact_priors` | function | `_exact_priors` | [tests/d2a/test_a_targets.py:229](../../tests/d2a/test_a_targets.py#L229) |  |
 | `_exact_proj` | function | `_exact_proj` | [tests/c2_readout/test_a_gls.py:82](../../tests/c2_readout/test_a_gls.py#L82) |  |
 | `_exact_q` | function | `_exact_q` | [tests/c1prime/test_b_cert_bounds.py:89](../../tests/c1prime/test_b_cert_bounds.py#L89) |  |
+| `_exc_status` | function | `_exc_status` | [tools/hwsd/hwsd_score.py:101](../../tools/hwsd/hwsd_score.py#L101) |  |
 | `_excl` | function | `_excl` | [tools/x6_stage1/x6s1_eval.py:414](../../tools/x6_stage1/x6s1_eval.py#L414) |  |
 | `_exec` | method | `SSHExecutor._exec` | [src/topo_pilot/executors/ssh.py:94](../../src/topo_pilot/executors/ssh.py#L94) |  |
 | `_exec_bootstrap` | function | `_exec_bootstrap` | [tests/x6_stage1/test_b_nb_s0_ops.py:162](../../tests/x6_stage1/test_b_nb_s0_ops.py#L162) |  |
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity.py:98](../../tests/experiment/test_x5g1t_identity.py#L98) |  |
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity_eval.py:60](../../tests/experiment/test_x5g1t_identity_eval.py#L60) |  |
 | `_exit` | function | `_exit` | [tools/hwsc/hwsc_jobs.py:140](../../tools/hwsc/hwsc_jobs.py#L140) |  |
+| `_exit` | function | `_exit` | [tools/hwsd/hwsd_jobs.py:211](../../tools/hwsd/hwsd_jobs.py#L211) |  |
 | `_expect_m` | function | `_expect_m` | [tests/c2_readout/test_a_inference.py:164](../../tests/c2_readout/test_a_inference.py#L164) |  |
 | `_expect_r` | function | `_expect_r` | [tests/c2_readout/test_a_inference.py:78](../../tests/c2_readout/test_a_inference.py#L78) |  |
 | `_expect_score` | function | `_expect_score` | [tests/circle_history/test_scores_precision.py:187](../../tests/circle_history/test_scores_precision.py#L187) | Exact E[g(suffix_k) . (m_L - m_k)] over every history of length L_ENUM. |
+| `_expected_class` | function | `_expected_class` | [tests/hwsd/test_b_registry_r10.py:61](../../tests/hwsd/test_b_registry_r10.py#L61) |  |
 | `_expected_config` | function | `_expected_config` | [tests/experiment/test_x5g1t_identity.py:120](../../tests/experiment/test_x5g1t_identity.py#L120) | §A, written out literally. |
 | `_expected_edges` | function | `_expected_edges` | [tools/x4_oracle_profile/inputs.py:83](../../tools/x4_oracle_profile/inputs.py#L83) |  |
 | `_expected_hy` | function | `_expected_hy` | [tests/c2_readout/test_b_registry.py:86](../../tests/c2_readout/test_b_registry.py#L86) |  |
@@ -755,12 +797,14 @@
 | `_feed` | function | `_feed` | [tools/x6_stage1/x6s1_registry.py:374](../../tools/x6_stage1/x6s1_registry.py#L374) |  |
 | `_fields` | function | `_fields` | [tests/k4b/test_a_lemma_t.py:131](../../tests/k4b/test_a_lemma_t.py#L131) | Scores f(h, r): 1-Lipschitz in r (Euclidean) and \|f(h, r)\| <= \|r\|. |
 | `_file` | function | `_file` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:26](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L26) |  |
+| `_file` | function | `_file` | [tests/hwsd/test_b_registry_r10.py:198](../../tests/hwsd/test_b_registry_r10.py#L198) |  |
 | `_file_sha` | function | `_file_sha` | [tools/c1prime/c1_data.py:87](../../tools/c1prime/c1_data.py#L87) |  |
 | `_file_sha` | function | `_file_sha` | [tools/x6_stage1/x6s1_data.py:236](../../tools/x6_stage1/x6s1_data.py#L236) |  |
 | `_file_sha` | function | `_file_sha` | [tools/x6_stage1/x6s1_registry.py:49](../../tools/x6_stage1/x6s1_registry.py#L49) |  |
 | `_files` | function | `_files` | [tools/hws/hws_records.py:64](../../tools/hws/hws_records.py#L64) |  |
 | `_files` | function | `_files` | [tools/x6_stage1/x6s1_ingest.py:88](../../tools/x6_stage1/x6s1_ingest.py#L88) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsc/hwsc_driver.py:41](../../tools/hwsc/hwsc_driver.py#L41) |  |
+| `_files_under` | function | `_files_under` | [tools/hwsd/hwsd_driver.py:33](../../tools/hwsd/hwsd_driver.py#L33) |  |
 | `_Fill` | class | `_Fill` | [tools/hws/hws_select.py:259](../../tools/hws/hws_select.py#L259) |  |
 | `_Fill` | class | `_Fill` | [tools/hwsc/hwsc_outcome.py:116](../../tools/hwsc/hwsc_outcome.py#L116) |  |
 | `_fill` | function | `_fill` | [tools/c2_nd/nd_decide.py:361](../../tools/c2_nd/nd_decide.py#L361) |  |
@@ -784,6 +828,8 @@
 | `_finite_decimal` | function | `_finite_decimal` | [tools/x4_circle_history/reference_cache.py:64](../../tools/x4_circle_history/reference_cache.py#L64) |  |
 | `_finite_le` | function | `_finite_le` | [tools/c1prime/c1_cert.py:176](../../tools/c1prime/c1_cert.py#L176) |  |
 | `_finite_pairs` | function | `_finite_pairs` | [tools/x4_circle_history/scores.py:103](../../tools/x4_circle_history/scores.py#L103) |  |
+| `_first` | function | `_first` | [tests/hwsd/test_a_hwsd_ref.py:111](../../tests/hwsd/test_a_hwsd_ref.py#L111) |  |
+| `_first` | function | `_first` | [tools/hwsd/hwsd_statements.py:46](../../tools/hwsd/hwsd_statements.py#L46) |  |
 | `_first_third_share` | function | `_first_third_share` | [src/topo_pilot/analysis/dynamics.py:17](../../src/topo_pilot/analysis/dynamics.py#L17) |  |
 | `_fit` | method | `Trainer._fit` | [src/topo_pilot/learner/trainer.py:148](../../src/topo_pilot/learner/trainer.py#L148) |  |
 | `_fit` | function | `_fit` | [tests/c1prime/test_b_fwl.py:66](../../tests/c1prime/test_b_fwl.py#L66) |  |
@@ -796,7 +842,9 @@
 | `_FixedDecoder` | class | `_FixedDecoder` | [tests/c1prime/test_b_gates.py:201](../../tests/c1prime/test_b_gates.py#L201) |  |
 | `_fixture` | function | `_fixture` | [tools/hwsc/hwsc_known.py:157](../../tools/hwsc/hwsc_known.py#L157) |  |
 | `_fixture` | function | `_fixture` | [tools/k4b/k4b_registry.py:85](../../tools/k4b/k4b_registry.py#L85) | R23 rules 2-4: path rule (main: tests/, .venv or a segment) and <= 1,024 history rows. |
+| `_fixture_calls` | function | `_fixture_calls` | [tools/hwsd/hwsd_known2.py:49](../../tools/hwsd/hwsd_known2.py#L49) |  |
 | `_fixture_ok` | function | `_fixture_ok` | [tools/hwsc/hwsc_scratch.py:80](../../tools/hwsc/hwsc_scratch.py#L80) |  |
+| `_fixture_ok` | function | `_fixture_ok` | [tools/hwsd/hwsd_registry.py:129](../../tools/hwsd/hwsd_registry.py#L129) |  |
 | `_fl` | function | `_fl` | [tools/x6zc/x6zc_const.py:65](../../tools/x6zc/x6zc_const.py#L65) |  |
 | `_flag` | function | `_flag` | [tools/hws/hws_exact.py:122](../../tools/hws/hws_exact.py#L122) |  |
 | `_flags` | function | `_flags` | [tests/hws/test_a_identities.py:240](../../tests/hws/test_a_identities.py#L240) | Every nested {"value", "pass"} record of a result dict. |
@@ -831,6 +879,7 @@
 | `_fr` | function | `_fr` | [tools/k4b/k4b_stats.py:54](../../tools/k4b/k4b_stats.py#L54) |  |
 | `_fr` | function | `_fr` | [tools/x6_stage1/x6s1_decide.py:33](../../tools/x6_stage1/x6s1_decide.py#L33) |  |
 | `_frac` | function | `_frac` | [tests/c1prime/test_b_cert_oracle.py:236](../../tests/c1prime/test_b_cert_oracle.py#L236) |  |
+| `_fracs` | function | `_fracs` | [tools/hwsd/hwsd_summary.py:233](../../tools/hwsd/hwsd_summary.py#L233) |  |
 | `_fraction_T` | function | `_fraction_T` | [tools/x2a_stage0/x2a_model.py:201](../../tools/x2a_stage0/x2a_model.py#L201) |  |
 | `_frame` | function | `_frame` | [tests/c1prime/test_b_frames.py:49](../../tests/c1prime/test_b_frames.py#L49) |  |
 | `_frame` | function | `_frame` | [tests/c2_nd/test_a_identity.py:37](../../tests/c2_nd/test_a_identity.py#L37) | Random readout M (8 x 31), oblique GLS projectors with a random SPD Sigma, two arms. |
@@ -848,6 +897,7 @@
 | `_fx` | function | `_fx` | [tools/hws/hws_dry.py:32](../../tools/hws/hws_dry.py#L32) | A planted decision fixture (labelled), classified by hws_select under FIX floors. |
 | `_G` | function | `_G` | [tools/x4_circle_history/process_law.py:143](../../tools/x4_circle_history/process_law.py#L143) |  |
 | `_g` | function | `_g` | [tests/hws/test_b_worlds.py:67](../../tests/hws/test_b_worlds.py#L67) |  |
+| `_g` | function | `_g` | [tools/hwsd/hwsd_dry.py:111](../../tools/hwsd/hwsd_dry.py#L111) |  |
 | `_g0` | function | `_g0` | [tools/x2a_stage0/x2a_ph.py:171](../../tools/x2a_stage0/x2a_ph.py#L171) |  |
 | `_g0_env` | function | `_g0_env` | [tests/c2_readout/test_b_lineage.py:154](../../tests/c2_readout/test_b_lineage.py#L154) |  |
 | `_g0_store` | function | `_g0_store` | [tests/c2_readout/test_b_patch.py:336](../../tests/c2_readout/test_b_patch.py#L336) | An S1 store at G0 time: coordinator files, one STARTED line, IMPL and AUTH-ADMIT. |
@@ -892,6 +942,7 @@
 | `_git` | function | `_git` | [tools/hws/hws_records.py:226](../../tools/hws/hws_records.py#L226) |  |
 | `_git` | function | `_git` | [tools/hwsb/hwsb_records.py:83](../../tools/hwsb/hwsb_records.py#L83) |  |
 | `_git` | function | `_git` | [tools/hwsc/hwsc_records.py:161](../../tools/hwsc/hwsc_records.py#L161) |  |
+| `_git` | function | `_git` | [tools/hwsd/hwsd_records.py:105](../../tools/hwsd/hwsd_records.py#L105) |  |
 | `_git` | function | `_git` | [tools/k4b/k4b_release.py:65](../../tools/k4b/k4b_release.py#L65) |  |
 | `_git` | function | `_git` | [tools/x2a_stage0/x2a_model.py:349](../../tools/x2a_stage0/x2a_model.py#L349) |  |
 | `_git` | function | `_git` | [tools/x6_stage0/x6_store.py:94](../../tools/x6_stage0/x6_store.py#L94) |  |
@@ -917,7 +968,9 @@
 | `_h0_deaths` | function | `_h0_deaths` | [tools/x2a_stage0/x2a_ph.py:115](../../tools/x2a_stage0/x2a_ph.py#L115) |  |
 | `_h0_floor` | function | `_h0_floor` | [src/topo_pilot/experiment/report_e4_s7.py:82](../../src/topo_pilot/experiment/report_e4_s7.py#L82) |  |
 | `_h0_from_mst` | function | `_h0_from_mst` | [src/topo_pilot/topology/persistence.py:134](../../src/topo_pilot/topology/persistence.py#L134) | H0 diagram from the minimum spanning tree (cheap partial result after a timeout). |
+| `_h1d` | function | `_h1d` | [tools/hwsd/hwsd_driver.py:119](../../tools/hwsd/hwsd_driver.py#L119) |  |
 | `_h2_summary` | function | `_h2_summary` | [src/topo_pilot/experiment/report_e4.py:66](../../src/topo_pilot/experiment/report_e4.py#L66) |  |
+| `_h2d` | function | `_h2d` | [tools/hwsd/hwsd_driver.py:206](../../tools/hwsd/hwsd_driver.py#L206) |  |
 | `_h3_decimal` | function | `_h3_decimal` | [tools/c1prime/c1_driver.py:227](../../tools/c1prime/c1_driver.py#L227) |  |
 | `_h5_lower` | function | `_h5_lower` | [tests/c1prime/test_b_precision.py:151](../../tests/c1prime/test_b_precision.py#L151) |  |
 | `_half` | function | `_half` | [tests/c2_readout/test_a_partition.py:50](../../tests/c2_readout/test_a_partition.py#L50) |  |
@@ -931,8 +984,10 @@
 | `_harm` | function | `_harm` | [tests/c2_readout/test_b_fwl_l1.py:36](../../tests/c2_readout/test_b_fwl_l1.py#L36) |  |
 | `_has` | function | `_has` | [tests/hwsc/test_b_registry.py:69](../../tests/hwsc/test_b_registry.py#L69) |  |
 | `_hash` | function | `_hash` | [tools/d2a/d2a_eval.py:211](../../tools/d2a/d2a_eval.py#L211) |  |
+| `_hash` | function | `_hash` | [tools/hwsd/hwsd_known.py:85](../../tools/hwsd/hwsd_known.py#L85) |  |
 | `_hash_json` | function | `_hash_json` | [tools/c1prime/c1_freeze.py:63](../../tools/c1prime/c1_freeze.py#L63) |  |
 | `_hash_ok` | function | `_hash_ok` | [tools/hwsc/hwsc_scratch.py:89](../../tools/hwsc/hwsc_scratch.py#L89) |  |
+| `_hash_ok` | function | `_hash_ok` | [tools/hwsd/hwsd_registry.py:138](../../tools/hwsd/hwsd_registry.py#L138) |  |
 | `_hashes` | function | `_hashes` | [tools/hws/hws_records.py:237](../../tools/hws/hws_records.py#L237) |  |
 | `_hashes` | function | `_hashes` | [tools/hwsb/hwsb_records.py:97](../../tools/hwsb/hwsb_records.py#L97) |  |
 | `_hb` | function | `_hb` | [tools/x2a_stage0/x2a_mc.py:34](../../tools/x2a_stage0/x2a_mc.py#L34) |  |
@@ -947,6 +1002,7 @@
 | `_head` | function | `_head` | [tools/x6zc/x6zc_store.py:302](../../tools/x6zc/x6zc_store.py#L302) |  |
 | `_headers` | function | `_headers` | [tools/x6_stage1/x6s1_registry.py:297](../../tools/x6_stage1/x6s1_registry.py#L297) | [(key, dtype, shape)] from .npy headers only (a .npy file, or each .npz member). |
 | `_heads` | function | `_heads` | [tools/hwsc/hwsc_drystore.py:50](../../tools/hwsc/hwsc_drystore.py#L50) |  |
+| `_heads` | function | `_heads` | [tools/hwsd/hwsd_registry.py:78](../../tools/hwsd/hwsd_registry.py#L78) |  |
 | `_hellinger` | function | `_hellinger` | [src/topo_pilot/experiment/s4_analysis.py:58](../../src/topo_pilot/experiment/s4_analysis.py#L58) |  |
 | `_helmert_ref` | function | `_helmert_ref` | [tests/c2_readout/test_a_readout.py:41](../../tests/c2_readout/test_a_readout.py#L41) |  |
 | `_hex` | function | `_hex` | [tests/c2_readout/test_b_registry.py:82](../../tests/c2_readout/test_b_registry.py#L82) |  |
@@ -956,6 +1012,7 @@
 | `_hexes` | function | `_hexes` | [tests/hwsc/test_b_registry2.py:202](../../tests/hwsc/test_b_registry2.py#L202) |  |
 | `_hist` | function | `_hist` | [tests/c2_readout/test_b_registry.py:58](../../tests/c2_readout/test_b_registry.py#L58) | y-rows 1..4 only, so both one-row shifts stay on the grid (Y_def on every row). |
 | `_hist` | function | `_hist` | [tests/hwsc/test_b_registry2.py:53](../../tests/hwsc/test_b_registry2.py#L53) |  |
+| `_hist` | function | `_hist` | [tests/hwsd/test_b_registry_build.py:26](../../tests/hwsd/test_b_registry_build.py#L26) |  |
 | `_hist` | function | `_hist` | [tools/x6_stage1/x6s1_pairs.py:273](../../tools/x6_stage1/x6s1_pairs.py#L273) |  |
 | `_histories` | method | `PredictionStage._histories` | [src/topo_pilot/prediction/stage.py:62](../../src/topo_pilot/prediction/stage.py#L62) |  |
 | `_histories` | function | `_histories` | [tests/d2a/test_a_pad.py:34](../../tests/d2a/test_a_pad.py#L34) |  |
@@ -970,8 +1027,12 @@
 | `_hmm` | function | `_hmm` | [tests/c1prime/test_b_cert_oracle.py:55](../../tests/c1prime/test_b_cert_oracle.py#L55) |  |
 | `_hmm` | function | `_hmm` | [tests/c2_readout/test_a_oracle.py:46](../../tests/c2_readout/test_a_oracle.py#L46) |  |
 | `_hmm` | function | `_hmm` | [tests/experiment/test_x4b2.py:21](../../tests/experiment/test_x4b2.py#L21) |  |
+| `_hmm` | function | `_hmm` | [tests/hwsd/test_a_known_bound.py:50](../../tests/hwsd/test_a_known_bound.py#L50) |  |
 | `_hold` | function | `_hold` | [tests/experiment/test_x5g1t_runtime.py:217](../../tests/experiment/test_x5g1t_runtime.py#L217) |  |
 | `_hold` | function | `_hold` | [tests/experiment/test_x5g1t_usage.py:301](../../tests/experiment/test_x5g1t_usage.py#L301) |  |
+| `_Hook` | class | `_Hook` | [tools/hwsd/hwsd_dry2.py:191](../../tools/hwsd/hwsd_dry2.py#L191) |  |
+| `_hwsc_w2` | function | `_hwsc_w2` | [tests/hwsd/test_b_reservation.py:200](../../tests/hwsd/test_b_reservation.py#L200) |  |
+| `_hwsu_dry` | function | `_hwsu_dry` | [tests/hwsd/test_b_registry_r10.py:297](../../tests/hwsd/test_b_registry_r10.py#L297) |  |
 | `_hy_ref` | function | `_hy_ref` | [tests/c2_readout/test_a_oracle.py:84](../../tests/c2_readout/test_a_oracle.py#L84) | Independent H^Y (v2 2.2): b -> b + k on w1..w31, a and w32 kept; Y_def per row. |
 | `_ident` | function | `_ident` | [tools/hws/hws_records.py:144](../../tools/hws/hws_records.py#L144) |  |
 | `_identity_calls` | function | `_identity_calls` | [tools/hwsc/hwsc_known.py:171](../../tools/hwsc/hwsc_known.py#L171) |  |
@@ -981,6 +1042,7 @@
 | `_idx` | function | `_idx` | [tests/hws/test_a_identities.py:247](../../tests/hws/test_a_identities.py#L247) |  |
 | `_illusion` | function | `_illusion` | [tests/c2_nd/test_a_decoy_maths.py:250](../../tests/c2_nd/test_a_decoy_maths.py#L250) |  |
 | `_image_counts` | function | `_image_counts` | [tools/x6_stage0/x6_dp.py:42](../../tools/x6_stage0/x6_dp.py#L42) |  |
+| `_import_checks` | function | `_import_checks` | [tools/hwsd/hwsd_config.py:89](../../tools/hwsd/hwsd_config.py#L89) |  |
 | `_in_segment` | function | `_in_segment` | [tools/k4b/k4b_registry.py:77](../../tools/k4b/k4b_registry.py#L77) | R23 rule 2(a): a pytest-of-* directory, or bt*/pt-* directly under tmp-*/coord-scratch. |
 | `_incidence` | function | `_incidence` | [src/topo_pilot/experiment/x4f_data.py:98](../../src/topo_pilot/experiment/x4f_data.py#L98) |  |
 | `_index_of` | method | `SpaceBuilder._index_of` | [src/topo_pilot/analysis/spaces.py:136](../../src/topo_pilot/analysis/spaces.py#L136) |  |
@@ -999,6 +1061,7 @@
 | `_instability_bounds` | function | `_instability_bounds` | [tools/x4_circle_history/precision_stage.py:56](../../tools/x4_circle_history/precision_stage.py#L56) | bound_K = exact max validation moment gap + moment envelope, rounded up (diagnostic). |
 | `_int_map` | function | `_int_map` | [tools/k4b/k4b_data.py:28](../../tools/k4b/k4b_data.py#L28) |  |
 | `_integrity_lines` | function | `_integrity_lines` | [src/topo_pilot/experiment/report_e4.py:149](../../src/topo_pilot/experiment/report_e4.py#L149) |  |
+| `_ints` | function | `_ints` | [tools/hwsd/hwsd_known.py:66](../../tools/hwsd/hwsd_known.py#L66) |  |
 | `_ints` | function | `_ints` | [tools/x6zc/x6zc_census.py:25](../../tools/x6zc/x6zc_census.py#L25) |  |
 | `_ints` | function | `_ints` | [tools/x6zc/x6zc_const.py:66](../../tools/x6zc/x6zc_const.py#L66) |  |
 | `_is_cand` | function | `_is_cand` | [tools/hws/hws_select.py:84](../../tools/hws/hws_select.py#L84) |  |
@@ -1007,6 +1070,7 @@
 | `_is_forbidden` | function | `_is_forbidden` | [tests/activations/test_activations.py:120](../../tests/activations/test_activations.py#L120) |  |
 | `_is_prime` | function | `_is_prime` | [src/topo_pilot/topology/persistence.py:20](../../src/topo_pilot/topology/persistence.py#L20) |  |
 | `_is_prime` | function | `_is_prime` | [src/topo_pilot/world/complex.py:51](../../src/topo_pilot/world/complex.py#L51) |  |
+| `_is_wall` | function | `_is_wall` | [tools/hwsd/hwsd_score.py:78](../../tools/hwsd/hwsd_score.py#L78) |  |
 | `_isolate` | function | `_isolate` | [tests/c2_readout/test_b_lineage.py:87](../../tests/c2_readout/test_b_lineage.py#L87) |  |
 | `_isolate` | function | `_isolate` | [tests/c2_readout/test_b_registry.py:36](../../tests/c2_readout/test_b_registry.py#L36) |  |
 | `_item` | function | `_item` | [tools/c2_nd/nd_driver.py:268](../../tools/c2_nd/nd_driver.py#L268) |  |
@@ -1020,6 +1084,7 @@
 | `_jl` | function | `_jl` | [tests/c2_readout/test_b_patch.py:326](../../tests/c2_readout/test_b_patch.py#L326) |  |
 | `_job` | function | `_job` | [tests/c1prime/test_c_release_worker.py:24](../../tests/c1prime/test_c_release_worker.py#L24) |  |
 | `_job` | function | `_job` | [tests/experiment/test_s7.py:202](../../tests/experiment/test_s7.py#L202) |  |
+| `_job` | function | `_job` | [tools/hwsd/hwsd_dry.py:89](../../tools/hwsd/hwsd_dry.py#L89) |  |
 | `_job_cpu` | function | `_job_cpu` | [tools/x6zc/x6zc_guard.py:243](../../tools/x6zc/x6zc_guard.py#L243) |  |
 | `_job_cpu_s` | function | `_job_cpu_s` | [tools/x6_stage1/x6s1_run.py:389](../../tools/x6_stage1/x6s1_run.py#L389) |  |
 | `_join` | function | `_join` | [tools/code_index/pathval.py:25](../../tools/code_index/pathval.py#L25) |  |
@@ -1041,6 +1106,7 @@
 | `_jsonable` | function | `_jsonable` | [tools/c1prime/c1_driver_late.py:245](../../tools/c1prime/c1_driver_late.py#L245) |  |
 | `_jsonable` | function | `_jsonable` | [tools/c1prime/c1_records.py:197](../../tools/c1prime/c1_records.py#L197) |  |
 | `_jsonable` | function | `_jsonable` | [tools/d1_seam/d1_seam_checks.py:265](../../tools/d1_seam/d1_seam_checks.py#L265) |  |
+| `_jsonable` | function | `_jsonable` | [tools/hwsd/hwsd_score.py:31](../../tools/hwsd/hwsd_score.py#L31) |  |
 | `_jsonable` | function | `_jsonable` | [tools/x2a_stage0/x2a_model.py:353](../../tools/x2a_stage0/x2a_model.py#L353) |  |
 | `_jsonable` | function | `_jsonable` | [tools/x4_circle_history/chart.py:321](../../tools/x4_circle_history/chart.py#L321) |  |
 | `_k` | function | `_k` | [tests/c2_readout/test_b_registry.py:64](../../tests/c2_readout/test_b_registry.py#L64) |  |
@@ -1051,6 +1117,8 @@
 | `_kc9_floor` | function | `_kc9_floor` | [tests/hws/test_a_stats.py:247](../../tests/hws/test_a_stats.py#L247) |  |
 | `_kc9_pass` | function | `_kc9_pass` | [tests/hws/test_a_stats.py:251](../../tests/hws/test_a_stats.py#L251) |  |
 | `_kc_extra` | function | `_kc_extra` | [tools/c2_nd/nd_stage_post.py:211](../../tools/c2_nd/nd_stage_post.py#L211) | KC-R contradictions (S4 records) and the DTEST report-only KC / KC-R categories (seed |
+| `_kd4_params` | function | `_kd4_params` | [tests/hwsd/test_a_kd4.py:162](../../tests/hwsd/test_a_kd4.py#L162) |  |
+| `_kd_accept_ok` | function | `_kd_accept_ok` | [tools/hwsd/hwsd_driver.py:112](../../tools/hwsd/hwsd_driver.py#L112) |  |
 | `_kernels` | method | `DevData._kernels` | [src/topo_pilot/experiment/s7_dev.py:138](../../src/topo_pilot/experiment/s7_dev.py#L138) |  |
 | `_key` | method | `ArtifactStore._key` | [src/topo_pilot/contracts/store.py:82](../../src/topo_pilot/contracts/store.py#L82) |  |
 | `_key` | function | `_key` | [tests/experiment/test_x5g1_safety.py:71](../../tests/experiment/test_x5g1_safety.py#L71) |  |
@@ -1100,6 +1168,7 @@
 | `_ledger_cpu` | function | `_ledger_cpu` | [tools/hws/hws_driver.py:127](../../tools/hws/hws_driver.py#L127) |  |
 | `_ledger_last` | function | `_ledger_last` | [tests/experiment/test_x5g1t_integration.py:40](../../tests/experiment/test_x5g1t_integration.py#L40) |  |
 | `_levels` | function | `_levels` | [tools/hws/hws_select.py:128](../../tools/hws/hws_select.py#L128) |  |
+| `_lgate` | function | `_lgate` | [tools/hwsd/hwsd_driver.py:247](../../tools/hwsd/hwsd_driver.py#L247) |  |
 | `_lh` | function | `_lh` | [tests/process/test_conductance.py:53](../../tests/process/test_conductance.py#L53) |  |
 | `_lic` | function | `_lic` | [tests/x6zc/test_x6zc_dryrun.py:155](../../tests/x6zc/test_x6zc_dryrun.py#L155) |  |
 | `_lift_ok` | function | `_lift_ok` | [tools/x6_stage0/x6_model.py:326](../../tools/x6_stage0/x6_model.py#L326) | Entrywise against the section 2.5 values; exact row and column sums. |
@@ -1113,6 +1182,7 @@
 | `_linked` | function | `_linked` | [tools/x6_stage1/x6s1_ingest.py:355](../../tools/x6_stage1/x6s1_ingest.py#L355) |  |
 | `_listing` | function | `_listing` | [tools/c1prime/c1_freeze.py:44](../../tools/c1prime/c1_freeze.py#L44) | Listing hash material (relative path -> size) without reading payload bytes. |
 | `_live` | function | `_live` | [tests/hwsc/test_b_binding.py:43](../../tests/hwsc/test_b_binding.py#L43) | (module, name, object) for every row, read from the live modules. |
+| `_live` | function | `_live` | [tools/hwsd/hwsd_bind.py:32](../../tools/hwsd/hwsd_bind.py#L32) |  |
 | `_lkey` | function | `_lkey` | [tools/x6zc/x6zc_decide.py:145](../../tools/x6zc/x6zc_decide.py#L145) |  |
 | `_ln` | function | `_ln` | [tests/c2_readout/test_a_readout.py:63](../../tests/c2_readout/test_a_readout.py#L63) |  |
 | `_lo` | function | `_lo` | [tools/d2a/d2a_decide.py:155](../../tools/d2a/d2a_decide.py#L155) |  |
@@ -1124,12 +1194,14 @@
 | `_load` | function | `_load` | [tests/experiment/test_x5g1t_config_synthetic.py:163](../../tests/experiment/test_x5g1t_config_synthetic.py#L163) |  |
 | `_load` | function | `_load` | [tools/c2_nd/nd_stage_base.py:97](../../tools/c2_nd/nd_stage_base.py#L97) |  |
 | `_load` | function | `_load` | [tools/hwsc/hwsc_jobs.py:136](../../tools/hwsc/hwsc_jobs.py#L136) |  |
+| `_load` | function | `_load` | [tools/hwsd/hwsd_jobs.py:207](../../tools/hwsd/hwsd_jobs.py#L207) |  |
 | `_load` | function | `_load` | [tools/x6_stage0/x6_store.py:228](../../tools/x6_stage0/x6_store.py#L228) |  |
 | `_load` | function | `_load` | [tools/x6_stage1/x6s1_run.py:76](../../tools/x6_stage1/x6s1_run.py#L76) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/precision_stage.py:22](../../tools/x4_circle_history/precision_stage.py#L22) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/runner.py:164](../../tools/x4_circle_history/runner.py#L164) |  |
 | `_load_process` | function | `_load_process` | [src/topo_pilot/experiment/x4b_run.py:129](../../src/topo_pilot/experiment/x4b_run.py#L129) |  |
 | `_load_reference` | function | `_load_reference` | [tools/x4_circle_history/runner.py:149](../../tools/x4_circle_history/runner.py#L149) | Verified (cache file object, cache) of the oracle stage; no recomputation (item 9). |
+| `_load_table` | function | `_load_table` | [tools/hwsd/hwsd_known2.py:176](../../tools/hwsd/hwsd_known2.py#L176) |  |
 | `_local_passes` | function | `_local_passes` | [tools/x4_circle_history/cochain.py:121](../../tools/x4_circle_history/cochain.py#L121) |  |
 | `_lock_path` | function | `_lock_path` | [tools/x6_stage1/x6s1_ingest.py:408](../../tools/x6_stage1/x6s1_ingest.py#L408) |  |
 | `_log` | function | `_log` | [tools/x4_circle_history/op_guard.py:33](../../tools/x4_circle_history/op_guard.py#L33) |  |
@@ -1205,12 +1277,15 @@
 | `_member` | function | `_member` | [tests/d2a/test_a_templates.py:37](../../tests/d2a/test_a_templates.py#L37) |  |
 | `_member` | function | `_member` | [tools/x6_stage1/x6s1_registry.py:80](../../tools/x6_stage1/x6s1_registry.py#L80) | bool [len(q)]: full 32-byte membership of void digests q in the sorted void array ref. |
 | `_Memo` | class | `_Memo` | [tools/x6zc/x6zc_stage_a.py:229](../../tools/x6zc/x6zc_stage_a.py#L229) |  |
+| `_merge` | function | `_merge` | [tools/hwsd/hwsd_readers.py:34](../../tools/hwsd/hwsd_readers.py#L34) | Union of two sources; True when src is a lineage failure. |
 | `_merge` | function | `_merge` | [tools/x2a_stage0/x2a_ph.py:53](../../tools/x2a_stage0/x2a_ph.py#L53) |  |
+| `_merged` | function | `_merged` | [tools/hwsd/hwsd_registry.py:244](../../tools/hwsd/hwsd_registry.py#L244) |  |
 | `_meta` | function | `_meta` | [src/topo_pilot/experiment/x5g1t_stages.py:93](../../src/topo_pilot/experiment/x5g1t_stages.py#L93) |  |
 | `_meta` | function | `_meta` | [tests/d2a/test_a_world.py:105](../../tests/d2a/test_a_world.py#L105) |  |
 | `_meta` | function | `_meta` | [tests/hwsc/test_r_0178_dry_store_rule.py:25](../../tests/hwsc/test_r_0178_dry_store_rule.py#L25) |  |
 | `_meta` | function | `_meta` | [tools/hwsc/hwsc_drystore.py:33](../../tools/hwsc/hwsc_drystore.py#L33) |  |
 | `_meta_type` | function | `_meta_type` | [tools/hwsc/hwsc_registry.py:56](../../tools/hwsc/hwsc_registry.py#L56) | artifact_type of <root>/<T>/<id>/payload.npz\|state.pt from its meta.json, else None. |
+| `_meta_type` | function | `_meta_type` | [tools/hwsd/hwsd_data.py:218](../../tools/hwsd/hwsd_data.py#L218) |  |
 | `_meter_file` | function | `_meter_file` | [tools/c2_readout/c2_data.py:273](../../tools/c2_readout/c2_data.py#L273) |  |
 | `_metric` | function | `_metric` | [src/topo_pilot/analysis/pointset.py:55](../../src/topo_pilot/analysis/pointset.py#L55) |  |
 | `_metric_dir` | function | `_metric_dir` | [tests/experiment/test_x5g1_export_integration.py:115](../../tests/experiment/test_x5g1_export_integration.py#L115) |  |
@@ -1246,6 +1321,7 @@
 | `_models` | function | `_models` | [tools/c2_nd/nd_stage_base.py:298](../../tools/c2_nd/nd_stage_base.py#L298) |  |
 | `_models` | function | `_models` | [tools/x6_stage1/x6s1_decide.py:190](../../tools/x6_stage1/x6s1_decide.py#L190) |  |
 | `_module` | function | `_module` | [tests/hwsc/test_b_binding.py:262](../../tests/hwsc/test_b_binding.py#L262) |  |
+| `_module` | function | `_module` | [tests/hwsd/test_b_binding.py:147](../../tests/hwsd/test_b_binding.py#L147) |  |
 | `_moment` | function | `_moment` | [tests/circle_history/test_scores_precision.py:165](../../tests/circle_history/test_scores_precision.py#L165) |  |
 | `_moment_gap` | function | `_moment_gap` | [tools/x4_circle_history/error_bound.py:290](../../tools/x4_circle_history/error_bound.py#L290) | Exact rational gap \|m_hat - M_ref\| (compared exactly; floats only for reporting). |
 | `_monotone` | function | `_monotone` | [tests/circle_history/test_process_law.py:70](../../tests/circle_history/test_process_law.py#L70) |  |
@@ -1277,12 +1353,16 @@
 | `_names` | function | `_names` | [tools/x6_stage1/x6s1_ingest.py:93](../../tools/x6_stage1/x6s1_ingest.py#L93) |  |
 | `_nb` | function | `_nb` | [tools/d1_seam/d1_seam.py:40](../../tools/d1_seam/d1_seam.py#L40) |  |
 | `_nd_sources` | function | `_nd_sources` | [tools/c2_nd/nd_registry.py:260](../../tools/c2_nd/nd_registry.py#L260) | Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5). `c2_dry` |
+| `_ne` | function | `_ne` | [tests/hwsd/test_a_hwsd_ref.py:174](../../tests/hwsd/test_a_hwsd_ref.py#L174) |  |
+| `_ne` | function | `_ne` | [tools/hwsd/hwsd_statements.py:123](../../tools/hwsd/hwsd_statements.py#L123) |  |
 | `_nec` | function | `_nec` | [tools/c2_nd/nd_decide.py:38](../../tools/c2_nd/nd_decide.py#L38) | The §2.3 table: NECESSARY, COMPLEMENT_LOW_ALIGNED, CODE_DOMINANT, NOT_NECESSARY or INC. |
 | `_need` | method | `SpaceBuilder._need` | [src/topo_pilot/analysis/spaces.py:202](../../src/topo_pilot/analysis/spaces.py#L202) |  |
+| `_need_inherit` | function | `_need_inherit` | [tools/hwsd/hwsd_config.py:125](../../tools/hwsd/hwsd_config.py#L125) |  |
 | `_needle_in` | function | `_needle_in` | [tools/hws/hws_driver.py:57](../../tools/hws/hws_driver.py#L57) | D-0127-1: an all-digit needle matches only as a whole token; others stay substrings. |
 | `_neighbor_scale` | function | `_neighbor_scale` | [tools/x4_circle_history/chart.py:101](../../tools/x4_circle_history/chart.py#L101) |  |
 | `_neighbours` | function | `_neighbours` | [tests/circle_history/test_process_law.py:137](../../tests/circle_history/test_process_law.py#L137) |  |
 | `_neighbours` | function | `_neighbours` | [tools/x4_circle_history/process_law.py:57](../../tools/x4_circle_history/process_law.py#L57) |  |
+| `_never_opened` | function | `_never_opened` | [tests/hwsd/test_b_registry_r9.py:99](../../tests/hwsd/test_b_registry_r9.py#L99) |  |
 | `_new` | function | `_new` | [tools/c2_nd/nd_registry.py:49](../../tools/c2_nd/nd_registry.py#L49) |  |
 | `_new` | function | `_new` | [tools/hwsc/hwsc_registry.py:33](../../tools/hwsc/hwsc_registry.py#L33) |  |
 | `_next_chunk` | function | `_next_chunk` | [tools/x6_stage1/x6s1_cloud.py:320](../../tools/x6_stage1/x6s1_cloud.py#L320) | §5.4 step 6: the next chunk's index arrays, drawn from a copy and checked before use. |
@@ -1309,6 +1389,8 @@
 | `_npy_header` | function | `_npy_header` | [tools/x6_stage1/x6s1_registry.py:171](../../tools/x6_stage1/x6s1_registry.py#L171) |  |
 | `_npz` | function | `_npz` | [tests/c2_readout/test_b_registry.py:202](../../tests/c2_readout/test_b_registry.py#L202) |  |
 | `_npz` | function | `_npz` | [tools/c2_nd/nd_stage_base.py:72](../../tools/c2_nd/nd_stage_base.py#L72) |  |
+| `_npz` | function | `_npz` | [tools/hwsd/hwsd_jobs.py:36](../../tools/hwsd/hwsd_jobs.py#L36) |  |
+| `_npz` | function | `_npz` | [tools/hwsd/hwsd_known2.py:161](../../tools/hwsd/hwsd_known2.py#L161) |  |
 | `_npz` | function | `_npz` | [tools/k4b/k4b_fresh.py:301](../../tools/k4b/k4b_fresh.py#L301) |  |
 | `_npz` | function | `_npz` | [tools/x6_stage1/x6s1_eval.py:420](../../tools/x6_stage1/x6s1_eval.py#L420) |  |
 | `_npz` | function | `_npz` | [tools/x6_stage1/x6s1_stage_post.py:51](../../tools/x6_stage1/x6s1_stage_post.py#L51) |  |
@@ -1317,12 +1399,16 @@
 | `_npz_raw32` | function | `_npz_raw32` | [tools/k4b/k4b_registry.py:182](../../tools/k4b/k4b_registry.py#L182) |  |
 | `_npz_tokens` | function | `_npz_tokens` | [tools/c1prime_registry/c1_registry_sources.py:85](../../tools/c1prime_registry/c1_registry_sources.py#L85) |  |
 | `_nr` | function | `_nr` | [tests/c2_nd/test_a_known.py:145](../../tests/c2_nd/test_a_known.py#L145) |  |
+| `_ns` | function | `_ns` | [tests/hwsd/test_b_guard_search.py:179](../../tests/hwsd/test_b_guard_search.py#L179) |  |
 | `_ns_root` | function | `_ns_root` | [tests/c2_readout/test_b_lineage.py:312](../../tests/c2_readout/test_b_lineage.py#L312) |  |
 | `_nudge` | function | `_nudge` | [tests/x6zc/test_x6zc_dryrun.py:102](../../tests/x6zc/test_x6zc_dryrun.py#L102) |  |
 | `_null_fixture` | function | `_null_fixture` | [tests/c2_readout/test_a_partition.py:120](../../tests/c2_readout/test_a_partition.py#L120) |  |
 | `_nwc_state` | function | `_nwc_state` | [tests/hws/test_a_outcomes.py:195](../../tests/hws/test_a_outcomes.py#L195) |  |
 | `_o` | function | `_o` | [tests/c2_nd/test_a_inference.py:44](../../tests/c2_nd/test_a_inference.py#L44) |  |
 | `_o_and_p` | function | `_o_and_p` | [tests/process/test_controls.py:38](../../tests/process/test_controls.py#L38) |  |
+| `_obl` | function | `_obl` | [tools/hwsd/hwsd_data.py:41](../../tools/hwsd/hwsd_data.py#L41) |  |
+| `_obl` | function | `_obl` | [tools/hwsd/hwsd_dry2.py:180](../../tools/hwsd/hwsd_dry2.py#L180) |  |
+| `_obl` | function | `_obl` | [tools/hwsd/hwsd_readers.py:30](../../tools/hwsd/hwsd_readers.py#L30) |  |
 | `_oblique` | function | `_oblique` | [tests/c2_readout/test_b_screens.py:237](../../tests/c2_readout/test_b_screens.py#L237) |  |
 | `_Obs` | class | `_Obs` | [tests/hwsb/test_r_0170_kb2_status.py:27](../../tests/hwsb/test_r_0170_kb2_status.py#L27) |  |
 | `_obs` | function | `_obs` | [tests/analysis/test_x5_endpoint.py:205](../../tests/analysis/test_x5_endpoint.py#L205) |  |
@@ -1352,17 +1438,21 @@
 | `_onehot` | function | `_onehot` | [src/topo_pilot/experiment/s7_probes.py:35](../../src/topo_pilot/experiment/s7_probes.py#L35) |  |
 | `_onehot` | function | `_onehot` | [tests/c1prime/test_b_fwl.py:41](../../tests/c1prime/test_b_fwl.py#L41) |  |
 | `_opened` | function | `_opened` | [tests/hwsc/test_b_guard_meter.py:59](../../tests/hwsc/test_b_guard_meter.py#L59) |  |
+| `_OpenHook` | class | `_OpenHook` | [tools/hwsd/hwsd_dry3.py:230](../../tools/hwsd/hwsd_dry3.py#L230) | Records every open() of a path containing one of the blinded tokens. |
 | `_operation` | function | `_operation` | [tools/c1prime/c1_records.py:161](../../tools/c1prime/c1_records.py#L161) |  |
 | `_optimizer` | method | `Trainer._optimizer` | [src/topo_pilot/learner/trainer.py:106](../../src/topo_pilot/learner/trainer.py#L106) |  |
 | `_oracle` | method | `SpaceBuilder._oracle` | [src/topo_pilot/analysis/spaces.py:73](../../src/topo_pilot/analysis/spaces.py#L73) |  |
 | `_oracle` | method | `StoreResolver._oracle` | [src/topo_pilot/experiment/x4_inputs.py:158](../../src/topo_pilot/experiment/x4_inputs.py#L158) |  |
 | `_oracle` | function | `_oracle` | [tests/contracts/conftest.py:43](../../tests/contracts/conftest.py#L43) |  |
 | `_oracle` | function | `_oracle` | [tests/experiment/test_x4.py:60](../../tests/experiment/test_x4.py#L60) |  |
+| `_oracle` | function | `_oracle` | [tools/hwsd/hwsd_driver.py:220](../../tools/hwsd/hwsd_driver.py#L220) |  |
 | `_oracle_D` | method | `X4Job._oracle_D` | [src/topo_pilot/experiment/x4.py:201](../../src/topo_pilot/experiment/x4.py#L201) |  |
 | `_oracle_split` | function | `_oracle_split` | [tools/x4_circle_history/runner.py:85](../../tools/x4_circle_history/runner.py#L85) |  |
+| `_order` | function | `_order` | [tools/hwsd/hwsd_summary.py:57](../../tools/hwsd/hwsd_summary.py#L57) |  |
 | `_os_canonical` | function | `_os_canonical` | [tools/hwsc/hwsc_registry.py:155](../../tools/hwsc/hwsc_registry.py#L155) |  |
 | `_os_digests` | function | `_os_digests` | [tools/hwsb/hwsb_registry.py:115](../../tools/hwsb/hwsb_registry.py#L115) |  |
 | `_os_parent_ok` | function | `_os_parent_ok` | [tools/hwsc/hwsc_drystore.py:40](../../tools/hwsc/hwsc_drystore.py#L40) | An ObservationSet whose single EmissionSpec parent lies in the same artifacts dir. |
+| `_os_parent_ok` | function | `_os_parent_ok` | [tools/hwsd/hwsd_registry.py:82](../../tools/hwsd/hwsd_registry.py#L82) |  |
 | `_os_roots` | function | `_os_roots` | [tools/hwsc/hwsc_registry.py:260](../../tools/hwsc/hwsc_registry.py#L260) | R-0176-R6 rule 1: ObservationSet stores in scratch whose EmissionSpec parents lie in the |
 | `_osum_dot` | function | `_osum_dot` | [tools/c1prime/c1_endpoint.py:21](../../tools/c1prime/c1_endpoint.py#L21) |  |
 | `_osum_dot` | function | `_osum_dot` | [tools/c1prime/c1_oracle.py:132](../../tools/c1prime/c1_oracle.py#L132) |  |
@@ -1376,6 +1466,7 @@
 | `_outcome_ok` | function | `_outcome_ok` | [tools/x6zc/x6zc_pipeline.py:107](../../tools/x6zc/x6zc_pipeline.py#L107) |  |
 | `_outside` | function | `_outside` | [tools/hwsb/hwsb_meter_bind.py:39](../../tools/hwsb/hwsb_meter_bind.py#L39) |  |
 | `_outside` | function | `_outside` | [tools/hwsc/hwsc_meter_bind.py:51](../../tools/hwsc/hwsc_meter_bind.py#L51) |  |
+| `_outside` | function | `_outside` | [tools/hwsd/hwsd_meter_bind.py:49](../../tools/hwsd/hwsd_meter_bind.py#L49) |  |
 | `_overlap_core` | function | `_overlap_core` | [src/topo_pilot/process/emission.py:88](../../src/topo_pilot/process/emission.py#L88) | ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)`` in float64 via log-sum-exp. |
 | `_own_betti` | function | `_own_betti` | [tests/world/test_world.py:67](../../tests/world/test_world.py#L67) |  |
 | `_own_boundary` | function | `_own_boundary` | [tests/world/test_world.py:49](../../tests/world/test_world.py#L49) | Independent cubical boundary: d = sum_i (-1)^i (upper_i - lower_i); edges canonical (lo,hi). |
@@ -1475,13 +1566,16 @@
 | `_pop` | function | `_pop` | [tools/hws/hws_meter_bind.py:40](../../tools/hws/hws_meter_bind.py#L40) |  |
 | `_pop` | function | `_pop` | [tools/hwsb/hwsb_meter_bind.py:83](../../tools/hwsb/hwsb_meter_bind.py#L83) |  |
 | `_pop` | function | `_pop` | [tools/hwsc/hwsc_meter_bind.py:87](../../tools/hwsc/hwsc_meter_bind.py#L87) |  |
+| `_pop` | function | `_pop` | [tools/hwsd/hwsd_meter_bind.py:91](../../tools/hwsd/hwsd_meter_bind.py#L91) |  |
 | `_pop` | function | `_pop` | [tools/k4b/k4b_meter_bind.py:113](../../tools/k4b/k4b_meter_bind.py#L113) |  |
 | `_pop` | function | `_pop` | [tools/x4_circle_history/meter_bind.py:200](../../tools/x4_circle_history/meter_bind.py#L200) |  |
 | `_pop_release` | function | `_pop_release` | [tools/c1prime/c1_meter_bind.py:94](../../tools/c1prime/c1_meter_bind.py#L94) |  |
 | `_pos` | function | `_pos` | [tools/x6_stage0/x6_run.py:206](../../tools/x6_stage0/x6_run.py#L206) |  |
 | `_posix` | function | `_posix` | [tools/hwsc/hwsc_config.py:167](../../tools/hwsc/hwsc_config.py#L167) |  |
+| `_posix` | function | `_posix` | [tools/hwsd/hwsd_config.py:161](../../tools/hwsd/hwsd_config.py#L161) |  |
 | `_posix` | function | `_posix` | [tools/x6_stage1/x6s1_ingest.py:65](../../tools/x6_stage1/x6s1_ingest.py#L65) |  |
 | `_posterior` | function | `_posterior` | [tests/circle_history/test_scores_precision.py:159](../../tests/circle_history/test_scores_precision.py#L159) |  |
+| `_pre` | function | `_pre` | [tests/hwsd/test_a_hwsd_ref.py:133](../../tests/hwsd/test_a_hwsd_ref.py#L133) |  |
 | `_pred` | function | `_pred` | [tools/x6_stage1/x6s1_stage_post.py:64](../../tools/x6_stage1/x6s1_stage_post.py#L64) |  |
 | `_pred_with_sse` | function | `_pred_with_sse` | [tests/c2_readout/test_b_fwl_l1.py:278](../../tests/c2_readout/test_b_fwl_l1.py#L278) | Entries 2 and 1 against Y = 0, so the SSE is the exact integer `sse` (<= 8 entries). |
 | `_predict` | function | `_predict` | [src/topo_pilot/experiment/x4f_probe.py:51](../../src/topo_pilot/experiment/x4f_probe.py#L51) |  |
@@ -1518,6 +1612,7 @@
 | `_pytest` | function | `_pytest` | [src/topo_pilot/experiment/s2.py:256](../../src/topo_pilot/experiment/s2.py#L256) |  |
 | `_pyth_kl` | function | `_pyth_kl` | [tools/x6_stage0/x6_dp.py:119](../../tools/x6_stage0/x6_dp.py#L119) |  |
 | `_q` | function | `_q` | [src/topo_pilot/experiment/x4b_audit.py:28](../../src/topo_pilot/experiment/x4b_audit.py#L28) |  |
+| `_q` | function | `_q` | [tests/hwsd/test_b_data.py:217](../../tests/hwsd/test_b_data.py#L217) |  |
 | `_q` | function | `_q` | [tools/hwsb/hwsb_gates.py:93](../../tools/hwsb/hwsb_gates.py#L93) |  |
 | `_q` | function | `_q` | [tools/k4b/k4b_stats.py:34](../../tools/k4b/k4b_stats.py#L34) |  |
 | `_q` | function | `_q` | [tools/x4_circle_history/precision.py:58](../../tools/x4_circle_history/precision.py#L58) |  |
@@ -1545,6 +1640,7 @@
 | `_r` | function | `_r` | [tests/experiment/test_report_e2.py:22](../../tests/experiment/test_report_e2.py#L22) |  |
 | `_r` | function | `_r` | [tests/experiment/test_report_e3.py:34](../../tests/experiment/test_report_e3.py#L34) |  |
 | `_r` | function | `_r` | [tests/experiment/test_s8_e4.py:30](../../tests/experiment/test_s8_e4.py#L30) |  |
+| `_r` | function | `_r` | [tools/hwsd/hwsd_dry2.py:54](../../tools/hwsd/hwsd_dry2.py#L54) |  |
 | `_r` | function | `_r` | [tools/x6_stage1/x6s1_stage_post.py:37](../../tools/x6_stage1/x6s1_stage_post.py#L37) |  |
 | `_r` | function | `_r` | [tools/x6_stage1/x6s1_stage_pre.py:50](../../tools/x6_stage1/x6s1_stage_pre.py#L50) |  |
 | `_r1` | function | `_r1` | [tests/c2_readout/test_b_screens.py:38](../../tests/c2_readout/test_b_screens.py#L38) |  |
@@ -1552,6 +1648,9 @@
 | `_radius` | function | `_radius` | [tools/k4b/k4b_scores.py:153](../../tools/k4b/k4b_scores.py#L153) |  |
 | `_raised_in` | function | `_raised_in` | [tools/c1prime/c1_records.py:118](../../tools/c1prime/c1_records.py#L118) |  |
 | `_raises` | function | `_raises` | [tools/hwsc/hwsc_dry2.py:32](../../tools/hwsc/hwsc_dry2.py#L32) |  |
+| `_raises` | function | `_raises` | [tools/hwsd/hwsd_dry2.py:39](../../tools/hwsd/hwsd_dry2.py#L39) |  |
+| `_raises` | function | `_raises` | [tools/hwsd/hwsd_dry3.py:48](../../tools/hwsd/hwsd_dry3.py#L48) |  |
+| `_raises_value` | function | `_raises_value` | [tools/hwsd/hwsd_dry3.py:222](../../tools/hwsd/hwsd_dry3.py#L222) |  |
 | `_rand_rep` | function | `_rand_rep` | [tests/learner/test_patch.py:39](../../tests/learner/test_patch.py#L39) |  |
 | `_random_X` | function | `_random_X` | [tests/k4b/test_a_ranks_ladder.py:181](../../tests/k4b/test_a_ranks_ladder.py#L181) |  |
 | `_rank` | function | `_rank` | [src/topo_pilot/analysis/x4f_erasure.py:73](../../src/topo_pilot/analysis/x4f_erasure.py#L73) |  |
@@ -1564,6 +1663,7 @@
 | `_rc` | function | `_rc` | [tests/experiment/test_x5g1_controls.py:39](../../tests/experiment/test_x5g1_controls.py#L39) |  |
 | `_rc` | function | `_rc` | [tests/experiment/test_x5g1_safety.py:96](../../tests/experiment/test_x5g1_safety.py#L96) |  |
 | `_rctx` | function | `_rctx` | [tests/c2_readout/test_b_policy.py:219](../../tests/c2_readout/test_b_policy.py#L219) |  |
+| `_rd` | function | `_rd` | [tools/hwsd/hwsd_statements.py:119](../../tools/hwsd/hwsd_statements.py#L119) |  |
 | `_Reached` | class | `_Reached` | [tests/experiment/test_x5g1t_identity.py:44](../../tests/experiment/test_x5g1t_identity.py#L44) | Raised by a spy: the stage got past every check to the guarded call. |
 | `_Reached` | class | `_Reached` | [tests/experiment/test_x5g1t_identity_eval.py:37](../../tests/experiment/test_x5g1t_identity_eval.py#L37) | Raised by a spy: the stage got past every check to the guarded call. |
 | `_read` | method | `RunControls._read` | [src/topo_pilot/experiment/x5g1_controls.py:45](../../src/topo_pilot/experiment/x5g1_controls.py#L45) |  |
@@ -1591,6 +1691,8 @@
 | `_record` | function | `_record` | [tools/x4_circle_history/chart.py:250](../../tools/x4_circle_history/chart.py#L250) |  |
 | `_record` | function | `_record` | [tools/x6zc/x6zc_guard.py:49](../../tools/x6zc/x6zc_guard.py#L49) |  |
 | `_recorded_store` | function | `_recorded_store` | [tests/hwsc/test_b_records.py:134](../../tests/hwsc/test_b_records.py#L134) |  |
+| `_recorded_store` | function | `_recorded_store` | [tests/hwsd/test_b_records_meter.py:36](../../tests/hwsd/test_b_records_meter.py#L36) |  |
+| `_recs` | function | `_recs` | [tests/hwsd/test_b_registry_build.py:117](../../tests/hwsd/test_b_registry_build.py#L117) |  |
 | `_recs` | function | `_recs` | [tools/hws/hws_select.py:76](../../tools/hws/hws_select.py#L76) |  |
 | `_redo` | function | `_redo` | [tests/c2_readout/test_b_registry.py:76](../../tests/c2_readout/test_b_registry.py#L76) |  |
 | `_ref` | function | `_ref` | [tools/c2_readout/c2_stats.py:125](../../tools/c2_readout/c2_stats.py#L125) | The §2.5 steps in order; fills `o` (Decimal values as str). |
@@ -1612,14 +1714,19 @@
 | `_reference` | function | `_reference` | [tools/x6_stage1/x6s1_run.py:441](../../tools/x6_stage1/x6s1_run.py#L441) | §4.6 item 1: the unchanged Trainer.fit on CPU with 2 intra-op threads. |
 | `_reference_ladder` | function | `_reference_ladder` | [tests/c1prime/test_b_precision.py:56](../../tests/c1prime/test_b_precision.py#L56) |  |
 | `_reference_posterior` | function | `_reference_posterior` | [tools/x4_circle_history/error_bound.py:199](../../tools/x4_circle_history/error_bound.py#L199) | The nested reference context (its own localcontext) INHERITS these traps, so any |
+| `_refs` | function | `_refs` | [tests/hwsd/test_b_data.py:188](../../tests/hwsd/test_b_data.py#L188) |  |
 | `_refused` | function | `_refused` | [tests/c2_readout/test_b_policy.py:58](../../tests/c2_readout/test_b_policy.py#L58) |  |
 | `_refused` | function | `_refused` | [tools/c2_nd/nd_dry.py:265](../../tools/c2_nd/nd_dry.py#L265) |  |
 | `_Reg` | class | `_Reg` | [tests/c2_readout/test_b_registry.py:97](../../tests/c2_readout/test_b_registry.py#L97) | Registry stand-in for separation (sealed_ranges {pool: (lo, hi)}, API.md 19.1 E-20). |
 | `_reg` | function | `_reg` | [tests/hwsc/test_b_streams.py:265](../../tests/hwsc/test_b_streams.py#L265) |  |
+| `_reg` | function | `_reg` | [tests/hwsd/test_b_data.py:147](../../tests/hwsd/test_b_data.py#L147) |  |
+| `_reg` | function | `_reg` | [tests/hwsd/test_b_registry_r9.py:271](../../tests/hwsd/test_b_registry_r9.py#L271) |  |
 | `_reg` | function | `_reg` | [tools/hwsc/hwsc_driver.py:153](../../tools/hwsc/hwsc_driver.py#L153) |  |
+| `_regd` | function | `_regd` | [tools/hwsd/hwsd_driver.py:160](../../tools/hwsd/hwsd_driver.py#L160) |  |
 | `_regen` | function | `_regen` | [tools/x6_stage1/x6s1_stage_post.py:147](../../tools/x6_stage1/x6s1_stage_post.py#L147) |  |
 | `_register` | function | `_register` | [tests/hwsc/test_b_registry.py:280](../../tests/hwsc/test_b_registry.py#L280) |  |
 | `_registered` | function | `_registered` | [tools/hwsc/hwsc_dry.py:40](../../tools/hwsc/hwsc_dry.py#L40) |  |
+| `_registered` | function | `_registered` | [tools/hwsd/hwsd_dry.py:63](../../tools/hwsd/hwsd_dry.py#L63) |  |
 | `_registry_npz` | function | `_registry_npz` | [tools/hwsc/hwsc_drystore.py:54](../../tools/hwsc/hwsc_drystore.py#L54) |  |
 | `_regressors` | function | `_regressors` | [tests/c2_readout/test_a_scope.py:89](../../tests/c2_readout/test_a_scope.py#L89) |  |
 | `_regret_curve` | function | `_regret_curve` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:85](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L85) | Regret per row and checkpoint; checkpoints were validated by ``validate_checkpoints``. |
@@ -1656,6 +1763,7 @@
 | `_report` | function | `_report` | [tools/hws/hws_records.py:150](../../tools/hws/hws_records.py#L150) |  |
 | `_report` | function | `_report` | [tools/x4_circle_history/process_law.py:178](../../tools/x4_circle_history/process_law.py#L178) |  |
 | `_repro` | function | `_repro` | [src/topo_pilot/experiment/circ_audit.py:94](../../src/topo_pilot/experiment/circ_audit.py#L94) |  |
+| `_repro_stage_c` | function | `_repro_stage_c` | [tools/hwsd/hwsd_dry3.py:301](../../tools/hwsd/hwsd_dry3.py#L301) | (1) A fresh stage-C DRC1 case: its recorded C0-CAL outcome reproduced by chart_one. |
 | `_reps` | function | `_reps` | [tests/experiment/test_circ_audit.py:9](../../tests/experiment/test_circ_audit.py#L9) |  |
 | `_req` | function | `_req` | [tools/x6_stage1/x6s1_cloud.py:88](../../tools/x6_stage1/x6s1_cloud.py#L88) |  |
 | `_req` | function | `_req` | [tools/x6_stage1/x6s1_registry.py:46](../../tools/x6_stage1/x6s1_registry.py#L46) |  |
@@ -1667,11 +1775,15 @@
 | `_res` | function | `_res` | [tests/experiment/test_x5g1_export_integration.py:62](../../tests/experiment/test_x5g1_export_integration.py#L62) |  |
 | `_res` | function | `_res` | [tools/hwsb/hwsb_dry.py:90](../../tools/hwsb/hwsb_dry.py#L90) |  |
 | `_res` | function | `_res` | [tools/hwsc/hwsc_dry2.py:27](../../tools/hwsc/hwsc_dry2.py#L27) |  |
+| `_res` | function | `_res` | [tools/hwsd/hwsd_dry.py:67](../../tools/hwsd/hwsd_dry.py#L67) |  |
 | `_resave` | function | `_resave` | [tests/experiment/test_x5g1t_identity.py:103](../../tests/experiment/test_x5g1t_identity.py#L103) | Save a checksum-valid variant of pool ``key``. With only ``obs`` changed the artifact id |
 | `_reservation_problem` | function | `_reservation_problem` | [tools/c2_nd/nd_registry.py:371](../../tools/c2_nd/nd_registry.py#L371) |  |
+| `_reserved` | function | `_reserved` | [tools/hwsd/hwsd_known.py:75](../../tools/hwsd/hwsd_known.py#L75) |  |
 | `_resolve` | function | `_resolve` | [src/topo_pilot/executors/entry.py:80](../../src/topo_pilot/executors/entry.py#L80) |  |
+| `_restored` | function | `_restored` | [tests/hwsd/test_b_binding.py:55](../../tests/hwsd/test_b_binding.py#L55) |  |
 | `_result` | function | `_result` | [tools/c2_readout/c2_decide.py:125](../../tools/c2_readout/c2_decide.py#L125) |  |
 | `_retable` | function | `_retable` | [tests/hwsc/test_b_streams.py:270](../../tests/hwsc/test_b_streams.py#L270) |  |
+| `_rewrite` | function | `_rewrite` | [tools/hwsd/hwsd_dry2.py:184](../../tools/hwsd/hwsd_dry2.py#L184) |  |
 | `_rff_rest` | function | `_rff_rest` | [tools/c2_readout/c2_stage_pre.py:245](../../tools/c2_readout/c2_stage_pre.py#L245) | The descriptive RFF decoder of f1 from P_rest y (C-27): FIT fit, FEAS score. |
 | `_rho` | function | `_rho` | [src/topo_pilot/analysis/geometry.py:15](../../src/topo_pilot/analysis/geometry.py#L15) |  |
 | `_rho` | function | `_rho` | [src/topo_pilot/experiment/x4.py:80](../../src/topo_pilot/experiment/x4.py#L80) | Spearman correlation; None when undefined (fewer than 3 pairs or a constant input). |
@@ -1684,7 +1796,9 @@
 | `_ripser_job` | function | `_ripser_job` | [src/topo_pilot/topology/persistence.py:101](../../src/topo_pilot/topology/persistence.py#L101) |  |
 | `_rjson` | function | `_rjson` | [tools/x6_stage1/x6s1_cloud.py:101](../../tools/x6_stage1/x6s1_cloud.py#L101) |  |
 | `_rng_untouched` | function | `_rng_untouched` | [tests/learner/test_multihorizon.py:214](../../tests/learner/test_multihorizon.py#L214) |  |
+| `_root` | function | `_root` | [tests/hwsd/test_b_guard_search.py:114](../../tests/hwsd/test_b_guard_search.py#L114) |  |
 | `_root` | function | `_root` | [tools/c2_readout/c2_registry.py:50](../../tools/c2_readout/c2_registry.py#L50) |  |
+| `_root_tree` | function | `_root_tree` | [tests/hwsd/test_b_registry_build.py:195](../../tests/hwsd/test_b_registry_build.py#L195) |  |
 | `_roots` | function | `_roots` | [tools/c2_readout/c2_code.py:264](../../tools/c2_readout/c2_code.py#L264) |  |
 | `_rot_world` | function | `_rot_world` | [tests/c2_readout/test_a_oracle.py:262](../../tests/c2_readout/test_a_oracle.py#L262) |  |
 | `_round_up` | function | `_round_up` | [tools/x4_circle_history/precision_stage.py:51](../../tools/x4_circle_history/precision_stage.py#L51) |  |
@@ -1756,12 +1870,14 @@
 | `_s0_dispatch` | function | `_s0_dispatch` | [tools/x6_stage1/x6s1_stage_pre.py:94](../../tools/x6_stage1/x6s1_stage_pre.py#L94) | E0 only (D-0087-2, R-0087-3; API.md §13 item 39): a GATES.jsonl holding exactly this |
 | `_s1_max` | function | `_s1_max` | [tests/hws/test_a_budget.py:28](../../tests/hws/test_a_budget.py#L28) |  |
 | `_s2_rows` | function | `_s2_rows` | [src/topo_pilot/experiment/prereg.py:46](../../src/topo_pilot/experiment/prereg.py#L46) |  |
+| `_s3d` | function | `_s3d` | [tools/hwsd/hwsd_driver.py:185](../../tools/hwsd/hwsd_driver.py#L185) |  |
 | `_s3rec` | function | `_s3rec` | [tests/hws/test_a_outcomes.py:260](../../tests/hws/test_a_outcomes.py#L260) |  |
 | `_s7_rows` | function | `_s7_rows` | [src/topo_pilot/experiment/circ_audit.py:63](../../src/topo_pilot/experiment/circ_audit.py#L63) |  |
 | `_same` | function | `_same` | [tools/c2_nd/nd_driver.py:321](../../tools/c2_nd/nd_driver.py#L321) |  |
 | `_same` | function | `_same` | [tools/c2_nd/nd_stage_val.py:264](../../tools/c2_nd/nd_stage_val.py#L264) | Bitwise equality of nested summaries (arrays by dtype, shape and bytes). |
 | `_same` | function | `_same` | [tools/hws/hws_exact.py:293](../../tools/hws/hws_exact.py#L293) |  |
 | `_same` | function | `_same` | [tools/hwsc/hwsc_bind.py:82](../../tools/hwsc/hwsc_bind.py#L82) |  |
+| `_same` | function | `_same` | [tools/hwsd/hwsd_known2.py:166](../../tools/hwsd/hwsd_known2.py#L166) |  |
 | `_same` | function | `_same` | [tools/k4b/k4b_config.py:134](../../tools/k4b/k4b_config.py#L134) |  |
 | `_same` | function | `_same` | [tools/x6_stage1/x6s1_data.py:314](../../tools/x6_stage1/x6s1_data.py#L314) |  |
 | `_same_array` | function | `_same_array` | [tests/contracts/test_store.py:30](../../tests/contracts/test_store.py#L30) |  |
@@ -1774,6 +1890,7 @@
 | `_save` | function | `_save` | [tests/experiment/test_report_e3.py:38](../../tests/experiment/test_report_e3.py#L38) |  |
 | `_save` | function | `_save` | [tests/experiment/test_report_x4.py:27](../../tests/experiment/test_report_x4.py#L27) |  |
 | `_save` | function | `_save` | [tools/d2a/d2a_decide.py:333](../../tools/d2a/d2a_decide.py#L333) |  |
+| `_save` | function | `_save` | [tools/hwsd/hwsd_data.py:127](../../tools/hwsd/hwsd_data.py#L127) |  |
 | `_save` | function | `_save` | [tools/x6_stage1/x6s1_cloud.py:312](../../tools/x6_stage1/x6s1_cloud.py#L312) |  |
 | `_save_all` | method | `DatasetStage._save_all` | [src/topo_pilot/dataset/stage.py:103](../../src/topo_pilot/dataset/stage.py#L103) |  |
 | `_save_model` | function | `_save_model` | [tests/circle_history/test_adapter.py:61](../../tests/circle_history/test_adapter.py#L61) |  |
@@ -1796,6 +1913,10 @@
 | `_scatter` | function | `_scatter` | [tests/c2_readout/test_a_readout.py:169](../../tests/c2_readout/test_a_readout.py#L169) |  |
 | `_scatter` | function | `_scatter` | [tools/c2_readout/c2_oracle.py:104](../../tools/c2_readout/c2_oracle.py#L104) | n-row arrays of a role computed on `rows` only (NaN elsewhere: no H^Y is formed there). |
 | `_scope` | function | `_scope` | [tools/c2_nd/nd_data.py:35](../../tools/c2_nd/nd_data.py#L35) |  |
+| `_score_ctx` | function | `_score_ctx` | [tools/hwsd/hwsd_jobs.py:78](../../tools/hwsd/hwsd_jobs.py#L78) |  |
+| `_score_ident` | function | `_score_ident` | [tools/hwsd/hwsd_jobs.py:58](../../tools/hwsd/hwsd_jobs.py#L58) |  |
+| `_scores` | function | `_scores` | [tests/hwsd/test_a_bounds.py:120](../../tests/hwsd/test_a_bounds.py#L120) |  |
+| `_scratch` | function | `_scratch` | [tests/hwsd/test_b_registry_build.py:71](../../tests/hwsd/test_b_registry_build.py#L71) |  |
 | `_scratch` | function | `_scratch` | [tests/x6_stage1/test_b_seed_pool_reg.py:286](../../tests/x6_stage1/test_b_seed_pool_reg.py#L286) |  |
 | `_scratch` | function | `_scratch` | [tools/x6_stage1/x6s1_stage_pre.py:56](../../tools/x6_stage1/x6s1_stage_pre.py#L56) |  |
 | `_sd_se` | function | `_sd_se` | [tools/hwsb/hwsb_eval.py:82](../../tools/hwsb/hwsb_eval.py#L82) |  |
@@ -1853,6 +1974,8 @@
 | `_sha` | function | `_sha` | [tools/d2a/d2a_world.py:187](../../tools/d2a/d2a_world.py#L187) |  |
 | `_sha` | function | `_sha` | [tools/hws/hws_exact.py:251](../../tools/hws/hws_exact.py#L251) |  |
 | `_sha` | function | `_sha` | [tools/hwsc/hwsc_records.py:165](../../tools/hwsc/hwsc_records.py#L165) |  |
+| `_sha` | function | `_sha` | [tools/hwsd/hwsd_records.py:109](../../tools/hwsd/hwsd_records.py#L109) |  |
+| `_sha` | function | `_sha` | [tools/hwsd/hwsd_score.py:109](../../tools/hwsd/hwsd_score.py#L109) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_charts.py:124](../../tools/k4b/k4b_charts.py#L124) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_driver.py:41](../../tools/k4b/k4b_driver.py#L41) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_registry_k.py:25](../../tools/k4b/k4b_registry_k.py#L25) |  |
@@ -1864,13 +1987,17 @@
 | `_sha_array` | function | `_sha_array` | [tools/hwsb/hwsb_data.py:120](../../tools/hwsb/hwsb_data.py#L120) |  |
 | `_sha_bytes` | function | `_sha_bytes` | [tests/hws/test_b_records.py:49](../../tests/hws/test_b_records.py#L49) |  |
 | `_sha_bytes` | function | `_sha_bytes` | [tools/k4b/k4b_release.py:34](../../tools/k4b/k4b_release.py#L34) |  |
+| `_sha_check` | function | `_sha_check` | [tools/hwsd/hwsd_known.py:90](../../tools/hwsd/hwsd_known.py#L90) |  |
 | `_sha_file` | function | `_sha_file` | [tests/circle_history/test_reference_cache.py:48](../../tests/circle_history/test_reference_cache.py#L48) |  |
 | `_sha_file` | function | `_sha_file` | [tests/experiment/test_x5g1t_config_checks.py:47](../../tests/experiment/test_x5g1t_config_checks.py#L47) |  |
 | `_sha_file` | function | `_sha_file` | [tests/experiment/test_x5g1t_config_production.py:44](../../tests/experiment/test_x5g1t_config_production.py#L44) |  |
 | `_sha_file` | function | `_sha_file` | [tests/experiment/test_x5g1t_config_synthetic.py:44](../../tests/experiment/test_x5g1t_config_synthetic.py#L44) |  |
 | `_sha_file` | function | `_sha_file` | [tests/experiment/test_x5g1t_export_checks.py:35](../../tests/experiment/test_x5g1t_export_checks.py#L35) |  |
+| `_sha_file` | function | `_sha_file` | [tools/hwsd/hwsd_config.py:116](../../tools/hwsd/hwsd_config.py#L116) |  |
 | `_sha_ok` | function | `_sha_ok` | [tools/c2_nd/nd_stage_base.py:53](../../tools/c2_nd/nd_stage_base.py#L53) |  |
 | `_sha_ok` | function | `_sha_ok` | [tools/hwsc/hwsc_known.py:76](../../tools/hwsc/hwsc_known.py#L76) |  |
+| `_shared` | function | `_shared` | [tools/hwsd/hwsd_jobs.py:142](../../tools/hwsd/hwsd_jobs.py#L142) |  |
+| `_shared_inputs` | function | `_shared_inputs` | [tools/hwsd/hwsd_summary.py:237](../../tools/hwsd/hwsd_summary.py#L237) |  |
 | `_shuffled` | function | `_shuffled` | [tests/contracts/test_ids.py:22](../../tests/contracts/test_ids.py#L22) |  |
 | `_sigma_str` | function | `_sigma_str` | [src/topo_pilot/dataset/stage.py:39](../../src/topo_pilot/dataset/stage.py#L39) |  |
 | `_signs` | function | `_signs` | [tests/c2_nd/test_a_family.py:52](../../tests/c2_nd/test_a_family.py#L52) |  |
@@ -1880,12 +2007,14 @@
 | `_skip` | function | `_skip` | [tools/c2_readout/c2_driver.py:268](../../tools/c2_readout/c2_driver.py#L268) |  |
 | `_skip_dir` | function | `_skip_dir` | [tools/hws/hws_driver.py:51](../../tools/hws/hws_driver.py#L51) |  |
 | `_skip_dir` | function | `_skip_dir` | [tools/hwsc/hwsc_known.py:44](../../tools/hwsc/hwsc_known.py#L44) |  |
+| `_skip_dir` | function | `_skip_dir` | [tools/hwsd/hwsd_known.py:41](../../tools/hwsd/hwsd_known.py#L41) |  |
 | `_smoke_root` | function | `_smoke_root` | [tools/x6_stage1/x6s1_run.py:364](../../tools/x6_stage1/x6s1_run.py#L364) | A local C0-shaped root for the chunked trainer with the recipe (cfg, k) on the stored smoke |
 | `_snapshot` | function | `_snapshot` | [tests/contracts/test_store.py:55](../../tests/contracts/test_store.py#L55) |  |
 | `_snapshot` | function | `_snapshot` | [tests/experiment/test_x5g1t_config_checks.py:51](../../tests/experiment/test_x5g1t_config_checks.py#L51) |  |
 | `_snapshot` | function | `_snapshot` | [tests/experiment/test_x5g1t_config_production.py:48](../../tests/experiment/test_x5g1t_config_production.py#L48) |  |
 | `_snapshot` | function | `_snapshot` | [tests/experiment/test_x5g1t_config_synthetic.py:48](../../tests/experiment/test_x5g1t_config_synthetic.py#L48) |  |
 | `_snapshot` | function | `_snapshot` | [tests/experiment/test_x5g1t_integration.py:44](../../tests/experiment/test_x5g1t_integration.py#L44) |  |
+| `_snapshot` | function | `_snapshot` | [tests/hwsd/test_b_binding.py:50](../../tests/hwsd/test_b_binding.py#L50) |  |
 | `_softmax` | function | `_softmax` | [src/topo_pilot/experiment/s7_controls.py:35](../../src/topo_pilot/experiment/s7_controls.py#L35) |  |
 | `_softmax` | function | `_softmax` | [src/topo_pilot/experiment/x4f_gates.py:132](../../src/topo_pilot/experiment/x4f_gates.py#L132) |  |
 | `_softmax` | function | `_softmax` | [tools/c2_readout/c2_attrib.py:140](../../tools/c2_readout/c2_attrib.py#L140) |  |
@@ -1897,6 +2026,7 @@
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_checks.py:73](../../tests/experiment/test_x5g1t_config_checks.py#L73) |  |
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_production.py:76](../../tests/experiment/test_x5g1t_config_production.py#L76) |  |
 | `_sources` | function | `_sources` | [tests/experiment/test_x5g1t_config_synthetic.py:76](../../tests/experiment/test_x5g1t_config_synthetic.py#L76) |  |
+| `_sources` | function | `_sources` | [tests/hwsd/test_b_registry_build.py:228](../../tests/hwsd/test_b_registry_build.py#L228) |  |
 | `_spec` | function | `_spec` | [tests/experiment/test_x5g1_export_integration.py:38](../../tests/experiment/test_x5g1_export_integration.py#L38) |  |
 | `_spec` | function | `_spec` | [tests/experiment/test_x5g1_safety.py:46](../../tests/experiment/test_x5g1_safety.py#L46) |  |
 | `_spec` | function | `_spec` | [tools/x6_stage1/x6s1_ingest.py:46](../../tools/x6_stage1/x6s1_ingest.py#L46) |  |
@@ -1914,6 +2044,7 @@
 | `_sqrt3_half` | function | `_sqrt3_half` | [tests/circle_history/test_error_bound.py:88](../../tests/circle_history/test_error_bound.py#L88) |  |
 | `_square_boundary` | function | `_square_boundary` | [tests/d1_seam/test_d1_seam.py:186](../../tests/d1_seam/test_d1_seam.py#L186) |  |
 | `_src` | function | `_src` | [tests/hwsc/test_b_registry2.py:207](../../tests/hwsc/test_b_registry2.py#L207) |  |
+| `_src` | function | `_src` | [tests/hwsd/test_b_registry_build.py:220](../../tests/hwsd/test_b_registry_build.py#L220) |  |
 | `_src_path` | function | `_src_path` | [tools/hwsb/hwsb_kb.py:70](../../tools/hwsb/hwsb_kb.py#L70) |  |
 | `_sse` | function | `_sse` | [tests/c2_readout/test_b_fwl_l1.py:190](../../tests/c2_readout/test_b_fwl_l1.py#L190) |  |
 | `_sse` | function | `_sse` | [tools/c2_readout/c2_stats.py:271](../../tools/c2_readout/c2_stats.py#L271) |  |
@@ -1921,6 +2052,7 @@
 | `_st` | function | `_st` | [tests/x6_stage0/test_x6_stage0_dp.py:239](../../tests/x6_stage0/test_x6_stage0_dp.py#L239) |  |
 | `_st` | function | `_st` | [tests/x6zc/test_x6zc_dryrun.py:143](../../tests/x6zc/test_x6zc_dryrun.py#L143) |  |
 | `_st` | function | `_st` | [tools/hwsb/hwsb_gates.py:62](../../tools/hwsb/hwsb_gates.py#L62) |  |
+| `_st` | function | `_st` | [tools/hwsd/hwsd_dry2.py:68](../../tools/hwsd/hwsd_dry2.py#L68) |  |
 | `_st` | function | `_st` | [tools/x6_stage1/x6s1_run.py:78](../../tools/x6_stage1/x6s1_run.py#L78) |  |
 | `_st` | function | `_st` | [tools/x6zc/x6zc_census.py:24](../../tools/x6zc/x6zc_census.py#L24) |  |
 | `_stage` | function | `_stage` | [tools/hws/hws_driver.py:212](../../tools/hws/hws_driver.py#L212) | One stage over its worklist with resume at world boundaries (RC-5, choice 40). |
@@ -1970,6 +2102,7 @@
 | `_stencil` | function | `_stencil` | [tools/x2a_stage0/x2a_model.py:175](../../tools/x2a_stage0/x2a_model.py#L175) |  |
 | `_step` | function | `_step` | [src/topo_pilot/experiment/report_e3.py:98](../../src/topo_pilot/experiment/report_e3.py#L98) |  |
 | `_step` | function | `_step` | [tools/d1_seam/d1_seam.py:95](../../tools/d1_seam/d1_seam.py#L95) |  |
+| `_step` | function | `_step` | [tools/hwsd/hwsd_summary.py:176](../../tools/hwsd/hwsd_summary.py#L176) |  |
 | `_step` | function | `_step` | [tools/x6_stage0/x6_exact.py:24](../../tools/x6_stage0/x6_exact.py#L24) | Condition the predictive state law on w: (belief, normaliser, next predictive). |
 | `_steps` | function | `_steps` | [tests/experiment/test_x5g1_safety.py:259](../../tests/experiment/test_x5g1_safety.py#L259) |  |
 | `_steps` | function | `_steps` | [tests/hwsc/test_b_records.py:87](../../tests/hwsc/test_b_records.py#L87) |  |
@@ -2005,6 +2138,7 @@
 | `_summary` | function | `_summary` | [tools/c2_nd/nd_registry.py:278](../../tools/c2_nd/nd_registry.py#L278) |  |
 | `_summary` | function | `_summary` | [tools/hwsb/hwsb_train.py:251](../../tools/hwsb/hwsb_train.py#L251) |  |
 | `_summary` | function | `_summary` | [tools/hwsc/hwsc_registry_build.py:55](../../tools/hwsc/hwsc_registry_build.py#L55) |  |
+| `_summary` | function | `_summary` | [tools/hwsd/hwsd_registry.py:239](../../tools/hwsd/hwsd_registry.py#L239) |  |
 | `_summary` | function | `_summary` | [tools/k4b/k4b_scores.py:92](../../tools/k4b/k4b_scores.py#L92) |  |
 | `_summary_for` | function | `_summary_for` | [tests/c1prime/test_b_precision.py:87](../../tests/c1prime/test_b_precision.py#L87) |  |
 | `_sums` | function | `_sums` | [tools/x6_stage1/x6s1_ingest.py:130](../../tools/x6_stage1/x6s1_ingest.py#L130) |  |
@@ -2019,6 +2153,7 @@
 | `_sym_bG` | function | `_sym_bG` | [tests/c1prime/test_b_cert_bounds.py:277](../../tests/c1prime/test_b_cert_bounds.py#L277) |  |
 | `_symbol_perm` | function | `_symbol_perm` | [src/topo_pilot/process/emission.py:83](../../src/topo_pilot/process/emission.py#L83) |  |
 | `_symbols` | function | `_symbols` | [tests/oracle_profile/independent_reference.py:59](../../tests/oracle_profile/independent_reference.py#L59) | Read the suffix as a non-empty list of Python ints in 0 .. V-1. |
+| `_syn` | function | `_syn` | [tests/hwsd/test_b_registry_build.py:240](../../tests/hwsd/test_b_registry_build.py#L240) |  |
 | `_synthetic` | function | `_synthetic` | [src/topo_pilot/experiment/x5g1t_config.py:352](../../src/topo_pilot/experiment/x5g1t_config.py#L352) |  |
 | `_synthetic_mailbox` | function | `_synthetic_mailbox` | [tests/circle_history/test_builder_v24_runtime.py:157](../../tests/circle_history/test_builder_v24_runtime.py#L157) | Hermetic control inputs for the unchanged job-0014 controls (job 0021 revision). |
 | `_t6` | function | `_t6` | [tools/x6_stage1/x6s1_stage_pre.py:179](../../tools/x6_stage1/x6s1_stage_pre.py#L179) |  |
@@ -2026,10 +2161,12 @@
 | `_t_star` | function | `_t_star` | [tests/circle_history/test_process_law.py:143](../../tests/circle_history/test_process_law.py#L143) |  |
 | `_table` | function | `_table` | [tests/c2_readout/test_b_registry.py:68](../../tests/c2_readout/test_b_registry.py#L68) |  |
 | `_table` | function | `_table` | [tests/d2a/test_b_targets.py:128](../../tests/d2a/test_b_targets.py#L128) |  |
+| `_table` | function | `_table` | [tools/hwsd/hwsd_dry2.py:172](../../tools/hwsd/hwsd_dry2.py#L172) |  |
 | `_tables` | function | `_tables` | [tests/c2_readout/test_b_registry.py:139](../../tests/c2_readout/test_b_registry.py#L139) |  |
 | `_tables` | function | `_tables` | [tests/experiment/test_x5g1t_integration.py:36](../../tests/experiment/test_x5g1t_integration.py#L36) |  |
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_registry2.py:295](../../tests/hwsc/test_b_registry2.py#L295) |  |
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_streams.py:251](../../tests/hwsc/test_b_streams.py#L251) |  |
+| `_tables` | function | `_tables` | [tests/hwsd/test_b_data.py:151](../../tests/hwsd/test_b_data.py#L151) |  |
 | `_tables` | function | `_tables` | [tools/x6_stage1/x6s1_stage_post.py:54](../../tools/x6_stage1/x6s1_stage_post.py#L54) |  |
 | `_tags` | function | `_tags` | [tools/c2_readout/c2_registry.py:168](../../tools/c2_readout/c2_registry.py#L168) |  |
 | `_tamper_flip` | function | `_tamper_flip` | [tests/contracts/test_store.py:177](../../tests/contracts/test_store.py#L177) |  |
@@ -2040,6 +2177,7 @@
 | `_tensors` | function | `_tensors` | [src/topo_pilot/experiment/x5g1_techbench.py:62](../../src/topo_pilot/experiment/x5g1_techbench.py#L62) |  |
 | `_terms` | function | `_terms` | [tools/x6zc/x6zc_stage_bc.py:37](../../tools/x6zc/x6zc_stage_bc.py#L37) |  |
 | `_test_obs` | function | `_test_obs` | [tests/dataset/test_panels.py:19](../../tests/dataset/test_panels.py#L19) |  |
+| `_text` | function | `_text` | [tools/hwsd/hwsd_score.py:83](../../tools/hwsd/hwsd_score.py#L83) |  |
 | `_threadpools` | function | `_threadpools` | [tools/x4_circle_history/env_identity.py:153](../../tools/x4_circle_history/env_identity.py#L153) |  |
 | `_three_sets` | function | `_three_sets` | [tests/c1prime/test_b_registry.py:132](../../tests/c1prime/test_b_registry.py#L132) |  |
 | `_through` | function | `_through` | [tools/c2_readout/c2_attrib.py:58](../../tools/c2_readout/c2_attrib.py#L58) |  |
@@ -2053,6 +2191,7 @@
 | `_tiny_run` | function | `_tiny_run` | [tests/hwsc/test_b_train_hold.py:252](../../tests/hwsc/test_b_train_hold.py#L252) |  |
 | `_tiny_store` | function | `_tiny_store` | [tools/hwsb/hwsb_dry.py:309](../../tools/hwsb/hwsb_dry.py#L309) |  |
 | `_tiny_train` | function | `_tiny_train` | [tools/hwsc/hwsc_dry3.py:92](../../tools/hwsc/hwsc_dry3.py#L92) |  |
+| `_tm` | function | `_tm` | [tools/hwsd/hwsd_summary.py:29](../../tools/hwsd/hwsd_summary.py#L29) |  |
 | `_tm` | function | `_tm` | [tools/k4b/k4b_fresh.py:199](../../tools/k4b/k4b_fresh.py#L199) |  |
 | `_tok` | function | `_tok` | [tests/hws/test_b_oracle.py:47](../../tests/hws/test_b_oracle.py#L47) |  |
 | `_tok` | function | `_tok` | [tools/x6_stage1/x6s1_stage_post.py:60](../../tools/x6_stage1/x6s1_stage_post.py#L60) |  |
@@ -2068,6 +2207,7 @@
 | `_tol` | function | `_tol` | [tools/hws/hws_known.py:37](../../tools/hws/hws_known.py#L37) |  |
 | `_top_cocycle` | method | `CircularCoordinates._top_cocycle` | [src/topo_pilot/topology/circular.py:49](../../src/topo_pilot/topology/circular.py#L49) |  |
 | `_top_d4` | function | `_top_d4` | [tools/hws/hws_select.py:97](../../tools/hws/hws_select.py#L97) |  |
+| `_tops` | function | `_tops` | [tools/hwsd/hwsd_dry3.py:56](../../tools/hwsd/hwsd_dry3.py#L56) |  |
 | `_touched` | function | `_touched` | [tests/hwsc/test_b_registry.py:64](../../tests/hwsc/test_b_registry.py#L64) |  |
 | `_toy_process` | function | `_toy_process` | [tests/c2_readout/test_b_registry.py:356](../../tests/c2_readout/test_b_registry.py#L356) |  |
 | `_tr` | function | `_tr` | [tests/c2_readout/test_a_gls.py:47](../../tests/c2_readout/test_a_gls.py#L47) |  |
@@ -2077,6 +2217,7 @@
 | `_train_cfg` | function | `_train_cfg` | [tools/hwsb/hwsb_config.py:75](../../tools/hwsb/hwsb_config.py#L75) |  |
 | `_train_spy` | function | `_train_spy` | [tests/experiment/test_x5g1t_identity.py:131](../../tests/experiment/test_x5g1t_identity.py#L131) |  |
 | `_train_tiny` | function | `_train_tiny` | [tools/hwsc/hwsc_dry.py:90](../../tools/hwsc/hwsc_dry.py#L90) |  |
+| `_train_tiny` | function | `_train_tiny` | [tools/hwsd/hwsd_dry.py:241](../../tools/hwsd/hwsd_dry.py#L241) |  |
 | `_trainer` | function | `_trainer` | [tests/learner/test_multihorizon.py:79](../../tests/learner/test_multihorizon.py#L79) |  |
 | `_translate` | function | `_translate` | [tools/x2a_stage0/x2a_model.py:285](../../tools/x2a_stage0/x2a_model.py#L285) |  |
 | `_tree_mean` | function | `_tree_mean` | [tests/c1prime/test_b_inference.py:45](../../tests/c1prime/test_b_inference.py#L45) |  |
@@ -2099,6 +2240,7 @@
 | `_typed` | function | `_typed` | [tools/x6_stage0/x6_store.py:244](../../tools/x6_stage0/x6_store.py#L244) |  |
 | `_typed` | function | `_typed` | [tools/x6_stage1/x6s1_ingest.py:77](../../tools/x6_stage1/x6s1_ingest.py#L77) |  |
 | `_u` | function | `_u` | [tests/circle_history/test_error_bound.py:40](../../tests/circle_history/test_error_bound.py#L40) |  |
+| `_u` | function | `_u` | [tools/hwsd/hwsd_dry.py:106](../../tools/hwsd/hwsd_dry.py#L106) |  |
 | `_u8` | function | `_u8` | [tools/c1prime_registry/c1_registry_sources.py:32](../../tools/c1prime_registry/c1_registry_sources.py#L32) | First 32 columns as uint8 after checking integer dtype and the 0..255 range (no silent |
 | `_u8` | function | `_u8` | [tools/x6_stage1/x6s1_registry.py:70](../../tools/x6_stage1/x6s1_registry.py#L70) |  |
 | `_unavailable` | function | `_unavailable` | [tools/k4b/k4b_decoder.py:44](../../tools/k4b/k4b_decoder.py#L44) |  |
@@ -2107,6 +2249,8 @@
 | `_under` | function | `_under` | [tools/c2_nd/nd_data.py:82](../../tools/c2_nd/nd_data.py#L82) |  |
 | `_under` | function | `_under` | [tools/hwsb/hwsb_meter_bind.py:49](../../tools/hwsb/hwsb_meter_bind.py#L49) |  |
 | `_under` | function | `_under` | [tools/hwsc/hwsc_meter_bind.py:61](../../tools/hwsc/hwsc_meter_bind.py#L61) |  |
+| `_under` | function | `_under` | [tools/hwsd/hwsd_config.py:165](../../tools/hwsd/hwsd_config.py#L165) |  |
+| `_under` | function | `_under` | [tools/hwsd/hwsd_meter_bind.py:59](../../tools/hwsd/hwsd_meter_bind.py#L59) |  |
 | `_under` | function | `_under` | [tools/k4b/k4b_registry.py:69](../../tools/k4b/k4b_registry.py#L69) |  |
 | `_underpowered` | function | `_underpowered` | [tests/c1prime/test_b_precision.py:96](../../tests/c1prime/test_b_precision.py#L96) |  |
 | `_unigram_probs` | method | `NGramBaseline._unigram_probs` | [src/topo_pilot/prediction/ngram.py:86](../../src/topo_pilot/prediction/ngram.py#L86) |  |
@@ -2135,6 +2279,7 @@
 | `_v1_fixture` | function | `_v1_fixture` | [tests/c1prime/test_b_gates.py:127](../../tests/c1prime/test_b_gates.py#L127) |  |
 | `_v2` | function | `_v2` | [tests/c1prime/test_b_gates.py:153](../../tests/c1prime/test_b_gates.py#L153) |  |
 | `_v3_lowers` | function | `_v3_lowers` | [tests/c1prime/test_b_precision.py:176](../../tests/c1prime/test_b_precision.py#L176) |  |
+| `_val` | function | `_val` | [tools/hwsd/hwsd_known2.py:172](../../tools/hwsd/hwsd_known2.py#L172) |  |
 | `_valid_rows` | function | `_valid_rows` | [src/topo_pilot/experiment/x5g1_oracle.py:23](../../src/topo_pilot/experiment/x5g1_oracle.py#L23) |  |
 | `_validate` | function | `_validate` | [src/topo_pilot/learner/model.py:129](../../src/topo_pilot/learner/model.py#L129) |  |
 | `_validate_cells` | method | `WorldSpec._validate_cells` | [src/topo_pilot/contracts/_schemas_world.py:83](../../src/topo_pilot/contracts/_schemas_world.py#L83) |  |
@@ -2205,6 +2350,7 @@
 | `_world_family` | function | `_world_family` | [src/topo_pilot/oracle/stage.py:39](../../src/topo_pilot/oracle/stage.py#L39) | ``config["family"]`` of the nearest WorldSpec ancestor of ``artifact_id`` ("" if none). |
 | `_world_of` | function | `_world_of` | [tools/hws/hws_driver.py:271](../../tools/hws/hws_driver.py#L271) |  |
 | `_worst` | function | `_worst` | [tools/c2_readout/c2_oracle.py:222](../../tools/c2_readout/c2_oracle.py#L222) |  |
+| `_wrap` | method | `OpenSpy._wrap` | [tests/hwsd/test_b_util.py:77](../../tests/hwsd/test_b_util.py#L77) |  |
 | `_wrap` | function | `_wrap` | [src/topo_pilot/world/lattice.py:46](../../src/topo_pilot/world/lattice.py#L46) | Map a lattice corner (coordinates may equal ``n_a``) to its representative vertex. |
 | `_wrap` | function | `_wrap` | [tools/x4_circle_history/chart.py:33](../../tools/x4_circle_history/chart.py#L33) | Phases in [0, 2pi): a modulo result that rounds to exactly 2pi becomes 0.0 (F4). |
 | `_write` | method | `ArtifactStore._write` | [src/topo_pilot/contracts/store.py:140](../../src/topo_pilot/contracts/store.py#L140) |  |
@@ -2220,7 +2366,9 @@
 | `_write` | function | `_write` | [tests/hwsc/test_r_0181_kc_records_rehearsal.py:21](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py#L21) |  |
 | `_write` | function | `_write` | [tools/c2_nd/nd_dry.py:106](../../tools/c2_nd/nd_dry.py#L106) |  |
 | `_write` | function | `_write` | [tools/hwsc/hwsc_gates.py:44](../../tools/hwsc/hwsc_gates.py#L44) |  |
+| `_write_guard` | function | `_write_guard` | [tools/hwsd/hwsd_known2.py:130](../../tools/hwsd/hwsd_known2.py#L130) | Decision 13: refuse any write under hwsc while KD3 runs. |
 | `_write_json` | function | `_write_json` | [tests/experiment/test_x5g1t_integration.py:91](../../tests/experiment/test_x5g1t_integration.py#L91) |  |
+| `_write_json` | function | `_write_json` | [tools/hwsd/hwsd_score.py:254](../../tools/hwsd/hwsd_score.py#L254) |  |
 | `_write_manifest` | function | `_write_manifest` | [src/topo_pilot/executors/entry.py:66](../../src/topo_pilot/executors/entry.py#L66) |  |
 | `_write_new` | function | `_write_new` | [tools/x4_oracle_profile/controls.py:167](../../tools/x4_oracle_profile/controls.py#L167) |  |
 | `_write_reg` | function | `_write_reg` | [tools/x6_stage1/x6s1_registry.py:383](../../tools/x6_stage1/x6s1_registry.py#L383) |  |
@@ -2230,6 +2378,8 @@
 | `_x` | function | `_x` | [tests/learner/test_multihorizon.py:58](../../tests/learner/test_multihorizon.py#L58) |  |
 | `_x1_max` | function | `_x1_max` | [tests/hws/test_a_budget.py:32](../../tests/hws/test_a_budget.py#L32) |  |
 | `_X2aTorusBuilder` | class | `_X2aTorusBuilder` | [tools/x2a_stage0/x2a_model.py:58](../../tools/x2a_stage0/x2a_model.py#L58) |  |
+| `_X6` | class | `_X6` | [tests/hwsd/test_b_data.py:142](../../tests/hwsd/test_b_data.py#L142) |  |
+| `_X6` | class | `_X6` | [tests/hwsd/test_b_registry_r9.py:266](../../tests/hwsd/test_b_registry_r9.py#L266) |  |
 | `_x6` | method | `Registry._x6` | [tools/c2_readout/c2_registry.py:328](../../tools/c2_readout/c2_registry.py#L328) |  |
 | `_x6` | function | `_x6` | [tools/x6zc/x6zc_stage_a.py:40](../../tools/x6zc/x6zc_stage_a.py#L40) |  |
 | `_x6_chunks` | function | `_x6_chunks` | [tools/c2_readout/c2_registry.py:77](../../tools/c2_readout/c2_registry.py#L77) |  |
@@ -2241,6 +2391,7 @@
 | `_x6json` | function | `_x6json` | [tools/x6zc/x6zc_stage_a.py:55](../../tools/x6zc/x6zc_stage_a.py#L55) |  |
 | `_X6TorusBuilder` | class | `_X6TorusBuilder` | [tools/x6_stage0/x6_model.py:124](../../tools/x6_stage0/x6_model.py#L124) |  |
 | `_x6zc_names` | function | `_x6zc_names` | [tools/c2_nd/nd_registry.py:155](../../tools/c2_nd/nd_registry.py#L155) |  |
+| `_x_arrays` | function | `_x_arrays` | [tests/hwsd/test_a_bounds.py:147](../../tests/hwsd/test_a_bounds.py#L147) |  |
 | `_xhat` | function | `_xhat` | [tools/x6_stage1/x6s1_eval.py:249](../../tools/x6_stage1/x6s1_eval.py#L249) |  |
 | `_xr` | function | `_xr` | [tools/c2_nd/nd_registry.py:43](../../tools/c2_nd/nd_registry.py#L43) |  |
 | `_xwrite` | function | `_xwrite` | [tools/x6_stage1/x6s1_ingest.py:69](../../tools/x6_stage1/x6s1_ingest.py#L69) |  |
@@ -2264,12 +2415,18 @@
 | `a_eff` | function | `a_eff` | [tools/hws/hws_exact.py:48](../../tools/hws/hws_exact.py#L48) |  |
 | `A_hat` | function | `A_hat` | [tools/c1prime/c1_endpoint.py:28](../../tools/c1prime/c1_endpoint.py#L28) | C4: Delta = z+ - z-, A = 0.5 * osum_v(d_v * Delta_v) (canonical order, caller-gathered). |
 | `A_logsoftmax` | function | `A_logsoftmax` | [tools/c1prime/c1_endpoint.py:50](../../tools/c1prime/c1_endpoint.py#L50) | The log-softmax definition (secondary quantities and checks only). |
+| `above_s` | function | `above_s` | [tests/hwsd/test_a_hwsd_ref.py:99](../../tests/hwsd/test_a_hwsd_ref.py#L99) |  |
+| `above_s` | function | `above_s` | [tools/hwsd/hwsd_statements.py:34](../../tools/hwsd/hwsd_statements.py#L34) |  |
+| `above_s_ok` | function | `above_s_ok` | [tests/hwsd/test_a_hwsd_ref.py:107](../../tests/hwsd/test_a_hwsd_ref.py#L107) |  |
+| `above_s_ok` | function | `above_s_ok` | [tools/hwsd/hwsd_statements.py:42](../../tools/hwsd/hwsd_statements.py#L42) |  |
 | `abs_mean` | function | `abs_mean` | [tools/c2_readout/c2_attrib.py:136](../../tools/c2_readout/c2_attrib.py#L136) |  |
 | `absence_shown` | function | `absence_shown` | [tools/hws/hws_select.py:178](../../tools/hws/hws_select.py#L178) | Choice 34: every evaluated, not-INELIGIBLE world is EXCLUDED on its latest look. |
 | `accept` | function | `accept` | [tools/c1prime/c1_freeze.py:161](../../tools/c1prime/c1_freeze.py#L161) |  |
 | `accept` | function | `accept` | [tools/c2_nd/nd_stage_post.py:56](../../tools/c2_nd/nd_stage_post.py#L56) |  |
 | `accept` | function | `accept` | [tools/c2_readout/c2_stage_post.py:47](../../tools/c2_readout/c2_stage_post.py#L47) |  |
 | `accept_tests` | function | `accept_tests` | [tools/k4b/k4b_release.py:98](../../tools/k4b/k4b_release.py#L98) | tests/ACCEPTED.json (exclusive create): counts, junit and the sha256 of every test file. |
+| `acceptance` | function | `acceptance` | [tools/hwsd/hwsd_score.py:381](../../tools/hwsd/hwsd_score.py#L381) |  |
+| `acceptance_check` | function | `acceptance_check` | [tools/hwsd/hwsd_records.py:272](../../tools/hwsd/hwsd_records.py#L272) |  |
 | `AccessDenied` | class | `AccessDenied` | [tools/x4_circle_history/errors.py:20](../../tools/x4_circle_history/errors.py#L20) | Access to a scored panel or scored row attempted without a scoring release. |
 | `AccessPolicy` | class | `AccessPolicy` | [src/topo_pilot/contracts/store.py:30](../../src/topo_pilot/contracts/store.py#L30) | Which consumers may load which artifact types. |
 | `act_at` | method | `S6Job.act_at` | [src/topo_pilot/experiment/s6.py:103](../../src/topo_pilot/experiment/s6.py#L103) | ActivationSet id at ``step`` (all panels where extracted, else panel 1 only). |
@@ -2286,6 +2443,8 @@
 | `ActivationStage` | class | `ActivationStage` | [src/topo_pilot/activations/_stage.py:24](../../src/topo_pilot/activations/_stage.py#L24) | Load checkpoint, test observations and history index; save an ``ActivationSet``. |
 | `acts` | method | `AnalysisJob.acts` | [src/topo_pilot/experiment/s4_analysis.py:87](../../src/topo_pilot/experiment/s4_analysis.py#L87) | All-panel ActivationSet id of a run; ``KeyError`` if the run is not done. |
 | `acts` | method | `ControlsJob.acts` | [src/topo_pilot/experiment/s7_controls.py:77](../../src/topo_pilot/experiment/s7_controls.py#L77) | All-panel ActivationSet of a control run at ``step`` (None if not trained). |
+| `acts_fn` | function | `acts_fn` | [tools/hwsd/hwsd_score.py:60](../../tools/hwsd/hwsd_score.py#L60) |  |
+| `acts_spy` | function | `acts_spy` | [tests/hwsd/test_a_scorer.py:89](../../tests/hwsd/test_a_scorer.py#L89) |  |
 | `adapt_chart_exception` | function | `adapt_chart_exception` | [tools/c1prime/c1_records.py:143](../../tools/c1prime/c1_records.py#L143) | The two chart-specific Invalid cases of §14 / rulings 1, 2, 6; else None. |
 | `adapter_identities` | function | `adapter_identities` | [tools/c2_nd/nd_decoy.py:208](../../tools/c2_nd/nd_decoy.py#L208) | The 1e-10 adapter identities of §3 row 11 (vii), norm-scaled (API.md §6.5, §20 A-2). |
 | `add_emission` | function | `add_emission` | [tests/dataset/conftest.py:38](../../tests/dataset/conftest.py#L38) | Factory: store an emission whose canonical form ``E[:, perm]`` equals ``E_canon``. |
@@ -2297,6 +2456,9 @@
 | `affine_readouts` | function | `affine_readouts` | [tools/c2_readout/c2_attrib.py:152](../../tools/c2_readout/c2_attrib.py#L152) | OLS affine maps on FIT natural rows from y to onehot(w32) and to nu (C-26); slopes. |
 | `afull` | function | `afull` | [tools/c2_nd/nd_split.py:43](../../tools/c2_nd/nd_split.py#L43) | (d named, dy, A_full) of the natural x or y pair under the readout M (base default). |
 | `afull` | function | `afull` | [tools/c2_readout/c2_stage_base.py:243](../../tools/c2_readout/c2_stage_base.py#L243) | (d named, dy, A_full) of the natural x or y pair (closed form; y pair NaN off Y_def). |
+| `agg` | function | `agg` | [tests/hwsd/test_a_statements.py:40](../../tests/hwsd/test_a_statements.py#L40) |  |
+| `aggregate` | function | `aggregate` | [tests/hwsd/test_a_hwsd_ref.py:248](../../tests/hwsd/test_a_hwsd_ref.py#L248) | per: {j: (reading, reason, qualifier)} -> (reading, {reason: sorted models}). |
+| `aggregate` | function | `aggregate` | [tools/hwsd/hwsd_statements.py:201](../../tools/hwsd/hwsd_statements.py#L201) |  |
 | `agreement` | function | `agreement` | [tests/k4b/test_b_endpoint.py:112](../../tests/k4b/test_b_endpoint.py#L112) |  |
 | `agreement` | function | `agreement` | [tools/k4b/k4b_decoder.py:90](../../tools/k4b/k4b_decoder.py#L90) |  |
 | `agreement` | function | `agreement` | [tools/x4_circle_history/chart.py:223](../../tools/x4_circle_history/chart.py#L223) |  |
@@ -2337,14 +2499,18 @@
 | `ar_two_step` | function | `ar_two_step` | [tools/d2a/d2a_eval.py:90](../../tools/d2a/d2a_eval.py#L90) | ``q1(i \| h) q1(j \| h i)``: w_{t+1} := i, read at index t + 1; no renormalisation. |
 | `archive_attempt` | function | `archive_attempt` | [tools/k4b/k4b_release.py:145](../../tools/k4b/k4b_release.py#L145) | §11.8: move the attempt's files and record suffixes to superseded/<job>/ + SHA256SUMS. |
 | `archive_attempt` | function | `archive_attempt` | [tools/x6_stage0/x6_store.py:162](../../tools/x6_stage0/x6_store.py#L162) |  |
+| `archive_attempt_d` | function | `archive_attempt_d` | [tools/hwsd/hwsd_records.py:295](../../tools/hwsd/hwsd_records.py#L295) |  |
 | `archive_partial` | function | `archive_partial` | [tools/hws/hws_records.py:78](../../tools/hws/hws_records.py#L78) | RC-5 resume (choice 40): unlisted files of the interrupted stage go to superseded/. |
 | `archive_stale` | function | `archive_stale` | [tools/x4_circle_history/op_guard.py:93](../../tools/x4_circle_history/op_guard.py#L93) | Move a stale ACTIVE marker (killed attempt) to operations/KILLED_<seq>.json; return path. |
 | `archive_superseded` | function | `archive_superseded` | [tools/x4_circle_history/freeze_bind.py:108](../../tools/x4_circle_history/freeze_bind.py#L108) | Keep an existing FREEZE.json as freezes/FREEZE_superseded_NN.json (exclusive create). |
+| `archived_wall` | function | `archived_wall` | [tools/hwsd/hwsd_score.py:227](../../tools/hwsd/hwsd_score.py#L227) |  |
 | `args_str` | function | `args_str` | [tools/code_index/pyinfo.py:27](../../tools/code_index/pyinfo.py#L27) |  |
 | `argv` | function | `argv` | [tests/hwsb/test_b_meter_law.py:138](../../tests/hwsb/test_b_meter_law.py#L138) |  |
 | `arm_model` | function | `arm_model` | [tools/x6_stage1/x6s1_data.py:214](../../tools/x6_stage1/x6s1_data.py#L214) |  |
 | `arm_value` | function | `arm_value` | [tools/d2a/d2a_decide.py:59](../../tools/d2a/d2a_decide.py#L59) |  |
 | `array_field` | function | `array_field` | [src/topo_pilot/contracts/base.py:160](../../src/topo_pilot/contracts/base.py#L160) | A dataclass field holding an array (excluded from ``__eq__``/``__repr__``). |
+| `array_npz` | function | `array_npz` | [tests/hwsd/test_b_util.py:187](../../tests/hwsd/test_b_util.py#L187) |  |
+| `arrays_one` | function | `arrays_one` | [tools/hwsd/hwsd_score.py:168](../../tools/hwsd/hwsd_score.py#L168) |  |
 | `arrays_sha256` | function | `arrays_sha256` | [tools/hwsb/hwsb_data.py:124](../../tools/hwsb/hwsb_data.py#L124) |  |
 | `arrow` | function | `arrow` | [reports/he_summary/charts.py:76](../../reports/he_summary/charts.py#L76) |  |
 | `Artifact` | class | `Artifact` | [src/topo_pilot/contracts/base.py:99](../../src/topo_pilot/contracts/base.py#L99) | Base of every typed artifact (each subclass is a frozen dataclass). |
@@ -2379,6 +2545,8 @@
 | `attempt_store` | function | `attempt_store` | [tests/k4b/test_b_rerun.py:49](../../tests/k4b/test_b_rerun.py#L49) | A store whose S4a attempt failed technically after earlier PASS gates. |
 | `attempts_without_completion` | function | `attempts_without_completion` | [tools/x4_circle_history/stage_records.py:153](../../tools/x4_circle_history/stage_records.py#L153) |  |
 | `audit` | function | `audit` | [tools/hwsc/hwsc_bind.py:247](../../tools/hwsc/hwsc_bind.py#L247) |  |
+| `audit` | function | `audit` | [tools/hwsd/hwsd_bind.py:86](../../tools/hwsd/hwsd_bind.py#L86) |  |
+| `audit_gate` | function | `audit_gate` | [tools/hwsd/hwsd_driver.py:38](../../tools/hwsd/hwsd_driver.py#L38) |  |
 | `audit_pairs` | function | `audit_pairs` | [tools/x6zc/x6zc_census.py:55](../../tools/x6zc/x6zc_census.py#L55) |  |
 | `audit_run` | function | `audit_run` | [src/topo_pilot/experiment/circ_audit.py:106](../../src/topo_pilot/experiment/circ_audit.py#L106) | All panel rows of one run, plus reproduction failures. |
 | `auth` | function | `auth` | [tests/hwsb/test_b_records.py:105](../../tests/hwsb/test_b_records.py#L105) |  |
@@ -2390,6 +2558,7 @@
 | `auth_ok` | function | `auth_ok` | [tools/hwsb/hwsb_driver.py:88](../../tools/hwsb/hwsb_driver.py#L88) |  |
 | `auth_ok` | function | `auth_ok` | [tools/hwsc/hwsc_records.py:137](../../tools/hwsc/hwsc_records.py#L137) |  |
 | `auth_ok` | function | `auth_ok` | [tools/x6_stage1/x6s1_run.py:139](../../tools/x6_stage1/x6s1_run.py#L139) |  |
+| `auth_ok_d` | function | `auth_ok_d` | [tools/hwsd/hwsd_records.py:90](../../tools/hwsd/hwsd_records.py#L90) |  |
 | `auth_problems` | function | `auth_problems` | [tools/x6zc/x6zc_guard.py:230](../../tools/x6zc/x6zc_guard.py#L230) |  |
 | `auth_record` | function | `auth_record` | [tests/c2_nd/test_b_lineage.py:231](../../tests/c2_nd/test_b_lineage.py#L231) |  |
 | `authorized_worker` | function | `authorized_worker` | [tools/c1prime/c1_release.py:114](../../tools/c1prime/c1_release.py#L114) | The executing worker session (protocol §18: "the authorized executing worker session"). |
@@ -2407,6 +2576,7 @@
 | `b4_init` | function | `b4_init` | [tools/hwsb/hwsb_gates.py:40](../../tools/hwsb/hwsb_gates.py#L40) |  |
 | `b4_status` | function | `b4_status` | [tools/hwsb/hwsb_gates.py:68](../../tools/hwsb/hwsb_gates.py#L68) |  |
 | `b4_summary` | function | `b4_summary` | [tools/x4_circle_history/precision.py:95](../../tools/x4_circle_history/precision.py#L95) |  |
+| `b4_test` | function | `b4_test` | [tools/hwsd/hwsd_data.py:170](../../tools/hwsd/hwsd_data.py#L170) |  |
 | `b4_val` | function | `b4_val` | [tools/hwsb/hwsb_gates.py:49](../../tools/hwsb/hwsb_gates.py#L49) |  |
 | `b4_val` | function | `b4_val` | [tools/k4b/k4b_driver.py:261](../../tools/k4b/k4b_driver.py#L261) |  |
 | `b5` | function | `b5` | [tools/hwsb/hwsb_gates.py:211](../../tools/hwsb/hwsb_gates.py#L211) |  |
@@ -2434,6 +2604,7 @@
 | `base` | function | `base` | [tests/hws/test_b_kc1.py:105](../../tests/hws/test_b_kc1.py#L105) |  |
 | `base` | function | `base` | [tests/hwsb/test_b_registry.py:41](../../tests/hwsb/test_b_registry.py#L41) |  |
 | `base` | function | `base` | [tests/hwsc/test_a_learning.py:34](../../tests/hwsc/test_a_learning.py#L34) |  |
+| `base` | function | `base` | [tests/hwsd/test_b_registry_r9.py:73](../../tests/hwsd/test_b_registry_r9.py#L73) |  |
 | `base` | function | `base` | [tests/x6_stage1/test_b_ingest_bundle.py:167](../../tests/x6_stage1/test_b_ingest_bundle.py#L167) |  |
 | `base_inputs` | function | `base_inputs` | [tools/c2_nd/nd_decoy.py:51](../../tools/c2_nd/nd_decoy.py#L51) | The readout basis of model64 and the frozen C2 problem R (P_S, B, L_B = R_L[5:], Gamma). |
 | `baseline` | method | `SpaceBuilder.baseline` | [src/topo_pilot/analysis/spaces.py:175](../../src/topo_pilot/analysis/spaces.py#L175) | Representation baseline R0..R3 on the panel histories (RESEARCH_SUMMARY 7.6). |
@@ -2465,6 +2636,8 @@
 | `beliefs` | method | `SpaceBuilder.beliefs` | [src/topo_pilot/analysis/spaces.py:98](../../src/topo_pilot/analysis/spaces.py#L98) | Belief rows b^(32) or b^(1) of one panel, metric Hellinger. |
 | `beliefs` | function | `beliefs` | [tools/hws/hws_oracle.py:51](../../tools/hws/hws_oracle.py#L51) |  |
 | `beliefs_p32` | function | `beliefs_p32` | [src/topo_pilot/experiment/x4b2.py:109](../../src/topo_pilot/experiment/x4b2.py#L109) | ``b32 [R, N]`` by the existing BayesFilter, in row chunks to bound memory. |
+| `below_s` | function | `below_s` | [tests/hwsd/test_a_hwsd_ref.py:103](../../tests/hwsd/test_a_hwsd_ref.py#L103) |  |
+| `below_s` | function | `below_s` | [tools/hwsd/hwsd_statements.py:38](../../tools/hwsd/hwsd_statements.py#L38) |  |
 | `bench_setting` | function | `bench_setting` | [src/topo_pilot/experiment/x5g1_techbench.py:76](../../src/topo_pilot/experiment/x5g1_techbench.py#L76) | All phases for one intra-op thread setting (see the frozen protocol §3). |
 | `beta` | function | `beta` | [tools/d2a/d2a_targets.py:106](../../tools/d2a/d2a_targets.py#L106) |  |
 | `beta` | function | `beta` | [tools/x6_stage0/x6_exact.py:181](../../tools/x6_stage0/x6_exact.py#L181) |  |
@@ -2486,6 +2659,7 @@
 | `bind` | function | `bind` | [tools/hws/hws_meter_bind.py:23](../../tools/hws/hws_meter_bind.py#L23) |  |
 | `bind` | function | `bind` | [tools/hwsb/hwsb_meter_bind.py:33](../../tools/hwsb/hwsb_meter_bind.py#L33) |  |
 | `bind` | function | `bind` | [tools/hwsc/hwsc_meter_bind.py:42](../../tools/hwsc/hwsc_meter_bind.py#L42) |  |
+| `bind` | function | `bind` | [tools/hwsd/hwsd_meter_bind.py:40](../../tools/hwsd/hwsd_meter_bind.py#L40) |  |
 | `bind` | function | `bind` | [tools/k4b/k4b_meter_bind.py:30](../../tools/k4b/k4b_meter_bind.py#L30) |  |
 | `bind` | function | `bind` | [tools/x4_circle_history/meter_bind.py:59](../../tools/x4_circle_history/meter_bind.py#L59) | Point the unchanged modules at this job and store (module-level names only). |
 | `bind` | function | `bind` | [tools/x6_stage1/x6s1_stage_post.py:158](../../tools/x6_stage1/x6s1_stage_post.py#L158) |  |
@@ -2495,11 +2669,14 @@
 | `binding_path` | function | `binding_path` | [tools/c2_nd/nd_driver.py:194](../../tools/c2_nd/nd_driver.py#L194) | FREEZE.json; in a dry-run store DRY.json (H, contract and meter bindings, ND-C42). |
 | `bit_generator` | method | `_RecGen.bit_generator` | [tests/x6_stage1/test_b_train_chain.py:126](../../tests/x6_stage1/test_b_train_chain.py#L126) |  |
 | `blinded` | function | `blinded` | [tools/hwsc/hwsc_config.py:171](../../tools/hwsc/hwsc_config.py#L171) |  |
+| `blinded` | function | `blinded` | [tools/hwsd/hwsd_config.py:169](../../tools/hwsd/hwsd_config.py#L169) |  |
 | `blk` | function | `blk` | [tests/hwsb/test_b_streams.py:330](../../tests/hwsb/test_b_streams.py#L330) |  |
 | `Block` | class | `Block` | [src/topo_pilot/learner/model.py:52](../../src/topo_pilot/learner/model.py#L52) | Pre-LN block: ``x = x + Attn(LN(x)); x = x + MLP(LN(x))``. |
 | `block_comparator` | function | `block_comparator` | [tools/x6_stage0/x6_exact.py:255](../../tools/x6_stage0/x6_exact.py#L255) |  |
 | `block_generator` | function | `block_generator` | [tools/hwsc/hwsc_data.py:98](../../tools/hwsc/hwsc_data.py#L98) |  |
+| `block_generator` | function | `block_generator` | [tools/hwsd/hwsd_data.py:46](../../tools/hwsd/hwsd_data.py#L46) |  |
 | `block_ids` | function | `block_ids` | [tools/hwsc/hwsc_data.py:103](../../tools/hwsc/hwsc_data.py#L103) |  |
+| `block_ids` | function | `block_ids` | [tools/hwsd/hwsd_data.py:51](../../tools/hwsd/hwsd_data.py#L51) |  |
 | `block_posterior` | function | `block_posterior` | [tools/x6_stage0/x6_exact.py:247](../../tools/x6_stage0/x6_exact.py#L247) |  |
 | `blockdiag` | function | `blockdiag` | [tests/x2a_stage0/test_x2a_stage0_ph.py:38](../../tests/x2a_stage0/test_x2a_stage0_ph.py#L38) |  |
 | `blocking_limits` | function | `blocking_limits` | [src/topo_pilot/experiment/x5g1t_usage.py:74](../../src/topo_pilot/experiment/x5g1t_usage.py#L74) | Relevant limits with a warning (any observability) or, when OBSERVED, used >= threshold. |
@@ -2519,6 +2696,7 @@
 | `bootstrap_check` | function | `bootstrap_check` | [tools/x6_stage1/x6s1_run.py:222](../../tools/x6_stage1/x6s1_run.py#L222) |  |
 | `bootstrap_ci` | method | `PredictiveMetrics.bootstrap_ci` | [src/topo_pilot/prediction/metrics.py:79](../../src/topo_pilot/prediction/metrics.py#L79) | 2.5/97.5 percentile CI of the mean from ``n`` resamples of whole groups. |
 | `bootstrap_inputs` | function | `bootstrap_inputs` | [tools/k4b/k4b_fresh.py:181](../../tools/k4b/k4b_fresh.py#L181) | The one ordered dict of the single 610103 bootstrap (API.md §14.2). |
+| `bootstrap_inputs_d` | function | `bootstrap_inputs_d` | [tools/hwsd/hwsd_summary.py:62](../../tools/hwsd/hwsd_summary.py#L62) |  |
 | `bootstrap_means` | function | `bootstrap_means` | [src/topo_pilot/experiment/x5g1_oracle.py:76](../../src/topo_pilot/experiment/x5g1_oracle.py#L76) | Means of ``values[rng.integers(0, n, n)]`` for ``n_draws`` draws, in batches with the |
 | `bootstrap_means` | function | `bootstrap_means` | [tools/c1prime/c1_means.py:31](../../tools/c1prime/c1_means.py#L31) |  |
 | `bootstrap_profile` | function | `bootstrap_profile` | [tools/x4_oracle_profile/oracle_profile.py:194](../../tools/x4_oracle_profile/oracle_profile.py#L194) | Whole-row bootstrap; one ``rng.integers(0, n, size=n)`` per draw shared by all K, B and V. |
@@ -2527,9 +2705,11 @@
 | `bound` | function | `bound` | [tests/circle_history/test_builder_runtime.py:32](../../tests/circle_history/test_builder_runtime.py#L32) |  |
 | `bound` | function | `bound` | [tests/hwsc/test_a_decision.py:36](../../tests/hwsc/test_a_decision.py#L36) |  |
 | `bound` | function | `bound` | [tests/hwsc/test_a_k4b_known_bound.py:47](../../tests/hwsc/test_a_k4b_known_bound.py#L47) |  |
+| `bound` | function | `bound` | [tests/hwsd/test_a_known_bound.py:43](../../tests/hwsd/test_a_known_bound.py#L43) |  |
 | `bound_auth` | function | `bound_auth` | [tests/c2_readout/test_b_lineage.py:195](../../tests/c2_readout/test_b_lineage.py#L195) | The v2 AUTH is pending (CONTRACT protocol.auth null); bind a synthetic one for the test. |
 | `bound_constants` | function | `bound_constants` | [tools/c1prime/c1_bounds.py:15](../../tools/c1prime/c1_bounds.py#L15) |  |
 | `bound_controls` | function | `bound_controls` | [tools/d2a/d2a_train.py:112](../../tools/d2a/d2a_train.py#L112) | The job-0014 controls module bound to the current dispatch identities (in this process). |
+| `bound_hwsd` | function | `bound_hwsd` | [tools/hwsd/hwsd_bind.py:71](../../tools/hwsd/hwsd_bind.py#L71) |  |
 | `bound_law` | function | `bound_law` | [tools/hwsb/hwsb_law.py:99](../../tools/hwsb/hwsb_law.py#L99) | Bind LAW sigma/neighbour and the rounded enclosure; restore all three in finally. |
 | `bound_stage_c` | function | `bound_stage_c` | [tools/hwsc/hwsc_bind.py:112](../../tools/hwsc/hwsc_bind.py#L112) |  |
 | `boundary` | method | `FakeControls.boundary` | [tests/experiment/test_x5g1t_training.py:73](../../tests/experiment/test_x5g1t_training.py#L73) |  |
@@ -2546,6 +2726,7 @@
 | `bounds` | function | `bounds` | [tools/c2_readout/c2_stage_val.py:125](../../tools/c2_readout/c2_stage_val.py#L125) |  |
 | `bounds` | function | `bounds` | [tools/k4b/k4b_stats.py:44](../../tools/k4b/k4b_stats.py#L44) | L (rank 84) of the X- draws, U (rank 4,917) of the X+ draws, central 95% of both. |
 | `bounds_for` | function | `bounds_for` | [tests/k4b/test_b_endpoint.py:161](../../tests/k4b/test_b_endpoint.py#L161) |  |
+| `bounds_row` | function | `bounds_row` | [tools/hwsd/hwsd_dry.py:135](../../tools/hwsd/hwsd_dry.py#L135) | The statement row of one checkpoint: bootstraps on the dry seeds (inside a dry binding). |
 | `box` | function | `box` | [reports/he_summary/charts.py:65](../../reports/he_summary/charts.py#L65) |  |
 | `box` | function | `box` | [tests/experiment/test_x5g1t_usage_files.py:80](../../tests/experiment/test_x5g1t_usage_files.py#L80) |  |
 | `box` | function | `box` | [tests/oracle_profile/test_builder_controls.py:24](../../tests/oracle_profile/test_builder_controls.py#L24) |  |
@@ -2586,6 +2767,7 @@
 | `build_chain` | function | `build_chain` | [tests/x6_stage1/test_b_chain_ops.py:49](../../tests/x6_stage1/test_b_chain_ops.py#L49) |  |
 | `build_chart` | function | `build_chart` | [tools/k4b/k4b_charts.py:65](../../tools/k4b/k4b_charts.py#L65) | Claim (model, role) first, then fit once; never retried. |
 | `build_checkpoint` | function | `build_checkpoint` | [tools/hwsb/hwsb_train.py:89](../../tools/hwsb/hwsb_train.py#L89) |  |
+| `build_d` | function | `build_d` | [tools/hwsd/hwsd_registry.py:254](../../tools/hwsd/hwsd_registry.py#L254) |  |
 | `build_decoys` | function | `build_decoys` | [tools/c2_nd/nd_split.py:75](../../tools/c2_nd/nd_split.py#L75) | ({kind: decoy}, move map, base basis) from the frozen C2 problem R (§2.6, Lemma DC4). |
 | `build_e0` | function | `build_e0` | [src/topo_pilot/experiment/report.py:91](../../src/topo_pilot/experiment/report.py#L91) | Write ``summary.md`` and ``fig_world_ph.png`` for exit level E0; returns the summary path. |
 | `build_e2` | function | `build_e2` | [src/topo_pilot/experiment/report_e2.py:214](../../src/topo_pilot/experiment/report_e2.py#L214) | Write ``name`` and ``figure`` for ``stage`` (S4: O, E2; S5: P, part of E3); ``extra`` |
@@ -2614,6 +2796,7 @@
 | `build_tiny_process` | function | `build_tiny_process` | [tools/hwsb/hwsb_dry.py:54](../../tools/hwsb/hwsb_dry.py#L54) |  |
 | `build_tiny_process_c` | function | `build_tiny_process_c` | [tools/hwsc/hwsc_dry.py:54](../../tools/hwsc/hwsc_dry.py#L54) |  |
 | `build_transition` | function | `build_transition` | [tools/hws/hws_worlds.py:197](../../tools/hws/hws_worlds.py#L197) |  |
+| `build_u_store` | function | `build_u_store` | [tests/hwsd/test_b_util.py:220](../../tests/hwsd/test_b_util.py#L220) | A store as track U would leave it after its oracle-only stage (J6, J10, J11). |
 | `build_world` | function | `build_world` | [src/topo_pilot/world/registry.py:41](../../src/topo_pilot/world/registry.py#L41) | Registry dispatch followed by full validation. |
 | `build_world` | function | `build_world` | [tools/hws/hws_worlds.py:193](../../tools/hws/hws_worlds.py#L193) |  |
 | `build_world` | function | `build_world` | [tools/x2a_stage0/x2a_model.py:64](../../tools/x2a_stage0/x2a_model.py#L64) |  |
@@ -2630,6 +2813,7 @@
 | `c0_val` | function | `c0_val` | [tools/c1prime/c1_chart.py:161](../../tools/c1prime/c1_chart.py#L161) | The four C0-val criteria (§14) with the frozen kernels; chart_gates is never called. |
 | `c0_val_gate` | function | `c0_val_gate` | [tools/c1prime/c1_driver_late.py:53](../../tools/c1prime/c1_driver_late.py#L53) |  |
 | `c0_val_gate` | function | `c0_val_gate` | [tools/k4b/k4b_charts.py:176](../../tools/k4b/k4b_charts.py#L176) | require_frozen; one direct chart per model; c1_chart.c0_val unchanged. |
+| `c0_val_line` | function | `c0_val_line` | [tools/hwsd/hwsd_known2.py:114](../../tools/hwsd/hwsd_known2.py#L114) |  |
 | `c0_val_stage` | function | `c0_val_stage` | [tools/k4b/k4b_driver.py:311](../../tools/k4b/k4b_driver.py#L311) |  |
 | `c0c` | function | `c0c` | [tools/c2_nd/nd_stage_pre.py:189](../../tools/c2_nd/nd_stage_pre.py#L189) | Chart sha256 (a dry-run store: the c2/ stand-in table) and Sup(DFIT) >= 0.99; DFIT |
 | `c0c` | function | `c0c` | [tools/c2_readout/c2_stage_pre.py:144](../../tools/c2_readout/c2_stage_pre.py#L144) |  |
@@ -2677,7 +2861,10 @@
 | `carries` | function | `carries` | [tools/d2a/d2a_decide.py:65](../../tools/d2a/d2a_decide.py#L65) |  |
 | `case_arrays` | function | `case_arrays` | [tools/c2_nd/nd_attrib.py:133](../../tools/c2_nd/nd_attrib.py#L133) | KC / KC-R arrays of one case (keys "<case>:<stat>"): the R arrays, the case's own y |
 | `case_dir` | function | `case_dir` | [tools/hwsc/hwsc_dry.py:44](../../tools/hwsc/hwsc_dry.py#L44) |  |
+| `case_dir` | function | `case_dir` | [tools/hwsd/hwsd_dry.py:72](../../tools/hwsd/hwsd_dry.py#L72) |  |
 | `case_guards` | function | `case_guards` | [tools/c2_nd/nd_stage_val.py:157](../../tools/c2_nd/nd_stage_val.py#L157) | KC / KC-R case guards: C2 stream_guards on the R keys; beta_A (coef 1) on the |
+| `cat` | function | `cat` | [tests/hwsd/test_a_onsets_order.py:35](../../tests/hwsd/test_a_onsets_order.py#L35) |  |
+| `category` | function | `category` | [tests/hwsd/test_a_evaluate.py:34](../../tests/hwsd/test_a_evaluate.py#L34) |  |
 | `caught` | function | `caught` | [tests/c1prime/test_a_chart_exceptions.py:40](../../tests/c1prime/test_a_chart_exceptions.py#L40) |  |
 | `caught` | function | `caught` | [tests/c1prime/test_a_exceptions.py:58](../../tests/c1prime/test_a_exceptions.py#L58) |  |
 | `CausalSelfAttention` | class | `CausalSelfAttention` | [src/topo_pilot/learner/model.py:35](../../src/topo_pilot/learner/model.py#L35) | Multi-head causal self-attention: softmax(Q K^T / sqrt(d_head) + causal mask) V. |
@@ -2695,6 +2882,7 @@
 | `centers` | method | `GridCenters.centers` | [src/topo_pilot/process/centers.py:59](../../src/topo_pilot/process/centers.py#L59) |  |
 | `CenterStrategy` | class | `CenterStrategy` | [src/topo_pilot/process/centers.py:33](../../src/topo_pilot/process/centers.py#L33) | Variation point: chooses ``n_centers`` points in the chart. |
 | `central` | function | `central` | [tools/hwsc/hwsc_records.py:267](../../tools/hwsc/hwsc_records.py#L267) |  |
+| `central_d` | function | `central_d` | [tools/hwsd/hwsd_records.py:204](../../tools/hwsd/hwsd_records.py#L204) |  |
 | `centre` | function | `centre` | [tools/c2_readout/c2_attrib.py:49](../../tools/c2_readout/c2_attrib.py#L49) |  |
 | `centre_emission` | function | `centre_emission` | [tools/hws/hws_worlds.py:209](../../tools/hws/hws_worlds.py#L209) |  |
 | `centres` | function | `centres` | [tests/circle_history/test_chart_extension.py:283](../../tests/circle_history/test_chart_extension.py#L283) |  |
@@ -2729,6 +2917,7 @@
 | `chart_from_arrays` | function | `chart_from_arrays` | [tools/x4_circle_history/chart.py:329](../../tools/x4_circle_history/chart.py#L329) |  |
 | `chart_gates` | function | `chart_gates` | [tools/x4_circle_history/chart.py:259](../../tools/x4_circle_history/chart.py#L259) | Support, fidelity, bins and overall-resultant criteria (API.md chart_gates). |
 | `chart_layers` | function | `chart_layers` | [reports/he_summary/charts.py:604](../../reports/he_summary/charts.py#L604) | reports/E3/summary.md layer sweep: median D per replicate, per hook. |
+| `chart_one` | function | `chart_one` | [tools/hwsd/hwsd_score.py:113](../../tools/hwsd/hwsd_score.py#L113) |  |
 | `chart_oracle` | function | `chart_oracle` | [reports/he_summary/charts.py:680](../../reports/he_summary/charts.py#L680) | README 'After E4', oracle profile job 0014 (calibration). |
 | `chart_probes` | function | `chart_probes` | [reports/he_summary/charts.py:633](../../reports/he_summary/charts.py#L633) | reports/E4/summary.md §4 (median test R² over 6 runs). |
 | `chart_to_arrays` | function | `chart_to_arrays` | [tools/x4_circle_history/chart.py:303](../../tools/x4_circle_history/chart.py#L303) | Arrays for an immutable NPZ; info travels as a JSON string in a unicode array (no pickle). |
@@ -2737,6 +2926,7 @@
 | `check` | method | `Budget.check` | [src/topo_pilot/experiment/x4b_run.py:110](../../src/topo_pilot/experiment/x4b_run.py#L110) |  |
 | `check` | method | `BudgetPlanner.check` | [src/topo_pilot/experiment/x5g1t_runtime.py:190](../../src/topo_pilot/experiment/x5g1t_runtime.py#L190) |  |
 | `check` | method | `Supervisor.check` | [tools/d2a/d2a_train.py:175](../../tools/d2a/d2a_train.py#L175) |  |
+| `check` | function | `check` | [tests/hwsd/test_a_statements.py:32](../../tests/hwsd/test_a_statements.py#L32) |  |
 | `check` | function | `check` | [tests/k4b/test_b_h1_meta.py:73](../../tests/k4b/test_b_h1_meta.py#L73) |  |
 | `check` | function | `check` | [tools/code_index/build.py:81](../../tools/code_index/build.py#L81) |  |
 | `check_boundary_closed` | function | `check_boundary_closed` | [src/topo_pilot/world/complex.py:207](../../src/topo_pilot/world/complex.py#L207) | Require ``d_{k-1} d_k = 0`` over Z for all k. |
@@ -2788,12 +2978,15 @@
 | `checkpoint` | method | `DevData.checkpoint` | [src/topo_pilot/experiment/s7_dev.py:96](../../src/topo_pilot/experiment/s7_dev.py#L96) |  |
 | `checkpoint_callback` | function | `checkpoint_callback` | [src/topo_pilot/experiment/x5g1t_train.py:43](../../src/topo_pilot/experiment/x5g1t_train.py#L43) | ``on_checkpoint(step, model, info)``: ``before`` -> LearnerStage-identical save -> |
 | `checkpoint_callback` | function | `checkpoint_callback` | [tools/d2a/d2a_train.py:84](../../tools/d2a/d2a_train.py#L84) | x5g1t_train.checkpoint_callback with run_id and horizon added to the identity (§2.5). |
+| `checkpoint_dir` | function | `checkpoint_dir` | [tools/hwsd/hwsd_score.py:43](../../tools/hwsd/hwsd_score.py#L43) |  |
 | `checkpoint_meta` | function | `checkpoint_meta` | [tools/k4b/k4b_driver.py:145](../../tools/k4b/k4b_driver.py#L145) | API.md §14.1: reads only <root>/Checkpoint/<id>/meta.json. |
 | `checkpoint_order_null` | method | `Dynamics.checkpoint_order_null` | [src/topo_pilot/analysis/dynamics.py:47](../../src/topo_pilot/analysis/dynamics.py#L47) | Return ``{"statistic", "p_value"}``. |
+| `checkpoint_row` | function | `checkpoint_row` | [tools/hwsd/hwsd_summary.py:120](../../tools/hwsd/hwsd_summary.py#L120) |  |
 | `CheckpointSaver` | class | `CheckpointSaver` | [tools/hwsb/hwsb_train.py:101](../../tools/hwsb/hwsb_train.py#L101) | The on_checkpoint callback: LearnerStage's save, then the hold, then a sentinel. |
 | `checks` | function | `checks` | [tools/c2_nd/nd_dry.py:273](../../tools/c2_nd/nd_dry.py#L273) | §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction |
 | `child_env` | function | `child_env` | [tools/k4b/k4b_meter_bind.py:95](../../tools/k4b/k4b_meter_bind.py#L95) |  |
 | `child_env_c` | function | `child_env_c` | [tools/hwsc/hwsc_meter_bind.py:95](../../tools/hwsc/hwsc_meter_bind.py#L95) | k4b_meter_bind.child_env(job) with its TEMP folder created (D-0177-1). |
+| `child_env_d` | function | `child_env_d` | [tools/hwsd/hwsd_meter_bind.py:78](../../tools/hwsd/hwsd_meter_bind.py#L78) | k4b_meter_bind.child_env(job) with its TEMP folder created (the D-0177-1 fix). |
 | `child_main` | function | `child_main` | [tools/d2a/d2a_train.py:263](../../tools/d2a/d2a_train.py#L263) | One training (CLI ``child RUN``): threads first, then train, saving every checkpoint. |
 | `child_of` | function | `child_of` | [src/topo_pilot/experiment/s2.py:66](../../src/topo_pilot/experiment/s2.py#L66) | The unique ``cls`` artifact with ``parent`` among its parents and matching config. |
 | `chip` | function | `chip` | [reports/he_summary/charts.py:88](../../reports/he_summary/charts.py#L88) |  |
@@ -2834,6 +3027,7 @@
 | `classify` | function | `classify` | [tools/x4_oracle_profile/controls.py:172](../../tools/x4_oracle_profile/controls.py#L172) | Return ``(state, reason)``; in run mode with ``latch_dir`` apply the persistent latch. |
 | `classify_all` | function | `classify_all` | [tools/x4_oracle_profile/controls.py:214](../../tools/x4_oracle_profile/controls.py#L214) | Most restrictive state across mailboxes. The real mailbox latches in ``out``; a synthetic |
 | `classify_exception` | function | `classify_exception` | [tools/c1prime/c1_records.py:85](../../tools/c1prime/c1_records.py#L85) | The §16 exception mapping (review fix 5) -> (status, reason). |
+| `classify_file` | function | `classify_file` | [tools/hwsd/hwsd_data.py:225](../../tools/hwsd/hwsd_data.py#L225) |  |
 | `classify_hits` | function | `classify_hits` | [tools/hwsb/hwsb_known.py:72](../../tools/hwsb/hwsb_known.py#L72) | Mirror of hws_driver.classify_seed_hits with the lists as arguments (RC-3). |
 | `classify_hits_c` | function | `classify_hits_c` | [tools/hwsc/hwsc_known.py:69](../../tools/hwsc/hwsc_known.py#L69) |  |
 | `classify_root` | function | `classify_root` | [tests/k4b/test_b_registry_rules.py:88](../../tests/k4b/test_b_registry_rules.py#L88) |  |
@@ -2864,6 +3058,7 @@
 | `cm_quantities` | function | `cm_quantities` | [tools/c2_readout/c2_attrib.py:197](../../tools/c2_readout/c2_attrib.py#L197) | A_M,X and e_M,X for X in F, S, C from z[X] = (z_X+, z_X-); I_M and A_M,ctx (reported). |
 | `cm_replacements` | function | `cm_replacements` | [tools/c2_readout/c2_attrib.py:191](../../tools/c2_readout/c2_attrib.py#L191) |  |
 | `cm_tokens` | function | `cm_tokens` | [tests/d2a/test_a_targets.py:82](../../tests/d2a/test_a_targets.py#L82) |  |
+| `cmp_line` | function | `cmp_line` | [tests/hwsd/test_a_hwsd_ref.py:278](../../tests/hwsd/test_a_hwsd_ref.py#L278) |  |
 | `coboundary` | function | `coboundary` | [tests/circle_history/test_cochain.py:62](../../tests/circle_history/test_cochain.py#L62) |  |
 | `coboundary` | function | `coboundary` | [tests/circle_history/test_cochain_lift.py:86](../../tests/circle_history/test_cochain_lift.py#L86) |  |
 | `cocycle_map` | function | `cocycle_map` | [tools/theory_exact/check_ceiling.py:23](../../tools/theory_exact/check_ceiling.py#L23) |  |
@@ -2919,6 +3114,8 @@
 | `contains` | method | `DigestSet.contains` | [tools/x6_stage1/x6s1_registry.py:136](../../tools/x6_stage1/x6s1_registry.py#L136) | Key candidate search, then full-digest confirmation against the runs. |
 | `contains` | method | `Registry.contains` | [tools/c2_readout/c2_registry.py:350](../../tools/c2_readout/c2_registry.py#L350) |  |
 | `contains` | method | `_Reg.contains` | [tests/c2_readout/test_b_registry.py:104](../../tests/c2_readout/test_b_registry.py#L104) |  |
+| `contains` | method | `_X6.contains` | [tests/hwsd/test_b_data.py:143](../../tests/hwsd/test_b_data.py#L143) |  |
+| `contains` | method | `_X6.contains` | [tests/hwsd/test_b_registry_r9.py:267](../../tests/hwsd/test_b_registry_r9.py#L267) |  |
 | `contains_scope` | function | `contains_scope` | [tools/c2_readout/c2_data.py:197](../../tools/c2_readout/c2_data.py#L197) | True iff the file bytes contain `needle` (1 MiB chunks, len(needle) - 1 bytes overlap). |
 | `Context` | class | `Context` | [tools/x4_circle_history/runner.py:38](../../tools/x4_circle_history/runner.py#L38) |  |
 | `context_gain` | function | `context_gain` | [src/topo_pilot/oracle/_futures.py:80](../../src/topo_pilot/oracle/_futures.py#L80) | Mean over rows of ``KL(q_C \|\| q_last)`` in nats. |
@@ -2934,10 +3131,12 @@
 | `control_scores` | function | `control_scores` | [tools/x4_circle_history/scores.py:151](../../tools/x4_circle_history/scores.py#L151) | {name: u_c . (m32 - m4)} for the three fixed suffix-only controls (spec v2.4 item 10). |
 | `control_summary` | function | `control_summary` | [tools/k4b/k4b_fresh.py:203](../../tools/k4b/k4b_fresh.py#L203) | Per entry: point, central 95%, alpha / 1-alpha bounds, max B, certified; no status (R22). |
 | `control_summary` | function | `control_summary` | [tools/x4_circle_history/precision.py:115](../../tools/x4_circle_history/precision.py#L115) | Validation control means with joint whole-trajectory resampling (spec v2.4 item 10). |
+| `control_summary_d` | function | `control_summary_d` | [tools/hwsd/hwsd_summary.py:116](../../tools/hwsd/hwsd_summary.py#L116) |  |
 | `control_table` | function | `control_table` | [src/topo_pilot/experiment/report_e4_s7.py:50](../../src/topo_pilot/experiment/report_e4_s7.py#L50) |  |
 | `control_targets` | function | `control_targets` | [src/topo_pilot/experiment/x4f_gates.py:205](../../src/topo_pilot/experiment/x4f_gates.py#L205) | Calibration-fitted control targets over all rows (PCs fitted on calibration only). |
 | `control_tokens` | function | `control_tokens` | [tools/x2a_stage0/x2a_mc.py:279](../../tools/x2a_stage0/x2a_mc.py#L279) |  |
 | `control_vectors` | function | `control_vectors` | [tools/x4_circle_history/scores.py:132](../../tools/x4_circle_history/scores.py#L132) |  |
+| `controls_one` | function | `controls_one` | [tools/hwsd/hwsd_score.py:190](../../tools/hwsd/hwsd_score.py#L190) |  |
 | `controls_ph_table` | function | `controls_ph_table` | [src/topo_pilot/experiment/report_e4_s7.py:88](../../src/topo_pilot/experiment/report_e4_s7.py#L88) |  |
 | `ControlsJob` | class | `ControlsJob` | [src/topo_pilot/experiment/s7_controls.py:61](../../src/topo_pilot/experiment/s7_controls.py#L61) | Descriptive PH of the U and N control models (no rule; RESEARCH_PLAN §3.3 note on U). |
 | `ControlState` | class | `ControlState` | [src/topo_pilot/experiment/x5g1t_runtime.py:35](../../src/topo_pilot/experiment/x5g1t_runtime.py#L35) |  |
@@ -2988,6 +3187,7 @@
 | `cue_normalise` | function | `cue_normalise` | [tools/x6_stage1/x6s1_eval.py:205](../../tools/x6_stage1/x6s1_eval.py#L205) |  |
 | `cue_normalised` | function | `cue_normalised` | [tools/x6_stage0/x6_model.py:286](../../tools/x6_stage0/x6_model.py#L286) |  |
 | `cue_ok` | function | `cue_ok` | [tools/x6_stage1/x6s1_decide.py:92](../../tools/x6_stage1/x6s1_decide.py#L92) |  |
+| `cumulative_d` | function | `cumulative_d` | [tools/hwsd/hwsd_records.py:210](../../tools/hwsd/hwsd_records.py#L210) |  |
 | `current_lineage` | function | `current_lineage` | [src/topo_pilot/experiment/x5g1t_config.py:180](../../src/topo_pilot/experiment/x5g1t_config.py#L180) |  |
 | `curve` | method | `S6Job.curve` | [src/topo_pilot/experiment/s6.py:115](../../src/topo_pilot/experiment/s6.py#L115) | S and regret on panel 1 at every checkpoint, and G_C. |
 | `curves_figure` | function | `curves_figure` | [src/topo_pilot/experiment/report_e3.py:254](../../src/topo_pilot/experiment/report_e3.py#L254) |  |
@@ -2997,11 +3197,23 @@
 | `CylinderBuilder` | class | `CylinderBuilder` | [src/topo_pilot/world/lattice.py:173](../../src/topo_pilot/world/lattice.py#L173) | Axis 0 periodic: beta = (1, 1, 0), chi = 0. |
 | `D` | function | `D` | [tests/x6_stage1/test_a_numerics.py:38](../../tests/x6_stage1/test_a_numerics.py#L38) |  |
 | `D` | function | `D` | [tools/c2_readout/c2_stats.py:46](../../tools/c2_readout/c2_stats.py#L46) | Exact Decimal(float) entries of a 2-d array. |
+| `d1` | function | `d1` | [tests/hwsd/test_a_hwsd_ref.py:178](../../tests/hwsd/test_a_hwsd_ref.py#L178) |  |
+| `d1` | function | `d1` | [tools/hwsd/hwsd_statements.py:127](../../tools/hwsd/hwsd_statements.py#L127) |  |
+| `d2` | function | `d2` | [tests/hwsd/test_a_hwsd_ref.py:187](../../tests/hwsd/test_a_hwsd_ref.py#L187) |  |
+| `d2` | function | `d2` | [tools/hwsd/hwsd_statements.py:136](../../tools/hwsd/hwsd_statements.py#L136) |  |
 | `d2_decompose` | function | `d2_decompose` | [tools/x6zc/x6zc_census.py:257](../../tools/x6zc/x6zc_census.py#L257) |  |
 | `d2a_store` | function | `d2a_store` | [tests/k4b/test_b_registry.py:153](../../tests/k4b/test_b_registry.py#L153) |  |
 | `d2a_store` | function | `d2a_store` | [tests/k4b/test_b_registry_rules.py:301](../../tests/k4b/test_b_registry_rules.py#L301) |  |
 | `D2AStop` | class | `D2AStop` | [tools/d2a/d2a_train.py:45](../../tools/d2a/d2a_train.py#L45) | STOP or INVALID control state (owner STOP, malformed control): stop at the boundary. |
+| `d3` | function | `d3` | [tests/hwsd/test_a_hwsd_ref.py:212](../../tests/hwsd/test_a_hwsd_ref.py#L212) |  |
+| `d3` | function | `d3` | [tools/hwsd/hwsd_statements.py:162](../../tools/hwsd/hwsd_statements.py#L162) |  |
+| `d4` | function | `d4` | [tests/hwsd/test_a_hwsd_ref.py:216](../../tests/hwsd/test_a_hwsd_ref.py#L216) |  |
+| `d4` | function | `d4` | [tools/hwsd/hwsd_statements.py:166](../../tools/hwsd/hwsd_statements.py#L166) |  |
 | `d4_rows` | function | `d4_rows` | [tools/hwsb/hwsb_eval.py:159](../../tools/hwsb/hwsb_eval.py#L159) |  |
+| `d5` | function | `d5` | [tests/hwsd/test_a_hwsd_ref.py:220](../../tests/hwsd/test_a_hwsd_ref.py#L220) |  |
+| `d5` | function | `d5` | [tools/hwsd/hwsd_statements.py:170](../../tools/hwsd/hwsd_statements.py#L170) |  |
+| `d6` | function | `d6` | [tests/hwsd/test_a_hwsd_ref.py:235](../../tests/hwsd/test_a_hwsd_ref.py#L235) |  |
+| `d6` | function | `d6` | [tools/hwsd/hwsd_statements.py:187](../../tools/hwsd/hwsd_statements.py#L187) |  |
 | `d_cluster` | function | `d_cluster` | [tools/x6zc/x6zc_core.py:84](../../tools/x6zc/x6zc_core.py#L84) |  |
 | `d_events` | function | `d_events` | [tests/c2_nd/test_a_family.py:168](../../tests/c2_nd/test_a_family.py#L168) |  |
 | `d_expect` | function | `d_expect` | [tests/c2_nd/test_a_family.py:101](../../tests/c2_nd/test_a_family.py#L101) |  |
@@ -3049,6 +3261,7 @@
 | `decision` | function | `decision` | [tools/x2a_stage0/x2a_mc.py:47](../../tools/x2a_stage0/x2a_mc.py#L47) |  |
 | `decision_rows` | function | `decision_rows` | [tools/d2a/d2a_world.py:115](../../tools/d2a/d2a_world.py#L115) |  |
 | `decode` | function | `decode` | [tools/hwsc/hwsc_bind.py:34](../../tools/hwsc/hwsc_bind.py#L34) |  |
+| `decode` | function | `decode` | [tools/hwsd/hwsd_bind.py:18](../../tools/hwsd/hwsd_bind.py#L18) | hwsc_bind.decode semantics, with hwsd's contract views and this worktree's REPO. |
 | `Decoder` | class | `Decoder` | [tools/c1prime/c1_fit.py:147](../../tools/c1prime/c1_fit.py#L147) |  |
 | `Decoder` | class | `Decoder` | [tools/c2_readout/c2_stats.py:213](../../tools/c2_readout/c2_stats.py#L213) |  |
 | `decoder` | function | `decoder` | [tests/k4b/test_b_endpoint.py:83](../../tests/k4b/test_b_endpoint.py#L83) |  |
@@ -3102,6 +3315,7 @@
 | `designed_stats` | function | `designed_stats` | [tools/x6_stage1/x6s1_eval.py:274](../../tools/x6_stage1/x6s1_eval.py#L274) |  |
 | `det` | function | `det` | [tools/x6_stage1/x6s1_stage_post.py:175](../../tools/x6_stage1/x6s1_stage_post.py#L175) |  |
 | `determinism_check` | function | `determinism_check` | [tools/k4b/k4b_charts.py:207](../../tools/k4b/k4b_charts.py#L207) |  |
+| `determinism_d` | function | `determinism_d` | [tools/hwsd/hwsd_score.py:366](../../tools/hwsd/hwsd_score.py#L366) |  |
 | `dev_acts` | method | `DevData.dev_acts` | [src/topo_pilot/experiment/s7_dev.py:104](../../src/topo_pilot/experiment/s7_dev.py#L104) | Dev ActivationSet (primary hook, all dev panels) of a run at ``step``. |
 | `dev_auc` | function | `dev_auc` | [src/topo_pilot/analysis/x5_endpoint.py:190](../../src/topo_pilot/analysis/x5_endpoint.py#L190) | Trapezoid area of the ratio curve over the actual step values. |
 | `dev_ce` | method | `Trainer.dev_ce` | [src/topo_pilot/learner/trainer.py:116](../../src/topo_pilot/learner/trainer.py#L116) | Mean CE (nats per position) over the whole dev set, batched, no grad, eval mode. |
@@ -3112,6 +3326,7 @@
 | `DevData` | class | `DevData` | [src/topo_pilot/experiment/s7_dev.py:58](../../src/topo_pilot/experiment/s7_dev.py#L58) | Dev panels, dev activations and aligned probe targets for the O/P runs. |
 | `deye` | function | `deye` | [tools/c2_readout/c2_stats.py:64](../../tools/c2_readout/c2_stats.py#L64) |  |
 | `diagnostics` | function | `diagnostics` | [src/topo_pilot/experiment/x5g1_run.py:84](../../src/topo_pilot/experiment/x5g1_run.py#L84) | Rate, spectrum, mixing bound and conditional-state integrated autocorrelations. |
+| `diagnostics` | function | `diagnostics` | [tools/hwsd/hwsd_statements.py:244](../../tools/hwsd/hwsd_statements.py#L244) |  |
 | `diagnostics` | function | `diagnostics` | [tools/x4_oracle_profile/run_profile.py:79](../../tools/x4_oracle_profile/run_profile.py#L79) |  |
 | `DiagramResult` | class | `DiagramResult` | [src/topo_pilot/topology/persistence.py:52](../../src/topo_pilot/topology/persistence.py#L52) | Persistence diagrams (pure result; persisted later as ``Diagrams``). |
 | `Diagrams` | class | `Diagrams` | [src/topo_pilot/contracts/_schemas_results.py:124](../../src/topo_pilot/contracts/_schemas_results.py#L124) | Persistence diagrams: ``rows: [n, 4] float64`` with columns (dim, birth, death, censored). |
@@ -3222,13 +3437,29 @@
 | `drc7` | function | `drc7` | [tools/hwsc/hwsc_dry2.py:117](../../tools/hwsc/hwsc_dry2.py#L117) |  |
 | `drc8` | function | `drc8` | [tools/hwsc/hwsc_dry2.py:151](../../tools/hwsc/hwsc_dry2.py#L151) |  |
 | `drc9` | function | `drc9` | [tools/hwsc/hwsc_dry2.py:180](../../tools/hwsc/hwsc_dry2.py#L180) |  |
+| `drd1` | function | `drd1` | [tools/hwsd/hwsd_dry.py:250](../../tools/hwsd/hwsd_dry.py#L250) | The tiny-world pipeline: train, SAMPLE tables, H2-D, ORACLE-D, B4-TEST, LGATE, SCORE, SUMMARY. |
+| `drd10` | function | `drd10` | [tools/hwsd/hwsd_dry2.py:317](../../tools/hwsd/hwsd_dry2.py#L317) |  |
+| `drd11` | function | `drd11` | [tools/hwsd/hwsd_dry2.py:337](../../tools/hwsd/hwsd_dry2.py#L337) |  |
+| `drd12` | function | `drd12` | [tools/hwsd/hwsd_dry3.py:190](../../tools/hwsd/hwsd_dry3.py#L190) |  |
+| `drd13` | function | `drd13` | [tools/hwsd/hwsd_dry3.py:256](../../tools/hwsd/hwsd_dry3.py#L256) |  |
+| `drd14` | function | `drd14` | [tools/hwsd/hwsd_dry3.py:345](../../tools/hwsd/hwsd_dry3.py#L345) |  |
+| `drd2` | function | `drd2` | [tools/hwsd/hwsd_dry3.py:60](../../tools/hwsd/hwsd_dry3.py#L60) | Real E4 architecture, 20-step checkpoints of one master on 2,048 in-memory w* rows. |
+| `drd3` | function | `drd3` | [tools/hwsd/hwsd_dry3.py:99](../../tools/hwsd/hwsd_dry3.py#L99) |  |
+| `drd4` | function | `drd4` | [tools/hwsd/hwsd_dry.py:233](../../tools/hwsd/hwsd_dry.py#L233) |  |
+| `drd5` | function | `drd5` | [tools/hwsd/hwsd_dry2.py:73](../../tools/hwsd/hwsd_dry2.py#L73) |  |
+| `drd6` | function | `drd6` | [tools/hwsd/hwsd_dry3.py:136](../../tools/hwsd/hwsd_dry3.py#L136) |  |
+| `drd7` | function | `drd7` | [tools/hwsd/hwsd_dry2.py:141](../../tools/hwsd/hwsd_dry2.py#L141) |  |
+| `drd8` | function | `drd8` | [tools/hwsd/hwsd_dry2.py:212](../../tools/hwsd/hwsd_dry2.py#L212) |  |
+| `drd9` | function | `drd9` | [tools/hwsd/hwsd_dry2.py:286](../../tools/hwsd/hwsd_dry2.py#L286) |  |
 | `dry` | method | `Plan.dry` | [tools/hwsb/hwsb_config.py:137](../../tools/hwsb/hwsb_config.py#L137) |  |
 | `dry` | function | `dry` | [tools/c2_nd/nd_stage_base.py:284](../../tools/c2_nd/nd_stage_base.py#L284) | nd_dry, only in a dry-run store (its functions refuse otherwise; G0 (x)). |
 | `dry` | function | `dry` | [tools/x6zc/x6zc_dry.py:77](../../tools/x6zc/x6zc_dry.py#L77) | Stage 0: every CONTRACT dry-run fixture through the pipeline on synthetic data only. |
 | `dry_binding` | function | `dry_binding` | [tests/hwsc/test_b_streams.py:47](../../tests/hwsc/test_b_streams.py#L47) |  |
 | `dry_class` | function | `dry_class` | [tools/hwsc/hwsc_drystore.py:75](../../tools/hwsc/hwsc_drystore.py#L75) | The class of one listed file of a hwsc-dry* store, or None (fails closed). |
+| `dry_class_d` | function | `dry_class_d` | [tools/hwsd/hwsd_registry.py:96](../../tools/hwsd/hwsd_registry.py#L96) |  |
 | `dry_plan` | function | `dry_plan` | [tools/hwsb/hwsb_config.py:144](../../tools/hwsb/hwsb_config.py#L144) |  |
 | `dry_plan` | function | `dry_plan` | [tools/hwsc/hwsc_config.py:147](../../tools/hwsc/hwsc_config.py#L147) |  |
+| `dry_plan` | function | `dry_plan` | [tools/hwsd/hwsd_config.py:147](../../tools/hwsd/hwsd_config.py#L147) |  |
 | `dry_root` | function | `dry_root` | [tests/hwsc/test_b_registry.py:255](../../tests/hwsc/test_b_registry.py#L255) |  |
 | `dry_stream` | function | `dry_stream` | [tools/x6zc/x6zc_const.py:63](../../tools/x6zc/x6zc_const.py#L63) |  |
 | `ds` | function | `ds` | [tests/x6_stage1/test_a_rules.py:85](../../tests/x6_stage1/test_a_rules.py#L85) |  |
@@ -3274,6 +3505,7 @@
 | `effective_settings` | function | `effective_settings` | [tools/hws/hws_meter_bind.py:29](../../tools/hws/hws_meter_bind.py#L29) |  |
 | `effective_settings` | function | `effective_settings` | [tools/hwsb/hwsb_meter_bind.py:72](../../tools/hwsb/hwsb_meter_bind.py#L72) |  |
 | `effective_settings` | function | `effective_settings` | [tools/hwsc/hwsc_meter_bind.py:81](../../tools/hwsc/hwsc_meter_bind.py#L81) |  |
+| `effective_settings` | function | `effective_settings` | [tools/hwsd/hwsd_meter_bind.py:85](../../tools/hwsd/hwsd_meter_bind.py#L85) |  |
 | `eighth_neighbour` | function | `eighth_neighbour` | [tests/circle_history/test_chart.py:69](../../tests/circle_history/test_chart.py#L69) |  |
 | `eligibility` | function | `eligibility` | [tools/c1prime/c1_driver.py:182](../../tools/c1prime/c1_driver.py#L182) |  |
 | `eligibility` | function | `eligibility` | [tools/c2_readout/c2_oracle.py:156](../../tools/c2_readout/c2_oracle.py#L156) | E_x (c1_oracle.eligible); E_y = Y_def, s(H^Y) <= s_max, finite log-evidence of H, H^Y. |
@@ -3300,6 +3532,8 @@
 | `enclosure` | function | `enclosure` | [tools/x6_stage0/x6_dp.py:130](../../tools/x6_stage0/x6_dp.py#L130) |  |
 | `end` | method | `LogitPolicy.end` | [tools/c2_nd/nd_driver.py:76](../../tools/c2_nd/nd_driver.py#L76) |  |
 | `end` | method | `LogitPolicy.end` | [tools/c2_readout/c2_driver.py:63](../../tools/c2_readout/c2_driver.py#L63) |  |
+| `end_obligation` | function | `end_obligation` | [tools/hwsd/hwsd_driver.py:79](../../tools/hwsd/hwsd_driver.py#L79) |  |
+| `end_reservation` | function | `end_reservation` | [tools/hwsd/hwsd_data.py:310](../../tools/hwsd/hwsd_data.py#L310) |  |
 | `endpoint` | function | `endpoint` | [tests/c2_nd/test_b_policy.py:286](../../tests/c2_nd/test_b_policy.py#L286) |  |
 | `endpoint` | function | `endpoint` | [tests/hwsc/test_a_outcomes.py:42](../../tests/hwsc/test_a_outcomes.py#L42) | spec {j: (L, U)} -> an ENDPOINT-like result (statuses by k4b_stats). |
 | `endpoint` | function | `endpoint` | [tools/c1prime/c1_driver_fresh.py:159](../../tools/c1prime/c1_driver_fresh.py#L159) |  |
@@ -3358,6 +3592,9 @@
 | `error_entry` | function | `error_entry` | [tools/x4_oracle_profile/meter.py:173](../../tools/x4_oracle_profile/meter.py#L173) |  |
 | `ErrorCode` | class | `ErrorCode` | [src/topo_pilot/contracts/errors.py:10](../../src/topo_pilot/contracts/errors.py#L10) | Codes carried by :class:`StageFailure`. The value equals the name. |
 | `esc` | function | `esc` | [reports/he_summary/charts.py:28](../../reports/he_summary/charts.py#L28) |  |
+| `est` | function | `est` | [tests/hwsd/test_a_hwsd_ref.py:87](../../tests/hwsd/test_a_hwsd_ref.py#L87) |  |
+| `est` | function | `est` | [tools/hwsd/hwsd_statements.py:16](../../tools/hwsd/hwsd_statements.py#L16) |  |
+| `est_loss` | function | `est_loss` | [tests/hwsd/test_a_hwsd_ref.py:284](../../tests/hwsd/test_a_hwsd_ref.py#L284) |  |
 | `eta` | function | `eta` | [tools/x6_stage0/x6_model.py:120](../../tools/x6_stage0/x6_model.py#L120) |  |
 | `Euclidean` | class | `Euclidean` | [src/topo_pilot/topology/metrics.py:69](../../src/topo_pilot/topology/metrics.py#L69) | Euclidean distance ``\|\|x - y\|\|_2``. |
 | `euler_characteristic` | method | `CubicalComplex.euler_characteristic` | [src/topo_pilot/world/complex.py:196](../../src/topo_pilot/world/complex.py#L196) | ``sum_k (-1)^k n_k``. |
@@ -3370,7 +3607,9 @@
 | `EvalSidecar` | class | `EvalSidecar` | [src/topo_pilot/contracts/_schemas_data.py:66](../../src/topo_pilot/contracts/_schemas_data.py#L66) | Privileged latent states for dev/test: ``z: int16[R, 33]``; ``z[:, t]`` emitted |
 | `evaluate` | method | `LearningGate.evaluate` | [src/topo_pilot/prediction/metrics.py:117](../../src/topo_pilot/prediction/metrics.py#L117) | Return the ``GateCheck`` only (see :meth:`evaluate_with_status`). |
 | `evaluate` | function | `evaluate` | [tests/c1prime/test_a_chart_val.py:89](../../tests/c1prime/test_a_chart_val.py#L89) |  |
+| `evaluate` | function | `evaluate` | [tests/hwsd/test_a_hwsd_ref.py:273](../../tests/hwsd/test_a_hwsd_ref.py#L273) |  |
 | `evaluate` | function | `evaluate` | [tools/code_index/pathval.py:89](../../tools/code_index/pathval.py#L89) |  |
+| `evaluate` | function | `evaluate` | [tools/hwsd/hwsd_statements.py:271](../../tools/hwsd/hwsd_statements.py#L271) |  |
 | `evaluate_with_status` | method | `LearningGate.evaluate_with_status` | [src/topo_pilot/prediction/metrics.py:110](../../src/topo_pilot/prediction/metrics.py#L110) | Return ``(GateCheck, Status)`` for a captured fraction. |
 | `evaluation_reserve` | function | `evaluation_reserve` | [src/topo_pilot/experiment/x5g1t_runtime.py:202](../../src/topo_pilot/experiment/x5g1t_runtime.py#L202) |  |
 | `evaluations` | function | `evaluations` | [tools/x6_stage1/x6s1_run.py:274](../../tools/x6_stage1/x6s1_run.py#L274) |  |
@@ -3396,6 +3635,7 @@
 | `exact_stationary` | function | `exact_stationary` | [tests/oracle_profile/test_oracle_profile.py:45](../../tests/oracle_profile/test_oracle_profile.py#L45) | Solve pi T = pi, sum(pi) = 1 exactly by Gauss-Jordan elimination over Fractions. |
 | `exact_world` | function | `exact_world` | [tools/hws/hws_exact.py:67](../../tools/hws/hws_exact.py#L67) | §4.6 step 6: exact per-world values and E1-E4 before any sampling. |
 | `exact_world_T` | function | `exact_world_T` | [tools/d1_seam/d1_seam.py:51](../../tools/d1_seam/d1_seam.py#L51) |  |
+| `EXC` | function | `EXC` | [tests/hwsd/test_a_hwsd_ref.py:61](../../tests/hwsd/test_a_hwsd_ref.py#L61) |  |
 | `excl` | function | `excl` | [tests/hwsc/test_a_outcomes.py:240](../../tests/hwsc/test_a_outcomes.py#L240) |  |
 | `exclusion_check` | function | `exclusion_check` | [tools/hwsc/hwsc_gates.py:61](../../tools/hwsc/hwsc_gates.py#L61) |  |
 | `execute` | method | `S0Stage.execute` | [src/topo_pilot/experiment/stages.py:103](../../src/topo_pilot/experiment/stages.py#L103) |  |
@@ -3433,6 +3673,7 @@
 | `expected_keys` | function | `expected_keys` | [tests/k4b/test_b_endpoint.py:152](../../tests/k4b/test_b_endpoint.py#L152) |  |
 | `expected_meta` | function | `expected_meta` | [tools/k4b/k4b_config.py:117](../../tools/k4b/k4b_config.py#L117) |  |
 | `expected_meta_c` | function | `expected_meta_c` | [tools/hwsc/hwsc_gates.py:52](../../tools/hwsc/hwsc_gates.py#L52) |  |
+| `expected_os_digests` | function | `expected_os_digests` | [tests/hwsd/test_b_util.py:141](../../tests/hwsd/test_b_util.py#L141) | Independent canonical digests of every ObservationSet of an artifacts root. |
 | `expected_roots` | function | `expected_roots` | [tests/c2_nd/test_b_registry.py:87](../../tests/c2_nd/test_b_registry.py#L87) | Replace CONTRACT scratch_roots_expected in place (restored afterwards). |
 | `expected_sources` | method | `StudyConfig.expected_sources` | [src/topo_pilot/experiment/x5g1t_config.py:99](../../src/topo_pilot/experiment/x5g1t_config.py#L99) | ``{id: (cls, sha)}`` for the world, both transition kernels and the emission. |
 | `expected_status` | function | `expected_status` | [tests/k4b/test_b_endpoint.py:339](../../tests/k4b/test_b_endpoint.py#L339) |  |
@@ -3483,6 +3724,7 @@
 | `F_plan` | function | `F_plan` | [tools/k4b/k4b_cert.py:141](../../tools/k4b/k4b_cert.py#L141) | §7.1: max(B_constant(1e-4, 4, 12288), FLOOR) + Z_bound. |
 | `f_plan` | function | `f_plan` | [tests/k4b/test_a_ranks_ladder.py:61](../../tests/k4b/test_a_ranks_ladder.py#L61) |  |
 | `f_plan` | function | `f_plan` | [tests/k4b/test_a_width_b4.py:39](../../tests/k4b/test_a_width_b4.py#L39) |  |
+| `f_sides` | function | `f_sides` | [tools/hwsd/hwsd_summary.py:108](../../tools/hwsd/hwsd_summary.py#L108) |  |
 | `f_star_index` | function | `f_star_index` | [tools/x6_stage0/x6_model.py:138](../../tools/x6_stage0/x6_model.py#L138) |  |
 | `face_cycle` | function | `face_cycle` | [tools/x6_stage0/x6_model.py:184](../../tools/x6_stage0/x6_model.py#L184) |  |
 | `face_holonomies` | function | `face_holonomies` | [tools/x6_stage0/x6_model.py:191](../../tools/x6_stage0/x6_model.py#L191) |  |
@@ -3493,11 +3735,13 @@
 | `failed` | function | `failed` | [tests/x6zc/test_x6zc_decide.py:58](../../tests/x6zc/test_x6zc_decide.py#L58) |  |
 | `failing_case` | function | `failing_case` | [tests/hwsc/test_a_learning.py:151](../../tests/hwsc/test_a_learning.py#L151) |  |
 | `failure` | function | `failure` | [tests/c1prime/test_a_exceptions.py:66](../../tests/c1prime/test_a_exceptions.py#L66) |  |
+| `fake_artifact` | function | `fake_artifact` | [tests/hwsd/test_b_util.py:179](../../tests/hwsd/test_b_util.py#L179) |  |
 | `fake_chart` | function | `fake_chart` | [tests/k4b/test_b_charts.py:47](../../tests/k4b/test_b_charts.py#L47) |  |
 | `fake_extend` | function | `fake_extend` | [tests/k4b/test_b_charts.py:240](../../tests/k4b/test_b_charts.py#L240) |  |
 | `fake_lsqr` | function | `fake_lsqr` | [tests/c1prime/test_a_chart_exceptions.py:71](../../tests/c1prime/test_a_chart_exceptions.py#L71) |  |
 | `fake_repo` | function | `fake_repo` | [tests/executors/conftest.py:21](../../tests/executors/conftest.py#L21) | A minimal repository (src, configs, pyproject, lock) plus planted secrets. |
 | `fake_resolver` | function | `fake_resolver` | [tests/experiment/test_x4.py:112](../../tests/experiment/test_x4.py#L112) | Source-aware like StoreResolver: S4 holds the O and N runs, S5 the P runs. |
+| `FakeChart` | class | `FakeChart` | [tests/hwsd/test_a_scorer.py:42](../../tests/hwsd/test_a_scorer.py#L42) |  |
 | `FakeControls` | class | `FakeControls` | [tests/experiment/test_x5g1t_training.py:66](../../tests/experiment/test_x5g1t_training.py#L66) | ``.boundary(what, next_estimate, reserve, audit=...)``; raises STOP at call ``stop_at``. |
 | `FakeSC` | class | `FakeSC` | [tests/experiment/test_x5g1t_export_checks.py:40](../../tests/experiment/test_x5g1t_export_checks.py#L40) | StudyControls stand-in: records each boundary and raises ``exc`` where ``stop_at``. |
 | `FakeSleep` | class | `FakeSleep` | [tests/hwsb/test_b_hold.py:72](../../tests/hwsb/test_b_hold.py#L72) | Counts calls; writes the decision file on the n-th call. |
@@ -3530,6 +3774,7 @@
 | `file_sha` | function | `file_sha` | [tools/x4_circle_history/env_identity.py:95](../../tools/x4_circle_history/env_identity.py#L95) |  |
 | `files_md` | function | `files_md` | [tools/code_index/render_lists.py:19](../../tools/code_index/render_lists.py#L19) |  |
 | `fill_ref` | function | `fill_ref` | [tests/hwsb/test_a_outcomes.py:78](../../tests/hwsb/test_a_outcomes.py#L78) |  |
+| `fill_templates` | function | `fill_templates` | [tools/hwsd/hwsd_summary.py:180](../../tools/hwsd/hwsd_summary.py#L180) |  |
 | `filt` | function | `filt` | [tests/hwsc/test_a_k4b_known_bound.py:83](../../tests/hwsc/test_a_k4b_known_bound.py#L83) | Forward filter restarted at pi: (P(obs), posterior mean of c(z_last)). |
 | `filt` | function | `filt` | [tests/x6_stage0/test_x6_stage0.py:101](../../tests/x6_stage0/test_x6_stage0.py#L101) | Exact forward filter (emit, then transition; pi = 1/48): ([q_0..q_t], P, [b_1..b_t]). |
 | `filt` | function | `filt` | [tools/theory_exact/theory_exact.py:75](../../tools/theory_exact/theory_exact.py#L75) |  |
@@ -3547,6 +3792,7 @@
 | `find_run_inputs` | function | `find_run_inputs` | [src/topo_pilot/experiment/s3.py:67](../../src/topo_pilot/experiment/s3.py#L67) | Locate the S2 artifacts of one (world, condition, replicate). |
 | `first` | function | `first` | [tools/c2_nd/nd_stage_post.py:137](../../tools/c2_nd/nd_stage_post.py#L137) | V3x and the SPEC array (Y1; Y1' for D; none for N-M): the first part of the stream. |
 | `first` | function | `first` | [tools/c2_readout/c2_stage_post.py:122](../../tools/c2_readout/c2_stage_post.py#L122) | V3x and the SPEC array (first part of the family stream; no endpoint array). |
+| `first_bad` | function | `first_bad` | [tools/hwsd/hwsd_driver.py:95](../../tools/hwsd/hwsd_driver.py#L95) |  |
 | `first_comment` | function | `first_comment` | [tools/code_index/scan.py:66](../../tools/code_index/scan.py#L66) |  |
 | `first_heading` | function | `first_heading` | [tools/code_index/scan.py:54](../../tools/code_index/scan.py#L54) |  |
 | `first_paragraph` | function | `first_paragraph` | [tools/code_index/pyinfo.py:71](../../tools/code_index/pyinfo.py#L71) |  |
@@ -3577,6 +3823,8 @@
 | `fitted` | function | `fitted` | [tests/circle_history/test_chart_arrays.py:60](../../tests/circle_history/test_chart_arrays.py#L60) |  |
 | `five_gram` | function | `five_gram` | [tools/x6_stage0/x6_model.py:311](../../tools/x6_stage0/x6_model.py#L311) |  |
 | `fixture` | function | `fixture` | [src/topo_pilot/experiment/x5g1_scorebench.py:75](../../src/topo_pilot/experiment/x5g1_scorebench.py#L75) |  |
+| `fixture` | function | `fixture` | [tests/hwsd/test_a_kd4.py:51](../../tests/hwsd/test_a_kd4.py#L51) |  |
+| `fixture_root` | function | `fixture_root` | [tools/hwsd/hwsd_dry.py:78](../../tools/hwsd/hwsd_dry.py#L78) |  |
 | `flat` | function | `flat` | [tests/hwsb/test_b_records.py:164](../../tests/hwsb/test_b_records.py#L164) |  |
 | `flat_oracle` | function | `flat_oracle` | [tools/c1prime/c1_driver_fresh.py:32](../../tools/c1prime/c1_driver_fresh.py#L32) |  |
 | `flat_torus` | method | `SyntheticShapes.flat_torus` | [src/topo_pilot/topology/shapes.py:92](../../src/topo_pilot/topology/shapes.py#L92) | Uniform angles on the Clifford torus in R^4 (beta_1 = 2). |
@@ -3612,6 +3860,8 @@
 | `forward` | function | `forward` | [tests/k4b/test_a_theorem_a.py:59](../../tests/k4b/test_a_theorem_a.py#L59) |  |
 | `forward_with_patch` | function | `forward_with_patch` | [src/topo_pilot/learner/patch.py:66](../../src/topo_pilot/learner/patch.py#L66) | Run the frozen model with the vector at ``(site, index)`` replaced. |
 | `FPSCenters` | class | `FPSCenters` | [src/topo_pilot/process/centers.py:71](../../src/topo_pilot/process/centers.py#L71) | Farthest-point sampling on ``world.dist``; the centers are vertex coordinates. |
+| `fr` | function | `fr` | [tests/hwsd/test_a_hwsd_ref.py:22](../../tests/hwsd/test_a_hwsd_ref.py#L22) |  |
+| `fr` | function | `fr` | [tools/hwsd/hwsd_statements.py:24](../../tools/hwsd/hwsd_statements.py#L24) |  |
 | `frac` | function | `frac` | [tools/c2_nd/nd_config.py:64](../../tools/c2_nd/nd_config.py#L64) | The exact rational a CONTRACT string names ("1/300", "1e-9", "6"). |
 | `frac` | function | `frac` | [tools/c2_nd/nd_stage_base.py:279](../../tools/c2_nd/nd_stage_base.py#L279) |  |
 | `frac` | function | `frac` | [tools/c2_readout/c2_config.py:78](../../tools/c2_readout/c2_config.py#L78) | The exact rational a CONTRACT string names ("1/240", "1e-9", "0.75"). |
@@ -3627,11 +3877,13 @@
 | `freeze` | function | `freeze` | [tools/x4_circle_history/freeze_bind.py:158](../../tools/x4_circle_history/freeze_bind.py#L158) |  |
 | `freeze` | function | `freeze` | [tools/x4_oracle_profile/freeze.py:113](../../tools/x4_oracle_profile/freeze.py#L113) |  |
 | `freeze_c` | function | `freeze_c` | [tools/hwsc/hwsc_records.py:183](../../tools/hwsc/hwsc_records.py#L183) |  |
+| `freeze_d` | function | `freeze_d` | [tools/hwsd/hwsd_records.py:119](../../tools/hwsd/hwsd_records.py#L119) |  |
 | `freeze_problems` | function | `freeze_problems` | [tools/x6zc/x6zc_guard.py:210](../../tools/x6zc/x6zc_guard.py#L210) |  |
 | `freeze_production` | function | `freeze_production` | [tools/k4b/k4b_charts.py:128](../../tools/k4b/k4b_charts.py#L128) | Writes every production chart, step-0 chart and decoder, then PRODUCTION_FROZEN.json. |
 | `fresh` | function | `fresh` | [tests/hwsc/test_b_registry2.py:333](../../tests/hwsc/test_b_registry2.py#L333) |  |
 | `fresh_clear` | function | `fresh_clear` | [tests/experiment/test_x5g1t_usage.py:58](../../tests/experiment/test_x5g1t_usage.py#L58) |  |
 | `fresh_clear` | function | `fresh_clear` | [tests/experiment/test_x5g1t_usage_files.py:59](../../tests/experiment/test_x5g1t_usage_files.py#L59) |  |
+| `fresh_fixture` | function | `fresh_fixture` | [tools/hwsd/hwsd_dry.py:82](../../tools/hwsd/hwsd_dry.py#L82) | A new empty folder under fixture_root (decision 6: never inside the hwsd-dry store). |
 | `fresh_fraction_ok` | function | `fresh_fraction_ok` | [tools/c1prime/c1_endpoint.py:123](../../tools/c1prime/c1_endpoint.py#L123) |  |
 | `fresh_prefixes` | function | `fresh_prefixes` | [tools/x6zc/x6zc_core.py:57](../../tools/x6zc/x6zc_core.py#L57) |  |
 | `fresh_state` | function | `fresh_state` | [tools/x6_stage1/x6s1_cloud.py:150](../../tools/x6_stage1/x6s1_cloud.py#L150) |  |
@@ -3687,6 +3939,7 @@
 | `g0_tpl` | function | `g0_tpl` | [tools/d2a/d2a_targets.py:265](../../tools/d2a/d2a_targets.py#L265) | Exact (Fractions) checks of the canonical pair and every registered template (§5.2). |
 | `g0_world` | function | `g0_world` | [tests/c2_nd/test_b_lineage.py:169](../../tests/c2_nd/test_b_lineage.py#L169) |  |
 | `g0c` | function | `g0c` | [tools/hwsc/hwsc_known.py:83](../../tools/hwsc/hwsc_known.py#L83) |  |
+| `g0d` | function | `g0d` | [tools/hwsd/hwsd_known.py:99](../../tools/hwsd/hwsd_known.py#L99) |  |
 | `g1` | function | `g1` | [src/topo_pilot/experiment/x4f_gates.py:82](../../src/topo_pilot/experiment/x4f_gates.py#L82) | G1-primary, G1-r2 and the descriptive short-context comparators. |
 | `g2` | function | `g2` | [src/topo_pilot/experiment/x4f_gates.py:179](../../src/topo_pilot/experiment/x4f_gates.py#L179) | Identity, causality (primary eraser), final-null and frozen-weight checks. |
 | `g3` | function | `g3` | [src/topo_pilot/experiment/x4f_damage.py:30](../../src/topo_pilot/experiment/x4f_damage.py#L30) | Primary eraser validity and post-erasure linear / RBF recoverability of m32. |
@@ -3696,6 +3949,7 @@
 | `G_hat` | function | `G_hat` | [tools/c1prime/c1_oracle.py:139](../../tools/c1prime/c1_oracle.py#L139) |  |
 | `G_named` | function | `G_named` | [tools/c1prime/c1_oracle.py:157](../../tools/c1prime/c1_oracle.py#L157) |  |
 | `G_overlap` | function | `G_overlap` | [tools/x2a_stage0/x2a_model.py:165](../../tools/x2a_stage0/x2a_model.py#L165) |  |
+| `g_ref` | function | `g_ref` | [tests/hwsd/test_a_kd4.py:43](../../tests/hwsd/test_a_kd4.py#L43) | API.md §12: [0, 2*pi*a) -> [0, pi/6) and [2*pi*a, 2*pi) -> [pi/6, 2*pi), linear. |
 | `gamma` | function | `gamma` | [tests/c1prime/test_a_oracle_named.py:90](../../tests/c1prime/test_a_oracle_named.py#L90) |  |
 | `gamma` | function | `gamma` | [tests/k4b/test_a_decision.py:49](../../tests/k4b/test_a_decision.py#L49) |  |
 | `gamma` | function | `gamma` | [tools/c1prime/c1_cert.py:29](../../tools/c1prime/c1_cert.py#L29) |  |
@@ -3800,6 +4054,7 @@
 | `guard` | function | `guard` | [tools/c2_nd/nd_dry.py:47](../../tools/c2_nd/nd_dry.py#L47) |  |
 | `guard` | function | `guard` | [tools/c2_readout/c2_decide.py:49](../../tools/c2_readout/c2_decide.py#L49) |  |
 | `guard` | function | `guard` | [tools/hwsc/hwsc_config.py:193](../../tools/hwsc/hwsc_config.py#L193) |  |
+| `guard` | function | `guard` | [tools/hwsd/hwsd_config.py:213](../../tools/hwsd/hwsd_config.py#L213) |  |
 | `guard` | function | `guard` | [tools/x4_oracle_profile/runtime.py:30](../../tools/x4_oracle_profile/runtime.py#L30) | Safe-boundary runtime control check (HOLD waits here; STOP/INVALID raise). |
 | `guard` | function | `guard` | [tools/x6zc/x6zc_store.py:66](../../tools/x6zc/x6zc_store.py#L66) |  |
 | `guard_endpoint` | function | `guard_endpoint` | [tools/c1prime/c1_bounds.py:83](../../tools/c1prime/c1_bounds.py#L83) | (E): per model F = max(B, 1e-9); \|L\| <= F or \|U\| <= F -> INCONCLUSIVE/NUMERICAL. |
@@ -3875,6 +4130,8 @@
 | `hexagon_clusters` | function | `hexagon_clusters` | [tests/circle_history/test_chart.py:272](../../tests/circle_history/test_chart.py#L272) |  |
 | `hist` | function | `hist` | [tests/k4b/test_b_registry_rules.py:68](../../tests/k4b/test_b_registry_rules.py#L68) |  |
 | `hist_name` | function | `hist_name` | [tools/hwsc/hwsc_data.py:131](../../tools/hwsc/hwsc_data.py#L131) |  |
+| `hist_name` | function | `hist_name` | [tools/hwsd/hwsd_data.py:66](../../tools/hwsd/hwsd_data.py#L66) |  |
+| `hist_table` | function | `hist_table` | [tests/hwsd/test_b_util.py:157](../../tests/hwsd/test_b_util.py#L157) |  |
 | `histories` | function | `histories` | [tests/c1prime/test_a_oracle.py:88](../../tests/c1prime/test_a_oracle.py#L88) |  |
 | `histories` | function | `histories` | [tests/c1prime/test_a_oracle_named.py:72](../../tests/c1prime/test_a_oracle_named.py#L72) |  |
 | `history` | method | `SequenceLayout.history` | [src/topo_pilot/contracts/layout.py:63](../../src/topo_pilot/contracts/layout.py#L63) | The history seen at position ``p``: ``w_1..w_p`` (empty for ``p = 0``), int64. |
@@ -3922,6 +4179,7 @@
 | `id_reuse` | function | `id_reuse` | [tools/x6_stage1/x6s1_registry.py:466](../../tools/x6_stage1/x6s1_registry.py#L466) | Sequence-id reuse between stage-1 pools and ObservationSets of other stores (diagnostic). |
 | `ideal_identities` | function | `ideal_identities` | [tools/x4_circle_history/process_law.py:76](../../tools/x4_circle_history/process_law.py#L76) |  |
 | `ident` | function | `ident` | [tests/circle_history/test_reference_cache.py:57](../../tests/circle_history/test_reference_cache.py#L57) |  |
+| `ident_d` | function | `ident_d` | [tools/hwsd/hwsd_known.py:150](../../tools/hwsd/hwsd_known.py#L150) |  |
 | `Identical` | class | `Identical` | [src/topo_pilot/process/emission.py:191](../../src/topo_pilot/process/emission.py#L191) | N: ``E = 1/V`` (world-independent negative control). |
 | `Identification` | class | `Identification` | [src/topo_pilot/world/identification.py:10](../../src/topo_pilot/world/identification.py#L10) | Gluing rule for a lattice axis: kind in {'none','periodic','flipped'}; for 'flipped' the |
 | `identity` | function | `identity` | [tests/hwsc/test_a_law.py:60](../../tests/hwsc/test_a_law.py#L60) |  |
@@ -3940,6 +4198,7 @@
 | `implementation_files` | function | `implementation_files` | [tools/hws/hws_records.py:230](../../tools/hws/hws_records.py#L230) |  |
 | `implementation_files` | function | `implementation_files` | [tools/hwsb/hwsb_records.py:87](../../tools/hwsb/hwsb_records.py#L87) |  |
 | `implementation_files` | function | `implementation_files` | [tools/hwsc/hwsc_records.py:177](../../tools/hwsc/hwsc_records.py#L177) |  |
+| `implementation_files_d` | function | `implementation_files_d` | [tools/hwsd/hwsd_records.py:113](../../tools/hwsd/hwsd_records.py#L113) |  |
 | `import_bundle` | method | `ArtifactStore.import_bundle` | [src/topo_pilot/contracts/store.py:235](../../src/topo_pilot/contracts/store.py#L235) | Import a bundle; verifies schema versions, ids, checksums and parents first |
 | `import_bundle` | function | `import_bundle` | [src/topo_pilot/contracts/_bundle.py:95](../../src/topo_pilot/contracts/_bundle.py#L95) | Verify everything first, then write in dependency order. |
 | `import_model` | function | `import_model` | [tools/x6_stage1/x6s1_ingest.py:419](../../tools/x6_stage1/x6s1_ingest.py#L419) |  |
@@ -3950,6 +4209,7 @@
 | `imported_modules` | function | `imported_modules` | [tests/executors/test_static.py:13](../../tests/executors/test_static.py#L13) |  |
 | `imports_section` | function | `imports_section` | [tools/code_index/render_pages.py:35](../../tools/code_index/render_pages.py#L35) |  |
 | `in_job` | function | `in_job` | [tools/x6zc/x6zc_guard.py:113](../../tools/x6zc/x6zc_guard.py#L113) |  |
+| `in_memory_rows` | function | `in_memory_rows` | [tools/hwsd/hwsd_dry.py:100](../../tools/hwsd/hwsd_dry.py#L100) |  |
 | `in_r_ord` | function | `in_r_ord` | [tools/x6_stage1/x6s1_pairs.py:97](../../tools/x6_stage1/x6s1_pairs.py#L97) |  |
 | `in_support` | function | `in_support` | [tests/k4b/test_a_theorem_a.py:76](../../tests/k4b/test_a_theorem_a.py#L76) | Correlated with the prefix (w1) and with the residual sign. |
 | `ind` | function | `ind` | [tools/c2_readout/c2_attrib.py:34](../../tools/c2_readout/c2_attrib.py#L34) | Indicator form s 1_E; a non-finite s on an eligible row is FAIL_TECHNICAL/NUMERICAL. |
@@ -3962,6 +4222,7 @@
 | `inflate` | function | `inflate` | [tools/c2_readout/c2_stats.py:76](../../tools/c2_readout/c2_stats.py#L76) |  |
 | `ingest` | function | `ingest` | [tools/x6_stage1/x6s1_ingest.py:381](../../tools/x6_stage1/x6s1_ingest.py#L381) |  |
 | `ingest_c2` | function | `ingest_c2` | [tools/x6_stage1/x6s1_stage_post.py:103](../../tools/x6_stage1/x6s1_stage_post.py#L103) |  |
+| `inherited_sha_ok` | function | `inherited_sha_ok` | [tools/hwsd/hwsd_config.py:120](../../tools/hwsd/hwsd_config.py#L120) |  |
 | `init_charts` | function | `init_charts` | [tools/k4b/k4b_charts.py:107](../../tools/k4b/k4b_charts.py#L107) | Step-0 charts: a valid CHART_UNAVAILABLE is INIT_UNAVAILABLE (non-gating); any |
 | `init_qualifier` | function | `init_qualifier` | [tools/k4b/k4b_fresh.py:233](../../tools/k4b/k4b_fresh.py#L233) | §9.3, R21: L-_init - F_init > 1/100, strict and exact. |
 | `init_seed` | function | `init_seed` | [tools/x6_stage1/x6s1_data.py:172](../../tools/x6_stage1/x6s1_data.py#L172) |  |
@@ -3975,8 +4236,10 @@
 | `inputs` | function | `inputs` | [tests/k4b/test_b_endpoint.py:93](../../tests/k4b/test_b_endpoint.py#L93) |  |
 | `inputs` | function | `inputs` | [tools/c2_nd/nd_stage_base.py:323](../../tools/c2_nd/nd_stage_base.py#L323) |  |
 | `inputs` | function | `inputs` | [tools/c2_readout/c2_stage_base.py:167](../../tools/c2_readout/c2_stage_base.py#L167) |  |
+| `install` | method | `OpenSpy.install` | [tests/hwsd/test_b_util.py:85](../../tests/hwsd/test_b_util.py#L85) |  |
 | `install` | function | `install` | [src/topo_pilot/executors/run_bundle_script.py:43](../../src/topo_pilot/executors/run_bundle_script.py#L43) | ``pip install`` the filtered lock; fall back to one package at a time on failure. |
 | `install` | function | `install` | [tests/hwsc/test_a_learning.py:107](../../tests/hwsc/test_a_learning.py#L107) |  |
+| `install` | function | `install` | [tests/hwsd/test_a_scorer.py:58](../../tests/hwsd/test_a_scorer.py#L58) |  |
 | `instructions` | method | `BundleExecutor.instructions` | [src/topo_pilot/executors/bundle.py:135](../../src/topo_pilot/executors/bundle.py#L135) | What the user must upload, run and download. |
 | `integer_lift` | function | `integer_lift` | [tools/x4_circle_history/cochain.py:140](../../tools/x4_circle_history/cochain.py#L140) | Exact integer lift alpha = a - p z of a mod-p cocycle a (API.md integer_lift). |
 | `integers` | method | `_RecGen.integers` | [tests/x6_stage1/test_b_train_chain.py:129](../../tests/x6_stage1/test_b_train_chain.py#L129) |  |
@@ -3995,8 +4258,10 @@
 | `Invalid` | class | `Invalid` | [tools/x4_circle_history/errors.py:8](../../tools/x4_circle_history/errors.py#L8) | Numerical, integrity or implementation defect: the runner reports FAIL_TECHNICAL. |
 | `inventory` | function | `inventory` | [tools/c2_nd/nd_registry.py:232](../../tools/c2_nd/nd_registry.py#L232) | k4b_registry.inventory/classify of every top-level directory against the ND frozen table; |
 | `inventory` | function | `inventory` | [tools/c2_readout/c2_registry.py:192](../../tools/c2_readout/c2_registry.py#L192) | k4b_registry.inventory/classify of every top-level directory, checked against the frozen |
+| `inventory` | function | `inventory` | [tools/hwsd/hwsd_driver.py:346](../../tools/hwsd/hwsd_driver.py#L346) |  |
 | `inventory` | function | `inventory` | [tools/k4b/k4b_registry.py:43](../../tools/k4b/k4b_registry.py#L43) | Every top-level directory of root (main too, R23 rule 3), recursively: history files with |
 | `inventory_c` | function | `inventory_c` | [tools/hwsc/hwsc_registry.py:307](../../tools/hwsc/hwsc_registry.py#L307) |  |
+| `inventory_d` | function | `inventory_d` | [tools/hwsd/hwsd_registry.py:208](../../tools/hwsd/hwsd_registry.py#L208) |  |
 | `inventory_diff` | function | `inventory_diff` | [tools/hwsb/hwsb_records.py:72](../../tools/hwsb/hwsb_records.py#L72) |  |
 | `inventory_equal` | function | `inventory_equal` | [tools/x6zc/x6zc_store.py:102](../../tools/x6zc/x6zc_store.py#L102) |  |
 | `inventory_root` | function | `inventory_root` | [tests/k4b/test_b_registry.py:69](../../tests/k4b/test_b_registry.py#L69) |  |
@@ -4004,6 +4269,7 @@
 | `inventory_x6` | function | `inventory_x6` | [tools/x6_stage1/x6s1_registry.py:350](../../tools/x6_stage1/x6s1_registry.py#L350) | k4b_registry.inventory(project_root) as one component, then the extended scan of the X6 |
 | `inverse` | function | `inverse` | [tools/x6_stage0/x6_model.py:64](../../tools/x6_stage0/x6_model.py#L64) |  |
 | `is_ancestor` | function | `is_ancestor` | [tools/x6zc/x6zc_guard.py:156](../../tools/x6zc/x6zc_guard.py#L156) |  |
+| `is_checkpoint_payload` | function | `is_checkpoint_payload` | [tools/hwsd/hwsd_data.py:242](../../tools/hwsd/hwsd_data.py#L242) |  |
 | `is_connected` | function | `is_connected` | [src/topo_pilot/analysis/x5_kernel.py:20](../../src/topo_pilot/analysis/x5_kernel.py#L20) | Undirected connectivity of ``{i != j : T_ij > 0 or T_ji > 0}``. |
 | `is_dry_store` | function | `is_dry_store` | [tools/c2_nd/nd_driver.py:187](../../tools/c2_nd/nd_driver.py#L187) | A FREEZE-free scratch store under SCRATCH_ROOT holding a valid AUTH_IMPL.json (§10.1). |
 | `is_dry_store` | function | `is_dry_store` | [tools/hwsc/hwsc_drystore.py:29](../../tools/hwsc/hwsc_drystore.py#L29) |  |
@@ -4026,6 +4292,7 @@
 | `job_from_dict` | function | `job_from_dict` | [src/topo_pilot/executors/base.py:98](../../src/topo_pilot/executors/base.py#L98) | Inverse of :func:`job_to_dict`. |
 | `job_paths` | function | `job_paths` | [tools/hwsb/hwsb_meter_bind.py:24](../../tools/hwsb/hwsb_meter_bind.py#L24) |  |
 | `job_paths` | function | `job_paths` | [tools/hwsc/hwsc_meter_bind.py:26](../../tools/hwsc/hwsc_meter_bind.py#L26) |  |
+| `job_paths` | function | `job_paths` | [tools/hwsd/hwsd_meter_bind.py:24](../../tools/hwsd/hwsd_meter_bind.py#L24) |  |
 | `job_peak_working_set` | function | `job_peak_working_set` | [tools/x4_oracle_profile/winjob.py:133](../../tools/x4_oracle_profile/winjob.py#L133) | Peak working set of every live job process (polled; exited processes keep the last). |
 | `job_to_dict` | function | `job_to_dict` | [src/topo_pilot/executors/base.py:87](../../src/topo_pilot/executors/base.py#L87) | JSON-ready dict of a JobSpec (tuples become lists). |
 | `JobHandle` | class | `JobHandle` | [src/topo_pilot/executors/base.py:45](../../src/topo_pilot/executors/base.py#L45) | Opaque reference to a submitted job (``location`` is a path, a remote path, or a pid). |
@@ -4046,7 +4313,9 @@
 | `jsonable` | function | `jsonable` | [tools/hwsb/hwsb_known.py:39](../../tools/hwsb/hwsb_known.py#L39) | JSON-safe copy: Fractions as str, numpy scalars as Python, (j, s) keys as 'j:s'. |
 | `jsonable` | function | `jsonable` | [tools/x6_stage0/x6_store.py:190](../../tools/x6_stage0/x6_store.py#L190) |  |
 | `JumpClock` | class | `JumpClock` | [tests/circle_history/test_cochain_lift.py:112](../../tests/circle_history/test_cochain_lift.py#L112) | 0.0 for the first `zero_calls` readings, then `late` (far beyond the 30 s cap). |
+| `junk` | function | `junk` | [tests/hwsd/test_b_util.py:64](../../tests/hwsd/test_b_util.py#L64) |  |
 | `junk` | function | `junk` | [tests/k4b/test_b_registry_rules.py:72](../../tests/k4b/test_b_registry_rules.py#L72) |  |
+| `k` | function | `k` | [tests/hwsd/test_a_onsets_order.py:30](../../tests/hwsd/test_a_onsets_order.py#L30) |  |
 | `k020` | function | `k020` | [tests/process/test_conductance.py:49](../../tests/process/test_conductance.py#L49) |  |
 | `k1_check` | function | `k1_check` | [tools/x6zc/x6zc_core.py:309](../../tools/x6zc/x6zc_core.py#L309) |  |
 | `k2_check` | function | `k2_check` | [tools/x2a_stage0/x2a_ph.py:79](../../tools/x2a_stage0/x2a_ph.py#L79) |  |
@@ -4098,6 +4367,10 @@
 | `kc_gate` | function | `kc_gate` | [tools/c2_nd/nd_decide.py:146](../../tools/c2_nd/nd_decide.py#L146) | KC per model: PASS/FAIL per case only (§6.7 L5); CONTRADICTED wins over UNRESOLVED. |
 | `kc_r` | function | `kc_r` | [tools/c2_nd/nd_stage_val.py:213](../../tools/c2_nd/nd_stage_val.py#L213) |  |
 | `kcr_gate` | function | `kcr_gate` | [tools/c2_nd/nd_decide.py:155](../../tools/c2_nd/nd_decide.py#L155) | KC-R per model (report-only): MOVE_CASE_CONTRADICTED, NOT_COMPUTED, UNRESOLVED or PASS. |
+| `kd2` | function | `kd2` | [tools/hwsd/hwsd_known2.py:87](../../tools/hwsd/hwsd_known2.py#L87) |  |
+| `kd4_table` | function | `kd4_table` | [tests/hwsd/test_a_hwsd_ref.py:324](../../tests/hwsd/test_a_hwsd_ref.py#L324) |  |
+| `kd5` | function | `kd5` | [tools/hwsd/hwsd_known.py:191](../../tools/hwsd/hwsd_known.py#L191) |  |
+| `kd6` | function | `kd6` | [tools/hwsd/hwsd_known.py:210](../../tools/hwsd/hwsd_known.py#L210) |  |
 | `Kernel` | class | `Kernel` | [tests/k4b/test_b_charts.py:61](../../tests/k4b/test_b_charts.py#L61) | Fake fit_chart_lcc: records each call and the ledger claims present at call time. |
 | `kernel` | function | `kernel` | [tools/x2a_stage0/x2a_model.py:71](../../tools/x2a_stage0/x2a_model.py#L71) |  |
 | `kernel` | function | `kernel` | [tools/x6_stage0/x6_model.py:136](../../tools/x6_stage0/x6_model.py#L136) |  |
@@ -4113,6 +4386,7 @@
 | `keys` | method | `Records.keys` | [tests/hws/test_a_outcomes.py:43](../../tests/hws/test_a_outcomes.py#L43) |  |
 | `kgram_law` | function | `kgram_law` | [tools/x6_stage0/x6_model.py:290](../../tools/x6_stage0/x6_model.py#L290) | Exact stationary law of (w_1..w_k) over reachable strings (prefix-shared DFS). |
 | `kind_of` | function | `kind_of` | [tools/code_index/scan.py:38](../../tools/code_index/scan.py#L38) |  |
+| `kinds` | function | `kinds` | [tests/hwsd/test_a_scorer.py:109](../../tests/hwsd/test_a_scorer.py#L109) |  |
 | `kinds_of` | function | `kinds_of` | [tests/experiment/test_x5g1t_usage.py:62](../../tests/experiment/test_x5g1t_usage.py#L62) |  |
 | `kinds_of` | function | `kinds_of` | [tests/experiment/test_x5g1t_usage_files.py:63](../../tests/experiment/test_x5g1t_usage_files.py#L63) |  |
 | `kl` | method | `PredictiveMetrics.kl` | [src/topo_pilot/prediction/metrics.py:55](../../src/topo_pilot/prediction/metrics.py#L55) | Rowwise ``KL(p\|\|q) = sum_i p_i log(p_i/q_i)`` with ``0 log 0 = 0``; ``[M, V] -> [M]``. |
@@ -4195,13 +4469,18 @@
 | `learning` | method | `TrainingRun.learning` | [src/topo_pilot/experiment/s3.py:239](../../src/topo_pilot/experiment/s3.py#L239) | Regret, G_C and captured at p = 32 over the activation set's histories. |
 | `learning_curve` | function | `learning_curve` | [tools/x6_stage1/x6s1_ingest.py:486](../../tools/x6_stage1/x6s1_ingest.py#L486) |  |
 | `learning_gate` | method | `AnalysisJob.learning_gate` | [src/topo_pilot/experiment/s4_analysis.py:96](../../src/topo_pilot/experiment/s4_analysis.py#L96) |  |
+| `learning_one` | function | `learning_one` | [tools/hwsd/hwsd_score.py:65](../../tools/hwsd/hwsd_score.py#L65) |  |
 | `LearningGate` | class | `LearningGate` | [src/topo_pilot/prediction/metrics.py:99](../../src/topo_pilot/prediction/metrics.py#L99) | Gate ``captured >= threshold`` (RESEARCH_SUMMARY §6). |
 | `leaves` | method | `Sym.leaves` | [tools/c1prime/c1_bounds.py:140](../../tools/c1prime/c1_bounds.py#L140) |  |
 | `leaves` | function | `leaves` | [tests/k4b/test_a_ranks_ladder.py:38](../../tests/k4b/test_a_ranks_ladder.py#L38) |  |
 | `ledger_append` | function | `ledger_append` | [tools/hwsb/hwsb_records.py:38](../../tools/hwsb/hwsb_records.py#L38) |  |
 | `ledger_append` | function | `ledger_append` | [tools/hwsc/hwsc_records.py:296](../../tools/hwsc/hwsc_records.py#L296) |  |
+| `ledger_append` | function | `ledger_append` | [tools/hwsd/hwsd_records.py:52](../../tools/hwsd/hwsd_records.py#L52) |  |
+| `ledger_append_d` | function | `ledger_append_d` | [tools/hwsd/hwsd_records.py:252](../../tools/hwsd/hwsd_records.py#L252) |  |
 | `ledger_claims` | function | `ledger_claims` | [tests/k4b/test_b_charts.py:90](../../tests/k4b/test_b_charts.py#L90) |  |
 | `ledger_cpu` | function | `ledger_cpu` | [tools/x6zc/x6zc_store.py:287](../../tools/x6zc/x6zc_store.py#L287) |  |
+| `ledger_for` | function | `ledger_for` | [tools/hwsd/hwsd_score.py:47](../../tools/hwsd/hwsd_score.py#L47) |  |
+| `ledger_init` | function | `ledger_init` | [tools/hwsd/hwsd_records.py:242](../../tools/hwsd/hwsd_records.py#L242) |  |
 | `ledger_path` | function | `ledger_path` | [tests/c1prime/test_a_chart_val.py:187](../../tests/c1prime/test_a_chart_val.py#L187) |  |
 | `ledger_read` | function | `ledger_read` | [tools/hwsb/hwsb_records.py:31](../../tools/hwsb/hwsb_records.py#L31) |  |
 | `ledger_read` | function | `ledger_read` | [tools/hwsc/hwsc_records.py:289](../../tools/hwsc/hwsc_records.py#L289) |  |
@@ -4213,6 +4492,7 @@
 | `legend` | function | `legend` | [reports/he_summary/charts.py:120](../../reports/he_summary/charts.py#L120) | items: [(label, color, kind)] laid out right-to-left starting at x (right edge). |
 | `lengths` | function | `lengths` | [tests/d2a/test_b_rules_decide.py:87](../../tests/d2a/test_b_rules_decide.py#L87) |  |
 | `letter` | function | `letter` | [tests/x6_stage0/test_x6_stage0.py:54](../../tests/x6_stage0/test_x6_stage0.py#L54) |  |
+| `lgate_oracle` | function | `lgate_oracle` | [tools/hwsd/hwsd_data.py:179](../../tools/hwsd/hwsd_data.py#L179) |  |
 | `lic_values` | function | `lic_values` | [tools/c2_nd/nd_split.py:369](../../tools/c2_nd/nd_split.py#L369) | The bracket values of the §7 sentences: claim models, point values, declared bounds. |
 | `lic_values` | function | `lic_values` | [tools/c2_readout/c2_stage_post.py:276](../../tools/c2_readout/c2_stage_post.py#L276) | The §3 bracket values (B3): the claim models and their count from the generic category, |
 | `licence` | function | `licence` | [tools/c2_nd/nd_decide.py:377](../../tools/c2_nd/nd_decide.py#L377) | The §7.2-§7.4 sentence, [name] filled ("[ ]" if absent), then the family's Q-CODE. |
@@ -4236,6 +4516,7 @@
 | `lineage` | method | `RestrictedE4Adapter.lineage` | [tools/x4_circle_history/adapter.py:91](../../tools/x4_circle_history/adapter.py#L91) |  |
 | `lineage_c` | function | `lineage_c` | [tools/hwsc/hwsc_records.py:99](../../tools/hwsc/hwsc_records.py#L99) |  |
 | `lineage_ctx` | function | `lineage_ctx` | [tests/c2_nd/test_b_lineage.py:325](../../tests/c2_nd/test_b_lineage.py#L325) |  |
+| `lineage_d` | function | `lineage_d` | [tools/hwsd/hwsd_records.py:57](../../tools/hwsd/hwsd_records.py#L57) |  |
 | `lineage_ok` | function | `lineage_ok` | [tools/k4b/k4b_release.py:194](../../tools/k4b/k4b_release.py#L194) | PASS iff the store is absent or holds only this lineage's recorded files (§11.8 item 7). |
 | `lineage_precheck` | function | `lineage_precheck` | [tools/x6_stage0/x6_store.py:159](../../tools/x6_stage0/x6_store.py#L159) |  |
 | `lines` | function | `lines` | [tools/c2_nd/nd_stage_base.py:263](../../tools/c2_nd/nd_stage_base.py#L263) |  |
@@ -4271,6 +4552,7 @@
 | `load_checkpoint` | function | `load_checkpoint` | [tools/c1prime/c1_driver_cal.py:26](../../tools/c1prime/c1_driver_cal.py#L26) |  |
 | `load_checkpoint` | function | `load_checkpoint` | [tools/k4b/k4b_driver.py:137](../../tools/k4b/k4b_driver.py#L137) |  |
 | `load_checkpoint` | function | `load_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:198](../../tools/x6_stage1/x6s1_cloud.py#L198) |  |
+| `load_checkpoint_d` | function | `load_checkpoint_d` | [tools/hwsd/hwsd_score.py:53](../../tools/hwsd/hwsd_score.py#L53) |  |
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/config.py:61](../../src/topo_pilot/experiment/config.py#L61) | Read ``base.yaml`` and ``local.yaml`` from the folder of ``stages_path``. |
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |
 | `load_config` | function | `load_config` | [tools/x4_oracle_profile/inputs.py:25](../../tools/x4_oracle_profile/inputs.py#L25) |  |
@@ -4280,8 +4562,10 @@
 | `load_contract` | function | `load_contract` | [tools/hws/hws_worlds.py:42](../../tools/hws/hws_worlds.py#L42) |  |
 | `load_contract` | function | `load_contract` | [tools/hwsb/hwsb_config.py:43](../../tools/hwsb/hwsb_config.py#L43) |  |
 | `load_contract` | function | `load_contract` | [tools/hwsc/hwsc_config.py:47](../../tools/hwsc/hwsc_config.py#L47) |  |
+| `load_contract` | function | `load_contract` | [tools/hwsd/hwsd_config.py:50](../../tools/hwsd/hwsd_config.py#L50) |  |
 | `load_contract` | function | `load_contract` | [tools/k4b/k4b_config.py:76](../../tools/k4b/k4b_config.py#L76) | CONTRACT.json; chart.lift_cpu_cap_s and resources.cpu_cap_s null -> +inf. |
 | `load_contract` | function | `load_contract` | [tools/x6zc/x6zc_const.py:28](../../tools/x6zc/x6zc_const.py#L28) |  |
+| `load_d` | function | `load_d` | [tools/hwsd/hwsd_registry.py:315](../../tools/hwsd/hwsd_registry.py#L315) |  |
 | `load_fit` | function | `load_fit` | [tools/c1prime/c1_driver_cal.py:244](../../tools/c1prime/c1_driver_cal.py#L244) |  |
 | `load_float32` | function | `load_float32` | [tools/hwsb/hwsb_eval.py:32](../../tools/hwsb/hwsb_eval.py#L32) |  |
 | `load_frozen` | function | `load_frozen` | [tools/k4b/k4b_fresh.py:319](../../tools/k4b/k4b_fresh.py#L319) | API.md §14.3: the frozen production charts, step-0 charts and decoders; no refit. |
@@ -4301,8 +4585,11 @@
 | `load_recorded` | function | `load_recorded` | [tools/k4b/k4b_fresh.py:306](../../tools/k4b/k4b_fresh.py#L306) | Arrays of stages/<stage>/<name>, re-hashed against its STAGE_COMPLETE record. |
 | `load_rows` | function | `load_rows` | [tests/experiment/test_x4.py:127](../../tests/experiment/test_x4.py#L127) |  |
 | `load_run` | function | `load_run` | [tools/d2a/d2a_eval.py:33](../../tools/d2a/d2a_eval.py#L33) |  |
+| `load_scores` | function | `load_scores` | [tools/hwsd/hwsd_summary.py:41](../../tools/hwsd/hwsd_summary.py#L41) |  |
 | `load_split` | function | `load_split` | [tools/x4_oracle_profile/inputs.py:196](../../tools/x4_oracle_profile/inputs.py#L196) | Load one split with schema, shape, ID, range and finiteness checks. |
 | `load_table` | function | `load_table` | [tools/hwsc/hwsc_bind.py:56](../../tools/hwsc/hwsc_bind.py#L56) |  |
+| `load_table` | function | `load_table` | [tools/hwsd/hwsd_bind.py:36](../../tools/hwsd/hwsd_bind.py#L36) |  |
+| `load_tables` | function | `load_tables` | [tools/hwsd/hwsd_data.py:85](../../tools/hwsd/hwsd_data.py#L85) |  |
 | `load_tables` | function | `load_tables` | [tools/x6_stage1/x6s1_pairs.py:64](../../tools/x6_stage1/x6s1_pairs.py#L64) |  |
 | `load_tokens` | function | `load_tokens` | [tools/d2a/d2a_world.py:229](../../tools/d2a/d2a_world.py#L229) |  |
 | `loaded_distributions` | function | `loaded_distributions` | [tools/x4_circle_history/env_identity.py:116](../../tools/x4_circle_history/env_identity.py#L116) |  |
@@ -4395,6 +4682,8 @@
 | `main` | function | `main` | [tools/hwsb/hwsb_meter_bind.py:91](../../tools/hwsb/hwsb_meter_bind.py#L91) | --job, --task-sha256, --session, --kind (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsc/hwsc_jobs.py:149](../../tools/hwsc/hwsc_jobs.py#L149) |  |
 | `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:106](../../tools/hwsc/hwsc_meter_bind.py#L106) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
+| `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:225](../../tools/hwsd/hwsd_jobs.py#L225) |  |
+| `main` | function | `main` | [tools/hwsd/hwsd_meter_bind.py:99](../../tools/hwsd/hwsd_meter_bind.py#L99) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
 | `main` | function | `main` | [tools/k4b/k4b_fresh.py:346](../../tools/k4b/k4b_fresh.py#L346) |  |
 | `main` | function | `main` | [tools/k4b/k4b_meter_bind.py:121](../../tools/k4b/k4b_meter_bind.py#L121) | --release (required), --kind (A\|B), --task-sha256, --session; then the meter argv. |
@@ -4414,6 +4703,7 @@
 | `main` | function | `main` | [tools/x6_stage1/x6s1_cloud.py:517](../../tools/x6_stage1/x6s1_cloud.py#L517) |  |
 | `main` | function | `main` | [tools/x6_stage1/x6s1_run.py:535](../../tools/x6_stage1/x6s1_run.py#L535) |  |
 | `main` | function | `main` | [tools/x6zc/x6zc_run.py:49](../../tools/x6zc/x6zc_run.py#L49) |  |
+| `main_bootstrap` | function | `main_bootstrap` | [tools/hwsd/hwsd_summary.py:79](../../tools/hwsd/hwsd_summary.py#L79) |  |
 | `main_in_process` | function | `main_in_process` | [tests/x6_stage1/test_b_train_chain.py:114](../../tests/x6_stage1/test_b_train_chain.py#L114) |  |
 | `main_tree` | function | `main_tree` | [tests/k4b/test_b_registry_rules.py:195](../../tests/k4b/test_b_registry_rules.py#L195) |  |
 | `make_artifact_id` | function | `make_artifact_id` | [src/topo_pilot/contracts/ids.py:73](../../src/topo_pilot/contracts/ids.py#L73) | Content address of an artifact. |
@@ -4463,6 +4753,7 @@
 | `make_trainer` | function | `make_trainer` | [tools/d2a/d2a_train.py:67](../../tools/d2a/d2a_train.py#L67) | Trainer for a registered run (§4.5); H = 1 is exactly the default path. |
 | `manifest_stem` | function | `manifest_stem` | [tools/c2_nd/nd_stage_base.py:143](../../tools/c2_nd/nd_stage_base.py#L143) | manifests/<job>.json; a dry-run store runs every stage in one job: <job>-<stage>. |
 | `manual_bootstrap` | function | `manual_bootstrap` | [tests/oracle_profile/test_oracle_profile_kernels.py:195](../../tests/oracle_profile/test_oracle_profile_kernels.py#L195) | Re-implementation of the documented order: one rng.integers(0, n, size=n) call per draw. |
+| `map_build` | function | `map_build` | [tools/hwsd/hwsd_score.py:90](../../tools/hwsd/hwsd_score.py#L90) |  |
 | `map_failures` | function | `map_failures` | [src/topo_pilot/experiment/x4b.py:176](../../src/topo_pilot/experiment/x4b.py#L176) | Names of protocol §3 checks that fail (empty when all pass). |
 | `marg_ref` | function | `marg_ref` | [tests/hwsb/test_a_learning.py:75](../../tests/hwsb/test_a_learning.py#L75) | Circular marginal by an explicit loop: label a sums the six symbols v = 6a + b. |
 | `margin` | function | `margin` | [tools/k4b/k4b_cert.py:137](../../tools/k4b/k4b_cert.py#L137) |  |
@@ -4498,6 +4789,7 @@
 | `memory_bytes` | method | `FakeTree.memory_bytes` | [tests/x6_stage1/test_b_nb_s0_ops.py:290](../../tests/x6_stage1/test_b_nb_s0_ops.py#L290) |  |
 | `memory_bytes` | method | `TrainingProcess.memory_bytes` | [tools/d2a/process_tree.py:68](../../tools/d2a/process_tree.py#L68) | Peak per-process committed memory, including processes that already exited. |
 | `memory_cap` | function | `memory_cap` | [tools/hwsc/hwsc_meter_bind.py:35](../../tools/hwsc/hwsc_meter_bind.py#L35) |  |
+| `memory_cap` | function | `memory_cap` | [tools/hwsd/hwsd_meter_bind.py:33](../../tools/hwsd/hwsd_meter_bind.py#L33) |  |
 | `memory_store` | function | `memory_store` | [src/topo_pilot/contracts/testing.py:100](../../src/topo_pilot/contracts/testing.py#L100) | A fresh :class:`ArtifactStore` over an in-memory backend with the default access policy. |
 | `MemoryBackend` | class | `MemoryBackend` | [src/topo_pilot/contracts/backends.py:47](../../src/topo_pilot/contracts/backends.py#L47) | In-process dictionary backend for tests (``contracts.testing.memory_store``). |
 | `MemoryCounters` | class | `MemoryCounters` | [tools/x4_oracle_profile/winjob.py:54](../../tools/x4_oracle_profile/winjob.py#L54) |  |
@@ -4510,6 +4802,7 @@
 | `meter_bind_check` | function | `meter_bind_check` | [tools/x6zc/x6zc_store.py:136](../../tools/x6zc/x6zc_store.py#L136) |  |
 | `meter_live` | function | `meter_live` | [tools/x6zc/x6zc_guard.py:166](../../tools/x6zc/x6zc_guard.py#L166) |  |
 | `meter_state` | function | `meter_state` | [tests/hwsc/test_b_guard_meter.py:232](../../tests/hwsc/test_b_guard_meter.py#L232) |  |
+| `meter_state` | function | `meter_state` | [tests/hwsd/test_b_records_meter.py:296](../../tests/hwsd/test_b_records_meter.py#L296) |  |
 | `MeterError` | class | `MeterError` | [tools/x4_oracle_profile/winjob.py:99](../../tools/x4_oracle_profile/winjob.py#L99) |  |
 | `Metric` | class | `Metric` | [src/topo_pilot/world/metrics.py:20](../../src/topo_pilot/world/metrics.py#L20) | Pairwise distance on the vertices of a world. |
 | `MetricRecords` | class | `MetricRecords` | [src/topo_pilot/contracts/_schemas_results.py:181](../../src/topo_pilot/contracts/_schemas_results.py#L181) | Long table of metric values (one ``MetricRow`` per value), stored as JSON. |
@@ -4552,6 +4845,7 @@
 | `module_file` | method | `Resolver.module_file` | [tools/code_index/resolve.py:37](../../tools/code_index/resolve.py#L37) | Walk `parts` from directory `base`. Returns (file or None, complete). |
 | `moment_check` | function | `moment_check` | [tools/k4b/k4b_cert.py:42](../../tools/k4b/k4b_cert.py#L42) | \|Fraction(float(m_hat)) - Fraction(M~)\| <= MOMENT_TOL for every row, K and coordinate. |
 | `moment_envelope` | function | `moment_envelope` | [tools/x4_circle_history/error_bound.py:193](../../tools/x4_circle_history/error_bound.py#L193) |  |
+| `moments` | function | `moments` | [tests/hwsd/test_a_scorer.py:269](../../tests/hwsd/test_a_scorer.py#L269) |  |
 | `moments` | function | `moments` | [tools/hwsb/hwsb_eval.py:153](../../tools/hwsb/hwsb_eval.py#L153) |  |
 | `move_map` | function | `move_map` | [tools/c2_nd/nd_decoy.py:98](../../tools/c2_nd/nd_decoy.py#L98) | U = V0 (L_B V0)^+, T = I + (U - B) L_B, Tinv = I + (B - U) L_B and the construction gates. |
 | `move_T` | function | `move_T` | [tools/c2_nd/nd_split.py:51](../../tools/c2_nd/nd_split.py#L51) |  |
@@ -4580,233 +4874,3 @@
 | `my_sample` | function | `my_sample` | [tests/x6_stage1/test_a_pairs.py:89](../../tests/x6_stage1/test_a_pairs.py#L89) | §2.3 backward sampler: randrange(c_m) per step, cumulative weights in NEIGHBOURS order. |
 | `my_segment` | function | `my_segment` | [tests/x6_stage1/test_a_pairs.py:103](../../tests/x6_stage1/test_a_pairs.py#L103) |  |
 | `my_select_bar` | function | `my_select_bar` | [tests/circle_history/test_chart.py:73](../../tests/circle_history/test_chart.py#L73) |  |
-| `my_U` | function | `my_U` | [tests/x6_stage1/test_a_numerics.py:145](../../tests/x6_stage1/test_a_numerics.py#L145) | Theorem EB (§7.3), delta1 = delta2 = delta/2, plain high-precision evaluation. |
-| `n0` | function | `n0` | [tools/c1prime/c1_driver.py:262](../../tools/c1prime/c1_driver.py#L262) |  |
-| `n2` | function | `n2` | [tools/c2_nd/nd_stage_pre.py:287](../../tools/c2_nd/nd_stage_pre.py#L287) |  |
-| `n2` | function | `n2` | [tools/c2_readout/c2_stage_pre.py:288](../../tools/c2_readout/c2_stage_pre.py#L288) |  |
-| `n2_check` | function | `n2_check` | [tools/c2_nd/nd_split.py:121](../../tools/c2_nd/nd_split.py#L121) |  |
-| `n2_check` | function | `n2_check` | [tools/c2_readout/c2_stage_base.py:282](../../tools/c2_readout/c2_stage_base.py#L282) |  |
-| `n2_fit` | function | `n2_fit` | [tools/c2_readout/c2_code.py:218](../../tools/c2_readout/c2_code.py#L218) | FIT class means, Sigma_2w = Ledoit-Wolf of the class-centred states, W = Sigma^-1/2, |
-| `n2_gate` | function | `n2_gate` | [tools/c2_readout/c2_code.py:243](../../tools/c2_readout/c2_code.py#L243) | F = fraction of (row, arm) states beyond q99; PASS iff F_S and F_C <= max(1/20, F_D + |
-| `n_labels` | function | `n_labels` | [tools/hws/hws_worlds.py:158](../../tools/hws/hws_worlds.py#L158) |  |
-| `n_sequences` | method | `ObservationSet.n_sequences` | [src/topo_pilot/contracts/_schemas_data.py:45](../../src/topo_pilot/contracts/_schemas_data.py#L45) | Number of trajectories R. |
-| `n_states` | method | `WorldSpec.n_states` | [src/topo_pilot/contracts/_schemas_world.py:62](../../src/topo_pilot/contracts/_schemas_world.py#L62) | Number of states N. |
-| `n_test` | function | `n_test` | [tools/c2_readout/c2_stats.py:364](../../tools/c2_readout/c2_stats.py#L364) |  |
-| `NA` | class | `NA` | [tests/hwsb/test_a_outcomes.py:73](../../tests/hwsb/test_a_outcomes.py#L73) |  |
-| `naive_scores` | function | `naive_scores` | [tools/k4b/k4b_scores.py:78](../../tools/k4b/k4b_scores.py#L78) |  |
-| `named` | function | `named` | [tests/oracle_profile/test_oracle_profile_traps.py:65](../../tests/oracle_profile/test_oracle_profile_traps.py#L65) |  |
-| `named32` | function | `named32` | [tools/hwsb/hwsb_data.py:220](../../tools/hwsb/hwsb_data.py#L220) |  |
-| `named_from_canonical` | function | `named_from_canonical` | [tools/c1prime/c1_oracle.py:146](../../tools/c1prime/c1_oracle.py#L146) |  |
-| `named_from_canonical` | function | `named_from_canonical` | [tools/k4b/k4b_data.py:95](../../tools/k4b/k4b_data.py#L95) |  |
-| `named_tiny` | function | `named_tiny` | [tests/hwsb/test_b_streams.py:173](../../tests/hwsb/test_b_streams.py#L173) |  |
-| `names` | method | `Recorder.names` | [tests/c1prime/test_a_chart.py:124](../../tests/c1prime/test_a_chart.py#L124) |  |
-| `names` | function | `names` | [tests/c2_nd/test_b_registry.py:306](../../tests/c2_nd/test_b_registry.py#L306) |  |
-| `names` | function | `names` | [tests/k4b/test_b_registry.py:63](../../tests/k4b/test_b_registry.py#L63) |  |
-| `names` | function | `names` | [tests/k4b/test_b_registry_rules.py:50](../../tests/k4b/test_b_registry_rules.py#L50) |  |
-| `names_file` | function | `names_file` | [tests/k4b/test_b_store_reader.py:102](../../tests/k4b/test_b_store_reader.py#L102) |  |
-| `namespace_scan` | function | `namespace_scan` | [tools/c2_nd/nd_data.py:86](../../tools/c2_nd/nd_data.py#L86) | G0 (vi): every file of C2's scanned set whose bytes contain "c2nd-v1" must be pinned C2ND |
-| `namespace_scan` | function | `namespace_scan` | [tools/c2_readout/c2_data.py:245](../../tools/c2_readout/c2_data.py#L245) | G0 (vi): every file of the §4.4 file set whose bytes contain "c2-v1" must be pinned |
-| `natural` | function | `natural` | [tools/x6_stage0/x6_dp.py:184](../../tools/x6_stage0/x6_dp.py#L184) |  |
-| `natural_logits` | function | `natural_logits` | [tools/c1prime/c1_model.py:72](../../tools/c1prime/c1_model.py#L72) |  |
-| `natural_pairs` | function | `natural_pairs` | [tools/x6_stage1/x6s1_eval.py:315](../../tools/x6_stage1/x6s1_eval.py#L315) |  |
-| `natural_pass` | function | `natural_pass` | [tools/c2_readout/c2_model.py:85](../../tools/c2_readout/c2_model.py#L85) |  |
-| `natural_prefixes` | function | `natural_prefixes` | [tools/x6_stage1/x6s1_pairs.py:186](../../tools/x6_stage1/x6s1_pairs.py#L186) |  |
-| `nb_static` | function | `nb_static` | [tools/x6_stage1/x6s1_run.py:207](../../tools/x6_stage1/x6s1_run.py#L207) |  |
-| `nbrs` | function | `nbrs` | [tests/x6_stage0/test_x6_stage0.py:49](../../tests/x6_stage0/test_x6_stage0.py#L49) |  |
-| `nearest` | function | `nearest` | [tests/x6_stage1/test_a_numerics.py:64](../../tests/x6_stage1/test_a_numerics.py#L64) | f is the float64 nearest to the Decimal ref (both neighbours are no closer). |
-| `nearest_partners` | function | `nearest_partners` | [src/topo_pilot/analysis/horizon_pools.py:62](../../src/topo_pilot/analysis/horizon_pools.py#L62) | ``k`` nearest Hellinger-Q1 neighbours of each anchor inside one pool. |
-| `need` | function | `need` | [tests/hwsb/test_a_capture.py:52](../../tests/hwsb/test_a_capture.py#L52) |  |
-| `need` | function | `need` | [tests/hwsb/test_a_enclosure_proof.py:53](../../tests/hwsb/test_a_enclosure_proof.py#L53) |  |
-| `need` | function | `need` | [tests/hwsb/test_a_endpoints.py:45](../../tests/hwsb/test_a_endpoints.py#L45) |  |
-| `need` | function | `need` | [tests/hwsb/test_a_ladder.py:55](../../tests/hwsb/test_a_ladder.py#L55) |  |
-| `need` | function | `need` | [tests/hwsb/test_a_learning.py:47](../../tests/hwsb/test_a_learning.py#L47) |  |
-| `need` | function | `need` | [tests/hwsb/test_a_outcomes.py:59](../../tests/hwsb/test_a_outcomes.py#L59) |  |
-| `needle_in` | function | `needle_in` | [tools/hwsc/hwsc_known.py:38](../../tools/hwsc/hwsc_known.py#L38) |  |
-| `needs_owner` | function | `needs_owner` | [tools/k4b/k4b_release.py:226](../../tools/k4b/k4b_release.py#L226) | True iff an outcome-bearing quantity would change, or was computed at/after failure. |
-| `nested_ridge` | function | `nested_ridge` | [src/topo_pilot/experiment/x4f_probe.py:55](../../src/topo_pilot/experiment/x4f_probe.py#L55) | Leave-one-panel-out selection over calibration panels, refit, score once. |
-| `NestedResult` | class | `NestedResult` | [src/topo_pilot/experiment/x4f_probe.py:23](../../src/topo_pilot/experiment/x4f_probe.py#L23) | Selected ``lam``, outer-validation ``r2`` (None + status if undefined), validation |
-| `never_called` | function | `never_called` | [tools/hwsc/hwsc_bind.py:159](../../tools/hwsc/hwsc_bind.py#L159) |  |
-| `next_symbol_probs` | function | `next_symbol_probs` | [tools/d2a/d2a_eval.py:69](../../tools/d2a/d2a_eval.py#L69) |  |
-| `NGramBaseline` | class | `NGramBaseline` | [src/topo_pilot/prediction/ngram.py:21](../../src/topo_pilot/prediction/ngram.py#L21) | Order-1 (unigram) or order-2 (bigram) next-token model fitted on train tokens only. |
-| `nll` | method | `PredictiveMetrics.nll` | [src/topo_pilot/prediction/metrics.py:45](../../src/topo_pilot/prediction/metrics.py#L45) | Per-row ``-log probs[i, targets[i]]`` -> ``[M]`` (``inf`` if the probability is 0). |
-| `nm_events` | function | `nm_events` | [tests/c2_nd/test_a_family.py:181](../../tests/c2_nd/test_a_family.py#L181) |  |
-| `nm_expect` | function | `nm_expect` | [tests/c2_nd/test_a_family.py:124](../../tests/c2_nd/test_a_family.py#L124) |  |
-| `nm_got` | function | `nm_got` | [tests/c2_nd/test_a_family.py:140](../../tests/c2_nd/test_a_family.py#L140) |  |
-| `nm_guards` | function | `nm_guards` | [tools/c2_nd/nd_attrib.py:200](../../tools/c2_nd/nd_attrib.py#L200) |  |
-| `nm_model` | function | `nm_model` | [tools/c2_nd/nd_decide.py:104](../../tools/c2_nd/nd_decide.py#L104) | RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c). |
-| `nm_status` | function | `nm_status` | [tests/c2_nd/test_b_layer2.py:113](../../tests/c2_nd/test_b_layer2.py#L113) |  |
-| `nm_stream` | function | `nm_stream` | [tools/c2_nd/nd_attrib.py:98](../../tools/c2_nd/nd_attrib.py#L98) | The N-M family stream of one model (7 arrays): categories on A_C against A_F only. |
-| `no_chart_gates` | function | `no_chart_gates` | [tests/c1prime/test_a_chart_val.py:80](../../tests/c1prime/test_a_chart_val.py#L80) | chart.chart_gates must never be called (its support criterion is every-row). |
-| `noise_envelope` | method | `F1Decision.noise_envelope` | [src/topo_pilot/analysis/f1.py:85](../../src/topo_pilot/analysis/f1.py#L85) | Return u, the largest cell-wise quantile of pairwise panel differences. |
-| `noisy_circle` | function | `noisy_circle` | [tests/analysis/test_sensitivity_circular.py:225](../../tests/analysis/test_sensitivity_circular.py#L225) |  |
-| `noisy_circle` | function | `noisy_circle` | [tests/topology/test_persistence.py:31](../../tests/topology/test_persistence.py#L31) |  |
-| `norm` | function | `norm` | [tests/hwsc/test_a_k4b_known_bound.py:143](../../tests/hwsc/test_a_k4b_known_bound.py#L143) |  |
-| `norm` | function | `norm` | [tools/code_index/pathval.py:17](../../tools/code_index/pathval.py#L17) |  |
-| `norm_bound` | function | `norm_bound` | [tools/k4b/k4b_cert.py:63](../../tools/k4b/k4b_cert.py#L63) | Lemma N: B_N = max(\|n - k/D\|, \|n - (k+1)/D\|) + (3/2)(eps_K + eps32). |
-| `normal95` | function | `normal95` | [tools/hws/hws_stats.py:68](../../tools/hws/hws_stats.py#L68) |  |
-| `normalise` | function | `normalise` | [tests/k4b/test_a_lemma_t.py:50](../../tests/k4b/test_a_lemma_t.py#L50) |  |
-| `normalise_rows` | function | `normalise_rows` | [src/topo_pilot/oracle/_common.py:70](../../src/topo_pilot/oracle/_common.py#L70) | Divide rows by their sums; return ``(rows, sums)``. |
-| `normalise_source` | function | `normalise_source` | [tools/x6_stage1/x6s1_cloud.py:390](../../tools/x6_stage1/x6s1_cloud.py#L390) |  |
-| `not_a_cocycle` | function | `not_a_cocycle` | [tests/c1prime/test_a_chart_exceptions.py:63](../../tests/c1prime/test_a_chart_exceptions.py#L63) | Triangle (0,1,2) with a = (1, 0, 0) on edges (01, 02, 12): D1 a = 1, not 0 mod 47. |
-| `not_licensed` | function | `not_licensed` | [tools/x6zc/x6zc_decide.py:156](../../tools/x6zc/x6zc_decide.py#L156) |  |
-| `not_recovered` | function | `not_recovered` | [tests/d2a/test_b_rules_decide.py:74](../../tests/d2a/test_b_rules_decide.py#L74) |  |
-| `not_recovered` | function | `not_recovered` | [tests/d2a/test_b_rules_qualifiers.py:76](../../tests/d2a/test_b_rules_qualifiers.py#L76) |  |
-| `note` | function | `note` | [tests/k4b/test_b_registry_rules.py:83](../../tests/k4b/test_b_registry_rules.py#L83) |  |
-| `notebook_sha_ok` | function | `notebook_sha_ok` | [tools/x6_stage1/x6s1_run.py:112](../../tools/x6_stage1/x6s1_run.py#L112) |  |
-| `notebook_source` | function | `notebook_source` | [tools/code_index/pyinfo.py:13](../../tools/code_index/pyinfo.py#L13) | Concatenate code cells (magics blanked) of a notebook; best effort. |
-| `NotebookExporter` | class | `NotebookExporter` | [src/topo_pilot/executors/notebook.py:38](../../src/topo_pilot/executors/notebook.py#L38) | Writes a minimal nbformat-4 notebook: unpack, install the lock, run and pack. |
-| `npz` | function | `npz` | [tools/c2_nd/nd_stage_base.py:107](../../tools/c2_nd/nd_stage_base.py#L107) |  |
-| `npz` | function | `npz` | [tools/c2_readout/c2_stage_base.py:61](../../tools/c2_readout/c2_stage_base.py#L61) |  |
-| `nr_events` | function | `nr_events` | [tests/c2_nd/test_a_family.py:149](../../tests/c2_nd/test_a_family.py#L149) |  |
-| `nr_expect` | function | `nr_expect` | [tests/c2_nd/test_a_family.py:77](../../tests/c2_nd/test_a_family.py#L77) |  |
-| `nr_guards` | function | `nr_guards` | [tools/c2_nd/nd_attrib.py:171](../../tools/c2_nd/nd_attrib.py#L171) | N-R guards: beta_A (coefficient 1, delta_P of the frozen C2 projector) on every |
-| `nr_model` | function | `nr_model` | [tools/c2_nd/nd_decide.py:53](../../tools/c2_nd/nd_decide.py#L53) | RESP, SPEC, category, coarse, rule-6 (a), nested, NEGATIVE_COMPLEMENT (§20 A-6). |
-| `nr_quantities` | function | `nr_quantities` | [tools/c2_nd/nd_attrib.py:50](../../tools/c2_nd/nd_attrib.py#L50) | A_full, A_S, A_comp = A_full - A_S (by subtraction), e_full, e_S, e_comp and the cross |
-| `nr_stream` | function | `nr_stream` | [tools/c2_nd/nd_attrib.py:68](../../tools/c2_nd/nd_attrib.py#L68) | The N-R family stream of one model (§4.2): 10 arrays plus 2 per variant (16 with three); |
-| `nr_variant_category` | function | `nr_variant_category` | [tools/c2_nd/nd_decide.py:73](../../tools/c2_nd/nd_decide.py#L73) | The variant category on v:Zc010, v:Zc050 (c2_decide.variant_category pattern). |
-| `nu_S` | function | `nu_S` | [tools/c2_readout/c2_attrib.py:115](../../tools/c2_readout/c2_attrib.py#L115) |  |
-| `nuisance` | function | `nuisance` | [tools/c1prime/c1_oracle.py:176](../../tools/c1prime/c1_oracle.py#L176) |  |
-| `nuisance5` | function | `nuisance5` | [tools/c2_readout/c2_oracle.py:137](../../tools/c2_readout/c2_oracle.py#L137) | (y-bar, Var y, \|m32\|) of c1_oracle.nuisance, the entropy (nats, 0 log 0 = 0) and the |
-| `null` | method | `SpaceBuilder.null` | [src/topo_pilot/analysis/spaces.py:124](../../src/topo_pilot/analysis/spaces.py#L124) | Gaussian null cloud with the same M and feature dimension as ``like`` (Euclidean). |
-| `null_basis` | function | `null_basis` | [tools/c2_nd/nd_decoy.py:91](../../tools/c2_nd/nd_decoy.py#L91) | An orthonormal basis of ker(M): right singular vectors with sv <= 1e-12 sigma_max. |
-| `null_projector` | function | `null_projector` | [tools/c2_readout/c2_attrib.py:96](../../tools/c2_readout/c2_attrib.py#L96) | J = I - V_r V_r', V_r the right singular vectors of C M at its matrix_rank (C-28). |
-| `null_recheck` | function | `null_recheck` | [tools/hws/hws_driver.py:159](../../tools/hws/hws_driver.py#L159) | §5.3 item 5: one fresh NULLCHK look; halt only if the same null exceeds again. |
-| `null_z` | function | `null_z` | [tools/hws/hws_stats.py:76](../../tools/hws/hws_stats.py#L76) |  |
-| `NullClouds` | class | `NullClouds` | [src/topo_pilot/topology/shapes.py:20](../../src/topo_pilot/topology/shapes.py#L20) | Gaussian null clouds for the noise floor (RESEARCH_SUMMARY 7.3). Shapes: ``[M, F]``. |
-| `nullity` | function | `nullity` | [tools/c2_nd/nd_decoy.py:199](../../tools/c2_nd/nd_decoy.py#L199) | {"null_<kind>": \|\|C M' B\|\|_max / (\|\|C M'\|\|_max \|\|B\|\|_max)} (C centres the outputs). |
-| `num` | function | `num` | [tools/c1prime/c1_driver_fresh.py:126](../../tools/c1prime/c1_driver_fresh.py#L126) |  |
-| `num` | function | `num` | [tools/c2_nd/nd_stage_post.py:193](../../tools/c2_nd/nd_stage_post.py#L193) | Form the admitted models' endpoint arrays; record every bound inside its guard. |
-| `num` | function | `num` | [tools/c2_readout/c2_stage_post.py:189](../../tools/c2_readout/c2_stage_post.py#L189) | Form the admitted models' endpoint arrays (policy: test_endpoint) and record every |
-| `num` | function | `num` | [tools/hws/hws_records.py:104](../../tools/hws/hws_records.py#L104) | JSON-safe copy: numpy scalars to Python, Fractions to strings, keys to str. |
-| `numbers` | function | `numbers` | [tests/k4b/test_a_ranks_ladder.py:51](../../tests/k4b/test_a_ranks_ladder.py#L51) |  |
-| `numerical_identity` | function | `numerical_identity` | [tools/c1prime/c1_freeze.py:105](../../tools/c1prime/c1_freeze.py#L105) |  |
-| `numerical_identity` | function | `numerical_identity` | [tools/x4_circle_history/freeze_bind.py:94](../../tools/x4_circle_history/freeze_bind.py#L94) | env_identity.record() from a fresh venv probe process (metered with this run). |
-| `numerical_rank` | function | `numerical_rank` | [tests/analysis/test_x4f_erasure.py:46](../../tests/analysis/test_x4f_erasure.py#L46) |  |
-| `numerical_rank` | function | `numerical_rank` | [tests/analysis/test_x4f_erasure_family.py:44](../../tests/analysis/test_x4f_erasure_family.py#L44) |  |
-| `o1` | function | `o1` | [tools/x6_stage0/x6_exact.py:373](../../tools/x6_stage0/x6_exact.py#L373) |  |
-| `o2` | function | `o2` | [tools/x6_stage0/x6_exact.py:386](../../tools/x6_stage0/x6_exact.py#L386) |  |
-| `o2_combine` | function | `o2_combine` | [tools/x6_stage0/x6_exact.py:384](../../tools/x6_stage0/x6_exact.py#L384) |  |
-| `obj` | function | `obj` | [tests/circle_history/test_reference_cache.py:79](../../tests/circle_history/test_reference_cache.py#L79) |  |
-| `obligation` | function | `obligation` | [tools/hwsc/hwsc_registry_build.py:156](../../tools/hwsc/hwsc_registry_build.py#L156) |  |
-| `obs_inventory` | function | `obs_inventory` | [tools/hwsc/hwsc_driver.py:139](../../tools/hwsc/hwsc_driver.py#L139) |  |
-| `observability_matrices` | method | `FutureOperator.observability_matrices` | [src/topo_pilot/oracle/_futures.py:62](../../src/topo_pilot/oracle/_futures.py#L62) | ``[O_1, ..., O_{k_max}]``; ``O_k`` has rows = strings of length ``<= k``, cols = N. |
-| `observability_singular_values` | method | `FutureOperator.observability_singular_values` | [src/topo_pilot/oracle/_futures.py:75](../../src/topo_pilot/oracle/_futures.py#L75) | Singular values of ``O_k`` (descending, unthresholded) for ``k = 1..k_max``. |
-| `observation_set` | function | `observation_set` | [tools/x6_stage1/x6s1_data.py:227](../../tools/x6_stage1/x6s1_data.py#L227) |  |
-| `observation_set_sources` | function | `observation_set_sources` | [tools/c1prime_registry/c1_registry_sources.py:59](../../tools/c1prime_registry/c1_registry_sources.py#L59) | Source (a): every ObservationSet, canonicalised with its own EmissionSpec perm. |
-| `ObservationSet` | class | `ObservationSet` | [src/topo_pilot/contracts/_schemas_data.py:25](../../src/topo_pilot/contracts/_schemas_data.py#L25) | Public token data for one split. |
-| `oc_of` | function | `oc_of` | [tests/hwsc/test_a_outcomes.py:212](../../tests/hwsc/test_a_outcomes.py#L212) |  |
-| `ok` | method | `Decoder.ok` | [tools/c2_readout/c2_stats.py:227](../../tools/c2_readout/c2_stats.py#L227) |  |
-| `on_test_split` | function | `on_test_split` | [src/topo_pilot/experiment/s3.py:87](../../src/topo_pilot/experiment/s3.py#L87) | True if the ActivationSet was extracted from test histories (S7 also extracts dev |
-| `one` | function | `one` | [tests/k4b/test_b_endpoint.py:117](../../tests/k4b/test_b_endpoint.py#L117) |  |
-| `one_hot_suffix` | function | `one_hot_suffix` | [tools/k4b/k4b_decoder.py:25](../../tools/k4b/k4b_decoder.py#L25) |  |
-| `one_skeleton` | method | `CubicalComplex.one_skeleton` | [src/topo_pilot/world/complex.py:200](../../src/topo_pilot/world/complex.py#L200) | ``int32[E, 2]`` edges, canonical ``(lo, hi)``, unique, lexicographically sorted. |
-| `only_mismatch` | function | `only_mismatch` | [tests/k4b/test_b_h1_meta.py:77](../../tests/k4b/test_b_h1_meta.py#L77) |  |
-| `open_ledgers` | function | `open_ledgers` | [tools/k4b/k4b_charts.py:43](../../tools/k4b/k4b_charts.py#L43) |  |
-| `open_reg` | function | `open_reg` | [tools/x6_stage1/x6s1_registry.py:394](../../tools/x6_stage1/x6s1_registry.py#L394) | Reopens X6-REG1/X6-REG2 from its manifest; every run file is re-hashed. |
-| `open_store` | function | `open_store` | [src/topo_pilot/experiment/cli.py:34](../../src/topo_pilot/experiment/cli.py#L34) | The local artifact store at ``cfg.artifact_root`` (created on first write). |
-| `open_store` | function | `open_store` | [tools/d2a/d2a_world.py:180](../../tools/d2a/d2a_world.py#L180) |  |
-| `optional_array_field` | function | `optional_array_field` | [src/topo_pilot/contracts/base.py:165](../../src/topo_pilot/contracts/base.py#L165) | An optional array field defaulting to ``None``. |
-| `oracle` | method | `Spy.oracle` | [tests/hwsc/test_a_learning.py:90](../../tests/hwsc/test_a_learning.py#L90) |  |
-| `oracle` | function | `oracle` | [tools/x6zc/x6zc_core.py:282](../../tools/x6zc/x6zc_core.py#L282) |  |
-| `oracle_at` | function | `oracle_at` | [tools/d2a/d2a_targets.py:101](../../tools/d2a/d2a_targets.py#L101) |  |
-| `oracle_done` | function | `oracle_done` | [tests/c1prime/test_a_gates.py:150](../../tests/c1prime/test_a_gates.py#L150) |  |
-| `oracle_feas` | function | `oracle_feas` | [tools/c2_nd/nd_stage_pre.py:131](../../tools/c2_nd/nd_stage_pre.py#L131) | (i) the oracle's own log-predictive gives G per DVAL row under each model's symbol |
-| `oracle_fits` | function | `oracle_fits` | [tools/d2a/d2a_eval.py:337](../../tools/d2a/d2a_eval.py#L337) | window8 (one-hot w_{t-7..t}) and the oracle ceilings on test; positive control on val. |
-| `oracle_fixture` | function | `oracle_fixture` | [tests/c2_nd/test_b_layer2.py:240](../../tests/c2_nd/test_b_layer2.py#L240) |  |
-| `oracle_geometry` | function | `oracle_geometry` | [tools/x6zc/x6zc_core.py:152](../../tools/x6zc/x6zc_core.py#L152) |  |
-| `oracle_identity` | function | `oracle_identity` | [tools/c2_nd/nd_attrib.py:235](../../tools/c2_nd/nd_attrib.py#L235) | A_full with the oracle's own log-predictive equals G per row within 1e-12 max(1, \|G\|). |
-| `oracle_moments` | function | `oracle_moments` | [tools/k4b/k4b_scores.py:20](../../tools/k4b/k4b_scores.py#L20) |  |
-| `oracle_moments` | function | `oracle_moments` | [tools/x4_circle_history/scores.py:56](../../tools/x4_circle_history/scores.py#L56) | {1, 4, 32: [n, 2]} first-harmonic suffix means via the unchanged job-0014 kernel. |
-| `oracle_phase` | function | `oracle_phase` | [tools/k4b/k4b_scores.py:45](../../tools/k4b/k4b_scores.py#L45) |  |
-| `oracle_predictives` | function | `oracle_predictives` | [tools/hwsb/hwsb_eval.py:75](../../tools/hwsb/hwsb_eval.py#L75) |  |
-| `oracle_q32` | function | `oracle_q32` | [src/topo_pilot/experiment/x5g1t_oracle.py:16](../../src/topo_pilot/experiment/x5g1t_oracle.py#L16) | ``BayesFilter(T, E, pi).run(tokens[:, :32]).q[:, 32]`` in batches; ``[R, V]`` float64. |
-| `oracle_role` | function | `oracle_role` | [tools/c2_readout/c2_oracle.py:87](../../tools/c2_readout/c2_oracle.py#L87) | c1_oracle.run_oracle plus q-bar; "m32" only when coords is given (API.md §19.1 E-5). |
-| `oracle_rows` | function | `oracle_rows` | [tools/d2a/d2a_targets.py:85](../../tools/d2a/d2a_targets.py#L85) | Oracle quantities at one position per row (``positions [R]``, 0 = no row), in row order. |
-| `oracle_split` | function | `oracle_split` | [tools/c1prime/c1_driver.py:167](../../tools/c1prime/c1_driver.py#L167) |  |
-| `oracle_split` | function | `oracle_split` | [tools/c2_readout/c2_oracle.py:113](../../tools/c2_readout/c2_oracle.py#L113) | The four roles (H from the H2 cache o_H when given; H^Y by the exact oracle forward on |
-| `oracle_splits` | function | `oracle_splits` | [tools/c2_readout/c2_stage_pre.py:81](../../tools/c2_readout/c2_stage_pre.py#L81) | The four-role oracle of each split from the H2 / H2' cache (H^Y on Y_def rows only), |
-| `oracle_val` | function | `oracle_val` | [tools/k4b/k4b_driver.py:243](../../tools/k4b/k4b_driver.py#L243) |  |
-| `OracleOutputs` | class | `OracleOutputs` | [src/topo_pilot/contracts/_schemas_data.py:143](../../src/topo_pilot/contracts/_schemas_data.py#L143) | Exact-filter quantities per history (rows aligned with ``history_id``, float64 unless noted). |
-| `OraclePredictor` | class | `OraclePredictor` | [tools/x6_stage1/x6s1_eval.py:129](../../tools/x6_stage1/x6s1_eval.py#L129) |  |
-| `OracleStage` | class | `OracleStage` | [src/topo_pilot/oracle/stage.py:56](../../src/topo_pilot/oracle/stage.py#L56) | Compute exact-oracle panels and process diagnostics from public artifacts only. |
-| `orc` | function | `orc` | [tools/c2_nd/nd_stage_base.py:311](../../tools/c2_nd/nd_stage_base.py#L311) |  |
-| `orc` | function | `orc` | [tools/c2_readout/c2_stage_base.py:92](../../tools/c2_readout/c2_stage_base.py#L92) |  |
-| `ord_d` | function | `ord_d` | [tools/x6_stage1/x6s1_decide.py:107](../../tools/x6_stage1/x6s1_decide.py#L107) |  |
-| `ord_rows` | function | `ord_rows` | [tests/x6_stage1/test_a_pairs.py:140](../../tests/x6_stage1/test_a_pairs.py#L140) |  |
-| `ordd` | function | `ordd` | [tests/x6_stage1/test_a_rules.py:97](../../tests/x6_stage1/test_a_rules.py#L97) |  |
-| `ordered_half_dot` | function | `ordered_half_dot` | [tests/c1prime/test_a_oracle_named.py:76](../../tests/c1prime/test_a_oracle_named.py#L76) | 0.5 * osum_v fl(d_v * x_v), left to right in column order (protocol C3/C4). |
-| `os_store` | function | `os_store` | [tests/k4b/test_b_registry_rules.py:235](../../tests/k4b/test_b_registry_rules.py#L235) |  |
-| `ostore` | function | `ostore` | [tools/x6_stage1/x6s1_stage_pre.py:64](../../tools/x6_stage1/x6s1_stage_pre.py#L64) |  |
-| `osum` | function | `osum` | [tools/c1prime/c1_cert.py:48](../../tools/c1prime/c1_cert.py#L48) |  |
-| `OUT` | function | `OUT` | [tools/c1prime/c1_cert.py:44](../../tools/c1prime/c1_cert.py#L44) |  |
-| `outcome` | function | `outcome` | [tests/k4b/test_b_charts.py:35](../../tests/k4b/test_b_charts.py#L35) |  |
-| `outcome` | function | `outcome` | [tests/k4b/test_b_registry.py:47](../../tests/k4b/test_b_registry.py#L47) | (status, result): a refusal raised as C1GateFailure or a returned status dict. |
-| `outcome` | function | `outcome` | [tests/k4b/test_b_rerun.py:37](../../tests/k4b/test_b_rerun.py#L37) |  |
-| `outcome` | function | `outcome` | [tools/hws/hws_select.py:192](../../tools/hws/hws_select.py#L192) | §7.1 precedence (RC-1, RC-7, R-HWS-1; choice 35; erratum E6). |
-| `outcome` | function | `outcome` | [tools/hwsb/hwsb_gates.py:292](../../tools/hwsb/hwsb_gates.py#L292) |  |
-| `outcome` | function | `outcome` | [tools/hwsc/hwsc_outcome.py:63](../../tools/hwsc/hwsc_outcome.py#L63) |  |
-| `outcome_path` | function | `outcome_path` | [src/topo_pilot/experiment/x5g1t_runtime.py:160](../../src/topo_pilot/experiment/x5g1t_runtime.py#L160) |  |
-| `output_bytes` | function | `output_bytes` | [tools/x4_oracle_profile/meter.py:69](../../tools/x4_oracle_profile/meter.py#L69) |  |
-| `OutputExists` | class | `OutputExists` | [src/topo_pilot/experiment/x5g1_safety.py:18](../../src/topo_pilot/experiment/x5g1_safety.py#L18) | A completed output version already exists; it is never overwritten. |
-| `outs` | function | `outs` | [tests/x6zc/test_x6zc_decide.py:68](../../tests/x6zc/test_x6zc_decide.py#L68) |  |
-| `outward_inputs` | function | `outward_inputs` | [tools/x6_stage1/x6s1_stats.py:68](../../tools/x6_stage1/x6s1_stats.py#L68) |  |
-| `overall` | function | `overall` | [tests/circle_history/test_chart_extension.py:313](../../tests/circle_history/test_chart_extension.py#L313) |  |
-| `overall` | function | `overall` | [tools/c1prime/c1_endpoint.py:72](../../tools/c1prime/c1_endpoint.py#L72) |  |
-| `overall` | function | `overall` | [tools/c2_nd/nd_decide.py:190](../../tools/c2_nd/nd_decide.py#L190) | §4.3 / C2 §6.5 (fatal, D: KNOWN_CASE_CONTRADICTED, CNHS, exclusions, categories). |
-| `overall` | function | `overall` | [tools/c2_readout/c2_decide.py:182](../../tools/c2_readout/c2_decide.py#L182) | §6.5: study failure; >= 2 CNHS; fewer than 2 valid models -> INCONCLUSIVE/<the reason of |
-| `overall` | function | `overall` | [tools/k4b/k4b_stats.py:79](../../tools/k4b/k4b_stats.py#L79) |  |
-| `overall_resultant` | function | `overall_resultant` | [tools/x4_circle_history/chart.py:243](../../tools/x4_circle_history/chart.py#L243) |  |
-| `overall_verdict` | function | `overall_verdict` | [src/topo_pilot/analysis/horizon_pools.py:180](../../src/topo_pilot/analysis/horizon_pools.py#L180) | ``(GO \| NO-GO \| INCONCLUSIVE, reason)`` per protocol x4b-v1 section 7. |
-| `overdue` | function | `overdue` | [tools/x4_circle_history/op_guard.py:74](../../tools/x4_circle_history/op_guard.py#L74) | Kill reason if the marker shows an active operation past its deadline, else None. |
-| `overdue_marker` | function | `overdue_marker` | [tests/k4b/test_b_meter.py:178](../../tests/k4b/test_b_meter.py#L178) |  |
-| `overlap_E` | function | `overlap_E` | [tools/theory_exact/theory_exact3.py:68](../../tools/theory_exact/theory_exact3.py#L68) |  |
-| `OverlapGaussian` | class | `OverlapGaussian` | [src/topo_pilot/process/emission.py:130](../../src/topo_pilot/process/emission.py#L130) | O: ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)``, no truncation, symbols renamed. |
-| `own` | function | `own` | [tests/hwsc/test_b_registry.py:363](../../tests/hwsc/test_b_registry.py#L363) |  |
-| `own_arm` | function | `own_arm` | [tools/x6_stage1/x6s1_eval.py:331](../../tools/x6_stage1/x6s1_eval.py#L331) | Blocks of EVAL_ROWS rows. p: the readout of `tokens` if already computed; keep: row indices |
-| `own_cpu_s` | function | `own_cpu_s` | [tools/x4_oracle_profile/winjob.py:114](../../tools/x4_oracle_profile/winjob.py#L114) |  |
-| `own_pairs` | function | `own_pairs` | [tools/x6_stage1/x6s1_eval.py:350](../../tools/x6_stage1/x6s1_eval.py#L350) | §2.8 abelian own-process spread (R-0082-2): per own-process R_ord(t) pair, the within- |
-| `own_records` | function | `own_records` | [tools/c2_nd/nd_data.py:162](../../tools/c2_nd/nd_data.py#L162) |  |
-| `own_records` | function | `own_records` | [tools/c2_readout/c2_data.py:311](../../tools/c2_readout/c2_data.py#L311) | G0 (vii), R-0107-2 (D-0107-1): {name: sha256} for GATES.jsonl and STAGES.jsonl, each an |
-| `p0` | function | `p0` | [tools/c1prime/c1_cert.py:92](../../tools/c1prime/c1_cert.py#L92) | P0 in exact rationals (§15.3.3); not ok -> FAIL_TECHNICAL/IDENTITY. |
-| `p1` | function | `p1` | [tools/c1prime/c1_cert.py:118](../../tools/c1prime/c1_cert.py#L118) |  |
-| `p1` | function | `p1` | [tools/c2_nd/nd_stage_val.py:305](../../tools/c2_nd/nd_stage_val.py#L305) |  |
-| `p1` | function | `p1` | [tools/c2_readout/c2_stage_val.py:332](../../tools/c2_readout/c2_stage_val.py#L332) | §6.7 per family; the VAL endpoint bundle is sealed here (§5.7, C-22); P1.json. |
-| `p1` | function | `p1` | [tools/c2_readout/c2_stats.py:326](../../tools/c2_readout/c2_stats.py#L326) | N_F = the smallest N at which every model passes every gated array; else the smallest N |
-| `p1` | function | `p1` | [tools/k4b/k4b_driver.py:346](../../tools/k4b/k4b_driver.py#L346) |  |
-| `p1_equivalence` | function | `p1_equivalence` | [tools/c2_nd/nd_stage_val.py:274](../../tools/c2_nd/nd_stage_val.py#L274) | R-0116-2: the direct kernel path with C2's seeds reproduces c2_stats._summaries. |
-| `p1_nd` | function | `p1_nd` | [tools/c2_nd/nd_stage_val.py:239](../../tools/c2_nd/nd_stage_val.py#L239) | §4.5: N_F = the smallest N at which every model passes every gated array, else the |
-| `p1c` | function | `p1c` | [tools/hwsc/hwsc_gates.py:189](../../tools/hwsc/hwsc_gates.py#L189) |  |
-| `p1c_ladder` | function | `p1c_ladder` | [tools/hwsc/hwsc_gates.py:174](../../tools/hwsc/hwsc_gates.py#L174) |  |
-| `p2_leaves` | function | `p2_leaves` | [tools/c1prime/c1_cert.py:186](../../tools/c1prime/c1_cert.py#L186) |  |
-| `p2_ok` | function | `p2_ok` | [tools/k4b/k4b_cert.py:109](../../tools/k4b/k4b_cert.py#L109) |  |
-| `p32_log_probs` | function | `p32_log_probs` | [src/topo_pilot/experiment/x5g1t_score.py:22](../../src/topo_pilot/experiment/x5g1t_score.py#L22) | ``log softmax(logits[:, 32, :])`` in float64, ``[R, V]``, computed ``batch`` rows at a time. |
-| `p3_label` | function | `p3_label` | [tools/x2a_stage0/x2a_mc.py:74](../../tools/x2a_stage0/x2a_mc.py#L74) |  |
-| `p4_label` | function | `p4_label` | [tools/x2a_stage0/x2a_mc.py:78](../../tools/x2a_stage0/x2a_mc.py#L78) |  |
-| `p4_rows` | function | `p4_rows` | [tools/hws/hws_oracle.py:154](../../tools/hws/hws_oracle.py#L154) |  |
-| `p_d2a` | function | `p_d2a` | [tools/hws/hws_exact.py:52](../../tools/hws/hws_exact.py#L52) |  |
-| `p_d2a_check` | function | `p_d2a_check` | [tools/hwsc/hwsc_data.py:236](../../tools/hwsc/hwsc_data.py#L236) |  |
-| `p_f` | method | `World.p_f` | [tools/hws/hws_worlds.py:92](../../tools/hws/hws_worlds.py#L92) |  |
-| `package_graph` | function | `package_graph` | [tools/code_index/render_deps.py:17](../../tools/code_index/render_deps.py#L17) |  |
-| `package_of` | function | `package_of` | [tools/code_index/render_deps.py:10](../../tools/code_index/render_deps.py#L10) |  |
-| `package_statement` | function | `package_statement` | [tools/c2_nd/nd_decide.py:387](../../tools/c2_nd/nd_decide.py#L387) | §7.5, only if C2-R USED, N-R CODE_DOMINANT (or NECESSARY) and D DECOY_NOT_USED. |
-| `pad` | function | `pad` | [tools/d2a/d2a_world.py:134](../../tools/d2a/d2a_world.py#L134) |  |
-| `pad` | function | `pad` | [tools/x6_stage1/x6s1_eval.py:50](../../tools/x6_stage1/x6s1_eval.py#L50) |  |
-| `page_path` | function | `page_path` | [tools/code_index/render_pages.py:17](../../tools/code_index/render_pages.py#L17) |  |
-| `pair` | function | `pair` | [tools/c2_readout/c2_attrib.py:87](../../tools/c2_readout/c2_attrib.py#L87) | The partition, energies and r of one arm pair under one projector problem. |
-| `pair_arrays` | function | `pair_arrays` | [tools/x6zc/x6zc_core.py:288](../../tools/x6zc/x6zc_core.py#L288) |  |
-| `pair_d2` | function | `pair_d2` | [src/topo_pilot/analysis/horizon_pools.py:124](../../src/topo_pilot/analysis/horizon_pools.py#L124) | ``H(Q2_a, Q2_partner)`` for every anchor/partner slot (NaN where there is no partner). |
-| `pair_dirs` | method | `Resolver.pair_dirs` | [tools/code_index/resolve.py:52](../../tools/code_index/resolve.py#L52) |  |
-| `pair_evidence` | function | `pair_evidence` | [src/topo_pilot/analysis/x5_endpoint.py:153](../../src/topo_pilot/analysis/x5_endpoint.py#L153) | Point events from the full-sample curves; quantiles from the paired bootstrap. |
-| `pair_flags` | function | `pair_flags` | [src/topo_pilot/analysis/x5_endpoint.py:164](../../src/topo_pilot/analysis/x5_endpoint.py#L164) | ``(supported, rejected)`` for one pair (protocol §6). |
-| `pair_law` | function | `pair_law` | [tools/x2a_stage0/x2a_model.py:171](../../tools/x2a_stage0/x2a_model.py#L171) |  |
-| `pair_scores` | function | `pair_scores` | [tools/d2a/d2a_eval.py:137](../../tools/d2a/d2a_eval.py#L137) |  |
-| `pair_stats` | function | `pair_stats` | [tools/x6zc/x6zc_core.py:299](../../tools/x6zc/x6zc_core.py#L299) |  |
-| `pair_terms` | function | `pair_terms` | [tools/x6_stage1/x6s1_eval.py:214](../../tools/x6_stage1/x6s1_eval.py#L214) |  |
-| `paired_bootstrap_endpoint` | function | `paired_bootstrap_endpoint` | [src/topo_pilot/analysis/x5_endpoint.py:125](../../src/topo_pilot/analysis/x5_endpoint.py#L125) | One shared ``rng.integers(0, R, size=R)`` per draw, applied to whole rows of both arms. |
-| `paired_cluster_boot` | function | `paired_cluster_boot` | [tools/x6zc/x6zc_decide.py:27](../../tools/x6zc/x6zc_decide.py#L27) |  |
-| `paired_generators` | function | `paired_generators` | [src/topo_pilot/experiment/x5g1_lineage.py:29](../../src/topo_pilot/experiment/x5g1_lineage.py#L29) | Two separately created generators with the identical frozen seed (common randomness). |
-| `paired_generators` | function | `paired_generators` | [src/topo_pilot/experiment/x5g1t_lineage.py:44](../../src/topo_pilot/experiment/x5g1t_lineage.py#L44) | Two separately created generators with the same frozen seed (common randomness). |
-| `PairEvidence` | class | `PairEvidence` | [src/topo_pilot/analysis/x5_endpoint.py:57](../../src/topo_pilot/analysis/x5_endpoint.py#L57) |  |
-| `pairwise` | method | `Chord.pairwise` | [src/topo_pilot/topology/metrics.py:84](../../src/topo_pilot/topology/metrics.py#L84) |  |
-| `pairwise` | method | `DistanceMetric.pairwise` | [src/topo_pilot/topology/metrics.py:65](../../src/topo_pilot/topology/metrics.py#L65) | Return the [M, M] distance matrix of the rows of ``X``. |
-| `pairwise` | method | `Euclidean.pairwise` | [src/topo_pilot/topology/metrics.py:74](../../src/topo_pilot/topology/metrics.py#L74) |  |

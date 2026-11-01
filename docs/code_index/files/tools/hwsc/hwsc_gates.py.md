@@ -73,6 +73,8 @@
 - [tools/hwsc/hwsc_jobs.py](hwsc_jobs.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 20, import)
 - [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 327, import)
+- [tools/hwsd/hwsd_driver.py](../hwsd/hwsd_driver.py.md) (line 16, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 20, import)
 
 ## Top-level constants
 

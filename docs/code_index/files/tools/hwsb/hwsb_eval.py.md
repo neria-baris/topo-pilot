@@ -54,12 +54,19 @@
 - [tests/hwsb/test_a_learning.py](../../tests/hwsb/test_a_learning.py.md) (line 36, import)
 - [tests/hwsb/test_b_e4path.py](../../tests/hwsb/test_b_e4path.py.md) (line 25, import)
 - [tests/hwsc/test_a_learning.py](../../tests/hwsc/test_a_learning.py.md) (line 27, import)
+- [tests/hwsd/test_a_learning.py](../../tests/hwsd/test_a_learning.py.md) (line 28, import)
+- [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 22, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 22, import)
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 17, import)
 - [tools/hwsb/hwsb_kb.py](hwsb_kb.py.md) (line 14, import)
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 16, import)
 - [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 11, import)
 - [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 14, import)
+- [tools/hwsd/hwsd_data.py](../hwsd/hwsd_data.py.md) (line 17, import)
+- [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 18, import)
+- [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 15, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 192, import)
+- [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 15, import)
 
 ## Top-level constants
 

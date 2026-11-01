@@ -67,6 +67,9 @@
 
 - [tests/hwsc/test_b_binding.py](../../tests/hwsc/test_b_binding.py.md) (line 171, import)
 - [tests/hwsc/test_b_records.py](../../tests/hwsc/test_b_records.py.md) (line 35, import)
+- [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 95, import)
+- [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 24, import)
+- [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 25, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 25, import)
 - [tests/k4b/test_b_h1_meta.py](../../tests/k4b/test_b_h1_meta.py.md) (line 30, import)
 - [tests/k4b/test_b_rerun.py](../../tests/k4b/test_b_rerun.py.md) (line 24, import)
@@ -76,6 +79,12 @@
 - [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 20, import)
 - [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 19, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 23, import)
+- [tools/hwsd/hwsd_driver.py](../hwsd/hwsd_driver.py.md) (line 23, import)
+- [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 29, import)
+- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 23, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 27, import)
+- [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 21, import)
+- [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 20, import)
 
 ## Top-level constants

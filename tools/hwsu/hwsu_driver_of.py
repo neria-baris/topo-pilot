@@ -42,6 +42,9 @@ def run_of(out, job, attempt=1, reservation_id="RES-HWSU-OF", repo=uc.REPO, ledg
            cont=None, ctx=None, dry_continue=False) -> dict:
     out = Path(out)
     ctx = build_ctx(out, job, attempt, reservation_id) if ctx is None else ctx
+    if ctx.get("dry") and not uc.dry_store_ok(out):
+        return {"exit": 3, "outcome": "FAIL_TECHNICAL/BINDING", "records": [], "obligation": None,
+                "rows_drawn": False}
     if not (ctx.get("dry") and ctx.get("dry_skip_of_b")):
         try:
             ur.of_b(out, repo)
@@ -113,6 +116,10 @@ def main(argv=None) -> int:
     g = lambda k, d=None: opts[k][0] if k in opts else d  # noqa: E731
     out = Path(g("out")) if g("out") else (uc.DRY_STORE if cmd == "dry" else uc.STORE)
     code = 0
+    if cmd not in ("of", "freeze-of", "reserve", "obligation", "end-reservation", "attest",
+                   "audit", "ledger-append", "dry"):
+        print(f"hwsu_driver_of: unknown subcommand {cmd!r}", file=sys.stderr)
+        return 2
     if cmd == "of":
         res = run_of(out, g("job"), int(g("attempt", 1)), g("reservation", "RES-HWSU-OF"),
                      ledger_path=g("ledger"), cont=g("continue"))

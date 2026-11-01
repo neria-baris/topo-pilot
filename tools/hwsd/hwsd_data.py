@@ -354,12 +354,12 @@ def reservation_ended(res_path, root=None) -> dict:
             ok = f.is_file() and stage_records.sha256(f) == want and \
                 dc.read_json(f).get("reservation_file_sha256") == cur
             return {"ended": bool(ok), "rule": "a", "reason": "" if ok else "no matching END"}
-        end = res_path.parent / f"{rid}.END.json"
+        store = res_path.parent.parent if res_path.parent.name == "reservations" \
+            else res_path.parent
+        end = store / "reservations" / f"{rid}.END.json"
         if not end.is_file():
             return {"ended": False, "rule": "b", "reason": "no END record"}
         e = dc.read_json(end)
-        store = res_path.parent.parent if res_path.parent.name == "reservations" \
-            else res_path.parent
         ob = store / str(e.get("obligation_file", ""))
         ok = (e.get("schema") == "hws-reservation-end-v1" and e.get("reservation_sha256") == cur
               and ob.is_file() and e.get("obligation_sha256") == stage_records.sha256(ob))

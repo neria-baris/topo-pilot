@@ -84,6 +84,14 @@ def end_obligation(out, job, attempt, reservation_id=None) -> Path:
                                       reservation_id=reservation_id)[0]
 
 
+def refuse_exit(out, ret, job, attempt):
+    """J10 item 2: a refused job that wrote anything into the store still writes its obligation."""
+    out = Path(out)
+    if out.is_dir() and any(out.iterdir()):
+        end_obligation(out, job, attempt)
+    return ret
+
+
 def first_bad(recs, soft=()):
     return next((r["status"] for r in recs if r["status"] != "PASS" and r["gate"] not in soft),
                 "PASS")
@@ -94,7 +102,7 @@ def run_kd(out, auth, sched, job, attempt=1) -> dict:
     out = Path(out)
     pf = hwsd_records.preflight_d(out, "KD", auth, sched)
     if pf["refused"]:
-        return pf
+        return refuse_exit(out, pf, job, attempt)
     with hwsd_bind.bound_hwsd():
         audit_gate(out)
         return hwsd_known.run_kd(out, auth, sched, job, attempt)
@@ -248,12 +256,12 @@ def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT,
     out, ctx, t0 = Path(out), {}, time.process_time()
     pf = hwsd_records.preflight_d(out, "SAMPLE", auth, sched)
     if pf["refused"]:
-        return pf
+        return refuse_exit(out, pf, job, attempt)
     with hwsd_bind.bound_hwsd():
         audit_gate(out)
         if not _kd_accept_ok(out, kd_accept):
             stage_records.record_gate(out, "KD_ACCEPT", REFUSE)
-            return {"refused": True, "reason": "KD_ACCEPT"}
+            return refuse_exit(out, {"refused": True, "reason": "KD_ACCEPT"}, job, attempt)
         stage_records.record_gate(out, "KD_ACCEPT", "PASS")
 
         def reservation():

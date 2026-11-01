@@ -34,7 +34,7 @@ def test_effective_tables():
     for k in ("hwsc-job-0181", "hwsc-job-0196", "hwsd-dry", "hwsd-dry-<job>", "hwsd-kd-<job>",
               "hwsu-*", "test_hwsd-<job>", "test_hwsu-<job>", "hwsc-dry-<job>", "test_hwsc-<job>"):
         assert k in st, k
-    assert st["hwsc-job-0181"]["decision"] == "TO_FREEZE"
+    assert st["hwsc-job-0181"]["decision"] == "EXCLUSION"  # TO_FREEZE review erratum
     assert rt["hwsc-store"]["decision"] == "READER" and rt["hwsc-store"]["readers"] == ["R9"]
     assert rt["hwsd-store"]["decision"] == "OWN"
     assert rt["hwsu-store"] == dc.CONTRACT["registry"]["inventory"]["rows"]["hwsu-store"]
@@ -171,7 +171,11 @@ def test_scratch_check_d_incomplete(tmp_path, plant):
 def test_scratch_check_d_to_freeze_row_without_files(tmp_path):
     sc = tmp_path / "scratch"
     (sc / "hwsc-job-0184").mkdir(parents=True)
-    assert _check(sc, readers_ok={"R5"})["status"] == INC  # "row not frozen"
+    # TO_FREEZE review erratum: the contract row is now EXCLUSION, so a TO_FREEZE row is planted
+    assert _check(sc, readers_ok={"R5"})["status"] == PASS
+    t = dc.scratch_table()
+    t["hwsc-job-0184"] = dict(t["hwsc-job-0184"], decision="TO_FREEZE", frozen_files="TO_FREEZE")
+    assert _check(sc, table=t, readers_ok={"R5"})["status"] == INC  # "row not frozen"
 
 
 def test_scratch_check_d_hwsu_needs_r10(tmp_path):

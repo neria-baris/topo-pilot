@@ -7,6 +7,7 @@ import hwsu_config as uc
 import hwsu_records as ur
 import json
 import os
+import re
 from pathlib import Path
 
 import hwsb_known
@@ -26,8 +27,15 @@ def _skip_dir(parent, name, groot) -> bool:
             or uc.blinded(parent / name, groot))
 
 
+def _prefilter(needles):
+    # R-0200-1: one pass per line; a line holding any needle as a substring matches, so the exact
+    # per-needle check below runs on every line that can hit and the hits are unchanged.
+    return re.compile("|".join(re.escape(nd) for nd in sorted(set(needles), key=len, reverse=True)))
+
+
 def seed_search_u(root, needles, root_for_guard=None) -> list:
     groot, hits = Path(root_for_guard or root), []
+    pre = _prefilter(needles)
     for folder, dirs, files in os.walk(root, topdown=True):
         here = Path(folder)
         dirs[:] = sorted(d for d in dirs if not _skip_dir(here, d, groot))
@@ -39,6 +47,8 @@ def seed_search_u(root, needles, root_for_guard=None) -> list:
                 continue
             with open(here / name, encoding="utf-8", errors="replace") as handle:
                 for i, line in enumerate(handle, 1):
+                    if not pre.search(line):
+                        continue
                     found = [nd for nd in needles if hwsc_known.needle_in(nd, line)]
                     hits += [{"path": str(here / name), "needle": nd, "line": i} for nd in found]
     return hits

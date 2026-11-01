@@ -18862,9 +18862,9 @@
   },
   "README.md": {
    "kind": "markdown",
-   "lines": 239,
+   "lines": 252,
    "purpose": "topo-pilot: topology of a latent world in transformer representations",
-   "sha256": "0ba717d27a444d19cfeac4d8e71cd6d5eff79e8ca0194b60d2e20eee8b47a594"
+   "sha256": "b5b1b4360db51913d28281d03641f8643c2424def0f38f8235c573fa813f28fb"
   },
   "README_HE.md": {
    "kind": "markdown",
@@ -247133,5 +247133,5 @@
    ]
   }
  },
- "sources_digest": "0f2e3920b45577b00fa6f82e353003a7cc6f7983f8b66f6794e5ca7e9ed09b66"
+ "sources_digest": "5073660479acdc41e06f9cf372c79b5ca53387df5aa0edfed922ff2a05983c7f"
 }

@@ -99,6 +99,7 @@ LEDGERS = [  # (label, store directory, note) -- cumulative_cpu_s of each cpu_le
     ("control placebo check", "x6zc-store", "model"),
     ("necessity and decoy", "c2nd-store", "model"),
     ("training pilot (2 models)", "hwsb-store", "training"),
+    ("full test, new world (3 models)", "hwsc-store", "training"),
 ]
 
 
@@ -193,6 +194,7 @@ EVENTS = [
     ("10-27", 5, "control placebo check:\nUNEXPLAINED", "desc", "agent-handoff/jobs/0155/review.md"),
     ("10-27", 2, "necessity: code dominant;\ndecoy NOT_USED", "pass", "agent-handoff/jobs/0167/review.md"),
     ("10-28", 1, "training pilot (new world):\nPASS", "pass", "agent-handoff/jobs/0175/review.md"),
+    ("10-30", 1, "full test (new world):\nSUPPORT (3/3 models)", "pass", "agent-handoff/jobs/0196/review.md"),
 ]
 LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
              ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]
@@ -203,7 +205,7 @@ LANES = ["Pilot", "P1: origin of\ncircular structure", "P2: causal use",
 
 def fig_timeline() -> None:
     n = len(EVENTS)
-    fig, ax = plt.subplots(figsize=(7.2, 5.6))
+    fig, ax = plt.subplots(figsize=(7.2, 5.35))
     prev = None
     for i, (d, lane, label, oc, _src) in enumerate(EVENTS):
         if d != prev:

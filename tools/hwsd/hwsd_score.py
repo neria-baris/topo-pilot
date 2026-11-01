@@ -16,7 +16,6 @@ import hwsb_eval
 import hwsd_records
 import k4b_cert
 import k4b_charts
-import k4b_config
 import k4b_data
 import k4b_decoder
 import k4b_driver
@@ -306,8 +305,10 @@ def score_checkpoint(ctx, j, step, ckpt=None, model64=None, perm=None, acts=None
         arr = {"X_minus": a["X_minus"], "X_plus": a["X_plus"], "r4n": a["r4n"],
                "phi": np.asarray(r["ext"].phase, dtype=np.float64),
                "supported": np.asarray(r["ext"].supported, dtype=bool),
-               "delta1_X_minus": cons["delta1"]["X_minus"], "delta1_X_plus": cons["delta1"]["X_plus"],
-               "delta2_X_minus": cons["delta2"]["X_minus"], "delta2_X_plus": cons["delta2"]["X_plus"],
+               "delta1_X_minus": cons["delta1"]["X_minus"],
+               "delta1_X_plus": cons["delta1"]["X_plus"],
+               "delta2_X_minus": cons["delta2"]["X_minus"],
+               "delta2_X_plus": cons["delta2"]["X_plus"],
                "naive_X": cons["naive"]["X"]}
         if "unavailable" not in cons["decoder"]:
             arr.update(decoder_X=cons["decoder"]["X"], decoder_phi=cons["decoder"]["phi"])

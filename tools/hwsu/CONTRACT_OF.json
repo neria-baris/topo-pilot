@@ -889,7 +889,10 @@
   "tools/hwsu/hwsu_bind.py",
   "tools/hwsu/hwsu_meter_bind.py",
   "tools/hwsu/hwsu_driver_of.py",
-  "tools/hwsu/hwsu_dry.py"
+  "tools/hwsu/hwsu_dry.py",
+  "tools/hwsu/hwsu_resv.py",
+  "tools/hwsu/hwsu_freeze.py",
+  "tools/hwsu/hwsu_dry_b.py"
  ],
  "tests": {
   "dir": "tests/hwsu",

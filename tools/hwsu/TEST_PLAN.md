@@ -65,3 +65,7 @@ Each case runs under the dry store (`X:/Downloads/topo-scratch/hwsu-dry-of-<job>
 ## 6. Phase 2 appends here
 
 **Phase 2 (model phase) appends its sections after this line** (its author split, test files `test_a_*`/`test_b_*` without the `_of_` infix, the DRU cases and the PF list). The bytes above this line are bound append-only by `FREEZE_OF.json` (API.md D-0) and are never changed.
+
+## E-1 erratum (job 0198 phase 3; appended, existing bytes unchanged, D-0)
+
+OF-2 compares exactly: `Fraction(float(L)) > Fraction(1, 50)`. The double 0.02 is above 1/50 and passes; the largest double below 1/50 fails. The sentence "a bound of exactly 0.02 is not a pass" is wrong at double precision and is superseded by this rule.

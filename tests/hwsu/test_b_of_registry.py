@@ -318,13 +318,13 @@ def test_contract_obligation_block_is_j11():
 
 def test_contract_reservation_baseline_and_root_baseline():
     rb = C["hygiene"]["reservations_baseline"]
-    assert rb["status"] == "TO_FREEZE" and len(rb["rows"]) == 3
+    assert rb["status"] == "REVIEWED" and len(rb["rows"]) == 3  # TO_FREEZE review erratum
     assert rb["rows"]["hwsc-store/RESERVATION_W2.json"]["state"] == "ACTIVE"
     assert rb["rows"]["hwsc-store/RESERVATION_W2.json"]["sha256"] == \
         "28c74163e992972b89238dccb30660b500027a78ac4a563fa0958df736e9dbe5"  # = HWSC_W2_END binding
     assert all(rb["rows"][k]["state"] is None for k in rb["rows"] if k.startswith("c2nd-store/"))
     root = C["hygiene"]["root_baseline"]
-    assert root["status"] == "TO_FREEZE" and len(root["rows"]) == 71
+    assert root["status"] == "REVIEWED" and len(root["rows"]) == 70  # TO_FREEZE review erratum
     unlisted = [k for k, v in root["rows"].items() if v.get("listed") is False]
     assert unlisted == ["topo-pilot-hwsd"]
     assert "hwsu-store" not in root["rows"]  # no HWSU store before OF

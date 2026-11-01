@@ -10,10 +10,10 @@
   "import cycles (strongly connected components)": 13,
   "import statements, external": 941,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3280,
+  "import statements, internal resolved": 3279,
   "import statements, internal unresolved": 0,
   "import statements, standard library": 2953,
-  "internal edges (file to file, with kind and line)": 3315,
+  "internal edges (file to file, with kind and line)": 3314,
   "python files": 664
  },
  "cycles": [
@@ -17417,19 +17417,13 @@
    "tools/hwsu/hwsu_seed.py",
    "tools/c1prime/c1_records.py",
    "import",
-   16
+   15
   ],
   [
    "tools/hwsu/hwsu_seed.py",
    "tools/hwsb/hwsb_known.py",
    "import",
    13
-  ],
-  [
-   "tools/hwsu/hwsu_seed.py",
-   "tools/hwsc/hwsc_known.py",
-   "import",
-   14
   ],
   [
    "tools/hwsu/hwsu_seed.py",
@@ -17447,7 +17441,7 @@
    "tools/hwsu/hwsu_seed.py",
    "tools/x4_circle_history/stage_records.py",
    "import",
-   15
+   14
   ],
   [
    "tools/k4b/k4b_cert.py",
@@ -25635,9 +25629,9 @@
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
-   "lines": 378,
+   "lines": 379,
    "purpose": "tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1)",
-   "sha256": "6a4c930a1e27fc6d00248f4ccea77ef5c0eb704a6a22cbe0fc5ed82064c6e400"
+   "sha256": "436fa80ffb882d804f581985af9e0a268622a4e4468913eaabb9d40e3ff12593"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -25731,9 +25725,9 @@
   },
   "tools/hwsu/hwsu_seed.py": {
    "kind": "python",
-   "lines": 158,
+   "lines": 163,
    "purpose": "HWSU needle search, hit classification, namespace overlap and G0-OF (API.md §6; protocol §4.2",
-   "sha256": "c93e71dc4fc0ca934ee71a67757edc6314ee3b54ad397fe2c2eeb7f3f9496744"
+   "sha256": "f87d4d39fb9e1eeeff8b32cb971907eedd6fbadb7551470a74583b2ac26d3a90"
   },
   "tools/k4b/API.md": {
    "kind": "markdown",
@@ -228058,23 +228052,6 @@
      "line": 14,
      "module": "",
      "names": [
-      "hwsc_known"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/hwsc/hwsc_known.py"
-     ],
-     "top": "hwsc_known"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "unique basename",
-     "lazy": false,
-     "level": 0,
-     "line": 15,
-     "module": "",
-     "names": [
       "stage_records"
      ],
      "status": "internal",
@@ -228089,7 +228066,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 16,
+     "line": 15,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -228105,112 +228082,112 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 27,
+     "end": 26,
      "kind": "function",
      "name": "_skip_dir",
      "qual": "_skip_dir",
      "sig": "def _skip_dir(parent, name, groot) -> bool",
-     "start": 23
+     "start": 22
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 33,
+     "end": 40,
      "kind": "function",
-     "name": "_prefilter",
-     "qual": "_prefilter",
-     "sig": "def _prefilter(needles)",
-     "start": 30
+     "name": "_line_matcher",
+     "qual": "_line_matcher",
+     "sig": "def _line_matcher(needles)",
+     "start": 29
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 54,
+     "end": 59,
      "kind": "function",
      "name": "seed_search_u",
      "qual": "seed_search_u",
      "sig": "def seed_search_u(root, needles, root_for_guard=None) -> list",
-     "start": 36
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 61,
-     "kind": "function",
-     "name": "classify_hits_u",
-     "qual": "classify_hits_u",
-     "sig": "def classify_hits_u(hits, fragments=None, job_scratch=None) -> dict",
-     "start": 57
+     "start": 43
     },
     {
      "decorators": [],
      "doc": "",
      "end": 66,
      "kind": "function",
-     "name": "needles",
-     "qual": "needles",
-     "sig": "def needles(contract=None) -> tuple",
-     "start": 64
+     "name": "classify_hits_u",
+     "qual": "classify_hits_u",
+     "sig": "def classify_hits_u(hits, fragments=None, job_scratch=None) -> dict",
+     "start": 62
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 74,
+     "end": 71,
      "kind": "function",
-     "name": "_tokens",
-     "qual": "_tokens",
-     "sig": "def _tokens(track) -> tuple",
+     "name": "needles",
+     "qual": "needles",
+     "sig": "def needles(contract=None) -> tuple",
      "start": 69
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 82,
+     "end": 79,
+     "kind": "function",
+     "name": "_tokens",
+     "qual": "_tokens",
+     "sig": "def _tokens(track) -> tuple",
+     "start": 74
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 87,
      "kind": "function",
      "name": "namespace_overlap",
      "qual": "namespace_overlap",
      "sig": "def namespace_overlap(u, d) -> list",
-     "start": 77
+     "start": 82
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 89,
+     "end": 94,
      "kind": "function",
      "name": "_sha_ok",
      "qual": "_sha_ok",
      "sig": "def _sha_ok(path, want, root) -> bool",
-     "start": 85
+     "start": 90
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 114,
+     "end": 119,
      "kind": "function",
      "name": "_authority",
      "qual": "_authority",
      "sig": "def _authority(out, ctx, checks) -> None",
-     "start": 92
+     "start": 97
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 130,
+     "end": 135,
      "kind": "function",
      "name": "_records",
      "qual": "_records",
      "sig": "def _records(ctx, checks) -> None",
-     "start": 117
+     "start": 122
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 158,
+     "end": 163,
      "kind": "function",
      "name": "g0_of",
      "qual": "g0_of",
      "sig": "def g0_of(out, ctx) -> dict",
-     "start": 133
+     "start": 138
     }
    ],
    "syspath": []
@@ -261101,5 +261078,5 @@
    ]
   }
  },
- "sources_digest": "6da8206947fbf37bb05d415ebe1a33aaafe410810dd9cecd3ef6452ed5e6589e"
+ "sources_digest": "919b18ac59519b96689a05b6973d499280bf7989debfe10db74e0cbd52797f00"
 }

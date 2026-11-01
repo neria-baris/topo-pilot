@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `nm_guards` | function | `nm_guards` | [tools/c2_nd/nd_attrib.py:200](../../tools/c2_nd/nd_attrib.py#L200) |  |
 | `nm_model` | function | `nm_model` | [tools/c2_nd/nd_decide.py:104](../../tools/c2_nd/nd_decide.py#L104) | RESP, ROUTED first, the four _M categories on ZMc010, ZMc050, WMc, VMc, rule-6 (c). |
 | `nm_status` | function | `nm_status` | [tests/c2_nd/test_b_layer2.py:113](../../tests/c2_nd/test_b_layer2.py#L113) |  |
 | `nm_stream` | function | `nm_stream` | [tools/c2_nd/nd_attrib.py:98](../../tools/c2_nd/nd_attrib.py#L98) | The N-M family stream of one model (7 arrays): categories on A_C against A_F only. |
@@ -1103,7 +1104,7 @@
 | `seed_key` | function | `seed_key` | [tests/k4b/test_b_h1_meta.py:58](../../tests/k4b/test_b_h1_meta.py#L58) |  |
 | `seed_search` | function | `seed_search` | [tools/hws/hws_driver.py:64](../../tools/hws/hws_driver.py#L64) | §6.6 G0 discovery search; excluded folders are pruned before any listing or open. |
 | `seed_search_c` | function | `seed_search_c` | [tools/hwsc/hwsc_known.py:51](../../tools/hwsc/hwsc_known.py#L51) |  |
-| `seed_search_u` | function | `seed_search_u` | [tools/hwsu/hwsu_seed.py:36](../../tools/hwsu/hwsu_seed.py#L36) |  |
+| `seed_search_u` | function | `seed_search_u` | [tools/hwsu/hwsu_seed.py:43](../../tools/hwsu/hwsu_seed.py#L43) |  |
 | `seeded` | function | `seeded` | [tests/oracle_profile/test_oracle_profile_kernels.py:44](../../tests/oracle_profile/test_oracle_profile_kernels.py#L44) |  |
 | `seeds` | function | `seeds` | [tests/learner/conftest.py:35](../../tests/learner/conftest.py#L35) |  |
 | `SeedTree` | class | `SeedTree` | [src/topo_pilot/contracts/ids.py:99](../../src/topo_pilot/contracts/ids.py#L99) | Deterministic, platform-independent seed derivation (the only source of randomness). |
@@ -3956,4 +3957,3 @@
 | `test_real_status_bounded_and_reused_keys_kept` | test | `test_real_status_bounded_and_reused_keys_kept` | [tests/k4b/test_a_transport_bound.py:59](../../tests/k4b/test_a_transport_bound.py#L59) |  |
 | `test_real_tables_have_pairwise_disjoint_ids` | test | `test_real_tables_have_pairwise_disjoint_ids` | [tests/hwsb/test_b_streams.py:127](../../tests/hwsb/test_b_streams.py#L127) |  |
 | `test_real_train_dev_streams_match_contract` | test | `test_real_train_dev_streams_match_contract` | [tests/hwsb/test_b_streams.py:40](../../tests/hwsb/test_b_streams.py#L40) |  |
-| `test_real_z_bound_is_exact_fraction_of_exact_upper` | test | `test_real_z_bound_is_exact_fraction_of_exact_upper` | [tests/k4b/test_a_transport_bound.py:68](../../tests/k4b/test_a_transport_bound.py#L68) |  |

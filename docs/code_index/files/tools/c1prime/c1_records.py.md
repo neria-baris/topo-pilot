@@ -129,7 +129,7 @@
 - [tools/hwsu/hwsu_pairs.py](../hwsu/hwsu_pairs.py.md) (line 12, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 22, import)
 - [tools/hwsu/hwsu_resv.py](../hwsu/hwsu_resv.py.md) (line 16, import)
-- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 16, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 15, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 18, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 18, import)
 - [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 29, import)

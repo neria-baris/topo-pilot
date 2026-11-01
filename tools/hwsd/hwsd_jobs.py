@@ -99,13 +99,13 @@ def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) 
     out, j, t0 = Path(out), int(master), time.process_time()
     pf = hwsd_records.preflight_d(out, "SCORE", auth, sched)
     if pf["refused"]:
-        return pf
+        return hd.refuse_exit(out, pf, job, attempt)
     ctx, acc = {}, {}
     with hwsd_bind.bound_hwsd():
         hd.audit_gate(out)
         if not _accept_sample_ok(out, accept_sample):
             stage_records.record_gate(out, "ACCEPT_SAMPLE", REFUSE)
-            return {"refused": True, "reason": "ACCEPT_SAMPLE"}
+            return hd.refuse_exit(out, {"refused": True, "reason": "ACCEPT_SAMPLE"}, job, attempt)
         stage_records.record_gate(out, "ACCEPT_SAMPLE", "PASS")
         _archive_interrupted(out, job, attempt, j)
 
@@ -163,13 +163,13 @@ def run_summary(out, auth, sched, job, attempt, accepts) -> dict:
     out, t0 = Path(out), time.process_time()
     pf = hwsd_records.preflight_d(out, "SUMMARY", auth, sched)
     if pf["refused"]:
-        return pf
+        return hd.refuse_exit(out, pf, job, attempt)
     rep = {}
     with hwsd_bind.bound_hwsd():
         hd.audit_gate(out)
         if not _accept_scores_ok(out, accepts):
             stage_records.record_gate(out, "ACCEPT_SCORE", REFUSE)
-            return {"refused": True, "reason": "ACCEPT_SCORE"}
+            return hd.refuse_exit(out, {"refused": True, "reason": "ACCEPT_SCORE"}, job, attempt)
         stage_records.record_gate(out, "ACCEPT_SCORE", "PASS")
         shared = _shared(out)
 

@@ -370,3 +370,9 @@ Review of the §15 items at hwsu-impl 18030bf; the record is CONTRACT `to_freeze
 - **4 CPU centrals: kept** (J-OF 900 s, DRO 200 s, OF 700 s; pause line 3×). Measured J-OF/DRO cost re-sets the forecast given to the owner, not the contract, so no cost-only change re-opens the freeze.
 - **5 of_b: REVIEWED.** `r_ref` e3710d2 kept; `phase1_files` = 4 documents + 13 modules (E-0).
 - **Test erratum:** author B's `test_contract_reservation_baseline_and_root_baseline` asserts status `REVIEWED` and 70 root rows (was `TO_FREEZE`, 71).
+
+## R-0200-1 erratum (coordinator a944ef89, 2026-11-01; owner addendum 40; appended, existing bytes unchanged, D-0)
+
+- **`seed_search_u` one-pass prefilter.** Before the per-needle check of a line, `seed_search_u` tests the line once against `_prefilter(needles)`, a compiled alternation of every needle (`re.escape`, longest first). A line on which no needle occurs as a substring cannot hit (`hwsc_known.needle_in` needs the needle as a substring), so it is skipped; every other line gets the unchanged `[nd for nd in needles if hwsc_known.needle_in(nd, line)]`. The hits list is identical (walk order, needles order, keys); the §6 row's equality with `hwsc_known.seed_search_c` still holds.
+- **Why:** OF attempt 1 (job 0200) spent 2,897 CPU-s inside OF-0 without finishing; the per-needle search over 199 needles costs ≈ 16× stage C's 12-needle search (R-0200-1).
+- **Evidence:** author B's `test_b_of_seed.py` (36 tests) pass; the coordinator compared the new and the pre-fix search on real subtrees (identical hit lists) and timed the new search over the whole project root (`jobs/0204/review.md`).

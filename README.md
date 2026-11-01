@@ -85,22 +85,20 @@ The PH pipeline recovers the known topology. Vietoris–Rips on the intrinsic me
 
 **At the E4 exit, not yet run:** interventions (X4-causal), X5, X6 and the extensions X1–X3. Later follow-ups are recorded below. Integration tests I03 (mini S1→S4 pipeline) and I05 (bundle round trip) were never built; cross-machine and GPU reproducibility are untested. No claim is made about causal use of the structure or about natural-language LLMs.
 
-## Current follow-up status (17 October 2026)
+## Current follow-up status (1 November 2026)
 
-- **D-2a closed NOT_LEARNED:** both H3 validation models completed 10,000 updates and failed
-  the learnability gate; the remaining 12 models and stage 3 did not run
-  ([review 0033](../agent-handoff/jobs/0033/review.md)).
-- **C1′ closed INCONCLUSIVE/FAMILY_UNMATCHED at M2-cal:** charts passed, but the intervention
-  changed protected readouts and controls did not match. No validation or fresh causal
-  endpoint ran. R13's numerical-tolerance change was ratified in owner addendum 10
-  ([review 0044](../agent-handoff/jobs/0044/review.md)).
-- **K4b:** the technical Z_bound integration defect was fixed and accepted in job 0050.
-  Job 0051 is recorded RUNNING, with no final report at this inspection; that status alone
-  is not an independent liveness check ([status](../agent-handoff/jobs/0051/status.json)).
-- **Maintenance:** D-2a process-tree monitoring and duplicate-run protection, X4-F map
-  validation/export, inner-loop STOP checks and exception-safe accounting were repaired
-  prospectively. Closed scientific verdicts stand. See the
-  [repair record and successor plans](docs/REMEDIATION_PLAN_HE.md).
+Every study below is closed with its registered outcome; nothing is running. Outcomes are as the reviews state them, with their caveats (internal codes in parentheses).
+
+- **Does the learned circle carry information beyond the last four symbols? (K4b):** no covariance of that size was found. In all three original models the covariance of the circle's phase with the beyond-four signal is below the registered margin of 0.01 (outcome EXCLUSION). The margin sits above what the ideal phase-only predictor itself reaches (0.0085), so this does not show that the learned circle lacks beyond-four information ([review](../agent-handoff/jobs/0057/review.md)).
+- **Does the model use the order of events? (X6, stages 0 and 1):** the exact calculation says order matters in principle (stage 0, GO). The trained models show only a weak sensitivity to order, about 6 % of the ideal predictor, far below the registered 25 %. Outcome INCONCLUSIVE; no claim of order use ([stage 0](../agent-handoff/jobs/0066/review.md), [stage 1](../agent-handoff/jobs/0099/review.md)).
+- **Placebo check for the order test (X6ZC):** a control model that should be insensitive to order still responded, and the response matched neither the ideal predictor nor a simple counting error. Outcome UNEXPLAINED; the stage-1 verdict is unchanged ([review](../agent-handoff/jobs/0155/review.md)).
+- **Does the prediction read the circle? (C2, readout attribution):** in all three models the registered linear circle code carries most of the effect on the prediction (outcome USED). This concerns that linear code only ([review](../agent-handoff/jobs/0115/review.md)).
+- **Is the circle code necessary, and does the test fool itself? (C2ND):** the code is the main carrier (other directions carry about 15 % of the effect, CODE_DOMINANT, 3 of 3 models), and on decoys that contain the code but never read it the test correctly said "not used" ([review](../agent-handoff/jobs/0167/review.md)).
+- **Which toy world to train in? (world sweep, stage A):** an oracle-only calculation (no model) selected one world, w*, where the beyond-four information is large enough to test. It makes no claim that any model learns that world ([review](../agent-handoff/jobs/0136/review.md)).
+- **Training pilot in that world (stage B):** two pilot models passed all their registered checks (HWSB_PASS). They are not part of the final test ([review](../agent-handoff/jobs/0175/review.md)).
+- **Full test in that world (stage C):** the registered outcome is SUPPORT in all three new models. After the certified margin, the lower bound of the beyond-four covariance (about 0.040) is above 0.01, and about 0.9 of the oracle comparator is reached. On the rows tested, the circle coordinate is not a function of the last four observations, and it depends on earlier observations in a direction aligned with the oracle. For two models the untrained-network control was unavailable (annotated). This does not establish that the prediction uses the information, and K4b's EXCLUSION in the original models stands ([review](../agent-handoff/jobs/0196/review.md)).
+- **Earlier closed studies (unchanged):** D-2a NOT_LEARNED ([review](../agent-handoff/jobs/0033/review.md)); C1' INCONCLUSIVE/FAMILY_UNMATCHED ([review](../agent-handoff/jobs/0044/review.md)). Process-monitoring and map-validation repairs are described in the [repair record](docs/REMEDIATION_PLAN_HE.md); closed verdicts stand.
+- **Planned next (planning only, nothing run yet):** (1) whether the stage-C models' predictions actually use the beyond-four information carried by the circle; (2) when that information appears during training, using the saved stage-C checkpoints, with no new training. Each run needs an explicit owner approval after its execution freeze. Repeating the full test in more worlds is the next candidate.
 
 ## After E4
 

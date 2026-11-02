@@ -10,12 +10,14 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import time
 from fractions import Fraction
 from pathlib import Path
 
 import hwsb_kb
 import hwsb_known
+import hwsc_bind
 import hwsc_config
 import hwsc_gates
 import hwsc_known
@@ -242,8 +244,9 @@ def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict:
             return kd2()
         if name == "KD3":
             return repro_c(out)
-        if name == "KD4":
-            return hwsd_dry.seq_cases(out=out / "stages" / "KD" / "SEQ")
+        if name == "KD4":  # R-0209-2: unbound (seq_cases binds the dry table); scratch out
+            with hwsc_bind.suspended(), tempfile.TemporaryDirectory(prefix="kd4") as tmp:
+                return hwsd_dry.seq_cases(out=Path(tmp) / "SEQ")
         if name == "KD5":
             return kd5()
         return kd6(job)

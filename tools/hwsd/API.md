@@ -635,3 +635,12 @@ Owner addendum 42 released the CPU pause lines for the track-D run. `run_kd`, `r
 ## 27. KD1 status erratum (job 0210; ruling R-0209-1)
 
 `ident_d` returns `{"n", "per_master"}` without a `status` key and raises `C1GateFailure` on any mismatch; `run_kd` read the missing key as a failure (KD attempt 1, job 0209: every identity check passed, KD1 recorded FAIL_TECHNICAL/KNOWN_CASE). `run_kd`'s KD1 step now returns `dict(ident_d(), status="PASS")`, the KD0 pattern. `ident_d` and its other callers (H1D, SCORE-IDENT) are unchanged.
+
+## 28. KD real-run errata (job 0211; ruling R-0209-2, coordinator pre-run review)
+
+Found by a read-only review of the paths not yet run on real stores, after KD attempt 1 (job 0209).
+1. **KD4 binding.** `run_kd` runs inside `bound_hwsd()`; `seq_cases` binds the dry table itself, and the nested `bound_stage_c` `check_old` would fail (code drift). The KD4 step now runs `seq_cases` inside `hwsc_bind.suspended()` (the KD2/KD3 pattern).
+2. **KD arrays in the store.** `repro_c`'s `chart_one` and `seq_cases` wrote `.npz` files under `stages/KD/` that no obligation name rule classifies, so `write_obligation` at the end of KD (and SAMPLE's lineage check) would fail. KD3's chart arrays and KD4's whole output now go to a temporary folder (under the job's TEMP, removed at the end of the item); only the KD3 construction ledgers stay in `stages/KD/REPRO/` (recorded by `complete_stage`). No comparison or reading changes.
+3. **SAMPLE LGATE after a raised B4-TEST.** `_lgate` uses `ctx.setdefault("s4_files", [])`.
+4. **SUMMARY `--accept` keys.** `_accept_scores_ok` also looks a master up by its string key.
+Regression tests: `tests/hwsd/test_c_continue.py` (KD end to end with stub items under `bound_hwsd()`).

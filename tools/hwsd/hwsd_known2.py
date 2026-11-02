@@ -183,7 +183,10 @@ def repro_c(out, hwsc=dc.HWSC_STORE) -> dict:
 
     out, hwsc, kd = Path(out), Path(hwsc), dc.CONTRACT["known_cases"]["KD3"]
     checks = {}
-    with hwsc_bind.suspended(), _write_guard(hwsc), hwsc_bind.bound_stage_c():
+    # R-0209-2: chart_one's arrays go to a temporary folder, never into the store (only the
+    # ledgers stay under stages/KD/REPRO).
+    with hwsc_bind.suspended(), _write_guard(hwsc), hwsc_bind.bound_stage_c(), \
+            tempfile.TemporaryDirectory(prefix="kd3") as tmp:
         proc = hwsc_data.build_process_c(ArtifactStore(MemoryBackend()))
         tabs = {"cal": _load_table(hwsc, "S3", "HIST_cal_b0.npz", "cal"),
                 "val": _load_table(hwsc, "S3", "HIST_val_b0.npz", "val"),
@@ -206,8 +209,10 @@ def repro_c(out, hwsc=dc.HWSC_STORE) -> dict:
                 A = {s: acts(tabs[s]["canon32"]) for s in ("cal", "val", "test")}
                 a0[f"{j}_{label}"] = np.array_equal(A["cal"], stored_acts[f"{j}_{label}"])
                 d = out / "stages" / "KD" / "REPRO" / str(j) / f"s{step}"
+                d.mkdir(parents=True, exist_ok=True)
+                w = Path(tmp) / str(j) / f"s{step}"
                 led = c1_chart.ConstructionLedger(d / "CHART_CONSTRUCTIONS.json")
-                ch = ds.chart_one(j, lambda s, A=A: A[s], tabs, m["cal"][32], led, cfg, d,
+                ch = ds.chart_one(j, lambda s, A=A: A[s], tabs, m["cal"][32], led, cfg, w,
                                   skip_direct=step == 0)
                 res[(j, step)] = ch
                 if ch["prod"] is not None:
@@ -215,16 +220,16 @@ def repro_c(out, hwsc=dc.HWSC_STORE) -> dict:
                                       planted=True)
                     arr[(j, step)] = r["arrays"]
                 if step == 5000:
-                    ser = _npz(d / "CHART.npz") if ch["prod"] is not None else None
+                    ser = _npz(w / "CHART.npz") if ch["prod"] is not None else None
                     a[f"{j}_chart"] = ser is not None and _same(ser, _npz(s4a / f"CHART_{j}.npz"))
                     a[f"{j}_decoder"] = ch["decoder"] is not None and _same(
-                        _npz(d / "DECODER.npz"), _npz(s4a / f"DECODER_{j}.npz"))
+                        _npz(w / "DECODER.npz"), _npz(s4a / f"DECODER_{j}.npz"))
                     cv, g = ch["c0_val"] or {}, gate_val.get(str(j), {})
                     b[j] = bool(cv) and all(cv.get(k) == g.get(k) for k in (
                         "fidelity", "n_supported", "bins", "resultant"))
                 elif j == dc.MASTERS[0]:
                     a[f"{j}_init_chart"] = ch["prod"] is not None and _same(
-                        _npz(d / "CHART.npz"), _npz(s4a / f"INIT_CHART_{j}.npz"))
+                        _npz(w / "CHART.npz"), _npz(s4a / f"INIT_CHART_{j}.npz"))
                 else:
                     a[f"{j}_init_unavailable"] = ch["c0_cal"]["status"] != "PASS" and \
                         frozen["init_status"].get(str(j)) not in (None, "PASS")

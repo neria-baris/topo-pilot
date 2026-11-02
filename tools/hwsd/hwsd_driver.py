@@ -247,7 +247,7 @@ def _b4(out, ctx) -> dict:
 def _lgate(out, ctx) -> dict:
     p = hwsd_data.save_lgate_q(Path(out), hwsd_data.lgate_oracle(
         ctx["proc"], ctx["tables"]["lgate"]["canon32"]))
-    ctx["s4_files"].append(p)
+    ctx.setdefault("s4_files", []).append(p)  # R-0209-2 (F3): B4-TEST may have raised
     return {}
 
 

@@ -91,3 +91,44 @@ def test_kd1_passes_when_ident_d_returns(tmp_path, monkeypatch):
         encoding="utf-8").splitlines()]
     assert [(g["gate"], g["status"]) for g in gates] == [("KD0", "PASS"), ("KD1", "PASS")]
     assert calls == ["KD2"]
+
+
+def test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store(tmp_path, monkeypatch):
+    """R-0209-2: KD4 runs unbound with output outside the store; KD closes with an obligation."""
+    import hwsc_bind
+    import hwsd_bind
+    import hwsd_dry
+    import numpy as np
+
+    store, seen = tmp_path / "store", {}
+    store.mkdir()
+    monkeypatch.setattr(drec, "pause_or_raise_d", lambda *a, **kw: None)
+    monkeypatch.setattr(hk, "g0d", lambda *a, **kw: {"checks": {}})
+    monkeypatch.setattr(hk, "ident_d", lambda: {"n": 36, "per_master": {}})
+    monkeypatch.setattr(hk, "kd2", lambda: {"status": "PASS"})
+
+    def repro(out):
+        d = Path(out) / "stages" / "KD" / "REPRO" / "1" / "s0"
+        d.mkdir(parents=True)
+        (d / "CHART_CONSTRUCTIONS.json").write_text("{}\n", encoding="utf-8")
+        return {"status": "PASS"}
+
+    def seq(out):
+        seen.update(active=hwsc_bind.ACTIVE, out=Path(out))
+        Path(out).mkdir(parents=True)
+        np.savez(Path(out) / "x.npz", a=np.zeros(2))
+        return {"status": "PASS"}
+
+    monkeypatch.setattr(hk, "repro_c", repro)
+    monkeypatch.setattr(hwsd_dry, "seq_cases", seq)
+    monkeypatch.setattr(hk, "kd5", lambda: {"status": "PASS"})
+    monkeypatch.setattr(hk, "kd6", lambda job: {"status": "PASS"})
+    monkeypatch.setattr(hk, "_audit", lambda: {"status": "PASS", "n_hits": 0})
+    with hwsd_bind.bound_hwsd():
+        rec = hk.run_kd(store, None, None, "9999", 1)
+    assert rec["status"] == "PASS"
+    assert seen["active"] is False
+    assert store.resolve() not in seen["out"].resolve().parents
+    assert not list(store.rglob("*.npz"))
+    assert (store / "REGISTRY_OBLIGATION_9999-a1.json").is_file()
+    assert drec.lineage_d(store)["status"] == "PASS"

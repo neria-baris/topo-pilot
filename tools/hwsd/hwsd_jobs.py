@@ -149,7 +149,9 @@ def _accept_scores_ok(out, accepts) -> bool:
     if isinstance(accepts, list):
         accepts = {int(r["master"]): r for r in accepts if isinstance(r, dict)}
     for j in dc.MASTERS:
-        a, f = (accepts or {}).get(j), Path(out) / "stages" / "SCORE" / str(j) / "ACCEPTANCE.json"
+        acc = accepts or {}
+        a = acc.get(j, acc.get(str(j)))  # R-0209-2 (F4): JSON object files have str keys
+        f = Path(out) / "stages" / "SCORE" / str(j) / "ACCEPTANCE.json"
         if not (isinstance(a, dict) and a.get("verdict") == "ACCEPT" and f.is_file()
                 and a.get("acceptance_sha256") == stage_records.sha256(f)):
             return False

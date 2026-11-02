@@ -157,3 +157,34 @@ def test_reservation_end_accepts_a_root_relative_obligation(rel, ended, tmp_path
         "reservation_sha256": sha(res), "obligation_file": rel,
         "obligation_sha256": sha(store / "REGISTRY_OBLIGATION_OF.json")}), encoding="utf-8")
     assert hwsd_data.reservation_ended(res, root)["ended"] is ended
+
+
+def test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace(tmp_path, monkeypatch):
+    """R-0216-1: the hwsd timed wrapper writes the op_guard records; survives a refused replace."""
+    import os
+
+    import op_guard
+
+    a, b = tmp_path / "a", tmp_path / "b"
+    a.mkdir()
+    b.mkdir()
+    assert op_guard.timed_factory(a, 600)("x", lambda: 7) == 7
+    assert hj.timed_factory_d(b, 600)("x", lambda: 7) == 7
+
+    def rows(d):
+        return [{k: v for k, v in json.loads(x).items() if k not in ("utc", "elapsed_s")}
+                for x in (d / op_guard.LOG).read_text(encoding="utf-8").splitlines()]
+
+    assert rows(a) == rows(b)
+    assert (a / op_guard.MARKER).read_text() == (b / op_guard.MARKER).read_text()
+    real, calls = os.replace, {"n": 0}
+
+    def flaky(src, dst):
+        calls["n"] += 1
+        if calls["n"] <= 3:
+            raise PermissionError(5, "Access is denied")
+        return real(src, dst)
+
+    monkeypatch.setattr(op_guard.os, "replace", flaky)
+    assert hj.timed_factory_d(b, 600)("y", lambda: 8) == 8
+    assert json.loads((b / op_guard.MARKER).read_text())["state"] == "idle"

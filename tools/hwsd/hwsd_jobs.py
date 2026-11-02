@@ -7,6 +7,7 @@ from __future__ import annotations  # noqa: I001
 import hwsd_config as dc
 import argparse
 import json
+import os
 import time
 from fractions import Fraction
 from pathlib import Path
@@ -55,6 +56,49 @@ def _archive_interrupted(out, job, attempt, j) -> None:
                                        files + ([marker] if marker.is_file() else []))
 
 
+def _write_marker_d(out, record, tries=100) -> None:
+    """op_guard.write_marker, retried: the meter reads the marker four times a second and Windows
+    refuses the replace while it is open (R-0216-1)."""
+    for k in range(tries):
+        try:
+            return op_guard.write_marker(out, record)
+        except PermissionError:
+            if k == tries - 1:
+                raise
+            time.sleep(0.02)
+
+
+def timed_factory_d(out, wall_s, clock=time.monotonic, wall_clock=time.time):
+    """op_guard.timed_factory line for line, with _write_marker_d (same records and log)."""
+    out, wall_s, state = Path(out), float(wall_s), {"seq": 0}
+
+    def timed(label, fn):
+        state["seq"] += 1
+        seq = state["seq"]
+        op_guard._log(out, {"event": "start", "seq": seq, "label": label, "deadline_s": wall_s})
+        _write_marker_d(out, {"state": "active", "seq": seq, "label": label,
+                              "started_epoch": wall_clock(), "deadline_s": wall_s,
+                              "pid": os.getpid()})
+        t0 = clock()
+        try:
+            result = fn()
+        except BaseException as exc:
+            _write_marker_d(out, {"state": "idle", "seq": seq, "label": label})
+            op_guard._log(out, {"event": "error", "seq": seq, "label": label,
+                                "type": type(exc).__name__})
+            raise
+        elapsed = clock() - t0
+        _write_marker_d(out, {"state": "idle", "seq": seq, "label": label})
+        op_guard._log(out, {"event": "end", "seq": seq, "label": label, "elapsed_s": elapsed})
+        if elapsed >= wall_s:
+            op_guard._log(out, {"event": "exhausted", "seq": seq, "label": label,
+                                "elapsed_s": elapsed})
+            raise op_guard.Unresolved(f"native operation {label} exceeded its {wall_s} s wall")
+        return result
+
+    return timed
+
+
 def _score_ident(out, accept, j) -> dict:
     out = Path(out)
     from hwsd_known import ident_d
@@ -89,7 +133,7 @@ def _score_ctx(out, j) -> dict:
     z = Fraction(dc.read_json(out / "stages" / "SAMPLE" / "H1D.json")["Z_bound"])
     return {"proc": proc, "tables": tables, "moments": mom, "refs_test": refs,
             "eps": k4b_cert.envelopes(), "q": {1: qz["q1"], 4: qz["q4"], 32: qz["q32"]}, "Z": z,
-            "cfg": k4b_config.chart_cfg(), "out": out, "timed": op_guard.timed_factory(out, 600),
+            "cfg": k4b_config.chart_cfg(), "out": out, "timed": timed_factory_d(out, 600),
             "planted": False}
 
 

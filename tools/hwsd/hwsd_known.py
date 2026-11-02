@@ -227,7 +227,7 @@ def kd6(job) -> dict:
             "returncode": rc, "tests": n, "failures": f, "errors": e}
 
 
-def run_kd(out, auth, sched, job, attempt=1) -> dict:
+def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict:
     import hwsd_dry
 
     out, t0, rec, status = Path(out), time.process_time(), {}, "PASS"
@@ -253,7 +253,7 @@ def run_kd(out, auth, sched, job, attempt=1) -> dict:
             rec[name] = {"status": "NOT_RUN"}
             stage_records.record_gate(out, name, "NOT_RUN")
             continue
-        hwsd_records.pause_or_raise_d(out, "KD", t0, led)
+        hwsd_records.pause_or_raise_d(out, "KD", t0, led, cont)
         try:
             r = step(name)
         except Exception as exc:  # noqa: BLE001  every KD failure is recorded, then stops

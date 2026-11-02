@@ -156,7 +156,7 @@ def _accept_scores_ok(out, accepts) -> bool:
     return True
 
 
-def run_summary(out, auth, sched, job, attempt, accepts) -> dict:
+def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict:
     import hwsd_driver as hd
     import hwsd_summary as dsum
 
@@ -196,7 +196,7 @@ def run_summary(out, auth, sched, job, attempt, accepts) -> dict:
             return {"outcome": rep["outcome"]}
 
         steps = [("BOOTSTRAP", bootstrap), ("STATEMENTS", statements)]
-        recs = hd.run_gates_d(out, [(g, hd.paused(out, "SUMMARY", t0, f)) for g, f in steps])
+        recs = hd.run_gates_d(out, [(g, hd.paused(out, "SUMMARY", t0, f, cont)) for g, f in steps])
     hd.end_obligation(out, job, attempt)
     bad = hd.first_bad(recs)
     out_status = rep.get("outcome", bad) if bad == "PASS" else bad
@@ -266,16 +266,17 @@ def main(argv=None) -> int:
             only = a.only.split(",") if a.only else None
             return 0 if hwsd_dry.run_dry(out, sched, only, job).get("all_pass") else 3
         if a.cmd == "kd":
-            res = hd.run_kd(out, auth, sched, job, attempt)
+            res = hd.run_kd(out, auth, sched, job, attempt, cont=a.__dict__["continue"])
         elif a.cmd == "sample":
-            res = hd.run_sample(out, auth, sched, job, attempt, _load(a.kd_accept))
+            res = hd.run_sample(out, auth, sched, job, attempt, _load(a.kd_accept),
+                                cont=a.__dict__["continue"])
         elif a.cmd == "score":
             res = run_score(out, auth, sched, job, attempt, int(a.master), _load(a.accept),
                             a.__dict__["continue"])
         elif a.cmd == "summary":
             acc = _load(a.accept) or {j: _load(out / f"ACCEPT_SCORE_{j}.json") if (
                 out / f"ACCEPT_SCORE_{j}.json").is_file() else None for j in dc.MASTERS}
-            res = run_summary(out, auth, sched, job, attempt, acc)
+            res = run_summary(out, auth, sched, job, attempt, acc, a.__dict__["continue"])
         else:
             res = hd.run_close(out, REFUSE, a.reason, job, attempt)
     except hwsb_driver.Paused:

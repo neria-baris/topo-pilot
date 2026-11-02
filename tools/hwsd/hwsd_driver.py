@@ -98,14 +98,14 @@ def first_bad(recs, soft=()):
 
 
 # ----------------------------------------------------------------------------------- KD job
-def run_kd(out, auth, sched, job, attempt=1) -> dict:
+def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict:
     out = Path(out)
     pf = hwsd_records.preflight_d(out, "KD", auth, sched)
     if pf["refused"]:
         return refuse_exit(out, pf, job, attempt)
     with hwsd_bind.bound_hwsd():
         audit_gate(out)
-        return hwsd_known.run_kd(out, auth, sched, job, attempt)
+        return hwsd_known.run_kd(out, auth, sched, job, attempt, cont)
 
 
 # -------------------------------------------------------------------------------- SAMPLE job
@@ -252,7 +252,7 @@ def _lgate(out, ctx) -> dict:
 
 
 def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT,
-               scratch=dc.SCRATCH) -> dict:
+               scratch=dc.SCRATCH, cont=None) -> dict:
     out, ctx, t0 = Path(out), {}, time.process_time()
     pf = hwsd_records.preflight_d(out, "SAMPLE", auth, sched)
     if pf["refused"]:
@@ -276,7 +276,7 @@ def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT,
             return {"reservation": rec["id"]}
 
         def b(fn):
-            return paused(out, "SAMPLE", t0, fn)
+            return paused(out, "SAMPLE", t0, fn, cont)
 
         steps = [("G0D", b(lambda: hwsd_known.g0d(out, "SAMPLE", auth, sched, root))),
                  ("RESERVATION", b(reservation)), ("H1D", b(lambda: _h1d(out, ctx))),

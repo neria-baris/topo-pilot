@@ -6,14 +6,14 @@
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1072,
-  "functions and methods (incl. tests)": 9950,
+  "functions and methods (incl. tests)": 9951,
   "import cycles (strongly connected components)": 14,
   "import statements, external": 946,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3455,
+  "import statements, internal resolved": 3456,
   "import statements, internal unresolved": 0,
   "import statements, standard library": 3006,
-  "internal edges (file to file, with kind and line)": 3490,
+  "internal edges (file to file, with kind and line)": 3491,
   "python files": 671
  },
  "cycles": [
@@ -9828,6 +9828,12 @@
    "tools/hwsd/hwsd_data.py",
    "import",
    144
+  ],
+  [
+   "tests/hwsd/test_c_continue.py",
+   "tools/hwsd/hwsd_data.py",
+   "import",
+   195
   ],
   [
    "tests/hwsd/test_c_continue.py",
@@ -25293,9 +25299,9 @@
   },
   "tests/hwsd/test_c_continue.py": {
    "kind": "python",
-   "lines": 190,
+   "lines": 200,
    "purpose": "Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42).",
-   "sha256": "96176aaf233c1160d9f28973ab54daea9266a6a83660ffb637b20fb320f94d50"
+   "sha256": "4819eb72cc99b900b4d7a51961793dc8732e312af3ff3369a5f543d716253e07"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -26709,15 +26715,15 @@
   },
   "tools/hwsd/API.md": {
    "kind": "markdown",
-   "lines": 654,
+   "lines": 658,
    "purpose": "tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1)",
-   "sha256": "e827e7b1e12fa5c7d9044a957ec1b30f9504586dd1d63ec68aed4e1918ea449d"
+   "sha256": "8872dc73fb46b8ebfd2aaada13e130692d2b8665907dd04b67c90a803e984a78"
   },
   "tools/hwsd/CONTRACT.json": {
    "kind": "json",
    "lines": 3254,
    "purpose": "",
-   "sha256": "c71d10058b84bde55e4a89d8e6021fe03ee3d9da2998f8d017082668c58ae5a6"
+   "sha256": "a3634638d15e9eeac3a0283a772b0ff49ffbd02696aeadd063363d83519c0f73"
   },
   "tools/hwsd/PROTOCOL_HWSD_v1.md": {
    "kind": "markdown",
@@ -151556,6 +151562,23 @@
       "tools/x4_circle_history/op_guard.py"
      ],
      "top": "op_guard"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": true,
+     "level": 0,
+     "line": 195,
+     "module": "",
+     "names": [
+      "hwsd_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsd/hwsd_data.py"
+     ],
+     "top": "hwsd_data"
     }
    ],
    "symbols": [
@@ -151654,6 +151677,16 @@
      "qual": "test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace",
      "sig": "def test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace(tmp_path, monkeypatch)",
      "start": 162
+    },
+    {
+     "decorators": [],
+     "doc": "R-0216-2: arrays archived to superseded/<job>-a<k>/ keep their name-rule class.",
+     "end": 200,
+     "kind": "test",
+     "name": "test_archived_score_arrays_are_classified",
+     "qual": "test_archived_score_arrays_are_classified",
+     "sig": "def test_archived_score_arrays_are_classified(tmp_path)",
+     "start": 193
     }
    ],
    "syspath": [
@@ -267540,5 +267573,5 @@
    ]
   }
  },
- "sources_digest": "faa8948e82ee1181b2b91edf170ae3709086291851dd7a6e8a5d8ec13a49c6e9"
+ "sources_digest": "adefa28f1308965dceb6ec3b581fa5b48c35fb802ef0e888a27642d70db227aa"
 }

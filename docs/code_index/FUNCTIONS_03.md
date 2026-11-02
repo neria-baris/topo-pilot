@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_rank_key_tuple` | test | `test_rank_key_tuple` | [tests/hws/test_a_classify.py:228](../../tests/hws/test_a_classify.py#L228) |  |
 | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | test | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | [tests/c2_readout/test_a_readout.py:125](../../tests/c2_readout/test_a_readout.py#L125) |  |
 | `test_rank_tolerance_is_relative_and_used` | test | `test_rank_tolerance_is_relative_and_used` | [tests/analysis/test_x4f_erasure.py:238](../../tests/analysis/test_x4f_erasure.py#L238) |  |
 | `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |

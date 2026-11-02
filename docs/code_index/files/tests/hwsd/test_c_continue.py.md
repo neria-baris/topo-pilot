@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsd/test_c_continue.py](../../../../../tests/hwsd/test_c_continue.py)
 - Kind: python
-- Lines: 190
+- Lines: 200
 
 ## Module docstring
 
@@ -21,6 +21,7 @@
 - `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](../../tools/hwsd/hwsd_dry.py.md) (line 100, via sys.path edit) (inside a function)
 - `import hwsd_data` -> [tools/hwsd/hwsd_data.py](../../tools/hwsd/hwsd_data.py.md) (line 144, via sys.path edit) (inside a function)
 - `import op_guard` -> [tools/x4_circle_history/op_guard.py](../../tools/x4_circle_history/op_guard.py.md) (line 166, via unique basename) (inside a function)
+- `import hwsd_data` -> [tools/hwsd/hwsd_data.py](../../tools/hwsd/hwsd_data.py.md) (line 195, via sys.path edit) (inside a function)
 
 ### External (third-party)
 
@@ -71,4 +72,5 @@
 - **test `test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store`** [L96-134]: `def test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store(tmp_path, monkeypatch)` - R-0209-2: KD4 runs unbound with output outside the store; KD closes with an obligation.
 - **test `test_reservation_end_accepts_a_root_relative_obligation`** [L140-159]: `def test_reservation_end_accepts_a_root_relative_obligation(rel, ended, tmp_path)` decorators: @pytest.mark.parametrize('rel,ended', [('hwsu-store/REGISTRY_OBLIGATION_OF.json', True), ('REGISTRY_OBLIGATION_OF.json', True), ('other/REGISTRY_OBLIGATION_OF.json', False)]) - R-0213-1: track U names the obligation relative to the root (J8 leaves it open).
 - **test `test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace`** [L162-190]: `def test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace(tmp_path, monkeypatch)` - R-0216-1: the hwsd timed wrapper writes the op_guard records; survives a refused replace.
+- **test `test_archived_score_arrays_are_classified`** [L193-200]: `def test_archived_score_arrays_are_classified(tmp_path)` - R-0216-2: arrays archived to superseded/<job>-a<k>/ keep their name-rule class.
 

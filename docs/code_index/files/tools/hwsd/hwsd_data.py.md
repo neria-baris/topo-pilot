@@ -69,6 +69,7 @@
 - [tests/hwsd/test_b_registry_r10.py](../../tests/hwsd/test_b_registry_r10.py.md) (line 15, import)
 - [tests/hwsd/test_b_reservation.py](../../tests/hwsd/test_b_reservation.py.md) (line 14, import)
 - [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 144, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 195, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 18, import)
 - [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 37, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 26, import)

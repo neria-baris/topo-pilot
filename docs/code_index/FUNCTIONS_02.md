@@ -1728,6 +1728,7 @@
 | `test_archive_attempt_moves_files_with_sha256sums` | test | `test_archive_attempt_moves_files_with_sha256sums` | [tests/k4b/test_b_rerun.py:73](../../tests/k4b/test_b_rerun.py#L73) |  |
 | `test_archive_partial_moves_only_unlisted_files` | test | `test_archive_partial_moves_only_unlisted_files` | [tests/hws/test_b_records.py:161](../../tests/hws/test_b_records.py#L161) |  |
 | `test_archive_stale_marker` | test | `test_archive_stale_marker` | [tests/circle_history/test_builder_v24_runtime.py:98](../../tests/circle_history/test_builder_v24_runtime.py#L98) |  |
+| `test_archived_score_arrays_are_classified` | test | `test_archived_score_arrays_are_classified` | [tests/hwsd/test_c_continue.py:193](../../tests/hwsd/test_c_continue.py#L193) | R-0216-2: arrays archived to superseded/<job>-a<k>/ keep their name-rule class. |
 | `test_archived_suffixes_are_kept` | test | `test_archived_suffixes_are_kept` | [tests/k4b/test_b_rerun.py:96](../../tests/k4b/test_b_rerun.py#L96) |  |
 | `test_archived_wall_label_protocol_reading` | test | `test_archived_wall_label_protocol_reading` | [tests/hwsd/test_a_scorer.py:217](../../tests/hwsd/test_a_scorer.py#L217) |  |
 | `test_archived_wall_record_and_newest_attempt` | test | `test_archived_wall_record_and_newest_attempt` | [tests/hwsd/test_b_records_meter.py:99](../../tests/hwsd/test_b_records_meter.py#L99) |  |
@@ -3990,4 +3991,3 @@
 | `test_rank_failures_keep_every_column` | test | `test_rank_failures_keep_every_column` | [tests/c2_readout/test_b_fwl_l1.py:97](../../tests/c2_readout/test_b_fwl_l1.py#L97) |  |
 | `test_rank_for_protocol_ranks` | test | `test_rank_for_protocol_ranks` | [tests/c1prime/test_b_inference.py:187](../../tests/c1prime/test_b_inference.py#L187) |  |
 | `test_rank_key_every_tie_break_level` | test | `test_rank_key_every_tie_break_level` | [tests/hws/test_a_classify.py:222](../../tests/hws/test_a_classify.py#L222) |  |
-| `test_rank_key_tuple` | test | `test_rank_key_tuple` | [tests/hws/test_a_classify.py:228](../../tests/hws/test_a_classify.py#L228) |  |

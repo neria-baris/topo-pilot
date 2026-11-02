@@ -46,7 +46,7 @@
 | `need` | function | `need` | [tests/hwsb/test_a_learning.py:47](../../tests/hwsb/test_a_learning.py#L47) |  |
 | `need` | function | `need` | [tests/hwsb/test_a_outcomes.py:59](../../tests/hwsb/test_a_outcomes.py#L59) |  |
 | `needle_in` | function | `needle_in` | [tools/hwsc/hwsc_known.py:38](../../tools/hwsc/hwsc_known.py#L38) |  |
-| `needles_d` | function | `needles_d` | [tools/hwsd/hwsd_known.py:70](../../tools/hwsd/hwsd_known.py#L70) |  |
+| `needles_d` | function | `needles_d` | [tools/hwsd/hwsd_known.py:72](../../tools/hwsd/hwsd_known.py#L72) |  |
 | `needs_owner` | function | `needs_owner` | [tools/k4b/k4b_release.py:226](../../tools/k4b/k4b_release.py#L226) | True iff an outcome-bearing quantity would change, or was computed at/after failure. |
 | `nested_ridge` | function | `nested_ridge` | [src/topo_pilot/experiment/x4f_probe.py:55](../../src/topo_pilot/experiment/x4f_probe.py#L55) | Leave-one-panel-out selection over calibration panels, refit, score once. |
 | `NestedResult` | class | `NestedResult` | [src/topo_pilot/experiment/x4f_probe.py:23](../../src/topo_pilot/experiment/x4f_probe.py#L23) | Selected ``lam``, outer-validation ``r2`` (None + status if undefined), validation |
@@ -204,7 +204,7 @@
 | `overall_verdict` | function | `overall_verdict` | [src/topo_pilot/analysis/horizon_pools.py:180](../../src/topo_pilot/analysis/horizon_pools.py#L180) | ``(GO \| NO-GO \| INCONCLUSIVE, reason)`` per protocol x4b-v1 section 7. |
 | `overdue` | function | `overdue` | [tools/x4_circle_history/op_guard.py:74](../../tools/x4_circle_history/op_guard.py#L74) | Kill reason if the marker shows an active operation past its deadline, else None. |
 | `overdue_marker` | function | `overdue_marker` | [tests/k4b/test_b_meter.py:178](../../tests/k4b/test_b_meter.py#L178) |  |
-| `overlap_check` | function | `overlap_check` | [tools/hwsd/hwsd_known.py:80](../../tools/hwsd/hwsd_known.py#L80) |  |
+| `overlap_check` | function | `overlap_check` | [tools/hwsd/hwsd_known.py:82](../../tools/hwsd/hwsd_known.py#L82) |  |
 | `overlap_E` | function | `overlap_E` | [tools/theory_exact/theory_exact3.py:68](../../tools/theory_exact/theory_exact3.py#L68) |  |
 | `OverlapGaussian` | class | `OverlapGaussian` | [src/topo_pilot/process/emission.py:130](../../src/topo_pilot/process/emission.py#L130) | O: ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)``, no truncation, symbols renamed. |
 | `own` | function | `own` | [tests/hwsc/test_b_registry.py:363](../../tests/hwsc/test_b_registry.py#L363) |  |
@@ -988,7 +988,7 @@
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_driver.py:56](../../tools/hwsc/hwsc_driver.py#L56) |  |
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_known.py:248](../../tools/hwsc/hwsc_known.py#L248) |  |
 | `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_driver.py:101](../../tools/hwsd/hwsd_driver.py#L101) |  |
-| `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_known.py:230](../../tools/hwsd/hwsd_known.py#L230) |  |
+| `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_known.py:232](../../tools/hwsd/hwsd_known.py#L232) |  |
 | `run_key` | function | `run_key` | [tools/hwsb/hwsb_config.py:187](../../tools/hwsb/hwsb_config.py#L187) |  |
 | `run_key` | function | `run_key` | [tools/hwsc/hwsc_config.py:154](../../tools/hwsc/hwsc_config.py#L154) |  |
 | `run_key` | function | `run_key` | [tools/x6_stage1/x6s1_data.py:168](../../tools/x6_stage1/x6s1_data.py#L168) |  |
@@ -1018,7 +1018,7 @@
 | `run_stage` | function | `run_stage` | [tools/c2_nd/nd_driver.py:350](../../tools/c2_nd/nd_driver.py#L350) | Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT |
 | `run_stage` | function | `run_stage` | [tools/c2_readout/c2_driver.py:357](../../tools/c2_readout/c2_driver.py#L357) | Lazy dispatch (API.md §19.2-§19.3): PLAN steps in order; NOT_RUN after a study stop. |
 | `run_stage` | function | `run_stage` | [tools/x6_stage1/x6s1_run.py:497](../../tools/x6_stage1/x6s1_run.py#L497) | PLAN[stage] (step, fn(ctx), validity) in §8 order after the disk floor and boundary; the |
-| `run_summary` | function | `run_summary` | [tools/hwsd/hwsd_jobs.py:159](../../tools/hwsd/hwsd_jobs.py#L159) |  |
+| `run_summary` | function | `run_summary` | [tools/hwsd/hwsd_jobs.py:161](../../tools/hwsd/hwsd_jobs.py#L161) |  |
 | `run_sweep` | function | `run_sweep` | [tools/hws/hws_driver.py:275](../../tools/hws/hws_driver.py#L275) | S1 -> (X1) -> (S2) -> S3 under the frozen rules (§6), then the outcome and report. |
 | `run_table` | function | `run_table` | [src/topo_pilot/experiment/report_x4.py:81](../../src/topo_pilot/experiment/report_x4.py#L81) |  |
 | `run_tool` | function | `run_tool` | [src/topo_pilot/experiment/stages.py:68](../../src/topo_pilot/experiment/stages.py#L68) | Run ``cmd`` in the repository; returns (exit code 0, :func:`tool_line`). |
@@ -1192,7 +1192,7 @@
 | `seed_key` | function | `seed_key` | [tests/k4b/test_b_h1_meta.py:58](../../tests/k4b/test_b_h1_meta.py#L58) |  |
 | `seed_search` | function | `seed_search` | [tools/hws/hws_driver.py:64](../../tools/hws/hws_driver.py#L64) | §6.6 G0 discovery search; excluded folders are pruned before any listing or open. |
 | `seed_search_c` | function | `seed_search_c` | [tools/hwsc/hwsc_known.py:51](../../tools/hwsc/hwsc_known.py#L51) |  |
-| `seed_search_d` | function | `seed_search_d` | [tools/hwsd/hwsd_known.py:48](../../tools/hwsd/hwsd_known.py#L48) |  |
+| `seed_search_d` | function | `seed_search_d` | [tools/hwsd/hwsd_known.py:50](../../tools/hwsd/hwsd_known.py#L50) |  |
 | `seeded` | function | `seeded` | [tests/oracle_profile/test_oracle_profile_kernels.py:44](../../tests/oracle_profile/test_oracle_profile_kernels.py#L44) |  |
 | `seeds` | function | `seeds` | [tests/learner/conftest.py:35](../../tests/learner/conftest.py#L35) |  |
 | `SeedTree` | class | `SeedTree` | [src/topo_pilot/contracts/ids.py:99](../../src/topo_pilot/contracts/ids.py#L99) | Deterministic, platform-independent seed derivation (the only source of randomness). |
@@ -3063,6 +3063,7 @@
 | `test_kd2b_stream_check` | test | `test_kd2b_stream_check` | [tests/hwsd/test_b_binding.py:277](../../tests/hwsd/test_b_binding.py#L277) |  |
 | `test_kd4_sequence_readings_on_planted_rows` | test | `test_kd4_sequence_readings_on_planted_rows` | [tests/hwsd/test_a_kd4.py:130](../../tests/hwsd/test_a_kd4.py#L130) |  |
 | `test_kd5_passes_on_w0` | test | `test_kd5_passes_on_w0` | [tests/hwsd/test_a_learning.py:154](../../tests/hwsd/test_a_learning.py#L154) |  |
+| `test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store` | test | `test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store` | [tests/hwsd/test_c_continue.py:96](../../tests/hwsd/test_c_continue.py#L96) | R-0209-2: KD4 runs unbound with output outside the store; KD closes with an obligation. |
 | `test_kd_only_store_in_track_u_form_passes` | test | `test_kd_only_store_in_track_u_form_passes` | [tests/hwsd/test_b_registry_r10.py:287](../../tests/hwsd/test_b_registry_r10.py#L287) |  |
 | `test_kd_only_store_with_its_obligation_passes` | test | `test_kd_only_store_with_its_obligation_passes` | [tests/hwsd/test_b_registry_r10.py:154](../../tests/hwsd/test_b_registry_r10.py#L154) |  |
 | `test_kernel_matches_fraction_formula` | test | `test_kernel_matches_fraction_formula` | [tests/x2a_stage0/test_x2a_stage0.py:167](../../tests/x2a_stage0/test_x2a_stage0.py#L167) |  |
@@ -3990,5 +3991,3 @@
 | `test_rank_key_tuple` | test | `test_rank_key_tuple` | [tests/hws/test_a_classify.py:228](../../tests/hws/test_a_classify.py#L228) |  |
 | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | test | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | [tests/c2_readout/test_a_readout.py:125](../../tests/c2_readout/test_a_readout.py#L125) |  |
 | `test_rank_tolerance_is_relative_and_used` | test | `test_rank_tolerance_is_relative_and_used` | [tests/analysis/test_x4f_erasure.py:238](../../tests/analysis/test_x4f_erasure.py#L238) |  |
-| `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |
-| `test_ranks` | test | `test_ranks` | [tests/hwsd/test_a_known_bound.py:185](../../tests/hwsd/test_a_known_bound.py#L185) |  |

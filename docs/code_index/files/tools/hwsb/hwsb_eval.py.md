@@ -65,7 +65,7 @@
 - [tools/hwsd/hwsd_data.py](../hwsd/hwsd_data.py.md) (line 17, import)
 - [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 18, import)
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 15, import)
-- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 192, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 194, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 15, import)
 
 ## Top-level constants

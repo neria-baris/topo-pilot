@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsd/hwsd_jobs.py](../../../../../tools/hwsd/hwsd_jobs.py)
 - Kind: python
-- Lines: 288
+- Lines: 290
 
 ## Module docstring
 
@@ -33,10 +33,10 @@
 - `from topo_pilot.contracts.backends import MemoryBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 31, via package root)
 - `from hwsd_known import ident_d` -> [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 60, via same directory) (inside a function)
 - `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 97, via same directory) (inside a function)
-- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 160, via same directory) (inside a function)
-- `import hwsd_summary` -> [tools/hwsd/hwsd_summary.py](hwsd_summary.py.md) (line 161, via same directory) (inside a function)
-- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 226, via same directory) (inside a function)
-- `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 264, via same directory) (inside a function)
+- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 162, via same directory) (inside a function)
+- `import hwsd_summary` -> [tools/hwsd/hwsd_summary.py](hwsd_summary.py.md) (line 163, via same directory) (inside a function)
+- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 228, via same directory) (inside a function)
+- `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 266, via same directory) (inside a function)
 
 ### External (third-party)
 
@@ -86,9 +86,9 @@
 - **function `_score_ctx`** [L78-93]: `def _score_ctx(out, j) -> dict`
 - **function `run_score`** [L96-139]: `def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) -> dict`
 - **function `_shared`** [L142-145]: `def _shared(out) -> dict`
-- **function `_accept_scores_ok`** [L148-156]: `def _accept_scores_ok(out, accepts) -> bool`
-- **function `run_summary`** [L159-203]: `def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict`
-- **function `_load`** [L207-208]: `def _load(p)`
-- **function `_exit`** [L211-217]: `def _exit(res) -> int`
-- **function `main`** [L225-288]: `def main(argv=None) -> int`
+- **function `_accept_scores_ok`** [L148-158]: `def _accept_scores_ok(out, accepts) -> bool`
+- **function `run_summary`** [L161-205]: `def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict`
+- **function `_load`** [L209-210]: `def _load(p)`
+- **function `_exit`** [L213-219]: `def _exit(res) -> int`
+- **function `main`** [L227-290]: `def main(argv=None) -> int`
 

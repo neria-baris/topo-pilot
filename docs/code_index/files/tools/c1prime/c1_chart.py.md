@@ -61,7 +61,7 @@
 - [tools/c2_readout/c2_stage_base.py](../c2_readout/c2_stage_base.py.md) (line 16, import)
 - [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 16, import)
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 72, import)
-- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 199, import)
+- [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 202, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 12, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 13, import)
 

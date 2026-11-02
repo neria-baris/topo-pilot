@@ -58,7 +58,7 @@
 
 - [tools/hwsb/hwsb_known.py](hwsb_known.py.md) (line 350, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 16, import)
-- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 17, import)
+- [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 18, import)
 
 ## Top-level constants
 

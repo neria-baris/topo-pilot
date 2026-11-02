@@ -75,10 +75,11 @@
 ## Imported by
 
 - [tests/hwsd/test_a_kd4.py](../../tests/hwsd/test_a_kd4.py.md) (line 30, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 100, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 33, import)
 - [tools/hwsd/hwsd_dry3.py](hwsd_dry3.py.md) (line 41, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 264, import)
-- [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 231, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 266, import)
+- [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 233, import)
 - [tools/hwsd/hwsd_known2.py](hwsd_known2.py.md) (line 50, import)
 
 ## Top-level constants

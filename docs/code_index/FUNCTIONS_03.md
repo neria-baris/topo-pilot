@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |
+| `test_ranks` | test | `test_ranks` | [tests/hwsd/test_a_known_bound.py:185](../../tests/hwsd/test_a_known_bound.py#L185) |  |
 | `test_rate_matched_diag_below_floor_invalid` | test | `test_rate_matched_diag_below_floor_invalid` | [tests/analysis/test_x5_kernel.py:227](../../tests/analysis/test_x5_kernel.py#L227) |  |
 | `test_rate_matched_diag_boundary` | test | `test_rate_matched_diag_boundary` | [tests/analysis/test_x5_kernel.py:207](../../tests/analysis/test_x5_kernel.py#L207) |  |
 | `test_rate_matched_negative_entry_invalid` | test | `test_rate_matched_negative_entry_invalid` | [tests/analysis/test_x5_kernel.py:221](../../tests/analysis/test_x5_kernel.py#L221) |  |

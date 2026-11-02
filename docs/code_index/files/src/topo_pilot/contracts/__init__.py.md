@@ -349,7 +349,7 @@
 - [tools/hwsd/hwsd_dry.py](../../../tools/hwsd/hwsd_dry.py.md) (line 43, import)
 - [tools/hwsd/hwsd_dry3.py](../../../tools/hwsd/hwsd_dry3.py.md) (line 44, import)
 - [tools/hwsd/hwsd_jobs.py](../../../tools/hwsd/hwsd_jobs.py.md) (line 30, import)
-- [tools/hwsd/hwsd_known.py](../../../tools/hwsd/hwsd_known.py.md) (line 31, import)
+- [tools/hwsd/hwsd_known.py](../../../tools/hwsd/hwsd_known.py.md) (line 33, import)
 - [tools/hwsd/hwsd_known2.py](../../../tools/hwsd/hwsd_known2.py.md) (line 30, import)
 - [tools/hwsd/hwsd_readers.py](../../../tools/hwsd/hwsd_readers.py.md) (line 19, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 18, import)

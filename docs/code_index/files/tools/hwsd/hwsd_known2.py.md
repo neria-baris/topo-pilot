@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsd/hwsd_known2.py](../../../../../tools/hwsd/hwsd_known2.py)
 - Kind: python
-- Lines: 252
+- Lines: 257
 
 ## Module docstring
 
@@ -34,7 +34,7 @@
 - `import hwsd_score` -> [tools/hwsd/hwsd_score.py](hwsd_score.py.md) (line 51, via same directory) (inside a function)
 - `import c1_chart` -> [tools/c1prime/c1_chart.py](../c1prime/c1_chart.py.md) (line 72, via unique basename) (inside a function)
 - `import hwsd_score` -> [tools/hwsd/hwsd_score.py](hwsd_score.py.md) (line 182, via same directory) (inside a function)
-- `import c1_chart` -> [tools/c1prime/c1_chart.py](../c1prime/c1_chart.py.md) (line 199, via unique basename) (inside a function)
+- `import c1_chart` -> [tools/c1prime/c1_chart.py](../c1prime/c1_chart.py.md) (line 202, via unique basename) (inside a function)
 
 ### External (third-party)
 
@@ -69,7 +69,7 @@
 
 ## Imported by
 
-- [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 37, import)
+- [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 39, import)
 
 ## Top-level constants
 
@@ -86,5 +86,5 @@
 - **function `_same`** [L166-169]: `def _same(a, b) -> bool`
 - **function `_val`** [L172-173]: `def _val(x)`
 - **function `_load_table`** [L176-178]: `def _load_table(hwsc, stage, name, split) -> dict`
-- **function `repro_c`** [L181-250]: `def repro_c(out, hwsc=dc.HWSC_STORE) -> dict`
+- **function `repro_c`** [L181-255]: `def repro_c(out, hwsc=dc.HWSC_STORE) -> dict`
 

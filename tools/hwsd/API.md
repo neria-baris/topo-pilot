@@ -631,3 +631,7 @@ D-0201-1: DRD4's KD4 case outputs are written under the fixture root, per decisi
 ## 26. Continuation erratum (job 0208; owner addendum 42)
 
 Owner addendum 42 released the CPU pause lines for the track-D run. `run_kd`, `run_sample` and `run_summary` now take `cont` (the path of a continuation record `{"stages": [...]}`, CLI `--continue`) and pass it to `hwsd_records.pause_or_raise_d`, as `run_score` already did; a stage named in the record is exempt from its pause check. Without `--continue` the behaviour is unchanged. No threshold, gate, statement or record format changes.
+
+## 27. KD1 status erratum (job 0210; ruling R-0209-1)
+
+`ident_d` returns `{"n", "per_master"}` without a `status` key and raises `C1GateFailure` on any mismatch; `run_kd` read the missing key as a failure (KD attempt 1, job 0209: every identity check passed, KD1 recorded FAIL_TECHNICAL/KNOWN_CASE). `run_kd`'s KD1 step now returns `dict(ident_d(), status="PASS")`, the KD0 pattern. `ident_d` and its other callers (H1D, SCORE-IDENT) are unchanged.

@@ -1,10 +1,12 @@
-"""Coordinator 080a3e03 (job 0208, owner addendum 42).
+"""Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42).
 
---continue reaches the KD, SAMPLE and SUMMARY pause checks (API §26).
+--continue reaches the KD, SAMPLE and SUMMARY pause checks (API §26); KD1 records PASS when
+ident_d returns (API §27).
 """
 
 from __future__ import annotations  # noqa: I001
 
+import json
 import sys
 from pathlib import Path
 
@@ -19,7 +21,7 @@ import hwsd_records as drec  # noqa: E402
 import pytest  # noqa: E402
 
 
-class _Stop(Exception):
+class _Stop(BaseException):  # not swallowed by run_kd's per-item except
     pass
 
 
@@ -69,3 +71,23 @@ def test_sample_and_summary_wrappers_honour_a_continuation(tmp_path, monkeypatch
     for stage in ("SAMPLE", "SUMMARY"):
         assert hd.paused(tmp_path, stage, 0.0, lambda: {"ok": 1}, "c.json")() == {"ok": 1}
     assert seen == [("SAMPLE", "c.json"), ("SUMMARY", "c.json")]
+
+
+def test_kd1_passes_when_ident_d_returns(tmp_path, monkeypatch):
+    calls = []
+    monkeypatch.setattr(drec, "pause_or_raise_d", lambda *a, **kw: None)
+    monkeypatch.setattr(hk, "g0d", lambda *a, **kw: {"checks": {}})
+    monkeypatch.setattr(hk, "ident_d", lambda: {"n": 36, "per_master": {}})
+
+    def stop(*a, **kw):
+        calls.append("KD2")
+        raise _Stop
+
+    monkeypatch.setattr(hk, "kd2", stop)
+    (tmp_path / "store").mkdir()
+    with pytest.raises(_Stop):
+        hk.run_kd(tmp_path / "store", None, None, "9999", 1)
+    gates = [json.loads(x) for x in (tmp_path / "store" / "GATES.jsonl").read_text(
+        encoding="utf-8").splitlines()]
+    assert [(g["gate"], g["status"]) for g in gates] == [("KD0", "PASS"), ("KD1", "PASS")]
+    assert calls == ["KD2"]

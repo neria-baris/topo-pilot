@@ -237,7 +237,7 @@ def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict:
         if name == "KD0":
             return dict(g0d(out, "KD", auth, sched), status="PASS")
         if name == "KD1":
-            return ident_d()
+            return dict(ident_d(), status="PASS")  # R-0209-1: ident_d raises on any mismatch
         if name == "KD2":
             return kd2()
         if name == "KD3":

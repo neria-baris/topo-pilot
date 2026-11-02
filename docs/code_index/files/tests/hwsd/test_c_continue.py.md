@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsd/test_c_continue.py](../../../../../tests/hwsd/test_c_continue.py)
 - Kind: python
-- Lines: 134
+- Lines: 159
 
 ## Module docstring
 
@@ -19,6 +19,7 @@
 - `import hwsc_bind` -> [tools/hwsc/hwsc_bind.py](../../tools/hwsc/hwsc_bind.py.md) (line 98, via unique basename) (inside a function)
 - `import hwsd_bind` -> [tools/hwsd/hwsd_bind.py](../../tools/hwsd/hwsd_bind.py.md) (line 99, via sys.path edit) (inside a function)
 - `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](../../tools/hwsd/hwsd_dry.py.md) (line 100, via sys.path edit) (inside a function)
+- `import hwsd_data` -> [tools/hwsd/hwsd_data.py](../../tools/hwsd/hwsd_data.py.md) (line 144, via sys.path edit) (inside a function)
 
 ### External (third-party)
 
@@ -28,6 +29,7 @@
 ### Standard library
 
 - `__future__` (lines 7)
+- `hashlib` (lines 142)
 - `json` (lines 9)
 - `pathlib` (lines 11)
 - `sys` (lines 10)
@@ -65,4 +67,5 @@
 - **test `test_sample_and_summary_wrappers_honour_a_continuation`** [L66-73]: `def test_sample_and_summary_wrappers_honour_a_continuation(tmp_path, monkeypatch)`
 - **test `test_kd1_passes_when_ident_d_returns`** [L76-93]: `def test_kd1_passes_when_ident_d_returns(tmp_path, monkeypatch)`
 - **test `test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store`** [L96-134]: `def test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store(tmp_path, monkeypatch)` - R-0209-2: KD4 runs unbound with output outside the store; KD closes with an obligation.
+- **test `test_reservation_end_accepts_a_root_relative_obligation`** [L140-159]: `def test_reservation_end_accepts_a_root_relative_obligation(rel, ended, tmp_path)` decorators: @pytest.mark.parametrize('rel,ended', [('hwsu-store/REGISTRY_OBLIGATION_OF.json', True), ('REGISTRY_OBLIGATION_OF.json', True), ('other/REGISTRY_OBLIGATION_OF.json', False)]) - R-0213-1: track U names the obligation relative to the root (J8 leaves it open).
 

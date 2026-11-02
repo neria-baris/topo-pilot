@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsd/hwsd_data.py](../../../../../tools/hwsd/hwsd_data.py)
 - Kind: python
-- Lines: 397
+- Lines: 400
 
 ## Module docstring
 
@@ -68,6 +68,7 @@
 - [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 17, import)
 - [tests/hwsd/test_b_registry_r10.py](../../tests/hwsd/test_b_registry_r10.py.md) (line 15, import)
 - [tests/hwsd/test_b_reservation.py](../../tests/hwsd/test_b_reservation.py.md) (line 14, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 144, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 18, import)
 - [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 37, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 26, import)
@@ -115,6 +116,6 @@
 - **function `start_reservation_d`** [L290-303]: `def start_reservation_d(store, attempt, utc) -> tuple`
 - **function `verify_reservation_d`** [L306-307]: `def verify_reservation_d(path, reservation_id, sampling_began=False) -> dict`
 - **function `end_reservation`** [L310-338]: `def end_reservation(store, reservation_id, utc, obligation_path, written_by='hwsd_data.end_reservation') -> dict`
-- **function `reservation_ended`** [L341-368]: `def reservation_ended(res_path, root=None) -> dict`
-- **function `w2_attest`** [L371-397]: `def w2_attest(root=None, exclude=()) -> dict`
+- **function `reservation_ended`** [L341-371]: `def reservation_ended(res_path, root=None) -> dict`
+- **function `w2_attest`** [L374-400]: `def w2_attest(root=None, exclude=()) -> dict`
 

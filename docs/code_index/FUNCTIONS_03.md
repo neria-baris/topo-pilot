@@ -154,6 +154,7 @@
 | `test_require_table_over_every_gate` | test | `test_require_table_over_every_gate` | [tests/c2_readout/test_b_policy.py:83](../../tests/c2_readout/test_b_policy.py#L83) |  |
 | `test_require_write_outside_allowed` | test | `test_require_write_outside_allowed` | [tests/c2_nd/test_b_policy.py:135](../../tests/c2_nd/test_b_policy.py#L135) |  |
 | `test_reservation_check` | test | `test_reservation_check` | [tests/c2_nd/test_b_registry.py:382](../../tests/c2_nd/test_b_registry.py#L382) |  |
+| `test_reservation_end_accepts_a_root_relative_obligation` | test | `test_reservation_end_accepts_a_root_relative_obligation` | [tests/hwsd/test_c_continue.py:140](../../tests/hwsd/test_c_continue.py#L140) | R-0213-1: track U names the obligation relative to the root (J8 leaves it open). |
 | `test_resid_post_0_patch_propagates_to_later_positions` | test | `test_resid_post_0_patch_propagates_to_later_positions` | [tests/learner/test_patch.py:111](../../tests/learner/test_patch.py#L111) | The forward continues through blocks[1]: later positions attend to the patched vector. |
 | `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | test | `test_resid_post_2_prefix_unchanged_and_own_patched_key_value` | [tests/c2_readout/test_b_patch.py:171](../../tests/c2_readout/test_b_patch.py#L171) |  |
 | `test_residual_difference_within_two_rho` | test | `test_residual_difference_within_two_rho` | [tests/k4b/test_a_lemma_t.py:122](../../tests/k4b/test_a_lemma_t.py#L122) |  |
@@ -1263,7 +1264,7 @@
 | `w0` | function | `w0` | [tests/hwsb/test_b_streams.py:148](../../tests/hwsb/test_b_streams.py#L148) |  |
 | `w0_process` | function | `w0_process` | [tools/hwsb/hwsb_known.py:158](../../tools/hwsb/hwsb_known.py#L158) |  |
 | `w1_stats` | function | `w1_stats` | [tests/x6zc/test_x6zc_core.py:104](../../tests/x6zc/test_x6zc_core.py#L104) |  |
-| `w2_attest` | function | `w2_attest` | [tools/hwsd/hwsd_data.py:371](../../tools/hwsd/hwsd_data.py#L371) |  |
+| `w2_attest` | function | `w2_attest` | [tools/hwsd/hwsd_data.py:374](../../tools/hwsd/hwsd_data.py#L374) |  |
 | `w32` | function | `w32` | [tools/c2_nd/nd_split.py:39](../../tools/c2_nd/nd_split.py#L39) |  |
 | `w32` | function | `w32` | [tools/c2_readout/c2_stage_base.py:226](../../tools/c2_readout/c2_stage_base.py#L226) |  |
 | `w_hat` | function | `w_hat` | [tools/c1prime/c1_fit.py:206](../../tools/c1prime/c1_fit.py#L206) |  |

@@ -1170,7 +1170,7 @@ Edge counts are file-to-file edges between different subpackages.
 - -> src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_records.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_dry.py, tools/hwsd/hwsd_config.py, tools/k4b/k4b_data.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsd/test_b_binding.py, tests/hwsd/test_b_data.py, tests/hwsd/test_b_guard_search.py, tests/hwsd/test_b_records_meter.py, tests/hwsd/test_b_registry_build.py, tests/hwsd/test_b_registry_r10.py, tests/hwsd/test_b_registry_r9.py, tests/hwsd/test_b_reservation.py
 ### `tests/hwsd/test_c_continue.py`
-- -> tools/hwsc/hwsc_bind.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_records.py
+- -> tools/hwsc/hwsc_bind.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_data.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_records.py
 - <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
@@ -1744,7 +1744,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsd/test_a_bounds.py, tests/hwsd/test_a_evaluate.py, tests/hwsd/test_a_kd4.py, tests/hwsd/test_a_known_bound.py, tests/hwsd/test_a_learning.py, tests/hwsd/test_a_onsets_order.py, tests/hwsd/test_a_scorer.py, tests/hwsd/test_a_statements.py, tests/hwsd/test_b_binding.py, tests/hwsd/test_b_data.py, tests/hwsd/test_b_guard_search.py, tests/hwsd/test_b_records_meter.py, tests/hwsd/test_b_registry_build.py, tests/hwsd/test_b_registry_r10.py, tests/hwsd/test_b_registry_r9.py, tests/hwsd/test_b_reservation.py, tests/hwsd/test_b_util.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_data.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_dry2.py, tools/hwsd/hwsd_dry3.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_known2.py, tools/hwsd/hwsd_meter_bind.py, tools/hwsd/hwsd_readers.py, tools/hwsd/hwsd_records.py, tools/hwsd/hwsd_registry.py, tools/hwsd/hwsd_score.py, tools/hwsd/hwsd_statements.py, tools/hwsd/hwsd_summary.py
 ### `tools/hwsd/hwsd_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, tools/c1prime/c1_records.py, tools/hwsb/hwsb_eval.py, tools/hwsc/hwsc_data.py, tools/hwsd/hwsd_config.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/reference_cache.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsd/test_b_binding.py, tests/hwsd/test_b_data.py, tests/hwsd/test_b_registry_r10.py, tests/hwsd/test_b_reservation.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_dry2.py, tools/hwsd/hwsd_dry3.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_known2.py
+- <- tests/hwsd/test_b_binding.py, tests/hwsd/test_b_data.py, tests/hwsd/test_b_registry_r10.py, tests/hwsd/test_b_reservation.py, tests/hwsd/test_c_continue.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_dry2.py, tools/hwsd/hwsd_dry3.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_known2.py
 ### `tools/hwsd/hwsd_driver.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_cert.py, tools/c1prime/c1_records.py, tools/hwsb/hwsb_records.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_gates.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_config.py, tools/hwsd/hwsd_data.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_records.py, tools/hwsd/hwsd_registry.py, tools/hwsd/hwsd_summary.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_driver.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsd/test_b_records_meter.py, tests/hwsd/test_c_continue.py, tools/hwsd/hwsd_jobs.py
@@ -9365,6 +9365,7 @@ tests/hwsd/test_b_util.py (see above)
 tests/hwsd/test_c_continue.py
     tools/hwsc/hwsc_bind.py (see above)
     tools/hwsd/hwsd_bind.py (see above)
+    tools/hwsd/hwsd_data.py (see above)
     tools/hwsd/hwsd_driver.py (see above)
     tools/hwsd/hwsd_dry.py (see above)
     tools/hwsd/hwsd_jobs.py (see above)

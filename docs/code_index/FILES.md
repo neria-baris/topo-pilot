@@ -1017,7 +1017,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1072 tracked fil
 | [test_b_registry_r9.py](files/tests/hwsd/test_b_registry_r9.py.md) | python | 297 lines | Author B: R9, the stage-C layout reader, on a synthetic stage-C-like store (J1; DRD8, DRD9). |
 | [test_b_reservation.py](files/tests/hwsd/test_b_reservation.py.md) | python | 265 lines | Author B: reservations, the J8 end record, W2 attestation, stopped sampling (J8, J10 item 3). |
 | [test_b_util.py](files/tests/hwsd/test_b_util.py.md) | python | 251 lines | Author B shared helpers for tests/hwsd (job 0197). Holds no tests. |
-| [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 134 lines | Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42). |
+| [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 159 lines | Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42). |
 
 ## tests/integration/
 
@@ -1388,13 +1388,13 @@ The generated index itself (`docs/code_index/`) is not indexed. 1072 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 646 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `API.md` | markdown | 650 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
 | `CONTRACT.json` | json | 3254 lines |  |
 | `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
 | `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |
 | [hwsd_bind.py](files/tools/hwsd/hwsd_bind.py.md) | python | 101 lines | HWSD versioned binding: the hwsd binding table on hwsc_bind.bound_stage_c, the dry and identity |
 | [hwsd_config.py](files/tools/hwsd/hwsd_config.py.md) | python | 256 lines | HWSD configuration: CONTRACT.json, constants, registry tables, plans, blindness guard (API.md §1). |
-| [hwsd_data.py](files/tools/hwsd/hwsd_data.py.md) | python | 397 lines | HWSD data: blocks and tables, H2-D separation, registry risk, ORACLE-D, reference persistence, |
+| [hwsd_data.py](files/tools/hwsd/hwsd_data.py.md) | python | 400 lines | HWSD data: blocks and tables, H2-D separation, registry risk, ORACLE-D, reference persistence, |
 | [hwsd_driver.py](files/tools/hwsd/hwsd_driver.py.md) | python | 361 lines | HWSD driver: common job helpers and the jobs KD, SAMPLE, CLOSE, inventory (API.md §11, §15.1, |
 | [hwsd_dry.py](files/tools/hwsd/hwsd_dry.py.md) | python | 398 lines | hwsd synthetic dry run: helpers, DRD1, DRD4/KD4 (seq_cases, plant_acts), run_dry (API.md §12). |
 | [hwsd_dry2.py](files/tools/hwsd/hwsd_dry2.py.md) | python | 398 lines | hwsd dry-run cases DRD5, DRD7, DRD8-DRD11 (API.md §12; TEST_PLAN §4). Split from hwsd_dry by |

@@ -66,9 +66,9 @@
 
 - [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 274, import)
 - [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 17, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 97, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 162, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 228, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 141, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 206, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 272, import)
 
 ## Top-level constants
 

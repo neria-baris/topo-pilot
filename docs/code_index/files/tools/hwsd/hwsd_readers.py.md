@@ -58,7 +58,7 @@
 - [tests/hwsd/test_b_registry_r9.py](../../tests/hwsd/test_b_registry_r9.py.md) (line 15, import)
 - [tests/hwsd/test_b_reservation.py](../../tests/hwsd/test_b_reservation.py.md) (line 15, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 27, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 18, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 19, import)
 - [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 26, import)
 - [tools/hwsd/hwsd_registry.py](hwsd_registry.py.md) (line 19, import)
 - [tools/hwsd/hwsd_summary.py](hwsd_summary.py.md) (line 13, import)

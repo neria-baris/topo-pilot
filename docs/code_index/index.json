@@ -6,14 +6,14 @@
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1072,
-  "functions and methods (incl. tests)": 9947,
+  "functions and methods (incl. tests)": 9950,
   "import cycles (strongly connected components)": 14,
   "import statements, external": 946,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3454,
+  "import statements, internal resolved": 3455,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3004,
-  "internal edges (file to file, with kind and line)": 3489,
+  "import statements, standard library": 3006,
+  "internal edges (file to file, with kind and line)": 3490,
   "python files": 671
  },
  "cycles": [
@@ -9860,6 +9860,12 @@
    20
   ],
   [
+   "tests/hwsd/test_c_continue.py",
+   "tools/x4_circle_history/op_guard.py",
+   "import",
+   166
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -17753,37 +17759,37 @@
    "tools/hwsd/hwsd_jobs.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   30
+   31
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   31
+   32
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/c1prime/c1_records.py",
    "import",
-   28
+   29
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsb/hwsb_driver.py",
    "import",
-   14
+   15
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsc/hwsc_data.py",
    "import",
-   15
+   16
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_bind.py",
    "import",
-   16
+   17
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
@@ -17795,97 +17801,97 @@
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_data.py",
    "import",
-   17
+   18
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_driver.py",
    "import",
-   97
+   141
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_driver.py",
    "import",
-   162
+   206
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_driver.py",
    "import",
-   228
+   272
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_dry.py",
    "import",
-   266
+   310
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_known.py",
    "import",
-   60
+   104
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_readers.py",
    "import",
-   18
+   19
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_records.py",
    "import",
-   19
+   20
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_score.py",
    "import",
-   20
+   21
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/hwsd/hwsd_summary.py",
    "import",
-   163
+   207
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/k4b/k4b_cert.py",
    "import",
-   21
+   22
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/k4b/k4b_config.py",
    "import",
-   22
+   23
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/k4b/k4b_driver.py",
    "import",
-   23
+   24
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/k4b/k4b_stats.py",
    "import",
-   24
+   25
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/x4_circle_history/op_guard.py",
    "import",
-   26
+   27
   ],
   [
    "tools/hwsd/hwsd_jobs.py",
    "tools/x4_circle_history/stage_records.py",
    "import",
-   27
+   28
   ],
   [
    "tools/hwsd/hwsd_known.py",
@@ -25287,9 +25293,9 @@
   },
   "tests/hwsd/test_c_continue.py": {
    "kind": "python",
-   "lines": 159,
+   "lines": 190,
    "purpose": "Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42).",
-   "sha256": "3f954f6c2506822b820b6dc5531f2c569ac99da372f85b491828557b8728133d"
+   "sha256": "96176aaf233c1160d9f28973ab54daea9266a6a83660ffb637b20fb320f94d50"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -26703,9 +26709,9 @@
   },
   "tools/hwsd/API.md": {
    "kind": "markdown",
-   "lines": 650,
+   "lines": 654,
    "purpose": "tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1)",
-   "sha256": "5c436891d2ea5f175695a6ceb971bede4845064382b7532dc60e8ac81a16f2a0"
+   "sha256": "e827e7b1e12fa5c7d9044a957ec1b30f9504586dd1d63ec68aed4e1918ea449d"
   },
   "tools/hwsd/CONTRACT.json": {
    "kind": "json",
@@ -26769,9 +26775,9 @@
   },
   "tools/hwsd/hwsd_jobs.py": {
    "kind": "python",
-   "lines": 290,
+   "lines": 334,
    "purpose": "HWSD jobs SCORE and SUMMARY and the CLI (API.md §11, §15.3, §15.4; split from hwsd_driver by",
-   "sha256": "ebd591c5b433aa67f85e1eabb382f2c6effed593f8fe3764e343696683176462"
+   "sha256": "cfadd653a90ccd740e9bab50b276657f112cbec926144a1a0edda31d1b3a0fa2"
   },
   "tools/hwsd/hwsd_known.py": {
    "kind": "python",
@@ -151518,6 +151524,38 @@
       "tools/hwsd/hwsd_data.py"
      ],
      "top": "hwsd_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 164,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 166,
+     "module": "",
+     "names": [
+      "op_guard"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/op_guard.py"
+     ],
+     "top": "op_guard"
     }
    ],
    "symbols": [
@@ -151606,6 +151644,16 @@
      "qual": "test_reservation_end_accepts_a_root_relative_obligation",
      "sig": "def test_reservation_end_accepts_a_root_relative_obligation(rel, ended, tmp_path)",
      "start": 140
+    },
+    {
+     "decorators": [],
+     "doc": "R-0216-1: the hwsd timed wrapper writes the op_guard records; survives a refused replace.",
+     "end": 190,
+     "kind": "test",
+     "name": "test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace",
+     "qual": "test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace",
+     "sig": "def test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace(tmp_path, monkeypatch)",
+     "start": 162
     }
    ],
    "syspath": [
@@ -229817,6 +229865,21 @@
      "line": 10,
      "module": "",
      "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
       "time"
      ],
      "status": "stdlib",
@@ -229829,7 +229892,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 11,
+     "line": 12,
      "module": "fractions",
      "names": [
       "Fraction"
@@ -229844,7 +229907,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 12,
+     "line": 13,
      "module": "pathlib",
      "names": [
       "Path"
@@ -229859,7 +229922,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 14,
+     "line": 15,
      "module": "",
      "names": [
       "hwsb_driver"
@@ -229876,7 +229939,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 15,
+     "line": 16,
      "module": "",
      "names": [
       "hwsc_data"
@@ -229893,7 +229956,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 16,
+     "line": 17,
      "module": "",
      "names": [
       "hwsd_bind"
@@ -229910,7 +229973,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 17,
+     "line": 18,
      "module": "",
      "names": [
       "hwsd_data"
@@ -229927,7 +229990,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 18,
+     "line": 19,
      "module": "",
      "names": [
       "hwsd_readers"
@@ -229944,7 +230007,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 19,
+     "line": 20,
      "module": "",
      "names": [
       "hwsd_records"
@@ -229961,7 +230024,7 @@
      "how": "same directory",
      "lazy": false,
      "level": 0,
-     "line": 20,
+     "line": 21,
      "module": "",
      "names": [
       "hwsd_score"
@@ -229978,7 +230041,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 21,
+     "line": 22,
      "module": "",
      "names": [
       "k4b_cert"
@@ -229995,7 +230058,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 22,
+     "line": 23,
      "module": "",
      "names": [
       "k4b_config"
@@ -230012,7 +230075,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 24,
      "module": "",
      "names": [
       "k4b_driver"
@@ -230029,7 +230092,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 24,
+     "line": 25,
      "module": "",
      "names": [
       "k4b_stats"
@@ -230046,7 +230109,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 25,
+     "line": 26,
      "module": "",
      "names": [
       "numpy"
@@ -230061,7 +230124,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 27,
      "module": "",
      "names": [
       "op_guard"
@@ -230078,7 +230141,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 28,
      "module": "",
      "names": [
       "stage_records"
@@ -230095,7 +230158,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 29,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -230112,7 +230175,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 30,
+     "line": 31,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore"
@@ -230129,7 +230192,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 32,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "MemoryBackend"
@@ -230146,7 +230209,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 60,
+     "line": 104,
      "module": "hwsd_known",
      "names": [
       "ident_d"
@@ -230163,7 +230226,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 97,
+     "line": 141,
      "module": "",
      "names": [
       "hwsd_driver"
@@ -230180,7 +230243,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 162,
+     "line": 206,
      "module": "",
      "names": [
       "hwsd_driver"
@@ -230197,7 +230260,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 163,
+     "line": 207,
      "module": "",
      "names": [
       "hwsd_summary"
@@ -230214,7 +230277,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 228,
+     "line": 272,
      "module": "",
      "names": [
       "hwsd_driver"
@@ -230231,7 +230294,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 266,
+     "line": 310,
      "module": "",
      "names": [
       "hwsd_dry"
@@ -230247,122 +230310,142 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 38,
+     "end": 39,
      "kind": "function",
      "name": "_npz",
      "qual": "_npz",
      "sig": "def _npz(path) -> dict",
-     "start": 36
+     "start": 37
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 46,
+     "end": 47,
      "kind": "function",
      "name": "_accept_sample_ok",
      "qual": "_accept_sample_ok",
      "sig": "def _accept_sample_ok(out, acc) -> bool",
-     "start": 41
+     "start": 42
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 55,
+     "end": 56,
      "kind": "function",
      "name": "_archive_interrupted",
      "qual": "_archive_interrupted",
      "sig": "def _archive_interrupted(out, job, attempt, j) -> None",
-     "start": 49
+     "start": 50
+    },
+    {
+     "decorators": [],
+     "doc": "op_guard.write_marker, retried: the meter reads the marker four times a second and Windows",
+     "end": 68,
+     "kind": "function",
+     "name": "_write_marker_d",
+     "qual": "_write_marker_d",
+     "sig": "def _write_marker_d(out, record, tries=100) -> None",
+     "start": 59
+    },
+    {
+     "decorators": [],
+     "doc": "op_guard.timed_factory line for line, with _write_marker_d (same records and log).",
+     "end": 99,
+     "kind": "function",
+     "name": "timed_factory_d",
+     "qual": "timed_factory_d",
+     "sig": "def timed_factory_d(out, wall_s, clock=time.monotonic, wall_clock=time.time)",
+     "start": 71
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 75,
+     "end": 119,
      "kind": "function",
      "name": "_score_ident",
      "qual": "_score_ident",
      "sig": "def _score_ident(out, accept, j) -> dict",
-     "start": 58
+     "start": 102
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 93,
+     "end": 137,
      "kind": "function",
      "name": "_score_ctx",
      "qual": "_score_ctx",
      "sig": "def _score_ctx(out, j) -> dict",
-     "start": 78
+     "start": 122
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 183,
      "kind": "function",
      "name": "run_score",
      "qual": "run_score",
      "sig": "def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) -> dict",
-     "start": 96
+     "start": 140
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 145,
+     "end": 189,
      "kind": "function",
      "name": "_shared",
      "qual": "_shared",
      "sig": "def _shared(out) -> dict",
-     "start": 142
+     "start": 186
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 158,
+     "end": 202,
      "kind": "function",
      "name": "_accept_scores_ok",
      "qual": "_accept_scores_ok",
      "sig": "def _accept_scores_ok(out, accepts) -> bool",
-     "start": 148
+     "start": 192
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 205,
+     "end": 249,
      "kind": "function",
      "name": "run_summary",
      "qual": "run_summary",
      "sig": "def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict",
-     "start": 161
+     "start": 205
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 210,
+     "end": 254,
      "kind": "function",
      "name": "_load",
      "qual": "_load",
      "sig": "def _load(p)",
-     "start": 209
+     "start": 253
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 219,
+     "end": 263,
      "kind": "function",
      "name": "_exit",
      "qual": "_exit",
      "sig": "def _exit(res) -> int",
-     "start": 213
+     "start": 257
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 290,
+     "end": 334,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 227
+     "start": 271
     }
    ],
    "syspath": []
@@ -267457,5 +267540,5 @@
    ]
   }
  },
- "sources_digest": "b3c4dcfb41b4eeba3b5b5890b1a1e277530fc823dbcf1af4ea48dedec30f8e7c"
+ "sources_digest": "faa8948e82ee1181b2b91edf170ae3709086291851dd7a6e8a5d8ec13a49c6e9"
 }

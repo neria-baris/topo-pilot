@@ -67,7 +67,7 @@
 - [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 21, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 172, import)
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 31, import)
-- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 24, import)
+- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 25, import)
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 25, import)
 - [tools/hwsd/hwsd_statements.py](../hwsd/hwsd_statements.py.md) (line 10, import)
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 20, import)

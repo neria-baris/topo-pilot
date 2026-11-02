@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | test | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | [tests/c2_readout/test_a_readout.py:125](../../tests/c2_readout/test_a_readout.py#L125) |  |
+| `test_rank_tolerance_is_relative_and_used` | test | `test_rank_tolerance_is_relative_and_used` | [tests/analysis/test_x4f_erasure.py:238](../../tests/analysis/test_x4f_erasure.py#L238) |  |
 | `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |
 | `test_ranks` | test | `test_ranks` | [tests/hwsd/test_a_known_bound.py:185](../../tests/hwsd/test_a_known_bound.py#L185) |  |
 | `test_rate_matched_diag_below_floor_invalid` | test | `test_rate_matched_diag_below_floor_invalid` | [tests/analysis/test_x5_kernel.py:227](../../tests/analysis/test_x5_kernel.py#L227) |  |
@@ -704,6 +706,7 @@
 | `test_tiers` | test | `test_tiers` | [tests/hws/test_b_worlds.py:131](../../tests/hws/test_b_worlds.py#L131) |  |
 | `test_time_never_resumes` | test | `test_time_never_resumes` | [tests/experiment/test_x5g1t_runtime.py:264](../../tests/experiment/test_x5g1t_runtime.py#L264) |  |
 | `test_timed_error_is_logged_and_reraised` | test | `test_timed_error_is_logged_and_reraised` | [tests/circle_history/test_builder_v24_runtime.py:43](../../tests/circle_history/test_builder_v24_runtime.py#L43) |  |
+| `test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace` | test | `test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace` | [tests/hwsd/test_c_continue.py:162](../../tests/hwsd/test_c_continue.py#L162) | R-0216-1: the hwsd timed wrapper writes the op_guard records; survives a refused replace. |
 | `test_timed_post_return_check_with_injected_clock` | test | `test_timed_post_return_check_with_injected_clock` | [tests/circle_history/test_builder_v24_runtime.py:50](../../tests/circle_history/test_builder_v24_runtime.py#L50) |  |
 | `test_timed_records_start_end_and_marker` | test | `test_timed_records_start_end_and_marker` | [tests/circle_history/test_builder_v24_runtime.py:35](../../tests/circle_history/test_builder_v24_runtime.py#L35) |  |
 | `test_to_canonical_random_perm_exact` | test | `test_to_canonical_random_perm_exact` | [tests/hwsb/test_a_learning.py:167](../../tests/hwsb/test_a_learning.py#L167) |  |
@@ -1028,6 +1031,7 @@
 | `tier_of` | function | `tier_of` | [tests/hws/test_a_classify.py:72](../../tests/hws/test_a_classify.py#L72) |  |
 | `timed` | function | `timed` | [src/topo_pilot/experiment/s8.py:80](../../src/topo_pilot/experiment/s8.py#L80) | MetricRecords whose rows include measured wall time or throughput. |
 | `timed_factory` | function | `timed_factory` | [tools/x4_circle_history/op_guard.py:38](../../tools/x4_circle_history/op_guard.py#L38) |  |
+| `timed_factory_d` | function | `timed_factory_d` | [tools/hwsd/hwsd_jobs.py:71](../../tools/hwsd/hwsd_jobs.py#L71) | op_guard.timed_factory line for line, with _write_marker_d (same records and log). |
 | `tiny` | function | `tiny` | [tests/c2_readout/test_b_patch.py:70](../../tests/c2_readout/test_b_patch.py#L70) |  |
 | `tiny` | function | `tiny` | [tests/experiment/test_x4f_gates_smoke.py:18](../../tests/experiment/test_x4f_gates_smoke.py#L18) |  |
 | `tiny` | function | `tiny` | [tests/hws/test_b_exact.py:67](../../tests/hws/test_b_exact.py#L67) |  |

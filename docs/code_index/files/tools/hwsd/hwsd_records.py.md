@@ -60,7 +60,7 @@
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 20, import)
 - [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 38, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 28, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 19, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 20, import)
 - [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 27, import)
 - [tools/hwsd/hwsd_score.py](hwsd_score.py.md) (line 16, import)
 

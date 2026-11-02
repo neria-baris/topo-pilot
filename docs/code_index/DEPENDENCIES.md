@@ -1170,7 +1170,7 @@ Edge counts are file-to-file edges between different subpackages.
 - -> src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_records.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_dry.py, tools/hwsd/hwsd_config.py, tools/k4b/k4b_data.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsd/test_b_binding.py, tests/hwsd/test_b_data.py, tests/hwsd/test_b_guard_search.py, tests/hwsd/test_b_records_meter.py, tests/hwsd/test_b_registry_build.py, tests/hwsd/test_b_registry_r10.py, tests/hwsd/test_b_registry_r9.py, tests/hwsd/test_b_reservation.py
 ### `tests/hwsd/test_c_continue.py`
-- -> tools/hwsc/hwsc_bind.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_data.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_records.py
+- -> tools/hwsc/hwsc_bind.py, tools/hwsd/hwsd_bind.py, tools/hwsd/hwsd_data.py, tools/hwsd/hwsd_driver.py, tools/hwsd/hwsd_dry.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_known.py, tools/hwsd/hwsd_records.py, tools/x4_circle_history/op_guard.py
 - <- none
 ### `tests/integration/_mini_pipeline.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/stage.py, src/topo_pilot/experiment/__init__.py, src/topo_pilot/experiment/stages.py
@@ -1891,7 +1891,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/circle_history/test_builder_guards.py, tests/circle_history/test_builder_runtime.py, tests/circle_history/test_builder_v24_runtime.py, tests/circle_history/test_builder_v25.py
 ### `tools/x4_circle_history/op_guard.py`
 - -> tools/x4_circle_history/errors.py
-- <- tests/circle_history/test_builder_v24_runtime.py, tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsd/test_b_records_meter.py, tests/k4b/test_b_meter.py, tests/k4b/test_b_rerun.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py, tools/hws/hws_meter_bind.py, tools/hwsb/hwsb_meter_bind.py, tools/hwsc/hwsc_meter_bind.py, tools/hwsd/hwsd_dry3.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_meter_bind.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/meter_bind.py
+- <- tests/circle_history/test_builder_v24_runtime.py, tests/hws/test_b_records.py, tests/hwsb/test_b_meter_law.py, tests/hwsd/test_b_records_meter.py, tests/hwsd/test_c_continue.py, tests/k4b/test_b_meter.py, tests/k4b/test_b_rerun.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_meter_bind.py, tools/hws/hws_meter_bind.py, tools/hwsb/hwsb_meter_bind.py, tools/hwsc/hwsc_meter_bind.py, tools/hwsd/hwsd_dry3.py, tools/hwsd/hwsd_jobs.py, tools/hwsd/hwsd_meter_bind.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/live_context.py, tools/x4_circle_history/meter_bind.py
 ### `tools/x4_circle_history/precision.py`
 - -> tools/x4_circle_history/errors.py
 - <- tests/c1prime/test_b_precision.py, tests/c2_readout/test_a_oracle.py, tests/circle_history/test_controls.py, tests/circle_history/test_scores_precision_gates.py, tests/hwsb/test_a_capture.py, tests/hwsb/test_a_ladder.py, tests/hwsc/test_a_ladder.py, tests/k4b/test_a_ranks_ladder.py, tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_stage_val.py, tools/c2_readout/c2_stats.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_gates.py, tools/k4b/k4b_stats.py, tools/x4_circle_history/precision_stage.py
@@ -9371,6 +9371,7 @@ tests/hwsd/test_c_continue.py
     tools/hwsd/hwsd_jobs.py (see above)
     tools/hwsd/hwsd_known.py (see above)
     tools/hwsd/hwsd_records.py (see above)
+    tools/x4_circle_history/op_guard.py (see above)
 ```
 
 ### tests/integration

@@ -73,7 +73,7 @@
 - [tools/hwsb/hwsb_stages.py](hwsb_stages.py.md) (line 304, import)
 - [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 13, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 20, import)
-- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 14, import)
+- [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 15, import)
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 15, import)
 
 ## Top-level constants

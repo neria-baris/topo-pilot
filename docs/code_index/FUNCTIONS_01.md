@@ -190,8 +190,8 @@
 | `_abs` | function | `_abs` | [tools/c2_readout/c2_stage_base.py:41](../../tools/c2_readout/c2_stage_base.py#L41) |  |
 | `_acc` | function | `_acc` | [tests/hwsd/test_b_records_meter.py:146](../../tests/hwsd/test_b_records_meter.py#L146) |  |
 | `_accept` | function | `_accept` | [tools/hws/hws_driver.py:261](../../tools/hws/hws_driver.py#L261) |  |
-| `_accept_sample_ok` | function | `_accept_sample_ok` | [tools/hwsd/hwsd_jobs.py:41](../../tools/hwsd/hwsd_jobs.py#L41) |  |
-| `_accept_scores_ok` | function | `_accept_scores_ok` | [tools/hwsd/hwsd_jobs.py:148](../../tools/hwsd/hwsd_jobs.py#L148) |  |
+| `_accept_sample_ok` | function | `_accept_sample_ok` | [tools/hwsd/hwsd_jobs.py:42](../../tools/hwsd/hwsd_jobs.py#L42) |  |
+| `_accept_scores_ok` | function | `_accept_scores_ok` | [tools/hwsd/hwsd_jobs.py:192](../../tools/hwsd/hwsd_jobs.py#L192) |  |
 | `_act_space` | function | `_act_space` | [src/topo_pilot/experiment/report_e2.py:68](../../src/topo_pilot/experiment/report_e2.py#L68) | The activation space name (``act:<primary hook>``) used by the analysis job. |
 | `_action` | function | `_action` | [tests/experiment/test_x5g1t_runtime.py:40](../../tests/experiment/test_x5g1t_runtime.py#L40) |  |
 | `_activations` | function | `_activations` | [tests/circle_history/test_builder_e2e.py:69](../../tests/circle_history/test_builder_e2e.py#L69) |  |
@@ -221,7 +221,7 @@
 | `_append` | function | `_append` | [tools/x6zc/x6zc_store.py:51](../../tools/x6zc/x6zc_store.py#L51) |  |
 | `_applies` | function | `_applies` | [tools/c2_nd/nd_stage_base.py:225](../../tools/c2_nd/nd_stage_base.py#L225) |  |
 | `_applies` | function | `_applies` | [tools/c2_readout/c2_decide.py:205](../../tools/c2_readout/c2_decide.py#L205) |  |
-| `_archive_interrupted` | function | `_archive_interrupted` | [tools/hwsd/hwsd_jobs.py:49](../../tools/hwsd/hwsd_jobs.py#L49) |  |
+| `_archive_interrupted` | function | `_archive_interrupted` | [tools/hwsd/hwsd_jobs.py:50](../../tools/hwsd/hwsd_jobs.py#L50) |  |
 | `_arg` | function | `_arg` | [tools/x6_stage1/x6s1_stats.py:106](../../tools/x6_stage1/x6s1_stats.py#L106) |  |
 | `_args` | function | `_args` | [tests/experiment/test_x4.py:157](../../tests/experiment/test_x4.py#L157) |  |
 | `_args` | function | `_args` | [tools/code_index/pathval.py:75](../../tools/code_index/pathval.py#L75) | Argument sequences (each a list of alternative-lists); starred literals are expanded. |
@@ -721,7 +721,7 @@
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity.py:98](../../tests/experiment/test_x5g1t_identity.py#L98) |  |
 | `_existing` | function | `_existing` | [tests/experiment/test_x5g1t_identity_eval.py:60](../../tests/experiment/test_x5g1t_identity_eval.py#L60) |  |
 | `_exit` | function | `_exit` | [tools/hwsc/hwsc_jobs.py:140](../../tools/hwsc/hwsc_jobs.py#L140) |  |
-| `_exit` | function | `_exit` | [tools/hwsd/hwsd_jobs.py:213](../../tools/hwsd/hwsd_jobs.py#L213) |  |
+| `_exit` | function | `_exit` | [tools/hwsd/hwsd_jobs.py:257](../../tools/hwsd/hwsd_jobs.py#L257) |  |
 | `_expect_m` | function | `_expect_m` | [tests/c2_readout/test_a_inference.py:164](../../tests/c2_readout/test_a_inference.py#L164) |  |
 | `_expect_r` | function | `_expect_r` | [tests/c2_readout/test_a_inference.py:78](../../tests/c2_readout/test_a_inference.py#L78) |  |
 | `_expect_score` | function | `_expect_score` | [tests/circle_history/test_scores_precision.py:187](../../tests/circle_history/test_scores_precision.py#L187) | Exact E[g(suffix_k) . (m_L - m_k)] over every history of length L_ENUM. |
@@ -1194,7 +1194,7 @@
 | `_load` | function | `_load` | [tests/experiment/test_x5g1t_config_synthetic.py:163](../../tests/experiment/test_x5g1t_config_synthetic.py#L163) |  |
 | `_load` | function | `_load` | [tools/c2_nd/nd_stage_base.py:97](../../tools/c2_nd/nd_stage_base.py#L97) |  |
 | `_load` | function | `_load` | [tools/hwsc/hwsc_jobs.py:136](../../tools/hwsc/hwsc_jobs.py#L136) |  |
-| `_load` | function | `_load` | [tools/hwsd/hwsd_jobs.py:209](../../tools/hwsd/hwsd_jobs.py#L209) |  |
+| `_load` | function | `_load` | [tools/hwsd/hwsd_jobs.py:253](../../tools/hwsd/hwsd_jobs.py#L253) |  |
 | `_load` | function | `_load` | [tools/x6_stage0/x6_store.py:228](../../tools/x6_stage0/x6_store.py#L228) |  |
 | `_load` | function | `_load` | [tools/x6_stage1/x6s1_run.py:76](../../tools/x6_stage1/x6s1_run.py#L76) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/precision_stage.py:22](../../tools/x4_circle_history/precision_stage.py#L22) |  |
@@ -1389,7 +1389,7 @@
 | `_npy_header` | function | `_npy_header` | [tools/x6_stage1/x6s1_registry.py:171](../../tools/x6_stage1/x6s1_registry.py#L171) |  |
 | `_npz` | function | `_npz` | [tests/c2_readout/test_b_registry.py:202](../../tests/c2_readout/test_b_registry.py#L202) |  |
 | `_npz` | function | `_npz` | [tools/c2_nd/nd_stage_base.py:72](../../tools/c2_nd/nd_stage_base.py#L72) |  |
-| `_npz` | function | `_npz` | [tools/hwsd/hwsd_jobs.py:36](../../tools/hwsd/hwsd_jobs.py#L36) |  |
+| `_npz` | function | `_npz` | [tools/hwsd/hwsd_jobs.py:37](../../tools/hwsd/hwsd_jobs.py#L37) |  |
 | `_npz` | function | `_npz` | [tools/hwsd/hwsd_known2.py:161](../../tools/hwsd/hwsd_known2.py#L161) |  |
 | `_npz` | function | `_npz` | [tools/k4b/k4b_fresh.py:301](../../tools/k4b/k4b_fresh.py#L301) |  |
 | `_npz` | function | `_npz` | [tools/x6_stage1/x6s1_eval.py:420](../../tools/x6_stage1/x6s1_eval.py#L420) |  |
@@ -1913,8 +1913,8 @@
 | `_scatter` | function | `_scatter` | [tests/c2_readout/test_a_readout.py:169](../../tests/c2_readout/test_a_readout.py#L169) |  |
 | `_scatter` | function | `_scatter` | [tools/c2_readout/c2_oracle.py:104](../../tools/c2_readout/c2_oracle.py#L104) | n-row arrays of a role computed on `rows` only (NaN elsewhere: no H^Y is formed there). |
 | `_scope` | function | `_scope` | [tools/c2_nd/nd_data.py:35](../../tools/c2_nd/nd_data.py#L35) |  |
-| `_score_ctx` | function | `_score_ctx` | [tools/hwsd/hwsd_jobs.py:78](../../tools/hwsd/hwsd_jobs.py#L78) |  |
-| `_score_ident` | function | `_score_ident` | [tools/hwsd/hwsd_jobs.py:58](../../tools/hwsd/hwsd_jobs.py#L58) |  |
+| `_score_ctx` | function | `_score_ctx` | [tools/hwsd/hwsd_jobs.py:122](../../tools/hwsd/hwsd_jobs.py#L122) |  |
+| `_score_ident` | function | `_score_ident` | [tools/hwsd/hwsd_jobs.py:102](../../tools/hwsd/hwsd_jobs.py#L102) |  |
 | `_scores` | function | `_scores` | [tests/hwsd/test_a_bounds.py:120](../../tests/hwsd/test_a_bounds.py#L120) |  |
 | `_scratch` | function | `_scratch` | [tests/hwsd/test_b_registry_build.py:71](../../tests/hwsd/test_b_registry_build.py#L71) |  |
 | `_scratch` | function | `_scratch` | [tests/x6_stage1/test_b_seed_pool_reg.py:286](../../tests/x6_stage1/test_b_seed_pool_reg.py#L286) |  |
@@ -1996,7 +1996,7 @@
 | `_sha_file` | function | `_sha_file` | [tools/hwsd/hwsd_config.py:116](../../tools/hwsd/hwsd_config.py#L116) |  |
 | `_sha_ok` | function | `_sha_ok` | [tools/c2_nd/nd_stage_base.py:53](../../tools/c2_nd/nd_stage_base.py#L53) |  |
 | `_sha_ok` | function | `_sha_ok` | [tools/hwsc/hwsc_known.py:76](../../tools/hwsc/hwsc_known.py#L76) |  |
-| `_shared` | function | `_shared` | [tools/hwsd/hwsd_jobs.py:142](../../tools/hwsd/hwsd_jobs.py#L142) |  |
+| `_shared` | function | `_shared` | [tools/hwsd/hwsd_jobs.py:186](../../tools/hwsd/hwsd_jobs.py#L186) |  |
 | `_shared_inputs` | function | `_shared_inputs` | [tools/hwsd/hwsd_summary.py:237](../../tools/hwsd/hwsd_summary.py#L237) |  |
 | `_shuffled` | function | `_shuffled` | [tests/contracts/test_ids.py:22](../../tests/contracts/test_ids.py#L22) |  |
 | `_sigma_str` | function | `_sigma_str` | [src/topo_pilot/dataset/stage.py:39](../../src/topo_pilot/dataset/stage.py#L39) |  |
@@ -2371,6 +2371,7 @@
 | `_write_json` | function | `_write_json` | [tests/experiment/test_x5g1t_integration.py:91](../../tests/experiment/test_x5g1t_integration.py#L91) |  |
 | `_write_json` | function | `_write_json` | [tools/hwsd/hwsd_score.py:254](../../tools/hwsd/hwsd_score.py#L254) |  |
 | `_write_manifest` | function | `_write_manifest` | [src/topo_pilot/executors/entry.py:66](../../src/topo_pilot/executors/entry.py#L66) |  |
+| `_write_marker_d` | function | `_write_marker_d` | [tools/hwsd/hwsd_jobs.py:59](../../tools/hwsd/hwsd_jobs.py#L59) | op_guard.write_marker, retried: the meter reads the marker four times a second and Windows |
 | `_write_new` | function | `_write_new` | [tools/x4_oracle_profile/controls.py:167](../../tools/x4_oracle_profile/controls.py#L167) |  |
 | `_write_reg` | function | `_write_reg` | [tools/x6_stage1/x6s1_registry.py:383](../../tools/x6_stage1/x6s1_registry.py#L383) |  |
 | `_write_roots` | function | `_write_roots` | [src/topo_pilot/experiment/x5g1t_config.py:265](../../src/topo_pilot/experiment/x5g1t_config.py#L265) |  |
@@ -4683,7 +4684,7 @@
 | `main` | function | `main` | [tools/hwsb/hwsb_meter_bind.py:91](../../tools/hwsb/hwsb_meter_bind.py#L91) | --job, --task-sha256, --session, --kind (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsc/hwsc_jobs.py:149](../../tools/hwsc/hwsc_jobs.py#L149) |  |
 | `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:106](../../tools/hwsc/hwsc_meter_bind.py#L106) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
-| `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:227](../../tools/hwsd/hwsd_jobs.py#L227) |  |
+| `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:271](../../tools/hwsd/hwsd_jobs.py#L271) |  |
 | `main` | function | `main` | [tools/hwsd/hwsd_meter_bind.py:99](../../tools/hwsd/hwsd_meter_bind.py#L99) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
 | `main` | function | `main` | [tools/k4b/k4b_fresh.py:346](../../tools/k4b/k4b_fresh.py#L346) |  |
@@ -4873,5 +4874,3 @@
 | `my_r_ord` | function | `my_r_ord` | [tests/x6_stage1/test_a_pairs.py:114](../../tests/x6_stage1/test_a_pairs.py#L114) |  |
 | `my_rank` | function | `my_rank` | [tests/hws/test_a_classify.py:113](../../tests/hws/test_a_classify.py#L113) |  |
 | `my_sample` | function | `my_sample` | [tests/x6_stage1/test_a_pairs.py:89](../../tests/x6_stage1/test_a_pairs.py#L89) | §2.3 backward sampler: randrange(c_m) per step, cumulative weights in NEIGHBOURS order. |
-| `my_segment` | function | `my_segment` | [tests/x6_stage1/test_a_pairs.py:103](../../tests/x6_stage1/test_a_pairs.py#L103) |  |
-| `my_select_bar` | function | `my_select_bar` | [tests/circle_history/test_chart.py:73](../../tests/circle_history/test_chart.py#L73) |  |

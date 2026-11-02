@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `my_segment` | function | `my_segment` | [tests/x6_stage1/test_a_pairs.py:103](../../tests/x6_stage1/test_a_pairs.py#L103) |  |
+| `my_select_bar` | function | `my_select_bar` | [tests/circle_history/test_chart.py:73](../../tests/circle_history/test_chart.py#L73) |  |
 | `my_U` | function | `my_U` | [tests/x6_stage1/test_a_numerics.py:145](../../tests/x6_stage1/test_a_numerics.py#L145) | Theorem EB (§7.3), delta1 = delta2 = delta/2, plain high-precision evaluation. |
 | `n0` | function | `n0` | [tools/c1prime/c1_driver.py:262](../../tools/c1prime/c1_driver.py#L262) |  |
 | `n2` | function | `n2` | [tools/c2_nd/nd_stage_pre.py:287](../../tools/c2_nd/nd_stage_pre.py#L287) |  |
@@ -1013,12 +1015,12 @@
 | `run_s0` | function | `run_s0` | [tools/hws/hws_driver.py:195](../../tools/hws/hws_driver.py#L195) | §3 stage S0 (KC1-KC14); implemented in hws_known (erratum E16). |
 | `run_s0` | function | `run_s0` | [tools/hws/hws_known.py:95](../../tools/hws/hws_known.py#L95) | §3: w0 at 32,768 rows, U and N at 4,096; KC1-KC14 gate; freezes g4* and g4A*. |
 | `run_sample` | function | `run_sample` | [tools/hwsd/hwsd_driver.py:254](../../tools/hwsd/hwsd_driver.py#L254) |  |
-| `run_score` | function | `run_score` | [tools/hwsd/hwsd_jobs.py:96](../../tools/hwsd/hwsd_jobs.py#L96) |  |
+| `run_score` | function | `run_score` | [tools/hwsd/hwsd_jobs.py:140](../../tools/hwsd/hwsd_jobs.py#L140) |  |
 | `run_stage` | function | `run_stage` | [src/topo_pilot/experiment/stages.py:148](../../src/topo_pilot/experiment/stages.py#L148) | Run every planned job of ``stage_id`` inline; raises ``INVALID_CONFIG`` for an unknown |
 | `run_stage` | function | `run_stage` | [tools/c2_nd/nd_driver.py:350](../../tools/c2_nd/nd_driver.py#L350) | Lazy dispatch (C2 API §19.2): PLAN steps in order, NOT_RUN after a study stop, REPORT |
 | `run_stage` | function | `run_stage` | [tools/c2_readout/c2_driver.py:357](../../tools/c2_readout/c2_driver.py#L357) | Lazy dispatch (API.md §19.2-§19.3): PLAN steps in order; NOT_RUN after a study stop. |
 | `run_stage` | function | `run_stage` | [tools/x6_stage1/x6s1_run.py:497](../../tools/x6_stage1/x6s1_run.py#L497) | PLAN[stage] (step, fn(ctx), validity) in §8 order after the disk floor and boundary; the |
-| `run_summary` | function | `run_summary` | [tools/hwsd/hwsd_jobs.py:161](../../tools/hwsd/hwsd_jobs.py#L161) |  |
+| `run_summary` | function | `run_summary` | [tools/hwsd/hwsd_jobs.py:205](../../tools/hwsd/hwsd_jobs.py#L205) |  |
 | `run_sweep` | function | `run_sweep` | [tools/hws/hws_driver.py:275](../../tools/hws/hws_driver.py#L275) | S1 -> (X1) -> (S2) -> S3 under the frozen rules (§6), then the outcome and report. |
 | `run_table` | function | `run_table` | [src/topo_pilot/experiment/report_x4.py:81](../../src/topo_pilot/experiment/report_x4.py#L81) |  |
 | `run_tool` | function | `run_tool` | [src/topo_pilot/experiment/stages.py:68](../../src/topo_pilot/experiment/stages.py#L68) | Run ``cmd`` in the repository; returns (exit code 0, :func:`tool_line`). |
@@ -3989,5 +3991,3 @@
 | `test_rank_for_protocol_ranks` | test | `test_rank_for_protocol_ranks` | [tests/c1prime/test_b_inference.py:187](../../tests/c1prime/test_b_inference.py#L187) |  |
 | `test_rank_key_every_tie_break_level` | test | `test_rank_key_every_tie_break_level` | [tests/hws/test_a_classify.py:222](../../tests/hws/test_a_classify.py#L222) |  |
 | `test_rank_key_tuple` | test | `test_rank_key_tuple` | [tests/hws/test_a_classify.py:228](../../tests/hws/test_a_classify.py#L228) |  |
-| `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | test | `test_rank_rule_one_zero_gamma_keeps_rank_two_zeros_do_not` | [tests/c2_readout/test_a_readout.py:125](../../tests/c2_readout/test_a_readout.py#L125) |  |
-| `test_rank_tolerance_is_relative_and_used` | test | `test_rank_tolerance_is_relative_and_used` | [tests/analysis/test_x4f_erasure.py:238](../../tests/analysis/test_x4f_erasure.py#L238) |  |

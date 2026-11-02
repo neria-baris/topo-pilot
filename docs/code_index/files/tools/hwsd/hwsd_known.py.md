@@ -74,7 +74,7 @@
 - [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 19, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 19, import)
 - [tools/hwsd/hwsd_dry3.py](hwsd_dry3.py.md) (line 38, import)
-- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 60, import)
+- [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 104, import)
 
 ## Top-level constants
 

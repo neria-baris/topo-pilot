@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsd/hwsd_jobs.py](../../../../../tools/hwsd/hwsd_jobs.py)
 - Kind: python
-- Lines: 290
+- Lines: 334
 
 ## Module docstring
 
@@ -15,41 +15,42 @@
 ### Internal (repo files)
 
 - `import hwsd_config` -> [tools/hwsd/hwsd_config.py](hwsd_config.py.md) (line 7, via same directory)
-- `import hwsb_driver` -> [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 14, via unique basename)
-- `import hwsc_data` -> [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 15, via unique basename)
-- `import hwsd_bind` -> [tools/hwsd/hwsd_bind.py](hwsd_bind.py.md) (line 16, via same directory)
-- `import hwsd_data` -> [tools/hwsd/hwsd_data.py](hwsd_data.py.md) (line 17, via same directory)
-- `import hwsd_readers` -> [tools/hwsd/hwsd_readers.py](hwsd_readers.py.md) (line 18, via same directory)
-- `import hwsd_records` -> [tools/hwsd/hwsd_records.py](hwsd_records.py.md) (line 19, via same directory)
-- `import hwsd_score` -> [tools/hwsd/hwsd_score.py](hwsd_score.py.md) (line 20, via same directory)
-- `import k4b_cert` -> [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 21, via unique basename)
-- `import k4b_config` -> [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 22, via unique basename)
-- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 23, via unique basename)
-- `import k4b_stats` -> [tools/k4b/k4b_stats.py](../k4b/k4b_stats.py.md) (line 24, via unique basename)
-- `import op_guard` -> [tools/x4_circle_history/op_guard.py](../x4_circle_history/op_guard.py.md) (line 26, via unique basename)
-- `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 27, via unique basename)
-- `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 28, via unique basename)
-- `from topo_pilot.contracts import ArtifactStore` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 30, via package root)
-- `from topo_pilot.contracts.backends import MemoryBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 31, via package root)
-- `from hwsd_known import ident_d` -> [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 60, via same directory) (inside a function)
-- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 97, via same directory) (inside a function)
-- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 162, via same directory) (inside a function)
-- `import hwsd_summary` -> [tools/hwsd/hwsd_summary.py](hwsd_summary.py.md) (line 163, via same directory) (inside a function)
-- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 228, via same directory) (inside a function)
-- `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 266, via same directory) (inside a function)
+- `import hwsb_driver` -> [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 15, via unique basename)
+- `import hwsc_data` -> [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 16, via unique basename)
+- `import hwsd_bind` -> [tools/hwsd/hwsd_bind.py](hwsd_bind.py.md) (line 17, via same directory)
+- `import hwsd_data` -> [tools/hwsd/hwsd_data.py](hwsd_data.py.md) (line 18, via same directory)
+- `import hwsd_readers` -> [tools/hwsd/hwsd_readers.py](hwsd_readers.py.md) (line 19, via same directory)
+- `import hwsd_records` -> [tools/hwsd/hwsd_records.py](hwsd_records.py.md) (line 20, via same directory)
+- `import hwsd_score` -> [tools/hwsd/hwsd_score.py](hwsd_score.py.md) (line 21, via same directory)
+- `import k4b_cert` -> [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 22, via unique basename)
+- `import k4b_config` -> [tools/k4b/k4b_config.py](../k4b/k4b_config.py.md) (line 23, via unique basename)
+- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 24, via unique basename)
+- `import k4b_stats` -> [tools/k4b/k4b_stats.py](../k4b/k4b_stats.py.md) (line 25, via unique basename)
+- `import op_guard` -> [tools/x4_circle_history/op_guard.py](../x4_circle_history/op_guard.py.md) (line 27, via unique basename)
+- `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 28, via unique basename)
+- `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 29, via unique basename)
+- `from topo_pilot.contracts import ArtifactStore` -> [src/topo_pilot/contracts/__init__.py](../../src/topo_pilot/contracts/__init__.py.md) (line 31, via package root)
+- `from topo_pilot.contracts.backends import MemoryBackend` -> [src/topo_pilot/contracts/backends.py](../../src/topo_pilot/contracts/backends.py.md) (line 32, via package root)
+- `from hwsd_known import ident_d` -> [tools/hwsd/hwsd_known.py](hwsd_known.py.md) (line 104, via same directory) (inside a function)
+- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 141, via same directory) (inside a function)
+- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 206, via same directory) (inside a function)
+- `import hwsd_summary` -> [tools/hwsd/hwsd_summary.py](hwsd_summary.py.md) (line 207, via same directory) (inside a function)
+- `import hwsd_driver` -> [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 272, via same directory) (inside a function)
+- `import hwsd_dry` -> [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 310, via same directory) (inside a function)
 
 ### External (third-party)
 
-- `numpy` (lines 25)
+- `numpy` (lines 26)
 
 ### Standard library
 
 - `__future__` (lines 5)
 - `argparse` (lines 8)
-- `fractions` (lines 11)
+- `fractions` (lines 12)
 - `json` (lines 9)
-- `pathlib` (lines 12)
-- `time` (lines 10)
+- `os` (lines 10)
+- `pathlib` (lines 13)
+- `time` (lines 11)
 
 ### Unresolved internal-looking imports
 
@@ -79,16 +80,18 @@
 
 ## Classes and functions
 
-- **function `_npz`** [L36-38]: `def _npz(path) -> dict`
-- **function `_accept_sample_ok`** [L41-46]: `def _accept_sample_ok(out, acc) -> bool`
-- **function `_archive_interrupted`** [L49-55]: `def _archive_interrupted(out, job, attempt, j) -> None`
-- **function `_score_ident`** [L58-75]: `def _score_ident(out, accept, j) -> dict`
-- **function `_score_ctx`** [L78-93]: `def _score_ctx(out, j) -> dict`
-- **function `run_score`** [L96-139]: `def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) -> dict`
-- **function `_shared`** [L142-145]: `def _shared(out) -> dict`
-- **function `_accept_scores_ok`** [L148-158]: `def _accept_scores_ok(out, accepts) -> bool`
-- **function `run_summary`** [L161-205]: `def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict`
-- **function `_load`** [L209-210]: `def _load(p)`
-- **function `_exit`** [L213-219]: `def _exit(res) -> int`
-- **function `main`** [L227-290]: `def main(argv=None) -> int`
+- **function `_npz`** [L37-39]: `def _npz(path) -> dict`
+- **function `_accept_sample_ok`** [L42-47]: `def _accept_sample_ok(out, acc) -> bool`
+- **function `_archive_interrupted`** [L50-56]: `def _archive_interrupted(out, job, attempt, j) -> None`
+- **function `_write_marker_d`** [L59-68]: `def _write_marker_d(out, record, tries=100) -> None` - op_guard.write_marker, retried: the meter reads the marker four times a second and Windows
+- **function `timed_factory_d`** [L71-99]: `def timed_factory_d(out, wall_s, clock=time.monotonic, wall_clock=time.time)` - op_guard.timed_factory line for line, with _write_marker_d (same records and log).
+- **function `_score_ident`** [L102-119]: `def _score_ident(out, accept, j) -> dict`
+- **function `_score_ctx`** [L122-137]: `def _score_ctx(out, j) -> dict`
+- **function `run_score`** [L140-183]: `def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) -> dict`
+- **function `_shared`** [L186-189]: `def _shared(out) -> dict`
+- **function `_accept_scores_ok`** [L192-202]: `def _accept_scores_ok(out, accepts) -> bool`
+- **function `run_summary`** [L205-249]: `def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict`
+- **function `_load`** [L253-254]: `def _load(p)`
+- **function `_exit`** [L257-263]: `def _exit(res) -> int`
+- **function `main`** [L271-334]: `def main(argv=None) -> int`
 

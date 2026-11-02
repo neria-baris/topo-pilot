@@ -69,7 +69,7 @@
 
 ## Imported by
 
-- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 16, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 18, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 358, import)
 
 ## Top-level constants

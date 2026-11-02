@@ -56,7 +56,7 @@
 ## Imported by
 
 - [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 17, import)
-- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 18, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 20, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 20, import)
 - [tools/hwsd/hwsd_dry.py](hwsd_dry.py.md) (line 38, import)
 - [tools/hwsd/hwsd_dry2.py](hwsd_dry2.py.md) (line 28, import)

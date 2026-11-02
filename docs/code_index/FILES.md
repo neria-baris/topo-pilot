@@ -1017,7 +1017,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1072 tracked fil
 | [test_b_registry_r9.py](files/tests/hwsd/test_b_registry_r9.py.md) | python | 297 lines | Author B: R9, the stage-C layout reader, on a synthetic stage-C-like store (J1; DRD8, DRD9). |
 | [test_b_reservation.py](files/tests/hwsd/test_b_reservation.py.md) | python | 265 lines | Author B: reservations, the J8 end record, W2 attestation, stopped sampling (J8, J10 item 3). |
 | [test_b_util.py](files/tests/hwsd/test_b_util.py.md) | python | 251 lines | Author B shared helpers for tests/hwsd (job 0197). Holds no tests. |
-| [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 71 lines | Coordinator 080a3e03 (job 0208, owner addendum 42). |
+| [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 93 lines | Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42). |
 
 ## tests/integration/
 
@@ -1388,7 +1388,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1072 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 633 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `API.md` | markdown | 637 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
 | `CONTRACT.json` | json | 3254 lines |  |
 | `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
 | `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |

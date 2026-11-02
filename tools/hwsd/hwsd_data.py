@@ -360,7 +360,10 @@ def reservation_ended(res_path, root=None) -> dict:
         if not end.is_file():
             return {"ended": False, "rule": "b", "reason": "no END record"}
         e = dc.read_json(end)
-        ob = store / str(e.get("obligation_file", ""))
+        rel = str(e.get("obligation_file", ""))  # R-0213-1: U writes it root-relative
+        ob = next((c for c in (store / rel, root / rel) if c.is_file()), store / rel)
+        if store.resolve() not in ob.resolve().parents:
+            return {"ended": False, "rule": "b", "reason": "obligation outside the store"}
         ok = (e.get("schema") == "hws-reservation-end-v1" and e.get("reservation_sha256") == cur
               and ob.is_file() and e.get("obligation_sha256") == stage_records.sha256(ob))
         return {"ended": bool(ok), "rule": "b", "reason": "" if ok else "END record mismatch"}

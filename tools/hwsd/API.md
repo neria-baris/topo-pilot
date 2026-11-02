@@ -644,3 +644,7 @@ Found by a read-only review of the paths not yet run on real stores, after KD at
 3. **SAMPLE LGATE after a raised B4-TEST.** `_lgate` uses `ctx.setdefault("s4_files", [])`.
 4. **SUMMARY `--accept` keys.** `_accept_scores_ok` also looks a master up by its string key.
 Regression tests: `tests/hwsd/test_c_continue.py` (KD end to end with stub items under `bound_hwsd()`).
+
+## 29. Reservation END path erratum (job 0214; ruling R-0213-1)
+
+J8 names `obligation_file` without fixing its base. Track U writes it relative to the project root (`hwsu-store/REGISTRY_OBLIGATION_OF.json`); `reservation_ended` joined it to the store and so read the ended U reservations as live (SAMPLE attempt 1, job 0213: RESERVATION INCONCLUSIVE/AUTHORITY before any draw). `reservation_ended` rule (b) now takes the first existing file of `<store>/<obligation_file>` and `<root>/<obligation_file>`, and refuses one that does not lie inside the store. Track D still writes its own END records relative to the store (§9 `end_reservation`). Regression test in `tests/hwsd/test_c_continue.py`.

@@ -132,3 +132,28 @@ def test_kd_end_to_end_with_stub_items_leaves_no_arrays_in_store(tmp_path, monke
     assert not list(store.rglob("*.npz"))
     assert (store / "REGISTRY_OBLIGATION_9999-a1.json").is_file()
     assert drec.lineage_d(store)["status"] == "PASS"
+
+
+@pytest.mark.parametrize("rel,ended", [("hwsu-store/REGISTRY_OBLIGATION_OF.json", True),
+                                       ("REGISTRY_OBLIGATION_OF.json", True),
+                                       ("other/REGISTRY_OBLIGATION_OF.json", False)])
+def test_reservation_end_accepts_a_root_relative_obligation(rel, ended, tmp_path):
+    """R-0213-1: track U names the obligation relative to the root (J8 leaves it open)."""
+    import hashlib
+
+    import hwsd_data
+
+    root = tmp_path / "root"
+    store = root / "hwsu-store"
+    (store / "reservations").mkdir(parents=True)
+    (root / "other").mkdir()
+    res = store / "RESERVATION_OF.json"
+    res.write_text(json.dumps({"id": "RES-HWSU-OF", "state": "ACTIVE"}), encoding="utf-8")
+    for d in (store, root / "other"):
+        (d / "REGISTRY_OBLIGATION_OF.json").write_text("{}", encoding="utf-8")
+    sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()  # noqa: E731
+    (store / "reservations" / "RES-HWSU-OF.END.json").write_text(json.dumps({
+        "schema": "hws-reservation-end-v1", "reservation_id": "RES-HWSU-OF",
+        "reservation_sha256": sha(res), "obligation_file": rel,
+        "obligation_sha256": sha(store / "REGISTRY_OBLIGATION_OF.json")}), encoding="utf-8")
+    assert hwsd_data.reservation_ended(res, root)["ended"] is ended

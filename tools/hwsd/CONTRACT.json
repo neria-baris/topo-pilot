@@ -2216,31 +2216,31 @@
   ],
   "name_rules": [
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/CHART\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/CHART\\.npz",
     "kind": "chart"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/DECODER\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/DECODER\\.npz",
     "kind": "decoder"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/ACTS_cal\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/ACTS_cal\\.npz",
     "kind": "activation"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/ARRAYS\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/SCORE/\\d+/s\\d+/ARRAYS\\.npz",
     "kind": "score"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/ORACLE_(cal|test)\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/ORACLE_(cal|test)\\.npz",
     "kind": "oracle-moment"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/LGATE_Q\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/LGATE_Q\\.npz",
     "kind": "oracle-moment"
    },
    {
-    "regex": "(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/SHARED_CONTROLS\\.npz",
+    "regex": "(superseded/\\d{4}-a\\d+/)?(DRD\\d+/\\d{8}T\\d{6}Z/)?stages/S4/SHARED_CONTROLS\\.npz",
     "kind": "score"
    }
   ],

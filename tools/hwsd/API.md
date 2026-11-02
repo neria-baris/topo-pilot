@@ -652,3 +652,7 @@ J8 names `obligation_file` without fixing its base. Track U writes it relative t
 ## 30. SCORE timed-operation marker erratum (job 0217; ruling R-0216-1)
 
 SCORE attempts 1 and 2 (job 0216) stopped in C0-CAL with `PermissionError [WinError 5]` on `os.replace(OPERATION_ACTIVE.json.tmp, OPERATION_ACTIVE.json)`: the store meter reads the marker four times a second (`op_guard.overdue`) and Windows refuses a replace while another process has the target open; under SCORE's load the collision came within 1 and 31 marker writes. `op_guard` is a sha-bound reuse file and stays unchanged. `hwsd_jobs.timed_factory_d` is `op_guard.timed_factory` line for line (same OPERATIONS.jsonl records and marker contents) with `_write_marker_d`, which retries `op_guard.write_marker` on `PermissionError` up to 100 times, 20 ms apart; `_score_ctx` uses it. Regression test in `tests/hwsd/test_c_continue.py`.
+
+## 31. Obligation name rules for archived attempts (job 0218; ruling R-0216-2)
+
+`archive_attempt_d` moves an interrupted SCORE attempt's files, arrays included, to `superseded/<job>-a<k>/`, and `obligation_files` walks the whole store, so the obligation at the end of every later job raised `unclassifiable array file superseded/...` (found by a coordinator check after SCORE 620301 attempt 2). CONTRACT `obligation.name_rules`: each of the seven non-history rules now starts with the optional group `(superseded/\d{4}-a\d+/)?`. Every name matched before still matches; history names are unchanged. Regression test in `tests/hwsd/test_c_continue.py`.

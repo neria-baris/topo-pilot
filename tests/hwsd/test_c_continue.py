@@ -188,3 +188,13 @@ def test_timed_factory_d_matches_op_guard_and_retries_a_refused_replace(tmp_path
     monkeypatch.setattr(op_guard.os, "replace", flaky)
     assert hj.timed_factory_d(b, 600)("y", lambda: 8) == 8
     assert json.loads((b / op_guard.MARKER).read_text())["state"] == "idle"
+
+
+def test_archived_score_arrays_are_classified(tmp_path):
+    """R-0216-2: arrays archived to superseded/<job>-a<k>/ keep their name-rule class."""
+    import hwsd_data
+
+    rel = "superseded/0216-a2/stages/SCORE/620301/s0/ACTS_cal.npz"
+    assert hwsd_data.classify_file(tmp_path, rel) == ("NON_HISTORY", "name_rule")
+    with pytest.raises(Exception):
+        hwsd_data.classify_file(tmp_path, "stages/KD/REPRO/1/s0/CHART.npz")

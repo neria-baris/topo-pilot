@@ -26651,7 +26651,7 @@
    "kind": "json",
    "lines": 3254,
    "purpose": "",
-   "sha256": "6b5c091920872968c30625e5f545e138136728139473f200feb2cb76ee063aca"
+   "sha256": "c71d10058b84bde55e4a89d8e6021fe03ee3d9da2998f8d017082668c58ae5a6"
   },
   "tools/hwsd/PROTOCOL_HWSD_v1.md": {
    "kind": "markdown",
@@ -267017,5 +267017,5 @@
    ]
   }
  },
- "sources_digest": "7cedcf5bdd8836f2a371f47ff6700a36922c654cf165fb5db80d3dd45c34aa0e"
+ "sources_digest": "b00ba9088b232176a697e7d926095a27d3d713917a1951aa3ed20e1fed381f69"
 }

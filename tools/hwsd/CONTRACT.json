@@ -27,8 +27,8 @@
    "37"
   ],
   "run_approval": {
-   "path": "TO_FREEZE",
-   "sha256": "TO_FREEZE",
+   "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-42.md",
+   "sha256": "33868b1278a561ac54859d42592d772642828c677339ab6f4e8d425fa03702bd",
    "rule": "the owner's explicit track-D run approval (not given by addendum 37); absent or TO_FREEZE -> INCONCLUSIVE/RESOURCE_OR_AUTHORITY"
   },
   "design_freeze": {

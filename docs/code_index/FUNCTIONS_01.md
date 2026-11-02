@@ -2108,6 +2108,7 @@
 | `_steps` | function | `_steps` | [tests/hwsc/test_b_records.py:87](../../tests/hwsc/test_b_records.py#L87) |  |
 | `_stochastic` | function | `_stochastic` | [tests/analysis/test_horizon.py:30](../../tests/analysis/test_horizon.py#L30) |  |
 | `_stochastic` | function | `_stochastic` | [tests/experiment/test_x4b.py:21](../../tests/experiment/test_x4b.py#L21) |  |
+| `_Stop` | class | `_Stop` | [tests/hwsd/test_c_continue.py:22](../../tests/hwsd/test_c_continue.py#L22) |  |
 | `_stop_file` | function | `_stop_file` | [tests/experiment/test_x5g1t_integration.py:154](../../tests/experiment/test_x5g1t_integration.py#L154) |  |
 | `_stop_request` | function | `_stop_request` | [tests/experiment/test_x5g1t_integration.py:150](../../tests/experiment/test_x5g1t_integration.py#L150) |  |
 | `_stop_worker_control` | function | `_stop_worker_control` | [tests/experiment/test_x5g1t_integration.py:146](../../tests/experiment/test_x5g1t_integration.py#L146) |  |

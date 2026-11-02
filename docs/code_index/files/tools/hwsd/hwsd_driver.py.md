@@ -65,6 +65,7 @@
 ## Imported by
 
 - [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 274, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 15, import)
 - [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 97, import)
 - [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 160, import)
 - [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 226, import)
@@ -82,7 +83,7 @@
 - **function `end_obligation`** [L79-84]: `def end_obligation(out, job, attempt, reservation_id=None) -> Path`
 - **function `refuse_exit`** [L87-92]: `def refuse_exit(out, ret, job, attempt)` - J10 item 2: a refused job that wrote anything into the store still writes its obligation.
 - **function `first_bad`** [L95-97]: `def first_bad(recs, soft=())`
-- **function `run_kd`** [L101-108]: `def run_kd(out, auth, sched, job, attempt=1) -> dict`
+- **function `run_kd`** [L101-108]: `def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict`
 - **function `_kd_accept_ok`** [L112-116]: `def _kd_accept_ok(out, kd_accept) -> bool`
 - **function `_h1d`** [L119-157]: `def _h1d(out, ctx) -> dict`
 - **function `_regd`** [L160-170]: `def _regd(out, ctx, root, scratch) -> dict`
@@ -92,7 +93,7 @@
 - **function `_oracle`** [L220-231]: `def _oracle(out, ctx) -> dict`
 - **function `_b4`** [L234-244]: `def _b4(out, ctx) -> dict`
 - **function `_lgate`** [L247-251]: `def _lgate(out, ctx) -> dict`
-- **function `run_sample`** [L254-303]: `def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT, scratch=dc.SCRATCH) -> dict`
+- **function `run_sample`** [L254-303]: `def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT, scratch=dc.SCRATCH, cont=None) -> dict`
 - **function `state_from_gates`** [L307-323]: `def state_from_gates(out) -> dict` - The outcome_d state keys (decision 10) read from GATES.jsonl and the SCORE folders.
 - **function `run_close`** [L326-343]: `def run_close(out, status, reason, job, attempt) -> dict`
 - **function `inventory`** [L346-355]: `def inventory(root, save=None, compare=None) -> dict`

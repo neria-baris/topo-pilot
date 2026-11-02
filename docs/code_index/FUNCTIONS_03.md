@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_rate_matched_diag_boundary` | test | `test_rate_matched_diag_boundary` | [tests/analysis/test_x5_kernel.py:207](../../tests/analysis/test_x5_kernel.py#L207) |  |
 | `test_rate_matched_negative_entry_invalid` | test | `test_rate_matched_negative_entry_invalid` | [tests/analysis/test_x5_kernel.py:221](../../tests/analysis/test_x5_kernel.py#L221) |  |
 | `test_rate_matched_nonpositive_alpha_invalid` | test | `test_rate_matched_nonpositive_alpha_invalid` | [tests/analysis/test_x5_kernel.py:215](../../tests/analysis/test_x5_kernel.py#L215) |  |
 | `test_rate_matched_valid_equals_formula` | test | `test_rate_matched_valid_equals_formula` | [tests/analysis/test_x5_kernel.py:199](../../tests/analysis/test_x5_kernel.py#L199) |  |
@@ -245,6 +246,7 @@
 | `test_run_gates_pause_is_recorded_and_stops` | test | `test_run_gates_pause_is_recorded_and_stops` | [tests/hwsc/test_b_records.py:123](../../tests/hwsc/test_b_records.py#L123) |  |
 | `test_run_gates_stops_at_first_non_pass` | test | `test_run_gates_stops_at_first_non_pass` | [tests/hwsc/test_b_records.py:107](../../tests/hwsc/test_b_records.py#L107) |  |
 | `test_run_kb_default_store_reaches_kb0` | test | `test_run_kb_default_store_reaches_kb0` | [tests/hwsb/test_r_0168_kb_default_store.py:24](../../tests/hwsb/test_r_0168_kb_default_store.py#L24) |  |
+| `test_run_kd_hands_cont_to_the_pause_check` | test | `test_run_kd_hands_cont_to_the_pause_check` | [tests/hwsd/test_c_continue.py:51](../../tests/hwsd/test_c_continue.py#L51) |  |
 | `test_run_key_real_and_dry` | test | `test_run_key_real_and_dry` | [tests/hwsc/test_b_streams.py:79](../../tests/hwsc/test_b_streams.py#L79) |  |
 | `test_run_lock_identity_follows_the_release_session` | test | `test_run_lock_identity_follows_the_release_session` | [tests/k4b/test_b_meter.py:69](../../tests/k4b/test_b_meter.py#L69) |  |
 | `test_run_metrics_and_probes_deferred` | test | `test_run_metrics_and_probes_deferred` | [tests/prediction/test_stage.py:70](../../tests/prediction/test_stage.py#L70) |  |
@@ -284,6 +286,7 @@
 | `test_same_pair_count_hand_array_and_inconclusive` | test | `test_same_pair_count_hand_array_and_inconclusive` | [tests/analysis/test_geometry.py:55](../../tests/analysis/test_geometry.py#L55) |  |
 | `test_same_pairs_199_inconclusive_and_200_ok` | test | `test_same_pairs_199_inconclusive_and_200_ok` | [tests/analysis/test_geometry.py:69](../../tests/analysis/test_geometry.py#L69) |  |
 | `test_same_pairs_below_200_inconclusive` | test | `test_same_pairs_below_200_inconclusive` | [tests/analysis/test_geometry.py:62](../../tests/analysis/test_geometry.py#L62) |  |
+| `test_sample_and_summary_wrappers_honour_a_continuation` | test | `test_sample_and_summary_wrappers_honour_a_continuation` | [tests/hwsd/test_c_continue.py:64](../../tests/hwsd/test_c_continue.py#L64) |  |
 | `test_sample_block_c_equals_k4b_sample_block_under_dry_binding` | test | `test_sample_block_c_equals_k4b_sample_block_under_dry_binding` | [tests/hwsc/test_b_streams.py:192](../../tests/hwsc/test_b_streams.py#L192) |  |
 | `test_sample_block_c_one_sampler_call_and_shape` | test | `test_sample_block_c_one_sampler_call_and_shape` | [tests/hwsc/test_b_streams.py:202](../../tests/hwsc/test_b_streams.py#L202) |  |
 | `test_sample_block_d_mirror_under_the_dry_binding` | test | `test_sample_block_d_mirror_under_the_dry_binding` | [tests/hwsd/test_b_data.py:80](../../tests/hwsd/test_b_data.py#L80) |  |

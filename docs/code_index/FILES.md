@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked files; 671 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1072 tracked files; 672 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1017,6 +1017,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 | [test_b_registry_r9.py](files/tests/hwsd/test_b_registry_r9.py.md) | python | 297 lines | Author B: R9, the stage-C layout reader, on a synthetic stage-C-like store (J1; DRD8, DRD9). |
 | [test_b_reservation.py](files/tests/hwsd/test_b_reservation.py.md) | python | 265 lines | Author B: reservations, the J8 end record, W2 attestation, stopped sampling (J8, J10 item 3). |
 | [test_b_util.py](files/tests/hwsd/test_b_util.py.md) | python | 251 lines | Author B shared helpers for tests/hwsd (job 0197). Holds no tests. |
+| [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 71 lines | Coordinator 080a3e03 (job 0208, owner addendum 42). |
 
 ## tests/integration/
 
@@ -1387,7 +1388,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 629 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
+| `API.md` | markdown | 633 lines | tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1) |
 | `CONTRACT.json` | json | 3254 lines |  |
 | `PROTOCOL_HWSD_v1.md` | markdown | 870 lines | HWSD-DESIGN-v1: track D, when does the beyond-four information appear during training? |
 | `TEST_PLAN.md` | markdown | 94 lines | HWSD test plan v1 (job 0197) |
@@ -1398,7 +1399,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1071 tracked fil
 | [hwsd_dry.py](files/tools/hwsd/hwsd_dry.py.md) | python | 398 lines | hwsd synthetic dry run: helpers, DRD1, DRD4/KD4 (seq_cases, plant_acts), run_dry (API.md §12). |
 | [hwsd_dry2.py](files/tools/hwsd/hwsd_dry2.py.md) | python | 398 lines | hwsd dry-run cases DRD5, DRD7, DRD8-DRD11 (API.md §12; TEST_PLAN §4). Split from hwsd_dry by |
 | [hwsd_dry3.py](files/tools/hwsd/hwsd_dry3.py.md) | python | 399 lines | hwsd dry-run cases DRD2, DRD3, DRD6, DRD7, DRD12, DRD13, DRD14 (API.md §12; TEST_PLAN §4). |
-| [hwsd_jobs.py](files/tools/hwsd/hwsd_jobs.py.md) | python | 287 lines | HWSD jobs SCORE and SUMMARY and the CLI (API.md §11, §15.3, §15.4; split from hwsd_driver by |
+| [hwsd_jobs.py](files/tools/hwsd/hwsd_jobs.py.md) | python | 288 lines | HWSD jobs SCORE and SUMMARY and the CLI (API.md §11, §15.3, §15.4; split from hwsd_driver by |
 | [hwsd_known.py](files/tools/hwsd/hwsd_known.py.md) | python | 289 lines | HWSD G0d and the known cases KD0-KD6 (API.md §9; protocol §6, §9). hwsd_driver and hwsd_dry are |
 | [hwsd_known2.py](files/tools/hwsd/hwsd_known2.py.md) | python | 252 lines | HWSD known cases KD2 (binding mirrors) and KD3 (stage-C reproduction) with their helpers |
 | [hwsd_meter_bind.py](files/tools/hwsd/hwsd_meter_bind.py.md) | python | 130 lines | HWSD meter binding (API.md §13; protocol §11.3; DRD12). |

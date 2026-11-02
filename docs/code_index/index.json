@@ -1,20 +1,20 @@
 {
  "counts": {
-  "classes": 325,
-  "code files": 671,
+  "classes": 326,
+  "code files": 672,
   "dynamic imports, dynamic expression or unresolved": 25,
   "dynamic imports, internal": 16,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1071,
-  "functions and methods (incl. tests)": 9940,
+  "files indexed": 1072,
+  "functions and methods (incl. tests)": 9944,
   "import cycles (strongly connected components)": 14,
-  "import statements, external": 944,
+  "import statements, external": 945,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3445,
+  "import statements, internal resolved": 3449,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 2998,
-  "internal edges (file to file, with kind and line)": 3480,
-  "python files": 670
+  "import statements, standard library": 3001,
+  "internal edges (file to file, with kind and line)": 3484,
+  "python files": 671
  },
  "cycles": [
   [
@@ -9810,6 +9810,30 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    36
+  ],
+  [
+   "tests/hwsd/test_c_continue.py",
+   "tools/hwsd/hwsd_driver.py",
+   "import",
+   15
+  ],
+  [
+   "tests/hwsd/test_c_continue.py",
+   "tools/hwsd/hwsd_jobs.py",
+   "import",
+   16
+  ],
+  [
+   "tests/hwsd/test_c_continue.py",
+   "tools/hwsd/hwsd_known.py",
+   "import",
+   17
+  ],
+  [
+   "tests/hwsd/test_c_continue.py",
+   "tools/hwsd/hwsd_records.py",
+   "import",
+   18
   ],
   [
    "tests/integration/_mini_pipeline.py",
@@ -25231,6 +25255,12 @@
    "purpose": "Author B shared helpers for tests/hwsd (job 0197). Holds no tests.",
    "sha256": "12d6ec559ba7486cfd815cde00813ebc3937e8ba5ddd8530c92f1fdacaf733cb"
   },
+  "tests/hwsd/test_c_continue.py": {
+   "kind": "python",
+   "lines": 71,
+   "purpose": "Coordinator 080a3e03 (job 0208, owner addendum 42).",
+   "sha256": "95e82213498eb83acc7bddd10928de3e396bfb3c7807c7ce57bde8134c9e90a2"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -26643,9 +26673,9 @@
   },
   "tools/hwsd/API.md": {
    "kind": "markdown",
-   "lines": 629,
+   "lines": 633,
    "purpose": "tools/hwsd: written contract (job 0197 phase 1; derived from HWSD-DESIGN-v1)",
-   "sha256": "fb1f80d307cbdc46e1f700ee959ff56012b4a5b095a60bbd6ef4967e1820852c"
+   "sha256": "a9d7f6e9b638dd9e4ec62e0f8331e956edd6dbae2ee89f7aabd36b6c79174bb3"
   },
   "tools/hwsd/CONTRACT.json": {
    "kind": "json",
@@ -26687,7 +26717,7 @@
    "kind": "python",
    "lines": 361,
    "purpose": "HWSD driver: common job helpers and the jobs KD, SAMPLE, CLOSE, inventory (API.md §11, §15.1,",
-   "sha256": "8a009773eba1ab304a3067dd84865100f3ca343967dfaf2d84b9206ae7a6f8ec"
+   "sha256": "48d8da4470c56d117b47c18777a7d42a0bce298e276f60e4aa7d67b3d71fe567"
   },
   "tools/hwsd/hwsd_dry.py": {
    "kind": "python",
@@ -26709,15 +26739,15 @@
   },
   "tools/hwsd/hwsd_jobs.py": {
    "kind": "python",
-   "lines": 287,
+   "lines": 288,
    "purpose": "HWSD jobs SCORE and SUMMARY and the CLI (API.md §11, §15.3, §15.4; split from hwsd_driver by",
-   "sha256": "dbd401f2e32b75343a91f90802c5f66779757350ef6f8d9872832cd9f589d34a"
+   "sha256": "e4230fad259f9ad000f304e9a28ffad31736b84de073da03a8b5c8748e8d02b0"
   },
   "tools/hwsd/hwsd_known.py": {
    "kind": "python",
    "lines": 289,
    "purpose": "HWSD G0d and the known cases KD0-KD6 (API.md §9; protocol §6, §9). hwsd_driver and hwsd_dry are",
-   "sha256": "2d3b6ef75ebc8bcdcdad694f3274b602dac4ae30c50a798d53e585070b0ee56d"
+   "sha256": "9b6a997a1fa9025c7196ff05f179bd2ff27dd8a5bed34205e70f035727fedaa1"
   },
   "tools/hwsd/hwsd_known2.py": {
    "kind": "python",
@@ -151211,6 +151241,209 @@
     }
    ]
   },
+  "tests/hwsd/test_c_continue.py": {
+   "constants": [],
+   "doc": "Coordinator 080a3e03 (job 0208, owner addendum 42).",
+   "doc1": "Coordinator 080a3e03 (job 0208, owner addendum 42).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "hwsd_driver"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsd/hwsd_driver.py"
+     ],
+     "top": "hwsd_driver"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "hwsd_jobs"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsd/hwsd_jobs.py"
+     ],
+     "top": "hwsd_jobs"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "hwsd_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsd/hwsd_known.py"
+     ],
+     "top": "hwsd_known"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsd_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsd/hwsd_records.py"
+     ],
+     "top": "hwsd_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    }
+   ],
+   "symbols": [
+    {
+     "bases": [
+      "Exception"
+     ],
+     "decorators": [],
+     "doc": "",
+     "end": 23,
+     "kind": "class",
+     "name": "_Stop",
+     "qual": "_Stop",
+     "start": 22
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('cmd', ['kd', 'sample', 'summary'])"
+     ],
+     "doc": "",
+     "end": 40,
+     "kind": "test",
+     "name": "test_cli_passes_continue",
+     "qual": "test_cli_passes_continue",
+     "sig": "def test_cli_passes_continue(cmd, tmp_path, monkeypatch)",
+     "start": 27
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 48,
+     "kind": "test",
+     "name": "test_cli_without_continue_passes_none",
+     "qual": "test_cli_without_continue_passes_none",
+     "sig": "def test_cli_without_continue_passes_none(tmp_path, monkeypatch)",
+     "start": 43
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 61,
+     "kind": "test",
+     "name": "test_run_kd_hands_cont_to_the_pause_check",
+     "qual": "test_run_kd_hands_cont_to_the_pause_check",
+     "sig": "def test_run_kd_hands_cont_to_the_pause_check(tmp_path, monkeypatch)",
+     "start": 51
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 71,
+     "kind": "test",
+     "name": "test_sample_and_summary_wrappers_honour_a_continuation",
+     "qual": "test_sample_and_summary_wrappers_honour_a_continuation",
+     "sig": "def test_sample_and_summary_wrappers_honour_a_continuation(tmp_path, monkeypatch)",
+     "start": 64
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tests/hwsd",
+      "tools/hwsd"
+     ],
+     "expr": "str(_p)",
+     "line": 13
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -226926,7 +227159,7 @@
      "kind": "function",
      "name": "run_kd",
      "qual": "run_kd",
-     "sig": "def run_kd(out, auth, sched, job, attempt=1) -> dict",
+     "sig": "def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict",
      "start": 101
     },
     {
@@ -227026,7 +227259,7 @@
      "kind": "function",
      "name": "run_sample",
      "qual": "run_sample",
-     "sig": "def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT, scratch=dc.SCRATCH) -> dict",
+     "sig": "def run_sample(out, auth, sched, job, attempt, kd_accept, root=dc.ROOT, scratch=dc.SCRATCH, cont=None) -> dict",
      "start": 254
     },
     {
@@ -229923,7 +230156,7 @@
      "kind": "function",
      "name": "run_summary",
      "qual": "run_summary",
-     "sig": "def run_summary(out, auth, sched, job, attempt, accepts) -> dict",
+     "sig": "def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict",
      "start": 159
     },
     {
@@ -229949,7 +230182,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 287,
+     "end": 288,
      "kind": "function",
      "name": "main",
      "qual": "main",
@@ -230556,7 +230789,7 @@
      "kind": "function",
      "name": "run_kd",
      "qual": "run_kd",
-     "sig": "def run_kd(out, auth, sched, job, attempt=1) -> dict",
+     "sig": "def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict",
      "start": 230
     },
     {
@@ -267017,5 +267250,5 @@
    ]
   }
  },
- "sources_digest": "b00ba9088b232176a697e7d926095a27d3d713917a1951aa3ed20e1fed381f69"
+ "sources_digest": "4ed250deaadeb7995d4a37160b708c12d870d964bbbb4f53d2d76b46af027687"
 }

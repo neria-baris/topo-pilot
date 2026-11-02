@@ -2181,7 +2181,9 @@
 | `test_claude_usage_unavailable_is_no_hold` | test | `test_claude_usage_unavailable_is_no_hold` | [tests/experiment/test_x5g1t_runtime.py:135](../../tests/experiment/test_x5g1t_runtime.py#L135) |  |
 | `test_clean_module_and_bool_and_foreign_functions` | test | `test_clean_module_and_bool_and_foreign_functions` | [tests/hwsc/test_b_binding.py:283](../../tests/hwsc/test_b_binding.py#L283) |  |
 | `test_cleared_kind_but_new_relevant_limit_blocks` | test | `test_cleared_kind_but_new_relevant_limit_blocks` | [tests/experiment/test_x5g1t_usage.py:349](../../tests/experiment/test_x5g1t_usage.py#L349) |  |
+| `test_cli_passes_continue` | test | `test_cli_passes_continue` | [tests/hwsd/test_c_continue.py:27](../../tests/hwsd/test_c_continue.py#L27) |  |
 | `test_cli_resume_marker_and_batch_precheck` | test | `test_cli_resume_marker_and_batch_precheck` | [tests/x6_stage1/test_b_train_chain.py:363](../../tests/x6_stage1/test_b_train_chain.py#L363) |  |
+| `test_cli_without_continue_passes_none` | test | `test_cli_without_continue_passes_none` | [tests/hwsd/test_c_continue.py:43](../../tests/hwsd/test_c_continue.py#L43) |  |
 | `test_closed_cocycle_is_centered_exact` | test | `test_closed_cocycle_is_centered_exact` | [tests/circle_history/test_cochain_lift.py:167](../../tests/circle_history/test_cochain_lift.py#L167) |  |
 | `test_closed_form_agrees_with_the_direct_donor_filter_within_t_plus_t2` | test | `test_closed_form_agrees_with_the_direct_donor_filter_within_t_plus_t2` | [tests/c1prime/test_a_oracle.py:191](../../tests/c1prime/test_a_oracle.py#L191) |  |
 | `test_closed_form_index_convention_on_a_nonsymmetric_posterior` | test | `test_closed_form_index_convention_on_a_nonsymmetric_posterior` | [tests/c1prime/test_a_oracle.py:177](../../tests/c1prime/test_a_oracle.py#L177) |  |
@@ -3990,4 +3992,3 @@
 | `test_ranks` | test | `test_ranks` | [tests/hwsc/test_a_k4b_known_bound.py:329](../../tests/hwsc/test_a_k4b_known_bound.py#L329) |  |
 | `test_ranks` | test | `test_ranks` | [tests/hwsd/test_a_known_bound.py:185](../../tests/hwsd/test_a_known_bound.py#L185) |  |
 | `test_rate_matched_diag_below_floor_invalid` | test | `test_rate_matched_diag_below_floor_invalid` | [tests/analysis/test_x5_kernel.py:227](../../tests/analysis/test_x5_kernel.py#L227) |  |
-| `test_rate_matched_diag_boundary` | test | `test_rate_matched_diag_boundary` | [tests/analysis/test_x5_kernel.py:207](../../tests/analysis/test_x5_kernel.py#L207) |  |

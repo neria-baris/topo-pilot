@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsd/hwsd_jobs.py](../../../../../tools/hwsd/hwsd_jobs.py)
 - Kind: python
-- Lines: 287
+- Lines: 288
 
 ## Module docstring
 
@@ -69,6 +69,7 @@
 
 ## Imported by
 
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 16, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 358, import)
 
 ## Top-level constants
@@ -86,8 +87,8 @@
 - **function `run_score`** [L96-139]: `def run_score(out, auth, sched, job, attempt, master, accept_sample, cont=None) -> dict`
 - **function `_shared`** [L142-145]: `def _shared(out) -> dict`
 - **function `_accept_scores_ok`** [L148-156]: `def _accept_scores_ok(out, accepts) -> bool`
-- **function `run_summary`** [L159-203]: `def run_summary(out, auth, sched, job, attempt, accepts) -> dict`
+- **function `run_summary`** [L159-203]: `def run_summary(out, auth, sched, job, attempt, accepts, cont=None) -> dict`
 - **function `_load`** [L207-208]: `def _load(p)`
 - **function `_exit`** [L211-217]: `def _exit(res) -> int`
-- **function `main`** [L225-287]: `def main(argv=None) -> int`
+- **function `main`** [L225-288]: `def main(argv=None) -> int`
 

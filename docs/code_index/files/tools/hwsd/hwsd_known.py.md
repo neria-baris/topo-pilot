@@ -69,6 +69,7 @@
 
 - [tests/hwsd/test_a_learning.py](../../tests/hwsd/test_a_learning.py.md) (line 25, import)
 - [tests/hwsd/test_b_guard_search.py](../../tests/hwsd/test_b_guard_search.py.md) (line 14, import)
+- [tests/hwsd/test_c_continue.py](../../tests/hwsd/test_c_continue.py.md) (line 17, import)
 - [tools/hwsd/hwsd_driver.py](hwsd_driver.py.md) (line 19, import)
 - [tools/hwsd/hwsd_dry3.py](hwsd_dry3.py.md) (line 38, import)
 - [tools/hwsd/hwsd_jobs.py](hwsd_jobs.py.md) (line 60, import)
@@ -92,6 +93,6 @@
 - **function `ident_d`** [L150-187]: `def ident_d(masters=dc.MASTERS, steps=dc.STEPS, hwsc=dc.HWSC_STORE, handoff=None) -> dict`
 - **function `kd5`** [L191-207]: `def kd5() -> dict`
 - **function `kd6`** [L210-227]: `def kd6(job) -> dict`
-- **function `run_kd`** [L230-284]: `def run_kd(out, auth, sched, job, attempt=1) -> dict`
+- **function `run_kd`** [L230-284]: `def run_kd(out, auth, sched, job, attempt=1, cont=None) -> dict`
 - **function `_audit`** [L287-289]: `def _audit() -> dict`
 

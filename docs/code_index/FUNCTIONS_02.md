@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `make_train_dev_c` | function | `make_train_dev_c` | [tools/hwsc/hwsc_data.py:69](../../tools/hwsc/hwsc_data.py#L69) | hwsb_data.make_train_dev line for line, with `scope` in place of the literal hwsb-v1. |
 | `make_trainer` | function | `make_trainer` | [tools/d2a/d2a_train.py:67](../../tools/d2a/d2a_train.py#L67) | Trainer for a registered run (§4.5); H = 1 is exactly the default path. |
 | `manifest_stem` | function | `manifest_stem` | [tools/c2_nd/nd_stage_base.py:143](../../tools/c2_nd/nd_stage_base.py#L143) | manifests/<job>.json; a dry-run store runs every stage in one job: <job>-<stage>. |
 | `manual_bootstrap` | function | `manual_bootstrap` | [tests/oracle_profile/test_oracle_profile_kernels.py:195](../../tests/oracle_profile/test_oracle_profile_kernels.py#L195) | Re-implementation of the documented order: one rng.integers(0, n, size=n) call per draw. |
@@ -1042,7 +1043,7 @@
 | `root` | method | `StudyConfig.root` | [src/topo_pilot/experiment/x5g1t_config.py:96](../../src/topo_pilot/experiment/x5g1t_config.py#L96) |  |
 | `root` | function | `root` | [tests/experiment/test_x5g1t_training.py:80](../../tests/experiment/test_x5g1t_training.py#L80) |  |
 | `root_inventory` | function | `root_inventory` | [tools/hwsu/hwsu_resv.py:256](../../tools/hwsu/hwsu_resv.py#L256) |  |
-| `root_table_u` | function | `root_table_u` | [tools/hwsu/u2/hwsu_registry.py:68](../../tools/hwsu/u2/hwsu_registry.py#L68) |  |
+| `root_table_u` | function | `root_table_u` | [tools/hwsu/u2/hwsu_registry.py:69](../../tools/hwsu/u2/hwsu_registry.py#L69) |  |
 | `rot_val` | function | `rot_val` | [tools/c2_readout/c2_stage_val.py:318](../../tools/c2_readout/c2_stage_val.py#L318) | The VAL rotation arm (report only; sealed until the fresh outcome, §5.7). |
 | `rotation` | function | `rotation` | [tools/c2_readout/c2_stage_val.py:139](../../tools/c2_readout/c2_stage_val.py#L139) | Report only: A_rot, G_rot on every TEST E_x row, theta_rot with its 95 % interval (seed |
 | `rotation_arm` | function | `rotation_arm` | [tools/c2_readout/c2_attrib.py:183](../../tools/c2_readout/c2_attrib.py#L183) |  |
@@ -1310,7 +1311,7 @@
 | `scratch_check` | function | `scratch_check` | [tools/hwsc/hwsc_scratch.py:117](../../tools/hwsc/hwsc_scratch.py#L117) |  |
 | `scratch_ok` | function | `scratch_ok` | [tools/x6_stage0/x6_store.py:229](../../tools/x6_stage0/x6_store.py#L229) |  |
 | `scratch_scan` | function | `scratch_scan` | [tools/hwsc/hwsc_scratch.py:44](../../tools/hwsc/hwsc_scratch.py#L44) |  |
-| `scratch_table_u` | function | `scratch_table_u` | [tools/hwsu/u2/hwsu_registry.py:52](../../tools/hwsu/u2/hwsu_registry.py#L52) |  |
+| `scratch_table_u` | function | `scratch_table_u` | [tools/hwsu/u2/hwsu_registry.py:53](../../tools/hwsu/u2/hwsu_registry.py#L53) |  |
 | `screen` | function | `screen` | [src/topo_pilot/experiment/x4b_audit.py:34](../../src/topo_pilot/experiment/x4b_audit.py#L34) | Partners (same last symbol unless ``last`` is None) and the frozen screen. |
 | `screen_bounds` | function | `screen_bounds` | [tools/hws/hws_stats.py:52](../../tools/hws/hws_stats.py#L52) |  |
 | `screen_pool` | function | `screen_pool` | [src/topo_pilot/analysis/horizon_pools.py:135](../../src/topo_pilot/analysis/horizon_pools.py#L135) | Apply the frozen screen: admissible ``d1 <= q1_max``; eligible = any admissible partner; |
@@ -1371,7 +1372,7 @@
 | `separation_c` | function | `separation_c` | [tools/hwsc/hwsc_data.py:166](../../tools/hwsc/hwsc_data.py#L166) |  |
 | `separation_cal_val` | function | `separation_cal_val` | [tools/k4b/k4b_data.py:150](../../tools/k4b/k4b_data.py#L150) |  |
 | `separation_fresh` | function | `separation_fresh` | [tools/k4b/k4b_data.py:154](../../tools/k4b/k4b_data.py#L154) |  |
-| `separation_u` | function | `separation_u` | [tools/hwsu/u2/hwsu_registry.py:150](../../tools/hwsu/u2/hwsu_registry.py#L150) |  |
+| `separation_u` | function | `separation_u` | [tools/hwsu/u2/hwsu_registry.py:178](../../tools/hwsu/u2/hwsu_registry.py#L178) |  |
 | `seq_disjoint` | function | `seq_disjoint` | [tools/k4b/k4b_data.py:160](../../tools/k4b/k4b_data.py#L160) |  |
 | `seq_ids` | function | `seq_ids` | [tools/hwsu/hwsu_pairs.py:100](../../tools/hwsu/hwsu_pairs.py#L100) |  |
 | `SeqClock` | class | `SeqClock` | [tests/circle_history/test_cochain_chart_v24.py:89](../../tests/circle_history/test_cochain_chart_v24.py#L89) | Returns `values` in order, then `tail` forever; counts readings. |
@@ -1496,7 +1497,7 @@
 | `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:127](../../tools/c2_nd/nd_registry.py#L127) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
 | `source_scratch_c` | function | `source_scratch_c` | [tools/hwsc/hwsc_registry.py:277](../../tools/hwsc/hwsc_registry.py#L277) |  |
 | `sources_digest` | function | `sources_digest` | [tools/code_index/scan.py:111](../../tools/code_index/scan.py#L111) |  |
-| `sources_u` | function | `sources_u` | [tools/hwsu/u2/hwsu_registry.py:139](../../tools/hwsu/u2/hwsu_registry.py#L139) |  |
+| `sources_u` | function | `sources_u` | [tools/hwsu/u2/hwsu_registry.py:167](../../tools/hwsu/u2/hwsu_registry.py#L167) |  |
 | `SourceTampered` | class | `SourceTampered` | [src/topo_pilot/experiment/x5g1_safety.py:22](../../src/topo_pilot/experiment/x5g1_safety.py#L22) | A source artifact failed full-hash or payload verification. |
 | `SpaceBuilder` | class | `SpaceBuilder` | [src/topo_pilot/analysis/spaces.py:35](../../src/topo_pilot/analysis/spaces.py#L35) | Builds :class:`PointSet` objects from stored artifacts. |
 | `spaces` | function | `spaces` | [tests/c2_nd/test_b_layer2.py:38](../../tests/c2_nd/test_b_layer2.py#L38) | P2: orthogonal projector onto a 6-d S inside 1-perp; PC: onto 1-perp minus S. |
@@ -3706,6 +3707,7 @@
 | `test_named_from_canonical_round_trip` | test | `test_named_from_canonical_round_trip` | [tests/k4b/test_b_data.py:162](../../tests/k4b/test_b_data.py#L162) |  |
 | `test_named_space_filter_agrees_with_canonical_within_4e_12` | test | `test_named_space_filter_agrees_with_canonical_within_4e_12` | [tests/c1prime/test_a_oracle_named.py:155](../../tests/c1prime/test_a_oracle_named.py#L155) | Section 3.3: q_named[perm[j]] = q_canon[j], checked against direct named-space filtering |
 | `test_named_tokens_are_inverted_to_canonical` | test | `test_named_tokens_are_inverted_to_canonical` | [tests/hwsb/test_b_registry.py:115](../../tests/hwsb/test_b_registry.py#L115) |  |
+| `test_names_only_check_accepts_a_clean_worktree_and_fails_closed` | test | `test_names_only_check_accepts_a_clean_worktree_and_fails_closed` | [tests/hwsu/test_impl_u2_review.py:146](../../tests/hwsu/test_impl_u2_review.py#L146) |  |
 | `test_namespace_adjacent_seed_blocks_disjoint` | test | `test_namespace_adjacent_seed_blocks_disjoint` | [tests/hwsu/test_b_of_seed.py:240](../../tests/hwsu/test_b_of_seed.py#L240) |  |
 | `test_namespace_hit_in_a_parallel_store_is_foreign` | test | `test_namespace_hit_in_a_parallel_store_is_foreign` | [tests/c2_nd/test_b_lineage.py:84](../../tests/c2_nd/test_b_lineage.py#L84) |  |
 | `test_namespace_initial_admission` | test | `test_namespace_initial_admission` | [tests/c2_readout/test_b_lineage.py:326](../../tests/c2_readout/test_b_lineage.py#L326) |  |
@@ -4025,5 +4027,3 @@
 | `test_pbm_zero_is_not_positive_next_float_is` | test | `test_pbm_zero_is_not_positive_next_float_is` | [tests/hwsc/test_a_decision.py:214](../../tests/hwsc/test_a_decision.py#L214) |  |
 | `test_pc_scores_definition_on_new_rows` | test | `test_pc_scores_definition_on_new_rows` | [tests/analysis/test_x4f_targets.py:136](../../tests/analysis/test_x4f_targets.py#L136) |  |
 | `test_pc_scores_hand_case_and_decorrelation` | test | `test_pc_scores_hand_case_and_decorrelation` | [tests/analysis/test_x4f_targets.py:145](../../tests/analysis/test_x4f_targets.py#L145) |  |
-| `test_per_model_status_boundaries` | test | `test_per_model_status_boundaries` | [tests/c1prime/test_b_inference.py:98](../../tests/c1prime/test_b_inference.py#L98) |  |
-| `test_per_stage_thresholds_of_the_protocol_table` | test | `test_per_stage_thresholds_of_the_protocol_table` | [tests/hws/test_a_budget.py:108](../../tests/hws/test_a_budget.py#L108) |  |

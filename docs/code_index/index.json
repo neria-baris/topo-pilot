@@ -6,13 +6,13 @@
   "dynamic imports, internal": 50,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1102,
-  "functions and methods (incl. tests)": 10351,
+  "functions and methods (incl. tests)": 10353,
   "import cycles (strongly connected components)": 14,
   "import statements, external": 984,
   "import statements, internal ambiguous": 6,
   "import statements, internal resolved": 3508,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3128,
+  "import statements, standard library": 3129,
   "internal edges (file to file, with kind and line)": 3576,
   "python files": 696
  },
@@ -18915,25 +18915,25 @@
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/c1prime/c1_data.py",
    "import",
-   21
+   22
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/c2_readout/c2_registry.py",
    "import",
-   22
+   23
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/hwsc/hwsc_registry.py",
    "import",
-   23
+   24
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/hwsc/hwsc_registry_build.py",
    "import",
-   24
+   25
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
@@ -18951,7 +18951,7 @@
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/hwsu/u2/hwsu_regsrc.py",
    "dynamic",
-   299
+   327
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
@@ -18963,19 +18963,19 @@
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/k4b/k4b_data.py",
    "import",
-   25
+   26
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/k4b/k4b_registry.py",
    "import",
-   26
+   27
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/x4_circle_history/stage_records.py",
    "import",
-   28
+   29
   ],
   [
    "tools/hwsu/u2/hwsu_regsrc.py",
@@ -25915,9 +25915,9 @@
   },
   "tests/hwsu/test_impl_u2_review.py": {
    "kind": "python",
-   "lines": 142,
+   "lines": 163,
    "purpose": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
-   "sha256": "261d04447bcf3fb1c90ecac7d2dec085ce543ed0cf90d2c5265bd26860421d74"
+   "sha256": "ed08de0a3666ae7a53df07f7ba0aaae86ec30c7744e35f17324ba5f550026816"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -27343,9 +27343,9 @@
   },
   "tools/hwsu/CONTRACT.json": {
    "kind": "json",
-   "lines": 1513,
+   "lines": 1533,
    "purpose": "",
-   "sha256": "78b8e92b33b2f9ce0813b464baa4493b4bd940b73f55b2466dc1a0ebaeff66d2"
+   "sha256": "1dad880fabfa25292eab7750b655222f7bbc7df64d0765c6a47e061d6e4fe02e"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -27523,9 +27523,9 @@
   },
   "tools/hwsu/u2/hwsu_registry.py": {
    "kind": "python",
-   "lines": 300,
+   "lines": 328,
    "purpose": "HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3;",
-   "sha256": "52c17fee45cb66a2ee73cd1b203937ef409e81554983b2f244d4c82bfa258d67"
+   "sha256": "f52e7a631b5a03dac6e0e35aeb3b3d5742b2c9045dcc7b43b9784acac6767485"
   },
   "tools/hwsu/u2/hwsu_regsrc.py": {
    "kind": "python",
@@ -158830,6 +158830,16 @@
      "qual": "test_g0u_treats_hwsg_locations_as_declarations",
      "sig": "def test_g0u_treats_hwsg_locations_as_declarations()",
      "start": 130
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 163,
+     "kind": "test",
+     "name": "test_names_only_check_accepts_a_clean_worktree_and_fails_closed",
+     "qual": "test_names_only_check_accepts_a_clean_worktree_and_fails_closed",
+     "sig": "def test_names_only_check_accepts_a_clean_worktree_and_fails_closed(tmp_path)",
+     "start": 146
     }
    ],
    "syspath": [
@@ -242826,7 +242836,7 @@
      "expr": "'hwsu_regsrc'",
      "func": "import_module",
      "label": "hwsu_regsrc",
-     "line": 299,
+     "line": 327,
      "literal": "hwsu_regsrc",
      "paths": [],
      "status": "internal",
@@ -242957,6 +242967,21 @@
      "line": 17,
      "module": "",
      "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
       "re"
      ],
      "status": "stdlib",
@@ -242969,7 +242994,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 18,
+     "line": 19,
      "module": "",
      "names": [
       "time"
@@ -242984,7 +243009,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 19,
+     "line": 20,
      "module": "pathlib",
      "names": [
       "Path"
@@ -242999,7 +243024,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 21,
+     "line": 22,
      "module": "",
      "names": [
       "c1_data"
@@ -243016,7 +243041,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 22,
+     "line": 23,
      "module": "",
      "names": [
       "c2_registry"
@@ -243033,7 +243058,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 24,
      "module": "",
      "names": [
       "hwsc_registry"
@@ -243050,7 +243075,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 24,
+     "line": 25,
      "module": "",
      "names": [
       "hwsc_registry_build"
@@ -243067,7 +243092,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 25,
+     "line": 26,
      "module": "",
      "names": [
       "k4b_data"
@@ -243084,7 +243109,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 27,
      "module": "",
      "names": [
       "k4b_registry"
@@ -243101,7 +243126,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 28,
      "module": "",
      "names": [
       "numpy"
@@ -243116,7 +243141,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 29,
      "module": "",
      "names": [
       "stage_records"
@@ -243133,7 +243158,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 181,
+     "line": 209,
      "module": "",
      "names": [
       "psutil"
@@ -243147,162 +243172,172 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 40,
+     "end": 41,
      "kind": "function",
      "name": "_r",
      "qual": "_r",
      "sig": "def _r(contract=None) -> dict",
-     "start": 39
+     "start": 40
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 44,
+     "end": 45,
      "kind": "function",
      "name": "_hwsc_json",
      "qual": "_hwsc_json",
      "sig": "def _hwsc_json(rel) -> dict",
-     "start": 43
+     "start": 44
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 48,
+     "end": 49,
      "kind": "function",
      "name": "_hwsc_reg",
      "qual": "_hwsc_reg",
      "sig": "def _hwsc_reg() -> dict",
-     "start": 47
+     "start": 48
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 56,
+     "end": 57,
      "kind": "function",
      "name": "scratch_table_u",
      "qual": "scratch_table_u",
      "sig": "def scratch_table_u(contract=None) -> dict",
-     "start": 52
+     "start": 53
     },
     {
      "decorators": [],
      "doc": "Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the",
-     "end": 65,
+     "end": 66,
      "kind": "function",
      "name": "fixture_prefixes",
      "qual": "fixture_prefixes",
      "sig": "def fixture_prefixes(contract=None) -> tuple",
-     "start": 59
+     "start": 60
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 71,
+     "end": 72,
      "kind": "function",
      "name": "root_table_u",
      "qual": "root_table_u",
      "sig": "def root_table_u(contract=None) -> dict",
-     "start": 68
+     "start": 69
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 82,
+     "end": 83,
      "kind": "function",
      "name": "_tags",
      "qual": "_tags",
      "sig": "def _tags(rec, readers) -> list",
-     "start": 74
+     "start": 75
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 100,
+     "end": 101,
      "kind": "function",
      "name": "_violation",
      "qual": "_violation",
      "sig": "def _violation(name, entry, rec, cls, readers)",
-     "start": 85
+     "start": 86
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 122,
+     "end": 133,
      "kind": "function",
      "name": "inventory_u",
      "qual": "inventory_u",
      "sig": "def inventory_u(root, readers, contract=None) -> dict",
-     "start": 103
+     "start": 104
+    },
+    {
+     "decorators": [],
+     "doc": "R-0231-1: list names under a deep-scan-excluded row (no file opened); PASS iff no array",
+     "end": 150,
+     "kind": "function",
+     "name": "_names_only",
+     "qual": "_names_only",
+     "sig": "def _names_only(path, rule) -> dict",
+     "start": 136
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 136,
+     "end": 164,
      "kind": "function",
      "name": "_scratch_u",
      "qual": "_scratch_u",
      "sig": "def _scratch_u(scratch, readers_ok) -> dict",
-     "start": 125
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 147,
-     "kind": "function",
-     "name": "sources_u",
-     "qual": "sources_u",
-     "sig": "def sources_u(root, scratch, store, own_expected, contract=None) -> dict",
-     "start": 139
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 166,
-     "kind": "function",
-     "name": "separation_u",
-     "qual": "separation_u",
-     "sig": "def separation_u(reg, tables, seq_union) -> dict",
-     "start": 150
+     "start": 153
     },
     {
      "decorators": [],
      "doc": "",
      "end": 175,
      "kind": "function",
-     "name": "load_registry_sets",
-     "qual": "load_registry_sets",
-     "sig": "def load_registry_sets(reg_dir, version) -> tuple",
-     "start": 169
+     "name": "sources_u",
+     "qual": "sources_u",
+     "sig": "def sources_u(root, scratch, store, own_expected, contract=None) -> dict",
+     "start": 167
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 186,
+     "end": 194,
+     "kind": "function",
+     "name": "separation_u",
+     "qual": "separation_u",
+     "sig": "def separation_u(reg, tables, seq_union) -> dict",
+     "start": 178
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 203,
+     "kind": "function",
+     "name": "load_registry_sets",
+     "qual": "load_registry_sets",
+     "sig": "def load_registry_sets(reg_dir, version) -> tuple",
+     "start": 197
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 214,
      "kind": "function",
      "name": "_peak_memory",
      "qual": "_peak_memory",
      "sig": "def _peak_memory()",
-     "start": 179
+     "start": 207
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 290,
+     "end": 318,
      "kind": "function",
      "name": "build_u",
      "qual": "build_u",
      "sig": "def build_u(version, out_dir, root, scratch, handoff, own=None, extra=None, sources=None, contract=None) -> dict",
-     "start": 189
+     "start": 217
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 300,
+     "end": 328,
      "kind": "function",
      "name": "__getattr__",
      "qual": "__getattr__",
      "sig": "def __getattr__(name)",
-     "start": 297
+     "start": 325
     }
    ],
    "syspath": []
@@ -276574,5 +276609,5 @@
    ]
   }
  },
- "sources_digest": "21c4f47423d7f95fe4b4ba66d4a6989ba3e89f759bc55e6d9d342eed968ce1e9"
+ "sources_digest": "01a7929229f19c24bf58f47d23ee1b6fd286117db0a15d5bd50ab77277ceb05f"
 }

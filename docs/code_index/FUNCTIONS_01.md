@@ -42,7 +42,7 @@
 | `__getattr__` | function | `__getattr__` | [tools/hwsu/hwsu_dry.py:242](../../tools/hwsu/hwsu_dry.py#L242) |  |
 | `__getattr__` | function | `__getattr__` | [tools/hwsu/hwsu_records.py:209](../../tools/hwsu/hwsu_records.py#L209) |  |
 | `__getattr__` | function | `__getattr__` | [tools/hwsu/u2/hwsu_gates.py:49](../../tools/hwsu/u2/hwsu_gates.py#L49) |  |
-| `__getattr__` | function | `__getattr__` | [tools/hwsu/u2/hwsu_registry.py:297](../../tools/hwsu/u2/hwsu_registry.py#L297) |  |
+| `__getattr__` | function | `__getattr__` | [tools/hwsu/u2/hwsu_registry.py:325](../../tools/hwsu/u2/hwsu_registry.py#L325) |  |
 | `__getitem__` | method | `PublicTokenDataset.__getitem__` | [src/topo_pilot/dataset/public.py:59](../../src/topo_pilot/dataset/public.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_classify.py:59](../../tests/hws/test_a_classify.py#L59) |  |
 | `__getitem__` | method | `Records.__getitem__` | [tests/hws/test_a_outcomes.py:55](../../tests/hws/test_a_outcomes.py#L55) |  |
@@ -1088,9 +1088,9 @@
 | `_hook` | function | `_hook` | [tests/hwsu/test_b_of_registry.py:43](../../tests/hwsu/test_b_of_registry.py#L43) |  |
 | `_hook` | function | `_hook` | [tests/hwsu/test_b_of_seed.py:41](../../tests/hwsu/test_b_of_seed.py#L41) |  |
 | `_hwsc` | function | `_hwsc` | [tests/hwsu/test_b_u2_registry.py:80](../../tests/hwsu/test_b_u2_registry.py#L80) | hwsc-store fixture: u2_hist tables listed in S3/S7 STAGE_COMPLETE, OBS_INVENTORY, plus a |
-| `_hwsc_json` | function | `_hwsc_json` | [tools/hwsu/u2/hwsu_registry.py:43](../../tools/hwsu/u2/hwsu_registry.py#L43) |  |
+| `_hwsc_json` | function | `_hwsc_json` | [tools/hwsu/u2/hwsu_registry.py:44](../../tools/hwsu/u2/hwsu_registry.py#L44) |  |
 | `_hwsc_meta` | function | `_hwsc_meta` | [tests/hwsu/test_b_of_driver.py:251](../../tests/hwsu/test_b_of_driver.py#L251) |  |
-| `_hwsc_reg` | function | `_hwsc_reg` | [tools/hwsu/u2/hwsu_registry.py:47](../../tools/hwsu/u2/hwsu_registry.py#L47) |  |
+| `_hwsc_reg` | function | `_hwsc_reg` | [tools/hwsu/u2/hwsu_registry.py:48](../../tools/hwsu/u2/hwsu_registry.py#L48) |  |
 | `_hwsd_allowed` | function | `_hwsd_allowed` | [tools/hwsu/hwsu_config.py:115](../../tools/hwsu/hwsu_config.py#L115) |  |
 | `_hy_ref` | function | `_hy_ref` | [tests/c2_readout/test_a_oracle.py:84](../../tests/c2_readout/test_a_oracle.py#L84) | Independent H^Y (v2 2.2): b -> b + k on w1..w31, a and w32 kept; Y_def per row. |
 | `_ident` | function | `_ident` | [tools/hws/hws_records.py:144](../../tools/hws/hws_records.py#L144) |  |
@@ -1421,6 +1421,7 @@
 | `_named_and_cross` | function | `_named_and_cross` | [tools/c2_readout/c2_oracle.py:239](../../tools/c2_readout/c2_oracle.py#L239) |  |
 | `_names` | function | `_names` | [tests/x6_stage1/test_b_chain_ops.py:66](../../tests/x6_stage1/test_b_chain_ops.py#L66) |  |
 | `_names` | function | `_names` | [tools/x6_stage1/x6s1_ingest.py:93](../../tools/x6_stage1/x6s1_ingest.py#L93) |  |
+| `_names_only` | function | `_names_only` | [tools/hwsu/u2/hwsu_registry.py:136](../../tools/hwsu/u2/hwsu_registry.py#L136) | R-0231-1: list names under a deep-scan-excluded row (no file opened); PASS iff no array |
 | `_nb` | function | `_nb` | [tools/d1_seam/d1_seam.py:40](../../tools/d1_seam/d1_seam.py#L40) |  |
 | `_nd_sources` | function | `_nd_sources` | [tools/c2_nd/nd_registry.py:260](../../tools/c2_nd/nd_registry.py#L260) | Rows 2-9; with an explicit root the stores are taken under it (API.md §20 B-5). `c2_dry` |
 | `_nec` | function | `_nec` | [tools/c2_nd/nd_decide.py:38](../../tools/c2_nd/nd_decide.py#L38) | The §2.3 table: NECESSARY, COMPLEMENT_LOW_ALIGNED, CODE_DOMINANT, NOT_NECESSARY or INC. |
@@ -1608,7 +1609,7 @@
 | `_payload_opened` | function | `_payload_opened` | [tests/hwsc/test_b_registry.py:301](../../tests/hwsc/test_b_registry.py#L301) |  |
 | `_pe` | function | `_pe` | [tests/analysis/test_x5_endpoint_bootstrap.py:203](../../tests/analysis/test_x5_endpoint_bootstrap.py#L203) |  |
 | `_peak_memory` | function | `_peak_memory` | [tools/hwsc/hwsc_registry_build.py:24](../../tools/hwsc/hwsc_registry_build.py#L24) |  |
-| `_peak_memory` | function | `_peak_memory` | [tools/hwsu/u2/hwsu_registry.py:179](../../tools/hwsu/u2/hwsu_registry.py#L179) |  |
+| `_peak_memory` | function | `_peak_memory` | [tools/hwsu/u2/hwsu_registry.py:207](../../tools/hwsu/u2/hwsu_registry.py#L207) |  |
 | `_per_model` | function | `_per_model` | [tools/c1prime/c1_driver_cal.py:229](../../tools/c1prime/c1_driver_cal.py#L229) |  |
 | `_percent_ok` | function | `_percent_ok` | [tools/x4_oracle_profile/controls.py:57](../../tools/x4_oracle_profile/controls.py#L57) |  |
 | `_perm` | function | `_perm` | [tests/c2_readout/test_a_readout.py:156](../../tests/c2_readout/test_a_readout.py#L156) |  |
@@ -1735,7 +1736,7 @@
 | `_r` | function | `_r` | [tests/experiment/test_report_e3.py:34](../../tests/experiment/test_report_e3.py#L34) |  |
 | `_r` | function | `_r` | [tests/experiment/test_s8_e4.py:30](../../tests/experiment/test_s8_e4.py#L30) |  |
 | `_r` | function | `_r` | [tests/hwsu/test_b_u2_registry.py:27](../../tests/hwsu/test_b_u2_registry.py#L27) |  |
-| `_r` | function | `_r` | [tools/hwsu/u2/hwsu_registry.py:39](../../tools/hwsu/u2/hwsu_registry.py#L39) |  |
+| `_r` | function | `_r` | [tools/hwsu/u2/hwsu_registry.py:40](../../tools/hwsu/u2/hwsu_registry.py#L40) |  |
 | `_r` | function | `_r` | [tools/x6_stage1/x6s1_stage_post.py:37](../../tools/x6_stage1/x6s1_stage_post.py#L37) |  |
 | `_r` | function | `_r` | [tools/x6_stage1/x6s1_stage_pre.py:50](../../tools/x6_stage1/x6s1_stage_pre.py#L50) |  |
 | `_r1` | function | `_r1` | [tests/c2_readout/test_b_screens.py:38](../../tests/c2_readout/test_b_screens.py#L38) |  |
@@ -2011,7 +2012,7 @@
 | `_scope` | function | `_scope` | [tools/c2_nd/nd_data.py:35](../../tools/c2_nd/nd_data.py#L35) |  |
 | `_scratch` | function | `_scratch` | [tests/x6_stage1/test_b_seed_pool_reg.py:286](../../tests/x6_stage1/test_b_seed_pool_reg.py#L286) |  |
 | `_scratch` | function | `_scratch` | [tools/x6_stage1/x6s1_stage_pre.py:56](../../tools/x6_stage1/x6s1_stage_pre.py#L56) |  |
-| `_scratch_u` | function | `_scratch_u` | [tools/hwsu/u2/hwsu_registry.py:125](../../tools/hwsu/u2/hwsu_registry.py#L125) |  |
+| `_scratch_u` | function | `_scratch_u` | [tools/hwsu/u2/hwsu_registry.py:153](../../tools/hwsu/u2/hwsu_registry.py#L153) |  |
 | `_sd_se` | function | `_sd_se` | [tools/hwsb/hwsb_eval.py:82](../../tools/hwsb/hwsb_eval.py#L82) |  |
 | `_seal` | function | `_seal` | [tests/hws/test_b_kc1.py:130](../../tests/hws/test_b_kc1.py#L130) |  |
 | `_seal` | function | `_seal` | [tools/c1prime/c1_driver_late.py:233](../../tools/c1prime/c1_driver_late.py#L233) | Sealed validation means (§12.5): written once, never read by the driver. |
@@ -2287,7 +2288,7 @@
 | `_tables` | function | `_tables` | [tools/hwsu/u2/hwsu_known.py:65](../../tools/hwsu/u2/hwsu_known.py#L65) |  |
 | `_tables` | function | `_tables` | [tools/x6_stage1/x6s1_stage_post.py:54](../../tools/x6_stage1/x6s1_stage_post.py#L54) |  |
 | `_tags` | function | `_tags` | [tools/c2_readout/c2_registry.py:168](../../tools/c2_readout/c2_registry.py#L168) |  |
-| `_tags` | function | `_tags` | [tools/hwsu/u2/hwsu_registry.py:74](../../tools/hwsu/u2/hwsu_registry.py#L74) |  |
+| `_tags` | function | `_tags` | [tools/hwsu/u2/hwsu_registry.py:75](../../tools/hwsu/u2/hwsu_registry.py#L75) |  |
 | `_take` | function | `_take` | [tools/hwsu/u2/hwsu_regsrc.py:47](../../tools/hwsu/u2/hwsu_regsrc.py#L47) |  |
 | `_tamper` | function | `_tamper` | [tests/hwsu/test_b_u2_freeze.py:171](../../tests/hwsu/test_b_u2_freeze.py#L171) |  |
 | `_tamper_flip` | function | `_tamper_flip` | [tests/contracts/test_store.py:177](../../tests/contracts/test_store.py#L177) |  |
@@ -2435,7 +2436,7 @@
 | `_verify_taylor_constants` | function | `_verify_taylor_constants` | [tools/x4_circle_history/error_bound.py:87](../../tools/x4_circle_history/error_bound.py#L87) | Exact verification (ERROR_BOUND.md v2.2 section 8). |
 | `_vid` | function | `_vid` | [tests/world/test_world.py:82](../../tests/world/test_world.py#L82) |  |
 | `_violation` | function | `_violation` | [tools/c2_readout/c2_registry.py:174](../../tools/c2_readout/c2_registry.py#L174) |  |
-| `_violation` | function | `_violation` | [tools/hwsu/u2/hwsu_registry.py:85](../../tools/hwsu/u2/hwsu_registry.py#L85) |  |
+| `_violation` | function | `_violation` | [tools/hwsu/u2/hwsu_registry.py:86](../../tools/hwsu/u2/hwsu_registry.py#L86) |  |
 | `_violations` | function | `_violations` | [tests/c1prime/test_b_cert_guards.py:188](../../tests/c1prime/test_b_cert_guards.py#L188) |  |
 | `_vm` | function | `_vm` | [tests/d1_seam/test_d1_seam.py:54](../../tests/d1_seam/test_d1_seam.py#L54) |  |
 | `_void` | function | `_void` | [tools/x6_stage1/x6s1_registry.py:71](../../tools/x6_stage1/x6s1_registry.py#L71) |  |
@@ -2915,7 +2916,7 @@
 | `build_tiny_process` | function | `build_tiny_process` | [tools/hwsb/hwsb_dry.py:54](../../tools/hwsb/hwsb_dry.py#L54) |  |
 | `build_tiny_process_c` | function | `build_tiny_process_c` | [tools/hwsc/hwsc_dry.py:54](../../tools/hwsc/hwsc_dry.py#L54) |  |
 | `build_transition` | function | `build_transition` | [tools/hws/hws_worlds.py:197](../../tools/hws/hws_worlds.py#L197) |  |
-| `build_u` | function | `build_u` | [tools/hwsu/u2/hwsu_registry.py:189](../../tools/hwsu/u2/hwsu_registry.py#L189) |  |
+| `build_u` | function | `build_u` | [tools/hwsu/u2/hwsu_registry.py:217](../../tools/hwsu/u2/hwsu_registry.py#L217) |  |
 | `build_world` | function | `build_world` | [src/topo_pilot/world/registry.py:41](../../src/topo_pilot/world/registry.py#L41) | Registry dispatch followed by full validation. |
 | `build_world` | function | `build_world` | [tools/hws/hws_worlds.py:193](../../tools/hws/hws_worlds.py#L193) |  |
 | `build_world` | function | `build_world` | [tools/x2a_stage0/x2a_model.py:64](../../tools/x2a_stage0/x2a_model.py#L64) |  |
@@ -3928,7 +3929,7 @@
 | `fitted` | function | `fitted` | [tests/circle_history/test_chart_arrays.py:60](../../tests/circle_history/test_chart_arrays.py#L60) |  |
 | `five_gram` | function | `five_gram` | [tools/x6_stage0/x6_model.py:311](../../tools/x6_stage0/x6_model.py#L311) |  |
 | `fixture` | function | `fixture` | [src/topo_pilot/experiment/x5g1_scorebench.py:75](../../src/topo_pilot/experiment/x5g1_scorebench.py#L75) |  |
-| `fixture_prefixes` | function | `fixture_prefixes` | [tools/hwsu/u2/hwsu_registry.py:59](../../tools/hwsu/u2/hwsu_registry.py#L59) | Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the |
+| `fixture_prefixes` | function | `fixture_prefixes` | [tools/hwsu/u2/hwsu_registry.py:60](../../tools/hwsu/u2/hwsu_registry.py#L60) | Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the |
 | `fixtures` | function | `fixtures` | [tools/hwsu/u2/hwsu_dry2d.py:241](../../tools/hwsu/u2/hwsu_dry2d.py#L241) |  |
 | `flat` | function | `flat` | [tests/hwsb/test_b_records.py:164](../../tests/hwsb/test_b_records.py#L164) |  |
 | `flat_oracle` | function | `flat_oracle` | [tools/c1prime/c1_driver_fresh.py:32](../../tools/c1prime/c1_driver_fresh.py#L32) |  |
@@ -4386,7 +4387,7 @@
 | `inventory_equal` | function | `inventory_equal` | [tools/x6zc/x6zc_store.py:102](../../tools/x6zc/x6zc_store.py#L102) |  |
 | `inventory_root` | function | `inventory_root` | [tests/k4b/test_b_registry.py:69](../../tests/k4b/test_b_registry.py#L69) |  |
 | `inventory_snapshot` | function | `inventory_snapshot` | [tools/hwsb/hwsb_records.py:60](../../tools/hwsb/hwsb_records.py#L60) |  |
-| `inventory_u` | function | `inventory_u` | [tools/hwsu/u2/hwsu_registry.py:103](../../tools/hwsu/u2/hwsu_registry.py#L103) |  |
+| `inventory_u` | function | `inventory_u` | [tools/hwsu/u2/hwsu_registry.py:104](../../tools/hwsu/u2/hwsu_registry.py#L104) |  |
 | `inventory_x6` | function | `inventory_x6` | [tools/x6_stage1/x6s1_registry.py:350](../../tools/x6_stage1/x6s1_registry.py#L350) | k4b_registry.inventory(project_root) as one component, then the extended scan of the X6 |
 | `inverse` | function | `inverse` | [tools/x6_stage0/x6_model.py:64](../../tools/x6_stage0/x6_model.py#L64) |  |
 | `is_ancestor` | function | `is_ancestor` | [tools/x6zc/x6zc_guard.py:156](../../tools/x6zc/x6zc_guard.py#L156) |  |
@@ -4717,7 +4718,7 @@
 | `load_process` | function | `load_process` | [tools/k4b/k4b_data.py:36](../../tools/k4b/k4b_data.py#L36) | inputs.load_process, re-keyed by int seed; perms and canonical emissions checked. |
 | `load_process` | function | `load_process` | [tools/x4_oracle_profile/inputs.py:148](../../tools/x4_oracle_profile/inputs.py#L148) | Verified T, pi, canonical E, named emissions/permutations, features and identity record. |
 | `load_recorded` | function | `load_recorded` | [tools/k4b/k4b_fresh.py:306](../../tools/k4b/k4b_fresh.py#L306) | Arrays of stages/<stage>/<name>, re-hashed against its STAGE_COMPLETE record. |
-| `load_registry_sets` | function | `load_registry_sets` | [tools/hwsu/u2/hwsu_registry.py:169](../../tools/hwsu/u2/hwsu_registry.py#L169) |  |
+| `load_registry_sets` | function | `load_registry_sets` | [tools/hwsu/u2/hwsu_registry.py:197](../../tools/hwsu/u2/hwsu_registry.py#L197) |  |
 | `load_rows` | function | `load_rows` | [tests/experiment/test_x4.py:127](../../tests/experiment/test_x4.py#L127) |  |
 | `load_run` | function | `load_run` | [tools/d2a/d2a_eval.py:33](../../tools/d2a/d2a_eval.py#L33) |  |
 | `load_split` | function | `load_split` | [tools/x4_oracle_profile/inputs.py:196](../../tools/x4_oracle_profile/inputs.py#L196) | Load one split with schema, shape, ID, range and finiteness checks. |
@@ -4888,4 +4889,3 @@
 | `make_table` | function | `make_table` | [tests/analysis/test_f1_rule.py:13](../../tests/analysis/test_f1_rule.py#L13) |  |
 | `make_ticket` | function | `make_ticket` | [tools/x6_stage1/x6s1_ingest.py:107](../../tools/x6_stage1/x6s1_ingest.py#L107) |  |
 | `make_train_dev` | function | `make_train_dev` | [tools/hwsb/hwsb_data.py:236](../../tools/hwsb/hwsb_data.py#L236) |  |
-| `make_train_dev_c` | function | `make_train_dev_c` | [tools/hwsc/hwsc_data.py:69](../../tools/hwsc/hwsc_data.py#L69) | hwsb_data.make_train_dev line for line, with `scope` in place of the literal hwsb-v1. |

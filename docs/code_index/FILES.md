@@ -1034,7 +1034,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked fil
 | [test_b_u2_records.py](files/tests/hwsu/test_b_u2_records.py.md) | python | 289 lines | Author B (job 0223, phase 2): sealing, records, obligations, reservations, meter binding and |
 | [test_b_u2_registry.py](files/tests/hwsu/test_b_u2_registry.py.md) | python | 297 lines | Author B (job 0223, phase 2): the registry readers with planted defects (protocol 8.2-8.3; |
 | [test_impl_u2_mirror.py](files/tests/hwsu/test_impl_u2_mirror.py.md) | python | 34 lines | Implementer test: hwsu_registry._violation mirrors c2_registry._violation (design 11.2). |
-| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 142 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
+| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 163 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
 
 ## tests/integration/
 
@@ -1407,7 +1407,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked fil
 |---|---|---|---|
 | `API.md` | markdown | 379 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
 | `API_U2.md` | markdown | 390 lines | tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1) |
-| `CONTRACT.json` | json | 1513 lines |  |
+| `CONTRACT.json` | json | 1533 lines |  |
 | `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |
@@ -1442,7 +1442,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked fil
 | [hwsu_gates.py](files/tools/hwsu/u2/hwsu_gates.py.md) | python | 373 lines | HWSU E1 gates, share-family stubs and the validation report (API_U2.md section 4.1, 4.7, 4.9). |
 | [hwsu_known.py](files/tools/hwsu/u2/hwsu_known.py.md) | python | 400 lines | HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6 |
 | [hwsu_model.py](files/tools/hwsu/u2/hwsu_model.py.md) | python | 299 lines | HWSU model part: stage-C loading, readout, response arrays, M0/X1 mirrors, logit policy |
-| [hwsu_registry.py](files/tools/hwsu/u2/hwsu_registry.py.md) | python | 300 lines | HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3; |
+| [hwsu_registry.py](files/tools/hwsu/u2/hwsu_registry.py.md) | python | 328 lines | HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3; |
 | [hwsu_regsrc.py](files/tools/hwsu/u2/hwsu_regsrc.py.md) | python | 291 lines | HWSU registry readers: U2 (stage C), U2', U5, U6, U8 and the J10 obligation reader |
 
 ## tools/k4b/

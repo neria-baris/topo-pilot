@@ -75,7 +75,7 @@
 - [tools/hwsu/hwsu_pairs.py](../hwsu/hwsu_pairs.py.md) (line 9, import)
 - [tools/hwsu/u2/hwsu_dry2d.py](../hwsu/u2/hwsu_dry2d.py.md) (line 22, import)
 - [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 30, import)
-- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 25, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 26, import)
 - [tools/hwsu/u2/hwsu_regsrc.py](../hwsu/u2/hwsu_regsrc.py.md) (line 18, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 18, import)

@@ -112,7 +112,7 @@
 - [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 32, import)
 - [tools/hwsu/u2/hwsu_known.py](../hwsu/u2/hwsu_known.py.md) (line 28, import)
 - [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 22, import)
-- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 28, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 29, import)
 - [tools/hwsu/u2/hwsu_regsrc.py](../hwsu/u2/hwsu_regsrc.py.md) (line 20, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 17, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 26, import)

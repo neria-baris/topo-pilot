@@ -77,7 +77,7 @@
 - [tools/hwsc/hwsc_dry2.py](../hwsc/hwsc_dry2.py.md) (line 181, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 12, import)
 - [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 13, import)
-- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 22, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 23, import)
 
 ## Top-level constants
 

@@ -70,7 +70,7 @@
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 15, import)
 - [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 15, import)
 - [tools/hwsc/hwsc_scratch.py](../hwsc/hwsc_scratch.py.md) (line 12, import)
-- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 26, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 27, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 19, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 21, import)
 - [tools/x6_stage1/x6s1_registry.py](../x6_stage1/x6s1_registry.py.md) (line 22, import)

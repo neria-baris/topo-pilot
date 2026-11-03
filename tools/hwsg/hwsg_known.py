@@ -182,7 +182,7 @@ def kg4(out, launcher=None) -> dict:
             procs.append(p)
         for p in procs:
             p.wait()
-        res[mode] = {m: json.loads(next(d.glob(f"KG4_{m}_*.json")).read_text())["checksums"]
+        res[mode] = {m: json.loads(max(d.glob(f"KG4_{m}_*.json"), key=lambda p: p.stat().st_mtime).read_text())["checksums"]
                      for m in masters}
     ok = res["concurrent"] == res["sequential"] and all(res["concurrent"].values())
     return {"status": "PASS" if ok else KNOWN, "equal": res["concurrent"] == res["sequential"],
@@ -282,9 +282,21 @@ def kg7() -> dict:
     return {"status": "PASS" if all(checks.values()) else KNOWN, **out}
 
 
+def _archive(out, target, tag) -> None:
+    """Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt)."""
+    import k4b_release
+
+    target = Path(target)
+    files = sorted(p for p in target.rglob("*") if p.is_file()) if target.is_dir()         else ([target] if target.is_file() else [])
+    if files:
+        k = len(list((out / "superseded").glob(f"{tag}-a*"))) + 1 if (out / "superseded").is_dir() else 1
+        k4b_release.archive_attempt(out, f"{tag}-a{k}", files, {})
+
+
 def kg8(out) -> dict:
     import hwsg_registry
 
+    _archive(Path(out), Path(out) / "registry" / "rehearsal", "KG8")
     m = hwsg_registry.build("REHEARSAL", Path(out) / "registry", root=gc.ROOT)
     return {"status": "PASS" if m["status"] == "PASS" else KNOWN, "registry_status": m["status"],
             "cpu_s": m.get("cpu_s"), "peak_memory_bytes": m.get("peak_memory_bytes"),
@@ -347,6 +359,7 @@ def run_kc(out, auth, sched, job) -> dict:
               "freeze_sha256": stage_records.sha256(out / "FREEZE.json")
               if (out / "FREEZE.json").exists() else None}
     f = out / "stages" / "KC" / "KG_RECORD.json"
+    _archive(out, f, "KC")
     f.parent.mkdir(parents=True, exist_ok=True)
     stage_records.write_new(f, json.loads(json.dumps(record, default=str)))
     import k4b_driver

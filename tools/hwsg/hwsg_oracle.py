@@ -87,7 +87,10 @@ def identity_checker(key):
         try:
             import hwsg_handoff
 
-            h = hwsg_handoff.load(d.tag)["process_identities"]
+            import hwsc_config
+
+            root = Path(hwsc_config.STORE).parent.parent if hwsg_bind.ACTIVE else gc.STORE
+            h = hwsg_handoff.load(d.tag, root)["process_identities"]
             norm = lambda o: json.loads(json.dumps(o, default=str))  # noqa: E731
             same = (norm(r["ids"]) == norm(h.get("ids"))
                     and r["arrays_sha256"] == h.get("arrays_sha256"))

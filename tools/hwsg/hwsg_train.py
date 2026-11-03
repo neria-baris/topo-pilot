@@ -76,10 +76,11 @@ def child(world_key, master, out, job, attempt) -> dict:
     try:
         with hwsg_bind.world(d.tag):
             import hwsb_config
+            import hwsc_config
             import hwsg_oracle
 
             plan = gc.plan(d.tag)
-            hwsb_config.STORE = wd
+            hwsb_config.STORE = hwsc_config.STORE = wd
             store = hwsg_oracle.store_for(wd)
             proc = hwsg_oracle.build_process_g(store, d.tag)
             ident = hwsg_oracle.identity_checker(d.tag)(store, proc)
@@ -156,6 +157,11 @@ def run_train(out, w, auth, sched, kc_accept, job, launcher=None) -> dict:
         stage_records.record_gate(out, "RAM", "REFUSED", **ram)
         return {"refused": True, "reason": "RAM", "ram": ram}
     stage_records.record_gate(out, "RAM", "PASS", **ram)
+    resv = wd / "RESERVATION_W2.json"
+    wd.mkdir(parents=True, exist_ok=True)
+    if not resv.exists():
+        k4b_release.start_reservation(resv, f"HWSG-{d.tag.upper()}-W2", rec.utc())
+        stage_records.record_gate(out, f"RESERVATION_{d.tag}", "PASS", id=f"RES-HWSG-{d.tag.upper()}-W2")
     before = _files_under(wd / "artifacts")
     launcher = launcher or (lambda argv, env: subprocess.Popen(argv, env=env, cwd=gc.REPO))
     procs, attempts = {}, {}

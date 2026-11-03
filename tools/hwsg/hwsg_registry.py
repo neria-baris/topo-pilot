@@ -228,9 +228,9 @@ def source_own(store, worlds) -> dict:
 
 
 # ----------------------------------------------------------------------------- inventory
-def inventory_g(root=None) -> dict:
+def inventory_g(root=None, readers=None) -> dict:
     root = Path(gc.ROOT if root is None else root)
-    r = hwsc_registry.inventory_c(root)
+    r = hwsc_registry.inventory_c(root, readers)
     viol = [v for v in r["violations"] if v["name"] not in ADDED_ROWS]
     return dict(r, violations=viol, unlisted=[n for n in r["unlisted"] if n not in ADDED_ROWS],
                 status=INCOMPLETE if viol else "PASS")
@@ -266,7 +266,7 @@ def certificate(manifest) -> str:
 
 def _inv_sha(root, inv, bound=None) -> tuple:
     obl = _obligations(root, bound)
-    return _sha({"inv": inv["inv"], "classes": inv["classes"], "obligations": obl}), obl
+    return _sha({"inv": inv["inv"], "obligations": obl}), obl
 
 
 def recheck(manifest, root=None) -> dict:
@@ -283,6 +283,8 @@ def recheck(manifest, root=None) -> dict:
 # ---------------------------------------------------------------------------------- build
 def sources(root, scratch, worlds, extra=None, table=None) -> dict:
     root = Path(root)
+    if table is None and isinstance(REG["scratch_dirs_at_0224"], list):
+        table = REG["scratch_dirs_at_0224"]
     spec = {"hwsc": lambda: source_hwsc(root / "hwsc-store"),
             "hwsu": lambda: source_obligation(root / "hwsu-store"),
             "hwsd": lambda: source_obligation(root / "hwsd-store"),
@@ -331,7 +333,7 @@ def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None,
         return res
 
     over = {"dry": lambda: union(hwsc_registry.source_dry()),
-            "inventory": lambda readers: inventory_g(root),
+            "inventory": lambda readers: inventory_g(root, readers),
             "scratch": lambda readers_ok: {"status": "PASS", "digests": set(), "seq_ids": set()},
             "own": spec["own"]}
     if callable(sources_fn):

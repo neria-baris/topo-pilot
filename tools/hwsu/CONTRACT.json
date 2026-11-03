@@ -950,6 +950,11 @@
   },
   "allowlist_note_u2": "phase-2 entries (new keys only, merged into the phase-1 allowlist by the loader); call_time_reads by hwsu_bind.function_reads at 49ac9c9 (job 0223 spec writer); re-run at h_exec (TO_FREEZE)",
   "allowlist_conditional_u2": {
+   "c2_config": {
+    "T_QSUM": {
+     "kind": "constant"
+    }
+   },
    "hwsc_gates": {
     "expected_meta_c": {
      "kind": "function",
@@ -1204,6 +1209,9 @@
   "tools/hwsu/u2/hwsu_model.py",
   "tools/hwsu/u2/hwsu_known.py",
   "tools/hwsu/u2/hwsu_registry.py",
+  "tools/hwsu/u2/hwsu_regsrc.py",
+  "tools/hwsu/u2/hwsu_decide.py",
+  "tools/hwsu/u2/hwsu_e2.py",
   "tools/hwsu/u2/hwsu_gates.py",
   "tools/hwsu/u2/hwsu_driver.py",
   "tools/hwsu/u2/hwsu_dry2.py"

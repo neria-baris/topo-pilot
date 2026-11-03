@@ -1,282 +1,191 @@
 """HWSU model-phase dry run DRU, response family (API_U2.md section 6; protocol 9).
 
-Synthetic worlds and roots only, scope hwsu-dry-v1, nothing under the project root. DRU1 and DRU2
-need a tiny training plan and a random-init model whose constructors are outside the reuse
-allowlist (TO_FREEZE items 5-6, spec gap reported by the implementer); they fail closed.
+Synthetic worlds and roots only, scope hwsu-dry-v1, nothing under the project root. This file
+holds the cases that train tiny models or call the builder of stage C (DRU1, DRU2, DRU-REG): the
+only file that may reference hwsb_train.train, hwsc_data.make_train_dev_c and
+hwsc_registry_build.build (R-0223-3). The other cases live in hwsu_dry2b (split by size) and are
+re-exported here.
 """
 
 from __future__ import annotations  # noqa: I001
 
 import hwsu_config as uc
-import hwsu_bind_u2 as bu2
-import hwsu_decide as ud
-import hwsu_dry as udry
+import hwsu_dry2b as d2b
+import hwsu_freeze as ufz
 import hwsu_known as uk
 import hwsu_model as um
-import hwsu_oracle as uo
-import hwsu_freeze as ufz
 import hwsu_records as ur
 import hwsu_registry as ureg
+import hwsu_dry as udry
 import u2  # noqa: F401
-import itertools
 import json
-from fractions import Fraction as Fr
 from pathlib import Path
 
-import c1_oracle
+import c1_model
+import c2_model
+import hwsb_config
+import hwsb_dry
+import hwsb_train
+import hwsc_data
+import hwsc_dry
+import hwsc_registry_build
 import numpy as np
 import stage_records
-from c1_records import C1GateFailure
+import topo_pilot.contracts as tpc
+import topo_pilot.contracts.backends as tpb
+import topo_pilot.learner as tpl
+import torch
 
+_res = d2b._res
+ks_p, ks_rules = d2b.ks_p, d2b.ks_rules
+dru3, dru4, dru5, dru6, dru7, dru8, dru9 = (d2b.dru3, d2b.dru4, d2b.dru5, d2b.dru6, d2b.dru7,
+                                            d2b.dru8, d2b.dru9)
 CASES = ("dru1", "dru2", "dru3", "dru4", "dru5", "dru6", "dru7", "dru8", "dru9", "dru_reg")
+DRU_SITE = "resid_post_0"  # the tiny model has one layer (hwsb tiny_site)
 
 
-def _res(ok, **details) -> dict:
-    return {"status": "PASS" if ok else "FAIL", "details": details}
+def tiny_plan(case="DRU1"):
+    """The tiny training plan: CONTRACT dry_run_u2 tiny_model / tiny_train / tiny_masters, sizes
+    train and dev only (R-0223-7 b)."""
+    d = uc.CONTRACT["dry_run_u2"]
+    tt = dict(d["tiny_train"])
+    tt["checkpoint_steps"] = tuple(int(s) for s in tt["checkpoint_steps"])
+    sizes = {k: int(d["tiny_sizes"][k]) for k in ("train", "dev")}
+    return hwsb_config.Plan("dry_tiny", tuple(int(m) for m in d["tiny_masters"]),
+                            tpl.ModelConfig(**d["tiny_model"]), tpl.TrainConfig(**tt), sizes,
+                            DRU_SITE, str(case), ("cylinder", "overlap", "1.0"),
+                            int(tt["steps"]), 0)
+
+
+def _train_one(store, proc, plan, m) -> dict:
+    """hwsb_data admits only hwsb_config.DRY_MASTERS for a dry plan; U's tiny masters (OPEN-6)
+    are admitted for the duration of the call and the constant is restored (synthetic)."""
+    old = getattr(hwsb_config, "DRY_MASTERS")  # noqa: B009  runtime patch, not an audited read
+    setattr(hwsb_config, "DRY_MASTERS", tuple(int(x) for x in plan.masters))  # noqa: B010
+    try:
+        obs = hwsc_data.make_train_dev_c(store, proc, m, plan, scope=uc.SCOPE_DRY)
+        return hwsb_train.train(store, {"train": obs["train"], "dev": obs["dev"]}, m, plan=plan)
+    finally:
+        setattr(hwsb_config, "DRY_MASTERS", old)  # noqa: B010
 
 
 def tiny_models(store, proc, plan=None) -> dict:
-    raise C1GateFailure("FAIL_TECHNICAL/BINDING", "tiny_train plan constructors are outside the "
-                        "reuse allowlist (TO_FREEZE item 6)")
+    """Three tiny models trained by hwsb_train.train on make_train_dev_c ObservationSets under
+    the dry scope; the record keeps no dev_ce."""
+    plan = plan or tiny_plan()
+    out = {}
+    for m in plan.masters:
+        res = _train_one(store, proc, plan, m)
+        out[int(m)] = {"master": int(m), "status": "COMPLETE", "run_key": res["run_key"],
+                       "checkpoint_ids": {str(k): v for k, v in res["checkpoint_ids"].items()},
+                       "checksums": {str(k): v for k, v in res["checksums"].items()}}
+    return out
 
 
-# --------------------------------------------------------------------------- KS-P, KS-RULES
-def _chain_laws(P=4):
-    c = udry.nonreversible_chain()
-    T, E, pi = c["T_f"], c["E_f"], c["pi_f"]
-
-    def alpha(w):
-        a = pi.copy()
-        for s in w:
-            a = (a * E[:, s]) @ T
-        return a  # unnormalised, already advanced one step
-
-    def joint(w):
-        a = pi.copy()
-        for t, s in enumerate(w):
-            b = a * E[:, s]
-            if t == len(w) - 1:
-                return float(b.sum())
-            a = b @ T
-
-    def pred(w):
-        q = alpha(w) @ E
-        return q / q.sum()
-    return pred, joint, P
-
-
-def ks_p(base) -> dict:
-    """Lemma P2 pair moment = conditional covariance (exact Fractions) and Lemma J (floats)."""
-    c, P = udry.nonreversible_chain(), 4
-    T, E, pi = c["T"], c["E"], c["pi"]
-
-    def joint(w):
-        a = pi.copy()
-        for t, s in enumerate(w):
-            b = a * E[:, s]
-            if t == len(w) - 1:
-                return sum(b)
-            a = b @ T
-
-    pre_all = list(itertools.product(range(2), repeat=P))
-    sufs = list(itertools.product(range(2), repeat=4))
-    tot = {(p, s): joint(list(p) + list(s)) for p in pre_all for s in sufs}
-    z = sum(tot.values())
-    ps = {s: sum(tot[(p, s)] for p in pre_all) / z for s in sufs}
-    q = {(p, s): tot[(p, s)] / z / ps[s] for p in pre_all for s in sufs}
-    fa = lambda p, s: Fr(sum((i + 1) * x for i, x in enumerate(p + s)))  # noqa: E731
-    fb = lambda p, s: Fr(sum((x + 1) ** 2 for x in p) - 3 * sum(s))  # noqa: E731
-    lhs = rhs = Fr(0)
-    for s in sufs:
-        ea = sum(q[(p, s)] * fa(p, s) for p in pre_all)
-        eb = sum(q[(p, s)] * fb(p, s) for p in pre_all)
-        rhs += ps[s] * (sum(q[(p, s)] * fa(p, s) * fb(p, s) for p in pre_all) - ea * eb)
-        lhs += ps[s] * sum(q[(p1, s)] * q[(p2, s)] * (fa(p1, s) - fa(p2, s)) * (
-            fb(p1, s) - fb(p2, s)) for p1 in pre_all for p2 in pre_all) / 2
-    suffix_only = all(fa((0,) * P, s) - fa((0,) * P, s) == 0 for s in sufs)
-    pred, jnt, _ = _chain_laws()
-    gj = kl = 0.0
-    for s in sufs:
-        q4 = pred(list(s))
-        for p1 in pre_all:
-            q1 = pred(list(p1) + list(s))
-            w1 = float(q[(p1, s)] * ps[s])
-            kl += w1 * float(np.sum(q1 * np.log(q1 / q4)) + np.sum(q4 * np.log(q4 / q1)))
-            for p2 in pre_all:
-                q2 = pred(list(p2) + list(s))
-                w2 = float(q[(p2, s)] * ps[s] * q[(p1, s)])
-                gj += w2 * float(c1_oracle.G_hat(q1[None, :], q2[None, :])[0][0])
-    return _res(lhs == rhs and suffix_only and abs(gj - kl) < 1e-10 * max(1.0, abs(kl)),
-                p2_exact=lhs == rhs, suffix_only_zero=suffix_only, lemma_j=[gj, kl])
-
-
-def _bj(l1, u1, l3, u3, la, g=0.01) -> dict:
-    return {"ZR010": {"L": l1, "U": u1, "g": g}, "ZR030": {"L": l3, "U": u3, "g": g},
-            "AF": {"L": la, "U": la + 1.0, "g": g}}
-
-
-def ks_rules(base) -> dict:
-    g, out = 0.01, {}
-    cases = {"RESPONDS_j": _bj(0.5, 0.9, 0.3, 0.8, 0.9),
-             "WEAK_RESPONSE_j": _bj(0.5, 0.9, -0.5, -0.2, 0.4),
-             "LOW_RESPONSE_j": _bj(-0.9, -0.5, -0.8, -0.2, -0.5),
-             "INC_j": _bj(-0.5, 0.5, -0.5, 0.5, -0.5),
-             "INC_j/NUMERICAL": _bj(0.5, 0.9, -g, -g, 0.4)}
-    out["status"] = {k: ud.model_status(v)["status"] == k for k, v in cases.items()}
-    edge = ud.model_status(_bj(g, 0.9, g, 0.9, 0.9))["status"]  # a bound exactly at +g is no sign
-    out["edge"] = edge in ("INC_j", "INC_j/NUMERICAL")
-    out["rule6"] = [ud.model_status(_bj(0.5, 0.9, -0.5, -0.2, 0.4))["rule6"],
-                    not ud.model_status(_bj(0.5, 0.9, 0.3, 0.8, 0.9))["rule6"]]
-    kinds = ["RESPONDS_j", "WEAK_RESPONSE_j", "LOW_RESPONSE_j", "INC_j", "EXCLUDED_j/MODEL"]
-    good = True
-    for combo in itertools.product(kinds, repeat=3):
-        r = ud.response_outcome(dict(enumerate(combo)))["outcome"]
-        live = [c for c in combo if not c.startswith("EXCLUDED")]
-        res = [c for c in live if c.split("_j")[0] in ("RESPONDS", "WEAK_RESPONSE", "LOW_RESPONSE")]
-        if len(live) < 2:
-            want = "INCONCLUSIVE/MODEL"
-        else:
-            want = next((b for b in ("RESPONDS", "WEAK_RESPONSE", "LOW_RESPONSE")
-                         if sum(c.startswith(b) for c in live) >= 2), None)
-            want = want or ("MIXED" if len(res) >= 2 else "INCONCLUSIVE/PRECISION")
-        good = good and r == want
-    out["combos"] = good
-    out["fw"] = all(ud.fw_events(r) <= 2 for r in ("<=0", "0<<=0.1", "0.1<<0.3", "=0.3", ">0.3"))
-    return _res(all(v if isinstance(v, bool) else all(v.values() if isinstance(v, dict) else v)
-                    for v in out.values()), **out)
-
-
-# ------------------------------------------------------------------------------------ cases
 def dru1(base, ctx=None) -> dict:
-    return _res(False, reason="needs tiny_models (plan constructors outside the allowlist; "
-                "TO_FREEZE item 6)")
+    """The tiny world with real training: three tiny models, their checkpoints, TRAIN_RECORD
+    fixtures through the stage-C reader, the readout basis of each trained model."""
+    base = Path(base)
+    plan, r = tiny_plan(), {}
+    store = tpc.ArtifactStore(tpb.LocalFSBackend(base / "artifacts"))
+    proc = hwsb_dry.build_tiny_process(store, masters=plan.masters)
+    recs = tiny_models(store, proc, plan)
+    steps = [str(s) for s in plan.train_cfg.checkpoint_steps]
+    r["steps"] = all(sorted(v["checkpoint_ids"]) == sorted(steps) for v in recs.values())
+    ids = {v["checkpoint_ids"][str(plan.gate_step)] for v in recs.values()}
+    r["distinct"] = len(ids) == len(recs)
+    r["trained"] = all(v["checkpoint_ids"]["0"] != v["checkpoint_ids"][str(plan.gate_step)]
+                       for v in recs.values())
+    ok = {}
+    for m, v in recs.items():
+        ck = store.load(tpc.Checkpoint, v["checkpoint_ids"][str(plan.gate_step)],
+                        consumer="experiment")
+        model64, _ = c1_model.load_model64(ck)
+        ok[m] = bool(um.basis_u(model64)["rank_ok"])
+        p = base / "stages" / "TRAIN" / str(m) / "TRAIN_RECORD.json"
+        um.write_json(p, dict(v, dev_ce={"1": 0.5}))
+        back = um.read_train_record(p, root=base)
+        ok[f"{m}:record"] = "dev_ce" not in back and back["status"] == "COMPLETE"
+    r["rank_and_record"] = all(ok.values())
+    r["no_hist_name"] = not any(p.name.startswith("HIST_") for p in base.rglob("*.npz"))
+    r["run_job"] = "NOT_COVERED: KC/E1/REG2/E2 through run_job need the stage-C fixture set"
+    return _res(all(v for k, v in r.items() if k != "run_job"), **r)
 
 
 def dru2(base, ctx=None) -> dict:
-    return _res(False, reason="needs a random-init 4-layer model constructor outside the "
-                "allowlist")
+    """Real architecture, random init (seed 649910), 2,048 in-memory w* DRY pairs: BASIS, M0, X1
+    through the model-part gates and A_full against the closed-form half dot."""
+    cfg = tpl.ModelConfig(vocab_in=37, vocab_out=36, n_ctx=33, n_layers=4, d_model=128, n_heads=4,
+                      d_mlp=512)
+    torch.manual_seed(649910)
+    model64 = tpl.TransformerLM(cfg).double().eval()
+    n, j = int(uc.CONTRACT["dry_run_u2"]["dru2"]["pairs"]), 649907
+    o1, o2, s1, s2, pc = d2b._ko_world(n)
+    _, pr = udry.tiny_pairs(n)
+    perm = np.random.default_rng(649910).permutation(36)
+    C = json.loads(json.dumps(uc.CONTRACT))
+    C["stage_c_u2"]["checkpoint_ids"] = {str(j): "dru2-random-init"}
+    models, policy = {j: {"model64": model64, "state_sha": "0" * 64}}, um.UPolicy()
+    r = {"basis": um.basis_gate(models, pr["a1"], {j: perm}, policy)["per_model"][j]}
+    b = um.basis_u(model64)
+    canon = np.asarray(pr["a1"])[:1024]
+    policy.begin("M0")
+    inputs = um.named_inputs(canon, perm)
+    acts, z = c2_model.natural_pass(model64, inputs, policy, "m0")
+    ident = {"master": j, "checkpoint_id": "dru2-random-init", "state_sha": "0" * 64,
+             "canon32": canon}
+    m0 = um.m0_u(model64, "0" * 64, ident, inputs, acts, z, b, np.asarray(pc["d"])[:1024], perm,
+                 policy, contract=C)
+    policy.end("M0")
+    del acts, z
+    r["m0"] = m0["status"]
+    x1 = um.x1_gate(models, pr, {j: perm}, {j: b}, policy)
+    r["x1_n_over"] = sum(a["n_over"] for a in x1["arms"].values())
+    y1, y2 = (um.readout_y(model64, pr[a], perm, b) for a in ("a1", "a2"))
+    d_named = um.named_d(pc["d"], perm)
+    A = um.a_full(d_named, b["M"], y1, y2)
+    z1, z2 = c2_model.closed_logits(y1, b), c2_model.closed_logits(y2, b)
+    ref = 0.5 * np.sum(d_named * (z1 - z2), axis=1)
+    tol = 1e-9 * max(1.0, float(np.max(np.abs(z1))), float(np.max(np.abs(z2))))
+    r["a_full_dev"] = float(np.max(np.abs(A - ref)))
+    ok = (b["rank_ok"] and m0["status"] == "PASS" and x1["ids_over"] == []
+          and r["a_full_dev"] <= tol)
+    return _res(ok, **r)
 
 
-def _ko_world(n=256):
-    w, pr = udry.tiny_pairs(n)
-    T, E, pi, co = w["T"], w["E_canon_shared"], w["pi"], w["coords"]
-    o1, o2 = (uo.arm_oracle(T, E, pi, pr[a], co) for a in ("a1", "a2"))
-    s1, s2 = uo.suffix_oracle(T, E, pi, [pr["a1"], pr["a2"]], co)
-    return o1, o2, s1, s2, uo.pair_core(o1, o2)
+EQ_KEYS = ("status", "problems", "n_digests", "digests_sha256", "seq_id_union_sha256", "x6",
+           "union_sha256", "sources", "classes", "coverage", "predicates", "inventory",
+           "sealed_ranges", "d2a_ranges", "handoff_validation", "version", "known_gaps")
 
 
-def dru3(base, ctx=None) -> dict:
-    o1, o2, s1, s2, pc = _ko_world()
-    N, G, seeds = uo.helmert(36), pc["G"], uc.CONTRACT["seeds"]["dry_u2"]
-
-    def A_of(lam):
-        def lg(o, s):
-            return s["logq4"] + lam * (o["logq"] - s["logq4"])
-        return uo.readout_A(pc["d"], lg(o1, s1), lg(o2, s2), N)
-
-    A = {"oracle": A_of(1.0), "suffix": A_of(0.0), "dose": A_of(0.2)}
-    b = ud.family_bounds(A, G, list(A), seeds["family_U"], draws=20000)
-    st = {j: ud.model_status({s: b[f"{j}:{s}"] for s in ("ZR010", "ZR030", "AF")}) for j in A}
-    ok = (st["oracle"]["status"] == "RESPONDS_j" and st["suffix"]["status"] == "LOW_RESPONSE_j"
-          and np.all(A["suffix"] == 0) and st["dose"]["status"] == "WEAK_RESPONSE_j"
-          and st["dose"]["rule6"])
-    return _res(ok, status={j: v["status"] for j, v in st.items()}, rule6=st["dose"]["rule6"])
-
-
-def dru4(base, ctx=None) -> dict:
-    r = ks_rules(base)
-    share = ud.share_outcome({"of_accept_sha256": "0" * 64})
-    pm = {1: "RESPONDS_j", 2: "RESPONDS_j", 3: "EXCLUDED_j/M0"}
-    prec = ud.response_outcome({1: "RESPONDS_j", 2: "INC_j", 3: "INC_j/NUMERICAL"})
-    dis = ud.response_outcome({1: "RESPONDS_j", 2: "RESPONDS_j", 3: "LOW_RESPONSE_j"})
-    ok = (r["status"] == "PASS" and ud.response_outcome(pm)["outcome"] == "RESPONDS"
-          and prec["outcome"] == "INCONCLUSIVE/PRECISION" and dis["dissent"] == [
-              "DISSENT(3: LOW_RESPONSE_j)"] and share["outcome"] == uk.SHARE_OUTCOME)
-    return _res(ok, rules=r["status"], share=share["outcome"])
-
-
-def dru5(base, ctx=None) -> dict:
-    rng = np.random.default_rng(649914)
-    G = np.ones(4096) + 0.1 * rng.standard_normal(4096)
-    seeds = {"p1_sd": 649914, "p1_centred": 649915}
-    mk = lambda sd, sh=0.0: {j: 0.5 * G + sd * rng.standard_normal(4096) + sh  # noqa: E731
-                             for j in (1, 2, 3)}
-    good = ud.p1_u(mk(0.05), G, [1, 2, 3], seeds, ladder=(4096, 8192))
-    shifted = ud.p1_u({j: a + 0.3 for j, a in mk(0.05).items()}, G, [1, 2, 3], seeds,
-                      ladder=(4096, 8192))
-    bad = ud.p1_u(mk(30.0), G, [1, 2, 3], seeds, ladder=(4096,))
-    return _res(good["N_RESP"] == 4096 and bad["N_RESP"] is None and shifted["N"] == good["N"],
-                good=good["N_RESP"], bad=bad["N_RESP"])
-
-
-def dru6(base, ctx=None) -> dict:
-    base, ok = Path(base), {}
-    store = base / "store"
-    store.mkdir(parents=True, exist_ok=True)
-    try:
-        ud.check_unsealed_u({"p1": {"ZR010": 1}})
-        ok["refused"] = False
-    except C1GateFailure:
-        ok["refused"] = True
-    arrays = {"G": np.ones(8), "A_1": np.ones(8), "ZR010_1": np.ones(8), "ZR030_1": np.ones(8)}
-    sha = ud.write_sealed_u(store, arrays)
-    try:
-        ud.write_sealed_u(store, arrays)
-        ok["once"] = False
-    except FileExistsError:
-        ok["once"] = True
-    ok["sha"] = stage_records.sha256(store / "SEALED_VALIDATION.json") == sha
-    return _res(all(ok.values()), **ok)
-
-
-def dru7(base, ctx=None) -> dict:
+def _build_equality(base) -> dict:
+    """build_u equals hwsc_registry_build.build on a synthetic root with stage C's source map
+    (R-0223-7 c): same sources, empty U-only sources; the common manifest fields and the digest
+    file contents are compared."""
     base = Path(base)
-    base.mkdir(parents=True, exist_ok=True)
-    plants = {"p_load.py": "import c2_model\nc2_model.load_models()\n",
-              "p_proc.py": "import c2_oracle\nc2_oracle.load_process()\n",
-              "p_p1.py": "import c2_stats\nc2_stats.p1()\n",
-              "p_m0.py": "import c2_model\nc2_model.m0()\n",
-              "p_seal.py": "import k4b_stats\nk4b_stats.write_sealed()\n",
-              "p_cfg.py": "import c2_config\nx = c2_config.SOME_UNLISTED\n"}
-    caught = {}
-    for n, text in plants.items():
-        f = base / n
-        f.write_text(text, encoding="utf-8")
-        caught[n] = bu2.audit_u2(files=[f])["status"] != "PASS"
-    return _res(all(caught.values()), caught=caught)
-
-
-def dru8(base, ctx=None) -> dict:
-    base = Path(base)
-    base.mkdir(parents=True, exist_ok=True)
-    p = base / "TRAIN_RECORD.json"
-    p.write_text(json.dumps({"checkpoint_ids": {"5000": "x"}, "checksums": {}, "run_key": [],
-                             "status": "COMPLETE", "dev_ce": {"1": 0.5}}), encoding="utf-8")
-    rec = um.read_train_record(p, root=base)
-    r = {"dev_ce_dropped": "dev_ce" not in rec, "keys": sorted(rec)}
-    try:
-        uk.of_binding(base)
-        r["of_refused"] = False
-    except C1GateFailure as exc:
-        r["of_refused"] = exc.status == "INCONCLUSIVE/AUTHORITY"
-    return _res(r["dev_ce_dropped"] and r["of_refused"], **r)
-
-
-def dru9(base, ctx=None) -> dict:
-    base = Path(base)
-    base.mkdir(parents=True, exist_ok=True)
-    led = base / "ledger.json"
-    led.unlink(missing_ok=True)
-    ur.ledger_append(led, "E1-j-a1", "j", "E1", 1.0, "dry")
-    try:
-        ur.ledger_append(led, "E1-j-a1", "j", "E1", 1.0, "dry")
-        dup = False
-    except C1GateFailure:
-        dup = True
-    caps = uc.CONTRACT["resources"]["u2_memory_cap_bytes"]
-    src = (uc.HERE / "u2" / "hwsu_driver.py").read_text(encoding="utf-8")
-    pause = "pause_or_raise_u(" in src
-    return _res(dup and caps["E1"] == 12 * 2**30 and not pause, dup=dup, caps=caps, pause=pause)
+    syn = hwsc_dry.synthetic_root(base / "syn")
+    dig = ("a" * 63 + "1", "b" * 63 + "2", "c" * 63 + "3")
+    src = hwsc_dry.stub_sources(dig)
+    src["own"] = src["dry"]
+    handoff = {"store_inventory": {}, "N_C": 3072, "Z_bound": None, "F_plan": None,
+               "p_D2a": 1e-15, "stage_c_exclusions": ()}
+    empty = src["dry"]
+    extra = {t: empty for t in ("hwsc", "hwsu_dry", "hwsd")}
+    extra["kreg2_c"] = lambda: {"status": "PASS", "digests": np.array([], dtype="<U64"),
+                                "seq_ids": np.array([], dtype=np.int64), "n": 0}
+    ma = hwsc_registry_build.build("K-REG1", base / "a" / "reg", root=syn["root"],
+                                   scratch=syn["scratch"], handoff=handoff, own_expected={},
+                                   sources=src)
+    mb = ureg.build_u("K-REG1", base / "b" / "reg", syn["root"], syn["scratch"], handoff,
+                      own={}, sources={**src, **extra})
+    same = {k: ma.get(k) == mb.get(k) for k in EQ_KEYS}
+    npz = []
+    for d in ("a", "b"):
+        with np.load(base / d / "reg" / "K-REG1_digests.npz", allow_pickle=False) as z:
+            npz.append((z["digests"].astype(str).tolist(), z["seq_ids"].tolist()))
+    same["digest_file"] = npz[0] == npz[1] and len(npz[0][0]) >= len(dig)
+    same["status_pass"] = ma["status"] == "PASS" == mb["status"]
+    return same
 
 
 def dru_reg(base, ctx=None) -> dict:
@@ -298,8 +207,9 @@ def dru_reg(base, ctx=None) -> dict:
     dry.mkdir(exist_ok=True)
     np.savez(dry / "HIST_x.npz", canon32=np.zeros((1, 32), dtype=np.uint8))
     r["no_obligation_incomplete"] = ureg.read_obligation_u2(dry)["status"] == ureg.INC
-    r["equality_with_build"] = "NOT_RUN: needs the stage-C synthetic source map (spec gap)"
-    return _res(all(v for k, v in r.items() if k != "equality_with_build"), **r)
+    eq = _build_equality(base / "equality")
+    r["equality_with_build"] = all(eq.values())
+    return _res(all(r.values()), equality=eq, **r)
 
 
 def run_dru(out, only=None) -> dict:
@@ -335,4 +245,3 @@ def run_dru(out, only=None) -> dict:
                             json.loads(json.dumps(rep, default=str)))
     ur.write_obligation(out, "REGISTRY_OBLIGATION.json", "DRU", "hwsu_dry2.run_dru", dry=True)
     return rep
-

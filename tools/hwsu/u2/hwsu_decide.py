@@ -66,7 +66,8 @@ def p1_u(A, G, models, seeds, ladder=uc.LADDER) -> dict:
                                          if j not in both[n_resp]]
     k = None if n_resp is None else (n_resp // uc.BLOCK_OF if n_resp % uc.BLOCK_OF == 0
                                      else n_resp / uc.BLOCK_OF)
-    return {"N_RESP": n_resp, "N": n_resp, "k": k, "mde": mde, "passes": passes, "precision_limited": limited, "prec": prec, "alt": alt}
+    return {"N_RESP": n_resp, "N": n_resp, "k": k, "mde": mde, "passes": passes,
+            "precision_limited": limited, "prec": prec, "alt": alt}
 
 
 # ------------------------------------------------------------ family stream, statements
@@ -112,7 +113,8 @@ def fw_events(theta_region) -> int:
     """Lemma FW-U, response part: events whose union holds 'a declared statement is false'.
     With G >= 0 elementwise the draw means satisfy ZR030 <= ZR010 <= AF, so L(ZR030) <= L(ZR010)
     <= L(AF) and U(ZR030) <= U(ZR010): every false positive statement is inside the event
-    F^L(ZR010) and F^L(AF) (theta <= 0), every false negative one inside F^U(ZR030) (theta > 0.30)."""
+    F^L(ZR010) and F^L(AF) (theta <= 0), every false negative one inside F^U(ZR030)
+    (theta > 0.30)."""
     r = _region(theta_region)
     if r not in _REGIONS:
         raise ValueError(f"unknown truth region {theta_region!r}")

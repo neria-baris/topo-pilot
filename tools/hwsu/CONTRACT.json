@@ -1328,6 +1328,7 @@
     "tools/hwsu/<phase2_files>",
     "tests/hwsu/test_a_u2_*.py",
     "tests/hwsu/test_b_u2_*.py",
+    "tests/hwsu/test_impl_u2_*.py",
     "tests/hwsu/AUTHORSHIP_A_U2.md",
     "tests/hwsu/AUTHORSHIP_B_U2.md",
     "docs/code_index/**"

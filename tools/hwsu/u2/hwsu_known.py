@@ -30,8 +30,8 @@ from c1_records import C1GateFailure
 
 AUTH, KNOWN, FREEZE = "INCONCLUSIVE/AUTHORITY", "FAIL_TECHNICAL/KNOWN_CASE", "FAIL_TECHNICAL/FREEZE"
 SHARE_OUTCOME = "INCONCLUSIVE/ORACLE_FEASIBILITY"
-TEST_PATTERNS = ("tests/hwsu/test_a_u2_*.py", "tests/hwsu/test_b_u2_*.py",
-                 "tests/hwsu/AUTHORSHIP_A_U2.md", "tests/hwsu/AUTHORSHIP_B_U2.md")
+TEST_PATTERNS = tuple("tests/hwsu/" + p for p in ("test_a_u2_*.py", "test_b_u2_*.py",
+                      "test_impl_u2_*.py", "AUTHORSHIP_A_U2.md", "AUTHORSHIP_B_U2.md"))
 
 
 def _C(contract=None) -> dict:

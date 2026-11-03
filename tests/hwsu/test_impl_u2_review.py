@@ -113,3 +113,14 @@ def test_handoff_is_decoded_with_a_bom_tolerant_codec(name):
     lines = [ln for ln in src.splitlines() if "HANDOFF_PATH" in ln and "decode(" in ln]
     assert lines and all('decode("utf-8-sig")' in ln for ln in lines)
     assert not re.search(r'HANDOFF_PATH\)\.decode\("utf-8"\)', src)
+
+
+# ----------------------------------------------------------------------------- R-0228-1
+def test_s0_allowlist_admits_the_implementer_phase2_tests():
+    known = mod("hwsu_known")
+    assert known._allowed_s0("A", "tests/hwsu/test_impl_u2_review.py")
+    assert known._allowed_s0("A", "tests/hwsu/test_impl_u2_mirror.py")
+    assert not known._allowed_s0("A", "tests/hwsu/test_impl_other.py")
+    assert not known._allowed_s0("M", "tests/hwsu/test_impl_u2_review.py")
+    allow = mod("hwsu_config").CONTRACT["s0_u2"]["allow"]["A"]
+    assert "tests/hwsu/test_impl_u2_*.py" in allow

@@ -101,7 +101,8 @@ def _tpre_models(ctx, pol) -> dict:
         acts, z = c2_model.natural_pass(m["model64"], inputs, pol, "m0")
         ij = {"master": j, "checkpoint_id": ctx["ident"]["ids"][j], "state_sha": m["state_sha"],
               "canon32": a1}
-        r = um.m0_u(m["model64"], m["state_sha"], ij, inputs, acts, z, b, d, perm, pol)
+        r = um.m0_u(m["model64"], m["state_sha"], ij, inputs, acts, z, b, d, perm, pol,
+                    contract=ctx.get("contract"))
         del acts, z
         if r["status"] != "PASS":
             raise FAIL(TEST_GATE, f"T-PRE M0 model {j}: {r['checks']}")
@@ -124,19 +125,24 @@ def t_pre(out, ctx) -> dict:
     pol, t, store = ctx["policy"], ctx["test"], Path(ctx["hwsc_store"])
     pol.begin("T-PRE")
     try:
-        ident = um.identity_c(store, ug._handoff(ctx))
-        um.charts_identity(store)
-        models = um.load_stage_c(store, ident)
-        h1 = uc.read_json(Path(out) / "stages" / "E1" / "H1U.json")["state_sha"]
-        if any(h1.get(str(j)) != m["state_sha"] for j, m in models.items()):
-            raise FAIL(um.IDENT, "state_sha differs from E1 H1U.json")
-        if hwsc_records.lineage_c(store)["status"] != "PASS":
-            raise FAIL(um.IDENT, "hwsc lineage")
-        ctx.update(models=models, ident=ident, perm_of={j: ctx["proc"]["perm"][j] for j in models})
+        if ctx.get("dry") and ctx.get("stage_c_loader"):  # dry run only: planted stage-C input
+            ctx["stage_c_loader"](ctx)
+            models = ctx["models"]
+        else:
+            ident = um.identity_c(store, ug._handoff(ctx))
+            um.charts_identity(store)
+            models = um.load_stage_c(store, ident)
+            h1 = uc.read_json(Path(out) / "stages" / "E1" / "H1U.json")["state_sha"]
+            if any(h1.get(str(j)) != m["state_sha"] for j, m in models.items()):
+                raise FAIL(um.IDENT, "state_sha differs from E1 H1U.json")
+            if hwsc_records.lineage_c(store)["status"] != "PASS":
+                raise FAIL(um.IDENT, "hwsc lineage")
+            ctx.update(models=models, ident=ident,
+                       perm_of={j: ctx["proc"]["perm"][j] for j in models})
         r3 = ug.h3_split(ctx, t["a1"], t["a2"], "test")
         ctx.update(h3=r3, pc=r3["pc"], o1=r3["o1"], o2=r3["o2"], s1=r3["s1"], A_KO=r3["A_KO"])
         b = ug.h5_bounds(r3["pc"]["G"], ctx["seeds"]["h5_test"], uc.ALPHA_HEADROOM)
-        if not Fraction(float(b["L"])) > Fraction(1, 100):
+        if not Fraction(float(b["L"])) > ctx.get("h5_floor", Fraction(1, 100)):
             raise FAIL(TEST_GATE, f"H5-U at test: L {b['L']}")
         ctx["basis_of"] = {j: um.basis_u(m["model64"]) for j, m in models.items()}
         res = _tpre_models(ctx, pol)
@@ -199,7 +205,7 @@ def endpoint(out, ctx) -> dict:
             per[j] = {"status": f"INC_{j}/NUMERICAL", "rule6": False, "coarse": [], "bounds": None}
     resp = ud.response_outcome({j: v["status"] for j, v in per.items()},
                                {j: v["rule6"] for j, v in per.items()})
-    share = ud.share_outcome(uk.of_binding(out))
+    share = ud.share_outcome(uk.of_binding(out, ctx.get("contract")))
     desc = ud.descriptives(ctx["A_test"], G, ctx["rowA"], models)
     A_KO = ctx["A_KO"]
     ids = uo.ko_identities(G, A_KO)
@@ -234,6 +240,6 @@ def report_u(out, ctx, records) -> Path:
         "contract_of_sha256": uc.CONTRACT_SHA256["of"],
         "contract_sha256": uc.CONTRACT_SHA256["phase2"],
         "freeze_sha256": _sha(out, "FREEZE.json"),
-        "freeze_of_sha256": uk.of_binding(out)["freeze_of_sha256"],
+        "freeze_of_sha256": uk.of_binding(out, ctx.get("contract"))["freeze_of_sha256"],
         "of_accept_sha256": share["of_accept_sha256"], "written_utc": ur.utc()}
     return um.write_json(Path(out) / "stages" / "E2" / "REPORT.json", rec)

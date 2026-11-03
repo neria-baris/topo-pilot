@@ -1,7 +1,6 @@
 """HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6
 (API_U2.md section 2; protocol 4.1, 6 rows KC and 0). Response family only: the KU
-constructions are not implemented (R-0223-1) and fail closed.
-"""
+constructions are not implemented (R-0223-1) and fail closed."""
 
 from __future__ import annotations  # noqa: I001
 
@@ -304,8 +303,8 @@ def kc1(ctx) -> dict:
 
 def kc2(ctx) -> dict:
     ident = um.identity_c(ctx["hwsc_store"], uc.load_handoff_u())
-    ch = um.charts_identity(ctx["hwsc_store"])
-    return {"ids": ident["ids"], "charts": ch["charts"], "no_checkpoint_loaded": True}
+    return {"ids": ident["ids"], "no_checkpoint_loaded": True,
+            "charts": um.charts_identity(ctx["hwsc_store"])["charts"]}
 
 
 def _need_pass(name, r) -> None:
@@ -325,8 +324,7 @@ def kc3(ctx) -> dict:
 
 def kc4(ctx=None) -> dict:
     a = bu2.audit_u2()
-    if a["status"] != "PASS":
-        raise C1GateFailure(KNOWN, f"audit_u2: {a['status']}")
+    _need_pass("audit_u2", a)
     return {"audit": a["status"], "by_path": a["by_path"]}
 
 
@@ -339,7 +337,11 @@ def kc5(out, ctx) -> dict:
     reh = out / "registry" / "rehearsal"
     hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
     man = ureg.build_u("REHEARSAL", reh, root=ctx["root"], scratch=ctx.get("scratch", uc.SCRATCH),
-                       handoff=hd, own=None)
+                       handoff=hd, own=None, sources=ctx.get("registry_sources"))
+    done = {f for e in stage_records.stages_so_far(out) if e.get("event") == "STAGE_COMPLETE"
+            for f in e.get("files", {})}  # the rehearsal registry joins the lineage (J10)
+    ur.complete_stage(out, "KC5", [p for p in sorted(reh.rglob("*")) if p.is_file()
+                                   and p.relative_to(out).as_posix() not in done])
     now, reg_b = _bytes(out), _bytes(reh)
     hist = [p.stat().st_size for p in out.rglob("HIST_*.npz")]
     per_row = (sum(hist) / 24576.0) if hist else 320.0
@@ -359,7 +361,7 @@ def kc5(out, ctx) -> dict:
 
 def kc6(out, ctx) -> dict:
     out = Path(out)
-    A = uc.CONTRACT["authority_u2"]["of_accept"]
+    A = (ctx.get("contract") or uc.CONTRACT)["authority_u2"]["of_accept"]
     rp = out / "stages" / "OF" / "OF_REPORT.json"
     if uc.sha256_file(rp) != A["of_report_sha256"]:
         raise C1GateFailure(KNOWN, "OF_REPORT.json does not re-hash")
@@ -367,7 +369,7 @@ def kc6(out, ctx) -> dict:
     for arm in ("a1", "a2"):
         parts = []
         for b in uc.BLOCKS_OF:
-            rel = f"stages/OF/HIST_OF_eval_{arm}_b{b}.npz"
+            rel = f"stages/OF/{'DRYHIST' if ctx.get('dry') else 'HIST'}_OF_eval_{arm}_b{b}.npz"
             if stage_records.sha256(out / rel) != um.stage_complete_sha(out, "OF_S", rel):
                 raise C1GateFailure(KNOWN, f"{rel} differs from the OF STAGE_COMPLETE")
             with np.load(out / rel, allow_pickle=False) as z:
@@ -389,9 +391,7 @@ def kc_report(out, records) -> Path:
                                                    "peak_memory_bytes", "manifest_sha256")},
             "store_bytes": rec.get("store_bytes"), "projection": rec.get("projection"),
             "written_utc": ur.utc()}
-    f.parent.mkdir(parents=True, exist_ok=True)
-    stage_records.write_new(f, json.loads(json.dumps(body, default=str)))
-    return f
+    return um.write_json(f, body)
 
 
 def ku_cases(*args, **kwargs):

@@ -11,6 +11,8 @@ from __future__ import annotations  # noqa: I001
 
 import hwsu_config as uc
 import hwsu_dry2b as d2b
+import hwsu_dry2c as d2c
+import hwsu_dry2d as d2d
 import hwsu_freeze as ufz
 import hwsu_known as uk
 import hwsu_model as um
@@ -57,16 +59,30 @@ def tiny_plan(case="DRU1"):
                             int(tt["steps"]), 0)
 
 
+class DryMasters:
+    """Dry-only rebinding of hwsb_config.DRY_MASTERS (CONTRACT binding.dry_rebinding_u2).
+
+    hwsb_data admits only hwsb_config.DRY_MASTERS for a dry plan; U's tiny masters (OPEN-6) are
+    admitted inside the with block. The constant is set on entry and restored on exit, also when
+    the block raises; synthetic training only (R-0223-9 part 2)."""
+
+    def __init__(self, masters):
+        self.masters, self.old = tuple(int(m) for m in masters), None
+
+    def __enter__(self):
+        self.old = hwsb_config.DRY_MASTERS
+        hwsb_config.DRY_MASTERS = self.masters
+        return self
+
+    def __exit__(self, *exc):
+        hwsb_config.DRY_MASTERS = self.old
+        return False
+
+
 def _train_one(store, proc, plan, m) -> dict:
-    """hwsb_data admits only hwsb_config.DRY_MASTERS for a dry plan; U's tiny masters (OPEN-6)
-    are admitted for the duration of the call and the constant is restored (synthetic)."""
-    old = getattr(hwsb_config, "DRY_MASTERS")  # noqa: B009  runtime patch, not an audited read
-    setattr(hwsb_config, "DRY_MASTERS", tuple(int(x) for x in plan.masters))  # noqa: B010
-    try:
+    with DryMasters(plan.masters):
         obs = hwsc_data.make_train_dev_c(store, proc, m, plan, scope=uc.SCOPE_DRY)
         return hwsb_train.train(store, {"train": obs["train"], "dev": obs["dev"]}, m, plan=plan)
-    finally:
-        setattr(hwsb_config, "DRY_MASTERS", old)  # noqa: B010
 
 
 def tiny_models(store, proc, plan=None) -> dict:
@@ -108,8 +124,9 @@ def dru1(base, ctx=None) -> dict:
         ok[f"{m}:record"] = "dev_ce" not in back and back["status"] == "COMPLETE"
     r["rank_and_record"] = all(ok.values())
     r["no_hist_name"] = not any(p.name.startswith("HIST_") for p in base.rglob("*.npz"))
-    r["run_job"] = "NOT_COVERED: KC/E1/REG2/E2 through run_job need the stage-C fixture set"
-    return _res(all(v for k, v in r.items() if k != "run_job"), **r)
+    stg = d2c.run_stages(base / "stages_job")
+    r["run_job_stages"] = stg
+    return _res(all(v for k, v in r.items() if k != "run_job_stages") and stg["ok"], **r)
 
 
 def dru2(base, ctx=None) -> dict:
@@ -209,7 +226,9 @@ def dru_reg(base, ctx=None) -> dict:
     r["no_obligation_incomplete"] = ureg.read_obligation_u2(dry)["status"] == ureg.INC
     eq = _build_equality(base / "equality")
     r["equality_with_build"] = all(eq.values())
-    return _res(all(r.values()), equality=eq, **r)
+    fx = d2d.fixtures(base / "fixtures")
+    r["planted_defect_fixtures"] = fx["ok"]
+    return _res(all(r.values()), equality=eq, fixtures=fx, **r)
 
 
 def run_dru(out, only=None) -> dict:

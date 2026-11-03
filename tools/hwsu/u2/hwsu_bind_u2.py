@@ -116,6 +116,20 @@ def _audit_reads(c) -> tuple:
     return unlisted, forbidden, by_path
 
 
+def rebindings(path) -> list:
+    """Assignments to an attribute of an imported module (mod.NAME = ...) in one file."""
+    tree = ast.parse(Path(path).read_text(encoding="utf-8"))
+    mods = {k: v for k, v in ub.module_imports(tree).items() if isinstance(v, str)}
+    out = []
+    for n in ast.walk(tree):
+        tg = (n.targets if isinstance(n, ast.Assign) else
+              [n.target] if isinstance(n, (ast.AugAssign, ast.AnnAssign)) else [])
+        out += [{"module": mods[t.value.id], "name": t.attr, "line": n.lineno,
+                 "file": Path(path).name} for t in tg if isinstance(t, ast.Attribute)
+                and isinstance(t.value, ast.Name) and t.value.id in mods]
+    return out
+
+
 def audit_u2(files=None, contract=None) -> dict:
     c = merged_contract(contract)
     fl = [Path(f) for f in (u2_files() if files is None else files)]
@@ -125,6 +139,11 @@ def audit_u2(files=None, contract=None) -> dict:
     unlisted, forbidden, by_path = _audit_reads(c)
     reads = {"status": "PASS" if not (unlisted or forbidden) else BIND, "unlisted": unlisted,
              "forbidden": forbidden}
-    ok = calls["status"] == "PASS" and reads["status"] == "PASS" and not misplaced
+    declared = {(d["module"], d["name"], d["file"])
+                for d in c["binding"].get("dry_rebinding_u2", [])}
+    undeclared = [r for f in fl for r in rebindings(f)
+                  if (r["module"], r["name"], r["file"]) not in declared]
+    ok = (calls["status"] == "PASS" and reads["status"] == "PASS" and not misplaced
+          and not undeclared)
     return {"status": "PASS" if ok else BIND, "calls": calls, "reads": reads,
-            "by_path": by_path, "misplaced": misplaced}
+            "by_path": by_path, "misplaced": misplaced, "undeclared_rebindings": undeclared}

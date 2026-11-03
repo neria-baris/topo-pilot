@@ -138,7 +138,7 @@ def reg1(out, ctx) -> dict:
     hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
     man = ureg.build_u("K-REG1", out / "registry", root=ctx["root"],
                        scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd,
-                       own=of_hist(ctx.get("dry")))
+                       own=of_hist(ctx.get("dry")), sources=ctx.get("registry_sources"))
     if man["status"] != "PASS":
         raise FAIL(man["status"], f"K-REG1 {man['problems'][:5]}")
     try:
@@ -273,7 +273,7 @@ def h5_bounds(G, seed, alpha) -> dict:
 def h5_u(ctx) -> dict:
     b = h5_bounds(ctx["pc"]["G"], ctx["seeds"]["h5_val"], uc.ALPHA_HEADROOM)
     ok_a = Fraction(float(b["L"])) > Fraction(1, 100)
-    A = uc.CONTRACT["authority_u2"]["of_accept"]
+    A = (ctx.get("contract") or uc.CONTRACT)["authority_u2"]["of_accept"]
     rp = Path(ctx["out"]) / "stages" / "OF" / "OF_REPORT.json"
     ok_b = (uc.sha256_file(rp) == A["of_report_sha256"]
             and Fraction(float(uc.read_json(rp)["EG"]["L"])) > uc.HEADROOM)
@@ -305,7 +305,7 @@ def x1_step(ctx) -> dict:
 
 
 def kc_u(ctx) -> dict:
-    G, v = ctx["pc"]["G"], ctx.get("val", ctx)
+    G, v = ctx["pc"]["G"], (ctx if "o1" in ctx else ctx["val"])
     N = uo.helmert(36)
     A_KO = {k: uo.readout_A(ctx["pc"]["d"], uo.ko_logits(v["o1"], v["s1"], k),
                             uo.ko_logits(v["o2"], v["s2"], k), N) for k in uo.CASES}
@@ -356,7 +356,8 @@ def p1_step(out, ctx) -> dict:
 
 def validation_report(out, ctx, records) -> Path:
     P = ctx.get("P1", {})
-    mde = P.get("mde", {})
+    # report labels avoid the sealed array names (check_unsealed_u): ZR010 -> R010
+    mde = {X.replace("ZR", "R"): v for X, v in P.get("mde", {}).items()}
     rec = {"schema": "hwsu-validation-v1", "gates": {r["gate"]: r["status"] for r in records},
            "G": {"mean": float(c1_means.tree_mean(ctx["pc"]["G"])) if "pc" in ctx else None},
            "ko": {"identities": "PASS" if "pc" in ctx else None, "categories": "PASS" if ctx.get(

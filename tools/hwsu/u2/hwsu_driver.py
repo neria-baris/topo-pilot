@@ -56,7 +56,8 @@ def reg2(out, ctx) -> dict:
     own = ug.of_hist(ctx.get("dry")) + [f"stages/E1/{pre}_{n}.npz" for n in (
         "fit_s_b0", "fit_s_b1", "val_a1_b0", "val_a2_b0")]
     man = ureg.build_u("K-REG2", out / "registry", root=ctx["root"],
-                       scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd, own=own)
+                       scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd, own=own,
+                       sources=ctx.get("registry_sources"))
     if man["status"] != "PASS":
         raise C1GateFailure(man["status"], f"K-REG2 {man['problems'][:5]}")
     ug.register_new(out, "REG2", "registry")
@@ -82,6 +83,8 @@ def steps(stage, ctx) -> list:
          "S7": lambda: ug.sample_e2(out, ctx), "H2-FRESH-U": lambda: ug.h2_fresh(ctx),
          "T-PRE": lambda: ug.t_pre(out, ctx), "NUM": lambda: ug.num_gate(out, ctx),
          "ENDPOINT": lambda: ug.endpoint(out, ctx)}
+    if ctx.get("dry"):  # planted adapters exist in the dry run only (R-0223-9)
+        f.update({g: (lambda fn=fn: fn(ctx)) for g, fn in ctx.get("planted_u2", {}).items()})
     names = [g for g in uc.CONTRACT["gates_u2"]["jobs"][stage] if g not in ("S0", "AUTH")]
 
     def wrap(g):
@@ -154,7 +157,7 @@ def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledge
             return dict(refused, outcome="INVALID")
     stage_records.record_gate(out, "S0", "PASS")
     try:
-        uk.auth_u(out, job, stage, ctx["mailbox"])
+        uk.auth_u(out, job, stage, ctx["mailbox"], ctx.get("contract"))
     except C1GateFailure as exc:
         stage_records.record_gate(out, "AUTH", exc.status, reason=str(exc.reason)[:2000])
         return dict(refused, outcome=exc.status)

@@ -27992,7 +27992,7 @@
    "kind": "python",
    "lines": 275,
    "purpose": "Author B: registry fixtures, class-to-reader table, inventory fail-closed (protocol 6, N6, DRG9).",
-   "sha256": "90035ede5eef013b82283b9b6ae871ea9ebeef34c3edd91e149ec83364cf0741"
+   "sha256": "cb43d497382a014cba53ab3c908837e6ee4af2e10469ba845218f9ab0d2ec773"
   },
   "tests/hwsg/test_b_streams.py": {
    "kind": "python",
@@ -29658,15 +29658,15 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 332,
+   "lines": 345,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "c6ed89b3387e0bfd37e9f744308b6cdcc930042d75792a83b40f8a5f5eafd198"
+   "sha256": "9dfa3c2d9551969cbc3ea442efc4bb38430d77d023ff09ca3b054f6ebd59abd9"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
-   "lines": 1611,
+   "lines": 3269,
    "purpose": "",
-   "sha256": "87d84a751f84824d1ba2361b2119f16a96adc86181bce35e9b44bfb7ecc4c621"
+   "sha256": "46674f84dce5d446040090a12a60271adf14e84d54d7122af01bbc69d2d0ca1f"
   },
   "tools/hwsg/PROTOCOL_HWSG_v1.md": {
    "kind": "markdown",
@@ -294983,5 +294983,5 @@
    ]
   }
  },
- "sources_digest": "65cbd06708c42fd0d2a4e2a1ec74735192cfedd3e8fa362c653091baa87bb7ea"
+ "sources_digest": "8b08c3ea708c76ccef7e24991280977c476e57bd6cc8a5ac8e031c5b564cff1b"
 }

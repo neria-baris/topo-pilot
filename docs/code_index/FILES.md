@@ -1459,8 +1459,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 332 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
-| `CONTRACT.json` | json | 1611 lines |  |
+| `API.md` | markdown | 345 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
+| `CONTRACT.json` | json | 3269 lines |  |
 | `PROTOCOL_HWSG_v1.md` | markdown | 477 lines | HWSG-DESIGN-v1: generality across worlds, the full beyond-four test repeated in three more worlds |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSG test plan v1 (job 0224) |
 | [hwsg_bind.py](files/tools/hwsg/hwsg_bind.py.md) | python | 243 lines | HWSG world rebinding and audit (API.md §2; protocol §2.3). No existing file is edited: the |

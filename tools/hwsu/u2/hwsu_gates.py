@@ -36,8 +36,13 @@ SAMPLER, ORACLE, LIN = "FAIL_TECHNICAL/SAMPLER", "FAIL_TECHNICAL/ORACLE", "FAIL_
 AUTH, INC_REG = "INCONCLUSIVE/AUTHORITY", "INCONCLUSIVE/REGISTRY_INCOMPLETE"
 SPLIT = ("release_b_check", "sample_e2", "h2_fresh", "t_pre", "num_gate", "endpoint",
          "sealed_opened", "report_u")
-OF_HIST = [f"stages/OF/HIST_OF_{k}_b{b}.npz" for k in ("fit", "eval_a1", "eval_a2")
-           for b in uc.BLOCKS_OF]
+
+
+def of_hist(dry=False) -> list:
+    pre = "DRYHIST" if dry else "HIST"
+    return [f"stages/OF/{pre}_OF_{k}_b{b}.npz" for k in ("fit", "eval_a1", "eval_a2")
+            for b in uc.BLOCKS_OF]
+
 
 
 def __getattr__(name):
@@ -132,7 +137,8 @@ def reg1(out, ctx) -> dict:
     out = Path(out)
     hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
     man = ureg.build_u("K-REG1", out / "registry", root=ctx["root"],
-                       scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd, own=OF_HIST)
+                       scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd,
+                       own=of_hist(ctx.get("dry")))
     if man["status"] != "PASS":
         raise FAIL(man["status"], f"K-REG1 {man['problems'][:5]}")
     try:

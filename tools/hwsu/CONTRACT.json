@@ -566,6 +566,10 @@
     "topo-pilot-hwsd": {
      "decision": "EXCLUSION",
      "reason": "track-D implementation worktree; pruned unsearched (blinded for HWSU, hwsu_config hygiene root_rule); OPEN-9"
+    },
+    "topo-pilot-hwsg": {
+     "decision": "EXCLUSION",
+     "reason": "HWSG implementation worktree (branch hwsg-impl; another study, not blinded for HWSU); deep-scanned like the other worktrees (header listing: only docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz, non-history); a history file or identity reference appearing there is REGISTRY_INCOMPLETE; confirmed at erratum E4"
     }
    },
    "deep_scan_exclude_add": [
@@ -575,7 +579,7 @@
     "topo-pilot-hwsd"
    ],
    "rule": "R8: a top-level directory not in the table that holds any history file, identity reference or ObservationSet root -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
-   "status": "TO_FREEZE (re-listed at KC5, REG1, REG2)"
+   "status": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): 73 top-level directories at 2026-11-03 = stage C's 68 plus hwsd-store, hwsu-store, topo-pilot-hwsd, topo-pilot-hwsu, topo-pilot-hwsg; re-listed at KC5, REG1, REG2"
   },
   "scratch_u2": {
    "base": "stage C's registry.scratch_inventory and scratch_rules (frozen 2026-10-29) for the directories they list",
@@ -650,7 +654,7 @@
      "reason": "dry fixtures of track G (another study); matched by prefix, re-confirmed at the execution freeze (R-0223-10 item 1)"
     }
    },
-   "rows_note": "the two rows above are the fixture-rule EXCLUSION rows of R-0223-10; per-directory rows for the other directories remain TO_FREEZE"
+   "rows_note": "the two rows above are the fixture-rule EXCLUSION rows of R-0223-10; FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): no further per-directory rows are needed (name-level scan 2026-11-03: hwsc-job-*, hwsd-run-*, hwsu-run-* hold only .log/.json files, hwsc-dry-* and test_hwsc-* are stage C pattern rows, test_* directories are not descended by scratch_scan, hwsu-dry*/test_hwsu-*/hwsd-dry*/test_hwsd-* are reserved globs, test_hwsg-*/hwsg-dry* are the rows above; hwsg-run-* will hold logs only; an array file appearing in an unrowed directory fails closed)"
   },
   "superset_check": "S-2: stage C's K-REG2 digest set (U8) is a union source; the J1 superset check of the reader-built union (before U8) is a diagnostic: count and list of missing digests",
   "requirements": "protocol 8.3: fit, val (every arm; kfit and feas are not drawn under S3, R-0223-4) disjoint from K-REG1 and from each other; test disjoint from K-REG2; sequence ids disjoint from every frozen union; sealed-D-2a predicate false on every row; collision -> FAIL_TECHNICAL/LINEAGE"
@@ -1000,7 +1004,7 @@
     }
    }
   },
-  "allowlist_note_u2": "phase-2 entries (new keys only, merged into the phase-1 allowlist by the loader); call_time_reads by hwsu_bind.function_reads at 49ac9c9 (job 0223 spec writer); re-run at h_exec (TO_FREEZE)",
+  "allowlist_note_u2": "phase-2 entries (new keys only, merged into the phase-1 allowlist by the loader); call_time_reads by hwsu_bind.function_reads at 49ac9c9 (job 0223 spec writer); FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): audit_u2 PASS at 40c4dfb (calls, reads, by_path hwsc_registry_build.build, no undeclared rebinding); s0_u re-runs it at h_exec",
   "allowlist_conditional_u2": {
    "c2_config": {
     "T_QSUM": {
@@ -1280,6 +1284,9 @@
  },
  "reuse_sha256_u2": {
   "tools/c2_readout/c2_model.py": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
+  "tools/hwsb/hwsb_dry2.py": "0ab39f0ad0424849e2263add2216887851f8272b3c3add90a5f9ac35d71944d7",
+  "tools/hwsb/hwsb_meter_bind.py": "7e32be1d1213fcdfec2ff04dab0efa91f5d1b52910daff9633c0caf1f6790110",
+  "tools/hwsc/hwsc_dry.py": "379818bb02c12a42328bfa885b802d8ea21186e2eb4501ecc7a5a1ee6a146574",
   "tools/hwsc/hwsc_drystore.py": "fba45b978c2281072d43c753c2307557e5e86fbc653e88b9bd65db2b0493d823"
  },
  "phase2_files": [
@@ -1486,12 +1493,12 @@
   "pass": "every expected result exactly; the report is bound to the implementation hash and accepted before FREEZE.json"
  },
  "to_freeze_u2": {
-  "binding.allowlist": "call_time_reads re-run at h_exec; hwsc_registry_build.build (OPEN-7)",
-  "reuse_sha256_u2": "phase-2 import closure at h_exec minus the phase-1 table (kept outside the phase-1 key reuse_sha256: hwsu_freeze reads that key; OPEN-1 note)",
-  "registry_u2.root_table_u2": "name-only re-listing at the freeze",
-  "registry_u2.scratch_u2.rows": "hwsc_registry.scratch_scan header scan at implementation; reviewed before FREEZE.json",
+  "binding.allowlist": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): audit_u2 PASS at 40c4dfb; s0_u re-runs it at h_exec; hwsc_registry_build.build by path (OPEN-7)",
+  "reuse_sha256_u2": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): runtime import closure of tools/hwsu/u2 and the allowlists minus the phase-1 table = 5 files (c2_model, hwsb_dry2, hwsb_meter_bind, hwsc_dry, hwsc_drystore), all equal to the git blobs at 40c4dfb (kept outside the phase-1 key reuse_sha256: hwsu_freeze reads that key; OPEN-1 note)",
+  "registry_u2.root_table_u2": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): name-only re-listing, 73 directories, one new row topo-pilot-hwsg (EXCLUSION); re-listed at KC5, REG1, REG2",
+  "registry_u2.scratch_u2.rows": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): name-level scan, every new directory covered or array-free; the two fixture-prefix rows stand",
   "cpu.u2_central_s": "cost only; re-set from measured J-U, DRU and KC",
-  "dry_run_u2.tiny_train": "the plan object built like stage C's DRC1 plan with V = 36",
-  "stage_c_u2.stages_jsonl": "re-hashed at the freeze (hwsc-store is closed; a change -> FAIL_TECHNICAL/IDENTITY)"
+  "dry_run_u2.tiny_train": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): equals stage C's hwsb dry_run.tiny_train (steps 200, batch 128, lr 0.001, warmup 20, cosine, checkpoints 0/100/200) with device pinned to cpu instead of auto; V = 36 in tiny_model",
+  "stage_c_u2.stages_jsonl": "FROZEN at erratum E4 (coordinator a0f20235, 2026-11-03): sha256 8eb6cec9... re-hashed, equal to sha256_2026_11_03 (hwsc-store is closed; a change -> FAIL_TECHNICAL/IDENTITY)"
  }
 }

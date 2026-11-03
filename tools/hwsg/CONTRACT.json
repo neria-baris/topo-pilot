@@ -1607,5 +1607,5 @@
   "binding.audit.left_unchanged",
   "cpu.central_wall_s",
   "FREEZE.json, DRY_REPORT sha256, PF record sha256"
- ]
+ ],"errata": {"E1": "process_code takes (family, mode, sigma, replicate). For six fields (family, mode, sigma_str, p_str, KEY_w, rep) hwsg_bind.process_code_g returns process_code(family, mode, f'{sigma_str}|{p_str}|{KEY_w}', rep); four fields pass through unchanged. Rebound inside world() in hwsb_data, hwsc_data and k4b_data (not CONTRACT rows; restored in finally). Sequence ids = make_sequence_ids(code, split, n) with split 'test' for blocks. Worked examples, rep = 'hwsg-v1/<KEY_w>/cal/b0': lo sigma field '1.25|0.8333333333333334|W12-q1-s1.25-p0.8333333333333334' code 896598705; mid '2.0|0.2|W12-q1-s2.0-p0.2' code 729926672; hi '2.5|0.5|W12-q1-s2.5-p0.5' code 761818423. Train/dev: rep 'hwsg-v1/<role>/<master>'. ACCEPT_TERMINAL.json binds the TERMINAL RESULT sha256 in field terminal_result_sha256 (also accepted: result_sha256, sha256); ACCEPT_VALIDATION.json binds VALIDATION_REPORT.json in validation_report_sha256 (also sha256); an optional verdict 'REJECT' refuses. release_barrier also returns release_b_missing (E1-accepted worlds without RELEASE_B.json)."}
 }

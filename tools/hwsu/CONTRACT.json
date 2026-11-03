@@ -935,6 +935,9 @@
     },
     "set_num_threads": {
      "kind": "function"
+    },
+    "manual_seed": {
+     "kind": "function"
     }
    },
    "topo_pilot.contracts": {
@@ -944,6 +947,32 @@
    },
    "topo_pilot.contracts.backends": {
     "LocalFSBackend": {
+     "kind": "class"
+    }
+   },
+   "hwsc_dry": {
+    "synthetic_root": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "stub_sources": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "hwsb_config": {
+    "Plan": {
+     "kind": "class"
+    }
+   },
+   "topo_pilot.learner": {
+    "ModelConfig": {
+     "kind": "class"
+    },
+    "TrainConfig": {
+     "kind": "class"
+    },
+    "TransformerLM": {
      "kind": "class"
     }
    }
@@ -1214,7 +1243,8 @@
   "tools/hwsu/u2/hwsu_e2.py",
   "tools/hwsu/u2/hwsu_gates.py",
   "tools/hwsu/u2/hwsu_driver.py",
-  "tools/hwsu/u2/hwsu_dry2.py"
+  "tools/hwsu/u2/hwsu_dry2.py",
+  "tools/hwsu/u2/hwsu_dry2b.py"
  ],
  "tests_u2": {
   "author_A": "tests/hwsu/test_a_u2_*.py",

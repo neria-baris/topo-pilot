@@ -74,6 +74,7 @@
 - [tests/hwsc/test_r_0181_kc_records_rehearsal.py](../../tests/hwsc/test_r_0181_kc_records_rehearsal.py.md) (line 18, import)
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 19, import)
 - [tests/hwsd/test_b_guard_search.py](../../tests/hwsd/test_b_guard_search.py.md) (line 17, import)
+- [tests/hwsu/test_b_of_seed.py](../../tests/hwsu/test_b_of_seed.py.md) (line 30, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 17, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 243, import)

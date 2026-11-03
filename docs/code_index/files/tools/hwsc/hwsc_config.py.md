@@ -89,6 +89,7 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 19, import)
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 21, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 14, import)
+- [tools/hwsu/hwsu_config.py](../hwsu/hwsu_config.py.md) (line 26, import)
 
 ## Top-level constants
 

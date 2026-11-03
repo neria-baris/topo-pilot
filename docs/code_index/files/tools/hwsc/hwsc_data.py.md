@@ -79,6 +79,8 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 20, import)
 - [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 16, import)
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 15, import)
+- [tools/hwsu/hwsu_dry.py](../hwsu/hwsu_dry.py.md) (line 22, import)
+- [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 22, import)
 
 ## Top-level constants
 

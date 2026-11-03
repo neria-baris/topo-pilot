@@ -70,6 +70,7 @@
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 17, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 249, import)
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 19, import)
+- [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 13, import)
 
 ## Top-level constants
 

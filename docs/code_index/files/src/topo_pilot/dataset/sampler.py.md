@@ -45,8 +45,13 @@
 - [tests/c1prime/test_b_registry.py](../../../tests/c1prime/test_b_registry.py.md) (line 25, import)
 - [tests/hws/test_b_oracle.py](../../../tests/hws/test_b_oracle.py.md) (line 31, import)
 - [tests/hws/test_b_records.py](../../../tests/hws/test_b_records.py.md) (line 41, import)
+- [tests/hwsu/test_a_of_gates.py](../../../tests/hwsu/test_a_of_gates.py.md) (line 28, import)
+- [tests/hwsu/test_a_of_sampler.py](../../../tests/hwsu/test_a_of_sampler.py.md) (line 20, import)
+- [tests/hwsu/test_b_of_streams.py](../../../tests/hwsu/test_b_of_streams.py.md) (line 22, import)
 - [tools/hws/hws_dry.py](../../../tools/hws/hws_dry.py.md) (line 24, import)
 - [tools/hws/hws_oracle.py](../../../tools/hws/hws_oracle.py.md) (line 16, import)
+- [tools/hwsu/hwsu_pairs.py](../../../tools/hwsu/hwsu_pairs.py.md) (line 11, import)
+- [tools/hwsu/hwsu_pairs.py](../../../tools/hwsu/hwsu_pairs.py.md) (line 14, import)
 - [tools/x4_circle_history/process_law.py](../../../tools/x4_circle_history/process_law.py.md) (line 131, dynamic)
 
 ## Top-level constants

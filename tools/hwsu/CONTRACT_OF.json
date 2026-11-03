@@ -1,0 +1,2863 @@
+{
+ "protocol": "HWSU-DESIGN-v1 (design freeze; phase 1 = the oracle-only stage OF)",
+ "protocol_file": "tools/hwsu/PROTOCOL_HWSU_v1.md",
+ "protocol_sha256": "9efbabdfae58b2ac893bbfbc66aa0cb25e419e10aff9fbf34f45123314af88eb",
+ "contract_job": "0198 phase 1",
+ "phase": 1,
+ "status": "CONTRACT_OF (written before any module code; the protocol wins on conflict)",
+ "precedence": "PROTOCOL_HWSU_v1.md > CONTRACT_OF.json > API.md > TEST_PLAN.md; a difference is a contract defect to report, never to resolve in code",
+ "number_format": "Exact values are strings parsed by fractions.Fraction(str); integers are JSON ints; floats are tolerances or report-only copies",
+ "loader": "hwsu_config.load_contract: this file plus an optional tools/hwsu/CONTRACT.json that must carry contract_of_sha256 = sha256 of this file's bytes; recursive dict union; any duplicate leaf key -> FAIL_TECHNICAL/BINDING (API.md §1.2, D-2)",
+ "authority": {
+  "addenda": [
+   {
+    "addendum": 25,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-25.md",
+    "sha256": "22f130227deb091e36696a880cac6789d8b4040d2ba7aac07a7e829700cf37f4"
+   },
+   {
+    "addendum": 26,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-26.md",
+    "sha256": "23ab23f951bb4bf728c8087d1fa1340f8fe34dcc73d6b501eeb97db892edf602"
+   },
+   {
+    "addendum": 28,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-28.md",
+    "sha256": "650d8b6b2508280a32cadb6c512632d4103b2ac241550e7055bfa45c3377666c"
+   },
+   {
+    "addendum": 37,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-37.md",
+    "sha256": "475f05403ecc454e62d94952250383116601f62acdccdaa6f4d21b301f561a2a"
+   }
+  ],
+  "design": {
+   "path": "planning/responses/HWSU-DESIGN-v1.md",
+   "sha256": "9efbabdfae58b2ac893bbfbc66aa0cb25e419e10aff9fbf34f45123314af88eb",
+   "protocol_copy": "tools/hwsu/PROTOCOL_HWSU_v1.md",
+   "freeze_record": {
+    "path": "records/HWSU_DESIGN_FREEZE.json",
+    "sha256": "25ecb10214e8b5f0e4b6eebe6796d6fb74ee9dd480563c7875aaf16a78d3734a"
+   }
+  },
+  "request": {
+   "path": "planning/requests/coord-hws-use-20261101.md",
+   "sha256": "2822c5c5916a97067f43bfde99639e2a71221405dc55d243cdf839ee58c07c9c"
+  },
+  "records": {
+   "HWS_UD_NAMESPACE": {
+    "path": "records/HWS_UD_NAMESPACE.json",
+    "sha256": "b4c6d6ff21ad6282c530a2c9e992c4973836ed0750c6cca06db4704ddd427b5e"
+   },
+   "HWSC_W2_END": {
+    "path": "records/HWSC_W2_END.json",
+    "sha256": "2390e29d58add4a65025559785f0e67c49291625847c0511d8b6321a9c03c6cb"
+   },
+   "joint_rulings": {
+    "path": "planning/responses/coord-hws-ud-20261101.joint-rulings.md",
+    "sha256": "641502e86352ebce97ab8ad04161b59dfe47685fcb910806e15e7f0d60f9546f"
+   },
+   "joint_rulings_addendum_1": {
+    "path": "planning/responses/coord-hws-ud-20261101.joint-rulings-addendum-1.md",
+    "sha256": "241040fbba03bd0209987279115fd8468ce48499cae75498870009fad033c22b"
+   },
+   "joint_rulings_addendum_2": {
+    "path": "planning/responses/coord-hws-ud-20261101.joint-rulings-addendum-2.md",
+    "sha256": "6644433a624cbde008f10ed4fe30a9de0efc3697c1d2b88bcf209d8386a2d9b5"
+   },
+   "joint_rulings_addendum_3": {
+    "path": "planning/responses/coord-hws-ud-20261101.joint-rulings-addendum-3.md",
+    "sha256": "127d08fefb8967bb76940e96c23bd4a73adb06e26151a17d123c2708a053c092"
+   }
+  },
+  "paths_relative_to": "the mailbox X:/Downloads/projects/topo-pilot/agent-handoff",
+  "run_approval": "AUTH_OF_<job>.json in hwsu-store binds the owner's OF approval file (path relative to the mailbox, sha256) and the sha256 of FREEZE_OF.json; written by the coordinator after the owner's approval (D-23)",
+  "not_authorised": "addendum 37: no run of track U, OF included, without an explicit owner run approval",
+  "owner_questions": "§13 pending; registered defaults used",
+  "base_commit": "e3710d2c60e54c82591b8ab59f13e5579848488a",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-hwsu",
+  "branch": "hwsu-impl"
+ },
+ "handoff": {
+  "path": "hwsb-store/HANDOFF.json",
+  "sha256": "a4d9a0c960adc285f4aec626ccb2e0405cce504357d746f7e0d270615eca4353",
+  "bytes": 5668,
+  "keys_read": [
+   "p_D2a",
+   "stage_c_exclusions"
+  ],
+  "p_D2a_copy_for_tests": 5.4162868151717785e-15,
+  "rule": "read only by hwsu_config.load_handoff_u (sha256 check; two keys); hwsc_config.load_handoff is never called (D-4)"
+ },
+ "world": {
+  "key": "W12-q1-s1.75-p0.2",
+  "process_code_args": [
+   "cylinder",
+   "overlap",
+   "1.75"
+  ],
+  "V": 36,
+  "N": 144,
+  "W": 12,
+  "H": 12,
+  "WorldSpec": {
+   "id": "21feee1d8ee5422e",
+   "payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f"
+  },
+  "TransitionSpec": {
+   "id": "e4dafc7b9785c172",
+   "payload_sha256": "f94340a64769df1c89935c1767a58d2f764b0f31a49e675bd43d8484eeba68dd"
+  },
+  "selection_sha256": {
+   "E": "4d7b8e5682033357dfde7f640a2dd5ad6d9f645afec33a6e580c8bc20b7ec467",
+   "T": "d55d1024e2e3cd36603e26ff9ae5e365d373abca62495287656f20d69033f688",
+   "pi": "5ab26711610321dcd79ea419ba214fed8e7d637d7b4103868de878af553ca4a9",
+   "coords": "81468d18466865c93107717f419c78ad65eff208b3277dc576d8bb4116912340"
+  },
+  "masters": [
+   620301,
+   620302,
+   620303
+  ],
+  "build": "hwsb_data.build_process(ArtifactStore(MemoryBackend()), masters=(620301, 620302, 620303)); identity by hwsc_data.process_identity (stage C's world block); nothing is written to disk",
+  "emission_meta_rule": "hwsc-store/artifacts/EmissionSpec/<id>/meta.json exists with artifact_type EmissionSpec and config.replicate == master; WorldSpec and TransitionSpec meta.json exist with their artifact_type (D-11)",
+  "stationarity_tol": 1e-12,
+  "validate_tol": 1e-12
+ },
+ "stage_c": {
+  "store": "X:/Downloads/projects/topo-pilot/hwsc-store",
+  "freeze_sha256": "17c5b574bd308d088e93692f3a146e08d03af27c6499edc0d07f173a56279800",
+  "production_frozen_sha256": "17da0ee89a33d0de06a4789312020f0a11cef50e4ae9530bf3742c3909deba36",
+  "phase1_reads": [
+   "artifacts/{WorldSpec,TransitionSpec,EmissionSpec}/<id>/meta.json",
+   "RESERVATION_W2.json",
+   "RUN.lock",
+   "OPERATION_ACTIVE.json (hashed only)"
+  ],
+  "phase1_never": "no payload.npz, state.pt, HIST_*, sealed/, chart, activation, registry digest file; hwsc_records.lineage_c is not run in OF (D-11)"
+ },
+ "namespace": {
+  "U": {
+   "round": "coord-hws-use-20261101",
+   "scopes": [
+    "hwsu-of-v1",
+    "hwsu-v1",
+    "hwsu-dry-v1"
+   ],
+   "store": "X:/Downloads/projects/topo-pilot/hwsu-store",
+   "dry_store_glob": "X:/Downloads/topo-scratch/hwsu-dry*",
+   "test_root_glob": "X:/Downloads/topo-scratch/test_hwsu-*",
+   "seed_blocks": [
+    [
+     640101,
+     640120
+    ],
+    [
+     649901,
+     649920
+    ]
+   ],
+   "code_module": "topo-pilot/tools/hwsu/"
+  },
+  "D_declared": {
+   "round": "coord-hws-dyn-20261101",
+   "scopes": [
+    "hwsd-v1",
+    "hwsd-dry-v1"
+   ],
+   "store": "X:/Downloads/projects/topo-pilot/hwsd-store",
+   "dry_store_glob": "X:/Downloads/topo-scratch/hwsd-dry*",
+   "test_root_glob": "X:/Downloads/topo-scratch/test_hwsd-*",
+   "seed_blocks": [
+    [
+     620400,
+     620499
+    ],
+    [
+     629950,
+     629999
+    ]
+   ],
+   "code_module": "topo-pilot/tools/hwsd/"
+  },
+  "rule": "OF-0: the record's tracks.U must equal namespace.U exactly; any U/D token overlap -> FAIL_TECHNICAL/SEED_SCOPE (D-16)"
+ },
+ "scopes": {
+  "of": "hwsu-of-v1",
+  "model": "hwsu-v1",
+  "dry": "hwsu-dry-v1"
+ },
+ "seeds": {
+  "of": {
+   "headroom": 640101,
+   "share": 640102,
+   "p1_sd": 640103,
+   "p1_centred": 640104,
+   "lemma_p": 640105
+  },
+  "dry_of": {
+   "headroom": 649901,
+   "share": 649902,
+   "p1_sd": 649903,
+   "p1_centred": 649904,
+   "lemma_p": 649905
+  },
+  "dry_tiny_master": 649906,
+  "model_phase_reserved": {
+   "family_U": 640111,
+   "kc_val": 640112,
+   "h5_val": 640113,
+   "p1_sd": 640114,
+   "p1_centred": 640115,
+   "r1_feas": 640116,
+   "desc_test": 640117,
+   "kc_test": 640118,
+   "h5_test": 640119,
+   "haar": 640120
+  },
+  "uses": {
+   "640101": "OF-2 bound (rank 250 of 5,000)",
+   "640102": "OF-1 KO categories and OF-3 bounds and psi_orc interval (two separate calls)",
+   "640103": "OF-4 SD draws",
+   "640104": "OF-4 centred draws",
+   "640105": "OF-5 joint draws"
+  }
+ },
+ "sizes": {
+  "L": 32,
+  "suffix_len": 4,
+  "block": 4096,
+  "blocks": [
+   0,
+   1
+  ],
+  "of_fit_singles": 8192,
+  "of_eval_pairs": 8192,
+  "histories": 24576,
+  "decimal_rows": 4,
+  "uniforms_per_arm2_row": 56
+ },
+ "streams": {
+  "of-fit": "SeedTree(0).generator(\"data\", \"hwsu-of-v1\", \"of-fit\", b, \"cylinder\", \"overlap\", \"1.75\")",
+  "of-eval arm 1": "SeedTree(0).generator(\"data\", \"hwsu-of-v1\", \"of-eval\", b, \"cylinder\", \"overlap\", \"1.75\")",
+  "of-eval arm 2": "SeedTree(0).generator(\"data\", \"hwsu-of-v1\", \"of-eval/cf\", b, \"cylinder\", \"overlap\", \"1.75\")",
+  "arm2_order": "n uniforms for z_28; then for t = 28..1: n emission uniforms, then (t > 1) n transition uniforms (API.md §2.2)",
+  "bootstrap": "c1_means.bootstrap_means / c2_decide.stream_bounds: PCG64(seed), one shared index stream per call"
+ },
+ "sequence_ids": {
+  "rule": "make_sequence_ids(process_code(\"cylinder\", \"overlap\", \"1.75\", f\"{scope}/{split}/b{block}/{arm}\"), \"test\", n)",
+  "arms": {
+   "of-fit": "s",
+   "of-eval": [
+    "a1",
+    "a2"
+   ]
+  },
+  "order": "rows in arm-1 sequence-id order (increasing index); arm 2 row i pairs with arm 1 row i; arm-2 ids never sorted (S2)"
+ },
+ "thresholds": {
+  "headroom": "1/50",
+  "share_ceiling": "1/5",
+  "response_lines": [
+   "1/10",
+   "3/10"
+  ],
+  "share_lines": [
+   "1/10",
+   "1/2"
+  ],
+  "lambda_ko3": "1/5",
+  "alpha_headroom": "1/20",
+  "alpha_val": "1/60",
+  "alpha_family": "1/300",
+  "ranks": {
+   "headroom_L": 250,
+   "val_L": 84,
+   "val_U": 4917,
+   "desc_L": 125,
+   "desc_U": 4875
+  },
+  "draws": 5000,
+  "ladder": [
+   4096,
+   8192,
+   16384,
+   32768
+  ],
+  "power": "4/5",
+  "delta": 0.0,
+  "alternatives": {
+   "response": "1/10",
+   "share": "3/100"
+  },
+  "ko_tol": 1e-12,
+  "decimal_rel_tol": "1/10000000000",
+  "m4_tol": 1e-12,
+  "lemma_p_se": 5,
+  "design_rank": 47,
+  "harmonics": 3,
+  "n_nuis": 5,
+  "whitened_rank": 11,
+  "cond_max": 100000000.0,
+  "glsref_rho": 1e-20,
+  "registry_cap": "1/100",
+  "p_D2a_rel_tol": 1e-12,
+  "guard": "c2_decide.guard (GUARD_REL 1e-9) with beta_A from GLS-REF delta_P for OF-3"
+ },
+ "gates_of": {
+  "order": [
+   "OF-B",
+   "OF-0",
+   "OF-P",
+   "RESERVATION",
+   "OF-S",
+   "OF-H",
+   "OF-1",
+   "OF-2",
+   "OF-3",
+   "OF-4",
+   "OF-5"
+  ],
+  "on_failure": {
+   "OF-B": "INVALID (do not run)",
+   "OF-0": "INCONCLUSIVE/AUTHORITY | FAIL_TECHNICAL/SEED_SCOPE | FAIL_TECHNICAL/LINEAGE",
+   "OF-P": "FAIL_TECHNICAL/IDENTITY",
+   "RESERVATION": "INCONCLUSIVE/AUTHORITY",
+   "OF-S": "FAIL_TECHNICAL/SAMPLER",
+   "OF-H": "(i) INCONCLUSIVE/REGISTRY_INCOMPLETE; (ii) FAIL_TECHNICAL/SAMPLER",
+   "OF-1": "(i)-(iii) FAIL_TECHNICAL/SAMPLER; (iv)-(v) FAIL_TECHNICAL/ORACLE",
+   "OF-2": "INCONCLUSIVE/ORACLE_FEASIBILITY",
+   "OF-3": "degenerate fit FAIL_TECHNICAL/NUMERICAL; bound -> SHARE_DROPPED (share outcome INCONCLUSIVE/ORACLE_FEASIBILITY)",
+   "OF-4": "response arrays INCONCLUSIVE/ORACLE_FEASIBILITY; share arrays only SHARE_DROPPED",
+   "OF-5": "FAIL_TECHNICAL/SAMPLER"
+  },
+  "continuing_statuses": [
+   "PASS",
+   "SHARE_DROPPED"
+  ],
+  "outcomes": [
+   "OF_PASS",
+   "OF_PASS_RESPONSE_ONLY",
+   "INVALID",
+   "INCONCLUSIVE/<reason>",
+   "FAIL_TECHNICAL/<reason>",
+   "PAUSE"
+  ],
+  "exit_codes": {
+   "0": "OF_PASS or OF_PASS_RESPONSE_ONLY",
+   "2": "refused (nothing sampled)",
+   "3": "FAIL_TECHNICAL",
+   "4": "PAUSE",
+   "5": "INCONCLUSIVE"
+  }
+ },
+ "blindness": {
+  "stage_c_list": "hwsc_config.blinded (stage-B files of stage C's list)",
+  "added": [
+   "hwsc-store/stages/S8/**",
+   "hwsc-store/stages/S5/**",
+   "hwsc-store/stages/E1/L1.json",
+   "hwsc-store/SEALED_VALIDATION.json",
+   "hwsc-store/SEALED_OPENED.json",
+   "agent-handoff/**/<component containing 'hws-dyn' or starting 'hwsd-' or 'hwsd_'> (D-3)",
+   "hwsd-store/** except REGISTRY_OBLIGATION*.json, RESERVATION*.json, reservations/, reservations/*.json (J9)"
+  ],
+  "public_summary": "hwsc_config.public_summary (00_READ_ME_FIRST*, docs/research_summary)",
+  "error": "FAIL_TECHNICAL/BLINDNESS before any open"
+ },
+ "g0": {
+  "needles_u": [
+   "hwsu-of-v1",
+   "hwsu-v1",
+   "hwsu-dry-v1",
+   "hwsu-store",
+   "640101",
+   "640102",
+   "640103",
+   "640104",
+   "640105",
+   "640106",
+   "640107",
+   "640108",
+   "640109",
+   "640110",
+   "640111",
+   "640112",
+   "640113",
+   "640114",
+   "640115",
+   "640116",
+   "640117",
+   "640118",
+   "640119",
+   "640120",
+   "649901",
+   "649902",
+   "649903",
+   "649904",
+   "649905",
+   "649906",
+   "649907",
+   "649908",
+   "649909",
+   "649910",
+   "649911",
+   "649912",
+   "649913",
+   "649914",
+   "649915",
+   "649916",
+   "649917",
+   "649918",
+   "649919",
+   "649920"
+  ],
+  "needles_d": [
+   "hwsd-v1",
+   "hwsd-dry-v1",
+   "hwsd-store",
+   "hwsd-dry",
+   "test_hwsd-",
+   "620400",
+   "620401",
+   "620402",
+   "620403",
+   "620404",
+   "620405",
+   "620406",
+   "620407",
+   "620408",
+   "620409",
+   "620410",
+   "620411",
+   "620412",
+   "620413",
+   "620414",
+   "620415",
+   "620416",
+   "620417",
+   "620418",
+   "620419",
+   "620420",
+   "620421",
+   "620422",
+   "620423",
+   "620424",
+   "620425",
+   "620426",
+   "620427",
+   "620428",
+   "620429",
+   "620430",
+   "620431",
+   "620432",
+   "620433",
+   "620434",
+   "620435",
+   "620436",
+   "620437",
+   "620438",
+   "620439",
+   "620440",
+   "620441",
+   "620442",
+   "620443",
+   "620444",
+   "620445",
+   "620446",
+   "620447",
+   "620448",
+   "620449",
+   "620450",
+   "620451",
+   "620452",
+   "620453",
+   "620454",
+   "620455",
+   "620456",
+   "620457",
+   "620458",
+   "620459",
+   "620460",
+   "620461",
+   "620462",
+   "620463",
+   "620464",
+   "620465",
+   "620466",
+   "620467",
+   "620468",
+   "620469",
+   "620470",
+   "620471",
+   "620472",
+   "620473",
+   "620474",
+   "620475",
+   "620476",
+   "620477",
+   "620478",
+   "620479",
+   "620480",
+   "620481",
+   "620482",
+   "620483",
+   "620484",
+   "620485",
+   "620486",
+   "620487",
+   "620488",
+   "620489",
+   "620490",
+   "620491",
+   "620492",
+   "620493",
+   "620494",
+   "620495",
+   "620496",
+   "620497",
+   "620498",
+   "620499",
+   "629950",
+   "629951",
+   "629952",
+   "629953",
+   "629954",
+   "629955",
+   "629956",
+   "629957",
+   "629958",
+   "629959",
+   "629960",
+   "629961",
+   "629962",
+   "629963",
+   "629964",
+   "629965",
+   "629966",
+   "629967",
+   "629968",
+   "629969",
+   "629970",
+   "629971",
+   "629972",
+   "629973",
+   "629974",
+   "629975",
+   "629976",
+   "629977",
+   "629978",
+   "629979",
+   "629980",
+   "629981",
+   "629982",
+   "629983",
+   "629984",
+   "629985",
+   "629986",
+   "629987",
+   "629988",
+   "629989",
+   "629990",
+   "629991",
+   "629992",
+   "629993",
+   "629994",
+   "629995",
+   "629996",
+   "629997",
+   "629998",
+   "629999"
+  ],
+  "declaration_fragments": [
+   "/tools/hwsu/",
+   "/tests/hwsu/",
+   "/agent-handoff/",
+   "/hwsu-store/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/topo-scratch/hwsu-dry",
+   "/topo-scratch/test_hwsu-",
+   "/tools/hwsd/",
+   "/tests/hwsd/",
+   "/topo-scratch/hwsd-dry",
+   "/topo-scratch/test_hwsd-",
+   "/hwsd-store/"
+  ],
+  "job_scratch": [],
+  "label": "hwsu_declaration",
+  "search_root": "X:/Downloads/projects/topo-pilot",
+  "rule": "hwsu_seed.seed_search_u (mirror of hwsc_known.seed_search_c; whole-token rule for digit needles; blinded paths pruned before any open by hwsu_config.blinded) then hwsu_seed.classify_hits_u; any unclassified hit -> FAIL_TECHNICAL/SEED_SCOPE"
+ },
+ "name_rule": {
+  "phase1": {
+   "applies_to": "stages/** array files",
+   "prefixes": [
+    "ORACLE_",
+    "MOMENTS_",
+    "FIT_",
+    "BOOT_",
+    "PREC_",
+    "PAIR_"
+   ],
+   "history": "HIST_*.npz (dry stores: DRYHIST_*.npz)",
+   "write_rule": "hwsu_records.save_array refuses any other array name (FAIL_TECHNICAL/LINEAGE)"
+  }
+ },
+ "obligation": {
+  "schema": "hws-registry-obligation-v1",
+  "j11": "joint ruling J11 (addendum 4), field for field for both tracks",
+  "top_level": [
+   "schema",
+   "store",
+   "track",
+   "job",
+   "attempt",
+   "written_utc",
+   "written_by",
+   "reservation_id",
+   "name_rules",
+   "dry_stores",
+   "files",
+   "rule"
+  ],
+  "track": "U",
+  "rule": "fail closed",
+  "file_keys": [
+   "relpath",
+   "sha256",
+   "bytes",
+   "class",
+   "reader",
+   "basis"
+  ],
+  "classes": [
+   "ObservationSet",
+   "K4b history table",
+   "NON_HISTORY"
+  ],
+  "readers": {
+   "ObservationSet": "hwsb_registry.registry_digests",
+   "K4b history table": "k4b_history_table",
+   "NON_HISTORY": null
+  },
+  "bases": [
+   "artifact",
+   "registry",
+   "name_rule"
+  ],
+  "basis_meaning": {
+   "artifact": "WorldSpec/TransitionSpec/EmissionSpec/Checkpoint payload classed by sibling meta.json (J10 1 i)",
+   "registry": "relpath with a component named registry before the file name (J10 1 ii)",
+   "name_rule": "a name_rules regex fullmatches the relpath (J10 1 iii)"
+  },
+  "sha256_null_only": "Checkpoint payload (state.pt / payload.npz under artifacts/Checkpoint/), never opened or hashed",
+  "name_rule_kinds": [
+   "chart",
+   "decoder",
+   "activation",
+   "oracle-moment",
+   "score",
+   "bootstrap",
+   "certificate"
+  ],
+  "name_rules": [
+   {
+    "kind": "oracle-moment",
+    "regex": "stages/(?:.+/)?ORACLE_[^/]*\\.npz"
+   },
+   {
+    "kind": "oracle-moment",
+    "regex": "stages/(?:.+/)?MOMENTS_[^/]*\\.npz"
+   },
+   {
+    "kind": "decoder",
+    "regex": "stages/(?:.+/)?FIT_[^/]*\\.npz"
+   },
+   {
+    "kind": "bootstrap",
+    "regex": "stages/(?:.+/)?BOOT_[^/]*\\.npz"
+   },
+   {
+    "kind": "score",
+    "regex": "stages/(?:.+/)?PREC_[^/]*\\.npz"
+   },
+   {
+    "kind": "score",
+    "regex": "stages/(?:.+/)?PAIR_[^/]*\\.npz"
+   }
+  ],
+  "reader_rule": "newest by written_utc governs; missing/extra key, unknown value, unlisted array file, sha256 mismatch (non-null), or a name_rule basis no regex matches -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+  "names": {
+   "OF": "REGISTRY_OBLIGATION_OF.json",
+   "stopped_attempt": "REGISTRY_OBLIGATION_<job>-a<k>.json",
+   "study_end": "REGISTRY_OBLIGATION.json",
+   "dry_store": "REGISTRY_OBLIGATION.json"
+  }
+ },
+ "reservation_end": {
+  "schema": "hws-reservation-end-v1",
+  "path": "<store>/reservations/<reservation_id>.END.json",
+  "fields": [
+   "schema",
+   "reservation_id",
+   "reservation_file",
+   "reservation_sha256",
+   "end_utc",
+   "obligation_file",
+   "obligation_sha256",
+   "written_by"
+  ],
+  "refusals": [
+   "reservation not ACTIVE or absent",
+   "obligation absent",
+   "end record exists"
+  ]
+ },
+ "reservations": {
+  "OF": {
+   "id": "RES-HWSU-OF",
+   "file": "RESERVATION_OF.json"
+  },
+  "OF_rerun": {
+   "id": "RES-HWSU-OF-a<k>",
+   "file": "RESERVATION_OF-a<k>.json"
+  },
+  "model": {
+   "id": "RES-HWSU-U",
+   "file": "RESERVATION_U.json"
+  },
+  "model_rerun": {
+   "id": "RES-HWSU-U-a<k>",
+   "file": "RESERVATION_U-a<k>.json"
+  },
+  "form": [
+   "id",
+   "scope",
+   "state",
+   "start_utc",
+   "end_utc",
+   "interruptions",
+   "job_states",
+   "written_by"
+  ],
+  "attestation": "hwsu_records.w2_attestation: <root>/*/RESERVATION*.json and <root>/*/reservations/*.json (END records excluded); ACTIVE iff state == ACTIVE; ended iff rule (a) RES-HWSC-W2 with HWSC_W2_END.json bound, or rule (b) a matching hws-reservation-end-v1 record"
+ },
+ "store_layout": {
+  "store": "X:/Downloads/projects/topo-pilot/hwsu-store",
+  "top_level_records": [
+   "FREEZE_OF.json",
+   "FREEZE.json",
+   "RESERVATION_*.json",
+   "REGISTRY_OBLIGATION*.json",
+   "AUTH_*.json",
+   "SCHED_*.json",
+   "ACCEPT_*.json",
+   "OF_ACCEPT.json",
+   "DECISION_*.json",
+   "RELEASE_*.json"
+  ],
+  "also_exempt": "k4b_release.RECORD_FILES; reservations/*.json; logs/, operations/, tmp/, tmp-*/; superseded/ (SHA256SUMS)",
+  "stage_OF": [
+   "stages/OF/G0_OF.json",
+   "stages/OF/HIST_OF_{fit,eval_a1,eval_a2}_b{0,1}.npz",
+   "stages/OF/ORACLE_OF_eval.npz",
+   "stages/OF/ORACLE_OF_fit.npz",
+   "stages/OF/FIT_OF_O.npz",
+   "stages/OF/FIT_OF_OK1.npz",
+   "stages/OF/FIT_OF_OE.npz",
+   "stages/OF/BOOT_OF.npz",
+   "stages/OF/PREC_OF.npz",
+   "stages/OF/OF_REPORT.json"
+  ],
+  "stage_events": [
+   "OF (BEGIN)",
+   "OF_S (BEGIN, STAGE_COMPLETE: the six history tables)",
+   "OF (STAGE_COMPLETE: report, G0_OF.json, arrays)"
+  ],
+  "hist_keys": [
+   "canon32",
+   "seq_ids",
+   "digest",
+   "landmark",
+   "ref_row",
+   "decoder_panel"
+  ],
+  "dry_store": "X:/Downloads/topo-scratch/hwsu-dry-of (or hwsu-dry-of-<job>); DRYHIST_OF_* names; stages/DRY/DRY_OF_REPORT.json; REGISTRY_OBLIGATION.json"
+ },
+ "records": {
+  "AUTH_OF": [
+   "schema=hwsu-auth-v1",
+   "stage=OF",
+   "job",
+   "owner_approval{path,sha256}",
+   "freeze_of_sha256",
+   "written_by",
+   "written_utc"
+  ],
+  "G0_OF": [
+   "status",
+   "hits",
+   "checks"
+  ],
+  "OF_REPORT": [
+   "schema=hwsu-of-report-v1",
+   "outcome",
+   "gates",
+   "EG",
+   "psi_orc",
+   "psi_orc_variants",
+   "circular_label_share",
+   "proxy",
+   "N_resp",
+   "N_share",
+   "alternatives",
+   "tails",
+   "lemma_p",
+   "ko",
+   "decimal",
+   "hygiene",
+   "n_rows",
+   "cpu_s",
+   "protocol_sha256",
+   "contract_of_sha256",
+   "freeze_of_sha256",
+   "written_utc"
+  ],
+  "study_ledger": {
+   "path": "X:/Downloads/projects/topo-pilot/agent-handoff/HWSU_CPU_LEDGER.json",
+   "study": "hwsu-v1",
+   "entry": [
+    "label",
+    "job",
+    "stage",
+    "cpu_s",
+    "source",
+    "utc"
+   ],
+   "labels": "unique per attempt: J-OF-<job>-a<k>, DRO-<job>-a<k>, OF-<job>-a<k>"
+  }
+ },
+ "freeze_of_fields": [
+  "protocol",
+  "protocol_sha256",
+  "contract_of_sha256",
+  "api_sha256",
+  "api_bytes",
+  "test_plan_sha256",
+  "test_plan_bytes",
+  "h_exec",
+  "r_ref",
+  "implementation_files",
+  "implementation_sha256",
+  "reuse_sha256",
+  "dry_run_report_path",
+  "dry_run_report_sha256",
+  "j_of_records",
+  "environment",
+  "written_by",
+  "created_utc"
+ ],
+ "of_b": {
+  "r_ref": "e3710d2c60e54c82591b8ab59f13e5579848488a",
+  "allow": {
+   "A": [
+    "tools/hwsu/<phase1_files>",
+    "tests/hwsu/test_a_of_*.py",
+    "tests/hwsu/test_b_of_*.py",
+    "tests/hwsu/AUTHORSHIP_A.md",
+    "tests/hwsu/AUTHORSHIP_B.md",
+    "docs/code_index/**"
+   ],
+   "M": [
+    "docs/code_index/**"
+   ]
+  },
+  "rule": "git diff --no-renames --name-status r_ref h_exec: every line allowed; reuse_sha256 equal at r_ref, h_exec and in the working tree; hwsu_bind.audit PASS; verify_freeze_of PASS; else INVALID"
+ },
+ "phase1_files": [
+  "tools/hwsu/PROTOCOL_HWSU_v1.md",
+  "tools/hwsu/API.md",
+  "tools/hwsu/CONTRACT_OF.json",
+  "tools/hwsu/TEST_PLAN.md",
+  "tools/hwsu/hwsu_config.py",
+  "tools/hwsu/hwsu_pairs.py",
+  "tools/hwsu/hwsu_oracle.py",
+  "tools/hwsu/hwsu_of.py",
+  "tools/hwsu/hwsu_records.py",
+  "tools/hwsu/hwsu_seed.py",
+  "tools/hwsu/hwsu_bind.py",
+  "tools/hwsu/hwsu_meter_bind.py",
+  "tools/hwsu/hwsu_driver_of.py",
+  "tools/hwsu/hwsu_dry.py",
+  "tools/hwsu/hwsu_resv.py",
+  "tools/hwsu/hwsu_freeze.py",
+  "tools/hwsu/hwsu_dry_b.py"
+ ],
+ "tests": {
+  "dir": "tests/hwsu",
+  "author_A": "test_a_of_*.py",
+  "author_B": "test_b_of_*.py",
+  "max_lines": 400,
+  "formatter": "never run over tests/",
+  "authorship": [
+   "tests/hwsu/AUTHORSHIP_A.md",
+   "tests/hwsu/AUTHORSHIP_B.md"
+  ],
+  "basetemp": "X:/Downloads/topo-scratch/test_hwsu-<job>/pytest",
+  "temp_root": "X:/Downloads/topo-scratch/test_hwsu-<job>"
+ },
+ "cpu": {
+  "policy": "measure-only (--max-cpu inf --max-wall inf); centrals are forecasts, never caps",
+  "stage_order": [
+   "J-OF",
+   "DRO",
+   "OF"
+  ],
+  "central_s": {
+   "J-OF": 900,
+   "DRO": 200,
+   "OF": 700
+  },
+  "range_s": {
+   "J-OF": [
+    600,
+    1800
+   ],
+   "DRO": [
+    100,
+    600
+   ],
+   "OF": [
+    400,
+    1500
+   ]
+  },
+  "cumulative_central_s": {
+   "J-OF": 900,
+   "DRO": 1100,
+   "OF": 1800
+  },
+  "multiplier": 3,
+  "re_set": "after measured J-OF/DRO/OF cost (cost only; addendum 26 item 2)"
+ },
+ "resources": {
+  "memory_cap_bytes": {
+   "J-OF": 8589934592,
+   "DRO": 8589934592,
+   "OF": 8589934592
+  },
+  "output_cap_bytes": 17179869184,
+  "max_cpu_flag": "inf",
+  "max_wall_flag": "inf",
+  "native_operation_wall_s": 600,
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "store": "X:/Downloads/projects/topo-pilot/hwsu-store",
+  "store_temp_root": "X:/Downloads/projects/topo-pilot/hwsu-store/tmp",
+  "test_job_root": "X:/Downloads/topo-scratch/test_hwsu-<job>",
+  "dry_store": "X:/Downloads/topo-scratch/hwsu-dry-of-<job>",
+  "project_root": "X:/Downloads/projects/topo-pilot",
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "mailbox": "X:/Downloads/projects/topo-pilot/agent-handoff",
+  "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv/Scripts/python.exe -s with PYTHONPATH=<worktree>/src",
+  "footprint": "no .npz/.npy committed under tools/hwsu or tests/hwsu; implementation, tests and the dry run write no array file under the project root"
+ },
+ "dry_run": {
+  "cases": [
+   "DRO1",
+   "DRO2",
+   "DRO3",
+   "DRO4",
+   "DRO5",
+   "DRO6",
+   "DRO7",
+   "DRO8",
+   "DRO9"
+  ],
+  "scope": "hwsu-dry-v1",
+  "store": "X:/Downloads/topo-scratch/hwsu-dry-of-<job>",
+  "report": "stages/DRY/DRY_OF_REPORT.json",
+  "tiny_world": "W = 6, H = 2, L = 32, V = 36 (API.md §10, D-18)",
+  "ks_pair_chain": {
+   "T": [
+    [
+     "0",
+     "3/4",
+     "1/4"
+    ],
+    [
+     "1/4",
+     "0",
+     "3/4"
+    ],
+    [
+     "3/4",
+     "1/4",
+     "0"
+    ]
+   ],
+   "E": [
+    [
+     "3/4",
+     "1/4"
+    ],
+    [
+     "1/2",
+     "1/2"
+    ],
+    [
+     "1/5",
+     "4/5"
+    ]
+   ],
+   "pi": [
+    "1/3",
+    "1/3",
+    "1/3"
+   ],
+   "L": 8,
+   "suffix_len": 4
+  },
+  "cost_central_s": 100,
+  "never": "a real store, real root files, a real checkpoint, a registered scope, HIST_* names"
+ },
+ "binding": {
+  "rule": "phase-1 code references reused code only as <module>.<name> pairs listed in allowlist (or external_ok modules, or from_imports); never a never_called name; every allowlisted tools function's transitive call-time reads equal its call_time_reads (AST audit, hwsu_bind)",
+  "external_ok": [
+   "__future__",
+   "ast",
+   "collections",
+   "copy",
+   "dataclasses",
+   "decimal",
+   "fnmatch",
+   "fractions",
+   "hashlib",
+   "importlib",
+   "inspect",
+   "io",
+   "itertools",
+   "json",
+   "math",
+   "os",
+   "pathlib",
+   "platform",
+   "re",
+   "shutil",
+   "statistics",
+   "subprocess",
+   "sys",
+   "time",
+   "types",
+   "numpy",
+   "scipy",
+   "scipy.linalg",
+   "psutil"
+  ],
+  "from_imports": {
+   "topo_pilot.contracts": [
+    "SeedTree",
+    "SequenceLayout",
+    "ArtifactStore",
+    "MemoryBackend",
+    "StageFailure",
+    "ErrorCode"
+   ],
+   "topo_pilot.dataset.checks": [
+    "make_sequence_ids",
+    "process_code"
+   ],
+   "topo_pilot.dataset.sampler": [
+    "HMMSampler"
+   ],
+   "topo_pilot.oracle": [
+    "BayesFilter"
+   ],
+   "c1_records": [
+    "C1GateFailure",
+    "classify_exception"
+   ],
+   "oracle_profile": [
+    "ProfileError"
+   ],
+   "fractions": [
+    "Fraction"
+   ],
+   "pathlib": [
+    "Path"
+   ]
+  },
+  "meter_modules": {
+   "meter": [
+    "OUT",
+    "LEDGER",
+    "LOCK",
+    "ACTIVE",
+    "CAP_S",
+    "STOP_NEW_S",
+    "OUTPUT_CAP",
+    "THREAD_VARS",
+    "limit_reason",
+    "main"
+   ],
+   "winjob": [
+    "MEMORY_CAP"
+   ]
+  },
+  "allowlist": {
+   "c1_means": {
+    "bootstrap_means": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_means.tree_mean",
+      "c1_records.C1GateFailure"
+     ],
+     "kind": "function"
+    },
+    "quantile_with_rank": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_means.rank_check",
+      "c1_means.rank_for",
+      "c1_records.C1GateFailure"
+     ],
+     "kind": "function"
+    },
+    "tree_mean": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_records.C1GateFailure"
+     ],
+     "kind": "function"
+    }
+   },
+   "c1_oracle": {
+    "G_hat": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_oracle._osum_dot"
+     ],
+     "kind": "function"
+    },
+    "decimal_G": {
+     "call_time_reads": {
+      "c1_oracle.WATCHED": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>)",
+      "error_bound._TRAPS": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>, <class 'decimal.Clamped'>, <class 'decimal.InvalidOperation'>, <class 'decimal.DivisionByZero'>)"
+     },
+     "calls_tools_functions": [
+      "c1_oracle._flags_check",
+      "c1_records.CertificateFlag",
+      "error_bound.trapping_context"
+     ],
+     "kind": "function"
+    },
+    "decimal_posterior60": {
+     "call_time_reads": {
+      "c1_oracle.WATCHED": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>)",
+      "error_bound._TRAPS": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>, <class 'decimal.Clamped'>, <class 'decimal.InvalidOperation'>, <class 'decimal.DivisionByZero'>)"
+     },
+     "calls_tools_functions": [
+      "c1_oracle._flags_check",
+      "c1_records.CertificateFlag",
+      "error_bound.trapping_context"
+     ],
+     "kind": "function"
+    },
+    "decimal_predictive": {
+     "call_time_reads": {
+      "c1_oracle.WATCHED": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>)",
+      "c1_oracle._TE_CACHE": "dict(len=0)",
+      "error_bound._TRAPS": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>, <class 'decimal.Clamped'>, <class 'decimal.InvalidOperation'>, <class 'decimal.DivisionByZero'>)"
+     },
+     "calls_tools_functions": [
+      "c1_oracle._decimal_TE",
+      "c1_oracle._flags_check",
+      "c1_records.CertificateFlag",
+      "error_bound.trapping_context"
+     ],
+     "kind": "function"
+    },
+    "decimal_reference": {
+     "call_time_reads": {
+      "c1_oracle.WATCHED": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>)",
+      "c1_oracle._TE_CACHE": "dict(len=0)",
+      "error_bound._TRAPS": "(<class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.Overflow'>, <class 'decimal.Clamped'>, <class 'decimal.InvalidOperation'>, <class 'decimal.DivisionByZero'>)"
+     },
+     "calls_tools_functions": [
+      "c1_oracle._decimal_TE",
+      "c1_oracle._flags_check",
+      "c1_oracle.decimal_posterior60",
+      "c1_oracle.decimal_predictive",
+      "c1_records.CertificateFlag",
+      "error_bound.trapping_context"
+     ],
+     "kind": "function"
+    },
+    "h3_compare": {
+     "call_time_reads": {
+      "c1_oracle.A_H3": "Fraction(1, 500000000000)"
+     },
+     "calls_tools_functions": [
+      "c1_oracle.F",
+      "c1_oracle.interval_rule",
+      "c1_oracle.rel_agree",
+      "c1_oracle.tol"
+     ],
+     "kind": "function"
+    },
+    "m32": {
+     "call_time_reads": {
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "oracle_profile.ProfileError",
+      "oracle_profile.circle_features"
+     ],
+     "kind": "function"
+    },
+    "rel_agree": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_oracle.F",
+      "c1_oracle.tol"
+     ],
+     "kind": "function"
+    }
+   },
+   "c1_records": {
+    "C1GateFailure": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "class"
+    },
+    "classify_exception": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_records.C1GateFailure",
+      "c1_records.CertificateFlag",
+      "c1_records._code",
+      "c1_records._frames",
+      "c1_records._raised_in",
+      "errors.Invalid",
+      "errors.JoinError",
+      "errors.Unresolved",
+      "oracle_profile.ProfileError"
+     ],
+     "kind": "function"
+    }
+   },
+   "c2_attrib": {
+    "half_dot": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_endpoint.A_hat",
+      "c1_endpoint._osum_dot",
+      "c2_attrib._f"
+     ],
+     "kind": "function"
+    },
+    "partition": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_endpoint.A_hat",
+      "c1_endpoint._osum_dot",
+      "c2_attrib._f",
+      "c2_attrib._through",
+      "c2_attrib.half_dot"
+     ],
+     "kind": "function"
+    },
+    "ratio_intervals": {
+     "call_time_reads": {
+      "c2_attrib.UNDEFINED": "UNDEFINED",
+      "c2_config.DESC_ALPHA": "Fraction(1, 40)"
+     },
+     "calls_tools_functions": [
+      "c1_means.bootstrap_means",
+      "c1_means.quantile_with_rank",
+      "c1_means.rank_check",
+      "c1_means.rank_for",
+      "c1_means.tree_mean",
+      "c1_records.C1GateFailure"
+     ],
+     "kind": "function"
+    }
+   },
+   "c2_code": {
+    "fstar": {
+     "call_time_reads": {
+      "c2_config.ZERO_MOD": 1e-12
+     },
+     "calls_tools_functions": [
+      "c2_code.harmonics",
+      "c2_oracle.phi_star"
+     ],
+     "kind": "function"
+    },
+    "harmonics": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "problem": {
+     "call_time_reads": {
+      "c2_code.DEG": "INCONCLUSIVE/PATCH_MODEL_DEGENERATE",
+      "c2_code.NUMERICAL": "EXCLUDED/NUMERICAL",
+      "c2_code.N_CLASS": 36,
+      "c2_config.COND_MAX": "1e8",
+      "c2_config.LW_RATIO": "1e-12",
+      "c2_config.N_NUIS": 5,
+      "c2_config.SV_RATIO": "1e-6",
+      "c2_config.T_GLS_ID": "1e-10"
+     },
+     "calls_tools_functions": [
+      "c1_fit.fwl_design",
+      "c2_code._le",
+      "c2_code._mx",
+      "c2_code.f1_fwl",
+      "c2_code.fwl",
+      "c2_code.gls",
+      "c2_code.gls_identities",
+      "c2_code.ledoit_wolf",
+      "c2_code.lw_ok",
+      "c2_config.frac"
+     ],
+     "kind": "function"
+    },
+    "standardise": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_fit.standardise_nuisance"
+     ],
+     "kind": "function"
+    }
+   },
+   "c2_decide": {
+    "_category": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c2_decide._sg",
+      "c2_decide.sign"
+     ],
+     "kind": "function"
+    },
+    "beta_A": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c2_decide._rows"
+     ],
+     "kind": "function"
+    },
+    "guard": {
+     "call_time_reads": {
+      "c2_config.GUARD_REL": "1e-9"
+     },
+     "calls_tools_functions": [
+      "c2_config.frac"
+     ],
+     "kind": "function"
+    },
+    "sign": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "stream_bounds": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "c1_means.bootstrap_means",
+      "c1_means.quantile_with_rank",
+      "c1_means.rank_check",
+      "c1_means.rank_for",
+      "c1_means.tree_mean",
+      "c1_records.C1GateFailure"
+     ],
+     "kind": "function"
+    }
+   },
+   "c2_oracle": {
+    "nuisance5": {
+     "call_time_reads": {
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "c1_oracle._y",
+      "c1_oracle.m32",
+      "c1_oracle.nuisance",
+      "oracle_profile.ProfileError",
+      "oracle_profile.circle_features"
+     ],
+     "kind": "function"
+    },
+    "oracle_role": {
+     "call_time_reads": {
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "c1_oracle.m32",
+      "c1_oracle.run_oracle",
+      "oracle_profile.ProfileError",
+      "oracle_profile.circle_features"
+     ],
+     "kind": "function"
+    },
+    "phi_star": {
+     "call_time_reads": {
+      "c2_config.ZERO_MOD": 1e-12
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "c2_stats": {
+    "delta_p": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "f1_problem": {
+     "call_time_reads": {
+      "c2_code.DEG": "INCONCLUSIVE/PATCH_MODEL_DEGENERATE",
+      "c2_code.NUMERICAL": "EXCLUDED/NUMERICAL",
+      "c2_code.N_CLASS": 36,
+      "c2_config.COND_MAX": "1e8",
+      "c2_config.GLSREF_PROJ": "1e-8",
+      "c2_config.GLSREF_RHO": "1e-20",
+      "c2_config.LW_RATIO": "1e-12",
+      "c2_config.N_NUIS": 5,
+      "c2_config.SV_RATIO": "1e-6",
+      "c2_config.T_GLS_ID": "1e-10",
+      "c2_stats.KEYS": "('theta_A', 'theta_G', 'omega_A', 'omega_G', 'e_Y', 'e_L', 'L_star_norm', 'rho_ref', 'eps_P_S', 'eps_P_G', 'dev_S', 'dev_G', 'delta_P_S', 'delta_P_G')",
+      "c2_stats.NUMERICAL": "EXCLUDED/NUMERICAL",
+      "c2_stats.TRAPS": "(<class 'decimal.Overflow'>, <class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.DivisionByZero'>, <class 'decimal.InvalidOperation'>)",
+      "c2_stats.ZERO": "Decimal('0')"
+     },
+     "calls_tools_functions": [
+      "c1_fit.fwl_design",
+      "c2_code._le",
+      "c2_code._mx",
+      "c2_code.f1_fwl",
+      "c2_code.fwl",
+      "c2_code.gls",
+      "c2_code.gls_identities",
+      "c2_code.ledoit_wolf",
+      "c2_code.lw_ok",
+      "c2_code.problem",
+      "c2_config.frac",
+      "c2_stats.D",
+      "c2_stats._ref",
+      "c2_stats.dT",
+      "c2_stats.dabs",
+      "c2_stats.dctx",
+      "c2_stats.deflate",
+      "c2_stats.deye",
+      "c2_stats.dinverse",
+      "c2_stats.dmatmul",
+      "c2_stats.dsolve",
+      "c2_stats.dsub",
+      "c2_stats.enclosure",
+      "c2_stats.frob",
+      "c2_stats.gls_ref",
+      "c2_stats.inflate",
+      "c2_stats.theta"
+     ],
+     "kind": "function"
+    },
+    "gls_ref": {
+     "call_time_reads": {
+      "c2_config.GLSREF_PROJ": "1e-8",
+      "c2_config.GLSREF_RHO": "1e-20",
+      "c2_stats.KEYS": "('theta_A', 'theta_G', 'omega_A', 'omega_G', 'e_Y', 'e_L', 'L_star_norm', 'rho_ref', 'eps_P_S', 'eps_P_G', 'dev_S', 'dev_G', 'delta_P_S', 'delta_P_G')",
+      "c2_stats.NUMERICAL": "EXCLUDED/NUMERICAL",
+      "c2_stats.TRAPS": "(<class 'decimal.Overflow'>, <class 'decimal.Underflow'>, <class 'decimal.Subnormal'>, <class 'decimal.DivisionByZero'>, <class 'decimal.InvalidOperation'>)",
+      "c2_stats.ZERO": "Decimal('0')"
+     },
+     "calls_tools_functions": [
+      "c2_stats.D",
+      "c2_stats._ref",
+      "c2_stats.dT",
+      "c2_stats.dabs",
+      "c2_stats.dctx",
+      "c2_stats.deflate",
+      "c2_stats.deye",
+      "c2_stats.dinverse",
+      "c2_stats.dmatmul",
+      "c2_stats.dsolve",
+      "c2_stats.dsub",
+      "c2_stats.enclosure",
+      "c2_stats.frob",
+      "c2_stats.inflate",
+      "c2_stats.theta"
+     ],
+     "kind": "function"
+    }
+   },
+   "hwsb_data": {
+    "arrays_sha256": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "hwsb_data._sha_array"
+     ],
+     "kind": "function"
+    },
+    "build_process": {
+     "call_time_reads": {
+      "hwsb_config.EMIS_CFG": "EmissionConfig(mode='overlap', V=36, sigma=1.75, center_strategy='grid', source_mode=None, metric='flat')",
+      "hwsb_config.MASTERS": "(620201, 620202)",
+      "hwsb_config.TRANS_CFG": "TransitionConfig(kind='max_degree_lazy_walk', p_stay=0.2)",
+      "hwsb_config.WORLD_CFG": "WorldConfig(family='cylinder', dims=(12, 12), metric='flat', params={})",
+      "hwsb_data.IDENTITY": "FAIL_TECHNICAL/IDENTITY",
+      "hwsb_data.READER": "experiment",
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "hwsb_config.HwsbStop",
+      "hwsb_data._check_perm",
+      "hwsb_data.assemble",
+      "oracle_profile.ProfileError",
+      "oracle_profile._finite_array",
+      "oracle_profile.canonical_emission",
+      "oracle_profile.circle_features",
+      "oracle_profile.validate_process"
+     ],
+     "kind": "function"
+    },
+    "spec_checksums": {
+     "call_time_reads": {
+      "hwsb_data.READER": "experiment"
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "hwsb_dry": {
+    "build_tiny_process": {
+     "call_time_reads": {
+      "hws_worlds.H": 12,
+      "hws_worlds.N_AXIAL": 6,
+      "hwsb_config.DRY_MASTERS": "(629901, 629902)",
+      "hwsb_data.IDENTITY": "FAIL_TECHNICAL/IDENTITY",
+      "hwsb_data.READER": "experiment",
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "hws_worlds.World",
+      "hws_worlds._base",
+      "hws_worlds._finish",
+      "hws_worlds._guarded",
+      "hws_worlds._labels",
+      "hws_worlds._mirrored",
+      "hws_worlds.anchored_labels",
+      "hws_worlds.build_tiny",
+      "hws_worlds.build_transition",
+      "hws_worlds.build_world",
+      "hws_worlds.centres",
+      "hws_worlds.features",
+      "hws_worlds.merge_columns",
+      "hws_worlds.n_labels",
+      "hws_worlds.symbol_sizes",
+      "hws_worlds.unanchored_labels",
+      "hws_worlds.v_prime",
+      "hws_worlds.world_key",
+      "hwsb_config.HwsbStop",
+      "hwsb_data._check_perm",
+      "hwsb_data.assemble",
+      "oracle_profile.ProfileError",
+      "oracle_profile._finite_array",
+      "oracle_profile.canonical_emission",
+      "oracle_profile.circle_features",
+      "oracle_profile.validate_process"
+     ],
+     "kind": "function"
+    }
+   },
+   "hwsb_known": {
+    "classify_hits": {
+     "call_time_reads": {
+      "hwsb_config.CONTRACT[\"seeds\"]": "<contract block>"
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "hwsc_config": {
+    "blinded": {
+     "call_time_reads": {
+      "hwsc_config.BLINDED_DIRS": "('hwsb-store/stages/eval',)",
+      "hwsc_config.BLINDED_FILES": "('hwsb-store/report.json', 'hwsb-store/gates.jsonl', 'agent-handoff/jobs/0175/review.md')",
+      "hwsc_config.BLINDED_GLOBS": "(('hwsb-store', 'chart_constructions_*.json'),)",
+      "hwsc_config.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')"
+     },
+     "calls_tools_functions": [
+      "hwsc_config._posix"
+     ],
+     "kind": "function"
+    },
+    "public_summary": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "hwsc_data": {
+    "p_d2a_check": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "hws_exact.p_d2a"
+     ],
+     "kind": "function"
+    },
+    "process_identity": {
+     "call_time_reads": {
+      "hwsb_data.READER": "experiment",
+      "hwsc_config.BLINDED_DIRS": "('hwsb-store/stages/eval',)",
+      "hwsc_config.BLINDED_FILES": "('hwsb-store/report.json', 'hwsb-store/gates.jsonl', 'agent-handoff/jobs/0175/review.md')",
+      "hwsc_config.BLINDED_GLOBS": "(('hwsb-store', 'chart_constructions_*.json'),)",
+      "hwsc_config.CONTRACT[\"world\"]": "<contract block>",
+      "hwsc_config.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "hwsc_config.SELECTION_PATH": "WindowsPath('X:/Downloads/projects/topo-pilot/hws-store/SELECTION.json')"
+     },
+     "calls_tools_functions": [
+      "c1_records.C1GateFailure",
+      "hwsb_data._sha_array",
+      "hwsb_data.arrays_sha256",
+      "hwsb_data.spec_checksums",
+      "hwsc_config._posix",
+      "hwsc_config.blinded",
+      "hwsc_config.guard",
+      "hwsc_config.public_summary",
+      "hwsc_config.read_json"
+     ],
+     "kind": "function"
+    }
+   },
+   "hwsc_known": {
+    "needle_in": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "hwsc_records": {
+    "superseded_ok": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "stage_records.sha256"
+     ],
+     "kind": "function"
+    }
+   },
+   "k4b_data": {
+    "digests": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "scores._require32",
+      "scores.history_digests"
+     ],
+     "kind": "function"
+    },
+    "duplicates": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "k4b_data.digests",
+      "scores._require32",
+      "scores.history_digests"
+     ],
+     "kind": "function"
+    },
+    "history_table": {
+     "call_time_reads": {
+      "k4b_data.PANEL": 512
+     },
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "k4b_data.digests",
+      "scores._require32",
+      "scores.history_digests"
+     ],
+     "kind": "function"
+    },
+    "predicate_check": {
+     "call_time_reads": {
+      "k4b_data.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "k4b_data.PREDICATES": "dict(len=1)",
+      "k4b_data.PREDICATE_REASON": "potential overlap with sealed D-2a histories"
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "k4b_meter_bind": {
+    "bind": {
+     "call_time_reads": {
+      "controls.JOB_ID": "0014",
+      "controls.TASK_SHA256": "C8B477C2D393836FBC2F0FD6383E16C1A89685575F2BC72D5E680FCFB8C9483D",
+      "k4b_meter_bind.INF": Infinity,
+      "meter.ACTIVE": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014/METER_ACTIVE.lock')",
+      "meter.CAP_S": 3600.0,
+      "meter.EMERGENCY": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014/cpu_ledger.emergency.jsonl')",
+      "meter.LEDGER": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014/cpu_ledger.json')",
+      "meter.LOCK": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014/RUN.lock')",
+      "meter.LOG_DIR": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014/logs')",
+      "meter.OUT": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014')",
+      "meter.OUTPUT_CAP": 134217728,
+      "meter.STOP_NEW_S": 3480.0,
+      "meter.WORKER_SESSION": "88eb0214-46ad-4376-b93b-3da3034423d6",
+      "winjob.MEMORY_CAP": 8589934592
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "child_env": {
+     "call_time_reads": {
+      "k4b_meter_bind.TEMP_ROOT": "X:/Downloads/projects/topo-pilot/k4b-store",
+      "meter.THREAD_VARS": "('OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'OMP_NUM_THREADS', 'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS')"
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "make_limiter": {
+     "call_time_reads": {
+      "controls.CONTINUE": "CONTINUE",
+      "controls.HOLD": "HOLD",
+      "controls.INVALID": "INVALID",
+      "controls.JOB_ID": "0014",
+      "controls.LATCH": "USAGE_LATCH.json",
+      "controls.MAILBOX": "WindowsPath('X:/Downloads/projects/topo-pilot/agent-handoff')",
+      "controls.STOP": "STOP",
+      "controls.TASK_SHA256": "C8B477C2D393836FBC2F0FD6383E16C1A89685575F2BC72D5E680FCFB8C9483D",
+      "controls.USAGE_THRESHOLD": 85.0,
+      "k4b_meter_bind.DISK_MIN_FREE": "dict(len=2)",
+      "meter.OUT": "WindowsPath('X:/Downloads/projects/topo-pilot/x4-oracle-profile-store-0014')",
+      "meter.OUTPUT_CAP": 134217728,
+      "meter.STOP_NEW_S": 3480.0,
+      "meter.TAIL_ALLOWANCE_S": 0.1,
+      "winjob.k32": "<WinDLL 'kernel32', handle 7ffd5a740000 at 0x1e1551280a0>"
+     },
+     "calls_tools_functions": [
+      "controls._audit_identity",
+      "controls._base",
+      "controls._percent_ok",
+      "controls._read_json",
+      "controls._usage_state",
+      "controls._utc",
+      "controls._write_new",
+      "controls.classify",
+      "controls.classify_all",
+      "controls.release_ready",
+      "k4b_meter_bind.disk_reason",
+      "meter.limit_reason",
+      "meter.output_bytes",
+      "op_guard.overdue",
+      "winjob.MeterError",
+      "winjob._check",
+      "winjob.own_cpu_s",
+      "winjob.process_cpu_s"
+     ],
+     "kind": "function"
+    },
+    "rewrite_argv": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "k4b_release": {
+    "RECORD_FILES": {
+     "kind": "constant",
+     "value": "('GATES.jsonl', 'STAGES.jsonl', 'CHART_CONSTRUCTIONS_trained.json', 'CHART_CONSTRUCTIONS_init.json', 'FREEZE.json', 'SEALED_VALIDATION.json', 'cpu_ledger.json', 'cpu_ledger.emergency.jsonl', 'RUN.lock', 'METER_ACTIVE.lock', 'OPERATION_ACTIVE.json', 'OPERATIONS.jsonl')"
+    },
+    "verify_reservation": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "op_guard": {
+    "MARKER": {
+     "kind": "constant",
+     "value": "OPERATION_ACTIVE.json"
+    },
+    "archive_stale": {
+     "call_time_reads": {
+      "op_guard.MARKER": "OPERATION_ACTIVE.json"
+     },
+     "calls_tools_functions": [
+      "op_guard._utc"
+     ],
+     "kind": "function"
+    },
+    "write_marker": {
+     "call_time_reads": {
+      "op_guard.MARKER": "OPERATION_ACTIVE.json"
+     },
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "oracle_profile": {
+    "ProfileError": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "class"
+    },
+    "circle_features": {
+     "call_time_reads": {
+      "oracle_profile.PERIOD": 12
+     },
+     "calls_tools_functions": [
+      "oracle_profile.ProfileError"
+     ],
+     "kind": "function"
+    },
+    "posterior_means": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "oracle_profile.ProfileError",
+      "oracle_profile._checked_k",
+      "oracle_profile._checked_tokens",
+      "oracle_profile._finite_array",
+      "oracle_profile._model_arrays",
+      "oracle_profile.suffix_posterior"
+     ],
+     "kind": "function"
+    },
+    "validate_process": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "oracle_profile.ProfileError",
+      "oracle_profile._finite_array"
+     ],
+     "kind": "function"
+    }
+   },
+   "precision": {
+    "centered_draws": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "precision._arrays"
+     ],
+     "kind": "function"
+    },
+    "precision_summary": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "precision._draw_matrix",
+      "precision._q",
+      "precision.mde"
+     ],
+     "kind": "function"
+    },
+    "sd_b4_draws": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "errors.Invalid",
+      "precision._arrays"
+     ],
+     "kind": "function"
+    }
+   },
+   "stage_records": {
+    "gates_so_far": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "stage_records._lines"
+     ],
+     "kind": "function"
+    },
+    "record_gate": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "stage_records._append",
+      "stage_records._utc"
+     ],
+     "kind": "function"
+    },
+    "save_npz": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "sha256": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    },
+    "stages_so_far": {
+     "call_time_reads": {},
+     "calls_tools_functions": [
+      "stage_records._lines"
+     ],
+     "kind": "function"
+    },
+    "write_new": {
+     "call_time_reads": {},
+     "calls_tools_functions": [],
+     "kind": "function"
+    }
+   },
+   "topo_pilot.contracts": {
+    "ArtifactStore": {
+     "kind": "class"
+    },
+    "ErrorCode": {
+     "kind": "class"
+    },
+    "MemoryBackend": {
+     "kind": "class"
+    },
+    "SeedTree": {
+     "kind": "class"
+    },
+    "SequenceLayout": {
+     "kind": "class"
+    },
+    "StageFailure": {
+     "kind": "class"
+    }
+   },
+   "topo_pilot.dataset.checks": {
+    "make_sequence_ids": {
+     "kind": "function"
+    },
+    "process_code": {
+     "kind": "function"
+    }
+   },
+   "topo_pilot.dataset.sampler": {
+    "HMMSampler": {
+     "kind": "class"
+    },
+    "_cumulative_rows": {
+     "kind": "function"
+    },
+    "_draw": {
+     "kind": "function"
+    }
+   },
+   "topo_pilot.oracle": {
+    "BayesFilter": {
+     "kind": "class"
+    }
+   }
+  },
+  "allowlist_note": "call_time_reads: the transitive module-level non-callable names read by the function (tools/ functions only, D-25), with their values at e3710d2 import time; meter/controls/winjob names under k4b_meter_bind are bind targets, not configuration reads",
+  "conditional_reads": [
+   {
+    "function": "hwsb_known.classify_hits",
+    "read": "hwsb_config.CONTRACT[\"seeds\"]",
+    "why": "only when fragments/job_scratch are None; HWSU always passes both"
+   },
+   {
+    "function": "hwsb_data.build_process",
+    "read": "hwsb_config.MASTERS",
+    "why": "default of masters; HWSU always passes masters"
+   },
+   {
+    "function": "hwsb_dry.build_tiny_process",
+    "read": "hwsb_config.DRY_MASTERS",
+    "why": "default of masters; HWSU passes (649906,)"
+   }
+  ],
+  "never_called": [
+   "c2_model.load_models",
+   "c2_oracle.load_process",
+   "c2_oracle.h3",
+   "c2_oracle.decimal_rows",
+   "c2_stats.p1",
+   "c2_stats._summaries",
+   "nd_decoy.head_edit (without an explicit g)",
+   "k4b_driver.*",
+   "c2_model.m0",
+   "hwsc_data.registry_risk",
+   "c2_code.haar_frames",
+   "c2_attrib.desc_intervals",
+   "hwsc_config.load_handoff",
+   "c2_stage_*",
+   "c2_driver.*",
+   "nd_stage_*",
+   "nd_driver.*"
+  ],
+  "forbidden_reads": [
+   "MODELS",
+   "PROTOCOL_IDS",
+   "SCOPE",
+   "PROCESS",
+   "CONTRACT[<other than the HWSC world block>]",
+   "seed",
+   "N_LADDER",
+   "BLOCK",
+   "VAL_DRAWS",
+   "DESC_DRAWS",
+   "LGATE_N",
+   "STORE",
+   "ARTIFACT_ROOT"
+  ],
+  "permitted_reads": "shape constants and the owner-approved C2/C2ND thresholds and tolerances listed under call_time_reads (e.g. c2_config.COND_MAX, LW_RATIO, SV_RATIO, T_GLS_ID, GLSREF_RHO, GLSREF_PROJ, GUARD_REL, ZERO_MOD, N_NUIS, DESC_ALPHA), c1_oracle.A_H3, k4b_data predicates, hwsc_config.CONTRACT[\"world\"]",
+  "audit_forbidden_hits_at_e3710d2": [
+   {
+    "hwsb_known.classify_hits": [
+     "hwsb_config.CONTRACT[\"seeds\"]"
+    ]
+   }
+  ]
+ },
+ "reuse_sha256": {
+  "src/topo_pilot/__init__.py": "db36a4bb98c2af8fb5582d1e2e4d13a09c70e9eb4ab37243957736135cf34a28",
+  "src/topo_pilot/activations/__init__.py": "61a417927043747bfec76b6a328aea1c3c6ba8c2077e14dedbfd84e390c34ef5",
+  "src/topo_pilot/activations/_extractor.py": "6351c4afbe6b7e4944c5b61a4cb5358a50a4962f65a2d068f59845a9b8dfb656",
+  "src/topo_pilot/activations/_stage.py": "e79d90003931f4016304e4cff35108501287f897d165b431a51eef1e86026e42",
+  "src/topo_pilot/analysis/__init__.py": "5ca777158d8504d059ff9b13e39621a5fc98311ae55f75e491c7174f7e46aa19",
+  "src/topo_pilot/analysis/baselines.py": "33849e1e554e7311390502ed2cfa11aa6cfbc43e3a5a962735a3bde3e85713e6",
+  "src/topo_pilot/analysis/circular.py": "7f7d80799cfbdd85e3f496272fe00811062e8555f55080630fcb417b39699484",
+  "src/topo_pilot/analysis/circular_bound.py": "ed140fad12d2da84dc5065e71f8beacd04d8b6922e0fa51e8a046695478d93fe",
+  "src/topo_pilot/analysis/discriminability.py": "c6285ca5136745a2747d9c182776f9c96ccdb420ab87db53cba50993a50aed0b",
+  "src/topo_pilot/analysis/dynamics.py": "a98740da74aa80103070a93ec5da9a283651dbe60f62faf93b37956f604200c1",
+  "src/topo_pilot/analysis/f1.py": "59fc565051c41f4df7f0b7a96a84c3ef2278747cf08d94364025129b32849b5e",
+  "src/topo_pilot/analysis/geometry.py": "edbc5e1c89b05e7f6c0572a4d94bde551ddd0f43e522625a0763c8777df31358",
+  "src/topo_pilot/analysis/horizon.py": "f0bc181dbb6a8015ba5c29d6360eef709e725944ba76cdc62a8c86dd7acfe8ce",
+  "src/topo_pilot/analysis/horizon_pools.py": "166ed10836ad439a5651b6c6acad2564cce52c2c87dfb3cd4efafad214836afb",
+  "src/topo_pilot/analysis/pointset.py": "8ef63cd8834b42bfafa24093251ddaa409949ea1e14aad1f74cf66bd241d8bf0",
+  "src/topo_pilot/analysis/readout.py": "cb14b7ea928a7c2378b91dff040099b0a1497433b693a552d7fda5edf0830e18",
+  "src/topo_pilot/analysis/sensitivity.py": "aafd87c730f50eb134c61ef9470e4a29bf83fdeb776e46678e983b28b9105695",
+  "src/topo_pilot/analysis/sigma.py": "e3264e402201bf178fa3d767f41ec418a07c01dbccb41535e612e489ed3c59bc",
+  "src/topo_pilot/analysis/spaces.py": "3baae89be7eec44aa036d846fb131eea96dba6baa9851aebb1f59a23701dc3bb",
+  "src/topo_pilot/analysis/x4f_erasure.py": "43c1d078ac4513471b60d16448aec5999600d3b00b137871012c7d67257a0673",
+  "src/topo_pilot/analysis/x4f_scores.py": "03e2d736a734cf8d45d158112d1955b4faba267b235777064814dee3bafc563b",
+  "src/topo_pilot/analysis/x4f_targets.py": "b7fe838bb1c7113c6421b40c422d160af46dc7439e5432707ccc449365f0c09a",
+  "src/topo_pilot/analysis/x5_context.py": "7fe14984e40fa1b4d12fb578d59c600ecc3bc1c64a77ea100e769fff94a5c4b0",
+  "src/topo_pilot/analysis/x5_endpoint.py": "ee87da6a25bdea2e983ce19d2d29f2e31ce6cb38140fc6dc99335d2cf90ec42d",
+  "src/topo_pilot/analysis/x5_kernel.py": "8f139b02998f3eaad67f741198f45d8bcc966f31ab845ad1d5299d9536372eb1",
+  "src/topo_pilot/contracts/__init__.py": "c0ca5b44922751483629523894c72d64d5731529ec46388adfbff87c2c8071a5",
+  "src/topo_pilot/contracts/_bundle.py": "4d56e2bda4c6428d0f1c22c5689e1f03f72045b0082ccee55ac66152559677bf",
+  "src/topo_pilot/contracts/_checks.py": "df93dccf5ddbf5efde6ef5016e1e00fd84eec14aac8b075bc00d462c84b1cd52",
+  "src/topo_pilot/contracts/_schemas_data.py": "9deb56ca0e885d66863c250fbbf02f9b59cf93ba8949c0325a27030f90fbbbcf",
+  "src/topo_pilot/contracts/_schemas_results.py": "3946d9078774e528db3b33cd72ada5db573a9d8471457f179919bc8daa64c946",
+  "src/topo_pilot/contracts/_schemas_world.py": "48d4dfda4a9cbd60624a4d34f7981a2b42c559d3a5631344d1e73204e30bd7ff",
+  "src/topo_pilot/contracts/backends.py": "81be4b6fd8f52e9029677cd92af61dac156f5d42be109e4c45c0dc6e45a73d64",
+  "src/topo_pilot/contracts/base.py": "36220ba0eb52d361878db588f200666301d615524e100baff2a1b0b3fe9d598e",
+  "src/topo_pilot/contracts/errors.py": "bd0b6f21680c80b51b665284bce89894f0b987db30938e7772b1f05805ea4d69",
+  "src/topo_pilot/contracts/ids.py": "41bf99ddd438869d92043bab3ce72c3d0de237efde9d0d7d1c258d123d58acd5",
+  "src/topo_pilot/contracts/layout.py": "5fc9e51ac1b7f518fdfc0e6d436a74345431eb037a3e959ea282cc38679dd027",
+  "src/topo_pilot/contracts/schemas.py": "547adf91081c145af530628e7d7eaba1c4d76cc2f36a6eba14123d6176b5cddc",
+  "src/topo_pilot/contracts/store.py": "75276c30a9b48165bf0d0a7e41a0f8d03b70d9736184106e062c0e0f7694b35e",
+  "src/topo_pilot/dataset/__init__.py": "e539d6bdb723db061331b238d2e89b443bf8dd6998ede9307096c428abbe36da",
+  "src/topo_pilot/dataset/checks.py": "48b3be302f82dc3e883f835b4941de009657b02de297df3300cc7a3f041fc7a9",
+  "src/topo_pilot/dataset/config.py": "579aeb64ebf887d2d83fc4966e0f8e5e4b8d453e4258bf4d7384dfe07b465a18",
+  "src/topo_pilot/dataset/panels.py": "c690d6510bd35e7355f122671d45ed4f01ac6f23d15b3dc61c14450bd85f3b60",
+  "src/topo_pilot/dataset/public.py": "7d5d6f9f169b2496cdffbe8b033de5de063bf38723cbbfe6773f31ef88b7c0a8",
+  "src/topo_pilot/dataset/sampler.py": "a94ffd3e7310e45d3e6351e8457864f6e64abe6e1b318211daed3d0c2f17b0d2",
+  "src/topo_pilot/dataset/stage.py": "ab8586e1c2365755604c2238882315f9ec7b8b042600fead23b89afec9b4d815",
+  "src/topo_pilot/experiment/__init__.py": "a2f7c9fe95096cd0b7a8376cdb6315b5638e944af3d5e3ff8c3874ac2c3bc635",
+  "src/topo_pilot/experiment/cli.py": "612e6b7c390d872f83cb48264d5db2fb8528c6f2728d1de46e43c8319148f67e",
+  "src/topo_pilot/experiment/config.py": "419bd7231d2dcdc2badda9d51d130bc02d5ababd69e92ae5ed5ecf9bfe06fc42",
+  "src/topo_pilot/experiment/prereg.py": "22257029ae2b2dc35818a287fc6c98855fcbdd6550424e45cd59d4483ca5b8e8",
+  "src/topo_pilot/experiment/report.py": "1ac96dd542b7bd1b7e7e1bc463d3a29ea2c69ef85768117ebb29eede028719e2",
+  "src/topo_pilot/experiment/report_e2.py": "6d2963bd6f79658ae5271b476acc1b13e330ed8d43d5de4324bf0aeec1560927",
+  "src/topo_pilot/experiment/report_e3.py": "93d9d91043fbe3bf4d519fdbbe30b7b8abf243f3839743666524344e3775fd9e",
+  "src/topo_pilot/experiment/report_e4.py": "a248c7b6c2d40769612dd4a2e2917067c71c2cf73353714ba87c07d864e43de5",
+  "src/topo_pilot/experiment/report_e4_s7.py": "d6d23f9fc22fb2f5c6821dccc812da901040773fb53927f70276305385819e2f",
+  "src/topo_pilot/experiment/report_x4.py": "3644218a5660735350689462bc1a41f5a56484c82da39f3a102f3f28d9d0246c",
+  "src/topo_pilot/experiment/s1.py": "55e5bf32ab21fd64d049d7cf08dce3b7026352eab6b1d36c5a392c9284115930",
+  "src/topo_pilot/experiment/s2.py": "1c87498cd58f06961466242bdd5c5b3f6e9c4da24390802484555d8148f8c1a5",
+  "src/topo_pilot/experiment/s3.py": "dfc203b8b3861045e895bbd43ba127f0522b2732ff357c99b839d4d41a4376ae",
+  "src/topo_pilot/experiment/s4.py": "2b51ee631e7f766928b2a808db1238b46873a1cc718fefa0b7e1e68c7c67d037",
+  "src/topo_pilot/experiment/s4_analysis.py": "283092a27768832121f2b75ef326b8c162837d5839ac43a5d92a7245f0c30dc4",
+  "src/topo_pilot/experiment/s6.py": "efe50e6045369333dd2ba88427a2b18ebb23488fc97530ceed3f4be9ca61609c",
+  "src/topo_pilot/experiment/s7.py": "a0b86c85513b3592744ddbcbc8e3c910226bc5316b61050451ddd1d8e6591847",
+  "src/topo_pilot/experiment/s8.py": "b4029280a463f6f16a5195352dd4834514a5b76b8268f3defa2c776537f910af",
+  "src/topo_pilot/experiment/stages.py": "3dbaeab44b932527ebb4f5c7b48af1e5c5edeb0e5a7b87f1ca76a7d47e7e4e2a",
+  "src/topo_pilot/experiment/x4.py": "d8c1dea629b54c7abec3a1eac0e20dff6b6467243cb9c23075e9fc50dc8ddc69",
+  "src/topo_pilot/experiment/x4_inputs.py": "274fddbcf53f47438209f69e1536a81dd2fcbae7e9cf19b68800d1be8c97ee1d",
+  "src/topo_pilot/experiment/x4f_probe.py": "d9e72d233ae3e841714173efbded5340fab99ec6707109dd653b7cca214c9b69",
+  "src/topo_pilot/learner/__init__.py": "01ebd8e9552a1172e1cb97e3dcfe3e0254417bb01190007d23b8813cbeab5033",
+  "src/topo_pilot/learner/config.py": "abadc6ee40115e910fd368dd89f63cb95e081af7791c4826b90fa4b9f1bfbdf6",
+  "src/topo_pilot/learner/model.py": "ee1c124ce83da147ccc2a4b4c0be167de902d61ecd00ead5748b8566f62ae039",
+  "src/topo_pilot/learner/patch.py": "64d742e85ddba3d121a5c72af0abaef910c9b986a03a7b87caa26c4c20dd0ad4",
+  "src/topo_pilot/learner/stage.py": "b6170ca6037c8f957edbeeaf628fb111c5e39c50098fed2abd53fe17d7e24413",
+  "src/topo_pilot/learner/trainer.py": "c6bf829c2bc6537e9950aa3af0bff2dbe3bcdf41083fff7ba987d037b102a4a3",
+  "src/topo_pilot/oracle/__init__.py": "cfd11d8c0ad2bc06027f00c26d61bd0ffd8e51e87053ed71f7be61501273f764",
+  "src/topo_pilot/oracle/_common.py": "6a782e0a3a6331b78bd201cdd4e9a2dd57de214e67e876254e9c5de33b03797c",
+  "src/topo_pilot/oracle/_filter.py": "a84dd4fc3b0b7dc0ef0e77dcdf0c20319d8c2cc47fe1de88afab6ad8d3dd7f86",
+  "src/topo_pilot/oracle/_futures.py": "da80add78c712f68e0fdf073be6829eecdc00d3e95799be7ce04f6f0822455c3",
+  "src/topo_pilot/oracle/stage.py": "7dfd8e527a3913f66da0ae8abf9b93b4bdd4cb63cb0b1dcd29225b640ab0b752",
+  "src/topo_pilot/prediction/__init__.py": "783458d4e22c3d9ad34feff300420769468052fb49030b9f9f21c8d60559b615",
+  "src/topo_pilot/prediction/metrics.py": "13943f83872c86d0f71f77cc72784102c11685ff04199d1ca7d88be6883c436d",
+  "src/topo_pilot/prediction/ngram.py": "16af0b507f3fc87cc18442e7c70a409a486e4a2718961c95078c6f0a9648f986",
+  "src/topo_pilot/prediction/ridge.py": "e63de356d0aa258d4035c86526c2487e574a5dc5445b47c4a5aa9a4de33e2b45",
+  "src/topo_pilot/prediction/stage.py": "8ac786bcdf6b29abc426ec2e576b0c8e994855b84b2d81f3be9682ddbb6322db",
+  "src/topo_pilot/process/__init__.py": "320fc7a51603b55bd410347d95aa3a83329edf4f6d8944d41a9f6797530896e4",
+  "src/topo_pilot/process/_diagnostics.py": "28542af04609451d735f3f8f86197aa9561a897b2b99a35866dd29127f50da6f",
+  "src/topo_pilot/process/_geometry.py": "399773ff8ca5d51a890997bc51b7b6d1d8dfc9f84d2b0066fd737a75fa265351",
+  "src/topo_pilot/process/centers.py": "95bebe112f0d0da19113970a2f8f59ce327e686de31d5ca8fc43dd66f7de7d99",
+  "src/topo_pilot/process/conductance.py": "71873b0c988f4da63dfed77b5be3d78a7f365048dae44e827e737978987ffd2d",
+  "src/topo_pilot/process/emission.py": "a4fa54d1be4848796f83d6309499a2c19fbbf2f172803186864711bde1f254b8",
+  "src/topo_pilot/process/stage.py": "c3b7dd9a25b455dc07365665aeab26fd3260f4c0e0560d8b696f41eb3e230303",
+  "src/topo_pilot/process/transition.py": "a0e450a150303bae9bfe51fade093553da71a83d779c32737045881128fe054d",
+  "src/topo_pilot/topology/__init__.py": "8f27aa6a4feada4f9c8277c8dc1defe618209722bda882e76a210cc31a830420",
+  "src/topo_pilot/topology/circular.py": "62f4e49de19f64e68ddd9b9c46869742a5bfba97cd356afc8078008753bfd597",
+  "src/topo_pilot/topology/distance.py": "3590d8aa4ae1afafc046105d08a9476b83f58fe0d9b10ef40b1fe869ccecb688",
+  "src/topo_pilot/topology/metrics.py": "5b411f5f1a1c9454f572292f37d56de97c4deb9135675c1655cce4c22e9d722f",
+  "src/topo_pilot/topology/persistence.py": "e4a3351568ffca8d232d5eeceb0cc8412d04c63a4e924f8abac7071e4ad9480e",
+  "src/topo_pilot/topology/shapes.py": "05bbe3495e698ac8198f5ddba2d0e603c4cc917fded024695a4211bf0381b092",
+  "src/topo_pilot/topology/summaries.py": "d9843e496f2057cb5f9f187430b366fef28c156106672bfc43371736900cc194",
+  "src/topo_pilot/world/__init__.py": "b9c01d748c7ebd2b1ca0ea1ee1a5add3d5252397560d7004c2c4d1f0bf491e2a",
+  "src/topo_pilot/world/complex.py": "a9812d0a719202eac0b78c505c8b3346d7215ea3015531535632a4b64aac5fa4",
+  "src/topo_pilot/world/config.py": "3aa20d683aae62fccd054d91913135b0be7644d189e9f67f5e2483eb7dac26eb",
+  "src/topo_pilot/world/identification.py": "ac5bc0c2c60fa271eb0c6226dbe523bd1d4150c84d083be9232570a9d69229f5",
+  "src/topo_pilot/world/lattice.py": "1d93e2371968d2996a04d94393b4e92d41153ea254158177b67eb5ddd0acf021",
+  "src/topo_pilot/world/metrics.py": "80513b485ce3462acd53949cb750ced0afb021826e4cdf20484b3cbe41a3b6d4",
+  "src/topo_pilot/world/registry.py": "4e5d510512830672a093d2646ce7714c4a67c0704b0bdc9e5122fefbd698b2b1",
+  "src/topo_pilot/world/stage.py": "c747848b9c3653cb8dbaea1900e4401cd37912c18d0956a2647fe16756b07798",
+  "tests/oracle_profile/independent_reference.py": "e08d02ad03ca840017feaf882e6a113638609426ce28d287dfcd939b1c59a681",
+  "tools/c1prime/CONTRACT.json": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+  "tools/c1prime/c1_bounds.py": "e6a2c1fc9594aa37664a8e50effc34bb1563bdde742edf0ff56395197da73435",
+  "tools/c1prime/c1_cert.py": "b0cb037a52071e80a80e246d538185e2dfc44c45456b15f543b8c2d274c560d8",
+  "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_data.py": "262418b2f0272e8425a038c53bb120c8f40402a4100b8a71e257f71b560106e9",
+  "tools/c1prime/c1_endpoint.py": "bdb283efbed04119cf23a5875835d08e1c21b4935d5f9cff334e3e88525d6e46",
+  "tools/c1prime/c1_fit.py": "13962c7a46541b9abbd53b2e9e69d6ce7c2f58de042499ba6f48c062228edf61",
+  "tools/c1prime/c1_gates.py": "017499e0c434321ceae95c78ad584c15e93e82efd0ce768137f452d5668db485",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+  "tools/c1prime/c1_oracle.py": "077ea1489262d15075624fd6116900c74a6e5b0eb2fe02e5d4f6127cbc0323b3",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/c1prime_registry/c1_registry_sources.py": "4f40840d8eb88d515556aeb7058640761d4b44a7a6ee8045fb3bce9987a5a253",
+  "tools/c2_nd/CONTRACT.json": "e39e4971fa09d3762f80f0c309296fd59e240707357afd2aec94f5f856ed487b",
+  "tools/c2_nd/nd_config.py": "d83489ce8d4dfb4f48af3c0ceb33ace5283c13876819d6a7dd93873f1b3d593a",
+  "tools/c2_nd/nd_registry.py": "19401c2e0aafc9ef82a032b490a8ba4bd9ec0a786d0dd2868a8d81c4d84653da",
+  "tools/c2_readout/CONTRACT.json": "3d4b9f6257b886a0edc40feb499513fe0d0cae0af5c031f76b0988750fe7445a",
+  "tools/c2_readout/c2_attrib.py": "882bf534c4898f16e595552edb7cde6db4a9f7682bed537917df206b64861ca8",
+  "tools/c2_readout/c2_code.py": "fa5b42a4e0187bc24990a368319fa22cde9a777339a75dcaa5aef34022ff5f0a",
+  "tools/c2_readout/c2_config.py": "d721d0f36d6bd46cdbf337fbf26f60aab11b4c11524d9e2d3e2b83ff7731a2b4",
+  "tools/c2_readout/c2_data.py": "5b97f8b8112cf7587c0be12eecacf259730c9c904f53f810ad111a5c4612c2a0",
+  "tools/c2_readout/c2_decide.py": "bb1b3652015d77c553afedafd984dfd00c97da37832a2efe5e659271521d9906",
+  "tools/c2_readout/c2_oracle.py": "b22496b4bbbcf5595eebce95604f63532d991556717e13e2a2875a2f8fa631f7",
+  "tools/c2_readout/c2_registry.py": "14f221d0484b61c0ebc76d910ade5c6e377cc864ccf3ab1973fbc450e1bafd56",
+  "tools/c2_readout/c2_stats.py": "1090bf1899f34fd2a04c0f6d0c33e92ee20ac49024899a2cf1cde38fc8c1fcf7",
+  "tools/hws/CONTRACT.json": "15e2ea5e243c1f48110391910f6545e0ed6f96d714f0cd0d7bf9fdcc42d655dd",
+  "tools/hws/hws_driver.py": "03dcb81ec55c2f784436071c15328aab5a62df1ece344cecb805e6fbc35d21b1",
+  "tools/hws/hws_exact.py": "098658012aaf3f63de11a8b55c6017e1e1732876ef3e6279363563433cd40b07",
+  "tools/hws/hws_oracle.py": "02d80e42ede5d23f51ddb6feaae8a5a3a8e3c0864e72a288c99a5073d80e051d",
+  "tools/hws/hws_records.py": "ae50fe2945e34f7c3ff9627fd404470bde3134105ab5d896442d4f790905405a",
+  "tools/hws/hws_select.py": "6614cf9520ec2a73dcc0e7fd239204c9fc28acbce46f6985ee1831af8519b71b",
+  "tools/hws/hws_stats.py": "51a4c19c9921ed5daaa5c76e1c6cda79de5c54b3b1b1dc21159c7f554340cd37",
+  "tools/hws/hws_worlds.py": "f2b98e40c0d07a64da4d7f96435124874650e2300945ea84a7da06ed7af66560",
+  "tools/hwsb/CONTRACT.json": "67d60fae3141865c08306aa46601ed0e6985b3c60a06b5a95caeda227b4897ba",
+  "tools/hwsb/hwsb_config.py": "3102aeb62e77cc2fa5bc8318457bdd4e172a0b1c336385942d89f4423d4a574b",
+  "tools/hwsb/hwsb_data.py": "fec9fb2eafd41eed4a88dec013974c258b90a40cd370222b00891669be96f9c3",
+  "tools/hwsb/hwsb_driver.py": "5f1c270ea75c7d48bfd9c6862601991d0effe31a3d71947a606a0c50cb811458",
+  "tools/hwsb/hwsb_dry.py": "d97e7477a9811efa877d2171d4e3cf97fa87ded08eee82d16950224d1b0d0d2c",
+  "tools/hwsb/hwsb_eval.py": "c3403826b7b5ee46ef0961a1630e5e91e60623316e14c752bff63a5d553b66b1",
+  "tools/hwsb/hwsb_gates.py": "ed5f542f13c1a41821412f1d771d7af8a06892710cabcf19e7cf4bd11e0d633c",
+  "tools/hwsb/hwsb_kb.py": "f88aeb43cdb51ae5b08f5e13e2e5f6554f70e35e7d0d91d3145f1f4f510d27c5",
+  "tools/hwsb/hwsb_known.py": "f24a1a3042b7e734ef3f05a910c932663aaf42759eda365ea25ee4cc2c20858f",
+  "tools/hwsb/hwsb_law.py": "be5e80d7135322f155ec48bf069cc4cd0f9e9a9e7315adac236b243d2b6fc685",
+  "tools/hwsb/hwsb_records.py": "2026a936516224b4f23ed7cc5ecbd9e363b55ea1251a4601f4d2c638a6a81ee3",
+  "tools/hwsb/hwsb_registry.py": "8d17c0082bba18679a56a044fc15c8a8c070eb6942ba38b3b8d6697bee3d3dba",
+  "tools/hwsb/hwsb_stages.py": "458a088d57af47586cd1cc70ef65934926f0c03f00e751fcab5cc0e49431e05d",
+  "tools/hwsb/hwsb_train.py": "cd2647f897607793f7dede0e590c88f6834bf8d1ec7483f6c401768f2008aff8",
+  "tools/hwsc/CONTRACT.json": "af669ac235845b09448c1823ec71dd72d825f9144eb2226077b6f72ce525af88",
+  "tools/hwsc/hwsc_bind.py": "f06cafba8eb860903502d6f805db333b37b4ce2a482c9424c8cdd462c1a5e71d",
+  "tools/hwsc/hwsc_config.py": "2785d8f84c0c47a25d0c73f0f4bb958e2fd35559cf75f550a0aaeadd7da882f3",
+  "tools/hwsc/hwsc_data.py": "39c27fb32b173e9bc5de7a5f1e14aa6b2ce177c47a72b57907ea9e8d7ea5ca4f",
+  "tools/hwsc/hwsc_gates.py": "89824392d5e7bf48cc0c89d78b5767668af08e19d6a5f35f83d227881599ec94",
+  "tools/hwsc/hwsc_known.py": "eacebc57055576b25884f7d4ab15d9d6a12a9e6dae410633253b1119b6fa66e1",
+  "tools/hwsc/hwsc_outcome.py": "88b4e2e07a09624a1728378649a6aa4be55f8eb75c84c31d49fbec90796d1153",
+  "tools/hwsc/hwsc_records.py": "2f756348be7d61a9c9824d4d6da819d088b80e0870dce85592241a532a34616d",
+  "tools/hwsc/hwsc_registry.py": "e95882527a9af40fe4282b3f25fd9d11d0320a8b3ab07b117e7352cb12847192",
+  "tools/hwsc/hwsc_registry_build.py": "c9d8381d2fc92ecfcfbc6e8dd205c7ecc20f686edceb324682aeda798a30e883",
+  "tools/hwsc/hwsc_scratch.py": "f84d5798fc803615190f9c5a75807e98a17a4299d3f20cc8b88d7a856bf98699",
+  "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+  "tools/k4b/k4b_cert.py": "8ae47232ac6433e3838f2080851b789a0a988e43de987a6eb54ea2a79e5ffd07",
+  "tools/k4b/k4b_charts.py": "f43b79e06d6b70f3e446c3c60665095f57514f541a5c62d593580a88255fd9d8",
+  "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+  "tools/k4b/k4b_data.py": "f7ee8b6de1aa31ec592f5b769c8f65c8e463afea0e2782dd1d1f6f89a5d64066",
+  "tools/k4b/k4b_decoder.py": "0b7607a55b77aec753392c682874591d7443fa40106abf4669b76226cc81b59c",
+  "tools/k4b/k4b_driver.py": "250a095865ab418b1a3cfe47334d2835b82b9b7fc22086080f0c9440e3d7ef6c",
+  "tools/k4b/k4b_fresh.py": "055ac35e74c2986d86efffb3d62e8c2fca978f985766b89eb7df31b155733f7e",
+  "tools/k4b/k4b_meter_bind.py": "34efd87454988e0394a9761d8aff68bb8199ec3786f8d38ad2ed8330744ccedb",
+  "tools/k4b/k4b_registry.py": "14c0f5ef7bf0386b3ae55ab80d730585c46842a21b67a8aa77b0b749b9f03b75",
+  "tools/k4b/k4b_registry_k.py": "cdeba06d3730237783919bb264160b540a8a7fcf0f3c9ff1197dda359f1a0042",
+  "tools/k4b/k4b_release.py": "d9f8ec66b2ecee3058425bf8c91eba0850e77113294176686a8a6e1b27fe1613",
+  "tools/k4b/k4b_scores.py": "a0127cf9fc101eeadc693bb338e784225be2f4b7ee1ab2fa3174888921a82577",
+  "tools/k4b/k4b_stats.py": "2dc3d1fbdbe500befd0c2c3a49506faeb35e62fb367ed0c831fd89c23e764359",
+  "tools/x4_circle_history/CONTRACT.json": "fb250e36135dda9d1c65345e95cca287795da17a8f09cc5a3a5dbe21fda21dc9",
+  "tools/x4_circle_history/chart.py": "938821a0fd6651ce9b3fae9ccb6d40dfe1577ff861b76e4e5ebd136cda399ccb",
+  "tools/x4_circle_history/cochain.py": "e53f6725d6596000770bc8242c33916f5402a10398ee5b43f960bd6438f93075",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x6_stage0/x6_dp.py": "593171f7244b5967fbb38cd92044536bf08f213c9d2490d6406c29076e9dba24",
+  "tools/x6_stage0/x6_exact.py": "a73f83cb671dbf3a7f07762b24041d949bbafe499d2e07fa9dd0976e25b37c1d",
+  "tools/x6_stage0/x6_model.py": "b359257aa120ba8631fb652d8166fd526179797adb0de5280927b89199c607e3",
+  "tools/x6_stage1/x6s1_data.py": "16c1e91e218e7ce56df264ab1844762f189e18677ab2d767aafeb2db169684ab",
+  "tools/x6_stage1/x6s1_registry.py": "17db30b087ea32141a126f0cce962d2c92f0a6f8cf92d9e7aee9b329cdf8e29f"
+ },
+ "reuse_sha256_note": "sha256 of the git blob bytes at e3710d2 of every repository file in the import closure of the allowlist (and the CONTRACT.json beside each), as imported with hwsu_config's sys.path order",
+ "hygiene": {
+  "root_rule": {
+   "listing": "name-only; no file opened, no array header read",
+   "array_suffixes": [
+    ".npz",
+    ".npy",
+    ".pt"
+   ],
+   "prune_names": [
+    ".git",
+    ".venv",
+    "__pycache__",
+    "node_modules",
+    "sealed",
+    "00_read_me_first*"
+   ],
+   "prune_paths": [
+    "docs/research_summary",
+    "hwsb-store/stages/EVAL",
+    "hwsc-store/stages/S5",
+    "hwsc-store/stages/S8",
+    "topo-pilot-hwsd",
+    "hwsd-store",
+    "tools/hwsd",
+    "tests/hwsd"
+   ],
+   "prune_components": [
+    "*hws-dyn*",
+    "hwsd-*"
+   ],
+   "protected_names": [
+    "payload.npz",
+    "state.pt",
+    "HIST_*",
+    "*/hist/*"
+   ],
+   "row": [
+    "n_array_files",
+    "n_protected_names",
+    "n_observationset_roots",
+    "n_sealed_dirs_pruned",
+    "array_relpaths_sha256"
+   ]
+  },
+  "root_baseline": {
+   "status": "REVIEWED",
+   "built_utc": "2026-11-01",
+   "built_by": "job 0198 phase 1 (read-only name listing)",
+   "rows": {
+    "agent-handoff": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "c1prime-store": {
+     "array_relpaths_sha256": "dccc6c6b65e475f3aa0eb1fc7cef48cc4db073056e77725c7aabb22b220a477f",
+     "listed": true,
+     "n_array_files": 15,
+     "n_observationset_roots": 0,
+     "n_protected_names": 6,
+     "n_sealed_dirs_pruned": 0
+    },
+    "c2-readout-store": {
+     "array_relpaths_sha256": "14396ad7d653d55f6b28622ce814f8a731509d10a65a32cd9fc6d8477d6192c3",
+     "listed": true,
+     "n_array_files": 54,
+     "n_observationset_roots": 0,
+     "n_protected_names": 5,
+     "n_sealed_dirs_pruned": 1
+    },
+    "c2nd-store": {
+     "array_relpaths_sha256": "9b771e37752574920db12636a7925d425725c0792f14da5c7360244b58aa1820",
+     "listed": true,
+     "n_array_files": 51,
+     "n_observationset_roots": 0,
+     "n_protected_names": 5,
+     "n_sealed_dirs_pruned": 1
+    },
+    "chart-diag-store-0023": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "circular-audit-store": {
+     "array_relpaths_sha256": "ac44e78ece7c9ba5cb9256f8f9535c488d1651fb901063272414b941df168a21",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 1,
+     "n_sealed_dirs_pruned": 0
+    },
+    "coord-scratch": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "d1-seam-oracle-store": {
+     "array_relpaths_sha256": "b2b0ea04f2c27575f02af9a3bdbaaa45db2553c293e6e3395ec97be9ba85091b",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "d2a-store": {
+     "array_relpaths_sha256": "8a8512016c8a096f23a644970254cd560efd566017778be454656b78116529b4",
+     "listed": true,
+     "n_array_files": 62,
+     "n_observationset_roots": 19,
+     "n_protected_names": 43,
+     "n_sealed_dirs_pruned": 0
+    },
+    "docs-0024-store": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "hws-store": {
+     "array_relpaths_sha256": "006945d52f9141d5e71387a615d9af290189bc86b4a8f5c5de24c50eb2df1b0f",
+     "listed": true,
+     "n_array_files": 177,
+     "n_observationset_roots": 0,
+     "n_protected_names": 177,
+     "n_sealed_dirs_pruned": 0
+    },
+    "hwsb-store": {
+     "array_relpaths_sha256": "b8eb9f5f3de3b5892326685bfc6c7d9540987d5eb6baffeb49274737086c6d3d",
+     "listed": true,
+     "n_array_files": 61,
+     "n_observationset_roots": 4,
+     "n_protected_names": 59,
+     "n_sealed_dirs_pruned": 0
+    },
+    "hwsc-store": {
+     "array_relpaths_sha256": "a6bd4f2e42000be9324e0a4d3fef0399efc4dc86d043d6b75d7d2b5406a01d91",
+     "listed": true,
+     "n_array_files": 138,
+     "n_observationset_roots": 6,
+     "n_protected_names": 92,
+     "n_sealed_dirs_pruned": 0
+    },
+    "int-0021-store": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "int-0022-store": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "k4b-store": {
+     "array_relpaths_sha256": "464abea466d102e81a6c401f08bf2bf2d9cb3316478e9427a22f135403d2bd04",
+     "listed": true,
+     "n_array_files": 16,
+     "n_observationset_roots": 0,
+     "n_protected_names": 3,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0027": {
+     "array_relpaths_sha256": "8d2c0014b430a357e7a4e7a5295373bd8e36fc402540e832bdc0932e98ed1edc",
+     "listed": true,
+     "n_array_files": 5,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0028": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0029": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0031": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0032": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0033": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0034": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0035c": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0036": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0039": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0039c": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0041": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0042": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0042c": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0044": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0045": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0046": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0046r": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "tmp-0047": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot": {
+     "array_relpaths_sha256": "917203ba9ad261b56405ad78d7759d7a8e3a455aaaa5f29018a6afe59f03d22a",
+     "listed": true,
+     "n_array_files": 993,
+     "n_observationset_roots": 72,
+     "n_protected_names": 992,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-c1p": {
+     "array_relpaths_sha256": "3b7a7c8d23f3286ef69ec7d9d03d1af88291b8b8d2924fee1c3815c50eec3675",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-c2": {
+     "array_relpaths_sha256": "af7977ae96cd12ff3e99eada0bab9bf66f660aca9ecf17c5d049b5cfa6b2ba8e",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-c2nd": {
+     "array_relpaths_sha256": "f9af9c862c88bbe18b53e8bf4c54f44e57833cdbb9bd43ad500c112ae20bcda7",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-causal-planning-codex": {
+     "array_relpaths_sha256": "f1391e865b9d146a5be9a0d1ba667ed0fd360e4f91c4c6ce2479fa1d8a3d97de",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-circle-history-k4": {
+     "array_relpaths_sha256": "63f2d3655ae6aad962f01bf6487f6cfd899607b4b36d230debb5b3978ee819dd",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-d1": {
+     "array_relpaths_sha256": "56b2a75ab848f09e54e8fe0a1d7bf67e2044ac5386c38b6170e96dfb3031ee96",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-d2a": {
+     "array_relpaths_sha256": "3816a3a141e2c3593da11d42853f9770372ef8ffe48fc5c1ca942a559bc7df3c",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-hws": {
+     "array_relpaths_sha256": "3b44a1fc8cc4589da630a7f8d3faab37705e55d650dfaa190ea96581d981377a",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-hwsd": {
+     "listed": false,
+     "reason": "pruned unlisted (blinded/track-D)"
+    },
+    "topo-pilot-hwsu": {
+     "array_relpaths_sha256": "2fe44d9f9ac136a4b9fa0b803b9f4dc5ee7327f8d0318ccb4763811650fe966e",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-int": {
+     "array_relpaths_sha256": "839a30201ed4a1e980898b0d51049eaf6a12630daaba972a9ccc1c30151a5f49",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-k4b": {
+     "array_relpaths_sha256": "832f406c307faa78dc247384ef7665897d7fc64a0a69a360941bd94b0680feb9",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-reorg": {
+     "array_relpaths_sha256": "451746b872d321b42ba9b3e1798255b133cfee66835e553e008ebb7747a95246",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-verify": {
+     "array_relpaths_sha256": "d38a1143d57c40e02301ff0d7ff789a9837ccd1eaacda3324e7f4b7258707d6e",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x2a": {
+     "array_relpaths_sha256": "3918e5d57bb25bb4c357084db68e25496baf98eca7b68fe68db3be290f2aa8db",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x4-history-feas": {
+     "array_relpaths_sha256": "31e769de462295b0249673195a37157257f22147117d891d776b8f45ade7fb05",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x4b": {
+     "array_relpaths_sha256": "d4b300ff9d5fb870a8d9cb8716708f4d8ffe72eb8b6432ef27762ff513f467be",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x6": {
+     "array_relpaths_sha256": "7e4eaeaa05d0a4cee6b1abb0dc6a05b286aea44ef0c14c9c706e8cffdebf1ce2",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x6s1": {
+     "array_relpaths_sha256": "ae98c829ebd6c3ac153b3be6387c72a8bb2932ae50dccd942c3e0f94f7508b20",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "topo-pilot-x6zc": {
+     "array_relpaths_sha256": "d87a14ed95caf80e812b7057f1ad2b9e0a710588e41fc51f8e4de2e0c1ca1395",
+     "listed": true,
+     "n_array_files": 1,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x2a-stage0-oracle-store": {
+     "array_relpaths_sha256": "6ddbccf7a4187d6927267a5e117590787256b9b81db1bd56004cee53725facd1",
+     "listed": true,
+     "n_array_files": 2,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4-circle-history-feas-store-0015": {
+     "array_relpaths_sha256": "7e934685d937f2903c19d50c5b808c0df984828328c103e5d822049e223bc1aa",
+     "listed": true,
+     "n_array_files": 3,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4-history-feas-store": {
+     "array_relpaths_sha256": "519c2c8769727531cf0f149f85aea1ee3380834789ef57f7fac8bdc17341fab5",
+     "listed": true,
+     "n_array_files": 2,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4-oracle-profile-store-0014": {
+     "array_relpaths_sha256": "eb01928b59587d552e04b1813680f3b39021cdfd720b649d3b8b811043fcc243",
+     "listed": true,
+     "n_array_files": 3,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4b-research-store": {
+     "array_relpaths_sha256": "3812794cb3c061013b573daa6d9efebb8d74955cff9cae7c4097b871c52fd231",
+     "listed": true,
+     "n_array_files": 5,
+     "n_observationset_roots": 0,
+     "n_protected_names": 1,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4b2-research-store": {
+     "array_relpaths_sha256": "b8d56caf6309a0dafc82e170519e40ba4a9b5c7747dbd68e5019b13975962c2b",
+     "listed": true,
+     "n_array_files": 9,
+     "n_observationset_roots": 0,
+     "n_protected_names": 1,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x4f-gates-research-store": {
+     "array_relpaths_sha256": "977cab7fb2fbe1a475a386f2a3e56259494b5f963e959c52d6d8d4f4d010bb7d",
+     "listed": true,
+     "n_array_files": 7,
+     "n_observationset_roots": 0,
+     "n_protected_names": 4,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x5g1-research-store": {
+     "array_relpaths_sha256": "49670297535144d1855bca8d384880ea71cbdc003d88b6ad3ea3bba5ffe9211f",
+     "listed": true,
+     "n_array_files": 4,
+     "n_observationset_roots": 2,
+     "n_protected_names": 4,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x5g1-techbench-store": {
+     "array_relpaths_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "listed": true,
+     "n_array_files": 0,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x5g1t-fixture-run": {
+     "array_relpaths_sha256": "00f05a5fe0326313c574c8bf7d8a0db2d64dfe3d7730ca72170d0ab71d6fd618",
+     "listed": true,
+     "n_array_files": 107,
+     "n_observationset_roots": 14,
+     "n_protected_names": 101,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x5g1t-research-store": {
+     "array_relpaths_sha256": "f07e5ac82c2eed8a5e83b073d8810c65022bc9fa6a21f2a9fffeae5f6c2f0e9d",
+     "listed": true,
+     "n_array_files": 342,
+     "n_observationset_roots": 12,
+     "n_protected_names": 336,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x6-stage0-oracle-store": {
+     "array_relpaths_sha256": "6c53c182de2c75e78c978b272a19744d4954673f30be06186c350e575beb81fa",
+     "listed": true,
+     "n_array_files": 3,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    },
+    "x6-stage1-store": {
+     "array_relpaths_sha256": "1516d11a2bd298aaad96ecd5cf01f843c7638a6cf3074bc27cbedaca6533e844",
+     "listed": true,
+     "n_array_files": 489,
+     "n_observationset_roots": 35,
+     "n_protected_names": 35,
+     "n_sealed_dirs_pruned": 1
+    },
+    "x6zc-store": {
+     "array_relpaths_sha256": "acc67952dcb9293cc74f5eb23e5df4f5bba5b52379b4c6b6084b0cbfefae76e7",
+     "listed": true,
+     "n_array_files": 33,
+     "n_observationset_roots": 0,
+     "n_protected_names": 0,
+     "n_sealed_dirs_pruned": 0
+    }
+   },
+   "review": "coordinator a944ef89, 2026-11-01: name-only re-scan at hwsu-impl 18030bf; 69 listed rows + 1 pruned (topo-pilot-hwsd), identical to the phase-1 rows except topo-pilot-hwsc-fix, which the owner removed (deletion approved 2026-11-01); the dry run and every job compare before/after listings"
+  },
+  "reservations_baseline": {
+   "status": "REVIEWED",
+   "built_utc": "2026-11-01",
+   "rows": {
+    "c2nd-store/RESERVATION_S1.json": {
+     "reservation_id": null,
+     "sha256": "bd3d87d4d9f6756f5c7e9e8a03cdababdac162f5cb6b636940a1cc16ca06d84d",
+     "state": null
+    },
+    "c2nd-store/RESERVATION_S5.json": {
+     "reservation_id": null,
+     "sha256": "b6c688197eb166e9347b15e4fa9903953f8c31d13a0570bc1353c48de57e24fa",
+     "state": null
+    },
+    "hwsc-store/RESERVATION_W2.json": {
+     "reservation_id": null,
+     "sha256": "28c74163e992972b89238dccb30660b500027a78ac4a563fa0958df736e9dbe5",
+     "state": "ACTIVE"
+    }
+   },
+   "review": "coordinator a944ef89, 2026-11-01: all three sha256 re-read and equal; W2 still ACTIVE (ended by records/HWSC_W2_END.json)"
+  },
+  "rule": "after each implementation or dry job, hwsu_records.root_inventory(root) shows no new array file, protected name or ObservationSet root (§8.4)"
+ },
+ "to_freeze": [
+  "hygiene.root_baseline (re-scan before FREEZE_OF)",
+  "hygiene.reservations_baseline",
+  "binding.allowlist call_time_reads and reuse_sha256 (re-run the audit at h_exec)",
+  "cpu.central_s (cost only)",
+  "of_b.r_ref and phase1_files (if a module is split by size)"
+ ],
+ "to_freeze_review": {
+  "reviewer": "coordinator a944ef89",
+  "date": "2026-11-01",
+  "head": "18030bf7008f7a04c133d9ebfeac715288c985d4",
+  "hygiene.root_baseline": "REVIEWED: re-scanned (see hygiene.root_baseline.review)",
+  "hygiene.reservations_baseline": "REVIEWED: unchanged",
+  "binding": "REVIEWED: hwsu_bind.audit() PASS at the head (calls and call-time reads); all 199 reuse_sha256 equal at e3710d2, at the head and in the working tree",
+  "cpu.central_s": "REVIEWED: planning centrals kept (J-OF 900, DRO 200, OF 700; pause line 3x); measured J-OF/DRO cost re-sets the owner forecast, not the contract",
+  "of_b": "REVIEWED: r_ref e3710d2 kept; phase1_files = 4 documents + 13 modules (E-0), matching tools/hwsu"
+ }
+}

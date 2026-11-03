@@ -59,6 +59,8 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 32, import)
 - [tools/hwsd/hwsd_jobs.py](../hwsd/hwsd_jobs.py.md) (line 27, import)
 - [tools/hwsd/hwsd_meter_bind.py](../hwsd/hwsd_meter_bind.py.md) (line 18, import)
+- [tools/hwsu/hwsu_meter_bind.py](../hwsu/hwsu_meter_bind.py.md) (line 12, import)
+- [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 20, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 24, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 20, import)
 - [tools/x4_circle_history/live_context.py](live_context.py.md) (line 106, import)

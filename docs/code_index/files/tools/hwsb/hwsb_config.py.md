@@ -72,6 +72,7 @@
 - [tests/hwsd/test_a_learning.py](../../tests/hwsd/test_a_learning.py.md) (line 27, import)
 - [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 20, import)
 - [tests/hwsd/test_b_util.py](../../tests/hwsd/test_b_util.py.md) (line 32, import)
+- [tests/hwsu/test_b_of_seed.py](../../tests/hwsu/test_b_of_seed.py.md) (line 29, import)
 - [tools/hwsb/hwsb_data.py](hwsb_data.py.md) (line 10, import)
 - [tools/hwsb/hwsb_driver.py](hwsb_driver.py.md) (line 9, import)
 - [tools/hwsb/hwsb_dry.py](hwsb_dry.py.md) (line 10, import)

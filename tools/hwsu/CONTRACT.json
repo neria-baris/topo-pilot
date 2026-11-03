@@ -572,6 +572,26 @@
      "reason": "HWSG implementation worktree (branch hwsg-impl; another study, not blinded for HWSU); deep-scanned like the other worktrees (header listing: only docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz, non-history); a history file or identity reference appearing there is REGISTRY_INCOMPLETE; confirmed at erratum E4"
     }
    },
+   "names_only_check": {
+    "rows": [
+     "topo-pilot-hwsd"
+    ],
+    "array_suffixes": [
+     ".npz",
+     ".npy",
+     ".pt"
+    ],
+    "allowed_arrays": [
+     "docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz"
+    ],
+    "prune": [
+     ".git",
+     ".venv",
+     "__pycache__",
+     "node_modules"
+    ],
+    "note": "R-0231-1 (coordinator a0f20235, 2026-11-03): k4b_registry.classify classes a deep-scan-excluded directory without a reader INCOMPLETE, so the OPEN-9 row (track-D worktree pruned unsearched, blinded) failed every build (KC attempt 2, job 0231). inventory_u lists the names under each row here (no file opened) and classes it NOT_SCANNED only when no array file but the listed non-history copy and no ObservationSet component appear; otherwise it stays INCOMPLETE (fail closed)"
+   },
    "deep_scan_exclude_add": [
     "hwsc-store",
     "hwsu-store",

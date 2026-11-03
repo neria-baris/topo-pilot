@@ -14,6 +14,7 @@ import u2  # noqa: F401
 import fnmatch
 import hashlib
 import importlib
+import os
 import re
 import time
 from pathlib import Path
@@ -108,6 +109,15 @@ def inventory_u(root, readers, contract=None) -> dict:
     inv.pop("hwsu-store", None)
     classes = k4b_registry.classify(inv, readers)
     frozen = {k: v for k, v in root_table_u(contract).items() if v.get("decision") != "OWN"}
+    rule = _r(contract)["root_table_u2"].get("names_only_check", {"rows": []})
+    names_only = {}
+    for name in rule["rows"]:
+        cls = classes.get(name)
+        if name in inv and cls and cls["class"] == "INCOMPLETE" and frozen.get(name, {}).get(
+                "decision") == "EXCLUSION":
+            names_only[name] = _names_only(root / name, rule)
+            if names_only[name]["ok"]:
+                classes[name] = {"class": "NOT_SCANNED", "reason": "R-0231-1 name-only check PASS"}
     violations = []
     for name in sorted(set(inv) | set(frozen)):
         entry = frozen.get(name)
@@ -119,7 +129,25 @@ def inventory_u(root, readers, contract=None) -> dict:
         if why:
             violations.append({"name": name, "reason": why})
     return {"status": INC if violations else "PASS", "inv": inv, "classes": classes,
-            "unlisted": sorted(set(inv) - set(frozen)), "violations": violations}
+            "unlisted": sorted(set(inv) - set(frozen)), "violations": violations,
+            "names_only": names_only}
+
+
+def _names_only(path, rule) -> dict:
+    """R-0231-1: list names under a deep-scan-excluded row (no file opened); PASS iff no array
+    file except rule["allowed_arrays"] and no ObservationSet path component."""
+    path, found = Path(path), []
+    for folder, dirs, files in os.walk(path):
+        dirs[:] = sorted(d for d in dirs if d not in rule["prune"])
+        rel = Path(folder).relative_to(path)
+        if "ObservationSet" in rel.parts:
+            found.append(rel.as_posix())
+            dirs[:] = []
+            continue
+        found += [(rel / f).as_posix() for f in sorted(files)
+                  if f.lower().endswith(tuple(rule["array_suffixes"]))
+                  and (rel / f).as_posix() not in rule["allowed_arrays"]]
+    return {"ok": not found, "found": found[:20]}
 
 
 def _scratch_u(scratch, readers_ok) -> dict:

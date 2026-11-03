@@ -140,3 +140,24 @@ def test_g0u_treats_hwsg_locations_as_declarations():
     assert seed.classify_hits_u(stray, frags, c["job_scratch"])["status"] != "PASS"
     src = (TOOLS / "u2" / "hwsu_known.py").read_text(encoding="utf-8")
     assert 'C["g0"].get("declaration_fragments_u2", [])' in src
+
+
+# ----------------------------------------------------------------------------- R-0231-1
+def test_names_only_check_accepts_a_clean_worktree_and_fails_closed(tmp_path):
+    reg = mod("hwsu_registry")
+    rule = mod("hwsu_config").CONTRACT["registry_u2"]["root_table_u2"]["names_only_check"]
+    assert rule["rows"] == ["topo-pilot-hwsd"]
+    wt = tmp_path / "wt"
+    (wt / "docs/proposals/X5_G1_VERIFICATION_OUTPUTS").mkdir(parents=True)
+    (wt / "docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz").write_bytes(b"x")
+    (wt / ".git").mkdir()
+    (wt / ".git" / "pack.npz").write_bytes(b"x")  # pruned
+    (wt / "tools").mkdir()
+    (wt / "tools" / "a.py").write_text("x", encoding="utf-8")
+    assert reg._names_only(wt, rule)["ok"]
+    (wt / "tools" / "HIST_x.npz").write_bytes(b"x")
+    r = reg._names_only(wt, rule)
+    assert not r["ok"] and r["found"] == ["tools/HIST_x.npz"]
+    (wt / "tools" / "HIST_x.npz").unlink()
+    (wt / "artifacts" / "ObservationSet" / "ab").mkdir(parents=True)
+    assert not reg._names_only(wt, rule)["ok"]

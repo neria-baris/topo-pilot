@@ -32,12 +32,7 @@ ADDED_ROWS = ("hwsc-store", "hwsu-store", "hwsd-store", "hwsg-store", "topo-pilo
               "topo-pilot-hwsd", "topo-pilot-hwsg")
 
 
-def _new(present=True) -> dict:
-    return hwsc_registry._new(present)
-
-
-def _close(out, lineage=False) -> dict:
-    return hwsc_registry._close(out, lineage)
+_new, _close = hwsc_registry._new, hwsc_registry._close
 
 
 def _merge(dst, src) -> dict:
@@ -116,13 +111,8 @@ def array_listing(store) -> list:
 
 
 def _metadata(store) -> list:
-    out = []
-    for folder, dirs, files in os.walk(store):
-        here = Path(folder)
-        dirs[:] = sorted(d for d in dirs if not gc.public_summary(here / d))
-        out += [(here / n).relative_to(store).as_posix() for n in sorted(files)
-                if Path(n).suffix in METADATA]
-    return out
+    return [(Path(f) / n).relative_to(store).as_posix() for f, _, ns in os.walk(store)
+            for n in sorted(ns) if Path(n).suffix in METADATA and not gc.public_summary(f)]
 
 
 def source_obligation(store, bound=None, opener=None) -> dict:
@@ -268,10 +258,6 @@ def _obligations(root, bound=None) -> dict:
     return out
 
 
-def readers_version() -> str:
-    return _sha(REG)
-
-
 def certificate(manifest) -> str:
     return _sha({"inventory_sha256": manifest["inventory_sha256"],
                  "readers_version": manifest["readers_version"],
@@ -313,7 +299,7 @@ def _certify(mpath, root, bound):
         if Path(path) == Path(mpath):
             inv = inventory_g(root)
             sha, obl = _inv_sha(root, inv, bound)
-            obj = dict(obj, inventory_sha256=sha, readers_version=readers_version(),
+            obj = dict(obj, inventory_sha256=sha, readers_version=_sha(REG),
                        sources_sha256=_sha([obj.get("sources"), obj.get("hwsc_sources"),
                                             obj.get("nd_sources")]),
                        obligations={k: {"path": v.get("path"), "sha256": v.get("sha256")}

@@ -636,7 +636,21 @@
    ],
    "listing_note": "directory names with mtime >= 2026-10-29 (name listing 2026-11-03; no file opened); some may already be rows of stage C's table; the reserved-glob directories are routed, not rows",
    "row_rule": "one row per top-level directory: READER (named reader), EXCLUSION (reason; frozen_files / hash_frozen as stage C) or a reserved-glob route; built by hwsc_registry.scratch_scan (npz/npy headers and names only) at implementation; re-scanned at KC5, REG1, REG2; a directory without a row -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
-   "rows": "TO_FREEZE"
+   "rows": {
+    "test_hwsg-<job>": {
+     "decision": "EXCLUSION",
+     "rule": "J4 fixture",
+     "prefix": "test_hwsg-",
+     "reason": "synthetic test fixtures of track G (another study); no history of the registered scopes; matched by prefix, listing re-confirmed at the execution freeze (R-0223-10 item 1)"
+    },
+    "hwsg-dry-<job>": {
+     "decision": "EXCLUSION",
+     "rule": "J4 fixture",
+     "prefix": "hwsg-dry",
+     "reason": "dry fixtures of track G (another study); matched by prefix, re-confirmed at the execution freeze (R-0223-10 item 1)"
+    }
+   },
+   "rows_note": "the two rows above are the fixture-rule EXCLUSION rows of R-0223-10; per-directory rows for the other directories remain TO_FREEZE"
   },
   "superset_check": "S-2: stage C's K-REG2 digest set (U8) is a union source; the J1 superset check of the reader-built union (before U8) is a diagnostic: count and list of missing digests",
   "requirements": "protocol 8.3: fit, val (every arm; kfit and feas are not drawn under S3, R-0223-4) disjoint from K-REG1 and from each other; test disjoint from K-REG2; sequence ids disjoint from every frozen union; sealed-D-2a predicate false on every row; collision -> FAIL_TECHNICAL/LINEAGE"
@@ -977,6 +991,12 @@
     },
     "TransformerLM": {
      "kind": "class"
+    }
+   },
+   "k4b_release": {
+    "archive_attempt": {
+     "kind": "function",
+     "call_time_reads": {}
     }
    }
   },

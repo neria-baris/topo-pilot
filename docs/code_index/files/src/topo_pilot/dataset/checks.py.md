@@ -69,7 +69,7 @@
 - [tools/hwsc/hwsc_data.py](../../../tools/hwsc/hwsc_data.py.md) (line 26, import)
 - [tools/hwsg/hwsg_bind.py](../../../tools/hwsg/hwsg_bind.py.md) (line 20, import)
 - [tools/hwsg/hwsg_known.py](../../../tools/hwsg/hwsg_known.py.md) (line 29, import)
-- [tools/hwsg/hwsg_train.py](../../../tools/hwsg/hwsg_train.py.md) (line 235, import)
+- [tools/hwsg/hwsg_train.py](../../../tools/hwsg/hwsg_train.py.md) (line 241, import)
 - [tools/hwsu/hwsu_pairs.py](../../../tools/hwsu/hwsu_pairs.py.md) (line 10, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 20, import)
 - [tools/x6_stage1/x6s1_cloud.py](../../../tools/x6_stage1/x6s1_cloud.py.md) (line 28, import)

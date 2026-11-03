@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_known.py](../../../../../tools/hwsg/hwsg_known.py)
 - Kind: python
-- Lines: 356
+- Lines: 369
 
 ## Module docstring
 
@@ -31,10 +31,11 @@
 - `import hwsg_records` -> [tools/hwsg/hwsg_records.py](hwsg_records.py.md) (line 58, via same directory) (inside a function)
 - `from hwsg_train import child_argv, child_env` -> [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 166, via same directory) (inside a function)
 - `import k4b_cert` -> [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 206, via unique basename) (inside a function)
-- `import hwsg_registry` -> [tools/hwsg/hwsg_registry.py](hwsg_registry.py.md) (line 286, via same directory) (inside a function)
-- `import hwsg_records` -> [tools/hwsg/hwsg_records.py](hwsg_records.py.md) (line 295, via same directory) (inside a function)
-- `from hwsg_oracle import store_for` -> [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 296, via same directory) (inside a function)
-- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 352, via unique basename) (inside a function)
+- `import k4b_release` -> [tools/k4b/k4b_release.py](../k4b/k4b_release.py.md) (line 287, via unique basename) (inside a function)
+- `import hwsg_registry` -> [tools/hwsg/hwsg_registry.py](hwsg_registry.py.md) (line 297, via same directory) (inside a function)
+- `import hwsg_records` -> [tools/hwsg/hwsg_records.py](hwsg_records.py.md) (line 307, via same directory) (inside a function)
+- `from hwsg_oracle import store_for` -> [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 308, via same directory) (inside a function)
+- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 365, via unique basename) (inside a function)
 
 ### External (third-party)
 
@@ -70,6 +71,7 @@
 
 ## Imported by
 
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 13, import)
 - [tools/hwsg/hwsg_dry.py](hwsg_dry.py.md) (line 9, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 9, import)
 
@@ -94,6 +96,7 @@
 - **function `kg6`** [L220-229]: `def kg6(job) -> dict`
 - **function `_fixture`** [L232-237]: `def _fixture(c, rows=3072, seed=7)`
 - **function `kg7`** [L240-282]: `def kg7() -> dict`
-- **function `kg8`** [L285-291]: `def kg8(out) -> dict`
-- **function `run_kc`** [L294-355]: `def run_kc(out, auth, sched, job) -> dict`
+- **function `_archive`** [L285-293]: `def _archive(out, target, tag) -> None` - Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt).
+- **function `kg8`** [L296-303]: `def kg8(out) -> dict`
+- **function `run_kc`** [L306-368]: `def run_kc(out, auth, sched, job) -> dict`
 

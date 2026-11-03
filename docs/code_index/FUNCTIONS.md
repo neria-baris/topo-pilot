@@ -1,9 +1,9 @@
 # Function key
 
-11205 classes, functions and methods, alphabetical (case-insensitive).
+11212 classes, functions and methods, alphabetical (case-insensitive).
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
-| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `load_contract` | 4947 |
-| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `load_contract` | `test_needle_in` | 4123 |
-| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_needles_and_the_real_contract` | `zt` | 2135 |
+| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `load_config` | 4946 |
+| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `load_config` | `test_near_threshold_plus_fail_is_inconclusive` | 4124 |
+| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_near_unit_gap_is_inconclusive` | `zt` | 2142 |

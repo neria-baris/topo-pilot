@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 331,
-  "code files": 728,
+  "code files": 729,
   "dynamic imports, dynamic expression or unresolved": 39,
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1140,
-  "functions and methods (incl. tests)": 10873,
+  "files indexed": 1141,
+  "functions and methods (incl. tests)": 10880,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1010,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3850,
+  "import statements, internal resolved": 3865,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3346,
-  "internal edges (file to file, with kind and line)": 3909,
-  "python files": 727
+  "import statements, standard library": 3350,
+  "internal edges (file to file, with kind and line)": 3924,
+  "python files": 728
  },
  "cycles": [
   [
@@ -10226,25 +10226,97 @@
    "tests/hwsg/test_b_streams.py",
    "tools/hwsc/hwsc_data.py",
    "dynamic",
-   60
+   61
   ],
   [
    "tests/hwsg/test_b_streams.py",
    "tools/hwsc/hwsc_data.py",
    "dynamic",
-   71
+   73
   ],
   [
    "tests/hwsg/test_b_streams.py",
    "tools/hwsc/hwsc_data.py",
    "dynamic",
-   82
+   84
   ],
   [
    "tests/hwsg/test_b_train_meter.py",
    "tests/hwsg/test_b_common.py",
    "import",
    11
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsc/hwsc_records.py",
+   "import",
+   97
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsc/hwsc_registry.py",
+   "import",
+   18
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_bind.py",
+   "import",
+   10
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_config.py",
+   "import",
+   11
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_handoff.py",
+   "import",
+   12
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_known.py",
+   "import",
+   13
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_oracle.py",
+   "import",
+   14
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_records.py",
+   "import",
+   15
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_registry.py",
+   "import",
+   16
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/hwsg/hwsg_train.py",
+   "import",
+   17
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/k4b/k4b_release.py",
+   "import",
+   19
+  ],
+  [
+   "tests/hwsg/test_impl_review.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   20
   ],
   [
    "tests/hwsu/test_a_of_gates.py",
@@ -20000,7 +20072,7 @@
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_oracle.py",
    "import",
-   296
+   308
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20018,13 +20090,13 @@
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_records.py",
    "import",
-   295
+   307
   ],
   [
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_registry.py",
    "import",
-   286
+   297
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20042,13 +20114,19 @@
    "tools/hwsg/hwsg_known.py",
    "tools/k4b/k4b_driver.py",
    "import",
-   352
+   365
   ],
   [
    "tools/hwsg/hwsg_known.py",
    "tools/k4b/k4b_fresh.py",
    "import",
    21
+  ],
+  [
+   "tools/hwsg/hwsg_known.py",
+   "tools/k4b/k4b_release.py",
+   "import",
+   287
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20142,6 +20220,12 @@
   ],
   [
    "tools/hwsg/hwsg_oracle.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   90
+  ],
+  [
+   "tools/hwsg/hwsg_oracle.py",
    "tools/hwsg/hwsg_bind.py",
    "import",
    6
@@ -20162,13 +20246,13 @@
    "tools/hwsg/hwsg_oracle.py",
    "tools/hwsg/hwsg_handoff.py",
    "import",
-   241
+   244
   ],
   [
    "tools/hwsg/hwsg_oracle.py",
    "tools/hwsg/hwsg_records.py",
    "import",
-   242
+   245
   ],
   [
    "tools/hwsg/hwsg_oracle.py",
@@ -20180,7 +20264,7 @@
    "tools/hwsg/hwsg_oracle.py",
    "tools/k4b/k4b_driver.py",
    "import",
-   243
+   246
   ],
   [
    "tools/hwsg/hwsg_oracle.py",
@@ -20318,7 +20402,7 @@
    "tools/hwsg/hwsg_registry.py",
    "tools/x4_circle_history/scores.py",
    "import",
-   364
+   366
   ],
   [
    "tools/hwsg/hwsg_registry.py",
@@ -20330,25 +20414,25 @@
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   217
+   223
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   234
+   240
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   218
+   224
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/dataset/checks.py",
    "import",
-   235
+   241
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20366,13 +20450,13 @@
    "tools/hwsg/hwsg_train.py",
    "tools/hwsb/hwsb_config.py",
    "import",
-   220
+   226
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "tools/hwsb/hwsb_data.py",
    "import",
-   221
+   227
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20385,6 +20469,12 @@
    "tools/hwsb/hwsb_train.py",
    "import",
    16
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsc/hwsc_config.py",
+   "import",
+   79
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20408,37 +20498,37 @@
    "tools/hwsg/hwsg_train.py",
    "tools/hwsg/hwsg_handoff.py",
    "import",
-   133
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_oracle.py",
-   "import",
-   79
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_oracle.py",
-   "import",
-   216
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_records.py",
-   "import",
-   108
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_records.py",
-   "import",
    134
   ],
   [
    "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_oracle.py",
+   "import",
+   80
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_oracle.py",
+   "import",
+   222
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
    "tools/hwsg/hwsg_records.py",
    "import",
-   196
+   109
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_records.py",
+   "import",
+   135
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_records.py",
+   "import",
+   202
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -27906,15 +27996,21 @@
   },
   "tests/hwsg/test_b_streams.py": {
    "kind": "python",
-   "lines": 128,
+   "lines": 130,
    "purpose": "Author B: streams carry the world key; seeds; disjointness (protocol 2.4, G4, KG2, DRG4).",
-   "sha256": "2e721b8f8e2932b92b78a65fdef92f7b91338787c9b45addd5ec3eaf3d695efb"
+   "sha256": "273ecda2e31eb5227073bdc7aa24e78d79cc39f170d38ae9211d18733e563f5c"
   },
   "tests/hwsg/test_b_train_meter.py": {
    "kind": "python",
    "lines": 97,
    "purpose": "Author B: training children, meter caps, ledgers, basetemps (G7, 10.3, DRG12, DRG13, KG4).",
    "sha256": "e33f5caa1bbafcfcdf57506652fe1b441aa89b58e2ba8c4690a639e8c0d3f631"
+  },
+  "tests/hwsg/test_impl_review.py": {
+   "kind": "python",
+   "lines": 119,
+   "purpose": "Implementer regression tests for R-0224-3 items 1-6 (one per item).",
+   "sha256": "8494540732b1e6381a60e2ba119bb2296cdb8330614ebe9d3a828ee30cd331b6"
   },
   "tests/hwsu/AUTHORSHIP_A.md": {
    "kind": "markdown",
@@ -29628,15 +29724,15 @@
   },
   "tools/hwsg/hwsg_known.py": {
    "kind": "python",
-   "lines": 356,
+   "lines": 369,
    "purpose": "HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job.",
-   "sha256": "c7a9fb861764f1bef1983108981ca6b90563fa7adb7b1131b0e7ac7efb2589af"
+   "sha256": "040da33cc934f898a9699d4d11a55bad7c3e8b9b111c4ff94e79aa17445285c7"
   },
   "tools/hwsg/hwsg_oracle.py": {
    "kind": "python",
-   "lines": 319,
+   "lines": 322,
    "purpose": "HWSG process, identity and stage O (API.md §4; protocol §2.3, §2.6, §3; gates O0-O5).",
-   "sha256": "aba4d62af928120259ab2c6d04627465551b2756f1d41d39d0626e06565945ef"
+   "sha256": "f777e516d97d0a464f350d58ba577c5bc9ba3bd3dbc9381902e0e8f208f931af"
   },
   "tools/hwsg/hwsg_ratio.py": {
    "kind": "python",
@@ -29652,15 +29748,15 @@
   },
   "tools/hwsg/hwsg_registry.py": {
    "kind": "python",
-   "lines": 399,
+   "lines": 401,
    "purpose": "HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6;",
-   "sha256": "19272cb65c15fb685454b103b86519ad191b75a83118d1863d6eccba95b5bbaa"
+   "sha256": "e485f9f0b172bb435e3a27e765d13753a40abf4bc7d7964f3f2da238e9c125f3"
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
-   "lines": 283,
+   "lines": 289,
    "purpose": "HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4).",
-   "sha256": "2bfcf34b80ff43c28e3a1e915b4fa0bf619abaad93c02ab4e1abbfb3af727bcd"
+   "sha256": "5d9cfd045975c101a4f4f4da8dd5343de5dad46ea558bedb42fb4da88a20e690"
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
@@ -159141,7 +159237,7 @@
      "expr": "'hwsc_data'",
      "func": "import_module",
      "label": "hwsc_data",
-     "line": 60,
+     "line": 61,
      "literal": "hwsc_data",
      "paths": [],
      "status": "internal",
@@ -159153,7 +159249,7 @@
      "expr": "'hwsc_data'",
      "func": "import_module",
      "label": "hwsc_data",
-     "line": 71,
+     "line": 73,
      "literal": "hwsc_data",
      "paths": [],
      "status": "internal",
@@ -159165,7 +159261,7 @@
      "expr": "'hwsc_data'",
      "func": "import_module",
      "label": "hwsc_data",
-     "line": 82,
+     "line": 84,
      "literal": "hwsc_data",
      "paths": [],
      "status": "internal",
@@ -159359,7 +159455,7 @@
       "pytest.mark.parametrize('tag', TAGS)"
      ],
      "doc": "",
-     "end": 54,
+     "end": 55,
      "kind": "test",
      "name": "test_block_generators_and_ids",
      "qual": "test_block_generators_and_ids",
@@ -159369,64 +159465,64 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 66,
+     "end": 68,
      "kind": "test",
      "name": "test_train_dev_sequence_ids_follow_scope_role_master",
      "qual": "test_train_dev_sequence_ids_follow_scope_role_master",
      "sig": "def test_train_dev_sequence_ids_follow_scope_role_master()",
-     "start": 57
+     "start": 58
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 77,
+     "end": 79,
      "kind": "test",
      "name": "test_cal_draws_differ_across_worlds_and_from_stage_c",
      "qual": "test_cal_draws_differ_across_worlds_and_from_stage_c",
      "sig": "def test_cal_draws_differ_across_worlds_and_from_stage_c()",
-     "start": 69
+     "start": 71
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 91,
+     "end": 93,
      "kind": "test",
      "name": "test_lgate_cal_val_id_sets_pairwise_disjoint_across_worlds",
      "qual": "test_lgate_cal_val_id_sets_pairwise_disjoint_across_worlds",
      "sig": "def test_lgate_cal_val_id_sets_pairwise_disjoint_across_worlds()",
-     "start": 80
+     "start": 82
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 104,
+     "end": 106,
      "kind": "test",
      "name": "test_planted_shared_sigma_pair_collides_under_sigma_only_tags",
      "qual": "test_planted_shared_sigma_pair_collides_under_sigma_only_tags",
      "sig": "def test_planted_shared_sigma_pair_collides_under_sigma_only_tags()",
-     "start": 94
+     "start": 96
     },
     {
      "decorators": [
       "pytest.mark.parametrize('tag', TAGS)"
      ],
      "doc": "",
-     "end": 119,
+     "end": 121,
      "kind": "test",
      "name": "test_seeds_masters_and_run_keys_equal_contract",
      "qual": "test_seeds_masters_and_run_keys_equal_contract",
      "sig": "def test_seeds_masters_and_run_keys_equal_contract(tag)",
-     "start": 108
+     "start": 110
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 128,
+     "end": 130,
      "kind": "test",
      "name": "test_dry_seeds_and_masters_do_not_touch_real_ones",
      "qual": "test_dry_seeds_and_masters_do_not_touch_real_ones",
      "sig": "def test_dry_seeds_and_masters_do_not_touch_real_ones()",
-     "start": 122
+     "start": 124
     }
    ],
    "syspath": [
@@ -159641,6 +159737,352 @@
      ],
      "expr": "str(Path(__file__).resolve().parent)",
      "line": 10
+    }
+   ]
+  },
+  "tests/hwsg/test_impl_review.py": {
+   "constants": [
+    "HERE"
+   ],
+   "doc": "Implementer regression tests for R-0224-3 items 1-6 (one per item).",
+   "doc1": "Implementer regression tests for R-0224-3 items 1-6 (one per item).",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 2,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 3,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "hwsg_bind"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_bind.py"
+     ],
+     "top": "hwsg_bind"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "hwsg_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_config.py"
+     ],
+     "top": "hwsg_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "hwsg_handoff"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_handoff.py"
+     ],
+     "top": "hwsg_handoff"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "",
+     "names": [
+      "hwsg_known"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_known.py"
+     ],
+     "top": "hwsg_known"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 14,
+     "module": "",
+     "names": [
+      "hwsg_oracle"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_oracle.py"
+     ],
+     "top": "hwsg_oracle"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 15,
+     "module": "",
+     "names": [
+      "hwsg_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_records.py"
+     ],
+     "top": "hwsg_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 16,
+     "module": "",
+     "names": [
+      "hwsg_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_registry.py"
+     ],
+     "top": "hwsg_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "sys.path edit",
+     "lazy": false,
+     "level": 0,
+     "line": 17,
+     "module": "",
+     "names": [
+      "hwsg_train"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_train.py"
+     ],
+     "top": "hwsg_train"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
+      "hwsc_registry"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_registry.py"
+     ],
+     "top": "hwsc_registry"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 19,
+     "module": "",
+     "names": [
+      "k4b_release"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_release.py"
+     ],
+     "top": "k4b_release"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 20,
+     "module": "",
+     "names": [
+      "stage_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/x4_circle_history/stage_records.py"
+     ],
+     "top": "stage_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 90,
+     "module": "",
+     "names": [
+      "os"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "os"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 97,
+     "module": "hwsc_records",
+     "names": [
+      "superseded_ok"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_records.py"
+     ],
+     "top": "hwsc_records"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 35,
+     "kind": "test",
+     "name": "test_1_inventory_g_passes_readers",
+     "qual": "test_1_inventory_g_passes_readers",
+     "sig": "def test_1_inventory_g_passes_readers(monkeypatch, tmp_path)",
+     "start": 23
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 54,
+     "kind": "test",
+     "name": "test_2_run_train_creates_reservation",
+     "qual": "test_2_run_train_creates_reservation",
+     "sig": "def test_2_run_train_creates_reservation(monkeypatch, tmp_path)",
+     "start": 38
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "test",
+     "name": "test_3_sources_passes_contract_scratch_table",
+     "qual": "test_3_sources_passes_contract_scratch_table",
+     "sig": "def test_3_sources_passes_contract_scratch_table(monkeypatch, tmp_path)",
+     "start": 57
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 93,
+     "kind": "test",
+     "name": "test_4_rerun_archives_and_kg4_takes_newest",
+     "qual": "test_4_rerun_archives_and_kg4_takes_newest",
+     "sig": "def test_4_rerun_archives_and_kg4_takes_newest(monkeypatch, tmp_path)",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 103,
+     "kind": "test",
+     "name": "test_5_superseded_name_accepted",
+     "qual": "test_5_superseded_name_accepted",
+     "sig": "def test_5_superseded_name_accepted(tmp_path)",
+     "start": 96
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 119,
+     "kind": "test",
+     "name": "test_6_identity_checker_uses_passed_store",
+     "qual": "test_6_identity_checker_uses_passed_store",
+     "sig": "def test_6_identity_checker_uses_passed_store(monkeypatch, tmp_path)",
+     "start": 106
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsg"
+     ],
+     "expr": "str(HERE)",
+     "line": 8
     }
    ]
   },
@@ -254036,10 +254478,27 @@
     {
      "candidates": [],
      "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 287,
+     "module": "",
+     "names": [
+      "k4b_release"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_release.py"
+     ],
+     "top": "k4b_release"
+    },
+    {
+     "candidates": [],
+     "form": "import",
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 286,
+     "line": 297,
      "module": "",
      "names": [
       "hwsg_registry"
@@ -254056,7 +254515,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 295,
+     "line": 307,
      "module": "",
      "names": [
       "hwsg_records"
@@ -254073,7 +254532,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 296,
+     "line": 308,
      "module": "hwsg_oracle",
      "names": [
       "store_for"
@@ -254090,7 +254549,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 352,
+     "line": 365,
      "module": "",
      "names": [
       "k4b_driver"
@@ -254255,23 +254714,33 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 291,
+     "doc": "Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt).",
+     "end": 293,
      "kind": "function",
-     "name": "kg8",
-     "qual": "kg8",
-     "sig": "def kg8(out) -> dict",
+     "name": "_archive",
+     "qual": "_archive",
+     "sig": "def _archive(out, target, tag) -> None",
      "start": 285
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 355,
+     "end": 303,
+     "kind": "function",
+     "name": "kg8",
+     "qual": "kg8",
+     "sig": "def kg8(out) -> dict",
+     "start": 296
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 368,
      "kind": "function",
      "name": "run_kc",
      "qual": "run_kc",
      "sig": "def run_kc(out, auth, sched, job) -> dict",
-     "start": 294
+     "start": 306
     }
    ],
    "syspath": []
@@ -254714,10 +255183,27 @@
     {
      "candidates": [],
      "form": "import",
+     "how": "unique basename",
+     "lazy": true,
+     "level": 0,
+     "line": 90,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 241,
+     "line": 244,
      "module": "",
      "names": [
       "hwsg_handoff"
@@ -254734,7 +255220,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 242,
+     "line": 245,
      "module": "",
      "names": [
       "hwsg_records"
@@ -254751,7 +255237,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 243,
+     "line": 246,
      "module": "",
      "names": [
       "k4b_driver"
@@ -254797,7 +255283,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 100,
+     "end": 103,
      "kind": "function",
      "name": "identity_checker",
      "qual": "identity_checker",
@@ -254807,122 +255293,122 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 105,
+     "end": 108,
      "kind": "function",
      "name": "_sha",
      "qual": "_sha",
      "sig": "def _sha(path) -> str",
-     "start": 104
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 131,
+     "end": 134,
      "kind": "function",
      "name": "selection",
      "qual": "selection",
      "sig": "def selection(report_path=None, s3_dir=None) -> dict",
-     "start": 108
+     "start": 111
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 139,
+     "end": 142,
      "kind": "function",
      "name": "_s3",
      "qual": "_s3",
      "sig": "def _s3(w, s3_dir=None) -> dict",
-     "start": 134
+     "start": 137
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 164,
+     "end": 167,
      "kind": "function",
      "name": "law",
      "qual": "law",
      "sig": "def law(proc, w, s3_dir=None) -> dict",
-     "start": 143
+     "start": 146
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 174,
+     "end": 177,
      "kind": "function",
      "name": "d2a",
      "qual": "d2a",
      "sig": "def d2a(proc) -> dict",
-     "start": 167
+     "start": 170
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 183,
+     "end": 186,
      "kind": "function",
      "name": "headroom",
      "qual": "headroom",
      "sig": "def headroom(w, report) -> dict",
-     "start": 177
+     "start": 180
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 199,
+     "end": 202,
      "kind": "function",
      "name": "_means",
      "qual": "_means",
      "sig": "def _means(proc, tok) -> dict",
-     "start": 187
+     "start": 190
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 223,
+     "end": 226,
      "kind": "function",
      "name": "reproduce",
      "qual": "reproduce",
      "sig": "def reproduce(proc_hws, w, hist_path=None, s3_dir=None) -> dict",
-     "start": 202
+     "start": 205
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 228,
+     "end": 231,
      "kind": "function",
      "name": "stage_a_process",
      "qual": "stage_a_process",
      "sig": "def stage_a_process(w)",
-     "start": 226
+     "start": 229
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 232,
+     "end": 235,
      "kind": "function",
      "name": "store_for",
      "qual": "store_for",
      "sig": "def store_for(wdir) -> ArtifactStore",
-     "start": 231
+     "start": 234
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 240,
      "kind": "function",
      "name": "_files",
      "qual": "_files",
      "sig": "def _files(d) -> set",
-     "start": 235
+     "start": 238
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 319,
+     "end": 322,
      "kind": "function",
      "name": "run_o",
      "qual": "run_o",
      "sig": "def run_o(out, auth, sched, job, store=None) -> dict",
-     "start": 240
+     "start": 243
     }
    ],
    "syspath": []
@@ -255958,7 +256444,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 364,
+     "line": 366,
      "module": "",
      "names": [
       "scores"
@@ -256098,7 +256584,7 @@
      "kind": "function",
      "name": "inventory_g",
      "qual": "inventory_g",
-     "sig": "def inventory_g(root=None) -> dict",
+     "sig": "def inventory_g(root=None, readers=None) -> dict",
      "start": 231
     },
     {
@@ -256164,7 +256650,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 291,
+     "end": 293,
      "kind": "function",
      "name": "sources",
      "qual": "sources",
@@ -256176,72 +256662,72 @@
       "contextlib.contextmanager"
      ],
      "doc": "",
-     "end": 314,
+     "end": 316,
      "kind": "function",
      "name": "_certify",
      "qual": "_certify",
      "sig": "def _certify(mpath, root, bound)",
-     "start": 295
+     "start": 297
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 349,
+     "end": 351,
      "kind": "function",
      "name": "build",
      "qual": "build",
      "sig": "def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict",
-     "start": 317
+     "start": 319
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "",
-     "end": 359,
+     "end": 361,
      "kind": "class",
      "name": "_RegView",
      "qual": "_RegView",
-     "start": 353
+     "start": 355
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 356,
+     "end": 358,
      "kind": "method",
      "name": "__init__",
      "qual": "_RegView.__init__",
      "sig": "def __init__(self, d)",
-     "start": 354
+     "start": 356
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 359,
+     "end": 361,
      "kind": "method",
      "name": "contains",
      "qual": "_RegView.contains",
      "sig": "def contains(self, digest)",
-     "start": 358
+     "start": 360
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 369,
+     "end": 371,
      "kind": "function",
      "name": "_table",
      "qual": "_table",
      "sig": "def _table(t) -> dict",
-     "start": 362
+     "start": 364
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 399,
+     "end": 401,
      "kind": "function",
      "name": "separation_g",
      "qual": "separation_g",
      "sig": "def separation_g(reg, tables_by_world) -> dict",
-     "start": 372
+     "start": 374
     }
    ],
    "syspath": []
@@ -256578,10 +257064,27 @@
     {
      "candidates": [],
      "form": "import",
-     "how": "same directory",
+     "how": "unique basename",
      "lazy": true,
      "level": 0,
      "line": 79,
+     "module": "",
+     "names": [
+      "hwsc_config"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsc/hwsc_config.py"
+     ],
+     "top": "hwsc_config"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": true,
+     "level": 0,
+     "line": 80,
      "module": "",
      "names": [
       "hwsg_oracle"
@@ -256598,7 +257101,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 108,
+     "line": 109,
      "module": "",
      "names": [
       "hwsg_records"
@@ -256615,7 +257118,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 133,
+     "line": 134,
      "module": "",
      "names": [
       "hwsg_handoff"
@@ -256632,7 +257135,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 134,
+     "line": 135,
      "module": "",
      "names": [
       "hwsg_records"
@@ -256649,7 +257152,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 196,
+     "line": 202,
      "module": "",
      "names": [
       "hwsg_records"
@@ -256666,7 +257169,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 216,
+     "line": 222,
      "module": "",
      "names": [
       "hwsg_oracle"
@@ -256683,7 +257186,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 217,
+     "line": 223,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore",
@@ -256701,7 +257204,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 218,
+     "line": 224,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "MemoryBackend"
@@ -256718,7 +257221,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 220,
+     "line": 226,
      "module": "",
      "names": [
       "hwsb_config"
@@ -256735,7 +257238,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 221,
+     "line": 227,
      "module": "",
      "names": [
       "hwsb_data"
@@ -256752,7 +257255,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 234,
+     "line": 240,
      "module": "topo_pilot.contracts",
      "names": [
       "ObservationSet"
@@ -256769,7 +257272,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 235,
+     "line": 241,
      "module": "topo_pilot.dataset.checks",
      "names": [
       "make_sequence_ids",
@@ -256787,7 +257290,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 242,
+     "line": 248,
      "module": "",
      "names": [
       "dataclasses"
@@ -256861,7 +257364,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 125,
+     "end": 126,
      "kind": "function",
      "name": "child",
      "qual": "child",
@@ -256871,62 +257374,62 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 129,
+     "end": 130,
      "kind": "function",
      "name": "_next_attempt",
      "qual": "_next_attempt",
      "sig": "def _next_attempt(wd, master) -> int",
-     "start": 128
+     "start": 129
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 192,
+     "end": 198,
      "kind": "function",
      "name": "run_train",
      "qual": "run_train",
      "sig": "def run_train(out, w, auth, sched, kc_accept, job, launcher=None) -> dict",
-     "start": 132
+     "start": 133
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 211,
+     "end": 217,
      "kind": "function",
      "name": "aggregate",
      "qual": "aggregate",
      "sig": "def aggregate(world_dir, job, ledger_path) -> dict",
-     "start": 195
+     "start": 201
     },
     {
      "decorators": [],
      "doc": "One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums.",
-     "end": 253,
+     "end": 259,
      "kind": "function",
      "name": "kg4_child",
      "qual": "kg4_child",
      "sig": "def kg4_child(master, out, steps=100, persist=True) -> dict",
-     "start": 214
+     "start": 220
     },
     {
      "decorators": [],
      "doc": "Start a dry child and kill it at once (DRG12): it must leave no record.",
-     "end": 263,
+     "end": 269,
      "kind": "function",
      "name": "_launch_kill",
      "qual": "_launch_kill",
      "sig": "def _launch_kill(out) -> bool",
-     "start": 256
+     "start": 262
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 279,
+     "end": 285,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 266
+     "start": 272
     }
    ],
    "syspath": []
@@ -294480,5 +294983,5 @@
    ]
   }
  },
- "sources_digest": "6a292338b883d1d88e875e6a3bd92ac16b2080e4e2d7bc9ca3fed85d52dbd160"
+ "sources_digest": "fd771820e1550eae2cf7f7e3ba19a1f797436592f091e02e93853df9f4f38218"
 }

@@ -60,6 +60,7 @@
 ## Imported by
 
 - [tests/hwsg/test_a_kg6_port.py](../../tests/hwsg/test_a_kg6_port.py.md) (line 25, import)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 10, import)
 - [tools/hwsg/hwsg_dry.py](hwsg_dry.py.md) (line 7, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 7, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 6, import)

@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked files; 728 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked files; 729 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1037,8 +1037,9 @@ The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked fil
 | [test_b_handoff_oracle.py](files/tests/hwsg/test_b_handoff_oracle.py.md) | python | 176 lines | Author B: WORLD_HANDOFF and oracle identity/reproduction (protocol 2.6, O1, O3, O4). |
 | [test_b_records.py](files/tests/hwsg/test_b_records.py.md) | python | 165 lines | Author B: sealing, terminal RESULTs, S8 export, markers, barrier, cross inputs, ledger. |
 | [test_b_registry.py](files/tests/hwsg/test_b_registry.py.md) | python | 275 lines | Author B: registry fixtures, class-to-reader table, inventory fail-closed (protocol 6, N6, DRG9). |
-| [test_b_streams.py](files/tests/hwsg/test_b_streams.py.md) | python | 128 lines | Author B: streams carry the world key; seeds; disjointness (protocol 2.4, G4, KG2, DRG4). |
+| [test_b_streams.py](files/tests/hwsg/test_b_streams.py.md) | python | 130 lines | Author B: streams carry the world key; seeds; disjointness (protocol 2.4, G4, KG2, DRG4). |
 | [test_b_train_meter.py](files/tests/hwsg/test_b_train_meter.py.md) | python | 97 lines | Author B: training children, meter caps, ledgers, basetemps (G7, 10.3, DRG12, DRG13, KG4). |
+| [test_impl_review.py](files/tests/hwsg/test_impl_review.py.md) | python | 119 lines | Implementer regression tests for R-0224-3 items 1-6 (one per item). |
 
 ## tests/hwsu/
 
@@ -1469,12 +1470,12 @@ The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked fil
 | [hwsg_dry2.py](files/tools/hwsg/hwsg_dry2.py.md) | python | 243 lines | HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1). |
 | [hwsg_handoff.py](files/tools/hwsg/hwsg_handoff.py.md) | python | 115 lines | HWSG WORLD_HANDOFF: build, write, load, view for stage-C functions (API.md §3; protocol §2.6). |
 | [hwsg_jobs.py](files/tools/hwsg/hwsg_jobs.py.md) | python | 271 lines | HWSG jobs: REG1, E1-w, REG2, E2-w and the CLI (API.md §11.4-§11.7). Every world stage runs |
-| [hwsg_known.py](files/tools/hwsg/hwsg_known.py.md) | python | 356 lines | HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job. |
-| [hwsg_oracle.py](files/tools/hwsg/hwsg_oracle.py.md) | python | 319 lines | HWSG process, identity and stage O (API.md §4; protocol §2.3, §2.6, §3; gates O0-O5). |
+| [hwsg_known.py](files/tools/hwsg/hwsg_known.py.md) | python | 369 lines | HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job. |
+| [hwsg_oracle.py](files/tools/hwsg/hwsg_oracle.py.md) | python | 322 lines | HWSG process, identity and stage O (API.md §4; protocol §2.3, §2.6, §3; gates O0-O5). |
 | [hwsg_ratio.py](files/tools/hwsg/hwsg_ratio.py.md) | python | 81 lines | HWSG capture ratio rho = X- / Delta4_orc with its joint bootstrap (API.md §7; N1, N7). |
 | [hwsg_records.py](files/tools/hwsg/hwsg_records.py.md) | python | 349 lines | HWSG records: preflight, S0, FREEZE, lineage, ledger, outcome, terminal RESULT, export, |
-| [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 399 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
-| [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 283 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
+| [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 401 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
+| [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 289 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
 
 ## tools/hwsu/
 

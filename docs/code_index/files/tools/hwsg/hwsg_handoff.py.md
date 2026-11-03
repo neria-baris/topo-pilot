@@ -47,12 +47,13 @@
 
 ## Imported by
 
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 12, import)
 - [tools/hwsg/hwsg_bind.py](hwsg_bind.py.md) (line 42, import)
 - [tools/hwsg/hwsg_dry2.py](hwsg_dry2.py.md) (line 8, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 8, import)
 - [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 88, import)
-- [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 241, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 133, import)
+- [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 244, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 134, import)
 
 ## Top-level constants
 

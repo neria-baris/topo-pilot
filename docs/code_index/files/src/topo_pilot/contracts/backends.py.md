@@ -69,7 +69,7 @@
 - [tools/hwsg/hwsg_jobs.py](../../../tools/hwsg/hwsg_jobs.py.md) (line 32, import)
 - [tools/hwsg/hwsg_known.py](../../../tools/hwsg/hwsg_known.py.md) (line 28, import)
 - [tools/hwsg/hwsg_oracle.py](../../../tools/hwsg/hwsg_oracle.py.md) (line 27, import)
-- [tools/hwsg/hwsg_train.py](../../../tools/hwsg/hwsg_train.py.md) (line 218, import)
+- [tools/hwsg/hwsg_train.py](../../../tools/hwsg/hwsg_train.py.md) (line 224, import)
 - [tools/k4b/k4b_driver.py](../../../tools/k4b/k4b_driver.py.md) (line 139, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 191, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 243, import)

@@ -97,6 +97,8 @@
 - [tools/hwsg/hwsg_config.py](../hwsg/hwsg_config.py.md) (line 28, import)
 - [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 17, import)
 - [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 19, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 90, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 79, import)
 - [tools/hwsu/hwsu_config.py](../hwsu/hwsu_config.py.md) (line 26, import)
 
 ## Top-level constants

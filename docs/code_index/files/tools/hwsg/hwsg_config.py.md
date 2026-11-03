@@ -59,6 +59,7 @@
 - [tests/hwsg/test_a_ratio.py](../../tests/hwsg/test_a_ratio.py.md) (line 23, import)
 - [tests/hwsg/test_a_selection.py](../../tests/hwsg/test_a_selection.py.md) (line 24, import)
 - [tests/hwsg/test_b_common.py](../../tests/hwsg/test_b_common.py.md) (line 29, dynamic)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 11, import)
 - [tools/hwsg/hwsg_bind.py](hwsg_bind.py.md) (line 6, import)
 - [tools/hwsg/hwsg_cross.py](hwsg_cross.py.md) (line 6, import)
 - [tools/hwsg/hwsg_dry.py](hwsg_dry.py.md) (line 6, import)

@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_oracle.py](../../../../../tools/hwsg/hwsg_oracle.py)
 - Kind: python
-- Lines: 319
+- Lines: 322
 
 ## Module docstring
 
@@ -31,9 +31,10 @@
 - `from topo_pilot.process.transition import TransitionBuilder` -> [src/topo_pilot/process/transition.py](../../src/topo_pilot/process/transition.py.md) (line 29, via package root)
 - `from topo_pilot.process import TransitionConfig` -> [src/topo_pilot/process/__init__.py](../../src/topo_pilot/process/__init__.py.md) (line 55, via package root) (inside a function)
 - `import hwsg_handoff` -> [tools/hwsg/hwsg_handoff.py](hwsg_handoff.py.md) (line 88, via same directory) (inside a function)
-- `import hwsg_handoff` -> [tools/hwsg/hwsg_handoff.py](hwsg_handoff.py.md) (line 241, via same directory) (inside a function)
-- `import hwsg_records` -> [tools/hwsg/hwsg_records.py](hwsg_records.py.md) (line 242, via same directory) (inside a function)
-- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 243, via unique basename) (inside a function)
+- `import hwsc_config` -> [tools/hwsc/hwsc_config.py](../hwsc/hwsc_config.py.md) (line 90, via unique basename) (inside a function)
+- `import hwsg_handoff` -> [tools/hwsg/hwsg_handoff.py](hwsg_handoff.py.md) (line 244, via same directory) (inside a function)
+- `import hwsg_records` -> [tools/hwsg/hwsg_records.py](hwsg_records.py.md) (line 245, via same directory) (inside a function)
+- `import k4b_driver` -> [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 246, via unique basename) (inside a function)
 
 ### External (third-party)
 
@@ -68,13 +69,14 @@
 
 - [tests/hwsg/test_a_law.py](../../tests/hwsg/test_a_law.py.md) (line 25, import)
 - [tests/hwsg/test_a_selection.py](../../tests/hwsg/test_a_selection.py.md) (line 25, import)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 14, import)
 - [tools/hwsg/hwsg_bind.py](hwsg_bind.py.md) (line 43, import)
 - [tools/hwsg/hwsg_dry.py](hwsg_dry.py.md) (line 10, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 236, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 7, import)
-- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 296, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 79, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 216, import)
+- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 308, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 80, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 222, import)
 
 ## Top-level constants
 
@@ -85,17 +87,17 @@
 - **function `build_process_g`** [L34-41]: `def build_process_g(store, w, masters=None) -> dict`
 - **function `process_builder`** [L44-45]: `def process_builder(key)`
 - **function `identity`** [L48-79]: `def identity(store, proc, w) -> dict`
-- **function `identity_checker`** [L82-100]: `def identity_checker(key)`
-- **function `_sha`** [L104-105]: `def _sha(path) -> str`
-- **function `selection`** [L108-131]: `def selection(report_path=None, s3_dir=None) -> dict`
-- **function `_s3`** [L134-139]: `def _s3(w, s3_dir=None) -> dict`
-- **function `law`** [L143-164]: `def law(proc, w, s3_dir=None) -> dict`
-- **function `d2a`** [L167-174]: `def d2a(proc) -> dict`
-- **function `headroom`** [L177-183]: `def headroom(w, report) -> dict`
-- **function `_means`** [L187-199]: `def _means(proc, tok) -> dict`
-- **function `reproduce`** [L202-223]: `def reproduce(proc_hws, w, hist_path=None, s3_dir=None) -> dict`
-- **function `stage_a_process`** [L226-228]: `def stage_a_process(w)`
-- **function `store_for`** [L231-232]: `def store_for(wdir) -> ArtifactStore`
-- **function `_files`** [L235-237]: `def _files(d) -> set`
-- **function `run_o`** [L240-319]: `def run_o(out, auth, sched, job, store=None) -> dict`
+- **function `identity_checker`** [L82-103]: `def identity_checker(key)`
+- **function `_sha`** [L107-108]: `def _sha(path) -> str`
+- **function `selection`** [L111-134]: `def selection(report_path=None, s3_dir=None) -> dict`
+- **function `_s3`** [L137-142]: `def _s3(w, s3_dir=None) -> dict`
+- **function `law`** [L146-167]: `def law(proc, w, s3_dir=None) -> dict`
+- **function `d2a`** [L170-177]: `def d2a(proc) -> dict`
+- **function `headroom`** [L180-186]: `def headroom(w, report) -> dict`
+- **function `_means`** [L190-202]: `def _means(proc, tok) -> dict`
+- **function `reproduce`** [L205-226]: `def reproduce(proc_hws, w, hist_path=None, s3_dir=None) -> dict`
+- **function `stage_a_process`** [L229-231]: `def stage_a_process(w)`
+- **function `store_for`** [L234-235]: `def store_for(wdir) -> ArtifactStore`
+- **function `_files`** [L238-240]: `def _files(d) -> set`
+- **function `run_o`** [L243-322]: `def run_o(out, auth, sched, job, store=None) -> dict`
 

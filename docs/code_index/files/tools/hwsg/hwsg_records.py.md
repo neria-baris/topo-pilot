@@ -56,15 +56,16 @@
 ## Imported by
 
 - [tests/hwsg/test_a_outcomes_licences.py](../../tests/hwsg/test_a_outcomes_licences.py.md) (line 24, import)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 15, import)
 - [tools/hwsg/hwsg_cross.py](hwsg_cross.py.md) (line 173, import)
 - [tools/hwsg/hwsg_dry2.py](hwsg_dry2.py.md) (line 9, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 11, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 58, import)
-- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 295, import)
-- [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 242, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 108, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 134, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 196, import)
+- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 307, import)
+- [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 245, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 109, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 135, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 202, import)
 
 ## Top-level constants
 

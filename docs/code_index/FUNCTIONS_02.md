@@ -2,8 +2,6 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
-| `load_contract` | function | `load_contract` | [tools/c1prime/c1_config.py:34](../../tools/c1prime/c1_config.py#L34) |  |
-| `load_contract` | function | `load_contract` | [tools/c2_nd/nd_config.py:49](../../tools/c2_nd/nd_config.py#L49) | CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256. |
 | `load_contract` | function | `load_contract` | [tools/c2_readout/c2_config.py:61](../../tools/c2_readout/c2_config.py#L61) | CONTRACT.json (utf-8); ValueError unless it names the frozen protocol sha256. |
 | `load_contract` | function | `load_contract` | [tools/hws/hws_worlds.py:42](../../tools/hws/hws_worlds.py#L42) |  |
 | `load_contract` | function | `load_contract` | [tools/hwsb/hwsb_config.py:43](../../tools/hwsb/hwsb_config.py#L43) |  |
@@ -466,7 +464,7 @@
 | `obligation` | function | `obligation` | [tools/hwsc/hwsc_registry_build.py:156](../../tools/hwsc/hwsc_registry_build.py#L156) |  |
 | `obligation_check` | function | `obligation_check` | [tools/hwsd/hwsd_readers.py:226](../../tools/hwsd/hwsd_readers.py#L226) |  |
 | `obligation_files` | function | `obligation_files` | [tools/hwsd/hwsd_data.py:247](../../tools/hwsd/hwsd_data.py#L247) |  |
-| `obligation_files` | function | `obligation_files` | [tools/hwsg/hwsg_registry.py:76](../../tools/hwsg/hwsg_registry.py#L76) |  |
+| `obligation_files` | function | `obligation_files` | [tools/hwsg/hwsg_registry.py:71](../../tools/hwsg/hwsg_registry.py#L71) |  |
 | `obligation_name` | function | `obligation_name` | [tools/hwsu/hwsu_resv.py:159](../../tools/hwsu/hwsu_resv.py#L159) |  |
 | `obligation_reader_fixture` | function | `obligation_reader_fixture` | [tools/hwsu/hwsu_dry_b.py:25](../../tools/hwsu/hwsu_dry_b.py#L25) |  |
 | `obs_inventory` | function | `obs_inventory` | [tools/hwsc/hwsc_driver.py:139](../../tools/hwsc/hwsc_driver.py#L139) |  |
@@ -1016,7 +1014,7 @@
 | `read_json` | function | `read_json` | [tools/hwsd/hwsd_config.py:223](../../tools/hwsd/hwsd_config.py#L223) |  |
 | `read_json` | function | `read_json` | [tools/hwsg/hwsg_config.py:254](../../tools/hwsg/hwsg_config.py#L254) |  |
 | `read_json` | function | `read_json` | [tools/hwsu/hwsu_config.py:157](../../tools/hwsu/hwsu_config.py#L157) |  |
-| `read_k4b_history_table` | function | `read_k4b_history_table` | [tools/hwsg/hwsg_registry.py:55](../../tools/hwsg/hwsg_registry.py#L55) |  |
+| `read_k4b_history_table` | function | `read_k4b_history_table` | [tools/hwsg/hwsg_registry.py:50](../../tools/hwsg/hwsg_registry.py#L50) |  |
 | `read_k4b_table` | function | `read_k4b_table` | [tools/hwsd/hwsd_readers.py:45](../../tools/hwsd/hwsd_readers.py#L45) |  |
 | `read_kreg2` | function | `read_kreg2` | [tools/x6_stage1/x6s1_registry.py:199](../../tools/x6_stage1/x6s1_registry.py#L199) | Streams and validates K-REG2 against its manifest (dtype, shape, strict order, count, |
 | `read_manifest` | function | `read_manifest` | [tools/x6_stage0/x6_store.py:128](../../tools/x6_stage0/x6_store.py#L128) |  |
@@ -1026,7 +1024,6 @@
 | `read_outcome` | function | `read_outcome` | [src/topo_pilot/experiment/x5g1t_runtime.py:164](../../src/topo_pilot/experiment/x5g1t_runtime.py#L164) |  |
 | `read_store` | function | `read_store` | [src/topo_pilot/experiment/x5g1t_config.py:250](../../src/topo_pilot/experiment/x5g1t_config.py#L250) |  |
 | `read_train_record` | function | `read_train_record` | [tools/hwsd/hwsd_config.py:228](../../tools/hwsd/hwsd_config.py#L228) |  |
-| `readers_version` | function | `readers_version` | [tools/hwsg/hwsg_registry.py:271](../../tools/hwsg/hwsg_registry.py#L271) |  |
 | `readme_md` | function | `readme_md` | [tools/code_index/render_lists.py:96](../../tools/code_index/render_lists.py#L96) |  |
 | `readout` | function | `readout` | [tests/c2_readout/test_b_patch.py:191](../../tests/c2_readout/test_b_patch.py#L191) |  |
 | `readout` | function | `readout` | [tools/c2_nd/nd_split.py:234](../../tools/c2_nd/nd_split.py#L234) |  |
@@ -1052,7 +1049,7 @@
 | `rec` | function | `rec` | [tests/hwsc/test_b_registry2.py:46](../../tests/hwsc/test_b_registry2.py#L46) |  |
 | `rec` | function | `rec` | [tools/c2_nd/nd_stage_base.py:259](../../tools/c2_nd/nd_stage_base.py#L259) |  |
 | `rec` | function | `rec` | [tools/c2_readout/c2_stage_base.py:132](../../tools/c2_readout/c2_stage_base.py#L132) |  |
-| `recheck` | function | `recheck` | [tools/hwsg/hwsg_registry.py:286](../../tools/hwsg/hwsg_registry.py#L286) |  |
+| `recheck` | function | `recheck` | [tools/hwsg/hwsg_registry.py:272](../../tools/hwsg/hwsg_registry.py#L272) |  |
 | `recognised` | function | `recognised` | [tools/c2_nd/nd_stage_base.py:172](../../tools/c2_nd/nd_stage_base.py#L172) | {rel: sha256}: coordinator records, the bound meter file, every accepted manifest's files |
 | `recognised` | function | `recognised` | [tools/c2_readout/c2_driver.py:287](../../tools/c2_readout/c2_driver.py#L287) |  |
 | `record` | function | `record` | [tools/c1prime/c1_env.py:23](../../tools/c1prime/c1_env.py#L23) |  |
@@ -1650,7 +1647,7 @@
 | `separation_cal_val` | function | `separation_cal_val` | [tools/k4b/k4b_data.py:150](../../tools/k4b/k4b_data.py#L150) |  |
 | `separation_d` | function | `separation_d` | [tools/hwsd/hwsd_data.py:95](../../tools/hwsd/hwsd_data.py#L95) |  |
 | `separation_fresh` | function | `separation_fresh` | [tools/k4b/k4b_data.py:154](../../tools/k4b/k4b_data.py#L154) |  |
-| `separation_g` | function | `separation_g` | [tools/hwsg/hwsg_registry.py:386](../../tools/hwsg/hwsg_registry.py#L386) |  |
+| `separation_g` | function | `separation_g` | [tools/hwsg/hwsg_registry.py:372](../../tools/hwsg/hwsg_registry.py#L372) |  |
 | `seq` | function | `seq` | [tests/hwsd/test_a_hwsd_ref.py:77](../../tests/hwsd/test_a_hwsd_ref.py#L77) |  |
 | `seq_cases` | function | `seq_cases` | [tools/hwsd/hwsd_dry.py:179](../../tools/hwsd/hwsd_dry.py#L179) |  |
 | `seq_disjoint` | function | `seq_disjoint` | [tools/k4b/k4b_data.py:160](../../tools/k4b/k4b_data.py#L160) |  |
@@ -1769,18 +1766,18 @@
 | `source_f` | function | `source_f` | [tools/k4b/k4b_registry.py:239](../../tools/k4b/k4b_registry.py#L239) | ObservationSet stores under other directories, canonicalised by their EmissionSpec perm |
 | `source_hwsb` | function | `source_hwsb` | [tools/hwsc/hwsc_registry.py:125](../../tools/hwsc/hwsc_registry.py#L125) |  |
 | `source_hwsc` | function | `source_hwsc` | [tools/hwsd/hwsd_readers.py:100](../../tools/hwsd/hwsd_readers.py#L100) |  |
-| `source_hwsc` | function | `source_hwsc` | [tools/hwsg/hwsg_registry.py:169](../../tools/hwsg/hwsg_registry.py#L169) |  |
+| `source_hwsc` | function | `source_hwsc` | [tools/hwsg/hwsg_registry.py:159](../../tools/hwsg/hwsg_registry.py#L159) |  |
 | `source_hwsu` | function | `source_hwsu` | [tools/hwsd/hwsd_readers.py:289](../../tools/hwsd/hwsd_readers.py#L289) |  |
 | `source_identity` | function | `source_identity` | [tools/x4_oracle_profile/validation.py:181](../../tools/x4_oracle_profile/validation.py#L181) |  |
 | `source_k` | function | `source_k` | [tools/k4b/k4b_registry_k.py:81](../../tools/k4b/k4b_registry_k.py#L81) | Classifies every file under k4b-store (§16 item 2 a-d); other non-empty -> INCOMPLETE. |
-| `source_obligation` | function | `source_obligation` | [tools/hwsg/hwsg_registry.py:128](../../tools/hwsg/hwsg_registry.py#L128) |  |
+| `source_obligation` | function | `source_obligation` | [tools/hwsg/hwsg_registry.py:118](../../tools/hwsg/hwsg_registry.py#L118) |  |
 | `source_own` | function | `source_own` | [tools/hwsc/hwsc_registry.py:282](../../tools/hwsc/hwsc_registry.py#L282) |  |
-| `source_own` | function | `source_own` | [tools/hwsg/hwsg_registry.py:228](../../tools/hwsg/hwsg_registry.py#L228) |  |
+| `source_own` | function | `source_own` | [tools/hwsg/hwsg_registry.py:218](../../tools/hwsg/hwsg_registry.py#L218) |  |
 | `source_parallel` | function | `source_parallel` | [tools/c2_nd/nd_registry.py:210](../../tools/c2_nd/nd_registry.py#L210) | A parallel round's store: absent -> PASS (present False); unfrozen -> INCOMPLETE; else |
 | `source_scratch` | function | `source_scratch` | [tools/c2_nd/nd_registry.py:127](../../tools/c2_nd/nd_registry.py#L127) | Every HIST_*.npz under the scratch root outside a test_* directory (relative to the root): |
 | `source_scratch_c` | function | `source_scratch_c` | [tools/hwsc/hwsc_registry.py:277](../../tools/hwsc/hwsc_registry.py#L277) |  |
-| `source_scratch_g` | function | `source_scratch_g` | [tools/hwsg/hwsg_registry.py:202](../../tools/hwsg/hwsg_registry.py#L202) |  |
-| `sources` | function | `sources` | [tools/hwsg/hwsg_registry.py:298](../../tools/hwsg/hwsg_registry.py#L298) |  |
+| `source_scratch_g` | function | `source_scratch_g` | [tools/hwsg/hwsg_registry.py:192](../../tools/hwsg/hwsg_registry.py#L192) |  |
+| `sources` | function | `sources` | [tools/hwsg/hwsg_registry.py:284](../../tools/hwsg/hwsg_registry.py#L284) |  |
 | `sources_digest` | function | `sources_digest` | [tools/code_index/scan.py:111](../../tools/code_index/scan.py#L111) |  |
 | `SourceTampered` | class | `SourceTampered` | [src/topo_pilot/experiment/x5g1_safety.py:22](../../src/topo_pilot/experiment/x5g1_safety.py#L22) | A source artifact failed full-hash or payload verification. |
 | `SpaceBuilder` | class | `SpaceBuilder` | [src/topo_pilot/analysis/spaces.py:35](../../src/topo_pilot/analysis/spaces.py#L35) | Builds :class:`PointSet` objects from stored artifacts. |
@@ -4126,3 +4123,6 @@
 | `test_nec_known_categories` | test | `test_nec_known_categories` | [tests/c2_nd/test_a_known.py:84](../../tests/c2_nd/test_a_known.py#L84) |  |
 | `test_nec_known_half_share_is_neither_partial_nor_code_dominant` | test | `test_nec_known_half_share_is_neither_partial_nor_code_dominant` | [tests/c2_nd/test_a_known.py:94](../../tests/c2_nd/test_a_known.py#L94) |  |
 | `test_nec_known_negative_complement` | test | `test_nec_known_negative_complement` | [tests/c2_nd/test_a_known.py:114](../../tests/c2_nd/test_a_known.py#L114) |  |
+| `test_needle_in` | test | `test_needle_in` | [tests/hwsc/test_b_guard_meter.py:154](../../tests/hwsc/test_b_guard_meter.py#L154) |  |
+| `test_needles_and_the_real_contract` | test | `test_needles_and_the_real_contract` | [tests/c2_nd/test_b_lineage.py:112](../../tests/c2_nd/test_b_lineage.py#L112) |  |
+| `test_needles_are_contract_lists` | test | `test_needles_are_contract_lists` | [tests/hwsu/test_b_of_seed.py:190](../../tests/hwsu/test_b_of_seed.py#L190) |  |

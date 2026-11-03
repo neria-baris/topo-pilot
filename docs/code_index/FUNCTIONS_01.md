@@ -170,7 +170,7 @@
 | `__init__` | method | `_RecGen.__init__` | [tests/x6_stage1/test_b_train_chain.py:122](../../tests/x6_stage1/test_b_train_chain.py#L122) |  |
 | `__init__` | method | `_RecGen.__init__` | [tools/x6_stage1/x6s1_run.py:413](../../tools/x6_stage1/x6s1_run.py#L413) |  |
 | `__init__` | method | `_Reg.__init__` | [tests/c2_readout/test_b_registry.py:100](../../tests/c2_readout/test_b_registry.py#L100) |  |
-| `__init__` | method | `_RegView.__init__` | [tools/hwsg/hwsg_registry.py:368](../../tools/hwsg/hwsg_registry.py#L368) |  |
+| `__init__` | method | `_RegView.__init__` | [tools/hwsg/hwsg_registry.py:354](../../tools/hwsg/hwsg_registry.py#L354) |  |
 | `__init__` | method | `_Row.__init__` | [tests/experiment/test_x4b2.py:76](../../tests/experiment/test_x4b2.py#L76) |  |
 | `__init__` | method | `_Seeds.__init__` | [tests/x6_stage1/test_b_train_chain.py:138](../../tests/x6_stage1/test_b_train_chain.py#L138) |  |
 | `__init__` | method | `_Seeds.__init__` | [tools/x6_stage1/x6s1_run.py:419](../../tools/x6_stage1/x6s1_run.py#L419) |  |
@@ -389,7 +389,7 @@
 | `_cancellation` | function | `_cancellation` | [tests/c2_readout/test_b_screens.py:253](../../tests/c2_readout/test_b_screens.py#L253) |  |
 | `_canon` | function | `_canon` | [tests/c2_readout/test_a_oracle.py:76](../../tests/c2_readout/test_a_oracle.py#L76) | Canonical histories whose prefix symbols lie in symbol rows rows[0]..rows[1]. |
 | `_canon` | function | `_canon` | [tools/hwsd/hwsd_known2.py:37](../../tools/hwsd/hwsd_known2.py#L37) |  |
-| `_canon` | function | `_canon` | [tools/hwsg/hwsg_registry.py:249](../../tools/hwsg/hwsg_registry.py#L249) |  |
+| `_canon` | function | `_canon` | [tools/hwsg/hwsg_registry.py:239](../../tools/hwsg/hwsg_registry.py#L239) |  |
 | `_canon_file` | function | `_canon_file` | [tests/hwsc/test_b_registry.py:88](../../tests/hwsc/test_b_registry.py#L88) |  |
 | `_canon_sha` | function | `_canon_sha` | [tests/hwsu/test_b_of_freeze.py:109](../../tests/hwsu/test_b_of_freeze.py#L109) |  |
 | `_canon_sha` | function | `_canon_sha` | [tools/hwsu/hwsu_freeze.py:22](../../tools/hwsu/hwsu_freeze.py#L22) |  |
@@ -412,7 +412,7 @@
 | `_centre` | function | `_centre` | [tests/c2_nd/test_a_identity.py:33](../../tests/c2_nd/test_a_identity.py#L33) |  |
 | `_centre` | function | `_centre` | [tests/c2_nd/test_a_known.py:34](../../tests/c2_nd/test_a_known.py#L34) |  |
 | `_certify` | function | `_certify` | [tests/circle_history/test_error_bound.py:282](../../tests/circle_history/test_error_bound.py#L282) |  |
-| `_certify` | function | `_certify` | [tools/hwsg/hwsg_registry.py:309](../../tools/hwsg/hwsg_registry.py#L309) |  |
+| `_certify` | function | `_certify` | [tools/hwsg/hwsg_registry.py:295](../../tools/hwsg/hwsg_registry.py#L295) |  |
 | `_cf_float` | function | `_cf_float` | [tools/x6_stage0/x6_run.py:64](../../tools/x6_stage0/x6_run.py#L64) |  |
 | `_Cfg` | class | `_Cfg` | [tests/experiment/test_report_e3.py:100](../../tests/experiment/test_report_e3.py#L100) |  |
 | `_Cfg` | class | `_Cfg` | [tests/experiment/test_s8_e4.py:187](../../tests/experiment/test_s8_e4.py#L187) |  |
@@ -507,7 +507,6 @@
 | `_clone` | function | `_clone` | [tests/hwsu/test_b_of_freeze.py:92](../../tests/hwsu/test_b_of_freeze.py#L92) |  |
 | `_close` | function | `_close` | [tools/c2_nd/nd_registry.py:54](../../tools/c2_nd/nd_registry.py#L54) |  |
 | `_close` | function | `_close` | [tools/hwsc/hwsc_registry.py:38](../../tools/hwsc/hwsc_registry.py#L38) |  |
-| `_close` | function | `_close` | [tools/hwsg/hwsg_registry.py:39](../../tools/hwsg/hwsg_registry.py#L39) |  |
 | `_close` | function | `_close` | [tools/x6_stage0/x6_exact.py:297](../../tools/x6_stage0/x6_exact.py#L297) |  |
 | `_close_res` | function | `_close_res` | [tools/hwsd/hwsd_driver.py:173](../../tools/hwsd/hwsd_driver.py#L173) | J8: the obligation right after the four tables, then the reservation end (new code). |
 | `_closed` | function | `_closed` | [tests/c2_readout/test_b_patch.py:200](../../tests/c2_readout/test_b_patch.py#L200) |  |
@@ -1034,7 +1033,7 @@
 | `_git` | function | `_git` | [tools/x6zc/x6zc_guard.py:207](../../tools/x6zc/x6zc_guard.py#L207) |  |
 | `_git_dir` | function | `_git_dir` | [tools/x4_circle_history/release.py:49](../../tools/x4_circle_history/release.py#L49) |  |
 | `_git_dirs` | function | `_git_dirs` | [tools/c1prime/c1_release.py:40](../../tools/c1prime/c1_release.py#L40) |  |
-| `_glob_re` | function | `_glob_re` | [tools/hwsg/hwsg_registry.py:165](../../tools/hwsg/hwsg_registry.py#L165) |  |
+| `_glob_re` | function | `_glob_re` | [tools/hwsg/hwsg_registry.py:155](../../tools/hwsg/hwsg_registry.py#L155) |  |
 | `_got` | function | `_got` | [tests/c2_nd/test_a_family.py:90](../../tests/c2_nd/test_a_family.py#L90) |  |
 | `_grid` | function | `_grid` | [tests/c2_nd/test_a_family.py:205](../../tests/c2_nd/test_a_family.py#L205) | Every sign pattern of `stats`: the rule equals the protocol table (so the categories |
 | `_grid_figure` | function | `_grid_figure` | [src/topo_pilot/experiment/report_e3.py:191](../../src/topo_pilot/experiment/report_e3.py#L191) | Small multiples: each cell holds ``series`` {(world, seed): [(step, value)]}, ``ylabel``, |
@@ -1170,7 +1169,7 @@
 | `_ints` | function | `_ints` | [tools/hwsd/hwsd_known.py:68](../../tools/hwsd/hwsd_known.py#L68) |  |
 | `_ints` | function | `_ints` | [tools/x6zc/x6zc_census.py:25](../../tools/x6zc/x6zc_census.py#L25) |  |
 | `_ints` | function | `_ints` | [tools/x6zc/x6zc_const.py:66](../../tools/x6zc/x6zc_const.py#L66) |  |
-| `_inv_sha` | function | `_inv_sha` | [tools/hwsg/hwsg_registry.py:281](../../tools/hwsg/hwsg_registry.py#L281) |  |
+| `_inv_sha` | function | `_inv_sha` | [tools/hwsg/hwsg_registry.py:267](../../tools/hwsg/hwsg_registry.py#L267) |  |
 | `_is_cand` | function | `_is_cand` | [tools/hws/hws_select.py:84](../../tools/hws/hws_select.py#L84) |  |
 | `_is_complete` | method | `ArtifactStore._is_complete` | [src/topo_pilot/contracts/store.py:209](../../src/topo_pilot/contracts/store.py#L209) |  |
 | `_is_coord` | function | `_is_coord` | [tools/c2_nd/nd_decoy.py:162](../../tools/c2_nd/nd_decoy.py#L162) |  |
@@ -1317,7 +1316,7 @@
 | `_load` | function | `_load` | [tools/x6_stage1/x6s1_run.py:76](../../tools/x6_stage1/x6s1_run.py#L76) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/precision_stage.py:22](../../tools/x4_circle_history/precision_stage.py#L22) |  |
 | `_load_npz` | function | `_load_npz` | [tools/x4_circle_history/runner.py:164](../../tools/x4_circle_history/runner.py#L164) |  |
-| `_load_obligation` | function | `_load_obligation` | [tools/hwsg/hwsg_registry.py:81](../../tools/hwsg/hwsg_registry.py#L81) |  |
+| `_load_obligation` | function | `_load_obligation` | [tools/hwsg/hwsg_registry.py:76](../../tools/hwsg/hwsg_registry.py#L76) |  |
 | `_load_process` | function | `_load_process` | [src/topo_pilot/experiment/x4b_run.py:129](../../src/topo_pilot/experiment/x4b_run.py#L129) |  |
 | `_load_reference` | function | `_load_reference` | [tools/x4_circle_history/runner.py:149](../../tools/x4_circle_history/runner.py#L149) | Verified (cache file object, cache) of the oracle stage; no recomputation (item 9). |
 | `_load_table` | function | `_load_table` | [tools/hwsd/hwsd_known2.py:176](../../tools/hwsd/hwsd_known2.py#L176) |  |
@@ -1403,7 +1402,7 @@
 | `_member` | function | `_member` | [tools/x6_stage1/x6s1_registry.py:80](../../tools/x6_stage1/x6s1_registry.py#L80) | bool [len(q)]: full 32-byte membership of void digests q in the sorted void array ref. |
 | `_Memo` | class | `_Memo` | [tools/x6zc/x6zc_stage_a.py:229](../../tools/x6zc/x6zc_stage_a.py#L229) |  |
 | `_merge` | function | `_merge` | [tools/hwsd/hwsd_readers.py:34](../../tools/hwsd/hwsd_readers.py#L34) | Union of two sources; True when src is a lineage failure. |
-| `_merge` | function | `_merge` | [tools/hwsg/hwsg_registry.py:43](../../tools/hwsg/hwsg_registry.py#L43) |  |
+| `_merge` | function | `_merge` | [tools/hwsg/hwsg_registry.py:38](../../tools/hwsg/hwsg_registry.py#L38) |  |
 | `_merge` | function | `_merge` | [tools/x2a_stage0/x2a_ph.py:53](../../tools/x2a_stage0/x2a_ph.py#L53) |  |
 | `_merged` | function | `_merged` | [tools/hwsd/hwsd_registry.py:244](../../tools/hwsd/hwsd_registry.py#L244) |  |
 | `_meta` | function | `_meta` | [src/topo_pilot/experiment/x5g1t_stages.py:93](../../src/topo_pilot/experiment/x5g1t_stages.py#L93) |  |
@@ -1412,7 +1411,7 @@
 | `_meta` | function | `_meta` | [tools/hwsc/hwsc_drystore.py:33](../../tools/hwsc/hwsc_drystore.py#L33) |  |
 | `_meta_type` | function | `_meta_type` | [tools/hwsc/hwsc_registry.py:56](../../tools/hwsc/hwsc_registry.py#L56) | artifact_type of <root>/<T>/<id>/payload.npz\|state.pt from its meta.json, else None. |
 | `_meta_type` | function | `_meta_type` | [tools/hwsd/hwsd_data.py:218](../../tools/hwsd/hwsd_data.py#L218) |  |
-| `_metadata` | function | `_metadata` | [tools/hwsg/hwsg_registry.py:118](../../tools/hwsg/hwsg_registry.py#L118) |  |
+| `_metadata` | function | `_metadata` | [tools/hwsg/hwsg_registry.py:113](../../tools/hwsg/hwsg_registry.py#L113) |  |
 | `_meter_file` | function | `_meter_file` | [tools/c2_readout/c2_data.py:273](../../tools/c2_readout/c2_data.py#L273) |  |
 | `_metric` | function | `_metric` | [src/topo_pilot/analysis/pointset.py:55](../../src/topo_pilot/analysis/pointset.py#L55) |  |
 | `_metric_dir` | function | `_metric_dir` | [tests/experiment/test_x5g1_export_integration.py:115](../../tests/experiment/test_x5g1_export_integration.py#L115) |  |
@@ -1499,7 +1498,6 @@
 | `_never_opened` | function | `_never_opened` | [tests/hwsd/test_b_registry_r9.py:99](../../tests/hwsd/test_b_registry_r9.py#L99) |  |
 | `_new` | function | `_new` | [tools/c2_nd/nd_registry.py:49](../../tools/c2_nd/nd_registry.py#L49) |  |
 | `_new` | function | `_new` | [tools/hwsc/hwsc_registry.py:33](../../tools/hwsc/hwsc_registry.py#L33) |  |
-| `_new` | function | `_new` | [tools/hwsg/hwsg_registry.py:35](../../tools/hwsg/hwsg_registry.py#L35) |  |
 | `_next_attempt` | function | `_next_attempt` | [tools/hwsg/hwsg_train.py:128](../../tools/hwsg/hwsg_train.py#L128) |  |
 | `_next_chunk` | function | `_next_chunk` | [tools/x6_stage1/x6s1_cloud.py:320](../../tools/x6_stage1/x6s1_cloud.py#L320) | §5.4 step 6: the next chunk's index arrays, drawn from a copy and checked before use. |
 | `_next_updates` | function | `_next_updates` | [src/topo_pilot/experiment/x5g1t_train.py:69](../../src/topo_pilot/experiment/x5g1t_train.py#L69) |  |
@@ -1556,7 +1554,7 @@
 | `_obl` | function | `_obl` | [tools/hwsd/hwsd_dry2.py:180](../../tools/hwsd/hwsd_dry2.py#L180) |  |
 | `_obl` | function | `_obl` | [tools/hwsd/hwsd_readers.py:30](../../tools/hwsd/hwsd_readers.py#L30) |  |
 | `_obl` | function | `_obl` | [tools/hwsg/hwsg_dry2.py:46](../../tools/hwsg/hwsg_dry2.py#L46) |  |
-| `_obligations` | function | `_obligations` | [tools/hwsg/hwsg_registry.py:257](../../tools/hwsg/hwsg_registry.py#L257) |  |
+| `_obligations` | function | `_obligations` | [tools/hwsg/hwsg_registry.py:247](../../tools/hwsg/hwsg_registry.py#L247) |  |
 | `_oblique` | function | `_oblique` | [tests/c2_readout/test_b_screens.py:237](../../tests/c2_readout/test_b_screens.py#L237) |  |
 | `_Obs` | class | `_Obs` | [tests/hwsb/test_r_0170_kb2_status.py:27](../../tests/hwsb/test_r_0170_kb2_status.py#L27) |  |
 | `_obs` | function | `_obs` | [tests/analysis/test_x5_endpoint.py:205](../../tests/analysis/test_x5_endpoint.py#L205) |  |
@@ -1915,7 +1913,7 @@
 | `_registry_npz` | function | `_registry_npz` | [tools/hwsc/hwsc_drystore.py:54](../../tools/hwsc/hwsc_drystore.py#L54) |  |
 | `_regressors` | function | `_regressors` | [tests/c2_readout/test_a_scope.py:89](../../tests/c2_readout/test_a_scope.py#L89) |  |
 | `_regret_curve` | function | `_regret_curve` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:85](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L85) | Regret per row and checkpoint; checkpoints were validated by ``validate_checkpoints``. |
-| `_RegView` | class | `_RegView` | [tools/hwsg/hwsg_registry.py:367](../../tools/hwsg/hwsg_registry.py#L367) |  |
+| `_RegView` | class | `_RegView` | [tools/hwsg/hwsg_registry.py:353](../../tools/hwsg/hwsg_registry.py#L353) |  |
 | `_rel` | function | `_rel` | [tests/hwsc/test_b_guard_meter.py:180](../../tests/hwsc/test_b_guard_meter.py#L180) |  |
 | `_rel` | function | `_rel` | [tools/c2_readout/c2_data.py:208](../../tools/c2_readout/c2_data.py#L208) | The posix path of `path` relative to `base`, or None if it lies outside. |
 | `_rel` | function | `_rel` | [tools/hws/hws_driver.py:40](../../tools/hws/hws_driver.py#L40) |  |
@@ -2192,7 +2190,7 @@
 | `_sha` | function | `_sha` | [tools/hwsg/hwsg_known.py:35](../../tools/hwsg/hwsg_known.py#L35) |  |
 | `_sha` | function | `_sha` | [tools/hwsg/hwsg_oracle.py:104](../../tools/hwsg/hwsg_oracle.py#L104) |  |
 | `_sha` | function | `_sha` | [tools/hwsg/hwsg_records.py:36](../../tools/hwsg/hwsg_records.py#L36) |  |
-| `_sha` | function | `_sha` | [tools/hwsg/hwsg_registry.py:253](../../tools/hwsg/hwsg_registry.py#L253) |  |
+| `_sha` | function | `_sha` | [tools/hwsg/hwsg_registry.py:243](../../tools/hwsg/hwsg_registry.py#L243) |  |
 | `_sha` | function | `_sha` | [tools/hwsu/hwsu_records.py:34](../../tools/hwsu/hwsu_records.py#L34) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_charts.py:124](../../tools/k4b/k4b_charts.py#L124) |  |
 | `_sha` | function | `_sha` | [tools/k4b/k4b_driver.py:41](../../tools/k4b/k4b_driver.py#L41) |  |
@@ -2403,7 +2401,7 @@
 | `_table` | function | `_table` | [tests/hwsg/test_b_registry.py:25](../../tests/hwsg/test_b_registry.py#L25) |  |
 | `_table` | function | `_table` | [tests/hwsu/test_b_of_driver.py:35](../../tests/hwsu/test_b_of_driver.py#L35) |  |
 | `_table` | function | `_table` | [tools/hwsd/hwsd_dry2.py:172](../../tools/hwsd/hwsd_dry2.py#L172) |  |
-| `_table` | function | `_table` | [tools/hwsg/hwsg_registry.py:376](../../tools/hwsg/hwsg_registry.py#L376) |  |
+| `_table` | function | `_table` | [tools/hwsg/hwsg_registry.py:362](../../tools/hwsg/hwsg_registry.py#L362) |  |
 | `_tables` | function | `_tables` | [tests/c2_readout/test_b_registry.py:139](../../tests/c2_readout/test_b_registry.py#L139) |  |
 | `_tables` | function | `_tables` | [tests/experiment/test_x5g1t_integration.py:36](../../tests/experiment/test_x5g1t_integration.py#L36) |  |
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_registry2.py:295](../../tests/hwsc/test_b_registry2.py#L295) |  |
@@ -2777,7 +2775,7 @@
 | `arm_oracle` | function | `arm_oracle` | [tools/hwsu/hwsu_oracle.py:32](../../tools/hwsu/hwsu_oracle.py#L32) |  |
 | `arm_value` | function | `arm_value` | [tools/d2a/d2a_decide.py:59](../../tools/d2a/d2a_decide.py#L59) |  |
 | `array_field` | function | `array_field` | [src/topo_pilot/contracts/base.py:160](../../src/topo_pilot/contracts/base.py#L160) | A dataclass field holding an array (excluded from ``__eq__``/``__repr__``). |
-| `array_listing` | function | `array_listing` | [tools/hwsg/hwsg_registry.py:106](../../tools/hwsg/hwsg_registry.py#L106) |  |
+| `array_listing` | function | `array_listing` | [tools/hwsg/hwsg_registry.py:101](../../tools/hwsg/hwsg_registry.py#L101) |  |
 | `array_npz` | function | `array_npz` | [tests/hwsd/test_b_util.py:187](../../tests/hwsd/test_b_util.py#L187) |  |
 | `arrays_one` | function | `arrays_one` | [tools/hwsd/hwsd_score.py:168](../../tools/hwsd/hwsd_score.py#L168) |  |
 | `arrays_sha256` | function | `arrays_sha256` | [tools/hwsb/hwsb_data.py:124](../../tools/hwsb/hwsb_data.py#L124) |  |
@@ -3041,7 +3039,7 @@
 | `build` | function | `build` | [tools/c2_readout/c2_registry.py:241](../../tools/c2_readout/c2_registry.py#L241) | C2-REG1 (before FIT) or C2-REG2 (R' with the FIT/FEAS/VAL tables in `extra`, keyed by |
 | `build` | function | `build` | [tools/hwsc/hwsc_registry_build.py:60](../../tools/hwsc/hwsc_registry_build.py#L60) |  |
 | `build` | function | `build` | [tools/hwsg/hwsg_handoff.py:19](../../tools/hwsg/hwsg_handoff.py#L19) |  |
-| `build` | function | `build` | [tools/hwsg/hwsg_registry.py:331](../../tools/hwsg/hwsg_registry.py#L331) |  |
+| `build` | function | `build` | [tools/hwsg/hwsg_registry.py:317](../../tools/hwsg/hwsg_registry.py#L317) |  |
 | `build` | function | `build` | [tools/k4b/k4b_registry.py:298](../../tools/k4b/k4b_registry.py#L298) | Builds K-REG1/K-REG2 from scratch; manifest and digest npz written by exclusive create. |
 | `build` | function | `build` | [tools/theory_exact/theory_exact.py:23](../../tools/theory_exact/theory_exact.py#L23) |  |
 | `build` | function | `build` | [tools/x4_circle_history/live_context.py:96](../../tools/x4_circle_history/live_context.py#L96) |  |
@@ -3179,7 +3177,7 @@
 | `centres` | function | `centres` | [tools/hws/hws_worlds.py:138](../../tools/hws/hws_worlds.py#L138) | Rectangular spacing-2 centres, row j = n_axial*i + b at (0.5 + 2i, 0.5 + 2b) (MD-5). |
 | `centres` | function | `centres` | [tools/hwsb/hwsb_law.py:29](../../tools/hwsb/hwsb_law.py#L29) |  |
 | `cert_val` | function | `cert_val` | [tools/k4b/k4b_driver.py:324](../../tools/k4b/k4b_driver.py#L324) |  |
-| `certificate` | function | `certificate` | [tools/hwsg/hwsg_registry.py:275](../../tools/hwsg/hwsg_registry.py#L275) |  |
+| `certificate` | function | `certificate` | [tools/hwsg/hwsg_registry.py:261](../../tools/hwsg/hwsg_registry.py#L261) |  |
 | `certificate` | function | `certificate` | [tools/theory_exact/theory_exact.py:90](../../tools/theory_exact/theory_exact.py#L90) | Theorem 2.1: r* and the smallest delta < r* that closes a nonzero-winding chain. |
 | `CertificateFlag` | class | `CertificateFlag` | [tools/c1prime/c1_records.py:44](../../tools/c1prime/c1_records.py#L44) | A watched Decimal flag in a certificate computation (P3). |
 | `certified_correction` | function | `certified_correction` | [tests/circle_history/test_cochain_lift.py:98](../../tests/circle_history/test_cochain_lift.py#L98) | Explicit closure, congruence and D1 z = b; returns z = (a - alpha) / p. |
@@ -3413,7 +3411,7 @@
 | `contains` | method | `DigestSet.contains` | [tools/x6_stage1/x6s1_registry.py:136](../../tools/x6_stage1/x6s1_registry.py#L136) | Key candidate search, then full-digest confirmation against the runs. |
 | `contains` | method | `Registry.contains` | [tools/c2_readout/c2_registry.py:350](../../tools/c2_readout/c2_registry.py#L350) |  |
 | `contains` | method | `_Reg.contains` | [tests/c2_readout/test_b_registry.py:104](../../tests/c2_readout/test_b_registry.py#L104) |  |
-| `contains` | method | `_RegView.contains` | [tools/hwsg/hwsg_registry.py:372](../../tools/hwsg/hwsg_registry.py#L372) |  |
+| `contains` | method | `_RegView.contains` | [tools/hwsg/hwsg_registry.py:358](../../tools/hwsg/hwsg_registry.py#L358) |  |
 | `contains` | method | `_X6.contains` | [tests/hwsd/test_b_data.py:143](../../tests/hwsd/test_b_data.py#L143) |  |
 | `contains` | method | `_X6.contains` | [tests/hwsd/test_b_registry_r9.py:267](../../tests/hwsd/test_b_registry_r9.py#L267) |  |
 | `contains_scope` | function | `contains_scope` | [tools/c2_readout/c2_data.py:197](../../tools/c2_readout/c2_data.py#L197) | True iff the file bytes contain `needle` (1 MiB chunks, len(needle) - 1 bytes overlap). |
@@ -4623,7 +4621,7 @@
 | `inventory_d` | function | `inventory_d` | [tools/hwsd/hwsd_registry.py:208](../../tools/hwsd/hwsd_registry.py#L208) |  |
 | `inventory_diff` | function | `inventory_diff` | [tools/hwsb/hwsb_records.py:72](../../tools/hwsb/hwsb_records.py#L72) |  |
 | `inventory_equal` | function | `inventory_equal` | [tools/x6zc/x6zc_store.py:102](../../tools/x6zc/x6zc_store.py#L102) |  |
-| `inventory_g` | function | `inventory_g` | [tools/hwsg/hwsg_registry.py:241](../../tools/hwsg/hwsg_registry.py#L241) |  |
+| `inventory_g` | function | `inventory_g` | [tools/hwsg/hwsg_registry.py:231](../../tools/hwsg/hwsg_registry.py#L231) |  |
 | `inventory_root` | function | `inventory_root` | [tests/k4b/test_b_registry.py:69](../../tests/k4b/test_b_registry.py#L69) |  |
 | `inventory_snapshot` | function | `inventory_snapshot` | [tools/hwsb/hwsb_records.py:60](../../tools/hwsb/hwsb_records.py#L60) |  |
 | `inventory_x6` | function | `inventory_x6` | [tools/x6_stage1/x6s1_registry.py:350](../../tools/x6_stage1/x6s1_registry.py#L350) | k4b_registry.inventory(project_root) as one component, then the extended scan of the X6 |
@@ -4814,7 +4812,7 @@
 | `latch_clears` | function | `latch_clears` | [src/topo_pilot/experiment/x5g1t_usage.py:101](../../src/topo_pilot/experiment/x5g1t_usage.py#L101) | True only on new OBSERVED evidence clearing every latched limit (see module doc). |
 | `latched` | function | `latched` | [tests/oracle_profile/test_builder_controls.py:177](../../tests/oracle_profile/test_builder_controls.py#L177) |  |
 | `latest_gate_verdicts` | function | `latest_gate_verdicts` | [src/topo_pilot/experiment/stages.py:117](../../src/topo_pilot/experiment/stages.py#L117) | Per gate id of ``stage_id``: the verdicts of its most recent report(s). |
-| `latest_obligation` | function | `latest_obligation` | [tools/hwsg/hwsg_registry.py:99](../../tools/hwsg/hwsg_registry.py#L99) |  |
+| `latest_obligation` | function | `latest_obligation` | [tools/hwsg/hwsg_registry.py:94](../../tools/hwsg/hwsg_registry.py#L94) |  |
 | `lattice` | function | `lattice` | [tools/theory_exact/theory_exact2.py:46](../../tools/theory_exact/theory_exact2.py#L46) |  |
 | `lattice_angle` | function | `lattice_angle` | [src/topo_pilot/analysis/circular.py:74](../../src/topo_pilot/analysis/circular.py#L74) | Angle of each state along one lattice axis. |
 | `lattice_cells` | function | `lattice_cells` | [src/topo_pilot/world/lattice.py:66](../../src/topo_pilot/world/lattice.py#L66) | All k-cubes of the glued lattice, ``k = 0..len(dims)``, as local-lexicographic tuples. |
@@ -4949,3 +4947,5 @@
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/config.py:61](../../src/topo_pilot/experiment/config.py#L61) | Read ``base.yaml`` and ``local.yaml`` from the folder of ``stages_path``. |
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |
 | `load_config` | function | `load_config` | [tools/x4_oracle_profile/inputs.py:25](../../tools/x4_oracle_profile/inputs.py#L25) |  |
+| `load_contract` | function | `load_contract` | [tools/c1prime/c1_config.py:34](../../tools/c1prime/c1_config.py#L34) |  |
+| `load_contract` | function | `load_contract` | [tools/c2_nd/nd_config.py:49](../../tools/c2_nd/nd_config.py#L49) | CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256. |

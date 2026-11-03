@@ -6,7 +6,7 @@
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1140,
-  "functions and methods (incl. tests)": 10875,
+  "functions and methods (incl. tests)": 10872,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1010,
   "import statements, internal ambiguous": 6,
@@ -20318,7 +20318,7 @@
    "tools/hwsg/hwsg_registry.py",
    "tools/x4_circle_history/scores.py",
    "import",
-   378
+   364
   ],
   [
    "tools/hwsg/hwsg_registry.py",
@@ -29652,9 +29652,9 @@
   },
   "tools/hwsg/hwsg_registry.py": {
    "kind": "python",
-   "lines": 413,
+   "lines": 399,
    "purpose": "HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6;",
-   "sha256": "020f0ad5299d9c60b20f7ce791017a6676b601019abbee5a6fe35b52df88fb63"
+   "sha256": "19272cb65c15fb685454b103b86519ad191b75a83118d1863d6eccba95b5bbaa"
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
@@ -255958,7 +255958,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 378,
+     "line": 364,
      "module": "",
      "names": [
       "scores"
@@ -255974,304 +255974,274 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 36,
-     "kind": "function",
-     "name": "_new",
-     "qual": "_new",
-     "sig": "def _new(present=True) -> dict",
-     "start": 35
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 40,
-     "kind": "function",
-     "name": "_close",
-     "qual": "_close",
-     "sig": "def _close(out, lineage=False) -> dict",
-     "start": 39
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 51,
+     "end": 46,
      "kind": "function",
      "name": "_merge",
      "qual": "_merge",
      "sig": "def _merge(dst, src) -> dict",
-     "start": 43
+     "start": 38
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 69,
+     "end": 64,
      "kind": "function",
      "name": "read_k4b_history_table",
      "qual": "read_k4b_history_table",
      "sig": "def read_k4b_history_table(path, entry, out, opener=None) -> None",
-     "start": 55
+     "start": 50
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 78,
+     "end": 73,
      "kind": "function",
      "name": "obligation_files",
      "qual": "obligation_files",
      "sig": "def obligation_files(store) -> list",
+     "start": 71
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 91,
+     "kind": "function",
+     "name": "_load_obligation",
+     "qual": "_load_obligation",
+     "sig": "def _load_obligation(store, bound=None) -> tuple",
      "start": 76
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 96,
-     "kind": "function",
-     "name": "_load_obligation",
-     "qual": "_load_obligation",
-     "sig": "def _load_obligation(store, bound=None) -> tuple",
-     "start": 81
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 103,
+     "end": 98,
      "kind": "function",
      "name": "latest_obligation",
      "qual": "latest_obligation",
      "sig": "def latest_obligation(store, bound=None) -> dict",
-     "start": 99
+     "start": 94
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 110,
+     "kind": "function",
+     "name": "array_listing",
+     "qual": "array_listing",
+     "sig": "def array_listing(store) -> list",
+     "start": 101
     },
     {
      "decorators": [],
      "doc": "",
      "end": 115,
      "kind": "function",
-     "name": "array_listing",
-     "qual": "array_listing",
-     "sig": "def array_listing(store) -> list",
-     "start": 106
+     "name": "_metadata",
+     "qual": "_metadata",
+     "sig": "def _metadata(store) -> list",
+     "start": 113
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 125,
+     "end": 151,
      "kind": "function",
-     "name": "_metadata",
-     "qual": "_metadata",
-     "sig": "def _metadata(store) -> list",
+     "name": "source_obligation",
+     "qual": "source_obligation",
+     "sig": "def source_obligation(store, bound=None, opener=None) -> dict",
      "start": 118
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 161,
-     "kind": "function",
-     "name": "source_obligation",
-     "qual": "source_obligation",
-     "sig": "def source_obligation(store, bound=None, opener=None) -> dict",
-     "start": 128
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 166,
+     "end": 156,
      "kind": "function",
      "name": "_glob_re",
      "qual": "_glob_re",
      "sig": "def _glob_re(g) -> re.Pattern",
-     "start": 165
+     "start": 155
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 198,
+     "end": 188,
      "kind": "function",
      "name": "source_hwsc",
      "qual": "source_hwsc",
      "sig": "def source_hwsc(store=None, expected=None) -> dict",
-     "start": 169
+     "start": 159
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 224,
+     "end": 214,
      "kind": "function",
      "name": "source_scratch_g",
      "qual": "source_scratch_g",
      "sig": "def source_scratch_g(scratch=None, table=None) -> dict",
-     "start": 202
+     "start": 192
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 227,
      "kind": "function",
      "name": "source_own",
      "qual": "source_own",
      "sig": "def source_own(store, worlds) -> dict",
-     "start": 228
+     "start": 218
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 246,
+     "end": 236,
      "kind": "function",
      "name": "inventory_g",
      "qual": "inventory_g",
      "sig": "def inventory_g(root=None) -> dict",
-     "start": 241
+     "start": 231
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 250,
+     "end": 240,
      "kind": "function",
      "name": "_canon",
      "qual": "_canon",
      "sig": "def _canon(o) -> str",
-     "start": 249
+     "start": 239
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 254,
+     "end": 244,
      "kind": "function",
      "name": "_sha",
      "qual": "_sha",
      "sig": "def _sha(o) -> str",
-     "start": 253
+     "start": 243
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 268,
+     "end": 258,
      "kind": "function",
      "name": "_obligations",
      "qual": "_obligations",
      "sig": "def _obligations(root, bound=None) -> dict",
-     "start": 257
+     "start": 247
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 272,
-     "kind": "function",
-     "name": "readers_version",
-     "qual": "readers_version",
-     "sig": "def readers_version() -> str",
-     "start": 271
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 278,
+     "end": 264,
      "kind": "function",
      "name": "certificate",
      "qual": "certificate",
      "sig": "def certificate(manifest) -> str",
-     "start": 275
+     "start": 261
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 283,
+     "end": 269,
      "kind": "function",
      "name": "_inv_sha",
      "qual": "_inv_sha",
      "sig": "def _inv_sha(root, inv, bound=None) -> tuple",
-     "start": 281
+     "start": 267
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 294,
+     "end": 280,
      "kind": "function",
      "name": "recheck",
      "qual": "recheck",
      "sig": "def recheck(manifest, root=None) -> dict",
-     "start": 286
+     "start": 272
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 305,
+     "end": 291,
      "kind": "function",
      "name": "sources",
      "qual": "sources",
      "sig": "def sources(root, scratch, worlds, extra=None, table=None) -> dict",
-     "start": 298
+     "start": 284
     },
     {
      "decorators": [
       "contextlib.contextmanager"
      ],
      "doc": "",
-     "end": 328,
+     "end": 314,
      "kind": "function",
      "name": "_certify",
      "qual": "_certify",
      "sig": "def _certify(mpath, root, bound)",
-     "start": 309
+     "start": 295
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 363,
+     "end": 349,
      "kind": "function",
      "name": "build",
      "qual": "build",
      "sig": "def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict",
-     "start": 331
+     "start": 317
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "",
-     "end": 373,
+     "end": 359,
      "kind": "class",
      "name": "_RegView",
      "qual": "_RegView",
-     "start": 367
+     "start": 353
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 370,
+     "end": 356,
      "kind": "method",
      "name": "__init__",
      "qual": "_RegView.__init__",
      "sig": "def __init__(self, d)",
-     "start": 368
+     "start": 354
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 373,
+     "end": 359,
      "kind": "method",
      "name": "contains",
      "qual": "_RegView.contains",
      "sig": "def contains(self, digest)",
-     "start": 372
+     "start": 358
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 383,
+     "end": 369,
      "kind": "function",
      "name": "_table",
      "qual": "_table",
      "sig": "def _table(t) -> dict",
-     "start": 376
+     "start": 362
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 413,
+     "end": 399,
      "kind": "function",
      "name": "separation_g",
      "qual": "separation_g",
      "sig": "def separation_g(reg, tables_by_world) -> dict",
-     "start": 386
+     "start": 372
     }
    ],
    "syspath": []
@@ -294485,5 +294455,5 @@
    ]
   }
  },
- "sources_digest": "b2ae1a5cd731684353024335075b92c5af7fb72bebfda3533e84f30b88473b82"
+ "sources_digest": "08c7146809d625d838cd450c80b34c2c114566e97ca42cf186c8e7e89a814574"
 }

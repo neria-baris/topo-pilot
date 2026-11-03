@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_registry.py](../../../../../tools/hwsg/hwsg_registry.py)
 - Kind: python
-- Lines: 413
+- Lines: 399
 
 ## Module docstring
 
@@ -20,7 +20,7 @@
 - `import hwsc_registry_build` -> [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 21, via unique basename)
 - `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 23, via unique basename)
 - `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 24, via unique basename)
-- `import scores` -> [tools/x4_circle_history/scores.py](../x4_circle_history/scores.py.md) (line 378, via unique basename) (inside a function)
+- `import scores` -> [tools/x4_circle_history/scores.py](../x4_circle_history/scores.py.md) (line 364, via unique basename) (inside a function)
 
 ### External (third-party)
 
@@ -73,34 +73,31 @@
 
 ## Classes and functions
 
-- **function `_new`** [L35-36]: `def _new(present=True) -> dict`
-- **function `_close`** [L39-40]: `def _close(out, lineage=False) -> dict`
-- **function `_merge`** [L43-51]: `def _merge(dst, src) -> dict`
-- **function `read_k4b_history_table`** [L55-69]: `def read_k4b_history_table(path, entry, out, opener=None) -> None`
-- **function `obligation_files`** [L76-78]: `def obligation_files(store) -> list`
-- **function `_load_obligation`** [L81-96]: `def _load_obligation(store, bound=None) -> tuple`
-- **function `latest_obligation`** [L99-103]: `def latest_obligation(store, bound=None) -> dict`
-- **function `array_listing`** [L106-115]: `def array_listing(store) -> list`
-- **function `_metadata`** [L118-125]: `def _metadata(store) -> list`
-- **function `source_obligation`** [L128-161]: `def source_obligation(store, bound=None, opener=None) -> dict`
-- **function `_glob_re`** [L165-166]: `def _glob_re(g) -> re.Pattern`
-- **function `source_hwsc`** [L169-198]: `def source_hwsc(store=None, expected=None) -> dict`
-- **function `source_scratch_g`** [L202-224]: `def source_scratch_g(scratch=None, table=None) -> dict`
-- **function `source_own`** [L228-237]: `def source_own(store, worlds) -> dict`
-- **function `inventory_g`** [L241-246]: `def inventory_g(root=None) -> dict`
-- **function `_canon`** [L249-250]: `def _canon(o) -> str`
-- **function `_sha`** [L253-254]: `def _sha(o) -> str`
-- **function `_obligations`** [L257-268]: `def _obligations(root, bound=None) -> dict`
-- **function `readers_version`** [L271-272]: `def readers_version() -> str`
-- **function `certificate`** [L275-278]: `def certificate(manifest) -> str`
-- **function `_inv_sha`** [L281-283]: `def _inv_sha(root, inv, bound=None) -> tuple`
-- **function `recheck`** [L286-294]: `def recheck(manifest, root=None) -> dict`
-- **function `sources`** [L298-305]: `def sources(root, scratch, worlds, extra=None, table=None) -> dict`
-- **function `_certify`** [L309-328]: `def _certify(mpath, root, bound)` decorators: @contextlib.contextmanager
-- **function `build`** [L331-363]: `def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict`
-- **class `_RegView`** [L367-373]
-- **method `_RegView.__init__`** [L368-370]: `def __init__(self, d)`
-- **method `_RegView.contains`** [L372-373]: `def contains(self, digest)`
-- **function `_table`** [L376-383]: `def _table(t) -> dict`
-- **function `separation_g`** [L386-413]: `def separation_g(reg, tables_by_world) -> dict`
+- **function `_merge`** [L38-46]: `def _merge(dst, src) -> dict`
+- **function `read_k4b_history_table`** [L50-64]: `def read_k4b_history_table(path, entry, out, opener=None) -> None`
+- **function `obligation_files`** [L71-73]: `def obligation_files(store) -> list`
+- **function `_load_obligation`** [L76-91]: `def _load_obligation(store, bound=None) -> tuple`
+- **function `latest_obligation`** [L94-98]: `def latest_obligation(store, bound=None) -> dict`
+- **function `array_listing`** [L101-110]: `def array_listing(store) -> list`
+- **function `_metadata`** [L113-115]: `def _metadata(store) -> list`
+- **function `source_obligation`** [L118-151]: `def source_obligation(store, bound=None, opener=None) -> dict`
+- **function `_glob_re`** [L155-156]: `def _glob_re(g) -> re.Pattern`
+- **function `source_hwsc`** [L159-188]: `def source_hwsc(store=None, expected=None) -> dict`
+- **function `source_scratch_g`** [L192-214]: `def source_scratch_g(scratch=None, table=None) -> dict`
+- **function `source_own`** [L218-227]: `def source_own(store, worlds) -> dict`
+- **function `inventory_g`** [L231-236]: `def inventory_g(root=None) -> dict`
+- **function `_canon`** [L239-240]: `def _canon(o) -> str`
+- **function `_sha`** [L243-244]: `def _sha(o) -> str`
+- **function `_obligations`** [L247-258]: `def _obligations(root, bound=None) -> dict`
+- **function `certificate`** [L261-264]: `def certificate(manifest) -> str`
+- **function `_inv_sha`** [L267-269]: `def _inv_sha(root, inv, bound=None) -> tuple`
+- **function `recheck`** [L272-280]: `def recheck(manifest, root=None) -> dict`
+- **function `sources`** [L284-291]: `def sources(root, scratch, worlds, extra=None, table=None) -> dict`
+- **function `_certify`** [L295-314]: `def _certify(mpath, root, bound)` decorators: @contextlib.contextmanager
+- **function `build`** [L317-349]: `def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict`
+- **class `_RegView`** [L353-359]
+- **method `_RegView.__init__`** [L354-356]: `def __init__(self, d)`
+- **method `_RegView.contains`** [L358-359]: `def contains(self, digest)`
+- **function `_table`** [L362-369]: `def _table(t) -> dict`
+- **function `separation_g`** [L372-399]: `def separation_g(reg, tables_by_world) -> dict`
 

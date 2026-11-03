@@ -218,7 +218,7 @@ def blinded(path, root=ROOT) -> bool:
     b = CONTRACT["blindness"]
     for a in b["allow"]:
         a = a.lower()
-        if rel == a or fnmatch.fnmatchcase(rel, a):
+        if rel == a or (fnmatch.fnmatchcase(rel, a) and rel.count("/") == a.count("/")):
             return False
     if rel in {f.lower() for f in b["files"]}:
         return True

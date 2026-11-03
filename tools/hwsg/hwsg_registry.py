@@ -132,6 +132,7 @@ def source_obligation(store, bound=None, opener=None) -> dict:
     except C1GateFailure as exc:
         out["other"].append({"path": str(store), "reason": exc.reason})
         return _close(out)
+    lineage = False
     listing = {e["relpath"]: e for e in array_listing(store)}
     entries = {e["relpath"]: e for e in obl["files"]}
     for rel in sorted(set(listing) - set(entries)):
@@ -153,10 +154,11 @@ def source_obligation(store, bound=None, opener=None) -> dict:
                 CLASS_TO_READER[key](store / rel, e, out, opener)
             except C1GateFailure as exc:
                 out["other"].append({"path": rel, "reason": exc.reason})
+                lineage = lineage or exc.status == LINEAGE
             except Exception as exc:  # noqa: BLE001
                 out["other"].append({"path": rel, "reason": f"unreadable {exc!r}"})
     out["metadata"] = _metadata(store)
-    return _close(out)
+    return _close(out, lineage)
 
 
 # ------------------------------------------------------------------------- reader (b)
@@ -362,10 +364,30 @@ def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None,
 
 
 # -------------------------------------------------------------------------- separation
+class _RegView:
+    def __init__(self, d):
+        self.digests, self.seq_ids = set(d.get("digests", ())), set(d.get("seq_ids", ()))
+        self.sealed_ranges, self.predicates = d.get("sealed_ranges", {}), d.get("predicates", {})
+
+    def contains(self, digest):
+        return np.isin(np.asarray(digest).astype(str), sorted(self.digests))
+
+
+def _table(t) -> dict:
+    if isinstance(t, (tuple, list)):
+        import scores
+
+        canon = np.asarray(t[0], dtype=np.uint8)
+        return {"canon32": canon, "seq_ids": np.asarray(t[1], dtype=np.int64),
+                "digest": np.array(scores.history_digests(canon), dtype="<U64")}
+    return t
+
+
 def separation_g(reg, tables_by_world) -> dict:
     res, coll, seq_coll = {}, {}, {}
-    for w, tabs in tables_by_world.items():
-        res[w] = hwsc_data.separation_c(reg, tabs)
+    reg = _RegView(reg) if isinstance(reg, dict) else reg
+    tables_by_world = {w: {s: _table(t) for s, t in tabs.items()}
+                       for w, tabs in tables_by_world.items()}
     flat = [(f"{w}:{s}", t) for w, tabs in tables_by_world.items() for s, t in tabs.items()]
     for (a, ta), (b, tb) in combinations(flat, 2):
         if a.split(":")[0] == b.split(":")[0]:
@@ -375,6 +397,11 @@ def separation_g(reg, tables_by_world) -> dict:
         coll[f"{a}_{b}"] = len(da & db)
         seq_coll[f"{a}_{b}"] = len(set(np.asarray(ta["seq_ids"]).tolist())
                                    & set(np.asarray(tb["seq_ids"]).tolist()))
+    if any(coll.values()) or any(seq_coll.values()):
+        return {"status": LINEAGE, "per_world": res, "cross_collisions": coll,
+                "cross_seq_collisions": seq_coll}
+    for w, tabs in tables_by_world.items():
+        res[w] = hwsc_data.separation_c(reg, tabs)
     st = [r["status"] for r in res.values()]
     if any(coll.values()) or any(seq_coll.values()) or LINEAGE in st:
         status = LINEAGE

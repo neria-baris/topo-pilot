@@ -47,13 +47,18 @@ def process_builder(key):
 
 def identity(store, proc, w) -> dict:
     d, c = gc.world(w), gc.CONTRACT["world_common"]
-    ck = hwsb_data.spec_checksums(store, proc)
     nb_ok = (proc["sigma"] == d.sigma and proc["neighbour"] == d.neighbour
              and (1 - d.p) / 4 == d.neighbour)
-    world = store.load(WorldSpec, proc["ids"]["world"], consumer=hwsb_data.READER)
-    from topo_pilot.process import TransitionConfig
+    try:
+        ck = hwsb_data.spec_checksums(store, proc)
+        world = store.load(WorldSpec, proc["ids"]["world"], consumer=hwsb_data.READER)
+        from topo_pilot.process import TransitionConfig
 
-    T_ref = np.asarray(TransitionBuilder().build(world, TransitionConfig(p_stay=d.p_float)).T)
+        T_ref = np.asarray(TransitionBuilder().build(
+            world, TransitionConfig(p_stay=d.p_float)).T)
+        loaded = True
+    except Exception:  # noqa: BLE001  an absent spec is an identity defect, not a crash
+        ck, T_ref, loaded = {"WorldSpec": None}, None, False
     ecs = [e.tobytes() for e in proc["E_canon"].values()]
     try:
         oracle_profile.validate_process(proc["T"], proc["E_canon_shared"], proc["pi"],
@@ -65,7 +70,7 @@ def identity(store, proc, w) -> dict:
         "sigma_neighbour": bool(nb_ok),
         "world_id": proc["ids"]["world"] == c["WorldSpec_id_expected"],
         "world_payload": ck["WorldSpec"] == c["WorldSpec_payload_sha256"],
-        "transition_rebuilt": bool(np.array_equal(np.asarray(proc["T"]), T_ref)),
+        "transition_rebuilt": loaded and bool(np.array_equal(np.asarray(proc["T"]), T_ref)),
         "E_canon_equal": len(set(ecs)) == 1,
         "validate_process": valid,
     }
@@ -83,7 +88,8 @@ def identity_checker(key):
             import hwsg_handoff
 
             h = hwsg_handoff.load(d.tag)["process_identities"]
-            same = (json.loads(json.dumps(r["ids"], default=str)) == h.get("ids")
+            norm = lambda o: json.loads(json.dumps(o, default=str))  # noqa: E731
+            same = (norm(r["ids"]) == norm(h.get("ids"))
                     and r["arrays_sha256"] == h.get("arrays_sha256"))
         except C1GateFailure:
             same = False

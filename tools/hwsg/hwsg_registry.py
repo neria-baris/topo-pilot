@@ -282,9 +282,8 @@ def recheck(manifest, root=None) -> dict:
 
 # ---------------------------------------------------------------------------------- build
 def sources(root, scratch, worlds, extra=None, table=None) -> dict:
-    root = Path(root)
-    if table is None and isinstance(REG["scratch_dirs_at_0224"], list):
-        table = REG["scratch_dirs_at_0224"]
+    root, tbl = Path(root), REG["scratch_dirs_at_0224"]
+    table = table if table is not None else (tbl if isinstance(tbl, list) else None)
     spec = {"hwsc": lambda: source_hwsc(root / "hwsc-store"),
             "hwsu": lambda: source_obligation(root / "hwsu-store"),
             "hwsd": lambda: source_obligation(root / "hwsd-store"),

@@ -65,10 +65,11 @@ topology of the latent world? (project topo-pilot)\par}
 {\large\color{ink2} The questions, the methods, every experiment to date (the pilot, the
 studies of where the learned circle comes from and whether the model uses it, the
 prediction-horizon studies, the crossing-order studies, the necessity and decoy test of the
-circle code, the search for a world with more history to measure, and the full test there), the results including
+circle code, the search for a world with more history to measure, the full test there, when
+that history signal appears during training, and whether the predictions use it), the results including
 the negative and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
-{\large 1 November 2026\par}
+{\large 4 November 2026\par}
 \vspace{0.3cm}
 {\large\itshape Living document; updated as runs complete.\par}
 \vfill
@@ -141,6 +142,17 @@ times the $0.01$ margin, and reaches 89--93\% of the oracle comparator on the sa
 On its supported rows the learned coordinate is therefore not a function of the last four
 observations; it depends on earlier history, in the direction of the oracle's belief. The claim
 covers these three models in this world; the earlier exclusion in the pilot world stands.
+Two follow-ups on the same three models are complete. Read at twelve saved checkpoints of each
+training run, the beyond-four-symbol covariance was already above the margin when the first
+validated chart appeared (in two models a chart that had not yet passed validation carried it
+even earlier), and before the predictions first beat every predictor that sees only the last four
+symbols; no model showed a certified loss later. A test of use then asked whether the models'
+next-symbol predictions depend on that history. On pairs of natural histories that share their
+last four symbols, the predictions move in the direction of the oracle's change by 0.88--0.93 of
+the oracle's own discrimination, and the registered outcome is RESPONDS in all three models; a
+predictor that reads only the last four symbols would show zero. How much of this response runs
+through the circle code was not assessed: an oracle-only stage found that this share could not be
+measured with the registered precision, so it was dropped before any model was measured.
 \end{abstract}
 
 \tableofcontents
@@ -229,9 +241,13 @@ one in which the oracle's beyond-four-symbol signal is 4.7 times the registered 
 the origin question can be asked again with room to answer it (\S\ref{sec:hws}). After a
 two-model training pilot passed, a full test with three new models returned SUPPORT in all three:
 the learned phase carries information from beyond the last four symbols (\S\ref{sec:hwsc}).
+Over training, that information was present no later than the first validated chart and before
+the predictions beat every last-four-symbol predictor (\S\ref{sec:hwsd}). The models' predictions
+respond to it, in the direction of the oracle's belief, in all three models (RESPONDS); how much
+of that response runs through the circle code was not assessed (\S\ref{sec:hwsu}).
 \end{enumerate}
 
-\begin{table}[t]\centering\small
+\begin{table}[p]\centering\footnotesize
 \caption{Headline outcomes. ``Label'' is the outcome vocabulary of the governing frozen
 protocol. Sources: \fpath{README.md}; \fpath{reports/E2--E4}; \fpath{state/DECISIONS.md};
 \fpath{agent-handoff/jobs/<job>/review.md}.}\label{tab:headline}
@@ -262,6 +278,8 @@ Training pilot in the selected world & PASS (uncertified) & both models learn an
 Full test in the selected world (beyond 4 symbols) & SUPPORT (3/3 models) & $L$ 0.039--0.041 against the margin 0.01\\
 Control's response to the designed order placebo & UNEXPLAINED & the response replicates; it matches neither order use nor a symmetric miscount\\
 Necessity of the circle code; decoy test & CODE\_DOMINANT; DECOY\_NOT\_USED (3/3 models) & the complement carries 14--15\%; the method returns NOT\_USED on decoys\\
+When the beyond-four signal appears in training (new world) & report (six registered statements) & present by the first validated chart, before the predictions beat every last-four predictor\\
+Do predictions use history beyond four symbols (new world) & RESPONDS (3/3 models); share not assessed & response 0.88--0.93 of the oracle's own discrimination\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -271,7 +289,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155, 0167, 0175 and 0196.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155, 0167, 0175, 0196, 0206, 0222 and 0237.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -479,9 +497,11 @@ ran in parallel on 26--27 October within a 12 CPU-hour line: an oracle sweep of 
 history-origin question, a check of the crossing-order control's placebo response, and a
 necessity and decoy test of the circle code. A small training pilot in the world the sweep
 selected passed on 28 October; I approved the full test on 29 October, and it reached its
-decision on 30 October.
+decision on 30 October. On 1 November I adopted two follow-ups on its three models: when the
+beyond-four signal appears during training (run on 2 November) and whether the predictions use
+it (an oracle-only stage on 2 November, the model stage on 3 November).
 
-\begin{table}[t]\centering\small
+\begin{table}[p]\centering\footnotesize
 \caption{Guide to the studies. Each study is named in this document by the descriptive name in
 the first column. The internal label is the key used in the project records and in
 Appendix~\ref{app:table}; readers do not need it.}\label{tab:key}
@@ -503,6 +523,8 @@ Necessity of the circle code and decoy test & C2ND & Is the code the only carrie
 World sweep for history signal (oracle) & HWS stage A & Is there a world with more beyond-four history signal to measure? & \ref{sec:hws}\\
 Training pilot in the selected world & HWS stage B & Do models trained there learn and form the circle, and would a full test be large enough? & \ref{sec:hwsc}\\
 Full test in the selected world & HWS stage C & Does the learned phase of three new models covary with history beyond four symbols? & \ref{sec:hwsc}\\
+Timing of the beyond-four signal in training & HWS track D & When, during training, does the learned phase start to carry it? & \ref{sec:hwsd}\\
+Use of history beyond four symbols & HWS track U & Do the new models' predictions depend on it, and how much through the circle code? & \ref{sec:hwsu}\\
 Two-step-ahead distinctions in the pilot world & X4 Phase B, B2 & Do beliefs exist that agree one step ahead but not two? & \ref{sec:horizons}\\
 Orientability needed only two steps ahead (oracle) & D-1 & Can a topological distinction be invisible one step ahead? & \ref{sec:horizons}\\
 Orientability in trained models & D-2a & Do trained models carry that distinction? & \ref{sec:horizons}\\
@@ -1007,6 +1029,47 @@ lacked the information, since their world had too little of it to see. The stage
 numbers motivated the world choice and are not part of the evidence. The full list of registered
 qualifiers is in the result file.
 
+\subsection{When does the beyond-four signal appear during training?}\label{sec:hwsd}
+\textbf{Question and design.} The full test read its three models at the end of training. This
+follow-up asks when, during training, the learned chart phase starts to carry the
+beyond-four-symbol part of the belief, relative to two landmarks: the first checkpoint whose chart
+passes the full test's validation rule, and the registered learning landmark (the captured score
+first reaching 0.8). It reuses the 12 checkpoints saved during each training run (steps 0, 50,
+100, 200, 400, 700, 1000, 1500, 2000, 3000, 4000 and 5000), draws its own fresh histories, builds
+a chart at every checkpoint by the full test's rule, and bounds the same covariance with the same
+margin $0.01$. Six statements and their error rates were registered before any checkpoint was
+read; ``before'' and ``after'' readings use stronger bounds (level $1/720$ per side and
+checkpoint, $1/60$ per model). I approved the run on 2 November; it used 3.19 CPU-hours in its
+store ledger (7.08 in its study ledger, which also counts test and dry-run repeats after
+corrections).
+
+\textbf{Result} (\fpath{hwsd-store/stages/SUMMARY/REPORT.json}). All gates passed and the
+registered outcome is a full report of the six statements:
+\begin{itemize}
+\item The step-5000 result of the full test replicates on these fresh histories in all three
+models (TRUE).
+\item ``Not before a validated chart'' is FALSE: in the second and third model, at step 100, a
+chart that had not yet passed validation already carried the covariance above $0.01$ at the
+strong level; their first validated charts came at steps 400 and 200. In the first model the
+statement holds (TRUE, informative).
+\item ``Only after the chart forms'' is FALSE in all three: the first validated chart (steps 200,
+400, 200) already carried it.
+\item ``Only after the learning landmark'' is FALSE in all three: the covariance was already above
+$0.01$ when the captured score first reached 0.8.
+\item When the predictions first beat every predictor that sees only the last four symbols (step
+400 in all three), the chart phase already carried it (TRUE).
+\item No model showed a certified loss after a certified gain (TRUE; this does not mean monotone).
+\end{itemize}
+Relative to the first validated chart the order is WITH in the first model and BEFORE in the
+other two; relative to the learning landmark it is the same.
+
+\textbf{What it does not establish.} It makes no use claim (\S\ref{sec:hwsu} asks that).
+Checkpoints of one run are not independent experiments, and there is no counterfactual, so
+training is not shown to cause anything. Timing is resolved only to the checkpoint grid. The
+BEFORE readings rest on charts that had not passed validation; their bounds are valid for that
+fixed field, but the field itself is not certified. It covers three runs of one recipe in one
+world. The six statements are not independent confirmations.
+
 
 % =========================================================================================
 \section{Causal use (charter priority 2)}\label{sec:causal}
@@ -1141,6 +1204,54 @@ the registered code carries about 85\% of the readout response and everything el
 the measure is specific on the constructed decoys. The limits stand: only the frozen linear code
 is covered, an exact identity ties necessity to the earlier share, and only the constructed
 decoys were tested.
+
+\subsection{Do the new models' predictions use history beyond four symbols?}\label{sec:hwsu}
+\textbf{Question and design.} The full test in the selected world (\S\ref{sec:hwsc}) showed that the
+learned chart phase of three new models carries information from beyond the last four symbols.
+This study asks whether their predictions depend on it, and how much of that dependence runs
+through the circle code. It uses pairs of natural histories that share their last four symbols;
+each arm is a draw from the process. Any predictor that depends only on the last four symbols
+responds identically to both arms, so any difference comes from earlier history. The response
+$\theta$ of a model is the part of its change in next-symbol prediction (position 32) that is
+aligned with the oracle's change, as a fraction of the oracle's own discrimination between the two
+arms. The bars are those I approved for the readout-attribution study, unchanged ($0.10$ and
+$0.30$), with one-sided bounds at $1-1/300$ and a family-wise error at most $0.05$. The models,
+site and charts are those of the full test.
+
+\textbf{Oracle-only stage.} Before any model was opened, an oracle-only stage checked on fresh
+pairs that both questions could be answered with the registered precision. The response
+question could: the oracle's own discrimination averaged 0.0646 nats, with a lower bound of 0.0628,
+about three times the registered minimum of 0.02. The share question could not: one of the share
+quantities missed its required precision at every registered sample size, so by the registered
+rule the share family was dropped before any model was measured (outcome
+INCONCLUSIVE/ORACLE\_FEASIBILITY for the share). I approved this stage on 1 November; the first attempt stopped at
+its CPU pause line inside a slow exposure search, and after that search was corrected the rerun
+passed on 2 November
+(\fpath{hwsu-store/OF_ACCEPT.json}).
+
+\textbf{Model stage.} I approved the model stage on 3 November. Its known cases passed at the
+fourth attempt; the first three stopped on configuration and procedure defects, each corrected
+(with a re-freeze where code changed) before any model output was computed. Validation passed every
+gate (4,096 pairs, one block), the second exposure registry passed, and the test on 4,096 fresh pairs
+passed every gate.
+
+\textbf{Result} (\fpath{hwsu-store/stages/E2/REPORT.json}). \textbf{RESPONDS in all three models.}
+The estimated responses are $\hat\theta=0.934$, $0.883$ and $0.923$ (descriptive 95\% intervals
+0.919--0.948, 0.870--0.896, 0.910--0.936). The registered bounds on the response in excess of
+$0.30$ of the oracle's discrimination are 0.041, 0.037 and 0.040, all above zero, and those in
+excess of $0.10$ are 0.053, 0.050 and 0.052. The known-case controls on the test pairs returned
+their constructed categories. Descriptively, the model and the oracle move in the same direction
+on 99.3\% of pairs, and the effect is heavy-tailed (the top 1\% of pairs carry 13\% of it).
+
+\textbf{Licence.} The registered licence reads: in 3 of the 3 models, when only the history before
+the last four symbols changes, the next-symbol prediction at position 32 moves in the direction of
+the oracle's change by more than 0.30 of the oracle's own discrimination; a predictor reading only
+the last four symbols would show zero on these pairs. The prediction therefore depends on earlier
+history, aligned with the belief. \textbf{What it does not establish.} How much of the response
+runs through the circle code was not assessed; this is no evidence for or against use of the code.
+The study does not exclude other encodings of the same information, and it covers these three
+models, one position and one world. The study used 1.83 CPU-hours in its store ledger (4.73 in its
+study ledger, which also counts test and dry-run repeats).
 
 
 % =========================================================================================
@@ -1479,7 +1590,7 @@ depend on the live environment (the pasted cell). Both led to added checks.
 % =========================================================================================
 \section{Compute}\label{sec:compute}
 Figure~\ref{fig:fig11_compute} summarises local compute from the store ledgers. Including every
-metered run (preflight test suites among them), the follow-up studies used about 104.0 CPU-hours
+metered run (preflight test suites among them), the follow-up studies used about 109.1 CPU-hours
 in the ledgers shown, 79.6 of them in the trained crossing-order study's local ingest and
 evaluation (its training ran on a cloud GPU); the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
 (13--21 minutes each). The largest items are the two training studies (learning speed, six models;
@@ -1488,7 +1599,11 @@ the trained crossing-order study. The full test in the selected world used 2.87 
 store ledger; its study ledger, which also counts every test-suite and dry-run repeat before the
 re-freezes, holds 5.16 CPU-hours (\fpath{agent-handoff/HWSC_CPU_LEDGER.json}). The stages I
 approved used about 3.0 CPU-hours against a forecast of 3.2; the repeated test rounds after the
-code corrections were not in that forecast.
+code corrections were not in that forecast. The two follow-ups on its models used 3.19 (training
+timing) and 1.83 (use test) CPU-hours in their store ledgers, and 7.08 and 4.73 in their study
+ledgers (\fpath{agent-handoff/HWSD_CPU_LEDGER.json}, \fpath{agent-handoff/HWSU_CPU_LEDGER.json}); I
+released their CPU pause lines on 2 November and asked for actual CPU to be reported instead of
+forecasts.
 
 \fig{fig11_compute}{(a) Cumulative CPU-hours per study from each store's \fpath{cpu_ledger.json}
 (measured plus tail allowance; includes metered test suites); the hatched bar is the summed
@@ -1506,6 +1621,11 @@ attempts). Sources: \fpath{<store>/cpu_ledger.json} for the stores named in
 \item \textbf{Origin beyond four symbols in the selected world} is decided: SUPPORT in all three
 new models (\S\ref{sec:hwsc}). The training pilot (27--28 October) passed; the full test ran on
 29--30 October after my approval. Its code is merged into the main branch.
+\item \textbf{Timing of the beyond-four signal in training} is complete (\S\ref{sec:hwsd}), and
+\textbf{use of that history by the predictions} is decided: RESPONDS in all three models, share
+not assessed (\S\ref{sec:hwsu}). Both codes are merged into the main branch.
+\item \textbf{Generality across worlds} (does the same picture hold in other worlds) is designed and
+implemented; its runs start after the use test, as I asked that real runs go one at a time.
 \item \textbf{The three parallel studies without training} are complete: the world sweep
 selected a world (\S\ref{sec:hws}); the control's placebo response remains unexplained
 (\S\ref{sec:x6zc}); the circle code is dominant and the method passes the decoy test
@@ -1536,6 +1656,9 @@ intervention designs stopped at gates. The one causal-use result concerns a sing
 linear code, at one position and site, for one kind of counterfactual (an $x$-history rotation
 with the last symbol kept); it excludes neither other encodings nor other carriers. Its necessity
 follow-up is tied to it by an exact identity, and its decoy test covers only constructed decoys.
+In the selected world, the use test shows that the predictions respond to history beyond four
+symbols, but how much of that runs through the circle code was not assessed; the training-timing
+study makes no use claim and no causal claim about training.
 \item \textbf{One toy setting.} One small architecture and recipe, synthetic HMMs on tiny lattices,
 a few seeds (three in the pilot, at most four per arm). Nothing is claimed about natural language
 or large models, other architectures, or populations of seeds.
@@ -1550,7 +1673,8 @@ disconnected points arbitrary offsets.
 origin test, the readout-attribution study and its necessity and decoy follow-up reuse the
 three pilot models, whose test panels
 had been unblinded; they draw fresh histories protected by registries, but the models are not
-fresh.
+fresh. Likewise, the training-timing study and the use test reuse the full test's three models
+after its result was known.
 \item \textbf{Margins and controls.} The four-symbol margin sits above the oracle's own value in
 the pilot world (the full test therefore moved to a world where it does not); the untrained-chart
 control of the full test was unavailable for two of its three models; the P control is one-sided;
@@ -1588,7 +1712,11 @@ sweep found a nearby world whose beyond-four signal is 4.7 times the registered 
 and a full test there, under the unchanged margin and decision rule, returned SUPPORT in all
 three new models. The origin question therefore has its first positive answer: with enough
 history information in the world, the learned circle reflects beliefs accumulated beyond the last
-few symbols, not only the latest observations.
+few symbols, not only the latest observations. In those models the signal was present no later
+than the first validated chart, before the predictions beat every last-four-symbol predictor, and
+the predictions themselves respond to history beyond the last four symbols, in the direction of the
+belief, at about 90\% of the oracle's discrimination. Whether that response runs through the
+circle code in this world remains open.
 
 % =========================================================================================
 \clearpage
@@ -1678,6 +1806,10 @@ HWS stage C KC & 10-29 & G0C, KC0--KC9 & attempts 1, 2 stopped by code defects (
 HWS stage C TRAIN & 10-29 & TRAIN (3 models) & PASS & jobs 0187--0189\\
 HWS stage C E1 & 10-29 & G0C, H1C, REG1, H2, L1, C0, CERT, P1 & all PASS; $N=3072$ & job 0191\\
 HWS stage C E2 & 10-30 & REG2, H2-FRESH, T-PRE, ENDPOINT & REG2 attempt 1 stopped by the output cap (corrected); SUPPORT (3/3 models) & jobs 0192, 0195, 0196\\
+HWS track D & 11-02 & FREEZE, AUTH, SCHED, BINDING\_AUDIT, ACCEPT\_SCORE, BOOTSTRAP, STATEMENTS & all PASS; HWSD\_REPORT (D1, D5, D6 TRUE; D2, D3, D4 FALSE) & job 0222\\
+HWS track U OF & 11-02 & OF-B, OF-0 \ldots\ OF-5 & attempt 1 stopped at the CPU pause line (corrected); attempt 2 OF\_PASS\_RESPONSE\_ONLY & jobs 0200, 0206\\
+HWS track U KC & 11-03 & G0U, KC0--KC6 & attempts 1--3 stopped by configuration and procedure defects (each corrected); attempt 4 all PASS & jobs 0229, 0231, 0233, 0234\\
+HWS track U E1, REG2, E2 & 11-03 & G0U, H1-U, REG1, S3, H2-U, H3-U, H5-U, BASIS, M0, X1, KC-U, P1; REG2; RELEASE-B, S7, H2-FRESH-U, T-PRE, NUM, ENDPOINT & all PASS; RESPONDS (3/3 models); share INCONCLUSIVE/\allowbreak ORACLE\_FEASIBILITY & jobs 0235--0237\\
 \bottomrule
 \end{longtable}
 \normalsize

@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-01T11:58:13Z",
+ "generated_utc": "2026-11-03T23:00:44Z",
  "studies": [
   {
    "label": "learning speed (6 models)",
@@ -108,6 +108,18 @@
    "store": "hwsc-store",
    "kind": "training",
    "cumulative_cpu_s": 10342.609375
+  },
+  {
+   "label": "training timing, new world",
+   "store": "hwsd-store",
+   "kind": "model",
+   "cumulative_cpu_s": 11491.46875
+  },
+  {
+   "label": "use of beyond-4 history, new world",
+   "store": "hwsu-store",
+   "kind": "oracle+model",
+   "cumulative_cpu_s": 6603.18125
   }
  ]
 }

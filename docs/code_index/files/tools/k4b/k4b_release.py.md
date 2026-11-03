@@ -66,6 +66,7 @@
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 19, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 24, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 19, import)
+- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 27, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 20, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 22, import)
 - [tools/k4b/k4b_meter_bind.py](k4b_meter_bind.py.md) (line 123, import)

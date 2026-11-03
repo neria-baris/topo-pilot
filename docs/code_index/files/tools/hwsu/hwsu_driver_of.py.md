@@ -56,6 +56,7 @@
 - [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 17, import)
 - [tests/hwsu/test_b_of_driver.py](../../tests/hwsu/test_b_of_driver.py.md) (line 20, import)
 - [tools/hwsu/hwsu_dry.py](hwsu_dry.py.md) (line 8, import)
+- [tools/hwsu/u2/hwsu_driver.py](u2/hwsu_driver.py.md) (line 10, import)
 
 ## Top-level constants
 

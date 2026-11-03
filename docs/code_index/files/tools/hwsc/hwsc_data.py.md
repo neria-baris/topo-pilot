@@ -81,6 +81,9 @@
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 15, import)
 - [tools/hwsu/hwsu_dry.py](../hwsu/hwsu_dry.py.md) (line 22, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 22, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 31, import)
+- [tools/hwsu/u2/hwsu_dry2c.py](../hwsu/u2/hwsu_dry2c.py.md) (line 14, import)
+- [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 28, import)
 
 ## Top-level constants
 

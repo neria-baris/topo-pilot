@@ -54,6 +54,9 @@
 - [tools/hwsu/hwsu_dry.py](hwsu_dry.py.md) (line 12, import)
 - [tools/hwsu/hwsu_dry_b.py](hwsu_dry_b.py.md) (line 10, import)
 - [tools/hwsu/hwsu_of.py](hwsu_of.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_e2.py](u2/hwsu_e2.py.md) (line 14, import)
+- [tools/hwsu/u2/hwsu_gates.py](u2/hwsu_gates.py.md) (line 16, import)
+- [tools/hwsu/u2/hwsu_regsrc.py](u2/hwsu_regsrc.py.md) (line 9, import)
 
 ## Top-level constants
 

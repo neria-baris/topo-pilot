@@ -63,6 +63,8 @@
 - [tests/hwsu/test_b_of_reservations.py](../../tests/hwsu/test_b_of_reservations.py.md) (line 18, import)
 - [tests/hwsu/test_b_of_seed.py](../../tests/hwsu/test_b_of_seed.py.md) (line 27, import)
 - [tests/hwsu/test_b_of_streams.py](../../tests/hwsu/test_b_of_streams.py.md) (line 166, import)
+- [tests/hwsu/test_b_u2_contract.py](../../tests/hwsu/test_b_u2_contract.py.md) (line 113, import)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 19, import)
 - [tools/hwsu/hwsu_driver_of.py](hwsu_driver_of.py.md) (line 7, import)
 - [tools/hwsu/hwsu_dry.py](hwsu_dry.py.md) (line 13, import)
 - [tools/hwsu/hwsu_dry_b.py](hwsu_dry_b.py.md) (line 11, import)
@@ -70,6 +72,14 @@
 - [tools/hwsu/hwsu_of.py](hwsu_of.py.md) (line 13, import)
 - [tools/hwsu/hwsu_resv.py](hwsu_resv.py.md) (line 14, import)
 - [tools/hwsu/hwsu_seed.py](hwsu_seed.py.md) (line 7, import)
+- [tools/hwsu/u2/hwsu_driver.py](u2/hwsu_driver.py.md) (line 16, import)
+- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 19, import)
+- [tools/hwsu/u2/hwsu_dry2b.py](u2/hwsu_dry2b.py.md) (line 16, import)
+- [tools/hwsu/u2/hwsu_dry2c.py](u2/hwsu_dry2c.py.md) (line 18, import)
+- [tools/hwsu/u2/hwsu_dry2d.py](u2/hwsu_dry2d.py.md) (line 13, import)
+- [tools/hwsu/u2/hwsu_e2.py](u2/hwsu_e2.py.md) (line 15, import)
+- [tools/hwsu/u2/hwsu_gates.py](u2/hwsu_gates.py.md) (line 17, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 14, import)
 
 ## Top-level constants
 

@@ -48,6 +48,9 @@
 ## Imported by
 
 - [tests/hwsu/test_b_of_meter.py](../../tests/hwsu/test_b_of_meter.py.md) (line 19, import)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 192, dynamic)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 203, dynamic)
+- [tools/hwsu/u2/hwsu_driver.py](u2/hwsu_driver.py.md) (line 13, import)
 
 ## Top-level constants
 

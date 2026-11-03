@@ -53,6 +53,7 @@
 - [tests/hwsu/test_b_of_seed.py](../../tests/hwsu/test_b_of_seed.py.md) (line 28, import)
 - [tools/hwsu/hwsu_driver_of.py](hwsu_driver_of.py.md) (line 8, import)
 - [tools/hwsu/hwsu_dry_b.py](hwsu_dry_b.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 16, import)
 
 ## Top-level constants
 

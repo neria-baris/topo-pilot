@@ -56,6 +56,13 @@
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 30, import)
 - [tests/c2_readout/test_b_patch.py](../../tests/c2_readout/test_b_patch.py.md) (line 26, import)
 - [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 119, import)
+- [tests/hwsu/test_a_u2_estimand.py](../../tests/hwsu/test_a_u2_estimand.py.md) (line 21, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 142, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 157, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 168, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 176, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 184, import)
+- [tests/hwsu/test_b_u2_dx_policy.py](../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 195, import)
 - [tools/c2_nd/nd_decoy.py](../c2_nd/nd_decoy.py.md) (line 23, import)
 - [tools/c2_nd/nd_dry.py](../c2_nd/nd_dry.py.md) (line 24, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 19, import)
@@ -68,6 +75,9 @@
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 18, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 22, import)
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 18, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 27, import)
+- [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 25, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 18, import)
 
 ## Top-level constants
 

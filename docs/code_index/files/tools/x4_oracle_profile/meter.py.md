@@ -55,6 +55,7 @@
 - [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 17, import)
 - [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 27, import)
 - [tests/hwsu/test_b_of_meter.py](../../tests/hwsu/test_b_of_meter.py.md) (line 21, import)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 222, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 28, import)
 - [tools/c1prime/c1_meter_bind.py](../c1prime/c1_meter_bind.py.md) (line 28, import)
 - [tools/c2_nd/store_template/nd_meter_bind.py](../c2_nd/store_template/nd_meter_bind.py.md) (line 66, import)
@@ -66,6 +67,7 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 30, import)
 - [tools/hwsd/hwsd_meter_bind.py](../hwsd/hwsd_meter_bind.py.md) (line 17, import)
 - [tools/hwsu/hwsu_meter_bind.py](../hwsu/hwsu_meter_bind.py.md) (line 11, import)
+- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 28, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 19, import)
 - [tools/x4_circle_history/meter_bind.py](../x4_circle_history/meter_bind.py.md) (line 48, import)
 

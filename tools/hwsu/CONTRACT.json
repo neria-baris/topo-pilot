@@ -19,9 +19,13 @@
    "R-0223-2": "new files API_U2.md, CONTRACT.json, TEST_PLAN_U2.md",
    "R-0213-1": "a track-D END record's obligation_file is store-relative: resolve the first existing of <store>/<rel> and <root>/<rel>, bounded to that store",
    "R-0213-2": "the DRU dry run writes every helper folder under X:/Downloads/topo-scratch/test_hwsu-<job>/",
-   "R-0206-1": "OF_REPORT.json freeze_of_sha256 is null; phase 2 binds the FREEZE_OF sha256 from OF_ACCEPT.json and checks it"
+   "R-0206-1": "OF_REPORT.json freeze_of_sha256 is null; phase 2 binds the FREEZE_OF sha256 from OF_ACCEPT.json and checks it",
+   "R-0223-3": "phase-2 modules in tools/hwsu/u2/ with own audit u2/hwsu_bind_u2.py; conditional_reads_u2 limited to four functions",
+   "R-0223-4": "KFIT and FEAS not drawn under S3",
+   "R-0223-5": "hwsc_registry_build.build audited by path (AST); no package installed"
   },
-  "status": "spec (job 0223 phase 1); OPEN points in API_U2.md section 14; TO_FREEZE items in API_U2.md section 13 and key to_freeze_u2"
+  "status": "spec (job 0223 phase 1); OPEN points in API_U2.md section 14; TO_FREEZE items in API_U2.md section 13 and key to_freeze_u2",
+  "errata": "E1 (R-0223-3..5)"
  },
  "authority_u2": {
   "paths_relative_to": "the mailbox X:/Downloads/projects/topo-pilot/agent-handoff",
@@ -195,30 +199,6 @@
     "n": 8192,
     "arm": "s"
    },
-   "kfit": {
-    "unit": "pairs",
-    "blocks": [
-     0
-    ],
-    "n": 4096,
-    "arms": [
-     "a1",
-     "a2"
-    ],
-    "use_under_S3": "drawn and gated (H2-U, H3-U) only; no construction (KU omitted); OPEN-2"
-   },
-   "feas": {
-    "unit": "pairs",
-    "blocks": [
-     0
-    ],
-    "n": 4096,
-    "arms": [
-     "a1",
-     "a2"
-    ],
-    "use_under_S3": "drawn and gated (H2-U, H3-U) only; SUP, L1, R1-U NOT_RUN/SHARE_DROPPED; OPEN-2"
-   },
    "val": {
     "unit": "pairs",
     "blocks": [
@@ -262,7 +242,8 @@
    "headroom_L": 250,
    "desc_L": 125,
    "desc_U": 4875
-  }
+  },
+  "kfit_feas_note": "kfit and feas are not drawn under S3 (R-0223-4, API_U2 section 12 O-14)"
  },
  "streams_u2": {
   "singles": "hwsu_pairs.sample_singles(T, E, pi, 'hwsu-v1', split, b, n)",
@@ -494,8 +475,8 @@
   "E1": [
    "stages/E1/G0U.json",
    "stages/E1/H1U.json",
-   "stages/E1/HIST_{fit_s_b0,fit_s_b1,kfit_a1_b0,kfit_a2_b0,feas_a1_b0,feas_a2_b0,val_a1_b0,val_a2_b0}.npz",
-   "stages/E1/ORACLE_E1_{fit,kfit,feas,val}.npz",
+   "stages/E1/HIST_{fit_s_b0,fit_s_b1,val_a1_b0,val_a2_b0}.npz",
+   "stages/E1/ORACLE_E1_{fit,val}.npz",
    "stages/E1/PAIR_E1_val.npz",
    "stages/E1/PREC_E1.npz",
    "stages/E1/BOOT_E1.npz",
@@ -658,7 +639,7 @@
    "rows": "TO_FREEZE"
   },
   "superset_check": "S-2: stage C's K-REG2 digest set (U8) is a union source; the J1 superset check of the reader-built union (before U8) is a diagnostic: count and list of missing digests",
-  "requirements": "protocol 8.3: fit, kfit, feas, val (every arm) disjoint from K-REG1 and from each other; test disjoint from K-REG2; sequence ids disjoint from every frozen union; sealed-D-2a predicate false on every row; collision -> FAIL_TECHNICAL/LINEAGE"
+  "requirements": "protocol 8.3: fit, val (every arm; kfit and feas are not drawn under S3, R-0223-4) disjoint from K-REG1 and from each other; test disjoint from K-REG2; sequence ids disjoint from every frozen union; sealed-D-2a predicate false on every row; collision -> FAIL_TECHNICAL/LINEAGE"
  },
  "binding": {
   "allowlist": {
@@ -1044,12 +1025,42 @@
       "x6s1_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
       "x6s1_registry.REG_RUN": "4194304",
       "x6s1_registry.V32": "dtype('V32')"
-     }
+     },
+     "import_first": [
+      "hwsc_registry"
+     ]
     },
     "build": {
      "kind": "function",
+     "ast_by_path": true,
      "call_time_reads": {},
-     "to_freeze": "OPEN-7: hwsu_bind.function_reads raises ModuleNotFoundError (psutil, imported inside _peak_memory) in this venv; use: DRU-REG equality only"
+     "ast_refs": [
+      "c1_data.build_registry",
+      "c2_registry._entry",
+      "c2_registry._ok_readers",
+      "c2_registry._try",
+      "c2_registry._x6_manifest",
+      "hashlib.sha256",
+      "hwsc_config.PROTOCOL_SHA256",
+      "hwsc_config.ROOT",
+      "hwsc_config.SCRATCH",
+      "hwsc_registry.INCOMPLETE",
+      "hwsc_registry.LINEAGE",
+      "hwsc_registry.VERSIONS",
+      "k4b_registry.source_f",
+      "k4b_registry.summary",
+      "k4b_registry.validate_handoff_json",
+      "numpy.array",
+      "numpy.asarray",
+      "numpy.int64",
+      "stage_records.save_npz",
+      "stage_records.sha256",
+      "stage_records.write_new",
+      "time.gmtime",
+      "time.process_time",
+      "time.strftime"
+     ],
+     "note": "R-0223-5: read by path (AST), not imported (psutil absent from the venv); DRU-REG checks equality with build_u in the dry run; called only by hwsu_dry2.dru_reg"
     }
    },
    "hwsb_train": {
@@ -1077,7 +1088,7 @@
     }
    }
   },
-  "allowlist_conditional_note": "phase-2 entries whose call-time reads include a forbidden name sanctioned by the protocol (conditional_reads_u2), and hwsc_registry_build.build (OPEN-7). They are outside binding.allowlist because the phase-1 audit (hwsu_bind.audit_reads, merged CONTRACT) would report them; hwsu_known.audit_u2 admits them. Their use needs the coordinator ruling on OPEN-1 before code",
+  "allowlist_conditional_note": "phase-2 entries whose call-time reads include a forbidden name sanctioned by the protocol (conditional_reads_u2), and hwsc_registry_build.build (audited by path, R-0223-5). They are outside binding.allowlist because the phase-1 audit (hwsu_bind.audit_reads, merged CONTRACT) would report them; u2/hwsu_bind_u2.audit_u2 admits them (R-0223-3). Call-time reads re-derived from source at erratum E1.",
   "conditional_reads_u2": [
    {
     "function": "hwsc_gates.expected_meta_c",
@@ -1102,17 +1113,20 @@
    {
     "function": "hwsb_train.train",
     "read": "hwsb_config.SCOPE",
-    "why": "DRU1 only (dry scope, tiny models; protocol 9 DRU1, the HWSC DRC1 pattern); never called on a real scope"
+    "why": "DRU1 only (dry scope, tiny models; protocol 9 DRU1, the HWSC DRC1 pattern); never called on a real scope",
+    "only_in": "u2/hwsu_dry2.py (DRU dry run, synthetic)"
    },
    {
     "function": "hwsc_data.make_train_dev_c",
     "read": "hwsb_config.SCOPE",
-    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)"
+    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)",
+    "only_in": "u2/hwsu_dry2.py (DRU dry run, synthetic)"
    },
    {
     "function": "hwsc_data.make_train_dev_c",
     "read": "hwsc_config.SCOPE",
-    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)"
+    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)",
+    "only_in": "u2/hwsu_dry2.py (DRU dry run, synthetic)"
    }
   ],
   "never_called_u2": [
@@ -1143,7 +1157,20 @@
    "hwsu_resv.w2_attestation (R-0213-1)": "hwsu_known.w2_attestation_u2",
    "hwsu_seed.g0_of": "hwsu_known.g0_u"
   },
-  "audit_u2": "hwsu_known.audit_u2 (API_U2.md section 2.6); OPEN-1"
+  "audit_u2": "u2/hwsu_bind_u2.audit_u2 (API_U2.md section 2.6); R-0223-3, R-0223-5",
+  "conditional_functions_u2": [
+   "hwsc_gates.expected_meta_c",
+   "hwsc_registry_build._default_sources",
+   "hwsb_train.train",
+   "hwsc_data.make_train_dev_c"
+  ],
+  "u2_audit": {
+   "module": "tools/hwsu/u2/hwsu_bind_u2.py",
+   "files": "tools/hwsu/u2/*.py",
+   "phase1_glob_unchanged": "tools/hwsu/hwsu_*.py (non-recursive, never sees u2/)",
+   "other_forbidden_read": "FAIL_TECHNICAL/BINDING",
+   "ruling": "R-0223-3"
+  }
  },
  "reuse_sha256_u2": {
   "tools/c2_readout/c2_model.py": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
@@ -1153,12 +1180,14 @@
   "tools/hwsu/API_U2.md",
   "tools/hwsu/CONTRACT.json",
   "tools/hwsu/TEST_PLAN_U2.md",
-  "tools/hwsu/hwsu_model.py",
-  "tools/hwsu/hwsu_known.py",
-  "tools/hwsu/hwsu_registry.py",
-  "tools/hwsu/hwsu_gates.py",
-  "tools/hwsu/hwsu_driver.py",
-  "tools/hwsu/hwsu_dry2.py"
+  "tools/hwsu/u2/__init__.py",
+  "tools/hwsu/u2/hwsu_bind_u2.py",
+  "tools/hwsu/u2/hwsu_model.py",
+  "tools/hwsu/u2/hwsu_known.py",
+  "tools/hwsu/u2/hwsu_registry.py",
+  "tools/hwsu/u2/hwsu_gates.py",
+  "tools/hwsu/u2/hwsu_driver.py",
+  "tools/hwsu/u2/hwsu_dry2.py"
  ],
  "tests_u2": {
   "author_A": "tests/hwsu/test_a_u2_*.py",
@@ -1331,8 +1360,6 @@
    "train": 4096,
    "dev": 512,
    "fit": 1024,
-   "kfit": 512,
-   "feas": 512,
    "val": 512,
    "test_block": 512
   },

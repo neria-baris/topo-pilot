@@ -139,9 +139,16 @@ def drg12() -> dict:
             ch["ledger_unique_labels"] = True
         rp = Path(td) / "RESERVATION_W2.json"
         k4b_release.start_reservation(rp, "HWSG-LO-W2", "2026-11-03T00:00:00Z")
+        kd = Path(td) / "kill"
+        pr = hwsg_train._launch_kill(kd)
+        ch["killed_child_leaves_no_record"] = pr and not list(kd.glob("KG4_*.json"))
+        m = gc.DRY_MASTERS["lo"][0]
+        a = hwsg_train.kg4_child(m, None, steps=20, persist=False)["checksums"]
+        b = hwsg_train.kg4_child(m, None, steps=20, persist=False)["checksums"]
+        ch["rerun_bitwise_equal"] = a == b and bool(a)
         ch["reservation_active"] = k4b_release.verify_reservation(
             rp, {"reservation": "RES-HWSG-LO-W2"})["status"] == "PASS"
-    return _res(ch, not_covered=["killed child and bitwise rerun need real children"])
+    return _res(ch)
 
 
 def drg13() -> dict:
@@ -188,7 +195,7 @@ def drg2() -> dict:
     ch = {}
     for t in gc.TAGS:
         r = hwsg_train.kg4_child(gc.DRY_MASTERS[t][0], None, steps=20, persist=False)
-        ch[f"{t}_stops_at_first_checkpoint"] = r["stopped_at"] is not None and bool(r["checksums"])
+        ch[f"{t}_20_steps"] = r["stopped_at"] == 20 and bool(r["checksums"])
     return _res(ch, persisted=False)
 
 

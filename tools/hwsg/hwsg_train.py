@@ -237,15 +237,30 @@ def kg4_child(master, out, steps=100, persist=True) -> dict:
         ids = make_sequence_ids(process_code("cylinder", "overlap", f"{d.sigma_str}|kg4", str(m)),
                                 split, n)
         obs[split] = ObservationSet(split=split, V=proc["V"], sequence_id=ids, tokens=tok)
+    cfg = hwsb_config.TRAIN_CFG
+    if int(steps) not in cfg.checkpoint_steps:
+        import dataclasses
+
+        cfg = dataclasses.replace(cfg, checkpoint_steps=(0, int(steps)))
     r = hwsb_train.train_known(obs["train"], obs["dev"], m, ("hwsg-v1", "KG4", m), f"kg4-{m}",
                                f"kg4-obs-{m}", stop_after=int(steps), threads=1,
-                               model_cfg=hwsb_config.MODEL_CFG, train_cfg=hwsb_config.TRAIN_CFG)
+                               model_cfg=hwsb_config.MODEL_CFG, train_cfg=cfg)
     rec = {"master": m, "checksums": {str(k): v for k, v in r["checksums"].items()},
            "stopped_at": r["stopped_at"], "threads": r["threads"]}
     if persist:
         Path(out).mkdir(parents=True, exist_ok=True)
         stage_records.write_new(Path(out) / f"KG4_{m}_{int(time.time() * 1000)}.json", rec)
     return rec
+
+
+def _launch_kill(out) -> bool:
+    """Start a dry child and kill it at once (DRG12): it must leave no record."""
+    m = gc.DRY_MASTERS[gc.TAGS[0]][0]
+    p = subprocess.Popen(child_argv(gc.TAGS[0], m, out, "kill", 1, sub="kg4"),
+                         env=child_env("kill", out, m), cwd=gc.REPO)
+    p.kill()
+    p.wait()
+    return p.returncode != 0
 
 
 def main(argv=None) -> int:

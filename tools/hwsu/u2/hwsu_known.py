@@ -38,7 +38,6 @@ TEST_PATTERNS = ("tests/hwsu/test_a_u2_*.py", "tests/hwsu/test_b_u2_*.py",
 def _C(contract=None) -> dict:
     return uc.CONTRACT if contract is None else contract
 
-
 # --------------------------------------------------------------------- OF binding (R-0206-1)
 def of_binding(store=uc.STORE, contract=None) -> dict:
     A = _C(contract)["authority_u2"]
@@ -97,7 +96,9 @@ def freeze_u(store, repo, h_exec, dru_report, j_u_records, written_by) -> dict:
         if want is not None and want != h:
             raise C1GateFailure(FREEZE, f"J-U record differs: {path}")
         ju.append({"path": str(path), "sha256": h})
-    blob = lambda n: ufz._blob(repo, h_exec, f"tools/hwsu/{n}")  # noqa: E731
+    def blob(n):
+        return ufz._blob(repo, h_exec, f"tools/hwsu/{n}")
+
     rec = {"protocol": C["protocol"], "protocol_sha256": ur._sha(blob("PROTOCOL_HWSU_v1.md")),
            "contract_of_sha256": ur._sha(blob("CONTRACT_OF.json")),
            "contract_sha256": ur._sha(blob("CONTRACT.json")),
@@ -133,12 +134,9 @@ def verify_freeze_u(store, repo) -> dict:
 
 
 def _allowed_s0(status, path, contract=None) -> bool:
-    C = _C(contract)
     idx = path.startswith("docs/code_index/")
-    if status == "A":
-        return (path in C["phase2_files"] or idx
-                or any(fnmatch.fnmatchcase(path, p) for p in TEST_PATTERNS))
-    return status == "M" and idx
+    return idx if status == "M" else status == "A" and (idx or path in _C(contract)[
+        "phase2_files"] or any(fnmatch.fnmatchcase(path, p) for p in TEST_PATTERNS))
 
 
 def s0_u(store, repo, r_ref=None) -> dict:
@@ -161,7 +159,7 @@ def s0_u(store, repo, r_ref=None) -> dict:
     audit = bu2.audit_u2()
     if audit["status"] != "PASS":
         raise C1GateFailure("INVALID", "binding audit failed")
-    return {"status": "PASS", "h_exec": h, "diff": diff, "audit": {"status": audit["status"]}}
+    return {"status": "PASS", "h_exec": h, "diff": diff, "audit": {"status": "PASS"}}
 
 
 # --------------------------------------------------------------- authority, attestation
@@ -268,9 +266,7 @@ def g0_u(out, ctx, stage) -> dict:
     if bad:
         raise C1GateFailure(AUTH, f"authority: {bad}")
     auth_u(out, ctx["job"], stage, mb, C)
-    ob = of_binding(out, C)
-    checks["authority"] = True
-    checks["of_binding"] = ob["status"] == "PASS"
+    checks.update(authority=True, of_binding=of_binding(out, C)["status"] == "PASS")
     us._records(ctx, checks)
     ns = uc.read_json(mb / A["records"]["HWS_UD_NAMESPACE"]["path"], root)["tracks"]
     if ns["U"] != C["namespace"]["U"]:
@@ -313,8 +309,6 @@ def kc2(ctx) -> dict:
 def _need_pass(name, r) -> None:
     if r.get("status") != "PASS":
         raise C1GateFailure(KNOWN, f"{name}: {r.get('status')} {r.get('details', '')}"[:600])
-
-
 def kc3(ctx) -> dict:
     base = uc.SCRATCH / f"test_hwsu-{ctx['job']}" / "kc3"
     d2 = importlib.import_module("hwsu_dry2")

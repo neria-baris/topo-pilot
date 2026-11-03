@@ -6,13 +6,13 @@
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1140,
-  "functions and methods (incl. tests)": 10872,
+  "functions and methods (incl. tests)": 10873,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1010,
   "import statements, internal ambiguous": 6,
   "import statements, internal resolved": 3850,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3345,
+  "import statements, standard library": 3346,
   "internal edges (file to file, with kind and line)": 3909,
   "python files": 727
  },
@@ -29562,15 +29562,15 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 328,
+   "lines": 332,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "4097d6710d9f7b54f5197e933857104e629d8a6078345eec5f418cdf4dea1d7f"
+   "sha256": "c6ed89b3387e0bfd37e9f744308b6cdcc930042d75792a83b40f8a5f5eafd198"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
    "lines": 1611,
    "purpose": "",
-   "sha256": "cb631d6da7ce30595ab9e5cb2c30746f11e238db94e7e3524ac49aa3c0363dbc"
+   "sha256": "87d84a751f84824d1ba2361b2119f16a96adc86181bce35e9b44bfb7ecc4c621"
   },
   "tools/hwsg/PROTOCOL_HWSG_v1.md": {
    "kind": "markdown",
@@ -29610,9 +29610,9 @@
   },
   "tools/hwsg/hwsg_dry2.py": {
    "kind": "python",
-   "lines": 236,
+   "lines": 243,
    "purpose": "HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1).",
-   "sha256": "3869e41f446556b346c09584c50a3e7b2a2a1a5ae8a3d2b2aa9afdd3dd4cdece"
+   "sha256": "4a7f5407099e5610d8d80a1c648ee06f4a08194118d7cd7dc7acae57facb75fc"
   },
   "tools/hwsg/hwsg_handoff.py": {
    "kind": "python",
@@ -29658,9 +29658,9 @@
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
-   "lines": 268,
+   "lines": 283,
    "purpose": "HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4).",
-   "sha256": "e6459c8218032592544da38d87773bab1e78d6ef9098f2765073b84718c704fe"
+   "sha256": "2bfcf34b80ff43c28e3a1e915b4fa0bf619abaad93c02ab4e1abbfb3af727bcd"
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
@@ -252644,7 +252644,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 144,
+     "end": 151,
      "kind": "function",
      "name": "drg12",
      "qual": "drg12",
@@ -252654,52 +252654,52 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 158,
+     "end": 165,
      "kind": "function",
      "name": "drg13",
      "qual": "drg13",
      "sig": "def drg13() -> dict",
-     "start": 147
+     "start": 154
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 184,
+     "end": 191,
      "kind": "function",
      "name": "drg14",
      "qual": "drg14",
      "sig": "def drg14() -> dict",
-     "start": 161
+     "start": 168
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 192,
+     "end": 199,
      "kind": "function",
      "name": "drg2",
      "qual": "drg2",
      "sig": "def drg2() -> dict",
-     "start": 187
+     "start": 194
     },
     {
      "decorators": [],
      "doc": "Record-side pipeline on synthetic inputs; geometry-dependent K4b gates are planted.",
-     "end": 210,
+     "end": 217,
      "kind": "function",
      "name": "drg1",
      "qual": "drg1",
      "sig": "def drg1() -> dict",
-     "start": 195
+     "start": 202
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 236,
+     "end": 243,
      "kind": "function",
      "name": "run_dry",
      "qual": "run_dry",
      "sig": "def run_dry(out, auth=None, sched=None, job='dry', repo=None) -> dict",
-     "start": 213
+     "start": 220
     }
    ],
    "syspath": []
@@ -256780,6 +256780,21 @@
       "src/topo_pilot/dataset/checks.py"
      ],
      "top": "topo_pilot"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 242,
+     "module": "",
+     "names": [
+      "dataclasses"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "dataclasses"
     }
    ],
    "symbols": [
@@ -256886,7 +256901,7 @@
     {
      "decorators": [],
      "doc": "One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums.",
-     "end": 248,
+     "end": 253,
      "kind": "function",
      "name": "kg4_child",
      "qual": "kg4_child",
@@ -256895,13 +256910,23 @@
     },
     {
      "decorators": [],
+     "doc": "Start a dry child and kill it at once (DRG12): it must leave no record.",
+     "end": 263,
+     "kind": "function",
+     "name": "_launch_kill",
+     "qual": "_launch_kill",
+     "sig": "def _launch_kill(out) -> bool",
+     "start": 256
+    },
+    {
+     "decorators": [],
      "doc": "",
-     "end": 264,
+     "end": 279,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 251
+     "start": 266
     }
    ],
    "syspath": []
@@ -294455,5 +294480,5 @@
    ]
   }
  },
- "sources_digest": "08c7146809d625d838cd450c80b34c2c114566e97ca42cf186c8e7e89a814574"
+ "sources_digest": "6a292338b883d1d88e875e6a3bd92ac16b2080e4e2d7bc9ca3fed85d52dbd160"
 }

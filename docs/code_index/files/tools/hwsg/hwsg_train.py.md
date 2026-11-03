@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_train.py](../../../../../tools/hwsg/hwsg_train.py)
 - Kind: python
-- Lines: 268
+- Lines: 283
 
 ## Module docstring
 
@@ -43,6 +43,7 @@
 
 - `__future__` (lines 3)
 - `argparse` (lines 7)
+- `dataclasses` (lines 242)
 - `json` (lines 8)
 - `os` (lines 9)
 - `pathlib` (lines 13)
@@ -88,6 +89,7 @@
 - **function `_next_attempt`** [L128-129]: `def _next_attempt(wd, master) -> int`
 - **function `run_train`** [L132-192]: `def run_train(out, w, auth, sched, kc_accept, job, launcher=None) -> dict`
 - **function `aggregate`** [L195-211]: `def aggregate(world_dir, job, ledger_path) -> dict`
-- **function `kg4_child`** [L214-248]: `def kg4_child(master, out, steps=100, persist=True) -> dict` - One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums.
-- **function `main`** [L251-264]: `def main(argv=None) -> int`
+- **function `kg4_child`** [L214-253]: `def kg4_child(master, out, steps=100, persist=True) -> dict` - One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums.
+- **function `_launch_kill`** [L256-263]: `def _launch_kill(out) -> bool` - Start a dry child and kill it at once (DRG12): it must leave no record.
+- **function `main`** [L266-279]: `def main(argv=None) -> int`
 

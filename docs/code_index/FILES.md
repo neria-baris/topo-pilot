@@ -1458,7 +1458,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 328 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
+| `API.md` | markdown | 332 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
 | `CONTRACT.json` | json | 1611 lines |  |
 | `PROTOCOL_HWSG_v1.md` | markdown | 477 lines | HWSG-DESIGN-v1: generality across worlds, the full beyond-four test repeated in three more worlds |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSG test plan v1 (job 0224) |
@@ -1466,7 +1466,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked fil
 | [hwsg_config.py](files/tools/hwsg/hwsg_config.py.md) | python | 265 lines | HWSG configuration: CONTRACT.json, constants, worlds, plans, paths, blindness guard (API.md §1). |
 | [hwsg_cross.py](files/tools/hwsg/hwsg_cross.py.md) | python | 200 lines | HWSG cross-world readings: generality, annotations, capture, similarity, licences (API.md §8; |
 | [hwsg_dry.py](files/tools/hwsg/hwsg_dry.py.md) | python | 213 lines | HWSG dry run, part 1: synthetic cases DRG3-DRG8, DRG10, DRG11 (API.md §16; protocol §10.1). |
-| [hwsg_dry2.py](files/tools/hwsg/hwsg_dry2.py.md) | python | 236 lines | HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1). |
+| [hwsg_dry2.py](files/tools/hwsg/hwsg_dry2.py.md) | python | 243 lines | HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1). |
 | [hwsg_handoff.py](files/tools/hwsg/hwsg_handoff.py.md) | python | 115 lines | HWSG WORLD_HANDOFF: build, write, load, view for stage-C functions (API.md §3; protocol §2.6). |
 | [hwsg_jobs.py](files/tools/hwsg/hwsg_jobs.py.md) | python | 271 lines | HWSG jobs: REG1, E1-w, REG2, E2-w and the CLI (API.md §11.4-§11.7). Every world stage runs |
 | [hwsg_known.py](files/tools/hwsg/hwsg_known.py.md) | python | 356 lines | HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job. |
@@ -1474,7 +1474,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1140 tracked fil
 | [hwsg_ratio.py](files/tools/hwsg/hwsg_ratio.py.md) | python | 81 lines | HWSG capture ratio rho = X- / Delta4_orc with its joint bootstrap (API.md §7; N1, N7). |
 | [hwsg_records.py](files/tools/hwsg/hwsg_records.py.md) | python | 349 lines | HWSG records: preflight, S0, FREEZE, lineage, ledger, outcome, terminal RESULT, export, |
 | [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 399 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
-| [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 268 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
+| [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 283 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
 
 ## tools/hwsu/
 

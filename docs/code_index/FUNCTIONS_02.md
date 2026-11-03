@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `load_contract` | function | `load_contract` | [tools/c2_nd/nd_config.py:49](../../tools/c2_nd/nd_config.py#L49) | CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256. |
 | `load_contract` | function | `load_contract` | [tools/c2_readout/c2_config.py:61](../../tools/c2_readout/c2_config.py#L61) | CONTRACT.json (utf-8); ValueError unless it names the frozen protocol sha256. |
 | `load_contract` | function | `load_contract` | [tools/hws/hws_worlds.py:42](../../tools/hws/hws_worlds.py#L42) |  |
 | `load_contract` | function | `load_contract` | [tools/hwsb/hwsb_config.py:43](../../tools/hwsb/hwsb_config.py#L43) |  |
@@ -135,7 +136,7 @@
 | `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:271](../../tools/hwsd/hwsd_jobs.py#L271) |  |
 | `main` | function | `main` | [tools/hwsd/hwsd_meter_bind.py:99](../../tools/hwsd/hwsd_meter_bind.py#L99) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsg/hwsg_jobs.py:234](../../tools/hwsg/hwsg_jobs.py#L234) |  |
-| `main` | function | `main` | [tools/hwsg/hwsg_train.py:251](../../tools/hwsg/hwsg_train.py#L251) |  |
+| `main` | function | `main` | [tools/hwsg/hwsg_train.py:266](../../tools/hwsg/hwsg_train.py#L266) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_driver_of.py:114](../../tools/hwsu/hwsu_driver_of.py#L114) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_meter_bind.py:90](../../tools/hwsu/hwsu_meter_bind.py#L90) |  |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
@@ -1373,7 +1374,7 @@
 | `run_dry` | function | `run_dry` | [tools/hwsb/hwsb_dry.py:343](../../tools/hwsb/hwsb_dry.py#L343) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsc/hwsc_dry.py:297](../../tools/hwsc/hwsc_dry.py#L297) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsd/hwsd_dry.py:359](../../tools/hwsd/hwsd_dry.py#L359) |  |
-| `run_dry` | function | `run_dry` | [tools/hwsg/hwsg_dry2.py:213](../../tools/hwsg/hwsg_dry2.py#L213) |  |
+| `run_dry` | function | `run_dry` | [tools/hwsg/hwsg_dry2.py:220](../../tools/hwsg/hwsg_dry2.py#L220) |  |
 | `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:204](../../tools/hwsc/hwsc_driver.py#L204) |  |
 | `run_e1` | function | `run_e1` | [tools/hwsg/hwsg_jobs.py:150](../../tools/hwsg/hwsg_jobs.py#L150) |  |
 | `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:67](../../tools/hwsc/hwsc_jobs.py#L67) |  |
@@ -4124,5 +4125,3 @@
 | `test_nec_known_half_share_is_neither_partial_nor_code_dominant` | test | `test_nec_known_half_share_is_neither_partial_nor_code_dominant` | [tests/c2_nd/test_a_known.py:94](../../tests/c2_nd/test_a_known.py#L94) |  |
 | `test_nec_known_negative_complement` | test | `test_nec_known_negative_complement` | [tests/c2_nd/test_a_known.py:114](../../tests/c2_nd/test_a_known.py#L114) |  |
 | `test_needle_in` | test | `test_needle_in` | [tests/hwsc/test_b_guard_meter.py:154](../../tests/hwsc/test_b_guard_meter.py#L154) |  |
-| `test_needles_and_the_real_contract` | test | `test_needles_and_the_real_contract` | [tests/c2_nd/test_b_lineage.py:112](../../tests/c2_nd/test_b_lineage.py#L112) |  |
-| `test_needles_are_contract_lists` | test | `test_needles_are_contract_lists` | [tests/hwsu/test_b_of_seed.py:190](../../tests/hwsu/test_b_of_seed.py#L190) |  |

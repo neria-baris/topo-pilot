@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_dry2.py](../../../../../tools/hwsg/hwsg_dry2.py)
 - Kind: python
-- Lines: 236
+- Lines: 243
 
 ## Module docstring
 
@@ -68,10 +68,10 @@
 - **function `_entry`** [L40-43]: `def _entry(store, rel, cls='K4b history table', reader='k4b_history_table') -> dict`
 - **function `_obl`** [L46-49]: `def _obl(store, entries, name='REGISTRY_OBLIGATION.json', utc='2026-11-02T00:00:00Z') -> None`
 - **function `drg9`** [L52-105]: `def drg9() -> dict`
-- **function `drg12`** [L108-144]: `def drg12() -> dict`
-- **function `drg13`** [L147-158]: `def drg13() -> dict`
-- **function `drg14`** [L161-184]: `def drg14() -> dict`
-- **function `drg2`** [L187-192]: `def drg2() -> dict`
-- **function `drg1`** [L195-210]: `def drg1() -> dict` - Record-side pipeline on synthetic inputs; geometry-dependent K4b gates are planted.
-- **function `run_dry`** [L213-236]: `def run_dry(out, auth=None, sched=None, job='dry', repo=None) -> dict`
+- **function `drg12`** [L108-151]: `def drg12() -> dict`
+- **function `drg13`** [L154-165]: `def drg13() -> dict`
+- **function `drg14`** [L168-191]: `def drg14() -> dict`
+- **function `drg2`** [L194-199]: `def drg2() -> dict`
+- **function `drg1`** [L202-217]: `def drg1() -> dict` - Record-side pipeline on synthetic inputs; geometry-dependent K4b gates are planted.
+- **function `run_dry`** [L220-243]: `def run_dry(out, auth=None, sched=None, job='dry', repo=None) -> dict`
 

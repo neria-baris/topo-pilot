@@ -1260,6 +1260,7 @@
 | `_launch` | function | `_launch` | [tools/d2a/d2a_train.py:306](../../tools/d2a/d2a_train.py#L306) |  |
 | `_launch` | function | `_launch` | [tools/hwsg/hwsg_known.py:161](../../tools/hwsg/hwsg_known.py#L161) |  |
 | `_launch` | function | `_launch` | [tools/x4_oracle_profile/meter.py:97](../../tools/x4_oracle_profile/meter.py#L97) |  |
+| `_launch_kill` | function | `_launch_kill` | [tools/hwsg/hwsg_train.py:256](../../tools/hwsg/hwsg_train.py#L256) | Start a dry child and kill it at once (DRG12): it must leave no record. |
 | `_law` | function | `_law` | [tests/x6_stage1/test_a_pairs.py:280](../../tests/x6_stage1/test_a_pairs.py#L280) |  |
 | `_law` | function | `_law` | [tools/hwsg/hwsg_known.py:192](../../tools/hwsg/hwsg_known.py#L192) |  |
 | `_law` | function | `_law` | [tools/hwsu/hwsu_dry.py:137](../../tools/hwsu/hwsu_dry.py#L137) | Exact law of the prefix given the suffix from a kernel dict (API.md §2.1). |
@@ -3754,13 +3755,13 @@
 | `drd7` | function | `drd7` | [tools/hwsd/hwsd_dry2.py:141](../../tools/hwsd/hwsd_dry2.py#L141) |  |
 | `drd8` | function | `drd8` | [tools/hwsd/hwsd_dry2.py:212](../../tools/hwsd/hwsd_dry2.py#L212) |  |
 | `drd9` | function | `drd9` | [tools/hwsd/hwsd_dry2.py:286](../../tools/hwsd/hwsd_dry2.py#L286) |  |
-| `drg1` | function | `drg1` | [tools/hwsg/hwsg_dry2.py:195](../../tools/hwsg/hwsg_dry2.py#L195) | Record-side pipeline on synthetic inputs; geometry-dependent K4b gates are planted. |
+| `drg1` | function | `drg1` | [tools/hwsg/hwsg_dry2.py:202](../../tools/hwsg/hwsg_dry2.py#L202) | Record-side pipeline on synthetic inputs; geometry-dependent K4b gates are planted. |
 | `drg10` | function | `drg10` | [tools/hwsg/hwsg_dry.py:179](../../tools/hwsg/hwsg_dry.py#L179) |  |
 | `drg11` | function | `drg11` | [tools/hwsg/hwsg_dry.py:201](../../tools/hwsg/hwsg_dry.py#L201) |  |
 | `drg12` | function | `drg12` | [tools/hwsg/hwsg_dry2.py:108](../../tools/hwsg/hwsg_dry2.py#L108) |  |
-| `drg13` | function | `drg13` | [tools/hwsg/hwsg_dry2.py:147](../../tools/hwsg/hwsg_dry2.py#L147) |  |
-| `drg14` | function | `drg14` | [tools/hwsg/hwsg_dry2.py:161](../../tools/hwsg/hwsg_dry2.py#L161) |  |
-| `drg2` | function | `drg2` | [tools/hwsg/hwsg_dry2.py:187](../../tools/hwsg/hwsg_dry2.py#L187) |  |
+| `drg13` | function | `drg13` | [tools/hwsg/hwsg_dry2.py:154](../../tools/hwsg/hwsg_dry2.py#L154) |  |
+| `drg14` | function | `drg14` | [tools/hwsg/hwsg_dry2.py:168](../../tools/hwsg/hwsg_dry2.py#L168) |  |
+| `drg2` | function | `drg2` | [tools/hwsg/hwsg_dry2.py:194](../../tools/hwsg/hwsg_dry2.py#L194) |  |
 | `drg3` | function | `drg3` | [tools/hwsg/hwsg_dry.py:40](../../tools/hwsg/hwsg_dry.py#L40) |  |
 | `drg4` | function | `drg4` | [tools/hwsg/hwsg_dry.py:74](../../tools/hwsg/hwsg_dry.py#L74) |  |
 | `drg5` | function | `drg5` | [tools/hwsg/hwsg_dry.py:93](../../tools/hwsg/hwsg_dry.py#L93) |  |
@@ -4948,4 +4949,3 @@
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |
 | `load_config` | function | `load_config` | [tools/x4_oracle_profile/inputs.py:25](../../tools/x4_oracle_profile/inputs.py#L25) |  |
 | `load_contract` | function | `load_contract` | [tools/c1prime/c1_config.py:34](../../tools/c1prime/c1_config.py#L34) |  |
-| `load_contract` | function | `load_contract` | [tools/c2_nd/nd_config.py:49](../../tools/c2_nd/nd_config.py#L49) | CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256. |

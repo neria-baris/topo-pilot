@@ -27337,15 +27337,15 @@
   },
   "tools/hwsu/API_U2.md": {
    "kind": "markdown",
-   "lines": 385,
+   "lines": 390,
    "purpose": "tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1)",
-   "sha256": "132949419b3508436e02c7dc1306089bc6d2f821f1280286154b3bb0219e103b"
+   "sha256": "f3c1273a01da342192100fc3759d19b298ee4a4026da0b47bf0be51c5b1ab024"
   },
   "tools/hwsu/CONTRACT.json": {
    "kind": "json",
-   "lines": 1497,
+   "lines": 1504,
    "purpose": "",
-   "sha256": "a25d86bd36a6e62ec12359d6fc49642d70a7d851f68ec898d6967c2d33a1a35c"
+   "sha256": "235d0858af073f622ca64621ae5baec4b461bd6212c20009e1f96782dfa3db23"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -276554,5 +276554,5 @@
    ]
   }
  },
- "sources_digest": "bed56000185fa082b7dd48c5ed881e3b33d8767bd1f7ab0ca30b044c72ea961c"
+ "sources_digest": "c5ae27d48bc06460df900c3c924e3762cbf4defbd715d6d65c95255cfdc3323c"
 }

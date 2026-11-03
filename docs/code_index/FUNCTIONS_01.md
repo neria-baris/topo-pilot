@@ -170,7 +170,7 @@
 | `__init__` | method | `_RecGen.__init__` | [tests/x6_stage1/test_b_train_chain.py:122](../../tests/x6_stage1/test_b_train_chain.py#L122) |  |
 | `__init__` | method | `_RecGen.__init__` | [tools/x6_stage1/x6s1_run.py:413](../../tools/x6_stage1/x6s1_run.py#L413) |  |
 | `__init__` | method | `_Reg.__init__` | [tests/c2_readout/test_b_registry.py:100](../../tests/c2_readout/test_b_registry.py#L100) |  |
-| `__init__` | method | `_RegView.__init__` | [tools/hwsg/hwsg_registry.py:356](../../tools/hwsg/hwsg_registry.py#L356) |  |
+| `__init__` | method | `_RegView.__init__` | [tools/hwsg/hwsg_registry.py:355](../../tools/hwsg/hwsg_registry.py#L355) |  |
 | `__init__` | method | `_Row.__init__` | [tests/experiment/test_x4b2.py:76](../../tests/experiment/test_x4b2.py#L76) |  |
 | `__init__` | method | `_Seeds.__init__` | [tests/x6_stage1/test_b_train_chain.py:138](../../tests/x6_stage1/test_b_train_chain.py#L138) |  |
 | `__init__` | method | `_Seeds.__init__` | [tools/x6_stage1/x6s1_run.py:419](../../tools/x6_stage1/x6s1_run.py#L419) |  |
@@ -413,7 +413,7 @@
 | `_centre` | function | `_centre` | [tests/c2_nd/test_a_identity.py:33](../../tests/c2_nd/test_a_identity.py#L33) |  |
 | `_centre` | function | `_centre` | [tests/c2_nd/test_a_known.py:34](../../tests/c2_nd/test_a_known.py#L34) |  |
 | `_certify` | function | `_certify` | [tests/circle_history/test_error_bound.py:282](../../tests/circle_history/test_error_bound.py#L282) |  |
-| `_certify` | function | `_certify` | [tools/hwsg/hwsg_registry.py:297](../../tools/hwsg/hwsg_registry.py#L297) |  |
+| `_certify` | function | `_certify` | [tools/hwsg/hwsg_registry.py:296](../../tools/hwsg/hwsg_registry.py#L296) |  |
 | `_cf_float` | function | `_cf_float` | [tools/x6_stage0/x6_run.py:64](../../tools/x6_stage0/x6_run.py#L64) |  |
 | `_Cfg` | class | `_Cfg` | [tests/experiment/test_report_e3.py:100](../../tests/experiment/test_report_e3.py#L100) |  |
 | `_Cfg` | class | `_Cfg` | [tests/experiment/test_s8_e4.py:187](../../tests/experiment/test_s8_e4.py#L187) |  |
@@ -1915,7 +1915,7 @@
 | `_registry_npz` | function | `_registry_npz` | [tools/hwsc/hwsc_drystore.py:54](../../tools/hwsc/hwsc_drystore.py#L54) |  |
 | `_regressors` | function | `_regressors` | [tests/c2_readout/test_a_scope.py:89](../../tests/c2_readout/test_a_scope.py#L89) |  |
 | `_regret_curve` | function | `_regret_curve` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:85](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L85) | Regret per row and checkpoint; checkpoints were validated by ``validate_checkpoints``. |
-| `_RegView` | class | `_RegView` | [tools/hwsg/hwsg_registry.py:355](../../tools/hwsg/hwsg_registry.py#L355) |  |
+| `_RegView` | class | `_RegView` | [tools/hwsg/hwsg_registry.py:354](../../tools/hwsg/hwsg_registry.py#L354) |  |
 | `_rel` | function | `_rel` | [tests/hwsc/test_b_guard_meter.py:180](../../tests/hwsc/test_b_guard_meter.py#L180) |  |
 | `_rel` | function | `_rel` | [tools/c2_readout/c2_data.py:208](../../tools/c2_readout/c2_data.py#L208) | The posix path of `path` relative to `base`, or None if it lies outside. |
 | `_rel` | function | `_rel` | [tools/hws/hws_driver.py:40](../../tools/hws/hws_driver.py#L40) |  |
@@ -2403,7 +2403,7 @@
 | `_table` | function | `_table` | [tests/hwsg/test_b_registry.py:25](../../tests/hwsg/test_b_registry.py#L25) |  |
 | `_table` | function | `_table` | [tests/hwsu/test_b_of_driver.py:35](../../tests/hwsu/test_b_of_driver.py#L35) |  |
 | `_table` | function | `_table` | [tools/hwsd/hwsd_dry2.py:172](../../tools/hwsd/hwsd_dry2.py#L172) |  |
-| `_table` | function | `_table` | [tools/hwsg/hwsg_registry.py:364](../../tools/hwsg/hwsg_registry.py#L364) |  |
+| `_table` | function | `_table` | [tools/hwsg/hwsg_registry.py:363](../../tools/hwsg/hwsg_registry.py#L363) |  |
 | `_tables` | function | `_tables` | [tests/c2_readout/test_b_registry.py:139](../../tests/c2_readout/test_b_registry.py#L139) |  |
 | `_tables` | function | `_tables` | [tests/experiment/test_x5g1t_integration.py:36](../../tests/experiment/test_x5g1t_integration.py#L36) |  |
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_registry2.py:295](../../tests/hwsc/test_b_registry2.py#L295) |  |
@@ -3041,7 +3041,7 @@
 | `build` | function | `build` | [tools/c2_readout/c2_registry.py:241](../../tools/c2_readout/c2_registry.py#L241) | C2-REG1 (before FIT) or C2-REG2 (R' with the FIT/FEAS/VAL tables in `extra`, keyed by |
 | `build` | function | `build` | [tools/hwsc/hwsc_registry_build.py:60](../../tools/hwsc/hwsc_registry_build.py#L60) |  |
 | `build` | function | `build` | [tools/hwsg/hwsg_handoff.py:19](../../tools/hwsg/hwsg_handoff.py#L19) |  |
-| `build` | function | `build` | [tools/hwsg/hwsg_registry.py:319](../../tools/hwsg/hwsg_registry.py#L319) |  |
+| `build` | function | `build` | [tools/hwsg/hwsg_registry.py:318](../../tools/hwsg/hwsg_registry.py#L318) |  |
 | `build` | function | `build` | [tools/k4b/k4b_registry.py:298](../../tools/k4b/k4b_registry.py#L298) | Builds K-REG1/K-REG2 from scratch; manifest and digest npz written by exclusive create. |
 | `build` | function | `build` | [tools/theory_exact/theory_exact.py:23](../../tools/theory_exact/theory_exact.py#L23) |  |
 | `build` | function | `build` | [tools/x4_circle_history/live_context.py:96](../../tools/x4_circle_history/live_context.py#L96) |  |
@@ -3413,7 +3413,7 @@
 | `contains` | method | `DigestSet.contains` | [tools/x6_stage1/x6s1_registry.py:136](../../tools/x6_stage1/x6s1_registry.py#L136) | Key candidate search, then full-digest confirmation against the runs. |
 | `contains` | method | `Registry.contains` | [tools/c2_readout/c2_registry.py:350](../../tools/c2_readout/c2_registry.py#L350) |  |
 | `contains` | method | `_Reg.contains` | [tests/c2_readout/test_b_registry.py:104](../../tests/c2_readout/test_b_registry.py#L104) |  |
-| `contains` | method | `_RegView.contains` | [tools/hwsg/hwsg_registry.py:360](../../tools/hwsg/hwsg_registry.py#L360) |  |
+| `contains` | method | `_RegView.contains` | [tools/hwsg/hwsg_registry.py:359](../../tools/hwsg/hwsg_registry.py#L359) |  |
 | `contains` | method | `_X6.contains` | [tests/hwsd/test_b_data.py:143](../../tests/hwsd/test_b_data.py#L143) |  |
 | `contains` | method | `_X6.contains` | [tests/hwsd/test_b_registry_r9.py:267](../../tests/hwsd/test_b_registry_r9.py#L267) |  |
 | `contains_scope` | function | `contains_scope` | [tools/c2_readout/c2_data.py:197](../../tools/c2_readout/c2_data.py#L197) | True iff the file bytes contain `needle` (1 MiB chunks, len(needle) - 1 bytes overlap). |

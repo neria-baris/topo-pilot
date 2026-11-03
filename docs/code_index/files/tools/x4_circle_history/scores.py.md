@@ -72,7 +72,7 @@
 - [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 21, import)
 - [tools/hwsd/hwsd_readers.py](../hwsd/hwsd_readers.py.md) (line 16, import)
 - [tools/hwsg/hwsg_dry2.py](../hwsg/hwsg_dry2.py.md) (line 20, import)
-- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 366, import)
+- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 365, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 14, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 25, import)
 - [tools/k4b/k4b_scores.py](../k4b/k4b_scores.py.md) (line 12, import)

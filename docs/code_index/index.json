@@ -20402,7 +20402,7 @@
    "tools/hwsg/hwsg_registry.py",
    "tools/x4_circle_history/scores.py",
    "import",
-   366
+   365
   ],
   [
    "tools/hwsg/hwsg_registry.py",
@@ -29748,9 +29748,9 @@
   },
   "tools/hwsg/hwsg_registry.py": {
    "kind": "python",
-   "lines": 401,
+   "lines": 400,
    "purpose": "HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6;",
-   "sha256": "e485f9f0b172bb435e3a27e765d13753a40abf4bc7d7964f3f2da238e9c125f3"
+   "sha256": "d38cc57c6ff5b9878c1999d2a5409758d037b88cf02f97da4ed81fdb49b239e8"
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
@@ -256444,7 +256444,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 366,
+     "line": 365,
      "module": "",
      "names": [
       "scores"
@@ -256650,7 +256650,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 293,
+     "end": 292,
      "kind": "function",
      "name": "sources",
      "qual": "sources",
@@ -256662,72 +256662,72 @@
       "contextlib.contextmanager"
      ],
      "doc": "",
-     "end": 316,
+     "end": 315,
      "kind": "function",
      "name": "_certify",
      "qual": "_certify",
      "sig": "def _certify(mpath, root, bound)",
-     "start": 297
+     "start": 296
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 351,
+     "end": 350,
      "kind": "function",
      "name": "build",
      "qual": "build",
      "sig": "def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict",
-     "start": 319
+     "start": 318
     },
     {
      "bases": [],
      "decorators": [],
      "doc": "",
-     "end": 361,
+     "end": 360,
      "kind": "class",
      "name": "_RegView",
      "qual": "_RegView",
+     "start": 354
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 357,
+     "kind": "method",
+     "name": "__init__",
+     "qual": "_RegView.__init__",
+     "sig": "def __init__(self, d)",
      "start": 355
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 358,
-     "kind": "method",
-     "name": "__init__",
-     "qual": "_RegView.__init__",
-     "sig": "def __init__(self, d)",
-     "start": 356
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 361,
+     "end": 360,
      "kind": "method",
      "name": "contains",
      "qual": "_RegView.contains",
      "sig": "def contains(self, digest)",
-     "start": 360
+     "start": 359
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 371,
+     "end": 370,
      "kind": "function",
      "name": "_table",
      "qual": "_table",
      "sig": "def _table(t) -> dict",
-     "start": 364
+     "start": 363
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 401,
+     "end": 400,
      "kind": "function",
      "name": "separation_g",
      "qual": "separation_g",
      "sig": "def separation_g(reg, tables_by_world) -> dict",
-     "start": 374
+     "start": 373
     }
    ],
    "syspath": []
@@ -294983,5 +294983,5 @@
    ]
   }
  },
- "sources_digest": "fd771820e1550eae2cf7f7e3ba19a1f797436592f091e02e93853df9f4f38218"
+ "sources_digest": "65cbd06708c42fd0d2a4e2a1ec74735192cfedd3e8fa362c653091baa87bb7ea"
 }

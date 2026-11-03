@@ -1650,7 +1650,7 @@
 | `separation_cal_val` | function | `separation_cal_val` | [tools/k4b/k4b_data.py:150](../../tools/k4b/k4b_data.py#L150) |  |
 | `separation_d` | function | `separation_d` | [tools/hwsd/hwsd_data.py:95](../../tools/hwsd/hwsd_data.py#L95) |  |
 | `separation_fresh` | function | `separation_fresh` | [tools/k4b/k4b_data.py:154](../../tools/k4b/k4b_data.py#L154) |  |
-| `separation_g` | function | `separation_g` | [tools/hwsg/hwsg_registry.py:374](../../tools/hwsg/hwsg_registry.py#L374) |  |
+| `separation_g` | function | `separation_g` | [tools/hwsg/hwsg_registry.py:373](../../tools/hwsg/hwsg_registry.py#L373) |  |
 | `seq` | function | `seq` | [tests/hwsd/test_a_hwsd_ref.py:77](../../tests/hwsd/test_a_hwsd_ref.py#L77) |  |
 | `seq_cases` | function | `seq_cases` | [tools/hwsd/hwsd_dry.py:179](../../tools/hwsd/hwsd_dry.py#L179) |  |
 | `seq_disjoint` | function | `seq_disjoint` | [tools/k4b/k4b_data.py:160](../../tools/k4b/k4b_data.py#L160) |  |

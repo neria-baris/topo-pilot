@@ -1474,7 +1474,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked fil
 | [hwsg_oracle.py](files/tools/hwsg/hwsg_oracle.py.md) | python | 322 lines | HWSG process, identity and stage O (API.md §4; protocol §2.3, §2.6, §3; gates O0-O5). |
 | [hwsg_ratio.py](files/tools/hwsg/hwsg_ratio.py.md) | python | 81 lines | HWSG capture ratio rho = X- / Delta4_orc with its joint bootstrap (API.md §7; N1, N7). |
 | [hwsg_records.py](files/tools/hwsg/hwsg_records.py.md) | python | 349 lines | HWSG records: preflight, S0, FREEZE, lineage, ledger, outcome, terminal RESULT, export, |
-| [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 401 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
+| [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 400 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
 | [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 289 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
 
 ## tools/hwsu/

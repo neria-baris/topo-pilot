@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_registry.py](../../../../../tools/hwsg/hwsg_registry.py)
 - Kind: python
-- Lines: 401
+- Lines: 400
 
 ## Module docstring
 
@@ -20,7 +20,7 @@
 - `import hwsc_registry_build` -> [tools/hwsc/hwsc_registry_build.py](../hwsc/hwsc_registry_build.py.md) (line 21, via unique basename)
 - `import stage_records` -> [tools/x4_circle_history/stage_records.py](../x4_circle_history/stage_records.py.md) (line 23, via unique basename)
 - `from c1_records import C1GateFailure` -> [tools/c1prime/c1_records.py](../c1prime/c1_records.py.md) (line 24, via unique basename)
-- `import scores` -> [tools/x4_circle_history/scores.py](../x4_circle_history/scores.py.md) (line 366, via unique basename) (inside a function)
+- `import scores` -> [tools/x4_circle_history/scores.py](../x4_circle_history/scores.py.md) (line 365, via unique basename) (inside a function)
 
 ### External (third-party)
 
@@ -93,12 +93,12 @@
 - **function `certificate`** [L261-264]: `def certificate(manifest) -> str`
 - **function `_inv_sha`** [L267-269]: `def _inv_sha(root, inv, bound=None) -> tuple`
 - **function `recheck`** [L272-280]: `def recheck(manifest, root=None) -> dict`
-- **function `sources`** [L284-293]: `def sources(root, scratch, worlds, extra=None, table=None) -> dict`
-- **function `_certify`** [L297-316]: `def _certify(mpath, root, bound)` decorators: @contextlib.contextmanager
-- **function `build`** [L319-351]: `def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict`
-- **class `_RegView`** [L355-361]
-- **method `_RegView.__init__`** [L356-358]: `def __init__(self, d)`
-- **method `_RegView.contains`** [L360-361]: `def contains(self, digest)`
-- **function `_table`** [L364-371]: `def _table(t) -> dict`
-- **function `separation_g`** [L374-401]: `def separation_g(reg, tables_by_world) -> dict`
+- **function `sources`** [L284-292]: `def sources(root, scratch, worlds, extra=None, table=None) -> dict`
+- **function `_certify`** [L296-315]: `def _certify(mpath, root, bound)` decorators: @contextlib.contextmanager
+- **function `build`** [L318-350]: `def build(version, out_dir, root=None, scratch=None, worlds=gc.TAGS, extra=None, sources_fn=None) -> dict`
+- **class `_RegView`** [L354-360]
+- **method `_RegView.__init__`** [L355-357]: `def __init__(self, d)`
+- **method `_RegView.contains`** [L359-360]: `def contains(self, digest)`
+- **function `_table`** [L363-370]: `def _table(t) -> dict`
+- **function `separation_g`** [L373-400]: `def separation_g(reg, tables_by_world) -> dict`
 

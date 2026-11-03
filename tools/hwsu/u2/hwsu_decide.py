@@ -169,9 +169,10 @@ def study_outcome(records, resp, share=None) -> str:
 
 
 def licences(resp, per_model, bounds, desc, contract=None) -> dict:
-    O = (uc.CONTRACT if contract is None else contract)["outcomes_u2"]
-    L, clause, out = O["licences"], O["scope_clause"], resp["outcome"]
-    key = {"RESPONDS": "RESPONDS", "WEAK_RESPONSE": "WEAK_RESPONSE / RESP_POSITIVE_BELOW_MARGIN",
+    oc = (uc.CONTRACT if contract is None else contract)["outcomes_u2"]
+    L, clause, out = oc["licences"], oc["scope_clause"], resp["outcome"]
+    weak = "WEAK_RESPONSE / RESP_POSITIVE_BELOW_MARGIN"
+    key = {"RESPONDS": "RESPONDS", "WEAK_RESPONSE": weak,
            "LOW_RESPONSE": "LOW_RESPONSE"}.get(out, "MIXED / INCONCLUSIVE")
     text = L[key]
     cat = out
@@ -183,9 +184,10 @@ def licences(resp, per_model, bounds, desc, contract=None) -> dict:
                 .replace("(masters ...)", f"(masters {', '.join(map(str, masters))})")
                 .replace("theta-hat = ...", f"theta-hat = {pts}")
                 .replace("lower bounds ....", f"lower bounds {lows}."))
-    res = {"response": f"{text} {clause}", "share": f"{L['SHARE_INCONCLUSIVE_ORACLE_FEASIBILITY']}"
-           f" {clause}", "disclosure": O["disclosure"], "does_not_establish": O[
-               "does_not_establish"], "rule6": resp.get("rule6")}
+    share = L["SHARE_INCONCLUSIVE_ORACLE_FEASIBILITY"]
+    res = {"response": f"{text} {clause}", "share": f"{share} {clause}",
+           "disclosure": oc["disclosure"], "does_not_establish": oc["does_not_establish"],
+           "rule6": resp.get("rule6")}
     if out == "LOW_RESPONSE":
         res["not_licensed"] = L["LOW_RESPONSE_not_licensed"]
     return res

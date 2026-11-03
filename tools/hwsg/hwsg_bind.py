@@ -17,8 +17,23 @@ import hwsc_config
 import hwsc_data
 from c1_records import C1GateFailure
 
+from topo_pilot.dataset import checks as _checks
+
 BAD = "FAIL_TECHNICAL/BINDING"
 ACTIVE = None
+_ORIG_PC = _checks.process_code
+
+
+def process_code_g(*args):
+    """process_code accepts (family, mode, sigma, replicate); PROC_w + replicate has six fields
+    (contract defect, reported): sigma, p and the world key are joined into the sigma field."""
+    if len(args) == 6:
+        family, mode, sigma, p, key, rep = args
+        return _ORIG_PC(family, mode, f"{sigma}|{p}|{key}", rep)
+    return _ORIG_PC(*args)
+
+
+_ADAPTERS = ("hwsb_data", "hwsc_data", "k4b_data")
 _ROWS = [tuple(r.split(".", 1)) for r in gc.CONTRACT["binding"]["rows_per_world"]]
 _IMPORT_VALUES = {(m, n): getattr(importlib.import_module(m), n) for m, n in _ROWS}
 
@@ -28,7 +43,7 @@ def _values(d, store_dir, dry_case=None) -> dict:
     import hwsg_oracle
 
     led, key = gc.STUDY_LEDGER, d.key
-    plan = gc.plan(d.tag)
+    plan = gc.plan(d)
     v = {
         ("hwsb_config", "SCOPE"): gc.SCOPE, ("hwsb_config", "KEY"): key,
         ("hwsb_config", "PROCESS"): d.process, ("hwsb_config", "MASTERS"): d.masters,
@@ -46,9 +61,9 @@ def _values(d, store_dir, dry_case=None) -> dict:
         ("hwsc_config", "HWSC_PLAN"): plan,
         ("hwsc_config", "RESERVATION_ID"): d.reservation_id,
         ("hwsc_config", "DISCLOSURE"): gc.DISCLOSURE,
-        ("hwsc_config", "load_handoff"): hwsg_handoff.loader(key),
-        ("hwsc_data", "build_process_c"): hwsg_oracle.process_builder(key),
-        ("hwsc_data", "process_identity"): hwsg_oracle.identity_checker(key),
+        ("hwsc_config", "load_handoff"): hwsg_handoff.loader(d),
+        ("hwsc_data", "build_process_c"): hwsg_oracle.process_builder(d),
+        ("hwsc_data", "process_identity"): hwsg_oracle.identity_checker(d),
     }
     if dry_case is not None:
         dm, case = gc.DRY_MASTERS[d.tag], f"hwsg-v1/DRY/{dry_case}/{d.tag}"
@@ -123,6 +138,10 @@ def world(w, dry_case=None):
     saved = []
     ACTIVE = d.tag
     try:
+        for m in _ADAPTERS:
+            mod = importlib.import_module(m)
+            saved.append((mod, "process_code", getattr(mod, "process_code")))
+            mod.process_code = process_code_g
         for r in rs:
             mod = importlib.import_module(r["module"])
             saved.append((mod, r["name"], getattr(mod, r["name"])))

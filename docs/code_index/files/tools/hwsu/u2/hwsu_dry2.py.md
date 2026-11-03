@@ -66,7 +66,7 @@
 ## Imported by
 
 - [tests/hwsu/test_b_u2_records.py](../../../tests/hwsu/test_b_u2_records.py.md) (line 41, dynamic)
-- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 261, dynamic)
+- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 335, dynamic)
 - [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 315, dynamic)
 
 ## Top-level constants

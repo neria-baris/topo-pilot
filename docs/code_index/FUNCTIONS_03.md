@@ -2,6 +2,16 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_percentile_interval_hand_case` | test | `test_percentile_interval_hand_case` | [tests/oracle_profile/test_oracle_profile_kernels.py:259](../../tests/oracle_profile/test_oracle_profile_kernels.py#L259) | n = 4: inverted CDF picks x_(ceil(n p)): p = .25 -> 1, .3 -> 2, .5 -> 2, 1 -> 4. |
+| `test_percentile_interval_hand_value` | test | `test_percentile_interval_hand_value` | [tests/analysis/test_x5_context.py:50](../../tests/analysis/test_x5_context.py#L50) |  |
+| `test_percentile_interval_matches_numpy_linear` | test | `test_percentile_interval_matches_numpy_linear` | [tests/analysis/test_x5_context.py:41](../../tests/analysis/test_x5_context.py#L41) |  |
+| `test_percentile_interval_rejects_bad_probs` | test | `test_percentile_interval_rejects_bad_probs` | [tests/oracle_profile/test_builder_kernels.py:91](../../tests/oracle_profile/test_builder_kernels.py#L91) |  |
+| `test_permutation_fixture_is_non_involutive` | test | `test_permutation_fixture_is_non_involutive` | [tests/c2_readout/test_a_readout.py:183](../../tests/c2_readout/test_a_readout.py#L183) |  |
+| `test_permuting_rows_within_calibration_does_not_change_result` | test | `test_permuting_rows_within_calibration_does_not_change_result` | [tests/experiment/test_x4f_probe.py:159](../../tests/experiment/test_x4f_probe.py#L159) |  |
+| `test_persist_order_and_values` | test | `test_persist_order_and_values` | [tests/c1prime/test_a_chart_lcc512.py:179](../../tests/c1prime/test_a_chart_lcc512.py#L179) | Items 3 and 9: giant before the lift, then lift kind, g and the smoothing residual. |
+| `test_persistent_latch_requires_fresh_clearance_and_release` | test | `test_persistent_latch_requires_fresh_clearance_and_release` | [tests/oracle_profile/test_builder_controls.py:181](../../tests/oracle_profile/test_builder_controls.py#L181) |  |
+| `test_phase1_audit_globs_never_see_u2` | test | `test_phase1_audit_globs_never_see_u2` | [tests/hwsu/test_b_u2_audit.py:212](../../tests/hwsu/test_b_u2_audit.py#L212) |  |
+| `test_phase2_arrays_use_phase1_prefixes_and_obligation_lists_them` | test | `test_phase2_arrays_use_phase1_prefixes_and_obligation_lists_them` | [tests/hwsu/test_b_u2_records.py:142](../../tests/hwsu/test_b_u2_records.py#L142) |  |
 | `test_phase2_files_names_modules_and_documents` | test | `test_phase2_files_names_modules_and_documents` | [tests/hwsu/test_b_u2_contract.py:123](../../tests/hwsu/test_b_u2_contract.py#L123) |  |
 | `test_phase2_files_not_in_phase1_files` | test | `test_phase2_files_not_in_phase1_files` | [tests/hwsu/test_b_u2_contract.py:134](../../tests/hwsu/test_b_u2_contract.py#L134) |  |
 | `test_phase_bin_counts_known_answers` | test | `test_phase_bin_counts_known_answers` | [tests/circle_history/test_chart_extension.py:287](../../tests/circle_history/test_chart_extension.py#L287) |  |
@@ -611,6 +621,7 @@
 | `test_scoring_authority_unlocks_scoring` | test | `test_scoring_authority_unlocks_scoring` | [tests/circle_history/test_error_bound.py:390](../../tests/circle_history/test_error_bound.py#L390) |  |
 | `test_scoring_guard_is_a_real_boundary` | test | `test_scoring_guard_is_a_real_boundary` | [tests/experiment/test_x5g1t_integration.py:324](../../tests/experiment/test_x5g1t_integration.py#L324) | A STOP that appears at 'score batch 1' stops dev-analysis with no result export. |
 | `test_scoring_lock_precedes_any_computation` | test | `test_scoring_lock_precedes_any_computation` | [tests/circle_history/test_error_bound.py:374](../../tests/circle_history/test_error_bound.py#L374) |  |
+| `test_scratch_matcher_excludes_other_study_fixtures` | test | `test_scratch_matcher_excludes_other_study_fixtures` | [tests/hwsu/test_impl_u2_review.py:39](../../tests/hwsu/test_impl_u2_review.py#L39) |  |
 | `test_screen_bounds_formulas` | test | `test_screen_bounds_formulas` | [tests/hws/test_a_stats.py:98](../../tests/hws/test_a_stats.py#L98) |  |
 | `test_screen_pool_and_pair_d2` | test | `test_screen_pool_and_pair_d2` | [tests/analysis/test_horizon.py:151](../../tests/analysis/test_horizon.py#L151) |  |
 | `test_screening_rates` | test | `test_screening_rates` | [tests/hws/test_a_budget.py:38](../../tests/hws/test_a_budget.py#L38) |  |
@@ -622,6 +633,7 @@
 | `test_sealed_keys_refused_anywhere` | test | `test_sealed_keys_refused_anywhere` | [tests/hwsc/test_b_records.py:348](../../tests/hwsc/test_b_records.py#L348) |  |
 | `test_sealed_keys_u_constant` | test | `test_sealed_keys_u_constant` | [tests/hwsu/test_b_u2_records.py:98](../../tests/hwsu/test_b_u2_records.py#L98) |  |
 | `test_search_root_for_guard` | test | `test_search_root_for_guard` | [tests/hwsu/test_b_of_seed.py:135](../../tests/hwsu/test_b_of_seed.py#L135) |  |
+| `test_second_archive_gets_a2_and_obligation_lists_archived_arrays` | test | `test_second_archive_gets_a2_and_obligation_lists_archived_arrays` | [tests/hwsu/test_impl_u2_review.py:67](../../tests/hwsu/test_impl_u2_review.py#L67) |  |
 | `test_second_attempt_refused_even_without_completion` | test | `test_second_attempt_refused_even_without_completion` | [tests/circle_history/test_builder_v24_stages.py:51](../../tests/circle_history/test_builder_v24_stages.py#L51) |  |
 | `test_second_candidate_chosen_even_if_third_better` | test | `test_second_candidate_chosen_even_if_third_better` | [tests/analysis/test_sigma_calibrator.py:64](../../tests/analysis/test_sigma_calibrator.py#L64) |  |
 | `test_second_start_refused_after_complete` | test | `test_second_start_refused_after_complete` | [tests/experiment/test_x5g1t_training.py:269](../../tests/experiment/test_x5g1t_training.py#L269) |  |
@@ -1073,6 +1085,7 @@
 | `test_unreadable_file_outside_a_segment_is_incomplete` | test | `test_unreadable_file_outside_a_segment_is_incomplete` | [tests/k4b/test_b_registry_rules.py:186](../../tests/k4b/test_b_registry_rules.py#L186) |  |
 | `test_unreadable_marker_stops_recovery` | test | `test_unreadable_marker_stops_recovery` | [tests/x6_stage1/test_b_chain_ops.py:182](../../tests/x6_stage1/test_b_chain_ops.py#L182) |  |
 | `test_unreadable_npz_fails_closed` | test | `test_unreadable_npz_fails_closed` | [tests/hwsb/test_b_registry.py:159](../../tests/hwsb/test_b_registry.py#L159) |  |
+| `test_unrecorded_compares_sha_not_only_name` | test | `test_unrecorded_compares_sha_not_only_name` | [tests/hwsu/test_impl_u2_review.py:90](../../tests/hwsu/test_impl_u2_review.py#L90) |  |
 | `test_unregistered_pool_refused` | test | `test_unregistered_pool_refused` | [tests/x6_stage1/test_b_seed_pool_reg.py:158](../../tests/x6_stage1/test_b_seed_pool_reg.py#L158) |  |
 | `test_unreleased_hold_never_returns` | test | `test_unreleased_hold_never_returns` | [tests/experiment/test_x5g1t_runtime.py:275](../../tests/experiment/test_x5g1t_runtime.py#L275) |  |
 | `test_unresolved_c_hor_can_still_match_a_later_rule` | test | `test_unresolved_c_hor_can_still_match_a_later_rule` | [tests/d2a/test_b_rules_decide.py:231](../../tests/d2a/test_b_rules_decide.py#L231) |  |
@@ -1678,6 +1691,7 @@
 | `write_new` | function | `write_new` | [tools/x4_circle_history/stage_records.py:35](../../tools/x4_circle_history/stage_records.py#L35) |  |
 | `write_new` | function | `write_new` | [tools/x4_oracle_profile/freeze.py:101](../../tools/x4_oracle_profile/freeze.py#L101) |  |
 | `write_obligation` | function | `write_obligation` | [tools/hwsu/hwsu_resv.py:169](../../tools/hwsu/hwsu_resv.py#L169) |  |
+| `write_obligation_u2` | function | `write_obligation_u2` | [tools/hwsu/u2/hwsu_driver.py:173](../../tools/hwsu/u2/hwsu_driver.py#L173) | Phase-1 obligation writer (hwsu_records.write_obligation) extended to the arrays of |
 | `write_preflight` | function | `write_preflight` | [tools/x6_stage0/x6_store.py:231](../../tools/x6_stage0/x6_store.py#L231) |  |
 | `write_prereg` | function | `write_prereg` | [src/topo_pilot/experiment/prereg.py:115](../../src/topo_pilot/experiment/prereg.py#L115) | Write ``PREREGISTRATION.md`` at the repository root; returns its path. |
 | `write_report` | function | `write_report` | [tools/hws/hws_records.py:311](../../tools/hws/hws_records.py#L311) |  |

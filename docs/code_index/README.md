@@ -13,7 +13,7 @@ Excluded by project rule (public research summary, for external readers only): `
 
 Input: `git ls-files` minus the excluded prefixes and minus `docs/code_index/` itself. No code is imported or executed (Python is parsed with `ast`). Output is sorted, has no timestamps, uses `/` separators, LF newlines and UTF-8.
 
-Sources digest: `1e61e54421a1622dabdb8d57b43f8d8fdf2859745a68b385c960e15e1f9acf81`
+Sources digest: `bed56000185fa082b7dd48c5ed881e3b33d8767bd1f7ab0ca30b044c72ea961c`
 
 ## Layout
 
@@ -35,18 +35,18 @@ Sources digest: `1e61e54421a1622dabdb8d57b43f8d8fdf2859745a68b385c960e15e1f9acf8
 
 ## Counts at generation time
 
-- files indexed: 1101
-- code files: 696
-- python files: 695
+- files indexed: 1102
+- code files: 697
+- python files: 696
 - classes: 322
-- functions and methods (incl. tests): 10333
-- internal edges (file to file, with kind and line): 3574
-- import statements, internal resolved: 3507
+- functions and methods (incl. tests): 10349
+- internal edges (file to file, with kind and line): 3576
+- import statements, internal resolved: 3508
 - import statements, internal ambiguous: 6
 - import statements, internal unresolved: 0
-- import statements, standard library: 3122
-- import statements, external: 982
-- dynamic imports, internal: 49
+- import statements, standard library: 3128
+- import statements, external: 984
+- dynamic imports, internal: 50
 - dynamic imports, stdlib/external literal: 2
-- dynamic imports, dynamic expression or unresolved: 32
+- dynamic imports, dynamic expression or unresolved: 33
 - import cycles (strongly connected components): 14

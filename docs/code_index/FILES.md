@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1101 tracked files; 696 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked files; 697 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1034,6 +1034,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1101 tracked fil
 | [test_b_u2_records.py](files/tests/hwsu/test_b_u2_records.py.md) | python | 289 lines | Author B (job 0223, phase 2): sealing, records, obligations, reservations, meter binding and |
 | [test_b_u2_registry.py](files/tests/hwsu/test_b_u2_registry.py.md) | python | 297 lines | Author B (job 0223, phase 2): the registry readers with planted defects (protocol 8.2-8.3; |
 | [test_impl_u2_mirror.py](files/tests/hwsu/test_impl_u2_mirror.py.md) | python | 34 lines | Implementer test: hwsu_registry._violation mirrors c2_registry._violation (design 11.2). |
+| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 115 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
 
 ## tests/integration/
 
@@ -1405,8 +1406,8 @@ The generated index itself (`docs/code_index/`) is not indexed. 1101 tracked fil
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | `API.md` | markdown | 379 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
-| `API_U2.md` | markdown | 384 lines | tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1) |
-| `CONTRACT.json` | json | 1477 lines |  |
+| `API_U2.md` | markdown | 385 lines | tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1) |
+| `CONTRACT.json` | json | 1497 lines |  |
 | `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |
@@ -1432,17 +1433,17 @@ The generated index itself (`docs/code_index/`) is not indexed. 1101 tracked fil
 | [__init__.py](files/tools/hwsu/u2/__init__.py.md) | python | 14 lines | HWSU phase-2 package (API_U2.md section 0; R-0223-3). |
 | [hwsu_bind_u2.py](files/tools/hwsu/u2/hwsu_bind_u2.py.md) | python | 149 lines | HWSU phase-2 call allowlist and constant-read audit (API_U2.md section 2.6; protocol 11.2). |
 | [hwsu_decide.py](files/tools/hwsu/u2/hwsu_decide.py.md) | python | 238 lines | HWSU decision side: P1 ladder, family stream, per-model statements, aggregation, outcomes, |
-| [hwsu_driver.py](files/tools/hwsu/u2/hwsu_driver.py.md) | python | 271 lines | HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5). |
+| [hwsu_driver.py](files/tools/hwsu/u2/hwsu_driver.py.md) | python | 345 lines | HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5). |
 | [hwsu_dry2.py](files/tools/hwsu/u2/hwsu_dry2.py.md) | python | 266 lines | HWSU model-phase dry run DRU, response family (API_U2.md section 6; protocol 9). |
 | [hwsu_dry2b.py](files/tools/hwsu/u2/hwsu_dry2b.py.md) | python | 259 lines | HWSU model-phase dry run DRU, cases that need no training (API_U2.md section 6; split from |
-| [hwsu_dry2c.py](files/tools/hwsu/u2/hwsu_dry2c.py.md) | python | 238 lines | HWSU model-phase dry run: the stage jobs KC, E1, REG2 and E2 through run_job on a synthetic |
-| [hwsu_dry2d.py](files/tools/hwsu/u2/hwsu_dry2d.py.md) | python | 222 lines | HWSU dry run DRU-REG: the planted-defect registry fixtures of API_U2.md section 6 |
+| [hwsu_dry2c.py](files/tools/hwsu/u2/hwsu_dry2c.py.md) | python | 242 lines | HWSU model-phase dry run: the stage jobs KC, E1, REG2 and E2 through run_job on a synthetic |
+| [hwsu_dry2d.py](files/tools/hwsu/u2/hwsu_dry2d.py.md) | python | 246 lines | HWSU dry run DRU-REG: the planted-defect registry fixtures of API_U2.md section 6 |
 | [hwsu_e2.py](files/tools/hwsu/u2/hwsu_e2.py.md) | python | 245 lines | HWSU E2 gates: RELEASE-B, S7, H2-FRESH-U, T-PRE, NUM, ENDPOINT, SEALED_OPENED and the report |
 | [hwsu_gates.py](files/tools/hwsu/u2/hwsu_gates.py.md) | python | 373 lines | HWSU E1 gates, share-family stubs and the validation report (API_U2.md section 4.1, 4.7, 4.9). |
 | [hwsu_known.py](files/tools/hwsu/u2/hwsu_known.py.md) | python | 400 lines | HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6 |
 | [hwsu_model.py](files/tools/hwsu/u2/hwsu_model.py.md) | python | 299 lines | HWSU model part: stage-C loading, readout, response arrays, M0/X1 mirrors, logit policy |
-| [hwsu_registry.py](files/tools/hwsu/u2/hwsu_registry.py.md) | python | 289 lines | HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3; |
-| [hwsu_regsrc.py](files/tools/hwsu/u2/hwsu_regsrc.py.md) | python | 289 lines | HWSU registry readers: U2 (stage C), U2', U5, U6, U8 and the J10 obligation reader |
+| [hwsu_registry.py](files/tools/hwsu/u2/hwsu_registry.py.md) | python | 300 lines | HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3; |
+| [hwsu_regsrc.py](files/tools/hwsu/u2/hwsu_regsrc.py.md) | python | 291 lines | HWSU registry readers: U2 (stage C), U2', U5, U6, U8 and the J10 obligation reader |
 
 ## tools/k4b/
 

@@ -60,7 +60,7 @@
 - [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 24, import)
 - [tools/hwsc/hwsc_meter_bind.py](../hwsc/hwsc_meter_bind.py.md) (line 20, import)
 - [tools/hwsu/hwsu_meter_bind.py](../hwsu/hwsu_meter_bind.py.md) (line 13, import)
-- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 30, import)
+- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 31, import)
 - [tools/k4b/k4b_meter_bind.py](../k4b/k4b_meter_bind.py.md) (line 21, import)
 - [tools/x4_oracle_profile/meter.py](meter.py.md) (line 29, import)
 - [tools/x6_stage1/x6s1_run.py](../x6_stage1/x6s1_run.py.md) (line 390, import)

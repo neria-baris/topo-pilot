@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 322,
-  "code files": 696,
-  "dynamic imports, dynamic expression or unresolved": 32,
-  "dynamic imports, internal": 49,
+  "code files": 697,
+  "dynamic imports, dynamic expression or unresolved": 33,
+  "dynamic imports, internal": 50,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1101,
-  "functions and methods (incl. tests)": 10333,
+  "files indexed": 1102,
+  "functions and methods (incl. tests)": 10349,
   "import cycles (strongly connected components)": 14,
-  "import statements, external": 982,
+  "import statements, external": 984,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3507,
+  "import statements, internal resolved": 3508,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3122,
-  "internal edges (file to file, with kind and line)": 3574,
-  "python files": 695
+  "import statements, standard library": 3128,
+  "internal edges (file to file, with kind and line)": 3576,
+  "python files": 696
  },
  "cycles": [
   [
@@ -10236,6 +10236,12 @@
    6
   ],
   [
+   "tests/hwsu/test_impl_u2_review.py",
+   "tools/hwsu/u2/__init__.py",
+   "dynamic",
+   21
+  ],
+  [
    "tests/integration/_mini_pipeline.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
@@ -18081,7 +18087,7 @@
    "tools/hwsu/u2/hwsu_driver.py",
    "tools/c1prime/c1_records.py",
    "import",
-   31
+   32
   ],
   [
    "tools/hwsu/u2/hwsu_driver.py",
@@ -18123,7 +18129,7 @@
    "tools/hwsu/u2/hwsu_driver.py",
    "tools/hwsu/u2/hwsu_bind_u2.py",
    "dynamic",
-   257
+   331
   ],
   [
    "tools/hwsu/u2/hwsu_driver.py",
@@ -18135,7 +18141,7 @@
    "tools/hwsu/u2/hwsu_driver.py",
    "tools/hwsu/u2/hwsu_dry2.py",
    "dynamic",
-   261
+   335
   ],
   [
    "tools/hwsu/u2/hwsu_driver.py",
@@ -18169,27 +18175,33 @@
   ],
   [
    "tools/hwsu/u2/hwsu_driver.py",
-   "tools/x4_circle_history/op_guard.py",
-   "import",
-   28
-  ],
-  [
-   "tools/hwsu/u2/hwsu_driver.py",
-   "tools/x4_circle_history/stage_records.py",
-   "import",
-   29
-  ],
-  [
-   "tools/hwsu/u2/hwsu_driver.py",
-   "tools/x4_oracle_profile/meter.py",
+   "tools/k4b/k4b_release.py",
    "import",
    27
   ],
   [
    "tools/hwsu/u2/hwsu_driver.py",
-   "tools/x4_oracle_profile/winjob.py",
+   "tools/x4_circle_history/op_guard.py",
+   "import",
+   29
+  ],
+  [
+   "tools/hwsu/u2/hwsu_driver.py",
+   "tools/x4_circle_history/stage_records.py",
    "import",
    30
+  ],
+  [
+   "tools/hwsu/u2/hwsu_driver.py",
+   "tools/x4_oracle_profile/meter.py",
+   "import",
+   28
+  ],
+  [
+   "tools/hwsu/u2/hwsu_driver.py",
+   "tools/x4_oracle_profile/winjob.py",
+   "import",
+   31
   ],
   [
    "tools/hwsu/u2/hwsu_dry2.py",
@@ -18939,7 +18951,7 @@
    "tools/hwsu/u2/hwsu_registry.py",
    "tools/hwsu/u2/hwsu_regsrc.py",
    "dynamic",
-   288
+   299
   ],
   [
    "tools/hwsu/u2/hwsu_registry.py",
@@ -25901,6 +25913,12 @@
    "purpose": "Implementer test: hwsu_registry._violation mirrors c2_registry._violation (design 11.2).",
    "sha256": "d7b5b040fb35d9562be851b82c12ad9e994ecd784b749c64b6b5fca278c28805"
   },
+  "tests/hwsu/test_impl_u2_review.py": {
+   "kind": "python",
+   "lines": 115,
+   "purpose": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
+   "sha256": "56ed9cad5e3c0dae79a2e76dc898172b44dae9bf159045cc6ef91b1b1314140b"
+  },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
    "lines": 16,
@@ -27319,15 +27337,15 @@
   },
   "tools/hwsu/API_U2.md": {
    "kind": "markdown",
-   "lines": 384,
+   "lines": 385,
    "purpose": "tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1)",
-   "sha256": "078c196ba4e57ee247c5a45a2598ffecd7ead0446fe8f5c610f4e581985ad356"
+   "sha256": "132949419b3508436e02c7dc1306089bc6d2f821f1280286154b3bb0219e103b"
   },
   "tools/hwsu/CONTRACT.json": {
    "kind": "json",
-   "lines": 1477,
+   "lines": 1497,
    "purpose": "",
-   "sha256": "dfee1f10fd361c038233b11cc5afb072af70048e57cea1379b7fd058904fdcab"
+   "sha256": "a25d86bd36a6e62ec12359d6fc49642d70a7d851f68ec898d6967c2d33a1a35c"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -27451,9 +27469,9 @@
   },
   "tools/hwsu/u2/hwsu_driver.py": {
    "kind": "python",
-   "lines": 271,
+   "lines": 345,
    "purpose": "HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5).",
-   "sha256": "6550347bd5f21a3c91286741b55c3030d749cefa1418139fcfde3405e6ffe38b"
+   "sha256": "598f451a85cc08fc16e217ec910b41f6dc7a68072f6ce8ee14f7dab2a60ffacb"
   },
   "tools/hwsu/u2/hwsu_dry2.py": {
    "kind": "python",
@@ -27469,15 +27487,15 @@
   },
   "tools/hwsu/u2/hwsu_dry2c.py": {
    "kind": "python",
-   "lines": 238,
+   "lines": 242,
    "purpose": "HWSU model-phase dry run: the stage jobs KC, E1, REG2 and E2 through run_job on a synthetic",
-   "sha256": "b4851f54e2490ec4a1c0a3496bcba3a0a319fb0ef13313025df2869fd3c63e5b"
+   "sha256": "d1ab6f064ab3d6704cbdc698bf6a60f16f2c565e7637e818aa1f10bdbab4462f"
   },
   "tools/hwsu/u2/hwsu_dry2d.py": {
    "kind": "python",
-   "lines": 222,
+   "lines": 246,
    "purpose": "HWSU dry run DRU-REG: the planted-defect registry fixtures of API_U2.md section 6",
-   "sha256": "ce8594dc408a3d07af116979cbf4201c9b53f395808cabbced887320c0ca0135"
+   "sha256": "acf705f796f9944b0d97b55c110ab06bf1e6322eb9d202d1d2602df8d1bc8607"
   },
   "tools/hwsu/u2/hwsu_e2.py": {
    "kind": "python",
@@ -27489,13 +27507,13 @@
    "kind": "python",
    "lines": 373,
    "purpose": "HWSU E1 gates, share-family stubs and the validation report (API_U2.md section 4.1, 4.7, 4.9).",
-   "sha256": "83bbe7caed73b1eda48b4ee706b456886198fb1fd3a027dcd9961f468427234f"
+   "sha256": "2df2d6d77d10ee72c3a65178cdf7298a4d844665288afe7f815b68dd88b62fb0"
   },
   "tools/hwsu/u2/hwsu_known.py": {
    "kind": "python",
    "lines": 400,
    "purpose": "HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6",
-   "sha256": "17e1601017fc8a38d7750209ae11a6eb621bb9b80d113132bd5546c4285fab08"
+   "sha256": "8b9809935829931db08de15c0b6e08988d891d27c6127c0f80cb4074876bfc46"
   },
   "tools/hwsu/u2/hwsu_model.py": {
    "kind": "python",
@@ -27505,15 +27523,15 @@
   },
   "tools/hwsu/u2/hwsu_registry.py": {
    "kind": "python",
-   "lines": 289,
+   "lines": 300,
    "purpose": "HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3;",
-   "sha256": "622e64ff26542958ee7c8016aaf4c7c75395eeb0adff13a661d1170df480a4fc"
+   "sha256": "52c17fee45cb66a2ee73cd1b203937ef409e81554983b2f244d4c82bfa258d67"
   },
   "tools/hwsu/u2/hwsu_regsrc.py": {
    "kind": "python",
-   "lines": 289,
+   "lines": 291,
    "purpose": "HWSU registry readers: U2 (stage C), U2', U5, U6, U8 and the J10 obligation reader",
-   "sha256": "4a0eec5b3c37f18e8c34401e7d16d7b938621d82a10ab20496985c32edbd9bed"
+   "sha256": "41ae201cd6f6745c69248f03120ad8307c811e0b08614f2bfc87e043a0888b60"
   },
   "tools/k4b/API.md": {
    "kind": "markdown",
@@ -158525,6 +158543,286 @@
    ],
    "syspath": []
   },
+  "tests/hwsu/test_impl_u2_review.py": {
+   "constants": [
+    "TOOLS"
+   ],
+   "doc": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
+   "doc1": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
+   "dynamic": [
+    {
+     "expr": "'u2'",
+     "func": "import_module",
+     "label": "u2",
+     "line": 21,
+     "literal": "u2",
+     "paths": [],
+     "status": "internal",
+     "targets": [
+      "tools/hwsu/u2/__init__.py"
+     ]
+    },
+    {
+     "expr": "name",
+     "func": "import_module",
+     "label": "dynamic: name",
+     "line": 22,
+     "literal": null,
+     "paths": [],
+     "status": "dynamic",
+     "targets": []
+    }
+   ],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 3,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 5,
+     "module": "",
+     "names": [
+      "importlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "importlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "json"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "json"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "re"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "re"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 11,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "",
+     "names": [
+      "pytest"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "pytest"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 22,
+     "kind": "function",
+     "name": "mod",
+     "qual": "mod",
+     "sig": "def mod(name)",
+     "start": 20
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 26,
+     "kind": "function",
+     "name": "_table",
+     "qual": "_table",
+     "sig": "def _table(path, seed=1, n=8)",
+     "start": 25
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 34,
+     "kind": "test",
+     "name": "test_fixture_prefixes_from_contract",
+     "qual": "test_fixture_prefixes_from_contract",
+     "sig": "def test_fixture_prefixes_from_contract()",
+     "start": 30
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('name,flagged', [('test_hwsg-0224', False), ('hwsg-dry-0230', False), ('otherstudy-0001', True)])"
+     ],
+     "doc": "",
+     "end": 43,
+     "kind": "test",
+     "name": "test_scratch_matcher_excludes_other_study_fixtures",
+     "qual": "test_scratch_matcher_excludes_other_study_fixtures",
+     "sig": "def test_scratch_matcher_excludes_other_study_fixtures(tmp_path, name, flagged)",
+     "start": 39
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 52,
+     "kind": "function",
+     "name": "_stage_files",
+     "qual": "_stage_files",
+     "sig": "def _stage_files(out)",
+     "start": 47
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 64,
+     "kind": "test",
+     "name": "test_archive_previous_moves_same_stage_only",
+     "qual": "test_archive_previous_moves_same_stage_only",
+     "sig": "def test_archive_previous_moves_same_stage_only(tmp_path)",
+     "start": 55
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 77,
+     "kind": "test",
+     "name": "test_second_archive_gets_a2_and_obligation_lists_archived_arrays",
+     "qual": "test_second_archive_gets_a2_and_obligation_lists_archived_arrays",
+     "sig": "def test_second_archive_gets_a2_and_obligation_lists_archived_arrays(tmp_path)",
+     "start": 67
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 87,
+     "kind": "test",
+     "name": "test_own_reader_follows_archived_listed_table",
+     "qual": "test_own_reader_follows_archived_listed_table",
+     "sig": "def test_own_reader_follows_archived_listed_table(tmp_path)",
+     "start": 80
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 98,
+     "kind": "test",
+     "name": "test_unrecorded_compares_sha_not_only_name",
+     "qual": "test_unrecorded_compares_sha_not_only_name",
+     "sig": "def test_unrecorded_compares_sha_not_only_name(tmp_path)",
+     "start": 90
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 107,
+     "kind": "test",
+     "name": "test_bind_stage_uses_the_stage_when_phase1_knows_it",
+     "qual": "test_bind_stage_uses_the_stage_when_phase1_knows_it",
+     "sig": "def test_bind_stage_uses_the_stage_when_phase1_knows_it()",
+     "start": 102
+    },
+    {
+     "decorators": [
+      "pytest.mark.parametrize('name', ['hwsu_driver', 'hwsu_gates', 'hwsu_known'])"
+     ],
+     "doc": "",
+     "end": 115,
+     "kind": "test",
+     "name": "test_handoff_is_decoded_with_a_bom_tolerant_codec",
+     "qual": "test_handoff_is_decoded_with_a_bom_tolerant_codec",
+     "sig": "def test_handoff_is_decoded_with_a_bom_tolerant_codec(name)",
+     "start": 111
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tools/hwsu",
+      "tools/hwsu/u2"
+     ],
+     "expr": "str(p)",
+     "line": 17
+    }
+   ]
+  },
   "tests/integration/_mini_pipeline.py": {
    "constants": [
     "REPO",
@@ -237676,7 +237974,9 @@
   "tools/hwsu/u2/hwsu_driver.py": {
    "constants": [
     "EXIT",
-    "STAGES"
+    "STAGES",
+    "STAGE_OUTPUTS",
+    "SUPERSEDED_RULE"
    ],
    "doc": "HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5).",
    "doc1": "HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5).",
@@ -237685,7 +237985,7 @@
      "expr": "'hwsu_bind_u2'",
      "func": "import_module",
      "label": "hwsu_bind_u2",
-     "line": 257,
+     "line": 331,
      "literal": "hwsu_bind_u2",
      "paths": [],
      "status": "internal",
@@ -237697,7 +237997,7 @@
      "expr": "'hwsu_dry2'",
      "func": "import_module",
      "label": "hwsu_dry2",
-     "line": 261,
+     "line": 335,
      "literal": "hwsu_dry2",
      "paths": [],
      "status": "internal",
@@ -238026,6 +238326,23 @@
      "line": 27,
      "module": "",
      "names": [
+      "k4b_release"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_release.py"
+     ],
+     "top": "k4b_release"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 28,
+     "module": "",
+     "names": [
       "meter"
      ],
      "status": "internal",
@@ -238040,7 +238357,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 29,
      "module": "",
      "names": [
       "op_guard"
@@ -238057,7 +238374,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 29,
+     "line": 30,
      "module": "",
      "names": [
       "stage_records"
@@ -238074,7 +238391,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 30,
+     "line": 31,
      "module": "",
      "names": [
       "winjob"
@@ -238091,7 +238408,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 32,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -238107,112 +238424,142 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 49,
+     "end": 50,
      "kind": "function",
      "name": "build_ctx_u",
      "qual": "build_ctx_u",
      "sig": "def build_ctx_u(out, job, attempt, stage, reservation_id=None, root=uc.ROOT, mailbox=uc.MAILBOX, hwsc_store=uc.HWSC_STORE, scope=uc.SCOPE_U, seeds=None, dry=False) -> dict",
-     "start": 38
+     "start": 39
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 66,
+     "end": 67,
      "kind": "function",
      "name": "reg2",
      "qual": "reg2",
      "sig": "def reg2(out, ctx) -> dict",
-     "start": 52
+     "start": 53
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 96,
+     "end": 97,
      "kind": "function",
      "name": "steps",
      "qual": "steps",
      "sig": "def steps(stage, ctx) -> list",
-     "start": 69
+     "start": 70
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 103,
+     "end": 104,
      "kind": "function",
      "name": "memory_cap_u2",
      "qual": "memory_cap_u2",
      "sig": "def memory_cap_u2(stage) -> int",
-     "start": 99
+     "start": 100
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 113,
+     "end": 114,
      "kind": "function",
      "name": "job_paths_u2",
      "qual": "job_paths_u2",
      "sig": "def job_paths_u2(job, kind) -> dict",
-     "start": 106
+     "start": 107
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 119,
+     "end": 120,
      "kind": "function",
      "name": "_exit_code",
      "qual": "_exit_code",
      "sig": "def _exit_code(outcome, registered) -> int",
-     "start": 116
+     "start": 117
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 133,
+     "end": 134,
      "kind": "function",
      "name": "_unrecorded",
      "qual": "_unrecorded",
      "sig": "def _unrecorded(out, rels) -> list",
-     "start": 122
+     "start": 123
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 141,
+     "end": 142,
      "kind": "function",
      "name": "_outcome",
      "qual": "_outcome",
      "sig": "def _outcome(stage, records, ctx) -> str",
-     "start": 136
+     "start": 137
+    },
+    {
+     "decorators": [],
+     "doc": "Pre-attempt archive (R-0223-10 item 2): earlier outputs of the same stage move to",
+     "end": 166,
+     "kind": "function",
+     "name": "archive_previous",
+     "qual": "archive_previous",
+     "sig": "def archive_previous(out, stage, job) -> Path | None",
+     "start": 153
+    },
+    {
+     "decorators": [],
+     "doc": "Phase-1 obligation writer (hwsu_records.write_obligation) extended to the arrays of",
+     "end": 207,
+     "kind": "function",
+     "name": "write_obligation_u2",
+     "qual": "write_obligation_u2",
+     "sig": "def write_obligation_u2(store, name, job, written_by, dry=False, attempt=None, reservation_id=None) -> Path",
+     "start": 173
+    },
+    {
+     "decorators": [],
+     "doc": "The stage name phase-1 bind accepts: the stage itself when its table knows it, else OF",
+     "end": 213,
+     "kind": "function",
+     "name": "bind_stage",
+     "qual": "bind_stage",
+     "sig": "def bind_stage(stage) -> str",
+     "start": 210
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 199,
+     "end": 272,
      "kind": "function",
      "name": "run_job",
      "qual": "run_job",
      "sig": "def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledger_path=None, ctx=None, dry_continue=False) -> dict",
-     "start": 144
+     "start": 216
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 233,
+     "end": 307,
      "kind": "function",
      "name": "meter_main",
      "qual": "meter_main",
      "sig": "def meter_main(argv=None) -> int",
-     "start": 202
+     "start": 275
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 267,
+     "end": 341,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 236
+     "start": 310
     }
    ],
    "syspath": []
@@ -239651,7 +239998,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 144,
+     "end": 146,
      "kind": "function",
      "name": "write_auth",
      "qual": "write_auth",
@@ -239661,42 +240008,42 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 160,
+     "end": 163,
      "kind": "function",
      "name": "stage_ctx",
      "qual": "stage_ctx",
      "sig": "def stage_ctx(store, sr, job, stage, planted, **extra) -> dict",
-     "start": 147
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "Coordinator-side files of a drawing job: reservation and the release record.",
-     "end": 184,
+     "end": 187,
      "kind": "function",
      "name": "prepare",
      "qual": "prepare",
      "sig": "def prepare(store, stage, rid) -> None",
-     "start": 163
+     "start": 166
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 198,
+     "end": 202,
      "kind": "function",
      "name": "run_stage",
      "qual": "run_stage",
-     "sig": "def run_stage(store, sr, job, stage, planted, reservation_id=None, dry_continue=True, **extra) -> dict",
-     "start": 187
+     "sig": "def run_stage(store, sr, job, stage, planted, reservation_id=None, dry_continue=True, attempt=1, **extra) -> dict",
+     "start": 190
     },
     {
      "decorators": [],
      "doc": "KC, E1, REG2 and E2 through run_job on one synthetic store (R-0223-9 part 1).",
-     "end": 238,
+     "end": 242,
      "kind": "function",
      "name": "run_stages",
      "qual": "run_stages",
      "sig": "def run_stages(base) -> dict",
-     "start": 215
+     "start": 219
     }
    ],
    "syspath": []
@@ -240036,13 +240383,23 @@
     },
     {
      "decorators": [],
+     "doc": "R-0223-10 item 2: E1 fails after REG1 (attempt 1); the pre-attempt archive moves its",
+     "end": 238,
+     "kind": "function",
+     "name": "rerun",
+     "qual": "rerun",
+     "sig": "def rerun(base) -> dict",
+     "start": 217
+    },
+    {
+     "decorators": [],
      "doc": "",
-     "end": 222,
+     "end": 246,
      "kind": "function",
      "name": "fixtures",
      "qual": "fixtures",
      "sig": "def fixtures(base) -> dict",
-     "start": 217
+     "start": 241
     }
    ],
    "syspath": []
@@ -242449,7 +242806,7 @@
      "expr": "'hwsu_regsrc'",
      "func": "import_module",
      "label": "hwsu_regsrc",
-     "line": 288,
+     "line": 299,
      "literal": "hwsu_regsrc",
      "paths": [],
      "status": "internal",
@@ -242756,7 +243113,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 170,
+     "line": 181,
      "module": "",
      "names": [
       "psutil"
@@ -242809,113 +243166,123 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 62,
+     "doc": "Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the",
+     "end": 65,
      "kind": "function",
-     "name": "root_table_u",
-     "qual": "root_table_u",
-     "sig": "def root_table_u(contract=None) -> dict",
+     "name": "fixture_prefixes",
+     "qual": "fixture_prefixes",
+     "sig": "def fixture_prefixes(contract=None) -> tuple",
      "start": 59
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 73,
+     "end": 71,
+     "kind": "function",
+     "name": "root_table_u",
+     "qual": "root_table_u",
+     "sig": "def root_table_u(contract=None) -> dict",
+     "start": 68
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 82,
      "kind": "function",
      "name": "_tags",
      "qual": "_tags",
      "sig": "def _tags(rec, readers) -> list",
-     "start": 65
+     "start": 74
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 91,
+     "end": 100,
      "kind": "function",
      "name": "_violation",
      "qual": "_violation",
      "sig": "def _violation(name, entry, rec, cls, readers)",
-     "start": 76
+     "start": 85
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 113,
+     "end": 122,
      "kind": "function",
      "name": "inventory_u",
      "qual": "inventory_u",
      "sig": "def inventory_u(root, readers, contract=None) -> dict",
-     "start": 94
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 125,
-     "kind": "function",
-     "name": "_scratch_u",
-     "qual": "_scratch_u",
-     "sig": "def _scratch_u(scratch, readers_ok) -> dict",
-     "start": 116
+     "start": 103
     },
     {
      "decorators": [],
      "doc": "",
      "end": 136,
      "kind": "function",
-     "name": "sources_u",
-     "qual": "sources_u",
-     "sig": "def sources_u(root, scratch, store, own_expected, contract=None) -> dict",
-     "start": 128
+     "name": "_scratch_u",
+     "qual": "_scratch_u",
+     "sig": "def _scratch_u(scratch, readers_ok) -> dict",
+     "start": 125
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 155,
+     "end": 147,
      "kind": "function",
-     "name": "separation_u",
-     "qual": "separation_u",
-     "sig": "def separation_u(reg, tables, seq_union) -> dict",
+     "name": "sources_u",
+     "qual": "sources_u",
+     "sig": "def sources_u(root, scratch, store, own_expected, contract=None) -> dict",
      "start": 139
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 164,
+     "end": 166,
      "kind": "function",
-     "name": "load_registry_sets",
-     "qual": "load_registry_sets",
-     "sig": "def load_registry_sets(reg_dir, version) -> tuple",
-     "start": 158
+     "name": "separation_u",
+     "qual": "separation_u",
+     "sig": "def separation_u(reg, tables, seq_union) -> dict",
+     "start": 150
     },
     {
      "decorators": [],
      "doc": "",
      "end": 175,
      "kind": "function",
-     "name": "_peak_memory",
-     "qual": "_peak_memory",
-     "sig": "def _peak_memory()",
-     "start": 168
+     "name": "load_registry_sets",
+     "qual": "load_registry_sets",
+     "sig": "def load_registry_sets(reg_dir, version) -> tuple",
+     "start": 169
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 279,
+     "end": 186,
+     "kind": "function",
+     "name": "_peak_memory",
+     "qual": "_peak_memory",
+     "sig": "def _peak_memory()",
+     "start": 179
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 290,
      "kind": "function",
      "name": "build_u",
      "qual": "build_u",
      "sig": "def build_u(version, out_dir, root, scratch, handoff, own=None, extra=None, sources=None, contract=None) -> dict",
-     "start": 178
+     "start": 189
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 289,
+     "end": 300,
      "kind": "function",
      "name": "__getattr__",
      "qual": "__getattr__",
      "sig": "def __getattr__(name)",
-     "start": 286
+     "start": 297
     }
    ],
    "syspath": []
@@ -243241,7 +243608,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 173,
+     "end": 175,
      "kind": "function",
      "name": "source_own_u",
      "qual": "source_own_u",
@@ -243251,52 +243618,52 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 222,
+     "end": 224,
      "kind": "function",
      "name": "read_obligation_u2",
      "qual": "read_obligation_u2",
      "sig": "def read_obligation_u2(store, root=uc.ROOT, contract=None) -> dict",
-     "start": 176
+     "start": 178
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 240,
+     "end": 242,
      "kind": "function",
      "name": "_read_store",
      "qual": "_read_store",
      "sig": "def _read_store(store, root, out, tag) -> None",
-     "start": 225
+     "start": 227
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 253,
+     "end": 255,
      "kind": "function",
      "name": "source_hwsd",
      "qual": "source_hwsd",
      "sig": "def source_hwsd(root, scratch, contract=None) -> dict",
-     "start": 243
+     "start": 245
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 263,
+     "end": 265,
      "kind": "function",
      "name": "_registered_ids",
      "qual": "_registered_ids",
      "sig": "def _registered_ids() -> set",
-     "start": 256
+     "start": 258
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 289,
+     "end": 291,
      "kind": "function",
      "name": "source_own_dry",
      "qual": "source_own_dry",
      "sig": "def source_own_dry(scratch, contract=None) -> dict",
-     "start": 266
+     "start": 268
     }
    ],
    "syspath": []
@@ -276187,5 +276554,5 @@
    ]
   }
  },
- "sources_digest": "1e61e54421a1622dabdb8d57b43f8d8fdf2859745a68b385c960e15e1f9acf81"
+ "sources_digest": "bed56000185fa082b7dd48c5ed881e3b33d8767bd1f7ab0ca30b044c72ea961c"
 }

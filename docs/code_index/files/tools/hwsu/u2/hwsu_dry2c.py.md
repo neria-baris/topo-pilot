@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_dry2c.py](../../../../../../tools/hwsu/u2/hwsu_dry2c.py)
 - Kind: python
-- Lines: 238
+- Lines: 242
 
 ## Module docstring
 
@@ -74,9 +74,9 @@
 - **function `_h5u`** [L119-121]: `def _h5u(ctx) -> dict` - H5-U headroom is a property of the production geometry; the tiny world has none.
 - **function `stage_extra`** [L124-126]: `def stage_extra(sr) -> dict` - Dry-only seams of the E2 job: the stage-C loader (planted models) and the H5 floor.
 - **function `planted_default`** [L129-130]: `def planted_default(sr) -> dict`
-- **function `write_auth`** [L133-144]: `def write_auth(store, job, stage, sr) -> Path`
-- **function `stage_ctx`** [L147-160]: `def stage_ctx(store, sr, job, stage, planted, **extra) -> dict`
-- **function `prepare`** [L163-184]: `def prepare(store, stage, rid) -> None` - Coordinator-side files of a drawing job: reservation and the release record.
-- **function `run_stage`** [L187-198]: `def run_stage(store, sr, job, stage, planted, reservation_id=None, dry_continue=True, **extra) -> dict`
-- **function `run_stages`** [L215-238]: `def run_stages(base) -> dict` - KC, E1, REG2 and E2 through run_job on one synthetic store (R-0223-9 part 1).
+- **function `write_auth`** [L133-146]: `def write_auth(store, job, stage, sr) -> Path`
+- **function `stage_ctx`** [L149-163]: `def stage_ctx(store, sr, job, stage, planted, **extra) -> dict`
+- **function `prepare`** [L166-187]: `def prepare(store, stage, rid) -> None` - Coordinator-side files of a drawing job: reservation and the release record.
+- **function `run_stage`** [L190-202]: `def run_stage(store, sr, job, stage, planted, reservation_id=None, dry_continue=True, attempt=1, **extra) -> dict`
+- **function `run_stages`** [L219-242]: `def run_stages(base) -> dict` - KC, E1, REG2 and E2 through run_job on one synthetic store (R-0223-9 part 1).
 

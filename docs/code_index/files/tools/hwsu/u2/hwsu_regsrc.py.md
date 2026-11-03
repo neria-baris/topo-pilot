@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_regsrc.py](../../../../../../tools/hwsu/u2/hwsu_regsrc.py)
 - Kind: python
-- Lines: 289
+- Lines: 291
 
 ## Module docstring
 
@@ -54,7 +54,7 @@
 ## Imported by
 
 - [tools/hwsu/u2/hwsu_dry2d.py](hwsu_dry2d.py.md) (line 15, import)
-- [tools/hwsu/u2/hwsu_registry.py](hwsu_registry.py.md) (line 288, dynamic)
+- [tools/hwsu/u2/hwsu_registry.py](hwsu_registry.py.md) (line 299, dynamic)
 - [tools/hwsu/u2/hwsu_registry.py](hwsu_registry.py.md) (line 12, import)
 
 ## Top-level constants
@@ -72,10 +72,10 @@
 - **function `source_hwsc`** [L81-117]: `def source_hwsc(store, contract=None) -> dict`
 - **function `source_kreg2_c`** [L120-131]: `def source_kreg2_c(store, contract=None) -> dict`
 - **function `superset_diagnostic`** [L134-146]: `def superset_diagnostic(union_sorted, kreg2_sorted, chunk=1000000) -> dict`
-- **function `source_own_u`** [L150-173]: `def source_own_u(store, expected, contract=None) -> dict`
-- **function `read_obligation_u2`** [L176-222]: `def read_obligation_u2(store, root=uc.ROOT, contract=None) -> dict`
-- **function `_read_store`** [L225-240]: `def _read_store(store, root, out, tag) -> None`
-- **function `source_hwsd`** [L243-253]: `def source_hwsd(root, scratch, contract=None) -> dict`
-- **function `_registered_ids`** [L256-263]: `def _registered_ids() -> set`
-- **function `source_own_dry`** [L266-289]: `def source_own_dry(scratch, contract=None) -> dict`
+- **function `source_own_u`** [L150-175]: `def source_own_u(store, expected, contract=None) -> dict`
+- **function `read_obligation_u2`** [L178-224]: `def read_obligation_u2(store, root=uc.ROOT, contract=None) -> dict`
+- **function `_read_store`** [L227-242]: `def _read_store(store, root, out, tag) -> None`
+- **function `source_hwsd`** [L245-255]: `def source_hwsd(root, scratch, contract=None) -> dict`
+- **function `_registered_ids`** [L258-265]: `def _registered_ids() -> set`
+- **function `source_own_dry`** [L268-291]: `def source_own_dry(scratch, contract=None) -> dict`
 

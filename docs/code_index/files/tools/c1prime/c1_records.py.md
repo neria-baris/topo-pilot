@@ -141,7 +141,7 @@
 - [tools/hwsu/hwsu_resv.py](../hwsu/hwsu_resv.py.md) (line 16, import)
 - [tools/hwsu/hwsu_seed.py](../hwsu/hwsu_seed.py.md) (line 15, import)
 - [tools/hwsu/u2/hwsu_decide.py](../hwsu/u2/hwsu_decide.py.md) (line 23, import)
-- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 31, import)
+- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 32, import)
 - [tools/hwsu/u2/hwsu_dry2b.py](../hwsu/u2/hwsu_dry2b.py.md) (line 26, import)
 - [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 29, import)
 - [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 33, import)

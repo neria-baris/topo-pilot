@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_registry.py](../../../../../../tools/hwsu/u2/hwsu_registry.py)
 - Kind: python
-- Lines: 289
+- Lines: 300
 
 ## Module docstring
 
@@ -27,7 +27,7 @@
 ### External (third-party)
 
 - `numpy` (lines 27)
-- `psutil` (lines 170)
+- `psutil` (lines 181)
 
 ### Standard library
 
@@ -49,7 +49,7 @@
 
 ### Dynamic imports
 
-- `import_module` line 288: `hwsu_regsrc` -> [tools/hwsu/u2/hwsu_regsrc.py](hwsu_regsrc.py.md)
+- `import_module` line 299: `hwsu_regsrc` -> [tools/hwsu/u2/hwsu_regsrc.py](hwsu_regsrc.py.md)
 
 ### sys.path additions
 
@@ -80,15 +80,16 @@
 - **function `_hwsc_json`** [L43-44]: `def _hwsc_json(rel) -> dict`
 - **function `_hwsc_reg`** [L47-48]: `def _hwsc_reg() -> dict`
 - **function `scratch_table_u`** [L52-56]: `def scratch_table_u(contract=None) -> dict`
-- **function `root_table_u`** [L59-62]: `def root_table_u(contract=None) -> dict`
-- **function `_tags`** [L65-73]: `def _tags(rec, readers) -> list`
-- **function `_violation`** [L76-91]: `def _violation(name, entry, rec, cls, readers)`
-- **function `inventory_u`** [L94-113]: `def inventory_u(root, readers, contract=None) -> dict`
-- **function `_scratch_u`** [L116-125]: `def _scratch_u(scratch, readers_ok) -> dict`
-- **function `sources_u`** [L128-136]: `def sources_u(root, scratch, store, own_expected, contract=None) -> dict`
-- **function `separation_u`** [L139-155]: `def separation_u(reg, tables, seq_union) -> dict`
-- **function `load_registry_sets`** [L158-164]: `def load_registry_sets(reg_dir, version) -> tuple`
-- **function `_peak_memory`** [L168-175]: `def _peak_memory()`
-- **function `build_u`** [L178-279]: `def build_u(version, out_dir, root, scratch, handoff, own=None, extra=None, sources=None, contract=None) -> dict`
-- **function `__getattr__`** [L286-289]: `def __getattr__(name)`
+- **function `fixture_prefixes`** [L59-65]: `def fixture_prefixes(contract=None) -> tuple` - Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the
+- **function `root_table_u`** [L68-71]: `def root_table_u(contract=None) -> dict`
+- **function `_tags`** [L74-82]: `def _tags(rec, readers) -> list`
+- **function `_violation`** [L85-100]: `def _violation(name, entry, rec, cls, readers)`
+- **function `inventory_u`** [L103-122]: `def inventory_u(root, readers, contract=None) -> dict`
+- **function `_scratch_u`** [L125-136]: `def _scratch_u(scratch, readers_ok) -> dict`
+- **function `sources_u`** [L139-147]: `def sources_u(root, scratch, store, own_expected, contract=None) -> dict`
+- **function `separation_u`** [L150-166]: `def separation_u(reg, tables, seq_union) -> dict`
+- **function `load_registry_sets`** [L169-175]: `def load_registry_sets(reg_dir, version) -> tuple`
+- **function `_peak_memory`** [L179-186]: `def _peak_memory()`
+- **function `build_u`** [L189-290]: `def build_u(version, out_dir, root, scratch, handoff, own=None, extra=None, sources=None, contract=None) -> dict`
+- **function `__getattr__`** [L297-300]: `def __getattr__(name)`
 

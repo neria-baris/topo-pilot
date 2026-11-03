@@ -62,6 +62,7 @@
 - [tests/hwsu/test_b_u2_records.py](../../../tests/hwsu/test_b_u2_records.py.md) (line 122, dynamic)
 - [tests/hwsu/test_b_u2_registry.py](../../../tests/hwsu/test_b_u2_registry.py.md) (line 28, dynamic)
 - [tests/hwsu/test_impl_u2_mirror.py](../../../tests/hwsu/test_impl_u2_mirror.py.md) (line 4, import)
+- [tests/hwsu/test_impl_u2_review.py](../../../tests/hwsu/test_impl_u2_review.py.md) (line 21, dynamic)
 - [tools/hwsu/u2/hwsu_bind_u2.py](hwsu_bind_u2.py.md) (line 13, import)
 - [tools/hwsu/u2/hwsu_decide.py](hwsu_decide.py.md) (line 11, import)
 - [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 18, import)

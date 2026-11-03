@@ -49,7 +49,7 @@
 ## Imported by
 
 - [tests/hwsu/test_b_u2_audit.py](../../../tests/hwsu/test_b_u2_audit.py.md) (line 30, dynamic)
-- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 257, dynamic)
+- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 331, dynamic)
 - [tools/hwsu/u2/hwsu_dry2b.py](hwsu_dry2b.py.md) (line 10, import)
 - [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 8, import)
 

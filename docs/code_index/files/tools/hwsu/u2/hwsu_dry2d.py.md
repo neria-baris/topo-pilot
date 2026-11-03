@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_dry2d.py](../../../../../../tools/hwsu/u2/hwsu_dry2d.py)
 - Kind: python
-- Lines: 222
+- Lines: 246
 
 ## Module docstring
 
@@ -77,5 +77,6 @@
 - **function `kreg2`** [L124-154]: `def kreg2(base) -> dict` - S-2: the K-REG2 digest file holds a digest the reader-built union lacks.
 - **function `hwsd_reader`** [L157-168]: `def hwsd_reader(base) -> dict` - A conforming hwsd-store obligation is read (READER U5); a stray array is not.
 - **function `obligations`** [L171-214]: `def obligations(base) -> dict` - DRO9 through read_obligation_u2, a stopped E1 and the KC obligation.
-- **function `fixtures`** [L217-222]: `def fixtures(base) -> dict`
+- **function `rerun`** [L217-238]: `def rerun(base) -> dict` - R-0223-10 item 2: E1 fails after REG1 (attempt 1); the pre-attempt archive moves its
+- **function `fixtures`** [L241-246]: `def fixtures(base) -> dict`
 

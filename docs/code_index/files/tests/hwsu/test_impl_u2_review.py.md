@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsu/test_impl_u2_review.py](../../../../../tests/hwsu/test_impl_u2_review.py)
 - Kind: python
-- Lines: 126
+- Lines: 142
 
 ## Module docstring
 
@@ -67,4 +67,5 @@
 - **test `test_bind_stage_uses_the_stage_when_phase1_knows_it`** [L102-107]: `def test_bind_stage_uses_the_stage_when_phase1_knows_it()`
 - **test `test_handoff_is_decoded_with_a_bom_tolerant_codec`** [L111-115]: `def test_handoff_is_decoded_with_a_bom_tolerant_codec(name)` decorators: @pytest.mark.parametrize('name', ['hwsu_driver', 'hwsu_gates', 'hwsu_known'])
 - **test `test_s0_allowlist_admits_the_implementer_phase2_tests`** [L119-126]: `def test_s0_allowlist_admits_the_implementer_phase2_tests()`
+- **test `test_g0u_treats_hwsg_locations_as_declarations`** [L130-142]: `def test_g0u_treats_hwsg_locations_as_declarations()`
 

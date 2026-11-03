@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_percentile_interval_equals_inverted_cdf_quantile` | test | `test_percentile_interval_equals_inverted_cdf_quantile` | [tests/oracle_profile/test_oracle_profile_kernels.py:251](../../tests/oracle_profile/test_oracle_profile_kernels.py#L251) |  |
 | `test_percentile_interval_hand_case` | test | `test_percentile_interval_hand_case` | [tests/oracle_profile/test_oracle_profile_kernels.py:259](../../tests/oracle_profile/test_oracle_profile_kernels.py#L259) | n = 4: inverted CDF picks x_(ceil(n p)): p = .25 -> 1, .3 -> 2, .5 -> 2, 1 -> 4. |
 | `test_percentile_interval_hand_value` | test | `test_percentile_interval_hand_value` | [tests/analysis/test_x5_context.py:50](../../tests/analysis/test_x5_context.py#L50) |  |
 | `test_percentile_interval_matches_numpy_linear` | test | `test_percentile_interval_matches_numpy_linear` | [tests/analysis/test_x5_context.py:41](../../tests/analysis/test_x5_context.py#L41) |  |

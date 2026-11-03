@@ -2976,6 +2976,7 @@
 | `test_g0_tpl_gate_passes` | test | `test_g0_tpl_gate_passes` | [tests/d2a/test_a_templates.py:152](../../tests/d2a/test_a_templates.py#L152) |  |
 | `test_g0c_passes_on_a_store_holding_only_its_freeze` | test | `test_g0c_passes_on_a_store_holding_only_its_freeze` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:51](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L51) |  |
 | `test_g0c_still_fails_closed_on_an_unrecorded_file` | test | `test_g0c_still_fails_closed_on_an_unrecorded_file` | [tests/hwsc/test_r_0181_g0c_lineage_order.py:58](../../tests/hwsc/test_r_0181_g0c_lineage_order.py#L58) |  |
+| `test_g0u_treats_hwsg_locations_as_declarations` | test | `test_g0u_treats_hwsg_locations_as_declarations` | [tests/hwsu/test_impl_u2_review.py:130](../../tests/hwsu/test_impl_u2_review.py#L130) |  |
 | `test_g1_check_is_scale_invariant_and_rejects_a_non_self_adjoint_projector` | test | `test_g1_check_is_scale_invariant_and_rejects_a_non_self_adjoint_projector` | [tests/c2_readout/test_a_gls.py:114](../../tests/c2_readout/test_a_gls.py#L114) |  |
 | `test_g1_identities_and_closed_form` | test | `test_g1_identities_and_closed_form` | [tests/c2_readout/test_a_readout.py:293](../../tests/c2_readout/test_a_readout.py#L293) |  |
 | `test_g1_ignores_validation_targets_for_selection` | test | `test_g1_ignores_validation_targets_for_selection` | [tests/experiment/test_x4f_gates_smoke.py:70](../../tests/experiment/test_x4f_gates_smoke.py#L70) |  |
@@ -4026,4 +4027,3 @@
 | `test_pc_scores_hand_case_and_decorrelation` | test | `test_pc_scores_hand_case_and_decorrelation` | [tests/analysis/test_x4f_targets.py:145](../../tests/analysis/test_x4f_targets.py#L145) |  |
 | `test_per_model_status_boundaries` | test | `test_per_model_status_boundaries` | [tests/c1prime/test_b_inference.py:98](../../tests/c1prime/test_b_inference.py#L98) |  |
 | `test_per_stage_thresholds_of_the_protocol_table` | test | `test_per_stage_thresholds_of_the_protocol_table` | [tests/hws/test_a_budget.py:108](../../tests/hws/test_a_budget.py#L108) |  |
-| `test_percentile_interval_equals_inverted_cdf_quantile` | test | `test_percentile_interval_equals_inverted_cdf_quantile` | [tests/oracle_profile/test_oracle_profile_kernels.py:251](../../tests/oracle_profile/test_oracle_profile_kernels.py#L251) |  |

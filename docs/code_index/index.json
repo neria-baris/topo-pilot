@@ -6,7 +6,7 @@
   "dynamic imports, internal": 50,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1102,
-  "functions and methods (incl. tests)": 10350,
+  "functions and methods (incl. tests)": 10351,
   "import cycles (strongly connected components)": 14,
   "import statements, external": 984,
   "import statements, internal ambiguous": 6,
@@ -25915,9 +25915,9 @@
   },
   "tests/hwsu/test_impl_u2_review.py": {
    "kind": "python",
-   "lines": 126,
+   "lines": 142,
    "purpose": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
-   "sha256": "293ea9894e415971912e70e7543854c0f0540f6d1ec499782b21820cd5568ae7"
+   "sha256": "261d04447bcf3fb1c90ecac7d2dec085ce543ed0cf90d2c5265bd26860421d74"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -27343,9 +27343,9 @@
   },
   "tools/hwsu/CONTRACT.json": {
    "kind": "json",
-   "lines": 1505,
+   "lines": 1513,
    "purpose": "",
-   "sha256": "41b704c8498ff7b0646c4c6b4ea520164e509fe9d3ab70adbb8494c872a4264a"
+   "sha256": "78b8e92b33b2f9ce0813b464baa4493b4bd940b73f55b2466dc1a0ebaeff66d2"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -27513,7 +27513,7 @@
    "kind": "python",
    "lines": 400,
    "purpose": "HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6",
-   "sha256": "05e8e0d981d5b8b23c22447191b38cd23711c435e1b3f243a6e5f0a2cb28e58c"
+   "sha256": "859bb7316f169dfa7cec9361c829d06ca9caec7a668564b2112d836fb1653820"
   },
   "tools/hwsu/u2/hwsu_model.py": {
    "kind": "python",
@@ -158820,6 +158820,16 @@
      "qual": "test_s0_allowlist_admits_the_implementer_phase2_tests",
      "sig": "def test_s0_allowlist_admits_the_implementer_phase2_tests()",
      "start": 119
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 142,
+     "kind": "test",
+     "name": "test_g0u_treats_hwsg_locations_as_declarations",
+     "qual": "test_g0u_treats_hwsg_locations_as_declarations",
+     "sig": "def test_g0u_treats_hwsg_locations_as_declarations()",
+     "start": 130
     }
    ],
    "syspath": [
@@ -276564,5 +276574,5 @@
    ]
   }
  },
- "sources_digest": "56ec8c397838eac352bb6637ea047d6b4a1586ba02b6acd22e53d6b0078e9497"
+ "sources_digest": "21c4f47423d7f95fe4b4ba66d4a6989ba3e89f759bc55e6d9d342eed968ce1e9"
 }

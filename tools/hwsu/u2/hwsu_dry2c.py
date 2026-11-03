@@ -149,7 +149,8 @@ def write_auth(store, job, stage, sr) -> Path:
 def stage_ctx(store, sr, job, stage, planted, **extra) -> dict:
     rid = extra.pop("reservation_id", None)
     ctx = udrv.build_ctx_u(store, job, extra.pop("attempt", 1), stage, rid, root=sr["root"],
-                           mailbox=sr["mailbox"], hwsc_store=sr["hwsc_store"], scope=uc.SCOPE_DRY, dry=True)
+                           mailbox=sr["mailbox"], hwsc_store=sr["hwsc_store"], scope=uc.SCOPE_DRY,
+                           dry=True)
     p = float(hwsc_data.p_d2a_check(udry.tiny_world(), 1.0)["p_D2a"])
     ho = _w(sr["root"] / "handoff.json", json.dumps({
         "p_D2a": p, "stage_c_exclusions": [], "store_inventory": {}}))

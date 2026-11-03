@@ -54,6 +54,7 @@
 - [tests/hwsc/test_b_guard_meter.py](../../tests/hwsc/test_b_guard_meter.py.md) (line 30, import)
 - [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 14, import)
 - [tests/hwsu/test_b_of_meter.py](../../tests/hwsu/test_b_of_meter.py.md) (line 38, import)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 220, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 26, import)
 - [tests/oracle_profile/test_builder_controls.py](../../tests/oracle_profile/test_builder_controls.py.md) (line 17, import)
 - [tests/x6_stage1/test_b_nb_s0_ops.py](../../tests/x6_stage1/test_b_nb_s0_ops.py.md) (line 303, import)

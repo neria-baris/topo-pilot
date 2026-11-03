@@ -53,10 +53,16 @@
 - [tests/hwsu/test_a_of_gates.py](../../tests/hwsu/test_a_of_gates.py.md) (line 16, import)
 - [tests/hwsu/test_a_of_lemmas.py](../../tests/hwsu/test_a_of_lemmas.py.md) (line 17, import)
 - [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 15, import)
+- [tests/hwsu/test_a_u2_estimand.py](../../tests/hwsu/test_a_u2_estimand.py.md) (line 18, import)
+- [tests/hwsu/test_a_u2_known.py](../../tests/hwsu/test_a_u2_known.py.md) (line 17, import)
 - [tests/hwsu/test_b_of_obligation.py](../../tests/hwsu/test_b_of_obligation.py.md) (line 326, import)
 - [tools/hwsu/hwsu_dry.py](hwsu_dry.py.md) (line 11, import)
 - [tools/hwsu/hwsu_dry_b.py](hwsu_dry_b.py.md) (line 9, import)
 - [tools/hwsu/hwsu_of.py](hwsu_of.py.md) (line 11, import)
+- [tools/hwsu/u2/hwsu_dry2b.py](u2/hwsu_dry2b.py.md) (line 15, import)
+- [tools/hwsu/u2/hwsu_e2.py](u2/hwsu_e2.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_gates.py](u2/hwsu_gates.py.md) (line 15, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 14, import)
 
 ## Top-level constants
 

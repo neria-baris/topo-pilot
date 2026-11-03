@@ -53,6 +53,8 @@
 - [tests/c2_readout/test_b_screens.py](../../tests/c2_readout/test_b_screens.py.md) (line 23, import)
 - [tests/hwsu/test_a_of_gates.py](../../tests/hwsu/test_a_of_gates.py.md) (line 23, import)
 - [tests/hwsu/test_a_of_oracle.py](../../tests/hwsu/test_a_of_oracle.py.md) (line 21, import)
+- [tests/hwsu/test_a_u2_family.py](../../tests/hwsu/test_a_u2_family.py.md) (line 19, import)
+- [tests/hwsu/test_a_u2_rules.py](../../tests/hwsu/test_a_u2_rules.py.md) (line 18, import)
 - [tools/c2_nd/nd_attrib.py](../c2_nd/nd_attrib.py.md) (line 21, import)
 - [tools/c2_nd/nd_decide.py](../c2_nd/nd_decide.py.md) (line 14, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 18, import)
@@ -65,6 +67,9 @@
 - [tools/hwsu/hwsu_dry_b.py](../hwsu/hwsu_dry_b.py.md) (line 17, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 20, import)
 - [tools/hwsu/hwsu_oracle.py](../hwsu/hwsu_oracle.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_decide.py](../hwsu/u2/hwsu_decide.py.md) (line 19, import)
+- [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 24, import)
+- [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 27, import)
 
 ## Top-level constants
 

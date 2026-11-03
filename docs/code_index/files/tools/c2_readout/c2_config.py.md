@@ -84,6 +84,7 @@
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 13, import)
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 10, import)
 - [tools/c2_readout/c2_stats.py](c2_stats.py.md) (line 20, import)
+- [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 26, import)
 
 ## Top-level constants
 

@@ -56,6 +56,7 @@
 - [tests/hwsc/test_r_0177_meter_tempdir.py](../../tests/hwsc/test_r_0177_meter_tempdir.py.md) (line 19, import)
 - [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 16, import)
 - [tests/hwsu/test_b_of_meter.py](../../tests/hwsu/test_b_of_meter.py.md) (line 20, import)
+- [tests/hwsu/test_b_u2_records.py](../../tests/hwsu/test_b_u2_records.py.md) (line 221, import)
 - [tests/k4b/test_b_meter.py](../../tests/k4b/test_b_meter.py.md) (line 27, import)
 - [tools/hws/hws_dry.py](../hws/hws_dry.py.md) (line 171, import)
 - [tools/hws/hws_meter_bind.py](../hws/hws_meter_bind.py.md) (line 15, import)
@@ -63,6 +64,7 @@
 - [tools/hwsc/hwsc_dry3.py](../hwsc/hwsc_dry3.py.md) (line 18, import)
 - [tools/hwsc/hwsc_meter_bind.py](../hwsc/hwsc_meter_bind.py.md) (line 17, import)
 - [tools/hwsu/hwsu_meter_bind.py](../hwsu/hwsu_meter_bind.py.md) (line 10, import)
+- [tools/hwsu/u2/hwsu_driver.py](../hwsu/u2/hwsu_driver.py.md) (line 26, import)
 
 ## Top-level constants
 

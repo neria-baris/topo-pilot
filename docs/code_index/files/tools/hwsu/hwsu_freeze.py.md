@@ -51,6 +51,8 @@
 ## Imported by
 
 - [tools/hwsu/hwsu_dry.py](hwsu_dry.py.md) (line 9, import)
+- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 14, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 11, import)
 
 ## Top-level constants
 

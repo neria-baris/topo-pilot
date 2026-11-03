@@ -59,6 +59,8 @@
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 15, import)
 - [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 13, import)
 - [tools/hwsc/hwsc_jobs.py](../hwsc/hwsc_jobs.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 24, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 15, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 100, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 170, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 274, import)

@@ -53,6 +53,8 @@
 ## Imported by
 
 - [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 330, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 31, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 24, import)
 
 ## Top-level constants
 

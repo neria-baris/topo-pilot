@@ -88,6 +88,7 @@
 - [tools/hwsc/hwsc_config.py](../hwsc/hwsc_config.py.md) (line 27, import)
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 16, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 19, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 26, import)
 
 ## Top-level constants
 

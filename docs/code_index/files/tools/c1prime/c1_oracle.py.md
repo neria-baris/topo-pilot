@@ -56,6 +56,7 @@
 - [tests/c2_readout/test_a_oracle.py](../../tests/c2_readout/test_a_oracle.py.md) (line 32, import)
 - [tests/c2_readout/test_a_readout.py](../../tests/c2_readout/test_a_readout.py.md) (line 28, import)
 - [tests/hwsu/test_a_of_lemmas.py](../../tests/hwsu/test_a_of_lemmas.py.md) (line 18, import)
+- [tests/hwsu/test_a_u2_estimand.py](../../tests/hwsu/test_a_u2_estimand.py.md) (line 20, import)
 - [tools/c1prime/c1_cert.py](c1_cert.py.md) (line 15, import)
 - [tools/c1prime/c1_data.py](c1_data.py.md) (line 11, import)
 - [tools/c1prime/c1_driver.py](c1_driver.py.md) (line 16, import)
@@ -69,6 +70,9 @@
 - [tools/c2_readout/c2_oracle.py](../c2_readout/c2_oracle.py.md) (line 20, import)
 - [tools/c2_readout/c2_stage_pre.py](../c2_readout/c2_stage_pre.py.md) (line 18, import)
 - [tools/hwsu/hwsu_oracle.py](../hwsu/hwsu_oracle.py.md) (line 9, import)
+- [tools/hwsu/u2/hwsu_dry2b.py](../hwsu/u2/hwsu_dry2b.py.md) (line 23, import)
+- [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 23, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 16, import)
 
 ## Top-level constants
 

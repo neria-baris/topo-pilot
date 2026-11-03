@@ -51,8 +51,10 @@
 
 - [tests/hwsu/test_b_of_bind.py](../../tests/hwsu/test_b_of_bind.py.md) (line 20, import)
 - [tests/hwsu/test_b_of_freeze.py](../../tests/hwsu/test_b_of_freeze.py.md) (line 21, import)
+- [tests/hwsu/test_b_u2_audit.py](../../tests/hwsu/test_b_u2_audit.py.md) (line 213, dynamic)
 - [tools/hwsu/hwsu_driver_of.py](hwsu_driver_of.py.md) (line 143, import)
 - [tools/hwsu/hwsu_freeze.py](hwsu_freeze.py.md) (line 137, import)
+- [tools/hwsu/u2/hwsu_bind_u2.py](u2/hwsu_bind_u2.py.md) (line 12, import)
 
 ## Top-level constants
 

@@ -71,6 +71,7 @@
 - [tools/hwsc/hwsc_gates.py](../hwsc/hwsc_gates.py.md) (line 19, import)
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 23, import)
 - [tools/hwsc/hwsc_records.py](../hwsc/hwsc_records.py.md) (line 22, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 20, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 16, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 19, import)
 - [tools/k4b/k4b_charts.py](k4b_charts.py.md) (line 15, import)

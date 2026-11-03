@@ -63,6 +63,8 @@
 - [tests/hwsu/test_b_of_obligation.py](../../tests/hwsu/test_b_of_obligation.py.md) (line 25, import)
 - [tests/hwsu/test_b_of_registry.py](../../tests/hwsu/test_b_of_registry.py.md) (line 25, import)
 - [tests/hwsu/test_b_of_streams.py](../../tests/hwsu/test_b_of_streams.py.md) (line 19, import)
+- [tests/hwsu/test_b_u2_hwsd.py](../../tests/hwsu/test_b_u2_hwsd.py.md) (line 22, import)
+- [tests/hwsu/test_b_u2_registry.py](../../tests/hwsu/test_b_u2_registry.py.md) (line 22, import)
 - [tests/k4b/test_b_data.py](../../tests/k4b/test_b_data.py.md) (line 23, import)
 - [tools/c2_readout/c2_registry.py](../c2_readout/c2_registry.py.md) (line 24, import)
 - [tools/hwsb/hwsb_gates.py](../hwsb/hwsb_gates.py.md) (line 265, import)
@@ -71,6 +73,9 @@
 - [tools/hwsc/hwsc_known.py](../hwsc/hwsc_known.py.md) (line 24, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 23, import)
 - [tools/hwsu/hwsu_pairs.py](../hwsu/hwsu_pairs.py.md) (line 9, import)
+- [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 30, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 25, import)
+- [tools/hwsu/u2/hwsu_regsrc.py](../hwsu/u2/hwsu_regsrc.py.md) (line 18, import)
 - [tools/k4b/k4b_driver.py](k4b_driver.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 18, import)
 

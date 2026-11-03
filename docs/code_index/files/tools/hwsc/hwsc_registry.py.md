@@ -69,6 +69,8 @@
 - [tools/hwsc/hwsc_known.py](hwsc_known.py.md) (line 21, import)
 - [tools/hwsc/hwsc_registry_build.py](hwsc_registry_build.py.md) (line 14, import)
 - [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 18, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 23, import)
+- [tools/hwsu/u2/hwsu_regsrc.py](../hwsu/u2/hwsu_regsrc.py.md) (line 17, import)
 
 ## Top-level constants
 

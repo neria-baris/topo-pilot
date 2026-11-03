@@ -73,6 +73,8 @@
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 14, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 19, import)
 - [tools/hwsu/hwsu_oracle.py](../hwsu/hwsu_oracle.py.md) (line 10, import)
+- [tools/hwsu/u2/hwsu_decide.py](../hwsu/u2/hwsu_decide.py.md) (line 18, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 17, import)
 
 ## Top-level constants
 

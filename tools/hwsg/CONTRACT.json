@@ -1,0 +1,1611 @@
+{
+ "protocol": "HWSG-DESIGN-v1 (becomes HWSG-FROZEN-v1 at the execution freeze)",
+ "protocol_file": "PROTOCOL_HWSG_v1.md",
+ "protocol_sha256": "3a673898e210e204febca4b688a1f93697606d843d76eb7a11b06e4a8c2d6989",
+ "request_sha256": "88dfbbcdf021d0fe7027562b460905bbd7ed696c6370e7d51939587a982d46e6",
+ "design_freeze_record": "agent-handoff/records/HWSG_DESIGN_FREEZE.json",
+ "contract_job": "0224",
+ "status": "SPEC (job 0224 phase 1); nothing here authorises a run; TO_FREEZE rows are filled before the execution freeze",
+ "precedence": "protocol > CONTRACT.json > API.md > TEST_PLAN.md; a difference is a contract defect reported through the coordinator",
+ "number_format": "exact quantities are str(Fraction); floats are JSON numbers; ints are ints",
+ "base_commit": "764b5af",
+ "authority": {
+  "addenda": [
+   25,
+   26,
+   37,
+   43,
+   44,
+   45
+  ],
+  "addendum_files": {
+   "43": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-43.md",
+   "44": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-44.md",
+   "45": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-45.md"
+  },
+  "addendum_sha256": {
+   "43": "983b1c441bed8e1c370b1565d0c1b845425f3c8febcb1c5425bb90d867e0eaa1",
+   "44": "1fd2ba7b028ff9671baeeb44f16e25eb8ec313a43f002dff2069ad70244aee12",
+   "45": "1df6da618735cc093ddf64670cb1d8d31a91dbc92c230371c4bf17a6835d6e82"
+  },
+  "addenda_25_26_37": "TO_FREEZE: paths and sha256 (the HWSC CONTRACT authority rows are the model)",
+  "h_exec": "TO_FREEZE",
+  "run_approval": "addendum 43 item 2: real stages after the execution freeze without a further owner question"
+ },
+ "scope": "hwsg-v1",
+ "w_star": {
+  "key": "W12-q1-s1.75-p0.2",
+  "role": "descriptive context only; KG1 identity and KG5 law reference",
+  "stage_c_store": "hwsc-store",
+  "handoff": "hwsb-store/HANDOFF.json",
+  "handoff_sha256": "a4d9a0c960adc285f4aec626ccb2e0405cce504357d746f7e0d270615eca4353",
+  "stage_c_masters": [
+   620301,
+   620302,
+   620303
+  ]
+ },
+ "worlds_order": [
+  "lo",
+  "mid",
+  "hi"
+ ],
+ "worlds": {
+  "lo": {
+   "key": "W12-q1-s1.25-p0.8333333333333334",
+   "sigma": "5/4",
+   "p": "5/6",
+   "neighbour": "1/24",
+   "sigma_str": "1.25",
+   "p_str": "0.8333333333333334",
+   "sigma_float": 1.25,
+   "p_float": 0.8333333333333334,
+   "masters": [
+    620611,
+    620612,
+    620613
+   ],
+   "seeds": {
+    "val_sd": 620614,
+    "val_b4": 620615,
+    "endpoint": 620616,
+    "fresh_b4": 620617,
+    "val_projection": 620618
+   },
+   "p1_seeds": [
+    620614,
+    620618
+   ],
+   "process_code_args": [
+    "cylinder",
+    "overlap",
+    "1.25",
+    "0.8333333333333334",
+    "W12-q1-s1.25-p0.8333333333333334"
+   ],
+   "configs": {
+    "WorldConfig": {
+     "family": "cylinder",
+     "dims": [
+      12,
+      12
+     ],
+     "metric": "flat"
+    },
+    "TransitionConfig": {
+     "kind": "max_degree_lazy_walk",
+     "p_stay": 0.8333333333333334
+    },
+    "EmissionConfig": {
+     "mode": "overlap",
+     "V": 36,
+     "sigma": 1.25,
+     "center_strategy": "grid"
+    }
+   },
+   "stage_a": {
+    "s3_record": "hws-store/stages/S3/worlds/W12-q1-s1.25-p0.8333333333333334.json",
+    "s3_record_sha256": "f6b25e4d1ac426447604d1b07c38b265a2552318c8d46f2e04daf371c6eb876e",
+    "hist": "hws-store/hist/S3/W12-q1-s1.25-p0.8333333333333334.npz",
+    "hist_sha256": "b690de893993356ce2de1296c0f237756a88813632afd8b252e1344e2b65050f",
+    "law_bound_Z_exact_upper": "10551693536054196757014429503/5000000000000000000000000000000000000000",
+    "law_status": "BOUNDED",
+    "L3_D4": 0.036222432865136454,
+    "at_3x": true,
+    "means": {
+     "D4": 0.036569244073947696,
+     "GC": 0.4349922191172567,
+     "G4": 0.06539220927298176,
+     "G4A": 0.03474315186225334
+    },
+    "stream": [
+     "data",
+     "hws-v1",
+     "S3",
+     "W12-q1-s1.25-p0.8333333333333334"
+    ],
+    "n": 32768
+   },
+   "store_dir": "hwsg-store/worlds/W12-q1-s1.25-p0.8333333333333334",
+   "run_key": [
+    "hwsg-v1",
+    "W12-q1-s1.25-p0.8333333333333334",
+    "<master>"
+   ],
+   "reservation_id": "RES-HWSG-LO-W2"
+  },
+  "mid": {
+   "key": "W12-q1-s2.0-p0.2",
+   "sigma": "2",
+   "p": "1/5",
+   "neighbour": "1/5",
+   "sigma_str": "2.0",
+   "p_str": "0.2",
+   "sigma_float": 2.0,
+   "p_float": 0.2,
+   "masters": [
+    620621,
+    620622,
+    620623
+   ],
+   "seeds": {
+    "val_sd": 620624,
+    "val_b4": 620625,
+    "endpoint": 620626,
+    "fresh_b4": 620627,
+    "val_projection": 620628
+   },
+   "p1_seeds": [
+    620624,
+    620628
+   ],
+   "process_code_args": [
+    "cylinder",
+    "overlap",
+    "2.0",
+    "0.2",
+    "W12-q1-s2.0-p0.2"
+   ],
+   "configs": {
+    "WorldConfig": {
+     "family": "cylinder",
+     "dims": [
+      12,
+      12
+     ],
+     "metric": "flat"
+    },
+    "TransitionConfig": {
+     "kind": "max_degree_lazy_walk",
+     "p_stay": 0.2
+    },
+    "EmissionConfig": {
+     "mode": "overlap",
+     "V": 36,
+     "sigma": 2.0,
+     "center_strategy": "grid"
+    }
+   },
+   "stage_a": {
+    "s3_record": "hws-store/stages/S3/worlds/W12-q1-s2.0-p0.2.json",
+    "s3_record_sha256": "709c2fd180c4d0a6c49f173c8d59e2a41dba37951d9bd2776731df1437e56c04",
+    "hist": "hws-store/hist/S3/W12-q1-s2.0-p0.2.npz",
+    "hist_sha256": "1678f52f55c100b1ce420e06a879598d77969f3c3f9646d9482fb532f8e6d84c",
+    "law_bound_Z_exact_upper": "4354808731811782445094748083/5000000000000000000000000000000000000000",
+    "law_status": "BOUNDED",
+    "L3_D4": 0.08639564907167291,
+    "at_3x": true,
+    "means": {
+     "D4": 0.08828538261284977,
+     "GC": 0.265344848524256,
+     "G4": 0.04184447819709872,
+     "G4A": 0.02538372921219953
+    },
+    "stream": [
+     "data",
+     "hws-v1",
+     "S3",
+     "W12-q1-s2.0-p0.2"
+    ],
+    "n": 32768
+   },
+   "store_dir": "hwsg-store/worlds/W12-q1-s2.0-p0.2",
+   "run_key": [
+    "hwsg-v1",
+    "W12-q1-s2.0-p0.2",
+    "<master>"
+   ],
+   "reservation_id": "RES-HWSG-MID-W2"
+  },
+  "hi": {
+   "key": "W12-q1-s2.5-p0.5",
+   "sigma": "5/2",
+   "p": "1/2",
+   "neighbour": "1/8",
+   "sigma_str": "2.5",
+   "p_str": "0.5",
+   "sigma_float": 2.5,
+   "p_float": 0.5,
+   "masters": [
+    620631,
+    620632,
+    620633
+   ],
+   "seeds": {
+    "val_sd": 620634,
+    "val_b4": 620635,
+    "endpoint": 620636,
+    "fresh_b4": 620637,
+    "val_projection": 620638
+   },
+   "p1_seeds": [
+    620634,
+    620638
+   ],
+   "process_code_args": [
+    "cylinder",
+    "overlap",
+    "2.5",
+    "0.5",
+    "W12-q1-s2.5-p0.5"
+   ],
+   "configs": {
+    "WorldConfig": {
+     "family": "cylinder",
+     "dims": [
+      12,
+      12
+     ],
+     "metric": "flat"
+    },
+    "TransitionConfig": {
+     "kind": "max_degree_lazy_walk",
+     "p_stay": 0.5
+    },
+    "EmissionConfig": {
+     "mode": "overlap",
+     "V": 36,
+     "sigma": 2.5,
+     "center_strategy": "grid"
+    }
+   },
+   "stage_a": {
+    "s3_record": "hws-store/stages/S3/worlds/W12-q1-s2.5-p0.5.json",
+    "s3_record_sha256": "54ca8cd0333d6538801da5155152a71faaf26569dba540ab99f234860185871b",
+    "hist": "hws-store/hist/S3/W12-q1-s2.5-p0.5.npz",
+    "hist_sha256": "886e04b43221b52ed4211e5f4aae5df21c194ed6ccca0cf11e59dc3480c486c4",
+    "law_bound_Z_exact_upper": "1046856722546615729545115383/1250000000000000000000000000000000000000",
+    "law_status": "BOUNDED",
+    "L3_D4": 0.23235378035761411,
+    "at_3x": true,
+    "means": {
+     "D4": 0.23553644013537134,
+     "GC": 0.2408353926864183,
+     "G4": 0.06848942731043885,
+     "G4A": 0.03789266015049612
+    },
+    "stream": [
+     "data",
+     "hws-v1",
+     "S3",
+     "W12-q1-s2.5-p0.5"
+    ],
+    "n": 32768
+   },
+   "store_dir": "hwsg-store/worlds/W12-q1-s2.5-p0.5",
+   "run_key": [
+    "hwsg-v1",
+    "W12-q1-s2.5-p0.5",
+    "<master>"
+   ],
+   "reservation_id": "RES-HWSG-HI-W2"
+  }
+ },
+ "world_common": {
+  "W": 12,
+  "H": 12,
+  "q": 1,
+  "tier": 0,
+  "V": 36,
+  "N": 144,
+  "period": 12,
+  "decoder_width": 144,
+  "S_ENVELOPE": 144,
+  "family": "cylinder",
+  "WorldSpec_id_expected": "21feee1d8ee5422e",
+  "WorldSpec_payload_sha256": "b6f0746e46d20d202c1a74220f96357a0a80375d57046ffea69b03f3f354f77f",
+  "neighbour_rule": "(1 - Fraction(p))/4 with p the exact stage-A Fraction (never repr(float))",
+  "array_hash_rule": "hashlib.sha256(np.ascontiguousarray(x, dtype=np.float64).tobytes()).hexdigest()",
+  "validate_tol": 1e-12
+ },
+ "selection": {
+  "rule": "pool = REPORT.json finalists.ordinary minus w*, restricted to S3 law_bound.status == 'BOUNDED'; key s3.<key>.L3.D4; lo = argmin; hi = argmax; mid = argmin over the rest of |ln L3.D4 - (ln L3_lo + ln L3_hi)/2|; ties by finalists.ordinary order (first wins)",
+  "report": "hws-store/stages/FINAL/REPORT.json",
+  "report_sha256": "bd460cee5bf286682ae6c4e325d70c07dd59730b6eb81360e2acfca7862ba05a",
+  "selection_json": "hws-store/SELECTION.json",
+  "selection_json_sha256": "243f732412b80d4fd0fc088f9612999520e82dd1ec124f2a9f013de35064f087",
+  "s3_world_dir": "hws-store/stages/S3/worlds",
+  "s3_record_sha256": {
+   "W12-q1-s1.75-p0.2": "164c6038680dcfa00dba4686c7432b5fa351c8dfec88a75119ea8a7447f5f8b3",
+   "W12-q1-s2.0-p0.2": "709c2fd180c4d0a6c49f173c8d59e2a41dba37951d9bd2776731df1437e56c04",
+   "W12-q1-s1.25-p0.8333333333333334": "f6b25e4d1ac426447604d1b07c38b265a2552318c8d46f2e04daf371c6eb876e",
+   "W12-q1-s1.25-p0.875": "223922b15f1f14d39baa091d9a9c49f715c0a1234d74415acbce002c06159fa6",
+   "W12-q1-s2.5-p0.2": "c0daa8cb626f0cda5e48180b424c99ae48882b7deceffe4e2b8a56eafd5bdfe0",
+   "W12-q1-s1.25-p0.9375": "7e060083c590aaee2f8c1049e496c26c96483b0ce5a069a6c98e574a07835164",
+   "W12-q1-s3.0-p0.2": "d49e220edce2cdd46de65f69e28a117dfc7571f84a385c5dfb45868d60825819",
+   "W12-q1-s1.5-p0.5": "b71cd436650df277db13ae019ac4786f3d9df9a5b256c450eae048b566252039",
+   "W12-q1-s1.375-p0.75": "9bd4ce914902fcc186e12e98cab81325fc5957afb135fa1bd9cfbf9e49c1e67c",
+   "W12-q1-s1.5-p0.75": "d2505e1503ea81eec803140389f1113f627248eac10765ef412586341fa41211",
+   "W12-q1-s2.0-p0.5": "350d436c05ee365d6be7d0e59ad25170b5317ff4d9ff43bb74a3d2e3ed7f666e",
+   "W12-q1-s1.5-p0.875": "4ee5a8d7da839f9fb01572eeb52cb320d14dc6ba0e05f5ab24dc39fc0748da58",
+   "W12-q1-s2.0-p0.75": "0c86c8336249e2dbfd6729ffbf764b0bc2899be8b6a010ff91c1a60806ceba3f",
+   "W12-q1-s2.5-p0.5": "54ca8cd0333d6538801da5155152a71faaf26569dba540ab99f234860185871b",
+   "W12-q1-s1.5-p0.9375": "d133bd11bbda511eb0b8ed082b2f8d93856f851970c3d7212e71e05e4b5558e4",
+   "W12-q1-s2.0-p0.875": "2cce403db42364642a2387ed9c3f4f9f2e62f5b61a5fdc849ebd76459b91472d"
+  },
+  "pool_expected": [
+   "W12-q1-s2.0-p0.2",
+   "W12-q1-s1.25-p0.8333333333333334",
+   "W12-q1-s1.25-p0.875",
+   "W12-q1-s2.5-p0.2",
+   "W12-q1-s1.25-p0.9375",
+   "W12-q1-s2.0-p0.5",
+   "W12-q1-s2.0-p0.75",
+   "W12-q1-s2.5-p0.5",
+   "W12-q1-s2.0-p0.875"
+  ],
+  "registered": {
+   "lo": "W12-q1-s1.25-p0.8333333333333334",
+   "mid": "W12-q1-s2.0-p0.2",
+   "hi": "W12-q1-s2.5-p0.5"
+  },
+  "fallback_list_stage_a": [
+   "W12-q1-s2.0-p0.2",
+   "W12-q1-s1.25-p0.8333333333333334"
+  ],
+  "verified_job_0224": "read-only recomputation from the JSON records reproduced the registered list"
+ },
+ "recipe_ref": {
+  "equal_to": [
+   "tools/hwsb/CONTRACT.json recipe",
+   "tools/hwsc/CONTRACT.json recipe"
+  ],
+  "site": "resid_post_3",
+  "index": 32,
+  "bos": 36,
+  "vocab_in": 37,
+  "vocab_out": 36,
+  "context": 33,
+  "threads": 1,
+  "device": "cpu",
+  "steps": 5000
+ },
+ "seeds": {
+  "cross": 620640,
+  "dry_masters_by_world": {
+   "lo": [
+    620901,
+    620902,
+    620903
+   ],
+   "mid": [
+    620904,
+    620905,
+    620906
+   ],
+   "hi": [
+    620907,
+    620908,
+    620909
+   ]
+  },
+  "dry_seeds": {
+   "val_sd": 620911,
+   "val_b4": 620912,
+   "endpoint": 620913,
+   "fresh_b4": 620914,
+   "val_projection": 620915
+  },
+  "kg0_needles": [
+   "hwsg-v1",
+   "620611",
+   "620612",
+   "620613",
+   "620614",
+   "620615",
+   "620616",
+   "620617",
+   "620618",
+   "620621",
+   "620622",
+   "620623",
+   "620624",
+   "620625",
+   "620626",
+   "620627",
+   "620628",
+   "620631",
+   "620632",
+   "620633",
+   "620634",
+   "620635",
+   "620636",
+   "620637",
+   "620638",
+   "620640",
+   "620901",
+   "620902",
+   "620903",
+   "620904",
+   "620905",
+   "620906",
+   "620907",
+   "620908",
+   "620909",
+   "620911",
+   "620912",
+   "620913",
+   "620914",
+   "620915"
+  ],
+  "kg0_declaration_fragments": [
+   "/tools/hwsg/",
+   "/tests/hwsg/",
+   "/agent-handoff/",
+   "/hwsg-store/",
+   "/coord-scratch/",
+   "/docs/code_index/",
+   "/topo-scratch/hwsg-dry",
+   "/topo-scratch/test_hwsg-"
+  ],
+  "kg0_rule": "hwsc_known.seed_search_c walk (whole-token rule; blinded paths pruned before any open; hwsg_config.blinded used as the prune) over the whole root; a hit is a declaration iff its lower-cased '/'-path contains a fragment; any other hit -> FAIL_TECHNICAL/BINDING; at most once per job, cached in-job",
+  "dry_never_issues": "no real master (62061x-62063x), no real stream tag and no real bootstrap seed except the synthetic bootstraps of DRG5/DRG10 (OPEN-6)"
+ },
+ "streams": {
+  "train_dev": {
+   "tree": "SeedTree(master)",
+   "via": "hwsc_data.make_train_dev_c(store, proc, master, HWSG_PLAN(w), scope='hwsg-v1') under hwsg_bind.world(key)",
+   "tuple": [
+    "data",
+    "hwsg-v1",
+    "<split>",
+    "<KEY_w>",
+    "<master>"
+   ],
+   "sequence_id": "make_sequence_ids(process_code(*PROC_w, 'hwsg-v1/<split>/<master>'), split, n)",
+   "design_literal": [
+    "data",
+    "hwsg-v1",
+    "<KEY_w>",
+    "<role>",
+    "<master>"
+   ],
+   "open": "OPEN-1"
+  },
+  "blocks": {
+   "tree": "SeedTree(0)",
+   "via": "k4b_data.history_generator / sample_block and hwsc_data.block_generator under the binding (k4b_data.SCOPE = 'hwsg-v1/<KEY_w>', k4b_data.PROCESS = PROC_w)",
+   "tuple": [
+    "data",
+    "hwsg-v1/<KEY_w>",
+    "<split>",
+    "<b>",
+    "cylinder",
+    "overlap",
+    "<sigma_str>",
+    "<p_str>",
+    "<KEY_w>"
+   ],
+   "sequence_id": "make_sequence_ids(process_code(*PROC_w, 'hwsg-v1/<KEY_w>/<split>/b<b>'), 'test', n)",
+   "design_literal": [
+    "data",
+    "hwsg-v1",
+    "<KEY_w>",
+    "<role>",
+    "<b>"
+   ],
+   "open": "OPEN-1"
+  },
+  "symbol_names": "SeedTree(master).generator('symbol_names', 'cylinder', master) inside OverlapGaussian (unchanged E4 mechanism)",
+  "init_and_batch_order": "Trainer: SeedTree(master).seed('init', *run_key), generator('batch_order', *run_key); run_key = ('hwsg-v1', KEY_w, master)",
+  "kg2_planted_pair": "two synthetic worlds with equal sigma and different p: tags from ('cylinder','overlap',sigma_str) collide; PROC_w tags do not"
+ },
+ "sizes": {
+  "train": 131072,
+  "dev": 4096,
+  "lgate": 4096,
+  "cal": 3072,
+  "val": 3072,
+  "block": 3072,
+  "panel": 512,
+  "landmarks": 512,
+  "decoder_rows": 2560,
+  "ladder": [
+   3072,
+   6144,
+   12288
+  ],
+  "ks": [
+   1,
+   2,
+   4
+  ],
+  "N_C": 3072,
+  "model_count": 3
+ },
+ "thresholds": {
+  "margin_M": "1/100",
+  "alpha": "1/60",
+  "draws": 5000,
+  "ranks": {
+   "alpha": 84,
+   "one_minus_alpha": 4917,
+   "b4_lower": 250,
+   "central_lo": 125,
+   "central_hi": 4875
+  },
+  "learning_captured": "4/5",
+  "G_C_min": 1e-06,
+  "cap": "1/10000",
+  "floor": "1/1000000000",
+  "F_plan_max": "1/1000",
+  "capture_floor": "1/2",
+  "registry_risk_max": "1/100",
+  "registry_risk_rows_O3": 22528,
+  "o4_tol": 1e-12,
+  "p_D2a_rel_tol": 1e-12,
+  "oracle_val_tol": 1e-10,
+  "min_successes": 4000,
+  "c0_val": {
+   "support_min": 507,
+   "panel": 512,
+   "fidelity_min": 0.8,
+   "bins": 12,
+   "bin_min": 8,
+   "resultant_max": 0.3
+  },
+  "cert_val": {
+   "row_bound_max": "1/10000",
+   "abs_X_max": 4
+  }
+ },
+ "handoff": {
+  "file": "WORLD_HANDOFF.json",
+  "keys": [
+   "key",
+   "sigma",
+   "p",
+   "neighbour",
+   "Z_bound",
+   "F_plan",
+   "p_D2a",
+   "N_C",
+   "model_count",
+   "process_identities",
+   "exclusions",
+   "protocol_sha256"
+  ],
+  "fraction_keys": [
+   "sigma",
+   "p",
+   "neighbour",
+   "Z_bound",
+   "F_plan"
+  ],
+  "int_keys": [
+   "N_C",
+   "model_count"
+  ],
+  "float_keys": [
+   "p_D2a"
+  ],
+  "forbidden_keys": [
+   "outcome",
+   "report_sha256",
+   "dev_ce",
+   "captured",
+   "L",
+   "U",
+   "ratio"
+  ],
+  "sha256_binding": "the file sha256 is recorded in the O STAGE_COMPLETE event; load() requires equality",
+  "fabricate_hwsb_pass": false
+ },
+ "exclusions": {
+  "stage_b_ids": "hwsb-store/HANDOFF.json stage_c_exclusions (24 ids)",
+  "stage_c_ids": [
+   "900fcd1d61111734",
+   "a4cb0279bee92f52",
+   "5badf5dec11c6087",
+   "71b118ba2c5e12cc",
+   "05a201f784b64167",
+   "69c86a578ae8c1bc"
+  ],
+  "stage_c_ids_source": "hwsc-store/stages/TRAIN/<master>/TRAIN_RECORD.json checkpoint_ids steps 0 and 5000 (OPEN-4)"
+ },
+ "law": {
+  "O2": {
+   "status": "BOUNDED",
+   "kappa_lt": "1",
+   "delta": "0",
+   "Z_equals": "Fraction(S3 record law_bound.Z_bound.exact_upper)",
+   "F_plan_le": "1/1000",
+   "call": "hwsb_law.law_bound(T, E_canon_shared, pi, coords, sigma_w, neighbour_w) with explicit Fractions"
+  },
+  "w0": {
+   "key": "W12-q1-s1.25-p0.2",
+   "sigma": "5/4",
+   "neighbour": "1/5",
+   "Z_bound_ref": "TO_FREEZE: the K4b recorded Z_bound (HWSB KB4 reference)"
+  },
+  "w_star": {
+   "Z_bound_ref": "HANDOFF Z_bound",
+   "F_plan_ref": "HANDOFF F_plan"
+  },
+  "nonterminating": "refused (protocol §4): O2 FAIL_TECHNICAL/LAW_BOUND"
+ },
+ "known_cases": {
+  "order": [
+   "KG0",
+   "KG1",
+   "KG2",
+   "KG3",
+   "KG4",
+   "KG5",
+   "KG6",
+   "KG7",
+   "KG8"
+  ],
+  "failure": "FAIL_TECHNICAL/KNOWN_CASE (all worlds); KG0 keeps its own status",
+  "kg2_rows": 64,
+  "kg3_steps": 100,
+  "kg4_steps": 100,
+  "kg4_masters": [
+   620901,
+   620902,
+   620903
+  ],
+  "kg6_world": "hi",
+  "kg6_suites": [
+   "tests/k4b/test_a_prop1.py",
+   "tests/k4b/test_a_theorem_a.py",
+   "tests/k4b/test_a_lemma_n.py",
+   "tests/k4b/test_a_transport_bound.py",
+   "tests/hwsc/test_a_decision.py",
+   "tests/hwsc/test_a_k4b_known_bound.py"
+  ],
+  "kg7_c": [
+   "1/2",
+   "9/10",
+   "3/2"
+  ],
+  "kg8_out": "hwsg-store/registry/rehearsal/"
+ },
+ "gates": {
+  "order_O": [
+   "O0",
+   "O1",
+   "O2",
+   "O3",
+   "O4",
+   "O5"
+  ],
+  "order_E1": [
+   "G0C",
+   "H1G",
+   "REG1_LOAD",
+   "H2",
+   "L1",
+   "ORACLE-VAL",
+   "B4-VAL",
+   "C0-CAL",
+   "C0-VAL",
+   "CERT-VAL",
+   "P1"
+  ],
+  "order_E2": [
+   "RELEASE_B",
+   "H1G_E2",
+   "H2-FRESH",
+   "T-PRE",
+   "ENDPOINT",
+   "RATIO",
+   "OUTCOME"
+  ],
+  "failure": {
+   "S0": "INVALID",
+   "PF": "INVALID",
+   "KG": "FAIL_TECHNICAL/KNOWN_CASE",
+   "WIN": "REFUSED",
+   "O0": "FAIL_TECHNICAL/BINDING",
+   "O1": "FAIL_TECHNICAL/IDENTITY",
+   "O2": "FAIL_TECHNICAL/LAW_BOUND",
+   "O3": "INCONCLUSIVE/REGISTRY_RISK",
+   "O4": "FAIL_TECHNICAL/ORACLE",
+   "O5": "INCONCLUSIVE/ORACLE_FEASIBILITY",
+   "T_nonfinite": "FAIL_TECHNICAL/TRAINING",
+   "T_runaway": "FAIL_TECHNICAL/RESOURCE",
+   "R1": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "R2": "NO_RELEASE",
+   "X": "FAIL_TECHNICAL/NUMERICAL"
+  },
+  "scope": {
+   "O0": "all",
+   "KG": "all",
+   "R1": "all",
+   "R2": "all",
+   "O1": "world",
+   "O2": "world",
+   "O3": "world",
+   "O4": "world",
+   "O5": "world",
+   "T": "model then world",
+   "E1": "world",
+   "E2": "world"
+  }
+ },
+ "outcomes": {
+  "precedence": [
+   "FAIL_TECHNICAL/<reason>",
+   "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+   "INCONCLUSIVE/REGISTRY_RISK | INCONCLUSIVE/ORACLE_FEASIBILITY | INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "INCONCLUSIVE/NOT_LEARNED",
+   "INCONCLUSIVE/<K4b reason>",
+   "SUPPORT | EXCLUSION | MIXED | INCONCLUSIVE | INCONCLUSIVE/NUMERICAL"
+  ],
+  "fail_reasons": [
+   "KNOWN_CASE",
+   "IDENTITY",
+   "LAW_BOUND",
+   "ORACLE",
+   "TRAINING",
+   "RESOURCE",
+   "LINEAGE",
+   "DETERMINISM",
+   "NUMERICAL",
+   "BINDING",
+   "SEALING",
+   "BLINDNESS"
+  ],
+  "k4b_reasons": [
+   "HEADROOM",
+   "CHART_UNAVAILABLE",
+   "NUMERICAL",
+   "UNDERPOWERED"
+  ],
+  "terminal_pre_endpoint": "worlds/<key>/stages/TERMINAL/RESULT.json",
+  "ratio": [
+   "DEFINED",
+   "RATIO_UNRESOLVED"
+  ]
+ },
+ "cross": {
+  "readings": {
+   "GENERAL": "all three registered worlds have outcome SUPPORT",
+   "NOT_GENERAL": "some world has P1 PASS, reached ENDPOINT, and has at least one model with per-model status EXCLUDE",
+   "GENERAL_UNAVAILABLE": "neither GENERAL nor NOT_GENERAL"
+  },
+  "annotations": {
+   "ALL_EXCLUSION": ">= 2 worlds at ENDPOINT and every endpoint world EXCLUSION",
+   "POSITIVE_EVERYWHERE": ">= 1 world at ENDPOINT and every model of every endpoint world has Fraction(float(L)) - F_minus > 0"
+  },
+  "capture": {
+   "min_endpoint_worlds": 2,
+   "CAPTURE_BELOW_HALF": "some DEFINED model ratio has Fraction(float(rhoU)) < 1/2",
+   "CAPTURE_AT_LEAST_HALF": "every model of every endpoint world has a DEFINED ratio and Fraction(float(rhoL)) >= 1/2",
+   "CAPTURE_UNRESOLVED": "neither",
+   "CAPTURE_UNAVAILABLE": "fewer than 2 worlds at ENDPOINT",
+   "order": "UNAVAILABLE, then BELOW_HALF, then AT_LEAST_HALF, else UNRESOLVED (OPEN-7)"
+  },
+  "similarity": {
+   "world_mean_ratio": "rho_bar_w = mean of the DEFINED model point ratios of world w; per draw rho_bar*_w[d] = mean over those models of rho*_wj[d]",
+   "central": "ranks 125 / 4875 of each model's rho* draws",
+   "COMMON_FRACTION_COMPATIBLE": "max over DEFINED models of central lower <= min over DEFINED models of central upper (6 to 9 models)",
+   "spread": "S = max rho_bar - min rho_bar; paired draws: each endpoint world's rho_bar* draw vector permuted by np.random.Generator(np.random.PCG64(620640)).permutation(5000), one permutation per world drawn in worlds_order from one generator; S*[d] from the permuted vectors; bound = rank 4917 (OPEN-8)",
+   "labels_only": true
+  },
+  "error_statements": {
+   "GENERAL": "intersection-union; false-claim rate <= the largest per-world rate (<= 0.10 over three models)",
+   "NOT_GENERAL": "per-world EXCLUDE claims, three families at <= 0.10 each (union <= 0.30 nominal)"
+  },
+  "inputs": "the sha256-bound RESULT.json of every registered world; draws re-derived only for endpoint worlds"
+ },
+ "licences": {
+  "SUPPORT": "In world {world}, under its documented law, on {N} fresh histories, for each of three newly trained E4-recipe models, the gauged chart phase at resid_post_3 is not a function of the last four observations on its supported rows; it depends on earlier observations, aligned with the oracle belief residual, with a certified lower bound above the margin 0.01.",
+  "GENERAL": "This held in each of three new worlds chosen by an oracle-only spanning rule (Delta4_orc lower bounds 0.036 to 0.232), as it did in the stage-C world.",
+  "EXCLUSION": "In world {world}, whose oracle comparator is >= 3M, the three models' completion-protected beyond-four alignment is certified below the margin. It does not establish zero alignment or absence elsewhere in the representation.",
+  "NOT_GENERAL": "In {worlds} (P1 passed) the model(s) {models} have endpoint status EXCLUDE. Per-world EXCLUDE claims, three families at <= 0.10 each (union <= 0.30 nominal).",
+  "MIXED_NOTE": "A MIXED world without an EXCLUDE model is reported as MIXED and supports no NOT_GENERAL claim.",
+  "GENERAL_UNAVAILABLE": "No cross-world generality reading is available: {reasons}.",
+  "CAPTURE_AT_LEAST_HALF": "Each of the {n} models reaching ENDPOINT in {worlds} captured at least half of the oracle comparator on the same rows (nominal one-sided bounds). This reading makes no claim about {unavailable}.",
+  "SIMILARITY": "The observed capture estimates are {compatible} with a common fraction at the reported descriptive precision.",
+  "POSITIVE_BELOW_MARGIN": "a description, not a SUPPORT claim",
+  "world_other_heads": "tools/hwsc/CONTRACT.json licences[head] (stage-C templates) with {world} added to the fill",
+  "does_not_establish": [
+   "K4B §8.4 items 1-10 and HWSC items 11-14 (object names adapted)",
+   "15 anything outside the three chosen worlds or the stage-A grid",
+   "16 any functional dependence of capture on Delta4_orc, sigma or p",
+   "17 that the recipe is optimal or that other recipes, sizes, sites, lengths behave alike",
+   "18 anything about w0 or the E4 models (K4b stands)",
+   "19 causal use of the coordinate (use study)",
+   "20 training dynamics",
+   "21 that a world dropped or failing L1/C0 lacks beyond-four information in models",
+   "22 a pooled estimate across worlds or with stage C/w0",
+   "23 a success probability over training seeds",
+   "24 ratio equivalence from overlapping intervals",
+   "25 that the oracle comparator bounds every learned phase field",
+   "26 that the coordinate holds all beyond-four information"
+  ]
+ },
+ "disclosure": "HWSG follows K4b (EXCLUSION in w0, comparator below the margin), stage A (worlds by oracle criteria), stage B (pilot in w*) and stage C (SUPPORT 3/3 in w*). HWSG's worlds were chosen by a rule fixed before any HWSG data, from stage-A oracle records only; the planners knew stage C's result. HWSG's models, histories, charts and decisions are its own. No threshold, margin, chart parameter or recipe setting was changed in response to any earlier result; the capture floor 1/2 was set at planning.",
+ "blindness": {
+  "files": [
+   "hwsb-store/REPORT.json",
+   "hwsb-store/GATES.jsonl",
+   "agent-handoff/jobs/0175/review.md"
+  ],
+  "dirs": [
+   "hwsb-store/stages/EVAL",
+   "agent-handoff/jobs/0175",
+   "hwsc-store/sealed",
+   "hwsc-store/stages/S4",
+   "hwsc-store/stages/S5",
+   "hwsc-store/stages/S7",
+   "hwsc-store/stages/S8",
+   "hwsu-store/stages",
+   "hwsd-store/stages",
+   "tools/hwsu",
+   "tools/hwsd"
+  ],
+  "globs": [
+   [
+    "hwsb-store",
+    "chart_constructions_*.json"
+   ],
+   [
+    "hwsc-store",
+    "sealed_*.json"
+   ],
+   [
+    "agent-handoff/planning/responses",
+    "*coord-hws-use-20261101*"
+   ],
+   [
+    "agent-handoff/planning/requests",
+    "*coord-hws-use-20261101*"
+   ],
+   [
+    "agent-handoff/planning/responses",
+    "*coord-hws-dyn-20261101*"
+   ],
+   [
+    "agent-handoff/planning/requests",
+    "*coord-hws-dyn-20261101*"
+   ],
+   [
+    "agent-handoff/planning/responses",
+    "hwsu-*"
+   ],
+   [
+    "agent-handoff/planning/responses",
+    "hwsd-*"
+   ]
+  ],
+  "job_range": {
+   "prefix": "agent-handoff/jobs/",
+   "from": 197,
+   "to": 223
+  },
+  "allow": [
+   "tools/hwsu/CONTRACT_OF.json",
+   "tools/hwsd/CONTRACT.json",
+   "agent-handoff/jobs/0175/task.md",
+   "agent-handoff/jobs/0175/*.json"
+  ],
+  "registry_reader_exception": "the frozen registry readers may list blinded directories and token-read history arrays inside them (never sealed/, state.pt, effect reports, *REPORT*.json); listing is not an open (OPEN-9)",
+  "public_summary": [
+   "component starting with 00_read_me_first (case-insensitive)",
+   "consecutive components docs/research_summary"
+  ],
+  "failure": "FAIL_TECHNICAL/BLINDNESS, raised before any open; walks prune before traversal"
+ },
+ "registry": {
+  "versions": [
+   "REHEARSAL",
+   "K-REG1",
+   "K-REG2"
+  ],
+  "out_dir": "hwsg-store/registry",
+  "stage_c_sources": {
+   "from": "tools/hwsc/CONTRACT.json registry (sources, inventory, scratch_inventory, c2nd, hwsb, dry_stores)",
+   "hwsc_contract_sha256": "af669ac235845b09448c1823ec71dd72d825f9144eb2226077b6f72ce525af88"
+  },
+  "class_to_reader": [
+   {
+    "class": "K4b history table",
+    "reader": "k4b_history_table",
+    "function": "hwsg_registry.read_k4b_history_table",
+    "reads": "sha256 of the file must equal the obligation entry; np.load(allow_pickle=False); keys canon32, seq_ids, digest required; digests = digest (<U64) entries; seq_ids = seq_ids (int64)"
+   },
+   {
+    "class": "NON_HISTORY",
+    "reader": null,
+    "function": null,
+    "reads": "never opened; recorded with relpath, bytes (stat) and the obligation sha256"
+   }
+  ],
+  "class_to_reader_basis": "every hwsu-store and hwsd-store REGISTRY_OBLIGATION*.json read at job 0224 holds only the pairs ('K4b history table', 'k4b_history_table') and ('NON_HISTORY', null)",
+  "obligation_stores": {
+   "hwsu-store": {
+    "obligation": "TO_FREEZE: the final track-U phase-2 obligation (at 0224: REGISTRY_OBLIGATION_OF.json sha256 5f79b6d9bcd3ea5ca8815c29fa0bf61425be4bd2404989164b8ba3f5d702bd29, 13 entries)",
+    "contract": "tools/hwsu/CONTRACT_OF.json",
+    "schema": "hws-registry-obligation-v1"
+   },
+   "hwsd-store": {
+    "obligation": "TO_FREEZE: the obligation with the latest written_utc (at 0224 the candidates are REGISTRY_OBLIGATION.json a148a244cbfa9703446f6f943dfe020e632570f493239b8ae75ec9c42fc868e5, 18 entries, and REGISTRY_OBLIGATION_0222-a1.json cee05f1c18c3ee3d7201b92e72dc3029cc70450f891557b1ad77c1de0f23e801, 162 entries) (OPEN-3)",
+    "contract": "tools/hwsd/CONTRACT.json",
+    "schema": "hws-registry-obligation-v1"
+   }
+  },
+  "obligation_rule": "the complete array-file listing of the store (.npz, .npy, .pt; superseded and dry/run subfolders included) equals the obligation's file list by relpath and bytes; new, missing or resized -> INCOMPLETE; metadata (.json, .jsonl, .md, .lock, .txt, .log) classified separately; unknown (class, reader) -> INCOMPLETE; NON_HISTORY never opened",
+  "hwsc_store": {
+   "obs_reader": "hwsb_registry.registry_digests(hwsc-store, expected=read_json(hwsc-store/stages/TRAIN/OBS_INVENTORY.json))",
+   "hist_reader": "token reader for stages/S3/HIST_*.npz, stages/S7/HIST_*.npz, superseded/**/HIST_*.npz",
+   "non_history_by_name": [
+    "registry/**",
+    "artifacts/{WorldSpec,TransitionSpec,EmissionSpec,Checkpoint}/**",
+    "stages/S4/ORACLE_*.npz",
+    "stages/S4a/*.npz"
+   ],
+   "name_only": [
+    "SEALED_*.json",
+    "sealed/**"
+   ],
+   "stage_dirs_at_0224": [
+    "E1",
+    "E2",
+    "KC",
+    "S3",
+    "S4",
+    "S4a",
+    "S5",
+    "S7",
+    "S8",
+    "TRAIN"
+   ],
+   "unassigned_array": "INCOMPLETE"
+  },
+  "scratch_since": "2026-10-29",
+  "scratch_prefix_rules": [
+   {
+    "glob": "test_hwsc-*",
+    "decision": "EXCLUSION",
+    "reason": "pytest fixtures (HWSC R6 rule, fixture_max_rows 1024)"
+   },
+   {
+    "glob": "test_hwsd-*",
+    "decision": "EXCLUSION",
+    "reason": "pytest fixtures (fixture_max_rows 1024)"
+   },
+   {
+    "glob": "test_hwsu-*",
+    "decision": "EXCLUSION",
+    "reason": "pytest fixtures (fixture_max_rows 1024)"
+   },
+   {
+    "glob": "test_hwsg-*",
+    "decision": "EXCLUSION",
+    "reason": "pytest fixtures of this study (fixture_max_rows 1024)"
+   },
+   {
+    "glob": "hwsc-dry-*",
+    "decision": "READER",
+    "reader": "hwsc_registry.source_dry (stage-C rule)"
+   },
+   {
+    "glob": "hwsc-job-*",
+    "decision": "TO_FREEZE",
+    "reason": "metered-job temp roots; header scan decides"
+   },
+   {
+    "glob": "hwsu-dry-*",
+    "decision": "READER",
+    "reader": "token reader"
+   },
+   {
+    "glob": "hwsu-run-*",
+    "decision": "TO_FREEZE"
+   },
+   {
+    "glob": "hwsd-dry*",
+    "decision": "READER",
+    "reader": "token reader"
+   },
+   {
+    "glob": "hwsd-run-*",
+    "decision": "TO_FREEZE"
+   },
+   {
+    "glob": "hwsg-dry*",
+    "decision": "READER",
+    "reader": "token reader (DRYHIST_*.npz)"
+   },
+   {
+    "glob": "paper*",
+    "decision": "TO_FREEZE",
+    "reason": "expected without array files"
+   }
+  ],
+  "scratch_dirs_at_0224": "TO_FREEZE: one row per top-level scratch directory modified since 2026-10-29 (80 at job 0224; API.md §16) with decision, reason and frozen_files from a read-only header scan",
+  "unmatched_scratch_dir": "INCOMPLETE (fail closed)",
+  "root_inventory": "tools/hwsc/CONTRACT.json registry.inventory plus rows: hwsc-store READER (b), hwsu-store OBLIGATION (c), hwsd-store OBLIGATION (c), hwsg-store OWN, topo-pilot-hwsu / topo-pilot-hwsd / topo-pilot-hwsg worktrees (TO_FREEZE rows by header scan)",
+  "own_lineage": "18 train/dev ObservationSets under hwsg-store/worlds/<key>/artifacts (superseded and interrupted attempts included), read by hwsb_registry.registry_digests per world with that world's OBS_INVENTORY",
+  "requirements": {
+   "collision": "FAIL_TECHNICAL/LINEAGE",
+   "predicate": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "replacement_sampling": false
+  },
+  "fail_closed": [
+   "unlisted top-level directory holding a history file, identity reference or ObservationSet root",
+   "unreadable history-bearing file",
+   "obligation/listing mismatch",
+   "unresolved reservation",
+   "wildcard non-history classification",
+   "unknown class or reader",
+   "missing or non-final phase-2 obligation"
+  ],
+  "certificate": "sha256 of the canonical JSON {inventory_sha256, readers_version, sources_sha256} rechecked immediately before every draw; a changed root invalidates it"
+ },
+ "ratio": {
+  "numerator_key": "X:<j>:-",
+  "plus_numerator_key": "X:<j>:+",
+  "denominator_key": "delta4_orc:all",
+  "n7_resolution": "k4b_fresh.bootstrap_inputs builds the one-sided entry 'delta4_orc:all' (delta4_orc is not in k4b_cert.CONTROL_K)",
+  "defined_if": "the world's B4-VAL gate PASS and the rank-84 value of the 'delta4_orc:all' draws > 0",
+  "rho_draws": "rho*_wj[d] = draws['X:<j>:-'][d] / draws['delta4_orc:all'][d] (float64); rhoL = rank 84, rhoU = rank 4917 of rho*_wj (k4b_stats.bounds rank rule); the X+ ratio draws['X:<j>:+']/D and both central intervals (ranks 125/4875) are reported",
+  "nonpositive_draw": "any draw with draws['delta4_orc:all'][d] <= 0 -> RATIO_UNRESOLVED for every model of the world (OPEN-11)",
+  "ranks": {
+   "lower": 84,
+   "upper": 4917,
+   "central": [
+    125,
+    4875
+   ]
+  },
+  "identity": "re-derived L (rank 84 of X:<j>:- draws) and U (rank 4917 of X:<j>:+ draws) equal RESULT per_model L and U bitwise; else FAIL_TECHNICAL/NUMERICAL",
+  "clip": false
+ },
+ "n8_resolution": "stage A records law_bound.Z_bound as {'exact_upper': str(Fraction), 'float'}; hwsb_law.law_bound returns Z_bound as a Fraction; O2/KG5 compare Fraction(exact_upper) == law['Z_bound']",
+ "o4": {
+  "reproduce": "regenerate the S3 oracle sample in memory with the stage-A S3 sampler for the world (stream ['data','hws-v1','S3',<key>], n 32768); its sha256 by the stage-A hist rule equals stage_a.hist_sha256; means by the hwsb_kb.kb5 formulas",
+  "reference_means": "S3 world record bounds.<D4|GC|G4|G4A>.mean (OPEN-2)",
+  "tol": 1e-12,
+  "stored_hist_opened": false
+ },
+ "cpu": {
+  "policy": "measure-only meter; runaway safeguards only (no pause lines, addendum 43)",
+  "ledger": "agent-handoff/HWSG_CPU_LEDGER.json",
+  "ledger_labels": "unique per attempt: '<job>-<stage>[-<tag>][-<master>]-a<k>'",
+  "central_s": {
+   "J-G1": 700,
+   "DRY": 400,
+   "KC": 1500,
+   "SEARCH": 2100,
+   "O": 900,
+   "TRAIN": 5700,
+   "TRAIN_child": 1900,
+   "REG1": 800,
+   "E1": 1400,
+   "REG2": 600,
+   "E2": "900*k + 100",
+   "CROSS": 30
+  },
+  "central_wall_s": "TO_FREEZE: per stage, from the HWSC ledger wall times",
+  "max_cpu_multiplier": 5,
+  "max_wall_multiplier": 4,
+  "train_child_max_cpu_s": 6006.6282,
+  "per_model_hold_s": 6006.6282,
+  "hold_from_step": 1000,
+  "hold_rule": "hold iff (step >= 1000 and cpu_s*5000/step > 6006.6282) or cpu_s > 6006.6282; FAIL_TECHNICAL/RESOURCE for that model; report step, CPU, projection only",
+  "forecast_total_k1": 42500,
+  "forecast_total_k4": 51400
+ },
+ "resources": {
+  "memory_cap_bytes": {
+   "J-G1": 8589934592,
+   "DRY": 12884901888,
+   "KC": 12884901888,
+   "O": 12884901888,
+   "TRAIN_child": 8589934592,
+   "REG1": 12884901888,
+   "E1": 12884901888,
+   "REG2": 12884901888,
+   "E2": 12884901888,
+   "CROSS": 12884901888
+  },
+  "aggregate_ram_check": "free physical RAM >= 3 * 1610612736 (expected child) + 4294967296 reserve before launching three TRAIN children (OPEN-10)",
+  "output_cap_bytes_world": 17179869184,
+  "output_cap_bytes_registry": 21474836480,
+  "native_operation_wall_s": 600,
+  "disk_min_free": {
+   "C:\\": 2000000000,
+   "X:\\": 30000000000
+  },
+  "store": "X:/Downloads/projects/topo-pilot/hwsg-store",
+  "scratch_root": "X:/Downloads/topo-scratch",
+  "test_job_root": "X:/Downloads/topo-scratch/test_hwsg-<job>",
+  "pytest_basetemp": "X:/Downloads/topo-scratch/test_hwsg-<job>/pytest",
+  "dry_store": "X:/Downloads/topo-scratch/hwsg-dry",
+  "dry_forbidden_name": "HIST_*.npz",
+  "interpreter": "X:/Downloads/projects/topo-pilot/topo-pilot/.venv/Scripts/python.exe -s with PYTHONPATH=<worktree>/src",
+  "footprint": "no .npz/.npy committed under tools/hwsg or tests/hwsg; implementation, tests and dry run write no array file under the project root"
+ },
+ "store_layout": [
+  "FREEZE.json",
+  "STAGES.jsonl",
+  "GATES.jsonl",
+  "AUTH_<stage>_<job>.json",
+  "SCHED_<job>.json",
+  "KC_ACCEPT.json",
+  "OPERATION_ACTIVE.json",
+  "stages/KC/KG_RECORD.json",
+  "stages/O/O_RECORD.json",
+  "stages/CROSS/CROSS.json",
+  "registry/rehearsal/",
+  "registry/K-REG1.json",
+  "registry/K-REG1_digests.npz",
+  "registry/runs/K-REG1/",
+  "registry/K-REG2.json",
+  "registry/K-REG2_digests.npz",
+  "registry/runs/K-REG2/",
+  "REGISTRY_OBLIGATION.json",
+  "worlds/<key>/WORLD_HANDOFF.json",
+  "worlds/<key>/artifacts/",
+  "worlds/<key>/STAGES.jsonl",
+  "worlds/<key>/GATES.jsonl",
+  "worlds/<key>/stages/TRAIN/<master>/TRAIN_RECORD.json",
+  "worlds/<key>/stages/TRAIN/<master>/HOLD_<step>.json",
+  "worlds/<key>/stages/TRAIN/OBS_INVENTORY.json",
+  "worlds/<key>/stages/{E1,S3,S4,S4a,S5,E2,S7,S8} (stage-C names)",
+  "worlds/<key>/stages/TERMINAL/RESULT.json",
+  "worlds/<key>/SEALED_VALIDATION.json",
+  "worlds/<key>/stages/S8/RESULT.json",
+  "worlds/<key>/stages/S8/SEALED_OPENED.json",
+  "worlds/<key>/stages/S8/RATIO.json",
+  "worlds/<key>/RELEASE_A.json",
+  "worlds/<key>/RELEASE_B.json",
+  "worlds/<key>/ACCEPT_*.json",
+  "worlds/<key>/RESERVATION_W2.json",
+  "worlds/<key>/reservations/",
+  "worlds/<key>/logs/",
+  "worlds/<key>/tmp/",
+  "superseded/<job>-a<k>/"
+ ],
+ "records": {
+  "RELEASE_B_extra": [
+   "world",
+   "N",
+   "k",
+   "kreg2_sha256",
+   "reservation",
+   "session",
+   "seeds",
+   "registry_certificate"
+  ],
+  "TERMINAL_RESULT": [
+   "world",
+   "outcome",
+   "label",
+   "stage",
+   "gate",
+   "details",
+   "annotations",
+   "licence",
+   "lineage_disclosure",
+   "protocol_sha256",
+   "p1_passed"
+  ],
+  "release_barrier": "before the first E2: every registered world has an accepted terminal outcome or an accepted E1 validation; release B exists for every E2-eligible world"
+ },
+ "s0": {
+  "protected_allowlist": [
+   "tools/hwsg/",
+   "tests/hwsg/",
+   "docs/code_index/"
+  ],
+  "margin_check": "k4b_config.MARGIN == Fraction(1, 100)",
+  "chart_equal": "tools/c1prime/CONTRACT.json chart equal at r_ref and h_exec; k4b_config.check_chart_equality()",
+  "recipe_equal": "hwsb CONTRACT recipe == hwsc CONTRACT recipe"
+ },
+ "preflight": {
+  "suites": [
+   "tools/hwsc/CONTRACT.json preflight suites",
+   "tests/hwsc",
+   "tests/hwsg"
+  ],
+  "binding_audit": true,
+  "file_sizes": "tools/check_file_sizes.py",
+  "temp_under_scratch": true
+ },
+ "dry_run": {
+  "cases": [
+   "DRG1",
+   "DRG2",
+   "DRG3",
+   "DRG4",
+   "DRG5",
+   "DRG6",
+   "DRG7",
+   "DRG8",
+   "DRG9",
+   "DRG10",
+   "DRG11",
+   "DRG12",
+   "DRG13",
+   "DRG14"
+  ],
+  "store": "X:/Downloads/topo-scratch/hwsg-dry",
+  "tiny": {
+   "family": "cylinder",
+   "W": 6,
+   "L": 32,
+   "worlds": 3,
+   "shared_sigma_pair": true,
+   "n_layers": 1,
+   "d_model": 16,
+   "steps": 200
+  },
+  "drg2": {
+   "steps": 20,
+   "persisted": false
+  },
+  "planted_adapter": "geometry-dependent K4b gates get planted inputs; DRY_REPORT lists kernels run directly vs inputs planted; never called whole-pipeline PASS",
+  "cost_s": [
+   300,
+   600
+  ]
+ },
+ "binding": {
+  "rows_per_world": [
+   "hwsb_config.SCOPE",
+   "hwsb_config.KEY",
+   "hwsb_config.PROCESS",
+   "hwsb_config.MASTERS",
+   "hwsb_config.SIGMA",
+   "hwsb_config.NEIGHBOUR",
+   "hwsb_config.TRANS_CFG",
+   "hwsb_config.EMIS_CFG",
+   "hwsb_config.STORE",
+   "hwsb_config.STUDY_LEDGER",
+   "hwsb_config.REAL_PLAN",
+   "hwsc_config.SCOPE",
+   "hwsc_config.KEY",
+   "hwsc_config.PROCESS",
+   "hwsc_config.MASTERS",
+   "hwsc_config.SEEDS",
+   "hwsc_config.P1C_SEEDS",
+   "hwsc_config.SIGMA",
+   "hwsc_config.NEIGHBOUR",
+   "hwsc_config.STORE",
+   "hwsc_config.DRY_STORE",
+   "hwsc_config.STUDY_LEDGER",
+   "hwsc_config.HANDOFF_PATH",
+   "hwsc_config.HWSC_PLAN",
+   "hwsc_config.RESERVATION_ID",
+   "hwsc_config.DISCLOSURE",
+   "hwsc_config.load_handoff",
+   "hwsc_data.build_process_c",
+   "hwsc_data.process_identity"
+  ],
+  "new_values": {
+   "hwsb_config.SCOPE": "'hwsg-v1'",
+   "hwsb_config.KEY": "KEY_w",
+   "hwsb_config.PROCESS": "PROC_w",
+   "hwsb_config.MASTERS": "masters_w",
+   "hwsb_config.SIGMA": "Fraction(sigma_w)",
+   "hwsb_config.NEIGHBOUR": "Fraction(neighbour_w)",
+   "hwsb_config.TRANS_CFG": "TransitionConfig(p_stay=p_float_w)",
+   "hwsb_config.EMIS_CFG": "EmissionConfig('overlap', 36, sigma_float_w, 'grid')",
+   "hwsb_config.STORE": "ROOT/hwsg-store/worlds/<key>",
+   "hwsb_config.STUDY_LEDGER": "ROOT/agent-handoff/HWSG_CPU_LEDGER.json",
+   "hwsb_config.REAL_PLAN": "hwsg_config.plan(w)",
+   "hwsc_config.SCOPE": "'hwsg-v1'",
+   "hwsc_config.KEY": "KEY_w",
+   "hwsc_config.PROCESS": "PROC_w",
+   "hwsc_config.MASTERS": "masters_w",
+   "hwsc_config.SEEDS": "seeds_w",
+   "hwsc_config.P1C_SEEDS": "(seeds_w['val_sd'], seeds_w['val_projection'])",
+   "hwsc_config.SIGMA": "Fraction(sigma_w)",
+   "hwsc_config.NEIGHBOUR": "Fraction(neighbour_w)",
+   "hwsc_config.STORE": "ROOT/hwsg-store/worlds/<key>",
+   "hwsc_config.DRY_STORE": "SCRATCH/hwsg-dry",
+   "hwsc_config.STUDY_LEDGER": "ROOT/agent-handoff/HWSG_CPU_LEDGER.json",
+   "hwsc_config.HANDOFF_PATH": "ROOT/hwsg-store/worlds/<key>/WORLD_HANDOFF.json",
+   "hwsc_config.HWSC_PLAN": "hwsg_config.plan(w)",
+   "hwsc_config.RESERVATION_ID": "worlds[w].reservation_id",
+   "hwsc_config.DISCLOSURE": "CONTRACT disclosure (HWSG)",
+   "hwsc_config.load_handoff": "hwsg_handoff.loader(key)",
+   "hwsc_data.build_process_c": "hwsg_oracle.process_builder(key)",
+   "hwsc_data.process_identity": "hwsg_oracle.identity_checker(key)"
+  },
+  "stage_c_table_retarget": {
+   "k4b_*.MODELS": "masters_w",
+   "k4b_config.SCOPE, k4b_data.SCOPE, k4b_decoder.SCOPE": "'hwsg-v1/' + KEY_w",
+   "k4b_*.PROCESS": "PROC_w",
+   "k4b_*.SEEDS": "seeds_w",
+   "k4b_config.STORE": "ROOT/hwsg-store/worlds/<key>",
+   "k4b_driver.ARTIFACTS": "ROOT/hwsg-store/worlds/<key>/artifacts",
+   "k4b_config.CONTRACT": "hwsc CONTRACT k4b_contract_view with protocol_sha256 = HWSG protocol and authority.c1prime_disclosure = HWSG disclosure",
+   "k4b_config.CONTRACT_PATH, PROTOCOL_PATH": "tools/hwsg/CONTRACT.json, tools/hwsg/PROTOCOL_HWSG_v1.md",
+   "hwsb_config.SCOPE": "omitted (set by the world rows)",
+   "hwsb_config.MASTERS": "omitted (set by the world rows)",
+   "hwsb_config.DRY_MASTERS": "dry masters of w"
+  },
+  "nesting": "hwsg_bind.world(key) first (old values = the import-time values), then hwsc_bind.bound_stage_c(hwsg_bind.stage_c_table(key)) inside; a second hwsg_bind.world while one is active -> FAIL_TECHNICAL/BINDING",
+  "audit": {
+   "module_dirs": [
+    "tools/k4b",
+    "tools/hwsb",
+    "tools/hws",
+    "tools/hwsc",
+    "tools/c1prime",
+    "tools/c1prime_registry"
+   ],
+   "w_star_forbidden": {
+    "floats": [
+     1.75,
+     0.2
+    ],
+    "fractions": [
+     "7/4"
+    ],
+    "strings": [
+     "W12-q1-s1.75-p0.2",
+     "hwsc-v1",
+     "hwsb-v1",
+     "k4b-sf-v1"
+    ],
+    "ints": [
+     620201,
+     620202,
+     620301,
+     620302,
+     620303,
+     620311,
+     620312,
+     620313,
+     620314,
+     620315,
+     610101,
+     610102,
+     610103,
+     610104,
+     610105,
+     1729,
+     2718,
+     3141
+    ],
+    "tuples": [
+     [
+      620301,
+      620302,
+      620303
+     ],
+     [
+      620201,
+      620202
+     ],
+     [
+      "cylinder",
+      "overlap",
+      "1.75"
+     ],
+     [
+      "cylinder",
+      "overlap",
+      "1.25"
+     ]
+    ],
+    "paths": [
+     "X:/Downloads/projects/topo-pilot/hwsc-store",
+     "X:/Downloads/projects/topo-pilot/hwsb-store",
+     "X:/Downloads/projects/topo-pilot/k4b-store",
+     "X:/Downloads/projects/topo-pilot/agent-handoff/HWSC_CPU_LEDGER.json"
+    ],
+    "dataclass_fields": "TransitionConfig(p_stay=0.2) and EmissionConfig(sigma=1.75) instances",
+    "mid_world_rule": "for world mid (p = 1/5) the float 0.2 and Fraction 1/5 are its own values and are not hits (OPEN-5)"
+   },
+   "left_unchanged": "TO_FREEZE: tools/hwsc/CONTRACT.json binding.left_unchanged plus every new hit of the implementation's static scan, each with a reason, reviewed as an erratum before the freeze",
+   "pass_rule": "as hwsc_bind.audit: PASS iff every hit's (module, top name) is in left_unchanged"
+  }
+ },
+ "tests": {
+  "author_a": "tests/hwsg/test_a_*.py + AUTHORSHIP_A.md",
+  "author_b": "tests/hwsg/test_b_*.py + AUTHORSHIP_B.md",
+  "basetemp": "X:/Downloads/topo-scratch/test_hwsg-<job>/pytest"
+ },
+ "modules": [
+  "hwsg_config",
+  "hwsg_bind",
+  "hwsg_handoff",
+  "hwsg_oracle",
+  "hwsg_train",
+  "hwsg_registry",
+  "hwsg_ratio",
+  "hwsg_cross",
+  "hwsg_known",
+  "hwsg_jobs",
+  "hwsg_records",
+  "hwsg_dry",
+  "hwsg_dry2"
+ ],
+ "reuse_sha256": {
+  "tools/hws/hws_driver.py": "03dcb81ec55c2f784436071c15328aab5a62df1ece344cecb805e6fbc35d21b1",
+  "tools/hws/hws_dry.py": "6b3eb8e6c56b3e0ca23c3349a51c3a33d495f454014e6ff4312ef2f62f0d3005",
+  "tools/hws/hws_exact.py": "098658012aaf3f63de11a8b55c6017e1e1732876ef3e6279363563433cd40b07",
+  "tools/hws/hws_known.py": "b93ee92c6acee92990129ed3e25f841141cdc8fd36b7dbeff4ab7e1d06dfff9d",
+  "tools/hws/hws_meter_bind.py": "fe7e5789e66f6caba2d05b09a2d67d90282e2651b66adf8779aafd078bea85ed",
+  "tools/hws/hws_oracle.py": "02d80e42ede5d23f51ddb6feaae8a5a3a8e3c0864e72a288c99a5073d80e051d",
+  "tools/hws/hws_records.py": "ae50fe2945e34f7c3ff9627fd404470bde3134105ab5d896442d4f790905405a",
+  "tools/hws/hws_select.py": "6614cf9520ec2a73dcc0e7fd239204c9fc28acbce46f6985ee1831af8519b71b",
+  "tools/hws/hws_stats.py": "51a4c19c9921ed5daaa5c76e1c6cda79de5c54b3b1b1dc21159c7f554340cd37",
+  "tools/hws/hws_worlds.py": "f2b98e40c0d07a64da4d7f96435124874650e2300945ea84a7da06ed7af66560",
+  "tools/hwsb/hwsb_config.py": "3102aeb62e77cc2fa5bc8318457bdd4e172a0b1c336385942d89f4423d4a574b",
+  "tools/hwsb/hwsb_data.py": "fec9fb2eafd41eed4a88dec013974c258b90a40cd370222b00891669be96f9c3",
+  "tools/hwsb/hwsb_driver.py": "5f1c270ea75c7d48bfd9c6862601991d0effe31a3d71947a606a0c50cb811458",
+  "tools/hwsb/hwsb_dry.py": "d97e7477a9811efa877d2171d4e3cf97fa87ded08eee82d16950224d1b0d0d2c",
+  "tools/hwsb/hwsb_dry2.py": "0ab39f0ad0424849e2263add2216887851f8272b3c3add90a5f9ac35d71944d7",
+  "tools/hwsb/hwsb_eval.py": "c3403826b7b5ee46ef0961a1630e5e91e60623316e14c752bff63a5d553b66b1",
+  "tools/hwsb/hwsb_gates.py": "ed5f542f13c1a41821412f1d771d7af8a06892710cabcf19e7cf4bd11e0d633c",
+  "tools/hwsb/hwsb_kb.py": "f88aeb43cdb51ae5b08f5e13e2e5f6554f70e35e7d0d91d3145f1f4f510d27c5",
+  "tools/hwsb/hwsb_known.py": "f24a1a3042b7e734ef3f05a910c932663aaf42759eda365ea25ee4cc2c20858f",
+  "tools/hwsb/hwsb_law.py": "be5e80d7135322f155ec48bf069cc4cd0f9e9a9e7315adac236b243d2b6fc685",
+  "tools/hwsb/hwsb_meter_bind.py": "7e32be1d1213fcdfec2ff04dab0efa91f5d1b52910daff9633c0caf1f6790110",
+  "tools/hwsb/hwsb_records.py": "2026a936516224b4f23ed7cc5ecbd9e363b55ea1251a4601f4d2c638a6a81ee3",
+  "tools/hwsb/hwsb_registry.py": "8d17c0082bba18679a56a044fc15c8a8c070eb6942ba38b3b8d6697bee3d3dba",
+  "tools/hwsb/hwsb_stages.py": "458a088d57af47586cd1cc70ef65934926f0c03f00e751fcab5cc0e49431e05d",
+  "tools/hwsb/hwsb_train.py": "cd2647f897607793f7dede0e590c88f6834bf8d1ec7483f6c401768f2008aff8",
+  "tools/hwsc/hwsc_bind.py": "f06cafba8eb860903502d6f805db333b37b4ce2a482c9424c8cdd462c1a5e71d",
+  "tools/hwsc/hwsc_config.py": "2785d8f84c0c47a25d0c73f0f4bb958e2fd35559cf75f550a0aaeadd7da882f3",
+  "tools/hwsc/hwsc_data.py": "39c27fb32b173e9bc5de7a5f1e14aa6b2ce177c47a72b57907ea9e8d7ea5ca4f",
+  "tools/hwsc/hwsc_driver.py": "1304804005d61c6288b266f73853938f303493b3252bedf735761358f1b8009c",
+  "tools/hwsc/hwsc_dry.py": "379818bb02c12a42328bfa885b802d8ea21186e2eb4501ecc7a5a1ee6a146574",
+  "tools/hwsc/hwsc_dry2.py": "47bbfe6f6e13c7370369bdabc9db8c532bb3373ed98a87c6cac8680ec37d3183",
+  "tools/hwsc/hwsc_dry3.py": "9747571146c035907643e657ca2ccc1d610f30c3c77ef4caedea544027f304fe",
+  "tools/hwsc/hwsc_drystore.py": "fba45b978c2281072d43c753c2307557e5e86fbc653e88b9bd65db2b0493d823",
+  "tools/hwsc/hwsc_gates.py": "89824392d5e7bf48cc0c89d78b5767668af08e19d6a5f35f83d227881599ec94",
+  "tools/hwsc/hwsc_jobs.py": "5e2522f8e61556e82ec79ac995fe056180be8ee937884b6aaed3dfe04b0f025c",
+  "tools/hwsc/hwsc_known.py": "eacebc57055576b25884f7d4ab15d9d6a12a9e6dae410633253b1119b6fa66e1",
+  "tools/hwsc/hwsc_meter_bind.py": "01a991d9ee91ba8de5caa13c895753a6938d08c74e4960d5111e42e50ce61c84",
+  "tools/hwsc/hwsc_outcome.py": "88b4e2e07a09624a1728378649a6aa4be55f8eb75c84c31d49fbec90796d1153",
+  "tools/hwsc/hwsc_records.py": "2f756348be7d61a9c9824d4d6da819d088b80e0870dce85592241a532a34616d",
+  "tools/hwsc/hwsc_registry.py": "e95882527a9af40fe4282b3f25fd9d11d0320a8b3ab07b117e7352cb12847192",
+  "tools/hwsc/hwsc_registry_build.py": "c9d8381d2fc92ecfcfbc6e8dd205c7ecc20f686edceb324682aeda798a30e883",
+  "tools/hwsc/hwsc_scratch.py": "f84d5798fc803615190f9c5a75807e98a17a4299d3f20cc8b88d7a856bf98699",
+  "tools/k4b/k4b_cert.py": "8ae47232ac6433e3838f2080851b789a0a988e43de987a6eb54ea2a79e5ffd07",
+  "tools/k4b/k4b_charts.py": "f43b79e06d6b70f3e446c3c60665095f57514f541a5c62d593580a88255fd9d8",
+  "tools/k4b/k4b_config.py": "cc8a391b3cde38c8bb6c804dd1b73fcfb1a4febe343095e0abd4a02085b6ba4a",
+  "tools/k4b/k4b_data.py": "f7ee8b6de1aa31ec592f5b769c8f65c8e463afea0e2782dd1d1f6f89a5d64066",
+  "tools/k4b/k4b_decoder.py": "0b7607a55b77aec753392c682874591d7443fa40106abf4669b76226cc81b59c",
+  "tools/k4b/k4b_driver.py": "250a095865ab418b1a3cfe47334d2835b82b9b7fc22086080f0c9440e3d7ef6c",
+  "tools/k4b/k4b_fresh.py": "055ac35e74c2986d86efffb3d62e8c2fca978f985766b89eb7df31b155733f7e",
+  "tools/k4b/k4b_meter_bind.py": "34efd87454988e0394a9761d8aff68bb8199ec3786f8d38ad2ed8330744ccedb",
+  "tools/k4b/k4b_registry.py": "14c0f5ef7bf0386b3ae55ab80d730585c46842a21b67a8aa77b0b749b9f03b75",
+  "tools/k4b/k4b_registry_k.py": "cdeba06d3730237783919bb264160b540a8a7fcf0f3c9ff1197dda359f1a0042",
+  "tools/k4b/k4b_release.py": "d9f8ec66b2ecee3058425bf8c91eba0850e77113294176686a8a6e1b27fe1613",
+  "tools/k4b/k4b_scores.py": "a0127cf9fc101eeadc693bb338e784225be2f4b7ee1ab2fa3174888921a82577",
+  "tools/k4b/k4b_stats.py": "2dc3d1fbdbe500befd0c2c3a49506faeb35e62fb367ed0c831fd89c23e764359",
+  "tools/c1prime/c1_bounds.py": "e6a2c1fc9594aa37664a8e50effc34bb1563bdde742edf0ff56395197da73435",
+  "tools/c1prime/c1_cert.py": "b0cb037a52071e80a80e246d538185e2dfc44c45456b15f543b8c2d274c560d8",
+  "tools/c1prime/c1_chart.py": "45b6aa0d8c8db28ce291eca320b1f322baddc9c70cee6588843f10935f4418df",
+  "tools/c1prime/c1_config.py": "8e170b5144b732527d41aeeb2ab71e41da2bfcd5b33b2d580527711b3ea6e207",
+  "tools/c1prime/c1_data.py": "262418b2f0272e8425a038c53bb120c8f40402a4100b8a71e257f71b560106e9",
+  "tools/c1prime/c1_driver.py": "796c1bedd6a68d73c3453e3e8bb3436d3f4ab4af273a237053ddff7f0ab73328",
+  "tools/c1prime/c1_driver_cal.py": "c1c0c2217295182ef14a6c426cff8317a914cbf21924b59c8d1311132c6a2d0d",
+  "tools/c1prime/c1_driver_fresh.py": "408f64575897ae6bd521fb5bc6e27c25dc88dcd7da534589d7eb557ec186ef94",
+  "tools/c1prime/c1_driver_late.py": "2dc1360463f9dbee2b17ff7e0b91679901d51b8bde9ff0dcb3b47a977dfefeca",
+  "tools/c1prime/c1_endpoint.py": "bdb283efbed04119cf23a5875835d08e1c21b4935d5f9cff334e3e88525d6e46",
+  "tools/c1prime/c1_env.py": "2b71dec2c6aed24a808c8dd69d4229e7045c6e0dc937c196f0336c562de6b7ea",
+  "tools/c1prime/c1_fit.py": "13962c7a46541b9abbd53b2e9e69d6ce7c2f58de042499ba6f48c062228edf61",
+  "tools/c1prime/c1_freeze.py": "928910c248de0d9490bd1a0f91300e091ff85068e83dac8b65da9feb0bb1d80c",
+  "tools/c1prime/c1_gates.py": "017499e0c434321ceae95c78ad584c15e93e82efd0ce768137f452d5668db485",
+  "tools/c1prime/c1_means.py": "e0630816942224933d3380897eb90b374522ca0ac4c4c8f3f6b62edcead2d00c",
+  "tools/c1prime/c1_meter_bind.py": "3c1439fc5e053091c683c863ad7b5f0b3fe56253eb2394c57e62fdb0c4b1458d",
+  "tools/c1prime/c1_model.py": "37665037dd4d6b29a45b5981016c3a965d98f9ee47d474e21c74c616f2324d0a",
+  "tools/c1prime/c1_oracle.py": "077ea1489262d15075624fd6116900c74a6e5b0eb2fe02e5d4f6127cbc0323b3",
+  "tools/c1prime/c1_records.py": "d0299ff4621c699a9439184b72e125a2dea34f304e50772c0c190fb9f628fdb5",
+  "tools/c1prime/c1_release.py": "2e3568374dc38e908822718449b896eead2bc23e447e23590cfb47c4f8ffbf38",
+  "tools/c1prime/materialise_protocol.py": "35fb0acfb9bb90aa091ceb46e6748160f8edc1a1e0bab0b6cfb793eca102a922",
+  "tools/c1prime_registry/c1_registry_sources.py": "4f40840d8eb88d515556aeb7058640761d4b44a7a6ee8045fb3bce9987a5a253",
+  "tools/c2_nd/nd_attrib.py": "a9542b4e39bbddc0ed521186ed2f0e11f4438957852e538885dee91ff1fb031d",
+  "tools/c2_nd/nd_config.py": "d83489ce8d4dfb4f48af3c0ceb33ace5283c13876819d6a7dd93873f1b3d593a",
+  "tools/c2_nd/nd_data.py": "95cc1ec8e789030b07bf3d107ecfefd7e6393a215930da5cf6469546a7b84eae",
+  "tools/c2_nd/nd_decide.py": "6690a20a740317614e6e8146426c260b98de451fe8d56461e3eaa2cc5adf7362",
+  "tools/c2_nd/nd_decoy.py": "bc6b6a7114d4e83551bb9d334ed312b408afc4260567f5d915670be1c145da31",
+  "tools/c2_nd/nd_driver.py": "a49adbea9f682c6fd135c6477cf59306e387e89dc5b5f215e1548a47d473aed4",
+  "tools/c2_nd/nd_dry.py": "87a652352b688ecc4c401d6bf80443cbd98818787f4793a2f83c03699e084c92",
+  "tools/c2_nd/nd_registry.py": "19401c2e0aafc9ef82a032b490a8ba4bd9ec0a786d0dd2868a8d81c4d84653da",
+  "tools/c2_nd/nd_split.py": "e6c874c289c5978ecdb465c21d851605a74b71d063d67754a3966d2d16f485d8",
+  "tools/c2_nd/nd_stage_base.py": "cbb13d1d81e9e316daa8decfddb26ee2c43f4711926fe3257f348846c4552923",
+  "tools/c2_nd/nd_stage_post.py": "9a3c02b73ad8f6f464fc40f8be5b43622497344646cb1f2eef4d66b531d9b9b1",
+  "tools/c2_nd/nd_stage_pre.py": "fd979fbc12e5a2049b853e0fd146033eea2286adcc5fc9bf571b233b7929c6c7",
+  "tools/c2_nd/nd_stage_val.py": "217d0d2e219186db78c226ace179d38dc3aba4b6bd1a374c5eb8c45924753fa2",
+  "tools/c2_readout/c2_attrib.py": "882bf534c4898f16e595552edb7cde6db4a9f7682bed537917df206b64861ca8",
+  "tools/c2_readout/c2_code.py": "fa5b42a4e0187bc24990a368319fa22cde9a777339a75dcaa5aef34022ff5f0a",
+  "tools/c2_readout/c2_config.py": "d721d0f36d6bd46cdbf337fbf26f60aab11b4c11524d9e2d3e2b83ff7731a2b4",
+  "tools/c2_readout/c2_data.py": "5b97f8b8112cf7587c0be12eecacf259730c9c904f53f810ad111a5c4612c2a0",
+  "tools/c2_readout/c2_decide.py": "bb1b3652015d77c553afedafd984dfd00c97da37832a2efe5e659271521d9906",
+  "tools/c2_readout/c2_driver.py": "1a092c67181b388e173b2ff8e499cbe3fe2d9415c64bca15119b192c56bb8908",
+  "tools/c2_readout/c2_model.py": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
+  "tools/c2_readout/c2_oracle.py": "b22496b4bbbcf5595eebce95604f63532d991556717e13e2a2875a2f8fa631f7",
+  "tools/c2_readout/c2_registry.py": "14f221d0484b61c0ebc76d910ade5c6e377cc864ccf3ab1973fbc450e1bafd56",
+  "tools/c2_readout/c2_stage_base.py": "0dee985930dc08faf55d4b3842b7e1ac0db49e808e2251742c62dcc8e47f951b",
+  "tools/c2_readout/c2_stage_post.py": "a7f267b0868e32c23334f86565b587ef9774abf23a9ded98b6473cbdb1d4fd9e",
+  "tools/c2_readout/c2_stage_pre.py": "e89e210d6165f0ca3f8f522c808b338562084e72d90749522a8f2909772893ae",
+  "tools/c2_readout/c2_stage_val.py": "a5a73dae7998367ae74adf60210e2ceb5ef138a3b0e70a34212a57ac98ecae69",
+  "tools/c2_readout/c2_stats.py": "1090bf1899f34fd2a04c0f6d0c33e92ee20ac49024899a2cf1cde38fc8c1fcf7",
+  "tools/x4_circle_history/adapter.py": "b54a62b9e240cda3466a45d3a04545ec1d97c96d131c56739cc5cc46089212bd",
+  "tools/x4_circle_history/chart.py": "938821a0fd6651ce9b3fae9ccb6d40dfe1577ff861b76e4e5ebd136cda399ccb",
+  "tools/x4_circle_history/cochain.py": "e53f6725d6596000770bc8242c33916f5402a10398ee5b43f960bd6438f93075",
+  "tools/x4_circle_history/cost_probe.py": "bc7c286fc441ee32786d24e8230d7d12b15b473586210ba1dd7134bdcc283798",
+  "tools/x4_circle_history/env_identity.py": "2922f2c885058e32cf862aad2d7e644867dc1a220f8861cd4a534ce0b88583d8",
+  "tools/x4_circle_history/error_bound.py": "b44fcda14ba11271d7b11f11e2b7641ec3418afeb0a936fff5cac73e0b56bc60",
+  "tools/x4_circle_history/errors.py": "8aa309c42350cad93f24ad73baf09a70e10c1d552a0b5d70514eeb541c7eb99f",
+  "tools/x4_circle_history/freeze_bind.py": "6fa90e81589442e7777a69e96c94139f86edb3a29c9b9c43ba63ae81c27003bd",
+  "tools/x4_circle_history/live_context.py": "17dddd34a3523e62fa25d0f0ac03d569bae2d0194d81a14b0ded95fc7c4ed786",
+  "tools/x4_circle_history/meter_bind.py": "8f8a4323443e6ffe676ca1bcf12260433f2a12d429db2aefc009b8995e675f3c",
+  "tools/x4_circle_history/op_guard.py": "90fb20e3686c19b28c561259634ef97b6516037a9165a8eba9d81640a0c590a1",
+  "tools/x4_circle_history/precision.py": "5ae1e632eee0ac5767a9b536c6f7aebbc2d7328a9a664db828f37afc643329c8",
+  "tools/x4_circle_history/precision_stage.py": "3fb09bfb995e977f04a97ffe8e5c0f212650928d7be67a0d17596105a8cbba3e",
+  "tools/x4_circle_history/process_law.py": "a0ae95894147bd76c141f0955360770a98ec25212c3bf22bc24793aa4371a5ee",
+  "tools/x4_circle_history/reference_cache.py": "c622ad9006848b68d8ee380144a42703ac1571780450d0936e5a7984b164339e",
+  "tools/x4_circle_history/release.py": "1c90ddb10fe41f640640206d6daf3c6b2023e4f6709213188c22cf74127b6246",
+  "tools/x4_circle_history/run_tests_bind.py": "66156109b4ff4ef96b18dc810f342f016079f3b6aefcad1a93611dcfa7790dbe",
+  "tools/x4_circle_history/runner.py": "6d2445c220c18f1471b7a8f4d22ce94cdcc3b7b6aa320d57fcfe40a7501f3ef1",
+  "tools/x4_circle_history/scores.py": "8cf9a5f810ad41a412379bfe2786e9ce7fafe4efbd31122ea66a7d7c70f989a6",
+  "tools/x4_circle_history/stage_records.py": "997a425dd16f72565414412001abcc5e657d545cf1da2aaf4b227a50f243cd10",
+  "tools/x4_oracle_profile/audit.py": "48876b8a5b89164be4108129060f5c6319737fe944b15a75a6f246977237fd1f",
+  "tools/x4_oracle_profile/controls.py": "c4fac9946c0fed21d6ac9eee913bad15e49cdc4595843e2737e7d8f4817f23eb",
+  "tools/x4_oracle_profile/freeze.py": "e89f0cd2622751804318199d7a83eba07de3f76158f5fa5fb97141ad54357c07",
+  "tools/x4_oracle_profile/inputs.py": "2ce1492e4388499e90b197784fc6b0bc84181d76831ef0980c6a1ee50bb81df0",
+  "tools/x4_oracle_profile/meter.py": "738ea68accc7a02c0e5645fca75d1b0919cac66b9bdbe357d910f515d7de4903",
+  "tools/x4_oracle_profile/oracle_profile.py": "fbda1c0382cb59859b8a8f128e4941232507c5d5e7e2f304c01d567d265190d1",
+  "tools/x4_oracle_profile/plot_profile.py": "5a12916abd810e8b8c41252690c373ae84ceca834001c43325e19ee4a365ce7e",
+  "tools/x4_oracle_profile/run_profile.py": "8c6d37d1a14dce7ee958f74ba5122f0f4ca0b6cc5ba1321cc824dff657271f1d",
+  "tools/x4_oracle_profile/run_tests.py": "f8ecf65df125a0932255442f95e6062bc39bc60ff77c58ba69aff813396d56b7",
+  "tools/x4_oracle_profile/runtime.py": "6e9f91574df12a9d7a192c047d3b75b95085fa2e6ce3fdc112feb973230a80c2",
+  "tools/x4_oracle_profile/synthetic_child.py": "626f0b82a497419e2c4eff54b31e68b77bf7ac74ba068ef7c224e4cf6d7f5b12",
+  "tools/x4_oracle_profile/validation.py": "b37f20e9992ddcc9bf3486c45757b6c4ff006fa50d911d7c359fb059732d5ed0",
+  "tools/x4_oracle_profile/winjob.py": "3b29e863ab6ae97c16540c0d56dbf678d18b88922e54fbc731f5cc0ec5405785",
+  "tools/x6_stage1/x6s1_cloud.py": "8660dbfd948fb024a92aa9ed2f2d1a048de48bf82fc3c19eb39c6d2ee76bea35",
+  "tools/x6_stage1/x6s1_data.py": "16c1e91e218e7ce56df264ab1844762f189e18677ab2d767aafeb2db169684ab",
+  "tools/x6_stage1/x6s1_decide.py": "3d6c586838e21b06348ef62b851a89bbc1daf45547c85b5560a87543738f8c04",
+  "tools/x6_stage1/x6s1_eval.py": "ac55fa3b3c44b3994be6867bb8e966f63bbdc25fe72624f6e22eaeb452e34f4b",
+  "tools/x6_stage1/x6s1_ingest.py": "1dacc6ceb26c02fb402bbef8cd92f3f12082fa8919c31cc7f690ca2dcc108aac",
+  "tools/x6_stage1/x6s1_pairs.py": "a96b40fadd30926ab356e9828e43ac36e3b35967d0ef388ea8bc7457c0606844",
+  "tools/x6_stage1/x6s1_registry.py": "17db30b087ea32141a126f0cce962d2c92f0a6f8cf92d9e7aee9b329cdf8e29f",
+  "tools/x6_stage1/x6s1_run.py": "145f41b831bb9aeaa36a7194acbe7a7846a54097ea040cf2f099c347be8c4e9e",
+  "tools/x6_stage1/x6s1_stage_post.py": "b84fd53245eb21ab51f964289b5203ceab44659ca4a2b4ca8404807a2343b9c7",
+  "tools/x6_stage1/x6s1_stage_pre.py": "3cbba2591ce7d27c70e908ad8820aa499a88ba6157f752d4cbae7c9b6b5640cc",
+  "tools/x6_stage1/x6s1_stats.py": "7299625b7ed08d07c22506a46bf1fe79aa244bb1e5225206f1105522f805704e",
+  "tools/hwsb/CONTRACT.json": "67d60fae3141865c08306aa46601ed0e6985b3c60a06b5a95caeda227b4897ba",
+  "tools/hwsc/CONTRACT.json": "af669ac235845b09448c1823ec71dd72d825f9144eb2226077b6f72ce525af88",
+  "tools/k4b/CONTRACT.json": "998f98e7d7c3f7db6066403c09979f9b589ae272cd20631ccea3ce683ed20cfb",
+  "tools/c1prime/CONTRACT.json": "f8df2e43bc24a3e992ce4323a8577ec4a7e2657a4e00bdf3ff0323b909a7a379",
+  "tools/hws/CONTRACT.json": "15e2ea5e243c1f48110391910f6545e0ed6f96d714f0cd0d7bf9fdcc42d655dd",
+  "tools/hwsb/ENCLOSURE_PROOF.md": "a52a52c669216080fbc3f2139dbd52c1e0b1a9cedbbc54331146ebde77ee889e"
+ },
+ "reuse_sha256_note": "sha256 of the file bytes at 764b5af (git show); S0 and FREEZE recheck them at h_exec",
+ "to_freeze": [
+  "authority.addenda_25_26_37",
+  "authority.h_exec",
+  "law.w0.Z_bound_ref",
+  "registry.obligation_stores.*.obligation",
+  "registry.scratch_dirs_at_0224 rows and frozen_files",
+  "registry.scratch_prefix_rules TO_FREEZE decisions",
+  "registry.root_inventory worktree rows",
+  "binding.audit.left_unchanged",
+  "cpu.central_wall_s",
+  "FREEZE.json, DRY_REPORT sha256, PF record sha256"
+ ]
+}

@@ -124,3 +124,19 @@ def test_s0_allowlist_admits_the_implementer_phase2_tests():
     assert not known._allowed_s0("M", "tests/hwsu/test_impl_u2_review.py")
     allow = mod("hwsu_config").CONTRACT["s0_u2"]["allow"]["A"]
     assert "tests/hwsu/test_impl_u2_*.py" in allow
+
+
+# ----------------------------------------------------------------------------- R-0229-1
+def test_g0u_treats_hwsg_locations_as_declarations():
+    seed, c = mod("hwsu_seed"), mod("hwsu_config").CONTRACT["g0"]
+    frags = c["declaration_fragments"] + c["declaration_fragments_u2"]
+    hits = [{"path": "X:/Downloads/projects/topo-pilot/topo-pilot-hwsg/tools/hwsg/API.md",
+             "needle": "hwsu-store", "line": 1},
+            {"path": "X:/Downloads/projects/topo-pilot/topo-pilot-hwsg/tests/hwsg/test_b_guard.py",
+             "needle": "hwsu-store", "line": 2}]
+    assert seed.classify_hits_u(hits, frags, c["job_scratch"])["status"] == "PASS"
+    stray = [{"path": "X:/Downloads/projects/topo-pilot/topo-pilot-x6/tools/x.py", "needle": "640101",
+              "line": 3}]
+    assert seed.classify_hits_u(stray, frags, c["job_scratch"])["status"] != "PASS"
+    src = (TOOLS / "u2" / "hwsu_known.py").read_text(encoding="utf-8")
+    assert 'C["g0"].get("declaration_fragments_u2", [])' in src

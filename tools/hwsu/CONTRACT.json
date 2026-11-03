@@ -1321,6 +1321,14 @@
   "formatter": "never run over tests/",
   "phase1_tests": "tests/hwsu/test_*_of_*.py are never edited"
  },
+ "g0": {
+  "declaration_fragments_u2": [
+   "/tools/hwsg/",
+   "/tests/hwsg/",
+   "/hwsg-store/"
+  ],
+  "declaration_fragments_u2_note": "R-0229-1 (coordinator a0f20235, 2026-11-03): KC attempt 1 (job 0229) stopped at KC0 FAIL_TECHNICAL/SEED_SCOPE on 40 hits, all in the HWSG worktree (its design, contract, code and tests name hwsu-store, hwsd-store, hwsd-dry, test_hwsd- and the colliding seeds 629961/629989 it avoids). HWSG is a declared sibling study (owner addenda 43, 45); its tools/tests/store are declaration locations like tools/hwsd. g0_u classifies with declaration_fragments (phase 1) + declaration_fragments_u2"
+ },
  "s0_u2": {
   "r_ref": "49ac9c96420dd5a91ffbc1496ab1d00f584dd13e",
   "allow": {

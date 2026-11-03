@@ -283,8 +283,8 @@ def g0_u(out, ctx, stage) -> dict:
     checks["attestation"] = w2["status"] == "PASS"
     if not checks["attestation"]:
         raise C1GateFailure(AUTH, f"live reservations: {w2['live']}")
-    c = us.classify_hits_u(us.seed_search_u(root, us.needles(C)), C["g0"]["declaration_fragments"],
-                           C["g0"]["job_scratch"])
+    c = us.classify_hits_u(us.seed_search_u(root, us.needles(C)), C["g0"]["declaration_fragments"]
+                           + C["g0"].get("declaration_fragments_u2", []), C["g0"]["job_scratch"])
     f = Path(out) / "stages" / stage / "G0U.json"
     f.parent.mkdir(parents=True, exist_ok=True)
     stage_records.write_new(f, {"hits": c["hits"], "status": c["status"], "checks": checks})

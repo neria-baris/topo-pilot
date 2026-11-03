@@ -25,7 +25,7 @@
    "R-0223-5": "hwsc_registry_build.build audited by path (AST); no package installed"
   },
   "status": "spec (job 0223 phase 1); OPEN points in API_U2.md section 14; TO_FREEZE items in API_U2.md section 13 and key to_freeze_u2",
-  "errata": "E1 (R-0223-3..5)"
+  "errata": "E1 (R-0223-3..5); E2 (R-0223-6)"
  },
  "authority_u2": {
   "paths_relative_to": "the mailbox X:/Downloads/projects/topo-pilot/agent-handoff",
@@ -1091,6 +1091,24 @@
   "allowlist_conditional_note": "phase-2 entries whose call-time reads include a forbidden name sanctioned by the protocol (conditional_reads_u2), and hwsc_registry_build.build (audited by path, R-0223-5). They are outside binding.allowlist because the phase-1 audit (hwsu_bind.audit_reads, merged CONTRACT) would report them; u2/hwsu_bind_u2.audit_u2 admits them (R-0223-3). Call-time reads re-derived from source at erratum E1.",
   "conditional_reads_u2": [
    {
+    "function": "hwsc_registry_build.build",
+    "read": "hwsc_config.PROTOCOL_SHA256",
+    "why": "R-0223-6: hwsc_registry_build.build reads ROOT and SCRATCH (the same project root and scratch roots U scans) and PROTOCOL_SHA256 (only stamps the reused builder's own protocol into its record; U's record binds U's protocol separately); called only by hwsu_dry2.dru_reg",
+    "only_in": "u2/hwsu_dry2.py (DRU-REG)"
+   },
+   {
+    "function": "hwsc_registry_build.build",
+    "read": "hwsc_config.ROOT",
+    "why": "R-0223-6: hwsc_registry_build.build reads ROOT and SCRATCH (the same project root and scratch roots U scans) and PROTOCOL_SHA256 (only stamps the reused builder's own protocol into its record; U's record binds U's protocol separately); called only by hwsu_dry2.dru_reg",
+    "only_in": "u2/hwsu_dry2.py (DRU-REG)"
+   },
+   {
+    "function": "hwsc_registry_build.build",
+    "read": "hwsc_config.SCRATCH",
+    "why": "R-0223-6: hwsc_registry_build.build reads ROOT and SCRATCH (the same project root and scratch roots U scans) and PROTOCOL_SHA256 (only stamps the reused builder's own protocol into its record; U's record binds U's protocol separately); called only by hwsu_dry2.dru_reg",
+    "only_in": "u2/hwsu_dry2.py (DRU-REG)"
+   },
+   {
     "function": "hwsc_gates.expected_meta_c",
     "read": "hwsc_config.SCOPE",
     "why": "protocol 11.2: called unchanged; its hwsc constants (SCOPE hwsc-v1, KEY) are the correct identities of the stage-C checkpoints"
@@ -1161,6 +1179,7 @@
   "conditional_functions_u2": [
    "hwsc_gates.expected_meta_c",
    "hwsc_registry_build._default_sources",
+   "hwsc_registry_build.build",
    "hwsb_train.train",
    "hwsc_data.make_train_dev_c"
   ],

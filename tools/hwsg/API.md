@@ -330,3 +330,16 @@ Each adapter that mirrors existing code says why direct reuse is unsafe and has 
 ## 18. Erratum E1 (R-0224-1, R-0224-2)
 
 process_code takes (family, mode, sigma, replicate). For six fields (family, mode, sigma_str, p_str, KEY_w, rep) hwsg_bind.process_code_g returns process_code(family, mode, f'{sigma_str}|{p_str}|{KEY_w}', rep); four fields pass through unchanged. Rebound inside world() in hwsb_data, hwsc_data and k4b_data (not CONTRACT rows; restored in finally). Sequence ids = make_sequence_ids(code, split, n) with split 'test' for blocks. Worked examples, rep = 'hwsg-v1/<KEY_w>/cal/b0': lo sigma field '1.25|0.8333333333333334|W12-q1-s1.25-p0.8333333333333334' code 896598705; mid '2.0|0.2|W12-q1-s2.0-p0.2' code 729926672; hi '2.5|0.5|W12-q1-s2.5-p0.5' code 761818423. Train/dev: rep 'hwsg-v1/<role>/<master>'. ACCEPT_TERMINAL.json binds the TERMINAL RESULT sha256 in field terminal_result_sha256 (also accepted: result_sha256, sha256); ACCEPT_VALIDATION.json binds VALIDATION_REPORT.json in validation_report_sha256 (also sha256); an optional verdict 'REJECT' refuses. release_barrier also returns release_b_missing (E1-accepted worlds without RELEASE_B.json).
+
+## 19. Erratum E2 (TO_FREEZE fill; ruling R-0238-1, coordinator be2e199d, 2026-11-04)
+
+CONTRACT `errata.E2` lists the filled rows (evidence: `coord-scratch/be2e199d/hwsg_tofreeze/`, job 0238). Rulings:
+- **R1 (w0 reference):** as in CONTRACT `errata.E2`: `hwsb_known.w0_process` with definition-time defaults is the intended w0 reference for KG3/KG5 (payload checksums equal stage-B KB1/KB2); never used for lo, mid or hi.
+- **A:** `hwsc-dry-*` scratch folders are EXCLUSION in `source_scratch_g`; their histories enter K-REG through the `dry` source (`hwsc_registry.source_dry`), which `hwsg_registry.build` already uses.
+- **B:** `tests/hwsg/test_b_registry.py::test_scratch_to_freeze_row_is_incomplete` now uses a name with no row or rule (`hwsc-job-*` is frozen as EXCLUSION); the fail-closed property tested is unchanged.
+- **C:** `registry.obligation_stores.*.obligation` records path and sha256; the run-time reader keeps the "greatest written_utc" rule (OPEN-3), which selects the same files while no hwsu/hwsd job runs. The coordinator checks both sha256 before REG1 and REG2. The hwsu row's `contract` field names the phase-1 contract, whose obligation format phase 2 reuses (API_U2 §5.3).
+- **D:** `source_scratch_g` matches rows by name and decision only (as track U phase 2).
+- **E:** the `test_hwsc-*` / `test_hwsg-*` reason texts are corrected; the decision (EXCLUSION) is unchanged.
+- **F:** `binding.audit.left_unchanged` lists only names hit by the HWSG scan (48 rows); stage-C rows without a hit are not copied, so a new hit fails closed.
+- **G:** KG3 runs `kb2_kb3` twice; cost only, no change.
+- **Deferred:** `authority.h_exec`, FREEZE, DRY report and PF record sha256 are fixed by `freeze_g` after the PF + DRY rerun.

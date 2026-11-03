@@ -19,16 +19,35 @@
    45
   ],
   "addendum_files": {
+   "25": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-25.md",
+   "26": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-26.md",
+   "37": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-37.md",
    "43": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-43.md",
    "44": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-44.md",
    "45": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-45.md"
   },
   "addendum_sha256": {
+   "25": "22f130227deb091e36696a880cac6789d8b4040d2ba7aac07a7e829700cf37f4",
+   "26": "23ab23f951bb4bf728c8087d1fa1340f8fe34dcc73d6b501eeb97db892edf602",
+   "37": "475f05403ecc454e62d94952250383116601f62acdccdaa6f4d21b301f561a2a",
    "43": "983b1c441bed8e1c370b1565d0c1b845425f3c8febcb1c5425bb90d867e0eaa1",
    "44": "1fd2ba7b028ff9671baeeb44f16e25eb8ec313a43f002dff2069ad70244aee12",
    "45": "1df6da618735cc093ddf64670cb1d8d31a91dbc92c230371c4bf17a6835d6e82"
   },
-  "addenda_25_26_37": "TO_FREEZE: paths and sha256 (the HWSC CONTRACT authority rows are the model)",
+  "addenda_25_26_37": {
+   "25": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-25.md",
+    "sha256": "22f130227deb091e36696a880cac6789d8b4040d2ba7aac07a7e829700cf37f4"
+   },
+   "26": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-26.md",
+    "sha256": "23ab23f951bb4bf728c8087d1fa1340f8fe34dcc73d6b501eeb97db892edf602"
+   },
+   "37": {
+    "path": "agent-handoff/archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-37.md",
+    "sha256": "475f05403ecc454e62d94952250383116601f62acdccdaa6f4d21b301f561a2a"
+   }
+  },
   "h_exec": "TO_FREEZE",
   "run_approval": "addendum 43 item 2: real stages after the execution freeze without a further owner question"
  },
@@ -636,7 +655,7 @@
    "key": "W12-q1-s1.25-p0.2",
    "sigma": "5/4",
    "neighbour": "1/5",
-   "Z_bound_ref": "TO_FREEZE: the K4b recorded Z_bound (HWSB KB4 reference)"
+   "Z_bound_ref": "2116763197780003590583470649/1000000000000000000000000000000000000000"
   },
   "w_star": {
    "Z_bound_ref": "HANDOFF Z_bound",
@@ -937,12 +956,26 @@
   "class_to_reader_basis": "every hwsu-store and hwsd-store REGISTRY_OBLIGATION*.json read at job 0224 holds only the pairs ('K4b history table', 'k4b_history_table') and ('NON_HISTORY', null)",
   "obligation_stores": {
    "hwsu-store": {
-    "obligation": "TO_FREEZE: the final track-U phase-2 obligation (at 0224: REGISTRY_OBLIGATION_OF.json sha256 5f79b6d9bcd3ea5ca8815c29fa0bf61425be4bd2404989164b8ba3f5d702bd29, 13 entries)",
+    "obligation": {
+     "path": "REGISTRY_OBLIGATION.json",
+     "sha256": "460356121645cdb8ccf13f00627b3a17a3f92b420595e0e60d53b0b2562ac986",
+     "entries": 63,
+     "written_utc": "2026-11-03T22:56:08Z",
+     "bytes": 16485,
+     "rule": "path relative to the store; hwsg_registry._load_obligation(bound) reads exactly this file and requires this sha256"
+    },
     "contract": "tools/hwsu/CONTRACT_OF.json",
     "schema": "hws-registry-obligation-v1"
    },
    "hwsd-store": {
-    "obligation": "TO_FREEZE: the obligation with the latest written_utc (at 0224 the candidates are REGISTRY_OBLIGATION.json a148a244cbfa9703446f6f943dfe020e632570f493239b8ae75ec9c42fc868e5, 18 entries, and REGISTRY_OBLIGATION_0222-a1.json cee05f1c18c3ee3d7201b92e72dc3029cc70450f891557b1ad77c1de0f23e801, 162 entries) (OPEN-3)",
+    "obligation": {
+     "path": "REGISTRY_OBLIGATION_0222-a1.json",
+     "sha256": "cee05f1c18c3ee3d7201b92e72dc3029cc70450f891557b1ad77c1de0f23e801",
+     "entries": 162,
+     "written_utc": "2026-11-02T18:13:12Z",
+     "bytes": 40645,
+     "rule": "path relative to the store; hwsg_registry._load_obligation(bound) reads exactly this file and requires this sha256"
+    },
     "contract": "tools/hwsd/CONTRACT.json",
     "schema": "hws-registry-obligation-v1"
    }
@@ -980,7 +1013,7 @@
    {
     "glob": "test_hwsc-*",
     "decision": "EXCLUSION",
-    "reason": "pytest fixtures (HWSC R6 rule, fixture_max_rows 1024)"
+    "reason": "pytest fixtures and basetemps (HWSC R6 rule: test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader); header scan 2026-11-04 found synthetic histories of up to 4,096 rows and scale/rehearsal fixtures of up to 4,194,304 rows (test_hwsc-0176) and 7,932,274 digests (test_hwsc-0185); listed, not read"
    },
    {
     "glob": "test_hwsd-*",
@@ -995,17 +1028,17 @@
    {
     "glob": "test_hwsg-*",
     "decision": "EXCLUSION",
-    "reason": "pytest fixtures of this study (fixture_max_rows 1024)"
+    "reason": "pytest fixtures and basetemps of this study (test_hwsg-0224: histories up to 16 rows; test_hwsg-0226 holds a copy of the stage-C pytest basetemp, histories up to 4,096 rows); not descended, listed, not read"
    },
    {
     "glob": "hwsc-dry-*",
-    "decision": "READER",
-    "reader": "hwsc_registry.source_dry (stage-C rule)"
+    "decision": "EXCLUSION",
+    "reason": "stage-C dry stores, read by the dry source (hwsc_registry.source_dry over _dry_paths(), D-0178-1 type rule), not by source_scratch_g: its generic token reader would open the state.pt checkpoints and fail on the planted unreadable fixtures; the 9 existing folders are rows of scratch_dirs_at_0224"
    },
    {
     "glob": "hwsc-job-*",
-    "decision": "TO_FREEZE",
-    "reason": "metered-job temp roots; header scan decides"
+    "decision": "EXCLUSION",
+    "reason": "metered-job temp roots of the stage-C jobs; the 10 existing folders hold one .log each (0 array files, header and name scan 2026-11-04)"
    },
    {
     "glob": "hwsu-dry-*",
@@ -1014,7 +1047,8 @@
    },
    {
     "glob": "hwsu-run-*",
-    "decision": "TO_FREEZE"
+    "decision": "EXCLUSION",
+    "reason": "metered run roots of track U (logs, .out, one .json); 0 array files in all 14 existing folders (header and name scan 2026-11-04)"
    },
    {
     "glob": "hwsd-dry*",
@@ -1023,7 +1057,8 @@
    },
    {
     "glob": "hwsd-run-*",
-    "decision": "TO_FREEZE"
+    "decision": "EXCLUSION",
+    "reason": "metered run roots of track D (logs and one json); 0 array files in all 9 existing folders (header and name scan 2026-11-04)"
    },
    {
     "glob": "hwsg-dry*",
@@ -1031,14 +1066,1383 @@
     "reader": "token reader (DRYHIST_*.npz)"
    },
    {
+    "glob": "hwsg-run-*",
+    "decision": "EXCLUSION",
+    "reason": "metered run roots of this study (run.log, json); no array file expected; hwsg-run-0226 holds one .log"
+   },
+   {
     "glob": "paper*",
-    "decision": "TO_FREEZE",
-    "reason": "expected without array files"
+    "decision": "EXCLUSION",
+    "reason": "paper build folders (tex, pdf, png, aux); 0 array files in paper and paper-edit (header and name scan 2026-11-04)"
    }
   ],
-  "scratch_dirs_at_0224": "TO_FREEZE: one row per top-level scratch directory modified since 2026-10-29 (80 at job 0224; API.md §16) with decision, reason and frozen_files from a read-only header scan",
+  "scratch_dirs_at_0224": [
+   {
+    "name": "hwsc-dry-0177",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "28f01dadfe73d3ce5cd65d651740aefb0e892e6dcbdebaf4089d385ced70635a",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0178",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "6b4dd3eff00feea65399d1c6383ded5ecbe9b7c47ee31bf85772ebd508bff54e",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0179",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "32c250713de97d8262a74b77e8628124bb2579681e62ad7207d0892cc7513a91",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0180",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "fc4bc4313b7521cd5bac2aaba32e9cf5de2167f86c5a8d7fc0f41d8b78886434",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0183",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "681aed08bed7afe0399ce310bbf4d39c80b1b5cdb37a63fc26326b0be738a2f6",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0185",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "ac2dcd20e2e90a570b46b38d14e1296b35063f54da4d3a2c47c1858a68b0ad0e",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0190",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "6a52b6eb2856fa2ee55106f45e981b8d3c7229b558acd0d4f5d226d6a12b59b2",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0193",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "b9772799ad628d8672aba31604594609a055656e6579490b68184dadd416cfbb",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-dry-0194",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "reason": "stage-C dry store (D-0178-1 type rule hwsc_drystore.dry_class). Its histories enter this registry through the 'dry' source (hwsg_registry.build -> hwsc_registry.source_dry over _dry_paths(), which globs hwsc-dry*); source_scratch_g lists it and does not read it, because its generic token reader would open the 9 state.pt checkpoints and trip over the 4 planted unreadable fixtures (DRC9/DRC11) that only hwsc_drystore classifies (header scan 2026-11-04: every other file has a dry_class)",
+    "frozen_files": {},
+    "listing_sha256": "3019f51bd01c2583d9a014f7a3c81d96c73b9e8a5047140ad3a4edc2fbea0b3d",
+    "counts_2026_11_04": {
+     "array_files": 50,
+     "class_counts": {
+      "pt": 9,
+      "history": 21,
+      "unreadable": 4
+     },
+     "dry_class": {
+      "CHECKPOINT": 9,
+      "R5": 12,
+      "REGISTRY_FIXTURE": 8,
+      "c2scratch": 1,
+      "planted_unreadable_fixtures": 4
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0181",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0184",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0186",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0187",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0188",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0189",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0191",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0192",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0195",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsc-job-0196",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered-job temp root of the stage-C jobs (one log file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261101T202006Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261101T202006Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261101T202006Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261101T202006Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0203",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261101T205825Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261101T205825Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261101T205825Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261101T205825Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0207",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261102T064741Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261102T064741Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261102T064741Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261102T064741Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0208",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261102T093250Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261102T093250Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261102T093250Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261102T093250Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0211",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261102T110623Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261102T110623Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261102T110623Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261102T110623Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0214",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261102T155207Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261102T155207Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261102T155207Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261102T155207Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-dry-0218",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-D dry store: DRYHIST_*.npz token tables (stages/S3) read by the token reader",
+    "frozen_files": {
+     "DRD1/20261102T172257Z/stages/S3/DRYHIST_cal_b0.npz": "history",
+     "DRD1/20261102T172257Z/stages/S3/DRYHIST_lgate_b0.npz": "history",
+     "DRD1/20261102T172257Z/stages/S3/DRYHIST_test_b0.npz": "history",
+     "DRD1/20261102T172257Z/stages/S3/DRYHIST_val_b0.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 4,
+     "class_counts": {
+      "history": 4
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0209",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0212",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0213",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0215",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0216",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0219",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0220",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0221",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsd-run-0222",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsg-dry-0226",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "this study's dry store: no array file at 2026-11-04 (the shakedown wrote json, lock, txt only); DRYHIST_*.npz of later dry runs are read by the token reader",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsg-run-0226",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-of-0198",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-1 dry store: DRYHIST_OF_*.npz token tables read by the token reader; BOOT_OF.npz and ORACLE_OF_*.npz carry no history key (non-history by header)",
+    "frozen_files": {
+     "stages/OF/DRYHIST_OF_eval_a1_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a1_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b1.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 9,
+     "class_counts": {
+      "history": 6
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-of-0198b",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-1 dry store: DRYHIST_OF_*.npz token tables read by the token reader; BOOT_OF.npz and ORACLE_OF_*.npz carry no history key (non-history by header)",
+    "frozen_files": {
+     "stages/OF/DRYHIST_OF_eval_a1_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a1_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b1.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 9,
+     "class_counts": {
+      "history": 6
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-of-0199",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-1 dry store: DRYHIST_OF_*.npz token tables read by the token reader; BOOT_OF.npz and ORACLE_OF_*.npz carry no history key (non-history by header)",
+    "frozen_files": {
+     "stages/OF/DRYHIST_OF_eval_a1_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a1_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b1.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 9,
+     "class_counts": {
+      "history": 6
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-of-0204",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-1 dry store: DRYHIST_OF_*.npz token tables read by the token reader; BOOT_OF.npz and ORACLE_OF_*.npz carry no history key (non-history by header)",
+    "frozen_files": {
+     "stages/OF/DRYHIST_OF_eval_a1_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a1_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b1.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 9,
+     "class_counts": {
+      "history": 6
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-of-0205",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-1 dry store: DRYHIST_OF_*.npz token tables read by the token reader; BOOT_OF.npz and ORACLE_OF_*.npz carry no history key (non-history by header)",
+    "frozen_files": {
+     "stages/OF/DRYHIST_OF_eval_a1_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a1_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_eval_a2_b1.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b0.npz": "history",
+     "stages/OF/DRYHIST_OF_fit_b1.npz": "history"
+    },
+    "counts_2026_11_04": {
+     "array_files": 9,
+     "class_counts": {
+      "history": 6
+     }
+    }
+   },
+   {
+    "name": "hwsu-dry-u2-0225",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-2 dry folder: no array file at 2026-11-04 (json, lock, txt only); an array file added later is read by the token reader (prefix rule hwsu-dry-*)",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsu-dry-u2-0227",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-2 dry folder: no array file at 2026-11-04 (json, lock, txt only); an array file added later is read by the token reader (prefix rule hwsu-dry-*)",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsu-dry-u2-0228",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-2 dry folder: no array file at 2026-11-04 (json, lock, txt only); an array file added later is read by the token reader (prefix rule hwsu-dry-*)",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsu-dry-u2-0230",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-2 dry folder: no array file at 2026-11-04 (json, lock, txt only); an array file added later is read by the token reader (prefix rule hwsu-dry-*)",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsu-dry-u2-0232",
+    "decision": "READER",
+    "readers": [
+     "token reader (hwsc_registry._token_file)"
+    ],
+    "to_freeze": false,
+    "reason": "track-U phase-2 dry folder: no array file at 2026-11-04 (json, lock, txt only); an array file added later is read by the token reader (prefix rule hwsu-dry-*)",
+    "frozen_files": {},
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "class_counts": {}
+    }
+   },
+   {
+    "name": "hwsu-run-0200",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0206",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0225",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0227",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0228",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1,
+      ".out": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0229",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0230",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1,
+      ".out": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0231",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0232",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 1,
+      ".out": 1
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0233",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0234",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0235",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0236",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "hwsu-run-0237",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "metered run root (logs/json only); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".log": 2
+     }
+    }
+   },
+   {
+    "name": "paper",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "paper build folder (tex, pdf, png, aux; no array file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".aux": 3,
+      ".bbl": 1,
+      ".blg": 1,
+      ".log": 3,
+      ".out": 3,
+      ".pdf": 3,
+      ".png": 50,
+      ".py": 7,
+      ".tex": 1,
+      ".toc": 2,
+      ".txt": 2
+     }
+    }
+   },
+   {
+    "name": "paper-edit",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "paper build folder (tex, pdf, png, aux; no array file); header and name scan 2026-11-04: 0 .npz/.npy/.pt files",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "files_by_extension": {
+      ".json": 1,
+      ".py": 7,
+      ".tex": 1
+     }
+    }
+   },
+   {
+    "name": "test_hwsc-0176",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 2391,
+     "history_headers": 826,
+     "history_gt_1024_rows": 146,
+     "max_history_rows": 4194304,
+     "pt": 127,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0177",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 3665,
+     "history_headers": 2212,
+     "history_gt_1024_rows": 110,
+     "max_history_rows": 4096,
+     "pt": 116,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0177r",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "history_headers": 0,
+     "history_gt_1024_rows": 0,
+     "max_history_rows": 0,
+     "pt": 0,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0178",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1857,
+     "history_headers": 1159,
+     "history_gt_1024_rows": 45,
+     "max_history_rows": 4096,
+     "pt": 60,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0179",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1476,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0180",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1476,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0182",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1261,
+     "history_headers": 905,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 35,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0183",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1478,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0185",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1487,
+     "history_headers": 1024,
+     "history_gt_1024_rows": 34,
+     "max_history_rows": 7932274,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0185k",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "history_headers": 0,
+     "history_gt_1024_rows": 0,
+     "max_history_rows": 0,
+     "pt": 0,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0186",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 0,
+     "history_headers": 0,
+     "history_gt_1024_rows": 0,
+     "max_history_rows": 0,
+     "pt": 0,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0190",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1478,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0193",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1478,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-0194",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1478,
+     "history_headers": 1015,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsc-coord",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 2298,
+     "history_headers": 864,
+     "history_gt_1024_rows": 120,
+     "max_history_rows": 4096,
+     "pt": 138,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsg-0224",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 269,
+     "history_headers": 98,
+     "history_gt_1024_rows": 0,
+     "max_history_rows": 16,
+     "pt": 0,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsg-0226",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "pytest fixtures and basetemps; test_* top-level folders are not descended by hwsc_scratch.scratch_scan or the C2ND scratch reader (scratch_exclude_prefix test_) (HWSC R6 rule); listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 1507,
+     "history_headers": 1026,
+     "history_gt_1024_rows": 25,
+     "max_history_rows": 4096,
+     "pt": 37,
+     "note": "header scan (names, shapes) only; synthetic test data"
+    }
+   },
+   {
+    "name": "test_hwsu-0233",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "empty after the R-0231-1 fixture archive (X:/Downloads/topo-fixture-archive/20261103T161816Z-job0233); test_hwsu pytest basetemp; listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 0
+    }
+   },
+   {
+    "name": "test_hwsu-0234",
+    "decision": "EXCLUSION",
+    "to_freeze": false,
+    "frozen_files": {},
+    "reason": "empty after the R-0231-1 fixture archive (X:/Downloads/topo-fixture-archive/20261103T161816Z-job0233); test_hwsu pytest basetemp; listed, not read",
+    "counts_2026_11_04": {
+     "array_files": 0
+    }
+   }
+  ],
   "unmatched_scratch_dir": "INCOMPLETE (fail closed)",
-  "root_inventory": "tools/hwsc/CONTRACT.json registry.inventory plus rows: hwsc-store READER (b), hwsu-store OBLIGATION (c), hwsd-store OBLIGATION (c), hwsg-store OWN, topo-pilot-hwsu / topo-pilot-hwsd / topo-pilot-hwsg worktrees (TO_FREEZE rows by header scan)",
+  "root_inventory": {
+   "base": "tools/hwsc/CONTRACT.json registry.inventory (rows unchanged; hwsc-store is dropped from the run-time inventory by hwsc_registry.inventory_c)",
+   "added_rows": {
+    "hwsc-store": {
+     "decision": "READER",
+     "readers": [
+      "b"
+     ],
+     "reason": "stage-C store: ObservationSets via hwsb_registry.registry_digests(OBS_INVENTORY) and HIST_*.npz token reader (registry.hwsc_store)"
+    },
+    "hwsu-store": {
+     "decision": "OBLIGATION",
+     "readers": [
+      "c"
+     ],
+     "reason": "final phase-2 obligation (registry.obligation_stores.hwsu-store); blinded directory stages/ listed by name only, never opened (OPEN-9)"
+    },
+    "hwsd-store": {
+     "decision": "OBLIGATION",
+     "readers": [
+      "c"
+     ],
+     "reason": "latest obligation by written_utc (registry.obligation_stores.hwsd-store); blinded directory stages/ listed by name only, never opened (OPEN-9)"
+    },
+    "hwsg-store": {
+     "decision": "OWN",
+     "reason": "this study's store (absent at 2026-11-04); its 18 ObservationSets are read as own lineage (registry.own_lineage); removed from the run-time inventory"
+    },
+    "topo-pilot-hwsu": {
+     "decision": "EXCLUSION",
+     "reason": "git worktree (track-U implementation worktree); header listing 2026-11-04: the only array file is docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz, 1,817,510 bytes, 29 members, no history key (non-history), headers equal to the copy in topo-pilot-x6, which the stage-C row already excludes; a history file or identity reference appearing there is REGISTRY_INCOMPLETE"
+    },
+    "topo-pilot-hwsd": {
+     "decision": "EXCLUSION",
+     "reason": "git worktree (track-D implementation worktree); header listing 2026-11-04: the only array file is docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz, 1,817,510 bytes, 29 members, no history key (non-history), headers equal to the copy in topo-pilot-x6, which the stage-C row already excludes; a history file or identity reference appearing there is REGISTRY_INCOMPLETE"
+    },
+    "topo-pilot-hwsg": {
+     "decision": "EXCLUSION",
+     "reason": "git worktree (this study's implementation worktree, branch hwsg-impl); header listing 2026-11-04: the only array file is docs/proposals/X5_G1_VERIFICATION_OUTPUTS/verification_arrays.npz, 1,817,510 bytes, 29 members, no history key (non-history), headers equal to the copy in topo-pilot-x6, which the stage-C row already excludes; a history file or identity reference appearing there is REGISTRY_INCOMPLETE"
+    }
+   },
+   "top_level_directories_2026_11_04": "73 = the 68 of stage C + hwsd-store, hwsu-store, topo-pilot-hwsd, topo-pilot-hwsu, topo-pilot-hwsg (hwsg-store not yet created); compared by name with tools/hwsc/CONTRACT.json registry.inventory (rootcmp.py)"
+  },
   "own_lineage": "18 train/dev ObservationSets under hwsg-store/worlds/<key>/artifacts (superseded and interrupted attempts included), read by hwsb_registry.registry_digests per world with that world's OBS_INVENTORY",
   "requirements": {
    "collision": "FAIL_TECHNICAL/LINEAGE",
@@ -1100,7 +2504,20 @@
    "E2": "900*k + 100",
    "CROSS": 30
   },
-  "central_wall_s": "TO_FREEZE: per stage, from the HWSC ledger wall times",
+  "central_wall_s": {
+   "J-G1": 570,
+   "DRY": 280,
+   "KC": 1426,
+   "SEARCH": 1602,
+   "O": 900,
+   "TRAIN": 5573,
+   "TRAIN_child": 1858,
+   "REG1": 831,
+   "E1": 1413,
+   "REG2": 624,
+   "E2": 3538,
+   "CROSS": 30
+  },
   "max_cpu_multiplier": 5,
   "max_wall_multiplier": 4,
   "train_child_max_cpu_s": 6006.6282,
@@ -1415,7 +2832,248 @@
     "dataclass_fields": "TransitionConfig(p_stay=0.2) and EmissionConfig(sigma=1.75) instances",
     "mid_world_rule": "for world mid (p = 1/5) the float 0.2 and Fraction 1/5 are its own values and are not hits (OPEN-5)"
    },
-   "left_unchanged": "TO_FREEZE: tools/hwsc/CONTRACT.json binding.left_unchanged plus every new hit of the implementation's static scan, each with a reason, reviewed as an erratum before the freeze",
+   "left_unchanged": [
+    {
+     "module": "c1_config",
+     "name": "CONTRACT",
+     "reason": "C1' contract record (artifact_root); read by stage C only through c1_config.chart_cfg/check_chart_equality (chart section)"
+    },
+    {
+     "module": "c1_config",
+     "name": "MODELS",
+     "reason": "C1' constant; no stage-C call path reads it"
+    },
+    {
+     "module": "c1_data",
+     "name": "PROCESS",
+     "reason": "C1' constant used only by c1_data history generators, never called under stage C (k4b_data and hwsc_data sample)"
+    },
+    {
+     "module": "c1_driver",
+     "name": "MODELS",
+     "reason": "[stage-C row, reason kept] C1' driver; never called under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_driver_cal",
+     "name": "CFG",
+     "reason": "C1' driver chart config (support_min_resultant 0.2 is a chart constant, not the world p); never called under HWSG. Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_driver_cal",
+     "name": "MODELS",
+     "reason": "[stage-C row, reason kept] C1' driver; never called under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_driver_fresh",
+     "name": "MODELS",
+     "reason": "[stage-C row, reason kept] C1' driver; never called under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_driver_late",
+     "name": "CFG",
+     "reason": "C1' driver chart config (support_min_resultant 0.2 is a chart constant, not the world p); never called under HWSG. Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_driver_late",
+     "name": "MODELS",
+     "reason": "[stage-C row, reason kept] C1' driver; never called under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_endpoint",
+     "name": "ladder.__defaults__",
+     "reason": "[stage-C row, reason kept] C1' ladder; never called under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_freeze",
+     "name": "CONTRACT",
+     "reason": "[stage-C row, reason kept] C1' contract record; never read under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "c1_meter_bind",
+     "name": "CONTRACT",
+     "reason": "[stage-C row, reason kept] C1' contract record; never read under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "hws_driver",
+     "name": "C",
+     "reason": "[stage-C row, reason kept] HWS contract record (KC1 artifact_root); read under stage C only by seed_search's module (no artifact access)"
+    },
+    {
+     "module": "hws_driver",
+     "name": "S0C",
+     "reason": "[stage-C row, reason kept] HWS contract record; never read under stage C"
+    },
+    {
+     "module": "hws_exact",
+     "name": "kc1_identity.__defaults__",
+     "reason": "HWS S0 known case; never called"
+    },
+    {
+     "module": "hws_known",
+     "name": "S0C",
+     "reason": "[stage-C row, reason kept] HWS contract record; never read under HWSG Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "hws_worlds",
+     "name": "CONTRACT",
+     "reason": "HWS contract record; never read for artifact_root under stage C"
+    },
+    {
+     "module": "hws_worlds",
+     "name": "S2_SIGMA_MID",
+     "reason": "HWS level grid (all sigma edges, 7/4 is one grid point); a lookup table keyed by the world's own sigma, not a stale w* value; build_process(World(...)) does not read it"
+    },
+    {
+     "module": "hws_worlds",
+     "name": "SIGMA_INDEX",
+     "reason": "HWS level index over every sigma level; read by hws_worlds world-index helpers keyed by the explicit World passed by hwsg_oracle.stage_a_process, so the 7/4 key never stands in for w"
+    },
+    {
+     "module": "hwsb_config",
+     "name": "CONTRACT",
+     "reason": "stage-B contract record; read under stage C only for its world, recipe, known_cases KB0-KB6, law and dry_run sections by the reused KB functions"
+    },
+    {
+     "module": "hwsb_config",
+     "name": "NEEDLES",
+     "reason": "stage-B G0 needles; hwsb_known.g0 is never called (G0c has its own)"
+    },
+    {
+     "module": "hwsb_config",
+     "name": "Plan.__init__.__defaults__",
+     "reason": "key/process defaults overridden at every HWSG construction: hwsg_config.plan passes all 10 fields positionally (d.key, d.process); hwsg_config.dry_plan uses dataclasses.replace(key=, process=); module-level REAL_PLAN/HWSC_PLAN built at import are not used (HWSC_PLAN rebound row)"
+    },
+    {
+     "module": "hwsb_data",
+     "name": "build_process.__defaults__",
+     "reason": "HWSG's world builds call hwsb_data.build_process only through hwsg_oracle.build_process_g (and hwsc_data.build_process_c, rebound to it), which pass masters, emission_cfg, world_cfg and transition_cfg explicitly and run check_explicit. ONE reviewed use of the definition-time defaults remains: hwsb_known.w0_process (called by hwsg_known.run_kc for KG3/KG5) passes only masters=(1729,) and emission_cfg=W0_EMIS_CFG; its world_cfg (cylinder 12x12 flat) and transition_cfg (p_stay 0.2) defaults are exactly the w0 reference world (W12-q1-s1.25-p0.2 differs from w* only in sigma); verified by payload checksums against stage-B KB1/KB2 (R1 ruling)."
+    },
+    {
+     "module": "hwsb_driver",
+     "name": "C",
+     "reason": "[stage-C row, reason kept] copy of the stage-B contract; hwsb_driver functions read under stage C: status_of, running_cpu (ledger only); pause_check is never called"
+    },
+    {
+     "module": "hwsb_gates",
+     "name": "ladder_pilot.__defaults__",
+     "reason": "always called with models and seeds explicit: hwsc_gates.p1c_ladder passes models=cc.MASTERS and seeds=cc.P1C_SEEDS (rebound rows); hwsg_bind.check_explicit requires models, seeds and ladder; the hwsb_stages/hwsb_dry2 callers are never called."
+    },
+    {
+     "module": "hwsb_kb",
+     "name": "E4",
+     "reason": "stage-B E4 master 1729, the KB reference master; read by hwsb_kb KB5/KB6 formulas reused unchanged by the HWSG known cases (E4 recipe, KG3/KG5 w0 reference); a reference constant, never a world value of lo/mid/hi."
+    },
+    {
+     "module": "hwsb_kb",
+     "name": "KC",
+     "reason": "[stage-C row, reason kept] stage-B known-case references (KB5, KB6), reused unchanged by KC5-KC6"
+    },
+    {
+     "module": "hwsb_known",
+     "name": "E4",
+     "reason": "stage-B E4 master 1729: w0_process builds the w0 reference process with masters=(E4,) and kb2_kb3 regenerates the E4 data; this is the stage-B reference that KG3/KG5 reproduce by design (see the R1 ruling); not a world value of lo/mid/hi."
+    },
+    {
+     "module": "hwsb_known",
+     "name": "KC",
+     "reason": "stage-B known-case references (KB0-KB6), reused unchanged: kb2_kb3 (KG3) and the KB4 w0 Z_bound (read by hwsg_known.kg5 as a fallback of law.w0.Z_bound_ref)."
+    },
+    {
+     "module": "hwsb_law",
+     "name": "law_bound.__defaults__",
+     "reason": "sigma/neighbour explicit at every HWSG call: hwsg_oracle.law (l.149-151), hwsg_known._law (l.193-195), both check_explicit; hwsc_gates.py:68 passes cc.SIGMA/cc.NEIGHBOUR (rebound rows)"
+    },
+    {
+     "module": "hwsb_records",
+     "name": "C",
+     "reason": "[stage-C row, reason kept] copy of the stage-B contract; read by hwsb_records.freeze/verify_freeze, never called under stage C"
+    },
+    {
+     "module": "hwsb_registry",
+     "name": "hws_store_digests.__defaults__",
+     "reason": "default store key 'W12-q1-s1.75-p0.2' of hws_store_digests; its only caller is hwsb_driver.py:232 (stage-B driver, never called under HWSG); hwsg_registry reads the registry through registry_digests/_token_file and the frozen obligations."
+    },
+    {
+     "module": "hwsb_stages",
+     "name": "train_core.__defaults__",
+     "reason": "never called (callers are hwsb_driver and hwsb_dry only; HWSG trains through hwsg_train -> hwsb_train.train)."
+    },
+    {
+     "module": "hwsb_train",
+     "name": "train.__defaults__",
+     "reason": "always called with plan explicit (hwsg_train.py:93 passes plan=gc.plan(tag)); train_known (KG4) takes explicit model_cfg and train_cfg."
+    },
+    {
+     "module": "hwsc_bind",
+     "name": "_STACK",
+     "reason": "stage-C binding stack holding pre-entry/old stage-C values by design (bind table); values only restored on exit, never read as inputs"
+    },
+    {
+     "module": "hwsc_config",
+     "name": "CONTRACT",
+     "reason": "stage-C contract record (binding table 92, streams, seeds, masters, world, recipe, resources, k4b_contract_view). Readers on HWSG paths: hwsc_data.process_identity (rebound to hwsg_oracle checker), hwsg_known.kg1 (deliberate w* reference comparison), hwsg_config.k4b_view (k4b chart view, 0.2 is support_min_resultant). hwsc_driver/hwsc_known.seed paths never called; derived constants are rebound rows"
+    },
+    {
+     "module": "hwsc_config",
+     "name": "HWSB_STORE",
+     "reason": "stage-B store path, one fixed store shared by stage C and HWSG (gc.HWSB_STORE same path); not a world value"
+    },
+    {
+     "module": "hwsc_config",
+     "name": "NEEDLES",
+     "reason": "stage-C G0 needles; used only by hwsc_known G0 / hwsc_dry3, never called by HWSG"
+    },
+    {
+     "module": "hwsc_config",
+     "name": "_W",
+     "reason": "private import-time alias of CONTRACT['world'] used only to derive KEY/PROCESS/SIGMA/NEIGHBOUR, all rebound rows"
+    },
+    {
+     "module": "hwsc_data",
+     "name": "make_train_dev_c.__defaults__",
+     "reason": "scope='hwsc-v1' default overridden: hwsg_train.py:89 passes scope=gc.SCOPE; hwsc_driver caller never called"
+    },
+    {
+     "module": "hwsc_data",
+     "name": "sequence_ids_c.__defaults__",
+     "reason": "only caller on HWSG path is make_train_dev_c (hwsc_data.py:78), which passes scope explicitly"
+    },
+    {
+     "module": "hwsc_known",
+     "name": "kc1.__defaults__",
+     "reason": "default masters (620301, 620302, 620303) of hwsc_known.kc1; kc1 is called only by hwsc_known.py:261 (stage-C KC driver), never by HWSG (KG1 builds its own w* definition in hwsg_known.kg1)."
+    },
+    {
+     "module": "hwsc_records",
+     "name": "C",
+     "reason": "the stage-C contract (hwsc_config.CONTRACT) held by hwsc_records; its 'world' section (key W12-q1-s1.75-p0.2) is not read by any function HWSG reuses from hwsc_records (environment, record_gate_files, run_gates_c, status_of, superseded_ok, utc); grep for the 'world' key in hwsc_records.py finds none."
+    },
+    {
+     "module": "k4b_config",
+     "name": "CONTRACT",
+     "reason": "hit is chart.support_min_resultant=0.2, a K4b chart constant equal to w* p only by coincidence; read by check_chart_equality (hwsg_jobs, hwsg_records) by design. Absent in mid because 0.2 is mid's own p (OPEN-5)"
+    },
+    {
+     "module": "k4b_meter_bind",
+     "name": "TEMP_ROOT",
+     "reason": "[stage-C row, reason kept] meter-parent setting; set by hwsc_meter_bind.bind in the meter process (DRC13 checks the effective value); not read inside a stage process Not imported by any tools/hwsg module (absent from the hwsg import closure of the static scan); listed so the audit does not depend on import order."
+    },
+    {
+     "module": "k4b_stats",
+     "name": "SEEDS",
+     "reason": "copied K4b seeds; read only as the definition-time defaults of k4b_stats.sd_upper/centered and by k4b_stats.ladder, none of which is called under stage C (P1 is hwsc_gates.p1c)"
+    },
+    {
+     "module": "k4b_stats",
+     "name": "centered.__defaults__",
+     "reason": "left unchanged: never called under stage C"
+    },
+    {
+     "module": "k4b_stats",
+     "name": "sd_upper.__defaults__",
+     "reason": "left unchanged: never called under stage C"
+    }
+   ],
    "pass_rule": "as hwsc_bind.audit: PASS iff every hit's (module, top name) is in left_unchanged"
   }
  },
@@ -1607,5 +3265,5 @@
   "binding.audit.left_unchanged",
   "cpu.central_wall_s",
   "FREEZE.json, DRY_REPORT sha256, PF record sha256"
- ],"errata": {"E1": "process_code takes (family, mode, sigma, replicate). For six fields (family, mode, sigma_str, p_str, KEY_w, rep) hwsg_bind.process_code_g returns process_code(family, mode, f'{sigma_str}|{p_str}|{KEY_w}', rep); four fields pass through unchanged. Rebound inside world() in hwsb_data, hwsc_data and k4b_data (not CONTRACT rows; restored in finally). Sequence ids = make_sequence_ids(code, split, n) with split 'test' for blocks. Worked examples, rep = 'hwsg-v1/<KEY_w>/cal/b0': lo sigma field '1.25|0.8333333333333334|W12-q1-s1.25-p0.8333333333333334' code 896598705; mid '2.0|0.2|W12-q1-s2.0-p0.2' code 729926672; hi '2.5|0.5|W12-q1-s2.5-p0.5' code 761818423. Train/dev: rep 'hwsg-v1/<role>/<master>'. ACCEPT_TERMINAL.json binds the TERMINAL RESULT sha256 in field terminal_result_sha256 (also accepted: result_sha256, sha256); ACCEPT_VALIDATION.json binds VALIDATION_REPORT.json in validation_report_sha256 (also sha256); an optional verdict 'REJECT' refuses. release_barrier also returns release_b_missing (E1-accepted worlds without RELEASE_B.json)."}
+ ],"errata": {"E1": "process_code takes (family, mode, sigma, replicate). For six fields (family, mode, sigma_str, p_str, KEY_w, rep) hwsg_bind.process_code_g returns process_code(family, mode, f'{sigma_str}|{p_str}|{KEY_w}', rep); four fields pass through unchanged. Rebound inside world() in hwsb_data, hwsc_data and k4b_data (not CONTRACT rows; restored in finally). Sequence ids = make_sequence_ids(code, split, n) with split 'test' for blocks. Worked examples, rep = 'hwsg-v1/<KEY_w>/cal/b0': lo sigma field '1.25|0.8333333333333334|W12-q1-s1.25-p0.8333333333333334' code 896598705; mid '2.0|0.2|W12-q1-s2.0-p0.2' code 729926672; hi '2.5|0.5|W12-q1-s2.5-p0.5' code 761818423. Train/dev: rep 'hwsg-v1/<role>/<master>'. ACCEPT_TERMINAL.json binds the TERMINAL RESULT sha256 in field terminal_result_sha256 (also accepted: result_sha256, sha256); ACCEPT_VALIDATION.json binds VALIDATION_REPORT.json in validation_report_sha256 (also sha256); an optional verdict 'REJECT' refuses. release_barrier also returns release_b_missing (E1-accepted worlds without RELEASE_B.json).", "E2": "Erratum E2 (TO_FREEZE fill, 2026-11-04): authority.addenda_25_26_37, law.w0.Z_bound_ref, registry.obligation_stores.*.obligation (hwsu REGISTRY_OBLIGATION.json 46035612..., 63 entries; hwsd REGISTRY_OBLIGATION_0222-a1.json cee05f1c..., 162 entries), registry.scratch_dirs_at_0224 (82 rows), the scratch_prefix_rules decisions, registry.root_inventory, cpu.central_wall_s and binding.audit.left_unchanged are frozen with their evidence in the job record. Ruling R-0238-1 (R1): hwsb_known.w0_process builds the KG3/KG5 w0 reference process with hwsb_data.build_process(store, masters=(1729,), emission_cfg=W0_EMIS_CFG) and the definition-time defaults world_cfg=WorldConfig('cylinder',(12,12),'flat') and transition_cfg=TransitionConfig(p_stay=0.2). These defaults are exactly the w0 reference world W12-q1-s1.25-p0.2: w0 differs from stage-B w* only in sigma (5/4 versus 7/4), which W0_EMIS_CFG carries; its WorldSpec and TransitionSpec payload sha256 equal stage-B KB1, its EmissionSpec[1729] equals KB2, and KB2 regenerates the E4 ObservationSets and compares their checksums with the stage-B record (HwsbStop on any difference), so a wrong default cannot pass silently. The use is intended: it runs outside hwsg_bind.world (so no rebinding reaches it), bypasses hwsg_bind.check_explicit by design, and is recorded in the reason of the left_unchanged row hwsb_data.build_process.__defaults__. It must not be extended to lo, mid or hi, which are built only by hwsg_oracle.build_process_g with explicit configs."}
 }

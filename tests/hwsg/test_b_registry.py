@@ -220,10 +220,10 @@ def test_scratch_unmatched_top_level_dir_is_incomplete(tmp_path):
 def test_scratch_to_freeze_row_is_incomplete(tmp_path):
     gr = mod("gr")
     scratch = tmp_path / "scratch"
-    (scratch / "hwsc-job-0999").mkdir(parents=True)
+    (scratch / "zz-unlisted-0999").mkdir(parents=True)
     now = time.time()
-    os.utime(scratch / "hwsc-job-0999", (now, now))
-    # CONTRACT scratch_prefix_rules: hwsc-job-* is TO_FREEZE
+    os.utime(scratch / "zz-unlisted-0999", (now, now))
+    # no CONTRACT row or prefix rule matches this name (R-0238-1 item B: hwsc-job-* is frozen as EXCLUSION)
     assert is_incomplete(gr.source_scratch_g(scratch))
 
 

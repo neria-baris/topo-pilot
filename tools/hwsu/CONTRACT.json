@@ -1,0 +1,1358 @@
+{
+ "contract_of_sha256": "c60b5839b76b3df049ae9beebfe9d78bdd5c0acfa2b8e96c530d919da1b360db",
+ "contract_phase2": {
+  "file": "tools/hwsu/CONTRACT.json",
+  "job": "0223 phase 1 (spec writer)",
+  "phase": 2,
+  "protocol_sha256": "9efbabdfae58b2ac893bbfbc66aa0cb25e419e10aff9fbf34f45123314af88eb",
+  "documents": {
+   "api": "tools/hwsu/API_U2.md",
+   "test_plan": "tools/hwsu/TEST_PLAN_U2.md",
+   "contract": "tools/hwsu/CONTRACT.json"
+  },
+  "naming": "coordinator ruling R-0223-2 (procedural, F-2): protocol 11.1 names the phase-2 documents API.md / TEST_PLAN.md and the phase-1 ones API_OF.md / TEST_PLAN_OF.md; phase 1 committed its documents as API.md / TEST_PLAN.md, so phase 2 writes API_U2.md and TEST_PLAN_U2.md as new files; no phase-1 file is modified or renamed",
+  "scope": "coordinator ruling R-0223-1 (procedural, S3): response family only; the share family was dropped at OF (OF_PASS_RESPONSE_ONLY); every omitted design item is listed in API_U2.md section 12",
+  "precedence": "PROTOCOL_HWSU_v1.md > CONTRACT_OF.json > CONTRACT.json > API_U2.md > TEST_PLAN_U2.md; phase-1 API.md / TEST_PLAN.md keep their precedence for the phase-1 modules",
+  "loader_rule": "hwsu_config.load_contract: union with CONTRACT_OF.json; every key here is new or a new key inside a phase-1 dict; no phase-1 key is overridden; lists are leaves, so phase-1 lists are never extended (phase-2 lists live under *_u2 keys)",
+  "rulings": {
+   "R-0223-1": "response family only (S3)",
+   "R-0223-2": "new files API_U2.md, CONTRACT.json, TEST_PLAN_U2.md",
+   "R-0213-1": "a track-D END record's obligation_file is store-relative: resolve the first existing of <store>/<rel> and <root>/<rel>, bounded to that store",
+   "R-0213-2": "the DRU dry run writes every helper folder under X:/Downloads/topo-scratch/test_hwsu-<job>/",
+   "R-0206-1": "OF_REPORT.json freeze_of_sha256 is null; phase 2 binds the FREEZE_OF sha256 from OF_ACCEPT.json and checks it"
+  },
+  "status": "spec (job 0223 phase 1); OPEN points in API_U2.md section 14; TO_FREEZE items in API_U2.md section 13 and key to_freeze_u2"
+ },
+ "authority_u2": {
+  "paths_relative_to": "the mailbox X:/Downloads/projects/topo-pilot/agent-handoff",
+  "addenda": {
+   "41": {
+    "addendum": 41,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-41.md",
+    "sha256": "6cc5458722eeec8dffca6fe04c9856edc13fc4bc931ffa9e1ce3d794d7b6ee55"
+   },
+   "42": {
+    "addendum": 42,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-42.md",
+    "sha256": "33868b1278a561ac54859d42592d772642828c677339ab6f4e8d425fa03702bd"
+   },
+   "43": {
+    "addendum": 43,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-43.md",
+    "sha256": "983b1c441bed8e1c370b1565d0c1b845425f3c8febcb1c5425bb90d867e0eaa1"
+   },
+   "44": {
+    "addendum": 44,
+    "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-44.md",
+    "sha256": "1fd2ba7b028ff9671baeeb44f16e25eb8ec313a43f002dff2069ad70244aee12"
+   }
+  },
+  "run_approval": {
+   "addendum": 43,
+   "path": "archive/owner-decisions-20261015/OWNER_DECISIONS.addendum-43.md",
+   "sha256": "983b1c441bed8e1c370b1565d0c1b845425f3c8febcb1c5425bb90d867e0eaa1",
+   "reading": "track U phase 2 (response family only) authorised through implementation, tests, dry run, execution freeze and its real stages, each accepted before the next; no runtime approvals"
+  },
+  "cpu_lines": "addenda 41-43: CPU pause lines released; measure-only; runaway safeguards only (resources.runaway_u2)",
+  "of_accept": {
+   "path": "X:/Downloads/projects/topo-pilot/hwsu-store/OF_ACCEPT.json",
+   "sha256": "7052bc5dbf855b14630af7eac71cba2fb9fa8c0732564b90dccb4733d9ed4751",
+   "outcome": "OF_PASS_RESPONSE_ONLY",
+   "N_resp": 4096,
+   "freeze_of_sha256": "294f2ac2c1647051925538613574062112609e17b4f945c2948cd1e3fa1c8766",
+   "of_report_sha256": "81292ccdd21505838f131ff5f0117ac4c8b2e00dfcfd6fab15ccf92736cadf15",
+   "h_exec": "49ac9c96420dd5a91ffbc1496ab1d00f584dd13e",
+   "keys_read": [
+    "schema",
+    "verdict",
+    "outcome",
+    "N_resp",
+    "freeze_of_sha256",
+    "of_report_sha256",
+    "h_exec"
+   ],
+   "rule": "R-0206-1: OF_ACCEPT freeze_of_sha256 == sha256(hwsu-store/FREEZE_OF.json) == this value; verdict ACCEPT; outcome OF_PASS_RESPONSE_ONLY (anything else -> INCONCLUSIVE/AUTHORITY: phase 2 is built for the response family only)"
+  },
+  "freeze_of": {
+   "path": "X:/Downloads/projects/topo-pilot/hwsu-store/FREEZE_OF.json",
+   "sha256": "294f2ac2c1647051925538613574062112609e17b4f945c2948cd1e3fa1c8766"
+  },
+  "base_commit": "49ac9c96420dd5a91ffbc1496ab1d00f584dd13e",
+  "branch": "hwsu-impl",
+  "worktree": "X:/Downloads/projects/topo-pilot/topo-pilot-hwsu"
+ },
+ "stage_c_u2": {
+  "store": "X:/Downloads/projects/topo-pilot/hwsc-store",
+  "freeze_sha256": "17c5b574bd308d088e93692f3a146e08d03af27c6499edc0d07f173a56279800",
+  "stages_jsonl": {
+   "relpath": "STAGES.jsonl",
+   "sha256_2026_11_03": "8eb6cec91916107c97d37513ed34c954d713ec0ef2d83a9f91061e6af23ec596",
+   "rule": "read as JSON lines (STAGE_COMPLETE records only); re-hashed at every U job"
+  },
+  "result_presence": {
+   "stage": "S8",
+   "relpath": "stages/S8/RESULT.json",
+   "sha256": "f2b8a6785317282acf1e12c421daa7060955b4e0738beb36148a53c487187048",
+   "rule": "presence and hash only, from the S8 STAGE_COMPLETE record; RESULT.json is never opened (blinded)"
+  },
+  "masters": [
+   620301,
+   620302,
+   620303
+  ],
+  "step": 5000,
+  "train_records": {
+   "620301": {
+    "relpath": "stages/TRAIN/620301/TRAIN_RECORD.json",
+    "sha256": "3e60208a9ae2688013ada1ab25bff49b0ce8d9b734c326d9eb01c8bb34e75335",
+    "stage": "TRAIN_620301"
+   },
+   "620302": {
+    "relpath": "stages/TRAIN/620302/TRAIN_RECORD.json",
+    "sha256": "023a332bde46bf5773c64db6d0cf664e40f25b10c5de5af32f7c1637cbaec2d9",
+    "stage": "TRAIN_620302"
+   },
+   "620303": {
+    "relpath": "stages/TRAIN/620303/TRAIN_RECORD.json",
+    "sha256": "9bf6417b466b6a63801bbe4e891937743e23aac656cde4d2257e60078a1aefd6",
+    "stage": "TRAIN_620303"
+   }
+  },
+  "train_record_keys": [
+   "checkpoint_ids",
+   "checksums",
+   "run_key",
+   "status"
+  ],
+  "checkpoint_ids": {
+   "620301": "a4cb0279bee92f52",
+   "620302": "71b118ba2c5e12cc",
+   "620303": "69c86a578ae8c1bc"
+  },
+  "production_frozen": {
+   "relpath": "stages/S4a/PRODUCTION_FROZEN.json",
+   "sha256": "17da0ee89a33d0de06a4789312020f0a11cef50e4ae9530bf3742c3909deba36",
+   "charts": {
+    "CHART_620301.npz": "808f4bf3783690e45af397a81186ebdd7b8d8eb49c9c35e52d1aecedbb2c45e8",
+    "CHART_620302.npz": "b4458c20442a8cef1884e7df04aaf6c856774efe0c89e81cb497e49c97d2d2d8",
+    "CHART_620303.npz": "f8fcd88647c3fb19dd8adcb4b8ca1af89b97288fa817dab56431debad721b043"
+   },
+   "gauges": {
+    "620301": [
+     -1,
+     2.3650106964740267,
+     0.8332683157217045
+    ],
+    "620302": [
+     1,
+     2.4279214653895926,
+     0.8474377710060595
+    ],
+    "620303": [
+     1,
+     2.4639191282863235,
+     0.8346641338381876
+    ]
+   },
+   "rule": "H1-U: the record re-hashes; each CHART_<j>.npz re-hashes (file bytes) to its entry; the record's gauges equal this copy; no chart is loaded or extended (SUP is NOT_RUN/SHARE_DROPPED)"
+  },
+  "k_reg2": {
+   "manifest": "registry/K-REG2.json",
+   "manifest_sha256": "ff455ed389c630b621aa4c18c5eae0760511278c2efb6930d1aa4084509fbf99",
+   "digest_file": "registry/K-REG2_digests.npz",
+   "digest_file_sha256": "07215343792521a4542f6f3c60e8db02575060bb568e2452c04e20de47f62654",
+   "n_digests": 8348018
+  },
+  "obs_inventory": {
+   "relpath": "stages/TRAIN/OBS_INVENTORY.json",
+   "sha256": "bd385a9648f1b3d6430748cf9d64a0f83b06f6b7be25f87dc2ecd7215b8b11a8",
+   "stage": "TRAIN_INVENTORY"
+  },
+  "u2_hist": {
+   "stages/S3/HIST_lgate_b0.npz": "S3",
+   "stages/S3/HIST_cal_b0.npz": "S3",
+   "stages/S3/HIST_val_b0.npz": "S3",
+   "stages/S7/HIST_test_b0.npz": "S7"
+  },
+  "sites": {
+   "attribution": "ln_final_out",
+   "circle_unused_under_S3": "resid_post_3",
+   "index": 32,
+   "bos": 36
+  },
+  "never": "RESULT.json, SEALED_*.json, stages/S5/**, stages/S8/**, stages/E1/L1.json, sealed/**, the TRAIN_RECORD key dev_ce; hwsc-store is never written"
+ },
+ "sizes_u2": {
+  "scope": "hwsu-v1",
+  "block": 4096,
+  "splits": {
+   "fit": {
+    "unit": "singles",
+    "blocks": [
+     0,
+     1
+    ],
+    "n": 8192,
+    "arm": "s"
+   },
+   "kfit": {
+    "unit": "pairs",
+    "blocks": [
+     0
+    ],
+    "n": 4096,
+    "arms": [
+     "a1",
+     "a2"
+    ],
+    "use_under_S3": "drawn and gated (H2-U, H3-U) only; no construction (KU omitted); OPEN-2"
+   },
+   "feas": {
+    "unit": "pairs",
+    "blocks": [
+     0
+    ],
+    "n": 4096,
+    "arms": [
+     "a1",
+     "a2"
+    ],
+    "use_under_S3": "drawn and gated (H2-U, H3-U) only; SUP, L1, R1-U NOT_RUN/SHARE_DROPPED; OPEN-2"
+   },
+   "val": {
+    "unit": "pairs",
+    "blocks": [
+     0
+    ],
+    "n": 4096,
+    "arms": [
+     "a1",
+     "a2"
+    ]
+   },
+   "test": {
+    "unit": "pairs",
+    "blocks": "b0..b(k-1)",
+    "n": "4096*k",
+    "k": [
+     1,
+     2,
+     4,
+     8
+    ],
+    "arms": [
+     "a1",
+     "a2"
+    ]
+   }
+  },
+  "rows_basis": 1024,
+  "rows_m0": 1024,
+  "rows_tpre_m0_x1": 1024,
+  "decimal_rows": 4,
+  "histories": "E1: 8,192 + 3 x 2 x 4,096 = 32,768; E2: 8,192 k; with OF 24,576: 57,344 + 8,192 k <= 122,880 at k = 8",
+  "family_draws": 20000,
+  "val_draws": 5000,
+  "desc_draws": 5000,
+  "ranks": {
+   "family_L": 67,
+   "family_U": 19934,
+   "val_L": 84,
+   "val_U": 4917,
+   "headroom_L": 250,
+   "desc_L": 125,
+   "desc_U": 4875
+  }
+ },
+ "streams_u2": {
+  "singles": "hwsu_pairs.sample_singles(T, E, pi, 'hwsu-v1', split, b, n)",
+  "pairs": "hwsu_pairs.sample_pairs(T, E, pi, 'hwsu-v1', split, b, n) (arm 2 stream split + '/cf')",
+  "seq_ids": "make_sequence_ids(process_code(*PROC, f'hwsu-v1/{split}/b{b}/{arm}'), 'test', n)",
+  "dry": "the same calls with scope hwsu-dry-v1"
+ },
+ "seeds": {
+  "dry_u2": {
+   "family_U": 649911,
+   "kc_val": 649912,
+   "h5_val": 649913,
+   "p1_sd": 649914,
+   "p1_centred": 649915,
+   "r1_feas": 649916,
+   "desc_test": 649917,
+   "kc_test": 649918,
+   "h5_test": 649919,
+   "haar": 649920
+  },
+  "uses_u2": {
+   "640111": "ENDPOINT family stream U (20,000 draws, alpha 1/300)",
+   "640112": "KO1-KO3 categories at VAL (alpha 1/60, 5,000 draws)",
+   "640113": "H5-U at VAL (alpha 1/20, rank 250)",
+   "640114": "P1 SD draws",
+   "640115": "P1 centred draws",
+   "640116": "R1-U (share; reserved, unused under S3)",
+   "640117": "descriptive intervals at TEST",
+   "640118": "KO report at TEST",
+   "640119": "H5-U at TEST (T-PRE)",
+   "640120": "Haar frames (share; reserved, unused under S3)"
+  }
+ },
+ "thresholds_u2": {
+  "resp_lines": [
+   "1/10",
+   "3/10"
+  ],
+  "headroom_val": "1/100",
+  "headroom_of_recheck": "1/50",
+  "alpha_family": "1/300",
+  "alpha_val": "1/60",
+  "alpha_headroom": "1/20",
+  "alt_response": "1/10 (times min_j mean_VAL(G))",
+  "power": "4/5",
+  "delta": 0.0,
+  "ladder": [
+   4096,
+   8192,
+   16384,
+   32768
+  ],
+  "x1_tol": "c2_config.TAU_X1 relative to max(1, |z|_inf) (c2_model.x1)",
+  "q_sum": "c2_config.T_QSUM",
+  "ko_tol": 1e-12,
+  "decimal_rel_tol": "1/10000000000",
+  "guard": "c2_decide.guard(array, 0.0) for every response array (no projector term)",
+  "registry_cap": "1/100"
+ },
+ "gates_u2": {
+  "jobs": {
+   "KC": [
+    "S0",
+    "AUTH",
+    "KC0",
+    "KC1",
+    "KC2",
+    "KC3",
+    "KC4",
+    "KC5",
+    "KC6"
+   ],
+   "E1": [
+    "S0",
+    "AUTH",
+    "G0U",
+    "H1-U",
+    "REG1",
+    "RESERVATION",
+    "S3",
+    "H2-U",
+    "H3-U",
+    "H5-U",
+    "BASIS",
+    "SUP",
+    "F1",
+    "L1",
+    "R1-U",
+    "M0",
+    "X1",
+    "DX",
+    "KC-U",
+    "P1"
+   ],
+   "REG2": [
+    "S0",
+    "AUTH",
+    "REG2"
+   ],
+   "E2": [
+    "S0",
+    "AUTH",
+    "RELEASE-B",
+    "RESERVATION",
+    "S7",
+    "H2-FRESH-U",
+    "T-PRE",
+    "NUM",
+    "ENDPOINT"
+   ]
+  },
+  "share_dropped": [
+   "SUP",
+   "F1",
+   "L1",
+   "R1-U",
+   "DX"
+  ],
+  "share_dropped_status": "NOT_RUN/SHARE_DROPPED",
+  "partly_share": {
+   "X1": "natural arms only",
+   "KC-U": "KO1-KO3 only",
+   "P1": "response arrays; N = N_RESP",
+   "ENDPOINT": "response family; share outcome fixed"
+  },
+  "continuing_statuses": [
+   "PASS",
+   "REPORTED",
+   "NOT_RUN/SHARE_DROPPED"
+  ],
+  "on_failure": {
+   "S0": "INVALID (do not run)",
+   "AUTH": "INCONCLUSIVE/AUTHORITY",
+   "KC0-KC6": "FAIL_TECHNICAL/KNOWN_CASE; KC0 authority INCONCLUSIVE/AUTHORITY, KC0 needles FAIL_TECHNICAL/SEED_SCOPE",
+   "G0U": "INCONCLUSIVE/AUTHORITY | FAIL_TECHNICAL/SEED_SCOPE | FAIL_TECHNICAL/LINEAGE",
+   "H1-U": "FAIL_TECHNICAL/IDENTITY",
+   "REG1": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "RESERVATION": "INCONCLUSIVE/AUTHORITY",
+   "S3": "FAIL_TECHNICAL/SAMPLER",
+   "H2-U": "FAIL_TECHNICAL/LINEAGE; predicate hit INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "H3-U": "FAIL_TECHNICAL/SAMPLER | FAIL_TECHNICAL/ORACLE",
+   "H5-U": "INCONCLUSIVE/HEADROOM",
+   "BASIS": "FAIL_TECHNICAL/MODEL",
+   "M0": "FAIL_TECHNICAL/MODEL (INCONCLUSIVE/NUMERICAL when only X1 attainability fails)",
+   "X1": "FAIL_TECHNICAL/X1",
+   "KC-U": "FAIL_TECHNICAL/KNOWN_CASE",
+   "P1": "INCONCLUSIVE/UNDERPOWERED",
+   "REG2": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "RELEASE-B": "INCONCLUSIVE/AUTHORITY",
+   "S7": "FAIL_TECHNICAL/SAMPLER",
+   "H2-FRESH-U": "as H2-U",
+   "T-PRE": "INCONCLUSIVE/TEST_GATE (endpoints NOT_RUN/T-PRE)",
+   "NUM": "INC_j/NUMERICAL (model)",
+   "ENDPOINT": "rank-check failure FAIL_TECHNICAL/NUMERICAL"
+  },
+  "exit_codes": {
+   "0": "PASS or a registered outcome",
+   "2": "refused (S0/AUTH/RELEASE; nothing drawn)",
+   "3": "FAIL_TECHNICAL",
+   "5": "INCONCLUSIVE"
+  }
+ },
+ "outcomes_u2": {
+  "precedence": [
+   "FAIL_TECHNICAL/<class>",
+   "INCONCLUSIVE/RESOURCE_OR_AUTHORITY",
+   "INCONCLUSIVE/<study gate>",
+   "response outcome",
+   "share outcome (fixed)"
+  ],
+  "response": [
+   "RESPONDS",
+   "WEAK_RESPONSE",
+   "LOW_RESPONSE",
+   "MIXED",
+   "INCONCLUSIVE/PRECISION"
+  ],
+  "share_fixed": "INCONCLUSIVE/ORACLE_FEASIBILITY",
+  "share_source": "OF_ACCEPT.json outcome OF_PASS_RESPONSE_ONLY (authority_u2.of_accept)",
+  "per_model": [
+   "RESPONDS_j",
+   "WEAK_RESPONSE_j",
+   "LOW_RESPONSE_j",
+   "INC_j",
+   "INC_j/NUMERICAL",
+   "EXCLUDED_j/<gate>",
+   "NOT_RUN/<gate>"
+  ],
+  "rule6": "RESP_POSITIVE_BELOW_MARGIN_j iff sign(L(AF), g) == 1 and sign(U(ZR030), g) == -1; 'in k models' iff >= 2 declare it; 'in all three' iff 3",
+  "qualifiers": [
+   "PRECISION_LIMITED(j)",
+   "DISSENT(j: status)"
+  ],
+  "family_error": "Lemma FW-U, response part: <= 2 coverage-failure events per model; 3 x 2 x 1/300 = 0.02 <= 0.05 (protocol 4.1: conservative at the unchanged alpha)",
+  "scope_clause": "Pairs are natural histories of world w* that share their last four symbols; each arm is a draw from the process. Any predictor or code that depends only on the last four symbols has zero effect on these pairs, so every effect stated here depends on the history before the last four symbols. The share outcomes concern the frozen, nuisance-excluding linear code defined by the FIT fit and projector of the stage-C chart phase. They do not exclude predictive use of beyond-four information in excluded directions, higher harmonics, interactions or other encodings.",
+  "licences": {
+   "RESPONDS": "In k of the 3 stage-C models (masters ...), when only the history before the last four symbols changes, the next-symbol prediction at position 32 moves in the direction of the oracle's change by more than 0.30 of the oracle's own discrimination: theta-hat = ..., one-sided (1 - 1/300) lower bounds .... A predictor reading only the last four symbols would show theta = 0 on these pairs. The prediction therefore depends on earlier history, aligned with the belief.",
+   "WEAK_RESPONSE / RESP_POSITIVE_BELOW_MARGIN": "... the prediction moves in the oracle's direction (lower bound above 0) but by less than 0.30 of the oracle's discrimination [WEAK: and by more than 0.10]. This is a positive finding below the response margin; it is neither RESPONDS nor evidence of a negligible response.",
+   "LOW_RESPONSE": "... the signed oracle-aligned response is certified below 0.10 of the oracle's (it may be negative). The circle carries beyond-four information (stage C), but these predictions move little with it in the oracle's direction.",
+   "LOW_RESPONSE_not_licensed": "that the prediction is a function of the last four symbols only (orthogonal or cancelling movement is not excluded)",
+   "MIXED / INCONCLUSIVE": "Only the per-model results, and the statement 'not evidence for or against use'.",
+   "SHARE_INCONCLUSIVE_ORACLE_FEASIBILITY": "The share question (how much of the response runs through the circle code) was not assessed: the oracle-only feasibility stage found that the share arrays could not be powered within the registered precision ladder, so the share family was dropped before any model was measured (protocol 4.1, S3). This is not evidence for or against use of the circle code."
+  },
+  "disclosure": "Track U follows stage C (SUPPORT in 3/3: the chart phase carries beyond-four information) and C2/C2ND (circle code used at the readout in the E4 models of world w0). Track U's histories, code fits and decisions are its own. Its thresholds are C2's owner-approved lines, unchanged; the charts, site and models are stage C's, unchanged. No threshold, margin or construction constant was set from any track-U or stage-C value. The oracle feasibility stage changed only cost forecasts.",
+  "does_not_establish": "protocol 7.3 items 1-11, printed in every report"
+ },
+ "name_rule_u2": {
+  "prefixes_protocol_8_2": [
+   "ACTS_",
+   "Y_",
+   "DECODER_",
+   "DECOY_",
+   "SCORES_",
+   "ENDPOINT_",
+   "CERT_",
+   "FRAMES_"
+  ],
+  "written_under_S3": [],
+  "rule": "U-D-6: under S3 phase-2 code writes array files only with the phase-1 prefixes (ORACLE_, PAIR_, BOOT_, PREC_) and HIST_* tables, through the phase-1 hwsu_records.save_array, so the phase-1 name rule and the phase-1 obligation writer (hwsu_records.write_obligation) cover every phase-2 store file unchanged; the protocol's phase-2 prefixes are recorded here and are not added to name_rule (adding them would change phase-1 behaviour: tests/hwsu/test_b_of_obligation.py expects ACTS_ refused)"
+ },
+ "store_layout_u2": {
+  "KC": [
+   "stages/KC/G0U.json",
+   "stages/KC/KC_REPORT.json",
+   "registry/rehearsal/REHEARSAL.json",
+   "registry/rehearsal/REHEARSAL_digests.npz",
+   "registry/rehearsal/runs/REHEARSAL/**"
+  ],
+  "E1": [
+   "stages/E1/G0U.json",
+   "stages/E1/H1U.json",
+   "stages/E1/HIST_{fit_s_b0,fit_s_b1,kfit_a1_b0,kfit_a2_b0,feas_a1_b0,feas_a2_b0,val_a1_b0,val_a2_b0}.npz",
+   "stages/E1/ORACLE_E1_{fit,kfit,feas,val}.npz",
+   "stages/E1/PAIR_E1_val.npz",
+   "stages/E1/PREC_E1.npz",
+   "stages/E1/BOOT_E1.npz",
+   "stages/E1/VALIDATION_REPORT.json",
+   "registry/K-REG1.json",
+   "registry/K-REG1_digests.npz",
+   "registry/runs/K-REG1/**",
+   "SEALED_VALIDATION.json"
+  ],
+  "REG2": [
+   "registry/K-REG2.json",
+   "registry/K-REG2_digests.npz",
+   "registry/runs/K-REG2/**"
+  ],
+  "E2": [
+   "stages/E2/HIST_test_{a1,a2}_b<i>.npz",
+   "stages/E2/ORACLE_E2_test.npz",
+   "stages/E2/PAIR_E2_test.npz",
+   "stages/E2/BOOT_E2.npz",
+   "stages/E2/TPRE.json",
+   "stages/E2/ENDPOINT.json",
+   "stages/E2/REPORT.json",
+   "stages/E2/SEALED_OPENED.json"
+  ],
+  "top_level_new": [
+   "FREEZE.json",
+   "AUTH_U_<job>.json",
+   "RESERVATION_U.json",
+   "RESERVATION_U-a<k>.json",
+   "RELEASE_A.json",
+   "RELEASE_B.json",
+   "ACCEPT_VALIDATION.json",
+   "SEALED_VALIDATION.json"
+  ],
+  "exempt_by_phase1_rule": "FREEZE.json, AUTH_*.json, RESERVATION_*.json, RELEASE_*.json, ACCEPT_*.json, REGISTRY_OBLIGATION*.json, reservations/*.json (phase-1 lineage_u); SEALED_VALIDATION.json and every registry/** file are listed in a STAGE_COMPLETE",
+  "dry_store": "X:/Downloads/topo-scratch/hwsu-dry-u2-<job>/ (DRYHIST_* names; OPEN-5)",
+  "dry_helpers": "X:/Downloads/topo-scratch/test_hwsu-<job>/ (R-0213-2)"
+ },
+ "registry_u2": {
+  "versions": [
+   "REHEARSAL",
+   "K-REG1",
+   "K-REG2"
+  ],
+  "label": "hwsu-reg-v1",
+  "out_dirs": {
+   "REHEARSAL": "X:/Downloads/projects/topo-pilot/hwsu-store/registry/rehearsal",
+   "K-REG1": "X:/Downloads/projects/topo-pilot/hwsu-store/registry",
+   "K-REG2": "X:/Downloads/projects/topo-pilot/hwsu-store/registry"
+  },
+  "sources": {
+   "U1": "hwsc_registry_build._default_sources callables unchanged except 'own' and 'inventory' (replaced by U2/U6 and U7)",
+   "U2": "hwsu_registry.source_hwsc(hwsc-store)",
+   "U2prime": "hwsu_registry.source_own_dry (hwsu-dry*, test_hwsu-*)",
+   "U3": "stage-C dry and test stores through U1 'dry' and the scratch rows",
+   "U4": "registry_u2.scratch_u2 (hwsc_registry.scratch_check with the HWSU table)",
+   "U5": "hwsu_registry.source_hwsd (hwsd-store, hwsd-dry*, test_hwsd-*)",
+   "U6": "hwsu_registry.source_own_u(hwsu-store)",
+   "U7": "hwsu_registry.inventory_u(root, readers, root_table_u2)",
+   "U8": "hwsu_registry.source_kreg2_c (stage C's K-REG2 digest file)"
+  },
+  "root_table_u2": {
+   "base": "stage C's registry.inventory (tools/hwsc/CONTRACT.json, 68 rows); hwsc-store changes from OWN to READER U2",
+   "add": {
+    "hwsc-store": {
+     "decision": "READER",
+     "readers": [
+      "U2"
+     ]
+    },
+    "hwsu-store": {
+     "decision": "OWN",
+     "readers": [
+      "U6"
+     ]
+    },
+    "hwsd-store": {
+     "decision": "READER_IF_PRESENT",
+     "readers": [
+      "U5"
+     ]
+    },
+    "topo-pilot-hwsu": {
+     "decision": "EXCLUSION",
+     "reason": "HWSU implementation worktree (protocol 11.1); no array file committed; header listing at the freeze"
+    },
+    "topo-pilot-hwsd": {
+     "decision": "EXCLUSION",
+     "reason": "track-D implementation worktree; pruned unsearched (blinded for HWSU, hwsu_config hygiene root_rule); OPEN-9"
+    }
+   },
+   "deep_scan_exclude_add": [
+    "hwsc-store",
+    "hwsu-store",
+    "hwsd-store",
+    "topo-pilot-hwsd"
+   ],
+   "rule": "R8: a top-level directory not in the table that holds any history file, identity reference or ObservationSet root -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "status": "TO_FREEZE (re-listed at KC5, REG1, REG2)"
+  },
+  "scratch_u2": {
+   "base": "stage C's registry.scratch_inventory and scratch_rules (frozen 2026-10-29) for the directories they list",
+   "reserved_globs": {
+    "hwsu-dry*": "U2prime",
+    "test_hwsu-*": "U2prime",
+    "hwsd-dry*": "U5",
+    "test_hwsd-*": "U5"
+   },
+   "new_since_2026_10_29": [
+    "hwsc-dry-0177",
+    "hwsc-dry-0178",
+    "hwsc-dry-0179",
+    "hwsc-dry-0180",
+    "hwsc-dry-0183",
+    "hwsc-dry-0185",
+    "hwsc-dry-0190",
+    "hwsc-dry-0193",
+    "hwsc-dry-0194",
+    "hwsc-job-0181",
+    "hwsc-job-0184",
+    "hwsc-job-0186",
+    "hwsc-job-0187",
+    "hwsc-job-0188",
+    "hwsc-job-0189",
+    "hwsc-job-0191",
+    "hwsc-job-0192",
+    "hwsc-job-0195",
+    "hwsc-job-0196",
+    "paper",
+    "paper-edit",
+    "test_hwsc-0176",
+    "test_hwsc-0177",
+    "test_hwsc-0177r",
+    "test_hwsc-0178",
+    "test_hwsc-0179",
+    "test_hwsc-0180",
+    "test_hwsc-0182",
+    "test_hwsc-0183",
+    "test_hwsc-0185",
+    "test_hwsc-0185k",
+    "test_hwsc-0186",
+    "test_hwsc-0190",
+    "test_hwsc-0193",
+    "test_hwsc-0194",
+    "test_hwsc-coord",
+    "hwsu-run-0200",
+    "hwsu-run-0206",
+    "hwsd-run-0209",
+    "hwsd-run-0212",
+    "hwsd-run-0213",
+    "hwsd-run-0215",
+    "hwsd-run-0216",
+    "hwsd-run-0219",
+    "hwsd-run-0220",
+    "hwsd-run-0221",
+    "hwsd-run-0222"
+   ],
+   "listing_note": "directory names with mtime >= 2026-10-29 (name listing 2026-11-03; no file opened); some may already be rows of stage C's table; the reserved-glob directories are routed, not rows",
+   "row_rule": "one row per top-level directory: READER (named reader), EXCLUSION (reason; frozen_files / hash_frozen as stage C) or a reserved-glob route; built by hwsc_registry.scratch_scan (npz/npy headers and names only) at implementation; re-scanned at KC5, REG1, REG2; a directory without a row -> INCONCLUSIVE/REGISTRY_INCOMPLETE",
+   "rows": "TO_FREEZE"
+  },
+  "superset_check": "S-2: stage C's K-REG2 digest set (U8) is a union source; the J1 superset check of the reader-built union (before U8) is a diagnostic: count and list of missing digests",
+  "requirements": "protocol 8.3: fit, kfit, feas, val (every arm) disjoint from K-REG1 and from each other; test disjoint from K-REG2; sequence ids disjoint from every frozen union; sealed-D-2a predicate false on every row; collision -> FAIL_TECHNICAL/LINEAGE"
+ },
+ "binding": {
+  "allowlist": {
+   "c2_model": {
+    "readout_basis": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.RANK_R": "1e-8"
+     }
+    },
+    "readout_coords": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "closed_logits": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "activations3": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.INDEX": "32",
+      "c2_config.SITES": "('resid_post_2', 'resid_post_3', 'ln_final_out')"
+     }
+    },
+    "natural_pass": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.INDEX": "32",
+      "c2_config.SITES": "('resid_post_2', 'resid_post_3', 'ln_final_out')"
+     }
+    },
+    "identity_patch": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_model.INDEX": "32",
+      "c2_config.INDEX": "32",
+      "c2_config.SITES": "('resid_post_2', 'resid_post_3', 'ln_final_out')"
+     }
+    },
+    "readout_identity": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.TAU_X1": "1e-9"
+     }
+    },
+    "kappa_x1": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "x1_attainable": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.UNIT_ROUNDOFF": "Fraction(1, 9007199254740992)",
+      "c2_config.X1_ATTAIN": "1e-10"
+     }
+    },
+    "two_route": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.T18": "1e-12"
+     }
+    },
+    "symbol_order_a": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "symbol_order_b": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.V": "36"
+     }
+    },
+    "symbol_order_c": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "x1": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.INDEX": "32",
+      "c2_config.TAU_X1": "1e-9",
+      "c2_model.X1_FAIL": "FAIL_TECHNICAL/X1"
+     }
+    }
+   },
+   "c1_model": {
+    "load_model64": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "model_inputs": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_model.BOS": "36"
+     }
+    }
+   },
+   "c1_oracle": {
+    "named_from_canonical": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "canonical_from_named_cols": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "hwsc_gates": {
+    "exclusion_check": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "k4b_config": {
+    "check_checkpoint_meta": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "hwsc_records": {
+    "lineage_c": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsc_config.BLINDED_DIRS": "('hwsb-store/stages/eval',)",
+      "hwsc_config.BLINDED_FILES": "('hwsb-store/report.json', 'hwsb-store/gates.jsonl', 'agent-handoff/jobs/0175/review.md')",
+      "hwsc_config.BLINDED_GLOBS": "(('hwsb-store', 'chart_constructions_*.json'),)",
+      "hwsc_config.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "hwsc_records.EXTRA_RECORDS": "('FREEZE.json', 'KC_ACCEPT.json', 'RELEASE_A.json', 'RELEASE_B.json', 'RESERVATION_W2.json', 'REGISTRY_OBLIGATION.json')",
+      "hwsc_records.RECORD_PATTERNS": "('AUTH_*.json', 'SCHED_*.json', 'ACCEPT_*.json', 'DECISION_*.json')",
+      "k4b_release.RECORD_FILES": "('GATES.jsonl', 'STAGES.jsonl', 'CHART_CONSTRUCTIONS_trained.json', 'CHART_CONSTRUCTIONS_init.json', 'FREEZE.json', 'SEALED_VALIDATION.json', 'cpu_ledger.json', 'cpu_ledger.emergency.jsonl', 'RUN.lock"
+     }
+    }
+   },
+   "c2_registry": {
+    "Registry": {
+     "kind": "class"
+    },
+    "separation": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_config.ROLES": "('H', 'Hp', 'Hm', 'HY')",
+      "c2_data.OFF": "255",
+      "c2_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "c2_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "k4b_data.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "k4b_data.PREDICATES": "<contract block>",
+      "k4b_data.PREDICATE_REASON": "potential overlap with sealed D-2a histories"
+     }
+    },
+    "_ok_readers": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_registry_sources.SCANNED_STORES": "('x4-history-feas-store', 'x4b-research-store', 'x4b2-research-store', 'x4-oracle-profile-store-0014', 'x4-circle-history-feas-store-0015', 'x4f-gates-research-store', 'd1-seam-oracle-store', 'chart-d",
+      "c2_registry.OWN_READERS": "<contract block>"
+     }
+    },
+    "_x6_manifest": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "_entry": {
+     "kind": "function",
+     "call_time_reads": {
+      "c2_registry.SRC_KEYS": "('name', 'path', 'sha256', 'kind', 'n', 'canonicalisation')"
+     }
+    },
+    "_try": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "hwsc_registry_build": {
+    "_summary": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "hwsc_registry": {
+    "source_own": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsb_config.HIST_NAMES": "('LGATE', 'CAL', 'VAL')",
+      "hwsb_data.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "hwsb_registry.READER": "experiment",
+      "hwsb_registry.REGISTRY": "FAIL_TECHNICAL/REGISTRY",
+      "hwsc_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "hwsc_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE"
+     }
+    },
+    "scratch_check": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsc_config.SCRATCH": "WindowsPath('X:/Downloads/topo-scratch')",
+      "hwsc_drystore.PLANTED": "<contract block>",
+      "hwsc_drystore._ARTS": "('WorldSpec', 'TransitionSpec', 'EmissionSpec', 'Checkpoint', 'ObservationSet')",
+      "hwsc_drystore._CASE": "re.compile('DRC\\\\d+')",
+      "hwsc_drystore._RUN": "re.compile('run_\\\\d{5}\\\\.npy')",
+      "hwsc_drystore._UTC": "re.compile('\\\\d{8}T\\\\d{6}Z')",
+      "hwsc_scratch.HASH_CLASSES": "('PYTEST_FIXTURE_LARGE', 'FIXTURE_STORE', 'OTHER_PROCESS_TRAINING', 'CHECKPOINT')",
+      "x6s1_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE"
+     }
+    },
+    "scratch_scan": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsc_config.SCRATCH": "WindowsPath('X:/Downloads/topo-scratch')",
+      "k4b_registry.HISTORY_KEYS": "('tokens', 'canon32', 'named32', 'H', 'canonical32', 'canonical_tokens')",
+      "k4b_registry.IDENTITY_KEYS": "('sequence_id', 'seq_ids', 'ids', 'history_id', 'canonical_ids')",
+      "k4b_registry_k.HISTORY_KEYS": "('tokens', 'canon32', 'named32', 'H', 'canonical32', 'canonical_tokens')",
+      "x6s1_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE"
+     }
+    }
+   },
+   "hwsc_drystore": {
+    "dry_class": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsc_drystore.PLANTED": "<contract block>",
+      "hwsc_drystore._ARTS": "('WorldSpec', 'TransitionSpec', 'EmissionSpec', 'Checkpoint', 'ObservationSet')",
+      "hwsc_drystore._CASE": "re.compile('DRC\\\\d+')",
+      "hwsc_drystore._RUN": "re.compile('run_\\\\d{5}\\\\.npy')",
+      "hwsc_drystore._UTC": "re.compile('\\\\d{8}T\\\\d{6}Z')",
+      "x6s1_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE"
+     }
+    }
+   },
+   "hwsb_registry": {
+    "registry_digests": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsb_config.HIST_NAMES": "('LGATE', 'CAL', 'VAL')",
+      "hwsb_data.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "hwsb_registry.READER": "experiment",
+      "hwsb_registry.REGISTRY": "FAIL_TECHNICAL/REGISTRY"
+     }
+    }
+   },
+   "k4b_registry": {
+    "inventory": {
+     "kind": "function",
+     "call_time_reads": {
+      "k4b_registry.IDENTITY_KEYS": "('sequence_id', 'seq_ids', 'ids', 'history_id', 'canonical_ids')",
+      "k4b_registry.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "k4b_registry_k.HISTORY_KEYS": "('tokens', 'canon32', 'named32', 'H', 'canonical32', 'canonical_tokens')"
+     }
+    },
+    "classify": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_registry_sources.ART": "WindowsPath('X:/Downloads/projects/topo-pilot/topo-pilot/artifacts')",
+      "k4b_registry.FIXTURES": "synthetic test fixtures",
+      "k4b_registry.FIXTURE_ROWS": "1024",
+      "k4b_registry.MAIN": "topo-pilot",
+      "k4b_registry.MAIN_FIXTURES": "('tests', '.venv')"
+     }
+    },
+    "source_f": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_registry_sources.ART": "WindowsPath('X:/Downloads/projects/topo-pilot/topo-pilot/artifacts')",
+      "k4b_registry.OWN_READERS": "<contract block>"
+     }
+    },
+    "revalidate_coverage": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_registry_sources.ART": "WindowsPath('X:/Downloads/projects/topo-pilot/topo-pilot/artifacts')",
+      "c1_registry_sources.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "k4b_registry.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')"
+     }
+    },
+    "validate_handoff_json": {
+     "kind": "function",
+     "call_time_reads": {}
+    },
+    "summary": {
+     "kind": "function",
+     "call_time_reads": {
+      "k4b_registry_k.GROUPS": "('derived', 'sources', 'other')"
+     }
+    }
+   },
+   "c1_data": {
+    "build_registry": {
+     "kind": "function",
+     "call_time_reads": {}
+    }
+   },
+   "torch": {
+    "get_num_threads": {
+     "kind": "function"
+    },
+    "set_num_threads": {
+     "kind": "function"
+    }
+   },
+   "topo_pilot.contracts": {
+    "Checkpoint": {
+     "kind": "class"
+    }
+   },
+   "topo_pilot.contracts.backends": {
+    "LocalFSBackend": {
+     "kind": "class"
+    }
+   }
+  },
+  "allowlist_note_u2": "phase-2 entries (new keys only, merged into the phase-1 allowlist by the loader); call_time_reads by hwsu_bind.function_reads at 49ac9c9 (job 0223 spec writer); re-run at h_exec (TO_FREEZE)",
+  "allowlist_conditional_u2": {
+   "hwsc_gates": {
+    "expected_meta_c": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsc_config.KEY": "W12-q1-s1.75-p0.2",
+      "hwsc_config.SCOPE": "hwsc-v1"
+     }
+    }
+   },
+   "hwsc_registry_build": {
+    "_default_sources": {
+     "kind": "function",
+     "call_time_reads": {
+      "c1_registry_sources.ART": "WindowsPath('X:/Downloads/projects/topo-pilot/topo-pilot/artifacts')",
+      "c1_registry_sources.EMPTY": "array([], shape=(0, 32), dtype=uint8)",
+      "c1_registry_sources.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "c2_config.CONTRACT[\"registry\"]": "<contract block>",
+      "c2_config.PROJECT_ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "c2_config.X6S1_STORE": "WindowsPath('X:/Downloads/projects/topo-pilot/x6-stage1-store')",
+      "c2_data.CHUNK": "1048576",
+      "c2_registry.COUNT_KEYS": "('history_files', 'identity_refs', 'observation_set_roots', 'unreadable')",
+      "c2_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "c2_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "hwsb_config.HIST_NAMES": "('LGATE', 'CAL', 'VAL')",
+      "hwsb_data.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "hwsb_registry.READER": "experiment",
+      "hwsb_registry.REGISTRY": "FAIL_TECHNICAL/REGISTRY",
+      "hwsc_config.BLINDED_DIRS": "('hwsb-store/stages/eval',)",
+      "hwsc_config.BLINDED_FILES": "('hwsb-store/report.json', 'hwsb-store/gates.jsonl', 'agent-handoff/jobs/0175/review.md')",
+      "hwsc_config.BLINDED_GLOBS": "(('hwsb-store', 'chart_constructions_*.json'),)",
+      "hwsc_config.HWSB_STORE": "WindowsPath('X:/Downloads/projects/topo-pilot/hwsb-store')",
+      "hwsc_config.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "hwsc_config.SCRATCH": "WindowsPath('X:/Downloads/topo-scratch')",
+      "hwsc_drystore.PLANTED": "<contract block>",
+      "hwsc_drystore._ARTS": "('WorldSpec', 'TransitionSpec', 'EmissionSpec', 'Checkpoint', 'ObservationSet')",
+      "hwsc_drystore._CASE": "re.compile('DRC\\\\d+')",
+      "hwsc_drystore._RUN": "re.compile('run_\\\\d{5}\\\\.npy')",
+      "hwsc_drystore._UTC": "re.compile('\\\\d{8}T\\\\d{6}Z')",
+      "hwsc_registry.ARRAYS": "('.npz', '.npy', '.pt')",
+      "hwsc_registry.ART_TYPES": "('WorldSpec', 'TransitionSpec', 'EmissionSpec', 'Checkpoint', 'ObservationSet')",
+      "hwsc_registry.C2_COLS": "('digest_H', 'digest_Hp', 'digest_Hm')",
+      "hwsc_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "hwsc_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "hwsc_registry.REG[\"c2nd\"]": "<contract block>",
+      "hwsc_registry.REG[\"deep_scan_exclude\"]": "<contract block>",
+      "hwsc_registry.REG[\"dry_stores\"]": "<contract block>",
+      "hwsc_registry.REG[\"hwsb\"]": "<contract block>",
+      "hwsc_registry.REG[\"inventory\"]": "<contract block>",
+      "hwsc_scratch.HASH_CLASSES": "('PYTEST_FIXTURE_LARGE', 'FIXTURE_STORE', 'OTHER_PROCESS_TRAINING', 'CHECKPOINT')",
+      "k4b_config.CONTRACT[\"registry\"]": "<contract block>",
+      "k4b_registry.FIXTURES": "synthetic test fixtures",
+      "k4b_registry.FIXTURE_ROWS": "1024",
+      "k4b_registry.HISTORY_KEYS": "('tokens', 'canon32', 'named32', 'H', 'canonical32', 'canonical_tokens')",
+      "k4b_registry.IDENTITY_KEYS": "('sequence_id', 'seq_ids', 'ids', 'history_id', 'canonical_ids')",
+      "k4b_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "k4b_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "k4b_registry.MAIN": "topo-pilot",
+      "k4b_registry.MAIN_FIXTURES": "('tests', '.venv')",
+      "k4b_registry.ROOT": "WindowsPath('X:/Downloads/projects/topo-pilot')",
+      "k4b_registry_k.DERIVED": "('K-REG*.json', 'K-REG*_digests.npz')",
+      "k4b_registry_k.GROUPS": "('derived', 'sources', 'other')",
+      "k4b_registry_k.HISTORY_KEYS": "('tokens', 'canon32', 'named32', 'H', 'canonical32', 'canonical_tokens')",
+      "k4b_registry_k.IDENTITY_KEYS": "('sequence_id', 'seq_ids', 'ids', 'history_id', 'canonical_ids')",
+      "k4b_registry_k.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "nd_config.C2_STORE": "WindowsPath('X:/Downloads/projects/topo-pilot/c2-readout-store')",
+      "nd_config.CONTRACT[\"registry\"]": "<contract block>",
+      "nd_config.SCRATCH_ROOT": "WindowsPath('X:/Downloads/topo-scratch')",
+      "nd_registry.ARRAYS": "('.npz', '.npy', '.pt')",
+      "nd_registry.C2_COLS": "('digest_H', 'digest_Hp', 'digest_Hm')",
+      "nd_registry.INCOMPLETE": "INCONCLUSIVE/REGISTRY_INCOMPLETE",
+      "nd_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "nd_registry.NOT_READ": "not read: payload/sealed",
+      "x6s1_registry.LINEAGE": "FAIL_TECHNICAL/LINEAGE",
+      "x6s1_registry.REG_RUN": "4194304",
+      "x6s1_registry.V32": "dtype('V32')"
+     }
+    },
+    "build": {
+     "kind": "function",
+     "call_time_reads": {},
+     "to_freeze": "OPEN-7: hwsu_bind.function_reads raises ModuleNotFoundError (psutil, imported inside _peak_memory) in this venv; use: DRU-REG equality only"
+    }
+   },
+   "hwsb_train": {
+    "train": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsb_config.KEY": "W12-q1-s1.75-p0.2",
+      "hwsb_config.REAL_PLAN": "Plan(kind='real', masters=(620201, 620202), model_cfg=ModelConfig(vocab_in=37, vocab_out=36, n_ctx=33, n_layers=4, d_model=128, n_heads=4, d_mlp=512, activation='gelu', dropout=0.0, tie_embeddings=Fal",
+      "hwsb_config.SCOPE": "hwsb-v1"
+     }
+    }
+   },
+   "hwsc_data": {
+    "make_train_dev_c": {
+     "kind": "function",
+     "call_time_reads": {
+      "hwsb_config.DRY_MASTERS": "(629901, 629902)",
+      "hwsb_config.KEY": "W12-q1-s1.75-p0.2",
+      "hwsb_config.MASTERS": "(620201, 620202)",
+      "hwsb_config.SCOPE": "hwsb-v1",
+      "hwsb_data.ROLES": "('train', 'dev', 'LGATE', 'CAL', 'VAL')",
+      "hwsb_data.SAMPLER": "FAIL_TECHNICAL/SAMPLER",
+      "hwsc_config.SCOPE": "hwsc-v1"
+     }
+    }
+   }
+  },
+  "allowlist_conditional_note": "phase-2 entries whose call-time reads include a forbidden name sanctioned by the protocol (conditional_reads_u2), and hwsc_registry_build.build (OPEN-7). They are outside binding.allowlist because the phase-1 audit (hwsu_bind.audit_reads, merged CONTRACT) would report them; hwsu_known.audit_u2 admits them. Their use needs the coordinator ruling on OPEN-1 before code",
+  "conditional_reads_u2": [
+   {
+    "function": "hwsc_gates.expected_meta_c",
+    "read": "hwsc_config.SCOPE",
+    "why": "protocol 11.2: called unchanged; its hwsc constants (SCOPE hwsc-v1, KEY) are the correct identities of the stage-C checkpoints"
+   },
+   {
+    "function": "hwsc_registry_build._default_sources",
+    "read": "c2_config.CONTRACT[\"registry\"]",
+    "why": "protocol 8.3 U1: the unchanged stage-C source callables; the CONTRACT['registry'] blocks they read are the frozen registry bindings of earlier studies"
+   },
+   {
+    "function": "hwsc_registry_build._default_sources",
+    "read": "k4b_config.CONTRACT[\"registry\"]",
+    "why": "protocol 8.3 U1: the unchanged stage-C source callables; the CONTRACT['registry'] blocks they read are the frozen registry bindings of earlier studies"
+   },
+   {
+    "function": "hwsc_registry_build._default_sources",
+    "read": "nd_config.CONTRACT[\"registry\"]",
+    "why": "protocol 8.3 U1: the unchanged stage-C source callables; the CONTRACT['registry'] blocks they read are the frozen registry bindings of earlier studies"
+   },
+   {
+    "function": "hwsb_train.train",
+    "read": "hwsb_config.SCOPE",
+    "why": "DRU1 only (dry scope, tiny models; protocol 9 DRU1, the HWSC DRC1 pattern); never called on a real scope"
+   },
+   {
+    "function": "hwsc_data.make_train_dev_c",
+    "read": "hwsb_config.SCOPE",
+    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)"
+   },
+   {
+    "function": "hwsc_data.make_train_dev_c",
+    "read": "hwsc_config.SCOPE",
+    "why": "DRU1 only; always called with scope=SCOPE_DRY (the default is never used)"
+   }
+  ],
+  "never_called_u2": [
+   "k4b_stats.write_sealed",
+   "k4b_stats.check_unsealed",
+   "k4b_driver.load_checkpoint",
+   "k4b_driver.checkpoint_meta",
+   "hwsc_registry.inventory_c",
+   "c2_driver.LogitPolicy",
+   "nd_decoy.*",
+   "k4b_charts.*",
+   "c2_code.*",
+   "c2_stats.l1",
+   "c2_stats.fit_decoder",
+   "c2_attrib.energies",
+   "c2_attrib.random_ref",
+   "c2_attrib.decomposition",
+   "k4b_scores.sha_phase"
+  ],
+  "never_called_u2_note": "hwsc_registry_build.build is called only by hwsu_dry2.dru_reg (DRU-REG equality on a synthetic root); hwsc_registry.source_own only inside hwsu_registry.source_hwsc",
+  "mirrors_u2": {
+   "c2_model.m0": "hwsu_model.m0_u",
+   "c2_driver.LogitPolicy": "hwsu_model.UPolicy",
+   "k4b_driver.load_checkpoint, checkpoint_meta": "hwsu_model.load_checkpoint_u, checkpoint_meta_u",
+   "k4b_stats.write_sealed, check_unsealed": "hwsu_gates.write_sealed_u, check_unsealed_u",
+   "hwsc_registry_build.build": "hwsu_registry.build_u",
+   "hwsc_registry.inventory_c": "hwsu_registry.inventory_u",
+   "hwsu_resv.w2_attestation (R-0213-1)": "hwsu_known.w2_attestation_u2",
+   "hwsu_seed.g0_of": "hwsu_known.g0_u"
+  },
+  "audit_u2": "hwsu_known.audit_u2 (API_U2.md section 2.6); OPEN-1"
+ },
+ "reuse_sha256_u2": {
+  "tools/c2_readout/c2_model.py": "6cbfb0cab730a5b8411a95a5e656fec953550f3962feede0be948b90f5f1e91d",
+  "tools/hwsc/hwsc_drystore.py": "fba45b978c2281072d43c753c2307557e5e86fbc653e88b9bd65db2b0493d823"
+ },
+ "phase2_files": [
+  "tools/hwsu/API_U2.md",
+  "tools/hwsu/CONTRACT.json",
+  "tools/hwsu/TEST_PLAN_U2.md",
+  "tools/hwsu/hwsu_model.py",
+  "tools/hwsu/hwsu_known.py",
+  "tools/hwsu/hwsu_registry.py",
+  "tools/hwsu/hwsu_gates.py",
+  "tools/hwsu/hwsu_driver.py",
+  "tools/hwsu/hwsu_dry2.py"
+ ],
+ "tests_u2": {
+  "author_A": "tests/hwsu/test_a_u2_*.py",
+  "author_B": "tests/hwsu/test_b_u2_*.py",
+  "authorship": [
+   "tests/hwsu/AUTHORSHIP_A_U2.md",
+   "tests/hwsu/AUTHORSHIP_B_U2.md"
+  ],
+  "basetemp": "X:/Downloads/topo-scratch/test_hwsu-<job>/pytest",
+  "temp_root": "X:/Downloads/topo-scratch/test_hwsu-<job>",
+  "max_lines": 400,
+  "formatter": "never run over tests/",
+  "phase1_tests": "tests/hwsu/test_*_of_*.py are never edited"
+ },
+ "s0_u2": {
+  "r_ref": "49ac9c96420dd5a91ffbc1496ab1d00f584dd13e",
+  "allow": {
+   "A": [
+    "tools/hwsu/<phase2_files>",
+    "tests/hwsu/test_a_u2_*.py",
+    "tests/hwsu/test_b_u2_*.py",
+    "tests/hwsu/AUTHORSHIP_A_U2.md",
+    "tests/hwsu/AUTHORSHIP_B_U2.md",
+    "docs/code_index/**"
+   ],
+   "M": [
+    "docs/code_index/**"
+   ]
+  },
+  "rule": "git diff --no-renames --name-status r_ref h_exec: every line allowed; hwsu_freeze.verify_freeze_of PASS (phase-1 files unchanged); reuse_sha256 (phase 1 and phase 2) equal at r_ref, h_exec and in the working tree; audit_u2 PASS"
+ },
+ "freeze_u2_fields": [
+  "protocol",
+  "protocol_sha256",
+  "contract_of_sha256",
+  "contract_sha256",
+  "api_u2_sha256",
+  "test_plan_u2_sha256",
+  "freeze_of_sha256",
+  "of_accept_sha256",
+  "h_exec",
+  "r_ref",
+  "implementation_files",
+  "implementation_sha256",
+  "reuse_sha256",
+  "dry_run_report_path",
+  "dry_run_report_sha256",
+  "j_u_records",
+  "environment",
+  "written_by",
+  "created_utc"
+ ],
+ "cpu": {
+  "u2_policy": "measure-only (--max-cpu inf --max-wall inf); no pause lines (owner addenda 41-43); actual CPU booked in the study ledger and reported",
+  "u2_stage_order": [
+   "J-U",
+   "DRU",
+   "KC",
+   "E1",
+   "REG2",
+   "E2"
+  ],
+  "u2_central_s": {
+   "J-U": 650,
+   "DRU": 300,
+   "KC": 1000,
+   "E1": 2000,
+   "REG2": 300,
+   "E2": "300 + 700*k"
+  },
+  "u2_range_s": {
+   "J-U": [
+    360,
+    1300
+   ],
+   "DRU": [
+    125,
+    600
+   ],
+   "KC": [
+    600,
+    2500
+   ],
+   "E1": [
+    1200,
+    4500
+   ],
+   "REG2": [
+    250,
+    900
+   ],
+   "E2": "x0.6-x2"
+  },
+  "u2_note": "forecasts only (protocol 10.2; share computations not run under S3); labels J-U-<job>-a<k>, DRU-<job>-a<k>, KC-<job>-a<k>, E1-<job>-a<k>, REG2-<job>-a<k>, E2-<job>-a<k>"
+ },
+ "resources": {
+  "u2_memory_cap_bytes": {
+   "J-U": 8589934592,
+   "DRU": 8589934592,
+   "KC": 12884901888,
+   "E1": 12884901888,
+   "REG2": 12884901888,
+   "E2": 12884901888
+  },
+  "runaway_u2": {
+   "rule": "safeguards against defects, not budget lines (addenda 41-43): meter memory cap, disk floors (C: >= 2 GB, X: >= 30 GB), output cap (16 GiB over the whole out directory), native-operation wall 600 s; and a coordinator watchdog on the driver's own CPU",
+   "watchdog_cpu_s": {
+    "J-U": 6500,
+    "DRU": 3000,
+    "KC": 12500,
+    "E1": 22500,
+    "REG2": 4500,
+    "E2": "10 * (300 + 700*k)"
+   },
+   "store_size_rule": "KC5: projected end-of-study hwsu-store size <= output_cap_bytes / 2, else a reviewed resource erratum before E1"
+  }
+ },
+ "dry_run_u2": {
+  "cases": [
+   "DRU1",
+   "DRU2",
+   "DRU3",
+   "DRU4",
+   "DRU5",
+   "DRU6",
+   "DRU7",
+   "DRU-REG",
+   "DRU8",
+   "DRU9"
+  ],
+  "scope": "hwsu-dry-v1",
+  "store": "X:/Downloads/topo-scratch/hwsu-dry-u2-<job>",
+  "helpers": "X:/Downloads/topo-scratch/test_hwsu-<job>/",
+  "report": "stages/DRY/DRY_U2_REPORT.json",
+  "tiny_masters": [
+   649907,
+   649908,
+   649909
+  ],
+  "tiny_masters_note": "unused DRY seeds of HWSU's reserved block (649906 is phase 1's tiny world); OPEN-6",
+  "tiny_world": "API.md (phase 1) section 10 tiny_world (W = 6, H = 2, L = 32, V = 36)",
+  "tiny_model": {
+   "vocab_in": 37,
+   "vocab_out": 36,
+   "n_ctx": 33,
+   "n_layers": 1,
+   "d_model": 16,
+   "n_heads": 2,
+   "d_mlp": 32,
+   "activation": "gelu",
+   "dropout": 0.0,
+   "tie_embeddings": false
+  },
+  "tiny_train": {
+   "steps": 200,
+   "batch_size": 128,
+   "lr": 0.001,
+   "warmup": 20,
+   "schedule": "cosine",
+   "weight_decay": 0.1,
+   "grad_clip": 1.0,
+   "checkpoint_steps": [
+    0,
+    100,
+    200
+   ],
+   "device": "cpu"
+  },
+  "tiny_sizes": {
+   "train": 4096,
+   "dev": 512,
+   "fit": 1024,
+   "kfit": 512,
+   "feas": 512,
+   "val": 512,
+   "test_block": 512
+  },
+  "dru2": {
+   "layers": 4,
+   "d_model": 128,
+   "init": "random, torch.manual_seed(649910)",
+   "pairs": 2048,
+   "world": "w* built in memory",
+   "persisted": "nothing"
+  },
+  "pass": "every expected result exactly; the report is bound to the implementation hash and accepted before FREEZE.json"
+ },
+ "to_freeze_u2": {
+  "binding.allowlist": "call_time_reads re-run at h_exec; hwsc_registry_build.build (OPEN-7)",
+  "reuse_sha256_u2": "phase-2 import closure at h_exec minus the phase-1 table (kept outside the phase-1 key reuse_sha256: hwsu_freeze reads that key; OPEN-1 note)",
+  "registry_u2.root_table_u2": "name-only re-listing at the freeze",
+  "registry_u2.scratch_u2.rows": "hwsc_registry.scratch_scan header scan at implementation; reviewed before FREEZE.json",
+  "cpu.u2_central_s": "cost only; re-set from measured J-U, DRU and KC",
+  "dry_run_u2.tiny_train": "the plan object built like stage C's DRC1 plan with V = 36",
+  "stage_c_u2.stages_jsonl": "re-hashed at the freeze (hwsc-store is closed; a change -> FAIL_TECHNICAL/IDENTITY)"
+ }
+}

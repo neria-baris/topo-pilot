@@ -83,6 +83,7 @@
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 20, import)
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 18, import)
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 17, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 20, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 16, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 19, import)
 - [tools/k4b/k4b_charts.py](k4b_charts.py.md) (line 15, import)

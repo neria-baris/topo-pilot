@@ -75,6 +75,7 @@
 - [tools/hwsc/hwsc_records.py](hwsc_records.py.md) (line 327, import)
 - [tools/hwsd/hwsd_driver.py](../hwsd/hwsd_driver.py.md) (line 16, import)
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 22, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 19, import)
 
 ## Top-level constants
 

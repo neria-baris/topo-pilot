@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1107 tracked files; 701 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1144 tracked files; 733 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1024,12 +1024,21 @@ The generated index itself (`docs/code_index/`) is not indexed. 1107 tracked fil
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | `AUTHORSHIP_A.md` | markdown | 113 lines | Authorship record: test author A (job 0198, phase 2; oracle and estimand side) |
+| `AUTHORSHIP_A_U2.md` | markdown | 49 lines | Authorship record: test author A, phase 2 (job 0223; estimand and decision side) |
 | `AUTHORSHIP_B.md` | markdown | 48 lines | Test author B, job 0198 (HWSU phase 1, the oracle-only stage OF): records, binding and registry side |
+| `AUTHORSHIP_B_U2.md` | markdown | 44 lines | Test author B, job 0223 (HWSU phase 2, response family only): records and registry side |
 | [test_a_of_gates.py](files/tests/hwsu/test_a_of_gates.py.md) | python | 382 lines | Author A (job 0198): the OF gates OF-2 ... OF-5, the outcome rule and the tails report |
 | [test_a_of_ladder.py](files/tests/hwsu/test_a_of_ladder.py.md) | python | 146 lines | Author A (job 0198): the OF-4 proxy ladder (protocol §2.9 P1 rule, §4.2 OF-4; DRO4) with the |
 | [test_a_of_lemmas.py](files/tests/hwsu/test_a_of_lemmas.py.md) | python | 233 lines | Author A (job 0198): Lemmas P1, P2, P3 and J (protocol §2.2; §5.1 KS-P), by exact enumeration |
 | [test_a_of_oracle.py](files/tests/hwsu/test_a_of_oracle.py.md) | python | 310 lines | Author A (job 0198): oracle quantities on the tiny world (protocol §2.3, §2.6 problem O, |
 | [test_a_of_sampler.py](files/tests/hwsu/test_a_of_sampler.py.md) | python | 275 lines | Author A (job 0198): the exact conditional prefix sampler (protocol §2.1, Lemma P0, §5.1 |
+| [test_a_u2_estimand.py](files/tests/hwsu/test_a_u2_estimand.py.md) | python | 153 lines | Author A (job 0223): the response estimand theta and A_full (protocol 2.5; API_U2 1.2, 4.7). |
+| [test_a_u2_family.py](files/tests/hwsu/test_a_u2_family.py.md) | python | 194 lines | Author A (job 0223): family stream U and Lemma FW-U, response part (protocol 2.9; API_U2 4.4). |
+| [test_a_u2_known.py](files/tests/hwsu/test_a_u2_known.py.md) | python | 101 lines | Author A (job 0223): KO1-KO3 at VAL and TEST (protocol 5.2; API_U2 4.1 KC-U, 4.6) and KS-RULES. |
+| [test_a_u2_lemmas.py](files/tests/hwsu/test_a_u2_lemmas.py.md) | python | 175 lines | Author A (job 0223): Lemmas P1, P2 and J by exact enumeration in Fractions on the phase-1 |
+| [test_a_u2_outcome.py](files/tests/hwsu/test_a_u2_outcome.py.md) | python | 204 lines | Author A (job 0223): aggregation, outcomes and licences (protocol 2.9 overall rules, 7; |
+| [test_a_u2_p1.py](files/tests/hwsu/test_a_u2_p1.py.md) | python | 159 lines | Author A (job 0223): P1 precision ladder and its blindness (protocol 2.9; API_U2 4.2; DRU5). |
+| [test_a_u2_rules.py](files/tests/hwsu/test_a_u2_rules.py.md) | python | 142 lines | Author A (job 0223): per-model response statements (protocol 2.9 table; API_U2 4.4 model_status). |
 | [test_b_of_bind.py](files/tests/hwsu/test_b_of_bind.py.md) | python | 298 lines | Author B (job 0198): the call-allowlist and call-time-read audit run by OF-B (protocol §11.2, |
 | [test_b_of_config.py](files/tests/hwsu/test_b_of_config.py.md) | python | 316 lines | Author B (job 0198): hwsu_config: constants, the CONTRACT loader (D-2), the blindness guard |
 | [test_b_of_driver.py](files/tests/hwsu/test_b_of_driver.py.md) | python | 307 lines | Author B (job 0198): the OF job order, stopped-attempt obligations and reservation ends (D-17, |
@@ -1041,6 +1050,17 @@ The generated index itself (`docs/code_index/`) is not indexed. 1107 tracked fil
 | [test_b_of_reservations.py](files/tests/hwsu/test_b_of_reservations.py.md) | python | 323 lines | Author B (job 0198): reservation files, the J8 end record and the W2 attestation |
 | [test_b_of_seed.py](files/tests/hwsu/test_b_of_seed.py.md) | python | 356 lines | Author B (job 0198): the J9 seed-search mirror, the declaration fragments, the namespace |
 | [test_b_of_streams.py](files/tests/hwsu/test_b_of_streams.py.md) | python | 172 lines | Author B (job 0198): streams, sequence ids, history tables and names (protocol §2.1 S2, §2.8; |
+| [test_b_u2_audit.py](files/tests/hwsu/test_b_u2_audit.py.md) | python | 245 lines | Author B (job 0223, phase 2): the phase-2 audit u2/hwsu_bind_u2.py (protocol 11.2; API_U2 2.6; |
+| [test_b_u2_binding.py](files/tests/hwsu/test_b_u2_binding.py.md) | python | 246 lines | Author B (job 0223, phase 2): stage-C binding and identity (protocol 3.1; API_U2 1.1; DRU8). |
+| [test_b_u2_contract.py](files/tests/hwsu/test_b_u2_contract.py.md) | python | 143 lines | Author B (job 0223, phase 2): CONTRACT.json and its loader (TEST_PLAN_U2 section 3 row |
+| [test_b_u2_dx_policy.py](files/tests/hwsu/test_b_u2_dx_policy.py.md) | python | 207 lines | Author B (job 0223, phase 2): the logit policy and the M0 mirror (API_U2 1.3-1.4; protocol 2.10, |
+| [test_b_u2_freeze.py](files/tests/hwsu/test_b_u2_freeze.py.md) | python | 224 lines | Author B (job 0223, phase 2): the execution freeze FREEZE.json and S0 (API_U2 2.2; protocol 4.1, |
+| [test_b_u2_hwsd.py](files/tests/hwsu/test_b_u2_hwsd.py.md) | python | 342 lines | Author B (job 0223, phase 2): U5 (source_hwsd), J10 obligations of another store and R-0213-1 |
+| [test_b_u2_of_binding.py](files/tests/hwsu/test_b_u2_of_binding.py.md) | python | 142 lines | Author B (job 0223, phase 2): R-0206-1 and the share outcome (API_U2 section 2.1; |
+| [test_b_u2_records.py](files/tests/hwsu/test_b_u2_records.py.md) | python | 289 lines | Author B (job 0223, phase 2): sealing, records, obligations, reservations, meter binding and |
+| [test_b_u2_registry.py](files/tests/hwsu/test_b_u2_registry.py.md) | python | 297 lines | Author B (job 0223, phase 2): the registry readers with planted defects (protocol 8.2-8.3; |
+| [test_impl_u2_mirror.py](files/tests/hwsu/test_impl_u2_mirror.py.md) | python | 34 lines | Implementer test: hwsu_registry._violation mirrors c2_registry._violation (design 11.2). |
+| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 163 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
 
 ## tests/integration/
 
@@ -1438,9 +1458,12 @@ The generated index itself (`docs/code_index/`) is not indexed. 1107 tracked fil
 | File | Kind | Size | Purpose |
 |---|---|---|---|
 | `API.md` | markdown | 379 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
+| `API_U2.md` | markdown | 390 lines | tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1) |
+| `CONTRACT.json` | json | 1533 lines |  |
 | `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |
+| `TEST_PLAN_U2.md` | markdown | 60 lines | HWSU test plan, phase 2 (job 0223; the model phase, response family only) |
 | [hwsu_bind.py](files/tools/hwsu/hwsu_bind.py.md) | python | 234 lines | HWSU call allowlist and constant-read audit (API.md §7; protocol §11.2; run by OF-B, RC-10). |
 | [hwsu_config.py](files/tools/hwsu/hwsu_config.py.md) | python | 186 lines | HWSU configuration: CONTRACT loader, constants, blindness guard, HANDOFF mirror (API.md §1). |
 | [hwsu_driver_of.py](files/tools/hwsu/hwsu_driver_of.py.md) | python | 160 lines | HWSU job OF: gate context, run_of and the CLI (API.md §9; protocol §4.2, §5). |
@@ -1454,6 +1477,25 @@ The generated index itself (`docs/code_index/`) is not indexed. 1107 tracked fil
 | [hwsu_records.py](files/tools/hwsu/hwsu_records.py.md) | python | 215 lines | HWSU records: gate runner, stages, lineage, ledger, pauses, registry risk (API.md §5.1-§5.2). |
 | [hwsu_resv.py](files/tools/hwsu/hwsu_resv.py.md) | python | 294 lines | HWSU name rule, reservations, W2 attestation, obligations, root inventory (API.md §5.1, |
 | [hwsu_seed.py](files/tools/hwsu/hwsu_seed.py.md) | python | 163 lines | HWSU needle search, hit classification, namespace overlap and G0-OF (API.md §6; protocol §4.2 |
+
+## tools/hwsu/u2/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| [__init__.py](files/tools/hwsu/u2/__init__.py.md) | python | 14 lines | HWSU phase-2 package (API_U2.md section 0; R-0223-3). |
+| [hwsu_bind_u2.py](files/tools/hwsu/u2/hwsu_bind_u2.py.md) | python | 149 lines | HWSU phase-2 call allowlist and constant-read audit (API_U2.md section 2.6; protocol 11.2). |
+| [hwsu_decide.py](files/tools/hwsu/u2/hwsu_decide.py.md) | python | 238 lines | HWSU decision side: P1 ladder, family stream, per-model statements, aggregation, outcomes, |
+| [hwsu_driver.py](files/tools/hwsu/u2/hwsu_driver.py.md) | python | 345 lines | HWSU jobs KC, E1, REG2, E2, the metered entry point and the CLI (API_U2.md section 5). |
+| [hwsu_dry2.py](files/tools/hwsu/u2/hwsu_dry2.py.md) | python | 266 lines | HWSU model-phase dry run DRU, response family (API_U2.md section 6; protocol 9). |
+| [hwsu_dry2b.py](files/tools/hwsu/u2/hwsu_dry2b.py.md) | python | 259 lines | HWSU model-phase dry run DRU, cases that need no training (API_U2.md section 6; split from |
+| [hwsu_dry2c.py](files/tools/hwsu/u2/hwsu_dry2c.py.md) | python | 242 lines | HWSU model-phase dry run: the stage jobs KC, E1, REG2 and E2 through run_job on a synthetic |
+| [hwsu_dry2d.py](files/tools/hwsu/u2/hwsu_dry2d.py.md) | python | 246 lines | HWSU dry run DRU-REG: the planted-defect registry fixtures of API_U2.md section 6 |
+| [hwsu_e2.py](files/tools/hwsu/u2/hwsu_e2.py.md) | python | 245 lines | HWSU E2 gates: RELEASE-B, S7, H2-FRESH-U, T-PRE, NUM, ENDPOINT, SEALED_OPENED and the report |
+| [hwsu_gates.py](files/tools/hwsu/u2/hwsu_gates.py.md) | python | 373 lines | HWSU E1 gates, share-family stubs and the validation report (API_U2.md section 4.1, 4.7, 4.9). |
+| [hwsu_known.py](files/tools/hwsu/u2/hwsu_known.py.md) | python | 400 lines | HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6 |
+| [hwsu_model.py](files/tools/hwsu/u2/hwsu_model.py.md) | python | 299 lines | HWSU model part: stage-C loading, readout, response arrays, M0/X1 mirrors, logit policy |
+| [hwsu_registry.py](files/tools/hwsu/u2/hwsu_registry.py.md) | python | 328 lines | HWSU exposure registry: K-REG mirror, tables, U7 inventory, separation (API_U2.md section 3; |
+| [hwsu_regsrc.py](files/tools/hwsu/u2/hwsu_regsrc.py.md) | python | 291 lines | HWSU registry readers: U2 (stage C), U2', U5, U6, U8 and the J10 obligation reader |
 
 ## tools/k4b/
 

@@ -1,9 +1,9 @@
 # Function key
 
-10811 classes, functions and methods, alphabetical (case-insensitive).
+11340 classes, functions and methods, alphabetical (case-insensitive).
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
-| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `main` | 4912 |
-| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `main_bootstrap` | `test_p2_analogue` | 4064 |
-| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_p32_requires_33_inputs` | `zt` | 1835 |
+| [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `lines` | 4936 |
+| [FUNCTIONS_02.md](FUNCTIONS_02.md) | `lines` | `test_N15_readout_projector_full_rank` | 4127 |
+| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_N15_readout_projector_gamma_with_zeros` | `zt` | 2277 |

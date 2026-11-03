@@ -65,6 +65,8 @@
 - [tools/hwsd/hwsd_jobs.py](../../../tools/hwsd/hwsd_jobs.py.md) (line 32, import)
 - [tools/hwsd/hwsd_known2.py](../../../tools/hwsd/hwsd_known2.py.md) (line 31, import)
 - [tools/hwsd/hwsd_readers.py](../../../tools/hwsd/hwsd_readers.py.md) (line 20, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../../../tools/hwsu/u2/hwsu_dry2.py.md) (line 37, import)
+- [tools/hwsu/u2/hwsu_model.py](../../../tools/hwsu/u2/hwsu_model.py.md) (line 24, import)
 - [tools/k4b/k4b_driver.py](../../../tools/k4b/k4b_driver.py.md) (line 139, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 191, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 243, import)

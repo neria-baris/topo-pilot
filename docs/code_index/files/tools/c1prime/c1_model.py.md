@@ -62,6 +62,8 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 22, import)
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 14, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 13, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 26, import)
+- [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 15, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 100, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 170, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 274, import)

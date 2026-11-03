@@ -67,6 +67,7 @@
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 28, import)
 - [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 20, import)
 - [tests/hwsd/test_b_registry_r9.py](../../tests/hwsd/test_b_registry_r9.py.md) (line 18, import)
+- [tests/hwsu/test_impl_u2_mirror.py](../../tests/hwsu/test_impl_u2_mirror.py.md) (line 5, import)
 - [tools/c2_nd/nd_registry.py](../c2_nd/nd_registry.py.md) (line 26, import)
 - [tools/c2_nd/nd_split.py](../c2_nd/nd_split.py.md) (line 21, import)
 - [tools/c2_readout/c2_stage_base.py](c2_stage_base.py.md) (line 27, import)
@@ -81,6 +82,7 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 252, import)
 - [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 17, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 13, import)
+- [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 23, import)
 
 ## Top-level constants
 

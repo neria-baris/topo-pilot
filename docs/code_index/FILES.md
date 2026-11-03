@@ -1034,7 +1034,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked fil
 | [test_b_u2_records.py](files/tests/hwsu/test_b_u2_records.py.md) | python | 289 lines | Author B (job 0223, phase 2): sealing, records, obligations, reservations, meter binding and |
 | [test_b_u2_registry.py](files/tests/hwsu/test_b_u2_registry.py.md) | python | 297 lines | Author B (job 0223, phase 2): the registry readers with planted defects (protocol 8.2-8.3; |
 | [test_impl_u2_mirror.py](files/tests/hwsu/test_impl_u2_mirror.py.md) | python | 34 lines | Implementer test: hwsu_registry._violation mirrors c2_registry._violation (design 11.2). |
-| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 115 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
+| [test_impl_u2_review.py](files/tests/hwsu/test_impl_u2_review.py.md) | python | 126 lines | Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5). |
 
 ## tests/integration/
 
@@ -1407,7 +1407,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1102 tracked fil
 |---|---|---|---|
 | `API.md` | markdown | 379 lines | tools/hwsu: written contract, phase 1 (job 0198 phase 1; derived from HWSU-DESIGN-v1) |
 | `API_U2.md` | markdown | 390 lines | tools/hwsu: written contract, phase 2 (model phase, response family only; job 0223 phase 1; derived from HWSU-DESIGN-v1) |
-| `CONTRACT.json` | json | 1504 lines |  |
+| `CONTRACT.json` | json | 1505 lines |  |
 | `CONTRACT_OF.json` | json | 2863 lines |  |
 | `PROTOCOL_HWSU_v1.md` | markdown | 1080 lines | HWSU-DESIGN-v1: track U. Does the readout of the three stage-C models use the beyond-four information that their circle carries? |
 | `TEST_PLAN.md` | markdown | 71 lines | HWSU test plan, phase 1 (job 0198; the oracle-only stage OF) |

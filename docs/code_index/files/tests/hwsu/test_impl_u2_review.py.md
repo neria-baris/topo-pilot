@@ -2,7 +2,7 @@
 
 - Source: [tests/hwsu/test_impl_u2_review.py](../../../../../tests/hwsu/test_impl_u2_review.py)
 - Kind: python
-- Lines: 115
+- Lines: 126
 
 ## Module docstring
 
@@ -66,4 +66,5 @@
 - **test `test_unrecorded_compares_sha_not_only_name`** [L90-98]: `def test_unrecorded_compares_sha_not_only_name(tmp_path)`
 - **test `test_bind_stage_uses_the_stage_when_phase1_knows_it`** [L102-107]: `def test_bind_stage_uses_the_stage_when_phase1_knows_it()`
 - **test `test_handoff_is_decoded_with_a_bom_tolerant_codec`** [L111-115]: `def test_handoff_is_decoded_with_a_bom_tolerant_codec(name)` decorators: @pytest.mark.parametrize('name', ['hwsu_driver', 'hwsu_gates', 'hwsu_known'])
+- **test `test_s0_allowlist_admits_the_implementer_phase2_tests`** [L119-126]: `def test_s0_allowlist_admits_the_implementer_phase2_tests()`
 

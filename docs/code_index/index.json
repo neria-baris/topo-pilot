@@ -6,7 +6,7 @@
   "dynamic imports, internal": 50,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1102,
-  "functions and methods (incl. tests)": 10349,
+  "functions and methods (incl. tests)": 10350,
   "import cycles (strongly connected components)": 14,
   "import statements, external": 984,
   "import statements, internal ambiguous": 6,
@@ -25915,9 +25915,9 @@
   },
   "tests/hwsu/test_impl_u2_review.py": {
    "kind": "python",
-   "lines": 115,
+   "lines": 126,
    "purpose": "Implementer regression tests for the real-tree path review R-0223-10 (items 1, 2, 4, 5).",
-   "sha256": "56ed9cad5e3c0dae79a2e76dc898172b44dae9bf159045cc6ef91b1b1314140b"
+   "sha256": "293ea9894e415971912e70e7543854c0f0540f6d1ec499782b21820cd5568ae7"
   },
   "tests/integration/TEST_PLAN.md": {
    "kind": "markdown",
@@ -27343,9 +27343,9 @@
   },
   "tools/hwsu/CONTRACT.json": {
    "kind": "json",
-   "lines": 1504,
+   "lines": 1505,
    "purpose": "",
-   "sha256": "235d0858af073f622ca64621ae5baec4b461bd6212c20009e1f96782dfa3db23"
+   "sha256": "41b704c8498ff7b0646c4c6b4ea520164e509fe9d3ab70adbb8494c872a4264a"
   },
   "tools/hwsu/CONTRACT_OF.json": {
    "kind": "json",
@@ -27513,7 +27513,7 @@
    "kind": "python",
    "lines": 400,
    "purpose": "HWSU binding, freeze, S0, authority, attestation, G0U and the known cases KC0-KC6",
-   "sha256": "8b9809935829931db08de15c0b6e08988d891d27c6127c0f80cb4074876bfc46"
+   "sha256": "05e8e0d981d5b8b23c22447191b38cd23711c435e1b3f243a6e5f0a2cb28e58c"
   },
   "tools/hwsu/u2/hwsu_model.py": {
    "kind": "python",
@@ -158810,6 +158810,16 @@
      "qual": "test_handoff_is_decoded_with_a_bom_tolerant_codec",
      "sig": "def test_handoff_is_decoded_with_a_bom_tolerant_codec(name)",
      "start": 111
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 126,
+     "kind": "test",
+     "name": "test_s0_allowlist_admits_the_implementer_phase2_tests",
+     "qual": "test_s0_allowlist_admits_the_implementer_phase2_tests",
+     "sig": "def test_s0_allowlist_admits_the_implementer_phase2_tests()",
+     "start": 119
     }
    ],
    "syspath": [
@@ -276554,5 +276564,5 @@
    ]
   }
  },
- "sources_digest": "c5ae27d48bc06460df900c3c924e3762cbf4defbd715d6d65c95255cfdc3323c"
+ "sources_digest": "56ec8c397838eac352bb6637ea047d6b4a1586ba02b6acd22e53d6b0078e9497"
 }

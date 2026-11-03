@@ -560,6 +560,7 @@
 | `test_runtime_state_other_modes_are_noop` | test | `test_runtime_state_other_modes_are_noop` | [tests/experiment/test_x5g1t_runtime.py:115](../../tests/experiment/test_x5g1t_runtime.py#L115) |  |
 | `test_runtime_state_unknown_mode_is_stop` | test | `test_runtime_state_unknown_mode_is_stop` | [tests/experiment/test_x5g1t_runtime.py:122](../../tests/experiment/test_x5g1t_runtime.py#L122) |  |
 | `test_runtime_state_wait_is_hold` | test | `test_runtime_state_wait_is_hold` | [tests/experiment/test_x5g1t_runtime.py:108](../../tests/experiment/test_x5g1t_runtime.py#L108) |  |
+| `test_s0_allowlist_admits_the_implementer_phase2_tests` | test | `test_s0_allowlist_admits_the_implementer_phase2_tests` | [tests/hwsu/test_impl_u2_review.py:119](../../tests/hwsu/test_impl_u2_review.py#L119) |  |
 | `test_s0_u_accepts_the_real_diff_once_the_tree_is_committed` | test | `test_s0_u_accepts_the_real_diff_once_the_tree_is_committed` | [tests/hwsu/test_b_u2_freeze.py:210](../../tests/hwsu/test_b_u2_freeze.py#L210) |  |
 | `test_s0_u_refuses_a_diff_touching_a_phase1_file` | test | `test_s0_u_refuses_a_diff_touching_a_phase1_file` | [tests/hwsu/test_b_u2_freeze.py:203](../../tests/hwsu/test_b_u2_freeze.py#L203) | r_ref far enough back that the diff contains phase-1 files (status A): refused. |
 | `test_s2_and_s3_forecasts_are_sums_over_the_actual_worklist` | test | `test_s2_and_s3_forecasts_are_sums_over_the_actual_worklist` | [tests/hws/test_a_budget.py:65](../../tests/hws/test_a_budget.py#L65) |  |

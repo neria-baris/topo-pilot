@@ -1,9 +1,9 @@
 # Function key
 
-10672 classes, functions and methods, alphabetical (case-insensitive).
+10673 classes, functions and methods, alphabetical (case-insensitive).
 
 | Page | First name | Last name | Entries |
 |---|---|---|---|
 | [FUNCTIONS_01.md](FUNCTIONS_01.md) | `__add__` | `make_train_dev_c` | 4887 |
 | [FUNCTIONS_02.md](FUNCTIONS_02.md) | `make_trainer` | `test_percentile_interval_equals_inverted_cdf_quantile` | 4025 |
-| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_percentile_interval_hand_case` | `zt` | 1760 |
+| [FUNCTIONS_03.md](FUNCTIONS_03.md) | `test_percentile_interval_hand_case` | `zt` | 1761 |

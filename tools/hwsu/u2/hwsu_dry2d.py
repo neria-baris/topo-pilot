@@ -214,9 +214,33 @@ def obligations(base) -> dict:
     return {"ok": bool(ok), **r}
 
 
+def rerun(base) -> dict:
+    """R-0223-10 item 2: E1 fails after REG1 (attempt 1); the pre-attempt archive moves its
+    outputs to superseded/<job>-a1/ with SHA256SUMS and attempt 2 passes on RES-HWSU-U-a2."""
+    base = Path(base)
+    sr = d2c.synthetic_root_u(base / "jobs")
+    store = uc.SCRATCH / f"hwsu-dry-u2-{abs(hash(str(base))) % 10**8}-rr"
+    pl = d2c.planted_default(sr)
+    d2c.run_stage(store, sr, "DRU-RR-KC", "KC", pl)
+    bad = {"S3": lambda ctx: (_ for _ in ()).throw(ValueError("planted failure after REG1"))}
+    a1 = d2c.run_stage(store, sr, "DRU-RR", "E1", dict(pl, **bad), reservation_id="RES-HWSU-U",
+                       dry_continue=False)
+    (store / "RELEASE_A.json").unlink()  # the coordinator issues a new release per attempt
+    a2 = d2c.run_stage(store, sr, "DRU-RR", "E1", pl, reservation_id="RES-HWSU-U-a2", attempt=2)
+    arch = store / "superseded" / "DRU-RR-a1"
+    sums = (arch / "SHA256SUMS").read_text(encoding="utf-8").splitlines() if arch.is_dir() else []
+    moved = [ln.partition("  ")[2] for ln in sums if ln.strip()]
+
+    ok = (a1["result"]["outcome"] != "E1_PASS" and a2["result"]["outcome"] == "E1_PASS"
+          and a2["result"]["archived"] == str(arch)
+          and "registry/K-REG1.json" in moved and not ur.lineage_u(store).get("bad"))
+    return {"ok": bool(ok), "attempt1": a1["result"]["outcome"],
+            "attempt2": a2["result"]["outcome"], "archived": moved[:6]}
+
+
 def fixtures(base) -> dict:
     base = Path(base)
     out = {"s3_tables": s3_defects(base / "s3"), "never_opened": never_opened(base / "nv"),
            "kreg2": kreg2(base / "k2"), "hwsd": hwsd_reader(base / "hd"),
-           "obligations": obligations(base / "ob")}
+           "obligations": obligations(base / "ob"), "rerun": rerun(base / "rr")}
     return {"ok": all(v["ok"] for v in out.values()), **out}

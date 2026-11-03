@@ -56,6 +56,15 @@ def scratch_table_u(contract=None) -> dict:
     return table
 
 
+def fixture_prefixes(contract=None) -> tuple:
+    """Scratch prefixes of other studies' synthetic test/dry fixtures (EXCLUSION rows with the
+    fixture rule J4 in CONTRACT scratch_u2.rows; R-0223-10 item 1)."""
+    rows = _r(contract)["scratch_u2"].get("rows")
+    rows = rows if isinstance(rows, dict) else {}
+    return tuple(r["prefix"] for r in rows.values() if r.get("decision") == "EXCLUSION"
+                 and r.get("rule") == "J4 fixture" and r.get("prefix"))
+
+
 def root_table_u(contract=None) -> dict:
     t = dict(_hwsc_reg()["inventory"])
     t.update(_r(contract)["root_table_u2"]["add"])
@@ -116,10 +125,12 @@ def inventory_u(root, readers, contract=None) -> dict:
 def _scratch_u(scratch, readers_ok) -> dict:
     res = hwsc_registry.scratch_check(scratch, table=scratch_table_u(), readers_ok=readers_ok)
     routed = _r()["scratch_u2"]["reserved_globs"]
+    fixture = fixture_prefixes()
     keep = []
     for o in res["other"]:
         first = re.split(r"[\\/]", str(o["path"]).replace(str(scratch), "").lstrip("\\/"))[0]
-        if not any(fnmatch.fnmatchcase(first, g) for g in routed):
+        if not any(fnmatch.fnmatchcase(first, g) for g in routed) and not first.startswith(
+                fixture):
             keep.append(o)
     res["other"] = keep
     return rs._close(res)

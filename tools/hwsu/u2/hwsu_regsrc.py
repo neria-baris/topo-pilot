@@ -160,6 +160,8 @@ def source_own_u(store, expected, contract=None) -> dict:
     for rel, want in listed.items():
         try:
             f = store / rel
+            if not f.is_file():  # archived by a later attempt (superseded/<job>-a<k>/<rel>)
+                f = next(iter(sorted(store.glob(f"superseded/*/{rel}"))), f)
             if stage_records.sha256(f) != want:
                 raise ValueError("sha256 differs from STAGE_COMPLETE")
             _take(out, f, rel)

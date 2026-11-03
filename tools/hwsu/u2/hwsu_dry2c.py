@@ -138,6 +138,8 @@ def write_auth(store, job, stage, sr) -> Path:
         stage_records.write_new(fz, {"fixture": True})
     ra = sr["contract"]["authority_u2"]["run_approval"]
     f = store / f"AUTH_U_{job}.json"
+    if f.exists():  # a rerun of the same job keeps its authorisation
+        return f
     stage_records.write_new(f, {
         "stage": stage, "owner_approval": {"path": ra["path"], "sha256": ra["sha256"]},
         "freeze_sha256": stage_records.sha256(fz)})
@@ -146,8 +148,8 @@ def write_auth(store, job, stage, sr) -> Path:
 
 def stage_ctx(store, sr, job, stage, planted, **extra) -> dict:
     rid = extra.pop("reservation_id", None)
-    ctx = udrv.build_ctx_u(store, job, 1, stage, rid, root=sr["root"], mailbox=sr["mailbox"],
-                           hwsc_store=sr["hwsc_store"], scope=uc.SCOPE_DRY, dry=True)
+    ctx = udrv.build_ctx_u(store, job, extra.pop("attempt", 1), stage, rid, root=sr["root"],
+                           mailbox=sr["mailbox"], hwsc_store=sr["hwsc_store"], scope=uc.SCOPE_DRY, dry=True)
     p = float(hwsc_data.p_d2a_check(udry.tiny_world(), 1.0)["p_D2a"])
     ho = _w(sr["root"] / "handoff.json", json.dumps({
         "p_D2a": p, "stage_c_exclusions": [], "store_inventory": {}}))
@@ -185,14 +187,15 @@ def prepare(store, stage, rid) -> None:
 
 
 def run_stage(store, sr, job, stage, planted, reservation_id=None, dry_continue=True,
-              **extra) -> dict:
+              attempt=1, **extra) -> dict:
     if not (Path(store) / "FREEZE_OF.json").exists():
         of_fixture(store, sr)
     write_auth(store, job, stage, sr)
     if reservation_id is not None:
         prepare(store, stage, reservation_id)
-    ctx = stage_ctx(store, sr, job, stage, planted, reservation_id=reservation_id, **extra)
-    res = udrv.run_job(stage, store, job, reservation_id=reservation_id, ctx=ctx,
+    ctx = stage_ctx(store, sr, job, stage, planted, reservation_id=reservation_id,
+                     attempt=attempt, **extra)
+    res = udrv.run_job(stage, store, job, attempt=attempt, reservation_id=reservation_id, ctx=ctx,
                        dry_continue=dry_continue)
     got = {r["gate"]: r["status"] for r in res["records"]}
     return {"result": res, "gates": got, "planted": sorted(planted), "ctx": ctx}

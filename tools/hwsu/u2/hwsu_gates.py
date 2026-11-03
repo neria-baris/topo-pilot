@@ -88,10 +88,10 @@ def register_new(out, stage, rel_dir) -> list:
     done = set()
     for e in stage_records.stages_so_far(out):
         if e.get("event") == "STAGE_COMPLETE":
-            done |= set(e.get("files", {}))
+            done |= set(e.get("files", {}).items())
     files = sorted(p.relative_to(out).as_posix() for p in (out / rel_dir).rglob("*")
                    if p.is_file())
-    new = [f for f in files if f not in done]
+    new = [f for f in files if (f, stage_records.sha256(out / f)) not in done]
     ur.complete_stage(out, stage, new)
     return new
 
@@ -135,7 +135,7 @@ def h1_u(out, ctx) -> dict:
 
 def reg1(out, ctx) -> dict:
     out = Path(out)
-    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
+    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8-sig"))
     man = ureg.build_u("K-REG1", out / "registry", root=ctx["root"],
                        scratch=ctx.get("scratch", uc.SCRATCH), handoff=hd,
                        own=of_hist(ctx.get("dry")), sources=ctx.get("registry_sources"))

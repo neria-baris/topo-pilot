@@ -24,6 +24,7 @@ import time
 from pathlib import Path
 
 import k4b_meter_bind
+import k4b_release
 import meter
 import op_guard
 import stage_records
@@ -51,7 +52,7 @@ def build_ctx_u(out, job, attempt, stage, reservation_id=None, root=uc.ROOT, mai
 
 def reg2(out, ctx) -> dict:
     out = Path(out)
-    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
+    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8-sig"))
     pre = "DRYHIST" if ctx.get("dry") else "HIST"
     own = ug.of_hist(ctx.get("dry")) + [f"stages/E1/{pre}_{n}.npz" for n in (
         "fit_s_b0", "fit_s_b1", "val_a1_b0", "val_a2_b0")]
@@ -123,14 +124,14 @@ def _unrecorded(out, rels) -> list:
     out, done = Path(out), set()
     for e in stage_records.stages_so_far(out):
         if e.get("event") == "STAGE_COMPLETE":
-            done |= set(e.get("files", {}))
+            done |= set(e.get("files", {}).items())
     found = []
     for rel in rels:
         base = out / rel
         fs = [base] if base.is_file() else sorted(p for p in base.rglob("*") if p.is_file()) \
             if base.is_dir() else []
         found += [p.relative_to(out).as_posix() for p in fs]
-    return [f for f in dict.fromkeys(found) if f not in done]
+    return [f for f in dict.fromkeys(found) if (f, stage_records.sha256(out / f)) not in done]
 
 
 def _outcome(stage, records, ctx) -> str:
@@ -139,6 +140,77 @@ def _outcome(stage, records, ctx) -> str:
     if stage == "E2" and "resp" in ctx:
         return ud.study_outcome([{"status": r["status"]} for r in records], ctx["resp"])
     return bad["status"] if bad else f"{stage}_PASS"
+
+
+STAGE_OUTPUTS = {
+    "KC": ("stages/KC", "registry/rehearsal"),
+    "E1": ("stages/E1", "registry/K-REG1.json", "registry/K-REG1_digests.npz",
+           "registry/runs/K-REG1", "SEALED_VALIDATION.json"),
+    "REG2": ("registry/K-REG2.json", "registry/K-REG2_digests.npz", "registry/runs/K-REG2"),
+    "E2": ("stages/E2",)}
+
+
+def archive_previous(out, stage, job) -> Path | None:
+    """Pre-attempt archive (R-0223-10 item 2): earlier outputs of the same stage move to
+    superseded/<job>-a<k>/ with SHA256SUMS (the hwsc archive_attempt pattern), so a rerun does not
+    meet an exclusive-create FileExistsError. Other stages' files are never touched."""
+    out, files = Path(out), []
+    for rel in STAGE_OUTPUTS[stage]:
+        p = out / rel
+        files += [p] if p.is_file() else sorted(q for q in p.rglob("*") if q.is_file())
+    if not files:
+        return None
+    k = 1
+    while (out / "superseded" / f"{job}-a{k}").exists():
+        k += 1
+    return k4b_release.archive_attempt(out, f"{job}-a{k}", files, {})
+
+
+SUPERSEDED_RULE = {"kind": "oracle-moment",
+                   "regex": r"superseded/[^/]+/stages/(?:.+/)?[A-Z]+_[^/]*\.npz"}
+
+
+def write_obligation_u2(store, name, job, written_by, dry=False, attempt=None,
+                        reservation_id=None) -> Path:
+    """Phase-1 obligation writer (hwsu_records.write_obligation) extended to the arrays of
+    archived attempts: superseded/<job>-a<k>/<rel> is classed by <rel>, stage arrays by
+    SUPERSEDED_RULE. Without archived arrays it is exactly the phase-1 writer."""
+    store, c = Path(store), uc.CONTRACT["obligation"]
+    arrays = sorted(p.relative_to(store).as_posix() for p in store.rglob("*")
+                    if p.is_file() and p.suffix in ur.ARRAY_SUFFIXES)
+    if not any(a.startswith("superseded/") for a in arrays):
+        return ur.write_obligation(store, name, job, written_by, dry=dry, attempt=attempt,
+                                   reservation_id=reservation_id)
+    files = []
+    for rel in arrays:
+        sup = rel.startswith("superseded/")
+        cls = ur.name_class("/".join(rel.split("/")[2:]) if sup else rel, uc.CONTRACT, dry)
+        if cls is None:
+            raise C1GateFailure("FAIL_TECHNICAL/LINEAGE", f"array outside the name rule: {rel}")
+        ckpt = cls == "NON_HISTORY_ARTIFACT" and rel.split("/")[-4:][1] == "Checkpoint"
+        f = store / rel
+        e = {"relpath": rel, "sha256": None if ckpt else uc.sha256_file(f),
+             "bytes": f.stat().st_size, "class": "NON_HISTORY", "reader": None}
+        if cls == "K4b history table":
+            e.update({"class": cls, "reader": c["readers"][cls], "basis": None})
+        else:
+            e["basis"] = {"NON_HISTORY_ARTIFACT": "artifact", "NON_HISTORY_REGISTRY": "registry",
+                          "NON_HISTORY": "name_rule"}[cls]
+        files.append(e)
+    rec = {"schema": c["schema"], "store": store.resolve().as_posix(), "track": c["track"],
+           "job": job, "attempt": attempt, "written_utc": ur.utc(), "written_by": written_by,
+           "reservation_id": reservation_id,
+           "name_rules": [dict(r) for r in c["name_rules"]] + [dict(SUPERSEDED_RULE)],
+           "dry_stores": [], "files": files, "rule": c["rule"]}
+    p = store / name
+    stage_records.write_new(p, rec)
+    return p
+
+
+def bind_stage(stage) -> str:
+    """The stage name phase-1 bind accepts: the stage itself when its table knows it, else OF
+    (the phase-2 cap replaces the value right after; R-0223-10 item 4)."""
+    return stage if stage in uc.CONTRACT["resources"]["memory_cap_bytes"] else "OF"
 
 
 def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledger_path=None,
@@ -162,6 +234,7 @@ def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledge
         stage_records.record_gate(out, "AUTH", exc.status, reason=str(exc.reason)[:2000])
         return dict(refused, outcome=exc.status)
     stage_records.record_gate(out, "AUTH", "PASS")
+    archived = archive_previous(out, stage, job)
     ur.begin_stage(out, stage)
     t0 = time.process_time()
     records = ur.run_gates_u(out, steps(stage, ctx),
@@ -183,9 +256,9 @@ def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledge
     name = ur.obligation_name(stage, attempt, final=complete)
     result = {"exit": _exit_code(outcome, complete), "outcome": outcome,
               "records": records, "obligation": name, "rows_drawn": ctx["rows_drawn"],
-              "cpu_s": ctx["cpu_s"]}
+              "cpu_s": ctx["cpu_s"], "archived": None if archived is None else str(archived)}
     try:
-        ob = ur.write_obligation(out, name, stage, written_by=f"hwsu_driver job {job}",
+        ob = write_obligation_u2(out, name, stage, written_by=f"hwsu_driver job {job}",
                                  dry=ctx.get("dry", False), attempt=attempt,
                                  reservation_id=reservation_id)
         extra = ["SEALED_VALIDATION.json"] if (out / "SEALED_VALIDATION.json").is_file() \
@@ -220,7 +293,8 @@ def meter_main(argv=None) -> int:
         print("hwsu_driver: placement refused", file=sys.stderr)
         return 2
     out.mkdir(parents=True, exist_ok=True)
-    umb.bind(job, opts["--task-sha256"], out, session, "OF", paths["temp_root"])
+    umb.bind(job, opts["--task-sha256"], out, session, bind_stage(opts["--stage"]),
+             paths["temp_root"])
     winjob.MEMORY_CAP = cap
     if meter.LOCK.exists() and session not in meter.LOCK.read_text("utf-8"):
         print("hwsu_driver: RUN.lock names another session", file=sys.stderr)

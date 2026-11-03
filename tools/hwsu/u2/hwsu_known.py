@@ -335,13 +335,13 @@ def _bytes(root) -> int:
 def kc5(out, ctx) -> dict:
     out = Path(out)
     reh = out / "registry" / "rehearsal"
-    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8"))
+    hd = json.loads(uc.read_bytes(ctx.get("handoff_path", uc.HANDOFF_PATH)).decode("utf-8-sig"))
     man = ureg.build_u("REHEARSAL", reh, root=ctx["root"], scratch=ctx.get("scratch", uc.SCRATCH),
                        handoff=hd, own=None, sources=ctx.get("registry_sources"))
-    done = {f for e in stage_records.stages_so_far(out) if e.get("event") == "STAGE_COMPLETE"
-            for f in e.get("files", {})}  # the rehearsal registry joins the lineage (J10)
-    ur.complete_stage(out, "KC5", [p for p in sorted(reh.rglob("*")) if p.is_file()
-                                   and p.relative_to(out).as_posix() not in done])
+    done = {x for e in stage_records.stages_so_far(out) if e.get("event") == "STAGE_COMPLETE"
+            for x in e.get("files", {}).items()}  # the rehearsal registry joins the lineage
+    ur.complete_stage(out, "KC5", [p for p in sorted(reh.rglob("*")) if p.is_file() and (
+        p.relative_to(out).as_posix(), stage_records.sha256(p)) not in done])
     now, reg_b = _bytes(out), _bytes(reh)
     hist = [p.stat().st_size for p in out.rglob("HIST_*.npz")]
     per_row = (sum(hist) / 24576.0) if hist else 320.0

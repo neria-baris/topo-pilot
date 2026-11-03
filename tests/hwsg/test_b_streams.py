@@ -50,7 +50,8 @@ def test_block_generators_and_ids(tag):
                 exp = SeedTree(0).generator("data", "hwsg-v1/" + W.key, split, b, *W.process)
                 assert np.array_equal(_draw(got), _draw(exp))
                 ids = hdata.block_ids(split, b, 64)
-                code = pcode(*W.process, f"hwsg-v1/{W.key}/{split}/b{b}")
+                code = pcode(W.process[0], W.process[1], "|".join(W.process[2:]),  # erratum E1
+                             f"hwsg-v1/{W.key}/{split}/b{b}")
                 assert np.array_equal(np.asarray(ids), np.asarray(make_ids(code, "test", 64)))
 
 
@@ -62,7 +63,8 @@ def test_train_dev_sequence_ids_follow_scope_role_master():
     with gb.world("mid"):
         m = W.masters[0]
         got = hdata.sequence_ids_c("train", 64, gc.plan("mid"), m, "hwsg-v1")
-        exp = make_ids(pcode(*W.process, f"hwsg-v1/train/{m}"), "train", 64)
+        exp = make_ids(pcode(W.process[0], W.process[1], "|".join(W.process[2:]),  # erratum E1
+                             f"hwsg-v1/train/{m}"), "train", 64)
         assert np.array_equal(np.asarray(got), np.asarray(exp))
 
 

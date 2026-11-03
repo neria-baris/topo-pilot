@@ -348,7 +348,7 @@
 - [tools/hwsu/hwsu_of.py](../../../tools/hwsu/hwsu_of.py.md) (line 30, import)
 - [tools/hwsu/hwsu_pairs.py](../../../tools/hwsu/hwsu_pairs.py.md) (line 13, import)
 - [tools/hwsu/hwsu_records.py](../../../tools/hwsu/hwsu_records.py.md) (line 24, import)
-- [tools/hwsu/u2/hwsu_dry2.py](../../../tools/hwsu/u2/hwsu_dry2.py.md) (line 34, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../../../tools/hwsu/u2/hwsu_dry2.py.md) (line 36, import)
 - [tools/hwsu/u2/hwsu_model.py](../../../tools/hwsu/u2/hwsu_model.py.md) (line 23, import)
 - [tools/k4b/k4b_data.py](../../../tools/k4b/k4b_data.py.md) (line 18, import)
 - [tools/k4b/k4b_decoder.py](../../../tools/k4b/k4b_decoder.py.md) (line 15, import)

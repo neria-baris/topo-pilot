@@ -67,9 +67,10 @@
 - [tests/hwsu/test_b_of_registry.py](../../tests/hwsu/test_b_of_registry.py.md) (line 34, import)
 - [tools/hwsu/hwsu_driver_of.py](hwsu_driver_of.py.md) (line 151, import)
 - [tools/hwsu/hwsu_dry_b.py](hwsu_dry_b.py.md) (line 7, import)
-- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 19, import)
+- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 21, import)
 - [tools/hwsu/u2/hwsu_dry2b.py](u2/hwsu_dry2b.py.md) (line 12, import)
-- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 10, import)
+- [tools/hwsu/u2/hwsu_dry2c.py](u2/hwsu_dry2c.py.md) (line 13, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 9, import)
 
 ## Top-level constants
 

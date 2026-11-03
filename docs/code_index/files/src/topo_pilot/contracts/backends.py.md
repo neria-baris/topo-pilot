@@ -59,7 +59,7 @@
 - [tools/hwsc/hwsc_jobs.py](../../../tools/hwsc/hwsc_jobs.py.md) (line 28, import)
 - [tools/hwsc/hwsc_known.py](../../../tools/hwsc/hwsc_known.py.md) (line 30, import)
 - [tools/hwsc/hwsc_registry.py](../../../tools/hwsc/hwsc_registry.py.md) (line 22, import)
-- [tools/hwsu/u2/hwsu_dry2.py](../../../tools/hwsu/u2/hwsu_dry2.py.md) (line 35, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../../../tools/hwsu/u2/hwsu_dry2.py.md) (line 37, import)
 - [tools/hwsu/u2/hwsu_model.py](../../../tools/hwsu/u2/hwsu_model.py.md) (line 24, import)
 - [tools/k4b/k4b_driver.py](../../../tools/k4b/k4b_driver.py.md) (line 139, import)
 - [tools/k4b/k4b_registry.py](../../../tools/k4b/k4b_registry.py.md) (line 191, import)

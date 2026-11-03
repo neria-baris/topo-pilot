@@ -145,7 +145,7 @@
 - [tools/hwsu/u2/hwsu_dry2b.py](../hwsu/u2/hwsu_dry2b.py.md) (line 26, import)
 - [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 29, import)
 - [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 33, import)
-- [tools/hwsu/u2/hwsu_known.py](../hwsu/u2/hwsu_known.py.md) (line 30, import)
+- [tools/hwsu/u2/hwsu_known.py](../hwsu/u2/hwsu_known.py.md) (line 29, import)
 - [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 26, import)
 - [tools/k4b/k4b_cert.py](../k4b/k4b_cert.py.md) (line 18, import)
 - [tools/k4b/k4b_charts.py](../k4b/k4b_charts.py.md) (line 18, import)

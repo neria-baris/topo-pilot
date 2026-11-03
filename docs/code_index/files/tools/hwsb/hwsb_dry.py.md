@@ -82,7 +82,7 @@
 - [tools/hwsb/hwsb_dry2.py](hwsb_dry2.py.md) (line 29, import)
 - [tools/hwsc/hwsc_dry.py](../hwsc/hwsc_dry.py.md) (line 18, import)
 - [tools/hwsu/hwsu_dry.py](../hwsu/hwsu_dry.py.md) (line 21, import)
-- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 27, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 29, import)
 
 ## Top-level constants
 

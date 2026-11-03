@@ -2,6 +2,28 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_phase2_files_names_modules_and_documents` | test | `test_phase2_files_names_modules_and_documents` | [tests/hwsu/test_b_u2_contract.py:123](../../tests/hwsu/test_b_u2_contract.py#L123) |  |
+| `test_phase2_files_not_in_phase1_files` | test | `test_phase2_files_not_in_phase1_files` | [tests/hwsu/test_b_u2_contract.py:134](../../tests/hwsu/test_b_u2_contract.py#L134) |  |
+| `test_phase_bin_counts_known_answers` | test | `test_phase_bin_counts_known_answers` | [tests/circle_history/test_chart_extension.py:287](../../tests/circle_history/test_chart_extension.py#L287) |  |
+| `test_phase_bound_at_K_equals_row_bound` | test | `test_phase_bound_at_K_equals_row_bound` | [tests/k4b/test_a_lemma_n.py:197](../../tests/k4b/test_a_lemma_n.py#L197) |  |
+| `test_phase_bound_closed_form_at_phi_zero` | test | `test_phase_bound_closed_form_at_phi_zero` | [tests/k4b/test_a_lemma_n.py:210](../../tests/k4b/test_a_lemma_n.py#L210) |  |
+| `test_phase_bound_detects_a_wrong_score` | test | `test_phase_bound_detects_a_wrong_score` | [tests/k4b/test_a_lemma_n.py:228](../../tests/k4b/test_a_lemma_n.py#L228) |  |
+| `test_phase_bound_K1_K2_differ_by_envelopes` | test | `test_phase_bound_K1_K2_differ_by_envelopes` | [tests/k4b/test_a_lemma_n.py:220](../../tests/k4b/test_a_lemma_n.py#L220) |  |
+| `test_phase_bound_refuses_phase_outside_domain` | test | `test_phase_bound_refuses_phase_outside_domain` | [tests/k4b/test_a_lemma_n.py:235](../../tests/k4b/test_a_lemma_n.py#L235) |  |
+| `test_pinsker_violations_counts_only_below_minus_tol` | test | `test_pinsker_violations_counts_only_below_minus_tol` | [tests/hws/test_a_stats.py:232](../../tests/hws/test_a_stats.py#L232) |  |
+| `test_pipeline_matches_independent_reference` | test | `test_pipeline_matches_independent_reference` | [tests/circle_history/test_error_bound.py:286](../../tests/circle_history/test_error_bound.py#L286) |  |
+| `test_pipeline_null_any_single_check_fails` | test | `test_pipeline_null_any_single_check_fails` | [tests/d2a/test_b_rules_flags.py:277](../../tests/d2a/test_b_rules_flags.py#L277) |  |
+| `test_pipeline_null_mean_below_threshold_does_not_rescue` | test | `test_pipeline_null_mean_below_threshold_does_not_rescue` | [tests/d2a/test_b_rules_flags.py:288](../../tests/d2a/test_b_rules_flags.py#L288) |  |
+| `test_pipeline_null_needs_all_four_checks` | test | `test_pipeline_null_needs_all_four_checks` | [tests/d2a/test_b_rules_flags.py:282](../../tests/d2a/test_b_rules_flags.py#L282) |  |
+| `test_pipeline_null_passes_at_boundary` | test | `test_pipeline_null_passes_at_boundary` | [tests/d2a/test_b_rules_flags.py:270](../../tests/d2a/test_b_rules_flags.py#L270) |  |
+| `test_placement_against_synthetic_root` | test | `test_placement_against_synthetic_root` | [tests/hwsu/test_b_of_meter.py:96](../../tests/hwsu/test_b_of_meter.py#L96) |  |
+| `test_placement_ok_contract_paths` | test | `test_placement_ok_contract_paths` | [tests/hwsu/test_b_of_meter.py:72](../../tests/hwsu/test_b_of_meter.py#L72) |  |
+| `test_placement_ok_for_test_paths_and_planted_inside_root` | test | `test_placement_ok_for_test_paths_and_planted_inside_root` | [tests/hwsb/test_b_meter_law.py:118](../../tests/hwsb/test_b_meter_law.py#L118) |  |
+| `test_placement_rejects_bad_store_paths` | test | `test_placement_rejects_bad_store_paths` | [tests/hwsu/test_b_of_meter.py:90](../../tests/hwsu/test_b_of_meter.py#L90) |  |
+| `test_placement_rejects_bad_test_paths` | test | `test_placement_rejects_bad_test_paths` | [tests/hwsu/test_b_of_meter.py:85](../../tests/hwsu/test_b_of_meter.py#L85) |  |
+| `test_plain_support_exclude_unresolved` | test | `test_plain_support_exclude_unresolved` | [tests/k4b/test_a_decision.py:141](../../tests/k4b/test_a_decision.py#L141) |  |
+| `test_planted_code_carries_the_contrast` | test | `test_planted_code_carries_the_contrast` | [tests/c2_nd/test_impl_dry_hs.py:107](../../tests/c2_nd/test_impl_dry_hs.py#L107) | Before rescaling, the head's code part carries a substantial share of the oracle |
+| `test_planted_collision_with_a_c2_test_table` | test | `test_planted_collision_with_a_c2_test_table` | [tests/c2_nd/test_b_registry.py:137](../../tests/c2_nd/test_b_registry.py#L137) |  |
 | `test_planted_defect_independent_suffixes_breaks_identity` | test | `test_planted_defect_independent_suffixes_breaks_identity` | [tests/hwsu/test_a_u2_lemmas.py:158](../../tests/hwsu/test_a_u2_lemmas.py#L158) | Pairs built from independent histories (suffix not shared) do not satisfy Lemma P2/P1. |
 | `test_planted_defect_is_a_hit` | test | `test_planted_defect_is_a_hit` | [tests/hwsc/test_b_binding.py:270](../../tests/hwsc/test_b_binding.py#L270) |  |
 | `test_planted_defective_samplers_are_caught` | test | `test_planted_defective_samplers_are_caught` | [tests/hwsu/test_a_of_sampler.py:162](../../tests/hwsu/test_a_of_sampler.py#L162) | (d) T in place of T~, and π in place of the bridge (β dropped): each fails (b). |
@@ -1344,13 +1366,13 @@
 | `tiny_index` | function | `tiny_index` | [tests/activations/conftest.py:91](../../tests/activations/conftest.py#L91) |  |
 | `tiny_model` | function | `tiny_model` | [tests/activations/conftest.py:61](../../tests/activations/conftest.py#L61) |  |
 | `tiny_model` | function | `tiny_model` | [tests/c2_nd/test_b_decoy_model.py:41](../../tests/c2_nd/test_b_decoy_model.py#L41) |  |
-| `tiny_models` | function | `tiny_models` | [tools/hwsu/u2/hwsu_dry2.py:72](../../tools/hwsu/u2/hwsu_dry2.py#L72) | Three tiny models trained by hwsb_train.train on make_train_dev_c ObservationSets under |
+| `tiny_models` | function | `tiny_models` | [tools/hwsu/u2/hwsu_dry2.py:88](../../tools/hwsu/u2/hwsu_dry2.py#L88) | Three tiny models trained by hwsb_train.train on make_train_dev_c ObservationSets under |
 | `tiny_obs` | function | `tiny_obs` | [tests/activations/conftest.py:86](../../tests/activations/conftest.py#L86) |  |
 | `tiny_obs` | function | `tiny_obs` | [tests/learner/conftest.py:14](../../tests/learner/conftest.py#L14) |  |
 | `tiny_observations` | function | `tiny_observations` | [src/topo_pilot/contracts/testing.py:82](../../src/topo_pilot/contracts/testing.py#L82) | ``R`` test-split trajectories of 33 symbols sampled from :func:`tiny_hmm`. |
 | `tiny_pairs` | function | `tiny_pairs` | [tools/hwsu/hwsu_dry.py:93](../../tools/hwsu/hwsu_dry.py#L93) |  |
 | `tiny_plan` | function | `tiny_plan` | [tests/hwsb/test_b_e4path.py:89](../../tests/hwsb/test_b_e4path.py#L89) |  |
-| `tiny_plan` | function | `tiny_plan` | [tools/hwsu/u2/hwsu_dry2.py:47](../../tools/hwsu/u2/hwsu_dry2.py#L47) | The tiny training plan: CONTRACT dry_run_u2 tiny_model / tiny_train / tiny_masters, sizes |
+| `tiny_plan` | function | `tiny_plan` | [tools/hwsu/u2/hwsu_dry2.py:49](../../tools/hwsu/u2/hwsu_dry2.py#L49) | The tiny training plan: CONTRACT dry_run_u2 tiny_model / tiny_train / tiny_masters, sizes |
 | `tiny_proc` | function | `tiny_proc` | [tests/hwsb/test_b_streams.py:271](../../tests/hwsb/test_b_streams.py#L271) |  |
 | `tiny_world` | function | `tiny_world` | [tools/hwsu/hwsu_dry.py:31](../../tools/hwsu/hwsu_dry.py#L31) |  |
 | `tiny_world_spec` | function | `tiny_world_spec` | [src/topo_pilot/contracts/testing.py:22](../../src/topo_pilot/contracts/testing.py#L22) | An ``n x n`` square or cylinder (axis 0 periodic) built by direct enumeration. |
@@ -1544,7 +1566,7 @@
 | `verify_freeze` | function | `verify_freeze` | [tools/hwsb/hwsb_records.py:146](../../tools/hwsb/hwsb_records.py#L146) |  |
 | `verify_freeze_c` | function | `verify_freeze_c` | [tools/hwsc/hwsc_records.py:208](../../tools/hwsc/hwsc_records.py#L208) |  |
 | `verify_freeze_of` | function | `verify_freeze_of` | [tools/hwsu/hwsu_freeze.py:108](../../tools/hwsu/hwsu_freeze.py#L108) |  |
-| `verify_freeze_u` | function | `verify_freeze_u` | [tools/hwsu/u2/hwsu_known.py:121](../../tools/hwsu/u2/hwsu_known.py#L121) |  |
+| `verify_freeze_u` | function | `verify_freeze_u` | [tools/hwsu/u2/hwsu_known.py:120](../../tools/hwsu/u2/hwsu_known.py#L120) |  |
 | `verify_full` | function | `verify_full` | [src/topo_pilot/experiment/x5g1t_checks.py:29](../../src/topo_pilot/experiment/x5g1t_checks.py#L29) |  |
 | `verify_identity` | function | `verify_identity` | [tools/d2a/d2a_train.py:214](../../tools/d2a/d2a_train.py#L214) | Dispatch identities (ruling D6): request, task.json, task.md digest, RUN.lock session. |
 | `verify_input_hashes` | function | `verify_input_hashes` | [tools/x4_oracle_profile/inputs.py:42](../../tools/x4_oracle_profile/inputs.py#L42) |  |
@@ -1569,7 +1591,7 @@
 | `w0_process` | function | `w0_process` | [tools/hwsb/hwsb_known.py:158](../../tools/hwsb/hwsb_known.py#L158) |  |
 | `w1_stats` | function | `w1_stats` | [tests/x6zc/test_x6zc_core.py:104](../../tests/x6zc/test_x6zc_core.py#L104) |  |
 | `w2_attestation` | function | `w2_attestation` | [tools/hwsu/hwsu_resv.py:127](../../tools/hwsu/hwsu_resv.py#L127) |  |
-| `w2_attestation_u2` | function | `w2_attestation_u2` | [tools/hwsu/u2/hwsu_known.py:225](../../tools/hwsu/u2/hwsu_known.py#L225) |  |
+| `w2_attestation_u2` | function | `w2_attestation_u2` | [tools/hwsu/u2/hwsu_known.py:224](../../tools/hwsu/u2/hwsu_known.py#L224) |  |
 | `w32` | function | `w32` | [tools/c2_nd/nd_split.py:39](../../tools/c2_nd/nd_split.py#L39) |  |
 | `w32` | function | `w32` | [tools/c2_readout/c2_stage_base.py:226](../../tools/c2_readout/c2_stage_base.py#L226) |  |
 | `w_hat` | function | `w_hat` | [tools/c1prime/c1_fit.py:206](../../tools/c1prime/c1_fit.py#L206) |  |
@@ -1635,6 +1657,7 @@
 | `write` | function | `write` | [tests/oracle_profile/test_builder_controls.py:36](../../tests/oracle_profile/test_builder_controls.py#L36) |  |
 | `write` | function | `write` | [tools/code_index/build.py:65](../../tools/code_index/build.py#L65) |  |
 | `write_admission_lock` | function | `write_admission_lock` | [tools/x6_stage1/x6s1_ingest.py:409](../../tools/x6_stage1/x6s1_ingest.py#L409) |  |
+| `write_auth` | function | `write_auth` | [tools/hwsu/u2/hwsu_dry2c.py:133](../../tools/hwsu/u2/hwsu_dry2c.py#L133) |  |
 | `write_checkpoint` | function | `write_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:220](../../tools/x6_stage1/x6s1_cloud.py#L220) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage0/x6_store.py:214](../../tools/x6_stage0/x6_store.py#L214) |  |
 | `write_gate` | function | `write_gate` | [tools/x6_stage1/x6s1_run.py:282](../../tools/x6_stage1/x6s1_run.py#L282) |  |

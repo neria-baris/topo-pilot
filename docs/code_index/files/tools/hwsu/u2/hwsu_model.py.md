@@ -59,11 +59,11 @@
 - [tests/hwsu/test_b_u2_dx_policy.py](../../../tests/hwsu/test_b_u2_dx_policy.py.md) (line 27, dynamic)
 - [tools/hwsu/u2/hwsu_decide.py](hwsu_decide.py.md) (line 9, import)
 - [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 14, import)
-- [tools/hwsu/u2/hwsu_dry2.py](hwsu_dry2.py.md) (line 16, import)
+- [tools/hwsu/u2/hwsu_dry2.py](hwsu_dry2.py.md) (line 18, import)
 - [tools/hwsu/u2/hwsu_dry2b.py](hwsu_dry2b.py.md) (line 14, import)
 - [tools/hwsu/u2/hwsu_e2.py](hwsu_e2.py.md) (line 13, import)
 - [tools/hwsu/u2/hwsu_gates.py](hwsu_gates.py.md) (line 13, import)
-- [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 12, import)
+- [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 11, import)
 - [tools/hwsu/u2/hwsu_regsrc.py](hwsu_regsrc.py.md) (line 8, import)
 
 ## Top-level constants

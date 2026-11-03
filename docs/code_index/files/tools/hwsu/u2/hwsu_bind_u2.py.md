@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_bind_u2.py](../../../../../../tools/hwsu/u2/hwsu_bind_u2.py)
 - Kind: python
-- Lines: 130
+- Lines: 149
 
 ## Module docstring
 
@@ -49,9 +49,9 @@
 ## Imported by
 
 - [tests/hwsu/test_b_u2_audit.py](../../../tests/hwsu/test_b_u2_audit.py.md) (line 30, dynamic)
-- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 254, dynamic)
+- [tools/hwsu/u2/hwsu_driver.py](hwsu_driver.py.md) (line 257, dynamic)
 - [tools/hwsu/u2/hwsu_dry2b.py](hwsu_dry2b.py.md) (line 10, import)
-- [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 9, import)
+- [tools/hwsu/u2/hwsu_known.py](hwsu_known.py.md) (line 8, import)
 
 ## Top-level constants
 
@@ -67,5 +67,6 @@
 - **function `function_reads_u2`** [L67-72]: `def function_reads_u2(module, qualname, entry) -> dict`
 - **function `_resolve`** [L75-79]: `def _resolve(mod, qualname)`
 - **function `_audit_reads`** [L82-116]: `def _audit_reads(c) -> tuple`
-- **function `audit_u2`** [L119-130]: `def audit_u2(files=None, contract=None) -> dict`
+- **function `rebindings`** [L119-130]: `def rebindings(path) -> list` - Assignments to an attribute of an imported module (mod.NAME = ...) in one file.
+- **function `audit_u2`** [L133-149]: `def audit_u2(files=None, contract=None) -> dict`
 

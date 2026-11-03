@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_driver.py](../../../../../../tools/hwsu/u2/hwsu_driver.py)
 - Kind: python
-- Lines: 268
+- Lines: 271
 
 ## Module docstring
 
@@ -54,8 +54,8 @@
 
 ### Dynamic imports
 
-- `import_module` line 254: `hwsu_bind_u2` -> [tools/hwsu/u2/hwsu_bind_u2.py](hwsu_bind_u2.py.md)
-- `import_module` line 258: `hwsu_dry2` -> [tools/hwsu/u2/hwsu_dry2.py](hwsu_dry2.py.md)
+- `import_module` line 257: `hwsu_bind_u2` -> [tools/hwsu/u2/hwsu_bind_u2.py](hwsu_bind_u2.py.md)
+- `import_module` line 261: `hwsu_dry2` -> [tools/hwsu/u2/hwsu_dry2.py](hwsu_dry2.py.md)
 
 ### sys.path additions
 
@@ -64,6 +64,7 @@
 ## Imported by
 
 - [tests/hwsu/test_b_u2_records.py](../../../tests/hwsu/test_b_u2_records.py.md) (line 36, dynamic)
+- [tools/hwsu/u2/hwsu_dry2c.py](hwsu_dry2c.py.md) (line 16, import)
 
 ## Top-level constants
 
@@ -73,14 +74,14 @@
 ## Classes and functions
 
 - **function `build_ctx_u`** [L38-49]: `def build_ctx_u(out, job, attempt, stage, reservation_id=None, root=uc.ROOT, mailbox=uc.MAILBOX, hwsc_store=uc.HWSC_STORE, scope=uc.SCOPE_U, seeds=None, dry=False) -> dict`
-- **function `reg2`** [L52-65]: `def reg2(out, ctx) -> dict`
-- **function `steps`** [L68-93]: `def steps(stage, ctx) -> list`
-- **function `memory_cap_u2`** [L96-100]: `def memory_cap_u2(stage) -> int`
-- **function `job_paths_u2`** [L103-110]: `def job_paths_u2(job, kind) -> dict`
-- **function `_exit_code`** [L113-116]: `def _exit_code(outcome, registered) -> int`
-- **function `_unrecorded`** [L119-130]: `def _unrecorded(out, rels) -> list`
-- **function `_outcome`** [L133-138]: `def _outcome(stage, records, ctx) -> str`
-- **function `run_job`** [L141-196]: `def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledger_path=None, ctx=None, dry_continue=False) -> dict`
-- **function `meter_main`** [L199-230]: `def meter_main(argv=None) -> int`
-- **function `main`** [L233-264]: `def main(argv=None) -> int`
+- **function `reg2`** [L52-66]: `def reg2(out, ctx) -> dict`
+- **function `steps`** [L69-96]: `def steps(stage, ctx) -> list`
+- **function `memory_cap_u2`** [L99-103]: `def memory_cap_u2(stage) -> int`
+- **function `job_paths_u2`** [L106-113]: `def job_paths_u2(job, kind) -> dict`
+- **function `_exit_code`** [L116-119]: `def _exit_code(outcome, registered) -> int`
+- **function `_unrecorded`** [L122-133]: `def _unrecorded(out, rels) -> list`
+- **function `_outcome`** [L136-141]: `def _outcome(stage, records, ctx) -> str`
+- **function `run_job`** [L144-199]: `def run_job(stage, out, job, attempt=1, reservation_id=None, repo=uc.REPO, ledger_path=None, ctx=None, dry_continue=False) -> dict`
+- **function `meter_main`** [L202-233]: `def meter_main(argv=None) -> int`
+- **function `main`** [L236-267]: `def main(argv=None) -> int`
 

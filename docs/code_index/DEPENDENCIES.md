@@ -385,7 +385,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- src/topo_pilot/experiment/x5g1t_main.py, src/topo_pilot/experiment/x5g1t_runtime.py, tests/experiment/test_x5g1t_usage.py, tests/experiment/test_x5g1t_usage_files.py
 ### `src/topo_pilot/learner/__init__.py`
 - -> src/topo_pilot/learner/config.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/patch.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py
-- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_layer2.py, tests/c2_readout/test_b_patch.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/hwsb/test_b_e4path.py, tests/hwsb/test_b_hold.py, tests/hwsu/test_b_u2_dx_policy.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_train.py, tools/hwsu/u2/hwsu_dry2.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_dry.py
+- <- src/topo_pilot/activations/_extractor.py, src/topo_pilot/activations/_stage.py, src/topo_pilot/experiment/s3.py, src/topo_pilot/experiment/x4_inputs.py, src/topo_pilot/experiment/x4f_gates.py, src/topo_pilot/experiment/x4f_run.py, src/topo_pilot/experiment/x5g1_scorebench.py, src/topo_pilot/experiment/x5g1_techbench.py, src/topo_pilot/experiment/x5g1t_checks.py, src/topo_pilot/experiment/x5g1t_stages.py, src/topo_pilot/experiment/x5g1t_stages_eval.py, src/topo_pilot/experiment/x5g1t_train.py, tests/activations/conftest.py, tests/activations/test_activations.py, tests/c2_nd/test_b_decoy_model.py, tests/c2_nd/test_b_layer2.py, tests/c2_readout/test_b_patch.py, tests/d2a/test_a_pad.py, tests/d2a/test_b_resource.py, tests/experiment/test_x4f_gates_smoke.py, tests/experiment/test_x5g1_scorebench_smoke.py, tests/experiment/test_x5g1t_checkpoint_checks.py, tests/experiment/test_x5g1t_config_checks.py, tests/experiment/test_x5g1t_config_production.py, tests/experiment/test_x5g1t_config_synthetic.py, tests/experiment/test_x5g1t_lineage_oracle.py, tests/experiment/test_x5g1t_training.py, tests/hwsb/test_b_e4path.py, tests/hwsb/test_b_hold.py, tests/hwsu/test_b_u2_dx_policy.py, tests/learner/conftest.py, tests/learner/test_checkpoint.py, tests/learner/test_model.py, tests/learner/test_multihorizon.py, tests/learner/test_patch.py, tests/learner/test_trainer_golden.py, tests/learner/test_training.py, tests/x6_stage1/test_a_eval.py, tests/x6_stage1/test_b_ingest_bundle.py, tests/x6_stage1/test_b_train_chain.py, tests/x6zc/test_x6zc_dryrun.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/d2a/d2a_eval.py, tools/d2a/d2a_train.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_train.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2c.py, tools/x6_stage1/x6s1_cloud.py, tools/x6_stage1/x6s1_data.py, tools/x6_stage1/x6s1_ingest.py, tools/x6_stage1/x6s1_run.py, tools/x6zc/x6zc_dry.py
 ### `src/topo_pilot/learner/config.py`
 - -> none
 - <- src/topo_pilot/learner/__init__.py, src/topo_pilot/learner/model.py, src/topo_pilot/learner/multihorizon.py, src/topo_pilot/learner/stage.py, src/topo_pilot/learner/trainer.py, tests/c2_readout/test_a_readout.py, tools/c2_nd/nd_dry.py, tools/hwsb/hwsb_config.py
@@ -1474,7 +1474,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/c1prime/test_a_eligibility_support.py, tests/c1prime/test_b_gates.py, tests/c2_readout/test_b_screens.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_late.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_stage_base.py
 ### `tools/c1prime/c1_means.py`
 - -> tools/c1prime/c1_config.py, tools/c1prime/c1_records.py
-- <- tests/c1prime/test_b_inference.py, tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_partition.py, tests/hws/test_a_stats.py, tests/hwsb/test_a_capture.py, tests/hwsb/test_a_endpoints.py, tests/hwsb/test_a_ladder.py, tests/hwsb/test_a_learning.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_b_u2_records.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_split.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stage_base.py, tools/hws/hws_stats.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_eval.py, tools/hwsb/hwsb_gates.py, tools/hwsb/hwsb_kb.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
+- <- tests/c1prime/test_b_inference.py, tests/c2_readout/test_a_inference.py, tests/c2_readout/test_a_partition.py, tests/hws/test_a_stats.py, tests/hwsb/test_a_capture.py, tests/hwsb/test_a_endpoints.py, tests/hwsb/test_a_ladder.py, tests/hwsb/test_a_learning.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_b_u2_records.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_width_b4.py, tests/k4b/test_b_endpoint.py, tools/c1prime/c1_endpoint.py, tools/c2_nd/nd_config.py, tools/c2_nd/nd_split.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_config.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stage_base.py, tools/hws/hws_stats.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_eval.py, tools/hwsb/hwsb_gates.py, tools/hwsb/hwsb_kb.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_config.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
 ### `tools/c1prime/c1_meter_bind.py`
 - -> tools/c1prime/c1_release.py, tools/x4_circle_history/op_guard.py, tools/x4_oracle_profile/controls.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
 - <- tests/c1prime/test_a_release_meter.py
@@ -1735,13 +1735,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsc/test_a_decision.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_a_learning.py, tests/hwsc/test_a_outcomes.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_guard_meter.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0178_dry_store_rule.py, tests/hwsc/test_r_0181_g0c_lineage_order.py, tests/hwsc/test_r_0181_kc_records_rehearsal.py, tests/hwsc/test_r_0184_kc7_inside_binding.py, tests/hwsc/test_r_0187_e1_release_and_gate_files.py, tests/hwsc/test_r_0192_output_cap.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_drystore.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_meter_bind.py, tools/hwsc/hwsc_outcome.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py, tools/hwsu/hwsu_config.py
 ### `tools/hwsc/hwsc_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/public.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_registry.py, tools/hws/hws_exact.py, tools/hwsb/hwsb_data.py, tools/hwsc/hwsc_config.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_gates.py
+- <- tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsc/test_b_train_hold.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_gates.py
 ### `tools/hwsc/hwsc_driver.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_registry.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsc/test_b_records.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0181_kc_records_rehearsal.py, tests/hwsc/test_r_0187_e1_release_and_gate_files.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
 ### `tools/hwsc/hwsc_dry.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/learner/stage.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_config.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/stage_records.py
-- <- tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_jobs.py, tools/hwsu/u2/hwsu_dry2.py
+- <- tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_jobs.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py
 ### `tools/hwsc/hwsc_dry2.py`
 - -> tools/c1prime/c1_records.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_eval.py, tools/hwsb/hwsb_gates.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_law.py, tools/hwsc/hwsc_bind.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_stats.py, tools/x4_circle_history/scores.py, tools/x4_circle_history/stage_records.py, tools/x6_stage1/x6s1_registry.py
 - <- tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry3.py
@@ -1783,13 +1783,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsu/test_b_of_bind.py, tests/hwsu/test_b_of_freeze.py, tests/hwsu/test_b_u2_audit.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/u2/hwsu_bind_u2.py
 ### `tools/hwsu/hwsu_config.py`
 - -> tools/c1prime/c1_records.py, tools/hwsc/hwsc_config.py
-- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_of_lemmas.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_of_sampler.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_family.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_a_u2_outcome.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_a_u2_rules.py, tests/hwsu/test_b_of_bind.py, tests/hwsu/test_b_of_config.py, tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_freeze.py, tests/hwsu/test_b_of_meter.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_records.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_reservations.py, tests/hwsu/test_b_of_seed.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_audit.py, tests/hwsu/test_b_u2_binding.py, tests/hwsu/test_b_u2_contract.py, tests/hwsu/test_b_u2_dx_policy.py, tests/hwsu/test_b_u2_freeze.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_of_binding.py, tests/hwsu/test_b_u2_records.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/hwsu_bind.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_meter_bind.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py
+- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_of_lemmas.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_of_sampler.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_family.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_a_u2_outcome.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_a_u2_rules.py, tests/hwsu/test_b_of_bind.py, tests/hwsu/test_b_of_config.py, tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_freeze.py, tests/hwsu/test_b_of_meter.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_records.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_reservations.py, tests/hwsu/test_b_of_seed.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_audit.py, tests/hwsu/test_b_u2_binding.py, tests/hwsu/test_b_u2_contract.py, tests/hwsu/test_b_u2_dx_policy.py, tests/hwsu/test_b_u2_freeze.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_of_binding.py, tests/hwsu/test_b_u2_records.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/hwsu_bind.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_meter_bind.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py
 ### `tools/hwsu/hwsu_driver_of.py`
 - -> tools/c1prime/c1_records.py, tools/hwsu/hwsu_bind.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_seed.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_b_of_driver.py, tools/hwsu/hwsu_dry.py, tools/hwsu/u2/hwsu_driver.py
 ### `tools/hwsu/hwsu_dry.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_decide.py, tools/hwsb/hwsb_dry.py, tools/hwsc/hwsc_data.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/hwsu_records.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_b_of_registry.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_known.py
+- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_b_of_registry.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/hwsu_dry_b.py`
 - -> tools/c1prime/c1_records.py, tools/c2_readout/c2_decide.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_seed.py, tools/x4_circle_history/stage_records.py
 - <- tools/hwsu/hwsu_dry.py
@@ -1804,13 +1804,13 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_ladder.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_obligation.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/hwsu_oracle.py`
 - -> src/topo_pilot/oracle/__init__.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_code.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_oracle.py, tools/c2_readout/c2_stats.py, tools/hwsu/hwsu_config.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_lemmas.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_b_of_obligation.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
+- <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_lemmas.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_b_of_obligation.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/hwsu_pairs.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/checks.py, src/topo_pilot/dataset/sampler.py, tools/c1prime/c1_records.py, tools/hwsu/hwsu_config.py, tools/k4b/k4b_data.py
 - <- tests/hwsu/test_a_of_gates.py, tests/hwsu/test_a_of_oracle.py, tests/hwsu/test_a_of_sampler.py, tests/hwsu/test_b_of_streams.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_of.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_regsrc.py
 ### `tools/hwsu/hwsu_records.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/c1prime/c1_records.py, tools/hwsc/hwsc_records.py, tools/hwsu/hwsu_config.py, tools/k4b/k4b_release.py, tools/x4_circle_history/op_guard.py, tools/x4_circle_history/stage_records.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_freeze.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_records.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_reservations.py, tests/hwsu/test_b_of_seed.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_contract.py, tests/hwsu/test_b_u2_records.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
+- <- tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_freeze.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_records.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_reservations.py, tests/hwsu/test_b_of_seed.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_contract.py, tests/hwsu/test_b_u2_records.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/hwsu_resv.py`
 - -> tools/c1prime/c1_records.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_records.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsu/test_b_of_registry.py
@@ -1819,7 +1819,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_seed.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/u2/__init__.py`
 - -> none
-- <- tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_family.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_a_u2_outcome.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_a_u2_rules.py, tests/hwsu/test_b_u2_audit.py, tests/hwsu/test_b_u2_binding.py, tests/hwsu/test_b_u2_dx_policy.py, tests/hwsu/test_b_u2_freeze.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_of_binding.py, tests/hwsu/test_b_u2_records.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py
+- <- tests/hwsu/test_a_u2_estimand.py, tests/hwsu/test_a_u2_family.py, tests/hwsu/test_a_u2_known.py, tests/hwsu/test_a_u2_lemmas.py, tests/hwsu/test_a_u2_outcome.py, tests/hwsu/test_a_u2_p1.py, tests/hwsu/test_a_u2_rules.py, tests/hwsu/test_b_u2_audit.py, tests/hwsu/test_b_u2_binding.py, tests/hwsu/test_b_u2_dx_policy.py, tests/hwsu/test_b_u2_freeze.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_of_binding.py, tests/hwsu/test_b_u2_records.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py
 ### `tools/hwsu/u2/hwsu_bind_u2.py`
 - -> tools/hwsu/hwsu_bind.py, tools/hwsu/hwsu_config.py, tools/hwsu/u2/__init__.py
 - <- tests/hwsu/test_b_u2_audit.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_known.py
@@ -1828,12 +1828,18 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py
 ### `tools/hwsu/u2/hwsu_driver.py`
 - -> tools/c1prime/c1_records.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_meter_bind.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/k4b/k4b_meter_bind.py, tools/x4_circle_history/op_guard.py, tools/x4_circle_history/stage_records.py, tools/x4_oracle_profile/meter.py, tools/x4_oracle_profile/winjob.py
-- <- tests/hwsu/test_b_u2_records.py
+- <- tests/hwsu/test_b_u2_records.py, tools/hwsu/u2/hwsu_dry2c.py
 ### `tools/hwsu/u2/hwsu_dry2.py`
-- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/learner/__init__.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/x4_circle_history/stage_records.py
+- -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/contracts/backends.py, src/topo_pilot/learner/__init__.py, tools/c1prime/c1_model.py, tools/c2_readout/c2_model.py, tools/hwsb/hwsb_config.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/x4_circle_history/stage_records.py
 - <- tests/hwsu/test_b_u2_records.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/u2/hwsu_dry2b.py`
 - -> tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_bind_u2.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/x4_circle_history/stage_records.py
+- <- tools/hwsu/u2/hwsu_dry2.py
+### `tools/hwsu/u2/hwsu_dry2c.py`
+- -> src/topo_pilot/learner/__init__.py, tools/c1prime/c1_means.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_dry.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_driver.py, tools/x4_circle_history/stage_records.py
+- <- tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2d.py
+### `tools/hwsu/u2/hwsu_dry2d.py`
+- -> tools/hwsc/hwsc_dry.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_data.py, tools/x4_circle_history/stage_records.py
 - <- tools/hwsu/u2/hwsu_dry2.py
 ### `tools/hwsu/u2/hwsu_e2.py`
 - -> tools/c1prime/c1_means.py, tools/c1prime/c1_oracle.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_model.py, tools/hwsc/hwsc_records.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/hwsu_records.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/x4_circle_history/stage_records.py
@@ -1849,10 +1855,10 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsu/test_b_u2_binding.py, tests/hwsu/test_b_u2_dx_policy.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_regsrc.py
 ### `tools/hwsu/u2/hwsu_registry.py`
 - -> tools/c1prime/c1_data.py, tools/c2_readout/c2_registry.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsu/hwsu_config.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_data.py, tools/k4b/k4b_registry.py, tools/x4_circle_history/stage_records.py
-- <- tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
+- <- tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_registry.py, tests/hwsu/test_impl_u2_mirror.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
 ### `tools/hwsu/u2/hwsu_regsrc.py`
 - -> tools/hwsb/hwsb_registry.py, tools/hwsc/hwsc_registry.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/u2/__init__.py, tools/hwsu/u2/hwsu_model.py, tools/k4b/k4b_data.py, tools/x4_circle_history/stage_records.py
-- <- tools/hwsu/u2/hwsu_registry.py
+- <- tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_registry.py
 ### `tools/k4b/k4b_cert.py`
 - -> tools/c1prime/c1_bounds.py, tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/k4b/k4b_config.py, tools/x4_circle_history/error_bound.py, tools/x4_circle_history/process_law.py
 - <- tests/hwsb/test_a_capture.py, tests/hwsb/test_a_ladder.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_a_ladder.py, tests/hwsc/test_a_law.py, tests/k4b/test_a_decision.py, tests/k4b/test_a_lemma_n.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_a_transport_bound.py, tests/k4b/test_a_width_b4.py, tools/hwsb/hwsb_stages.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_known.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
@@ -1864,7 +1870,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/hwsb/test_a_ladder.py, tests/hwsc/test_a_k4b_known_bound.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_r_0187_e1_release_and_gate_files.py, tests/k4b/test_a_decision.py, tests/k4b/test_a_lemma_n.py, tests/k4b/test_a_ranks_ladder.py, tests/k4b/test_b_charts.py, tests/k4b/test_b_data.py, tests/k4b/test_b_flow.py, tests/k4b/test_b_h1_meta.py, tests/k4b/test_b_registry.py, tests/k4b/test_b_registry_fixes.py, tests/k4b/test_b_registry_rules.py, tools/hwsb/hwsb_gates.py, tools/hwsb/hwsb_stages.py, tools/hwsc/hwsc_config.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsu/u2/hwsu_model.py, tools/k4b/k4b_cert.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_data.py, tools/k4b/k4b_decoder.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_meter_bind.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/k4b/k4b_scores.py, tools/k4b/k4b_stats.py
 ### `tools/k4b/k4b_data.py`
 - -> src/topo_pilot/contracts/__init__.py, src/topo_pilot/dataset/__init__.py, src/topo_pilot/dataset/checks.py, tools/c1prime/c1_data.py, tools/c1prime/c1_model.py, tools/c1prime/c1_records.py, tools/k4b/k4b_config.py, tools/x4_circle_history/scores.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py
-- <- tests/hwsb/test_b_registry.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_registry.py, tests/k4b/test_b_data.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_gates.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
+- <- tests/hwsb/test_b_registry.py, tests/hwsc/test_b_binding.py, tests/hwsc/test_b_registry.py, tests/hwsc/test_b_registry2.py, tests/hwsc/test_b_streams.py, tests/hwsu/test_b_of_driver.py, tests/hwsu/test_b_of_obligation.py, tests/hwsu/test_b_of_registry.py, tests/hwsu/test_b_of_streams.py, tests/hwsu/test_b_u2_hwsd.py, tests/hwsu/test_b_u2_registry.py, tests/k4b/test_b_data.py, tools/c2_readout/c2_registry.py, tools/hwsb/hwsb_gates.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_pairs.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py
 ### `tools/k4b/k4b_decoder.py`
 - -> src/topo_pilot/analysis/x4f_scores.py, src/topo_pilot/contracts/__init__.py, src/topo_pilot/experiment/x4f_probe.py, src/topo_pilot/prediction/ridge.py, tools/k4b/k4b_config.py, tools/k4b/k4b_scores.py
 - <- tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_scores.py
@@ -1984,7 +1990,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- tests/c1prime/test_b_registry.py, tests/c1prime_registry/test_registry_builder.py, tests/circle_history/test_controls.py, tests/circle_history/test_error_bound.py, tests/circle_history/test_reference_binding.py, tests/circle_history/test_scores_precision.py, tests/hws/test_b_oracle.py, tests/hwsb/test_b_registry.py, tests/hwsb/test_b_streams.py, tests/hwsc/test_b_registry.py, tests/k4b/test_a_theorem_a.py, tests/k4b/test_b_data.py, tests/k4b/test_b_endpoint.py, tests/k4b/test_b_flow.py, tools/c1prime/c1_data.py, tools/c2_readout/c2_data.py, tools/hws/hws_oracle.py, tools/hws/hws_stats.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_registry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_registry.py, tools/k4b/k4b_data.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_scores.py, tools/x4_circle_history/adapter.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
 ### `tools/x4_circle_history/stage_records.py`
 - -> tools/x4_circle_history/errors.py
-- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_builder_v24_stages.py, tests/hws/test_b_records.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0187_e1_release_and_gate_files.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/hws/hws_driver.py, tools/hws/hws_dry.py, tools/hws/hws_known.py, tools/hws/hws_records.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_records.py, tools/hwsb/hwsb_registry.py, tools/hwsb/hwsb_stages.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_drystore.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
+- <- tests/c1prime/test_a_chart.py, tests/c1prime/test_a_chart_exceptions.py, tests/c1prime/test_a_exceptions.py, tests/c1prime/test_a_gates.py, tests/c2_readout/test_b_lineage.py, tests/c2_readout/test_b_policy.py, tests/circle_history/test_builder_e2e.py, tests/circle_history/test_builder_v24_stages.py, tests/hws/test_b_records.py, tests/hwsc/test_b_records.py, tests/hwsc/test_b_train_hold.py, tests/hwsc/test_r_0187_e1_release_and_gate_files.py, tools/c1prime/c1_driver.py, tools/c1prime/c1_driver_cal.py, tools/c1prime/c1_driver_fresh.py, tools/c1prime/c1_driver_late.py, tools/c1prime/c1_records.py, tools/c2_nd/nd_driver.py, tools/c2_nd/nd_registry.py, tools/c2_nd/nd_stage_base.py, tools/c2_readout/c2_driver.py, tools/c2_readout/c2_registry.py, tools/c2_readout/c2_stage_base.py, tools/hws/hws_driver.py, tools/hws/hws_dry.py, tools/hws/hws_known.py, tools/hws/hws_records.py, tools/hwsb/hwsb_data.py, tools/hwsb/hwsb_driver.py, tools/hwsb/hwsb_dry.py, tools/hwsb/hwsb_dry2.py, tools/hwsb/hwsb_kb.py, tools/hwsb/hwsb_known.py, tools/hwsb/hwsb_records.py, tools/hwsb/hwsb_registry.py, tools/hwsb/hwsb_stages.py, tools/hwsb/hwsb_train.py, tools/hwsc/hwsc_data.py, tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_drystore.py, tools/hwsc/hwsc_gates.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py, tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py, tools/hwsu/hwsu_freeze.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_records.py, tools/hwsu/hwsu_resv.py, tools/hwsu/hwsu_seed.py, tools/hwsu/u2/hwsu_decide.py, tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py, tools/hwsu/u2/hwsu_model.py, tools/hwsu/u2/hwsu_registry.py, tools/hwsu/u2/hwsu_regsrc.py, tools/k4b/k4b_charts.py, tools/k4b/k4b_driver.py, tools/k4b/k4b_fresh.py, tools/k4b/k4b_registry.py, tools/k4b/k4b_release.py, tools/x4_circle_history/precision_stage.py, tools/x4_circle_history/runner.py
 ### `tools/x4_oracle_profile/audit.py`
 - -> src/topo_pilot/contracts/__init__.py, tools/x4_oracle_profile/inputs.py, tools/x4_oracle_profile/oracle_profile.py, tools/x4_oracle_profile/validation.py
 - <- none
@@ -9437,27 +9443,104 @@ tests/hwsu/test_b_u2_freeze.py
                 tools/hwsu/u2/hwsu_known.py (cycle)
                 tools/hwsu/u2/hwsu_model.py (see above)
                 tools/x4_circle_history/stage_records.py (see above)
+            tools/hwsu/u2/hwsu_dry2c.py
+                src/topo_pilot/learner/__init__.py (see above)
+                tools/c1prime/c1_means.py (see above)
+                tools/hwsc/hwsc_data.py (see above)
+                tools/hwsc/hwsc_dry.py (see above)
+                tools/hwsu/hwsu_config.py (see above)
+                tools/hwsu/hwsu_dry.py (see above)
+                tools/hwsu/hwsu_oracle.py (see above)
+                tools/hwsu/hwsu_records.py (see above)
+                tools/hwsu/u2/__init__.py (see above)
+                tools/hwsu/u2/hwsu_driver.py
+                    tools/c1prime/c1_records.py (see above)
+                    tools/hwsu/hwsu_config.py (see above)
+                    tools/hwsu/hwsu_driver_of.py (see above)
+                    tools/hwsu/hwsu_meter_bind.py (see above)
+                    tools/hwsu/hwsu_of.py (see above)
+                    tools/hwsu/hwsu_records.py (see above)
+                    tools/hwsu/u2/__init__.py (see above)
+                    tools/hwsu/u2/hwsu_bind_u2.py (see above)
+                    tools/hwsu/u2/hwsu_decide.py (see above)
+                    tools/hwsu/u2/hwsu_dry2.py (cycle)
+                    tools/hwsu/u2/hwsu_gates.py
+                        tools/c1prime/c1_means.py (see above)
+                        tools/c1prime/c1_records.py (see above)
+                        tools/c2_readout/c2_config.py (see above)
+                        tools/c2_readout/c2_decide.py (see above)
+                        tools/hwsc/hwsc_data.py (see above)
+                        tools/hwsc/hwsc_records.py (see above)
+                        tools/hwsu/hwsu_config.py (see above)
+                        tools/hwsu/hwsu_of.py (see above)
+                        tools/hwsu/hwsu_oracle.py (see above)
+                        tools/hwsu/hwsu_pairs.py (see above)
+                        tools/hwsu/hwsu_records.py (see above)
+                        tools/hwsu/u2/__init__.py (see above)
+                        tools/hwsu/u2/hwsu_decide.py (see above)
+                        tools/hwsu/u2/hwsu_e2.py
+                            tools/c1prime/c1_means.py (see above)
+                            tools/c1prime/c1_oracle.py (see above)
+                            tools/c1prime/c1_records.py (see above)
+                            tools/c2_readout/c2_decide.py (see above)
+                            tools/c2_readout/c2_model.py (see above)
+                            tools/hwsc/hwsc_records.py (see above)
+                            tools/hwsu/hwsu_config.py (see above)
+                            tools/hwsu/hwsu_oracle.py (see above)
+                            tools/hwsu/hwsu_pairs.py (see above)
+                            tools/hwsu/hwsu_records.py (see above)
+                            tools/hwsu/u2/__init__.py (see above)
+                            tools/hwsu/u2/hwsu_decide.py (see above)
+                            tools/hwsu/u2/hwsu_gates.py (cycle)
+                            tools/hwsu/u2/hwsu_known.py (cycle)
+                            tools/hwsu/u2/hwsu_model.py (see above)
+                            tools/hwsu/u2/hwsu_registry.py
+                                tools/c1prime/c1_data.py (see above)
+                                tools/c2_readout/c2_registry.py (see above)
+                                tools/hwsc/hwsc_registry.py (see above)
+                                tools/hwsc/hwsc_registry_build.py (see above)
+                                tools/hwsu/hwsu_config.py (see above)
+                                tools/hwsu/u2/__init__.py (see above)
+                                tools/hwsu/u2/hwsu_regsrc.py
+                                    tools/hwsb/hwsb_registry.py (see above)
+                                    tools/hwsc/hwsc_registry.py (see above)
+                                    tools/hwsu/hwsu_config.py (see above)
+                                    tools/hwsu/hwsu_pairs.py (see above)
+                                    tools/hwsu/u2/__init__.py (see above)
+                                    tools/hwsu/u2/hwsu_model.py (see above)
+                                    tools/k4b/k4b_data.py (see above)
+                                    tools/x4_circle_history/stage_records.py (see above)
+                                tools/k4b/k4b_data.py (see above)
+                                tools/k4b/k4b_registry.py (see above)
+                                tools/x4_circle_history/stage_records.py (see above)
+                            tools/x4_circle_history/stage_records.py (see above)
+                        tools/hwsu/u2/hwsu_known.py (cycle)
+                        tools/hwsu/u2/hwsu_model.py (see above)
+                        tools/hwsu/u2/hwsu_registry.py (see above)
+                        tools/k4b/k4b_data.py (see above)
+                        tools/x4_circle_history/stage_records.py (see above)
+                    tools/hwsu/u2/hwsu_known.py (cycle)
+                    tools/hwsu/u2/hwsu_model.py (see above)
+                    tools/hwsu/u2/hwsu_registry.py (see above)
+                    tools/k4b/k4b_meter_bind.py (see above)
+                    tools/x4_circle_history/op_guard.py (see above)
+                    tools/x4_circle_history/stage_records.py (see above)
+                    tools/x4_oracle_profile/meter.py (see above)
+                    tools/x4_oracle_profile/winjob.py (see above)
+                tools/x4_circle_history/stage_records.py (see above)
+            tools/hwsu/u2/hwsu_dry2d.py
+                tools/hwsc/hwsc_dry.py (see above)
+                tools/hwsu/hwsu_config.py (see above)
+                tools/hwsu/hwsu_records.py (see above)
+                tools/hwsu/u2/__init__.py (see above)
+                tools/hwsu/u2/hwsu_dry2c.py (see above)
+                tools/hwsu/u2/hwsu_registry.py (see above)
+                tools/hwsu/u2/hwsu_regsrc.py (see above)
+                tools/k4b/k4b_data.py (see above)
+                tools/x4_circle_history/stage_records.py (see above)
             tools/hwsu/u2/hwsu_known.py (cycle)
             tools/hwsu/u2/hwsu_model.py (see above)
-            tools/hwsu/u2/hwsu_registry.py
-                tools/c1prime/c1_data.py (see above)
-                tools/c2_readout/c2_registry.py (see above)
-                tools/hwsc/hwsc_registry.py (see above)
-                tools/hwsc/hwsc_registry_build.py (see above)
-                tools/hwsu/hwsu_config.py (see above)
-                tools/hwsu/u2/__init__.py (see above)
-                tools/hwsu/u2/hwsu_regsrc.py
-                    tools/hwsb/hwsb_registry.py (see above)
-                    tools/hwsc/hwsc_registry.py (see above)
-                    tools/hwsu/hwsu_config.py (see above)
-                    tools/hwsu/hwsu_pairs.py (see above)
-                    tools/hwsu/u2/__init__.py (see above)
-                    tools/hwsu/u2/hwsu_model.py (see above)
-                    tools/k4b/k4b_data.py (see above)
-                    tools/x4_circle_history/stage_records.py (see above)
-                tools/k4b/k4b_data.py (see above)
-                tools/k4b/k4b_registry.py (see above)
-                tools/x4_circle_history/stage_records.py (see above)
+            tools/hwsu/u2/hwsu_registry.py (see above)
             tools/x4_circle_history/stage_records.py (see above)
         tools/hwsu/u2/hwsu_model.py (see above)
         tools/hwsu/u2/hwsu_registry.py (see above)
@@ -9480,62 +9563,7 @@ tests/hwsu/test_b_u2_records.py
     tools/hwsu/hwsu_meter_bind.py (see above)
     tools/hwsu/hwsu_records.py (see above)
     tools/hwsu/u2/__init__.py (see above)
-    tools/hwsu/u2/hwsu_driver.py
-        tools/c1prime/c1_records.py (see above)
-        tools/hwsu/hwsu_config.py (see above)
-        tools/hwsu/hwsu_driver_of.py (see above)
-        tools/hwsu/hwsu_meter_bind.py (see above)
-        tools/hwsu/hwsu_of.py (see above)
-        tools/hwsu/hwsu_records.py (see above)
-        tools/hwsu/u2/__init__.py (see above)
-        tools/hwsu/u2/hwsu_bind_u2.py (see above)
-        tools/hwsu/u2/hwsu_decide.py (see above)
-        tools/hwsu/u2/hwsu_dry2.py (see above)
-        tools/hwsu/u2/hwsu_gates.py
-            tools/c1prime/c1_means.py (see above)
-            tools/c1prime/c1_records.py (see above)
-            tools/c2_readout/c2_config.py (see above)
-            tools/c2_readout/c2_decide.py (see above)
-            tools/hwsc/hwsc_data.py (see above)
-            tools/hwsc/hwsc_records.py (see above)
-            tools/hwsu/hwsu_config.py (see above)
-            tools/hwsu/hwsu_of.py (see above)
-            tools/hwsu/hwsu_oracle.py (see above)
-            tools/hwsu/hwsu_pairs.py (see above)
-            tools/hwsu/hwsu_records.py (see above)
-            tools/hwsu/u2/__init__.py (see above)
-            tools/hwsu/u2/hwsu_decide.py (see above)
-            tools/hwsu/u2/hwsu_e2.py
-                tools/c1prime/c1_means.py (see above)
-                tools/c1prime/c1_oracle.py (see above)
-                tools/c1prime/c1_records.py (see above)
-                tools/c2_readout/c2_decide.py (see above)
-                tools/c2_readout/c2_model.py (see above)
-                tools/hwsc/hwsc_records.py (see above)
-                tools/hwsu/hwsu_config.py (see above)
-                tools/hwsu/hwsu_oracle.py (see above)
-                tools/hwsu/hwsu_pairs.py (see above)
-                tools/hwsu/hwsu_records.py (see above)
-                tools/hwsu/u2/__init__.py (see above)
-                tools/hwsu/u2/hwsu_decide.py (see above)
-                tools/hwsu/u2/hwsu_gates.py (cycle)
-                tools/hwsu/u2/hwsu_known.py (see above)
-                tools/hwsu/u2/hwsu_model.py (see above)
-                tools/hwsu/u2/hwsu_registry.py (see above)
-                tools/x4_circle_history/stage_records.py (see above)
-            tools/hwsu/u2/hwsu_known.py (see above)
-            tools/hwsu/u2/hwsu_model.py (see above)
-            tools/hwsu/u2/hwsu_registry.py (see above)
-            tools/k4b/k4b_data.py (see above)
-            tools/x4_circle_history/stage_records.py (see above)
-        tools/hwsu/u2/hwsu_known.py (see above)
-        tools/hwsu/u2/hwsu_model.py (see above)
-        tools/hwsu/u2/hwsu_registry.py (see above)
-        tools/k4b/k4b_meter_bind.py (see above)
-        tools/x4_circle_history/op_guard.py (see above)
-        tools/x4_circle_history/stage_records.py (see above)
-        tools/x4_oracle_profile/meter.py (see above)
-        tools/x4_oracle_profile/winjob.py (see above)
+    tools/hwsu/u2/hwsu_driver.py (see above)
     tools/hwsu/u2/hwsu_dry2.py (see above)
     tools/hwsu/u2/hwsu_gates.py (see above)
     tools/hwsu/u2/hwsu_known.py (see above)
@@ -17725,6 +17753,28 @@ tools/hwsu/u2/hwsu_driver.py
                 tools/x4_circle_history/stage_records.py (see above)
             tools/hwsu/u2/hwsu_model.py (see above)
             tools/x4_circle_history/stage_records.py (see above)
+        tools/hwsu/u2/hwsu_dry2c.py
+            src/topo_pilot/learner/__init__.py (see above)
+            tools/c1prime/c1_means.py (see above)
+            tools/hwsc/hwsc_data.py (see above)
+            tools/hwsc/hwsc_dry.py (see above)
+            tools/hwsu/hwsu_config.py (see above)
+            tools/hwsu/hwsu_dry.py (see above)
+            tools/hwsu/hwsu_oracle.py (see above)
+            tools/hwsu/hwsu_records.py (see above)
+            tools/hwsu/u2/__init__.py (see above)
+            tools/hwsu/u2/hwsu_driver.py (cycle)
+            tools/x4_circle_history/stage_records.py (see above)
+        tools/hwsu/u2/hwsu_dry2d.py
+            tools/hwsc/hwsc_dry.py (see above)
+            tools/hwsu/hwsu_config.py (see above)
+            tools/hwsu/hwsu_records.py (see above)
+            tools/hwsu/u2/__init__.py (see above)
+            tools/hwsu/u2/hwsu_dry2c.py (see above)
+            tools/hwsu/u2/hwsu_registry.py (see above)
+            tools/hwsu/u2/hwsu_regsrc.py (see above)
+            tools/k4b/k4b_data.py (see above)
+            tools/x4_circle_history/stage_records.py (see above)
         tools/hwsu/u2/hwsu_known.py (see above)
         tools/hwsu/u2/hwsu_model.py (see above)
         tools/hwsu/u2/hwsu_registry.py (see above)
@@ -17776,6 +17826,8 @@ tools/hwsu/u2/hwsu_driver.py
     tools/x4_oracle_profile/winjob.py (see above)
 tools/hwsu/u2/hwsu_dry2.py (see above)
 tools/hwsu/u2/hwsu_dry2b.py (see above)
+tools/hwsu/u2/hwsu_dry2c.py (see above)
+tools/hwsu/u2/hwsu_dry2d.py (see above)
 tools/hwsu/u2/hwsu_e2.py (see above)
 tools/hwsu/u2/hwsu_gates.py (see above)
 tools/hwsu/u2/hwsu_known.py (see above)
@@ -19626,8 +19678,7 @@ src/topo_pilot/experiment/cli.py
 - 6 files: tools/hwsc/hwsc_driver.py, tools/hwsc/hwsc_dry.py, tools/hwsc/hwsc_dry2.py, tools/hwsc/hwsc_dry3.py, tools/hwsc/hwsc_jobs.py, tools/hwsc/hwsc_known.py
 - 3 files: tools/hwsc/hwsc_registry.py, tools/hwsc/hwsc_registry_build.py, tools/hwsc/hwsc_scratch.py
 - 3 files: tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_dry_b.py
-- 3 files: tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_known.py
-- 2 files: tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py
+- 8 files: tools/hwsu/u2/hwsu_driver.py, tools/hwsu/u2/hwsu_dry2.py, tools/hwsu/u2/hwsu_dry2b.py, tools/hwsu/u2/hwsu_dry2c.py, tools/hwsu/u2/hwsu_dry2d.py, tools/hwsu/u2/hwsu_e2.py, tools/hwsu/u2/hwsu_gates.py, tools/hwsu/u2/hwsu_known.py
 - 2 files: tools/k4b/k4b_decoder.py, tools/k4b/k4b_scores.py
 - 2 files: tools/x4_circle_history/live_context.py, tools/x4_circle_history/runner.py
 

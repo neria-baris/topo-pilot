@@ -75,7 +75,7 @@
 - [tools/c2_readout/c2_stage_post.py](c2_stage_post.py.md) (line 18, import)
 - [tools/c2_readout/c2_stage_pre.py](c2_stage_pre.py.md) (line 22, import)
 - [tools/c2_readout/c2_stage_val.py](c2_stage_val.py.md) (line 18, import)
-- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 25, import)
+- [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 27, import)
 - [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 25, import)
 - [tools/hwsu/u2/hwsu_model.py](../hwsu/u2/hwsu_model.py.md) (line 18, import)
 

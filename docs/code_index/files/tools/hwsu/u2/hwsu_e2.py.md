@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_e2.py](../../../../../../tools/hwsu/u2/hwsu_e2.py)
 - Kind: python
-- Lines: 239
+- Lines: 245
 
 ## Module docstring
 
@@ -73,10 +73,10 @@
 - **function `release_b_check`** [L38-55]: `def release_b_check(out, ctx) -> dict`
 - **function `sample_e2`** [L58-81]: `def sample_e2(out, ctx) -> dict`
 - **function `h2_fresh`** [L84-88]: `def h2_fresh(ctx) -> dict`
-- **function `_tpre_models`** [L91-120]: `def _tpre_models(ctx, pol) -> dict` - M0 (arm 1) and X1 (natural arms) on the 1,024 lowest-id test pairs; ephemeral logits.
-- **function `t_pre`** [L123-149]: `def t_pre(out, ctx) -> dict`
-- **function `num_gate`** [L152-180]: `def num_gate(out, ctx) -> dict`
-- **function `sealed_opened`** [L183-187]: `def sealed_opened(out, ctx) -> Path`
-- **function `endpoint`** [L190-216]: `def endpoint(out, ctx) -> dict`
-- **function `report_u`** [L219-239]: `def report_u(out, ctx, records) -> Path`
+- **function `_tpre_models`** [L91-121]: `def _tpre_models(ctx, pol) -> dict` - M0 (arm 1) and X1 (natural arms) on the 1,024 lowest-id test pairs; ephemeral logits.
+- **function `t_pre`** [L124-155]: `def t_pre(out, ctx) -> dict`
+- **function `num_gate`** [L158-186]: `def num_gate(out, ctx) -> dict`
+- **function `sealed_opened`** [L189-193]: `def sealed_opened(out, ctx) -> Path`
+- **function `endpoint`** [L196-222]: `def endpoint(out, ctx) -> dict`
+- **function `report_u`** [L225-245]: `def report_u(out, ctx, records) -> Path`
 

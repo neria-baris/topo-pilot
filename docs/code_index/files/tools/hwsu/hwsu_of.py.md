@@ -73,7 +73,7 @@
 - [tools/hwsu/u2/hwsu_decide.py](u2/hwsu_decide.py.md) (line 10, import)
 - [tools/hwsu/u2/hwsu_driver.py](u2/hwsu_driver.py.md) (line 15, import)
 - [tools/hwsu/u2/hwsu_gates.py](u2/hwsu_gates.py.md) (line 14, import)
-- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 13, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 12, import)
 
 ## Top-level constants
 

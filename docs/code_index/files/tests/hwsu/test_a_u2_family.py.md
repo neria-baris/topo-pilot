@@ -67,7 +67,7 @@
 - **test `test_ranks_at_alpha_1_300`** [L56-59]: `def test_ranks_at_alpha_1_300()`
 - **test `test_keys_and_ranks`** [L62-66]: `def test_keys_and_ranks(fb)`
 - **test `test_equals_one_shared_stream`** [L69-76]: `def test_equals_one_shared_stream(data, fb)`
-- **test `test_key_order_is_part_of_contract`** [L79-88]: `def test_key_order_is_part_of_contract(data, fb)` - A stream over a permuted key order yields different bounds: order matters.
+- **test `test_key_order_is_part_of_contract`** [L79-88]: `def test_key_order_is_part_of_contract(data, fb)` - Erratum E4 (R-0223-8): the key sequence follows the given master order; per-key bounds
 - **test `test_seed_default_640111`** [L91-95]: `def test_seed_default_640111(data, fb)`
 - **test `test_rank_mismatch_fails_numerical`** [L98-111]: `def test_rank_mismatch_fails_numerical(data, monkeypatch)`
 - **test `test_bound_ordering`** [L114-116]: `def test_bound_ordering(fb)`

@@ -73,11 +73,13 @@
 - [tools/hwsu/hwsu_resv.py](hwsu_resv.py.md) (line 14, import)
 - [tools/hwsu/hwsu_seed.py](hwsu_seed.py.md) (line 7, import)
 - [tools/hwsu/u2/hwsu_driver.py](u2/hwsu_driver.py.md) (line 16, import)
-- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 17, import)
+- [tools/hwsu/u2/hwsu_dry2.py](u2/hwsu_dry2.py.md) (line 19, import)
 - [tools/hwsu/u2/hwsu_dry2b.py](u2/hwsu_dry2b.py.md) (line 16, import)
+- [tools/hwsu/u2/hwsu_dry2c.py](u2/hwsu_dry2c.py.md) (line 18, import)
+- [tools/hwsu/u2/hwsu_dry2d.py](u2/hwsu_dry2d.py.md) (line 13, import)
 - [tools/hwsu/u2/hwsu_e2.py](u2/hwsu_e2.py.md) (line 15, import)
 - [tools/hwsu/u2/hwsu_gates.py](u2/hwsu_gates.py.md) (line 17, import)
-- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 15, import)
+- [tools/hwsu/u2/hwsu_known.py](u2/hwsu_known.py.md) (line 14, import)
 
 ## Top-level constants
 

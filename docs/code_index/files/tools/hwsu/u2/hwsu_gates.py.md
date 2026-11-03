@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsu/u2/hwsu_gates.py](../../../../../../tools/hwsu/u2/hwsu_gates.py)
 - Kind: python
-- Lines: 372
+- Lines: 373
 
 ## Module docstring
 
@@ -98,5 +98,5 @@
 - **function `kc_u`** [L307-318]: `def kc_u(ctx) -> dict`
 - **function `model_A`** [L321-330]: `def model_A(ctx, a1, a2, d_canon) -> tuple` - A_full per model from the readout coordinates (closed form; no logit).
 - **function `p1_step`** [L333-354]: `def p1_step(out, ctx) -> dict`
-- **function `validation_report`** [L357-371]: `def validation_report(out, ctx, records) -> Path`
+- **function `validation_report`** [L357-372]: `def validation_report(out, ctx, records) -> Path`
 

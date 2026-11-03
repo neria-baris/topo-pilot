@@ -77,15 +77,15 @@ def test_equals_one_shared_stream(data, fb):
 
 
 def test_key_order_is_part_of_contract(data, fb):
-    """A stream over a permuted key order yields different bounds: order matters."""
+    """Erratum E4 (R-0223-8): the key sequence follows the given master order; per-key bounds
+    are order-invariant (one index stream shared by every key)."""
     A, G = data
-    arrays = _arrays(A, G, MASTERS[::-1])
-    perm = c2_decide.stream_bounds(arrays, 640111, float(Fraction(1, 300)), 20000)
-    k = f"{MASTERS[0]}:ZR010"
-    assert (perm[k]["L"], perm[k]["U"]) != (fb[k]["L"], fb[k]["U"])
-    fb2 = mod("hwsu_gates").family_bounds(A, G, MASTERS[::-1])
-    assert list(fb2)[0] == f"{MASTERS[-1]}:ZR010"
-    assert fb2[k]["L"] == perm[k]["L"]
+    rev = MASTERS[::-1]
+    fb2 = mod("hwsu_gates").family_bounds(A, G, rev)
+    assert list(fb2) == [f"{j}:{s}" for j in rev for s in ("ZR010", "ZR030", "AF")]
+    for k in fb:
+        for f in ("L", "U", "mean", "rank_L", "rank_U", "g"):
+            assert fb2[k][f] == fb[k][f], (k, f)
 
 
 def test_seed_default_640111(data, fb):

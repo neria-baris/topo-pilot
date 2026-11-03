@@ -23,6 +23,7 @@ from fractions import Fraction
 from pathlib import Path
 
 import c1_means
+import c2_config
 import c2_decide
 import hwsc_data
 import hwsc_records
@@ -68,8 +69,7 @@ share_arrays_u = haar_frames_u = share_family
 
 
 def qsum_tol() -> Fraction:
-    return Fraction(str(uc.read_json(uc.REPO / "tools" / "c2_readout" / "CONTRACT.json")[
-        "tolerances"]["q_sum"]))
+    return Fraction(str(c2_config.T_QSUM))
 
 
 def _handoff(ctx) -> dict:

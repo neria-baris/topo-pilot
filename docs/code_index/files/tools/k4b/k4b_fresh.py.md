@@ -65,6 +65,7 @@
 ## Imported by
 
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 35, import)
+- [tests/hwsg/test_a_ratio.py](../../tests/hwsg/test_a_ratio.py.md) (line 26, import)
 - [tests/k4b/test_b_endpoint.py](../../tests/k4b/test_b_endpoint.py.md) (line 29, import)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 26, import)
 - [tools/hwsc/hwsc_data.py](../hwsc/hwsc_data.py.md) (line 18, import)
@@ -74,6 +75,9 @@
 - [tools/hwsd/hwsd_data.py](../hwsd/hwsd_data.py.md) (line 22, import)
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 23, import)
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 19, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 25, import)
+- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 21, import)
+- [tools/hwsg/hwsg_ratio.py](../hwsg/hwsg_ratio.py.md) (line 9, import)
 
 ## Top-level constants
 

@@ -73,6 +73,8 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 23, import)
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 22, import)
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 17, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 16, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 21, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 18, import)
 
 ## Top-level constants

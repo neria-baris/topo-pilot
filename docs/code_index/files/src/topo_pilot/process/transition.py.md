@@ -49,6 +49,7 @@
 - [tests/d1_seam/test_d1_seam.py](../../../tests/d1_seam/test_d1_seam.py.md) (line 18, import)
 - [tests/process/test_transition.py](../../../tests/process/test_transition.py.md) (line 13, import)
 - [tests/x2a_stage0/test_x2a_stage0.py](../../../tests/x2a_stage0/test_x2a_stage0.py.md) (line 22, import)
+- [tools/hwsg/hwsg_oracle.py](../../../tools/hwsg/hwsg_oracle.py.md) (line 29, import)
 
 ## Top-level constants
 

@@ -72,6 +72,7 @@
 - [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 18, import)
 - [tools/hwsd/hwsd_readers.py](../hwsd/hwsd_readers.py.md) (line 14, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 16, import)
+- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 20, import)
 
 ## Top-level constants
 

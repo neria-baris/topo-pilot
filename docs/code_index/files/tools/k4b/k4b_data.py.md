@@ -61,6 +61,8 @@
 - [tests/hwsc/test_b_streams.py](../../tests/hwsc/test_b_streams.py.md) (line 29, import)
 - [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 23, import)
 - [tests/hwsd/test_b_util.py](../../tests/hwsd/test_b_util.py.md) (line 35, import)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 48, dynamic)
+- [tests/hwsg/test_b_registry.py](../../tests/hwsg/test_b_registry.py.md) (line 27, dynamic)
 - [tests/hwsu/test_b_of_driver.py](../../tests/hwsu/test_b_of_driver.py.md) (line 25, import)
 - [tests/hwsu/test_b_of_obligation.py](../../tests/hwsu/test_b_of_obligation.py.md) (line 25, import)
 - [tests/hwsu/test_b_of_registry.py](../../tests/hwsu/test_b_of_registry.py.md) (line 25, import)

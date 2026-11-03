@@ -81,6 +81,7 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 252, import)
 - [tools/hwsd/hwsd_dry2.py](../hwsd/hwsd_dry2.py.md) (line 17, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 13, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 17, import)
 
 ## Top-level constants
 

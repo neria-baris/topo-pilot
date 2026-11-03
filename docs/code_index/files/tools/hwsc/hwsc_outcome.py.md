@@ -42,7 +42,11 @@
 
 ## Imported by
 
+- [tests/hwsg/test_a_kg6_port.py](../../tests/hwsg/test_a_kg6_port.py.md) (line 27, import)
 - [tools/hwsc/hwsc_gates.py](hwsc_gates.py.md) (line 222, import)
+- [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 19, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 22, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 15, import)
 
 ## Top-level constants
 

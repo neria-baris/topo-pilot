@@ -55,6 +55,8 @@
 - [tools/hwsb/hwsb_data.py](hwsb_data.py.md) (line 349, import)
 - [tools/hwsc/hwsc_driver.py](../hwsc/hwsc_driver.py.md) (line 12, import)
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 14, import)
+- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 18, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 15, import)
 
 ## Top-level constants
 

@@ -70,6 +70,7 @@
 - [tests/hwsd/test_b_binding.py](../../tests/hwsd/test_b_binding.py.md) (line 95, import)
 - [tests/hwsd/test_b_data.py](../../tests/hwsd/test_b_data.py.md) (line 24, import)
 - [tests/hwsd/test_b_records_meter.py](../../tests/hwsd/test_b_records_meter.py.md) (line 25, import)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 49, dynamic)
 - [tests/k4b/test_b_flow.py](../../tests/k4b/test_b_flow.py.md) (line 25, import)
 - [tests/k4b/test_b_h1_meta.py](../../tests/k4b/test_b_h1_meta.py.md) (line 30, import)
 - [tests/k4b/test_b_rerun.py](../../tests/k4b/test_b_rerun.py.md) (line 24, import)
@@ -85,6 +86,12 @@
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 29, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 21, import)
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 18, import)
+- [tools/hwsg/hwsg_cross.py](../hwsg/hwsg_cross.py.md) (line 174, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 24, import)
+- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 352, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 243, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 18, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 18, import)
 - [tools/k4b/k4b_fresh.py](k4b_fresh.py.md) (line 20, import)
 
 ## Top-level constants

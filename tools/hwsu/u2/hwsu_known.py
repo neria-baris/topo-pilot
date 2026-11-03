@@ -78,6 +78,8 @@ def implementation_files_u(repo, h_exec, contract=None) -> dict:
 
 def freeze_u(store, repo, h_exec, dru_report, j_u_records, written_by) -> dict:
     C = uc.CONTRACT
+    if (Path(store) / "FREEZE.json").exists():
+        raise C1GateFailure(FREEZE, "FREEZE.json exists (exclusive create)")
     ufz.verify_freeze_of(store, repo)
     ob = of_binding(store)
     files = implementation_files_u(repo, h_exec)

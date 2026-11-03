@@ -40,7 +40,7 @@ def _tm(x) -> float:
 def p1_u(A, G, models, seeds, ladder=uc.LADDER) -> dict:
     models, G = list(models), np.asarray(G, dtype=np.float64)
     alt = float(uc.ALT_RESP * Fraction(_tm(G)))
-    passes, prec = {}, {}
+    passes, prec, mde = {}, {}, {}
     for X in ("ZR010", "ZR030"):
         Xd = {j: um.response_arrays(A[j], G)[X] for j in models}
         sd, _ = precision.sd_b4_draws(Xd, {j: G for j in models}, models, seeds["p1_sd"],
@@ -54,7 +54,7 @@ def p1_u(A, G, models, seeds, ladder=uc.LADDER) -> dict:
             prec[f"e_{X}_{N}"] = e
             passes[X][N] = {j: bool(s["models"][j]["mde_upper"] <= alt
                                     and s["models"][j]["power"] >= uc.POWER) for j in models}
-            passes[X].setdefault("summary", {})[N] = {
+            mde.setdefault(X, {})[N] = {
                 j: {"mde_upper": s["models"][j]["mde_upper"], "power": s["models"][j]["power"]}
                 for j in models}
     both = {N: [j for j in models if passes["ZR010"][N][j] and passes["ZR030"][N][j]]
@@ -64,8 +64,9 @@ def p1_u(A, G, models, seeds, ladder=uc.LADDER) -> dict:
         n_resp = next((N for N in ladder if len(both[N]) >= 2), None)
     limited = [] if n_resp is None else [f"PRECISION_LIMITED({j})" for j in models
                                          if j not in both[n_resp]]
-    return {"N_RESP": n_resp, "N": n_resp, "k": None if n_resp is None else n_resp // uc.BLOCK_OF,
-            "passes": passes, "precision_limited": limited, "prec": prec, "alt": alt}
+    k = None if n_resp is None else (n_resp // uc.BLOCK_OF if n_resp % uc.BLOCK_OF == 0
+                                     else n_resp / uc.BLOCK_OF)
+    return {"N_RESP": n_resp, "N": n_resp, "k": k, "mde": mde, "passes": passes, "precision_limited": limited, "prec": prec, "alt": alt}
 
 
 # ------------------------------------------------------------ family stream, statements
@@ -95,7 +96,7 @@ def model_status(bj) -> dict:
     return {"status": _CAT[cat], "rule6": bool(rule6), "coarse": coarse, "bounds": bj}
 
 
-_REGIONS = {"<=0": 1, "0<<=0.1": 2, "0.1<<0.3": 2, "=0.3": 2, ">0.3": 1}
+_REGIONS = {"<=0": 2, "0<<=0.1": 2, "0.1<<0.3": 2, "=0.3": 2, ">0.3": 1}
 
 
 def _region(x) -> str:
@@ -111,7 +112,7 @@ def fw_events(theta_region) -> int:
     """Lemma FW-U, response part: events whose union holds 'a declared statement is false'.
     With G >= 0 elementwise the draw means satisfy ZR030 <= ZR010 <= AF, so L(ZR030) <= L(ZR010)
     <= L(AF) and U(ZR030) <= U(ZR010): every false positive statement is inside the event
-    L(AF) > mean (theta <= 0), every false negative one inside U(ZR030) < mean (theta > 0.30)."""
+    F^L(ZR010) and F^L(AF) (theta <= 0), every false negative one inside F^U(ZR030) (theta > 0.30)."""
     r = _region(theta_region)
     if r not in _REGIONS:
         raise ValueError(f"unknown truth region {theta_region!r}")

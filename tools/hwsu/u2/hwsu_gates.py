@@ -305,9 +305,12 @@ def x1_step(ctx) -> dict:
 
 
 def kc_u(ctx) -> dict:
-    G = ctx["pc"]["G"]
-    ids = uo.ko_identities(G, ctx["A_KO"])
-    cats = uo.ko_categories(G, ctx["A_KO"], ctx["seeds"]["kc_val"],
+    G, v = ctx["pc"]["G"], ctx.get("val", ctx)
+    N = uo.helmert(36)
+    A_KO = {k: uo.readout_A(ctx["pc"]["d"], uo.ko_logits(v["o1"], v["s1"], k),
+                            uo.ko_logits(v["o2"], v["s2"], k), N) for k in uo.CASES}
+    ids = uo.ko_identities(G, A_KO)
+    cats = uo.ko_categories(G, A_KO, ctx.get("seeds", {}).get("kc_val", 640112),
                             draws=int(ctx.get("draws", uc.DRAWS)))
     if not (all(v["ok"] for v in ids.values()) and cats["ok"]):
         raise FAIL("FAIL_TECHNICAL/KNOWN_CASE", f"KC-U {ids} {cats}")
@@ -353,8 +356,7 @@ def p1_step(out, ctx) -> dict:
 
 def validation_report(out, ctx, records) -> Path:
     P = ctx.get("P1", {})
-    mde = {X: {N: P["passes"][X]["summary"][N] for N in P["passes"][X]["summary"]}
-           for X in P.get("passes", {})}
+    mde = P.get("mde", {})
     rec = {"schema": "hwsu-validation-v1", "gates": {r["gate"]: r["status"] for r in records},
            "G": {"mean": float(c1_means.tree_mean(ctx["pc"]["G"])) if "pc" in ctx else None},
            "ko": {"identities": "PASS" if "pc" in ctx else None, "categories": "PASS" if ctx.get(

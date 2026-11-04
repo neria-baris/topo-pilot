@@ -47,10 +47,10 @@
 **מה זה אומר לנו:** הוויכוח הזה הוא בדיוק השאלה של כיוון 2: האם המטרה מכריחה את הייצוג, או שהוא תוצר של בחירות ספציפיות? הלקח של Schaeffer et al. הוא שכל טענה של "אוניברסליות" חייבת לסרוק היפר־פרמטרים ולדווח באיזה שיעור מהריצות הייצוג מופיע, לא רק להראות דוגמה.
 
 ### 2.5 טופולוגיה לא טריוויאלית ולא־אוריינטבילית בייצוגים
-**מה ידוע:** בקוד הטבעי נמצא בקבוק קליין: במרחב טלאי התמונות, ובהמשך גם בקוד של הקורטקס הראייתי. ברשתות מלאכותיות כמעט כל העבודה היא על מקודדים ולא על מודלי רצפים. VAE גאוסי רגיל אינו מסוגל לייצג רצועת מביוס. VAE שבנוי כמנה של גליל (כיסוי כפול) לומד אותה, אבל נוטה לקרוס בקואורדינטה אחת. מפה יחידה אינה יכולה לייצג משטח לא־אוריינטבילי, ולכן נדרשות כמה מפות. אוריינטביליות ניתנת לבדיקה לפי סימן דטרמיננטת היעקוביאן.
+**מה ידוע:** בקוד הטבעי נמצא בקבוק קליין: במרחב טלאי התמונות, ובהמשך גם בקוד של הקורטקס הראייתי. ברשתות מלאכותיות כמעט כל העבודה היא על מקודדים ולא על מודלי רצפים. VAE גאוסי רגיל אינו מסוגל לייצג רצועת מביוס. VAE שבנוי כמנה של גליל (כיסוי כפול) לומד אותה, אבל נוטה לקרוס בקואורדינטה אחת. מפה יחידה אינה יכולה לייצג משטח לא־אוריינטבילי, ולכן נדרשות כמה מפות. אוריינטביליות ניתנת לבדיקה לפי סימני דטרמיננטות היעקוביאן של מפות המעבר בין המפות.
 - Carlsson, Ishkhanov, de Silva & Zomorodian 2008, IJCV: בקבוק קליין בטלאי תמונות.
 - van Hulst, Tomczak, Heemels & Antunes 2026, arXiv:2606.07058: VAE עם טופולוגיה מוכתבת, כולל רצועת מביוס דרך כיסוי כפול.
-- arXiv:2602.22873 (2026): מקודדים רב־מפתיים ומחלקות אופייניות; בדיקת אוריינטביליות (שם הכותבים לא אומת).
+- Paluzo-Hidalgo & Ike 2026, arXiv:2602.22873: אטלסים של מקודדים אוטומטיים ומחלקות אופייניות; בדיקת אוריינטביליות לפי סימני היעקוביאנים של מפות המעבר.
 - מהמפה הקודמת: Fitz et al. 2026 ו־Malhotra et al. 2026 (הומולוגיה מתמדת של ייצוגים).
 
 **מה זה אומר לנו:** לא מצאנו אף עבודה שבה מודל רצפים לומד עולם נסתר לא־אוריינטבילי ונבדק מול אורקל. ההשערה "כיסוי כפול אוריינטבילי ועוד ביט של צד" תואמת את מה שה־VAE צריך לקבל בכפייה. אצלנו השאלה היא אם זה נוצר מעצמו.
@@ -94,7 +94,7 @@
 - **דירוג חידוש: בינוני־נמוך.** יש ערך בטבלה שיטתית מול אורקל עם בקרות סיבתיות, אבל השאלה הכללית כבר נשאלה. החלק החדש ביותר הוא דווקא היעדים הגסים או בלי מיקום: אם המעגל שורד בהם, זה עדות לכך שהטופולוגיה של העולם, ולא פרטי היעד, היא שמכריחה אותו.
 
 ### כיוון 3: עולמות נסתרים לא־אוריינטביליים
-- **העבודה הקרובה ביותר:** van Hulst et al. 2026 (Möbius VAE דרך כיסוי כפול, בכפייה); arXiv:2602.22873 (מפה יחידה לא מספיקה; בדיקת אוריינטביליות); Carlsson et al. 2008 (קליין בקוד טבעי); Gardner et al. 2022 וטבעות וטורוסים במוח. לפי המפה הקודמת, גם בה סומן "עקביות אוריינטציה" כפער ארוך־טווח.
+- **העבודה הקרובה ביותר:** van Hulst et al. 2026 (Möbius VAE דרך כיסוי כפול, בכפייה); Paluzo-Hidalgo & Ike 2026 (מפה יחידה לא מספיקה; בדיקת אוריינטביליות); Carlsson et al. 2008 (קליין בקוד טבעי); Gardner et al. 2022 וטבעות וטורוסים במוח. לפי המפה הקודמת, גם בה סומן "עקביות אוריינטציה" כפער ארוך־טווח.
 - **מה יהיה חדש:** מודל רצפים שמאומן רק על ניבוי, בעולם מביוס או קליין עם אורקל מדויק, ובדיקה אם הוא בונה כיסוי כפול ועוד מאפיין "צד", או ייצוג אחר. לא מצאנו אף עבודה כזו.
 - **הסיכון שזה כבר נעשה או טריוויאלי:** נמוך שזה נעשה, גבוה שזה ייכשל. הניסיון הקודם שלנו הראה שהמודלים לא למדו את המשימה. בלי עיצוב מחדש, שבו ההבדל בין העולמות נראה בניבוי בטווח קצר, הכיוון עלול שוב לא להניב תשובה. יש גם סיכון של טריוויאליות: אם המעבר בתפר הופך סימן במפורש בתצפיות, "ביט הצד" נקרא ישירות מהקלט.
 - **דירוג חידוש: גבוה,** בכפוף לכך שהמשימה תילמד. הסיכון הניסויי הוא הגבוה מבין השלושה.
@@ -113,7 +113,7 @@
 - Piotrowski, M., Riechers, P.M., Filan, D., Shai, A.S. (2025). Constrained belief updates explain geometric structures in transformer representations. ICML 2025. https://arxiv.org/abs/2502.01954
 - Riechers, P.M., Elliott, T.J., Shai, A.S. (2025). Neural networks leverage nominally quantum and post-quantum representations. https://arxiv.org/abs/2507.07432
 - Agarwal, N., Dalal, S.R., Misra, V. (2025). The Bayesian Geometry of Transformer Attention. https://arxiv.org/abs/2512.22471
-- Brenner, S., Knösche, T.R., Scherf, N. (2026). arXiv:2603.16689 [מפה]. https://arxiv.org/abs/2603.16689. הערה: במפה הכותרת היא "Predictive Statistics Shape Emergent World Representations of Grid Walkers" (גרסה 2). בחיפוש הופיעה הכותרת "Grid-World Representations in Transformers Reflect Predictive Geometry", כנראה של גרסה 1. יש לוודא איזו כותרת לצטט.
+- Brenner, S., Knösche, T.R., Scherf, N. (2026). Predictive Statistics Shape Emergent World Representations of Grid Walkers. arXiv:2603.16689v2 [מפה]. https://arxiv.org/abs/2603.16689. הערה (אומת 2026-11-04): זו כותרת גרסה 2 (5 ביוני 2026), הנוכחית; לגרסה 1 (17 במרץ 2026) הכותרת "Grid-World Representations in Transformers Reflect Predictive Geometry".
 - Jerpelea (2026). Planting a Latent Variable in Natural-Looking Text… arXiv:2608.26887 [מפה]. https://arxiv.org/abs/2608.26887
 - Shai et al. (2026). Transformers learn factored representations. arXiv:2602.02385 [מפה].
 - Balcells et al. (2026). Large Language Models Develop Belief State Geometry In-Context. arXiv:2609.17376 [מפה].
@@ -130,14 +130,14 @@
 - Cueva, C.J., Wei, X.-X. (2018). Emergence of grid-like representations by training recurrent neural networks to perform spatial localization. ICLR 2018. https://arxiv.org/abs/1803.07770
 - Banino, A. et al. (2018). Vector-based navigation using grid-like representations in artificial agents. Nature 557:429–433. doi:10.1038/s41586-018-0102-6
 - Sorscher, B., Mel, G., Ganguli, S., Ocko, S. (2019). A unified theory for the origin of grid cells through the lens of pattern formation. NeurIPS 2019.
-- Schaeffer, R., Khona, M., Fiete, I.R. (2022). No Free Lunch from Deep Learning in Neuroscience: A Case Study through Models of the Entorhinal-Hippocampal Circuit. NeurIPS 2022. (מזהה arXiv לא אומת)
+- Schaeffer, R., Khona, M., Fiete, I.R. (2022). No Free Lunch from Deep Learning in Neuroscience: A Case Study through Models of the Entorhinal-Hippocampal Circuit. NeurIPS 2022. bioRxiv doi:10.1101/2022.08.07.503109 (אומת 2026-11-04; לא נמצאה גרסת arXiv)
 - Whittington, J.C.R. et al. (2020). The Tolman-Eichenbaum Machine. Cell 183(5):1249–1263. doi:10.1016/j.cell.2020.10.024
 - Whittington, J.C.R., Warren, J., Behrens, T.E.J. (2022). Relating transformers to models and neural representations of the hippocampal formation. ICLR 2022. https://arxiv.org/abs/2112.04035
 - Gardner, R.J. et al. (2022). Toroidal topology of population activity in grid cells. Nature 602:123–128. doi:10.1038/s41586-021-04268-7
 - Chaudhuri, R., Gerçek, B., Pandey, B., Peyrache, A., Fiete, I. (2019). The intrinsic attractor manifold and population dynamics of a canonical cognitive circuit across waking and sleep. Nature Neuroscience 22:1512–1520.
 - Carlsson, G., Ishkhanov, T., de Silva, V., Zomorodian, A. (2008). On the Local Behavior of Spaces of Natural Images. IJCV 76:1–12.
 - van Hulst, J.S., Tomczak, J.M., Heemels, W.P.M.H., Antunes, D.J. (2026). Constructing VAE Latent Spaces with Prescribed Topology. https://arxiv.org/abs/2606.07058
-- (2026) מקודדים רב־מפתיים עם מחלקות אופייניות, בדיקת אוריינטביליות. https://arxiv.org/abs/2602.22873. **כותרת מלאה וכותבים לא אומתו.**
+- Paluzo-Hidalgo, E., Ike, Y. (2026). Learning Tangent Bundles and Characteristic Classes with Autoencoder Atlases. https://arxiv.org/abs/2602.22873 (אומת 2026-11-04)
 - Huh, M., Cheung, B., Wang, T., Isola, P. (2024). The Platonic Representation Hypothesis. ICML 2024. https://arxiv.org/abs/2405.07987
 - Kornblith, S., Norouzi, M., Lee, H., Hinton, G. (2019). Similarity of Neural Network Representations Revisited. ICML 2019. https://arxiv.org/abs/1905.00414
 - Goel, G., Bartlett, P. (2024). Can a Transformer Represent a Kalman Filter? L4DC, PMLR 242. https://arxiv.org/abs/2312.06937

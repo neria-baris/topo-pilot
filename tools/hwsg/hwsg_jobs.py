@@ -188,7 +188,7 @@ def run_e2(out, w, auth, sched, release_path=None, session=None, dry_continue=Fa
         bar = rec.release_barrier(out)
         if not bar["ok"] or bar["release_b_missing"]:
             raise C1GateFailure("INCONCLUSIVE/RESOURCE_OR_AUTHORITY", f"release barrier {bar}")
-        ctx["release"] = k4b_fresh.require_release_b(wd, rp, session)
+        ctx["release"] = k4b_fresh.require_release_b(out, rp, session)
         return {"N": ctx["release"]["N"], "k": ctx["release"]["k"]}
 
     def g_identity():
@@ -207,7 +207,7 @@ def run_e2(out, w, auth, sched, release_path=None, session=None, dry_continue=Fa
         return {"ratio": rr["status"]}
 
     steps = [("RELEASE_B", g_release), ("H1G_E2", g_identity),
-             ("H2-FRESH", lambda: hwsc_data.h2_fresh_c(wd, ctx)),
+             ("H2-FRESH", lambda: hwsc_data.h2_fresh_c(out, ctx)),
              ("T-PRE", lambda: k4b_fresh.t_pre(wd, ctx)),
              ("ENDPOINT", lambda: k4b_fresh.endpoint_gate(ctx)), ("RATIO", g_ratio)]
     with hwsg_bind.world(d.tag):

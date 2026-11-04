@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked files; 729 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1142 tracked files; 730 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1040,6 +1040,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked fil
 | [test_b_streams.py](files/tests/hwsg/test_b_streams.py.md) | python | 130 lines | Author B: streams carry the world key; seeds; disjointness (protocol 2.4, G4, KG2, DRG4). |
 | [test_b_train_meter.py](files/tests/hwsg/test_b_train_meter.py.md) | python | 97 lines | Author B: training children, meter caps, ledgers, basetemps (G7, 10.3, DRG12, DRG13, KG4). |
 | [test_impl_review.py](files/tests/hwsg/test_impl_review.py.md) | python | 119 lines | Implementer regression tests for R-0224-3 items 1-6 (one per item). |
+| [test_r0257_store_paths.py](files/tests/hwsg/test_r0257_store_paths.py.md) | python | 56 lines | R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that |
 
 ## tests/hwsu/
 
@@ -1459,7 +1460,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 361 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
+| `API.md` | markdown | 365 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
 | `CONTRACT.json` | json | 3279 lines |  |
 | `PROTOCOL_HWSG_v1.md` | markdown | 477 lines | HWSG-DESIGN-v1: generality across worlds, the full beyond-four test repeated in three more worlds |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSG test plan v1 (job 0224) |

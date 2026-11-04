@@ -1195,7 +1195,7 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tests/hwsg/test_b_common.py`
 - -> tools/c1prime/c1_records.py, tools/hwsg/hwsg_config.py
-- <- tests/hwsg/test_b_binding.py, tests/hwsg/test_b_guard.py, tests/hwsg/test_b_handoff_oracle.py, tests/hwsg/test_b_records.py, tests/hwsg/test_b_registry.py, tests/hwsg/test_b_streams.py, tests/hwsg/test_b_train_meter.py
+- <- tests/hwsg/test_b_binding.py, tests/hwsg/test_b_guard.py, tests/hwsg/test_b_handoff_oracle.py, tests/hwsg/test_b_records.py, tests/hwsg/test_b_registry.py, tests/hwsg/test_b_streams.py, tests/hwsg/test_b_train_meter.py, tests/hwsg/test_r0257_store_paths.py
 ### `tests/hwsg/test_b_guard.py`
 - -> tests/hwsg/test_b_common.py
 - <- none
@@ -1216,6 +1216,9 @@ Edge counts are file-to-file edges between different subpackages.
 - <- none
 ### `tests/hwsg/test_impl_review.py`
 - -> tools/hwsc/hwsc_records.py, tools/hwsc/hwsc_registry.py, tools/hwsg/hwsg_bind.py, tools/hwsg/hwsg_config.py, tools/hwsg/hwsg_handoff.py, tools/hwsg/hwsg_known.py, tools/hwsg/hwsg_oracle.py, tools/hwsg/hwsg_records.py, tools/hwsg/hwsg_registry.py, tools/hwsg/hwsg_train.py, tools/k4b/k4b_release.py, tools/x4_circle_history/stage_records.py
+- <- none
+### `tests/hwsg/test_r0257_store_paths.py`
+- -> tests/hwsg/test_b_common.py
 - <- none
 ### `tests/hwsu/test_a_of_gates.py`
 - -> src/topo_pilot/dataset/sampler.py, tools/c1prime/c1_means.py, tools/c1prime/c1_records.py, tools/c2_readout/c2_attrib.py, tools/c2_readout/c2_decide.py, tools/c2_readout/c2_stats.py, tools/hwsu/hwsu_config.py, tools/hwsu/hwsu_driver_of.py, tools/hwsu/hwsu_dry.py, tools/hwsu/hwsu_of.py, tools/hwsu/hwsu_oracle.py, tools/hwsu/hwsu_pairs.py, tools/x4_circle_history/precision.py
@@ -10572,6 +10575,8 @@ tests/hwsg/test_impl_review.py
     tools/hwsg/hwsg_train.py (see above)
     tools/k4b/k4b_release.py (see above)
     tools/x4_circle_history/stage_records.py (see above)
+tests/hwsg/test_r0257_store_paths.py
+    tests/hwsg/test_b_common.py (see above)
 ```
 
 ### tests/hwsu

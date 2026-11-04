@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 331,
-  "code files": 729,
+  "code files": 730,
   "dynamic imports, dynamic expression or unresolved": 39,
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1141,
-  "functions and methods (incl. tests)": 10883,
+  "files indexed": 1142,
+  "functions and methods (incl. tests)": 10884,
   "import cycles (strongly connected components)": 16,
-  "import statements, external": 1010,
+  "import statements, external": 1011,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3865,
+  "import statements, internal resolved": 3866,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3351,
-  "internal edges (file to file, with kind and line)": 3924,
-  "python files": 728
+  "import statements, standard library": 3354,
+  "internal edges (file to file, with kind and line)": 3925,
+  "python files": 729
  },
  "cycles": [
   [
@@ -10317,6 +10317,12 @@
    "tools/x4_circle_history/stage_records.py",
    "import",
    20
+  ],
+  [
+   "tests/hwsg/test_r0257_store_paths.py",
+   "tests/hwsg/test_b_common.py",
+   "import",
+   12
   ],
   [
    "tests/hwsu/test_a_of_gates.py",
@@ -28012,6 +28018,12 @@
    "purpose": "Implementer regression tests for R-0224-3 items 1-6 (one per item).",
    "sha256": "8494540732b1e6381a60e2ba119bb2296cdb8330614ebe9d3a828ee30cd331b6"
   },
+  "tests/hwsg/test_r0257_store_paths.py": {
+   "kind": "python",
+   "lines": 56,
+   "purpose": "R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that",
+   "sha256": "e60d8e89f4072a9a9a3fa202a1325e7a854d63efcfafc33eecec1f9b739edf9e"
+  },
   "tests/hwsu/AUTHORSHIP_A.md": {
    "kind": "markdown",
    "lines": 113,
@@ -29658,9 +29670,9 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 361,
+   "lines": 365,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "e13039ff761b40981aba97b0bd49ca629bc72e8016f429f793e83721027c8c16"
+   "sha256": "aed16b2b59f1f658b312b053eaf2d18e55fb523230358e88915911cc610a21f7"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
@@ -29720,7 +29732,7 @@
    "kind": "python",
    "lines": 271,
    "purpose": "HWSG jobs: REG1, E1-w, REG2, E2-w and the CLI (API.md §11.4-§11.7). Every world stage runs",
-   "sha256": "ca1b06ea6aa827f28e2c4a533cd029f6694f22d7bf39d35484cf1865e4d9a85b"
+   "sha256": "8c58d9b289e642b8d51eea26f46620354ef36246686a2bb32a23b41162e3284c"
   },
   "tools/hwsg/hwsg_known.py": {
    "kind": "python",
@@ -160083,6 +160095,113 @@
      ],
      "expr": "str(HERE)",
      "line": 8
+    }
+   ]
+  },
+  "tests/hwsg/test_r0257_store_paths.py": {
+   "constants": [],
+   "doc": "R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that\nread the store-level registry/K-REG2.json (API.md section 24).",
+   "doc1": "R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that",
+   "dynamic": [],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 9,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 12,
+     "module": "test_b_common",
+     "names": [
+      "mod"
+     ],
+     "status": "internal",
+     "targets": [
+      "tests/hwsg/test_b_common.py"
+     ],
+     "top": "test_b_common"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 56,
+     "kind": "test",
+     "name": "test_run_e2_passes_store_to_release_b_and_h2_fresh",
+     "qual": "test_run_e2_passes_store_to_release_b_and_h2_fresh",
+     "sig": "def test_run_e2_passes_store_to_release_b_and_h2_fresh(tmp_path, monkeypatch)",
+     "start": 15
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tests/hwsg"
+     ],
+     "expr": "str(Path(__file__).resolve().parent)",
+     "line": 11
     }
    ]
   },
@@ -295028,5 +295147,5 @@
    ]
   }
  },
- "sources_digest": "9b44b9da2e48c237c11dfdc1ec93d39eb6a592bd09d26cdc670ba15a28ed4955"
+ "sources_digest": "af45e4d70cb29ec8dcdcd5c616742e49a20b210891e1ee150d3e79821e94d938"
 }

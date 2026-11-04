@@ -266,7 +266,7 @@ def certificate(manifest) -> str:
 
 def _inv_sha(root, inv, bound=None) -> tuple:
     obl = _obligations(root, bound)
-    return _sha({"inv": inv["inv"], "obligations": obl}), obl
+    return _sha({"inv": gc.certificate_inv(inv["inv"]), "obligations": obl}), obl
 
 
 def recheck(manifest, root=None) -> dict:

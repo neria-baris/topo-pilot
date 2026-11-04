@@ -169,6 +169,25 @@ def world_dir(store, w) -> Path:
     return Path(store) / "worlds" / world(w).key
 
 
+def _own_draw(p) -> bool:
+    s = str(p).replace("\\", "/")
+    return (f"/{STORE.name}/worlds/" in s and s.endswith(".npz")
+            and ("/stages/S3/HIST_" in s or "/stages/S7/HIST_" in s))
+
+
+def certificate_inv(inv) -> dict:
+    """R-0251-1: the registry certificate's root inventory without the own store's E1/E2 draw
+    tables (worlds/*/stages/S3|S7/HIST_*.npz); H2/H2-FRESH and separation_g cover those across
+    worlds, so a later world's recheck is not invalidated by an earlier world's draws."""
+    row = inv.get(STORE.name)
+    if not isinstance(row, dict):
+        return inv
+    row = dict(row, history_files=[f for f in row.get("history_files", []) if not _own_draw(f)],
+               history_shapes={k: v for k, v in row.get("history_shapes", {}).items()
+                               if not _own_draw(k)})
+    return dict(inv, **{STORE.name: row})
+
+
 def plan(w) -> hwsb_config.Plan:
     d = world(w)
     return hwsb_config.Plan("real", d.masters, hwsb_config.MODEL_CFG, hwsb_config.TRAIN_CFG,

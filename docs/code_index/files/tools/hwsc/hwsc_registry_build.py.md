@@ -54,6 +54,7 @@
 
 - [tools/hwsc/hwsc_registry.py](hwsc_registry.py.md) (line 330, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 17, import)
+- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 21, import)
 - [tools/hwsu/u2/hwsu_dry2.py](../hwsu/u2/hwsu_dry2.py.md) (line 33, import)
 - [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 25, import)
 

@@ -63,6 +63,7 @@
 - [tests/hwsc/test_b_train_hold.py](../../tests/hwsc/test_b_train_hold.py.md) (line 30, import)
 - [tests/hwsc/test_r_0178_dry_store_rule.py](../../tests/hwsc/test_r_0178_dry_store_rule.py.md) (line 17, import)
 - [tests/hwsd/test_b_registry_build.py](../../tests/hwsd/test_b_registry_build.py.md) (line 18, import)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 18, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 18, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 26, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 18, import)
@@ -72,6 +73,7 @@
 - [tools/hwsc/hwsc_scratch.py](hwsc_scratch.py.md) (line 18, import)
 - [tools/hwsd/hwsd_readers.py](../hwsd/hwsd_readers.py.md) (line 14, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 16, import)
+- [tools/hwsg/hwsg_registry.py](../hwsg/hwsg_registry.py.md) (line 20, import)
 - [tools/hwsu/u2/hwsu_registry.py](../hwsu/u2/hwsu_registry.py.md) (line 24, import)
 - [tools/hwsu/u2/hwsu_regsrc.py](../hwsu/u2/hwsu_regsrc.py.md) (line 17, import)
 

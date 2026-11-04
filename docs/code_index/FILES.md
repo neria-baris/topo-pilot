@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1145 tracked files; 733 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1181 tracked files; 763 code files (linked to their pages).
 
 ## (repo root)
 
@@ -1020,6 +1020,30 @@ The generated index itself (`docs/code_index/`) is not indexed. 1145 tracked fil
 | [test_b_util.py](files/tests/hwsd/test_b_util.py.md) | python | 251 lines | Author B shared helpers for tests/hwsd (job 0197). Holds no tests. |
 | [test_c_continue.py](files/tests/hwsd/test_c_continue.py.md) | python | 200 lines | Coordinator 080a3e03 (jobs 0208, 0210; owner addendum 42). |
 
+## tests/hwsg/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `AUTHORSHIP_A.md` | markdown | 48 lines | HWSG tests, author A (job 0224) |
+| `AUTHORSHIP_B.md` | markdown | 9 lines | Authorship B (job 0224, test author B, black-box records side) |
+| [test_a_cross.py](files/tests/hwsg/test_a_cross.py.md) | python | 278 lines | Author A (job 0224): CROSS decision table and RC-1 boundaries (§2.7, §7.3; DRG7/10/14). |
+| [test_a_kg6_port.py](files/tests/hwsg/test_a_kg6_port.py.md) | python | 233 lines | Author A (job 0224): KG6 port, the K4b/HWSC known statements under the hi binding (§5 KG6). |
+| [test_a_law.py](files/tests/hwsg/test_a_law.py.md) | python | 181 lines | Author A (job 0224): process override and law bound per sigma (O1/O2/O3; KG5; DRG8). |
+| [test_a_outcomes_licences.py](files/tests/hwsg/test_a_outcomes_licences.py.md) | python | 138 lines | Author A (job 0224): outcome precedence and licences (§7.2, §7.4, §7.5; API §12-§13). |
+| [test_a_ratio.py](files/tests/hwsg/test_a_ratio.py.md) | python | 205 lines | Author A (job 0224): capture ratio and its joint bootstrap (§2.7; N1, N7; KG7; DRG10). |
+| [test_a_selection.py](files/tests/hwsg/test_a_selection.py.md) | python | 192 lines | Author A (job 0224): world selection O0 and headroom O5 (protocol §3; API §4; TEST_PLAN §2). |
+| [test_b_binding.py](files/tests/hwsg/test_b_binding.py.md) | python | 192 lines | Author B: binding and rebinding (protocol 2.3, G3, KG1, DRG3). Black-box on API.md section 2. |
+| [test_b_common.py](files/tests/hwsg/test_b_common.py.md) | python | 64 lines | Shared helpers of author B (no tests here). Imports are lazy so collection never fails. |
+| [test_b_guard.py](files/tests/hwsg/test_b_guard.py.md) | python | 107 lines | Author B: blindness guard (protocol 8, DRG11). |
+| [test_b_handoff_oracle.py](files/tests/hwsg/test_b_handoff_oracle.py.md) | python | 176 lines | Author B: WORLD_HANDOFF and oracle identity/reproduction (protocol 2.6, O1, O3, O4). |
+| [test_b_records.py](files/tests/hwsg/test_b_records.py.md) | python | 165 lines | Author B: sealing, terminal RESULTs, S8 export, markers, barrier, cross inputs, ledger. |
+| [test_b_registry.py](files/tests/hwsg/test_b_registry.py.md) | python | 275 lines | Author B: registry fixtures, class-to-reader table, inventory fail-closed (protocol 6, N6, DRG9). |
+| [test_b_streams.py](files/tests/hwsg/test_b_streams.py.md) | python | 130 lines | Author B: streams carry the world key; seeds; disjointness (protocol 2.4, G4, KG2, DRG4). |
+| [test_b_train_meter.py](files/tests/hwsg/test_b_train_meter.py.md) | python | 97 lines | Author B: training children, meter caps, ledgers, basetemps (G7, 10.3, DRG12, DRG13, KG4). |
+| [test_impl_review.py](files/tests/hwsg/test_impl_review.py.md) | python | 119 lines | Implementer regression tests for R-0224-3 items 1-6 (one per item). |
+| [test_r0257_store_paths.py](files/tests/hwsg/test_r0257_store_paths.py.md) | python | 56 lines | R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that |
+| [test_r0259_e2_context.py](files/tests/hwsg/test_r0259_e2_context.py.md) | python | 85 lines | R-0259-1: run_e2 sets ctx["test_acts"] as stage C does, and every ctx key read after H2-FRESH |
+
 ## tests/hwsu/
 
 | File | Kind | Size | Purpose |
@@ -1453,6 +1477,28 @@ The generated index itself (`docs/code_index/`) is not indexed. 1145 tracked fil
 | [hwsd_score.py](files/tools/hwsd/hwsd_score.py.md) | python | 393 lines | HWSD per-checkpoint scorer (API.md section 6 and section 16): learning, chart_one, arrays_one, |
 | [hwsd_statements.py](files/tools/hwsd/hwsd_statements.py.md) | python | 289 lines | hwsd_statements: notation, onsets, ORDER and statements D1-D6 (API.md section 7). |
 | [hwsd_summary.py](files/tools/hwsd/hwsd_summary.py.md) | python | 312 lines | HWSD SUMMARY: bootstraps, bounds, F, the 36-row table, outcome, report (API.md section 8). |
+
+## tools/hwsg/
+
+| File | Kind | Size | Purpose |
+|---|---|---|---|
+| `API.md` | markdown | 369 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
+| `CONTRACT.json` | json | 3279 lines |  |
+| `PROTOCOL_HWSG_v1.md` | markdown | 477 lines | HWSG-DESIGN-v1: generality across worlds, the full beyond-four test repeated in three more worlds |
+| `TEST_PLAN.md` | markdown | 69 lines | HWSG test plan v1 (job 0224) |
+| [hwsg_bind.py](files/tools/hwsg/hwsg_bind.py.md) | python | 243 lines | HWSG world rebinding and audit (API.md §2; protocol §2.3). No existing file is edited: the |
+| [hwsg_config.py](files/tools/hwsg/hwsg_config.py.md) | python | 284 lines | HWSG configuration: CONTRACT.json, constants, worlds, plans, paths, blindness guard (API.md §1). |
+| [hwsg_cross.py](files/tools/hwsg/hwsg_cross.py.md) | python | 200 lines | HWSG cross-world readings: generality, annotations, capture, similarity, licences (API.md §8; |
+| [hwsg_dry.py](files/tools/hwsg/hwsg_dry.py.md) | python | 213 lines | HWSG dry run, part 1: synthetic cases DRG3-DRG8, DRG10, DRG11 (API.md §16; protocol §10.1). |
+| [hwsg_dry2.py](files/tools/hwsg/hwsg_dry2.py.md) | python | 243 lines | HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1). |
+| [hwsg_handoff.py](files/tools/hwsg/hwsg_handoff.py.md) | python | 115 lines | HWSG WORLD_HANDOFF: build, write, load, view for stage-C functions (API.md §3; protocol §2.6). |
+| [hwsg_jobs.py](files/tools/hwsg/hwsg_jobs.py.md) | python | 276 lines | HWSG jobs: REG1, E1-w, REG2, E2-w and the CLI (API.md §11.4-§11.7). Every world stage runs |
+| [hwsg_known.py](files/tools/hwsg/hwsg_known.py.md) | python | 376 lines | HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job. |
+| [hwsg_oracle.py](files/tools/hwsg/hwsg_oracle.py.md) | python | 322 lines | HWSG process, identity and stage O (API.md §4; protocol §2.3, §2.6, §3; gates O0-O5). |
+| [hwsg_ratio.py](files/tools/hwsg/hwsg_ratio.py.md) | python | 81 lines | HWSG capture ratio rho = X- / Delta4_orc with its joint bootstrap (API.md §7; N1, N7). |
+| [hwsg_records.py](files/tools/hwsg/hwsg_records.py.md) | python | 349 lines | HWSG records: preflight, S0, FREEZE, lineage, ledger, outcome, terminal RESULT, export, |
+| [hwsg_registry.py](files/tools/hwsg/hwsg_registry.py.md) | python | 400 lines | HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6; |
+| [hwsg_train.py](files/tools/hwsg/hwsg_train.py.md) | python | 309 lines | HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4). |
 
 ## tools/hwsu/
 

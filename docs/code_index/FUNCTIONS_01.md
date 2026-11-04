@@ -230,7 +230,7 @@
 | `_append` | function | `_append` | [tools/x6zc/x6zc_store.py:51](../../tools/x6zc/x6zc_store.py#L51) |  |
 | `_applies` | function | `_applies` | [tools/c2_nd/nd_stage_base.py:225](../../tools/c2_nd/nd_stage_base.py#L225) |  |
 | `_applies` | function | `_applies` | [tools/c2_readout/c2_decide.py:205](../../tools/c2_readout/c2_decide.py#L205) |  |
-| `_archive` | function | `_archive` | [tools/hwsg/hwsg_known.py:285](../../tools/hwsg/hwsg_known.py#L285) | Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt). |
+| `_archive` | function | `_archive` | [tools/hwsg/hwsg_known.py:292](../../tools/hwsg/hwsg_known.py#L292) | Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt). |
 | `_archive_interrupted` | function | `_archive_interrupted` | [tools/hwsd/hwsd_jobs.py:50](../../tools/hwsd/hwsd_jobs.py#L50) |  |
 | `_arg` | function | `_arg` | [tools/x6_stage1/x6s1_stats.py:106](../../tools/x6_stage1/x6s1_stats.py#L106) |  |
 | `_args` | function | `_args` | [tests/experiment/test_x4.py:157](../../tests/experiment/test_x4.py#L157) |  |
@@ -907,7 +907,7 @@
 | `_FixedDecoder` | class | `_FixedDecoder` | [tests/c1prime/test_b_gates.py:201](../../tests/c1prime/test_b_gates.py#L201) |  |
 | `_fixture` | function | `_fixture` | [tests/hwsg/test_a_ratio.py:57](../../tests/hwsg/test_a_ratio.py#L57) |  |
 | `_fixture` | function | `_fixture` | [tools/hwsc/hwsc_known.py:157](../../tools/hwsc/hwsc_known.py#L157) |  |
-| `_fixture` | function | `_fixture` | [tools/hwsg/hwsg_known.py:232](../../tools/hwsg/hwsg_known.py#L232) |  |
+| `_fixture` | function | `_fixture` | [tools/hwsg/hwsg_known.py:239](../../tools/hwsg/hwsg_known.py#L239) |  |
 | `_fixture` | function | `_fixture` | [tools/k4b/k4b_registry.py:85](../../tools/k4b/k4b_registry.py#L85) | R23 rules 2-4: path rule (main: tests/, .venv or a segment) and <= 1,024 history rows. |
 | `_fixture_calls` | function | `_fixture_calls` | [tools/hwsd/hwsd_known2.py:49](../../tools/hwsd/hwsd_known2.py#L49) |  |
 | `_fixture_ok` | function | `_fixture_ok` | [tools/hwsc/hwsc_scratch.py:80](../../tools/hwsc/hwsc_scratch.py#L80) |  |
@@ -4757,8 +4757,8 @@
 | `kg4_child` | function | `kg4_child` | [tools/hwsg/hwsg_train.py:220](../../tools/hwsg/hwsg_train.py#L220) | One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums. |
 | `kg5` | function | `kg5` | [tools/hwsg/hwsg_known.py:198](../../tools/hwsg/hwsg_known.py#L198) |  |
 | `kg6` | function | `kg6` | [tools/hwsg/hwsg_known.py:220](../../tools/hwsg/hwsg_known.py#L220) |  |
-| `kg7` | function | `kg7` | [tools/hwsg/hwsg_known.py:240](../../tools/hwsg/hwsg_known.py#L240) |  |
-| `kg8` | function | `kg8` | [tools/hwsg/hwsg_known.py:296](../../tools/hwsg/hwsg_known.py#L296) |  |
+| `kg7` | function | `kg7` | [tools/hwsg/hwsg_known.py:247](../../tools/hwsg/hwsg_known.py#L247) |  |
+| `kg8` | function | `kg8` | [tools/hwsg/hwsg_known.py:303](../../tools/hwsg/hwsg_known.py#L303) |  |
 | `kgram_law` | function | `kgram_law` | [tools/x6_stage0/x6_model.py:290](../../tools/x6_stage0/x6_model.py#L290) | Exact stationary law of (w_1..w_k) over reachable strings (prefix-shared DFS). |
 | `kind_of` | function | `kind_of` | [tools/code_index/scan.py:38](../../tools/code_index/scan.py#L38) |  |
 | `kinds` | function | `kinds` | [tests/hwsd/test_a_scorer.py:109](../../tests/hwsd/test_a_scorer.py#L109) |  |

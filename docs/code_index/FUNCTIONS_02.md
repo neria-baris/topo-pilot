@@ -1401,7 +1401,7 @@
 | `run_kb` | function | `run_kb` | [tools/hwsb/hwsb_known.py:281](../../tools/hwsb/hwsb_known.py#L281) | KB0 -> KB6 as gates; the first failure stops with later items NOT_RUN. |
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_driver.py:56](../../tools/hwsc/hwsc_driver.py#L56) |  |
 | `run_kc` | function | `run_kc` | [tools/hwsc/hwsc_known.py:248](../../tools/hwsc/hwsc_known.py#L248) |  |
-| `run_kc` | function | `run_kc` | [tools/hwsg/hwsg_known.py:306](../../tools/hwsg/hwsg_known.py#L306) |  |
+| `run_kc` | function | `run_kc` | [tools/hwsg/hwsg_known.py:313](../../tools/hwsg/hwsg_known.py#L313) |  |
 | `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_driver.py:101](../../tools/hwsd/hwsd_driver.py#L101) |  |
 | `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_known.py:232](../../tools/hwsd/hwsd_known.py#L232) |  |
 | `run_key` | function | `run_key` | [tools/hwsb/hwsb_config.py:187](../../tools/hwsb/hwsb_config.py#L187) |  |

@@ -61,7 +61,7 @@
 - [tools/hwsg/hwsg_dry2.py](hwsg_dry2.py.md) (line 9, import)
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 11, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 58, import)
-- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 307, import)
+- [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 314, import)
 - [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 245, import)
 - [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 109, import)
 - [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 135, import)

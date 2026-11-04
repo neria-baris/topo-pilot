@@ -88,7 +88,7 @@
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 18, import)
 - [tools/hwsg/hwsg_cross.py](../hwsg/hwsg_cross.py.md) (line 174, import)
 - [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 24, import)
-- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 365, import)
+- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 372, import)
 - [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 246, import)
 - [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 18, import)
 - [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 18, import)

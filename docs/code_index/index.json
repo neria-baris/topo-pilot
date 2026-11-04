@@ -20072,7 +20072,7 @@
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_oracle.py",
    "import",
-   308
+   315
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20090,13 +20090,13 @@
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_records.py",
    "import",
-   307
+   314
   ],
   [
    "tools/hwsg/hwsg_known.py",
    "tools/hwsg/hwsg_registry.py",
    "import",
-   297
+   304
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20114,7 +20114,7 @@
    "tools/hwsg/hwsg_known.py",
    "tools/k4b/k4b_driver.py",
    "import",
-   365
+   372
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -20126,7 +20126,7 @@
    "tools/hwsg/hwsg_known.py",
    "tools/k4b/k4b_release.py",
    "import",
-   287
+   294
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -29658,15 +29658,15 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 345,
+   "lines": 349,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "9dfa3c2d9551969cbc3ea442efc4bb38430d77d023ff09ca3b054f6ebd59abd9"
+   "sha256": "3ceddf05b884967cd5812ae4674e3edc23dab91087d3df21bdcb0b9f6a153a12"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
-   "lines": 3269,
+   "lines": 3272,
    "purpose": "",
-   "sha256": "46674f84dce5d446040090a12a60271adf14e84d54d7122af01bbc69d2d0ca1f"
+   "sha256": "ed80c4b25f5bdb6144b297b829a8f32d7c208183773e3be70f53d60751f60e0a"
   },
   "tools/hwsg/PROTOCOL_HWSG_v1.md": {
    "kind": "markdown",
@@ -29724,9 +29724,9 @@
   },
   "tools/hwsg/hwsg_known.py": {
    "kind": "python",
-   "lines": 369,
+   "lines": 376,
    "purpose": "HWSG known cases KG0-KG8 (API.md §10; protocol §5) and the KC job.",
-   "sha256": "040da33cc934f898a9699d4d11a55bad7c3e8b9b111c4ff94e79aa17445285c7"
+   "sha256": "f0aa4c17f8dd4bb9f85db406a5d1bd0654b1441cb8d5940dba6d487ba9bf1c6b"
   },
   "tools/hwsg/hwsg_oracle.py": {
    "kind": "python",
@@ -254466,7 +254466,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 241,
+     "line": 248,
      "module": "",
      "names": [
       "tempfile"
@@ -254481,7 +254481,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 287,
+     "line": 294,
      "module": "",
      "names": [
       "k4b_release"
@@ -254498,7 +254498,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 297,
+     "line": 304,
      "module": "",
      "names": [
       "hwsg_registry"
@@ -254515,7 +254515,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 307,
+     "line": 314,
      "module": "",
      "names": [
       "hwsg_records"
@@ -254532,7 +254532,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 308,
+     "line": 315,
      "module": "hwsg_oracle",
      "names": [
       "store_for"
@@ -254549,7 +254549,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 365,
+     "line": 372,
      "module": "",
      "names": [
       "k4b_driver"
@@ -254685,7 +254685,7 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 229,
+     "end": 236,
      "kind": "function",
      "name": "kg6",
      "qual": "kg6",
@@ -254695,52 +254695,52 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 237,
+     "end": 244,
      "kind": "function",
      "name": "_fixture",
      "qual": "_fixture",
      "sig": "def _fixture(c, rows=3072, seed=7)",
-     "start": 232
+     "start": 239
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 282,
+     "end": 289,
      "kind": "function",
      "name": "kg7",
      "qual": "kg7",
      "sig": "def kg7() -> dict",
-     "start": 240
+     "start": 247
     },
     {
      "decorators": [],
      "doc": "Move an earlier attempt's files to superseded/<tag>-a<k>/ (k4b_release.archive_attempt).",
-     "end": 293,
+     "end": 300,
      "kind": "function",
      "name": "_archive",
      "qual": "_archive",
      "sig": "def _archive(out, target, tag) -> None",
-     "start": 285
+     "start": 292
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 303,
+     "end": 310,
      "kind": "function",
      "name": "kg8",
      "qual": "kg8",
      "sig": "def kg8(out) -> dict",
-     "start": 296
+     "start": 303
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 368,
+     "end": 375,
      "kind": "function",
      "name": "run_kc",
      "qual": "run_kc",
      "sig": "def run_kc(out, auth, sched, job) -> dict",
-     "start": 306
+     "start": 313
     }
    ],
    "syspath": []
@@ -294983,5 +294983,5 @@
    ]
   }
  },
- "sources_digest": "8b08c3ea708c76ccef7e24991280977c476e57bd6cc8a5ac8e031c5b564cff1b"
+ "sources_digest": "d754b4012998083025763789c3a203718934c887470e8ec3e353eee28a0a825c"
 }

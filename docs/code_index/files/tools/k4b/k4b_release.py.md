@@ -67,7 +67,7 @@
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 19, import)
 - [tools/hwsg/hwsg_dry2.py](../hwsg/hwsg_dry2.py.md) (line 18, import)
 - [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 26, import)
-- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 287, import)
+- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 294, import)
 - [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 19, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 24, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 19, import)

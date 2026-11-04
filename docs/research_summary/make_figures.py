@@ -102,6 +102,7 @@ LEDGERS = [  # (label, store directory, note) -- cumulative_cpu_s of each cpu_le
     ("full test, new world (3 models)", "hwsc-store", "training"),
     ("training timing, new world", "hwsd-store", "model"),
     ("use of beyond-4 history, new world", "hwsu-store", "oracle+model"),
+    ("full test in three more worlds", "hwsg-store", "training"),
 ]
 
 
@@ -200,6 +201,7 @@ EVENTS = [
     ("11-02", 2, "use test, oracle stage:\nresponse feasible; share dropped", "inc", "agent-handoff/jobs/0206/review.md"),
     ("11-02", 1, "training timing (new world):\nsignal before or with the chart", "desc", "agent-handoff/jobs/0222/review.md"),
     ("11-03", 2, "use test (new world):\nRESPONDS (3/3 models)", "pass", "agent-handoff/jobs/0237/review.md"),
+    ("11-04", 1, "three more worlds: SUPPORT in 2\n(3/3 each); 1 inconclusive", "pass", "agent-handoff/jobs/0264/review.md"),
 ]
 LANE_HEAD = [chr(10).join(x) for x in (("Pilot",), ("P1", "origin"), ("P2", "causal use"),
              ("P3", "horizons"), ("learning", "speed"), ("crossing", "order"))]

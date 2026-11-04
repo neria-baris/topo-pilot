@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-03T23:00:44Z",
+ "generated_utc": "2026-11-04T11:08:42Z",
  "studies": [
   {
    "label": "learning speed (6 models)",
@@ -120,6 +120,12 @@
    "store": "hwsu-store",
    "kind": "oracle+model",
    "cumulative_cpu_s": 6603.18125
+  },
+  {
+   "label": "full test in three more worlds",
+   "store": "hwsg-store",
+   "kind": "training",
+   "cumulative_cpu_s": 22575.146875
   }
  ]
 }

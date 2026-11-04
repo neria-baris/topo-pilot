@@ -66,7 +66,8 @@ topology of the latent world? (project topo-pilot)\par}
 studies of where the learned circle comes from and whether the model uses it, the
 prediction-horizon studies, the crossing-order studies, the necessity and decoy test of the
 circle code, the search for a world with more history to measure, the full test there, when
-that history signal appears during training, and whether the predictions use it), the results including
+that history signal appears during training, whether the predictions use it, and whether the
+history result holds in three more worlds), the results including
 the negative and inconclusive ones, and what remains open\par}
 \vspace{1.2cm}
 {\large 4 November 2026\par}
@@ -153,6 +154,14 @@ the oracle's own discrimination, and the registered outcome is RESPONDS in all t
 predictor that reads only the last four symbols would show zero. How much of this response runs
 through the circle code was not assessed: an oracle-only stage found that this share could not be
 measured with the registered precision, so it was dropped before any model was measured.
+A worlds study then repeated the full test, unchanged, in three more worlds chosen in advance by
+an oracle-only rule to span a 6.4-fold range of beyond-four-symbol signal, with three newly trained
+models per world. In the two worlds that reached the endpoint the outcome is SUPPORT in all three
+models (lower bounds 0.031--0.033 and 0.072--0.079 against the margin 0.01), and each of the six
+models captures at least half of the oracle comparator (about 95\% and 91\% on average). In the
+third and noisiest world all three models learned, but for one of them the registered chart rule
+did not produce a valid chart, so that world is inconclusive and no claim across all worlds is
+made.
 \end{abstract}
 
 \tableofcontents
@@ -245,6 +254,9 @@ Over training, that information was present no later than the first validated ch
 the predictions beat every last-four-symbol predictor (\S\ref{sec:hwsd}). The models' predictions
 respond to it, in the direction of the oracle's belief, in all three models (RESPONDS); how much
 of that response runs through the circle code was not assessed (\S\ref{sec:hwsu}).
+Repeated unchanged in three more worlds, the full test returned SUPPORT in all three new models
+of two worlds; the third world is inconclusive because one model's chart failed validation, so
+there is no claim for all worlds (\S\ref{sec:hwsg}).
 \end{enumerate}
 
 \begin{table}[p]\centering\footnotesize
@@ -280,6 +292,7 @@ Control's response to the designed order placebo & UNEXPLAINED & the response re
 Necessity of the circle code; decoy test & CODE\_DOMINANT; DECOY\_NOT\_USED (3/3 models) & the complement carries 14--15\%; the method returns NOT\_USED on decoys\\
 When the beyond-four signal appears in training (new world) & report (six registered statements) & present by the first validated chart, before the predictions beat every last-four predictor\\
 Do predictions use history beyond four symbols (new world) & RESPONDS (3/3 models); share not assessed & response 0.88--0.93 of the oracle's own discrimination\\
+Full test repeated in three more worlds & SUPPORT, SUPPORT (3/3 models each); third world INCONCLUSIVE & every model captures at least half of the oracle comparator; no all-worlds claim\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -289,7 +302,7 @@ column of the research question it served (P1--P3 are the owner charter's priori
 within a day follows the decision log; spacing is not to scale. Sources (one per row, in
 \fpath{make_figures.py}): \fpath{state/DECISIONS.md} D-017, D-049, D-052, D-054, D-057, D-063,
 D-073, D-074; \fpath{reports/E2/summary.md}, \fpath{reports/E3/summary.md};
-\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155, 0167, 0175, 0196, 0206, 0222 and 0237.}
+\fpath{x4-history-feas-store/GATE_REPORT.json}; \fpath{agent-handoff/jobs/<job>/review.md} for jobs 0018, 0020, 0023, 0025, 0033, 0044, 0057, 0066, 0089, 0092, 0093, 0094, 0099, 0115, 0136, 0155, 0167, 0175, 0196, 0206, 0222, 0237 and 0264.}
 
 % =========================================================================================
 \section{Background and related work}\label{sec:related}
@@ -499,7 +512,8 @@ necessity and decoy test of the circle code. A small training pilot in the world
 selected passed on 28 October; I approved the full test on 29 October, and it reached its
 decision on 30 October. On 1 November I adopted two follow-ups on its three models: when the
 beyond-four signal appears during training (run on 2 November) and whether the predictions use
-it (an oracle-only stage on 2 November, the model stage on 3 November).
+it (an oracle-only stage on 2 November, the model stage on 3 November). The worlds study was
+planned and approved on 3 November and ran on 3--4 November.
 
 \begin{table}[p]\centering\footnotesize
 \caption{Guide to the studies. Each study is named in this document by the descriptive name in
@@ -525,6 +539,7 @@ Training pilot in the selected world & HWS stage B & Do models trained there lea
 Full test in the selected world & HWS stage C & Does the learned phase of three new models covary with history beyond four symbols? & \ref{sec:hwsc}\\
 Timing of the beyond-four signal in training & HWS track D & When, during training, does the learned phase start to carry it? & \ref{sec:hwsd}\\
 Use of history beyond four symbols & HWS track U & Do the new models' predictions depend on it, and how much through the circle code? & \ref{sec:hwsu}\\
+The full test in three more worlds & HWSG & Does the beyond-four result hold in other worlds, and do models capture a similar fraction of the oracle's signal? & \ref{sec:hwsg}\\
 Two-step-ahead distinctions in the pilot world & X4 Phase B, B2 & Do beliefs exist that agree one step ahead but not two? & \ref{sec:horizons}\\
 Orientability needed only two steps ahead (oracle) & D-1 & Can a topological distinction be invisible one step ahead? & \ref{sec:horizons}\\
 Orientability in trained models & D-2a & Do trained models carry that distinction? & \ref{sec:horizons}\\
@@ -1070,6 +1085,55 @@ BEFORE readings rest on charts that had not passed validation; their bounds are 
 fixed field, but the field itself is not certified. It covers three runs of one recipe in one
 world. The six statements are not independent confirmations.
 
+\subsection{Does the result hold in other worlds?}\label{sec:hwsg}
+\textbf{Question and design.} The full test (\S\ref{sec:hwsc}) answered the origin question in one
+world. This study asks whether that answer is a property of training rather than of that world:
+in worlds with different amounts of beyond-four-symbol information, do models trained by the same
+recipe carry it, and do they capture a similar fraction of what the oracle carries? It repeats the
+full test unchanged (recipe, estimand, certificate, margin $0.01$, decision rule, 3,072 fresh test
+histories per world) in three new worlds. The worlds were chosen before any data by a rule fixed
+in the plan from the world sweep's oracle records only: among the sweep's finalists with an exact
+law bound, the ones with the lowest, the highest and the geometric-middle lower bound of the
+oracle's beyond-four signal. This gave a lazy walk with sharp emissions (``lo'', bound 0.036), a
+world near the selected one (``mid'', 0.086), and the world with the broadest emissions (``hi'',
+0.232), a 6.4-fold span around the selected world's 0.046 (\fpath{hwsg-store/stages/O/O_RECORD.json}).
+Three new models were trained per world with fresh seeds, and every world had its own
+known-case, oracle, learnability and chart gates. A secondary quantity is each model's capture:
+its covariance as a fraction of the oracle comparator on the same test rows, with a registered
+floor of one half. A claim for all worlds required SUPPORT in all three.
+
+\textbf{Result} (\fpath{hwsg-store/stages/CROSS/CROSS.json};
+\fpath{hwsg-store/worlds/<world>/stages/S8/RESULT.json}).
+\begin{itemize}
+\item \textbf{lo: SUPPORT in all three models.} Lower bounds 0.031--0.033 against the margin
+$0.01$; capture 0.92--0.96 of the oracle comparator (mean 0.946).
+\item \textbf{mid: SUPPORT in all three models.} Lower bounds 0.072--0.079; capture 0.87--0.93
+(mean 0.911).
+\item \textbf{hi: INCONCLUSIVE (chart unavailable).} All three models passed the learnability gate,
+but for one of them the registered chart rule gave no chart that passed validation on fresh
+histories (fidelity 0.517 against the required 0.80; the other two reached 0.94 and 0.97). The
+plan registered this risk in advance: the world is reported as inconclusive, and no model,
+recipe or chart rule was replaced.
+\item \textbf{Across worlds.} No claim for all worlds is available, since the registered rule needs
+all three. Every one of the six models that reached the endpoint captures at least half of the
+oracle comparator. The two worlds' mean captures differ by 0.035; by the registered descriptive
+check they are not compatible with one common fraction at the reported precision.
+\end{itemize}
+Before any test value was computed, the coordinator's checks found two wiring defects in the
+test-stage code (a part the rehearsal had never run end to end), and one stage stopped on a
+certificate defect; each was corrected, re-tested and re-frozen. A defect in the coordinator's
+record-keeping gave one world's endpoint a wrong label; the rerun reproduced every number bit for
+bit and only corrected the label. No threshold, margin or setting changed.
+
+\textbf{What it does not establish.} Nothing about the third world: an unavailable chart is not
+evidence that its models lack the information. Nothing about worlds outside the sweep's grid,
+other recipes, sizes, sites or architectures, or any trend of capture with the world's
+parameters, and no pooled estimate across worlds. The untrained-chart comparator was unavailable
+for five of the six models (a registered annotation). The study makes no use claim. Its store
+ledger holds 6.27 CPU-hours; its study ledger, which also counts the nine trainings (about
+0.8--0.9 CPU-hours each) and every test and dry-run repeat, holds 15.6
+(\fpath{agent-handoff/HWSG_CPU_LEDGER.json}).
+
 
 % =========================================================================================
 \section{Causal use (charter priority 2)}\label{sec:causal}
@@ -1590,7 +1654,7 @@ depend on the live environment (the pasted cell). Both led to added checks.
 % =========================================================================================
 \section{Compute}\label{sec:compute}
 Figure~\ref{fig:fig11_compute} summarises local compute from the store ledgers. Including every
-metered run (preflight test suites among them), the follow-up studies used about 109.1 CPU-hours
+metered run (preflight test suites among them), the follow-up studies used about 115.3 CPU-hours
 in the ledgers shown, 79.6 of them in the trained crossing-order study's local ingest and
 evaluation (its training ran on a cloud GPU); the 17 pilot trainings took 4.4 wall-clock hours on a six-core laptop CPU
 (13--21 minutes each). The largest items are the two training studies (learning speed, six models;
@@ -1603,7 +1667,8 @@ code corrections were not in that forecast. The two follow-ups on its models use
 timing) and 1.83 (use test) CPU-hours in their store ledgers, and 7.08 and 4.73 in their study
 ledgers (\fpath{agent-handoff/HWSD_CPU_LEDGER.json}, \fpath{agent-handoff/HWSU_CPU_LEDGER.json}); I
 released their CPU pause lines on 2 November and asked for actual CPU to be reported instead of
-forecasts.
+forecasts. The worlds study used 6.27 CPU-hours in its store ledger and 15.6 in its study ledger,
+which also counts its nine trainings (\fpath{agent-handoff/HWSG_CPU_LEDGER.json}).
 
 \fig{fig11_compute}{(a) Cumulative CPU-hours per study from each store's \fpath{cpu_ledger.json}
 (measured plus tail allowance; includes metered test suites); the hatched bar is the summed
@@ -1624,8 +1689,15 @@ new models (\S\ref{sec:hwsc}). The training pilot (27--28 October) passed; the f
 \item \textbf{Timing of the beyond-four signal in training} is complete (\S\ref{sec:hwsd}), and
 \textbf{use of that history by the predictions} is decided: RESPONDS in all three models, share
 not assessed (\S\ref{sec:hwsu}). Both codes are merged into the main branch.
-\item \textbf{Generality across worlds} (does the same picture hold in other worlds) is designed and
-implemented; its runs start after the use test, as I asked that real runs go one at a time.
+\item \textbf{The full test in three more worlds} is complete (\S\ref{sec:hwsg}): SUPPORT in all
+three models of two worlds, the third inconclusive, no claim for all worlds. Its code is merged
+into the main branch.
+\item \textbf{Next, approved for planning on 4 November.} (1) What part of the belief the circle
+code keeps: whether its length, and not only its angle, tracks how certain the belief is, tested
+on the existing models against the exact oracle. (2) A small diagnostic of whether a model can
+learn the non-orientable world at all, before any new orientability test. A follow-up measuring,
+with a larger sample, how much of the predictions' response runs through the circle code is
+planned but paused until (1) reports. Real runs go one at a time.
 \item \textbf{The three parallel studies without training} are complete: the world sweep
 selected a world (\S\ref{sec:hws}); the control's placebo response remains unexplained
 (\S\ref{sec:x6zc}); the circle code is dominant and the method passes the decoy test
@@ -1638,7 +1710,7 @@ the layer-2 and oracle-phase codes also USED (\S\ref{sec:causal}).
 models.
 \item \textbf{Other options} recorded by the coordinator and by me include an independent
 replication of the pilot's O models, a speed-matched successor of the learning-speed study, a
-redesign of the orientability learnability test, a follow-up on the four-symbol margin and
+comparison across architectures and training objectives, a follow-up on the four-symbol margin and
 comparator scale, and the remaining tasks of a seven-task project reorganisation. None is
 authorised.
 \item \textbf{Records out of date.} \fpath{state/PROGRESS.md} and the README's ``Current follow-up status''
@@ -1660,7 +1732,8 @@ In the selected world, the use test shows that the predictions respond to histor
 symbols, but how much of that runs through the circle code was not assessed; the training-timing
 study makes no use claim and no causal claim about training.
 \item \textbf{One toy setting.} One small architecture and recipe, synthetic HMMs on tiny lattices,
-a few seeds (three in the pilot, at most four per arm). Nothing is claimed about natural language
+a few seeds (three in the pilot, at most four per arm); the worlds study varies only the world's
+parameters within one family. Nothing is claimed about natural language
 or large models, other architectures, or populations of seeds.
 \item \textbf{Statistics.} Pilot decisions use sign consistency and a data-derived envelope, not
 significance tests; panels are partitions within runs. Most later bounds are nominal bootstrap
@@ -1677,7 +1750,8 @@ fresh. Likewise, the training-timing study and the use test reuse the full test'
 after its result was known.
 \item \textbf{Margins and controls.} The four-symbol margin sits above the oracle's own value in
 the pilot world (the full test therefore moved to a world where it does not); the untrained-chart
-control of the full test was unavailable for two of its three models; the P control is one-sided;
+control of the full test was unavailable for two of its three models (and for five of six in the
+worlds study); the P control is one-sided;
 the learning-speed kernel is confounded with speed.
 \item \textbf{Reproducibility scope.} One machine and environment; one of 17 pilot trainings was
 retrained; the clean-rerun gate formally failed; GPU training in the crossing-order study is not
@@ -1716,7 +1790,10 @@ few symbols, not only the latest observations. In those models the signal was pr
 than the first validated chart, before the predictions beat every last-four-symbol predictor, and
 the predictions themselves respond to history beyond the last four symbols, in the direction of the
 belief, at about 90\% of the oracle's discrimination. Whether that response runs through the
-circle code in this world remains open.
+circle code in this world remains open. Repeated unchanged in three more worlds, the origin result
+held in all three new models of both worlds that reached the endpoint, each capturing at least half
+of the oracle's signal; the third world gave no answer, so generality across worlds is supported
+but not established.
 
 % =========================================================================================
 \clearpage
@@ -1810,6 +1887,10 @@ HWS track D & 11-02 & FREEZE, AUTH, SCHED, BINDING\_AUDIT, ACCEPT\_SCORE, BOOTST
 HWS track U OF & 11-02 & OF-B, OF-0 \ldots\ OF-5 & attempt 1 stopped at the CPU pause line (corrected); attempt 2 OF\_PASS\_RESPONSE\_ONLY & jobs 0200, 0206\\
 HWS track U KC & 11-03 & G0U, KC0--KC6 & attempts 1--3 stopped by configuration and procedure defects (each corrected); attempt 4 all PASS & jobs 0229, 0231, 0233, 0234\\
 HWS track U E1, REG2, E2 & 11-03 & G0U, H1-U, REG1, S3, H2-U, H3-U, H5-U, BASIS, M0, X1, KC-U, P1; REG2; RELEASE-B, S7, H2-FRESH-U, T-PRE, NUM, ENDPOINT & all PASS; RESPONDS (3/3 models); share INCONCLUSIVE/\allowbreak ORACLE\_FEASIBILITY & jobs 0235--0237\\
+HWSG KC, O & 11-03, 11-04 & known cases; O (world selection, oracle gates per world) & KC attempts 1, 2 stopped by code and data defects (each corrected); attempt 3 all PASS; O PASS (3 worlds) & jobs 0238--0245\\
+HWSG TRAIN, REG1 & 11-04 & TRAIN (3 models per world); REG1 & PASS & jobs 0246--0249\\
+HWSG E1 & 11-04 & G0C, H1G, REG1\_LOAD, H2, L1, ORACLE-VAL, B4-VAL, C0-CAL, C0-VAL, CERT-VAL, P1 & lo, mid all PASS (mid attempt 1 stopped by a certificate defect, corrected); hi INCONCLUSIVE/\allowbreak CHART\_UNAVAILABLE at C0-VAL & jobs 0250, 0251, 0254, 0255\\
+HWSG REG2, E2, CROSS & 11-04 & REG2; RELEASE-B, H2-FRESH, T-PRE, ENDPOINT, RATIO; CROSS & REG2 attempt 1 stopped (procedural); E2 attempt 1 stopped at T-PRE (code defect); lo SUPPORT, mid SUPPORT (3/3 models each); GENERAL\_UNAVAILABLE; capture at least half & jobs 0256--0264\\
 \bottomrule
 \end{longtable}
 \normalsize

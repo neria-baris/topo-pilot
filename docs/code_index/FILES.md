@@ -2,7 +2,7 @@
 
 Excluded by project rule (public research summary, for external readers only): `00_READ_ME_FIRST_Research_Summary_So_Far/`, `docs/research_summary/`. These paths are never opened or indexed.
 
-The generated index itself (`docs/code_index/`) is not indexed. 1181 tracked files; 763 code files (linked to their pages).
+The generated index itself (`docs/code_index/`) is not indexed. 1182 tracked files; 763 code files (linked to their pages).
 
 ## (repo root)
 
@@ -91,6 +91,7 @@ The generated index itself (`docs/code_index/`) is not indexed. 1181 tracked fil
 | `D2_LEARNABILITY_DIAGNOSTIC_V1.md` | markdown | 97 lines | D2 development diagnostic v1 — proposed successor, not a rerun of D-2a |
 | `GAP_CLOSING_EXPERIMENTS_EN.md` | markdown | 203 lines | Experiment plan for closing the gaps in Topo-Pilot |
 | `GAP_CLOSING_EXPERIMENTS_HE.md` | markdown | 201 lines | תוכנית ניסויים לסגירת הפערים ב-Topo-Pilot |
+| `LITERATURE_REVIEW_NEXT_DIRECTIONS_HE.md` | markdown | 150 lines | סקירת ספרות: שלושה כיוונים להמשך |
 | `NEXT_ROUND_SHARPER_ANSWERS_HE.md` | markdown | 127 lines | הסבב הבא: איך לקבל תשובות חדות יותר |
 | `RESEARCH_HARNESS_ARCHITECTURE.md` | markdown | 168 lines | Minimal reusable mathematical research harness |
 | `RESEARCH_LANDSCAPE.md` | markdown | 170 lines | Topo Pilot: research landscape |

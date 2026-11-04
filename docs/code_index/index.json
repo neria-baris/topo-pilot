@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 51,
   "dynamic imports, internal": 76,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1181,
+  "files indexed": 1182,
   "functions and methods (incl. tests)": 11411,
   "import cycles (strongly connected components)": 17,
   "import statements, external": 1055,
@@ -25567,6 +25567,12 @@
    "lines": 201,
    "purpose": "תוכנית ניסויים לסגירת הפערים ב-Topo-Pilot",
    "sha256": "8b5c7049817696bb92221471cc26f0be437b6787caddb439a776d9f5a957f091"
+  },
+  "docs/proposals/LITERATURE_REVIEW_NEXT_DIRECTIONS_HE.md": {
+   "kind": "markdown",
+   "lines": 150,
+   "purpose": "סקירת ספרות: שלושה כיוונים להמשך",
+   "sha256": "319b0ef8e147ed25805dc9be0e8bb81e911dbf1012045726b5bf6298cf705c0f"
   },
   "docs/proposals/NEXT_ROUND_SHARPER_ANSWERS_HE.md": {
    "kind": "markdown",
@@ -310901,5 +310907,5 @@
    ]
   }
  },
- "sources_digest": "03f9212446d992cc0f8533d1b5013edc3ca0a151e74dacc888ba69832365a611"
+ "sources_digest": "ba0d8825c0f617c3673e3139f183c6c6a2f102982e25cd9139f651d8a777ecad"
 }

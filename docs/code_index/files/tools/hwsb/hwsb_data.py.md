@@ -82,7 +82,7 @@
 - [tools/hwsc/hwsc_registry.py](../hwsc/hwsc_registry.py.md) (line 13, import)
 - [tools/hwsd/hwsd_readers.py](../hwsd/hwsd_readers.py.md) (line 13, import)
 - [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 17, import)
-- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 227, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 247, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 21, import)
 
 ## Top-level constants

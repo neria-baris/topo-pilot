@@ -101,8 +101,8 @@
 - [tools/hwsg/hwsg_config.py](../hwsg/hwsg_config.py.md) (line 27, import)
 - [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 16, import)
 - [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 16, import)
-- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 78, import)
-- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 226, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 98, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 246, import)
 
 ## Top-level constants
 

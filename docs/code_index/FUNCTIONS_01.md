@@ -292,6 +292,7 @@
 | `_auth` | function | `_auth` | [tests/circle_history/test_adapter.py:216](../../tests/circle_history/test_adapter.py#L216) |  |
 | `_auth` | function | `_auth` | [tests/circle_history/test_error_bound.py:361](../../tests/circle_history/test_error_bound.py#L361) |  |
 | `_authority` | function | `_authority` | [tools/hwsu/hwsu_seed.py:97](../../tools/hwsu/hwsu_seed.py#L97) |  |
+| `_available_bytes` | function | `_available_bytes` | [tools/hwsg/hwsg_train.py:46](../../tools/hwsg/hwsg_train.py#L46) | Available physical memory: psutil if installed, else GlobalMemoryStatusEx (R-0244-1). |
 | `_axis_coords` | function | `_axis_coords` | [src/topo_pilot/analysis/circular.py:65](../../src/topo_pilot/analysis/circular.py#L65) |  |
 | `_b` | function | `_b` | [tests/c2_nd/test_a_family.py:36](../../tests/c2_nd/test_a_family.py#L36) |  |
 | `_b` | function | `_b` | [tests/c2_readout/test_a_partition.py:74](../../tests/c2_readout/test_a_partition.py#L74) |  |
@@ -867,7 +868,7 @@
 | `_files_under` | function | `_files_under` | [tools/hwsc/hwsc_driver.py:41](../../tools/hwsc/hwsc_driver.py#L41) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsd/hwsd_driver.py:33](../../tools/hwsd/hwsd_driver.py#L33) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_jobs.py:41](../../tools/hwsg/hwsg_jobs.py#L41) |  |
-| `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_train.py:65](../../tools/hwsg/hwsg_train.py#L65) |  |
+| `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_train.py:85](../../tools/hwsg/hwsg_train.py#L85) |  |
 | `_Fill` | class | `_Fill` | [tools/hws/hws_select.py:259](../../tools/hws/hws_select.py#L259) |  |
 | `_Fill` | class | `_Fill` | [tools/hwsc/hwsc_outcome.py:116](../../tools/hwsc/hwsc_outcome.py#L116) |  |
 | `_Fill` | class | `_Fill` | [tools/hwsg/hwsg_cross.py:167](../../tools/hwsg/hwsg_cross.py#L167) |  |
@@ -1261,7 +1262,7 @@
 | `_launch` | function | `_launch` | [tools/d2a/d2a_train.py:306](../../tools/d2a/d2a_train.py#L306) |  |
 | `_launch` | function | `_launch` | [tools/hwsg/hwsg_known.py:161](../../tools/hwsg/hwsg_known.py#L161) |  |
 | `_launch` | function | `_launch` | [tools/x4_oracle_profile/meter.py:97](../../tools/x4_oracle_profile/meter.py#L97) |  |
-| `_launch_kill` | function | `_launch_kill` | [tools/hwsg/hwsg_train.py:262](../../tools/hwsg/hwsg_train.py#L262) | Start a dry child and kill it at once (DRG12): it must leave no record. |
+| `_launch_kill` | function | `_launch_kill` | [tools/hwsg/hwsg_train.py:282](../../tools/hwsg/hwsg_train.py#L282) | Start a dry child and kill it at once (DRG12): it must leave no record. |
 | `_law` | function | `_law` | [tests/x6_stage1/test_a_pairs.py:280](../../tests/x6_stage1/test_a_pairs.py#L280) |  |
 | `_law` | function | `_law` | [tools/hwsg/hwsg_known.py:192](../../tools/hwsg/hwsg_known.py#L192) |  |
 | `_law` | function | `_law` | [tools/hwsu/hwsu_dry.py:137](../../tools/hwsu/hwsu_dry.py#L137) | Exact law of the prefix given the suffix from a kernel dict (API.md §2.1). |
@@ -1500,7 +1501,7 @@
 | `_never_opened` | function | `_never_opened` | [tests/hwsd/test_b_registry_r9.py:99](../../tests/hwsd/test_b_registry_r9.py#L99) |  |
 | `_new` | function | `_new` | [tools/c2_nd/nd_registry.py:49](../../tools/c2_nd/nd_registry.py#L49) |  |
 | `_new` | function | `_new` | [tools/hwsc/hwsc_registry.py:33](../../tools/hwsc/hwsc_registry.py#L33) |  |
-| `_next_attempt` | function | `_next_attempt` | [tools/hwsg/hwsg_train.py:129](../../tools/hwsg/hwsg_train.py#L129) |  |
+| `_next_attempt` | function | `_next_attempt` | [tools/hwsg/hwsg_train.py:149](../../tools/hwsg/hwsg_train.py#L149) |  |
 | `_next_chunk` | function | `_next_chunk` | [tools/x6_stage1/x6s1_cloud.py:320](../../tools/x6_stage1/x6s1_cloud.py#L320) | §5.4 step 6: the next chunk's index arrays, drawn from a copy and checked before use. |
 | `_next_updates` | function | `_next_updates` | [src/topo_pilot/experiment/x5g1t_train.py:69](../../src/topo_pilot/experiment/x5g1t_train.py#L69) |  |
 | `_no_arrays` | function | `_no_arrays` | [tests/c2_readout/test_b_patch.py:93](../../tests/c2_readout/test_b_patch.py#L93) |  |
@@ -1683,7 +1684,7 @@
 | `_payload_opened` | function | `_payload_opened` | [tests/hwsc/test_b_registry.py:301](../../tests/hwsc/test_b_registry.py#L301) |  |
 | `_pe` | function | `_pe` | [tests/analysis/test_x5_endpoint_bootstrap.py:203](../../tests/analysis/test_x5_endpoint_bootstrap.py#L203) |  |
 | `_peak_memory` | function | `_peak_memory` | [tools/hwsc/hwsc_registry_build.py:24](../../tools/hwsc/hwsc_registry_build.py#L24) |  |
-| `_peak_rss` | function | `_peak_rss` | [tools/hwsg/hwsg_train.py:55](../../tools/hwsg/hwsg_train.py#L55) |  |
+| `_peak_rss` | function | `_peak_rss` | [tools/hwsg/hwsg_train.py:75](../../tools/hwsg/hwsg_train.py#L75) |  |
 | `_per_model` | function | `_per_model` | [tools/c1prime/c1_driver_cal.py:229](../../tools/c1prime/c1_driver_cal.py#L229) |  |
 | `_percent_ok` | function | `_percent_ok` | [tools/x4_oracle_profile/controls.py:57](../../tools/x4_oracle_profile/controls.py#L57) |  |
 | `_perm` | function | `_perm` | [tests/c2_readout/test_a_readout.py:156](../../tests/c2_readout/test_a_readout.py#L156) |  |
@@ -2723,7 +2724,7 @@
 | `agg` | function | `agg` | [tests/hwsd/test_a_statements.py:40](../../tests/hwsd/test_a_statements.py#L40) |  |
 | `aggregate` | function | `aggregate` | [tests/hwsd/test_a_hwsd_ref.py:248](../../tests/hwsd/test_a_hwsd_ref.py#L248) | per: {j: (reading, reason, qualifier)} -> (reading, {reason: sorted models}). |
 | `aggregate` | function | `aggregate` | [tools/hwsd/hwsd_statements.py:201](../../tools/hwsd/hwsd_statements.py#L201) |  |
-| `aggregate` | function | `aggregate` | [tools/hwsg/hwsg_train.py:201](../../tools/hwsg/hwsg_train.py#L201) |  |
+| `aggregate` | function | `aggregate` | [tools/hwsg/hwsg_train.py:221](../../tools/hwsg/hwsg_train.py#L221) |  |
 | `agreement` | function | `agreement` | [tests/k4b/test_b_endpoint.py:112](../../tests/k4b/test_b_endpoint.py#L112) |  |
 | `agreement` | function | `agreement` | [tools/k4b/k4b_decoder.py:90](../../tools/k4b/k4b_decoder.py#L90) |  |
 | `agreement` | function | `agreement` | [tools/x4_circle_history/chart.py:223](../../tools/x4_circle_history/chart.py#L223) |  |
@@ -3277,7 +3278,7 @@
 | `checkpoint_row` | function | `checkpoint_row` | [tools/hwsd/hwsd_summary.py:120](../../tools/hwsd/hwsd_summary.py#L120) |  |
 | `CheckpointSaver` | class | `CheckpointSaver` | [tools/hwsb/hwsb_train.py:101](../../tools/hwsb/hwsb_train.py#L101) | The on_checkpoint callback: LearnerStage's save, then the hold, then a sentinel. |
 | `checks` | function | `checks` | [tools/c2_nd/nd_dry.py:273](../../tools/c2_nd/nd_dry.py#L273) | §10.1: the broken decoys, the forbidden accesses (DTEST before ACCEPT, a construction |
-| `child` | function | `child` | [tools/hwsg/hwsg_train.py:70](../../tools/hwsg/hwsg_train.py#L70) |  |
+| `child` | function | `child` | [tools/hwsg/hwsg_train.py:90](../../tools/hwsg/hwsg_train.py#L90) |  |
 | `child_argv` | function | `child_argv` | [tools/hwsg/hwsg_train.py:40](../../tools/hwsg/hwsg_train.py#L40) |  |
 | `child_env` | function | `child_env` | [tools/hwsg/hwsg_train.py:31](../../tools/hwsg/hwsg_train.py#L31) |  |
 | `child_env` | function | `child_env` | [tools/k4b/k4b_meter_bind.py:95](../../tools/k4b/k4b_meter_bind.py#L95) |  |
@@ -4754,7 +4755,7 @@
 | `kg2` | function | `kg2` | [tools/hwsg/hwsg_known.py:131](../../tools/hwsg/hwsg_known.py#L131) |  |
 | `kg3` | function | `kg3` | [tools/hwsg/hwsg_known.py:154](../../tools/hwsg/hwsg_known.py#L154) |  |
 | `kg4` | function | `kg4` | [tools/hwsg/hwsg_known.py:165](../../tools/hwsg/hwsg_known.py#L165) |  |
-| `kg4_child` | function | `kg4_child` | [tools/hwsg/hwsg_train.py:220](../../tools/hwsg/hwsg_train.py#L220) | One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums. |
+| `kg4_child` | function | `kg4_child` | [tools/hwsg/hwsg_train.py:240](../../tools/hwsg/hwsg_train.py#L240) | One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums. |
 | `kg5` | function | `kg5` | [tools/hwsg/hwsg_known.py:198](../../tools/hwsg/hwsg_known.py#L198) |  |
 | `kg6` | function | `kg6` | [tools/hwsg/hwsg_known.py:220](../../tools/hwsg/hwsg_known.py#L220) |  |
 | `kg7` | function | `kg7` | [tools/hwsg/hwsg_known.py:247](../../tools/hwsg/hwsg_known.py#L247) |  |
@@ -4947,4 +4948,3 @@
 | `load_checkpoint` | function | `load_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:198](../../tools/x6_stage1/x6s1_cloud.py#L198) |  |
 | `load_checkpoint_d` | function | `load_checkpoint_d` | [tools/hwsd/hwsd_score.py:53](../../tools/hwsd/hwsd_score.py#L53) |  |
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/config.py:61](../../src/topo_pilot/experiment/config.py#L61) | Read ``base.yaml`` and ``local.yaml`` from the folder of ``stages_path``. |
-| `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |

@@ -2,6 +2,7 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |
 | `load_config` | function | `load_config` | [tools/x4_oracle_profile/inputs.py:25](../../tools/x4_oracle_profile/inputs.py#L25) |  |
 | `load_contract` | function | `load_contract` | [tools/c1prime/c1_config.py:34](../../tools/c1prime/c1_config.py#L34) |  |
 | `load_contract` | function | `load_contract` | [tools/c2_nd/nd_config.py:49](../../tools/c2_nd/nd_config.py#L49) | CONTRACT.json (utf-8); ValueError unless it names the C2ND protocol sha256. |
@@ -138,7 +139,7 @@
 | `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:271](../../tools/hwsd/hwsd_jobs.py#L271) |  |
 | `main` | function | `main` | [tools/hwsd/hwsd_meter_bind.py:99](../../tools/hwsd/hwsd_meter_bind.py#L99) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsg/hwsg_jobs.py:234](../../tools/hwsg/hwsg_jobs.py#L234) |  |
-| `main` | function | `main` | [tools/hwsg/hwsg_train.py:272](../../tools/hwsg/hwsg_train.py#L272) |  |
+| `main` | function | `main` | [tools/hwsg/hwsg_train.py:292](../../tools/hwsg/hwsg_train.py#L292) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_driver_of.py:114](../../tools/hwsu/hwsu_driver_of.py#L114) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_meter_bind.py:90](../../tools/hwsu/hwsu_meter_bind.py#L90) |  |
 | `main` | function | `main` | [tools/k4b/k4b_driver.py:374](../../tools/k4b/k4b_driver.py#L374) |  |
@@ -973,7 +974,7 @@
 | `r_model` | function | `r_model` | [tools/c2_readout/c2_decide.py:137](../../tools/c2_readout/c2_decide.py#L137) | R and S* rules 1-5; NEGATIVE and the coarse statements only after RESP and SPEC. |
 | `r_space` | function | `r_space` | [src/topo_pilot/experiment/report_e4_s7.py:108](../../src/topo_pilot/experiment/report_e4_s7.py#L108) |  |
 | `raise_if_failed` | function | `raise_if_failed` | [src/topo_pilot/executors/_outputs.py:58](../../src/topo_pilot/executors/_outputs.py#L58) | ``EXECUTOR_ERROR`` wrapping the failures recorded in the job's RunManifest(s). |
-| `ram_ok` | function | `ram_ok` | [tools/hwsg/hwsg_train.py:46](../../tools/hwsg/hwsg_train.py#L46) |  |
+| `ram_ok` | function | `ram_ok` | [tools/hwsg/hwsg_train.py:68](../../tools/hwsg/hwsg_train.py#L68) |  |
 | `rand_pred` | function | `rand_pred` | [tests/x6zc/test_x6zc_core.py:367](../../tests/x6zc/test_x6zc_core.py#L367) |  |
 | `random_family` | function | `random_family` | [src/topo_pilot/analysis/x4f_erasure.py:152](../../src/topo_pilot/analysis/x4f_erasure.py#L152) | Random rank-``rank`` erasers in the retained range, matched in mean displacement. |
 | `random_laws` | function | `random_laws` | [tests/x6_stage1/test_a_eval.py:193](../../tests/x6_stage1/test_a_eval.py#L193) |  |
@@ -1445,7 +1446,7 @@
 | `run_train` | function | `run_train` | [src/topo_pilot/experiment/x5g1t_stages.py:217](../../src/topo_pilot/experiment/x5g1t_stages.py#L217) | One model; the outcome is recorded by ``train_one`` on every exit. |
 | `run_train` | function | `run_train` | [tools/hwsb/hwsb_driver.py:173](../../tools/hwsb/hwsb_driver.py#L173) |  |
 | `run_train` | function | `run_train` | [tools/hwsc/hwsc_driver.py:74](../../tools/hwsc/hwsc_driver.py#L74) |  |
-| `run_train` | function | `run_train` | [tools/hwsg/hwsg_train.py:133](../../tools/hwsg/hwsg_train.py#L133) |  |
+| `run_train` | function | `run_train` | [tools/hwsg/hwsg_train.py:153](../../tools/hwsg/hwsg_train.py#L153) |  |
 | `run_transition` | method | `ProcessStage.run_transition` | [src/topo_pilot/process/stage.py:24](../../src/topo_pilot/process/stage.py#L24) | Build and save the ``TransitionSpec`` of ``world_id``; returns its artifact id. |
 | `run_val_gate` | function | `run_val_gate` | [tests/k4b/test_b_charts.py:295](../../tests/k4b/test_b_charts.py#L295) |  |
 | `run_validation` | function | `run_validation` | [tools/c1prime/c1_driver_late.py:190](../../tools/c1prime/c1_driver_late.py#L190) |  |
@@ -4125,4 +4126,3 @@
 | `test_native_wall_at_c0_cal` | test | `test_native_wall_at_c0_cal` | [tests/hwsd/test_a_scorer.py:211](../../tests/hwsd/test_a_scorer.py#L211) |  |
 | `test_natural_prefix_rule_independent` | test | `test_natural_prefix_rule_independent` | [tests/x6_stage1/test_a_designed.py:199](../../tests/x6_stage1/test_a_designed.py#L199) |  |
 | `test_nb_static_refuses` | test | `test_nb_static_refuses` | [tests/x6_stage1/test_b_nb_s0_ops.py:153](../../tests/x6_stage1/test_b_nb_s0_ops.py#L153) |  |
-| `test_near_threshold_plus_fail_is_inconclusive` | test | `test_near_threshold_plus_fail_is_inconclusive` | [tests/analysis/test_x5_context.py:126](../../tests/analysis/test_x5_context.py#L126) |  |

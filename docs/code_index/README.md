@@ -13,7 +13,7 @@ Excluded by project rule (public research summary, for external readers only): `
 
 Input: `git ls-files` minus the excluded prefixes and minus `docs/code_index/` itself. No code is imported or executed (Python is parsed with `ast`). Output is sorted, has no timestamps, uses `/` separators, LF newlines and UTF-8.
 
-Sources digest: `78c9cabe966bde6883c17f8134838bacbe9d668c04ca89a5b0bc55ae087e646c`
+Sources digest: `8b732bcf7f6af0889f82bb5dea171302750e8611e47dbc861955d03b5a585ea2`
 
 ## Layout
 
@@ -39,12 +39,12 @@ Sources digest: `78c9cabe966bde6883c17f8134838bacbe9d668c04ca89a5b0bc55ae087e646
 - code files: 729
 - python files: 728
 - classes: 331
-- functions and methods (incl. tests): 10880
+- functions and methods (incl. tests): 10881
 - internal edges (file to file, with kind and line): 3924
 - import statements, internal resolved: 3865
 - import statements, internal ambiguous: 6
 - import statements, internal unresolved: 0
-- import statements, standard library: 3350
+- import statements, standard library: 3351
 - import statements, external: 1010
 - dynamic imports, internal: 41
 - dynamic imports, stdlib/external literal: 2

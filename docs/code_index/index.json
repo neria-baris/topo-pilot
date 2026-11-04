@@ -6,13 +6,13 @@
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1141,
-  "functions and methods (incl. tests)": 10880,
+  "functions and methods (incl. tests)": 10881,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1010,
   "import statements, internal ambiguous": 6,
   "import statements, internal resolved": 3865,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3350,
+  "import statements, standard library": 3351,
   "internal edges (file to file, with kind and line)": 3924,
   "python files": 728
  },
@@ -20414,25 +20414,25 @@
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   223
+   243
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   240
+   260
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   224
+   244
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "src/topo_pilot/dataset/checks.py",
    "import",
-   241
+   261
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20444,19 +20444,19 @@
    "tools/hwsg/hwsg_train.py",
    "tools/hwsb/hwsb_config.py",
    "import",
-   78
+   98
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "tools/hwsb/hwsb_config.py",
    "import",
-   226
+   246
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "tools/hwsb/hwsb_data.py",
    "import",
-   227
+   247
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20474,7 +20474,7 @@
    "tools/hwsg/hwsg_train.py",
    "tools/hwsc/hwsc_config.py",
    "import",
-   79
+   99
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -20498,37 +20498,37 @@
    "tools/hwsg/hwsg_train.py",
    "tools/hwsg/hwsg_handoff.py",
    "import",
-   134
+   154
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "tools/hwsg/hwsg_oracle.py",
    "import",
-   80
+   100
   ],
   [
    "tools/hwsg/hwsg_train.py",
    "tools/hwsg/hwsg_oracle.py",
+   "import",
+   242
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_records.py",
+   "import",
+   129
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_records.py",
+   "import",
+   155
+  ],
+  [
+   "tools/hwsg/hwsg_train.py",
+   "tools/hwsg/hwsg_records.py",
    "import",
    222
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_records.py",
-   "import",
-   109
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_records.py",
-   "import",
-   135
-  ],
-  [
-   "tools/hwsg/hwsg_train.py",
-   "tools/hwsg/hwsg_records.py",
-   "import",
-   202
   ],
   [
    "tools/hwsg/hwsg_train.py",
@@ -29658,9 +29658,9 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 353,
+   "lines": 357,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "e772e66bfc796f085d819866f9e39cb4c8762da3f263a1a1ac18591ed43caaaf"
+   "sha256": "b6e6fa2cc4e7f18fff75bb0cbc056e8a482928e6fcf5f25effb8a79d69bd5977"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
@@ -29754,9 +29754,9 @@
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
-   "lines": 289,
+   "lines": 309,
    "purpose": "HWSG parallel training children (API.md §5; protocol §9; G7, DRG12, DRG13, KG4).",
-   "sha256": "5d9cfd045975c101a4f4f4da8dd5343de5dad46ea558bedb42fb4da88a20e690"
+   "sha256": "2fa94209058393e00605099e9dcbc9998e87f75686a3875e592e549debbb6685"
   },
   "tools/hwsu/API.md": {
    "kind": "markdown",
@@ -257020,7 +257020,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 48,
+     "line": 49,
      "module": "",
      "names": [
       "psutil"
@@ -257035,7 +257035,22 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 57,
+     "line": 53,
+     "module": "",
+     "names": [
+      "ctypes"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "ctypes"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": true,
+     "level": 0,
+     "line": 77,
      "module": "",
      "names": [
       "psutil"
@@ -257050,7 +257065,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 78,
+     "line": 98,
      "module": "",
      "names": [
       "hwsb_config"
@@ -257067,7 +257082,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 79,
+     "line": 99,
      "module": "",
      "names": [
       "hwsc_config"
@@ -257084,7 +257099,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 80,
+     "line": 100,
      "module": "",
      "names": [
       "hwsg_oracle"
@@ -257101,7 +257116,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 109,
+     "line": 129,
      "module": "",
      "names": [
       "hwsg_records"
@@ -257118,7 +257133,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 134,
+     "line": 154,
      "module": "",
      "names": [
       "hwsg_handoff"
@@ -257135,24 +257150,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 135,
-     "module": "",
-     "names": [
-      "hwsg_records"
-     ],
-     "status": "internal",
-     "targets": [
-      "tools/hwsg/hwsg_records.py"
-     ],
-     "top": "hwsg_records"
-    },
-    {
-     "candidates": [],
-     "form": "import",
-     "how": "same directory",
-     "lazy": true,
-     "level": 0,
-     "line": 202,
+     "line": 155,
      "module": "",
      "names": [
       "hwsg_records"
@@ -257172,6 +257170,23 @@
      "line": 222,
      "module": "",
      "names": [
+      "hwsg_records"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/hwsg/hwsg_records.py"
+     ],
+     "top": "hwsg_records"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "same directory",
+     "lazy": true,
+     "level": 0,
+     "line": 242,
+     "module": "",
+     "names": [
       "hwsg_oracle"
      ],
      "status": "internal",
@@ -257186,7 +257201,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 223,
+     "line": 243,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore",
@@ -257204,7 +257219,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 224,
+     "line": 244,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "MemoryBackend"
@@ -257221,7 +257236,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 226,
+     "line": 246,
      "module": "",
      "names": [
       "hwsb_config"
@@ -257238,7 +257253,7 @@
      "how": "unique basename",
      "lazy": true,
      "level": 0,
-     "line": 227,
+     "line": 247,
      "module": "",
      "names": [
       "hwsb_data"
@@ -257255,7 +257270,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 240,
+     "line": 260,
      "module": "topo_pilot.contracts",
      "names": [
       "ObservationSet"
@@ -257272,7 +257287,7 @@
      "how": "package root",
      "lazy": true,
      "level": 0,
-     "line": 241,
+     "line": 261,
      "module": "topo_pilot.dataset.checks",
      "names": [
       "make_sequence_ids",
@@ -257290,7 +257305,7 @@
      "how": "",
      "lazy": true,
      "level": 0,
-     "line": 248,
+     "line": 268,
      "module": "",
      "names": [
       "dataclasses"
@@ -257333,103 +257348,113 @@
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 52,
+     "doc": "Available physical memory: psutil if installed, else GlobalMemoryStatusEx (R-0244-1).",
+     "end": 65,
      "kind": "function",
-     "name": "ram_ok",
-     "qual": "ram_ok",
-     "sig": "def ram_ok(n_children=3, free_bytes=None) -> dict",
+     "name": "_available_bytes",
+     "qual": "_available_bytes",
+     "sig": "def _available_bytes() -> int",
      "start": 46
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 62,
+     "end": 72,
+     "kind": "function",
+     "name": "ram_ok",
+     "qual": "ram_ok",
+     "sig": "def ram_ok(n_children=3, free_bytes=None) -> dict",
+     "start": 68
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 82,
      "kind": "function",
      "name": "_peak_rss",
      "qual": "_peak_rss",
      "sig": "def _peak_rss()",
-     "start": 55
+     "start": 75
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 67,
+     "end": 87,
      "kind": "function",
      "name": "_files_under",
      "qual": "_files_under",
      "sig": "def _files_under(d) -> set",
-     "start": 65
+     "start": 85
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 126,
+     "end": 146,
      "kind": "function",
      "name": "child",
      "qual": "child",
      "sig": "def child(world_key, master, out, job, attempt) -> dict",
-     "start": 70
+     "start": 90
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 130,
+     "end": 150,
      "kind": "function",
      "name": "_next_attempt",
      "qual": "_next_attempt",
      "sig": "def _next_attempt(wd, master) -> int",
-     "start": 129
+     "start": 149
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 198,
+     "end": 218,
      "kind": "function",
      "name": "run_train",
      "qual": "run_train",
      "sig": "def run_train(out, w, auth, sched, kc_accept, job, launcher=None) -> dict",
-     "start": 133
+     "start": 153
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 217,
+     "end": 237,
      "kind": "function",
      "name": "aggregate",
      "qual": "aggregate",
      "sig": "def aggregate(world_dir, job, ledger_path) -> dict",
-     "start": 201
+     "start": 221
     },
     {
      "decorators": [],
      "doc": "One one-thread 100-step training on dry data of a dry master (KG4); writes the checksums.",
-     "end": 259,
+     "end": 279,
      "kind": "function",
      "name": "kg4_child",
      "qual": "kg4_child",
      "sig": "def kg4_child(master, out, steps=100, persist=True) -> dict",
-     "start": 220
+     "start": 240
     },
     {
      "decorators": [],
      "doc": "Start a dry child and kill it at once (DRG12): it must leave no record.",
-     "end": 269,
+     "end": 289,
      "kind": "function",
      "name": "_launch_kill",
      "qual": "_launch_kill",
      "sig": "def _launch_kill(out) -> bool",
-     "start": 262
+     "start": 282
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 285,
+     "end": 305,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 272
+     "start": 292
     }
    ],
    "syspath": []
@@ -294983,5 +295008,5 @@
    ]
   }
  },
- "sources_digest": "78c9cabe966bde6883c17f8134838bacbe9d668c04ca89a5b0bc55ae087e646c"
+ "sources_digest": "8b732bcf7f6af0889f82bb5dea171302750e8611e47dbc861955d03b5a585ea2"
 }

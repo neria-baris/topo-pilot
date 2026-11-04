@@ -63,9 +63,9 @@
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 58, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 314, import)
 - [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 245, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 109, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 135, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 202, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 129, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 155, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 222, import)
 
 ## Top-level constants
 

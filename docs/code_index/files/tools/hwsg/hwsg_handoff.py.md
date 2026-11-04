@@ -53,7 +53,7 @@
 - [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 8, import)
 - [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 88, import)
 - [tools/hwsg/hwsg_oracle.py](hwsg_oracle.py.md) (line 244, import)
-- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 134, import)
+- [tools/hwsg/hwsg_train.py](hwsg_train.py.md) (line 154, import)
 
 ## Top-level constants
 

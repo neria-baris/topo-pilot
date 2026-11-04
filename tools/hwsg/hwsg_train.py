@@ -43,11 +43,31 @@ def child_argv(w, master, out, job, attempt, sub="child") -> list:
             "--attempt", str(int(attempt))]
 
 
-def ram_ok(n_children=3, free_bytes=None) -> dict:
-    if free_bytes is None:
+def _available_bytes() -> int:
+    """Available physical memory: psutil if installed, else GlobalMemoryStatusEx (R-0244-1)."""
+    try:
         import psutil
 
-        free_bytes = int(psutil.virtual_memory().available)
+        return int(psutil.virtual_memory().available)
+    except ImportError:
+        import ctypes
+
+        class _MS(ctypes.Structure):
+            _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong)] + [
+                (n, ctypes.c_ulonglong) for n in ("total_phys", "avail_phys", "total_pf",
+                                                  "avail_pf", "total_virtual", "avail_virtual",
+                                                  "avail_ext_virtual")]
+
+        ms = _MS()
+        ms.dwLength = ctypes.sizeof(_MS)
+        if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(ms)):
+            raise OSError("GlobalMemoryStatusEx failed")
+        return int(ms.avail_phys)
+
+
+def ram_ok(n_children=3, free_bytes=None) -> dict:
+    if free_bytes is None:
+        free_bytes = _available_bytes()
     need = int(n_children) * RAM_PER_CHILD + RAM_RESERVE
     return {"ok": int(free_bytes) >= need, "free_bytes": int(free_bytes), "need_bytes": need}
 

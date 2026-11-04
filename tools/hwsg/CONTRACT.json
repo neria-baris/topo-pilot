@@ -989,7 +989,14 @@
    "hist_reader": "token reader for stages/S3/HIST_*.npz, stages/S7/HIST_*.npz, superseded/**/HIST_*.npz",
    "non_history_by_name": [
     "registry/**",
-    "artifacts/{WorldSpec,TransitionSpec,EmissionSpec,Checkpoint}/**",
+    "artifacts/WorldSpec/**",
+    "artifacts/TransitionSpec/**",
+    "artifacts/EmissionSpec/**",
+    "artifacts/Checkpoint/**",
+    "superseded/*/artifacts/WorldSpec/**",
+    "superseded/*/artifacts/TransitionSpec/**",
+    "superseded/*/artifacts/EmissionSpec/**",
+    "logs/superseded-reg2-*/**",
     "stages/S4/ORACLE_*.npz",
     "stages/S4a/*.npz"
    ],

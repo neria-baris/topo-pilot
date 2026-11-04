@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `test_natural_prefix_rule_independent` | test | `test_natural_prefix_rule_independent` | [tests/x6_stage1/test_a_designed.py:199](../../tests/x6_stage1/test_a_designed.py#L199) |  |
+| `test_nb_static_refuses` | test | `test_nb_static_refuses` | [tests/x6_stage1/test_b_nb_s0_ops.py:153](../../tests/x6_stage1/test_b_nb_s0_ops.py#L153) |  |
 | `test_near_threshold_plus_fail_is_inconclusive` | test | `test_near_threshold_plus_fail_is_inconclusive` | [tests/analysis/test_x5_context.py:126](../../tests/analysis/test_x5_context.py#L126) |  |
 | `test_near_unit_gap_is_inconclusive` | test | `test_near_unit_gap_is_inconclusive` | [tests/analysis/test_x5_context.py:122](../../tests/analysis/test_x5_context.py#L122) |  |
 | `test_nearest_partners_excludes_self_duplicates_and_other_symbols` | test | `test_nearest_partners_excludes_self_duplicates_and_other_symbols` | [tests/analysis/test_horizon.py:139](../../tests/analysis/test_horizon.py#L139) |  |

@@ -1459,12 +1459,12 @@ The generated index itself (`docs/code_index/`) is not indexed. 1141 tracked fil
 
 | File | Kind | Size | Purpose |
 |---|---|---|---|
-| `API.md` | markdown | 357 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
+| `API.md` | markdown | 361 lines | tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1) |
 | `CONTRACT.json` | json | 3279 lines |  |
 | `PROTOCOL_HWSG_v1.md` | markdown | 477 lines | HWSG-DESIGN-v1: generality across worlds, the full beyond-four test repeated in three more worlds |
 | `TEST_PLAN.md` | markdown | 69 lines | HWSG test plan v1 (job 0224) |
 | [hwsg_bind.py](files/tools/hwsg/hwsg_bind.py.md) | python | 243 lines | HWSG world rebinding and audit (API.md §2; protocol §2.3). No existing file is edited: the |
-| [hwsg_config.py](files/tools/hwsg/hwsg_config.py.md) | python | 265 lines | HWSG configuration: CONTRACT.json, constants, worlds, plans, paths, blindness guard (API.md §1). |
+| [hwsg_config.py](files/tools/hwsg/hwsg_config.py.md) | python | 284 lines | HWSG configuration: CONTRACT.json, constants, worlds, plans, paths, blindness guard (API.md §1). |
 | [hwsg_cross.py](files/tools/hwsg/hwsg_cross.py.md) | python | 200 lines | HWSG cross-world readings: generality, annotations, capture, similarity, licences (API.md §8; |
 | [hwsg_dry.py](files/tools/hwsg/hwsg_dry.py.md) | python | 213 lines | HWSG dry run, part 1: synthetic cases DRG3-DRG8, DRG10, DRG11 (API.md §16; protocol §10.1). |
 | [hwsg_dry2.py](files/tools/hwsg/hwsg_dry2.py.md) | python | 243 lines | HWSG dry run, part 2: DRG1, DRG2, DRG9, DRG12-DRG14 and the DRY report (API.md §16; §10.1). |

@@ -1626,6 +1626,7 @@
 | `_overlap_core` | function | `_overlap_core` | [src/topo_pilot/process/emission.py:88](../../src/topo_pilot/process/emission.py#L88) | ``E[z, j] = softmax_j(-d(z, c_j)^2 / 2 sigma^2)`` in float64 via log-sum-exp. |
 | `_own_betti` | function | `_own_betti` | [tests/world/test_world.py:67](../../tests/world/test_world.py#L67) |  |
 | `_own_boundary` | function | `_own_boundary` | [tests/world/test_world.py:49](../../tests/world/test_world.py#L49) | Independent cubical boundary: d = sum_i (-1)^i (upper_i - lower_i); edges canonical (lo,hi). |
+| `_own_draw` | function | `_own_draw` | [tools/hwsg/hwsg_config.py:172](../../tools/hwsg/hwsg_config.py#L172) |  |
 | `_own_store` | function | `_own_store` | [tests/c2_readout/test_b_fwl_l1.py:342](../../tests/c2_readout/test_b_fwl_l1.py#L342) |  |
 | `_own_suffix_ok` | function | `_own_suffix_ok` | [tools/c2_readout/c2_data.py:299](../../tools/c2_readout/c2_data.py#L299) | R-0107-2: STAGES.jsonl gets exactly one STARTED line of this stage; GATES.jsonl only |
 | `_owner_record` | function | `_owner_record` | [tools/x4_circle_history/release.py:181](../../tools/x4_circle_history/release.py#L181) |  |
@@ -1741,7 +1742,7 @@
 | `_pos` | function | `_pos` | [tools/x6_stage0/x6_run.py:206](../../tools/x6_stage0/x6_run.py#L206) |  |
 | `_posix` | function | `_posix` | [tools/hwsc/hwsc_config.py:167](../../tools/hwsc/hwsc_config.py#L167) |  |
 | `_posix` | function | `_posix` | [tools/hwsd/hwsd_config.py:161](../../tools/hwsd/hwsd_config.py#L161) |  |
-| `_posix` | function | `_posix` | [tools/hwsg/hwsg_config.py:203](../../tools/hwsg/hwsg_config.py#L203) |  |
+| `_posix` | function | `_posix` | [tools/hwsg/hwsg_config.py:222](../../tools/hwsg/hwsg_config.py#L222) |  |
 | `_posix` | function | `_posix` | [tools/hwsu/hwsu_config.py:111](../../tools/hwsu/hwsu_config.py#L111) |  |
 | `_posix` | function | `_posix` | [tools/x6_stage1/x6s1_ingest.py:65](../../tools/x6_stage1/x6s1_ingest.py#L65) |  |
 | `_posterior` | function | `_posterior` | [tests/circle_history/test_scores_precision.py:159](../../tests/circle_history/test_scores_precision.py#L159) |  |
@@ -1922,7 +1923,7 @@
 | `_rel` | function | `_rel` | [tools/hws/hws_driver.py:40](../../tools/hws/hws_driver.py#L40) |  |
 | `_rel` | function | `_rel` | [tools/hwsb/hwsb_registry.py:90](../../tools/hwsb/hwsb_registry.py#L90) |  |
 | `_rel` | function | `_rel` | [tools/hwsc/hwsc_registry.py:43](../../tools/hwsc/hwsc_registry.py#L43) |  |
-| `_rel` | function | `_rel` | [tools/hwsg/hwsg_config.py:207](../../tools/hwsg/hwsg_config.py#L207) |  |
+| `_rel` | function | `_rel` | [tools/hwsg/hwsg_config.py:226](../../tools/hwsg/hwsg_config.py#L226) |  |
 | `_rel` | function | `_rel` | [tools/hwsu/hwsu_resv.py:79](../../tools/hwsu/hwsu_resv.py#L79) |  |
 | `_rel` | function | `_rel` | [tools/x6zc/x6zc_census.py:108](../../tools/x6zc/x6zc_census.py#L108) |  |
 | `_rel_norm` | function | `_rel_norm` | [tools/c1prime/c1_fit.py:104](../../tools/c1prime/c1_fit.py#L104) |  |
@@ -2951,7 +2952,7 @@
 | `bit_generator` | method | `_RecGen.bit_generator` | [tests/x6_stage1/test_b_train_chain.py:126](../../tests/x6_stage1/test_b_train_chain.py#L126) |  |
 | `blinded` | function | `blinded` | [tools/hwsc/hwsc_config.py:171](../../tools/hwsc/hwsc_config.py#L171) |  |
 | `blinded` | function | `blinded` | [tools/hwsd/hwsd_config.py:169](../../tools/hwsd/hwsd_config.py#L169) |  |
-| `blinded` | function | `blinded` | [tools/hwsg/hwsg_config.py:214](../../tools/hwsg/hwsg_config.py#L214) |  |
+| `blinded` | function | `blinded` | [tools/hwsg/hwsg_config.py:233](../../tools/hwsg/hwsg_config.py#L233) |  |
 | `blinded` | function | `blinded` | [tools/hwsu/hwsu_config.py:123](../../tools/hwsu/hwsu_config.py#L123) |  |
 | `blk` | function | `blk` | [tests/hwsb/test_b_streams.py:330](../../tests/hwsb/test_b_streams.py#L330) |  |
 | `Block` | class | `Block` | [src/topo_pilot/learner/model.py:52](../../src/topo_pilot/learner/model.py#L52) | Pre-LN block: ``x = x + Attn(LN(x)); x = x + MLP(LN(x))``. |
@@ -3182,6 +3183,7 @@
 | `cert_val` | function | `cert_val` | [tools/k4b/k4b_driver.py:324](../../tools/k4b/k4b_driver.py#L324) |  |
 | `certificate` | function | `certificate` | [tools/hwsg/hwsg_registry.py:261](../../tools/hwsg/hwsg_registry.py#L261) |  |
 | `certificate` | function | `certificate` | [tools/theory_exact/theory_exact.py:90](../../tools/theory_exact/theory_exact.py#L90) | Theorem 2.1: r* and the smallest delta < r* that closes a nonzero-winding chain. |
+| `certificate_inv` | function | `certificate_inv` | [tools/hwsg/hwsg_config.py:178](../../tools/hwsg/hwsg_config.py#L178) | R-0251-1: the registry certificate's root inventory without the own store's E1/E2 draw |
 | `CertificateFlag` | class | `CertificateFlag` | [tools/c1prime/c1_records.py:44](../../tools/c1prime/c1_records.py#L44) | A watched Decimal flag in a certificate computation (P3). |
 | `certified_correction` | function | `certified_correction` | [tests/circle_history/test_cochain_lift.py:98](../../tests/circle_history/test_cochain_lift.py#L98) | Explicit closure, congruence and D1 z = b; returns z = (a - alpha) / p. |
 | `certify` | function | `certify` | [tools/k4b/k4b_cert.py:114](../../tools/k4b/k4b_cert.py#L114) | primary/controls: {name: {"X": array, "max_B": Fraction}}. Primary defects raise |
@@ -3789,7 +3791,7 @@
 | `dry_plan` | function | `dry_plan` | [tools/hwsb/hwsb_config.py:144](../../tools/hwsb/hwsb_config.py#L144) |  |
 | `dry_plan` | function | `dry_plan` | [tools/hwsc/hwsc_config.py:147](../../tools/hwsc/hwsc_config.py#L147) |  |
 | `dry_plan` | function | `dry_plan` | [tools/hwsd/hwsd_config.py:147](../../tools/hwsd/hwsd_config.py#L147) |  |
-| `dry_plan` | function | `dry_plan` | [tools/hwsg/hwsg_config.py:179](../../tools/hwsg/hwsg_config.py#L179) |  |
+| `dry_plan` | function | `dry_plan` | [tools/hwsg/hwsg_config.py:198](../../tools/hwsg/hwsg_config.py#L198) |  |
 | `dry_root` | function | `dry_root` | [tests/hwsc/test_b_registry.py:255](../../tests/hwsc/test_b_registry.py#L255) |  |
 | `dry_store_ok` | function | `dry_store_ok` | [tools/hwsu/hwsu_config.py:179](../../tools/hwsu/hwsu_config.py#L179) | True iff path lies under SCRATCH/hwsu-dry* or SCRATCH/test_hwsu-* (dry guard, E-4). |
 | `dry_stream` | function | `dry_stream` | [tools/x6zc/x6zc_const.py:63](../../tools/x6zc/x6zc_const.py#L63) |  |
@@ -4403,7 +4405,7 @@
 | `guard` | function | `guard` | [tools/c2_readout/c2_decide.py:49](../../tools/c2_readout/c2_decide.py#L49) |  |
 | `guard` | function | `guard` | [tools/hwsc/hwsc_config.py:193](../../tools/hwsc/hwsc_config.py#L193) |  |
 | `guard` | function | `guard` | [tools/hwsd/hwsd_config.py:213](../../tools/hwsd/hwsd_config.py#L213) |  |
-| `guard` | function | `guard` | [tools/hwsg/hwsg_config.py:248](../../tools/hwsg/hwsg_config.py#L248) |  |
+| `guard` | function | `guard` | [tools/hwsg/hwsg_config.py:267](../../tools/hwsg/hwsg_config.py#L267) |  |
 | `guard` | function | `guard` | [tools/hwsu/hwsu_config.py:147](../../tools/hwsu/hwsu_config.py#L147) |  |
 | `guard` | function | `guard` | [tools/x4_oracle_profile/runtime.py:30](../../tools/x4_oracle_profile/runtime.py#L30) | Safe-boundary runtime control check (HOLD waits here; STOP/INVALID raise). |
 | `guard` | function | `guard` | [tools/x6zc/x6zc_store.py:66](../../tools/x6zc/x6zc_store.py#L66) |  |
@@ -4692,7 +4694,7 @@
 | `k4_compare` | function | `k4_compare` | [tools/x6zc/x6zc_census.py:113](../../tools/x6zc/x6zc_census.py#L113) |  |
 | `k4b_cases` | function | `k4b_cases` | [tests/hwsb/test_a_ladder.py:120](../../tests/hwsb/test_a_ladder.py#L120) |  |
 | `k4b_class` | function | `k4b_class` | [tests/k4b/test_b_store_reader.py:239](../../tests/k4b/test_b_store_reader.py#L239) |  |
-| `k4b_view` | function | `k4b_view` | [tools/hwsg/hwsg_config.py:195](../../tools/hwsg/hwsg_config.py#L195) |  |
+| `k4b_view` | function | `k4b_view` | [tools/hwsg/hwsg_config.py:214](../../tools/hwsg/hwsg_config.py#L214) |  |
 | `k5_batch` | function | `k5_batch` | [tools/x6zc/x6zc_census.py:168](../../tools/x6zc/x6zc_census.py#L168) |  |
 | `k5_bos` | function | `k5_bos` | [tools/x6zc/x6zc_census.py:200](../../tools/x6zc/x6zc_census.py#L200) |  |
 | `k5_independent` | function | `k5_independent` | [tools/x6zc/x6zc_census.py:129](../../tools/x6zc/x6zc_census.py#L129) | (a) members rebuilt from content (§20 E-3); exact q*, exact cue normalisation and sums. |
@@ -4946,5 +4948,3 @@
 | `load_checkpoint` | function | `load_checkpoint` | [tools/c1prime/c1_driver_cal.py:26](../../tools/c1prime/c1_driver_cal.py#L26) |  |
 | `load_checkpoint` | function | `load_checkpoint` | [tools/k4b/k4b_driver.py:137](../../tools/k4b/k4b_driver.py#L137) |  |
 | `load_checkpoint` | function | `load_checkpoint` | [tools/x6_stage1/x6s1_cloud.py:198](../../tools/x6_stage1/x6s1_cloud.py#L198) |  |
-| `load_checkpoint_d` | function | `load_checkpoint_d` | [tools/hwsd/hwsd_score.py:53](../../tools/hwsd/hwsd_score.py#L53) |  |
-| `load_config` | function | `load_config` | [src/topo_pilot/experiment/config.py:61](../../src/topo_pilot/experiment/config.py#L61) | Read ``base.yaml`` and ``local.yaml`` from the folder of ``stages_path``. |

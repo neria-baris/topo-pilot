@@ -2,6 +2,8 @@
 
 | Name | Kind | Qualified name | Location | First docstring line |
 |---|---|---|---|---|
+| `load_checkpoint_d` | function | `load_checkpoint_d` | [tools/hwsd/hwsd_score.py:53](../../tools/hwsd/hwsd_score.py#L53) |  |
+| `load_config` | function | `load_config` | [src/topo_pilot/experiment/config.py:61](../../src/topo_pilot/experiment/config.py#L61) | Read ``base.yaml`` and ``local.yaml`` from the folder of ``stages_path``. |
 | `load_config` | function | `load_config` | [src/topo_pilot/experiment/x5g1t_config.py:144](../../src/topo_pilot/experiment/x5g1t_config.py#L144) |  |
 | `load_config` | function | `load_config` | [tools/x4_oracle_profile/inputs.py:25](../../tools/x4_oracle_profile/inputs.py#L25) |  |
 | `load_contract` | function | `load_contract` | [tools/c1prime/c1_config.py:34](../../tools/c1prime/c1_config.py#L34) |  |
@@ -745,7 +747,7 @@
 | `plan` | method | `TrainingStageBase.plan` | [src/topo_pilot/experiment/s4.py:44](../../src/topo_pilot/experiment/s4.py#L44) |  |
 | `plan` | method | `X4Stage.plan` | [src/topo_pilot/experiment/x4.py:345](../../src/topo_pilot/experiment/x4.py#L345) |  |
 | `plan` | function | `plan` | [tests/hwsb/test_b_registry.py:34](../../tests/hwsb/test_b_registry.py#L34) |  |
-| `plan` | function | `plan` | [tools/hwsg/hwsg_config.py:172](../../tools/hwsg/hwsg_config.py#L172) |  |
+| `plan` | function | `plan` | [tools/hwsg/hwsg_config.py:191](../../tools/hwsg/hwsg_config.py#L191) |  |
 | `plan20` | function | `plan20` | [tests/hwsb/test_b_hold.py:149](../../tests/hwsb/test_b_hold.py#L149) |  |
 | `plant_acts` | function | `plant_acts` | [tools/hwsd/hwsd_dry.py:117](../../tools/hwsd/hwsd_dry.py#L117) | Planted float64 activations [n, 128]: coordinates 0 and 1 carry the signal. |
 | `Planted` | class | `Planted` | [tests/x6zc/test_x6zc_dryrun.py:79](../../tests/x6zc/test_x6zc_dryrun.py#L79) | p = Z + sum_k f_k(prefix)(P_k - Z), Z = q*_ZC, P_k a SyntheticPredictor; equal cue masses |
@@ -896,7 +898,7 @@
 | `protected_diff` | function | `protected_diff` | [tools/d2a/d2a_world.py:267](../../tools/d2a/d2a_world.py#L267) | (entries, violations) of ``git diff --no-renames --name-status R H -- PROTECTED``. |
 | `protocol_ok` | function | `protocol_ok` | [tools/hwsg/hwsg_config.py:64](../../tools/hwsg/hwsg_config.py#L64) |  |
 | `provenance_row` | function | `provenance_row` | [src/topo_pilot/experiment/x4b.py:121](../../src/topo_pilot/experiment/x4b.py#L121) | Identity of one input artifact (type, producer commit, checksum, parents). |
-| `prune` | function | `prune` | [tools/hwsg/hwsg_config.py:262](../../tools/hwsg/hwsg_config.py#L262) |  |
+| `prune` | function | `prune` | [tools/hwsg/hwsg_config.py:281](../../tools/hwsg/hwsg_config.py#L281) |  |
 | `ps` | function | `ps` | [tests/analysis/test_spaces.py:10](../../tests/analysis/test_spaces.py#L10) |  |
 | `ps` | function | `ps` | [tests/experiment/test_x5g1t_usage.py:26](../../tests/experiment/test_x5g1t_usage.py#L26) | PowerShell ``"o"`` format: 7 fractional digits and a Z suffix. |
 | `ps` | function | `ps` | [tests/experiment/test_x5g1t_usage_files.py:27](../../tests/experiment/test_x5g1t_usage_files.py#L27) | PowerShell ``"o"`` format: 7 fractional digits and a Z suffix. |
@@ -904,7 +906,7 @@
 | `psi_of` | function | `psi_of` | [tests/k4b/test_b_endpoint.py:104](../../tests/k4b/test_b_endpoint.py#L104) |  |
 | `public_summary` | function | `public_summary` | [tools/hwsc/hwsc_config.py:186](../../tools/hwsc/hwsc_config.py#L186) |  |
 | `public_summary` | function | `public_summary` | [tools/hwsd/hwsd_config.py:209](../../tools/hwsd/hwsd_config.py#L209) |  |
-| `public_summary` | function | `public_summary` | [tools/hwsg/hwsg_config.py:241](../../tools/hwsg/hwsg_config.py#L241) |  |
+| `public_summary` | function | `public_summary` | [tools/hwsg/hwsg_config.py:260](../../tools/hwsg/hwsg_config.py#L260) |  |
 | `public_summary` | function | `public_summary` | [tools/hwsu/hwsu_config.py:143](../../tools/hwsu/hwsu_config.py#L143) |  |
 | `PublicTokenDataset` | class | `PublicTokenDataset` | [src/topo_pilot/dataset/public.py:37](../../src/topo_pilot/dataset/public.py#L37) | Map-style dataset ``i -> (inputs [33], targets [33])`` of int64 tensors. |
 | `punctured_complex` | function | `punctured_complex` | [tools/x6_stage0/x6_model.py:141](../../tools/x6_stage0/x6_model.py#L141) |  |
@@ -1008,7 +1010,7 @@
 | `rbf_probe` | function | `rbf_probe` | [src/topo_pilot/experiment/x4f_gates.py:67](../../src/topo_pilot/experiment/x4f_gates.py#L67) | RBF random-feature ridge (calibration standardisation and median bandwidth). |
 | `read_bytes` | function | `read_bytes` | [tools/hwsc/hwsc_config.py:199](../../tools/hwsc/hwsc_config.py#L199) |  |
 | `read_bytes` | function | `read_bytes` | [tools/hwsd/hwsd_config.py:219](../../tools/hwsd/hwsd_config.py#L219) |  |
-| `read_bytes` | function | `read_bytes` | [tools/hwsg/hwsg_config.py:258](../../tools/hwsg/hwsg_config.py#L258) |  |
+| `read_bytes` | function | `read_bytes` | [tools/hwsg/hwsg_config.py:277](../../tools/hwsg/hwsg_config.py#L277) |  |
 | `read_bytes` | function | `read_bytes` | [tools/hwsu/hwsu_config.py:153](../../tools/hwsu/hwsu_config.py#L153) |  |
 | `read_chain` | function | `read_chain` | [src/topo_pilot/experiment/x5g1t_config.py:241](../../src/topo_pilot/experiment/x5g1t_config.py#L241) | Read-through backend chain over ``roots`` (the first is the innermost); writes nothing. |
 | `read_controls` | function | `read_controls` | [src/topo_pilot/experiment/x5g1t_runtime.py:52](../../src/topo_pilot/experiment/x5g1t_runtime.py#L52) | Precedence STOP > HOLD > CONTINUE (API v4 §2): STOP file, request, worker_control, |
@@ -1016,7 +1018,7 @@
 | `read_json` | function | `read_json` | [tools/hws/hws_exact.py:247](../../tools/hws/hws_exact.py#L247) |  |
 | `read_json` | function | `read_json` | [tools/hwsc/hwsc_config.py:203](../../tools/hwsc/hwsc_config.py#L203) |  |
 | `read_json` | function | `read_json` | [tools/hwsd/hwsd_config.py:223](../../tools/hwsd/hwsd_config.py#L223) |  |
-| `read_json` | function | `read_json` | [tools/hwsg/hwsg_config.py:254](../../tools/hwsg/hwsg_config.py#L254) |  |
+| `read_json` | function | `read_json` | [tools/hwsg/hwsg_config.py:273](../../tools/hwsg/hwsg_config.py#L273) |  |
 | `read_json` | function | `read_json` | [tools/hwsu/hwsu_config.py:157](../../tools/hwsu/hwsu_config.py#L157) |  |
 | `read_k4b_history_table` | function | `read_k4b_history_table` | [tools/hwsg/hwsg_registry.py:50](../../tools/hwsg/hwsg_registry.py#L50) |  |
 | `read_k4b_table` | function | `read_k4b_table` | [tools/hwsd/hwsd_readers.py:45](../../tools/hwsd/hwsd_readers.py#L45) |  |
@@ -1407,7 +1409,7 @@
 | `run_kd` | function | `run_kd` | [tools/hwsd/hwsd_known.py:232](../../tools/hwsd/hwsd_known.py#L232) |  |
 | `run_key` | function | `run_key` | [tools/hwsb/hwsb_config.py:187](../../tools/hwsb/hwsb_config.py#L187) |  |
 | `run_key` | function | `run_key` | [tools/hwsc/hwsc_config.py:154](../../tools/hwsc/hwsc_config.py#L154) |  |
-| `run_key` | function | `run_key` | [tools/hwsg/hwsg_config.py:188](../../tools/hwsg/hwsg_config.py#L188) |  |
+| `run_key` | function | `run_key` | [tools/hwsg/hwsg_config.py:207](../../tools/hwsg/hwsg_config.py#L207) |  |
 | `run_key` | function | `run_key` | [tools/x6_stage1/x6s1_data.py:168](../../tools/x6_stage1/x6s1_data.py#L168) |  |
 | `run_key_of` | function | `run_key_of` | [src/topo_pilot/experiment/s3.py:83](../../src/topo_pilot/experiment/s3.py#L83) |  |
 | `run_km` | function | `run_km` | [tests/c2_nd/test_b_layer2.py:90](../../tests/c2_nd/test_b_layer2.py#L90) |  |
@@ -4124,5 +4126,3 @@
 | `test_nan_predictive_is_numerical` | test | `test_nan_predictive_is_numerical` | [tests/hwsd/test_a_learning.py:142](../../tests/hwsd/test_a_learning.py#L142) |  |
 | `test_nan_row_is_numerical` | test | `test_nan_row_is_numerical` | [tests/hwsc/test_a_learning.py:196](../../tests/hwsc/test_a_learning.py#L196) |  |
 | `test_native_wall_at_c0_cal` | test | `test_native_wall_at_c0_cal` | [tests/hwsd/test_a_scorer.py:211](../../tests/hwsd/test_a_scorer.py#L211) |  |
-| `test_natural_prefix_rule_independent` | test | `test_natural_prefix_rule_independent` | [tests/x6_stage1/test_a_designed.py:199](../../tests/x6_stage1/test_a_designed.py#L199) |  |
-| `test_nb_static_refuses` | test | `test_nb_static_refuses` | [tests/x6_stage1/test_b_nb_s0_ops.py:153](../../tests/x6_stage1/test_b_nb_s0_ops.py#L153) |  |

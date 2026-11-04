@@ -6,7 +6,7 @@
   "dynamic imports, internal": 41,
   "dynamic imports, stdlib/external literal": 2,
   "files indexed": 1141,
-  "functions and methods (incl. tests)": 10881,
+  "functions and methods (incl. tests)": 10883,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1010,
   "import statements, internal ambiguous": 6,
@@ -29658,9 +29658,9 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 357,
+   "lines": 361,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "b6e6fa2cc4e7f18fff75bb0cbc056e8a482928e6fcf5f25effb8a79d69bd5977"
+   "sha256": "e13039ff761b40981aba97b0bd49ca629bc72e8016f429f793e83721027c8c16"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
@@ -29688,9 +29688,9 @@
   },
   "tools/hwsg/hwsg_config.py": {
    "kind": "python",
-   "lines": 265,
+   "lines": 284,
    "purpose": "HWSG configuration: CONTRACT.json, constants, worlds, plans, paths, blindness guard (API.md §1).",
-   "sha256": "4421ccffd1406c6f5d1c942402997a27f3e25dd3369717e761d594ec12b86791"
+   "sha256": "14bdb412085e16a50aef76f4947bccd73d2491dbd794aed5bc8f49a3702506dc"
   },
   "tools/hwsg/hwsg_cross.py": {
    "kind": "python",
@@ -29750,7 +29750,7 @@
    "kind": "python",
    "lines": 400,
    "purpose": "HWSG registry: composition adapter, readers (b)-(d),(f), inventory, certificate (API.md §6;",
-   "sha256": "d38cc57c6ff5b9878c1999d2a5409758d037b88cf02f97da4ed81fdb49b239e8"
+   "sha256": "0f8c439cfbfa0467c5274efb440dda439bc1c541de8f16e19199f3ea882b4272"
   },
   "tools/hwsg/hwsg_train.py": {
    "kind": "python",
@@ -251778,122 +251778,142 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 176,
+     "end": 175,
      "kind": "function",
-     "name": "plan",
-     "qual": "plan",
-     "sig": "def plan(w) -> hwsb_config.Plan",
+     "name": "_own_draw",
+     "qual": "_own_draw",
+     "sig": "def _own_draw(p) -> bool",
      "start": 172
     },
     {
      "decorators": [],
-     "doc": "",
-     "end": 185,
+     "doc": "R-0251-1: the registry certificate's root inventory without the own store's E1/E2 draw",
+     "end": 188,
      "kind": "function",
-     "name": "dry_plan",
-     "qual": "dry_plan",
-     "sig": "def dry_plan(w, case, kind='dry_tiny') -> hwsb_config.Plan",
-     "start": 179
+     "name": "certificate_inv",
+     "qual": "certificate_inv",
+     "sig": "def certificate_inv(inv) -> dict",
+     "start": 178
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 192,
+     "end": 195,
      "kind": "function",
-     "name": "run_key",
-     "qual": "run_key",
-     "sig": "def run_key(w, master, case=None) -> tuple",
-     "start": 188
-    },
-    {
-     "decorators": [],
-     "doc": "",
-     "end": 199,
-     "kind": "function",
-     "name": "k4b_view",
-     "qual": "k4b_view",
-     "sig": "def k4b_view() -> dict",
-     "start": 195
+     "name": "plan",
+     "qual": "plan",
+     "sig": "def plan(w) -> hwsb_config.Plan",
+     "start": 191
     },
     {
      "decorators": [],
      "doc": "",
      "end": 204,
      "kind": "function",
-     "name": "_posix",
-     "qual": "_posix",
-     "sig": "def _posix(path) -> str",
-     "start": 203
+     "name": "dry_plan",
+     "qual": "dry_plan",
+     "sig": "def dry_plan(w, case, kind='dry_tiny') -> hwsb_config.Plan",
+     "start": 198
     },
     {
      "decorators": [],
      "doc": "",
      "end": 211,
      "kind": "function",
-     "name": "_rel",
-     "qual": "_rel",
-     "sig": "def _rel(path, root)",
+     "name": "run_key",
+     "qual": "run_key",
+     "sig": "def run_key(w, master, case=None) -> tuple",
      "start": 207
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 238,
+     "end": 218,
      "kind": "function",
-     "name": "blinded",
-     "qual": "blinded",
-     "sig": "def blinded(path, root=ROOT) -> bool",
+     "name": "k4b_view",
+     "qual": "k4b_view",
+     "sig": "def k4b_view() -> dict",
      "start": 214
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 245,
+     "end": 223,
+     "kind": "function",
+     "name": "_posix",
+     "qual": "_posix",
+     "sig": "def _posix(path) -> str",
+     "start": 222
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 230,
+     "kind": "function",
+     "name": "_rel",
+     "qual": "_rel",
+     "sig": "def _rel(path, root)",
+     "start": 226
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 257,
+     "kind": "function",
+     "name": "blinded",
+     "qual": "blinded",
+     "sig": "def blinded(path, root=ROOT) -> bool",
+     "start": 233
+    },
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 264,
      "kind": "function",
      "name": "public_summary",
      "qual": "public_summary",
      "sig": "def public_summary(path) -> bool",
-     "start": 241
+     "start": 260
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 251,
+     "end": 270,
      "kind": "function",
      "name": "guard",
      "qual": "guard",
      "sig": "def guard(path, root=ROOT) -> Path",
-     "start": 248
+     "start": 267
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 255,
+     "end": 274,
      "kind": "function",
      "name": "read_json",
      "qual": "read_json",
      "sig": "def read_json(path, root=ROOT)",
-     "start": 254
+     "start": 273
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 259,
+     "end": 278,
      "kind": "function",
      "name": "read_bytes",
      "qual": "read_bytes",
      "sig": "def read_bytes(path, root=ROOT) -> bytes",
-     "start": 258
+     "start": 277
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 265,
+     "end": 284,
      "kind": "function",
      "name": "prune",
      "qual": "prune",
      "sig": "def prune(dirpath, dirnames, root=ROOT) -> None",
-     "start": 262
+     "start": 281
     }
    ],
    "syspath": [
@@ -295008,5 +295028,5 @@
    ]
   }
  },
- "sources_digest": "8b732bcf7f6af0889f82bb5dea171302750e8611e47dbc861955d03b5a585ea2"
+ "sources_digest": "9b44b9da2e48c237c11dfdc1ec93d39eb6a592bd09d26cdc670ba15a28ed4955"
 }

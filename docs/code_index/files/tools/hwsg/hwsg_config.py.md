@@ -2,7 +2,7 @@
 
 - Source: [tools/hwsg/hwsg_config.py](../../../../../tools/hwsg/hwsg_config.py)
 - Kind: python
-- Lines: 265
+- Lines: 284
 
 ## Module docstring
 
@@ -135,16 +135,18 @@
 - **function `_make`** [L136-151]: `def _make(tag, d) -> WorldDef`
 - **function `world`** [L157-165]: `def world(w) -> WorldDef`
 - **function `world_dir`** [L168-169]: `def world_dir(store, w) -> Path`
-- **function `plan`** [L172-176]: `def plan(w) -> hwsb_config.Plan`
-- **function `dry_plan`** [L179-185]: `def dry_plan(w, case, kind='dry_tiny') -> hwsb_config.Plan`
-- **function `run_key`** [L188-192]: `def run_key(w, master, case=None) -> tuple`
-- **function `k4b_view`** [L195-199]: `def k4b_view() -> dict`
-- **function `_posix`** [L203-204]: `def _posix(path) -> str`
-- **function `_rel`** [L207-211]: `def _rel(path, root)`
-- **function `blinded`** [L214-238]: `def blinded(path, root=ROOT) -> bool`
-- **function `public_summary`** [L241-245]: `def public_summary(path) -> bool`
-- **function `guard`** [L248-251]: `def guard(path, root=ROOT) -> Path`
-- **function `read_json`** [L254-255]: `def read_json(path, root=ROOT)`
-- **function `read_bytes`** [L258-259]: `def read_bytes(path, root=ROOT) -> bytes`
-- **function `prune`** [L262-265]: `def prune(dirpath, dirnames, root=ROOT) -> None`
+- **function `_own_draw`** [L172-175]: `def _own_draw(p) -> bool`
+- **function `certificate_inv`** [L178-188]: `def certificate_inv(inv) -> dict` - R-0251-1: the registry certificate's root inventory without the own store's E1/E2 draw
+- **function `plan`** [L191-195]: `def plan(w) -> hwsb_config.Plan`
+- **function `dry_plan`** [L198-204]: `def dry_plan(w, case, kind='dry_tiny') -> hwsb_config.Plan`
+- **function `run_key`** [L207-211]: `def run_key(w, master, case=None) -> tuple`
+- **function `k4b_view`** [L214-218]: `def k4b_view() -> dict`
+- **function `_posix`** [L222-223]: `def _posix(path) -> str`
+- **function `_rel`** [L226-230]: `def _rel(path, root)`
+- **function `blinded`** [L233-257]: `def blinded(path, root=ROOT) -> bool`
+- **function `public_summary`** [L260-264]: `def public_summary(path) -> bool`
+- **function `guard`** [L267-270]: `def guard(path, root=ROOT) -> Path`
+- **function `read_json`** [L273-274]: `def read_json(path, root=ROOT)`
+- **function `read_bytes`** [L277-278]: `def read_bytes(path, root=ROOT) -> bytes`
+- **function `prune`** [L281-284]: `def prune(dirpath, dirnames, root=ROOT) -> None`
 

@@ -5,7 +5,7 @@
   "dynamic imports, dynamic expression or unresolved": 43,
   "dynamic imports, internal": 50,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1144,
+  "files indexed": 1145,
   "functions and methods (incl. tests)": 11009,
   "import cycles (strongly connected components)": 16,
   "import statements, external": 1022,
@@ -24183,6 +24183,12 @@
    "lines": 347,
    "purpose": "",
    "sha256": "968edfd704e6bc89d2b232afe945fc1391ca08828cf17d0d5509876a621f68c8"
+  },
+  "docs/proposals/THEORY_TOPICS_HE.md": {
+   "kind": "markdown",
+   "lines": 833,
+   "purpose": "הנושאים המתמטיים בפרויקט: ניסוחים מדויקים לקראת משפטים והוכחות",
+   "sha256": "a0a973b2d01c2c80b5433c9ab466ed15fbeb1d1de2a10242f9a03f1ed1fff76a"
   },
   "docs/proposals/THEORY_TRACK_HE.md": {
    "kind": "markdown",
@@ -297049,5 +297055,5 @@
    ]
   }
  },
- "sources_digest": "2f4595dd54217dff52edc7c21c851cc7a4942118b0153e8a38d2cd76a5e74b73"
+ "sources_digest": "eae7925ff5e1a5395b08976afa0c1a70290e3549e93ba5bb37efc8010ab79e3d"
 }

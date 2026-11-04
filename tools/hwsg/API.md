@@ -343,3 +343,7 @@ CONTRACT `errata.E2` lists the filled rows (evidence: `coord-scratch/be2e199d/hw
 - **F:** `binding.audit.left_unchanged` lists only names hit by the HWSG scan (48 rows); stage-C rows without a hit are not copied, so a new hit fails closed.
 - **G:** KG3 runs `kb2_kb3` twice; cost only, no change.
 - **Deferred:** `authority.h_exec`, FREEZE, DRY report and PF record sha256 are fixed by `freeze_g` after the PF + DRY rerun.
+
+## 20. Erratum E3 (ruling R-0239-2, coordinator be2e199d, 2026-11-04)
+
+KC attempt 1 (job 0239) stopped at KG6 `FAIL_TECHNICAL/KNOWN_CASE`: run inside `hwsg_bind.world("hi")`, the reused `tests/k4b` and `tests/hwsc` suites fail their own binding guard (`k4b_config` code drift; `MODELS` = the hi masters), 1 failed, 59 errors, 70 passed. Correction (first of at most two for this defect): `kg6(job)` runs CONTRACT `known_cases.kg6_suites` unbound and the new CONTRACT `known_cases.kg6_port_suites` (`tests/hwsg/test_a_kg6_port.py`, author A's port, which enters `world("hi")` with `bound_stage_c` itself and checks restoration); PASS iff both return 0. Basetemp `test_hwsg-<job>/test_hwsc-kg6/pytest-<i>` (R-0199-1 component). `returncode` is now the list of both codes. No other function changes; new freeze cycle before KC attempt 2.

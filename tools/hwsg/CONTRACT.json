@@ -693,6 +693,9 @@
    "tests/hwsc/test_a_decision.py",
    "tests/hwsc/test_a_k4b_known_bound.py"
   ],
+  "kg6_port_suites": [
+   "tests/hwsg/test_a_kg6_port.py"
+  ],
   "kg7_c": [
    "1/2",
    "9/10",

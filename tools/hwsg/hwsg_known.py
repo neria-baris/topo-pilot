@@ -220,13 +220,20 @@ def kg5(proc_w0, proc_star, handoff, worlds_procs) -> dict:
 def kg6(job) -> dict:
     import pytest
 
+    # R-0239-2: the reused K4b/HWSC suites guard their own binding, so they run unbound; the
+    # world(kg6_world) ∘ bound_stage_c part is the author-A port, which enters world("hi") itself.
     base = gc.SCRATCH / f"test_hwsg-{job}"
     (base / "tmp").mkdir(parents=True, exist_ok=True)
-    suites = [str(gc.REPO / s) for s in C["known_cases"]["kg6_suites"]]
-    with hwsg_bind.world(C["known_cases"]["kg6_world"]):
-        rc = int(pytest.main(suites + ["-p", "no:cacheprovider", "-q",
-                                       f"--basetemp={base / 'pytest-kg6'}"]))
-    return {"status": "PASS" if rc == 0 else KNOWN, "returncode": rc, "suites": suites}
+    (base / "test_hwsc-kg6").mkdir(parents=True, exist_ok=True)  # R-0199-1 basetemp component
+    kc = C["known_cases"]
+    suites = [str(gc.REPO / s) for s in kc["kg6_suites"]]
+    port = [str(gc.REPO / s) for s in kc["kg6_port_suites"]]
+    rcs = [int(pytest.main(s + ["-p", "no:cacheprovider", "-q",
+                                f"--basetemp={base / 'test_hwsc-kg6' / f'pytest-{i}'}"]))
+           for i, s in enumerate((suites, port))]
+    ok = rcs == [0, 0]
+    return {"status": "PASS" if ok else KNOWN, "returncode": rcs, "suites": suites,
+            "port_suites": port}
 
 
 def _fixture(c, rows=3072, seed=7):

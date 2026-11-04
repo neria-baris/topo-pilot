@@ -14,6 +14,7 @@ import argparse
 import json
 from pathlib import Path
 
+import c1_model
 import c2_registry
 import hwsc_data
 import hwsc_gates
@@ -21,6 +22,7 @@ import hwsc_jobs
 import hwsc_known
 import hwsc_outcome
 import k4b_config
+import k4b_data
 import k4b_driver
 import k4b_fresh
 import k4b_release
@@ -198,6 +200,9 @@ def run_e2(out, w, auth, sched, release_path=None, session=None, dry_continue=Fa
         hwsg_registry.recheck(reg2)
         ctx["test"] = hwsc_data.sample_test_c(wd, ctx["proc"], ctx["release"],
                                               ctx["reservation_path"], False)
+        test = ctx["test"]
+        ctx["test_acts"] = lambda j, s: c1_model.activations(
+            ctx["models"][(j, s)], k4b_data.model_inputs(test["canon32"], ctx["proc"]["perm"][j]))
         return {"Z_bound": str(ctx["Z"]), "test_rows": int(len(ctx["test"]["canon32"]))}
 
     def g_ratio():

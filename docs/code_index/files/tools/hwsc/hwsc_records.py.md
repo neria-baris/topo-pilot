@@ -65,6 +65,7 @@
 ## Imported by
 
 - [tests/hwsd/test_a_learning.py](../../tests/hwsd/test_a_learning.py.md) (line 29, import)
+- [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 97, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 24, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 25, import)
 - [tools/hwsc/hwsc_dry2.py](hwsc_dry2.py.md) (line 17, import)
@@ -73,6 +74,8 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 23, import)
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 22, import)
 - [tools/hwsd/hwsd_records.py](../hwsd/hwsd_records.py.md) (line 17, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 16, import)
+- [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 21, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 18, import)
 - [tools/hwsu/u2/hwsu_e2.py](../hwsu/u2/hwsu_e2.py.md) (line 26, import)
 - [tools/hwsu/u2/hwsu_gates.py](../hwsu/u2/hwsu_gates.py.md) (line 29, import)

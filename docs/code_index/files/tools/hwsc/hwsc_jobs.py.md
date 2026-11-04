@@ -65,6 +65,7 @@
 - [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 20, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 255, import)
 - [tools/hwsc/hwsc_dry.py](hwsc_dry.py.md) (line 161, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 21, import)
 
 ## Top-level constants
 

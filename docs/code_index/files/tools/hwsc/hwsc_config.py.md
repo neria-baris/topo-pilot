@@ -68,6 +68,10 @@
 - [tests/hwsc/test_r_0184_kc7_inside_binding.py](../../tests/hwsc/test_r_0184_kc7_inside_binding.py.md) (line 17, import)
 - [tests/hwsc/test_r_0187_e1_release_and_gate_files.py](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py.md) (line 18, import)
 - [tests/hwsc/test_r_0192_output_cap.py](../../tests/hwsc/test_r_0192_output_cap.py.md) (line 13, import)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 47, dynamic)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 111, dynamic)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 124, dynamic)
+- [tests/hwsg/test_b_binding.py](../../tests/hwsg/test_b_binding.py.md) (line 141, dynamic)
 - [tools/hwsc/hwsc_bind.py](hwsc_bind.py.md) (line 7, import)
 - [tools/hwsc/hwsc_data.py](hwsc_data.py.md) (line 7, import)
 - [tools/hwsc/hwsc_driver.py](hwsc_driver.py.md) (line 7, import)
@@ -89,6 +93,12 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 19, import)
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 21, import)
 - [tools/hwsd/hwsd_registry.py](../hwsd/hwsd_registry.py.md) (line 14, import)
+- [tools/hwsg/hwsg_bind.py](../hwsg/hwsg_bind.py.md) (line 16, import)
+- [tools/hwsg/hwsg_config.py](../hwsg/hwsg_config.py.md) (line 28, import)
+- [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 17, import)
+- [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 19, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 90, import)
+- [tools/hwsg/hwsg_train.py](../hwsg/hwsg_train.py.md) (line 99, import)
 - [tools/hwsu/hwsu_config.py](../hwsu/hwsu_config.py.md) (line 26, import)
 
 ## Top-level constants

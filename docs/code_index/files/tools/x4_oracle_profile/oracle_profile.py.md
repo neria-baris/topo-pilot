@@ -71,6 +71,7 @@
 - [tools/hws/hws_worlds.py](../hws/hws_worlds.py.md) (line 24, import)
 - [tools/hwsb/hwsb_data.py](../hwsb/hwsb_data.py.md) (line 17, import)
 - [tools/hwsb/hwsb_driver.py](../hwsb/hwsb_driver.py.md) (line 63, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 22, import)
 - [tools/hwsu/hwsu_of.py](../hwsu/hwsu_of.py.md) (line 26, import)
 - [tools/hwsu/hwsu_oracle.py](../hwsu/hwsu_oracle.py.md) (line 15, import)
 - [tools/hwsu/hwsu_records.py](../hwsu/hwsu_records.py.md) (line 23, import)

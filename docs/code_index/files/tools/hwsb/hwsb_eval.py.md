@@ -67,6 +67,7 @@
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 15, import)
 - [tools/hwsd/hwsd_known.py](../hwsd/hwsd_known.py.md) (line 194, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 15, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 18, import)
 
 ## Top-level constants
 

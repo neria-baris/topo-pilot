@@ -56,6 +56,7 @@
 - [tools/hws/hws_known.py](hws_known.py.md) (line 18, import)
 - [tools/hwsb/hwsb_eval.py](../hwsb/hwsb_eval.py.md) (line 15, import)
 - [tools/hwsb/hwsb_kb.py](../hwsb/hwsb_kb.py.md) (line 12, import)
+- [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 15, import)
 
 ## Top-level constants
 

@@ -73,7 +73,7 @@
 
 - [tests/hwsg/test_impl_review.py](../../tests/hwsg/test_impl_review.py.md) (line 17, import)
 - [tools/hwsg/hwsg_dry2.py](hwsg_dry2.py.md) (line 11, import)
-- [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 237, import)
+- [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 242, import)
 - [tools/hwsg/hwsg_known.py](hwsg_known.py.md) (line 166, import)
 
 ## Top-level constants

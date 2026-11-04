@@ -75,7 +75,7 @@
 - [tools/hwsd/hwsd_data.py](../hwsd/hwsd_data.py.md) (line 22, import)
 - [tools/hwsd/hwsd_known2.py](../hwsd/hwsd_known2.py.md) (line 23, import)
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 19, import)
-- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 25, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 27, import)
 - [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 21, import)
 - [tools/hwsg/hwsg_ratio.py](../hwsg/hwsg_ratio.py.md) (line 9, import)
 

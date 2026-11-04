@@ -85,7 +85,7 @@
 - [tools/hwsd/hwsd_summary.py](../hwsd/hwsd_summary.py.md) (line 17, import)
 - [tools/hwsg/hwsg_config.py](../hwsg/hwsg_config.py.md) (line 29, import)
 - [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 20, import)
-- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 23, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 24, import)
 - [tools/hwsg/hwsg_records.py](../hwsg/hwsg_records.py.md) (line 17, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 16, import)
 - [tools/k4b/k4b_cert.py](k4b_cert.py.md) (line 19, import)

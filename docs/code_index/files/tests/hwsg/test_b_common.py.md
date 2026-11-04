@@ -56,6 +56,7 @@
 - [tests/hwsg/test_b_streams.py](test_b_streams.py.md) (line 12, import)
 - [tests/hwsg/test_b_train_meter.py](test_b_train_meter.py.md) (line 11, import)
 - [tests/hwsg/test_r0257_store_paths.py](test_r0257_store_paths.py.md) (line 12, import)
+- [tests/hwsg/test_r0259_e2_context.py](test_r0259_e2_context.py.md) (line 13, import)
 
 ## Top-level constants
 

@@ -145,7 +145,7 @@
 - [tools/hwsg/hwsg_dry.py](../hwsg/hwsg_dry.py.md) (line 23, import)
 - [tools/hwsg/hwsg_dry2.py](../hwsg/hwsg_dry2.py.md) (line 22, import)
 - [tools/hwsg/hwsg_handoff.py](../hwsg/hwsg_handoff.py.md) (line 13, import)
-- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 29, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 31, import)
 - [tools/hwsg/hwsg_known.py](../hwsg/hwsg_known.py.md) (line 25, import)
 - [tools/hwsg/hwsg_oracle.py](../hwsg/hwsg_oracle.py.md) (line 24, import)
 - [tools/hwsg/hwsg_ratio.py](../hwsg/hwsg_ratio.py.md) (line 13, import)

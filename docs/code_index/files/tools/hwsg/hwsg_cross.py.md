@@ -53,7 +53,7 @@
 - [tests/hwsg/test_a_outcomes_licences.py](../../tests/hwsg/test_a_outcomes_licences.py.md) (line 23, import)
 - [tools/hwsg/hwsg_dry.py](hwsg_dry.py.md) (line 8, import)
 - [tools/hwsg/hwsg_dry2.py](hwsg_dry2.py.md) (line 6, import)
-- [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 235, import)
+- [tools/hwsg/hwsg_jobs.py](hwsg_jobs.py.md) (line 240, import)
 
 ## Top-level constants
 

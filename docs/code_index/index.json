@@ -1,20 +1,20 @@
 {
  "counts": {
   "classes": 331,
-  "code files": 730,
+  "code files": 731,
   "dynamic imports, dynamic expression or unresolved": 39,
-  "dynamic imports, internal": 41,
+  "dynamic imports, internal": 43,
   "dynamic imports, stdlib/external literal": 2,
-  "files indexed": 1142,
-  "functions and methods (incl. tests)": 10884,
+  "files indexed": 1143,
+  "functions and methods (incl. tests)": 10885,
   "import cycles (strongly connected components)": 16,
-  "import statements, external": 1011,
+  "import statements, external": 1012,
   "import statements, internal ambiguous": 6,
-  "import statements, internal resolved": 3866,
+  "import statements, internal resolved": 3869,
   "import statements, internal unresolved": 0,
-  "import statements, standard library": 3354,
-  "internal edges (file to file, with kind and line)": 3925,
-  "python files": 729
+  "import statements, standard library": 3358,
+  "internal edges (file to file, with kind and line)": 3930,
+  "python files": 730
  },
  "cycles": [
   [
@@ -10325,6 +10325,24 @@
    12
   ],
   [
+   "tests/hwsg/test_r0259_e2_context.py",
+   "tests/hwsg/test_b_common.py",
+   "import",
+   13
+  ],
+  [
+   "tests/hwsg/test_r0259_e2_context.py",
+   "tools/c1prime/c1_model.py",
+   "dynamic",
+   71
+  ],
+  [
+   "tests/hwsg/test_r0259_e2_context.py",
+   "tools/k4b/k4b_data.py",
+   "dynamic",
+   69
+  ],
+  [
    "tests/hwsu/test_a_of_gates.py",
    "src/topo_pilot/dataset/sampler.py",
    "import",
@@ -19862,55 +19880,61 @@
    "tools/hwsg/hwsg_jobs.py",
    "src/topo_pilot/contracts/__init__.py",
    "import",
-   31
+   33
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
    "src/topo_pilot/contracts/backends.py",
    "import",
-   32
+   34
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/c1prime/c1_records.py",
-   "import",
-   29
-  ],
-  [
-   "tools/hwsg/hwsg_jobs.py",
-   "tools/c2_readout/c2_registry.py",
+   "tools/c1prime/c1_model.py",
    "import",
    17
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/hwsc/hwsc_data.py",
+   "tools/c1prime/c1_records.py",
+   "import",
+   31
+  ],
+  [
+   "tools/hwsg/hwsg_jobs.py",
+   "tools/c2_readout/c2_registry.py",
    "import",
    18
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/hwsc/hwsc_gates.py",
+   "tools/hwsc/hwsc_data.py",
    "import",
    19
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/hwsc/hwsc_jobs.py",
+   "tools/hwsc/hwsc_gates.py",
    "import",
    20
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/hwsc/hwsc_known.py",
+   "tools/hwsc/hwsc_jobs.py",
    "import",
    21
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/hwsc/hwsc_outcome.py",
+   "tools/hwsc/hwsc_known.py",
    "import",
    22
+  ],
+  [
+   "tools/hwsg/hwsg_jobs.py",
+   "tools/hwsc/hwsc_outcome.py",
+   "import",
+   23
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
@@ -19928,7 +19952,7 @@
    "tools/hwsg/hwsg_jobs.py",
    "tools/hwsg/hwsg_cross.py",
    "import",
-   235
+   240
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
@@ -19946,7 +19970,7 @@
    "tools/hwsg/hwsg_jobs.py",
    "tools/hwsg/hwsg_oracle.py",
    "import",
-   236
+   241
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
@@ -19970,37 +19994,43 @@
    "tools/hwsg/hwsg_jobs.py",
    "tools/hwsg/hwsg_train.py",
    "import",
-   237
+   242
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
    "tools/k4b/k4b_config.py",
    "import",
-   23
-  ],
-  [
-   "tools/hwsg/hwsg_jobs.py",
-   "tools/k4b/k4b_driver.py",
-   "import",
    24
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/k4b/k4b_fresh.py",
+   "tools/k4b/k4b_data.py",
    "import",
    25
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/k4b/k4b_release.py",
+   "tools/k4b/k4b_driver.py",
    "import",
    26
   ],
   [
    "tools/hwsg/hwsg_jobs.py",
-   "tools/x4_circle_history/stage_records.py",
+   "tools/k4b/k4b_fresh.py",
+   "import",
+   27
+  ],
+  [
+   "tools/hwsg/hwsg_jobs.py",
+   "tools/k4b/k4b_release.py",
    "import",
    28
+  ],
+  [
+   "tools/hwsg/hwsg_jobs.py",
+   "tools/x4_circle_history/stage_records.py",
+   "import",
+   30
   ],
   [
    "tools/hwsg/hwsg_known.py",
@@ -28024,6 +28054,12 @@
    "purpose": "R-0257-1: run_e2 hands the STORE (not the world folder) to the reused stage-C functions that",
    "sha256": "e60d8e89f4072a9a9a3fa202a1325e7a854d63efcfafc33eecec1f9b739edf9e"
   },
+  "tests/hwsg/test_r0259_e2_context.py": {
+   "kind": "python",
+   "lines": 85,
+   "purpose": "R-0259-1: run_e2 sets ctx[\"test_acts\"] as stage C does, and every ctx key read after H2-FRESH",
+   "sha256": "24daffef4b012beb36cfe7908359119de126a518a06df303c4d98ffc0b47fe0f"
+  },
   "tests/hwsu/AUTHORSHIP_A.md": {
    "kind": "markdown",
    "lines": 113,
@@ -29670,9 +29706,9 @@
   },
   "tools/hwsg/API.md": {
    "kind": "markdown",
-   "lines": 365,
+   "lines": 369,
    "purpose": "tools/hwsg: written contract (job 0224 phase 1; derived from HWSG-DESIGN-v1)",
-   "sha256": "aed16b2b59f1f658b312b053eaf2d18e55fb523230358e88915911cc610a21f7"
+   "sha256": "d74824a0f80ae0b76627dd2519f31145dc6ac9b64d9a40162aace3ce3e4cf548"
   },
   "tools/hwsg/CONTRACT.json": {
    "kind": "json",
@@ -29730,9 +29766,9 @@
   },
   "tools/hwsg/hwsg_jobs.py": {
    "kind": "python",
-   "lines": 271,
+   "lines": 276,
    "purpose": "HWSG jobs: REG1, E1-w, REG2, E2-w and the CLI (API.md §11.4-§11.7). Every world stage runs",
-   "sha256": "8c58d9b289e642b8d51eea26f46620354ef36246686a2bb32a23b41162e3284c"
+   "sha256": "f11c1137b159b798e90f13cdf5c61c10782b173ab6f453569d530e267e2b8422"
   },
   "tools/hwsg/hwsg_known.py": {
    "kind": "python",
@@ -160205,6 +160241,153 @@
     }
    ]
   },
+  "tests/hwsg/test_r0259_e2_context.py": {
+   "constants": [],
+   "doc": "R-0259-1: run_e2 sets ctx[\"test_acts\"] as stage C does, and every ctx key read after H2-FRESH\nis present (API.md section 25).",
+   "doc1": "R-0259-1: run_e2 sets ctx[\"test_acts\"] as stage C does, and every ctx key read after H2-FRESH",
+   "dynamic": [
+    {
+     "expr": "'k4b_data'",
+     "func": "import_module",
+     "label": "k4b_data",
+     "line": 69,
+     "literal": "k4b_data",
+     "paths": [],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_data.py"
+     ]
+    },
+    {
+     "expr": "'c1_model'",
+     "func": "import_module",
+     "label": "c1_model",
+     "line": 71,
+     "literal": "c1_model",
+     "paths": [],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_model.py"
+     ]
+    }
+   ],
+   "error": "",
+   "imports": [
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 4,
+     "module": "__future__",
+     "names": [
+      "annotations"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "__future__"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 6,
+     "module": "",
+     "names": [
+      "importlib"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "importlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 7,
+     "module": "",
+     "names": [
+      "sys"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "sys"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 8,
+     "module": "pathlib",
+     "names": [
+      "Path"
+     ],
+     "status": "stdlib",
+     "targets": [],
+     "top": "pathlib"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "",
+     "lazy": false,
+     "level": 0,
+     "line": 10,
+     "module": "",
+     "names": [
+      "numpy"
+     ],
+     "status": "external",
+     "targets": [],
+     "top": "numpy"
+    },
+    {
+     "candidates": [],
+     "form": "from",
+     "how": "same directory",
+     "lazy": false,
+     "level": 0,
+     "line": 13,
+     "module": "test_b_common",
+     "names": [
+      "mod"
+     ],
+     "status": "internal",
+     "targets": [
+      "tests/hwsg/test_b_common.py"
+     ],
+     "top": "test_b_common"
+    }
+   ],
+   "symbols": [
+    {
+     "decorators": [],
+     "doc": "",
+     "end": 85,
+     "kind": "test",
+     "name": "test_run_e2_context_reaches_t_pre_endpoint_ratio_and_export",
+     "qual": "test_run_e2_context_reaches_t_pre_endpoint_ratio_and_export",
+     "sig": "def test_run_e2_context_reaches_t_pre_endpoint_ratio_and_export(tmp_path, monkeypatch)",
+     "start": 16
+    }
+   ],
+   "syspath": [
+    {
+     "dirs": [
+      "tests/hwsg"
+     ],
+     "expr": "str(Path(__file__).resolve().parent)",
+     "line": 12
+    }
+   ]
+  },
   "tests/hwsu/test_a_of_gates.py": {
    "constants": [
     "FEAS",
@@ -253710,6 +253893,23 @@
      "line": 17,
      "module": "",
      "names": [
+      "c1_model"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/c1prime/c1_model.py"
+     ],
+     "top": "c1_model"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 18,
+     "module": "",
+     "names": [
       "c2_registry"
      ],
      "status": "internal",
@@ -253724,7 +253924,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 18,
+     "line": 19,
      "module": "",
      "names": [
       "hwsc_data"
@@ -253741,7 +253941,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 19,
+     "line": 20,
      "module": "",
      "names": [
       "hwsc_gates"
@@ -253758,7 +253958,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 20,
+     "line": 21,
      "module": "",
      "names": [
       "hwsc_jobs"
@@ -253775,7 +253975,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 21,
+     "line": 22,
      "module": "",
      "names": [
       "hwsc_known"
@@ -253792,7 +253992,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 22,
+     "line": 23,
      "module": "",
      "names": [
       "hwsc_outcome"
@@ -253809,7 +254009,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 23,
+     "line": 24,
      "module": "",
      "names": [
       "k4b_config"
@@ -253826,7 +254026,24 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 24,
+     "line": 25,
+     "module": "",
+     "names": [
+      "k4b_data"
+     ],
+     "status": "internal",
+     "targets": [
+      "tools/k4b/k4b_data.py"
+     ],
+     "top": "k4b_data"
+    },
+    {
+     "candidates": [],
+     "form": "import",
+     "how": "unique basename",
+     "lazy": false,
+     "level": 0,
+     "line": 26,
      "module": "",
      "names": [
       "k4b_driver"
@@ -253843,7 +254060,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 25,
+     "line": 27,
      "module": "",
      "names": [
       "k4b_fresh"
@@ -253860,7 +254077,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 26,
+     "line": 28,
      "module": "",
      "names": [
       "k4b_release"
@@ -253877,7 +254094,7 @@
      "how": "",
      "lazy": false,
      "level": 0,
-     "line": 27,
+     "line": 29,
      "module": "",
      "names": [
       "numpy"
@@ -253892,7 +254109,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 28,
+     "line": 30,
      "module": "",
      "names": [
       "stage_records"
@@ -253909,7 +254126,7 @@
      "how": "unique basename",
      "lazy": false,
      "level": 0,
-     "line": 29,
+     "line": 31,
      "module": "c1_records",
      "names": [
       "C1GateFailure"
@@ -253926,7 +254143,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 31,
+     "line": 33,
      "module": "topo_pilot.contracts",
      "names": [
       "ArtifactStore"
@@ -253943,7 +254160,7 @@
      "how": "package root",
      "lazy": false,
      "level": 0,
-     "line": 32,
+     "line": 34,
      "module": "topo_pilot.contracts.backends",
      "names": [
       "LocalFSBackend"
@@ -253960,7 +254177,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 235,
+     "line": 240,
      "module": "",
      "names": [
       "hwsg_cross"
@@ -253977,7 +254194,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 236,
+     "line": 241,
      "module": "",
      "names": [
       "hwsg_oracle"
@@ -253994,7 +254211,7 @@
      "how": "same directory",
      "lazy": true,
      "level": 0,
-     "line": 237,
+     "line": 242,
      "module": "",
      "names": [
       "hwsg_train"
@@ -254010,122 +254227,122 @@
     {
      "decorators": [],
      "doc": "",
-     "end": 38,
+     "end": 40,
      "kind": "function",
      "name": "_store",
      "qual": "_store",
      "sig": "def _store(wd) -> ArtifactStore",
-     "start": 37
+     "start": 39
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 43,
+     "end": 45,
      "kind": "function",
      "name": "_files_under",
      "qual": "_files_under",
      "sig": "def _files_under(d) -> set",
-     "start": 41
+     "start": 43
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 51,
+     "end": 53,
      "kind": "function",
      "name": "_audit_gate",
      "qual": "_audit_gate",
      "sig": "def _audit_gate(out, tag) -> None",
-     "start": 46
+     "start": 48
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 72,
+     "end": 74,
      "kind": "function",
      "name": "_registry_job",
      "qual": "_registry_job",
      "sig": "def _registry_job(out, auth, sched, stage, version, extra=None, worlds=gc.TAGS) -> dict",
-     "start": 55
+     "start": 57
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 76,
+     "end": 78,
      "kind": "function",
      "name": "run_reg1",
      "qual": "run_reg1",
      "sig": "def run_reg1(out, auth, sched, job=None) -> dict",
-     "start": 75
+     "start": 77
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 86,
+     "end": 88,
      "kind": "function",
      "name": "_tables",
      "qual": "_tables",
      "sig": "def _tables(out, tag, blocks=('lgate', 'cal', 'val')) -> dict",
-     "start": 79
+     "start": 81
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 96,
+     "end": 98,
      "kind": "function",
      "name": "run_reg2",
      "qual": "run_reg2",
      "sig": "def run_reg2(out, auth, sched, job=None) -> dict",
-     "start": 89
+     "start": 91
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 115,
+     "end": 117,
      "kind": "function",
      "name": "_g0g",
      "qual": "_g0g",
      "sig": "def _g0g(wd, out, auth, sched, rel)",
-     "start": 100
+     "start": 102
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 147,
+     "end": 149,
      "kind": "function",
      "name": "e1_steps",
      "qual": "e1_steps",
      "sig": "def e1_steps(out, wd, tag, ctx, handoff, auth, sched) -> list",
-     "start": 118
+     "start": 120
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 174,
+     "end": 176,
      "kind": "function",
      "name": "run_e1",
      "qual": "run_e1",
      "sig": "def run_e1(out, w, auth, sched, release_path=None, session=None, task_sha256=None, dry_continue=False) -> dict",
-     "start": 150
+     "start": 152
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 230,
+     "end": 235,
      "kind": "function",
      "name": "run_e2",
      "qual": "run_e2",
      "sig": "def run_e2(out, w, auth, sched, release_path=None, session=None, dry_continue=False) -> dict",
-     "start": 178
+     "start": 180
     },
     {
      "decorators": [],
      "doc": "",
-     "end": 267,
+     "end": 272,
      "kind": "function",
      "name": "main",
      "qual": "main",
      "sig": "def main(argv=None) -> int",
-     "start": 234
+     "start": 239
     }
    ],
    "syspath": []
@@ -295147,5 +295364,5 @@
    ]
   }
  },
- "sources_digest": "af45e4d70cb29ec8dcdcd5c616742e49a20b210891e1ee150d3e79821e94d938"
+ "sources_digest": "51a562e4fc40d0afdea8afcc535214d08c5509b0e1027087b0bc72fbfe21456d"
 }

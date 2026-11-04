@@ -285,7 +285,7 @@
 | `_audit` | function | `_audit` | [tests/hwsu/test_b_of_freeze.py:237](../../tests/hwsu/test_b_of_freeze.py#L237) | A stub with the API §7 shape of hwsu_bind.audit. |
 | `_audit` | function | `_audit` | [tools/hwsd/hwsd_known.py:290](../../tools/hwsd/hwsd_known.py#L290) |  |
 | `_audit_gate` | function | `_audit_gate` | [tools/hwsc/hwsc_driver.py:46](../../tools/hwsc/hwsc_driver.py#L46) |  |
-| `_audit_gate` | function | `_audit_gate` | [tools/hwsg/hwsg_jobs.py:46](../../tools/hwsg/hwsg_jobs.py#L46) |  |
+| `_audit_gate` | function | `_audit_gate` | [tools/hwsg/hwsg_jobs.py:48](../../tools/hwsg/hwsg_jobs.py#L48) |  |
 | `_audit_identity` | function | `_audit_identity` | [tools/x4_oracle_profile/controls.py:82](../../tools/x4_oracle_profile/controls.py#L82) | Audit mode: job 0014 must be terminal; coordinator hold still holds; no usage latch. |
 | `_audit_row` | function | `_audit_row` | [tools/x6zc/x6zc_census.py:29](../../tools/x6zc/x6zc_census.py#L29) |  |
 | `_auth` | function | `_auth` | [tests/c2_readout/test_b_lineage.py:207](../../tests/c2_readout/test_b_lineage.py#L207) |  |
@@ -867,7 +867,7 @@
 | `_files` | function | `_files` | [tools/x6_stage1/x6s1_ingest.py:88](../../tools/x6_stage1/x6s1_ingest.py#L88) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsc/hwsc_driver.py:41](../../tools/hwsc/hwsc_driver.py#L41) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsd/hwsd_driver.py:33](../../tools/hwsd/hwsd_driver.py#L33) |  |
-| `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_jobs.py:41](../../tools/hwsg/hwsg_jobs.py#L41) |  |
+| `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_jobs.py:43](../../tools/hwsg/hwsg_jobs.py#L43) |  |
 | `_files_under` | function | `_files_under` | [tools/hwsg/hwsg_train.py:85](../../tools/hwsg/hwsg_train.py#L85) |  |
 | `_Fill` | class | `_Fill` | [tools/hws/hws_select.py:259](../../tools/hws/hws_select.py#L259) |  |
 | `_Fill` | class | `_Fill` | [tools/hwsc/hwsc_outcome.py:116](../../tools/hwsc/hwsc_outcome.py#L116) |  |
@@ -981,7 +981,7 @@
 | `_g0_env` | function | `_g0_env` | [tests/c2_readout/test_b_lineage.py:154](../../tests/c2_readout/test_b_lineage.py#L154) |  |
 | `_g0_store` | function | `_g0_store` | [tests/c2_readout/test_b_patch.py:336](../../tests/c2_readout/test_b_patch.py#L336) | An S1 store at G0 time: coordinator files, one STARTED line, IMPL and AUTH-ADMIT. |
 | `_g0_world` | function | `_g0_world` | [tests/hwsu/test_b_of_seed.py:247](../../tests/hwsu/test_b_of_seed.py#L247) |  |
-| `_g0g` | function | `_g0g` | [tools/hwsg/hwsg_jobs.py:100](../../tools/hwsg/hwsg_jobs.py#L100) |  |
+| `_g0g` | function | `_g0g` | [tools/hwsg/hwsg_jobs.py:102](../../tools/hwsg/hwsg_jobs.py#L102) |  |
 | `_g4_checks` | function | `_g4_checks` | [tools/x6_stage0/x6_dp.py:346](../../tools/x6_stage0/x6_dp.py#L346) |  |
 | `_G_dec` | function | `_G_dec` | [tests/c1prime/test_b_identities.py:164](../../tests/c1prime/test_b_identities.py#L164) |  |
 | `_gain_run` | function | `_gain_run` | [tests/c2_nd/test_a_decoy_maths.py:195](../../tests/c2_nd/test_a_decoy_maths.py#L195) | D arrays, bounds and d_model at every gain; Y1' active iff V3y' passes (C2 y_active). |
@@ -1913,7 +1913,7 @@
 | `_register` | function | `_register` | [tests/hwsc/test_b_registry.py:280](../../tests/hwsc/test_b_registry.py#L280) |  |
 | `_registered` | function | `_registered` | [tools/hwsc/hwsc_dry.py:40](../../tools/hwsc/hwsc_dry.py#L40) |  |
 | `_registered` | function | `_registered` | [tools/hwsd/hwsd_dry.py:63](../../tools/hwsd/hwsd_dry.py#L63) |  |
-| `_registry_job` | function | `_registry_job` | [tools/hwsg/hwsg_jobs.py:55](../../tools/hwsg/hwsg_jobs.py#L55) |  |
+| `_registry_job` | function | `_registry_job` | [tools/hwsg/hwsg_jobs.py:57](../../tools/hwsg/hwsg_jobs.py#L57) |  |
 | `_registry_npz` | function | `_registry_npz` | [tools/hwsc/hwsc_drystore.py:54](../../tools/hwsc/hwsc_drystore.py#L54) |  |
 | `_regressors` | function | `_regressors` | [tests/c2_readout/test_a_scope.py:89](../../tests/c2_readout/test_a_scope.py#L89) |  |
 | `_regret_curve` | function | `_regret_curve` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:85](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L85) | Regret per row and checkpoint; checkpoints were validated by ``validate_checkpoints``. |
@@ -2358,7 +2358,7 @@
 | `_store` | function | `_store` | [tools/c1prime_registry/c1_registry_sources.py:52](../../tools/c1prime_registry/c1_registry_sources.py#L52) |  |
 | `_store` | function | `_store` | [tools/hwsb/hwsb_driver.py:169](../../tools/hwsb/hwsb_driver.py#L169) |  |
 | `_store` | function | `_store` | [tools/hwsc/hwsc_driver.py:37](../../tools/hwsc/hwsc_driver.py#L37) |  |
-| `_store` | function | `_store` | [tools/hwsg/hwsg_jobs.py:37](../../tools/hwsg/hwsg_jobs.py#L37) |  |
+| `_store` | function | `_store` | [tools/hwsg/hwsg_jobs.py:39](../../tools/hwsg/hwsg_jobs.py#L39) |  |
 | `_store_chain` | function | `_store_chain` | [tools/x6_stage1/x6s1_ingest.py:432](../../tools/x6_stage1/x6s1_ingest.py#L432) |  |
 | `_store_with_obligation` | function | `_store_with_obligation` | [tests/hwsu/test_b_of_reservations.py:105](../../tests/hwsu/test_b_of_reservations.py#L105) |  |
 | `_stored_S` | method | `StoreResolver._stored_S` | [src/topo_pilot/experiment/x4_inputs.py:190](../../src/topo_pilot/experiment/x4_inputs.py#L190) | S of the primary hook per (world, cond, seed, step, panel) from the newest source |
@@ -2411,7 +2411,7 @@
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_registry2.py:295](../../tests/hwsc/test_b_registry2.py#L295) |  |
 | `_tables` | function | `_tables` | [tests/hwsc/test_b_streams.py:251](../../tests/hwsc/test_b_streams.py#L251) |  |
 | `_tables` | function | `_tables` | [tests/hwsd/test_b_data.py:151](../../tests/hwsd/test_b_data.py#L151) |  |
-| `_tables` | function | `_tables` | [tools/hwsg/hwsg_jobs.py:79](../../tools/hwsg/hwsg_jobs.py#L79) |  |
+| `_tables` | function | `_tables` | [tools/hwsg/hwsg_jobs.py:81](../../tools/hwsg/hwsg_jobs.py#L81) |  |
 | `_tables` | function | `_tables` | [tools/x6_stage1/x6s1_stage_post.py:54](../../tools/x6_stage1/x6s1_stage_post.py#L54) |  |
 | `_tags` | function | `_tags` | [tools/c2_readout/c2_registry.py:168](../../tools/c2_readout/c2_registry.py#L168) |  |
 | `_tamper_flip` | function | `_tamper_flip` | [tests/contracts/test_store.py:177](../../tests/contracts/test_store.py#L177) |  |
@@ -3814,7 +3814,7 @@
 | `e0_figure` | function | `e0_figure` | [src/topo_pilot/experiment/report.py:49](../../src/topo_pilot/experiment/report.py#L49) | Dot plot of S (longest H1 bar / q95 scale) per world, one series per metric, with the |
 | `e0_table` | function | `e0_table` | [src/topo_pilot/experiment/report.py:37](../../src/topo_pilot/experiment/report.py#L37) | Markdown lines: graph cycles vs surface holes, and S per world and metric. |
 | `e1_steps` | function | `e1_steps` | [tools/hwsc/hwsc_driver.py:164](../../tools/hwsc/hwsc_driver.py#L164) |  |
-| `e1_steps` | function | `e1_steps` | [tools/hwsg/hwsg_jobs.py:118](../../tools/hwsg/hwsg_jobs.py#L118) |  |
+| `e1_steps` | function | `e1_steps` | [tools/hwsg/hwsg_jobs.py:120](../../tools/hwsg/hwsg_jobs.py#L120) |  |
 | `e2_check` | function | `e2_check` | [tools/hws/hws_worlds.py:315](../../tools/hws/hws_worlds.py#L315) |  |
 | `e2_context` | function | `e2_context` | [tools/hwsc/hwsc_jobs.py:34](../../tools/hwsc/hwsc_jobs.py#L34) | Release-B context exactly as k4b_fresh.main assembles it (identity re-checked first). |
 | `e3a` | function | `e3a` | [tools/x6_stage1/x6s1_stage_post.py:218](../../tools/x6_stage1/x6s1_stage_post.py#L218) |  |

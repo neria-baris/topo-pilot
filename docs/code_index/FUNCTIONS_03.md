@@ -882,6 +882,7 @@
 | `test_run_close_writes_its_obligation` | test | `test_run_close_writes_its_obligation` | [tests/hwsd/test_b_records_meter.py:273](../../tests/hwsd/test_b_records_meter.py#L273) |  |
 | `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | test | `test_run_e1_accepts_a_stage_c_release_and_records_its_gate_files` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:55](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L55) |  |
 | `test_run_e1_still_refuses_a_k4b_protocol_release` | test | `test_run_e1_still_refuses_a_k4b_protocol_release` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:65](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L65) |  |
+| `test_run_e2_context_reaches_t_pre_endpoint_ratio_and_export` | test | `test_run_e2_context_reaches_t_pre_endpoint_ratio_and_export` | [tests/hwsg/test_r0259_e2_context.py:16](../../tests/hwsg/test_r0259_e2_context.py#L16) |  |
 | `test_run_e2_passes_store_to_release_b_and_h2_fresh` | test | `test_run_e2_passes_store_to_release_b_and_h2_fresh` | [tests/hwsg/test_r0257_store_paths.py:15](../../tests/hwsg/test_r0257_store_paths.py#L15) |  |
 | `test_run_e2_records_h1c_e2` | test | `test_run_e2_records_h1c_e2` | [tests/hwsc/test_r_0187_e1_release_and_gate_files.py:79](../../tests/hwsc/test_r_0187_e1_release_and_gate_files.py#L79) |  |
 | `test_run_gate_taxonomy` | test | `test_run_gate_taxonomy` | [tests/circle_history/test_builder_v24_stages.py:33](../../tests/circle_history/test_builder_v24_stages.py#L33) |  |

@@ -140,7 +140,7 @@
 | `main` | function | `main` | [tools/hwsc/hwsc_meter_bind.py:106](../../tools/hwsc/hwsc_meter_bind.py#L106) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
 | `main` | function | `main` | [tools/hwsd/hwsd_jobs.py:271](../../tools/hwsd/hwsd_jobs.py#L271) |  |
 | `main` | function | `main` | [tools/hwsd/hwsd_meter_bind.py:99](../../tools/hwsd/hwsd_meter_bind.py#L99) | --job, --task-sha256, --session, --kind, --stage (all required), then the meter argv. |
-| `main` | function | `main` | [tools/hwsg/hwsg_jobs.py:234](../../tools/hwsg/hwsg_jobs.py#L234) |  |
+| `main` | function | `main` | [tools/hwsg/hwsg_jobs.py:239](../../tools/hwsg/hwsg_jobs.py#L239) |  |
 | `main` | function | `main` | [tools/hwsg/hwsg_train.py:292](../../tools/hwsg/hwsg_train.py#L292) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_driver_of.py:114](../../tools/hwsu/hwsu_driver_of.py#L114) |  |
 | `main` | function | `main` | [tools/hwsu/hwsu_meter_bind.py:90](../../tools/hwsu/hwsu_meter_bind.py#L90) |  |
@@ -1381,9 +1381,9 @@
 | `run_dry` | function | `run_dry` | [tools/hwsd/hwsd_dry.py:359](../../tools/hwsd/hwsd_dry.py#L359) |  |
 | `run_dry` | function | `run_dry` | [tools/hwsg/hwsg_dry2.py:220](../../tools/hwsg/hwsg_dry2.py#L220) |  |
 | `run_e1` | function | `run_e1` | [tools/hwsc/hwsc_driver.py:204](../../tools/hwsc/hwsc_driver.py#L204) |  |
-| `run_e1` | function | `run_e1` | [tools/hwsg/hwsg_jobs.py:150](../../tools/hwsg/hwsg_jobs.py#L150) |  |
+| `run_e1` | function | `run_e1` | [tools/hwsg/hwsg_jobs.py:152](../../tools/hwsg/hwsg_jobs.py#L152) |  |
 | `run_e2` | function | `run_e2` | [tools/hwsc/hwsc_jobs.py:67](../../tools/hwsc/hwsc_jobs.py#L67) |  |
-| `run_e2` | function | `run_e2` | [tools/hwsg/hwsg_jobs.py:178](../../tools/hwsg/hwsg_jobs.py#L178) |  |
+| `run_e2` | function | `run_e2` | [tools/hwsg/hwsg_jobs.py:180](../../tools/hwsg/hwsg_jobs.py#L180) |  |
 | `run_emission` | method | `ProcessStage.run_emission` | [src/topo_pilot/process/stage.py:43](../../src/topo_pilot/process/stage.py#L43) | Build and save the ``EmissionSpec`` of ``world_id`` for replicate ``seeds.master``. |
 | `run_eval` | function | `run_eval` | [tools/hwsb/hwsb_driver.py:215](../../tools/hwsb/hwsb_driver.py#L215) |  |
 | `run_final_test` | function | `run_final_test` | [src/topo_pilot/experiment/x5g1t_stages_eval.py:178](../../src/topo_pilot/experiment/x5g1t_stages_eval.py#L178) | Fresh test (generated here only), step-final checkpoints only; needs authorisation. |
@@ -1424,9 +1424,9 @@
 | `run_phase_b` | function | `run_phase_b` | [src/topo_pilot/experiment/x4b_run.py:200](../../src/topo_pilot/experiment/x4b_run.py#L200) | Run protocol x4b-v1 once; write tables/exports; return the verdict summary. |
 | `run_pools` | function | `run_pools` | [src/topo_pilot/experiment/x5g1t_stages.py:168](../../src/topo_pilot/experiment/x5g1t_stages.py#L168) | Train and dev pools for every master and arm (never the fresh test). |
 | `run_probes` | method | `PredictionStage.run_probes` | [src/topo_pilot/prediction/stage.py:78](../../src/topo_pilot/prediction/stage.py#L78) | Not implemented here: probe I/O lives in ``experiment`` stage S7 (D-047), because dev |
-| `run_reg1` | function | `run_reg1` | [tools/hwsg/hwsg_jobs.py:75](../../tools/hwsg/hwsg_jobs.py#L75) |  |
+| `run_reg1` | function | `run_reg1` | [tools/hwsg/hwsg_jobs.py:77](../../tools/hwsg/hwsg_jobs.py#L77) |  |
 | `run_reg2` | function | `run_reg2` | [tools/hwsc/hwsc_driver.py:227](../../tools/hwsc/hwsc_driver.py#L227) |  |
-| `run_reg2` | function | `run_reg2` | [tools/hwsg/hwsg_jobs.py:89](../../tools/hwsg/hwsg_jobs.py#L89) |  |
+| `run_reg2` | function | `run_reg2` | [tools/hwsg/hwsg_jobs.py:91](../../tools/hwsg/hwsg_jobs.py#L91) |  |
 | `run_remote` | function | `run_remote` | [tests/executors/test_bundle.py:19](../../tests/executors/test_bundle.py#L19) | Build the bundle for a stub job, unpack it in a fresh folder, run run_bundle.py there. |
 | `run_rows` | method | `CircularJob.run_rows` | [src/topo_pilot/experiment/s7_circular.py:62](../../src/topo_pilot/experiment/s7_circular.py#L62) |  |
 | `run_rows` | method | `ControlsJob.run_rows` | [src/topo_pilot/experiment/s7_controls.py:83](../../src/topo_pilot/experiment/s7_controls.py#L83) |  |

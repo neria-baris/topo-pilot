@@ -48,6 +48,7 @@
 ## Imported by
 
 - [tests/hwsb/test_b_e4path.py](../../tests/hwsb/test_b_e4path.py.md) (line 27, import)
+- [tests/hwsg/test_r0259_e2_context.py](../../tests/hwsg/test_r0259_e2_context.py.md) (line 71, dynamic)
 - [tools/c1prime/c1_driver_cal.py](c1_driver_cal.py.md) (line 15, import)
 - [tools/c1prime/c1_driver_late.py](c1_driver_late.py.md) (line 18, import)
 - [tools/c2_nd/nd_decoy.py](../c2_nd/nd_decoy.py.md) (line 21, import)
@@ -62,6 +63,7 @@
 - [tools/hwsd/hwsd_dry.py](../hwsd/hwsd_dry.py.md) (line 22, import)
 - [tools/hwsd/hwsd_dry3.py](../hwsd/hwsd_dry3.py.md) (line 14, import)
 - [tools/hwsd/hwsd_score.py](../hwsd/hwsd_score.py.md) (line 13, import)
+- [tools/hwsg/hwsg_jobs.py](../hwsg/hwsg_jobs.py.md) (line 17, import)
 - [tools/k4b/k4b_data.py](../k4b/k4b_data.py.md) (line 100, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 170, import)
 - [tools/k4b/k4b_driver.py](../k4b/k4b_driver.py.md) (line 274, import)

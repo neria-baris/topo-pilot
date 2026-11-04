@@ -25572,7 +25572,7 @@
    "kind": "markdown",
    "lines": 150,
    "purpose": "סקירת ספרות: שלושה כיוונים להמשך",
-   "sha256": "319b0ef8e147ed25805dc9be0e8bb81e911dbf1012045726b5bf6298cf705c0f"
+   "sha256": "1a9aa1ce19cf459b2536219d580777302649c28ebb7b638292485b408c9e2dcc"
   },
   "docs/proposals/NEXT_ROUND_SHARPER_ANSWERS_HE.md": {
    "kind": "markdown",
@@ -310907,5 +310907,5 @@
    ]
   }
  },
- "sources_digest": "ba0d8825c0f617c3673e3139f183c6c6a2f102982e25cd9139f651d8a777ecad"
+ "sources_digest": "20bbdf31147f45983a214667ffb333cabd9f6a24cd4255ed682df5c830043dcf"
 }
